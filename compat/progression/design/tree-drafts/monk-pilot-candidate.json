@@ -1,0 +1,1086 @@
+{
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "target_existing_path": "tmm_progression:monk",
+  "source": "Current first-party TyzMonkBridge numerical pilot; archived ranks, costs and prerequisite sketch",
+  "notes": "Requires existing native graph and unresolved Fortunate Hands node; not intended to load standalone. See per-node notes in monk.json.",
+  "skills": [
+    {
+      "id": "tmm_progression:tmm_monk_empty_hand_force",
+      "title": "Empty-Hand Force",
+      "description": "Repeatable empty-hand damage bonus beyond the native +1 Open Palm unlock; stacking cap.",
+      "lane": "Martial Body",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 1,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 0.35
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_flowing_counter",
+      "title": "Flowing Counter",
+      "description": "Bounded counterattack after a verified native Guarding Palm/parry unlock.",
+      "lane": "Martial Body",
+      "max_rank": 10,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 10,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_empty_hand_force"
+      ],
+      "effects": [
+        {
+          "type": "counter_attack",
+          "per_rank": 0.4,
+          "params": {
+            "max_damage": 4,
+            "cooldown_ticks": 40,
+            "delivery": "melee",
+            "chance": 1
+          }
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_unarmed_precision",
+      "title": "Empty-Hand Precision",
+      "description": "Strengthen genuine unarmed hit precision/critical strike after Monk Guarding Palm/Monk rank; no innate spirit projectile or spell projectile",
+      "lane": "Martial Body",
+      "max_rank": 5,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 17,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_flowing_counter"
+      ],
+      "effects": [
+        {
+          "type": "critical_hit",
+          "per_rank": 0.02,
+          "params": {
+            "multiplier": 1.5,
+            "delivery": "melee"
+          }
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_natural_poise",
+      "title": "Natural Poise",
+      "description": "Scale unarmored protection beyond native Unarmored Poise +2; never scale equipped armor.",
+      "lane": "Conditioning",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 1,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 0.4
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_hunger_discipline",
+      "title": "Hunger Discipline",
+      "description": "Bounded food/exhaustion efficiency after native license; do not remove all hunger.",
+      "lane": "Conditioning",
+      "max_rank": 10,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 10,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_natural_poise"
+      ],
+      "effects": [
+        {
+          "type": "hunger_efficiency",
+          "per_rank": 0.04
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_fire_blast_tempering",
+      "title": "Fire & Blast Tempering",
+      "description": "Limited environmental damage mitigation after both matching native licenses.",
+      "lane": "Conditioning",
+      "max_rank": 5,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 17,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_hunger_discipline"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.025,
+          "damage_tag": "#minecraft:is_fire"
+        },
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.025,
+          "damage_tag": "#minecraft:is_explosion"
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_body_speed",
+      "title": "Body Speed",
+      "description": "Repeatable speed under no conventional gear discipline; native Fleet Footwork remains a one-off.",
+      "lane": "Footwork",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 1,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:movement_speed",
+          "per_rank": 0.003
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_balanced_landing",
+      "title": "Balanced Landing",
+      "description": "Fall/knockback control; native Step Assist remains a one-off in native tree.",
+      "lane": "Footwork",
+      "max_rank": 10,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 10,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_body_speed"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:knockback_resistance",
+          "per_rank": 0.025
+        },
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.03,
+          "damage_tag": "minecraft:fall"
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_glide_control",
+      "title": "Glide Control",
+      "description": "Improve native momentum gliding only after rank-15 native unlock; never creative flight.",
+      "lane": "Footwork",
+      "max_rank": 5,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 20,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_balanced_landing",
+        "tmm_progression:momentum_glide"
+      ],
+      "effects": [
+        {
+          "type": "glide_control_bonus",
+          "per_rank": 0.02
+        }
+      ],
+      "requires_milestones": [
+        "tmm_progression:dragon_defeated"
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_barehand_efficiency",
+      "title": "Barehand Efficiency",
+      "description": "Repeatable hand-mining speed; native Stone/Iron/Diamond/Netherite Fist unlock legal harvest tiers.",
+      "lane": "Hands as Tools",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 1,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "break_speed",
+          "per_rank": 0.06
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_looting_palm",
+      "title": "Looting Palm",
+      "description": "Bounded unarmed looting after native rank-9 license; no creature-drop duplication.",
+      "lane": "Hands as Tools",
+      "max_rank": 5,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 17,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_fortunate_hands"
+      ],
+      "effects": [
+        {
+          "type": "ordinary_drop_bonus",
+          "per_rank": 0.04,
+          "target": "#tmm_progression:monk_ordinary_drop_targets"
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_monastic_learning",
+      "title": "Monastic Mastery Learning",
+      "description": "Improve real Monk native practice/mastery gain after its native license; **not** global MXP or Tyz XP multiplier.",
+      "lane": "Bounded Native-Licensed Tyz Enhancements",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 10,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "experience_gain_bonus",
+          "per_rank": 0.02,
+          "target": "tmm_progression:monk"
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_focused_advancement",
+      "title": "Focused Advancement",
+      "description": "One-time bounded Monk native skill-point training improvement only with owner-approved accounting.",
+      "lane": "Bounded Native-Licensed Tyz Enhancements",
+      "max_rank": 5,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "requires_skills": [],
+      "effects": [],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      },
+      "rank_level_requirements": [
+        17,
+        17,
+        17,
+        17,
+        20
+      ],
+      "refundable": false,
+      "rank_point_award": {
+        "system": "tmm_progression:monk",
+        "points": 1
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_inner_fortune",
+      "title": "Inner Fortune",
+      "description": "True personal Luck, targeting exactly 85% of the best legally attainable fully maxed AND GEARED Sea Dragon Luck, including all enchanted/Affixed/overcharged/socked armor, legal Curios and other permanent modifiers, with Monk legal Curios already included. Not Fortune/Looting.",
+      "lane": "Gearless Noncombat Mastery",
+      "max_rank": 50,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 20,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_unarmed_precision"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:luck",
+          "per_rank": 0.2
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_inner_reservoir",
+      "title": "Inner Reservoir",
+      "description": "Personal magical resource reserve, targeting ~85% of geared full Dragon maximum capacity in each comparable mana-based spell system, not equivalent spell damage or mana regeneration.",
+      "lane": "Gearless Noncombat Mastery",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 20,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_unarmed_precision"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "per_rank": 5
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:max_mana",
+          "per_rank": 5
+        },
+        {
+          "type": "attribute",
+          "attribute": "psi:total_psi",
+          "per_rank": 50
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_worldly_cultivation",
+      "title": "Worldly Cultivation",
+      "description": "Personally controlled crop growth, legal breeding and harvesting efficiency, calibrated to ~85% of fully optimized Forest Dragon outcome for the same source action; reinforces native Monk Gardening rather than installing automated farm machinery.",
+      "lane": "Gearless Noncombat Mastery",
+      "max_rank": 25,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "required_rank": 20,
+      "requires_skills": [
+        "tmm_progression:tmm_monk_fortunate_hands",
+        "tmm_progression:hand_harvest"
+      ],
+      "effects": [
+        {
+          "type": "crop_bonus",
+          "per_rank": 0.01,
+          "target": "#minecraft:crops"
+        }
+      ],
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmm_progression:tmm_monk_capstone",
+      "title": "Empty-Hand Paragon",
+      "description": "Final Monk combat ceiling: a fully mastered Monk must be able to defeat the actual Chaos Guardian alone with absolutely no worn armor, Curios or other worn equipment and no weapons. This is a complete-fight mastery requirement, not free damage immunity, skipping Guardian mechanics, or importing a new Monk projectile. The test must exercise all authentic combat phases, crystals/shields and hostile threats with pack-approved legal unarmed/Monk abilities.",
+      "lane": "Capstone",
+      "max_rank": 1,
+      "xp_channel": "tmm_progression:mxp",
+      "level_system": "tmm_progression:monk",
+      "rank_costs": [
+        5
+      ],
+      "required_rank": 20,
+      "requires_skills": [],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 5
+        },
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 3
+        }
+      ],
+      "requires_milestones": [
+        "tmm_progression:dragon_defeated"
+      ],
+      "purchase_when": {
+        "type": "or",
+        "conditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_unarmed_precision"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_hunger_discipline"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_unarmed_precision"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_balanced_landing"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_unarmed_precision"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fortunate_hands"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fire_blast_tempering"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_flowing_counter"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fire_blast_tempering"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_balanced_landing"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fire_blast_tempering"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fortunate_hands"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_glide_control"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_flowing_counter"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_glide_control"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_hunger_discipline"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_glide_control"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_fortunate_hands"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_looting_palm"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_flowing_counter"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_looting_palm"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_hunger_discipline"
+              }
+            ]
+          },
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_looting_palm"
+              },
+              {
+                "type": "skill_rank",
+                "path": "tmm_progression:monk",
+                "minimum": 1,
+                "id": "tmm_progression:tmm_monk_balanced_landing"
+              }
+            ]
+          }
+        ]
+      },
+      "eligibility": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "player_state",
+            "state": "unarmored"
+          },
+          {
+            "type": "player_state",
+            "state": "empty_hands"
+          },
+          {
+            "type": "player_state",
+            "state": "curios_empty"
+          }
+        ]
+      }
+    }
+  ]
+}

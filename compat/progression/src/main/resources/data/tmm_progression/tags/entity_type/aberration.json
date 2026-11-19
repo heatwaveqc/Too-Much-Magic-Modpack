@@ -1,4 +1,21 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    {
+      "id": "artifacts:mimic",
+      "required": false
+    },
+    {
+      "id": "wardentools:contagion_incarnation",
+      "required": false
+    },
+    {
+      "id": "wardentools:parasyte",
+      "required": false
+    },
+    {
+      "id": "witchery:nightmare",
+      "required": false
+    }
+  ]
 }

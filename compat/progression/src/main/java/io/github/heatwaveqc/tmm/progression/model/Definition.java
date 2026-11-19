@@ -35,15 +35,25 @@ public final class Definition {
     public record Skill(String id, int maxRank, int requiredRank, int baseCost, int stepCost,
                         List<String> requiresSkills, List<String> requiresAnySkills,
                         List<String> requiresMilestones, String choiceGroup,
-                        List<Integer> autoRanks, List<Effect> effects) {
+                        List<Integer> autoRanks, List<Effect> effects, List<Integer> rankCosts,List<Integer> rankRequirements) {
+        public Skill(String id,int maxRank,int requiredRank,int baseCost,int stepCost,
+                     List<String> requiresSkills,List<String> requiresAnySkills,List<String> requiresMilestones,
+                     String choiceGroup,List<Integer> autoRanks,List<Effect> effects){
+            this(id,maxRank,requiredRank,baseCost,stepCost,requiresSkills,requiresAnySkills,requiresMilestones,choiceGroup,autoRanks,effects,List.of(),List.of());
+        }
         public Skill {
             requiresSkills = List.copyOf(requiresSkills);
             requiresAnySkills = List.copyOf(requiresAnySkills);
             requiresMilestones = List.copyOf(requiresMilestones);
             autoRanks = List.copyOf(autoRanks);
             effects = List.copyOf(effects);
+            rankCosts=List.copyOf(rankCosts);rankRequirements=List.copyOf(rankRequirements);
+            if(!rankRequirements.isEmpty()&&(rankRequirements.size()!=maxRank||rankRequirements.stream().anyMatch(n->n<1)))throw new IllegalArgumentException("Invalid rank_level_requirements");
+            if(!rankCosts.isEmpty()&&(rankCosts.size()!=maxRank||rankCosts.stream().anyMatch(n->n<0)))throw new IllegalArgumentException("Invalid rank_costs");
         }
+        public int nextRequiredRank(int owned){return rankRequirements.isEmpty()?requiredRank:rankRequirements.get(Math.max(0,Math.min(owned,rankRequirements.size()-1)));}
         public int price(int owned) {
+            if(!rankCosts.isEmpty())return rankCosts.get(Math.max(0,Math.min(owned,rankCosts.size()-1)));
             return (int) Math.min(Integer.MAX_VALUE, (long) baseCost + (long) stepCost * owned);
         }
     }
@@ -51,7 +61,17 @@ public final class Definition {
     public record Effect(String type, String attribute, String operation,
                          String selector, String weapon, String damageTag,
                          double amountPerRank, int tier, boolean emptyHand, boolean unarmored,
-                         Map<String,String> params) {
-        public Effect { params = Map.copyOf(params); }
+                         Map<String,String> params,List<Double> rankValues) {
+        public Effect(String type,String attribute,String operation,String selector,String weapon,String damageTag,
+                      double amountPerRank,int tier,boolean emptyHand,boolean unarmored,Map<String,String> params){
+            this(type,attribute,operation,selector,weapon,damageTag,amountPerRank,tier,emptyHand,unarmored,params,List.of());
+        }
+        public Effect { params=Map.copyOf(params);rankValues=List.copyOf(rankValues); }
+        /** rank_values are cumulative outputs, not successive increments. Existing handlers scale once. */
+        public Effect atRank(int rank){
+            if(rankValues.isEmpty()||rank<1)return this;
+            return new Effect(type,attribute,operation,selector,weapon,damageTag,
+                rankValues.get(Math.min(rank,rankValues.size())-1)/rank,tier,emptyHand,unarmored,params);
+        }
     }
 }

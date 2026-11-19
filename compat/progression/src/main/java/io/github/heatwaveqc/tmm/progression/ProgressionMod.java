@@ -27,17 +27,21 @@ public final class ProgressionMod {
     public static final String MOD_ID = "tmm_progression";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public ProgressionMod(IEventBus modBus) {
+    public ProgressionMod(IEventBus modBus, net.neoforged.fml.ModContainer container) {
+        new io.github.heatwaveqc.tmm.progression.mxp.MxpMod(modBus,container);
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tmm.progression.network.DietNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tmm.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
+        io.github.heatwaveqc.tmm.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
         NewbieMode.register();
         TyzMonkBridge.register();

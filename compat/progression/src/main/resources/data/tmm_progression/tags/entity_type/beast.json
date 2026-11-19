@@ -1,7 +1,486 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "alexscaves:atlatitan",
+      "required": false
+    },
+    {
+      "id": "alexscaves:candicorn",
+      "required": false
+    },
+    {
+      "id": "alexscaves:corrodent",
+      "required": false
+    },
+    {
+      "id": "alexscaves:grottoceratops",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gummy_bear",
+      "required": false
+    },
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "required": false
+    },
+    {
+      "id": "alexscaves:raycat",
+      "required": false
+    },
+    {
+      "id": "alexscaves:relicheirus",
+      "required": false
+    },
+    {
+      "id": "alexscaves:subterranodon",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tremorsaurus",
+      "required": false
+    },
+    {
+      "id": "alexscaves:tremorzilla",
+      "required": false
+    },
+    {
+      "id": "alexscaves:underzealot",
+      "required": false
+    },
+    {
+      "id": "alexscaves:vallumraptor",
+      "required": false
+    },
+    {
+      "id": "alexscaves:vesper",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashjack_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashjack_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_camel",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_direwolf",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_dolphin",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:summon_strider",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_starbuncle",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:gift_starby",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:lily",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:nook",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:starbuncle",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_horse",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:summon_wolf",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_boss",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_guardian",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_hunter",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_stalker",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:modern_remnant",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:ferret",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:otter",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:red_panda",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:shima_enaga",
+      "required": false
+    },
+    {
+      "id": "crittersandcompanions:snail",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:hunter_griffin",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:hunter_hound",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:raven",
+      "required": false
+    },
+    {
+      "id": "eidolon_repraised:slimy_slug",
+      "required": false
+    },
+    {
+      "id": "enchanted:familiar_cat",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aurora_deer",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:ratlin",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:seeker",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:shadow_snail",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:starfire_bird",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:yeti",
+      "required": false
+    },
+    {
+      "id": "evilcraft:werewolf",
+      "required": false
+    },
+    {
+      "id": "feywild:moo_shroom_cow",
+      "required": false
+    },
+    {
+      "id": "goety:armored_ravager",
+      "required": false
+    },
+    {
+      "id": "goety:bear_servant",
+      "required": false
+    },
+    {
+      "id": "goety:black_beast",
+      "required": false
+    },
+    {
+      "id": "goety:black_wolf",
+      "required": false
+    },
+    {
+      "id": "goety:burning_hoglin",
+      "required": false
+    },
+    {
+      "id": "goety:gnasher",
+      "required": false
+    },
+    {
+      "id": "goety:hoglin_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_black_wolf",
+      "required": false
+    },
+    {
+      "id": "goety:polar_bear_servant",
+      "required": false
+    },
+    {
+      "id": "goety:ravaged",
+      "required": false
+    },
+    {
+      "id": "goety:ravager",
+      "required": false
+    },
+    {
+      "id": "goety:skeletal_warg",
+      "required": false
+    },
+    {
+      "id": "goety:skeleton_wolf",
+      "required": false
+    },
+    {
+      "id": "goety:snapper",
+      "required": false
+    },
+    {
+      "id": "goety:stormhound",
+      "required": false
+    },
+    {
+      "id": "goety:trampler",
+      "required": false
+    },
+    {
+      "id": "goety:trampler_servant",
+      "required": false
+    },
+    {
+      "id": "goety:twilight_goat",
+      "required": false
+    },
+    {
+      "id": "goety:vampire_bat",
+      "required": false
+    },
+    {
+      "id": "goety:warg",
+      "required": false
+    },
+    {
+      "id": "goety:winter_wolf",
+      "required": false
+    },
+    {
+      "id": "goety:zombie_ravager",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ancient_remnant",
+      "required": false
+    },
+    {
+      "id": "hexerei:crow",
+      "required": false
+    },
+    {
+      "id": "hexerei:owl",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:summoned_polar_bear",
+      "required": false
+    },
+    "minecraft:armadillo",
+    "minecraft:axolotl",
+    "minecraft:bat",
+    "minecraft:camel",
+    "minecraft:cat",
+    "minecraft:chicken",
+    "minecraft:cow",
+    "minecraft:dolphin",
+    "minecraft:donkey",
+    "minecraft:fox",
+    "minecraft:frog",
+    "minecraft:goat",
+    "minecraft:hoglin",
+    "minecraft:horse",
+    "minecraft:llama",
+    "minecraft:mooshroom",
+    "minecraft:mule",
+    "minecraft:ocelot",
+    "minecraft:panda",
+    "minecraft:parrot",
+    "minecraft:pig",
+    "minecraft:polar_bear",
+    "minecraft:rabbit",
     "minecraft:ravager",
-    "minecraft:hoglin"
+    "minecraft:sheep",
+    "minecraft:sniffer",
+    "minecraft:strider",
+    "minecraft:trader_llama",
+    "minecraft:wolf",
+    {
+      "id": "occultism:mercy_goat",
+      "required": false
+    },
+    {
+      "id": "occultism:otherworld_bird",
+      "required": false
+    },
+    {
+      "id": "occultism:possessed_hoglin",
+      "required": false
+    },
+    {
+      "id": "pastel:egg_laying_wooly_pig",
+      "required": false
+    },
+    {
+      "id": "pastel:lizard",
+      "required": false
+    },
+    {
+      "id": "scriptor:colorful_sheep",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_pig",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_rabbit",
+      "required": false
+    },
+    {
+      "id": "theaurorian:aurorian_sheep",
+      "required": false
+    },
+    {
+      "id": "tombstone:spectral_wolf",
+      "required": false
+    },
+    {
+      "id": "totemic:bald_eagle",
+      "required": false
+    },
+    {
+      "id": "totemic:buffalo",
+      "required": false
+    },
+    {
+      "id": "twilightforest:alpha_yeti",
+      "required": false
+    },
+    {
+      "id": "twilightforest:bighorn_sheep",
+      "required": false
+    },
+    {
+      "id": "twilightforest:boar",
+      "required": false
+    },
+    {
+      "id": "twilightforest:deer",
+      "required": false
+    },
+    {
+      "id": "twilightforest:dwarf_rabbit",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hostile_wolf",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hydra",
+      "required": false
+    },
+    {
+      "id": "twilightforest:minoshroom",
+      "required": false
+    },
+    {
+      "id": "twilightforest:minotaur",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mist_wolf",
+      "required": false
+    },
+    {
+      "id": "twilightforest:naga",
+      "required": false
+    },
+    {
+      "id": "twilightforest:penguin",
+      "required": false
+    },
+    {
+      "id": "twilightforest:quest_ram",
+      "required": false
+    },
+    {
+      "id": "twilightforest:raven",
+      "required": false
+    },
+    {
+      "id": "twilightforest:squirrel",
+      "required": false
+    },
+    {
+      "id": "twilightforest:tiny_bird",
+      "required": false
+    },
+    {
+      "id": "twilightforest:winter_wolf",
+      "required": false
+    },
+    {
+      "id": "twilightforest:yeti",
+      "required": false
+    },
+    {
+      "id": "wardentools:deeplurker",
+      "required": false
+    },
+    {
+      "id": "wardentools:noctilure",
+      "required": false
+    },
+    {
+      "id": "wardentools:pale_wanderer",
+      "required": false
+    },
+    {
+      "id": "winteroverhaul:robin",
+      "required": false
+    },
+    {
+      "id": "witchery:owl",
+      "required": false
+    },
+    {
+      "id": "witchery:werewolf",
+      "required": false
+    }
   ]
 }

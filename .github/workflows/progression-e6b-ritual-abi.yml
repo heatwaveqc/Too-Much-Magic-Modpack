@@ -1,0 +1,24 @@
+name: Progression E6b pinned ritual ABI (static only)
+on:
+  pull_request:
+    paths:
+      - 'compat/progression/tools/e6b_ritual_abi.py'
+      - '.github/workflows/progression-e6b-ritual-abi.yml'
+permissions:
+  contents: read
+jobs:
+  abi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        provider: [enchanted, witchery, eidolon, totemic]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify artifact and inspect native ritual paths
+        run: python3 compat/progression/tools/e6b_ritual_abi.py ${{ matrix.provider }}

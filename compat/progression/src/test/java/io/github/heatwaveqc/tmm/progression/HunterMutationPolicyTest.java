@@ -25,7 +25,7 @@ class HunterMutationPolicyTest {
         assertTrue(p.eligible("minecraft:speed",false));
         assertFalse(p.eligible("minecraft:absorption",false));
         assertFalse(p.eligible("modded:instant_effect",true));
-        assertEquals(2,PathJson.read("test:mutagenic_hunter",source).maxRank());
+        assertEquals(2,TestPaths.read("test:mutagenic_hunter",source).maxRank());
     }
 
     @Test void invalidConfigurationFailsClosed() {
@@ -36,7 +36,7 @@ class HunterMutationPolicyTest {
             CONFIG.replace("maximum_amplifier\":3","maximum_amplifier\":100"),
             CONFIG.replace("minecraft:saturation","invalid_effect"),
             CONFIG.replace("\"minecraft:saturation\"","\"minecraft:absorption\"")
-        }) assertThrows(IllegalArgumentException.class,() -> PathJson.read(
+        }) assertThrows(IllegalArgumentException.class,() -> TestPaths.read(
             "test:bad_mutation",JsonParser.parseString(broken).getAsJsonObject()));
     }
 
@@ -46,7 +46,7 @@ class HunterMutationPolicyTest {
             assertNotNull(input);
             var json = JsonParser.parseReader(new java.io.InputStreamReader(input,
                 java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
-            PathJson.read("tmm_progression:hunter",json);
+            TestPaths.read("tmm_progression:hunter",json);
             var p = HunterMutationPolicy.parse(json);
             assertEquals(720000,p.targetDurationTicks());
             assertEquals(0.0005f,p.exhaustionPerMutationTick());

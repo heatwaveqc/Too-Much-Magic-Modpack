@@ -1,14 +1,331 @@
 {
   "replace": false,
   "values": [
-    "cataclysm:netherite_monstrosity",
-    "cataclysm:the_harbinger",
-    "cataclysm:ender_golem",
-    "cataclysm:the_prowler",
-    "cataclysm:the_watcher",
-    "irons_spellbooks:citadel_keeper",
-    "irons_spellbooks:cursed_armor_stand",
-    "goety:hostile_redstone_golem",
-    "goety:hostile_redstone_monstrosity"
+    {
+      "id": "alexscaves:boundroid",
+      "required": false
+    },
+    {
+      "id": "alexscaves:boundroid_winch",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gumbeeper",
+      "required": false
+    },
+    {
+      "id": "alexscaves:magnetron",
+      "required": false
+    },
+    {
+      "id": "alexscaves:mine_guardian",
+      "required": false
+    },
+    {
+      "id": "alexscaves:notor",
+      "required": false
+    },
+    {
+      "id": "alexscaves:teletor",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_entity",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:firenando_familiar",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:amethyst_golem",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:blazing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:cascading_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_amethyst_golem",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:flourishing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:vexing_weald_walker",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coral_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:coralssus",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_guardian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:netherite_ministrosity",
+      "required": false
+    },
+    {
+      "id": "cataclysm:netherite_monstrosity",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_harbinger",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_prowler",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_watcher",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:anger_pot",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:fear_pot",
+      "required": false
+    },
+    {
+      "id": "deeperdarker:sorrow_pot",
+      "required": false
+    },
+    {
+      "id": "embers:ancient_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:aethersent_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:astral_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:freeze",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:grimstone_golem",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:permafrost",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:starlight_golem",
+      "required": false
+    },
+    {
+      "id": "goety:flame_construct",
+      "required": false
+    },
+    {
+      "id": "goety:glacial_wall",
+      "required": false
+    },
+    {
+      "id": "goety:grave_golem",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor",
+      "required": false
+    },
+    {
+      "id": "goety:haunted_armor_servant",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_redstone_golem",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_redstone_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety:ice_golem",
+      "required": false
+    },
+    {
+      "id": "goety:obsidian_monolith",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_cube",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_golem",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_ministrosity",
+      "required": false
+    },
+    {
+      "id": "goety:redstone_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety:squall_golem",
+      "required": false
+    },
+    {
+      "id": "goety:stone_ministrosity",
+      "required": false
+    },
+    {
+      "id": "goety:totemic_bomb",
+      "required": false
+    },
+    {
+      "id": "goety:totemic_wall",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coral_golem",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:coralssus",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:netherite_monstrosity",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:the_prowler",
+      "required": false
+    },
+    {
+      "id": "goety_cataclysm:watcher_servant",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:barrel_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:candle_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:coal_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:hay_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:honey_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:kelp_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:netherite_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:slime_golem",
+      "required": false
+    },
+    {
+      "id": "golemoverhaul:terracotta_golem",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:citadel_keeper",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:cursed_armor_stand",
+      "required": false
+    },
+    "minecraft:iron_golem",
+    "minecraft:snow_golem",
+    {
+      "id": "occultism:iesnium_golem",
+      "required": false
+    },
+    {
+      "id": "pastel:preservation_turret",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hallowsteel_golem",
+      "required": false
+    },
+    {
+      "id": "primalmagick:hexium_golem",
+      "required": false
+    },
+    {
+      "id": "primalmagick:primalite_golem",
+      "required": false
+    },
+    {
+      "id": "the_bumblezone:cosmic_crystal_entity",
+      "required": false
+    },
+    {
+      "id": "twilightforest:carminite_golem",
+      "required": false
+    },
+    {
+      "id": "twilightforest:death_tome",
+      "required": false
+    },
+    {
+      "id": "twilightforest:harbinger_cube",
+      "required": false
+    },
+    {
+      "id": "twilightforest:roving_cube",
+      "required": false
+    },
+    {
+      "id": "wardentools:crystal_golem",
+      "required": false
+    },
+    {
+      "id": "wardentools:protector",
+      "required": false
+    }
   ]
 }
