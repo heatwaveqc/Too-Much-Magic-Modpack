@@ -38,7 +38,7 @@ def compile_candidate(catalog, audit, review):
     # Built-in loader strips .json and interprets exclusion entries as regex.
     # Avoid its limited '*' character class; exclude all resource-backed pools
     # and decrees, including add-on paths. Our flat files load separately.
-    dump("config/bountiful/bountiful.json", {"general":{"dataPathsToExclude":["bounty_pools/.*","bounty_decrees/.*"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1}}})
+    dump("config/bountiful/bountiful.json", {"general":{"dataPathsToExclude":["bounty_pools/.+","bounty_decrees/.+"]},"bounty":{"allowDecreeMixing":False,"shouldHaveTimersAndExpire":True,"initialCountPreference":{"min":1,"max":1},"fillerCountPreference":{"min":1,"max":1}}})
     def entry(item, count, worth):
         if not ITEM.fullmatch(item) or item not in registered:
             raise ValueError("unregistered item: " + item)
