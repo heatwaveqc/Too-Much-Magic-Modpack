@@ -1,0 +1,2832 @@
+{
+  "schema_version": 1,
+  "status": "source_seed_not_runtime_authority",
+  "frozen_census": {
+    "pr": 348,
+    "source_commit": "1ae3aa4569294b8904e6bf156a73b779758832f3",
+    "installed_integration": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+    "item_count": 23681,
+    "recipe_count": 24857
+  },
+  "semantics": {
+    "traits": "Nonexclusive review classifications; suffix candidate is evidence only. Never dietary or ingredient authorization.",
+    "consumption": "Separate native food properties, custom use, placed feast, drink, ingredient-only, species-only; unknown until inspected.",
+    "diet_overrides": "Source observation or policy review, not an active allowance. Provider/state rules distinct."
+  },
+  "ingredient_equivalences": {
+    "status": "narrow first-pass additive tag source; runtime unverified",
+    "groups": {
+      "c:foods/tomato": [
+        "pamhc2crops:tomatoitem"
+      ],
+      "c:foods/onion": [
+        "pamhc2crops:onionitem"
+      ],
+      "c:foods/cabbage": [
+        "pamhc2crops:cabbageitem"
+      ]
+    }
+  },
+  "items": {
+    "aquaculture:arapaima": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:atlantic_cod": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:atlantic_halibut": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:atlantic_herring": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:bayad": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:blackfish": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:bluegill": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:boulti": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:brown_shrooma": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:brown_trout": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:capitaine": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:carp": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:catfish": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:fish_fillet_cooked": {
+      "traits": [
+        "cooked_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:fish_fillet_raw": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "aquaculture:gar": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:muskellunge": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:pacific_halibut": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:perch": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:pink_salmon": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:piranha": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:pollock": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:rainbow_trout": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:red_grouper": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:red_shrooma": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:smallmouth_bass": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:sushi": {
+      "traits": [
+        "grain_free_seafood_candidate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "aquaculture:synodontis": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:tambaqui": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "aquaculture:tuna": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "ars_nouveau:sourceberry_bush": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "artifacts:everlasting_beef": {
+      "traits": [
+        "magic_meat",
+        "reusable_food"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "botania:infinite_fruit": {
+      "traits": [
+        "magical_nourishment",
+        "reusable_food"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "native_cost_and_consumer_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "botania:mana_cookie": {
+      "traits": [
+        "magical_nourishment"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "native_cost_and_consumer_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "deeperdarker:angler_fish": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "dragonsurvival:cave_dragon_treat": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:charged_coal": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:charred_meat": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:charred_mushroom": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:charred_seafood": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:charred_vegetable": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:forest_dragon_treat": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:sea_dragon_treat": {
+      "traits": [
+        "native_special"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "dragonsurvival:seasoned_fish": {
+      "traits": [
+        "grain_free_seafood_candidate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "eternal_starlight:aurora_deer_steak": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "eternal_starlight:luminaris": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "eternal_starlight:luminofish": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "eternal_starlight:ratlin_meat": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "eternal_starlight:rookfish": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "eternal_starlight:shadow_snail_meat": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "evilcraft:flesh_rejuvenated": {
+      "traits": [
+        "magical_nourishment",
+        "reusable_food"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "native_cost_and_consumer_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "farmersdelight:bacon": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "farmersdelight:cabbage": {
+      "traits": [
+        "vegetable",
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json",
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:cabbage_leaf": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:chicken_cuts": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "farmersdelight:cod_slice": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:cooked_bacon": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:fruit_salad": {
+      "traits": [
+        "prepared_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:milk_bottle": {
+      "traits": [
+        "dairy"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:minced_beef": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "farmersdelight:mixed_salad": {
+      "traits": [
+        "prepared_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:nether_salad": {
+      "traits": [
+        "prepared_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:onion": {
+      "traits": [
+        "vegetable",
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json",
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:raw_pasta": {
+      "traits": [
+        "pasta"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:rice": {
+      "traits": [
+        "grain"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:rice_panicle": {
+      "traits": [
+        "grain"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:salmon_slice": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:tomato": {
+      "traits": [
+        "vegetable",
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json",
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "farmersdelight:wheat_dough": {
+      "traits": [
+        "dough"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "hexerei:blood_bottle": {
+      "traits": [
+        "blood_candidate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "provider_and_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "policy": "ordinary_blood_bridge_only_no_generic_food"
+      }
+    },
+    "irons_spellbooks:blood_vial": {
+      "traits": [
+        "blood_candidate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "provider_and_container_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "policy": "ordinary_blood_bridge_only_no_generic_food"
+      }
+    },
+    "minecraft:apple": {
+      "traits": [
+        "fruit"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:beef": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:beetroot": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:bread": {
+      "traits": [
+        "ordinary_grain_meal"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:brown_mushroom": {
+      "traits": [
+        "fungus"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:cake": {
+      "traits": [
+        "ordinary_grain_meal"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:carrot": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:chicken": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:chorus_fruit": {
+      "traits": [
+        "fruit"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:cod": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_beef": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_chicken": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_cod": {
+      "traits": [
+        "cooked_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_mutton": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_porkchop": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_rabbit": {
+      "traits": [
+        "cooked_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cooked_salmon": {
+      "traits": [
+        "cooked_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:cookie": {
+      "traits": [
+        "ordinary_grain_meal"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:crimson_fungus": {
+      "traits": [
+        "fungus"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:dried_kelp": {
+      "traits": [
+        "aquatic_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:enchanted_golden_apple": {
+      "traits": [
+        "fruit"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:glow_berries": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:golden_apple": {
+      "traits": [
+        "fruit"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:golden_carrot": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:honey_bottle": {
+      "traits": [
+        "native_drink"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:kelp": {
+      "traits": [
+        "aquatic_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:melon_slice": {
+      "traits": [
+        "fruit"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:milk_bucket": {
+      "traits": [
+        "dairy"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:mutton": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:poisonous_potato": {
+      "traits": [
+        "hazardous",
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "hazard_and_diet_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:porkchop": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:potato": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:pufferfish": {
+      "traits": [
+        "hazardous",
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "hazard_and_diet_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:pumpkin": {
+      "traits": [
+        "vegetable"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:rabbit": {
+      "traits": [
+        "raw_meat"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:red_mushroom": {
+      "traits": [
+        "fungus"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:rotten_flesh": {
+      "traits": [
+        "hazardous"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "hazard_and_diet_review",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:salmon": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:seagrass": {
+      "traits": [
+        "aquatic_plant"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:spider_eye": {
+      "traits": [
+        "hazardous"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "hazard_and_diet_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:sugar": {
+      "traits": [
+        "sugar"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:sugar_cane": {
+      "traits": [
+        "sugar"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:sweet_berries": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:tropical_fish": {
+      "traits": [
+        "raw_fish"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "minecraft:warped_fungus": {
+      "traits": [
+        "fungus"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "minecraft:wheat": {
+      "traits": [
+        "grain"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:arrowrootitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:artichokeitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:asparagusitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bellpepperitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:blackberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:blueberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:bokchoyitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:broccoliitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:brusselsproutitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cabbageitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cactusfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:calabashitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:candleberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cantaloupeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cassavaitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:caulifloweritem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:celeryitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:chilipepperitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cloudberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cranberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:cucumberitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:eggplantitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:elderberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:garlicitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:grapeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:greengrapeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:guaranaitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:huckleberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:jicamaitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:juniperberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:kaleitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:kiwiitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:kohlrabiitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:leekitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:lettuceitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:lotusitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:mulberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:nettlesitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:nopalesitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:okraitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:onionitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:parsnipitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:peanutitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:peasitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:pineappleitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:radishitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:raspberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:rhubarbitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:rutabagaitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:scallionitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:spinachitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:strawberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:sweetpotatoitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:taroitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:tomatilloitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:tomatoitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:turnipitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:waterchestnutitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:wintersquashitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:wolfberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2crops:zucchiniitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:bakewareitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:batteritem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:butteritem": {
+      "traits": [
+        "dairy"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:cocoapowderitem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:cookingoilitem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:creamitem": {
+      "traits": [
+        "dairy"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:cuttingboarditem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:doughitem": {
+      "traits": [
+        "dough"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:flouritem": {
+      "traits": [
+        "flour"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:freshmilkitem": {
+      "traits": [
+        "dairy"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:freshwateritem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:grinderitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:juiceritem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:mayonaiseitem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:mixingbowlitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:pastaitem": {
+      "traits": [
+        "pasta"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:potitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:rolleritem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:saltitem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:saucepanitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:skilletitem": {
+      "traits": [
+        "utensil"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2foodcore:vinegaritem": {
+      "traits": [
+        "culinary_intermediate"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:apricotitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:avocadoitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:bananaitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:breadfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:cherryitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:dateitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:dragonfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:durianitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:figitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:gooseberryitem": {
+      "traits": [
+        "berry"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/berries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:grapefruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:guavaitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:jackfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:lemonitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:limeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:lycheeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:mangoitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:oliveitem": {
+      "traits": [
+        "vegetable_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/vegetables.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:orangeitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:papayaitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:passionfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:pawpawitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:peachitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:pearitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:persimmonitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:plumitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:pomegranateitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:rambutanitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:soursopitem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:starfruititem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pamhc2trees:tamarinditem": {
+      "traits": [
+        "fruit_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/fruit.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pastel:crawfish": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pastel:koi": {
+      "traits": [
+        "raw_fish_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_fish.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "pastel:lizard_meat": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {}
+    },
+    "spectrum:enchanted_golden_carrot": {
+      "traits": [
+        "magical_nourishment"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "legacy_namespace_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "spectrum:enchanted_star_candy": {
+      "traits": [
+        "magical_nourishment"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "legacy_namespace_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "spectrum:magnificent_star_candy": {
+      "traits": [
+        "magical_nourishment"
+      ],
+      "evidence": [
+        "review seed: existing diet, CFB or vanilla/FD source; confirm exact runtime ID and properties",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "legacy_namespace_review",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:cave_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval",
+        "dragonsurvival:sea_dragon": "existing_selector_observation_not_policy_approval",
+        "policy": "explicit_magic_exception_candidate_preserve_native_cost"
+      }
+    },
+    "twilightforest:raw_meef": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    },
+    "twilightforest:raw_venison": {
+      "traits": [
+        "raw_meat_candidate"
+      ],
+      "evidence": [
+        "kubejs/data/tmm/tags/item/emc/ordinary/raw_meat.json",
+        "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
+      ],
+      "review": "source_candidate",
+      "consumption": "unknown",
+      "diet_overrides": {
+        "dragonsurvival:forest_dragon": "existing_selector_observation_not_policy_approval"
+      }
+    }
+  }
+}
