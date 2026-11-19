@@ -36,13 +36,14 @@ public final class RitualRewards {
     private static boolean validId(String id){
         return id!=null&&id.length()<=180&&id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+");
     }
-    private static final Map<String,Rule> RULES=forgeRules();
-    private static Map<String,Rule> forgeRules(){
+    private static final Map<String,Rule> RULES=initialRules();
+    private static Map<String,Rule> initialRules(){
         var rules=new LinkedHashMap<String,Rule>();
         forge(rules,Band.FORGE_1,"ferrognetic_mixture","quantum_catcher","smelter_prism","upgrade_tier_2");
         forge(rules,Band.FORGE_2,"draco_arcanus_boots","draco_arcanus_chestplate","draco_arcanus_helmet","draco_arcanus_leggings","terrastomp_prism","upgrade_tier_3");
         forge(rules,Band.FORGE_3,"eternal_stella","quantum_injector","sea_prism","whirlwind_prism","upgrade_tier_4");
         forge(rules,Band.FORGE_4,"boss_catcher","soul_binding_crystal","tyr_boots","tyr_chestplate","tyr_helmet","tyr_leggings","upgrade_tier_5");
+        PinnedRitualCatalog.addTo(rules);
         return Map.copyOf(rules);
     }
     private static void forge(Map<String,Rule> out,Band band,String... paths){

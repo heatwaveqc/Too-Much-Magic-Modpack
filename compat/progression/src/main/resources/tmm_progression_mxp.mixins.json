@@ -43,7 +43,9 @@
     "GoetyLichRescueMixin",
     "ForbiddenLichRescueMixin",
     "GoetyLichSummonLimitMixin",
-    "GoetyLichRitualLimitMixin"
+    "GoetyLichRitualLimitMixin",
+    "ForgeRitualManagerMixin",
+    "ForgeRitualInstallMixin"
   ],
   "injectors": {
     "defaultRequire": 0

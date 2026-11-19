@@ -10,12 +10,33 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RitualSettlementTest {
     @Test void explicitForgeRulesUseRequiredTier(){
-        assertEquals(22,RitualRewards.rules().size());
+        assertEquals(22,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("forbidden_arcanus:")).count());
         assertEquals(1000,RitualRewards.lookup("forbidden_arcanus:upgrade_tier_2").band().first());
         assertEquals(3500,RitualRewards.lookup("forbidden_arcanus:upgrade_tier_5").band().first());
         assertEquals(480,RitualRewards.lookup("forbidden_arcanus:eternal_stella").band().repeat());
         assertNull(RitualRewards.lookup("forbidden_arcanus:unknown"));
         assertNull(RitualRewards.lookup("neovitae:ritual"));
+    }
+    @Test void pinnedCatalogAliasesAndHeldRecipes(){
+        assertEquals(113,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("occultism:")).count());
+        assertEquals(36,RitualRewards.rules().keySet().stream().filter(id->id.startsWith("rootsclassic:")).count());
+        assertEquals(RitualRewards.lookup("occultism:ritual/craft_stabilizer_tier1").family(),
+            RitualRewards.lookup("occultism:ritual/craft_stabilizer_tier1_dark").family());
+        assertEquals(RitualRewards.lookup("rootsclassic:ritual/crafting/living_pickaxe").family(),
+            RitualRewards.lookup("rootsclassic:ritual/crafting/living_sword").family());
+        assertNull(RitualRewards.lookup("occultism:ritual/repair_armors"));
+        assertNull(RitualRewards.lookup("rootsclassic:ritual/sacrifice"));
+    }
+    @Test void forgeProofRejectsUnchangedTierWrongItemOrWrongRequirement(){
+        var id="forbidden_arcanus:eternal_stella";
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.matchesTier(id,3));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.matchesTier(id,5));
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.itemResult(id,id,1));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.itemResult(id,"minecraft:diamond",1));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.itemResult(id,id,0));
+        var upgrade="forbidden_arcanus:upgrade_tier_5";
+        assertTrue(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.actualUpgrade(upgrade,4,5));
+        assertFalse(io.github.heatwaveqc.tmm.progression.mxp.core.ForgeRitualProof.actualUpgrade(upgrade,5,5));
     }
     @Test void receiptsFailClosed(){
         UUID operation=UUID.randomUUID(), actor=UUID.randomUUID();
