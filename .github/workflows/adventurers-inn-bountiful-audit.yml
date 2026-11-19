@@ -1,0 +1,23 @@
+name: Adventurer Inn Bountiful static overlay (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'research/prefab-donors/design/adventurers-inn-v1/**'
+      - '.github/workflows/adventurers-inn-bountiful-audit.yml'
+permissions:
+  contents: read
+jobs:
+  static-overlay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate and validate fixed original Inn, then add one Bountiful board
+        run: |
+          cd research/prefab-donors/design/adventurers-inn-v1
+          python rebuild.py
+          python add_bountiful_board.py
+          python -m unittest test_bountiful_board.py
