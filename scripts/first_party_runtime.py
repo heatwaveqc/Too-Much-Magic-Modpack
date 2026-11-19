@@ -45,6 +45,34 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def validate_jar_license(directory, jar):
+    """Verify the release license and notices, not just an SPDX metadata label."""
+    with zipfile.ZipFile(jar) as z:
+        metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
+        if metadata.get("license") != "MIT":
+            raise ValueError("First-party JAR must declare MIT: " + jar.name)
+        # Economy already ships its MIT code license and independently licensed
+        # Botania-derived art notices in META-INF; preserve that established
+        # location and verify every required notice rather than relicensing art.
+        economy = directory.name == "economy"
+        prefix = "META-INF/" if economy else ""
+        names = ("LICENSE", "THIRD_PARTY_NOTICES.md")
+        if economy:
+            names += ("ASSET-CREDITS.md", "BOTANIA-ASSET-LICENSE.md")
+        for name in names:
+            entry = prefix + name
+            if z.namelist().count(entry) != 1:
+                raise ValueError("Missing or duplicate " + entry + " in " + jar.name)
+            expected = (directory / name).read_bytes()
+            if not expected or z.read(entry) != expected:
+                raise ValueError("Missing or inconsistent notice " + entry + " in " + jar.name)
+        license_text = z.read(prefix + "LICENSE").decode()
+        for required in ("MIT License", "Copyright (c)", "Permission is hereby granted",
+                         "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"',
+                         "SOFTWARE."):
+            if required not in license_text:
+                raise ValueError("Incomplete MIT license in " + jar.name)
+
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
 
@@ -65,11 +93,13 @@ def verify_trader_irons_pin(jar, root=ROOT):
     print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
 
 def verify_packaging_inputs(addons, root=ROOT):
-    expected = {jar.name: mod for _, mod, jar in selected(root)}
+    expected = {jar.name: (directory, mod) for directory, mod, jar in selected(root)}
     if len(addons) != len(expected) or {p.name for p in addons} != set(expected):
         raise ValueError("Missing, extra or duplicate first-party runtime JAR selection")
     for jar in addons:
-        validate_jar(jar, expected[jar.name])
+        directory, mod = expected[jar.name]
+        validate_jar(jar, mod)
+        validate_jar_license(directory, jar)
 
 def main():
     p = argparse.ArgumentParser()
@@ -87,6 +117,7 @@ def main():
             else:
                 subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
+            validate_jar_license(directory, jar)
             if mod == "traders_vengence":
                 verify_trader_irons_pin(jar)
     elif args.action == "paths":
@@ -100,9 +131,10 @@ def main():
         actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengence-") or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
-        for _, mod, jar in rows:
+        for directory, mod, jar in rows:
             dest = args.mods_dir / jar.name
             validate_jar(dest, mod)
+            validate_jar_license(directory, dest)
             if hashlib.sha256(jar.read_bytes()).digest() != hashlib.sha256(dest.read_bytes()).digest():
                 raise ValueError("Smoke JAR bytes differ: " + jar.name)
         print("Verified exact selected runtime JARs: " + ", ".join(sorted(expected)))

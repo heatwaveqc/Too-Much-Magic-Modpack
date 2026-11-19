@@ -36,7 +36,7 @@ tasks.named('processResources') {
 }
 
 tasks.named('jar', Jar) {
-    from(project.files('LICENSE', 'ASSET-CREDITS.md', 'BOTANIA-ASSET-LICENSE.md')) {
+    from(project.files('LICENSE', 'THIRD_PARTY_NOTICES.md', 'ASSET-CREDITS.md', 'BOTANIA-ASSET-LICENSE.md')) {
         into 'META-INF'
     }
 }

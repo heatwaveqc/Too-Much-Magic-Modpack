@@ -751,7 +751,8 @@
     "feature/quest-chapter-ownership-2026-11-17": "Ready-PR reconciliation, exact donor 22ec4839fb6de41726d2b3c0bbd01716df738643 (#327), source merged through #361; gameplay testing remains separate.",
     "feature/equestrian-roster-2026-11-17": "Ready-PR reconciliation, exact donor 25019866caabcf38faa967fe356ebfff336b8817 (#329), source merged through #361; gameplay testing remains separate.",
     "docs/prefab-next-test-20261118": "Ready-PR reconciliation, exact donor 5bbada77f273fa139c2c65ca6a346ec8f2ec07fd (#352), source merged through #361; gameplay testing remains separate.",
-    "feature/astral-dimension-sky-config-2026-11-19": "Ready-PR reconciliation, exact donor 22e0870c22410d6d74abd0cb29b4c5b74527d90e (#361), source merged through #361; gameplay testing remains separate."
+    "feature/astral-dimension-sky-config-2026-11-19": "Ready-PR reconciliation, exact donor 22e0870c22410d6d74abd0cb29b4c5b74527d90e (#361), source merged through #361; gameplay testing remains separate.",
+    "feature/first-party-mit-licensing-2026-11-18": "Exact #341 source 8cca84604664c316ac9b86b4c17735f39e8d2f63 reconciled through #361 with newly integrated Economy classpath and asset notices; pending GPL Trader draft #351 retains separate scope."
   },
   "superseded_or_non_runtime": {
     "feature/materials-unification-mahou-doubling": "Superseded by silver-equipment branch carrying material config",
