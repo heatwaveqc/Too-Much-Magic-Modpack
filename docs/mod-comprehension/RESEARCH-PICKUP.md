@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Fire/static glyphs
+
+- Added ars-elemental-pinned-fire-static.md4recipes/routes. Cauterize3damage-successgate/allyallowed, harmfulMILKcure; DISPEL_ALLOW/DENY comparators compareHolder.value vsHolder, javap2lambdasconfirmed mismatch. Conflaginitialonfire+successful9+5ampdamage, allentityboxfire+60beforeguards, otherliving.75damage/10%Blast200/nativeexpirystrength2NONE. Spark3+1.5amp+wet2/15+5duration statusregardlessdamageboolean/AirStaticCharged. Discharge7+3amp/Static*1.3thenremove; initialarmorFErequest25%unchecked, eachcap*1.1evenempty; THENboxdamage incloriginal, successShockedampcap5. No runtime/permissionacceptance.
+- **Next10glyphs +12tomes** BubbleShield,Cavitate,Charm,ConjureTerrain,Geyser,LifeLink,PhantomGrasp,Spike,WateryGrave,WaterJet. SuggestedWaterCavitate/Grave/Jet/Geyser +entityrecipients, thenEarthSpike/Terrain andAnima/Shield. 29of39routescovered through14companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Venom/Spores/Rage
 
 - Added ars-elemental-pinned-venom-spores-rage.md3routes exactrecipes/config/recipients. Envenom5+5seconds(builtconfignotfallback30/8), oldPoisonamp/2floataddsamp→Venom/removePoison; EarthimmuneSpiderdirectVenom. Venomperiods20/10/8/4/2/1then0 anddamage2+.25amp,nooriginalcaster. Sporesinitialstatusgate,damage6+2.5amp+initialVenom2+3level REUSEDsecondary,boxnotradius,noallyguard, spreadPoison+Hunger; 5%Earthgroundblossom directplacement distinctGrow20%. RageonlyMob/60+120duration, Sauceattack+.25mult andtargetonlyifnull/forCombatnotblanketalliedbypass.
