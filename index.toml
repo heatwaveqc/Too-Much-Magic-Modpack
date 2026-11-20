@@ -774,7 +774,7 @@ hash = "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
 
 [[files]]
 file = "kubejs/data/tmm/curios/slots/bundle.json"
-hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
+hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
