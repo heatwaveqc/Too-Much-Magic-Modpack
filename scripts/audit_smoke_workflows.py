@@ -31,14 +31,14 @@ def unsafe_or(expression: str) -> bool:
     'branch_a || (manual && flag)' is not. A conservative syntactic guard.
     """
     source = expression.replace("\u0024{{", "").replace("}}", "")
-    group = re.compile(r"\\([^()]*\\)")
+    group = re.compile(r"\([^()]*\)")
     while match := group.search(source):
         value = match.group(0)[1:-1]
         if "||" in value and (DISPATCH.search(value) or AUTHORIZED.search(value)):
             return True
         # Remove harmless branch-only OR groups before checking outer logic.
         source = source[:match.start()] + ("BRANCH_SELECTOR" if "||" in value else value) + source[match.end():]
-    return "||" in source or "\\nor " in source
+    return "||" in source
 
 
 def protected(job_if: str, step_if: str) -> bool:
