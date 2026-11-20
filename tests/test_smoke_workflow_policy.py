@@ -49,6 +49,34 @@ class SmokeWorkflowPolicyTest(unittest.TestCase):
 """
         self.assertTrue(scan_workflow(source, "b14-cc-eldritch-iesnium.yml"))
 
+    def test_branch_alternatives_with_both_gates_are_safe(self):
+        source = """name: Sample
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  smoke:
+    if: (github.ref_name == 'a' || github.ref_name == 'b') && github.event_name == 'workflow_dispatch' && inputs.full_smoke == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash scripts/smoke_server.sh
+"""
+        self.assertEqual(scan_workflow(source, "b8-final-client.yml"), [])
+
+    def test_or_branch_outside_manual_guard_is_rejected(self):
+        source = """name: Sample
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  smoke:
+    if: github.ref_name == 'a' || (github.event_name == 'workflow_dispatch' && inputs.full_smoke == true)
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash scripts/smoke_server.sh
+"""
+        self.assertTrue(scan_workflow(source, "b8-final-client.yml"))
+
     def test_manually_authorized_b14_step(self):
         source = HEADER + """      - name: source check
         run: python3 scripts/validate.py
