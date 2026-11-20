@@ -27,6 +27,18 @@ class ControlsDefaultsPolicyTest {
         assertEquals(Decision.DEFAULT_UNBOUND, ControlsDefaultsPolicy.decide("key.brand_new_mod.cast", Set.of()));
     }
 
+    @Test void contextualMiddleClickSortIsTheOnlyBoundModDefault() {
+        String sort = "key.invtweaks_sort_either.desc";
+        assertTrue(ControlsDefaultsPolicy.isContextualSort(sort));
+        assertEquals(Decision.DEFAULT_PACK_BOUND, ControlsDefaultsPolicy.decide(sort, Set.of()));
+        assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide(sort, Set.of(sort)));
+        assertEquals(Decision.DEFAULT_UNBOUND,
+            ControlsDefaultsPolicy.decide("key.invtweaks_sort_inventory.desc", Set.of()));
+        assertEquals(Decision.DEFAULT_UNBOUND,
+            ControlsDefaultsPolicy.decide("key.invtweaks_sort_player.desc", Set.of()));
+        assertFalse(ControlsDefaultsPolicy.isContextualSort("key.pickItem"));
+    }
+
     @Test void allSavedKeysIncludingDefaultValuedOnesArePlayerOwned() {
         Set<String> saved = Set.of("keyset.open", "key.dragonsurvival.ability", "key.attack");
         assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide("keyset.open", saved));

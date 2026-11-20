@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Client-only, registry-driven first-run controls policy:
  *   - NEVER touch the 34 vanilla mapping IDs;
- *   - change modded "Reset" defaults to unbound;
+ *   - change modded "Reset" defaults to unbound, except contextual inventory sorting;
  *   - only clear a current modded binding if no matching key_ line was present
  *     in options.txt BEFORE mod configuration may rewrite that file;
  *   - process a KeyMapping identity once per launch, never repeatedly reset.
@@ -36,6 +36,7 @@ public final class ClientKeyDefaults {
     private static boolean snapshotFailed;
     private static boolean initialLog;
     private static final InputConstants.Key UNBOUND = InputConstants.UNKNOWN;
+    private static final InputConstants.Key SORT_MIDDLE = InputConstants.Type.MOUSE.getOrCreate(2);
 
     private ClientKeyDefaults() {}
 
@@ -61,30 +62,36 @@ public final class ClientKeyDefaults {
 
         int defaultsSet = 0;
         int firstRunUnbound = 0;
+        int firstRunBound = 0;
         int playerPreserved = 0;
         int vanillaPreserved = 0;
         for (KeyMapping mapping : minecraft.options.keyMappings) {
             if (mapping == null || !PROCESSED.add(mapping)) continue;
-            switch (ControlsDefaultsPolicy.decide(mapping.getName(), originalSavedNames)) {
+            ControlsDefaultsPolicy.Decision decision =
+                ControlsDefaultsPolicy.decide(mapping.getName(), originalSavedNames);
+            switch (decision) {
                 case VANILLA -> vanillaPreserved++;
-                case PRESERVE_PLAYER, DEFAULT_UNBOUND -> {
-                    // Update the reset-to-default target without modifying the
-                    // user's CURRENT key assignment, including KeySets bindings.
-                    if (!mapping.getDefaultKey().equals(UNBOUND)
+                case PRESERVE_PLAYER, DEFAULT_UNBOUND, DEFAULT_PACK_BOUND -> {
+                    InputConstants.Key targetDefault =
+                        ControlsDefaultsPolicy.isContextualSort(mapping.getName())
+                            ? SORT_MIDDLE : UNBOUND;
+                    // Never rewrite saved player controls. Only update Reset's
+                    // target, and initialize unsaved bindings on first launch.
+                    if (!mapping.getDefaultKey().equals(targetDefault)
                         || mapping.getDefaultKeyModifier() != KeyModifier.NONE) {
                         KeyMappingDefaultAccessor accessor = (KeyMappingDefaultAccessor) mapping;
-                        accessor.tmm$setDefaultKey(UNBOUND);
+                        accessor.tmm$setDefaultKey(targetDefault);
                         accessor.tmm$setDefaultKeyModifier(KeyModifier.NONE);
                         defaultsSet++;
                     }
-                    if (ControlsDefaultsPolicy.decide(mapping.getName(), originalSavedNames)
-                        == ControlsDefaultsPolicy.Decision.PRESERVE_PLAYER) {
+                    if (decision == ControlsDefaultsPolicy.Decision.PRESERVE_PLAYER) {
                         playerPreserved++;
-                    } else {
-                        // Newly introduced mappings alone start unbound.
-                        if (!mapping.getKey().equals(UNBOUND)
-                            || mapping.getKeyModifier() != KeyModifier.NONE) {
-                            mapping.setKeyModifierAndCode(KeyModifier.NONE, UNBOUND);
+                    } else if (!mapping.getKey().equals(targetDefault)
+                        || mapping.getKeyModifier() != KeyModifier.NONE) {
+                        mapping.setKeyModifierAndCode(KeyModifier.NONE, targetDefault);
+                        if (decision == ControlsDefaultsPolicy.Decision.DEFAULT_PACK_BOUND) {
+                            firstRunBound++;
+                        } else {
                             firstRunUnbound++;
                         }
                     }
@@ -92,20 +99,20 @@ public final class ClientKeyDefaults {
             }
         }
 
-        if (defaultsSet > 0 || firstRunUnbound > 0) {
+        if (defaultsSet > 0 || firstRunUnbound > 0 || firstRunBound > 0) {
             KeyMapping.resetMapping();
         }
-        if (firstRunUnbound > 0) {
+        if (firstRunUnbound > 0 || firstRunBound > 0) {
             // Persist the new defaults ONCE; subsequent sessions recognize all
             // saved key_ entries as player-owned and leave them unchanged.
             minecraft.options.save();
         }
-        if (!initialLog || defaultsSet > 0 || firstRunUnbound > 0
+        if (!initialLog || defaultsSet > 0 || firstRunUnbound > 0 || firstRunBound > 0
             || playerPreserved > 0 || vanillaPreserved > 0) {
-            if (!initialLog || defaultsSet > 0 || firstRunUnbound > 0) {
+            if (!initialLog || defaultsSet > 0 || firstRunUnbound > 0 || firstRunBound > 0) {
                 ProgressionMod.LOGGER.info(
-                    "TMM Controls: registry scan: vanilla={}, saved mod keys={}, updated mod defaults={}, newly unbound={}",
-                    vanillaPreserved, playerPreserved, defaultsSet, firstRunUnbound);
+                    "TMM Controls: registry scan: vanilla={}, saved mod keys={}, updated mod defaults={}, newly unbound={}, new pack bindings={}",
+                    vanillaPreserved, playerPreserved, defaultsSet, firstRunUnbound, firstRunBound);
             }
             initialLog = true;
         }
