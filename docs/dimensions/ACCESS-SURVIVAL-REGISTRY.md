@@ -27,9 +27,9 @@ The data intentionally keeps `dimension_id` **empty where not confirmed against 
 | Otherside | 5 | 5 | Ancient City portal and Warden-derived Heart of the Deep | Serious boss-ingredient entry gate |
 | Dive Into the Abyss | 5 | 5 | Reported void-entry / progression | Exact ID and no-portal exit not yet independently verified |
 | Eternal Starlight | 4 | 5 | Ruins Gatekeeper / Orb of Prophecy | Portal generation is arrival-path dependent |
-| Aurorian | 3 | 4 | Crafted/activated portal | Exact port recipe and available return materials need audit |
+| Aurorian | 3 | 3 | Crafted/activated portal | Exact port recipe and available return materials need audit |
 | Bumblezone | 3 | 2 | Bee-nest / pearl entry | Return via vertical boundary may use remembered origin |
-| Twilight Forest | 3 | 4 | Flower pool + diamond; separate boss/biome sequence | External entry does not inherently lift internal boss/biome protection |
+| Twilight Forest | 3 | 3 | Flower pool + diamond; separate boss/biome sequence | External entry does not inherently lift internal boss/biome protection |
 | Voidscape | 5 | 5 | Standing on bedrock / voidic travel | Severe environmental hazards, no proven naked escape |
 | Pastel Deeper Down / Imbrifer | 4 | 5 | Late progression portal | Exact **Pastel** dimension ID and return path unverified |
 | Neo Vitae Endless Realm | 5 | 5 | Tier II / III ritual dungeon | **Instance/lobby + placement risk** under arbitrary teleport |
@@ -56,6 +56,16 @@ These are preliminary comparative grades, **not measured survival completion rat
 **Return state:** Some destinations rely on an arrival portal, remembered coordinates, an attached dream/player shell, or an instance/lobby. A forced teleport might skip that initialization, leaving a stranded player or inconsistent state. Prioritize JAWR Spirit World and Neo Vitae Endless Realm as **high-risk nonstandard arrivals**. Environmental survival should additionally test elemental/time/void damage, flight restrictions, and forms independently.
 
 **Score does not equal eligibility:** The most interesting weird-progression destinations may be difficult. These scores are inputs for future mod configuration, quest, and Newbie decisions, not an automatic judgment that a dimension is suitable or unsuitable.
+
+## Return-route source audit update — 2026-11-20
+
+Owner selected an initial **native-config-only** Angel destination set of `minecraft:overworld`, `aether:the_aether`, `the_bumblezone:the_bumblezone`, `twilightforest:twilight_forest`, `theaurorian:the_aurorian`, `eternal_starlight:starlight`. All other loaded dimensions must be excluded with `banned_dimensions`, including `neovitae:dungeon` and JAWR Spirit World. Draft config and exact return-route audit are in [PR #392](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/392). Native blacklist is not fail-closed; exhaustive level census needed to finish JAWR and any other unknown realm IDs.
+
+Verified source IDs: `wardentools:abyssdim` (Dive Into the Abyss, source `ModDimensions.java`) and `pastel:deeper_down` (Pastel 1.21.1 dimension JSON). No longer leave either ID blank in CSV. JAWR's runtime Spirit World ID remains unresolved.
+
+The Aether falls below Y=0 to Overworld (risk of lethal Overworld fall); Bumblezone leaves via Y<0 or Y>255, with origin-record lookup and Overworld fallback. Twilight Forest 1.21.1 has a portal in the Forest leading to `originDimension` (default Overworld), but an involuntary arrival has no portal. Its diamond/water/vegetation recipe must be obtained locally. Aurorian 1.21.1 port crafts portal frames from native stone and lights them with two Silentwood Sticks; its portal sends from Aurorian to Overworld. Eternal Starlight's `ESPortalBlock`/ `ESTeleporter` creates a return portal only after *native portal transit*. Angel entry does not create one; a naked player may be unable to acquire an Orb of Prophecy inside.
+
+Source details and explicit unknowns: [Weeping Angels return-route audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/weeping-angels-native-dimension-blacklist-20261120/docs/dimensions/WEEPING-ANGELS-NATIVE-DESTINATIONS-2026-11-20.md).
 
 ## Verification and acceptance workflow (future owner-authorized test)
 
