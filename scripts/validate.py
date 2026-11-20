@@ -72,6 +72,8 @@ def main() -> None:
     if "default-options" in active:
         from validate_defaultoptions_keybindings import validate as validate_default_keybindings
         validate_default_keybindings()
+    from validate_starter_tome import validate_starter_tome
+    validate_starter_tome()
     print(f"PASS: packwiz metadata + hashes; {len(indexed)} files, {len(active)} active mods; {len(mods)} desired entries")
     print("NOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed")
 

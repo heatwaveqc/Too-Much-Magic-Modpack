@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "objective": "All introductory, portable physical guidebooks for the pinned pack, excluding progression unlocks and functional spellcasting equipment.",
+  "books": [
+    {
+      "mod": "ars_nouveau",
+      "name": "Worn Notebook",
+      "item": "ars_nouveau:worn_notebook",
+      "components": {},
+      "source": "Ars Nouveau Worn Notebook recipe"
+    },
+    {
+      "mod": "botania",
+      "name": "Lexica Botania",
+      "item": "botania:lexicon",
+      "components": {},
+      "source": "Botania Revived lexicon recipe"
+    },
+    {
+      "mod": "occultism",
+      "name": "Dictionary of Spirits",
+      "item": "occultism:dictionary_of_spirits",
+      "components": {},
+      "source": "Occultism 1.21.1 dictionary recipe"
+    },
+    {
+      "mod": "evilcraft",
+      "name": "Origins of Darkness",
+      "item": "evilcraft:origins_of_darkness",
+      "components": {},
+      "source": "EvilCraft origins item asset"
+    },
+    {
+      "mod": "rootsclassic",
+      "name": "Runic Tablet",
+      "item": "rootsclassic:runic_tablet",
+      "components": {},
+      "source": "Roots Classic 1.21.1 registry and runic_tablet recipe"
+    },
+    {
+      "mod": "hexerei",
+      "name": "Book of Shadows",
+      "item": "hexerei:book_of_shadows",
+      "components": {},
+      "source": "Hexerei 1.21.1 Book of Shadows recipe"
+    },
+    {
+      "mod": "theurgy",
+      "name": "The Hermetica",
+      "item": "modonomicon:modonomicon",
+      "components": {
+        "modonomicon:book_id": "theurgy:the_hermetica"
+      },
+      "source": "Theurgy 1.21.1 recipe and Modonomicon book definition"
+    },
+    {
+      "mod": "goety",
+      "name": "The Black Book",
+      "item": "patchouli:guide_book",
+      "components": {
+        "patchouli:book": "goety:black_book"
+      },
+      "source": "Goety Patchouli black_book resource; Patchouli component recipe"
+    },
+    {
+      "mod": "eidolon_repraised",
+      "name": "Ars Ecclesia",
+      "item": "eidolon_repraised:codex",
+      "components": {},
+      "source": "Eidolon Repraised 1.21.1 codex recipe"
+    },
+    {
+      "mod": "neovitae",
+      "name": "Scriptura Vitae",
+      "item": "neovitae:guide_book",
+      "components": {},
+      "source": "Neo Vitae 1.21.1 guide_book recipe and Modonomicon custom book item"
+    },
+    {
+      "mod": "astralsorcery",
+      "name": "Astral Tome",
+      "item": "astralsorcery:tome",
+      "components": {},
+      "source": "Astral Sorcery 1.21.1 tome recipe"
+    }
+  ],
+  "pending_review": [
+    {
+      "mod": "goety",
+      "candidate": "Witch's Brew",
+      "reason": "Secondary guide versus specialist book; verify starter eligibility"
+    },
+    {
+      "mod": "draconicevolution",
+      "candidate": "info_tablet",
+      "reason": "Exact current registry in pinned 3.1.4.633 not yet checked"
+    },
+    {
+      "mod": "primalmagick",
+      "reason": "Grimoire is a placed bookshelf; check for portable introduction"
+    },
+    {
+      "mod": "forbidden_arcanus",
+      "reason": "Find true introductory guide rather than magic artifacts"
+    },
+    {
+      "mod": "mahou_tsukai",
+      "reason": "Check actual introductory reference"
+    },
+    {
+      "mod": "irons_spellbooks",
+      "reason": "Spellcasting equipment is not a guidebook"
+    },
+    {
+      "mod": "hexcasting",
+      "reason": "Audit reference book separately from spell storage"
+    },
+    {
+      "mod": "other_magic_mods",
+      "reason": "Complete installed-JAR roster and native first-login gifts audit"
+    }
+  ]
+}
