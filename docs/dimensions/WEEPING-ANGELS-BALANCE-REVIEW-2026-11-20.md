@@ -1,6 +1,6 @@
 # Weeping Angels — spawn, combat, and world-interaction balance review
 
-**Review date:** 2026-11-20. **Status:** source-reviewed balance proposals with **permanent theft-disabling owner decision implemented in the PR candidate config**; remaining proposals are unapproved and no runtime result is claimed. This follows the owner-locked native six-destination teleport policy in [#387](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/387) and [PR #392](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/392). Do not change the approved destinations, local teleport/fallback behavior, 50% default teleport chance, or 400-block range during this balance review.
+**Review date:** 2026-11-20. **Status:** owner-locked encounter design and native configuration candidates staged; physical damage compatibility, template authoring, exhaustive dimension census and binary/runtime QA remain pending. No runtime PASS is claimed. This follows the owner-locked native six-destination teleport policy in [#387](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/387) and [PR #392](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/392). Do not change the approved destinations, local teleport/fallback behavior, 50% default teleport chance, or 400-block range during this balance review.
 
 ## OWNER-LOCKED encounter policy — 2026-11-20 (supersedes earlier ambient-spawn proposals)
 
@@ -18,6 +18,21 @@
 **Validation pending:** Prove the exact pinned NeoForge 1.21.1 artifact uses the reviewed spawn modifier/config and that KubeJS `data/` override wins; structure templates must actually place `weeping_angels:statue` **block entities with valid data**, signal wiring must persist through NBT/worldgen and work on dedicated servers, and all natural/snow spawns must be absent in a disposable world. Also verify no stray spawners/feature paths bypass the override. Maintain test-world safety, manual summon capability, native teleport destination blacklist completeness, Newbie travel and escape QA.
 
 **Important:** The above two suppression files are staged feature-source candidates, not yet indexed into Packwiz or runtime tested. Integration writer retains sole authority for reconciliation and manifest/hash/index changes. No assembly, smoke, client launch or gameplay test has been performed.
+
+## Standard Weeping Angel structure trap target — owner confirmed 2026-11-20
+
+This is an **authoring target** for the existing Weeping Angels workstream, not evidence that any finished structure template has been placed or tested.
+
+- **Open rooms and chambers:** use a **calibrated sculk sensor** hidden in the structure (up to **16 blocks** vibration detection). Feed calibration-side redstone **signal strength 1** for footstep vibrations and route its output to power an existing `weeping_angels:statue` block. Verify orientation and signal strengths in game; the statue's upstream block entity checks `level.hasNeighborSignal(blockPos)` and then converts itself to a living Angel once powered.
+- **Tight passages and chokepoints:** use a **concealed tripwire**, optionally a pressure plate if appropriate, to power the statue when the player crosses a predetermined line. Tripwire is recommended where footstep vibration paths are unreliable or where an exact trigger line is desirable.
+- **Fallback:** a vanilla regular sculk sensor detects vibrations up to 8 blocks but does not filter only footsteps. Prefer calibrated where the builder wants to distinguish footsteps from other vibration classes.
+- **Single-shot trap:** once awakened, the statue block is replaced by the living Angel. Preserve normal freeze-when-observed AI, teleporting behavior and physical-vulnerability compatibility; do not add permanent idle entity AI just to emulate a statue.
+- **Environmental/stealth behavior:** sensors can hear other entities and may be occluded by wool; players who sneak can generally bypass footstep detection. Keep these emergent behaviors as intentional gameplay unless they produce broken encounters. In structures requiring a reliable mandatory fight, choose hidden tripwire rather than implementing custom player-only detection.
+- **QA fixture:** include at least one room/sensor trap and one corridor/tripwire trap in approved structure templates. For each, record template ID, sensor location and orientation, calibrating signal source/strength, wiring to statue, initial dormant state, activation distance or crossing condition, conversion count (exactly once), false-positive behavior with ambient mobs and redstone, survival stealth bypass, chunk reload, and claim interactions.
+- **Spawn scope:** only placed/approved structure encounters; never reenable regular ambient or random Snow Angel worldgen. Claiming a dungeon must not silently neutralize its authored traps. No theft.
+- **Build authority:** structure authoring and compatibility testing can proceed as ordinary source-only feature work. Indexing and integration remain with the single integration writer; world launch/QA builds require the standing authorization.
+
+References: [mod's native statue activation implementation](https://github.com/Jeryn99/Weeping-Angels/blob/mc/1.21/common/src/main/java/mc/craig/software/angels/common/blockentity/StatueBlockEntity.java), [vanilla calibrated sculk sensor](https://minecraft.wiki/w/Calibrated_Sculk_Sensor), [NeoForge 1.21.1 biome modifiers](https://docs.neoforged.net/docs/1.21.1/worldgen/biomemodifier/).
 
 ## Sources and exact scope
 
