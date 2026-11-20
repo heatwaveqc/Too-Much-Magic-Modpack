@@ -9,8 +9,11 @@
 #
 # Verify actual filename and keys against pinned 1.21.1 NeoForge artifact.
 # Owner-locked: disable stealing permanently; preserve player tools/gear.
+# Owner-approved trial: allow Angel block interactions; claims MUST protect claimed chunks.
+# Do not treat as proven FTB Chunks compatibility until actual runtime QA.
 [behaviour]
     angel_theft = false
+    block_breaking = true
 
 [teleporting]
     interdimensional_teleporting = true
