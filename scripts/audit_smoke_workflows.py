@@ -75,7 +75,12 @@ def scan_workflow(source: str, filename: str) -> list[str]:
             continue
         if STEP.match(line):
             finish_step()
-            step_name, step_if, step_run = line.strip().split(":", 1)[-1].strip(), "", []
+            step_label, inline = line.strip().split(":", 1)
+            step_name, step_if, step_run = inline.strip(), "", []
+            # YAML permits an entire step as '- run: command'. Audit that, too.
+            if step_label == "- run":
+                step_name = "inline-run"
+                step_run.append(inline.strip())
             step_line = i
             continue
         match = JOB_IF.match(line)
