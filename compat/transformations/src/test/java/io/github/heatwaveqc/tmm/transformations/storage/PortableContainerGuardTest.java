@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 /** Pure no-game checks: no recursive bag, no accidental ordinary-item ban. */
 class PortableContainerGuardTest {
     @Test void ordinaryStackAllowed() {
-        assertFalse(PortableContainerGuard.rejects(false, false, false));
+        assertFalse(PortableBagNestingRules.rejects(false, false, false));
     }
     @Test void taggedCrossModBagRejected() {
-        assertTrue(PortableContainerGuard.rejects(false, true, false));
+        assertTrue(PortableBagNestingRules.rejects(false, true, false));
     }
     @Test void shulkerBoxRejectedInsideOtherPortableContainer() {
-        assertTrue(PortableContainerGuard.rejects(false, false, true));
+        assertTrue(PortableBagNestingRules.rejects(false, false, true));
     }
     @Test void emptyStackNotRejected() {
-        assertFalse(PortableContainerGuard.rejects(true, true, true));
+        assertFalse(PortableBagNestingRules.rejects(true, true, true));
     }
 }
