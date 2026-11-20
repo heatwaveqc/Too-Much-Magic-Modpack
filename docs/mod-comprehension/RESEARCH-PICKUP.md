@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Elemental native glyph empowering
+
+- Added ars-elemental-pinned-empowering.md: GlyphEvents/CompatUtils/Cut/Grow/Flare/Evaporate mixins, head5recipes/HeadCutRecipe/vorpalCut, MagicFire/Frozen+damage/heal handlers, EntityMagnetSpell. Exactamp/duration/query/velocity; Grow20%groundblossom notvanillaspore; MudClay claimchecked vs Ignite directblock loop unchecked. Headinclusive nextInt<=threshold means6/11/21percent, up1+min(3,luck)attempts stopfirst. Fieldexpirationaccessor70+200*duration, parenteffectiveexpiryacceptance; no fake runtimePASS.
+- **Next summons/steeds** SummonEvents.summonedEvent alreadyread: fourreplacement branches WaterDolphin/FireStrider/EarthCamel/NecroSkeleHorse, HashSetfirsteligible; Necro+Strength/Speed500amp1. Need all summonentity constructors/lifetime/inherit/AI/owner/payment and NecroticHoming clonedEntitySpellResolver recipient; parent resolver exactsource. Then39addonglyphs/12tomes, Siren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 fullreview. Fivecompanions guide-urn,foci,armor,threads,empowering now; do not repeat. GlobalSaucebundledselectionstillopen.
+- Integration refetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourly active; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Elemental threads
 
 - Added ars-elemental-pinned-threads.md: all3recipes/install via nativeTable; Shocked100/amp1or2 vs slot3StaticCharged100/amp1→2vanillaBolts at duration1; no originalcaster attribution, ArsLightningMixin itemguard not proof vanillaBoltguard. Spores100*slotTicks/ampSlotMinus1 poison vs invertedHunger, specialEffectSpores canDamage fallback. Summonpowerattribute slot−1 consumed by BOTH addon+registeredSauce damage listeners. Sickness reduction BROKEN: native countForPerk maximum1–3, integer divide10→0; directjavap idiv confirmed. No silent fix/runtimePASS.
