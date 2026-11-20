@@ -1,6 +1,6 @@
 # Ars Elemental 0.7.10.4 — armor acquisition, attributes and damage response
 
-Exact hash-pinned Elemental binary and bundled Sauce 0.0.61.100 recipient scope: [guide receipt](ars-elemental-pinned-guide-urn.md), [dependency receipt](ars-elemental-pinned-foci.md). Direct 48 packaged armor recipes, ElementalArmor/ArmorSet/three weight classes/AAMaterials/ArsNouveauRegistry; Sauce ElementalArmorRecipe, JEI category, IElementalArmor, ManaDiscountMixin, AttributeEventHandler and DamageEventHandler. Parent exact Ars 5.13.5 AnimatedMagicArmor/ArmorPerkHolder and [native armor walkthrough](ars-nouveau-pinned-armor-threads.md). No runtime acceptance. Addon remains researching; three addon thread operations and other systems still require review.
+Exact hash-pinned Elemental binary and bundled Sauce 0.0.61.100 recipient scope: [guide receipt](ars-elemental-pinned-guide-urn.md), [dependency receipt](ars-elemental-pinned-foci.md). Direct 48 packaged armor recipes, ElementalArmor/ArmorSet/three weight classes/AAMaterials/ArsNouveauRegistry; Sauce ElementalArmorRecipe, JEI category, IElementalArmor, ManaDiscountMixin, AttributeEventHandler and DamageEventHandler. Parent exact Ars 5.13.5 AnimatedMagicArmor/ArmorPerkHolder and [native armor walkthrough](ars-nouveau-pinned-armor-threads.md). No runtime acceptance. Addon remains researching; [three addon threads](ars-elemental-pinned-threads.md) now have a separate audit; other systems still require review.
 
 ## Build a chosen school and weight
 
@@ -33,7 +33,7 @@ Example pilot item **`ars_elemental:fire_hat`** takes **`ars_nouveau:arcanist_ho
 |Medium|3,2,1|3,2,1|
 |Heavy|2,2,1|3,2,1|
 
-Use native Alteration Table to install/recover threads; highest-valued slot is filled first. The separate Spore/Shock/Summon perks are registered but their recipe/operation audit remains open. Light/heavy tooltip explicitly warns their models/textures are work in progress and currently resemble medium; a shared model does not prove the same item stats.
+Use native Alteration Table to install/recover threads; highest-valued slot is filled first. The separate [Spore/Shock/Summon thread audit](ars-elemental-pinned-threads.md) covers recipes, slot effects and the broken advertised sickness reduction. Light/heavy tooltip explicitly warns their models/textures are work in progress and currently resemble medium; a shared model does not prove the same item stats.
 
 ## Per-piece casting and material stats
 

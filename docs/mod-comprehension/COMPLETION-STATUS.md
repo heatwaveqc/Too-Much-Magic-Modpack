@@ -136,3 +136,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 2026-11-19 Elemental foci checkpoint: [acquisition/modifier/passive/event companion](mods/ars-elemental-pinned-foci.md), including embedded Sauce 0.0.61.100 selection API. Still researching for armor, glyph effects, helpers, devices, worldgen and full progression review; global bundled Sauce selection unresolved. 9/42 unchanged.
 
 - 2026-11-19 — Elemental armor checkpoint: 48recipes and bundled Sauce serializer/JEI/mana/defense recipient audited in [companion](mods/ars-elemental-pinned-armor.md). Still researching; 9/42 source-complete unchanged. No runtime test.
+
+- 2026-11-19 — Elemental [thread checkpoint](mods/ars-elemental-pinned-threads.md) closes three optional thread routes with advertised sickness failure explicit; bundled dependency selection and remaining major addon routes still open. Counts unchanged:9 source-complete/33 researching.

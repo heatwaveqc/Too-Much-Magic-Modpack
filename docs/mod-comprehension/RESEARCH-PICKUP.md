@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Elemental threads
+
+- Added ars-elemental-pinned-threads.md: all3recipes/install via nativeTable; Shocked100/amp1or2 vs slot3StaticCharged100/amp1→2vanillaBolts at duration1; no originalcaster attribution, ArsLightningMixin itemguard not proof vanillaBoltguard. Spores100*slotTicks/ampSlotMinus1 poison vs invertedHunger, specialEffectSpores canDamage fallback. Summonpowerattribute slot−1 consumed by BOTH addon+registeredSauce damage listeners. Sickness reduction BROKEN: native countForPerk maximum1–3, integer divide10→0; directjavap idiv confirmed. No silent fix/runtimePASS.
+- **Next glyph empowering/headloot and summons** GlyphEvents/CompatUtils already read but endpoint effects/CutMixin/HeadCutRecipe/steed replacements/summon entity lifetime/Homing resolver payments pending. Then all39glyphs/12tomes, Siren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. FourElementalcompanions now guide-urn,foci,armor,threads; don't re-audit these. Global Sauce version selection across otherbundledaddons stillopen. Fullclasses elemental-fresh, elemental-sauce-fresh external; parent ars-fresh-20261117.
+- 9complete33researching/no blocker/hourly active; docs-only/no subagents/assembly/launch/runtimeedits/merge. Integration last7d1be155bf1334995b65ebe88566bd4d7ae54635; priorpinsunchanged. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Elemental armor
 
 - Added ars-elemental-pinned-armor.md: all48sauce armor conversions, internal-tier2 gate/7000Source perpiece/Mark+Netherite+2essences; lightSorcerer/mediumArcanist/heavyBattlemage, Waterprefixaqua. Sauce recipe defaulttier3 does NOT set holdertier3, tooltipfixed4; copiespatch/resetsdamage. Fourrepeat perkprovider lists samecapacity; exact sortedslots. AttributeID reuse means don't sum parentmanaagain. SchooldiscountMixin per-glyph ceil(cost*min(percent,1)) distinctfocus subtraction. Weightpower/resistanceweakness maps and taggeddamage B=floor(.5L+M+1.5H), fullschool canmixweights, originaldamage*Bmana andheavyoverflowheal; hungerboundary explicit. No runtime validation.

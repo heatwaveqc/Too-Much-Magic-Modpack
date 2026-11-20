@@ -405,3 +405,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Elemental [focus companion](mods/ars-elemental-pinned-foci.md): exact recipes/Mark/Anima, whole-spell first-focus cost subtraction, greater passive conditions and Necrotic worn-versus-held/event boundaries. Embedded Sauce recipient audited; global dependency selection and remaining addon systems still open. 9/42 unchanged.
 
 - 2026-11-19 — Elemental [armor audit](mods/ars-elemental-pinned-armor.md) covers all48 tier-gated conversion recipes, retained components, light/medium/heavy slots and both attribute/tagged-damage response paths. Tooltip4 is not proof of stored tier3; matching school can mix weights. Three addon threads and other major systems remain open.
+
+- 2026-11-19 — Elemental [three-thread audit](mods/ars-elemental-pinned-threads.md): exact recipes/slot/status/expiry bolt paths and both summon-power consumers. Summoning Sickness reduction does not occur for slots1–3: integer division of native maximum slot by10. Addon remains researching, 9/42 unchanged.
