@@ -413,3 +413,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [steed audit](mods/ars-elemental-pinned-steeds.md): all four focus substitutions, native summon acquisition/event order/duration, riding and noSave boundaries. SkeleHorse inherits Horse, no breathing override proved; combat summons still open.9/42 unchanged.
 
 - 2026-11-20 — Elemental [undead/Homing audit](mods/ars-elemental-pinned-undead-summons.md): revival includes expiry/dispel, inherited minimum400 and Vhex shadow lifetime, replay validates/posts events but bypasses mana precheck and debits summon capability if any; native provider only Player. Specific replay listener does not recurse.9/42 unchanged.
+
+- 2026-11-20 — Elemental [Homing/Propagate Homing](mods/ars-elemental-pinned-homing.md): two Tier3 recipes, split/ignore/direction/child context, exact native targeting squared-distance thresholds; actual lifetime uses native Projectile config default60s rather than unread addon30s field.9/42 unchanged.

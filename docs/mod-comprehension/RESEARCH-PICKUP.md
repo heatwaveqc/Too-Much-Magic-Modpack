@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Homing glyph routes
+
+- Added ars-elemental-pinned-homing.md:2of39glyphpaths, Tier3/XP160, HomingNetherStar+Manip+DowsingRod+Eye default75; Propagate consumesHominglyph+Manip default400. Native4inflatedquery every3ticks,targetretainsquared≤50/acquire<75 notblockradius; noLOSselectionbutcollisionstillnormal; ignores/directvspropagationownerpredicate difference. Speedfloor.2/default.5,split,Dampen,Extract childdirection. IPropagator cancelsparentcontinuation childremainder+Dummypart/casttype directentityconstruction no newonCastpayment. ActualTTL uses nativeMethodProjectiledefault60seconds; addon30secondsfieldunread. Parenttickvirtualexpiration nowconfirmsGravityoverride age>limit.
+- **Next remaining37glyphrecipes +12tomes** naturalArcProjectile/PropagatorArc (classesalreadyfresh), then remainingeffects/augments/filters/summonBeeSlime; makecoverage matrix insteadofcallinginventorycomplete. Hominglens=deviceauditstillopen. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. Eightcompanions guide-urn/foci/armor/threads/empowering/steeds/undead-summons/homing; don'trepeat. GlobalSaucebundledselectionstillopen.
+- ParentEntityHomingProjectileSpellfresh in elemental-parent-fresh; nativeEntityProjectileSpell/MethodProjectile/SpellContext in ars-fresh-20261117; IPropagator in elemental-sauce-fresh. Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635.9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental undead/Homing recipients
 
 - Added ars-elemental-pinned-undead-summons.md: native3glyphrecipes, reRaiseSummon no didExpire/causegate includes expiry/dispel, inheritmax(old,400)/owner/old0. Direwolfdirecttimer vs Skeletonstarvedamage20every20afterexpiry; Vhex privateinterfacecounter shadows inheritedVanillaVex lifetime (no own ticking), don'tpromise400tickexpiry. Direwolf/SkeletonnoSaveonlySSRversionflag, current5.13.5notSSR; VhexnormalregisterEntity. NotmountnoSaveblanket.

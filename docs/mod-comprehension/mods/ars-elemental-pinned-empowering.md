@@ -52,3 +52,5 @@ With Fire and a following Evaporate effect, player Ignite over its computed AoE/
 Entity Evaporate removes native Soaked without a school condition inside the enabled GlyphEvents handler. Entity Cut also removes both ends of addon Life Link if its effect instance carries owner/target references, without requiring Air. These are auxiliary modifications, not proof the whole Life Link glyph route is audited.
 
 Future explicit acceptance: configured empowering toggle versus separate mixins; lesser/greater/held/resolver focus checks; burn/fire resistance/armor event order; Freeze amp and marker/heal/fire interactions; claim/placement permissions; target/allies/following filters and field expiration; Launch duration; head-drop statistical/kill-source behavior. Pilot35–37 provides item possession milestones only. No new quest, balance change or protection override is authorized by this report.
+
+Follow-up [native projectile lifetime audit](ars-elemental-pinned-homing.md) confirms parent server tick dispatches getExpirationTime and compares age>expiration; Gravity override therefore supplies the recorded field limit. No measured duration claimed.
