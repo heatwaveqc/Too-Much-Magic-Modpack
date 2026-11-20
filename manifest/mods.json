@@ -3008,12 +3008,13 @@
       "desired": true,
       "version": "2.2.46.a",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/ldlib/files/all",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ldlib/files/9495128",
       "enabled_in_pack": false,
       "dependencies_verified": false,
       "curseforge_project_id": 626676,
       "packwiz_slug": "ldlib2",
-      "note": "REQUIRED LIBRARY for owner-selected Prefab Custom Addon, 2026-11-20. Candidate exact 1.21.1 NeoForge release LDLib2-1.21.1-2.2.46.a (Nov 7, 2026), official CF project 626676. Resolve exact file ID, native loader ranges and any transitive dependencies from actual JAR prior to pin; do not accidentally select a 26.x branch. No independent gameplay use or activation implied."
+      "note": "REQUIRED LIBRARY for owner-selected Prefab Custom Addon, 2026-11-20. Candidate exact 1.21.1 NeoForge release LDLib2-1.21.1-2.2.46.a (Nov 7, 2026), official CF project 626676. Exact provider candidate file CF 9495128 (corroborated by secondary published pack manifests) is source-staged unindexed; independently verify jar hash, native loader ranges and any transitive dependencies before integration; do not accidentally select a 26.x branch. No independent gameplay use or activation implied.",
+      "candidate_file_id": 9495128
     }
   ],
   "excluded": [
