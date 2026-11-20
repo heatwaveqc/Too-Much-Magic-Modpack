@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental paired filters
+
+- Added ars-elemental-pinned-filters.md all12recipes sixpairs XP27/tier1/mana0; positiveallowsP negative!P despite REVERSED concretebookdescriptions. Negativeallowsblocks, predicates actualtags/interfaces notenvironment. Contextual5argXOR vs legacy2argIFilter bypassinversion: legacySaucegetFilterPredicate/twoargcheckIgnoreFilters negativeactspositive. Homing/Gravity usecontextual. Exacttagcontributions, sequentialAND, placement/Controlehelper boundaries. Arccommitc842e63c andthisfiltercommitcoherent sameheartbeat, ensurebothpushed.
+- **Next23effect/summon glyphs +12tomes** BubbleShield,Cauterize,Cavitate,Charm,Conflagrate,ConjureTerrain,Discharge,Envenom,Geyser,LifeLink,Mist,NullifyDefense,Oxidize,PhantomGrasp,PoisonSpores,Rage,SlipFeet,Spark,Spike,SummonBee,Slime,WateryGrave,WaterJet. StartBee/Slime tofinishsummoncluster, thenstatuses/elementeffects. 16of39glyphpathscovered through10companions (prior9+filters). ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 fullreview. GlobalSauceversionselectionopen.
+- Integrationlatest7d1be155bf1334995b65ebe88566bd4d7ae54635/no relevantchange;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Arc glyphs
 
 - Added ars-elemental-pinned-arc.md:2Tier2recipes XP55, ArcArrow+Snowball+Slime+Pearl mana10; PropagateconsumesArcglyph+Manip mana150. Gravitybuilt-in; speedmax(.2,1+acc/2); directyawsplit vs propagatedintegerlateraloffset, Extractdirection. Nativebounce−.9normalcomponent/Pierce/Sensitive>1return; usesnativeProjectileTTLfieldnotaddon(unread). javap3anonymousconstructors confirmed native(Level,resolver), onlygetType override; CFRsyntheticouterthisnotmissingconstructor.
