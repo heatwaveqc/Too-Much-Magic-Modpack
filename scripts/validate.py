@@ -72,6 +72,9 @@ def main() -> None:
     if "default-options" in active:
         from validate_defaultoptions_keybindings import validate as validate_default_keybindings
         validate_default_keybindings()
+    if "curios" in active:
+        from validate_curios_bundle_slot import main as validate_curios_bundle_slot
+        validate_curios_bundle_slot()
     print(f"PASS: packwiz metadata + hashes; {len(indexed)} files, {len(active)} active mods; {len(mods)} desired entries")
     print("NOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed")
 
