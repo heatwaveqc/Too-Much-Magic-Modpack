@@ -26,7 +26,7 @@ The data intentionally keeps `dimension_id` **empty where not confirmed against 
 | Aether | 3 | 2 | Glowstone/water portal | Fall-through void return and interactions with other mods need proof |
 | Otherside | 5 | 5 | Ancient City portal and Warden-derived Heart of the Deep | Serious boss-ingredient entry gate |
 | Dive Into the Abyss | 5 | 5 | Reported void-entry / progression | Exact ID and no-portal exit not yet independently verified |
-| Eternal Starlight | 4 | 5 | Ruins Gatekeeper / Orb of Prophecy | Portal generation is arrival-path dependent |
+| Eternal Starlight | 4 | 4 | Ruins Gatekeeper / Orb of Prophecy | Native arrival portal is absent, but frame and Orb are locally craftable |
 | Aurorian | 3 | 3 | Crafted/activated portal | Exact port recipe and available return materials need audit |
 | Bumblezone | 3 | 2 | Bee-nest / pearl entry | Return via vertical boundary may use remembered origin |
 | Twilight Forest | 3 | 3 | Flower pool + diamond; separate boss/biome sequence | External entry does not inherently lift internal boss/biome protection |
@@ -63,7 +63,7 @@ Owner selected an initial **native-config-only** Angel destination set of `minec
 
 Verified source IDs: `wardentools:abyssdim` (Dive Into the Abyss, source `ModDimensions.java`) and `pastel:deeper_down` (Pastel 1.21.1 dimension JSON). No longer leave either ID blank in CSV. JAWR's runtime Spirit World ID remains unresolved.
 
-The Aether falls below Y=0 to Overworld (risk of lethal Overworld fall); Bumblezone leaves via Y<0 or Y>255, with origin-record lookup and Overworld fallback. Twilight Forest 1.21.1 has a portal in the Forest leading to `originDimension` (default Overworld), but an involuntary arrival has no portal. Its diamond/water/vegetation recipe must be obtained locally. Aurorian 1.21.1 port crafts portal frames from native stone and lights them with two Silentwood Sticks; its portal sends from Aurorian to Overworld. Eternal Starlight's `ESPortalBlock`/ `ESTeleporter` creates a return portal only after *native portal transit*. Angel entry does not create one; a naked player may be unable to acquire an Orb of Prophecy inside.
+The Aether falls below Y=0 to Overworld (risk of lethal Overworld fall); Bumblezone leaves via Y<0 or Y>255, with origin-record lookup and Overworld fallback. Twilight Forest 1.21.1 has a portal in the Forest leading to `originDimension` (default Overworld), but an involuntary arrival has no portal. Its diamond/water/vegetation recipe must be obtained locally. Aurorian 1.21.1 port crafts portal frames from native stone and lights them with two Silentwood Sticks; its portal sends from Aurorian to Overworld. Eternal Starlight's `ESPortalBlock`/`ESTeleporter` creates a return portal only after *native portal transit*; Angel entry does not create one. However, the **Orb of Prophecy is craftable inside** from 5 Blue Starlight Crystal Shards and 4 Glass. Crystals generate locally (but iron-tier pickaxe required; Deepsilver pickaxe qualifies); Twilight Sand smelts to Glass, and Chiseled Voidstone frame blocks are made from Cobbled Voidstone slabs. Escape via self-built native return portal is source-supported rather than a hard lock. Confirm exact pinned 0.9.1 recipes and test naked return in-world.
 
 Source details and explicit unknowns: [Weeping Angels return-route audit](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/weeping-angels-native-dimension-blacklist-20261120/docs/dimensions/WEEPING-ANGELS-NATIVE-DESTINATIONS-2026-11-20.md).
 
