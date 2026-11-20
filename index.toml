@@ -1342,7 +1342,7 @@ hash = "a008a3d2481547b0fa52282a41225b53be3dfefb1874324ba88636d7d22be43f"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/portable_bags.json"
-hash = "74cfe9ee1a0f89cee7b25ef06f62f853480f9b5635c731d9d2f36355e758c614"
+hash = "f19d544f7990c8ad9eca7cffe27900d8dce1e38f63aeec8d624100e9a90d5c33"
 
 [[files]]
 file = "kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/ancient_horrors.json"
