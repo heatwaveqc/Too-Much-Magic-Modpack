@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "STATIC_REVIEW_QUEUE_NOT_FINAL_ROOT_CLASSIFICATION_OR_PRICE_APPROVAL",
+  "installed_build_sha": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+  "installed_baseline_sha": "a81723733b4437770f61f566afe583343ccccff9",
+  "installed_mod_jar_count": 209,
+  "source_capture_time": "2026-11-18T12:19:31-07:00",
+  "capture_sha256": "1a27ad3594afbedf155b14e2575cbe63b5c5dc763656541ef860306420c3b7bf",
+  "source_files": {
+    "docs/qa/surveys-2026-11-18/items.csv": "c64102943de65098e168e6c6bf3237837be8bf1b8334796ff3f2a5f2d9ea92ff",
+    "docs/qa/surveys-2026-11-18/summary.json": "83c284ae2e9bd94c027a3e732ac6270d91ef274b7a926c80bd5c490e95bb81f6",
+    "manifest/emc-coverage-policy.json": "5c96f567b481752ec640f4e16ef4f9b52dd4be8e707d573851eee7c60952e243"
+  },
+  "totals": {
+    "registered_items": 23681,
+    "positive_default_stack_emc": 5780,
+    "approved_exception_zero_default_emc": 17,
+    "unpriced_review_rows": 17884,
+    "recipe_output_unpriced": 9430,
+    "no_generic_recipe_output_observed": 8454,
+    "other_unpriced_unclassified": 0
+  },
+  "limitations": [
+    "Census measures default-stack EMC and source references; it does not resolve every item component or alternate stack state.",
+    "recipe_output_unpriced is a recipe investigation queue, not proof of a missing mapper or free recipe.",
+    "root_or_special_candidate means no generic RecipeManager output was observed, not that the item is a true economic root.",
+    "Static loot references do not prove conditional, enabled, reachable, renewable, or player-obtainable drops.",
+    "Acquisition yields, resource costs, return containers, SCC/rootless cycles, mapper/blacklist attribution, and most provider-to-namespace joins remain unresolved.",
+    "Eight measured default EMC values exceed JavaScript's exact integer range; use native long serialization before pricing work.",
+    "The capture is the installed 2026-11-18 snapshot, not the moving 2026-11-20 integration head."
+  ]
+}
