@@ -167,7 +167,7 @@ key_key.hexerei.broomDismount:key.keyboard.unknown:
 key_key.hexerei.broomDown:key.keyboard.unknown:
 key_key.hexerei.broomUp:key.keyboard.unknown:
 key_key.hexerei.glasses_zoom:key.keyboard.unknown:
-key_key.invtweaks_sort_either.desc:key.keyboard.unknown:
+key_key.invtweaks_sort_either.desc:key.mouse.middle:
 key_key.invtweaks_sort_inventory.desc:key.keyboard.unknown:
 key_key.invtweaks_sort_player.desc:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_bar_modifier:key.keyboard.unknown:
