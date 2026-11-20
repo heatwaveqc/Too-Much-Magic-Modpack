@@ -1,9 +1,9 @@
 {
-  "schema": "tmm.mod-capability-axes.v0.1",
-  "status": "draft-owner-review",
+  "schema": "tmm.mod-capability-axes.v0.2",
+  "status": "draft-owner-review-updated-2026-11-20",
   "generated_at": "2026-11-20",
-  "source": "Owner's 16-axis proposal, with 12 suggested additions",
-  "total_axes": 28,
+  "source": "Owner's initial 16 axes, 12 proposed supporting axes, and owner follow-up progression tier axis + resource scope clarification",
+  "total_axes": 29,
   "original_axes": 16,
   "added_axes": 12,
   "axes": [
@@ -163,8 +163,8 @@
       "id": "energy",
       "label": "Energy",
       "group": "Infrastructure",
-      "definition": "Generation, conversion, storage, transmission and consumption of mana, FE/OP, Source, EV, blood or other power systems.",
-      "boundary": "Do not equate unlike energies; each conversion is a typed pathway with proof on both ends.",
+      "definition": "All distinct quantifiable power or spendable operating resources (not just FE), including EV, Anima, mana, Source, Media, lumen/starlight, soul-based charge and FE/OP when supported. Document generation, storage on blocks/players/items, use, transport, persistence, conversion and each resource's full progression.",
+      "boundary": "Energy is a typed pathway, not a generic FE API; never equate EV, player Anima, item charges and altar reservoirs without explicit proved conversion. Every storage scope must be separately investigated.",
       "origin": "added"
     },
     {
@@ -230,6 +230,64 @@
       "definition": "Merchant trades, bounty systems, currency, shops, barter, exchange markets and economic access paths.",
       "boundary": "General programmable transmutation belongs to general generation; recipe synthesis to crafting.",
       "origin": "added"
+    },
+    {
+      "id": "progression_tiers",
+      "label": "Progression tiers & unlocks",
+      "group": "Cross-cutting",
+      "definition": "Actual formal mod progression tiers, research stages, altar/multiblock upgrades, personal unlock trees, dimension gates and meaningful nonformal access stages. Capture every transition and resulting new capabilities, from first usable to terminal branches.",
+      "boundary": "This is the mod's unlock graph, not a comparative ranking. Formal tiers must be source-backed; use analyst_stage only when the mod has no native tier name. Record player/item/block/world state and mandatory versus optional choices.",
+      "origin": "owner_followup"
     }
+  ],
+  "owner_followup_axes": 1,
+  "per_capability_required_fields": [
+    "stable_capability_id",
+    "axes",
+    "exact_named_objects_and_registry_ids",
+    "delivery_and_activation",
+    "initial_guide_and_earliest_access",
+    "prerequisites_and_tier_ids",
+    "typed_inputs_outputs_and_costs",
+    "limits_and_failure_modes",
+    "bottom_end",
+    "intermediate_growth",
+    "top_end_and_other_endpoints",
+    "source_version_and_evidence",
+    "guidebook_jei_reference",
+    "quest_learning_steps_and_observable_success",
+    "ftb_detection_and_truthfulness",
+    "proposed_xp_and_safe_item_reward",
+    "validation_positive_and_boundary"
+  ],
+  "energy_required_scopes": [
+    "block_entity_or_network",
+    "player_attachment_or_network",
+    "item_or_container"
+  ],
+  "energy_required_subsystems": [
+    "resource_identity_and_units",
+    "producers",
+    "consumers",
+    "storage",
+    "transport",
+    "conversion_if_sourced",
+    "capacity_and_overflow",
+    "persistence",
+    "early_middle_terminal_tiers",
+    "in_pack_evidence"
+  ],
+  "progression_tier_required_fields": [
+    "name_and_native_id",
+    "tier_kind",
+    "scope",
+    "prerequisites",
+    "unlock_action_and_materials",
+    "operation_proof",
+    "unlocked_capability_ids",
+    "resource_gate",
+    "next_tier",
+    "mandatory_or_optional",
+    "quest_step_and_reference"
   ]
 }
