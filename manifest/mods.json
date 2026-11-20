@@ -1483,17 +1483,6 @@
       "packwiz_slug": "lootr"
     },
     {
-      "id": "magical-satchel",
-      "name": "Magical satchel / Surprisingly Substantial Satchel",
-      "category": "storage",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
-    },
-    {
       "id": "mahou-tsukai",
       "name": "Mahou Tsukai",
       "category": "magic",
@@ -2044,15 +2033,19 @@
       "packwiz_slug": "rhino"
     },
     {
-      "id": "roguelike-dungeons",
-      "name": "Roguelike-style dungeon provider",
+      "id": "dungeon-crawl",
+      "name": "Dungeon Crawl",
       "category": "adventure",
       "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
+      "version": "mc1.21.1-2.3.17",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/dungeon-crawl/files/7887320",
       "enabled_in_pack": false,
-      "dependencies_verified": false
+      "dependencies_verified": false,
+      "curseforge_project_id": 324973,
+      "candidate_file_id": 7887320,
+      "packwiz_slug": "dungeon-crawl",
+      "note": "OWNER IDENTITY RESOLUTION 2026-11-20: Roguelike-style dungeon provider is Dungeon Crawl, spiritual successor to Roguelike Dungeons. Explicitly selected as desired inclusion candidate. Exact NeoForge 1.21.1 2.3.17 official CF project 324973/file 7887320 (jar DungeonCrawl-NeoForge-1.21-2.3.17.jar); source/structure compatibility, YUNG suite overlap, spawn balance, hash and required dependencies must be audited before indexing. NOT installed; owner-authorized next QA must test fresh procedural dungeons. Old placeholder id roguelike-dungeons superseded."
     },
     {
       "id": "roots-classic",
@@ -2128,17 +2121,6 @@
       "dependencies_verified": true,
       "note": "Owner-approved QoL integration (2026-11-13). Performance profiling for client/server; commands/permissions require admin configuration.",
       "packwiz_slug": "spark"
-    },
-    {
-      "id": "starlight-structures",
-      "name": "Starlight / Stalwart Dungeons candidate",
-      "category": "adventure",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
     },
     {
       "id": "stateobserver",
@@ -2623,7 +2605,7 @@
       "source": "https://modrinth.com/mod/yungs-better-end-island/version/I52NZ1qK",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Owner-approved conditional mod. Deliberately NOT pinned/installed pending verified BetterEnd: New Dawn worldgen/dragon/End portal compatibility in live B16+B18 QA."
+      "note": "OWNER PROMOTION 2026-11-20: previously conditional, NOW APPROVED AND REQUIRED TO ATTEMPT FOR NEXT OWNER-AUTHORIZED COMPREHENSIVE UNSTABLE QA, with explicit LIVE End compatibility test. YUNG Better End Island 1.21.1-NeoForge-3.1.2, Modrinth I52NZ1qK (same mod known from ATM10, NOT proof of BetterEnd: New Dawn runtime compatibility). Exact artifact SHA-512 from provider and native metadata must be verified before packwiz index. Existing YUNG API is pinned. Test fresh disposable End main island terrain, dragon fight/respawn, end crystals/pillars, exit portal and End gateways, BetterEnd New Dawn biomes, Thallasium and existing YUNG structure overlap; create fresh chunks, do not retrofit player worlds. As of this roster edit it remains desired true/enabled_in_pack false; not gameplay PASS. Integration writer owns index/pack hash; no full smoke/Prism authorized."
     },
     {
       "id": "smart-keep-inventory",
@@ -2943,6 +2925,95 @@
       "dependencies_verified": false,
       "packwiz_slug": "nuit",
       "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested. 2026-11-19: removed from this QA candidate as its sole newly introduced dependent Liroth is owner-deferred. Verified pin evidence retained for future intake."
+    },
+    {
+      "id": "aquaculture-delight",
+      "name": "Aquaculture Delight",
+      "category": "food",
+      "desired": true,
+      "version": "1.2.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/aquaculture-delight/files/6179576",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 961988,
+      "candidate_file_id": 6179576,
+      "packwiz_slug": "aquaculture-delight",
+      "note": "OWNER APPROVED 2026-11-20. Official NeoForge 1.21.1 aquaculturedelight-1.2.0-neoforge-1.21.1.jar, CurseForge 961988/6179576. Needs pinned Aquaculture 2 and Farmer's Delight (both already active). Audit cut/fillet conversions, Neptunium, original Aquaculture sushi vs new sushi roll, Dragon Survival Sea diet, recipes/knives, food tags, cooking integrations and EMC. Exact native JAR dependency/hash verification and next authorized live test pending."
+    },
+    {
+      "id": "lets-do-brewery",
+      "name": "[Let's Do] Brewery - Farm&Charm Compat",
+      "category": "food",
+      "desired": true,
+      "version": "2.1.13",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lets-do-brewery-farm-charm-compat/files/9150302",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1038106,
+      "candidate_file_id": 9150302,
+      "packwiz_slug": "lets-do-brewery",
+      "note": "OWNER APPROVED 2026-11-20; official NeoForge 1.21.1 letsdo-brewery-neoforge-2.1.13.jar CF 1038106/9150302. Mandatory [Let's Do] Farm & Charm dependency; unlike previous general audit the owner specifically requested Brewery, so resolve Farm & Charm as a necessary dependency, not an optional speculative mod. Verify actual native dependency range/Architectury/Cloth before indexing. Review overlaps with Brewin' and Chewin', HerbalBrews, Cocktails Delight, dedicated manual keg/fermentation, status effects, diet/satiation, EMC; no automatic machine integration bypass."
+    },
+    {
+      "id": "lets-do-farm-and-charm",
+      "name": "[Let's Do] Farm & Charm",
+      "category": "food",
+      "desired": true,
+      "version": "1.1.29",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lets-do-farm-charm/files/9203717",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1038103,
+      "candidate_file_id": 9203717,
+      "packwiz_slug": "lets-do-farm-and-charm",
+      "note": "REQUIRED DEPENDENCY for owner-approved [Let's Do] Brewery, 2026-11-20; NOT an independently requested alternate farming overhaul. Official NeoForge 1.21.1 letsdo-farm_and_charm-neoforge-1.1.29.jar, CF 1038103/9203717. Verify deps Architectury/Cloth against current pins; content overlap with Farmer's Delight/Pam's/Hearthkeeper/crops and native machines/menus, worldgen, EMC and recipe tag/craft conservation. No silent elimination of existing farming and kitchen content."
+    },
+    {
+      "id": "just-enough-professions",
+      "name": "Just Enough Professions (JEP)",
+      "category": "qol",
+      "desired": true,
+      "version": "4.0.5",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/just-enough-professions-jep/files/7966681",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 417645,
+      "candidate_file_id": 7966681,
+      "packwiz_slug": "just-enough-professions",
+      "note": "OWNER APPROVED 2026-11-20 as CLIENT UI companion to existing JEI: display professions and their job-site blocks using JEI Uses. NeoForge 1.21.1 JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar CF 417645/7966681. Verify installed JEI 19.64 compatibility, host-side classification client-only and proper village profession registry; native JEP isn't a trade-table viewer. Exact hash, bundle metadata and client QA pending."
+    },
+    {
+      "id": "prefab-custom-addon",
+      "name": "Prefab Custom Addon",
+      "category": "housing",
+      "desired": true,
+      "version": "2.7.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/prefab-custom-addon/files/9284793",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 1614764,
+      "candidate_file_id": 9284793,
+      "packwiz_slug": "prefab-custom-addon",
+      "note": "OWNER CLASSIFIED REQUIRED 2026-11-20 to deploy previously authored custom starter/school house and Adventurer's Inn blueprints through Prefab 1.0.9. Official NeoForge 1.21.1 prefab-custom-addon-2.7.1-cf.jar CF 1614764/9284793. Mandatory LDLib2 >=2.2 and active Prefab; confirm exact native declared ranges. Audit actual source branch and formats (.nbt/.schem/.litematic), house data install path, safe materials/permissions and no free progression loot, multiplayer upload/security and persistence. Existing houses being drafted isn't proof addon jar or packages are already installed."
+    },
+    {
+      "id": "ldlib2",
+      "name": "LDLib2",
+      "category": "dependency",
+      "desired": true,
+      "version": "2.2.46.a",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/ldlib/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 626676,
+      "packwiz_slug": "ldlib2",
+      "note": "REQUIRED LIBRARY for owner-selected Prefab Custom Addon, 2026-11-20. Candidate exact 1.21.1 NeoForge release LDLib2-1.21.1-2.2.46.a (Nov 7, 2026), official CF project 626676. Resolve exact file ID, native loader ranges and any transitive dependencies from actual JAR prior to pin; do not accidentally select a 26.x branch. No independent gameplay use or activation implied."
     }
   ],
   "excluded": [
