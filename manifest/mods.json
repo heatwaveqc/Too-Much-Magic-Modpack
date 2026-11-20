@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-11-15",
+  "date": "2026-11-20",
   "target": {
     "minecraft": "1.21.1",
     "loader": "neoforge",
