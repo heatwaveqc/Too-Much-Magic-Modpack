@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create Default Options' exhaustive mod-only, unbound initial key defaults.
+"""Create Default Options' mod-only defaults, with one approved middle-click exception.
 
 Uses two actual /defaultoptions saveKeys exports. Does NOT change options.txt.
 No client runtime here; never assume a source mod's key ID or scrape defaults.
@@ -11,6 +11,8 @@ import re
 
 LINE = re.compile(r"key_([^:\n]+):([^:\n]+)(?::([^\n]*))?$")
 MIN_VANILLA = {"key.attack", "key.use", "key.forward", "key.back", "key.jump", "key.inventory"}
+# Issue #305: GUI-contextual sorting; leave vanilla pick-block untouched.
+PACK_DEFAULTS = {"key.invtweaks_sort_either.desc": "key.mouse.middle"}
 
 def read_keys(path: Path) -> dict[str, str]:
     if not path.is_file():
@@ -40,7 +42,9 @@ def build(loaded: dict[str, str], vanilla: dict[str, str]) -> str:
     modded = loaded.keys() - vanilla.keys()
     if not modded:
         raise ValueError("No modded bindings found; refuse empty output")
-    return "".join(f"key_{key}:key.keyboard.unknown:\n" for key in sorted(modded))
+    if missing := PACK_DEFAULTS.keys() - modded:
+        raise ValueError(f"Approved default keys missing from loaded mod export: {sorted(missing)}")
+    return "".join(f"key_{key}:{PACK_DEFAULTS.get(key, 'key.keyboard.unknown')}:\n" for key in sorted(modded))
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
