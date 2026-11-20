@@ -27,11 +27,20 @@ public final class ControlsDefaultsPolicy {
         "key.sprint", "key.swapOffhand", "key.togglePerspective", "key.use"
     );
 
-    public enum Decision { VANILLA, PRESERVE_PLAYER, DEFAULT_UNBOUND }
+    // Intentional GUI-only exception to the pack's otherwise unbound mod controls.
+    // Do not change the vanilla middle-mouse pick-block mapping.
+    private static final String CONTEXTUAL_SORT = "key.invtweaks_sort_either.desc";
+
+    public enum Decision { VANILLA, PRESERVE_PLAYER, DEFAULT_UNBOUND, DEFAULT_PACK_BOUND }
+
+    public static boolean isContextualSort(String keyName) {
+        return CONTEXTUAL_SORT.equals(keyName);
+    }
 
     public static Decision decide(String keyName, Set<String> namesPresentBeforeLaunch) {
         if (VANILLA.contains(keyName)) return Decision.VANILLA;
         if (namesPresentBeforeLaunch.contains(keyName)) return Decision.PRESERVE_PLAYER;
+        if (isContextualSort(keyName)) return Decision.DEFAULT_PACK_BOUND;
         return Decision.DEFAULT_UNBOUND;
     }
 
