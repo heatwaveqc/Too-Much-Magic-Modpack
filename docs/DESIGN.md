@@ -1,5 +1,7 @@
 # Design contract (2026-11-13)
 
+> **Current mod disposition (November 20, 2026):** [Owner Mod Dispositions](qa/OWNER-MOD-DISPOSITIONS-2026-11-20.md) supersedes the historical prototype/dimension selection below where inconsistent. YUNG's Better End Island is now owner-approved for next authorized live QA with BetterEnd compatibility **unverified**; five older dimension candidates (Dimensional Dungeons, Realms of Redemption, Undergarden, Blue Skies, Advent of Ascension) remain deferred. Dragon Survival, Aether and Twilight Final Boss addon are already pinned; standalone Surprisingly Substantial Satchel is actually in Occultism. See #390 for scope freeze and first-party progression rules. No assembly/smoke or build approval implied.
+
 > **2026-11-14 owner decision:** Change only the **Philosopher's Stone center** from diamond to one of three boss-associated items (Wilden Tribute, Botania Gaia Spirit, Neo Vitae Mine Key). Keep both original outer-ring layouts. Require **Chaos Shard** in Red MK3+ Power Flower direct recipes and MK3 upgrade. All-items EMC is a coverage goal with cheap glass-pane exceptions. Existing older post-Chaos-only text below is historical. See [tiered gate design](PROJECTE-TIERED-GATING-PROPOSAL.md) and [feature checklist](FEATURE-CHECKLIST.md). No runtime gate has been implemented yet.
 
 ## Vision
