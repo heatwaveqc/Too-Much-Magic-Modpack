@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Arc glyphs
+
+- Added ars-elemental-pinned-arc.md:2Tier2recipes XP55, ArcArrow+Snowball+Slime+Pearl mana10; PropagateconsumesArcglyph+Manip mana150. Gravitybuilt-in; speedmax(.2,1+acc/2); directyawsplit vs propagatedintegerlateraloffset, Extractdirection. Nativebounce−.9normalcomponent/Pierce/Sensitive>1return; usesnativeProjectileTTLfieldnotaddon(unread). javap3anonymousconstructors confirmed native(Level,resolver), onlygetType override; CFRsyntheticouterthisnotmissingconstructor.
+- **Next12filters** sixpositive/negativepairs aerial/aquatic/fiery/insect/summon/undead; then23otherglyphs and12tomes. Exactremaining23 listed in Arccompanion; makecoverageprogresshonest. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. Ninecompanions now guide-urn/foci/armor/threads/empowering/steeds/undead-summons/homing/arc;4of39glyphpathscovered. GlobalSauceversionselectionstillopen.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Homing glyph routes
 
 - Added ars-elemental-pinned-homing.md:2of39glyphpaths, Tier3/XP160, HomingNetherStar+Manip+DowsingRod+Eye default75; Propagate consumesHominglyph+Manip default400. Native4inflatedquery every3ticks,targetretainsquared≤50/acquire<75 notblockradius; noLOSselectionbutcollisionstillnormal; ignores/directvspropagationownerpredicate difference. Speedfloor.2/default.5,split,Dampen,Extract childdirection. IPropagator cancelsparentcontinuation childremainder+Dummypart/casttype directentityconstruction no newonCastpayment. ActualTTL uses nativeMethodProjectiledefault60seconds; addon30secondsfieldunread. Parenttickvirtualexpiration nowconfirmsGravityoverride age>limit.
