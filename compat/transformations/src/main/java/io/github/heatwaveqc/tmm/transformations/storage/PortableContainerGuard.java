@@ -31,12 +31,7 @@ public final class PortableContainerGuard {
         boolean tagged = stack.is(PORTABLE_BAGS);
         boolean shulker = stack.getItem() instanceof BlockItem item
             && item.getBlock() instanceof ShulkerBoxBlock;
-        return rejects(false, tagged, shulker);
-    }
-
-    /** Pure transaction decision, to test without a running Minecraft server. */
-    public static boolean rejects(boolean empty, boolean taggedBag, boolean shulkerBox) {
-        return !empty && (taggedBag || shulkerBox);
+        return PortableBagNestingRules.rejects(false, tagged, shulker);
     }
 
     public static void markProjecteBag(ItemStackHandler handler) {
