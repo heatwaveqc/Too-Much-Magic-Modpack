@@ -142,3 +142,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-19 — Elemental native-glyph empowering checkpoint [companion](mods/ars-elemental-pinned-empowering.md) added; status remains researching for addon glyphs/summon/helpers/devices/worldgen and final route review. No runtime/protection acceptance;9source-complete33researching.
 
 - 2026-11-20 — Elemental [four-mount checkpoint](mods/ars-elemental-pinned-steeds.md) closes travel branch source slice; no runtime riding/persistence acceptance, combat summons and remaining major addon routes still researching.9complete33researching unchanged.
+
+- 2026-11-20 — Elemental [combat summon checkpoint](mods/ars-elemental-pinned-undead-summons.md) closes revival/Homing recipient slice with Vhex timer caveat; addon glyph acquisition/helper/device/worldgen and global Sauce selection still researching.9complete33researching; no runtime acceptance.

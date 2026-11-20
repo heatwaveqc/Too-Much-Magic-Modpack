@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-20 Elemental undead/Homing recipients
+
+- Added ars-elemental-pinned-undead-summons.md: native3glyphrecipes, reRaiseSummon no didExpire/causegate includes expiry/dispel, inheritmax(old,400)/owner/old0. Direwolfdirecttimer vs Skeletonstarvedamage20every20afterexpiry; Vhex privateinterfacecounter shadows inheritedVanillaVex lifetime (no own ticking), don'tpromise400tickexpiry. Direwolf/SkeletonnoSaveonlySSRversionflag, current5.13.5notSSR; VhexnormalregisterEntity. NotmountnoSaveblanket.
+- Homingreplay recipient closed: clone withWrappedCaster sets actualentitySummon, Eventusesunwrapped so Playergatepreventsownrecursion. EntityResolver enoughMana true but grammar/eventcancelstillapply; SUCCESS invokesLivingCasterdebitmobcapability, nativeCapabilityRegistry onlyPlayerprovider, notnewplayerdebit. Otherinstalledpaymentlisteners stillacceptance/globalSauce selectionopen. Replay event occursbeforeoriginalfinalsuccess. 2HPkillhealnoequippedfocusgate reiterated.
+- **Next39addon glyphs/12tomes** obtain/operate each (Homing acquisition+projectile is next natural); Bee/Slime glyph recipients then Siren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 fullreview. Sevencompanions guide-urn/foci/armor/threads/empowering/steeds/undead-summons; don't re-audit. Parentfresh selected6entityclasses+inners/CapabilityRegistry/SpellCastEvent in elemental-parent-fresh; existingresolver/context in ars-fresh-20261117.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental temporary mounts
 
 - Added ars-elemental-pinned-steeds.md: all4focus replacements WaterDolphin/FireStrider/EarthCamel/NecroSkeleHorse; nativeTier1Steed4Leather/XP27/cost100/default300+120*durationseconds/AoEcount/sickness600, parentadds originalbeforeevent/childspell. Copyremainingticks/blockpos/beneficialeffects notwholeNBT. All4entitytypesnoSave! FireCamelSkelefireimmune. Dolphinemptyhandmountnoownergate/riderairrefill+jumpformulas; Striderdirectcontrols; Camelrestrictions; SkeleextendsHorse/disablewaterdismount but no breathingoverrideproof. FullparentSteed/Horse/ISummon freshlydecompiled external elemental-parent-fresh, addonclassesexisting.
