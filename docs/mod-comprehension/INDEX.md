@@ -423,3 +423,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Bee/Slime audit](mods/ars-elemental-pinned-bee-slime.md): two Tier2 glyph acquisitions, duration/sickness, custom AI/owner/nectar guards, variant/size and death-only split boundary.18of39 glyph routes covered;21effects/12tomes/other systems remain.9/42 unchanged.
 
 - 2026-11-20 — Elemental [four status/control routes](mods/ars-elemental-pinned-mist-rust-sliding.md): Mist actualradius4+AoE and19/20tick cadence/fog; Rust/entity versus10%claimed-block oxidation; Sliding friction; Nullify recipe disabled by default and field-only delay reset.22of39 recipe routes audited,9/42 complete unchanged.
+
+- 2026-11-20 — Elemental [Venom/Spores/Rage](mods/ars-elemental-pinned-venom-spores-rage.md): three recipe/status/AI routes, actual5+5Envenom config, Poison promotion, Spores initial gate/box/allies/reused bonus, Rage existing-target preservation.25of39 glyph recipes audited;9/42 unchanged.

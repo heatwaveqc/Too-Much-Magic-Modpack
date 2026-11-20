@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Venom/Spores/Rage
+
+- Added ars-elemental-pinned-venom-spores-rage.md3routes exactrecipes/config/recipients. Envenom5+5seconds(builtconfignotfallback30/8), oldPoisonamp/2floataddsamp→Venom/removePoison; EarthimmuneSpiderdirectVenom. Venomperiods20/10/8/4/2/1then0 anddamage2+.25amp,nooriginalcaster. Sporesinitialstatusgate,damage6+2.5amp+initialVenom2+3level REUSEDsecondary,boxnotradius,noallyguard, spreadPoison+Hunger; 5%Earthgroundblossom directplacement distinctGrow20%. RageonlyMob/60+120duration, Sauceattack+.25mult andtargetonlyifnull/forCombatnotblanketalliedbypass.
+- **Next14glyphs +12tomes** BubbleShield,Cauterize,Cavitate,Charm,Conflagrate,ConjureTerrain,Discharge,Geyser,LifeLink,PhantomGrasp,Spark,Spike,WateryGrave,WaterJet. SuggestedFireCauterize/Conflagrate andAirSpark/Discharge next, traceactualdamage/statusrecipient. 25of39routescovered through13companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental status/control glyphs
 
 - Added ars-elemental-pinned-mist-rust-sliding.md4routes: Mist radius4+AoE (constructorextra1),duration100+20*d ticks,cadence19/20 NOT20tick,35tickstatus/noownerfilter/mobtargetclearsinitialonly; actualclientfog. OxidizeRustarmor−.15mult/30+8duration versus blockclaimcheck10%nextstate; readsRandomizenotcompatible. Sliding10+10durationfallback/frictionclamp(base+.38,base,1.075). NullifycodeinvulnerableTime0 ONLY; recipecondition sauce:ae_config frame_skip_recipe false default, notnormalmandatoryacquisition. No runtimechanges.
