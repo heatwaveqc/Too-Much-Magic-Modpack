@@ -12,7 +12,14 @@
     "NewbieVampireAcquisitionMixin",
     "NewbieWerewolfAcquisitionMixin",
     "NewbieDragonAcquisitionMixin",
-    "MahouCatalystExchangeMixin"
+    "MahouCatalystExchangeMixin",
+    "OccultismSatchelSlotMixin",
+    "ProjecteBagAttachmentMixin",
+    "ProjecteAlchBagMenuMixin",
+    "MarkedBagHandlerMixin",
+    "VanillaBundleInsertionMixin",
+    "VanillaShulkerInsertionMixin",
+    "VanillaShulkerHopperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
