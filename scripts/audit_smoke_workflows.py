@@ -24,13 +24,29 @@ DISPATCH = re.compile(r"""github\.event_name\s*==\s*['"]workflow_dispatch['"]"""
 AUTHORIZED = re.compile(r"\binputs\.(?:full_smoke|authorized_build)\s*==\s*true\b")
 
 
+def unsafe_or(expression: str) -> bool:
+    """Reject authorization OR branches; allow OR within a branch-selector group.
+
+    For example '(branch_a || branch_b) && manual && flag' is safe, but
+    'branch_a || (manual && flag)' is not. A conservative syntactic guard.
+    """
+    source = expression.replace("\u0024{{", "").replace("}}", "")
+    group = re.compile(r"\\([^()]*\\)")
+    while match := group.search(source):
+        value = match.group(0)[1:-1]
+        if "||" in value and (DISPATCH.search(value) or AUTHORIZED.search(value)):
+            return True
+        # Remove harmless branch-only OR groups before checking outer logic.
+        source = source[:match.start()] + ("BRANCH_SELECTOR" if "||" in value else value) + source[match.end():]
+    return "||" in source or "\\nor " in source
+
+
 def protected(job_if: str, step_if: str) -> bool:
-    # Job and step predicates are conjunctive; an OR within either may bypass.
-    both = (job_if, step_if)
-    if any("||" in text or "\nor " in text for text in both):
+    # Job and step conditions combine with AND, so their gates can be split.
+    if unsafe_or(job_if) or unsafe_or(step_if):
         return False
-    text = " ".join(both)
-    return bool(DISPATCH.search(text) and AUTHORIZED.search(text))
+    both = " ".join((job_if, step_if))
+    return bool(DISPATCH.search(both) and AUTHORIZED.search(both))
 
 
 def scan_workflow(source: str, filename: str) -> list[str]:
