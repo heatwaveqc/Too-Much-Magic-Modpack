@@ -409,3 +409,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Elemental [three-thread audit](mods/ars-elemental-pinned-threads.md): exact recipes/slot/status/expiry bolt paths and both summon-power consumers. Summoning Sickness reduction does not occur for slots1–3: integer division of native maximum slot by10. Addon remains researching, 9/42 unchanged.
 
 - 2026-11-19 — Elemental [empowering audit](mods/ars-elemental-pinned-empowering.md): native glyph substitutions, burn/freeze handlers, gravity query/velocity, exact five head recipes and inclusive RNG thresholds (6/11/21%, not nominal5/10/20). Remaining addon glyph/summon routes open;9/42 unchanged.
+
+- 2026-11-20 — Elemental [steed audit](mods/ars-elemental-pinned-steeds.md): all four focus substitutions, native summon acquisition/event order/duration, riding and noSave boundaries. SkeleHorse inherits Horse, no breathing override proved; combat summons still open.9/42 unchanged.

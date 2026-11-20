@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental temporary mounts
+
+- Added ars-elemental-pinned-steeds.md: all4focus replacements WaterDolphin/FireStrider/EarthCamel/NecroSkeleHorse; nativeTier1Steed4Leather/XP27/cost100/default300+120*durationseconds/AoEcount/sickness600, parentadds originalbeforeevent/childspell. Copyremainingticks/blockpos/beneficialeffects notwholeNBT. All4entitytypesnoSave! FireCamelSkelefireimmune. Dolphinemptyhandmountnoownergate/riderairrefill+jumpformulas; Striderdirectcontrols; Camelrestrictions; SkeleextendsHorse/disablewaterdismount but no breathingoverrideproof. FullparentSteed/Horse/ISummon freshlydecompiled external elemental-parent-fresh, addonclassesexisting.
+- **Next combat summons/Homing** SummonDirewolf/SummonUndead/AllyVhexEntity + embedded IUndeadSummon.inherit lifetime/AI/owner; NecroticFocusHoming event→EntitySpellResolver.onCast payment/recursion. OtherSummonBee/Slime belong addon glyphs. Then39glyphs/12tomes, Siren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. Sixcompanions guide-urn/foci/armor/threads/empowering/steeds; do not re-audit. Global Sauce dependency selection stillopen.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635.9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Elemental native glyph empowering
 
 - Added ars-elemental-pinned-empowering.md: GlyphEvents/CompatUtils/Cut/Grow/Flare/Evaporate mixins, head5recipes/HeadCutRecipe/vorpalCut, MagicFire/Frozen+damage/heal handlers, EntityMagnetSpell. Exactamp/duration/query/velocity; Grow20%groundblossom notvanillaspore; MudClay claimchecked vs Ignite directblock loop unchecked. Headinclusive nextInt<=threshold means6/11/21percent, up1+min(3,luck)attempts stopfirst. Fieldexpirationaccessor70+200*duration, parenteffectiveexpiryacceptance; no fake runtimePASS.
