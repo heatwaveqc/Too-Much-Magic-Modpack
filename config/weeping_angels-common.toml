@@ -1,0 +1,23 @@
+# Too Much Magic — Weeping Angels native destination exclusions (first unstable-test candidate)
+# IMPORTANT: incomplete until the integration writer reconciles ALL loaded dimension IDs,
+# including JAWR Spirit World, any ancillary JAWR realms, Feywild and other runtime-only
+# worlds. Native Weeping Angels has a blacklist, not a fail-closed allowlist.
+# Target allowed: minecraft:overworld, aether:the_aether,
+# the_bumblezone:the_bumblezone, twilightforest:twilight_forest,
+# theaurorian:the_aurorian, eternal_starlight:starlight.
+# Does not change separate natural-spawn blacklist.
+#
+# Verify actual filename and keys against pinned 1.21.1 NeoForge artifact.
+[teleporting]
+    interdimensional_teleporting = true
+    teleport_range = 400
+    teleport_chance = 50
+    banned_dimensions = [
+        "minecraft:the_nether",
+        "minecraft:the_end",
+        "deeperdarker:otherside",
+        "wardentools:abyssdim",
+        "voidscape:void",
+        "pastel:deeper_down",
+        "neovitae:dungeon",
+    ]
