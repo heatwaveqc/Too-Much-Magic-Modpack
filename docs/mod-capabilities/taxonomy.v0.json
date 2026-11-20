@@ -1,0 +1,235 @@
+{
+  "schema": "tmm.mod-capability-axes.v0.1",
+  "status": "draft-owner-review",
+  "generated_at": "2026-11-20",
+  "source": "Owner's 16-axis proposal, with 12 suggested additions",
+  "total_axes": 28,
+  "original_axes": 16,
+  "added_axes": 12,
+  "axes": [
+    {
+      "id": "gear",
+      "label": "Gear",
+      "group": "Player & combat",
+      "definition": "Equipable/held equipment, intrinsic functionality, passive effects and equipment-provided abilities.",
+      "boundary": "Item presence is not proof of an independently usable spell or effect.",
+      "origin": "original"
+    },
+    {
+      "id": "movement",
+      "label": "Movement",
+      "group": "Player & combat",
+      "definition": "Movement speed, flight, dashes, blink/teleport, mounting, water/air traversal and player travel between dimensions.",
+      "boundary": "Moving inventories belongs to logistics; creating dimensions belongs to world content.",
+      "origin": "original"
+    },
+    {
+      "id": "ore_processing",
+      "label": "Ore processing",
+      "group": "Resources & production",
+      "definition": "Crushing, refining, multiplying, washing or otherwise upgrading mined ore or raw metal inputs.",
+      "boundary": "Obtaining fresh ore is ore generation; general item crafting alone is crafting.",
+      "origin": "original"
+    },
+    {
+      "id": "storage",
+      "label": "Storage",
+      "group": "Infrastructure",
+      "definition": "Accessible items, fluids, magical reagents, inventories, portability, remote access and capacity.",
+      "boundary": "Stored FE/mana and its network belong to energy; transport between storage nodes belongs to logistics.",
+      "origin": "original"
+    },
+    {
+      "id": "crafting",
+      "label": "Crafting",
+      "group": "Infrastructure",
+      "definition": "Recipes, rituals, infusion, potions, item synthesis, fabrication and conversion whose goal is producing crafted outputs.",
+      "boundary": "Enchanting/upgrading an existing object belongs to equipment augmentation; open-ended resource creation to general generation.",
+      "origin": "original"
+    },
+    {
+      "id": "logistics",
+      "label": "Logistics",
+      "group": "Infrastructure",
+      "definition": "Transfer, routing, sorting, filtering and remote delivery of items, fluids, entities or resources.",
+      "boundary": "Player teleport belongs to movement; signal logic belongs to automation/control.",
+      "origin": "original"
+    },
+    {
+      "id": "buffs",
+      "label": "Buffs",
+      "group": "Player & combat",
+      "definition": "Temporary or maintained positive effects to players, allies and pets, including potion/spell auras.",
+      "boundary": "Persistent learned innate player-state changes belong to permanent power; healing is tracked separately.",
+      "origin": "original"
+    },
+    {
+      "id": "external_compatibility",
+      "label": "External compatibility",
+      "group": "Cross-cutting",
+      "definition": "Native or pack-specific interactions that bridge distinct mods, APIs, energy types, entities or mechanics.",
+      "boundary": "A theme or theoretical KubeJS possibility does not count as an implemented bridge; also tag the actual functional axis.",
+      "origin": "original"
+    },
+    {
+      "id": "mob_farming",
+      "label": "Mob farming",
+      "group": "Resources & production",
+      "definition": "Renewable mob acquisition, capture, duplication, spawning, automated kills, drops and experience farming.",
+      "boundary": "A summoned ally is a companion; wild mob world-spawning additions are world content.",
+      "origin": "original"
+    },
+    {
+      "id": "ore_generation",
+      "label": "Ore generation",
+      "group": "Resources & production",
+      "definition": "Generation or acquisition of new ore/raw-ore equivalents through mining magic, miners, magical sources or repeated supply independent of an existing vanilla vein.",
+      "boundary": "Ordinary naturally placed ore veins belong to world content; ore doubling belongs to ore processing.",
+      "origin": "original"
+    },
+    {
+      "id": "permanent_power",
+      "label": "Permanent power",
+      "group": "Player & combat",
+      "definition": "Persistent player-state abilities, attunements, transformations, learned skills and irreversible character unlocks.",
+      "boundary": "Long-lived potions, wearable gear and renewable auras are buffs/gear, not innate permanent power.",
+      "origin": "original"
+    },
+    {
+      "id": "general_generation",
+      "label": "General generation",
+      "group": "Resources & production",
+      "definition": "General-purpose creation, replication, exchange, transmutation or regeneration of useful resources from substitutes/currency/ambient systems.",
+      "boundary": "Ore-specific yields go to ore generation; fixed ordinary recipes go to crafting; processing existing ore goes to ore processing.",
+      "origin": "original"
+    },
+    {
+      "id": "direct_damage",
+      "label": "Direct damage",
+      "group": "Player & combat",
+      "definition": "Entity damage inflicted by spells, powers, traps, constructs or equipment-independent actions; record separately even if cast using gear.",
+      "boundary": "Damage reduction is defense; debuff-only effects belong to debuff/control.",
+      "origin": "original"
+    },
+    {
+      "id": "block_breaking",
+      "label": "Block breaking",
+      "group": "Resources & production",
+      "definition": "Active breaking, mining, excavation, timbering, harvesting or destruction of existing blocks, including spells and machines.",
+      "boundary": "Generating new ore/resources or changing biomes without breaking blocks is different.",
+      "origin": "original"
+    },
+    {
+      "id": "permanent_pets",
+      "label": "Permanent pets",
+      "group": "Actors & entities",
+      "definition": "Persistent owned, summoned, created or bound helpers/familiars/constructs that survive normal expiration and can continue service.",
+      "boundary": "Time-limited/single-use actors belong to temporary pets; mob farms are a distinct purpose.",
+      "origin": "original"
+    },
+    {
+      "id": "temporary_pets",
+      "label": "Temporary pets",
+      "group": "Actors & entities",
+      "definition": "Expiring or one-shot controlled minions, summons, temporary allies and short-lived constructs.",
+      "boundary": "A persistent tame or durable construct belongs to permanent pets; projectiles are direct damage.",
+      "origin": "original"
+    },
+    {
+      "id": "defense",
+      "label": "Defense",
+      "group": "Player & combat",
+      "definition": "Wards, barriers, armor-independent mitigation, resistance, immunity, shielding and hazard protection.",
+      "boundary": "Healing after damage is healing/recovery; a shield as item is also tagged Gear.",
+      "origin": "added"
+    },
+    {
+      "id": "healing_recovery",
+      "label": "Healing & recovery",
+      "group": "Player & combat",
+      "definition": "HP healing, hunger/saturation restoration, mana or ability-resource recovery and cleansing of harmful effects.",
+      "boundary": "Prevention of damage is defense; avoidance of death/death recovery is death/respawn.",
+      "origin": "added"
+    },
+    {
+      "id": "debuff_control",
+      "label": "Debuffs & control",
+      "group": "Player & combat",
+      "definition": "Slows, curses, crowd control, fear, roots, silence, disarming, forced motion, enemy disablement and targeting manipulation.",
+      "boundary": "Raw damage belongs to direct damage; positive status belongs to buffs.",
+      "origin": "added"
+    },
+    {
+      "id": "energy",
+      "label": "Energy",
+      "group": "Infrastructure",
+      "definition": "Generation, conversion, storage, transmission and consumption of mana, FE/OP, Source, EV, blood or other power systems.",
+      "boundary": "Do not equate unlike energies; each conversion is a typed pathway with proof on both ends.",
+      "origin": "added"
+    },
+    {
+      "id": "automation_control",
+      "label": "Automation & control",
+      "group": "Infrastructure",
+      "definition": "Redstone, logic, sensing triggers, programmable computers, state evaluation and repeatable task sequencing.",
+      "boundary": "Transport alone is logistics, and the transformation being automated stays under its native axis.",
+      "origin": "added"
+    },
+    {
+      "id": "agriculture",
+      "label": "Agriculture & ecology",
+      "group": "Resources & production",
+      "definition": "Crop/tree growth, fishing, animal breeding, food farming, biomass, gardening and natural-resource regeneration.",
+      "boundary": "Combat mob farms belong to mob farming; one-off cooked recipes to crafting.",
+      "origin": "added"
+    },
+    {
+      "id": "detection_information",
+      "label": "Detection & information",
+      "group": "World & utility",
+      "definition": "Locate/reveal ores, structures, mobs, threats, places, recipes, status, hidden world state and exploration guidance.",
+      "boundary": "Teleport is movement; uncovering new dimensions is world content.",
+      "origin": "added"
+    },
+    {
+      "id": "equipment_augmentation",
+      "label": "Equipment augmentation",
+      "group": "Infrastructure",
+      "definition": "Enchantment, reforging, socketing, upgrade tiers, imbuement and modification of existing items or tools.",
+      "boundary": "Initial creation belongs to crafting; innate learned skills to permanent power.",
+      "origin": "added"
+    },
+    {
+      "id": "world_manipulation",
+      "label": "World manipulation",
+      "group": "World & utility",
+      "definition": "Placement/building, terrain alteration, environmental changes, weather/time/light, protections and world-rule interactions.",
+      "boundary": "Simply adding generated biomes/structures is world content; breaking existing blocks is block breaking.",
+      "origin": "added"
+    },
+    {
+      "id": "world_content",
+      "label": "World content",
+      "group": "World & utility",
+      "definition": "Added dimensions, biomes, structures, ambient ores, worldgen, encounter spawns and discoverable features.",
+      "boundary": "This is a content-impact axis, not necessarily a controllable player ability; do not mislabel it as ore generation.",
+      "origin": "added"
+    },
+    {
+      "id": "death_respawn",
+      "label": "Death & respawn",
+      "group": "Player & combat",
+      "definition": "Resurrection, death avoidance, corpse/grave/inventory preservation, respawn location and recovery after death.",
+      "boundary": "Routine HP healing belongs to healing/recovery; standard damage resistance is defense.",
+      "origin": "added"
+    },
+    {
+      "id": "trade_economy",
+      "label": "Trade & economy",
+      "group": "Resources & production",
+      "definition": "Merchant trades, bounty systems, currency, shops, barter, exchange markets and economic access paths.",
+      "boundary": "General programmable transmutation belongs to general generation; recipe synthesis to crafting.",
+      "origin": "added"
+    }
+  ]
+}
