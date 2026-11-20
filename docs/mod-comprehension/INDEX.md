@@ -403,3 +403,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-19 — Ars Elemental exact 0.7.10.4 artifact hash matched; native Notebook registration and Urn acquisition/linking/fluid/payment/manual bucket paths audited. Botania fallback is a stub; cauldron needs external fluid capability. New [companion](mods/ars-elemental-pinned-guide-urn.md); addon remains researching, total 9/42 source-complete.
 
 - 2026-11-19 — Elemental [focus companion](mods/ars-elemental-pinned-foci.md): exact recipes/Mark/Anima, whole-spell first-focus cost subtraction, greater passive conditions and Necrotic worn-versus-held/event boundaries. Embedded Sauce recipient audited; global dependency selection and remaining addon systems still open. 9/42 unchanged.
+
+- 2026-11-19 — Elemental [armor audit](mods/ars-elemental-pinned-armor.md) covers all48 tier-gated conversion recipes, retained components, light/medium/heavy slots and both attribute/tagged-damage response paths. Tooltip4 is not proof of stored tier3; matching school can mix weights. Three addon threads and other major systems remain open.

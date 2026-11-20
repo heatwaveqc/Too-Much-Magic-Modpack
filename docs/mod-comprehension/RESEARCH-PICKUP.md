@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-19 Elemental armor
+
+- Added ars-elemental-pinned-armor.md: all48sauce armor conversions, internal-tier2 gate/7000Source perpiece/Mark+Netherite+2essences; lightSorcerer/mediumArcanist/heavyBattlemage, Waterprefixaqua. Sauce recipe defaulttier3 does NOT set holdertier3, tooltipfixed4; copiespatch/resetsdamage. Fourrepeat perkprovider lists samecapacity; exact sortedslots. AttributeID reuse means don't sum parentmanaagain. SchooldiscountMixin per-glyph ceil(cost*min(percent,1)) distinctfocus subtraction. Weightpower/resistanceweakness maps and taggeddamage B=floor(.5L+M+1.5H), fullschool canmixweights, originaldamage*Bmana andheavyoverflowheal; hungerboundary explicit. No runtime validation.
+- **Next three addon threads** ShockPerk/SporePerk/SummonPerk and recipes/eventconsumers, armor repair/material endpoint if needed; then glyph empowering/headloot/steeds/summonlifetime+Homingpayment,39glyphs/12tomes, helpers/Siren/devices/bangles/worldgen/VexingCaves/pilot35–37 final review. Armor recipes/body now covered; don't re-inventory48. Global Sauce bundledselection across installedaddons still open. Fullclasses elemental-fresh + elemental-sauce-fresh external.
+- Fetchedintegration still7d1be155bf1334995b65ebe88566bd4d7ae54635, prior relevantpins unchanged. 9complete33researching/no blocker/hourly active; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-19 Elemental foci
 
 - Added ars-elemental-pinned-foci.md: four lesser/greater acquisition, reusable catalysts, Mark five-per-Tribute/10000Source and current sauce:anima_essence; exact modifier/firstfocus whole-base-cost subtraction/held precedence, greater20tick passives and precise Y/Shocked conditions. Necrotic broad+1damage, Necromancy duration+2/selectedamp+2; worn-only resurrect/Homing replay versus lifesteal NO focus check. Summon/receiver internals not yet closed.
