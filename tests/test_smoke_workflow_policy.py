@@ -71,6 +71,10 @@ jobs:
 """
         self.assertEqual(scan_workflow(source, "b6-prism-download.yml"), [])
 
+    def test_inline_run_with_unguarded_prism_fails(self):
+        source = HEADER + "      - run: python3 scripts/build_b6_prism.py --test\\n"
+        self.assertTrue(scan_workflow(source, "b6-prism-download.yml"))
+
     def test_source_compile_is_not_client_packaging(self):
         source = HEADER + """      - name: compile only
         run: python3 -m py_compile scripts/build_b6_prism.py
