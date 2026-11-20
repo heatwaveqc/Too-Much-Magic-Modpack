@@ -427,3 +427,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Venom/Spores/Rage](mods/ars-elemental-pinned-venom-spores-rage.md): three recipe/status/AI routes, actual5+5Envenom config, Poison promotion, Spores initial gate/box/allies/reused bonus, Rage existing-target preservation.25of39 glyph recipes audited;9/42 unchanged.
 
 - 2026-11-20 — Elemental [four Fire/static routes](mods/ars-elemental-pinned-fire-static.md): Cauterize Holder/value tag mismatch bytecode-confirmed; Conflagrate fire-before-eligibility/Blast; Spark status after unchecked damage; Discharge FE extraction and Static removal before damage.29of39 glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Cavitate/Watery Grave](mods/ars-elemental-pinned-cavitation-grave.md): native occupied-Bubble hurt does not promise pop; damage-gated box shockwave versus unchecked secondary Soaked; motion/status/Zombie conversion before air/damage, dry status drain.31of39glyph recipes audited;9/42 unchanged.

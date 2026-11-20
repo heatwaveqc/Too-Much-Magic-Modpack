@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Cavitate/Watery Grave
+
+- Added ars-elemental-pinned-cavitation-grave.md2recipes/routes +freshnativeBubbleEntityrecipient. Cavitate8+3amp/range2+AoE box; initialBubble/passenger+successfuldamage, secondarySoakedregardlessdamageboolean/default30+8notfallback15/5. NativeoccupiedLivingBubblehurttrueBUTdoesnotpop; noexplicitCavitatepop. GraveactualExtendaugmentstatus vs velocitymin−1; Zombie(nonDrowned)conversion20earlyreturn; others air≤0ORaquatic damage5+2amp else drain50*(3+amp)floor−19, no samecastpostdraindamage. Statusalltick wetairbornevelocitymin−.5/airampdrainfloor−19 else dry/onGroundair−5unclamped. Mutationsprecededamageguards.
+- **Next8glyphs +12tomes** BubbleShield,Charm,ConjureTerrain,Geyser,LifeLink,PhantomGrasp,Spike,WaterJet. WaterJet partlyread but need EntityWaterJet; Geyser needs EntityGeyser/LavaGeyser and blockentity/source/Sourceconsumer. SuggestedfinishWaterJet/Geyser thenEarthTerrain/Spike thenAnima/Shield.31of39routescovered through15companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Alladdonclasses elemental-fresh; parentBubblefresh in elemental-parent-fresh. Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Fire/static glyphs
 
 - Added ars-elemental-pinned-fire-static.md4recipes/routes. Cauterize3damage-successgate/allyallowed, harmfulMILKcure; DISPEL_ALLOW/DENY comparators compareHolder.value vsHolder, javap2lambdasconfirmed mismatch. Conflaginitialonfire+successful9+5ampdamage, allentityboxfire+60beforeguards, otherliving.75damage/10%Blast200/nativeexpirystrength2NONE. Spark3+1.5amp+wet2/15+5duration statusregardlessdamageboolean/AirStaticCharged. Discharge7+3amp/Static*1.3thenremove; initialarmorFErequest25%unchecked, eachcap*1.1evenempty; THENboxdamage incloriginal, successShockedampcap5. No runtime/permissionacceptance.
