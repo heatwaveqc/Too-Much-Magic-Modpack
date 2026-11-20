@@ -1,6 +1,6 @@
 # Mod capability dossier — `<manifest-id>`
 
-> **Purpose:** The primary evidence-backed source for writing **full instructional quests** for this mod. This is a **detailed catalog of objects, actual behaviors and tiered unlocks**, not a one-word capability scorecard, tier ranking or a 29-row substitute for gameplay research. See [axis field guide](../AXIS-FIELD-GUIDE.md), [energy and progression rules](../ENERGY-AND-PROGRESSION.md) and [quest walkthrough standard](../../../QUEST-WALKTHROUGH-STANDARD.md). Delete placeholder examples after real inspection; retain `unknown` honestly.
+> **Purpose:** The primary evidence-backed source for writing **full instructional quests** for this mod. This is a **detailed catalog of objects, actual behaviors and tiered unlocks**, not a one-word capability scorecard, tier ranking or a 29-row substitute for gameplay research. See [axis field guide](../AXIS-FIELD-GUIDE.md), [energy and progression rules](../ENERGY-AND-PROGRESSION.md) and [quest walkthrough standard](../../QUEST-WALKTHROUGH-STANDARD.md). Delete placeholder examples after real inspection; retain `unknown` honestly.
 
 **Status:** `unresearched` / `partial` / `source-backed-partial` / `quest-source-ready` / `verified-in-pack` / `stale`  
 **Selection vs installation:** `pinned-active` / `approved-unpinned` / `deferred` / `excluded` / `unknown`; exact manifest commit and packwiz/source SHA  
