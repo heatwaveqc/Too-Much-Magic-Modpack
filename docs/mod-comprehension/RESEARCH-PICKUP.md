@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Water Jet/Geyser
+
+- Added ars-elemental-pinned-jet-geyser.md2recipes/routes fullentities. JetTier3mana80/damage4+amp,Splitcost40,1+split/originsradius1.5/hitY+1,nearest10boxinitialnoally/LOSfilter,RandomizedroundrobinnotRNG. Markerfireatcounter25/savedentityID/currentalive/≤12fromorigin/noRetarget; damagecanfailbutbeamstill, actualbypasses_armortag. Markerfireimmune/noSave/spawndataorigins/NBTtimeronly. GeyserTier2mana40/heightmax(0,4+2amp),nonairanchor/Sensitivefaces/backtracking; duration5+1*d waterONLYFirebase5. Pushboxes/component±.4/allalive/nofilters; Soaked40 vs Fireoverride+20fireticksnotSoaked; noSave. No physicalwater/upkeepSourceinvented.
+- **Next6glyphs +12tomes** BubbleShield,Charm,ConjureTerrain,LifeLink,PhantomGrasp,Spike. SuggestedEarthTerrain/Spike thenAnimaCharm/Link/Phantom andShield.33of39routescovered through16companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Alladdonclasses elemental-fresh; nativebinarieshashesretained. Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Cavitate/Watery Grave
 
 - Added ars-elemental-pinned-cavitation-grave.md2recipes/routes +freshnativeBubbleEntityrecipient. Cavitate8+3amp/range2+AoE box; initialBubble/passenger+successfuldamage, secondarySoakedregardlessdamageboolean/default30+8notfallback15/5. NativeoccupiedLivingBubblehurttrueBUTdoesnotpop; noexplicitCavitatepop. GraveactualExtendaugmentstatus vs velocitymin−1; Zombie(nonDrowned)conversion20earlyreturn; others air≤0ORaquatic damage5+2amp else drain50*(3+amp)floor−19, no samecastpostdraindamage. Statusalltick wetairbornevelocitymin−.5/airampdrainfloor−19 else dry/onGroundair−5unclamped. Mutationsprecededamageguards.
