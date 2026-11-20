@@ -361,6 +361,10 @@ file = "defaultconfigs/ProjectE/mapping.toml"
 hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
 
 [[files]]
+file = "defaultconfigs/ars_nouveau-server.toml"
+hash = "cd6e01ae4e5d60d14516b3611e5d385305fbaa095aabe1dbe486f3f76f0a4848"
+
+[[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
 hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
@@ -778,7 +782,7 @@ hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
-hash = "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
+hash = "6c4dd61c219a7572e11ad8dd6abc09eea1657fb073dcbf941cc9d21d746967af"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/caerbannog.json"
