@@ -33,7 +33,9 @@ Read source from [Jeryn99/Weeping-Angels `mc/1.21`](https://github.com/Jeryn99/W
 
 **Upstream evidence:** [`StatueBlockEntity`](https://github.com/Jeryn99/Weeping-Angels/blob/mc/1.21/common/src/main/java/mc/craig/software/angels/common/blockentity/StatueBlockEntity.java), [`SnowAngelBlockEntity`](https://github.com/Jeryn99/Weeping-Angels/blob/mc/1.21/common/src/main/java/mc/craig/software/angels/common/blockentity/SnowAngelBlockEntity.java), [`HurtHelper`](https://github.com/Jeryn99/Weeping-Angels/blob/mc/1.21/common/src/main/java/mc/craig/software/angels/util/HurtHelper.java), [NeoForge 1.21.1 biome modifier docs](https://docs.neoforged.net/docs/1.21.1/worldgen/biomemodifier/). Source-level only; confirm pinned artifact and effective datapack behavior.
 
-## Recommended *first unstable QA* balance (owner approval still needed)
+## Earlier first unstable QA balance (mostly exploratory; theft alone locked)
+
+**Spawn-weight/group rows below are only an alternative if ambient spawning is retained. If structure-only is approved, suppress ambient spawns rather than tune those numbers.**
 
 | Control | Native default | Proposed pilot | Rationale |
 | --- | --- | --- | --- |
@@ -44,13 +46,13 @@ Read source from [Jeryn99/Weeping-Angels `mc/1.21`](https://github.com/Jeryn99/W
 | `[snow_angels].snow_angels` | true | **true** | Keep the special scenic/ambush feature, evaluate on new chunks. |
 | `[behaviour].stalk_range` | 65 | **65** | Preserve observation/stalking mechanics. |
 | `[behaviour].block_breaking` | true | **false initially** | Avoid destructive interactions with magical builds during first integration QA. Revisit protected-tag approach later. |
-| `[behaviour].angel_theft` | true | **false initially** | Avoid full-stack loss of survival tools while testing teleports/combat. Later consider true with a restricted mundane-items tag excluding pickaxes and magical equipment. |
-| `[damage].hurt_type` | PICKAXE_AND_GENERATOR | **ANYTHING initially** | Native config-only way to allow Monk, spells, dragons and ordinary weapon damage; monitor whether 20 HP makes them too fragile. |
+| `[behaviour].angel_theft` | true | **false permanently — owner locked and staged** | The Angel must never steal inventory items. |
+| `[damage].hurt_type` | PICKAXE_AND_GENERATOR | **Target physical-only filter, implementation pending** | Permit punches, Monk fists, bites/claws and pickaxes; reject ordinary swords/arrows/spells. Native config alone cannot express it. |
 | `[teleporting]` | native defaults | **unchanged** | Owner-locked native 50% chance, 400-block range, cross-dimension and fallback; existing draft six-world policy. |
 
-**Spawn-dimension choice for owner:** recommend **natural Overworld-only Angel spawns in first QA**, while preserving the approved six-world **abduction destination** pool. The mod's default spawn-biome tag can include Nether and modded biomes. To claim strict Overworld-only using native `spawn_dimension_blacklist`, first finish the *same exact runtime dimension census* required by PR #392. Include Nether, End, the five permitted Angel destinations other than Overworld, and all remaining loaded dimensions in the natural-spawn exclusion list. Do not invent JAWR or speculative realm IDs. The initial pilot can explicitly document a partial suppression of currently confirmed dimensions but must not claim strict Overworld-only until complete.
+**Earlier ambient-spawn fallback, now lower priority:** natural Overworld-only spawns were proposed, but owner is exploring **structure-only encounters** instead. If structure-only is approved, suppress the regular biome modifier entirely rather than attempting an exhaustive natural-spawn dimension blacklist. Keep destination blacklist independent. Treat Snow Angel worldgen separately.
 
-**Design tradeoff:** using `ANYTHING` removes the iconic pickaxe-only vulnerability. A later exact source-compatible integration can preserve special resistances while making magic/Monk attacks eligible, but **that requires new gameplay behavior/code**, not just the native config or a tag change. Do not build such a patch without a separate owner decision.
+**Damage implementation gate:** `ANYTHING` alone is no longer a recommended final setting because it lets swords, arrows and spells hurt Angels. Native pickaxe checking also rejects empty-hand and form-based attacks. Implement and test a selective incoming-damage policy against exact pinned sources before changing the native damage setting.
 
 ## Implementation and QA gates
 
