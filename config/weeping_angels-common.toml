@@ -8,6 +8,10 @@
 # Does not change separate natural-spawn blacklist.
 #
 # Verify actual filename and keys against pinned 1.21.1 NeoForge artifact.
+# Owner-locked: disable stealing permanently; preserve player tools/gear.
+[behaviour]
+    angel_theft = false
+
 [teleporting]
     interdimensional_teleporting = true
     teleport_range = 400
