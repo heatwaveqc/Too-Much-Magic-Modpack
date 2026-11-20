@@ -419,3 +419,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Arc/Propagate Arc](mods/ars-elemental-pinned-arc.md): two Tier2 recipe routes, native bounce/Pierce/Sensitive semantics, propagated offsets and bytecode-confirmed anonymous constructor endpoints.4of39 glyph routes covered;12filters+23other effects remain, plus12tomes.9/42 unchanged.
 
 - 2026-11-20 — Elemental [12filter audit](mods/ars-elemental-pinned-filters.md): exact acquisition/predicates/tags, positive allows family and negative inversion despite reversed native descriptions, negative block allowance and legacy two-argument inversion omission.16of39 glyph routes covered;23effects/12tomes/other systems remain.9/42 unchanged.
+
+- 2026-11-20 — Elemental [Bee/Slime audit](mods/ars-elemental-pinned-bee-slime.md): two Tier2 glyph acquisitions, duration/sickness, custom AI/owner/nectar guards, variant/size and death-only split boundary.18of39 glyph routes covered;21effects/12tomes/other systems remain.9/42 unchanged.

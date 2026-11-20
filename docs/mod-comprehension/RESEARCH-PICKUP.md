@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Bee/Slime glyphs
+
+- Added ars-elemental-pinned-bee-slime.md:2Tier2recipes/XP55/mana100,3+Split,duration20*(60+60*duration)/no floor,sickness.8*ticks(nonSSR). NativecanSummonrealPlayer. BeehasHive/Nectar/Food/Breed/Stungfalse/customAI; Slimeamp size read despite Amplifynotcompatible, attrs/variantFirepriority/FIRElava+immunity, ally/owner guards, death/dying2–4childhalfsize retainslifetime/notliveexpiry. ChildrenownerPlayercast caveat; no honey/slimeballfarmclaim. BothnoSaveonlySSR/currentfalse; notNecroticrevival3classes.
+- **Next21effect glyphs +12tomes** BubbleShield,Cauterize,Cavitate,Charm,Conflagrate,ConjureTerrain,Discharge,Envenom,Geyser,LifeLink,Mist,NullifyDefense,Oxidize,PhantomGrasp,PoisonSpores,Rage,SlipFeet,Spark,Spike,WateryGrave,WaterJet. Suggestedstatuses grouped with actualmob-effect/damageevent recipients; sourceallfresh. 18of39routescovered through11companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental paired filters
 
 - Added ars-elemental-pinned-filters.md all12recipes sixpairs XP27/tier1/mana0; positiveallowsP negative!P despite REVERSED concretebookdescriptions. Negativeallowsblocks, predicates actualtags/interfaces notenvironment. Contextual5argXOR vs legacy2argIFilter bypassinversion: legacySaucegetFilterPredicate/twoargcheckIgnoreFilters negativeactspositive. Homing/Gravity usecontextual. Exacttagcontributions, sequentialAND, placement/Controlehelper boundaries. Arccommitc842e63c andthisfiltercommitcoherent sameheartbeat, ensurebothpushed.
