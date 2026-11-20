@@ -4,7 +4,7 @@
 
 **Universal minimum for every present capability:** exact name and registry identifier (if supported); physical block/item/GUI, spell or state; how player first obtains and performs it; inputs and resulting outputs (quantity/type), cost and failure behavior; **bottom end (first usable access)**, intermediate stages and **top end (last reachable capability)**; version-specific limitations; guide/JEI reference; native/pack-specific unlock; quest teaching step and truthful detectable completion; links to source and validation. Avoid imaginary tiers for feature-only mods.
 
-**Bottom/top means functional bounds within the mod, not a rank relative to other mods.** Record ranges and branching capabilities even when there is no strictly better end state. Each capability must be linked to the [progression timeline](templates/MOD-CAPABILITIES.md#progression-ladder-and-branch-map), and where power is spent, to the [resource ledger](ENERGY-AND-PROGRESSION.md).
+**Bottom/top means functional bounds within the mod, not a rank relative to other mods.** Record ranges and branching capabilities even when there is no strictly better end state. Each capability must be linked to the [progression timeline](templates/MOD-CAPABILITIES.md#4-progression-ladder-and-branch-map), and where power is spent, to the [resource ledger](ENERGY-AND-PROGRESSION.md).
 
 ## `gear`
 
