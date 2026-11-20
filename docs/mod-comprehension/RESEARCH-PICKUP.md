@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental status/control glyphs
+
+- Added ars-elemental-pinned-mist-rust-sliding.md4routes: Mist radius4+AoE (constructorextra1),duration100+20*d ticks,cadence19/20 NOT20tick,35tickstatus/noownerfilter/mobtargetclearsinitialonly; actualclientfog. OxidizeRustarmor−.15mult/30+8duration versus blockclaimcheck10%nextstate; readsRandomizenotcompatible. Sliding10+10durationfallback/frictionclamp(base+.38,base,1.075). NullifycodeinvulnerableTime0 ONLY; recipecondition sauce:ae_config frame_skip_recipe false default, notnormalmandatoryacquisition. No runtimechanges.
+- **Next17glyphs +12tomes** BubbleShield,Cauterize,Cavitate,Charm,Conflagrate,ConjureTerrain,Discharge,Envenom,Geyser,LifeLink,PhantomGrasp,PoisonSpores,Rage,Spark,Spike,WateryGrave,WaterJet. Envenom/PoisonSpores/Rage alreadypartiallyread, doactualVenom/RageSauce recipients. 22of39routescovered through12companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Exactallclasses elemental-fresh/elemental-sauce-fresh plusselectedparentfresh. Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Bee/Slime glyphs
 
 - Added ars-elemental-pinned-bee-slime.md:2Tier2recipes/XP55/mana100,3+Split,duration20*(60+60*duration)/no floor,sickness.8*ticks(nonSSR). NativecanSummonrealPlayer. BeehasHive/Nectar/Food/Breed/Stungfalse/customAI; Slimeamp size read despite Amplifynotcompatible, attrs/variantFirepriority/FIRElava+immunity, ally/owner guards, death/dying2–4childhalfsize retainslifetime/notliveexpiry. ChildrenownerPlayercast caveat; no honey/slimeballfarmclaim. BothnoSaveonlySSR/currentfalse; notNecroticrevival3classes.

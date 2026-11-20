@@ -421,3 +421,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [12filter audit](mods/ars-elemental-pinned-filters.md): exact acquisition/predicates/tags, positive allows family and negative inversion despite reversed native descriptions, negative block allowance and legacy two-argument inversion omission.16of39 glyph routes covered;23effects/12tomes/other systems remain.9/42 unchanged.
 
 - 2026-11-20 — Elemental [Bee/Slime audit](mods/ars-elemental-pinned-bee-slime.md): two Tier2 glyph acquisitions, duration/sickness, custom AI/owner/nectar guards, variant/size and death-only split boundary.18of39 glyph routes covered;21effects/12tomes/other systems remain.9/42 unchanged.
+
+- 2026-11-20 — Elemental [four status/control routes](mods/ars-elemental-pinned-mist-rust-sliding.md): Mist actualradius4+AoE and19/20tick cadence/fog; Rust/entity versus10%claimed-block oxidation; Sliding friction; Nullify recipe disabled by default and field-only delay reset.22of39 recipe routes audited,9/42 complete unchanged.

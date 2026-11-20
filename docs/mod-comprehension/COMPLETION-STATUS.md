@@ -152,3 +152,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-20 — Elemental [filter checkpoint](mods/ars-elemental-pinned-filters.md):12routes source-audited with contextual/legacy discrepancy;16of39 glyph routes total, not full addon completion.9complete33researching; no runtime acceptance.
 
 - 2026-11-20 — Elemental [combat Bee/Slime checkpoint](mods/ars-elemental-pinned-bee-slime.md):18of39 glyph recipes operationally audited;21other glyphs/tomes/remaining systems still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [status/control checkpoint](mods/ars-elemental-pinned-mist-rust-sliding.md):22of39 glyph recipes audited including conditionally unavailable default Nullify;17otherglyphs/12tomes/majorbranches researching.9complete33researching; no runtime acceptance.
