@@ -184,3 +184,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-21 — Elemental [prism/lens audit](mods/ars-elemental-pinned-prisms.md): exact acquisition/aim/install/recipient, seven lens classes, Source mutation/payment order, strict chain size and Mirror overload mismatch confirmed by javap.26companions;9/42 unchanged; no routing/scribing acceptance.
 
 - 2026-11-21 — Elemental [four Source relays](mods/ars-elemental-pinned-relays.md): recipes/storage, inherited20tick collector/deposit/splitter, all4SOURCE_CAPABILITY registrations and Air lossless modern path versus retained legacy loss.27companions;9/42 unchanged; no transfer acceptance.
+
+- 2026-11-21 — Elemental [five infused turrets](mods/ars-elemental-pinned-turrets.md): exact recipes, matching35%/unmatched60%raw Source cost, virtual school focus/child resolver, valid-block event and Homing/Arc additions to native maps.28companions;9/42 unchanged; no operational acceptance.

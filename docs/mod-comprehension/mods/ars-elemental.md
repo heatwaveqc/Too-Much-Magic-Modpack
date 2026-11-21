@@ -57,3 +57,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Advanced Prism/lenses and Mirror](ars-elemental-pinned-prisms.md) traces recipes, aimed routing, seven lens implementations and native two-ended behavior; Mirror reflection overload misses native dispatch, Chaining mutates before unchecked actual debit.
 
 [Four elemental Source relays](ars-elemental-pinned-relays.md) covers exact upgrades/buffers, inherited directional loops and explicit capability registration; normal addon Warp capability path is lossless, legacy tile overload still has distance-loss code.
+
+[Five infused turrets](ars-elemental-pinned-turrets.md) closes school recipes/Sauce resolver/cost, block-type registration and addon Homing/Arc behavior extensions on native turrets.

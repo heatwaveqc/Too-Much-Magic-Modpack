@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-21 Elemental infused turrets
+
+- Added ars-elemental-pinned-turrets.md fiveImbuementrecipes Enchantedspell_turret consumed/5000Source +3schoolEssences+greaterFocus(orShaper)reusable. EmbeddedSauceFocusEnhancedSpellTurret+Tile fixedschool/fromblock; costint(raw*.35)ifANYmatchingpart elseint(raw*.6), notenchantedhalfagain/unmatchedraw10060vsnative50. VirtualISchoolFocusexactschool/ShaperManip, childresolverpreserved, notallplayerpassives. Paymentbeforebehavior/cancel/success no refund; linkedinsufficientnofallback.
+- ModTiles BlockEntityTypeAddBlocksEvent addsall5 toSauceinitialemptyFOCUS_TURRET type: notinvalidtileclaim. Addonstaticregistrations addHoming+Arc toBOTHnativeBasic/Rotatingmaps: basicdirection/Arc+.25Y vsadjustabletileangle; ArcordinaryEntityProjectilegravitytrue notcustomArcclass. Infuseddispatch passesblockFACING vsnativeRotatingnearestrotation, Touchquerycanmisalignwithaim. Parentturret andFlashjackdocs crosslinkedforinstalledscope.
+- **Next gear** bangles/casterbag/curiobag/SpellHorn/MirrorShield+enchantments/otherregistereditems, thenworldgen/mages/VexingCaves/pilot35–37/finalreview/globalSauceversionselection.28companions,39glyphs/12tomes/helpers/devices not whole-addoncomplete.9complete33researching/no hardblocker/hourlyactive. Integration077a34d8706dba51b10ad65dde05a7d34cfb5c96 unchangedonfetch. Docs only/no agents/assembly/launch/runtimeedits/merge; gitlog actualpushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental Source relays
 
 - Added ars-elemental-pinned-relays.md4upgrades nativecorrespondingrelay+2essence+2diamonds/Source0/noNBT; Fire4000/4000/3500,Earth5000/5000/2500,Water3500each,Air3000each(capacity/receive/extract), limitspercallnotpooledseconds. Native20tick FirecollectAFTERsend/range5, EarthlocaldepositAFTERsend/excluderelay, WaterrequiresnonemptydestBEFOREpull/integerdivision. **ModRegistry registers all4Sourcecapabilities returning SourceStorage**. Normal addonWarp→addonWarp process usesplain3argcaptransfer/no loss. Air2argcapoverride bypassesnativeWarpcode; legacy3argTileoverload NOToverridden stilldistance-lossbranch. No blanketcrossmod/dimension/unloaded promise or measuredtransfer.

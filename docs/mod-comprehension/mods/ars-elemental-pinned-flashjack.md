@@ -30,7 +30,7 @@ Every goal tick applies Glowing40 to target. Within distance7 and attackCooldown
 2. Find alive native WealdWalkers within bird AABB inflated30; set each target to this target. No owner/alliance filter in this loop.
 3. Set goal cooldown20. Close spark's early return delays this work on that tick.
 
-Native RotatingTurretTile.shootSpell still requires server/nonempty spell and pays its positive getManaCost from linked Source capability (simulation then extraction), otherwise native multi-provider range10 lookup. It then dispatches supported cast-type behavior; payment precedes behavior lookup. Bird does not supply free turret mana or skip recipient spell checks. It calls shootSpell directly rather than requiring a redstone pulse in this method. Duplicated list entries can request multiple shots/payment; no added list deduplication or cooldown check here. Elemental turret subtype specifics remain part of pending device audit; proven common interface is RotatingTurretTile.
+Native RotatingTurretTile.shootSpell still requires server/nonempty spell and pays its positive getManaCost from linked Source capability (simulation then extraction), otherwise native multi-provider range10 lookup. It then dispatches supported cast-type behavior; payment precedes behavior lookup. Bird does not supply free turret mana or skip recipient spell checks. It calls shootSpell directly rather than requiring a redstone pulse in this method. Duplicated list entries can request multiple shots/payment; no added list deduplication or cooldown check here. [Elemental turret subtype audit](ars-elemental-pinned-turrets.md) now traces school costs/resolver and native form extensions; common interface is RotatingTurretTile.
 
 ## Recovery, visual lightning and appearance
 
