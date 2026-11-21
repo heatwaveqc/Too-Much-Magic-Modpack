@@ -67,7 +67,7 @@ def main():
     assert 'command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in intro
     assert 'quest.544D309000100001.title: "I\x27m Ready for Regular Mode"' in read("config/ftbquests/quests/lang/en_us.snbt")
 
-    pmix = data("compat/progression/src/main/resources/tmm_progression.mixins.json")["mixins"]
+    pmix = data("compat/progression/src/main/resources/tyr_progression.mixins.json")["mixins"]
     for name in ("InventoryReservationMixin", "MonkFortuneMixin",
                  "HunterLootingMixin", "HunterRareLootMixin", "VirtualElytraItemExtensionMixin"):
         assert name in pmix, name
@@ -82,12 +82,12 @@ def main():
     assert tmix.get("plugin") == "io.github.heatwaveqc.tmm.transformations.mixin.DracolichMixinPlugin"
     assert set(tmix["client"]) >= {"DracolichModelLoadMixin","DracolichDragonModelMixin",
                                     "DracolichGlowLayerMixin", "DracolichArmorLayerMixin"}
-    mxp = read("compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/mxp/MxpService.java")
+    mxp = read("compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mxp/MxpService.java")
     assert "ProgressionApi.awardMagic" in mxp, "Unified MXP must delegate to the authoritative ledger"
-    api = read("compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/core/ProgressionApi.java")
+    api = read("compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/core/ProgressionApi.java")
     assert "anyJoined(ServerPlayer player)" in api and "NewbieMode.isNewbie(player)" in api
     award = api.split("private static boolean awardMagic(", 1)[1].split("public static boolean awardExperience", 1)[0]
-    assert "NewbieMode.isNewbie(player)" in award and 'ModList.get().isLoaded("tmm_mxp")' in award, "No Newbie / duplicate legacy MXP award"
+    assert "NewbieMode.isNewbie(player)" in award and 'ModList.get().isLoaded("tmm_mxp")' not in award, "Unified Tyr engine must suppress Newbie awards without delegating to retired MXP"
     native = read("compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/NativeSpeciesJoinGuard.java")
     assert "registerProgressionJoinVeto()" in native and "hasJoinedProgression(player)" in native
     assert "SpeciesEnrollmentPolicy.canJoinHumanPath" in native

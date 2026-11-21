@@ -6,7 +6,7 @@ license="${mod_license}"
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
-authors="Too Much Magic contributors"
+authors="Tyr Mod Family contributors"
 description='''Datapack-configured, server-authoritative progression and player enhancement core.
 Independent of Monk, Hunter, JAWR, Vampirism and Tyz.
 '''
@@ -27,20 +27,20 @@ side="BOTH"
 
 # Client-only controls policy; leave unrelated experimental progression mixins unchanged.
 [[mixins]]
-config="tmm_controls_defaults.mixins.json"
+config="tyr_controls_defaults.mixins.json"
 
 # Gameplay loot predicate injection, separate from client controls policy.
 [[mixins]]
-config="tmm_progression.mixins.json"
+config="tyr_progression.mixins.json"
 
 # Engine-owned MXP hooks (guarded when legacy module is installed).
 [[mixins]]
-config="tmm_progression_mxp.mixins.json"
+config="tyr_progression_mxp.mixins.json"
 
 # Client-only optional lightmap compatibility hook.
 [[mixins]]
-config="tmm_progression_vision.mixins.json"
+config="tyr_progression_vision.mixins.json"
 
 # Optional Dragon Survival beverage permission hook.
 [[mixins]]
-config="tmm_progression_diet.mixins.json"
+config="tyr_progression_diet.mixins.json"

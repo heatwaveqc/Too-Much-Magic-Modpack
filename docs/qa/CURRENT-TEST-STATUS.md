@@ -129,3 +129,7 @@ If an agent has only inspected documentation or committed source, **do not upgra
 ## Unified Progression runtime cutover — owner 2026-11-19
 
 Exact reviewed dev/progression donor `1063355f7ba920e113baae38ce4a6f03ba2c8e44` (#347/#344/#375) staged in isolated integration PR. Tyz 6.4.2 runtime pin, 27 configuration files and old KubeJS Thrift script excluded; standalone tmm_mxp JAR excluded, historical source kept inert. Retain Pufferfish Attributes. Independent target 219 third-party pins, four first-party runtime modules. Single award authority and Newbie gating require source checks and later fresh-world live acceptance. Core presently has zero authored nodes; individual native class/form trees and replacement of legacy purchased skills remain development scope. Legacy save migration is not required in pre-alpha QA. No rate or balance change and no assembly, boot or publication authorized.
+
+## 2026-11-21 Tyr Progression namespace promotion (source-only)
+
+Reviewed immutable `dev/progression` donor `bae3599dc9bb1520fd1fd0d16b7338b3fbb8e107` (merged #424 plus #432) replaces the identical #376-era `compat/progression` subtree in the next integration PR. The selected first-party runtime and QA target now identify `tyr_progression` exclusively; Tyz and standalone MXP stay retired. Source/metadata quick CI and preflight are required; no assembly, server/client boot, or gameplay PASS is claimed. See the live-test inclusion register for B/C acceptance.

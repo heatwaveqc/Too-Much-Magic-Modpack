@@ -3,7 +3,7 @@
   "modules": [
     {
       "directory": "compat/progression",
-      "mod_id": "tmm_progression"
+      "mod_id": "tyr_progression"
     },
     {
       "directory": "compat/transformations",

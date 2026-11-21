@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.heatwaveqc.tyr.progression.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "OptionsOriginalKeyCaptureMixin",
+    "KeyMappingDefaultAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:gilded",
+  "id": "tyr_progression:gilded",
   "title": "Gilded",
   "source_revision": "2fd6df6de1e21cdd8f07750a63e76261124a0fc4",
   "native_path_legacy": {
@@ -35,13 +35,13 @@
     "activities": [
       {
         "event": "external",
-        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
         "xp": 10,
         "cooldown_ticks": 0
       },
       {
         "event": "external",
-        "target": "tmm_progression:gilded_lava_fish_caught",
+        "target": "tyr_progression:gilded_lava_fish_caught",
         "xp": 5,
         "cooldown_ticks": 0,
         "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
@@ -49,11 +49,11 @@
     ],
     "milestones": [
       {
-        "id": "tmm_progression:gilded_gold_prospecting",
+        "id": "tyr_progression:gilded_gold_prospecting",
         "criteria": [
           {
             "event": "external",
-            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
             "count": 32
           }
         ],
@@ -61,16 +61,16 @@
         "points": 0
       },
       {
-        "id": "tmm_progression:gilded_gold_mastery",
+        "id": "tyr_progression:gilded_gold_mastery",
         "criteria": [
           {
             "event": "external",
-            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
             "count": 256
           }
         ],
         "after": [
-          "tmm_progression:gilded_gold_prospecting"
+          "tyr_progression:gilded_gold_prospecting"
         ],
         "xp": 250,
         "points": 0
@@ -78,7 +78,7 @@
     ],
     "skills": [
       {
-        "id": "tmm_progression:gilded_nether_diet",
+        "id": "tyr_progression:gilded_nether_diet",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -88,14 +88,14 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:food_whitelist",
-            "target": "#tmm_progression:gilded_nether_foods",
+            "type": "tyr_progression:food_whitelist",
+            "target": "#tyr_progression:gilded_nether_foods",
             "params": {
               "enforce": "before_consumption_finish",
               "nonfood_consumables": "unaffected",
               "unlisted_food": "deny",
-              "gold_foods_tag": "#tmm_progression:gilded_gold_foods",
-              "gold_recipe_policy": "tmm_progression:gilded_gold_food_policy",
+              "gold_foods_tag": "#tyr_progression:gilded_gold_foods",
+              "gold_recipe_policy": "tyr_progression:gilded_gold_food_policy",
               "allow_recipe_derived_gold_foods": "true",
               "gold_food_nutrition_multiplier": "2",
               "gold_food_saturation_gain_multiplier": "2",
@@ -106,7 +106,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_piglin_kin",
+        "id": "tyr_progression:gilded_piglin_kin",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -116,8 +116,8 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:piglin_affinity",
-            "target": "#tmm_progression:gilded_piglin_allies",
+            "type": "tyr_progression:piglin_affinity",
+            "target": "#tyr_progression:gilded_piglin_allies",
             "params": {
               "prevent_unprovoked_targeting": "true",
               "prevent_gold_mining_alarm": "true",
@@ -129,7 +129,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_gold_diamond_equivalence",
+        "id": "tyr_progression:gilded_gold_diamond_equivalence",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -139,8 +139,8 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:gold_diamond_equivalence",
-            "target": "#tmm_progression:gilded_gold_equipment",
+            "type": "tyr_progression:gold_diamond_equivalence",
+            "target": "#tyr_progression:gilded_gold_equipment",
             "params": {
               "effective_tool_tier": "diamond",
               "effective_weapon_damage": "diamond",
@@ -153,7 +153,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_renewal",
+        "id": "tyr_progression:gilded_renewal",
         "max_rank": 3,
         "required_rank": 1,
         "base_cost": 0,
@@ -166,7 +166,7 @@
         "effects": [
           {
             "type": "gear_durability",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "armor",
@@ -176,7 +176,7 @@
           },
           {
             "type": "gear_durability",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "mainhand",
@@ -187,7 +187,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_fortunes_favor",
+        "id": "tyr_progression:gilded_fortunes_favor",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -197,8 +197,8 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:virtual_fortune",
-            "target": "#tmm_progression:gilded_fortune_tools",
+            "type": "tyr_progression:virtual_fortune",
+            "target": "#tyr_progression:gilded_fortune_tools",
             "per_rank": 3,
             "params": {
               "combine": "additive",
@@ -216,7 +216,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_last_gilt",
+        "id": "tyr_progression:gilded_last_gilt",
         "max_rank": 3,
         "required_rank": 1,
         "base_cost": 0,
@@ -228,8 +228,8 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:virtual_unbreaking",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "type": "tyr_progression:virtual_unbreaking",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "combine": "additive",
@@ -240,7 +240,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_looting",
+        "id": "tyr_progression:gilded_looting",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -250,8 +250,8 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:virtual_looting",
-            "target": "#tmm_progression:gilded_gold_weapons",
+            "type": "tyr_progression:virtual_looting",
+            "target": "#tyr_progression:gilded_gold_weapons",
             "per_rank": 3,
             "params": {
               "combine": "additive",
@@ -270,7 +270,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_undying_ember",
+        "id": "tyr_progression:gilded_undying_ember",
         "max_rank": 1,
         "required_rank": 18,
         "base_cost": 0,
@@ -280,7 +280,7 @@
         ],
         "effects": [
           {
-            "type": "tmm_progression:fire_immunity",
+            "type": "tyr_progression:fire_immunity",
             "target": "#minecraft:is_fire",
             "params": {
               "inspiration": "zombified_piglin",
@@ -299,7 +299,7 @@
     "schema": 1,
     "name": "Gilded XP",
     "point_name": "Gilded Points",
-    "requires_path": "tmm_progression:gilded",
+    "requires_path": "tyr_progression:gilded",
     "rank_xp": [
       0,
       20,
@@ -326,13 +326,13 @@
     "sources": [
       {
         "event": "external",
-        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
         "xp": 10,
         "cooldown_ticks": 0
       },
       {
         "event": "external",
-        "target": "tmm_progression:gilded_lava_fish_caught",
+        "target": "tyr_progression:gilded_lava_fish_caught",
         "xp": 5,
         "cooldown_ticks": 0,
         "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
@@ -454,10 +454,10 @@
   "initiation": {
     "schema_version": 1,
     "status": "design_only_pending_java_adapter",
-    "path": "tmm_progression:gilded",
+    "path": "tyr_progression:gilded",
     "trigger": {
       "event": "successful_food_consumption",
-      "food_item_tag": "#tmm_progression:gilded_rite_foods",
+      "food_item_tag": "#tyr_progression:gilded_rite_foods",
       "consume_item_normally": true
     },
     "conditions": {
@@ -473,7 +473,7 @@
       "not_already_joined": true
     },
     "on_success": {
-      "join_path": "tmm_progression:gilded",
+      "join_path": "tyr_progression:gilded",
       "award_rite_xp": 0,
       "notify_player": true
     },
@@ -482,15 +482,15 @@
   "food_policy": {
     "schema_version": 1,
     "status": "design_only_pending_java_adapter",
-    "path": "tmm_progression:gilded",
+    "path": "tyr_progression:gilded",
     "allow_if_any": [
       {
         "kind": "item_tag",
-        "id": "#tmm_progression:gilded_nether_foods"
+        "id": "#tyr_progression:gilded_nether_foods"
       },
       {
         "kind": "item_tag",
-        "id": "#tmm_progression:gilded_gold_foods"
+        "id": "#tyr_progression:gilded_gold_foods"
       },
       {
         "kind": "crafting_recipe_contains_gold",
@@ -554,7 +554,7 @@
   "food_rite_candidate": {
     "enrollment": "food",
     "food_rite": {
-      "target": "#tmm_progression:gilded_rite_foods",
+      "target": "#tyr_progression:gilded_rite_foods",
       "when": {
         "type": "and",
         "conditions": [
