@@ -1,5 +1,7 @@
 # Dragon Survival food compatibility — first implementation (2026-11-14)
 
+> **2026-11-21 correction:** The earlier native-preservation text below is superseded where it conflicts with the owner-approved plant-only Forest Dragon diet. The current pack data map removes 75 animal/monster selectors accidentally inherited from the upstream Forest map and adds explicit source-backed Dungeon's/Ender's food selectors. See [food addon compatibility matrix](qa/FOOD-ADDON-SPECIES-MATRIX-2026-11-21.md). This is **source-only**, without smoke, registry expansion, client, or gameplay QA.
+
 **Status:** source-authored, untested in a NeoForge/Prism client. No stable release approval.
 **Target:** Minecraft 1.21.1 / NeoForge / Dragon Survival **2.0.74** (desired in Monk stream; do not assert installed until packwiz-pinned).
 **Source of upstream diet:** [Dragon Survival 1.21.1 diet_entries.json](https://github.com/DragonSurvivalTeam/DragonSurvival/blob/1.21.1/src/generated/resources/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json), blob `435b6c7132ca4eb1af302dcbb5988ad2ca2217d0`.
@@ -55,3 +57,16 @@ Removed upstream conditional entries that violate the policy: cake/creative blaz
 7. Compare **the pinned 2.0.74 jar's** bundled data map and registry with this upstream-source snapshot. The source branch may advance independently; do not claim byte-for-byte version match without checking.
 
 **Known limitation:** recipe-derived classification is not performed automatically for all ~900 Pam foods. Regex selectors cover straightforward named preserves and drinks, while other composite foods need recipe-source review. Static tests cannot establish live tag membership. Additional raw produce whose source mod omits common tags must be added after a live registry audit. The design is intentionally conservative where ingredient provenance is ambiguous.
+
+## November 21 reconciliation — owner-approved food add-ons
+
+The owner explicitly added Huaxia Delight, Crispy!, Dungeon's Delight and Ender's Delight (plus RunicLib required by Dungeon's) as next-test candidates. Native Forge mod IDs are `dungeonsdelight` and `endersdelight` (not their project slugs). The full item/species decisions and source references are in [FOOD-ADDON-SPECIES-MATRIX-2026-11-21.md](qa/FOOD-ADDON-SPECIES-MATRIX-2026-11-21.md).
+
+- **Forest correction:** Upstream `#c:foods/raw_meat` and 74 named animal/monster selectors contradicted the pack's plant-only Forest rule. Removed from the complete replacement map. No ordinary meat is legal merely because Dragon Survival upstream permits it. Three Pam raw tofu-meat imitation items remain as vegetable/soy exceptions, not animal meat; their actual recipes remain QA items.
+- **Cave additions:** 9 Dungeon's Delight raw animal/monster foods, 3 Ender's Delight End-mob flesh foods, all exact registry IDs confirmed in source. Entries retain item effects. This allows eating raw meat **as food**; it does not bypass the two-stage cooked-to-charred native recipe pathway. The food items may cause harmful native effects; retain those.
+- **Forest additions:** `dungeonsdelight:rotgourd_slice` and `endersdelight:chorus_juice`; the latter is precisely chorus fruit + sugar + glass bottle. No blanket End's Delight plants: multiple crop items are nonfood BlockItems and cooked soups/curries are outside the policy.
+- **Sea:** no automatically admitted End monsters or ghast 'calamari'; none of the newly inspected IDs is verified raw **aquatic** fish/plant food. Existing `#c:foods/raw_fish`, kelp and rice-free Aquaculture sushi stay authoritative.
+- **Huaxia and Crispy:** no speculative IDs or blanket entry. Existing `#c:foods/fruit/vegetable` filtering may pick up real raw produce if the actual upstream tags qualify, but cooked wok dishes, noodles, dumplings, rice and cookies are disallowed without explicit species-appropriate ingredient audit. No effect-based magical-food exception for fortune cookies.
+- **Other forms:** preserve native/first-party JAWR vampire, werewolf and lich rules and the separate Gilded Nether/gold food policy; neither forms nor regeneration rules are changed by this data map. Correcting these foods does not prove Gilded recipe-derived gold transitivity or vampire blood integration.
+
+**Source checks:** updated `scripts/verify_dragon_diets.py` now rejects Forest meat selectors, broad monster-food tags, baked/grain dishes, and unexpected Sea intake while asserting the new 12 Cave and 2 Forest entries. **Unverified:** runtime tag expansion, Dragon Survival 2.0.74 pinned JAR parity, native effect retention, End biome crop generation with BetterEnd, actual meal consumption and the complete Pam/Huaxia recipe provenance. Do not call this a gameplay pass.
