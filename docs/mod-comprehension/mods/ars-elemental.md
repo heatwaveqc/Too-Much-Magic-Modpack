@@ -47,3 +47,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Siren acquisition and fishing shrine](ars-elemental-pinned-siren.md) covers token/charm conversion, habitat scoring, progress/Source/output order and lost inventory remainders. Native Binding/script/summon route and duplicate modifier dispatch are now traced.
 
 [Flarecannon guard and familiar](ars-elemental-pinned-flarecannon.md) covers recipe/summon/home, combat/recovery, Binding and the actual projectile base-cost reduction versus book prose.
+
+[Flashjack scout/familiar](ars-elemental-pinned-flashjack.md) covers wild conversion, turret/walker targeting, real turret Source payment, appearance/recovery and ineffective normal first-form movement discount condition.

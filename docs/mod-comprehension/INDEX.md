@@ -443,3 +443,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-21 — Elemental [Siren/shrine audit](mods/ars-elemental-pinned-siren.md): wild conversion, charm Apparatus/shrine, aquarium state/type scoring, Source repayment and lossy inventory overflow; familiar effect traced, Binding capture details remain open.21 companions;9/42 source-complete unchanged. No runtime acceptance.
 
 - 2026-11-21 — Elemental [Flarecannon audit](mods/ars-elemental-pinned-flarecannon.md) and [Siren Binding closure](mods/ars-elemental-pinned-siren.md): guard recipe/AI/recovery, native familiar conversion/unlock/summon, actual50%base-cost subtraction versus20%book and duplicated damage-modifier dispatch.22 companions;9/42 unchanged; no gameplay acceptance.
+
+- 2026-11-21 — Elemental [Flashjack audit](mods/ars-elemental-pinned-flashjack.md): token/charm/scout links, paid native turrets, Walker warnings, FlashLightning rod/copper effects, recovery and familiar conditions. Movement discount checks first EFFECT, so ordinary Self→Leap does not qualify despite book prose.23 companions;9/42 unchanged; no acceptance tests.
