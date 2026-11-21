@@ -1,0 +1,13 @@
+name = "Aura Cascade Reimagined"
+filename = "aura-cascade-neoforge-0.2.1+1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "4cfde7f28e7d691fa771d91c23c79e8f2297e6a5"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9005415
+project-id = 1519395
