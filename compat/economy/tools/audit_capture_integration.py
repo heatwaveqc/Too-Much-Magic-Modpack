@@ -10,7 +10,31 @@ import fetch_compile_classpath as locked
 from fetch_compile_classpath import ROOT, read_lock, fetch
 
 TAG = ROOT / "compat/economy/src/main/resources/data/tmm/tags/entity_type/capture_blacklist.json"
+MIXINS = ROOT / "compat/economy/src/main/resources/tmm_economy.mixins.json"
+JAVA = ROOT / "compat/economy/src/main/java/io/github/heatwaveqc/tmm/economy"
 POLICY = {"blacklist_target", "approved_misc_default_deny"}
+
+def source_contract():
+    mixins = set(json.loads(MIXINS.read_text(encoding="utf-8"))["mixins"])
+    required_mixins = {
+        "EvilCraftVengeanceSpiritMixin",
+        "EvilCraftRandomSpiritMixin",
+        "EvilCraftSpiritFurnaceMixin",
+        "EvilCraftSpiritReanimatorMixin",
+    }
+    assert required_mixins <= mixins
+    checks = {
+        "EvilCraftReplicationPolicy.java": ["tmm", "replication_blacklist", "MobCategory.MONSTER", "SAFE_EMPTY_SPIRIT"],
+        "mixin/EvilCraftVengeanceSpiritMixin.java": ["canSustain", "blocked(entity.getType())"],
+        "mixin/EvilCraftRandomSpiritMixin.java": ["getRandomInnerEntity", "randomAllowedMonster"],
+        "mixin/EvilCraftSpiritFurnaceMixin.java": ["canTick", "tile.getEntity()", "setReturnValue(false)"],
+        "mixin/EvilCraftSpiritReanimatorMixin.java": ["canTick", "tile.getEntityType()", "setReturnValue(false)"],
+    }
+    for relative, tokens in checks.items():
+        source = (JAVA / relative).read_text(encoding="utf-8")
+        for token in tokens:
+            assert token in source, f"Missing EvilCraft guard token {relative}: {token}"
+    print("PASS EvilCraft source guards share replication tag and preserve denied machine inputs")
 
 def project(registry):
     assert registry["schema_version"] == 1 and registry["registry_revision"] == 6
@@ -46,6 +70,7 @@ def main():
     assert not set(spirits) & {v if isinstance(v, str) else v["id"] for v in expected["values"]}
     assert json.loads((TAG.parent / "replication_blacklist.json").read_text(encoding="utf-8")) == {"replace": False, "values": ["#tmm:capture_blacklist"] + [{"id": i, "required": False} for i in spirits]}
     print("PASS 4 bound worker transport exceptions, 1200 total replication denials")
+    source_contract()
     consumers = ["apothic_spawners:blacklisted_from_spawners","occultism:soul_gem_deny_list","occultism:fragile_soul_gem_deny_list","ars_nouveau:jar_blacklist","ars_nouveau:drygmy_blacklist","forbidden_arcanus:quantum_catcher_blacklisted"]
     for key in consumers:
         ns, name = key.split(":")
@@ -58,7 +83,7 @@ def main():
     print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
     if args.projection_only:
         return
-    names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar", "neovitae-1.21.1-1.1.53.jar"}
+    names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar", "neovitae-1.21.1-1.1.53.jar", "evilcraft-1.21.1-neoforge-1.2.100.jar"}
     # Audit exact native tag resources for all seven consumers before gameplay acceptance.
     locked.SLUGS.extend(["occultism", "ars-ocultas"])
     names |= {"ars_nouveau-1.21.1-5.13.5.jar", "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus-2.6.1.jar", "ars_ocultas-1.21.1-2.6.2.jar"}
@@ -71,6 +96,7 @@ def main():
         apoth = dest / "ApothicSpawners-1.21.1-1.4.0.jar"
         reliq = dest / "reliquary-1.21.1-2.0.85.1599.jar"
         neo = dest / "neovitae-1.21.1-1.1.53.jar"
+        evil = dest / "evilcraft-1.21.1-neoforge-1.2.100.jar"
         with zipfile.ZipFile(apoth) as z:
             native = json.loads(z.read("data/apothic_spawners/tags/entity_type/blacklisted_from_spawners.json"))
             print("Native blacklist:", native)
@@ -81,6 +107,10 @@ def main():
             native_neo = json.loads(z.read("data/neovitae/tags/entity_type/deny_imprisonment.json"))
             assert {"minecraft:ender_dragon", "minecraft:wither", "minecraft:warden"} <= set(native_neo["values"])
         abi(neo, "com.breakinblocks.neovitae.common.event.ImprisonmentArrayHandler", ["static void onLivingDeath(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDeathEvent;)V", "DENY_IMPRISONMENT", "SpawnerBlockEntity.setEntityId"])
+        abi(evil, "org.cyclops.evilcraft.entity.monster.EntityVengeanceSpirit", ["canSustain(net.minecraft.world.entity.LivingEntity)", "(Lnet/minecraft/world/entity/LivingEntity;)Z", "vengeanceEvent(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)"])
+        abi(evil, "org.cyclops.evilcraft.entity.monster.EntityVengeanceSpiritData", ["getRandomInnerEntity(net.minecraft.util.RandomSource)", "(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/entity/EntityType;"])
+        abi(evil, "org.cyclops.evilcraft.blockentity.tickaction.spiritfurnace.BoxCookTickAction", ["canTick(org.cyclops.evilcraft.blockentity.BlockEntitySpiritFurnace, net.minecraft.world.item.ItemStack, int, int)", "(Lorg/cyclops/evilcraft/blockentity/BlockEntitySpiritFurnace;Lnet/minecraft/world/item/ItemStack;II)Z"])
+        abi(evil, "org.cyclops.evilcraft.blockentity.tickaction.spiritreanimator.ReanimateTickAction", ["canTick(org.cyclops.evilcraft.blockentity.BlockEntitySpiritReanimator, net.minecraft.world.item.ItemStack, int, int)", "(Lorg/cyclops/evilcraft/blockentity/BlockEntitySpiritReanimator;Lnet/minecraft/world/item/ItemStack;II)Z"])
         consumer_jars = {"apothic_spawners": apoth, "ars_nouveau": dest / "ars_nouveau-1.21.1-5.13.5.jar", "occultism": dest / "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus": dest / "forbidden_arcanus-2.6.1.jar"}
         for key in consumers:
             ns, name = key.split(":")
