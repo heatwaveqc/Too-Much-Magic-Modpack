@@ -1,0 +1,14 @@
+{
+  "type": "occultism:miner",
+  "ingredient": {
+    "tag": "occultism:miners/eldritch"
+  },
+  "result": {
+    "type": "occultism:weighted_item",
+    "stack": {
+      "count": 1,
+      "id": "draconicevolution:deepslate_draconium_ore"
+    },
+    "weight": 90
+  }
+}

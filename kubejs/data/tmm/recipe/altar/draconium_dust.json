@@ -1,0 +1,67 @@
+{
+  "type": "astralsorcery:altar_crafting",
+  "base_focus_shatter_chance": 0,
+  "duration": 100,
+  "effects": [
+    "astralsorcery:default_altar_sparkle",
+    "astralsorcery:default_central_beam",
+    "astralsorcery:default_lumen_input",
+    "astralsorcery:default_relay_input"
+  ],
+  "grid": {
+    "key": {
+      "D": {
+        "type": "item",
+        "ingredient": {
+          "item": "dragonsurvival:elder_dragon_dust"
+        }
+      }
+    },
+    "pattern": [
+      " D ",
+      "D D",
+      " D "
+    ],
+    "relay_pattern": [
+      "     ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ]
+  },
+  "may_chain": false,
+  "only_night": true,
+  "output_modifiers": [],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "draconicevolution:draconium_dust"
+    }
+  ],
+  "required_additional_inputs": [],
+  "required_fluid": [
+    {
+      "amount": 1000,
+      "id": "astralsorcery:liquid_starlight"
+    }
+  ],
+  "required_lumen": [
+    {
+      "amount": 200,
+      "lumen": "astralsorcery:discidia"
+    }
+  ],
+  "required_starlight": [],
+  "required_type": "radiance",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "dragonsurvival:elder_dragon_dust"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "draconicevolution:draconium_dust"
+    }
+  ]
+}
