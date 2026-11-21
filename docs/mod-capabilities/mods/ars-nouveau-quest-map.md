@@ -1,0 +1,118 @@
+# Ars Nouveau 5.13.5 — 49-quest reconciliation and next quest-source steps
+
+**Research only.** Current integration records at `test/full-integration/manifest/ars_quest_pilot.json` have **49** entries (29 base Ars, 20 across seven addons), and current Ars SNBT has the corresponding 49 task stanzas. Prior surveys calling this whole chapter unmerged are outdated. This document **does not create or alter FTB quests, GUIDs, chapter coordinates, rewards, registration, or runtime scripts**. [Compact layout PR #395](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/395) is a separate active owner of their layout. New IDs below are **Atlas research labels only**.
+
+Sources: [29-axis Ars dossier](ars-nouveau.md), [all 82 glyph learning recipes](../inventories/ars-nouveau-glyph-recipes.md), [24 ritual tablets](../inventories/ars-nouveau-ritual-tablets.md), [36 important hardware recipes](../inventories/ars-nouveau-core-infrastructure-recipes.md), [seven-addon crosswalk](../inventories/ars-nouveau-addon-family.md) and [original 49-node manifest](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/ars_quest_pilot.json).
+
+## Current FTB criterion truth: 49 entries
+
+This section is a **complete current quest inventory**, not a recommendation to duplicate it. A source recipe/guide may describe much more than an item or advancement task actually proves. The user can learn native operations through instruction without needing a separate regression test of the upstream mod.
+
+| # | Existing key / addon | Task actually checks | Editorial correction or missing lesson |
+| ---: | --- | --- | --- |
+| 0 | `orientation` — ars-nouveau | checkmark | Teach Worn Notebook acquisition/opening explicitly; optional orientation checkmark alone cannot grant a guide |
+| 1 | `novice` — ars-nouveau | advancement (`ars_nouveau:novice_spell_book`) | Advancement proves Novice book, not editor opening or successful first spell |
+| 2 | `chamber` — ars-nouveau | item (`ars_nouveau:imbuement_chamber`) | Item task proves station only; source guide should explain Source vs unpowered slow gem recipe |
+| 3 | `scribe` — ars-nouveau | item (`ars_nouveau:scribes_table`) | Table item task does not prove selecting/paying XP, consuming glyph item or gaining learned knowledge |
+| 4 | `jar` — ars-nouveau | item (`ars_nouveau:source_jar`) | Jar item task cannot prove Source entered storage; add Sourcelink setup |
+| 5 | `agro` — ars-nouveau | item (`ars_nouveau:agronomic_sourcelink`) | Sourcelink item task cannot prove eligible crop/tree growth produced Source |
+| 6 | `relay` — ars-nouveau | item (`ars_nouveau:relay`) | Relay item task cannot prove endpoint linkage or transfer |
+| 7 | `apparatus` — ars-nouveau | item (`ars_nouveau:enchanting_apparatus`) | Apparatus item does not prove correct Core/Pedestal geometry or completed recipe |
+| 8 | `magebloom` — ars-nouveau | item (`ars_nouveau:magebloom_crop`) | Magebloom item task doesn't teach cultivation or fiber route |
+| 9 | `mage` — ars-nouveau | advancement (`ars_nouveau:apprentice_spell_book`) | Apprentice advancement is honest for book; teach exact upgrade inputs and spell-tier boundary |
+| 10 | `brazier` — ars-nouveau | item (`ars_nouveau:ritual_brazier`) | Ritual Brazier item does not prove valid tablet placement/Source or ritual activation |
+| 11 | `summon` — ars-nouveau | item (`ars_nouveau:ritual_wilden_summon`) | Summon Wilden tablet item does not prove activation or Chimera augmentation |
+| 12 | `chimera` — ars-nouveau | advancement (`tmm:ars_pilot/chimera`) | Actual boss-kill advancement is more direct; ensure Tribute output vs kill separated |
+| 13 | `archmage` — ars-nouveau | advancement (`ars_nouveau:archmage_spell_book`) | Actual tier-book advancement is appropriate; never award Nether Star/Totem/Tribute |
+| 14 | `robes` — ars-nouveau | item (`ars_nouveau:arcanist_robes`) | Clothing acquisition doesn't prove armor thread effect or source/mana budget |
+| 15 | `alteration` — ars-nouveau | item (`ars_nouveau:alteration_table`) | Table item doesn't prove thread was inserted or removed |
+| 16 | `starby` — ars-nouveau | advancement (`ars_nouveau:starby_charm`) | Worker Charm/tame advancement != successful filtered item transport |
+| 17 | `whirl` — ars-nouveau | advancement (`ars_nouveau:whirlisprig_charm`) | Charm/tame advancement != plant-diversity Source production |
+| 18 | `drygmy` — ars-nouveau | advancement (`ars_nouveau:drygmy_charm`) | Advancement != Henge Source spend, mob eligibility, drop routing or loot-gating |
+| 19 | `wixie` — ars-nouveau | advancement (`ars_nouveau:wixie_charm`) | Charm/worker acquisition != cauldron production and item routing |
+| 20 | `familiar` — ars-nouveau | advancement (`ars_nouveau:familiar`) | Familiar advancement does not prove each distinct ability; use one real safe example |
+| 21 | `turret` — ars-nouveau | advancement (`ars_nouveau:basic_spell_turret`) | Turret advancement doesn't prove stored spell cast, resource debit or redstone behavior |
+| 22 | `lectern` — ars-nouveau | item (`ars_nouveau:storage_lectern`) | Item task does not prove linked remote inventory accessibility |
+| 23 | `repository` — ars-nouveau | item (`ars_nouveau:repository`) | Repository item task doesn't prove connected inventory/search across blocks |
+| 24 | `warp` — ars-nouveau | advancement (`ars_nouveau:warp_scroll`) | Warp advancement/item doesn't by itself document fully built Source Jar/frame and valid destination |
+| 25 | `flight` — ars-nouveau | item (`ars_nouveau:ritual_flight`) | Flight tablet item task not proof of successful safe ritual; use native guide and Source |
+| 26 | `mirror` — ars-nouveau | item (`ars_nouveau:enchanters_mirror`) | Mirror item task is not proof of stored spell behavior |
+| 27 | `flask` — ars-nouveau | advancement (`ars_nouveau:potion_flask`) | Flask advancement doesn't teach filling/dose/effect limits |
+| 28 | `golem` — ars-nouveau | advancement (`ars_nouveau:amethyst_golem_charm`) | Golem advancement doesn't prove role or supply chain |
+| 29 | `add_wand` — ars-additions | item (`ars_additions:advanced_dominion_wand`) | Wand item task != multi-endpoint configuration |
+| 30 | `add_index` — ars-additions | item (`ars_additions:warp_index`) | Index item task != remote Storage Lectern or chunk-load requirement |
+| 31 | `add_ender` — ars-additions | item (`ars_additions:ender_source_jar`) | Ender Jar item task != shared Source, no extra Source production |
+| 32 | `control_remote` — ars-controle | item (`ars_controle:remote`) | Remote item != compatible linked endpoint |
+| 33 | `control_sensor` — ars-controle | item (`ars_controle:temporal_stability_sensor`) | Sensor item != load-sensitive comparator behavior; avoid testing native sensor alone |
+| 34 | `control_brazier` — ars-controle | item (`ars_controle:portable_brazier_relay`) | Portable Relay item != safe supported ritual or parent loaded Source supply |
+| 35 | `element_focus` — ars-elemental | item (`ars_elemental:lesser_fire_focus`) | Focus item != school amplification/off-school penalty |
+| 36 | `element_urn` — ars-elemental | item (`ars_elemental:everfull_urn`) | Urn item != Source debit and fluid output to supported container |
+| 37 | `element_hat` — ars-elemental | item (`ars_elemental:fire_hat`) | Hat item != full set specialization, high armor tiers |
+| 38 | `elemancy_essence` — ars-elemancy | item (`ars_elemancy:cinder_essence`) | Essence item captures one of six dual paths; pedestals are nonconsumed; no required all-six chain |
+| 39 | `elemancy_hat` — ars-elemancy | item (`ars_elemancy:cinder_hat`) | Hat item not full school set; four-element capstone omitted |
+| 40 | `ocultas_gem` — ars-ocultas | item (`occultism:spirit_attuned_gem`) | Gem item cannot prove which parent/addon recipe was used |
+| 41 | `ocultas_jar` — ars-ocultas | item (`ars_nouveau:mob_jar`) | Empty Mob Jar item not proof of Occultism spirit jarred with preserved worker job |
+| 42 | `ocultas_altar` — ars-ocultas | item (`ars_ocultas:altar`) | Altar item not proof of Sacrificial Bowl integration; nonconsuming altar behavior requires owner policy before quest |
+| 43 | `ans_loom` — ars-n-spells | advancement (`ars_n_spells:craft_spell_loom`) | Advancement proves Loom acquisition, not inscription |
+| 44 | `ans_transcribe` — ars-n-spells | advancement (`ars_n_spells:transcribe_spell`) | Advancement can be source-granted for real transcription; differentiate generic tablet and Loom |
+| 45 | `ans_bind` — ars-n-spells | advancement (`ars_n_spells:bind_spell`) | Advancement can reflect binding; separate Iron's wheel from right-click carrier |
+| 46 | `ans_cast` — ars-n-spells | advancement (`ars_n_spells:first_cross_cast`) | Actual source-granted cross-cast advancement, subject to first-party task criteria |
+| 47 | `unify_pumpkin` — ars-unification | item (`farmersdelight:pumpkin_slice`) | Product item doesn't prove Ars Cut glyph used rather than cutting board |
+| 48 | `unify_cabbage` — ars-unification | item (`farmersdelight:cabbage_leaf`) | Product item doesn't prove glyph used; installed Occultism Crush bridge omitted |
+
+**Inventory checks:** base 29 (checkmark 1, advancement 13, item 15), addons 20 (item 16, advancement 4); all 49 current keys are unique: true. Only the current manifest's `criterion` is counted; tutorial prose may teach extra operations but does not upgrade an inventory check to usage credit.
+
+## Main teaching thread — revision, not new tier gates
+
+The native critical path is Notebook access (guide) → Novice Book → first valid spell → Scribes Table selected glyph/XP/consume-to-learn → Source link + Jar → Imbuement/Apparatus → Apprentice Book → Summon Wilden + three parts → actual Chimera kill + Tribute → Archmage Book. **Only the spellbook tiers and material inputs are native hard gates.** Source, 23 other rituals, armor, helpers and addon directions are branches unless explicitly needed to craft those inputs. Rewards must not give away rare Tier-3 gating materials or change underlying recipe EMC.
+
+**Hard correction:** Source and player mana are different. Source Gems are material items. Vanilla XP spent on Scribes Table is not TMM MXP and not player mana. Ars 'n Spells may route Ars/Iron's player mana according to server mode; do not state an effective mode until pack config is reconciled.
+
+## Candidate additions or specifically extended lessons
+
+The following are **new documentation/quest-source candidates**; `revise` means enrich existing key prose/criterion first, `add` means a separate optional branch may be useful only after comparing chapter layout and owner-approved quest design. These are *not* runtime FTB IDs and not automatically new hard prerequisite arrows.
+
+| Research ID | Mode | Reference prerequisite / existing key | Concrete action and why it teaches something missing | Honest completion criterion and scope |
+| --- | --- | --- | --- | --- |
+| `AR-01` | revise | `orientation` | Craft/open Worn Notebook from book + lapis gem tag and find the relevant Starting guide pages | Notebook item task at most proves acquisition; no automatic UI-read claim |
+| `AR-02` | revise | `novice` | Hold Novice Book, press C, build a known valid Form→Effect and cast; view mana decrement | Book advancement proves acquisition only; don't require a new native-casting regression run |
+| `AR-03` | revise | `scribe` | Select chosen glyph at Table, pay source recipe vanilla XP + item inputs, collect and use crafted glyph to learn | Glyph possession != learned capability; a custom player-known predicate would be new first-party detector work |
+| `AR-04` | revise | `jar + agro` | Grow eligible crops/trees beside Agronomic Sourcelink and store actual Source in 10k Jar; distinguish event triggers from bone meal | Native Source formula documented; quest task may still be item possession, not production |
+| `AR-05` | add | `jar` | Compare a food→Mycelial or potion→Alchemical or fuel→Volcanic Sourcelink on actual consumed input | Choose one optional branch; don't imply free Source or all TMM food/potion tags qualify |
+| `AR-06` | revise | `relay` | Use Dominion Wand source-first → destination-second; feed an actual Ars machine from Jar | Relay item task not link-credit; preserve dependency on Source producer |
+| `AR-07` | revise | `apparatus` | Place Arcane Core, Pedestals within 3 blocks, central reagent, enough Source and craft one source-defined product | Item task checks only the station; claim production only with real output/task |
+| `AR-08` | add | `mage + scribe` | Choose a Tier-2 utility glyph and demonstrate new targeting/AoE versus Tier-1, optionally record cheaper mana setup | A choice quest, not all Tier-2 glyphs; may be documentation inside existing Mage quest |
+| `AR-09` | add | `brazier` | Use a low-risk ritual such as Harvest or Flowering and its specific Notebook page; add items then activate empty-handed | Brazier item task alone is not ritual completion; no native standalone testing needed |
+| `AR-10` | revise | `summon + chimera` | Explain ordinary Wilden versus three-augment Chimera (Horn+Spike+Wing), safe arena, Tribute and actual kill | Keep actual kill advancement; don't pay the player a free Nether Star/Totem/Tribute |
+| `AR-11` | add | `starby` | Configure one Starbuncle filter for one real source chest→destination path | Charm/advancement acquisition ≠ item transport |
+| `AR-12` | add | `whirl` | Grow diverse plants for Whirlisprig Source production and configure storage/link | One representative habitat, no all-crop checklist |
+| `AR-13` | add | `drygmy` | Build Henge with common eligible mobs/Mob Jar, 1,000 Source generation budget and adjacent output storage | Only include gated loot or boss targets after TMM owner blacklist decision |
+| `AR-14` | add | `wixie` | Use Wixie Cauldron on one supported actual potion/item recipe, supply ingredients/Source | Charm advancement is not production proof; do not require all potion recipes |
+| `AR-15` | add | `brazier` | Teach one utility ritual from Flight/Scrying/Sanctuary/Restoration and distinguish table input from active ongoing Source | Optional branch; no new mandatory book tier |
+| `AR-16` | revise | `alteration + robes` | Apply then remove one compatible Thread through Alteration Table and wear changed armor | Ownership of table/robe not enough for usage criterion |
+| `AR-17` | add | `familiar + turret` | Use one safe summon or defensive familiar, set Spell Turret trigger/redstone on a harmless target | Use a representative spell; don't assume all mobs or protected blocks are valid |
+| `AR-18` | add | `warp + lectern` | Explain travel Portal full Jar, written scroll and Source frame; separately read a linked Repository/Lectern | Current Warp/Storage items cannot prove a successful link |
+| `AR-19` | add | `add_wand` | Teach Additions Mark/Recall or Retaliate Form with real source-defined target and short expiry | Additional addon glyph feature missing from all 3 Additions item quests |
+| `AR-20` | add | `add_index` | Explore documented Additions Warp Portal/Nexus Tower or Wixie Apparatus automation | Optional worldgen/automation branch; release-version exact artifact scope open |
+| `AR-21` | add | `control_remote` | Link Controle Scryer's Linkage to a **supported** item/fluid/FE/redstone endpoint, distinguish transfer from generation | Cross-mod endpoint or TMM override is testable only if TMM alters it |
+| `AR-22` | add | `control_sensor` | Use one Boolean/Precise Delay spell and explain comparator-based lag-control Sensor | Current 3 Controle item quests omit conditional glyph surface |
+| `AR-23` | add | `control_brazier` | Teach Scroll Holder and Warping Prism, which depend on bound scroll/portal and permissions | Do not promise automatic chunk loading or universal cross-dimension operation |
+| `AR-24` | add | `element_focus + element_hat` | Choose Fire/Water/Air/Earth Focus and a full elemental armor set; teach tradeoff, matching spell and mana | 3 Elemental pilot items do not represent four-school full-set progression |
+| `AR-25` | add | `element_urn` | Craft/use Siren Shrine aquatic habitat → Source → fishing loot; separately mention Source→water Urn | Source-funded alternative loot, gated-item policy if configured by TMM |
+| `AR-26` | add | `element_focus` | Teach Elemental Flashjack/Flarecannon/Weald Walker or turret/relay/prism role | One independently discoverable helper or machine, not all items required |
+| `AR-27` | revise | `elemancy_essence + elemancy_hat` | Present seven 3,000-Source Essence combinations; let player choose one dual path and optional four-element shard | Existing Cinder example is not complete specialization guidance; no forced all six pairs |
+| `AR-28` | add | `ocultas_jar` | Put bound Occultism Crusher/Janitor in Ars Mob Jar; feed actual job-compatible item and collect output | Jar acquisition != job processing; preserve Occultism tier requirements |
+| `AR-29` | blocked-design | `ocultas_altar` | Before teaching any permanent gate bypass, decide if 5,000-Source reusable sacrifice/item flag behavior is acceptable | Owner-level design question; do not silently legitimize nonconsuming sacrifice or claim a test ran |
+| `AR-30` | add | `ocultas_gem` | Teach Source-powered silver↔gold conversion and distinct Spirit Attuned Gem alternative cost; keep tier-4 Marid stabilizer route optional | Recipe outputs only; 2,000 Source per ingot and separate Marid ritual ingredients |
+| `AR-31` | add | `ans_cast` | Distinguish Loom→Iron's wheel binding from generic 2,000-Source right-click Spell Transcription and 500-Source Uninscription | Current source-granted advancement covers one path; no duplicate hard progression |
+| `AR-32` | blocked-design | `ans_loom` | Decide active mana mode, school damage scaling and passive Mana Well 2 mana/tick near-player economics before new balance teaching | Mode fresh default is not effective pack config; 1,500/2,000 Source rituals optional |
+| `AR-33` | add | `unify_pumpkin + unify_cabbage` | Teach Unification Occultism Crusher Spirit recipe imported into Ars Crush, and compare to Farmer's Delight Cut | Existing 2 quests only cover Farmer's Delight; product possession doesn't prove the glyph |
+| `AR-34` | add | `drygmy + control_remote` | Teach safe physical mob routing/capture using Ars Pull, Mob Jar, containment and eligible Drygmy habitat | Cross-mod capture blacklists are a TMM integration gate; native Pull glyph source cost is separately indexed |
+
+## Owner design and implementation handoff (no new test queue for upstream-native functions)
+
+**Code/design-ready split:** Most Atlas additions are **editorial/source-writing** and can be assigned without new architecture; none yet authorizes new FTB GUIDs, automatic reward choices, or edits to the existing 49-node runtime. The next implementation writer can map approved teaching gaps to existing keys or real optional new nodes without overlapping PR #395. Native mechanisms need not be retested. **Owner design holds:** AR-29 (Ocultas reusable altar), AR-32 (cross-mana mode/economy), and Drygmy protected loot policy (AR-13), including guard coverage for boss or rare mob farming.
+
+**Pack-specific QA applies ONLY when changed:** new task detector, KubeJS recipe/loot/tag override, cross-magic Progression handler, effective 'n Spells config adjustment, or explicit blacklist patch. Test that precise first-party behavior and honest FTB credit. Do **not** demand fresh native Source production, glyph, worker, ritual or equipment acceptance solely to close this research profile.
+
+**Research not yet complete:** exact vanilla+addon cast mana costs and abilities, 24 separate ritual activation/augmentation/Source requirements, Elemental/Controle/Additions glyph catalogs, armor Threads and workstations, and every 1.21.1 addon compatibility delta. This is a broad accurate **first-pass Atlas**, not quest-source-ready and not complete in-game verification.
