@@ -120,8 +120,148 @@
 			tasks: [
 				{ id: "544D807000700000", type: "checkmark" }
 			]
-			x: 0.0d
+			x: 6.0d
 			y: 12.0d
+		}
+		{
+			id: "544DB10000000001"
+			icon: { id: "minecraft:golden_carrot" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000001", type: "xp", xp: 10 }
+				{ id: "544DB40000000001", type: "item", item: { id: "minecraft:stick", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544DB20000000001", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 16.0d
+		}
+		{
+			id: "544DB10000000002"
+			icon: { id: "minecraft:spider_eye" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000002", type: "xp", xp: 10 }
+				{ id: "544DB40000000002", type: "item", item: { id: "minecraft:arrow", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544DB20000000002", type: "checkmark" }
+			]
+			x: 8.0d
+			y: 16.0d
+		}
+		{
+			id: "544DB10000000003"
+			icon: { id: "minecraft:gold_nugget" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000003", type: "xp", xp: 10 }
+				{ id: "544DB40000000003", type: "item", item: { id: "minecraft:gold_nugget", count: 1 }, count: 4 }
+			]
+			tasks: [
+				{ id: "544DB20000000003", type: "checkmark" }
+			]
+			x: 8.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB10000000004"
+			icon: { id: "minecraft:redstone" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000004", type: "xp", xp: 10 }
+				{ id: "544DB40000000004", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544DB20000000004", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 16.0d
+		}
+		{
+			id: "544DB10000000005"
+			icon: { id: "minecraft:bone" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000005", type: "xp", xp: 10 }
+				{ id: "544DB40000000005", type: "item", item: { id: "minecraft:bone", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544DB20000000005", type: "checkmark" }
+			]
+			x: 0.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB10000000006"
+			icon: { id: "minecraft:amethyst_shard" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000006", type: "xp", xp: 10 }
+				{ id: "544DB40000000006", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544DB20000000006", type: "checkmark" }
+			]
+			x: 12.0d
+			y: 16.0d
+		}
+		{
+			id: "544DB10000000007"
+			icon: { id: "minecraft:bone" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000007", type: "xp", xp: 10 }
+				{ id: "544DB40000000007", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544DB20000000007", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB10000000008"
+			icon: { id: "minecraft:soul_sand" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000008", type: "xp", xp: 10 }
+				{ id: "544DB40000000008", type: "item", item: { id: "minecraft:bone", count: 1 }, count: 1 }
+			]
+			tasks: [
+				{ id: "544DB20000000008", type: "checkmark" }
+			]
+			x: 12.0d
+			y: 20.0d
+		}
+		{
+			id: "544DB10000000009"
+			icon: { id: "minecraft:obsidian" }
+			optional: true
+			rewards: [
+				{ id: "544DB30000000009", type: "xp", xp: 10 }
+				{ id: "544DB40000000009", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544DB20000000009", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 24.0d
+		}
+		{
+			id: "544DB1000000000A"
+			icon: { id: "minecraft:dragon_breath" }
+			optional: true
+			rewards: [
+				{ id: "544DB3000000000A", type: "xp", xp: 10 }
+				{ id: "544DB4000000000A", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 2 }
+			]
+			tasks: [
+				{ id: "544DB2000000000A", type: "checkmark" }
+			]
+			x: 8.0d
+			y: 24.0d
 		}
 	]
 }

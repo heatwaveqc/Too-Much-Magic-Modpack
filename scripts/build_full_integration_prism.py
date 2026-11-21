@@ -8,6 +8,7 @@ import re
 import sys
 import zipfile
 from first_party_runtime import verify_packaging_inputs
+from verify_qa_inventory import inventory, for_side
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OUTPUT = "Too-Much-Magic-Full-Integration-Prism.zip"
@@ -25,6 +26,7 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
     # Personal options are shipped ONLY by the UNSTABLE QA client builder.
     qa_assets = {
         "minecraft/options.txt": root / "scripts/prism_qa_options.txt",
+        "minecraft/tmm-qa-install-verify.ps1": root / "scripts/tmm_qa_install_verify.ps1",
         "minecraft/tmm-qa-preferences.ps1": root / "scripts/tmm_qa_preferences.ps1",
         "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd": root / "scripts/IMPORT-OLD-TMM-PREFERENCES.cmd",
     }
@@ -36,12 +38,16 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if seed.splitlines().count("onboardAccessibility:false") != 1 or any(line.startswith("narrator:") for line in seed.splitlines()):
         raise RuntimeError("Skip QA accessibility onboarding without forcing narrator preferences")
+    if seed.splitlines().count("tutorialStep:none") != 1 or sum(line.startswith("tutorialStep:") for line in seed.splitlines()) != 1:
+        raise RuntimeError("Skip vanilla tutorial toasts in fresh QA instances")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
     addons = [pathlib.Path(p) for p in runtime_jars]
     verify_packaging_inputs(addons, root)
     pack = f"https://raw.githubusercontent.com/{REPO}/{commit}/pack.toml"
     addons_sha = {jar.name: hashlib.sha256(jar.read_bytes()).hexdigest() for jar in addons}
+    expected = {"schema": 1, "source_commit": commit, "mods": for_side(inventory(root), "client", addons)}
+    meta["expected_client_mod_count"] = len(expected["mods"])
     meta["integration_commit"] = commit
     meta["custom_jar_sha256"] = addons_sha
     meta["client_tested"] = False
@@ -101,6 +107,7 @@ Client, multiplayer, third-party binary behavior, native death/cure
 and mutation persistence are NOT proven by server smoke alone.
 
 Other mods download by packwiz; selected first-party JARs bundled.
+Windows QA pre-launch checks every expected client JAR byte hash and rejects missing/extra JARs.
 WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
 plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
@@ -110,7 +117,7 @@ InstanceType=OneSix
 name=Too Much Magic - Full Integration DEV - Test Worlds ONLY
 OverrideCommands=true
 PreLoadCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode apply -OptionsPath "$INST_MC_DIR/options.txt"
-PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar -s client {pack}
+PreLaunchCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-install-verify.ps1" -JavaPath "$INST_JAVA" -PackUrl {pack} -InstancePath "$INST_MC_DIR"
 PostExitCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode save -OptionsPath "$INST_MC_DIR/options.txt"
 OverrideMemory=true
 MinMemAlloc=2048
@@ -127,6 +134,7 @@ MaxMemAlloc=8192
         z.writestr("minecraft/packwiz-installer-bootstrap.jar", raw)
         z.writestr("INSTALL-AND-TEST.txt", guide)
         z.writestr("BUILD-MANIFEST.json", json.dumps(meta, indent=2) + "\n")
+        z.writestr("minecraft/tmm-qa-expected-mods.json", json.dumps(expected, indent=2) + "\n")
         for arcname, source in qa_assets.items():
             z.write(source, arcname)
         for jar in addons:
@@ -139,6 +147,8 @@ MaxMemAlloc=8192
         for jar in addons:
             if z.read("minecraft/mods/" + jar.name) != jar.read_bytes():
                 raise RuntimeError("First-party jar changed during packaging")
+        if json.loads(z.read("minecraft/tmm-qa-expected-mods.json")) != expected:
+            raise RuntimeError("Client inventory changed during packaging")
         if pack.encode() not in z.read("instance.cfg"):
             raise RuntimeError("Installer is not commit locked")
         for arcname, source in qa_assets.items():

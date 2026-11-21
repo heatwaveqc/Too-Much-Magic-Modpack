@@ -2,7 +2,7 @@ package io.github.heatwaveqc.tmm.tradersvengence.runtime;
 
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.AbstractVillager;
 
 /**
  * Vanilla HurtByTargetGoal, narrowed to actual mob attackers rather than
@@ -10,9 +10,9 @@ import net.minecraft.world.entity.npc.Villager;
  * outside the shared permanent blacklist.
  */
 public final class VillagerSelfDefenseGoal extends HurtByTargetGoal {
-    private final Villager villager;
+    private final AbstractVillager villager;
 
-    public VillagerSelfDefenseGoal(Villager villager) {
+    public VillagerSelfDefenseGoal(AbstractVillager villager) {
         super(villager);
         this.villager = villager;
     }

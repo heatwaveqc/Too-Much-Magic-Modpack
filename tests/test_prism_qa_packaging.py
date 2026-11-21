@@ -21,19 +21,72 @@ def main() -> None:
     for name in ("options.txt", "tmm-qa-preferences.ps1", "IMPORT-OLD-TMM-PREFERENCES.cmd"):
         assert name not in index, "Personal QA preferences must not be packwiz indexed"
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin
+    from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths, MINIGUN_AUDIO_BLOBS
+    def add_donor_fixture(z, directory, case="valid"):
+        if directory.name != "traders-vengence":
+            return
+        for path in [*caliberarms_asset_paths(directory), *MINIGUN_AUDIO_BLOBS]:
+            if case == "missing_donor_license" and path.endswith("/caliberarms/LICENSE.txt"):
+                continue
+            if case == "missing_minigun_audio" and path.endswith("/minigun_stop.ogg"):
+                continue
+            if case == "missing_spinup_audio" and path.endswith("/minigun_spinup.ogg"):
+                continue
+            data = (directory / "src/main/resources" / path).read_bytes()
+            if case == "wrong_donor_audio" and path.endswith("/guns/m1911/fire_1.ogg"):
+                data += b"modified"
+            if case == "wrong_minigun_audio" and path.endswith("/minigun/minigun.ogg"):
+                data += b"modified"
+            z.writestr(path, data)
+        if case == "uncleared_hud_audio":
+            z.writestr("assets/traders_vengence/sounds/hud_init.ogg", b"not allowed")
+
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for _, mod, expected_path in selected():
+        for directory, mod, expected_path in selected():
             jar = folder / expected_path.name
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")
-                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "' + mod + '"\n')
+                z.writestr("META-INF/neoforge.mods.toml", 'license = "' + expected_license(directory) + '"\n[[mods]]\nmodId = "' + mod + '"\n')
+                prefix = "META-INF/" if mod == "tmm_economy" else ""
+                z.writestr(prefix + "LICENSE", (directory / "LICENSE").read_bytes())
+                z.writestr(prefix + "THIRD_PARTY_NOTICES.md", (directory / "THIRD_PARTY_NOTICES.md").read_bytes())
+                if mod == "tmm_economy":
+                    for name in ("ASSET-CREDITS.md", "BOTANIA-ASSET-LICENSE.md"):
+                        z.writestr(prefix + name, (directory / name).read_bytes())
+                add_donor_fixture(z, directory)
             addons.append(jar)
         verify_packaging_inputs(addons)
+        # Release license regression: accept exact bundled module license files, reject
+        # incorrect metadata, omitted files and mismatched notices.
+        for directory, mod, expected_path in selected():
+            j = folder / ("license-test-" + expected_path.name)
+            cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
+            if directory.name == "traders-vengence":
+                cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
+                          "wrong_minigun_audio", "missing_spinup_audio", "uncleared_hud_audio")
+            for case in cases:
+                with zipfile.ZipFile(j, "w") as z:
+                    declared = "All Rights Reserved" if case == "wrong_license" else expected_license(directory)
+                    z.writestr("META-INF/neoforge.mods.toml", 'license = "' + declared + '"\n[[mods]]\nmodId = "' + mod + '"\n')
+                    prefix = "META-INF/" if mod == "tmm_economy" else ""
+                    if case != "missing_license":
+                        z.writestr(prefix + "LICENSE", (directory / "LICENSE").read_bytes())
+                    notice = b"incorrect" if case == "wrong_notice" else (directory / "THIRD_PARTY_NOTICES.md").read_bytes()
+                    z.writestr(prefix + "THIRD_PARTY_NOTICES.md", notice)
+                    if mod == "tmm_economy":
+                        for name in ("ASSET-CREDITS.md", "BOTANIA-ASSET-LICENSE.md"):
+                            z.writestr(prefix + name, (directory / name).read_bytes())
+                    add_donor_fixture(z, directory, case)
+                try:
+                    validate_jar_license(directory, j)
+                except ValueError:
+                    assert case != "valid", "Valid module license rejected"
+                else:
+                    assert case == "valid", "Invalid license accepted: " + case
         # Regression against the loader's actual native version, not its short
         # marketing version. Test the old failure, an exact pin and a future ABI.
         trader = folder / "trader-dependency-test.jar"
@@ -90,6 +143,8 @@ def main() -> None:
                 assert "mmc-pack.json" in z.namelist()
                 expected = {
                     "minecraft/options.txt",
+                    "minecraft/tmm-qa-install-verify.ps1",
+                    "minecraft/tmm-qa-expected-mods.json",
                     "minecraft/tmm-qa-preferences.ps1",
                     "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd",
                 }
@@ -97,6 +152,7 @@ def main() -> None:
                 opts = z.read("minecraft/options.txt").decode()
                 assert opts.replace("\r\n", "\n").startswith("version:3955\n")
                 assert opts.splitlines().count("onboardAccessibility:false") == 1
+                assert [l for l in opts.splitlines() if l.startswith("tutorialStep:")] == ["tutorialStep:none"]
                 assert not any(l.startswith("narrator:") for l in opts.splitlines()), "Never force narrator off"
                 assert "guiScale:3" in opts
                 assert "soundCategory_master:0.55" in opts
@@ -104,7 +160,10 @@ def main() -> None:
                 cfg = z.read("instance.cfg").decode()
                 assert "PreLoadCommand=powershell.exe " in cfg
                 assert "PostExitCommand=powershell.exe " in cfg
-                assert 'PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar' in cfg
+                assert 'PreLaunchCommand=powershell.exe ' in cfg and "tmm-qa-install-verify.ps1" in cfg
+                from verify_qa_inventory import inventory, for_side
+                expected_mods = json.loads(z.read("minecraft/tmm-qa-expected-mods.json"))
+                assert expected_mods == {"schema": 1, "source_commit": commit, "mods": for_side(inventory(ROOT), "client", addons)}
                 assert "raw.githubusercontent.com" in cfg and commit in cfg
                 meta = json.loads(z.read("BUILD-MANIFEST.json"))
                 assert meta["personal_settings"]["public_release"] is False

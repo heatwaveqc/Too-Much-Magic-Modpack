@@ -13,6 +13,10 @@ on:
       - 'scripts/retire_teamlapen.py'
       - 'scripts/verify_retirement.py'
       - 'scripts/verify_next_test_roster.py'
+      - 'scripts/verify_qa_inventory.py'
+      - 'manifest/next-qa-target.json'
+      - 'tests/test_qa_inventory.py'
+      - 'scripts/tmm_qa_install_verify.ps1'
       - 'scripts/validate_quests.py'
       - 'compat/progression/**'
       - 'compat/**'
@@ -143,11 +147,15 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
           python3 scripts/validate.py
           python3 scripts/validate_quests.py
+          python3 -m unittest discover -s tests -p test_qa_inventory.py
+          python3 scripts/verify_qa_inventory.py
           python3 -m py_compile scripts/validate_integration_sources.py scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
       - name: Integration Assembly — explicitly authorized, never on automatic push
         if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') && (inputs.full_smoke == true || inputs.assemble_only == true) }}
         run: |
+          python3 scripts/verify_qa_inventory.py --strict-target
           python3 scripts/assemble_integration.py
+          python3 scripts/verify_qa_inventory.py --strict-target
           python3 scripts/validate.py
           python3 scripts/verify_tyz_migration.py
           python3 scripts/verify_next_test_roster.py
@@ -193,6 +201,7 @@ jobs:
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         env:
           SMOKE_WITH_MODS: '1'
+          VERIFY_FULL_QA_INVENTORY: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
         run: bash scripts/smoke_server.sh

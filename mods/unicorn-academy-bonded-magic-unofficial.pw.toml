@@ -1,0 +1,13 @@
+name = "Unicorn Academy: Bonded Magic (unofficial)"
+filename = "unicornacademy-1.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "b989b1dfec0d4c1360f52682adfa4f2196c38c50"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9150781
+project-id = 1741944

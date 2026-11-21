@@ -184,11 +184,28 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     skills = [
         "Read the Two Skill Systems", "Open the Skill Interface", "Understand Attributes",
         "Experiment with Improvable Skills", "Inspect Cooldown and Casting Perks",
-        "Plan for Practical Attribute Caps", "Choose How to Specialize",
+        "Plan for Practical Attribute Caps", "Choose One Specialization",
     ]
-    put("Skills & Advancement", "Chapter Overview", 0, 0)
+    put("Skills & Factions", "Chapter Overview", 0, 0)
     for i, title in enumerate(skills):
-        put("Skills & Advancement", title, (i % 3) * 4, 4 + (i // 3) * 4)
+        put("Skills & Factions", title, *((6, 12) if title == "Choose One Specialization" else ((i % 3) * 4, 4 + (i // 3) * 4)))
+
+    # Ownership and compact positions for the consolidated orientation guides.
+    put("Skills & Factions", "The Monk Path", 0, 16)
+    put("Skills & Factions", "The Hunter Path", 8, 16)
+    put("Skills & Factions", "The Gilded Path", 8, 20)
+    put("Skills & Factions", "Becoming a Vampire", 4, 16)
+    put("Skills & Factions", "Becoming a Werewolf", 0, 20)
+    put("Skills & Factions", "Becoming a Dragon", 12, 16)
+    put("Skills & Factions", "Lichdom: Forbidden Magic", 4, 20)
+    put("Skills & Factions", "Lichdom: Goety", 12, 20)
+    put("Skills & Factions", "The Archlich", 4, 24)
+    put("Skills & Factions", "The Dracolich", 8, 24)
+    put("Artifacts", "Relics: Learn Your Relic", 4, 0)
+    put("Artifacts", "Reliquified Artifacts", 8, 0)
+    put("ProjectE", "ProjectE Energy Converters", 4, 0)
+    put("Artifacts", "Chapter Overview", 0, 0)
+    put("ProjectE", "Chapter Overview", 0, 0)
 
     tech = "A Sufficiently Advanced Magic"
     put(tech, "Chapter Overview", 0, 0)
@@ -214,6 +231,10 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
 
 
 SUBTITLE = {
+    "Goety": "Dark arts, soul rituals and summoning; see Skills & Factions for lichdom.",
+    "Just Another Witchery Remake": "Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations.",
+    "ProjectE": "EMC, Project Expansion and ProjectE Energy Converters.",
+    "Artifacts": "Artifacts, Relics and Reliquified Artifacts: equipment, abilities and progression.",
     "Getting Started": "First tools and shelter, then a practical magic path of your choosing.",
     "Tips & Tricks": "Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage.",
     "Food & Fishing": "Farming, fishing, food preparation and modular kitchens.",
@@ -221,7 +242,7 @@ SUBTITLE = {
     "Basic Progression": "Shared resources and tools, plus separate player commodity-selling contracts.",
     "Advanced Progression": "Enchanting, brewing, storage, ritual space and exploration supplies.",
     "Endgame Roadmap": "Read-only late-game map; actual boss objectives live in other chapters.",
-    "Skills & Advancement": "Pufferfish skills, attributes and Improvable Skills progression.",
+    "Skills & Factions": "Universal Core Magic and Improvable Skills; choose one specialization, with explicit combination exceptions.",
     "A Sufficiently Advanced Magic": "Draconic generation, energy storage, FE crystals, reactor safety and future approved technology.",
 }
 
@@ -376,8 +397,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 227 or intro_count != 188:
-        raise ValueError(f"Expected 227 objects / 188 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 240 or intro_count != 201:
+        raise ValueError(f"Expected 240 objects / 201 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:

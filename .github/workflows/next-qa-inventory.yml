@@ -1,0 +1,44 @@
+name: Next QA target and artifact audit (NO GAME BOOT)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - 'manifest/next-qa-target.json'
+      - 'manifest/mods.json'
+      - 'manifest/first-party-runtime.json'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'mods/**'
+      - 'scripts/verify_qa_inventory.py'
+      - 'scripts/audit_qa_candidates.py'
+      - 'tests/test_qa_inventory.py'
+      - 'scripts/tmm_qa_install_verify.ps1'
+      - '.github/workflows/next-qa-inventory.yml'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p test_qa_inventory.py
+      - run: python3 scripts/validate.py
+      - name: Report independent target gaps (strict at authorized assembly)
+        run: python3 scripts/verify_qa_inventory.py
+  targeted-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/audit_qa_candidates.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qa-candidate-artifact-metadata
+          path: qa-candidate-artifact-audit.json

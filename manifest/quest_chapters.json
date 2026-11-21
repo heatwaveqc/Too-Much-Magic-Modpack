@@ -157,14 +157,18 @@
       "category": "Progression",
       "group_id": "544D102000000000",
       "chapter_id": "544D202000400000",
-      "name": "Skills & Advancement",
+      "name": "Skills & Factions",
       "filename": "skills_advancement.snbt",
       "order_index": 3,
       "icon": "minecraft:experience_bottle",
       "mod_ids": [
+        "tyzs-skills",
         "improvable-skills",
-        "puffish-skills",
-        "puffish-attributes"
+        "puffish-attributes",
+        "dragon-survival",
+        "witchery-remake",
+        "forbidden-magic",
+        "goety"
       ],
       "overview_quest_id": "544D302000400001",
       "overview_task_id": "544D402000400001"
@@ -629,7 +633,9 @@
       "order_index": 5,
       "icon": "minecraft:heart_of_the_sea",
       "mod_ids": [
-        "artifacts"
+        "artifacts",
+        "relics",
+        "reliquified-artifacts"
       ],
       "overview_quest_id": "544D304000600001",
       "overview_task_id": "544D404000600001"
@@ -672,7 +678,8 @@
       "icon": "minecraft:nether_star",
       "mod_ids": [
         "projecte",
-        "project-expansion"
+        "project-expansion",
+        "projecte-energy-converters"
       ],
       "overview_quest_id": "544D305000200001",
       "overview_task_id": "544D405000200001"

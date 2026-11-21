@@ -33,6 +33,13 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
     done
     echo "Custom first-party modules installed: ${#EXTRA_JARS[@]}"
   fi
+  if [[ "${VERIFY_FULL_QA_INVENTORY:-0}" == "1" ]]; then
+    verify_args=()
+    if [[ -n "$EXTRA_JAR_LIST" ]]; then
+      for EXTRA in "${EXTRA_JARS[@]}"; do verify_args+=(--extra "$EXTRA"); done
+    fi
+    python3 "$ROOT/scripts/verify_qa_inventory.py" --strict-target --mods-dir "$WORK_DIR/mods" --side server "${verify_args[@]}"
+  fi
   cp -a "$ROOT/kubejs" "$WORK_DIR/kubejs"
   if [[ -d "$ROOT/config" ]]; then
     mkdir -p "$WORK_DIR/config"

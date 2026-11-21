@@ -45,6 +45,91 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def expected_license(directory):
+    return "GPL-3.0-only" if directory.name == "traders-vengence" else "MIT"
+
+CALIBERARMS_MANIFEST = "META-INF/traders_vengence/caliberarms/provenance.json"
+CALIBERARMS_JAR_SHA256 = "88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90"
+
+def caliberarms_asset_paths(directory):
+    """The donor model, audio and separate MIT/CC0 notices must ship together."""
+    root = directory / "src/main/resources"
+    manifest = json.loads((root / CALIBERARMS_MANIFEST).read_text(encoding="utf-8"))
+    expected_paths = {
+        "META-INF/traders_vengence/caliberarms/LICENSE.txt",
+        "META-INF/traders_vengence/caliberarms/CREDITS.md",
+        "assets/traders_vengence/models/item/npc_pistol.json",
+        "assets/traders_vengence/textures/item/gun/m1911.png",
+        "assets/traders_vengence/sounds.json",
+        *(f"assets/traders_vengence/sounds/guns/m1911/fire_{i}.ogg" for i in (1, 2)),
+        *(f"assets/traders_vengence/sounds/reload/pistol/{action}_{i}.ogg"
+          for action, count in (("mag_in", 2), ("mag_out", 2), ("slide", 4))
+          for i in range(1, count + 1)),
+    }
+    if manifest.get("jar_sha256") != CALIBERARMS_JAR_SHA256 or set(manifest.get("files", {})) != expected_paths:
+        raise ValueError("Unreviewed Caliber Arms donor manifest")
+    for path, expected_hash in manifest["files"].items():
+        if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected_hash:
+            raise ValueError("Caliber Arms source asset hash mismatch: " + path)
+    return sorted(expected_paths | {CALIBERARMS_MANIFEST})
+
+def validate_caliberarms_assets(directory, z):
+    root = directory / "src/main/resources"
+    for name in caliberarms_asset_paths(directory):
+        if z.namelist().count(name) != 1 or z.read(name) != (root / name).read_bytes():
+            raise ValueError("Missing, duplicate or inconsistent Caliber Arms resource: " + name)
+
+MINIGUN_AUDIO_BLOBS = {
+    "assets/traders_vengence/sounds/minigun/minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
+    "assets/traders_vengence/sounds/minigun/minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019",
+    "assets/traders_vengence/sounds/minigun/minigun_spinup.ogg": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed",
+}
+
+def validate_minigun_audio(directory, z):
+    for name, expected in MINIGUN_AUDIO_BLOBS.items():
+        data = (directory / "src/main/resources" / name).read_bytes()
+        blob = hashlib.sha1(f"blob {len(data)}".encode() + bytes(1) + data).hexdigest()
+        if blob != expected or z.namelist().count(name) != 1 or z.read(name) != data:
+            raise ValueError("Missing or modified audited minigun recording: " + name)
+    if any(name.endswith("/hud_init.ogg") for name in z.namelist()):
+        raise ValueError("Uncleared third-party HUD audio must not be packaged")
+
+def validate_jar_license(directory, jar):
+    """Require the approved module-specific license and exact bundled notices."""
+    expected_id = expected_license(directory)
+    props = dict(line.split("=", 1) for line in (directory / "gradle.properties").read_text().splitlines()
+                 if "=" in line and not line.startswith("#"))
+    if props.get("mod_license") != expected_id:
+        raise ValueError("Unexpected module license: " + str(directory))
+    with zipfile.ZipFile(jar) as z:
+        metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
+        if metadata.get("license") != expected_id:
+            raise ValueError("First-party JAR must declare " + expected_id + ": " + jar.name)
+        economy = directory.name == "economy"
+        prefix = "META-INF/" if economy else ""
+        names = ("LICENSE", "THIRD_PARTY_NOTICES.md")
+        if economy:
+            names += ("ASSET-CREDITS.md", "BOTANIA-ASSET-LICENSE.md")
+        for name in names:
+            entry = prefix + name
+            if z.namelist().count(entry) != 1:
+                raise ValueError("Missing or duplicate " + name + " in " + jar.name)
+            expected = (directory / name).read_bytes()
+            if not expected or z.read(entry) != expected:
+                raise ValueError("Missing or inconsistent notice " + name + " in " + jar.name)
+        license_text = z.read(prefix + "LICENSE").decode()
+        markers = (("MIT License", "Copyright (c)", "Permission is hereby granted",
+                    "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"', "SOFTWARE.")
+                   if expected_id == "MIT" else
+                   ("GNU GENERAL PUBLIC LICENSE", "Version 3", "TERMS AND CONDITIONS",
+                    "Corresponding Source", "END OF TERMS AND CONDITIONS"))
+        for required in markers:
+            if required not in license_text:
+                raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
+        if directory.name == "traders-vengence":
+            validate_caliberarms_assets(directory, z)
+            validate_minigun_audio(directory, z)
+
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
 
@@ -65,11 +150,13 @@ def verify_trader_irons_pin(jar, root=ROOT):
     print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
 
 def verify_packaging_inputs(addons, root=ROOT):
-    expected = {jar.name: mod for _, mod, jar in selected(root)}
+    expected = {jar.name: (directory, mod) for directory, mod, jar in selected(root)}
     if len(addons) != len(expected) or {p.name for p in addons} != set(expected):
         raise ValueError("Missing, extra or duplicate first-party runtime JAR selection")
     for jar in addons:
-        validate_jar(jar, expected[jar.name])
+        directory, mod = expected[jar.name]
+        validate_jar(jar, mod)
+        validate_jar_license(directory, jar)
 
 def main():
     p = argparse.ArgumentParser()
@@ -87,6 +174,7 @@ def main():
             else:
                 subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
+            validate_jar_license(directory, jar)
             if mod == "traders_vengence":
                 verify_trader_irons_pin(jar)
     elif args.action == "paths":
@@ -100,9 +188,10 @@ def main():
         actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengence-") or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
-        for _, mod, jar in rows:
+        for directory, mod, jar in rows:
             dest = args.mods_dir / jar.name
             validate_jar(dest, mod)
+            validate_jar_license(directory, dest)
             if hashlib.sha256(jar.read_bytes()).digest() != hashlib.sha256(dest.read_bytes()).digest():
                 raise ValueError("Smoke JAR bytes differ: " + jar.name)
         print("Verified exact selected runtime JARs: " + ", ".join(sorted(expected)))
