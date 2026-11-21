@@ -64,6 +64,8 @@ public final class NewbieMode {
         ProgressionApi.setMode(player, KEY, mode);
         syncTag(player);
         VirtualElytra.reconcile(player);
+        // Graduation switches the personal client darkness stage immediately.
+        VisionRuntime.reconcile(player,true);
     }
 
     private static void syncTag(ServerPlayer player) {
