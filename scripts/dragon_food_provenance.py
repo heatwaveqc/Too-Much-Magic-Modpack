@@ -148,14 +148,23 @@ class FoodModel:
         elif "any_of" in ingredient:
             variants = []
             for alternate in ingredient["any_of"]:
-                variants.extend(self._resolve_ingredient(owner, alternate, path))
+                for base in self._resolve_ingredient(owner, alternate, path):
+                    variants.append(Variant(
+                        tuple((family, units * count) for family, units in base.components),
+                        base.preparation, base.sources, base.marine_plant_units * count,
+                    ))
             return self._limit(owner, variants, "ingredient_alternatives")
         variants = []
         for choice in choices:
             if choice in self.tools:
                 variants.append(Variant((), "reusable_tool", (f"reusable:{choice}",)))
                 continue
-            for base in self.resolve_item(choice, path):
+            found = self.resolve_item(choice, path)
+            if not found:
+                # A partially resolved tag must not make the other valid
+                # alternatives look like a complete proven recipe.
+                self.issue(owner, "unresolved_recipe_ingredient", choice)
+            for base in found:
                 variants.append(Variant(
                     tuple((family, units * count) for family, units in base.components),
                     base.preparation, base.sources, base.marine_plant_units * count,
