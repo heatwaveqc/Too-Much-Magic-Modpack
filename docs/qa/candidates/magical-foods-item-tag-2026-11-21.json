@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:enchanted_golden_apple",
+    {
+      "id": "spectrum:enchanted_golden_carrot",
+      "required": false
+    },
+    {
+      "id": "evilcraft:flesh_rejuvenated",
+      "required": false
+    },
+    {
+      "id": "botania:infinite_fruit",
+      "required": false
+    },
+    {
+      "id": "botania:mana_cookie",
+      "required": false
+    },
+    {
+      "id": "spectrum:enchanted_star_candy",
+      "required": false
+    },
+    {
+      "id": "spectrum:magnificent_star_candy",
+      "required": false
+    }
+  ]
+}
