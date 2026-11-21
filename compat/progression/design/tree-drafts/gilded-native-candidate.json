@@ -1,0 +1,842 @@
+{
+  "status": "INACTIVE_ENGINEERING_CANDIDATE_DO_NOT_LOAD",
+  "source_revision": "2fd6df6de1e21cdd8f07750a63e76261124a0fc4",
+  "notes": [
+    "Preserves historical eight native nodes, innate ranks, native XP curve and two seven-rank paid pilot values; no new prices. Names are presentation placeholders.",
+    "Normal Gilded and Golden Dragon diet are distinct. Old ordinary Nether/gold foods and actual lava-catch provenance are retained only for verified non-dragon/non-lich. Golden Dragon requires verified cave species and exact golden fruit/vegetable tag; modded enchanted carrot and alcohol IDs still need registry survey. Lich physiology precedence and eligibility/hybrid integration require provider reconciliation. Unknown provider flags do not qualify these condition examples.",
+    "Alcohol uses explicit pending tag; no changes to normal intoxication. Ore and lava fishing practice are opt-in activities; no global fishing ban. Actual lava fishing permission and final receipt behavior need pinned provider inspection.",
+    "Pending block/entity loot tags deliberately absent, and hybrid claw/breath effects deliberately not emitted; confirm conditional gold-tool/weapon permission and native DS claw/breath source. No runtime promotion; ordinary path and skill scope need full review. No Netherite weapons looting. Source food bonuses use actual positive delta, no second potion application.",
+    "Gold weapon/armor changes are player-scoped native equivalence with original numerical values. Harvest extension is limited to correct golden pickaxe and known vanilla requirements. Native and crafted items retain original NBT."
+  ],
+  "experience_system": {
+    "schema": 1,
+    "name": "Gilded XP",
+    "point_name": "Gilded Points",
+    "requires_path": "tmm_progression:gilded",
+    "rank_xp": [
+      0,
+      20,
+      55,
+      105,
+      180,
+      280,
+      420,
+      600,
+      850,
+      1200,
+      1700,
+      2400,
+      3400,
+      4800,
+      6600,
+      9000,
+      12000,
+      16000,
+      21000,
+      28000
+    ],
+    "points_per_rank": 0,
+    "sources": [
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "xp": 10,
+        "cooldown_ticks": 0
+      },
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_lava_fish_caught",
+        "xp": 5,
+        "cooldown_ticks": 0,
+        "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
+      }
+    ]
+  },
+  "path": {
+    "schema": 1,
+    "xp_channel": "tmm_progression:gilded",
+    "exclusive_group": "",
+    "enrollment": "food",
+    "food_rite": {
+      "target": "#tmm_progression:gilded_rite_foods",
+      "when": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "dimension",
+            "id": "minecraft:the_nether"
+          },
+          {
+            "type": "equipped",
+            "slot": "head",
+            "target": "minecraft:golden_helmet"
+          },
+          {
+            "type": "equipped",
+            "slot": "chest",
+            "target": "minecraft:golden_chestplate"
+          },
+          {
+            "type": "equipped",
+            "slot": "legs",
+            "target": "minecraft:golden_leggings"
+          },
+          {
+            "type": "equipped",
+            "slot": "feet",
+            "target": "minecraft:golden_boots"
+          }
+        ]
+      }
+    },
+    "milestones": [
+      {
+        "id": "tmm_progression:gilded_gold_prospecting",
+        "criteria": [
+          {
+            "event": "external",
+            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "count": 32
+          }
+        ],
+        "xp": 50,
+        "points": 0
+      },
+      {
+        "id": "tmm_progression:gilded_gold_mastery",
+        "criteria": [
+          {
+            "event": "external",
+            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "count": 256
+          }
+        ],
+        "after": [
+          "tmm_progression:gilded_gold_prospecting"
+        ],
+        "xp": 250,
+        "points": 0
+      }
+    ],
+    "skills": [
+      {
+        "id": "tmm_progression:gilded_nether_diet",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "diet_permission",
+            "target": "#tmm_progression:gilded_alcohol",
+            "params": {
+              "category": "alcohol"
+            }
+          },
+          {
+            "type": "food_restriction",
+            "target": "#tmm_progression:gilded_nether_foods",
+            "params": {
+              "gold_recipes": true,
+              "lava_caught": true,
+              "drink_permission": true
+            },
+            "when": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:dragon"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:jawr_lich"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:goety_lich"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "food_efficiency",
+            "target": "#tmm_progression:gilded_gold_foods",
+            "per_rank": 1,
+            "params": {
+              "gold_recipes": true
+            },
+            "when": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:dragon"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:jawr_lich"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:goety_lich"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "food_restriction",
+            "target": "#tmm_progression:gilded_golden_dragon_foods",
+            "params": {
+              "drink_permission": true
+            },
+            "when": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "dragon_species",
+                  "id": "dragonsurvival:cave_dragon"
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:jawr_lich"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:goety_lich"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "food_efficiency",
+            "target": "#tmm_progression:gilded_golden_dragon_foods",
+            "per_rank": 1,
+            "when": {
+              "type": "and",
+              "conditions": [
+                {
+                  "type": "dragon_species",
+                  "id": "dragonsurvival:cave_dragon"
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:jawr_lich"
+                  }
+                },
+                {
+                  "type": "not",
+                  "condition": {
+                    "type": "flag",
+                    "id": "tmm_progression:goety_lich"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_piglin_kin",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "piglin_kinship",
+            "params": {
+              "alarm_protection": true
+            }
+          },
+          {
+            "type": "ore_practice",
+            "target": "#tmm_progression:gilded_gold_ores",
+            "params": {
+              "event": "tmm_progression:gilded_gold_ore_broken_without_silk"
+            }
+          },
+          {
+            "type": "lava_fishing_practice",
+            "params": {
+              "event": "tmm_progression:gilded_lava_fish_caught"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_gold_diamond_equivalence",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor",
+            "per_rank": 1,
+            "when": {
+              "type": "equipped",
+              "slot": "head",
+              "target": "minecraft:golden_helmet"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor_toughness",
+            "per_rank": 2,
+            "when": {
+              "type": "equipped",
+              "slot": "head",
+              "target": "minecraft:golden_helmet"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor",
+            "per_rank": 3,
+            "when": {
+              "type": "equipped",
+              "slot": "chest",
+              "target": "minecraft:golden_chestplate"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor_toughness",
+            "per_rank": 2,
+            "when": {
+              "type": "equipped",
+              "slot": "chest",
+              "target": "minecraft:golden_chestplate"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor",
+            "per_rank": 3,
+            "when": {
+              "type": "equipped",
+              "slot": "legs",
+              "target": "minecraft:golden_leggings"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor_toughness",
+            "per_rank": 2,
+            "when": {
+              "type": "equipped",
+              "slot": "legs",
+              "target": "minecraft:golden_leggings"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor",
+            "per_rank": 2,
+            "when": {
+              "type": "equipped",
+              "slot": "feet",
+              "target": "minecraft:golden_boots"
+            }
+          },
+          {
+            "type": "attribute",
+            "attribute": "minecraft:armor_toughness",
+            "per_rank": 2,
+            "when": {
+              "type": "equipped",
+              "slot": "feet",
+              "target": "minecraft:golden_boots"
+            }
+          },
+          {
+            "type": "melee_bonus",
+            "weapon": "minecraft:golden_sword",
+            "per_rank": 3
+          },
+          {
+            "type": "melee_bonus",
+            "weapon": "minecraft:golden_pickaxe",
+            "per_rank": 3
+          },
+          {
+            "type": "melee_bonus",
+            "weapon": "minecraft:golden_shovel",
+            "per_rank": 3
+          },
+          {
+            "type": "melee_bonus",
+            "weapon": "minecraft:golden_axe",
+            "per_rank": 2
+          },
+          {
+            "type": "held_harvest_tier",
+            "target": "#minecraft:mineable/pickaxe",
+            "weapon": "minecraft:golden_pickaxe",
+            "tier": 3
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_renewal",
+        "max_rank": 3,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1,
+          10,
+          18
+        ],
+        "effects": [
+          {
+            "type": "gear_durability",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "armor",
+              "action": "repair",
+              "interval_ticks": "5"
+            }
+          },
+          {
+            "type": "gear_durability",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "mainhand",
+              "action": "repair",
+              "interval_ticks": "5"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_fortunes_favor",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "virtual_fortune",
+            "target": "#tmm_progression:gilded_fortune_blocks_pending",
+            "weapon": "#tmm_progression:gilded_fortune_tools",
+            "per_rank": 3,
+            "params": {
+              "max_total": 10
+            },
+            "when": {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "id": "tmm_progression:dragon"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_last_gilt",
+        "max_rank": 3,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          4,
+          8,
+          12
+        ],
+        "effects": [
+          {
+            "type": "virtual_unbreaking",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "mainhand"
+            }
+          },
+          {
+            "type": "virtual_unbreaking",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "armor"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_looting",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "virtual_looting",
+            "target": "#tmm_progression:gilded_looting_targets_pending",
+            "weapon": "#tmm_progression:gilded_gold_weapons",
+            "per_rank": 3,
+            "params": {
+              "max_total": 10
+            },
+            "when": {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "id": "tmm_progression:dragon"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_undying_ember",
+        "max_rank": 1,
+        "required_rank": 18,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          18
+        ],
+        "effects": [
+          {
+            "type": "fire_immunity"
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:tmm_gilded_fortune_mastery",
+        "title": "Fortune's Favor",
+        "max_rank": 7,
+        "required_rank": 1,
+        "rank_costs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "xp_channel": "tmm_progression:mxp",
+        "level_system": "tmm_progression:gilded",
+        "effects": [
+          {
+            "type": "virtual_fortune",
+            "target": "#tmm_progression:gilded_fortune_blocks_pending",
+            "weapon": "#tmm_progression:gilded_fortune_tools",
+            "per_rank": 1,
+            "params": {
+              "max_total": 10
+            },
+            "when": {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "id": "tmm_progression:dragon"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:tmm_gilded_looting_mastery",
+        "title": "Golden Spoils",
+        "max_rank": 7,
+        "required_rank": 1,
+        "rank_costs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "xp_channel": "tmm_progression:mxp",
+        "level_system": "tmm_progression:gilded",
+        "effects": [
+          {
+            "type": "virtual_looting",
+            "target": "#tmm_progression:gilded_looting_targets_pending",
+            "weapon": "#tmm_progression:gilded_gold_weapons",
+            "per_rank": 1,
+            "params": {
+              "max_total": 10
+            },
+            "when": {
+              "type": "not",
+              "condition": {
+                "type": "flag",
+                "id": "tmm_progression:dragon"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "tags": {
+    "block/gilded_gold_ores": {
+      "replace": false,
+      "values": [
+        "minecraft:gold_ore",
+        "minecraft:deepslate_gold_ore",
+        "minecraft:nether_gold_ore"
+      ]
+    },
+    "entity_type/gilded_piglin_allies": {
+      "replace": false,
+      "values": [
+        "minecraft:piglin",
+        "minecraft:piglin_brute"
+      ]
+    },
+    "item/gilded_fortune_tools": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_pickaxe",
+        "minecraft:golden_axe",
+        "minecraft:golden_shovel",
+        "minecraft:golden_hoe",
+        "minecraft:netherite_pickaxe",
+        "minecraft:netherite_axe",
+        "minecraft:netherite_shovel",
+        "minecraft:netherite_hoe"
+      ]
+    },
+    "item/gilded_gold_equipment": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_helmet",
+        "minecraft:golden_chestplate",
+        "minecraft:golden_leggings",
+        "minecraft:golden_boots",
+        "minecraft:golden_sword",
+        "minecraft:golden_pickaxe",
+        "minecraft:golden_axe",
+        "minecraft:golden_shovel",
+        "minecraft:golden_hoe"
+      ]
+    },
+    "item/gilded_gold_foods": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_apple",
+        "minecraft:enchanted_golden_apple",
+        "minecraft:golden_carrot"
+      ]
+    },
+    "item/gilded_gold_weapons": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_sword",
+        "minecraft:golden_axe"
+      ]
+    },
+    "item/gilded_nether_foods": {
+      "replace": false,
+      "values": [
+        "minecraft:mushroom_stew",
+        "minecraft:porkchop",
+        "minecraft:cooked_porkchop",
+        "minecraft:rotten_flesh",
+        {
+          "id": "mynethersdelight:hoglin_loin",
+          "required": false
+        },
+        {
+          "id": "mynethersdelight:cooked_loin",
+          "required": false
+        },
+        {
+          "id": "mynethersdelight:strider_slice",
+          "required": false
+        },
+        {
+          "id": "mynethersdelight:strider_with_grilled_fungus",
+          "required": false
+        },
+        "#tmm_progression:gilded_gold_foods",
+        "#tmm_progression:gilded_lava_catch_foods"
+      ]
+    },
+    "item/gilded_repairable_equipment": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_helmet",
+        "minecraft:golden_chestplate",
+        "minecraft:golden_leggings",
+        "minecraft:golden_boots",
+        "minecraft:golden_sword",
+        "minecraft:golden_pickaxe",
+        "minecraft:golden_axe",
+        "minecraft:golden_shovel",
+        "minecraft:golden_hoe",
+        "minecraft:netherite_helmet",
+        "minecraft:netherite_chestplate",
+        "minecraft:netherite_leggings",
+        "minecraft:netherite_boots",
+        "minecraft:netherite_sword",
+        "minecraft:netherite_pickaxe",
+        "minecraft:netherite_axe",
+        "minecraft:netherite_shovel",
+        "minecraft:netherite_hoe"
+      ]
+    },
+    "item/gilded_rite_foods": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_apple",
+        "minecraft:enchanted_golden_apple",
+        "minecraft:golden_carrot"
+      ]
+    },
+    "item/gilded_lava_catch_foods": {
+      "replace": false,
+      "values": [
+        {
+          "id": "lavafishing:flame_squat_lobster",
+          "required": false
+        },
+        {
+          "id": "lavafishing:obsidian_sword_fish",
+          "required": false
+        },
+        {
+          "id": "lavafishing:steam_flying_fish",
+          "required": false
+        },
+        {
+          "id": "lavafishing:agni_fish",
+          "required": false
+        },
+        {
+          "id": "lavafishing:arowana_fish",
+          "required": false
+        },
+        {
+          "id": "lavafishing:quartz_fish",
+          "required": false
+        },
+        {
+          "id": "lavafishing:scaly_foot_snail",
+          "required": false
+        },
+        {
+          "id": "lavafishing:yeti_crab",
+          "required": false
+        },
+        {
+          "id": "lavafishing:lava_lamprey",
+          "required": false
+        },
+        {
+          "id": "lavafishing:fish_paste",
+          "required": false
+        },
+        {
+          "id": "lavafishing:spicy_fish_fillet",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:searing_cod",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:glowdine",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:wither_bonefish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:lava_pufferfish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:bonefish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:obsidianfish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:magmacubefish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:soulsucker",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:eyeball_fish",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:fortress_grouper",
+          "required": false
+        },
+        {
+          "id": "netherdepthsupgrade:blazefish",
+          "required": false
+        }
+      ]
+    },
+    "item/gilded_golden_dragon_foods": {
+      "replace": false,
+      "values": [
+        "minecraft:golden_apple",
+        "minecraft:enchanted_golden_apple",
+        "minecraft:golden_carrot"
+      ]
+    }
+  }
+}

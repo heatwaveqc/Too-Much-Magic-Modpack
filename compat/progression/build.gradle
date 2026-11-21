@@ -45,4 +45,5 @@ neoForge.ideSyncTask generateModMetadata
 tasks.withType(Jar).configureEach {
     from('LICENSE')
     from('THIRD_PARTY_NOTICES.md')
+    from('third_party_licenses') { into 'third_party_licenses' }
 }

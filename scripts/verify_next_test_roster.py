@@ -7,7 +7,6 @@ REQUIRED = {
     "dragon-survival": ("both", "9539454"),
     "comforts": ("both", "3kpPjcTc"),
     "colorful-hearts": ("client", "us0gze50"),
-    "tyzs-skills": ("both", "OUmvFAPs"),
 }
 def run(root=ROOT):
     mods = {m["id"]:m for m in json.loads((root/"manifest/mods.json").read_text())["mods"]}
@@ -25,7 +24,9 @@ def run(root=ROOT):
     assert mods["puffish-attributes"]["enabled_in_pack"] is True
     assert mods["improvable-skills"]["enabled_in_pack"] is True
     assert mods["geckolib"]["enabled_in_pack"] is True
-    assert "config/tyzs_skills/custom/skills/tmm_magic_potency_1.json" in paths
+    from verify_unified_progression import verify_selection
+    verify_selection(root)
+    assert "mods/tyzs-skills.pw.toml" not in paths
     for mid in ("vampirism", "werewolves", "vampires-delight"):
         assert mid not in mods and f"mods/{mid}.pw.toml" not in paths, mid
     assert "defaultconfigs/vampirism-server.toml" not in paths
@@ -33,5 +34,5 @@ def run(root=ROOT):
     assert "config/tmm_transformations-server.toml" not in paths
     assert "kubejs/server_scripts/dragon_diets.js" in paths
     assert "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json" in paths
-    print("PASS next-QA: JAWR-native roster, Tyz, standalone Monk/Hunter and bridge; TeamLapen absent")
+    print("PASS next-QA: JAWR-native roster, unified Progression and bridge; TeamLapen absent")
 if __name__=="__main__": run()

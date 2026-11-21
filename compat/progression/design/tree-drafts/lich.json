@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:lich",
+  "title": "Lich",
+  "legacy_eligibility": "JAWR Forbidden Magic / Goety verified lich state (Archlich and Dracolich share one Lich tree)",
+  "notes": [
+    "Goety and Forbidden Magic advancement remain separate native tracks; this Tyz category is shared once.",
+    "For Archlich: phylactery rescue first, Arca only on failed phylactery; never duplicate saves.",
+    "For Dracolich, the same one Lich Tyz category may coexist with exactly one dragon species.",
+    "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Soul Economy",
+      "source": {
+        "id": "tmm_lich_soul_conservation",
+        "label": "Soul Conservation",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Lower eligible personal necromancy spell costs, not global ritual/machine cost.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_lich_soul_conservation",
+        "stage": "entry",
+        "label": "Soul Conservation",
+        "effect": "Lower eligible personal necromancy spell costs, not global ritual/machine cost.",
+        "method": "resource debit hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; provider cost"
+      }
+    },
+    {
+      "lane": "Soul Economy",
+      "source": {
+        "id": "tmm_lich_soul_reserve",
+        "label": "Soul Reserve",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Bounded native personal soul/Arca resource capacity where extensible.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_soul_conservation"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_soul_reserve",
+        "stage": "advanced",
+        "label": "Soul Reserve",
+        "effect": "Bounded native personal soul/Arca resource capacity where extensible.",
+        "method": "source-specific resource adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_soul_conservation"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "provider resource capacity"
+      }
+    },
+    {
+      "lane": "Soul Economy",
+      "source": {
+        "id": "tmm_lich_soul_treasury",
+        "label": "Soul Treasury",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "mastery",
+        "effect": "Small high-level sustain on committed necromantic actions, no passive self-funding loop.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_soul_reserve"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_soul_treasury",
+        "stage": "mastery",
+        "label": "Soul Treasury",
+        "effect": "Small high-level sustain on committed necromantic actions, no passive self-funding loop.",
+        "method": "resource/reward adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_soul_reserve"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "committed resource recovery"
+      }
+    },
+    {
+      "lane": "Blood & Nature Opposition",
+      "source": {
+        "id": "tmm_lich_sanguine_attunement",
+        "label": "Sanguine Attunement",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power.",
+        "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+        "notes": [
+          "Paired drawback: every purchased rank in this entry blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 2 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_lich_sanguine_attunement",
+        "stage": "entry",
+        "label": "Sanguine Attunement",
+        "effect": "Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power.",
+        "method": "dual positive/negative spell effect adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; blood/nature classification and postbonus penalty"
+      }
+    },
+    {
+      "lane": "Blood & Nature Opposition",
+      "source": {
+        "id": "tmm_lich_crimson_channel",
+        "label": "Crimson Channel",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput.",
+        "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+        "notes": [
+          "Paired drawback: every purchased rank in this advanced blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 3 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_sanguine_attunement"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_crimson_channel",
+        "stage": "advanced",
+        "label": "Crimson Channel",
+        "effect": "Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput.",
+        "method": "both-school spell adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_sanguine_attunement"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; blood/nature classification"
+      }
+    },
+    {
+      "lane": "Blood & Nature Opposition",
+      "source": {
+        "id": "tmm_lich_verdant_severance",
+        "label": "Verdant Severance",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff.",
+        "reference_basis": "eligible_personal_blood_spell_power_with_post_positive_nature_penalty",
+        "notes": [
+          "Paired drawback: every purchased rank in this mastery blood specialist reduces this Lich's final personal Botania/Roots nature-spell potency by 5 percentage points; total across all blood nodes capped at 75% reduction; unrelated modded machines excluded."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_crimson_channel"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_verdant_severance",
+        "stage": "mastery",
+        "label": "Verdant Severance",
+        "effect": "High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff.",
+        "method": "source-aware effect arbitration",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_crimson_channel"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; nature penalty"
+      }
+    },
+    {
+      "lane": "Undead Host",
+      "source": {
+        "id": "tmm_lich_bone_captain",
+        "label": "Bone Captain",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Modest bonus to personally owned undead servants.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_lich_bone_captain",
+        "stage": "entry",
+        "label": "Bone Captain",
+        "effect": "Modest bonus to personally owned undead servants.",
+        "method": "owner-linked summon adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; owned undead"
+      }
+    },
+    {
+      "lane": "Undead Host",
+      "source": {
+        "id": "tmm_lich_grave_regiment",
+        "label": "Grave Regiment",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Improved servant coordination/leash and bounded count efficiency.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_bone_captain"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_grave_regiment",
+        "stage": "advanced",
+        "label": "Grave Regiment",
+        "effect": "Improved servant coordination/leash and bounded count efficiency.",
+        "method": "servant owner adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_bone_captain"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "owned undead coordination/count"
+      }
+    },
+    {
+      "lane": "Undead Host",
+      "source": {
+        "id": "tmm_lich_death_host",
+        "label": "Death Host",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Late temporary enhancement to current owned minions with hard entity budget.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_grave_regiment"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_death_host",
+        "stage": "mastery",
+        "label": "Death Host",
+        "effect": "Late temporary enhancement to current owned minions with hard entity budget.",
+        "method": "bounded group effect",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_grave_regiment"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, magic_stat; owned undead"
+      }
+    },
+    {
+      "lane": "Soul Preservation",
+      "source": {
+        "id": "tmm_lich_cold_persistence",
+        "label": "Cold Persistence",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 125,
+        "stage": "entry",
+        "effect": "Limited tolerance of wither/undead hazards, preserving explicit weaknesses.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_lich_cold_persistence",
+        "stage": "entry",
+        "label": "Cold Persistence",
+        "effect": "Limited tolerance of wither/undead hazards, preserving explicit weaknesses.",
+        "method": "damage hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "damage_multiplier, status_immunity"
+      }
+    },
+    {
+      "lane": "Soul Preservation",
+      "source": {
+        "id": "tmm_lich_anchor_attunement",
+        "label": "Anchor Attunement",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_cold_persistence"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_anchor_attunement",
+        "stage": "advanced",
+        "label": "Anchor Attunement",
+        "effect": "Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost.",
+        "method": "anchor API verification",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_cold_persistence"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "anchor API"
+      }
+    },
+    {
+      "lane": "Soul Preservation",
+      "source": {
+        "id": "tmm_lich_final_passage",
+        "label": "Final Passage",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 100,
+        "stage": "mastery",
+        "effect": "Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger.",
+        "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_lich_anchor_attunement"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_lich_final_passage",
+        "stage": "mastery",
+        "label": "Final Passage",
+        "effect": "Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger.",
+        "method": "post-rescue arbiter hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_lich_anchor_attunement"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "post-success resurrection hook"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Sovereign of Ash",
+        "effect": "High-tier necromantic command stance requiring advanced lich progression and stable anchor ownership.",
+        "status": "concept_only",
+        "id": "tmm_lich_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_lich_soul_treasury",
+            "tmm_lich_verdant_severance",
+            "tmm_lich_death_host",
+            "tmm_lich_final_passage"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_lich_soul_reserve",
+            "tmm_lich_crimson_channel",
+            "tmm_lich_grave_regiment",
+            "tmm_lich_anchor_attunement"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}

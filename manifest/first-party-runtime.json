@@ -10,10 +10,6 @@
       "mod_id": "tmm_transformations"
     },
     {
-      "directory": "compat/mxp",
-      "mod_id": "tmm_mxp"
-    },
-    {
       "directory": "compat/traders-vengence",
       "mod_id": "traders_vengence"
     },

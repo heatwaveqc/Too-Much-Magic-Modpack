@@ -1,0 +1,722 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:sea_dragon",
+  "title": "Sea Dragon",
+  "legacy_eligibility": "Dragon Survival verified species and real growth gates",
+  "notes": [
+    "Retain Sea Dragon's existing sushi/magical-food compatibility fixes as separate diet logic.",
+    "No free permanent underwater invulnerability or world fluid griefing.",
+    "Sea specialization is provisional until actual installed spells can be classified as tide/ice/storm/abyssal; avoid invented element IDs.",
+    "No Sea Dragon mana regeneration talents; preserve baseline armor/damage/harvest-speed modules at premium prices.",
+    "Abyssal Fortune (Extreme ×50) is the dominant Sea Dragon luck specialty. It is intentionally absurdly strong as a design target but must be mapped to real Luck consumers, not globally duplicating loot.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+    "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_sea_draconic_reservoir",
+        "label": "Draconic Reservoir",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 2500,
+        "stage": "species-shared",
+        "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+        "reference_basis": "personal_base_max_mana_or_equivalent",
+        "notes": [
+          "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; personal pool APIs"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_sea_draconic_potency",
+        "label": "Draconic Potency",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 1000,
+        "stage": "species-shared",
+        "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+        "reference_basis": "personal_baseline_spell_effect",
+        "notes": [
+          "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; actual school units"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_sea_draconic_scales",
+        "label": "Draconic Scales",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+        "reference_basis": "form_base_natural_armor_effectiveness",
+        "notes": [
+          "2 SP/rank and no immortal or near-100% reduction."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute; native armor reference"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_sea_draconic_claws",
+        "label": "Draconic Claws",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Real dragon form physical strike boost; not global magic damage.",
+        "reference_basis": "unmodified_verified_dragon_melee",
+        "notes": [
+          "2 SP/rank, separately bounded from Dragon spell potency."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "melee_bonus; native claw attribution"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_sea_draconic_talons",
+        "label": "Draconic Talons",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 2,
+        "max_sp": 100,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+        "reference_basis": "legal_block_break_speed",
+        "notes": [
+          "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "break_speed; legal native claw harvesting"
+      }
+    },
+    {
+      "lane": "Tideshaping",
+      "source": {
+        "id": "tmm_dragon_sea_current_rider",
+        "label": "Current Rider",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 500,
+        "stage": "entry",
+        "effect": "Improve movement control in water, including currents.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_current_rider",
+        "stage": "entry",
+        "label": "Current Rider",
+        "effect": "Improve movement control in water, including currents.",
+        "method": "water movement hook",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute; water current mechanics"
+      }
+    },
+    {
+      "lane": "Tideshaping",
+      "source": {
+        "id": "tmm_dragon_sea_tidal_strike",
+        "label": "Tidal Strike",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Enhance wet-target combat and native aquatic attacks, not generic damage.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_current_rider"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_tidal_strike",
+        "stage": "advanced",
+        "label": "Tidal Strike",
+        "effect": "Enhance wet-target combat and native aquatic attacks, not generic damage.",
+        "method": "attack/wet-state hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_current_rider"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "damage_bonus; wet target and native attack"
+      }
+    },
+    {
+      "lane": "Tideshaping",
+      "source": {
+        "id": "tmm_dragon_sea_undertow",
+        "label": "Undertow",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Cooldown-limited pull/slow applied to legal targets without moving world water blocks.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_tidal_strike"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_undertow",
+        "stage": "mastery",
+        "label": "Undertow",
+        "effect": "Cooldown-limited pull/slow applied to legal targets without moving world water blocks.",
+        "method": "targeted crowd-control",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_tidal_strike"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "bounded pull and control"
+      }
+    },
+    {
+      "lane": "Abyssal Defense",
+      "source": {
+        "id": "tmm_dragon_sea_pressure_adaptation",
+        "label": "Pressure Adaptation",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Reduce underwater environmental penalties.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_pressure_adaptation",
+        "stage": "entry",
+        "label": "Pressure Adaptation",
+        "effect": "Reduce underwater environmental penalties.",
+        "method": "environment adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, status_immunity"
+      }
+    },
+    {
+      "lane": "Abyssal Defense",
+      "source": {
+        "id": "tmm_dragon_sea_brine_scales",
+        "label": "Brine Scales",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Situational protection while submerged; no blanket armor bonus on land.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_pressure_adaptation"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_brine_scales",
+        "stage": "advanced",
+        "label": "Brine Scales",
+        "effect": "Situational protection while submerged; no blanket armor bonus on land.",
+        "method": "damage/form gate",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_pressure_adaptation"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute, damage_multiplier"
+      }
+    },
+    {
+      "lane": "Abyssal Defense",
+      "source": {
+        "id": "tmm_dragon_sea_deepwater_refuge",
+        "label": "Deepwater Refuge",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Bounded underwater healing or defense with a meaningful resource/cooldown cost.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_brine_scales"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_deepwater_refuge",
+        "stage": "mastery",
+        "label": "Deepwater Refuge",
+        "effect": "Bounded underwater healing or defense with a meaningful resource/cooldown cost.",
+        "method": "resource-aware effect",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_brine_scales"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, delayed_regeneration; provider debit"
+      }
+    },
+    {
+      "lane": "Swimmer's Grace",
+      "source": {
+        "id": "tmm_dragon_sea_sleek_form",
+        "label": "Sleek Form",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 2,
+        "max_sp": 100,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Increase underwater speed, capped against sprint/exotic gear.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_sleek_form",
+        "stage": "entry",
+        "label": "Sleek Form",
+        "effect": "Increase underwater speed, capped against sprint/exotic gear.",
+        "method": "water movement attribute",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Swimmer's Grace",
+      "source": {
+        "id": "tmm_dragon_sea_slipstream",
+        "label": "Slipstream",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Short burst dodge in water with collision safety.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_sleek_form"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_slipstream",
+        "stage": "advanced",
+        "label": "Slipstream",
+        "effect": "Short burst dodge in water with collision safety.",
+        "method": "dash movement hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_sleek_form"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation; water dodge"
+      }
+    },
+    {
+      "lane": "Swimmer's Grace",
+      "source": {
+        "id": "tmm_dragon_sea_ocean_leap",
+        "label": "Ocean Leap",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "mastery",
+        "effect": "Leap from water and control reentry without free flight.",
+        "reference_basis": "pre_skill_attribute_or_action_rate",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_slipstream"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_ocean_leap",
+        "stage": "mastery",
+        "label": "Ocean Leap",
+        "effect": "Leap from water and control reentry without free flight.",
+        "method": "momentum movement hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_slipstream"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "jump_bonus, fall_reduction; native water movement"
+      }
+    },
+    {
+      "lane": "Tidal & Abyssal Magic",
+      "source": {
+        "id": "tmm_dragon_sea_tidal_attunement",
+        "label": "Tidal Attunement",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_tidal_attunement",
+        "stage": "entry",
+        "label": "Tidal Attunement",
+        "effect": "Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status.",
+        "method": "classified spell effect",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; source classification"
+      }
+    },
+    {
+      "lane": "Tidal & Abyssal Magic",
+      "source": {
+        "id": "tmm_dragon_sea_stormcalling",
+        "label": "Stormcalling",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_tidal_attunement"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_stormcalling",
+        "stage": "advanced",
+        "label": "Stormcalling",
+        "effect": "Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control.",
+        "method": "classified spell caster hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_tidal_attunement"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; lightning/storm providers"
+      }
+    },
+    {
+      "lane": "Tidal & Abyssal Magic",
+      "source": {
+        "id": "tmm_dragon_sea_abyssal_sovereignty",
+        "label": "Abyssal Sovereignty",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_sea_stormcalling"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_sea_abyssal_sovereignty",
+        "stage": "mastery",
+        "label": "Abyssal Sovereignty",
+        "effect": "High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic.",
+        "method": "source-specific school/attribute adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_sea_stormcalling"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; abyssal affinity"
+      }
+    },
+    {
+      "lane": "Abyssal Fortune",
+      "source": {
+        "id": "tmm_dragon_sea_abyssal_fortune",
+        "label": "Abyssal Fortune",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 50,
+        "sp_per_rank": 1,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 5000,
+        "stage": "mastery",
+        "effect": "Extremely high Sea Dragon luck; powerful personal Luck-stat and source-verified luck-sensitive results, but no unconditional duplicate item generation or boss/quest gate bypass.",
+        "reference_basis": "defined_nonzero_personal_Luck_reference_unit_or_source_verified_luck_sensitive_event",
+        "notes": [
+          "Owner explicitly wants Sea Dragon Luck at a ridiculously high ceiling; Extreme +100% of a defined Luck reference per rank, 50 ranks, is an intentional exceptional specialist scale.",
+          "Vanilla Luck is usually zero before modifiers; never calculate percent of zero and claim a benefit. Map each rank to an independently specified nonzero Luck unit after verifying exact attribute ID/behavior.",
+          "High Luck attribute values do not automatically imply more loot in every mod. Test fishing and other loot tables and named mod effects to identify which mechanics actually honor Luck; no made-up global drop chance.",
+          "Never multiply fixed boss loot, critical keys, quest-only items, ProjectE gate materials or nonrandom recipe outputs. Avoid extra credit on loot-generation hooks.",
+          "Gate exceptionally high levels behind real Sea Dragon progression/late milestones; obtain real saturated-limit curves before numbers are frozen."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "late verified Sea Dragon milestones; no other dragon species"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "attribute"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Tide Sovereign",
+        "effect": "Late-game, time-limited aquatic combat and mobility surge; must be distinctly weaker on land.",
+        "status": "concept_only",
+        "id": "tmm_dragon_sea_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_sea_undertow",
+            "tmm_dragon_sea_deepwater_refuge",
+            "tmm_dragon_sea_ocean_leap",
+            "tmm_dragon_sea_abyssal_sovereignty"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_sea_tidal_strike",
+            "tmm_dragon_sea_brine_scales",
+            "tmm_dragon_sea_slipstream",
+            "tmm_dragon_sea_stormcalling"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}

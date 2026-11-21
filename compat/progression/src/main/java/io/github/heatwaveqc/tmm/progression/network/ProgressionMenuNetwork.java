@@ -55,7 +55,7 @@ public final class ProgressionMenuNetwork {
         public static final Type<Snapshot> TYPE = new Type<>(
                 ResourceLocation.fromNamespaceAndPath(ProgressionMod.MOD_ID, "menu_snapshot"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Snapshot> CODEC =
-                StreamCodec.composite(ByteBufCodecs.STRING_UTF8, Snapshot::json, Snapshot::new);
+                StreamCodec.composite(ByteBufCodecs.stringUtf8(262144), Snapshot::json, Snapshot::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
@@ -80,6 +80,7 @@ public final class ProgressionMenuNetwork {
                             case "buy" -> validId(payload.skill()) &&
                                     ProgressionApi.buy(player, payload.path(), payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
+                            case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
                         };
                         // A rejected mutation also receives a fresh projection
@@ -103,37 +104,78 @@ public final class ProgressionMenuNetwork {
     }
 
     private static void send(ServerPlayer player, String pathId) {
+        if(pathId.isEmpty()||!PathRegistry.all().containsKey(pathId)){
+            pathId=PathRegistry.all().keySet().stream().sorted()
+                .filter(id->ProgressionApi.track(player,id).joined()&&PathRegistry.eligible(player,id)).findFirst()
+                .orElseGet(()->PathRegistry.all().keySet().stream().sorted().findFirst().orElse(""));
+        }
         if (!validId(pathId)) return;
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return;
         Track state = ProgressionApi.track(player, pathId);
         JsonObject json = new JsonObject();
         json.addProperty("path", pathId);
+        json.addProperty("title",PathRegistry.presentation(pathId,"").title());
+        var channel=PathRegistry.channel(pathId);
+        json.addProperty("xp_channel",channel==null?"":channel.id());
+        json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
+        json.addProperty("eligible",PathRegistry.eligible(player,pathId));
         json.addProperty("rank", state.rank());
-        json.addProperty("max_rank", path.maxRank());
+        json.addProperty("max_rank", channel.maxRank());
         json.addProperty("xp", state.xp());
         json.addProperty("points", state.points());
-        long threshold = state.rank() < path.rankXp().size()
-                ? path.rankXp().get(state.rank()) : path.rankXp().getLast();
+        var curve=channel.magic()?java.util.List.of(0L):channel.source().rankXp();
+        long threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
+        if(channel!=null && channel.magic()) {
+            var wallet=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get()).wallet(channel.id());
+            long start=wallet==null?0:wallet.xp()-(long)wallet.magicProgress();
+            threshold=start>Long.MAX_VALUE-1000?Long.MAX_VALUE:start+1000;
+            json.addProperty("magic_channel",true);
+        }
         json.addProperty("next_xp", threshold);
         long currentStart = state.rank() > 0
-                ? path.rankXp().get(Math.min(state.rank() - 1, path.rankXp().size() - 1))
+                ? curve.get(Math.min(state.rank()-1,curve.size()-1))
                 : 0;
+        if(channel!=null && channel.magic()) currentStart=Math.max(0,threshold-1000);
         json.addProperty("rank_start_xp", currentStart);
+        var ledger=player.getData(io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments.LEDGER.get());
+        JsonArray wallets=new JsonArray();
+        for(var system:PathRegistry.economies().values().stream().sorted(java.util.Comparator.comparing(io.github.heatwaveqc.tmm.progression.model.XpChannel::id)).toList()){
+            var w=ledger.wallet(system.id());JsonObject row=new JsonObject();
+            row.addProperty("id",system.id());row.addProperty("name",system.name());row.addProperty("point_name",system.pointName());
+            row.addProperty("level",w==null?0:w.rank());row.addProperty("points",w==null?0:w.points());
+            row.addProperty("xp",w==null?0:w.xp());wallets.add(row);
+        }
+        json.add("wallets",wallets);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
             JsonObject item = new JsonObject();
             int owned = state.skillRank(skill.id());
             item.addProperty("id", skill.id());
+            var present=PathRegistry.presentation(pathId,skill.id());
+            item.addProperty("title",present.title());item.addProperty("description",present.description());item.addProperty("lane",present.lane());
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
-            item.addProperty("required_rank", skill.requiredRank());
+            item.addProperty("required_rank", skill.nextRequiredRank(owned));
+            item.addProperty("eligible",PathRegistry.skillEligible(player,pathId,skill.id()));
             item.addProperty("auto", !skill.autoRanks().isEmpty());
+            var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tmm.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));
+            item.addProperty("currency",binding.currency().id());
+            item.addProperty("permanent",binding.permanent());
+            item.addProperty("point_name",binding.currency().pointName());
+            item.addProperty("level_system",binding.levelSystem().name());
             item.addProperty("price", skill.price(owned));
+            var activation=PathRegistry.activation(pathId,skill.id());
+            if(activation!=null){
+                item.addProperty("activation_mode",activation.mode());
+                item.addProperty("activation_active",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.active(player,pathId,skill.id()));
+                item.addProperty("activation_ready",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.canRequest(player,pathId,skill.id()));
+                item.addProperty("activation_remaining",io.github.heatwaveqc.tmm.progression.runtime.SkillActivation.remaining(player,pathId,skill.id()));
+            }
             item.addProperty("choice_group", skill.choiceGroup());
-            item.addProperty("buyable", ProgressionMath.buy(path, state, skill.id()) != state);
+            item.addProperty("buyable", ProgressionApi.canBuy(player,pathId,skill.id()));
             item.add("requires", strings(skill.requiresSkills()));
             item.add("requires_any", strings(skill.requiresAnySkills()));
             item.add("milestones", strings(skill.requiresMilestones()));
@@ -143,7 +185,9 @@ public final class ProgressionMenuNetwork {
             skills.add(item);
         }
         json.add("skills", skills);
-        PacketDistributor.sendToPlayer(player, new Snapshot(json.toString()));
+        String payload=json.toString();
+        if(payload.length()>262144){ProgressionMod.LOGGER.warn("Tree snapshot too large: {}",pathId);return;}
+        PacketDistributor.sendToPlayer(player, new Snapshot(payload));
     }
 
     public static void forget(ServerPlayer player) {

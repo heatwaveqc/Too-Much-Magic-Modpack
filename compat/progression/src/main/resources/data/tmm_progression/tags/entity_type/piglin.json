@@ -1,8 +1,24 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "enigmaticlegacyplus:piglin_wanderer",
+      "required": false
+    },
+    {
+      "id": "goety:burning_hoglin",
+      "required": false
+    },
+    {
+      "id": "goety:hoglin_servant",
+      "required": false
+    },
+    "minecraft:hoglin",
     "minecraft:piglin",
     "minecraft:piglin_brute",
-    "minecraft:hoglin"
+    {
+      "id": "occultism:possessed_hoglin",
+      "required": false
+    }
   ]
 }

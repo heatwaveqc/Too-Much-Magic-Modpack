@@ -1,0 +1,20 @@
+name: Progression E6c Goety pinned ritual ABI (static only)
+on:
+  pull_request:
+    paths:
+      - 'compat/progression/tools/e6c_goety_ritual_abi.py'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/mxp/**'
+      - '.github/workflows/progression-e6c-goety-ritual-abi.yml'
+permissions:
+  contents: read
+jobs:
+  abi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: python3 compat/progression/tools/e6c_goety_ritual_abi.py

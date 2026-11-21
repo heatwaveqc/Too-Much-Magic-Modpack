@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:gilded",
+  "title": "Gilded",
+  "source_revision": "2fd6df6de1e21cdd8f07750a63e76261124a0fc4",
+  "native_path_legacy": {
+    "schema": 1,
+    "exclusive_group": "",
+    "enrollment": "admin",
+    "rank_xp": [
+      0,
+      20,
+      55,
+      105,
+      180,
+      280,
+      420,
+      600,
+      850,
+      1200,
+      1700,
+      2400,
+      3400,
+      4800,
+      6600,
+      9000,
+      12000,
+      16000,
+      21000,
+      28000
+    ],
+    "max_level": 20,
+    "points_per_rank": 0,
+    "activities": [
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "xp": 10,
+        "cooldown_ticks": 0
+      },
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_lava_fish_caught",
+        "xp": 5,
+        "cooldown_ticks": 0,
+        "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
+      }
+    ],
+    "milestones": [
+      {
+        "id": "tmm_progression:gilded_gold_prospecting",
+        "criteria": [
+          {
+            "event": "external",
+            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "count": 32
+          }
+        ],
+        "xp": 50,
+        "points": 0
+      },
+      {
+        "id": "tmm_progression:gilded_gold_mastery",
+        "criteria": [
+          {
+            "event": "external",
+            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "count": 256
+          }
+        ],
+        "after": [
+          "tmm_progression:gilded_gold_prospecting"
+        ],
+        "xp": 250,
+        "points": 0
+      }
+    ],
+    "skills": [
+      {
+        "id": "tmm_progression:gilded_nether_diet",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:food_whitelist",
+            "target": "#tmm_progression:gilded_nether_foods",
+            "params": {
+              "enforce": "before_consumption_finish",
+              "nonfood_consumables": "unaffected",
+              "unlisted_food": "deny",
+              "gold_foods_tag": "#tmm_progression:gilded_gold_foods",
+              "gold_recipe_policy": "tmm_progression:gilded_gold_food_policy",
+              "allow_recipe_derived_gold_foods": "true",
+              "gold_food_nutrition_multiplier": "2",
+              "gold_food_saturation_gain_multiplier": "2",
+              "non_gold_nether_food_multiplier": "1",
+              "gold_food_preserve_status_effects": "true"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_piglin_kin",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:piglin_affinity",
+            "target": "#tmm_progression:gilded_piglin_allies",
+            "params": {
+              "prevent_unprovoked_targeting": "true",
+              "prevent_gold_mining_alarm": "true",
+              "prevent_container_alarm": "true",
+              "allow_retaliation": "true",
+              "clear_existing_anger": "false"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_gold_diamond_equivalence",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:gold_diamond_equivalence",
+            "target": "#tmm_progression:gilded_gold_equipment",
+            "params": {
+              "effective_tool_tier": "diamond",
+              "effective_weapon_damage": "diamond",
+              "effective_armor": "diamond",
+              "effective_armor_toughness": "diamond",
+              "preserve_gold_mining_speed": "true",
+              "persist_item_changes": "false"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_renewal",
+        "max_rank": 3,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1,
+          10,
+          18
+        ],
+        "effects": [
+          {
+            "type": "gear_durability",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "armor",
+              "action": "repair",
+              "interval_ticks": "5"
+            }
+          },
+          {
+            "type": "gear_durability",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "slot": "mainhand",
+              "action": "repair",
+              "interval_ticks": "5"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_fortunes_favor",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:virtual_fortune",
+            "target": "#tmm_progression:gilded_fortune_tools",
+            "per_rank": 3,
+            "params": {
+              "combine": "additive",
+              "loot_rolls": "once",
+              "persist_enchantment": "false",
+              "silk_touch": "honor",
+              "base_virtual_bonus": "3",
+              "maximum_virtual_bonus": "10",
+              "tyz_skill_id": "tmm_gilded_fortune_mastery",
+              "tyz_purchased_levels": "7",
+              "gate": "joined_gilded",
+              "stack_with_stored_enchantment": "additive"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_last_gilt",
+        "max_rank": 3,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          4,
+          8,
+          12
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:virtual_unbreaking",
+            "target": "#tmm_progression:gilded_repairable_equipment",
+            "per_rank": 1,
+            "params": {
+              "combine": "additive",
+              "persist_enchantment": "false",
+              "per_damage_event": "once"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_looting",
+        "max_rank": 1,
+        "required_rank": 1,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          1
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:virtual_looting",
+            "target": "#tmm_progression:gilded_gold_weapons",
+            "per_rank": 3,
+            "params": {
+              "combine": "additive",
+              "delivery": "direct_melee",
+              "gold_only": "true",
+              "persist_enchantment": "false",
+              "affects_rare_loot": "true",
+              "base_virtual_bonus": "3",
+              "maximum_virtual_bonus": "10",
+              "tyz_skill_id": "tmm_gilded_looting_mastery",
+              "tyz_purchased_levels": "7",
+              "gate": "joined_gilded",
+              "stack_with_stored_enchantment": "additive"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tmm_progression:gilded_undying_ember",
+        "max_rank": 1,
+        "required_rank": 18,
+        "base_cost": 0,
+        "step_cost": 0,
+        "auto_ranks": [
+          18
+        ],
+        "effects": [
+          {
+            "type": "tmm_progression:fire_immunity",
+            "target": "#minecraft:is_fire",
+            "params": {
+              "inspiration": "zombified_piglin",
+              "fire_damage_tag": "#minecraft:is_fire",
+              "fire_and_lava_damage": "immune",
+              "status_burning": "removed",
+              "other_damage": "unchanged",
+              "applies_to": "player_only"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "native_experience_candidate": {
+    "schema": 1,
+    "name": "Gilded XP",
+    "point_name": "Gilded Points",
+    "requires_path": "tmm_progression:gilded",
+    "rank_xp": [
+      0,
+      20,
+      55,
+      105,
+      180,
+      280,
+      420,
+      600,
+      850,
+      1200,
+      1700,
+      2400,
+      3400,
+      4800,
+      6600,
+      9000,
+      12000,
+      16000,
+      21000,
+      28000
+    ],
+    "points_per_rank": 0,
+    "sources": [
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "xp": 10,
+        "cooldown_ticks": 0
+      },
+      {
+        "event": "external",
+        "target": "tmm_progression:gilded_lava_fish_caught",
+        "xp": 5,
+        "cooldown_ticks": 0,
+        "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
+      }
+    ]
+  },
+  "paid_candidates": [
+    {
+      "legacy_pilot": {
+        "active": true,
+        "id": "tmm_gilded_fortune_mastery",
+        "maximumLevel": 7,
+        "prices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "type": "IMMUTABLE",
+        "category": "tmm_gilded",
+        "icon": "minecraft:textures/item/golden_pickaxe.png",
+        "displayName": "Fortune's Favor",
+        "description": "Gilded starts with +3 virtual Fortune on gold and Netherite tools. Each purchased rank adds +1, up to +10, additive to actual enchantments. Requires completed Gilded initiation.",
+        "modifiers": [],
+        "customValues": {
+          "power": {
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "unit": " virtual Fortune"
+          }
+        },
+        "config": {
+          "visible": true,
+          "purchasable": true,
+          "refundable": true,
+          "skillPrerequisites": []
+        }
+      },
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contribution_per_purchased_rank": 1,
+      "base_innate_bonus": 3,
+      "combined_maximum": 10,
+      "note": "Existing source ranks 4..10 are combined innate+paid totals. Do not add the full value to the native +3 a second time. Existing shared virtual enchantment cap is lower; reconcile and preserve item/claw/breath gates."
+    },
+    {
+      "legacy_pilot": {
+        "active": true,
+        "id": "tmm_gilded_looting_mastery",
+        "maximumLevel": 7,
+        "prices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "type": "IMMUTABLE",
+        "category": "tmm_gilded",
+        "icon": "minecraft:textures/item/golden_sword.png",
+        "displayName": "Golden Spoils",
+        "description": "Gilded begins with +3 virtual Looting for direct melee kills using golden swords and axes. Each independent Tyz purchase adds +1 up to +10, stacking with real Looting.",
+        "modifiers": [],
+        "customValues": {
+          "power": {
+            "values": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "unit": " virtual Looting"
+          }
+        },
+        "config": {
+          "visible": true,
+          "purchasable": true,
+          "refundable": true,
+          "skillPrerequisites": []
+        }
+      },
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "contribution_per_purchased_rank": 1,
+      "base_innate_bonus": 3,
+      "combined_maximum": 10,
+      "note": "Existing source ranks 4..10 are combined innate+paid totals. Do not add the full value to the native +3 a second time. Existing shared virtual enchantment cap is lower; reconcile and preserve item/claw/breath gates."
+    }
+  ],
+  "initiation": {
+    "schema_version": 1,
+    "status": "design_only_pending_java_adapter",
+    "path": "tmm_progression:gilded",
+    "trigger": {
+      "event": "successful_food_consumption",
+      "food_item_tag": "#tmm_progression:gilded_rite_foods",
+      "consume_item_normally": true
+    },
+    "conditions": {
+      "dimension": "minecraft:the_nether",
+      "equipment_slots": {
+        "head": "minecraft:golden_helmet",
+        "chest": "minecraft:golden_chestplate",
+        "legs": "minecraft:golden_leggings",
+        "feet": "minecraft:golden_boots"
+      },
+      "must_be_real_server_player": true,
+      "exclude_creative_and_spectator": true,
+      "not_already_joined": true
+    },
+    "on_success": {
+      "join_path": "tmm_progression:gilded",
+      "award_rite_xp": 0,
+      "notify_player": true
+    },
+    "qa_note": "Server-only successful consumption; verify all armor slots and dimension at Finish, not merely start-use. Use ProgressionApi.join; reject manual command enrollment. This file requires a custom native adapter and is not recognized automatically by PathJson."
+  },
+  "food_policy": {
+    "schema_version": 1,
+    "status": "design_only_pending_java_adapter",
+    "path": "tmm_progression:gilded",
+    "allow_if_any": [
+      {
+        "kind": "item_tag",
+        "id": "#tmm_progression:gilded_nether_foods"
+      },
+      {
+        "kind": "item_tag",
+        "id": "#tmm_progression:gilded_gold_foods"
+      },
+      {
+        "kind": "crafting_recipe_contains_gold",
+        "recipe_type": "minecraft:crafting",
+        "ingredient_items": [
+          "minecraft:gold_nugget",
+          "minecraft:gold_ingot",
+          "minecraft:gold_block"
+        ],
+        "ingredient_tags": [
+          "#c:nuggets/gold",
+          "#c:ingots/gold",
+          "#c:storage_blocks/gold"
+        ],
+        "recursive_through_food_ingredients": true,
+        "maximum_depth": 8
+      }
+    ],
+    "require_food_component": true,
+    "allow_non_food_consumables": true,
+    "note": "Gold-food recipe qualification overrides Nether-origin requirement. Match actual server recipe ingredients, including tags and nested gold-bearing food ingredients, without relying on item display names. Prevent recursion cycles, reload on datapack changes, do not broaden to non-crafting machine recipes. Explicitly whitelist enchanted golden apple (not craftable in current vanilla).",
+    "gold_food_bonus": {
+      "eligible_when": "Gilded has already joined; food qualifies from explicit golden food tag OR crafting recipe gold ingredient/recursive golden-food ingredient",
+      "nutrition_multiplier": 2,
+      "saturation_points_multiplier": 2,
+      "saturation_modifier_multiplier": 1,
+      "applies_to": "gold_qualified_food_only",
+      "normal_nether_foods_not_gold_qualified": "unchanged",
+      "vanilla_food_bar_and_saturation_caps": true,
+      "preserve_food_potion_effects": true,
+      "consumption_count": 1,
+      "apply_after_successful_consumption": "once",
+      "recommendation": "At verified LivingEntityUseItemEvent.Finish, after vanilla food applied, call player's FoodData.eat(original FoodProperties) one additional time when joined and gold-qualified; adds only hunger/saturation, not second food potion effects. Test event order on pinned NeoForge 21.1.265 and use hand-sensitive callback where appropriate. Never globally modify item components."
+    }
+  },
+  "coverage": {
+    "status": "ISOLATED_SOURCE_NEEDS_PORT",
+    "native_nodes": 8,
+    "paid_nodes": 2,
+    "available": [
+      "gear_durability",
+      "food_efficiency",
+      "original loot calculation hooks"
+    ],
+    "pending": [
+      "generic food rite",
+      "recipe-aware food allowlist",
+      "piglin kinship and alarms",
+      "diamond-equivalent gold",
+      "virtual Unbreaking",
+      "native fire immunity/burning clearing",
+      "lava fishing and gold ore award adapters",
+      "virtual Fortune/Looting source and cap semantics"
+    ]
+  },
+  "notes": [
+    "Level 20 capstone undefined in source. Source draft's fire immunity is rank 18; lava fishing unlocks at initiation per LIVE-TEST-READINESS.md. Existing gold+Netherite tool rules, direct golden weapon melee, and general Gilded food rules require reconciliation with later Golden Dragon gold-only diet and claw/breath eligibility. No new values invented.",
+    "No source at runtime activated. Existing isolated Gilded Java is first-party and should be selectively generalized, not wholesale merged.",
+    "Food rite now has native generic acquisition backing; candidate only, requires actual rite tag and compatibility/provider gating. Virtual loot caps can opt into 10 with max_total:10; claw/breath ownership and original Gilded hooks still require port/QA."
+  ],
+  "food_rite_candidate": {
+    "enrollment": "food",
+    "food_rite": {
+      "target": "#tmm_progression:gilded_rite_foods",
+      "when": {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "dimension",
+            "id": "minecraft:the_nether"
+          },
+          {
+            "type": "equipped",
+            "slot": "head",
+            "target": "minecraft:golden_helmet"
+          },
+          {
+            "type": "equipped",
+            "slot": "chest",
+            "target": "minecraft:golden_chestplate"
+          },
+          {
+            "type": "equipped",
+            "slot": "legs",
+            "target": "minecraft:golden_leggings"
+          },
+          {
+            "type": "equipped",
+            "slot": "feet",
+            "target": "minecraft:golden_boots"
+          }
+        ]
+      }
+    }
+  }
+}

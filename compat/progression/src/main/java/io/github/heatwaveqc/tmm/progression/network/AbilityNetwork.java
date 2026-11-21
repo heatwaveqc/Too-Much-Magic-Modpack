@@ -41,11 +41,13 @@ public final class AbilityNetwork {
                     case "treasure" -> ClassAbilities.toggle(player,"treasure");
                     case "glide" -> ClassAbilities.toggle(player,"glide");
                     case "ordeal" -> ClassAbilities.toggle(player,"ordeal");
+                    case "enhanced_night_vision","lava_vision" -> io.github.heatwaveqc.tmm.progression.runtime.VisionRuntime.toggle(player,action);
                     default -> false;
                 };
                 if (ok && !action.equals("blink"))
                     player.displayClientMessage(Component.literal(action + ": " +
-                        ClassAbilities.mode(player,action)),true);
+                        (action.equals("enhanced_night_vision")||action.equals("lava_vision")?
+                        io.github.heatwaveqc.tmm.progression.runtime.VisionRuntime.mode(player,action):ClassAbilities.mode(player,action))),true);
             });
         });
     }

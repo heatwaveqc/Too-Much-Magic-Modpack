@@ -39,8 +39,10 @@ jobs:
         run: python3 scripts/validate_quests.py
       - name: Verify quick QA starter rewards and recipe fixes (source-only)
         run: python3 scripts/verify_quick_repairs.py
-      - name: Verify single Tyz backend and first-wave Core Skills
-        run: python3 scripts/verify_tyz_migration.py
+      - name: Verify single Unified Progression XP authority and exact QA target
+        run: |
+          python3 scripts/verify_unified_progression.py
+          python3 scripts/verify_qa_inventory.py --strict-target
       - name: Validate CC Eldritch gate and Iesnium Spirit Fire source
         run: python3 scripts/validate_cc_iesnium_pilot.py
       - uses: actions/setup-go@v5

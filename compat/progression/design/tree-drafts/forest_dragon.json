@@ -1,0 +1,793 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
+  "id": "tmm_progression:forest_dragon",
+  "title": "Forest Dragon",
+  "legacy_eligibility": "Dragon Survival verified species and real growth gates",
+  "notes": [
+    "Do not turn Forest Dragon neutrality into global creature pacification.",
+    "Sourceberries and modded enchanted golden carrot diets are separate food tags, not a skill gate.",
+    "Green Thumb and Shepherd's Blessing are existing Tyz IMMUTABLE skills; propose same-ID Forest Dragon relocation, with real species-state use checks and no double-harvest multipliers.",
+    "No Forest Dragon mana regeneration talents; its Green Recovery/Elder Grove refer only to health recovery, never mana.",
+    "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
+    "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
+  ],
+  "proposed_paid_currency": "tmm_progression:mxp",
+  "native_level_gates_pending": true,
+  "nodes": [
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_forest_draconic_reservoir",
+        "label": "Draconic Reservoir",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 2500,
+        "stage": "species-shared",
+        "effect": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+        "reference_basis": "personal_base_max_mana_or_equivalent",
+        "notes": [
+          "+100% of pre-Tyz personal reference pool per rank; at 25 ranks +2500% capacity; exclude regeneration."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; personal pool APIs"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_forest_draconic_potency",
+        "label": "Draconic Potency",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 1000,
+        "stage": "species-shared",
+        "effect": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+        "reference_basis": "personal_baseline_spell_effect",
+        "notes": [
+          "At 10 ranks nominal +1000% relative to defined pre-skill reference; requires damage and boss-effect caps."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; actual school units"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_forest_draconic_scales",
+        "label": "Draconic Scales",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+        "reference_basis": "form_base_natural_armor_effectiveness",
+        "notes": [
+          "2 SP/rank and no immortal or near-100% reduction."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute; native armor reference"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_forest_draconic_claws",
+        "label": "Draconic Claws",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Real dragon form physical strike boost; not global magic damage.",
+        "reference_basis": "unmodified_verified_dragon_melee",
+        "notes": [
+          "2 SP/rank, separately bounded from Dragon spell potency."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "melee_bonus; native claw attribution"
+      }
+    },
+    {
+      "lane": "Universal Dragon Physiology & Sorcery (species-local)",
+      "source": {
+        "id": "tmm_dragon_forest_draconic_talons",
+        "label": "Draconic Talons",
+        "strength": "Weak",
+        "percent_per_rank": 5,
+        "level_cap": 50,
+        "sp_per_rank": 2,
+        "max_sp": 100,
+        "nominal_cumulative_percent": 250,
+        "stage": "species-shared",
+        "effect": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+        "reference_basis": "legal_block_break_speed",
+        "notes": [
+          "2 SP/rank; respect required harvest tier, protected ores, tool policy and claims."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "break_speed; legal native claw harvesting"
+      }
+    },
+    {
+      "lane": "Verdant Vitality",
+      "source": {
+        "id": "tmm_dragon_forest_green_recovery",
+        "label": "Green Recovery",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 25,
+        "sp_per_rank": 2,
+        "max_sp": 50,
+        "nominal_cumulative_percent": 250,
+        "stage": "entry",
+        "effect": "Small recovery benefit in living biomes, not in all dimensions.",
+        "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_green_recovery",
+        "stage": "entry",
+        "label": "Green Recovery",
+        "effect": "Small recovery benefit in living biomes, not in all dimensions.",
+        "method": "biome/regen adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "delayed_regeneration"
+      }
+    },
+    {
+      "lane": "Verdant Vitality",
+      "source": {
+        "id": "tmm_dragon_forest_living_bark",
+        "label": "Living Bark",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 2,
+        "max_sp": 20,
+        "nominal_cumulative_percent": 200,
+        "stage": "advanced",
+        "effect": "Situational natural defense near vegetation, with stacking caps.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_green_recovery"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_living_bark",
+        "stage": "advanced",
+        "label": "Living Bark",
+        "effect": "Situational natural defense near vegetation, with stacking caps.",
+        "method": "biome/attribute hook",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_green_recovery"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "attribute; nearby vegetation condition"
+      }
+    },
+    {
+      "lane": "Verdant Vitality",
+      "source": {
+        "id": "tmm_dragon_forest_elder_grove",
+        "label": "Elder Grove",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 5,
+        "sp_per_rank": 2,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 250,
+        "stage": "mastery",
+        "effect": "Time-limited regeneration/support pulse, costing dragon resource.",
+        "reference_basis": "natural_health_or_explicit_HP_per_second_benchmark",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_living_bark"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_elder_grove",
+        "stage": "mastery",
+        "label": "Elder Grove",
+        "effect": "Time-limited regeneration/support pulse, costing dragon resource.",
+        "method": "area heal adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_living_bark"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, status_pulse; resource debit"
+      }
+    },
+    {
+      "lane": "Thorn & Root",
+      "source": {
+        "id": "tmm_dragon_forest_bramble_claw",
+        "label": "Bramble Claw",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Add a bounded nature-themed status to confirmed claw attacks.",
+        "reference_basis": "pre_skill_damage_or_relevant_NeoForge_attribute_proxy",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_bramble_claw",
+        "stage": "entry",
+        "label": "Bramble Claw",
+        "effect": "Add a bounded nature-themed status to confirmed claw attacks.",
+        "method": "attack/status adapter",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "status_on_hit; actual claw event"
+      }
+    },
+    {
+      "lane": "Thorn & Root",
+      "source": {
+        "id": "tmm_dragon_forest_entangling_breath",
+        "label": "Entangling Breath",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Native breath enhancer applying short slows only where source breath supports it.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_bramble_claw"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_entangling_breath",
+        "stage": "advanced",
+        "label": "Entangling Breath",
+        "effect": "Native breath enhancer applying short slows only where source breath supports it.",
+        "method": "breath/context adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_bramble_claw"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "status_on_hit; native breath hook"
+      }
+    },
+    {
+      "lane": "Thorn & Root",
+      "source": {
+        "id": "tmm_dragon_forest_thornstorm",
+        "label": "Thornstorm",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Cooldown-limited small-area crowd control with no world block destruction.",
+        "reference_basis": "declared_mechanical_reference_unit_requires_API_review",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_entangling_breath"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_thornstorm",
+        "stage": "mastery",
+        "label": "Thornstorm",
+        "effect": "Cooldown-limited small-area crowd control with no world block destruction.",
+        "method": "targeting adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_entangling_breath"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, status_pulse; claims"
+      }
+    },
+    {
+      "lane": "Fertility & Bounty",
+      "source": {
+        "id": "tmm_dragon_forest_germination_touch",
+        "label": "Germination Touch",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "entry",
+        "effect": "Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth.",
+        "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+        "notes": [
+          "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_germination_touch",
+        "stage": "entry",
+        "label": "Germination Touch",
+        "effect": "Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth.",
+        "method": "bonemeal use/plant growth events",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "committed bonemeal hook"
+      }
+    },
+    {
+      "lane": "Fertility & Bounty",
+      "source": {
+        "id": "tmm_dragon_forest_breeder_s_blessing",
+        "label": "Breeder's Blessing",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "advanced",
+        "effect": "Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents.",
+        "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+        "notes": [
+          "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_germination_touch"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_breeder_s_blessing",
+        "stage": "advanced",
+        "label": "Breeder's Blessing",
+        "effect": "Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents.",
+        "method": "breed events with anti-duplicate constraints",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_germination_touch"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "legitimate paired breeding hooks"
+      }
+    },
+    {
+      "lane": "Fertility & Bounty",
+      "source": {
+        "id": "tmm_dragon_forest_harvest_bounty",
+        "label": "Harvest Bounty",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "mastery",
+        "effect": "Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks.",
+        "reference_basis": "legal_triggered_grow_or_harvest_event_count",
+        "notes": [
+          "Growth/harvest event chance and output require per-action caps and idempotence; do not interpret the power tier as unlimited crop multiplication."
+        ],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_breeder_s_blessing"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_harvest_bounty",
+        "stage": "mastery",
+        "label": "Harvest Bounty",
+        "effect": "Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks.",
+        "method": "harvest loot transaction / Harvest with Ease",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_breeder_s_blessing"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "crop_bonus, virtual_fortune"
+      }
+    },
+    {
+      "lane": "Fae Affinity",
+      "source": {
+        "id": "tmm_dragon_forest_fey_courtesy",
+        "label": "Fey Courtesy",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 25,
+        "sp_per_rank": 1,
+        "max_sp": 25,
+        "nominal_cumulative_percent": 1250,
+        "stage": "entry",
+        "effect": "Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [],
+        "native_progression_gate": "verified eligible transformation or faction"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_fey_courtesy",
+        "stage": "entry",
+        "label": "Fey Courtesy",
+        "effect": "Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification.",
+        "method": "tagged fae spell/relations",
+        "status": "concept_only",
+        "prerequisites": [],
+        "external_gate": "provider eligible; native entry",
+        "rank_model": {
+          "max_ranks_provisional": 10,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat, faction_neutrality; verify fae relations"
+      }
+    },
+    {
+      "lane": "Fae Affinity",
+      "source": {
+        "id": "tmm_dragon_forest_fey_conduit",
+        "label": "Fey Conduit",
+        "strength": "Strong",
+        "percent_per_rank": 50,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 500,
+        "stage": "advanced",
+        "effect": "Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_fey_courtesy"
+        ],
+        "native_progression_gate": "verified mid native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_fey_conduit",
+        "stage": "advanced",
+        "label": "Fey Conduit",
+        "effect": "Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP.",
+        "method": "verified fae spell/pet adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_fey_courtesy"
+        ],
+        "external_gate": "verified native mid-progression",
+        "rank_model": {
+          "max_ranks_provisional": 5,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat; source attribution"
+      }
+    },
+    {
+      "lane": "Fae Affinity",
+      "source": {
+        "id": "tmm_dragon_forest_grove_guardian",
+        "label": "Grove Guardian",
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 5,
+        "sp_per_rank": 1,
+        "max_sp": 5,
+        "nominal_cumulative_percent": 500,
+        "stage": "mastery",
+        "effect": "Bounded fae-aligned personal magic and allied-support synergy without taking over world production.",
+        "reference_basis": "personal_source_verified_resource_or_spell_baseline",
+        "notes": [],
+        "origin": "new_tyz_design_not_installed",
+        "runtime_status": "DESIGN_ONLY",
+        "prerequisites": [
+          "tmm_dragon_forest_fey_conduit"
+        ],
+        "native_progression_gate": "verified late native form rank + prerequisite rank"
+      },
+      "concept": {
+        "id": "tmm_dragon_forest_grove_guardian",
+        "stage": "mastery",
+        "label": "Grove Guardian",
+        "effect": "Bounded fae-aligned personal magic and allied-support synergy without taking over world production.",
+        "method": "classified fae magic/owner adapter",
+        "status": "concept_only",
+        "prerequisites": [
+          "tmm_dragon_forest_fey_conduit"
+        ],
+        "external_gate": "verified native late-progression",
+        "rank_model": {
+          "max_ranks_provisional": 3,
+          "sp_cost_each_provisional": 1
+        }
+      },
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "magic_stat, status_pulse; summon owner"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "venomous_attack",
+        "label": "Venomous Strike",
+        "strength": "Middling",
+        "percent_per_rank": 10,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 100,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to poison targets on hit",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Source handler is general melee hit; require dragon eligibility at use-time"
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "combat",
+        "target_category": "tmm_dragon_forest",
+        "native_max_levels": 5,
+        "native_sp_total": 21,
+        "behavior_class": "VenomousAttackEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "status_on_hit"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "green_thumb",
+        "label": "Green Thumb",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "legacy-rehome",
+        "effect": "Adds a {success_probability}% chance to double drops when harvesting crops and plants",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Forest Dragon may get separate eco benefits; check harvest plugins and duplication Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
+          "Transferred to Forest Dragon ONLY after verified same-ID/native behavior+species use-time gate; do not duplicate with new Forest crop/breeding nodes."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "nature",
+        "target_category": "tmm_dragon_forest",
+        "native_max_levels": 5,
+        "native_sp_total": 14,
+        "behavior_class": "GreenThumbEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "available",
+        "handler_or_gap": "crop_bonus"
+      }
+    },
+    {
+      "lane": "Retained Tyz 6.4.2 source skills",
+      "source": {
+        "id": "shepherd_s_blessing",
+        "label": "Shepherd’s Blessing",
+        "strength": "Average",
+        "percent_per_rank": 20,
+        "level_cap": 10,
+        "sp_per_rank": 1,
+        "max_sp": 10,
+        "nominal_cumulative_percent": 200,
+        "stage": "legacy-rehome",
+        "effect": "Baby animals grow {growth_speed}% faster",
+        "reference_basis": "original_Tyz_6_4_2_immutable_or_generic_effect",
+        "notes": [
+          "Only proposed post-migration strength/cap. The exact existing Tyz 6.4.2 preset rank count/prices/Java effects must remain intact until an explicit same-ID replacement and save-accounting migration is implemented.",
+          "Animal baby growth multiplier can affect farms; evaluate performance Requires Forest Dragon state for purchase AND effects; avoid overlap with Harvest with Ease and farmer mods. Preserves original values pending tuning.",
+          "Transferred to Forest Dragon ONLY after verified same-ID/native behavior+species use-time gate; do not duplicate with new Forest crop/breeding nodes."
+        ],
+        "origin": "builtin_same_id_rehome_plan",
+        "runtime_status": "DESIGN_ONLY",
+        "origin_category": "nature",
+        "target_category": "tmm_dragon_forest",
+        "native_max_levels": 15,
+        "native_sp_total": 79,
+        "behavior_class": "ShepherdsBlessingEffect"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "gap",
+        "handler_or_gap": "attributed baby maturation hook"
+      }
+    },
+    {
+      "lane": "Capstone",
+      "source": {
+        "label": "Elderwood Heart",
+        "effect": "Late native progression grants a timed defensive/support state in forest biomes.",
+        "status": "concept_only",
+        "id": "tmm_dragon_forest_capstone",
+        "prerequisite_rule": {
+          "any_one": [
+            "tmm_dragon_forest_elder_grove",
+            "tmm_dragon_forest_thornstorm",
+            "tmm_dragon_forest_harvest_bounty",
+            "tmm_dragon_forest_grove_guardian"
+          ],
+          "plus_one_advanced_from_different_lane": [
+            "tmm_dragon_forest_living_bark",
+            "tmm_dragon_forest_entangling_breath",
+            "tmm_dragon_forest_breeder_s_blessing",
+            "tmm_dragon_forest_fey_conduit"
+          ]
+        },
+        "external_gate": "verified final native progression plus explicit late-game achievement",
+        "rank_model": {
+          "max_ranks_provisional": 1,
+          "sp_cost_provisional": "2-5"
+        },
+        "strength": "Extreme",
+        "percent_per_rank": 100,
+        "level_cap": 1,
+        "sp_per_rank": 5,
+        "exception_reason": "One-time capstone purchase rather than linear mana/stat rank; cooldowns/external milestones required",
+        "implementation": "DESIGN_ONLY"
+      },
+      "concept": null,
+      "coverage": {
+        "status": "partial",
+        "handler_or_gap": "activation, existing attributes/procs; native late gates and resource costs"
+      }
+    }
+  ],
+  "jawr_alternate_sketch": []
+}
