@@ -81,7 +81,7 @@ def stage(root: Path) -> None:
             changed += 1
     print(f"PASS: Staged Monk Tyz 6.4.2 category and {len(content)} skills; {changed} written.")
     print("Single Tyz wallet and four Core preview skills were left unchanged.")
-    print("Run packwiz refresh and compile the SAME branch's tmm_progression JAR.")
+    print("Run packwiz refresh and compile the SAME branch's tyr_progression JAR.")
 
 
 if __name__ == "__main__":
