@@ -55,8 +55,8 @@ final class AstralDarknessPolicyTest {
         assertEquals(DARK, AstralDarknessPolicy.color(VANILLA, DARK, 15, 0.0f, 1f, 4));
         assertEquals(0f, AstralDarknessPolicy.nightWeight(0.25f));
         assertEquals(1f, AstralDarknessPolicy.nightWeight(0.50f));
-        assertTrue(AstralDarknessPolicy.nightWeight(0.225f) > 0);
-        assertTrue(AstralDarknessPolicy.nightWeight(0.225f) < 1);
+        assertTrue(AstralDarknessPolicy.nightWeight(0.275f) > 0);
+        assertTrue(AstralDarknessPolicy.nightWeight(0.275f) < 1);
     }
 
     @Test void actualVisionAndDistanceVeilRemainDistinct() {
