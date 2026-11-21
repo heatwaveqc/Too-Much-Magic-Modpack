@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "occultism:book_of_binding_empty"
+    },
+    "w": {
+      "tag": "c:dyes/blue"
+    },
+    "a": {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "apotheosis:mysterious_scrap_metal"
+        },
+        {
+          "type": "apotheosis:gem",
+          "purity": "cracked"
+        }
+      ]
+    }
+  },
+  "pattern": [
+    " w ",
+    "wbw",
+    "aw "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultism:book_of_binding_foliot"
+  }
+}
