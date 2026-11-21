@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ProjectE/custom_emc.json"
+hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+
+[[files]]
 file = "config/almostunified/placeholders.json"
 hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
@@ -15,6 +19,46 @@ hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
 [[files]]
 file = "config/astralsorcery-client.toml"
 hash = "e556d8de1e028ec2ad58b254ef82cbf181769a1f236700ff1fb8624fb705618e"
+
+[[files]]
+file = "config/bountiful/bountiful.json"
+hash = "950de71b545d10986fad0b67a40771eb55d137d3be237ac8b833797b6ffd5de8"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_culinary.json"
+hash = "a49a33b4bfe05aca673d2c2c368538cc9564b4a5b0f5fceea09fa6d280eb7a72"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_fishing.json"
+hash = "8faee371bbd3b2d6d3898dcf8276c97b53dc1d6e9531b8f41c81c0787ff23ba5"
+
+[[files]]
+file = "config/bountiful/bounty_decrees/tmm_hunting.json"
+hash = "61120375da7a60bae4a7b1d3730d16da28a6e99087a48d7e1a13054ab5b9a6d5"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_culinary_objs.json"
+hash = "c9aab36626793e4093ef8ef147763ade915b4b2577e0a2e6d0225eebf89939e7"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_culinary_rews.json"
+hash = "e7091269f1aa6e1c901ea8cf9a07370f26e24b7794976c2f5d4043f7f305a4b6"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_fishing_objs.json"
+hash = "e295ac0ca51ad92cfb02b180ad898c9207377dfa547925ca0e157ba3fa8e899a"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_fishing_rews.json"
+hash = "61effc84ed16bf2869e0c17ec2b7a0c5b1cfa0cd0e554d4777b3694df54c96cd"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_hunting_objs.json"
+hash = "5b7b75b985cc79baf0b2d7a61db2c5b9d0424ac2e8ccdcaf38a63ec052510085"
+
+[[files]]
+file = "config/bountiful/bounty_pools/tmm_hunting_rews.json"
+hash = "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
@@ -263,6 +307,10 @@ hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
+
+[[files]]
+file = "kubejs/assets/bountiful/lang/en_us.json"
+hash = "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec"
 
 [[files]]
 file = "kubejs/assets/brandonscore/lang/en_us.json"
@@ -666,7 +714,7 @@ hash = "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
 
 [[files]]
 file = "kubejs/data/tmm/curios/slots/bundle.json"
-hash = "9511861429d94b7517329569341960e7aca73e0993b44ea12a418563ccec24f3"
+hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
@@ -874,7 +922,7 @@ hash = "89960c1e990de96dfe4851d03628d89e9794c637429e26e846a96aa5461d30a9"
 
 [[files]]
 file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
-hash = "34735d12ab1a9ee0f0ccbafe7f97b0d0efb5b6c898bceddc0d5f59758bfe08a2"
+hash = "aca07da8c8456de7c38b9f411db3779bbd582849a5ac819babddfff247874596"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/alkahestry/betterend__thallasium_raw.json"
@@ -1039,6 +1087,18 @@ hash = "5d99cb0c17145020f16e37716d9bd85d2de84f04647e37b7bb97d343d836be5e"
 [[files]]
 file = "kubejs/data/tmm/recipe/blockgen/natural_stone/primalmagick__marble_raw.json"
 hash = "ebdc608e941b6088208cac7b00145415c53542ebab2a075f96fda862e9a935ee"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_culinary.json"
+hash = "2a7e418ff5e80e8beea215a25354d5a662186dc5924570c26d2c52084cf038ec"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_fishing.json"
+hash = "9494db6cf6de033e21976b045a112efc89938cc4cefcc024a98e6bbf13dbabd7"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/bountiful/tmm_hunting.json"
+hash = "194411e62337e7d55a41666d226bac7b9d087448a59bdce16260c55124cec5dd"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/caerbannog.json"

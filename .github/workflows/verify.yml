@@ -23,6 +23,10 @@ jobs:
           python-version: '3.12'
       - name: Verify manifest, packwiz hash chain and exclusions
         run: python3 scripts/validate.py
+      - name: Guard legacy Bxx game boots and Prism packaging (source-only)
+        run: |
+          python3 scripts/audit_smoke_workflows.py
+          python3 -m unittest discover -s tests -p 'test_smoke_workflow_policy.py'
       - name: Fetch frozen integration source refs for read-only preflight
         if: ${{ github.ref == 'refs/heads/test/full-integration' || github.base_ref == 'test/full-integration' }}
         run: git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'

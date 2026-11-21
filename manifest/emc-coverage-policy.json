@@ -2,7 +2,7 @@
   "schema_version": 1,
   "goal": "Every registered item in the actual 1.21.1 NeoForge pack has a positive EMC value, except a short, explicit approved low-value exception list.",
   "status": "AUDIT_NOT_YET_RUN_AGAINST_FULL_GAME_REGISTRY",
-  "coverage_target": "100% of actual item registry, less approved exceptions",
+  "coverage_target": "100% of actual item registry, less approved cheap-glass exceptions and untransmutable task/decree documents",
   "valuation_sources": [
     "ProjectE native recipe/conversion mappers",
     "ProjectE native custom_emc.json file (not unverified KubeJS ProjectE addons)",
@@ -28,7 +28,7 @@
     "minecraft:red_stained_glass_pane",
     "minecraft:black_stained_glass_pane"
   ],
-  "exception_policy": "Only the owner-approved cheap-item list is excluded; other missing items are reportable errors, not silently assigned 0 or excluded. New exclusions require explicit approval.",
+  "exception_policy": "Owner-approved zero-EMC exceptions: original glass panes plus Bountiful's two task/document item types (bountiful:bounty and bountiful:decree). Bountyboard is not excluded. All other missing values remain reportable errors.",
   "balancing_and_hazards": [
     "Compute value of every acquired/craftable item at its least-cost reproducible route; resolve cycles and refund exploits.",
     "Boss trophies and high-tier materials should have positive EMC under universal coverage; after learning they can be transmuted, so boss-as-ingredient gates are one-time unlocks per community, NOT kill checks.",
@@ -36,7 +36,12 @@
     "NBT/data-bearing and charged containers must be assessed: plain item-ID EMC values do not prove safe handling of contents, attributes, enchantments or stored resources.",
     "Item variants, durability, spawn eggs, creative/debug artifacts and dynamic loot still appear in coverage census for review; no undocumented exclusions.",
     "Ensure large values fit ProjectE's signed-long/mapper limits; complex Project Expansion EMC BigInteger values may require special policy and native compatibility.",
-    "EMC-to-Quest Shop currency economy should be tested for unintended self-amplifying loops."
+    "EMC-to-Quest Shop currency economy should be tested for unintended self-amplifying loops.",
+    "Never give a generic EMC price to Bountiful signed decree or generated bounty slips; their component-bearing contents and contracts must not be replicated by ProjectE. Verify zero EMC for default and personalized stacks in runtime."
   ],
-  "success_gate": "Export real loaded item registry and post-mapping positive EMC table, compare, assign missing root values, rerun until zero non-exception misses, then test acquisition/transmutation and no-positive-cycle exploits in Prism."
+  "success_gate": "Export real loaded item registry and post-mapping positive EMC table, compare, assign missing root values, rerun until zero non-exception misses, then test acquisition/transmutation and no-positive-cycle exploits in Prism.",
+  "non_transmutable_document_exceptions": [
+    "bountiful:decree",
+    "bountiful:bounty"
+  ]
 }
