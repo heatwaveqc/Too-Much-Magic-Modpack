@@ -1,6 +1,6 @@
 # Too Much Magic — Potion and Alchemy Interoperability Matrix
 
-**Status:** Design/research v0.4, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
+**Status:** Design/research v0.5, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
 
 ## Why this is not just a potion-container chart
 
@@ -107,47 +107,40 @@ A transaction test MUST record input item ID/components, effect registry IDs, po
 
 **I8 — Advancement/quest gates cannot be laundered.** An eligible standard MobEffectInstance doesn't automatically authorize an alternate ritual, Witchery curse/ascension, Goety lich, or Hunter mutation acquisition. Validate registered recipe/authoritative progression as appropriate.
 
-## C.5. Simpler EvilCraft extraction cap and Hunter flight exclusion (owner proposal awaiting final approval)
+## C.5. Final owner decision: keep EvilCraft's native extraction and spouse amplification
 
-**Newest design discussion (2026-11-20; supersedes prior broad privileged-effect prohibitions and makes Demonic Spouse provenance tracking a fallback rather than the preferred implementation):** Owner is comfortable with **some cross-mod effect amplification** but rejects an indefinitely growing duration economy (e.g. repeatedly converting a single invisibility potion into dozens of hours of potion-equivalent effects). Proposes solving the EvilCraft–Occultism feedback loop primarily with a **cap on Purifier-generated potion duration**, rather than costly per-effect provenance. The owner has not yet explicitly approved the additional **consume-entire-active-effect** behavior below, so it remains a recommendation needing decision.
+**Locked owner decision (2026-11-20):** NO Ev﻿ilCraft Purifier mechanic change, NO Demonic Partner enhanced-effect provenance system, NO special whole-active-effect draining rule. Preserve the native EvilCraft config's five-minute per-bottle maximum and its retained-effect splitting behavior, including cross-mod Demonic Partner duration magnification. The owner explicitly accepts substantial effects from combining multiple mods, and did not ask to suppress repeated extraction. **Do not implement any of the earlier alternative anti-loop patches.** If actual QA demonstrates a severe balance or resource-free exploit, bring that concrete observation back as a new design decision rather than preemptively restricting native behavior.
 
-### Source-specific finding: EvilCraft already has a cap, but permits splitting
+### Verified source behavior and caveat
 
-- In the reviewed [EvilCraft Purifier config](https://github.com/CyclopsMC/EvilCraft/blob/master/src/main/java/org/cyclops/evilcraft/block/BlockPurifierConfig.java), \`maxPotionEffectDuration\` defaults to **6,000 ticks** (5 minutes). Setting a negative value disables the cap. The pack's \`test/full-integration\` repo tree has **no explicit checked-in Purifier configuration override**; this is not proof of the effective generated server config for a real runtime. Verify actual value and pinned EvilCraft 1.2.100 implementation.
-- The native [\`CollectPotionPurifyAction\`](https://github.com/CyclopsMC/EvilCraft/blob/master/src/main/java/org/cyclops/evilcraft/blockentity/tickaction/purifier/CollectPotionPurifyAction.java) removes the entity's active effect, and **when it exceeds the cap, restores a new active effect with the remaining duration** while putting the capped segment in the bottled PC result. This means one long effect is divided into multiple legitimate capped bottles.
-- [Occultism DemonicPartner](https://github.com/klikli-dev/occultism/blob/master/src/main/java/com/klikli_dev/occultism/common/entity/spirit/demonicpartner/DemonicPartner.java) multiplies standard non-instant \`PotionContents\` effect duration ×5. Therefore a 5-minute Purifier bottle becomes a 25-minute active buff, which can be split into **five** 5-minute bottles under current Purifier source behavior (subject to machine blood, bottles and runtime economics). Each of those bottles could separately be spouse-boosted. **A per-bottle cap alone does not stop the aggregate amplification loop.** Do not claim an actual fifty-hour buff or free replication was tested; ingredient/blood/time costs and vanilla effect merge semantics still matter.
-- [Neo Vitae FlightEffect](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/effect/FlightEffect.java) provides temporary creative-style flight via a real \`neovitae:flight\` MobEffect; its native custom flask path remains usable.
+- [EvilCraft Purifier default config](https://github.com/CyclopsMC/EvilCraft/blob/master/src/main/java/org/cyclops/evilcraft/block/BlockPurifierConfig.java): \`maxPotionEffectDuration\` defaults to **6,000 ticks = five minutes**; a negative value removes the cap. Current repository tree has no explicit committed purifier config override; verify generated config and exact pinned 1.2.100 bytecode when runtime testing.
+- [Purifier source](https://github.com/CyclopsMC/EvilCraft/blob/master/src/main/java/org/cyclops/evilcraft/blockentity/tickaction/purifier/CollectPotionPurifyAction.java) extracts a capped segment from a non-ambient active effect and restores any excess duration to the entity, so a long effect can produce **multiple** five-minute bottles with enough blood and bottles.
+- [Occultism DemonicPartner source](https://github.com/klikli-dev/occultism/blob/master/src/main/java/com/klikli_dev/occultism/common/entity/spirit/demonicpartner/DemonicPartner.java) applies ×5 duration to non-instant effects from a potion-bearing item; ×50 for suspicious stew. Therefore the native **bottle cap does not impose a global/aggregate limit on repeated cycles**. A five-minute effect can become 25 minutes via spouse; in the idealized case of splitting and enhancing every portion, a 25-minute buff can turn into five further 25-minute applications (total 125 minutes), then more on successive iterations. These are *potential cumulative potion durations*, not evidence that Minecraft combines durations additively in one MobEffectInstance. Record resource/time costs and actual effect-merge semantics in QA, but **no preventive patch approved**.
+- Native temporary flight through [Neo Vitae \`neovitae:flight\`](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/effect/FlightEffect.java) remains legal, including legitimate spouse interaction where item/dose conservation permits it. No generic privileged-effect export denylist is approved by this decision.
 
-### Recommended minimal contract: cap output **and drain the whole selected active effect** (owner decision pending)
+### Separate narrow protection already approved: Hunter
 
-1. **Purifier produces at most one bottle per extracted effect**, with effective duration \`min(original remaining effect duration, configured Purifier cap)\` for positive caps. Keep the default/configured **five-minute** cap as baseline; use existing EvilCraft settings, not a new separate 100-hour clamp. Preserve effect ID, amplifier, display flags where meaningful. Ensure no extra effect copies in extraction path.
-2. **Consume the entire selected effect when bottle extraction successfully commits**, even when original duration exceeds output cap; do **not** restore the remainder as an active effect. This is an intentional sacrifice of excess duration, preventing one boosted effect from being split into five or more five-minute bottle inputs. Other simultaneous effects remain. It does **not** change drinking or normal native Occultism ×5 application.
-3. **No source provenance tracking is needed for this loop** if the whole-effect consumption is implemented. The earlier proposed per-effect spouse markers, persistence and selective Purifier suppression are retained as a fallback design only, not a work item to implement in parallel.
-4. Native conversion accounting remains: EvilCraft's full blood charge + glass bottle + successful selected effect removal must all commit atomically, with no loss on failed transaction. Before/after testing must check the **whole-effect removal, cap, and output contents**, not only the output duration. For an instant/no-duration effect, retain native treatment and validate independently.
-5. **Hunter**: add **only \`neovitae:flight\`** to the authoritative \`hunter_mutations.effect_blacklist\`. Existing \`StandPotionEligibility\` already rejects arbitrary modded flasks/Purifier custom-only extracts; effect-ID exclusion adds defense in depth if future registered stand brewing paths can yield Neo Vitae flight. Do not globally ban temporary native flight or its one-time spouse enhancement.
-6. **Other loops:** the cap + consume-all rule only blocks duplication through *Purifier extraction*. If another machine can convert extended **active** effects into item doses, or directly extend them without equivalent cost, review that route separately using the compatibility matrix. Similarly, renewable charms are their own eligibility problem; do not misrepresent the fix as universal protection against every duration exploit.
+Add **only** \`neovitae:flight\` to canonical \`hunter_mutations.effect_blacklist\` in \`compat/progression/src/main/resources/data/tmm_progression/tmm_progression/paths/hunter.json\`, through the proper Progression configuration owner/isolated implementation PR. Current Hunter \`StandPotionEligibility\` is an independent source gate against arbitrary custom-component potions; explicitly blocking the flight effect protects against future stand recipes/adapters too. **This document has not edited executable Hunter configs.**
 
-### Concrete QA cases
+### QA-only audit
 
-| Source active duration | Bottled duration at default cap | Active duration afterward | Required result |
-|---:|---:|---:|---|
-| 3 min | 3 min | 0 | Standard extraction, one bottle |
-| 5 min | 5 min | 0 | Boundary |
-| 25 min (e.g. spouse ×5) | **5 min** | **0** | No four extra bottles left in player's active buff |
-| 50 hours (command/test fixture) | **5 min** | **0** | Never obtain a 50-hour bottle from Purifier |
-| 25 min, Purifier lacks blood or bottle | none | **25 min** | No resource or effect lost on refused processing |
-| 25 min with second unrelated 4-min effect | 5 min selected | second 4-min effect remains | Only chosen effect drained; second remains eligible |
-| 5-min flight PotionContents → spouse | 25-min temporary flight | N/A | Normal native cross-mod potency stays usable |
-| Same 25-min flight → Purifier → spouse | extracted ≤5 min; new active ≤25 min | no extra active duration stock | Repeating produces no additive or multi-bottle duration growth |
-| Hunter Mutagenic Brew with \`neovitae:flight\` despite valid stand source | none | N/A | No permanent flight mutation, existing ordinary mutations unaffected |
-| One player also has independent flight provider | normal source behavior | N/A | Removing flight effect does not disable another legitimate flight source |
+| Case | Expected behavior |
+|---|---|
+| Purify ≤ five-minute ordinary potion effect | Extract actual remaining duration, debit blood and one bottle |
+| Purify > five-minute ordinary effect | Five-minute bottle **plus native remaining active effect**; subsequent extraction may collect another segment |
+| Five-minute bottle → spouse | Native ×5 (25-minute) active effect |
+| Spouse-enhanced 25-minute effect → Purifier | Native five-minute bottle, **20-minute remainder stays active** (not consumed); preserve actual resource debits |
+| Long effects / two-player / reload | No abnormal item or blood duplication beyond intended native transaction; actual maximum duration per bottle respected |
+| Neo Vitae flight → normal use / Purifier / spouse | Do not ban temporary native flight or legitimate native ×5 interaction; validate no stuck creative flight after expiry |
+| Hunter Bio-Mutagen receives \`neovitae:flight\` effect | Permanent mutation **denied** by explicit flight blacklist, regardless of brewing source; other approved effects unaffected |
 
-**Implementation scope:** a small exact-version EvilCraft compatibility patch/mixin (or configurable upstream option if present) to remove the "restore remainder" behavior, plus a configuration-only Hunter blacklist entry. Follow AGENTS.md branch ownership. This is simpler than the previously proposed server-saved spouse-effect provenance. **No gameplay edits or in-world validation have been made.**
+**No runtime fix or build is authorized.** The earlier proposals for spouse provenance, blanket privilege bans, and discarding unextracted duration are **withdrawn**, not pending work.
 
-### Fallback if owner rejects consuming all remaining duration
+### Next open design question — Wixie and multi-school brewing automation
 
-Keep the existing more complex **per-player/per-effect Occultism spouse-enhanced provenance** proposal: tag actual ×5 or ×50 applications with an Occultism-specific hook; deny EvilCraft capture of boosted effects at both \`canWork\` and \`work\`; reconcile replacements and relog. This preserves normal Purifier splitting but introduces new persistence and injection complexity. A **cap alone without an extraction accounting change cannot guarantee no multiplication of doses**.
+[Ars WixieCauldronTile](https://github.com/baileyholl/Ars-Nouveau/blob/1.21.1/src/main/java/com/hollingsworth/arsnouveau/common/block/tile/WixieCauldronTile.java) already runs a dedicated \`PotionCraftingManager\` for standard potion mixing, using nearby Ars Potion Jars (300 units per completed output; verify exact inputs and native recipe selection against the installed JAR). By contrast [Iron's Alchemist Cauldron](https://github.com/Iron431/Irons-Spells-n-Spellbooks/blob/master/src/main/java/io/redspace/ironsspellbooks/block/alchemist_cauldron/AlchemistCauldronTile.java) has native **FluidStack + reagent → FluidStack(s)** cauldron brew/soak recipes, and [Neo Vitae FlaskRecipe](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/recipe/flask/FlaskRecipe.java) has its own **flask state, syphon cost, machine time and tier**. They cannot be made equivalent merely by registering their outputs as ordinary vanilla potion brewing recipes.
 
+**Owner choice needed:** Wixie should (A) automate regular registered brewing recipes and jar fluids, leaving Iron/Neo dedicated alchemy to their intended machines with ordinary inventory/logistics automation; or (B) become a cross-school universal alchemist that can perform Iron and Neo recipes *only when all respective native costs, ingredient slots, machine/tier gating and original vessels are enforced*. A native-block automation adapter is a third, lower-risk avenue: Wixie can request work at nearby dedicated machines rather than impersonating them. **Recommendation for discussion: ordinary Wixie potion production + eventual capability-preserving delegation to Iron/Neo, not recipe substitution.**
 
 ## D. Proposed investigation and test sequence
 
