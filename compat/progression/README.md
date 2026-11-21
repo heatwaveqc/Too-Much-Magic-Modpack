@@ -43,7 +43,7 @@ Create `data/<your_namespace>/tyr_progression/paths/<path>.json`. See both sampl
 | `auto_ranks` | For mandatory milestone/rank-granted powers; rank thresholds at which effect ranks automatically increase **for free** |
 | `effects` | Native effect type with optional `target`, `weapon`, `damage_tag`, `attribute`, `operation`, `per_rank`, `tier`, `empty_hand`, `unarmored`, `params` |
 
-Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tmmprogress enroll <path>` works only for paths configured with `enrollment: manual`. The shipped Hunter instead uses the completed Poison Potion + Regeneration + Monster Hunter ritual; Monk requires 200 valid sunset ticks. OP join remains QA-only.
+Native activity/criterion event types: `kill`, `block_break`, `external`, `food_consumed`, `food_discovered` (one-time per player by item registry ID), `animal_petted` (only successful server-side Animal Friendship interactions), and `advancement` (earned AdvancementHolder ID). Selectors are exact IDs, `#` registry tags, or `*` (any target of that event type). Use `food_discovered` with `*` to award mastery for any edible registered item without one-off tags. Rewards are **custom path XP and path points only**, never Minecraft XP or Tyz MXP. First Sunset and other cross-mod achievements can be added by a trusted adapter calling `ProgressionApi.recordExternal(serverPlayer, "namespace:event")`. That API **does not join the path** and awards only a configured milestone; `ProgressionApi.join(player, pathId)` must be called by a verified enrollment ritual. Native non-OP joins: `/tyrprogress enroll <path>` works only for paths configured with `enrollment: manual`. The shipped Hunter instead uses the completed Poison Potion + Regeneration + Monster Hunter ritual; Monk requires 200 valid sunset ticks. OP join remains QA-only.
 
 ### Data-defined potion enrollment (Trial of Venom)
 
@@ -71,7 +71,7 @@ This milestone records initiation only. **Poison immunity, shortened harmful-eff
 
 ### Hunter specialty and computed XP
 
-The shipped Hunter path now offers 14 currently active mutually exclusive, zero-point creature-family choices (Fae and Aberration remain taxonomy placeholders without eligible prey) at rank 1. `/tmmprogress specialty list` displays valid families; one chosen tag doubles XP from a qualifying creature. Multi-family creatures are never doubled more than once.
+The shipped Hunter path now offers 14 currently active mutually exclusive, zero-point creature-family choices (Fae and Aberration remain taxonomy placeholders without eligible prey) at rank 1. `/tyrprogress specialty list` displays valid families; one chosen tag doubles XP from a qualifying creature. Multi-family creatures are never doubled more than once.
 
 Server-validated kill XP: `round(victim.maxHealth / 4 × (matchingSpecialty ? 2 : 1))`, minimum 1, with a 1,000,000-per-event overflow guard. Fixed Hunter Undead/Raider kill activities were removed. Qualifying kills require a hostile living victim or explicit inclusion; player, tame-animal and excluded-type victims are rejected, and server adapters can veto more via `HunterExperience.registerKillGuard`. Summon and automation adapters still need pack-specific implementation.
 
@@ -83,7 +83,7 @@ Hunter now registers Bio-Mutagen (shapeless: 4 Moss Blocks, 4 Rotten Flesh, 1 Sp
 
 The Hunter JSON `hunter_mutations` policy defines **720,000 effect ticks / 10 hours**, **no minimum effect duration**, exact-effect blacklist, default max amplifier and **0.0005 hunger exhaustion per server tick per distinct active mutation**. Mutations have **no count or slot cap**. Stronger ranks of the same effect replace rather than stack with weaker ranks, and lower-level potions cannot contribute to higher-level mutation progress. Stronger ranks do not increase the distinct-effect count. Progress and unlocked levels persist across death and logout. Instant effects and banned effects are ineligible for direct permanence.
 
-`/tmmprogress mutations` displays a mutation summary; no dedicated GUI or cure procedure is implemented. See [mutagenic-feature design and QA](../../docs/hunter/MUTAGENIC-BREW-AND-EVERLASTING-ABILITY-AUDIT.md). Draft PR #148 is stacked on #143, #141, #136, #127. **Not yet approved for the integrated pack.**
+`/tyrprogress mutations` displays a mutation summary; no dedicated GUI or cure procedure is implemented. See [mutagenic-feature design and QA](../../docs/hunter/MUTAGENIC-BREW-AND-EVERLASTING-ABILITY-AUDIT.md). Draft PR #148 is stacked on #143, #141, #136, #127. **Not yet approved for the integrated pack.**
 
 ### Built-in effect handlers
 
@@ -117,20 +117,20 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 ### QA commands
 
 ```text
-/tmmprogress list
-/tmmprogress status tyr_progression:monk
-/tmmprogress buy tyr_progression:hunter tyr_progression:undead_slayer
-/tmmprogress respec tyr_progression:hunter
-/tmmprogress admin join tyr_progression:monk        # OP-only
-/tmmprogress admin event tyr_progression:monk_first_sunset  # OP-only
-/tmmprogress specialty list                       # Available Hunter creature specialties
-/tmmprogress specialty undead                     # Select one free specialty
-/tmmprogress enroll <path>                         # Only for paths enrolled manually
-/tmmprogress power blink                          # Blink; also V key
-/tmmprogress power armor                          # Toggle Armor Lock
-/tmmprogress power treasure                       # Toggle Fortune/Silk hand mode
-/tmmprogress power glide                          # Toggle Momentum Glide after Dragon
-/tmmprogress power ordeal                         # Start/abort blindness ordeal
+/tyrprogress list
+/tyrprogress status tyr_progression:monk
+/tyrprogress buy tyr_progression:hunter tyr_progression:undead_slayer
+/tyrprogress respec tyr_progression:hunter
+/tyrprogress admin join tyr_progression:monk        # OP-only
+/tyrprogress admin event tyr_progression:monk_first_sunset  # OP-only
+/tyrprogress specialty list                       # Available Hunter creature specialties
+/tyrprogress specialty undead                     # Select one free specialty
+/tyrprogress enroll <path>                         # Only for paths enrolled manually
+/tyrprogress power blink                          # Blink; also V key
+/tyrprogress power armor                          # Toggle Armor Lock
+/tyrprogress power treasure                       # Toggle Fortune/Silk hand mode
+/tyrprogress power glide                          # Toggle Momentum Glide after Dragon
+/tyrprogress power ordeal                         # Start/abort blindness ordeal
 ```
 
 To run the module from this directory with Gradle: `gradle --no-daemon build` then `gradle runServer` or `gradle runClient`. GitHub Actions `progression-core.yml` checks Java/JUnit, boots a disposable dedicated server, and requires both Monk/Hunter datapacks to load; check the most recent branch CI run.

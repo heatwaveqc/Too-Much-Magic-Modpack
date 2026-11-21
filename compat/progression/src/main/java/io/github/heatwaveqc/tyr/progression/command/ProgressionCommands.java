@@ -20,7 +20,7 @@ public final class ProgressionCommands {
     private ProgressionCommands() {}
 
     public static void register(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("tmmprogress")
+        event.getDispatcher().register(Commands.literal("tyrprogress")
             .then(Commands.literal("list")
                 .executes(ctx -> {
                     ctx.getSource().sendSuccess(() -> Component.literal(
