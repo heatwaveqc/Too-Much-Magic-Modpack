@@ -449,3 +449,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-21 — Elemental [Flashing Walker](mods/ars-elemental-pinned-flashing-walker.md): exact Awakening mixin/native recipient, connected50logs/leaves priority, fixed spell and baby recovery.24companions;9/42 unchanged; no awakening/combat acceptance.
 
 - 2026-11-21 — Elemental [current elevators](mods/ars-elemental-pinned-upstreams.md): three exact recipes/stack geometry/medium and crouch conditions, Air10Source per20tick list/default fluids0, post-debit provider/effect boundaries.25companions;9/42 unchanged; no movement acceptance.
+
+- 2026-11-21 — Elemental [prism/lens audit](mods/ars-elemental-pinned-prisms.md): exact acquisition/aim/install/recipient, seven lens classes, Source mutation/payment order, strict chain size and Mirror overload mismatch confirmed by javap.26companions;9/42 unchanged; no routing/scribing acceptance.
