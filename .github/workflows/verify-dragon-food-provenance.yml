@@ -1,0 +1,48 @@
+name: Dragon food provenance pilot (NO GAME BOOT)
+
+on:
+  push:
+    branches:
+      - feature/dragon-food-provenance-engine-444
+  pull_request:
+    paths:
+      - 'scripts/dragon_food_provenance.py'
+      - 'tests/test_dragon_food_provenance.py'
+      - 'docs/qa/candidates/dragon-food-source-pilot-v1.json'
+      - '.github/workflows/verify-dragon-food-provenance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provenance:
+    name: Source-only diet classification checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline recipe/biology/ambiguity regressions
+        run: python3 -m unittest discover -s tests -p 'test_dragon_food_provenance.py' -v
+      - name: Generate strictly source-only pilot report
+        run: |
+          python3 scripts/dragon_food_provenance.py \
+            --input docs/qa/candidates/dragon-food-source-pilot-v1.json \
+            --output /tmp/dragon-food-provenance-report-v1.json
+          python3 - /tmp/dragon-food-provenance-report-v1.json <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1],encoding="utf-8"))
+          assert d["schema"]==1 and d["scope"]=="source_pilot_not_full_registry_census"
+          assert d["count"]==9 and d["unresolved"]==1
+          assert d["runtime_map_generated"] is False
+          assert d["numeric_food_values_generated"] is False
+          print("PASS: limited source inventory, explicit unknown queue; no runtime diet change")
+          PY
+      - name: Publish provenance report artifact (audit only)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-food-source-pilot-v1
+          path: /tmp/dragon-food-provenance-report-v1.json
+          if-no-files-found: error
