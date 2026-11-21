@@ -172,3 +172,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-20 — Elemental [tome checkpoint](mods/ars-elemental-pinned-tomes.md):12records/sixschool items/bundled resolver and native pool/payment audited. Helpers/devices/gear/worldgen/global dependency/final review open.9complete33researching; no loot/casting acceptance.
 
 - 2026-11-21 — Elemental [Siren/shrine audit](mods/ars-elemental-pinned-siren.md): wild conversion, charm Apparatus/shrine, aquarium state/type scoring, Source repayment and lossy inventory overflow; familiar effect traced, Binding capture details remain open.21 companions;9/42 source-complete unchanged. No runtime acceptance.
+
+- 2026-11-21 — Elemental [Flarecannon audit](mods/ars-elemental-pinned-flarecannon.md) and [Siren Binding closure](mods/ars-elemental-pinned-siren.md): guard recipe/AI/recovery, native familiar conversion/unlock/summon, actual50%base-cost subtraction versus20%book and duplicated damage-modifier dispatch.22 companions;9/42 unchanged; no gameplay acceptance.

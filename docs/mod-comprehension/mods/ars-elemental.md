@@ -44,4 +44,6 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 - Not run: Source-to-water output and rate; full-set armor trigger; Siren Shrine source/output cycle; turret focus synergy; prism costs and target boundary.
 
 
-[Siren acquisition and fishing shrine](ars-elemental-pinned-siren.md) covers token/charm conversion, habitat scoring, progress/Source/output order and lost inventory remainders. Familiar effect is traced; native Binding acquisition details remain open.
+[Siren acquisition and fishing shrine](ars-elemental-pinned-siren.md) covers token/charm conversion, habitat scoring, progress/Source/output order and lost inventory remainders. Native Binding/script/summon route and duplicate modifier dispatch are now traced.
+
+[Flarecannon guard and familiar](ars-elemental-pinned-flarecannon.md) covers recipe/summon/home, combat/recovery, Binding and the actual projectile base-cost reduction versus book prose.
