@@ -1,5 +1,8 @@
 # Housing provider audit — do the built houses require Prefab Custom Addon? (2026-11-20)
 
+**2026-11-20 implementation handoff (supersedes the earlier unpinned-hash blocker):** Exact selected Modrinth Prefab Custom Addon 2.7.1 `i4msNeGb/oqFiI80X` is source-pinned in `mods/prefab-custom-addon.pw.toml`. **Official downloaded-byte verification passed** in [GitHub Actions #44851493921](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44851493921): SHA512 `6c52f5ea6445e49a5c21a2b156d4195e027234dc67b6f0042749c5d0ec9cd95240a841e38a0550bb6f158e3fcaaa399da788ba685b43e5f799be19e09b0eaa44`, mod ID `prefab_custom_addon`, native mandatory dependencies Prefab `[1.0.7,)` BOTH and `ldlib2` `[2.2,)` CLIENT. LDLib2 exact bytes/runtime still need integration writer's verification. The **18-house source generator + disposable-only QA staging** lives on [draft PR #416](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/416), branched from current housing source, and **all 18 NBT + four staging-safety unit tests passed** [GitHub Actions #44851395463](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44851395463). Not merged/indexed, no actual game launch. The currently unpatched Inn still needs child [#381](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/381); personal selector and free reward remain Progression-owned and unimplemented.
+
+
 **Result: YES, for the 18 custom houses under the existing architecture. NO for the Generic native Prefab choice.** This is a source/format verification, not a Minecraft client PASS or an endorsement to ship an unreviewed template.
 
 ## Exact sources inspected
