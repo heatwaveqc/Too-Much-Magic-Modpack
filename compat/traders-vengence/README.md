@@ -49,6 +49,14 @@ Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from dr
   acquisition can still count as a fresh offense.
 - Operator commands: `/tradersvengence status <UUID>`,
   `/tradersvengence pardon <UUID>`, `/tradersvengence accuse <UUID>`.
+- An iron golem whose lethal damage source is exactly vanilla lava permanently
+  blacklists every online player in the same dimension within an inclusive
+  10-block Euclidean radius of the death position. This is proximity
+  culpability and does not require a player attacker. Fire tick, magma,
+  campfire and other fire-tagged damage are deliberately not treated as lava.
+  A golem that leaves lava and later dies only to afterburn is therefore not
+  attributed by this source-only hook; no tick scanner or last-contact state is
+  introduced.
 
 ## Known limitations / testing blockers
 1. **Source-only upgrade:** the new `WanderingTraderSpawnerMixin` redirects the native
@@ -103,6 +111,12 @@ Test in a disposable save after an owner-authorized test build:
   neutral mob too, and verify the permanent player blacklist is unaffected.
 - Confirm environmental damage does not cause mob self-defense, and normal
   villagers still trade and work when unprovoked.
+- Kill player-built and naturally spawned iron golems with direct lava damage.
+  Confirm every player at less than or exactly 10 blocks is accused, players
+  outside the radius or dimension are not, and environmental sources work with
+  no attacker entity. Repeat with fall, suffocation, drowning, magma, campfire,
+  generic fire and afterburn; none of those deaths should trigger proximity
+  culpability.
 - On another fresh unblacklisted player, provoke an Iron's Priest until it truly
   selects the player as its attack target; confirm the permanent village vendetta.
   Verify approaching or trading with a neutral Priest does NOT create an offense;
