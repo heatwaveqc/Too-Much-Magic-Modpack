@@ -113,6 +113,31 @@ def toml(row: dict) -> str:
             f"version = {quote(row['version_id'])}\n")
 
 
+def verify_dependency_closure(rows: list[dict]) -> None:
+    by_name = {row["id"]: row for row in rows}
+    require(set(by_name) == set(RELEASES), "Unexpected root/dependency selection")
+    creature = by_name["creature-feature"]
+    blueprint = by_name["blueprint"]
+    required = [d for d in creature["dependencies"] if d.get("dependency_type") == "required"]
+    require(len(required) == 1 and required[0].get("project_id") == blueprint["project"]
+            and required[0].get("version_id") == blueprint["version_id"],
+            "Creature Feature required dependencies changed: review before staging")
+    require(not any(d.get("dependency_type") == "required" for d in blueprint["dependencies"]),
+            "Blueprint has new required dependencies: review before staging")
+    require(all(d.get("dependency_type") == "optional"
+                and d.get("project_id") == "T9PomCSv"
+                for d in creature["dependencies"] if d.get("dependency_type") != "required"),
+            "Unexpected Creature Feature optional/incompatible dependency")
+    for slug, row in by_name.items():
+        runtime_required = {d.get("mod_id") for d in row["jar"]["mandatory"]}
+        require(runtime_required <= {"minecraft", "neoforge"},
+                f"{slug}: additional mandatory runtime module(s): {sorted(runtime_required)}")
+        pin = ROOT / "mods" / (slug + ".pw.toml")
+        if pin.is_file():
+            require(tomllib.loads(pin.read_text(encoding="utf-8")) == tomllib.loads(toml(row)),
+                    f"{slug}: committed Packwiz pin differs from verified official source")
+
+
 def report() -> dict:
     entries = []
     for slug in RELEASES:
@@ -124,6 +149,7 @@ def report() -> dict:
                 f"{slug}: provider JAR hash mismatch")
         row["jar"] = scan_jar(payload, slug)
         entries.append(row)
+    verify_dependency_closure(entries)
     return {"schema": 1, "issue": 419, "source": "official Modrinth exact version API and CDN",
             "verified": entries}
 
@@ -145,7 +171,7 @@ def main() -> None:
             (args.output / (row["id"] + ".pw.toml")).write_text(toml(row), encoding="utf-8")
         (args.output / "creature-feature-audit.json").write_text(
             json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print("CREATURE_AUDIT 2 official runtime JARs verified; other required dependencies need reconciliation")
+    print("CREATURE_AUDIT 2 official runtime JARs, exact Packwiz pins and required dependency closure verified; Sable optional/Hats embedded")
 
 
 if __name__ == "__main__":
