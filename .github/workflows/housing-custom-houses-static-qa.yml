@@ -1,0 +1,64 @@
+name: QA custom houses — static NBT rebuild only
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/housing-custom-houses-static-qa.yml'
+      - 'research/prefab-donors/**'
+  push:
+    branches:
+      - 'feature/prefab-all-houses-qa-staging-20261120'
+    paths:
+      - '.github/workflows/housing-custom-houses-static-qa.yml'
+      - 'research/prefab-donors/**'
+
+permissions:
+  contents: read
+
+jobs:
+  housing-source-only:
+    name: Rebuild & verify 18 NBT previews (no Minecraft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python syntax and staging safety unit tests
+        run: |
+          python -m py_compile research/prefab-donors/stage_all_houses_qa.py research/prefab-donors/test_houses_qa.py
+          python research/prefab-donors/test_houses_qa.py
+      - name: Rebuild all 18 original NBT structures and validate signatures
+        run: |
+          python research/prefab-donors/stage_all_houses_qa.py --verify-only > /tmp/tmm-houses-qa-verification.json
+          python - <<'PY'
+          import json
+          data = json.load(open('/tmp/tmm-houses-qa-verification.json', encoding='utf-8'))
+          assert data['status'] == 'STATIC_QA_PREVIEW_ONLY'
+          assert data['generated_houses'] == 18
+          assert data['native_generic_separate'] is True
+          assert data['no_free_grants'] is True
+          assert len({x['filename'] for x in data['houses']}) == 18
+          print('PASS: 18 independent NBT source builds; NO gameplay/loader/house grant tested')
+          PY
+      - name: Stage all 18 into disposable client + server-cache paths (no game boot)
+        run: |
+          qa_dir="$(mktemp -d)"
+          trap 'rm -rf "$qa_dir"' EXIT
+          touch "$qa_dir/.tmm-disposable-qa"
+          python research/prefab-donors/stage_all_houses_qa.py --stage-qa-game-dir "$qa_dir" --target singleplayer > "$qa_dir/source-report.json"
+          python - "$qa_dir" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          report = json.loads((root / 'source-report.json').read_text())
+          names = {x['filename'] for x in report['houses']}
+          assert len(names) == 18
+          client = {p.name for p in (root / 'prefab-extension').glob('*.nbt')}
+          server = {p.name for p in (root / 'prefab-extension/server-cache').glob('*.nbt')}
+          assert client == server == names
+          print('PASS: 18 staged in client root, 18 staged in server-cache; disposable static file validation only')
+          PY
