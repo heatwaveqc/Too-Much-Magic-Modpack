@@ -118,6 +118,40 @@ class DragonFoodModelTests(unittest.TestCase):
         self.assertTrue(entry["multiple_family_outcomes"])
         self.assertTrue(entry["multiple_possible_provenances"])
 
+    def test_nested_any_of_counts_preserve_alternative_material_quantity(self):
+        data = fixture()
+        edible(data, "fixture:bulk")
+        recipe(data, "fixture:bulk", [
+            {"any_of": [
+                {"item": "minecraft:beef"},
+                {"item": "minecraft:carrot"},
+            ], "count": 3}
+        ], preparation="minimally_processed")
+        entry = next(r for r in module.FoodModel(data).report()["records"]
+                     if r["item"] == "fixture:bulk")
+        self.assertEqual(entry["status"], "resolved")
+        self.assertEqual(len(entry["variants"]), 2)
+        self.assertIn({"terrestrial_animal": 3},
+                      [v["components"] for v in entry["variants"]])
+        self.assertIn({"plant_fungus": 3},
+                      [v["components"] for v in entry["variants"]])
+
+    def test_partly_unresolved_tag_never_looks_fully_resolved(self):
+        data = fixture()
+        edible(data, "fixture:partial_broth")
+        data["tags"]["fixture:broth_options"] = [
+            "minecraft:carrot", "fixture:unknown_stock_source"
+        ]
+        recipe(data, "fixture:partial_broth", [
+            {"tag": "fixture:broth_options"}
+        ], "cooked")
+        result = module.FoodModel(data).report()
+        entry = next(r for r in result["records"] if r["item"] == "fixture:partial_broth")
+        self.assertEqual(entry["status"], "partial")
+        self.assertEqual(entry["variants"][0]["components"], {"plant_fungus": 1})
+        self.assertIn("unresolved_recipe_ingredient",
+                      {x["reason"] for x in entry["issues"]})
+
     def test_two_recipe_sources_for_one_output_do_not_collapse(self):
         data = fixture()
         edible(data, "fixture:food")
