@@ -255,6 +255,8 @@ The second research pass has now exhaustively indexed the six major **generated 
 
 **TMM rule: vanilla XP does not award MXP.** The Gathering and its **Tome of Peritia** are vanilla-experience collection/storage features, not part of MXP generation. A monster kill may have independent custom skill rewards, but capturing the resulting vanilla XP orbs does not create any MXP.
 
+**Testing scope:** Treat the native Gathering ritual and its Tome of Peritia XP storage as working upstream features; **no standalone gameplay test is required** because TMM has not altered either. If we later change the ritual, item handler, XP handling or author an FTB detector, test **that TMM-owned change only**. Cross-mod/blacklist tests apply only to actual pack overrides and affected boundaries.
+
 The first Atlas pilot **incorrectly left The Gathering in logistics and Vortex/Repulsion in generic control**, without connecting them to the physical mob-farm pipeline. The [source-audited construction guide](../inventories/neovitae-mob-farm-systems.md) now documents **separate mob movement, collection of dropped items, vanilla XP storage, harvesting EV and no-entity simulation** with first/middle/terminal use and negative cases. Native Gathering is the registered ritual `neovitae:zephyr`, **not** a live-entity attractor. The native **Vortex Sigil is a persistent pulling Alchemy Array; Repulsion Array pushes hostiles**, distinct from Ars Nouveau's separately cast Pull glyph.
 
 ## 9. Source ledger
