@@ -176,3 +176,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-21 — Elemental [Flarecannon audit](mods/ars-elemental-pinned-flarecannon.md) and [Siren Binding closure](mods/ars-elemental-pinned-siren.md): guard recipe/AI/recovery, native familiar conversion/unlock/summon, actual50%base-cost subtraction versus20%book and duplicated damage-modifier dispatch.22 companions;9/42 unchanged; no gameplay acceptance.
 
 - 2026-11-21 — Elemental [Flashjack audit](mods/ars-elemental-pinned-flashjack.md): token/charm/scout links, paid native turrets, Walker warnings, FlashLightning rod/copper effects, recovery and familiar conditions. Movement discount checks first EFFECT, so ordinary Self→Leap does not qualify despite book prose.23 companions;9/42 unchanged; no acceptance tests.
+
+- 2026-11-21 — Elemental [Flashing Walker](mods/ars-elemental-pinned-flashing-walker.md): exact Awakening mixin/native recipient, connected50logs/leaves priority, fixed spell and baby recovery.24companions;9/42 unchanged; no awakening/combat acceptance.

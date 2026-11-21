@@ -49,3 +49,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Flarecannon guard and familiar](ars-elemental-pinned-flarecannon.md) covers recipe/summon/home, combat/recovery, Binding and the actual projectile base-cost reduction versus book prose.
 
 [Flashjack scout/familiar](ars-elemental-pinned-flashjack.md) covers wild conversion, turret/walker targeting, real turret Source payment, appearance/recovery and ineffective normal first-form movement discount condition.
+
+[Flashing Weald Walker](ars-elemental-pinned-flashing-walker.md) traces exact50-block Awakening override, native guardian recipient/spell/patrol and adult-to-baby recovery.

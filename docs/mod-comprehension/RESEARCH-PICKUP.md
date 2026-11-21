@@ -1,3 +1,10 @@
+# Latest checkpoint — 2026-11-21 Elemental Flashing Walker
+
+- Added ars-elemental-pinned-flashing-walker.md: required AwakeningMixin scans Flashing first before nativefindTargets, DFS350/exactyellowlog+leaves>=50/near ritual3,1,3; nativeprogress>5/20ticks/Source0/unaugmented branch. Destruction without drops before uncheckedspawn. ActualnativeWealdWalker factory Projectile/Spark/Launch/Launch/Delay/WindShear; no Homing or worker charm/familiar. Native attrs60/10.5attack/regen1per20, adultfatal→baby60health/secondbabyfataldies, BoneMeal ageup; nativegoals/home/Flashjacktargetrecipient. Naturalspawn builderweight10/group1–3 documented, fullworldgenpending.
+- **Next devices/prism lenses/relays** inventory exact registered classes/recipes/Notebook and two-ended native recipients; then bangles/bags/gear/worldgen/VexingCaves/pilot35–37/finalreview/globalSauceversionselection.24companions,39glyphs/12tomes/helperroutes do not equal whole-addon completion.9complete33researching/no hard blocker/hourlyactive. Exact nativeWealdWalker inclinners+CastSpellGoal+SmashGoal freshly selected/decompiled in elemental-parent-fresh. Integration077a34d8706dba51b10ad65dde05a7d34cfb5c96 unchanged on fetch. Docs only/no subagents/assembly/launch/runtime edits/merge; gitlog actual pushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental Flashjack
 
 - Added ars-elemental-pinned-flashjack.md full scout/familiar route: Flashpine wild conversion>60ticks/1–2tokens; repeated feeding wastes fruit. Source0Token+2Air+2Gold charm; player tame/home. Wand turret list allows duplicates/stale entries, type blacklist/home callbacks lack explicit ownership/dimension guard. Hijack goal REQUIRES nonempty list even glowing/spark/Walker warning; close spark4/40tick, turret passes20ticks/native Source still paid; alive Walkers30box no ownerfilter. Native parent turret audit crosslinked for debit-before-dispatch. FlashLightning rod/copper/gameevent without normal vanilla entity/fire loop. Owner fruit lightning no consume; nonowner fruit processing edge; familiar fruit6000Speed/NightVision and different dye map/cost.
