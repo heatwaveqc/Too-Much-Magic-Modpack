@@ -375,7 +375,7 @@
       "merged_from": "feature/b16-betterend-thallasium-iesnium",
       "merged_pr": 276,
       "original_source_commit": "34df74d2e61e351f6b3f2d07f2e86aed1b602bd7",
-      "note": "Four 1.21.1 NeoForge New Dawn mod versions SHA-512 pinned and indexed with exactly one Occultism Thallasium→Iesnium Spirit Fire route. No End worldgen, server, client, harvest or gameplay PASS. Retains existing unrelated Gilded B16 batch and holds YUNG Better End Island."
+      "note": "Four 1.21.1 NeoForge New Dawn mod versions SHA-512 pinned and indexed with exactly one Occultism Thallasium\u2192Iesnium Spirit Fire route. No End worldgen, server, client, harvest or gameplay PASS. Retains existing unrelated Gilded B16 batch and holds YUNG Better End Island."
     },
     {
       "name": "b17-b18-yung-ars-pinned",
@@ -447,17 +447,17 @@
       "note": "Exactly 18 KubeJS source assets from original #126, indexed in current Packwiz with hashes. Includes 17 recipe/fluid-tag assets and 1 Iron blood vial drinkable startup script. Strict component-aware JAWR right-click/finish handler merged into existing first-party compat/transformations stream; no duplicate owner. Real current Transformations JAR rebuild, native recipe codecs, cauldron capabilities, client effects and crossmod compatibility require owner-authorized gameplay acceptance. EvilCraft canonical blood at supported bottle/bucket recipes only, NOT universal Neo Vitae drain/pipes/JEI renaming."
     },
     {
-      "name": "traders-vengence-module",
+      "name": "traders-vengeance-module",
       "branch": "test/full-integration",
       "paths": [
-        "compat/traders-vengence/"
+        "compat/traders-vengeance/"
       ],
       "source_commit": "a5c8f32bd50744e2b3e083273c50e75d93b27c82",
       "merged_from": "feature/traders-vengence",
       "merged_pr": 283,
       "mode": "source-module-ci-not-installed",
       "integrated_into_baseline": true,
-      "note": "Standalone NeoForge 1.21.1 Trader's Vengence offender blacklist, village reprisals, Iron's 3.16.3 Magic Missile, Hero pardon and natural trader spawn/sign rules. Reconciled onto latest baseline; natural WanderingTraderSpawner Mixin filters only scheduled spawn candidates, retries bounded native searches (no EntityJoin veto), manual summons unaffected; guard goal duplicate registration. Source and quick Module CI only. NO first-party traders_vengence JAR assembled/pinned, no dedicated server boot/client spawn/combat test. B20 magic stock and B19 Gateways remain separate source streams, untouched. Next owner-authorized all-ready QA must attempt actual JAR inclusion; do not label gameplay PASS."
+      "note": "Standalone NeoForge 1.21.1 Trader's Vengeance offender blacklist, village reprisals, Iron's 3.16.3 Magic Missile, Hero pardon and natural trader spawn/sign rules. Reconciled onto latest baseline; natural WanderingTraderSpawner Mixin filters only scheduled spawn candidates, retries bounded native searches (no EntityJoin veto), manual summons unaffected; guard goal duplicate registration. Source and quick Module CI only. NO first-party traders_vengeance JAR assembled/pinned, no dedicated server boot/client spawn/combat test. B20 magic stock and B19 Gateways remain separate source streams, untouched. Next owner-authorized all-ready QA must attempt actual JAR inclusion; do not label gameplay PASS."
     },
     {
       "name": "newbie-mode-smartkeep-pinned",
@@ -587,9 +587,9 @@
     "TARGETED RETIREMENT QA: 13 new unrelated runtime feature branches were discovered and explicitly deferred_pending_runtime, not silently imported. Do not label this artifact a complete union of all new feature work. Merge their reviewed paths separately before a comprehensive all-feature test.",
     "RUNTIME DEFERRAL: Ars quest pilot from feature/ars-quest-pilot is source-only in this retirement QA because its 187-quest legacy manifest would overwrite the current Alcohol Is Magic questline and reintroduce obsolete tech. Integrate Ars pilot only after merging 19 Alcohol quests and reconciling locale/IDs without content loss.",
     "NEXT QA: import source-locked Bundle Curios slots (3 files + locale key), NOT the old advancement or first_log.mcfunction; test one claim per player and no auto gift.",
-    "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengence #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral.",
-    "TRADER'S VENGENCE #219→#283: source-integrated standalone compat/traders-vengence but NOT an installed first-party JAR. Next comprehensive QA must attempt to build/install the exact NeoForge 21.1.265 Java 21 module alongside Iron's 3.16.3, prove natural-only trader spawn Mixin attaches (with No Soliciting, ±10 sea level and natural ground), separate /summon/spawn egg exemptions, persistent blacklists and Hero pardons, villager/golem/llama AI and real Iron's Magic Missiles, B20 trade-stock compatibility. Record precise blockers and full client/server acceptance; no full smoke without owner approval. Docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md.",
-    "NEWBIE #241→#285/#286: shared Progression/MXP source, species setter vetoes, exact 1.21.1 NeoForge Smart Keep Inventory pin, 227-quest personal graduation, Smart Keep tag predicate and disabled Tyz Safekept are integrated into source/Packwiz. First-party tmm_progression/tmm_mxp/tmm_transformations JARs require rebuilding/replacing current runtime in next owner-authorized full candidate; FTB Essentials native /home,/sethome,/rtp,/back availability still depends on separate reviewed mod pin. Live 2-player Corail/Curios/XP inventory retention, team graduation isolation, Iron's/Ars virtual Elytra, native mod setter mixins, any-path (Gilded) guards, crossmod and multiplayer acceptance untested. Prefab is DESIRED, unpinned, no house reward. Do not claim ready as an installed full modpack without these checks. See docs/qa/NEWBIE-MODE-SMARTKEEP-RECONCILIATION-2026-11-16.md.",
+    "READY FEATURE BLOCKERS FOR COMPREHENSIVE QA: Newbie Mode #241 lacks installed Smart Keep Inventory (CF 7530253) and must reconcile FTB graduation quest without clobbering baseline; Trader's Vengeance #219 and MXP #161 require additional first-party JAR packaging; JAWR Tyz forms #94 still source-only; BetterEnd/YUNG B16/B17 need exact compatible hash pins. No blanket owner deferral.",
+    "TRADER'S VENGEANCE #219\u2192#283: source-integrated standalone compat/traders-vengeance but NOT an installed first-party JAR. Next comprehensive QA must attempt to build/install the exact NeoForge 21.1.265 Java 21 module alongside Iron's 3.16.3, prove natural-only trader spawn Mixin attaches (with No Soliciting, \u00b110 sea level and natural ground), separate /summon/spawn egg exemptions, persistent blacklists and Hero pardons, villager/golem/llama AI and real Iron's Magic Missiles, B20 trade-stock compatibility. Record precise blockers and full client/server acceptance; no full smoke without owner approval. Docs/qa/TRADERS-VENGENCE-RECONCILIATION-2026-11-16.md.",
+    "NEWBIE #241\u2192#285/#286: shared Progression/MXP source, species setter vetoes, exact 1.21.1 NeoForge Smart Keep Inventory pin, 227-quest personal graduation, Smart Keep tag predicate and disabled Tyz Safekept are integrated into source/Packwiz. First-party tmm_progression/tmm_mxp/tmm_transformations JARs require rebuilding/replacing current runtime in next owner-authorized full candidate; FTB Essentials native /home,/sethome,/rtp,/back availability still depends on separate reviewed mod pin. Live 2-player Corail/Curios/XP inventory retention, team graduation isolation, Iron's/Ars virtual Elytra, native mod setter mixins, any-path (Gilded) guards, crossmod and multiplayer acceptance untested. Prefab is DESIRED, unpinned, no house reward. Do not claim ready as an installed full modpack without these checks. See docs/qa/NEWBIE-MODE-SMARTKEEP-RECONCILIATION-2026-11-16.md.",
     "OWNER-DEFERRED: actual JAWR Tyz skill effects (inactive catalog only), JAWR blood expenditure MXP hook, Newbie Prefab housing and crafting restrictions, Newbie/Astral dynamic darkness. Static More Darkness included."
   ],
   "deferred_pending_runtime": {

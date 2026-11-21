@@ -44,9 +44,9 @@ def validate_jar(jar, mod):
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
 def expected_license(directory):
-    return "GPL-3.0-only" if directory.name == "traders-vengence" else "MIT"
+    return "GPL-3.0-only" if directory.name == "traders-vengeance" else "MIT"
 
-CALIBERARMS_MANIFEST = "META-INF/traders_vengence/caliberarms/provenance.json"
+CALIBERARMS_MANIFEST = "META-INF/traders_vengeance/caliberarms/provenance.json"
 CALIBERARMS_JAR_SHA256 = "88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90"
 
 def caliberarms_asset_paths(directory):
@@ -54,21 +54,28 @@ def caliberarms_asset_paths(directory):
     root = directory / "src/main/resources"
     manifest = json.loads((root / CALIBERARMS_MANIFEST).read_text(encoding="utf-8"))
     expected_paths = {
-        "META-INF/traders_vengence/caliberarms/LICENSE.txt",
-        "META-INF/traders_vengence/caliberarms/CREDITS.md",
-        "assets/traders_vengence/models/item/npc_pistol.json",
-        "assets/traders_vengence/textures/item/gun/m1911.png",
-        "assets/traders_vengence/sounds.json",
-        *(f"assets/traders_vengence/sounds/guns/m1911/fire_{i}.ogg" for i in (1, 2)),
-        *(f"assets/traders_vengence/sounds/reload/pistol/{action}_{i}.ogg"
+        "META-INF/traders_vengeance/caliberarms/LICENSE.txt",
+        "META-INF/traders_vengeance/caliberarms/CREDITS.md",
+        "assets/traders_vengeance/models/item/npc_pistol.json",
+        "assets/traders_vengeance/textures/item/gun/m1911.png",
+        "assets/traders_vengeance/sounds.json",
+        *(f"assets/traders_vengeance/sounds/guns/m1911/fire_{i}.ogg" for i in (1, 2)),
+        *(f"assets/traders_vengeance/sounds/reload/pistol/{action}_{i}.ogg"
           for action, count in (("mag_in", 2), ("mag_out", 2), ("slide", 4))
           for i in range(1, count + 1)),
     }
-    if manifest.get("jar_sha256") != CALIBERARMS_JAR_SHA256 or set(manifest.get("files", {})) != expected_paths:
+    files = manifest.get("files", {})
+    adapted = manifest.get("adapted_files", {})
+    if (manifest.get("jar_sha256") != CALIBERARMS_JAR_SHA256
+            or set(files) != expected_paths or not set(adapted) <= expected_paths):
         raise ValueError("Unreviewed Caliber Arms donor manifest")
-    for path, expected_hash in manifest["files"].items():
+    for path, source_hash in files.items():
+        record = adapted.get(path)
+        if record is not None and record.get("source_sha256") != source_hash:
+            raise ValueError("Caliber Arms donor provenance mismatch: " + path)
+        expected_hash = record["packaged_sha256"] if record else source_hash
         if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected_hash:
-            raise ValueError("Caliber Arms source asset hash mismatch: " + path)
+            raise ValueError("Caliber Arms packaged asset hash mismatch: " + path)
     return sorted(expected_paths | {CALIBERARMS_MANIFEST})
 
 def validate_caliberarms_assets(directory, z):
@@ -78,9 +85,9 @@ def validate_caliberarms_assets(directory, z):
             raise ValueError("Missing, duplicate or inconsistent Caliber Arms resource: " + name)
 
 MINIGUN_AUDIO_BLOBS = {
-    "assets/traders_vengence/sounds/minigun/minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
-    "assets/traders_vengence/sounds/minigun/minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019",
-    "assets/traders_vengence/sounds/minigun/minigun_spinup.ogg": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed",
+    "assets/traders_vengeance/sounds/minigun/minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
+    "assets/traders_vengeance/sounds/minigun/minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019",
+    "assets/traders_vengeance/sounds/minigun/minigun_spinup.ogg": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed",
 }
 
 def validate_minigun_audio(directory, z):
@@ -118,7 +125,7 @@ def validate_jar_license(directory, jar):
         for required in markers:
             if required not in license_text:
                 raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
-        if directory.name == "traders-vengence":
+        if directory.name == "traders-vengeance":
             validate_caliberarms_assets(directory, z)
             validate_minigun_audio(directory, z)
 
@@ -135,11 +142,11 @@ def verify_trader_irons_pin(jar, root=ROOT):
     expected = "[" + match.group(1) + "]"
     with zipfile.ZipFile(jar) as z:
         metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
-    rows = [d for d in metadata.get("dependencies", {}).get("traders_vengence", [])
+    rows = [d for d in metadata.get("dependencies", {}).get("traders_vengeance", [])
             if d.get("modId") == "irons_spellbooks"]
     if len(rows) != 1 or rows[0].get("versionRange") != expected or rows[0].get("type") != "required" or rows[0].get("ordering") != "AFTER" or rows[0].get("side") != "BOTH":
-        raise ValueError("Trader's Vengence Iron's dependency must be required, BOTH, AFTER, exact native pinned range " + expected)
-    print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
+        raise ValueError("Trader's Vengeance Iron's dependency must be required, BOTH, AFTER, exact native pinned range " + expected)
+    print("PASS: compiled Trader's Vengeance requires exact native Iron's version " + expected)
 
 def verify_packaging_inputs(addons, root=ROOT):
     expected = {jar.name: (directory, mod) for directory, mod, jar in selected(root)}
@@ -161,7 +168,7 @@ def main():
             subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
             validate_jar_license(directory, jar)
-            if mod == "traders_vengence":
+            if mod == "traders_vengeance":
                 verify_trader_irons_pin(jar)
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
@@ -171,7 +178,7 @@ def main():
         if args.mods_dir is None:
             p.error("--mods-dir required")
         expected = {jar.name for _, _, jar in rows}
-        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengence-") or j.name in expected}
+        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengeance-") or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
         for directory, mod, jar in rows:
