@@ -20,7 +20,7 @@
 | **Touch → Break → AoE** | 5 | 10 | 35 (Break) | **50 mana** | Tier-II AoE adds surrounding target blocks, not unlimited area; Break must be able to harvest each block |
 | **Projectile → Pierce → Break** | 10 | 10 | 40 (Projectile) | **60 mana** | Tier-II Pierce modifies projectile behavior, **not** Break, because it follows Projectile |
 
-These numbers are arithmetic from the exact 5.13.5 Java defaults, assuming **no per-action augment price override for the listed pair, no configured price overrides, no event adjustments and no caster discounts**. They are *examples*, not measured runtime outcomes or claims of a particular player's maximum mana. Illustrative ingredient/learning-glyph costs must be drawn separately from the [133 base+addon learning recipes](ars-nouveau-glyph-recipes.md) and addon indexes.
+These numbers are arithmetic from the exact 5.13.5 Java defaults, assuming **no per-action augment price override for the listed pair, no configured price overrides, no event adjustments and no caster discounts**. They are *examples*, not measured runtime outcomes or claims of a particular player's maximum mana. Ingredient/learning costs must be drawn separately: the [82 base glyph learning recipes](ars-nouveau-glyph-recipes.md) plus [39 Elemental glyphs](ars-elemental-glyph-recipes.md), [9 Controle glyphs](ars-controle-exact-recipes.md) and [3 Additions glyphs](ars-additions-high-impact.md) comprise the 133 known Ars-family learning JSONs; those vanilla XP payments do not enter mana arithmetic.
 
 ## II. Validators are not a single rule applied identically at every stage
 
