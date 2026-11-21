@@ -2,6 +2,14 @@
 
 This file governs every automated contributor and pack change.
 
+## Dragon Survival species diet — owner-locked invariant (2026-11-16, 2026-11-19, reaffirmed 2026-11-21)
+
+**Do not invert Forest and Cave diets.** **Forest Dragon = raw meat AND raw fruit/vegetables/other approved raw plant foods**, with its native `#c:foods/raw_meat` and individual original meat selectors preserved. **Cave Dragon = Dragon Survival's specially charred meat/seafood and its other original cave foods**; the ordinary raw/cooked meat or fish used to **craft** those charred outputs are *recipe inputs*, not automatically edible Cave foods. **Sea Dragon = raw aquatic fish/plants, plus explicitly approved rice-free sushi and specialty foods.** Existing explicit magical-food exceptions are separate. No broad grain/ordinary-cooked meal admission.
+
+**Do not judge diet breadth by selector counts.** A small Cave `diet_entries.json` list can accept many cooked recipe inputs through tags and processing; a large Forest list includes native raw-meat allowances. The authoritative species mapping is the *current approved owner decision plus actual source* `kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json`, documented in [Dragon Survival diets](docs/DRAGON-DIETS-2026-11-14.md), with regression guard `scripts/verify_dragon_diets.py`. Review the real food item registry, recipe outputs, input tags and the installed mod version before changing the list. Prior food summaries/PR descriptions that mention only Forest produce are **incomplete, not a vegetarian restriction**. Prior assistant descriptions of Cave as a raw-meat eater are **incorrect and superseded**.
+
+**Change discipline:** preserve native selectors absent an explicit owner-approved removal; use a focused before/after map diff and run the source verifier. New raw monster meat goes to Forest, not Cave. New Cave-compatible raw ingredients require an inspected route through ordinary cooking then native charring rather than a direct raw-food permission or an invented raw+coal shortcut. If correcting an indexed map, the single integration writer must update Packwiz `index.toml`/`pack.toml` hashes atomically. Source inspection or static checks do not prove consumption in-game. The Nov 21 food-add-on [candidate matrix](docs/qa/FOOD-ADDON-SPECIES-MATRIX-2026-11-21.md) explicitly preserves this rule.
+
 ## Task selection: live design chats vs scheduled Work (owner guideline, 2026-11-20)
 
 - **Live, owner-attended chats are design-first by default.** When choosing an open item to tackle next in a live conversation, favor work that benefits from owner decisions: mechanics, progression, balance, mod inclusion, architecture, ambiguous requirements, and tradeoffs. Investigate options and obtain the owner's decision rather than silently inventing one.
