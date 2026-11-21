@@ -1,3 +1,10 @@
+# Latest checkpoint — 2026-11-21 Elemental upstream devices
+
+- Added ars-elemental-pinned-upstreams.md all3Apparatusrecipes/source0; AirShulkerShellgate, Water/MagmaSoulSand. Same-type stack below top yields raw46*power AABBheight+1.5inflate, livingentities/noobstruction/ownercheck. Air20ticks/10*powerSource oncepernonemptylist, notperentity; crouchSlowFallII vsLevitationII50ticks/noopposite-effectremove. Water2ticks/defaultcost0/Y=max(.4,oldY+.1)/Breathing100; Magma2ticks/default0/Y=.4/FireRes100; crouchskipsfluidlift ANDprotectionrenewal. NativeSourceaggregate refundinsufficient, addonprovider-validitycheckAFTERdebit/no refund; effect rejection no refund. Redstone disabledsaved. No movement/unsafe-lava acceptance.
+- **Next prism/devices/relays** common/blocks/prism AdvancedPrism/Tile, AbstractPrismLens + Acceleration/Deceleration/Piercing/Homing/Arc/Chaining/Rainbow, SpellMirror; then4elementalrelays and turret subclasses, bangles/bags/gear/worldgen/VexingCaves/pilot35–37/fullreview/globalSauceversionselection.25companions,39glyphs/12tomes/helpers still not whole-addon completion.9complete33researching/no hard blocker/hourlyactive. Integration077a34d8706dba51b10ad65dde05a7d34cfb5c96 unchanged; twoexacthashes checkedthisrun. Docs only/no subagents/assembly/launch/runtime edits/merge; gitlog actual pushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental Flashing Walker
 
 - Added ars-elemental-pinned-flashing-walker.md: required AwakeningMixin scans Flashing first before nativefindTargets, DFS350/exactyellowlog+leaves>=50/near ritual3,1,3; nativeprogress>5/20ticks/Source0/unaugmented branch. Destruction without drops before uncheckedspawn. ActualnativeWealdWalker factory Projectile/Spark/Launch/Launch/Delay/WindShear; no Homing or worker charm/familiar. Native attrs60/10.5attack/regen1per20, adultfatal→baby60health/secondbabyfataldies, BoneMeal ageup; nativegoals/home/Flashjacktargetrecipient. Naturalspawn builderweight10/group1–3 documented, fullworldgenpending.

@@ -51,3 +51,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Flashjack scout/familiar](ars-elemental-pinned-flashjack.md) covers wild conversion, turret/walker targeting, real turret Source payment, appearance/recovery and ineffective normal first-form movement discount condition.
 
 [Flashing Weald Walker](ars-elemental-pinned-flashing-walker.md) traces exact50-block Awakening override, native guardian recipient/spell/patrol and adult-to-baby recovery.
+
+[Three current elevators](ars-elemental-pinned-upstreams.md) covers exact recipes/stage gates, stack geometry, medium/crouch behavior, redstone and once-per-list Source payment/failed-effect cost.
