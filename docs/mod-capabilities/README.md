@@ -12,6 +12,16 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
 
+## Active pilot and research backlog
+
+**Neo Vitae pilot (2026-11-20) — source-backed partial, not yet quest-source-ready:**
+
+- [Neo Vitae 29-axis detailed capability dossier](mods/neovitae.md): typed block/player/item energy, six formal altar tiers, representative 21 multi-axis capability records, concrete objects, evidence and missing recipe coverage.
+- [Neo Vitae quest-authoring map](mods/neovitae-quest-map.md): 36 proposed main/optional teachable steps with exact player actions, observable outcomes, honest FTB detector uncertainty and safe reward directions. These are research IDs, not a committed quest chapter.
+- [Neo Vitae declared registry inventory](inventories/neovitae-registries.md): 211 statically named items, 90 blocks and six Orb data-map values from version-aligned upstream source; **not** a pin-matched JAR dump or evidence that every object is craftable.
+
+**Remaining work before source-ready:** inspect pinned JAR recipes and book pages; map all required altar/Tabula/Forge/Athanor costs, major array/ritual families and their specific mechanics; reconcile actual pack overrides, creature/gate exclusions and real FTB detectors; follow the positive/boundary gameplay tests. Another researcher should fill these gaps rather than repeat the high-level profile.
+
 ## The axis taxonomy — 29 research dimensions, no rankings
 
 The initial owner-proposed 16 axes remain. There are 12 supporting suggestions from draft v0.1 and **one new explicitly owner-directed axis: progression tiers**, whose transition graph is also required **throughout every other axis**. The previous energy axis has been redefined to include **all typed magical resources and all storage locations**, not only FE.
