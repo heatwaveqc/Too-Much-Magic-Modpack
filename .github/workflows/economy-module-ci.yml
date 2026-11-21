@@ -45,6 +45,8 @@ jobs:
           python3 -m unittest discover -s compat/economy/tools -p 'test_verify_converter_contract.py' -v
       - name: Fetch exact hash-locked compile classpath
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Audit pinned Project Expansion EMC Link account resolution (Type A bytecode only)
+        run: python3 compat/economy/tools/audit_native_emc_link_offline.py "$RUNNER_TEMP/economy-compile-mods/projectexpansion-1.21.1-1.0.6.jar"
       - name: Compile Economy and execute unit tests
         working-directory: compat/economy
         run: gradle --no-daemon "-PtmmCompileModsDir=$RUNNER_TEMP/economy-compile-mods" clean build
