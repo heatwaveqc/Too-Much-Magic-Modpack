@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": {
+    "components": {
+      "bountiful:decree_data": {
+        "ids": [
+          "tmm_hunting"
+        ],
+        "rank": 1
+      }
+    },
+    "count": 1,
+    "id": "bountiful:decree"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

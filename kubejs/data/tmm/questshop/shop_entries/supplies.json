@@ -46,5 +46,11 @@
     "amount": 64,
     "cost": 5,
     "category": "tmm:supplies"
+  },
+  {
+    "item": "bountiful:bountyboard",
+    "amount": 1,
+    "cost": 5,
+    "category": "tmm:supplies"
   }
 ]
