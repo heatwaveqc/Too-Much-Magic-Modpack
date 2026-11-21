@@ -23,7 +23,7 @@ def main() -> None:
     sys.path.insert(0, str(ROOT / 'scripts'))
     from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths, MINIGUN_AUDIO_BLOBS
     def add_donor_fixture(z, directory, case="valid"):
-        if directory.name != "traders-vengence":
+        if directory.name != "traders-vengeance":
             return
         for path in [*caliberarms_asset_paths(directory), *MINIGUN_AUDIO_BLOBS]:
             if case == "missing_donor_license" and path.endswith("/caliberarms/LICENSE.txt"):
@@ -39,7 +39,7 @@ def main() -> None:
                 data += b"modified"
             z.writestr(path, data)
         if case == "uncleared_hud_audio":
-            z.writestr("assets/traders_vengence/sounds/hud_init.ogg", b"not allowed")
+            z.writestr("assets/traders_vengeance/sounds/hud_init.ogg", b"not allowed")
 
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
@@ -61,7 +61,7 @@ def main() -> None:
         for directory, mod, expected_path in selected():
             j = folder / ("license-test-" + expected_path.name)
             cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
-            if directory.name == "traders-vengence":
+            if directory.name == "traders-vengeance":
                 cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
                           "wrong_minigun_audio", "missing_spinup_audio", "uncleared_hud_audio")
             for case in cases:
@@ -84,8 +84,8 @@ def main() -> None:
         trader = folder / "trader-dependency-test.jar"
         for version, valid in (("[3.16.3,)", False), ("[1.21.1-3.16.3]", True), ("[1.21.1-3.16.4]", False)):
             with zipfile.ZipFile(trader, "w") as z:
-                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "traders_vengence"\n'
-                           '[[dependencies.traders_vengence]]\nmodId = "irons_spellbooks"\n'
+                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "traders_vengeance"\n'
+                           '[[dependencies.traders_vengeance]]\nmodId = "irons_spellbooks"\n'
                            'type = "required"\nordering = "AFTER"\nside = "BOTH"\n'
                            f'versionRange = "{version}"\n')
             try:
