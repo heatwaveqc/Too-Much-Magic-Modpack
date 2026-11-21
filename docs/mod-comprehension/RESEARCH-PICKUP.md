@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental glyph recipe closure
+
+- Added ars-elemental-pinned-bubble-shield.md finalglyph+39recipegroupmap. Tier2XP55mana400/statusmana_shield/targetManaCap;30+8duration. DamageC=max(0,350-.75*discountShieldOnly),min(amp+1,M/C) but requiresM≥C, debitactualReduction*C ONLYinvulncontainerinequality, removebelowC; zeroCNaNboundarynotfreeclaim. Debuff10%/balance≥700/rawcostdebit350/blacklistLevitation,Hymn,Sickness, MagicFireNeutralnewapplicationblockfree. No idleSourceinvented. MethodCarianPhalanx registeredONLY!production, no normal40thglyphpath.
+- **Next12castertomes** currentrecipes/casterdata/SchoolCasterTome/nativeCasterTome/propagation/runtimepayments and schoolfocusbehavior; thenSirens/helpers/devices/prismlenses/relays/bangles/bags/othergear/worldgen/VexingCaves/pilot35–37/fullreview. All39packagedglyphpaths through19companions now sourceaudited, but wholeaddonstillresearching. GlobalSaucebundledselectionopen.
+- Fullclasses elemental-fresh/elemental-sauce-fresh; selectedparentfresh. Integrationlatest2e63c50f7d154bd43871e88163049569609caa72; priorElemental/Arspinsunchanged.9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Charm/Link/Phantom
 
 - Added ars-elemental-pinned-anima.md3recipes/routes. CharmPlayer/server/blacklist/maxhealth<150, hostileR=int10+100healthratio,B10+5amp(+50wornNecroundead); tameHorseonlysetTamed/notowner; Foxtrust/lovebranches. EnthrallEffect persistentthrallkey thenunrelated ANYMobEffect.Remove clearskey(!); expirykeyclear/persistenceflagnotreset. Saucefollow/target/alliedrecipient traced; ElementalconstructorENABLE_ENTHRALL=true. AlsoRageEntityMixinalliedfalse nowconfirmed correctingprioropenrecipient.
