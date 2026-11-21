@@ -7,7 +7,6 @@ import io.github.heatwaveqc.tyr.progression.state.Discoveries;
 import io.github.heatwaveqc.tyr.progression.state.Modes;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
-import io.github.heatwaveqc.tyr.progression.runtime.TyzMonkBridge;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
@@ -177,7 +176,7 @@ public final class ProgressionApi {
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
                 if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
                 recent.put(cooldownKey,now);
-                long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),TyzMonkBridge.bonusMonkXp(player,required,source.xp()));
+                long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),source.xp());
                 next=ChannelEngine.grant(next,system,xp,0);
             }
         }

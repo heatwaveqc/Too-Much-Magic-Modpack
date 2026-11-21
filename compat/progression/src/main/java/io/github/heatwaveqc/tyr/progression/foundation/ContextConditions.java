@@ -77,10 +77,37 @@ public final class ContextConditions {
             case "sky_visible"->p.level().canSeeSky(p.blockPosition().above());
             case "empty_hand"->p.getMainHandItem().isEmpty();
             case "empty_hands"->p.getMainHandItem().isEmpty()&&p.getOffhandItem().isEmpty();
-            case "curios_empty"->io.github.heatwaveqc.tyr.progression.runtime.TyzMonkBridge.emptyCurios(p);
+            case "curios_empty"->emptyCurios(p);
             default->{boolean empty=true;for(var stack:p.getArmorSlots())if(!stack.isEmpty())empty=false;yield empty;}
         });
     }
+    /** Player-owned equipment predicate; never requires the retired Tyz bridge. */
+    private static boolean emptyCurios(ServerPlayer player) {
+        if (!net.neoforged.fml.ModList.get().isLoaded("curios")) return true;
+        try {
+            Class<?> api = Class.forName("top.theillusivec4.curios.api.CuriosApi");
+            Object raw = api.getMethod("getCuriosInventory",
+                    net.minecraft.world.entity.LivingEntity.class).invoke(null, player);
+            if (!(raw instanceof java.util.Optional<?> optional) || optional.isEmpty())
+                return false;
+            Object inventory = optional.get();
+            Object rawMap = inventory.getClass().getMethod("getCurios").invoke(inventory);
+            if (!(rawMap instanceof java.util.Map<?, ?> entries)) return false;
+            for (Object slotHandler : entries.values()) {
+                Object stacks = slotHandler.getClass().getMethod("getStacks").invoke(slotHandler);
+                int count = ((Number) stacks.getClass().getMethod("getSlots").invoke(stacks)).intValue();
+                for (int slot = 0; slot < count; slot++) {
+                    Object stack = stacks.getClass().getMethod("getStackInSlot", int.class).invoke(stacks, slot);
+                    if (stack instanceof net.minecraft.world.item.ItemStack item && !item.isEmpty())
+                        return false;
+                }
+            }
+            return true;
+        } catch (ReflectiveOperationException | RuntimeException failure) {
+            return false; // Never claim empty inventory after an unknown provider ABI.
+        }
+    }
+
     public static Condition<ServerPlayer> equipped(String slot,String target){
         List<EquipmentSlot> slots=switch(slot){
             case "mainhand"->List.of(EquipmentSlot.MAINHAND);
