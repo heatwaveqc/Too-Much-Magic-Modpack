@@ -73,7 +73,7 @@ public final class ClassAbilities {
             String next = ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on") ? "off" : "on";
             return ProgressionApi.setMode(p,GLIDE_MODE,next);
         }
-        if ("ordeal".equals(what) && ProgressionApi.track(p,"tmm_progression:monk").rank() >= 17
+        if ("ordeal".equals(what) && unlocked(p,"blindness_ordeal")
                 && !ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("done")) {
             String next = ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active") ? "off" : "active";
             if (next.equals("off")) p.removeEffect(MobEffects.BLINDNESS);
@@ -178,10 +178,14 @@ public final class ClassAbilities {
     private static void exhaustion(ServerPlayer p) {
         float now = p.getFoodData().getExhaustionLevel();
         Float old = LAST_EXHAUSTION.put(p.getUUID(),now);
-        if (old == null || !unlocked(p,"hunger_discipline")) return;
-        if (now > old) {
-            float reduced = old + (now - old) * 0.5f
-                    * TyzMonkBridge.hungerMultiplier(p);
+        if(old==null||p.isCreative()||p.isSpectator())return;
+        boolean nativeHunger=unlocked(p,"hunger_discipline");
+        double rate=0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("hunger_efficiency"))
+            rate+=a.effect().amountPerRank()*a.rank();
+        double scale=(nativeHunger?0.5*TyzMonkBridge.hungerMultiplier(p):1)*Math.max(.05,1-rate);
+        if (now > old && scale<1) {
+            float reduced = old + (now - old) * (float)scale;
             p.getFoodData().setExhaustion(reduced);
             LAST_EXHAUSTION.put(p.getUUID(),reduced);
         }
@@ -221,8 +225,11 @@ public final class ClassAbilities {
 
     public static void jump(ServerPlayer p, LivingEvent.LivingJumpEvent event) {
         var active = effect(p,"monk_leap");
-        if (active == null) return;
-        double factor = Math.max(1.0,Math.min(1.5,number(active,"factor",1.2)));
+        double factor=active==null?1:Math.max(1.0,Math.min(1.5,number(active,"factor",1.2)));
+        double bonus=0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("jump_bonus"))bonus+=a.effect().amountPerRank()*a.rank();
+        factor=Math.min(3,factor*(1+Math.max(0,bonus)));
+        if(factor==1||p.isCreative()||p.isSpectator())return;
         Vec3 speed = p.getDeltaMovement();
         p.setDeltaMovement(speed.x,speed.y*factor,speed.z);
         p.hurtMarked = true;
@@ -262,7 +269,8 @@ public final class ClassAbilities {
 
         // Monk's existing Tyz control skill improves the small thrust, not eligibility.
         double monkControl = NewbieMode.isNewbie(p) ? 0.0 : TyzMonkBridge.glideSpeedBonus(p);
-        double forwardBoost = (0.016 + monkControl * 0.04) * levelFactor;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("glide_control_bonus"))monkControl+=a.effect().amountPerRank()*a.rank();
+        double forwardBoost = (0.016 + Math.min(0.1,Math.max(0,monkControl)) * 0.04) * levelFactor;
         Vec3 heading = new Vec3(look.x / horizontalLook, 0, look.z / horizontalLook);
         Vec3 horizontal = new Vec3(velocity.x,0,velocity.z);
         // We never snap/reduce natural Elytra or firework speed; only stop adding thrust.
@@ -280,10 +288,20 @@ public final class ClassAbilities {
         p.hurtMarked = true;
     }
 
+    private static boolean ordealComplete(ServerPlayer p,EffectRuntime.Active active) {
+        var params=active.effect().params();
+        String path=params.getOrDefault("completion_path","");
+        String milestone=params.getOrDefault("completion_milestone","");
+        return !path.isEmpty()&&!milestone.isEmpty()&&ProgressionApi.track(p,path).completed(milestone);
+    }
     private static void ordeal(ServerPlayer p) {
         if (!ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("active")) return;
-        if (ProgressionApi.track(p,"tmm_progression:monk")
-                .completed("tmm_progression:blind_ordeal_victory")) {
+        var active=effect(p,"blindness_ordeal");
+        if(active==null){
+            ProgressionApi.setMode(p,ORDEAL_MODE,"off");
+            return; // Do not remove external blindness; the temporary ordeal refresh expires.
+        }
+        if (ordealComplete(p,active)) {
             ProgressionApi.setMode(p,ORDEAL_MODE,"done");
             p.removeEffect(MobEffects.BLINDNESS);
             return;
@@ -298,17 +316,21 @@ public final class ClassAbilities {
                 || !(event.getEntity() instanceof Monster)
                 || event.getSource().getDirectEntity() != p
                 || !p.getMainHandItem().isEmpty()) return;
-        ProgressionApi.recordExternal(p,"tmm_progression:blind_hostile_kill");
-        if (ProgressionApi.track(p,"tmm_progression:monk")
-                .completed("tmm_progression:blind_ordeal_victory")) {
+        var active=effect(p,"blindness_ordeal");
+        if(active==null)return;
+        String eventId=active.effect().params().getOrDefault("kill_event","");
+        if(eventId.isEmpty())return;
+        ProgressionApi.recordExternal(p,eventId);
+        if (ordealComplete(p,active)) {
             ProgressionApi.setMode(p,ORDEAL_MODE,"done");
             p.removeEffect(MobEffects.BLINDNESS);
         }
     }
 
     public static void fall(ServerPlayer p,LivingFallEvent event) {
-        if (unlocked(p,"monk_leap"))
-            event.setDistance(Math.max(0.0f,event.getDistance()-3.0f));
+        double reduction=unlocked(p,"monk_leap")?3:0;
+        for(var a:EffectRuntime.active(p))if(a.effect().type().equals("fall_reduction"))reduction+=a.effect().amountPerRank()*a.rank();
+        if(reduction>0&&!p.isCreative()&&!p.isSpectator())event.setDistance((float)Math.max(0,event.getDistance()-Math.min(128,reduction)));
     }
 
     /** Server-authoritative aimed movement; does not load chunks or teleport through solid blocks. */
@@ -388,6 +410,10 @@ public final class ClassAbilities {
                 player.serverLevel().getGameTime()+600));
         }
     }
+    public static boolean isRecentRetaliation(Mob mob,ServerPlayer p){
+        var last=RETALIATION.get(mob.getUUID());
+        return last!=null&&last.attacker().equals(p.getUUID())&&p.serverLevel().getGameTime()<=last.until();
+    }
     public static void targetChange(ServerPlayer p, LivingChangeTargetEvent event) {
         if (!(event.getEntity() instanceof Mob mob)) return;
         if (mob instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon
@@ -400,6 +426,17 @@ public final class ClassAbilities {
         var last = RETALIATION.get(mob.getUUID());
         if (last != null && last.attacker().equals(p.getUUID())
                 && p.serverLevel().getGameTime() <= last.until()) return;
+        double detection=1,reference=0;
+        for(var active:EffectRuntime.active(p)){
+            var fx=active.effect();
+            if(fx.type().equals("detection_range")&&mob instanceof net.minecraft.world.entity.monster.Monster&&Selectors.entity(fx.selector(),mob)){
+                detection*=1-io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.scaled(fx.amountPerRank(),active.rank(),0.95);
+                reference=Math.max(reference,io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.number(fx.params(),"reference_range",16,1,64));
+            }
+        }
+        if(reference>0&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p)&&mob.getTarget()!=p&&mob.distanceToSqr(p)>Math.pow(Math.max(2,reference*Math.max(.05,detection)),2)){
+            event.setNewAboutToBeSetTarget(null);return;
+        }
         for (var a : EffectRuntime.active(p))
             if (a.effect().type().equals("faction_neutrality")
                     && Selectors.entity(a.effect().selector(),mob)) {

@@ -201,7 +201,6 @@
     "treechop",
     "twilight-forest",
     "twilight-forest-final-boss-remake",
-    "tyzs-skills",
     "unfocused",
     "unicorn-academy-bonded-magic-unofficial",
     "valhelsia-core",
@@ -226,7 +225,6 @@
   "required_first_party_mod_ids": [
     "tmm_progression",
     "tmm_transformations",
-    "tmm_mxp",
     "traders_vengence",
     "tmm_economy"
   ],
@@ -322,6 +320,7 @@
     "No unverified artifact is enabled merely because it is a target. Exact dependency, side and loader checks must precede pinning.",
     "Tyz and standalone MXP retained until a coherent Unified Progression replacement explicitly revises this target and all runtime validators.",
     "Other unresolved desired/catalog-only mods outside this scope are not automatically activated. No required-mod omission may silently disappear from target.",
-    "2026-11-19 owner approved excluding Deep Aether and Liroth: Revamped from this QA target; remove Nuit (newly added solely for Liroth) while keeping existing BetterEnd New Dawn libraries, Aether and owo-lib. Prior exact audit evidence retained. This is a current-QA deferral, not deletion of historical catalog entries."
+    "2026-11-19 owner approved excluding Deep Aether and Liroth: Revamped from this QA target; remove Nuit (newly added solely for Liroth) while keeping existing BetterEnd New Dawn libraries, Aether and owo-lib. Prior exact audit evidence retained. This is a current-QA deferral, not deletion of historical catalog entries.",
+    "Owner-approved unified Progression cutover: remove Tyz and standalone tmm_mxp runtime; retain independent Pufferfish Attributes. Rebuilt tmm_progression owns MXP; no legacy save migration; fresh disposable QA world. Individual skill trees and gameplay parity tracked separately."
   ]
 }

@@ -238,7 +238,7 @@ public final class TyzMonkBridge {
     }
 
     /** Fail closed if Curios is loaded but its actual slots cannot be read. */
-    private static boolean emptyCurios(ServerPlayer player) {
+    public static boolean emptyCurios(ServerPlayer player) {
         if (!ModList.get().isLoaded("curios")) return true;
         try {
             Class<?> api=Class.forName("top.theillusivec4.curios.api.CuriosApi");

@@ -74,7 +74,7 @@ public final class EffectHandlers {
         if (CUSTOM.putIfAbsent(id,handler) != null || BUILTIN.contains(id))
             throw new IllegalArgumentException("Duplicate effect type " + id);
     }
-    public static boolean known(String id) { return BUILTIN.contains(id) || CUSTOM.containsKey(id); }
+    public static boolean known(String id) { return BUILTIN.contains(id) || CUSTOM.containsKey(id) || io.github.heatwaveqc.tmm.progression.data.MechanicalSpec.known(id); }
 
     private static void dispatch(ServerPlayer player, Invoker call) {
         for (EffectRuntime.Active active : EffectRuntime.active(player)) {

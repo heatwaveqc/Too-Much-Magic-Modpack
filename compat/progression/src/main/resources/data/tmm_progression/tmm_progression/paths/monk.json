@@ -1,73 +1,7 @@
 {
+  "xp_channel": "tmm_progression:monk",
   "schema": 1,
   "exclusive_group": "",
-  "rank_xp": [
-    0,
-    20,
-    55,
-    105,
-    180,
-    280,
-    420,
-    600,
-    850,
-    1200,
-    1650,
-    2200,
-    2900,
-    3750,
-    4800,
-    6100,
-    7700,
-    9600,
-    11800,
-    14300
-  ],
-  "points_per_rank": 1,
-  "activities": [
-    {
-      "event": "barehand_block_break",
-      "target": "#minecraft:logs",
-      "xp": 2,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "barehand_block_break",
-      "target": "#minecraft:mineable/pickaxe",
-      "xp": 1,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "kill",
-      "target": "#tmm_progression:monk_training_hostiles",
-      "xp": 8,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "unarmed_kill",
-      "target": "#tmm_progression:monk_training_hostiles",
-      "xp": 4,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "food_discovered",
-      "target": "*",
-      "xp": 10,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "advancement",
-      "target": "*",
-      "xp": 25,
-      "cooldown_ticks": 0
-    },
-    {
-      "event": "animal_petted",
-      "target": "*",
-      "xp": 2,
-      "cooldown_ticks": 20
-    }
-  ],
   "milestones": [
     {
       "id": "tmm_progression:first_sunset",
@@ -785,7 +719,12 @@
       ],
       "effects": [
         {
-          "type": "blindness_ordeal"
+          "type": "blindness_ordeal",
+          "params": {
+            "completion_path": "tmm_progression:monk",
+            "completion_milestone": "tmm_progression:blind_ordeal_victory",
+            "kill_event": "tmm_progression:blind_hostile_kill"
+          }
         }
       ]
     },
@@ -822,6 +761,19 @@
       ]
     }
   ],
-  "max_level": 20,
-  "enrollment": "sunset"
+  "enrollment": "sunset",
+  "timed_enrollment": {
+    "dimension": "minecraft:overworld",
+    "start_time": 12000,
+    "end_time": 13000,
+    "ticks": 200,
+    "clear_sky": true,
+    "dry": true,
+    "empty_hand": true,
+    "unarmored": true,
+    "max_look_x": -0.7,
+    "max_abs_look_y": 0.45,
+    "completion_event": "tmm_progression:monk_first_sunset",
+    "label": "First Sunset"
+  }
 }

@@ -32,3 +32,15 @@ config="tmm_controls_defaults.mixins.json"
 # Gameplay loot predicate injection, separate from client controls policy.
 [[mixins]]
 config="tmm_progression.mixins.json"
+
+# Engine-owned MXP hooks (guarded when legacy module is installed).
+[[mixins]]
+config="tmm_progression_mxp.mixins.json"
+
+# Client-only optional lightmap compatibility hook.
+[[mixins]]
+config="tmm_progression_vision.mixins.json"
+
+# Optional Dragon Survival beverage permission hook.
+[[mixins]]
+config="tmm_progression_diet.mixins.json"

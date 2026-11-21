@@ -44,16 +44,16 @@ class PotionEnrollmentTriggerTest {
     }
 
     @Test void rejectMissingOrMalformedSafetyRequirements() {
-        assertThrows(IllegalArgumentException.class,() -> PathJson.read("test:hunter",
+        assertThrows(IllegalArgumentException.class,() -> TestPaths.read("test:hunter",
             json(RITUAL.replace("\"required_advancement\"", "\"typo_advancement\""))));
-        assertThrows(IllegalArgumentException.class,() -> PathJson.read("test:hunter",
+        assertThrows(IllegalArgumentException.class,() -> TestPaths.read("test:hunter",
             json(RITUAL.replace("\"minecraft:poison\",\"minecraft:long_poison\",\"minecraft:strong_poison\"",
                                "\"minecraft:poison\",\"minecraft:poison\""))));
-        assertThrows(IllegalArgumentException.class,() -> PathJson.read("test:hunter",
+        assertThrows(IllegalArgumentException.class,() -> TestPaths.read("test:hunter",
             json(RITUAL.replace("\"enrollment\":\"potion\"","\"enrollment\":\"manual\""))));
-        assertThrows(IllegalArgumentException.class,() -> PathJson.read("test:hunter",
+        assertThrows(IllegalArgumentException.class,() -> TestPaths.read("test:hunter",
             json(RITUAL.replace("\"clear_effects\":[\"minecraft:poison\"],",""))));
-        assertThrows(IllegalArgumentException.class,() -> PathJson.read("test:hunter",
+        assertThrows(IllegalArgumentException.class,() -> TestPaths.read("test:hunter",
             json(RITUAL.replace("\"potions\":[\"minecraft:poison\",\"minecraft:long_poison\",\"minecraft:strong_poison\"],",
                                "\"potions\":[],\"extra_script\":\"doBadThings\","))));
     }
@@ -63,7 +63,7 @@ class PotionEnrollmentTriggerTest {
             "data/tmm_progression/tmm_progression/paths/hunter.json")) {
             assertNotNull(stream);
             var json = JsonParser.parseReader(new InputStreamReader(stream,StandardCharsets.UTF_8)).getAsJsonObject();
-            var path = PathJson.read("tmm_progression:hunter",json);
+            var path = TestPaths.read("tmm_progression:hunter",json);
             var trigger = PotionEnrollmentTrigger.parse(json);
             assertNotNull(trigger);
             assertEquals("tmm_progression:human_disciplines",path.exclusiveGroup());

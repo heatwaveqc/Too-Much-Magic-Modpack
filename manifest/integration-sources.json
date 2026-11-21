@@ -126,8 +126,8 @@
       "paths": [
         "compat/mxp/"
       ],
-      "mode": "source-integrated-module-ci-not-installed",
-      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet. Frozen donor updated from older #45 hooks to its direct descendant #161: same Ars/Iron/Botania/Neo hooks plus configurable server-authoritative MXP growth factor 1.02 default. SOURCE/TEST-ONLY: no tmm_mxp JAR installed, no runtime/client claim, and no owner-authorized full build. Full 32-file source copied from reviewed PR #279 on dev/progression, then source-synced to integration by #281. Adds JAWR 900-blood post-commit API and cross-payment dedup regression tests, but NO native JAWR hook. NO tmm_mxp built/pinned runtime JAR. Source-only module CI is NOT a Minecraft server/client PASS.",
+      "mode": "archived-source-test-only-not-runtime",
+      "note": "Current successor to one-wallet MXP math pilot, with source-only Ars, Iron's, Botania portable mana and Neo Vitae EV hooks and JUnit tests. Not packaged as gameplay JAR until full runtime Mixin validation. No duplicate MXP wallet. Frozen donor updated from older #45 hooks to its direct descendant #161: same Ars/Iron/Botania/Neo hooks plus configurable server-authoritative MXP growth factor 1.02 default. SOURCE/TEST-ONLY: no tmm_mxp JAR installed, no runtime/client claim, and no owner-authorized full build. Full 32-file source copied from reviewed PR #279 on dev/progression, then source-synced to integration by #281. Adds JAWR 900-blood post-commit API and cross-payment dedup regression tests, but NO native JAWR hook. NO tmm_mxp built/pinned runtime JAR. Source-only module CI is NOT a Minecraft server/client PASS. Superseded in this QA; standalone tmm_mxp never selected with unified engine.",
       "source_commit": "f0ab1cde706883a09929e2b82eba57482377ee17",
       "supersedes_source_branch": "feature/mxp-ars-irons-botania-neo-hooks",
       "supersedes_source_commit": "9a8ef2fc66454e03a6244be97b04be821c1588aa",
@@ -144,8 +144,8 @@
         "scripts/verify_tyz_migration.py",
         "scripts/stage_monk_tyz.py"
       ],
-      "mode": "runtime-first-wave-integrated",
-      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification. 2026-11-16 Newbie source reconciliation: Tyz Safekept active=false exact override now indexed in live config; do not rely solely on the excluded compat/magic source overlay. No full gameplay/client/server PASS.",
+      "mode": "archived-source-test-only-not-runtime",
+      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification. 2026-11-16 Newbie source reconciliation: Tyz Safekept active=false exact override now indexed in live config; do not rely solely on the excluded compat/magic source overlay. No full gameplay/client/server PASS. Superseded by owner-approved cutover; preserve historical generator/reference sources but never stage Tyz overlay or reinstall runtime.",
       "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "integrated_into_baseline": true,
       "merged_pr": 229,
@@ -237,12 +237,13 @@
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Shared Monk/Hunter JAR upgraded from advanced Hunter and Bedrock Rest/classic Monk trials. Retains native Silver Hunter and JAWR lycanthrope selector. Adds optional TyzMonkBridge with 18 conditional purchased skills and purchase/refund eligibility; compile the native JAR and stage the matching Tyz overlay together for the next authorized candidate. Reviewed #279/#281 migrates 37 INACTIVE JAWR Vampire/Werewolf SkillPrefabs, original form gates and bounded Werewolf pilots into this single engine. Optional JAWR 0.5.39/Tyz 6.4.2 upstream classes. All advanced form gates fail closed; no standalone tmm_form_skills module. Full runtime QA in issue #280. 2026-11-16 Newbie source reconciliation: after reviewed #285, persisted Newbie/Regular, native vanilla Elytra, join veto and global MXP award gate now engine-owned. No full gameplay/client/server PASS.",
-      "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
+      "note": "Current coherent unified Progression donor (PRs #347, #344, #375). Native MXP ledger and paid-source/boss/ritual hooks selected; optional Tyz API retained source-only, standalone MXP excluded. Preserve Newbie, native Elytra, loot, diet, controls attributes and third-party licenses. Individual tree definitions and live acceptance remain separate.",
+      "merged_from": "dev/progression",
       "integrated_into_baseline": true,
-      "merged_pr": 229,
-      "merged_commit": "f468ccf8589d0a4cbb2990c86e782f8b794f70df",
-      "latest_reconcile_pr": 286
+      "merged_pr": 375,
+      "merged_commit": "1063355f7ba920e113baae38ce4a6f03ba2c8e44",
+      "latest_reconcile_pr": 286,
+      "source_commit": "1063355f7ba920e113baae38ce4a6f03ba2c8e44"
     },
     {
       "name": "jawr-native-transformation-bridge",
@@ -512,7 +513,6 @@
         "mods/smart-keep-inventory.pw.toml",
         "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json",
         "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json",
-        "config/tyzs_skills/custom/skills/keepsake.json",
         "config/ftbquests/quests/chapters/intro.snbt",
         "config/ftbquests/quests/lang/en_us.snbt",
         "manifest/quest_content.json",
@@ -525,7 +525,7 @@
       "merged_from": "feature/newbie-mode-smartkeep-2026-11-16",
       "mode": "exact-mod-pinned-and-config-source-not-gameplay-tested",
       "integrated_into_baseline": true,
-      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending."
+      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending. Owner-approved unified cutover retires Tyz itself; disabled Safekept overlay no longer required. Native Smart Keep and graduation predicates remain unchanged."
     },
     {
       "name": "parchment-fragment-acquisition",
@@ -851,12 +851,8 @@
   "pending_runtime_work": [
     "OWNER DECISION 2026-11-16: Aether, Deep Aether and Liroth: Revamped are deferred to a future deployment, not required in this smoke. Beta libraries are approved in principle for these experimental dimensions, review exact necessary versions and native loader constraints before later inclusion. Mahou native #289 is required for this smoke; do not restore the old global KubeJS bridge. Validate native circle injection and gameplay separately.",
     "NEXT QA MUST HAVE: Dragon Survival v2.0.74, its Sea/Forest/Cave food compatibility scripts, Comforts and client-only Colorful Hearts all hash-pinned and installed. Server smoke must pass; client gameplay remains unverified.",
-    "MXP full-source hook branch is present but not runtime-installed; validate real spent resource debits/multi-cast ordering, then compile and package only after explicit test approval.",
     "NEXT FULL QA: #320/#350 Ritual of Equivalent Exchange (12 tags, 40 alternatives; both grid recipes suppressed) and MK3+ direct/Red upgrade Chaos Shard. Verify each offering, no obsolete scripted grid bypass, Matter Upgrader and actual EMC routes.",
     "EMC COMPLETENESS: same-build item/variant and post-mapping EMC census, explicit approved zero exclusions and Capturing resolved blacklist, held recipes and productive/cycle audit. Do not auto-price missing items or mark intentional denials as failures.",
-    "Tyz 6.4.2 now present in test/full-integration; remove no longer applicable Pufferfish Skills backend. Verify exact pinned JAR and four Core Skills in next owner-authorized test build. Independent Pufferfish Attributes kept until dependency audit.",
-    "MxpService->TyzBridge Java API connection exists in source feature/mxp-configurable-growth-20261115 with configurable 1.02 default. It is NOT a packaged MXP mod/JAR. Compile/integrate and live-test Tyz credit/XP-SP/persistence and spell resource debits before calling MXP operational; nine custom form and Monk/Hunter trees are still not built.",
-    "New five-form Tyz trees and external locks are currently design-only",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
     "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
@@ -884,7 +880,8 @@
     "EQUESTRIAN #329: roster-only owner approval; exact pins/dependency/side checks and Unicorn Academy experimental compatibility attempt still required. No mod enabled by this merge.",
     "QUESTS #327: guide ownership, localization and layout integrated; actual client quest display, claim and ProjectE converter descriptions still require next QA.",
     "Frozen donor consolidation: all twelve source streams baseline-owned. Next authorized QA must attempt the exact 18 ore offers, canonical dust processing and blank-circle compatibility, FTB Essentials commands, starter kit, Curios, current dragon diets, B20 trades and experimental Caerbannog. Live checks in docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md.",
-    "Roots staff imprint, Terra maximum/HUD and HexCast media-efficiency prototypes are source evidence, not runtime implementations; shared Progression #347 retains parity review obligations; no separate pilot JAR or legacy KubeJS skill hooks."
+    "Roots staff imprint, Terra maximum/HUD and HexCast media-efficiency prototypes are source evidence, not runtime implementations; shared Progression #347 retains parity review obligations; no separate pilot JAR or legacy KubeJS skill hooks.",
+    "Unified Progression owner-approved cutover from immutable dev/progression 1063355f7ba920e113baae38ce4a6f03ba2c8e44: single native MXP authority, Tyz and standalone tmm_mxp not selected. Validate first/repeat/disallowed receipts, no duplicate awards, persistence, optional mixin weave and current native trees on fresh worlds. Individual final tree content and retired skill parity remain development scope."
   ],
   "deferred_pending_runtime": {}
 }

@@ -43,9 +43,9 @@ def main():
     player_condition = data("kubejs/data/tmm/smart_keep_inventory/condition/newbie.json")
     assert player_condition == {"player": {"nbt": '{Tags:["tmm_newbie"]}'}, "keepExperience": True}
     assert data("kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json") == {"disabled": True}
-    assert data("config/tyzs_skills/custom/skills/keepsake.json") == {
-        "active": False, "id": "keepsake", "type": "IMMUTABLE"
-    }
+    from verify_unified_progression import verify_selection
+    verify_selection(ROOT)
+    assert not (ROOT/"config/tyzs_skills/custom/skills/keepsake.json").exists()
 
     authored = data("manifest/quest_content.json")["quests"]
     resolved = data("manifest/quest_content_resolved.json")["quests"]
@@ -82,10 +82,12 @@ def main():
     assert tmix.get("plugin") == "io.github.heatwaveqc.tmm.transformations.mixin.DracolichMixinPlugin"
     assert set(tmix["client"]) >= {"DracolichModelLoadMixin","DracolichDragonModelMixin",
                                     "DracolichGlowLayerMixin", "DracolichArmorLayerMixin"}
-    mxp = read("compat/mxp/src/main/java/io/github/heatwaveqc/tmm/mxp/MxpService.java")
-    assert "MxpProgressionEligibility.canEarn(player)" in mxp, "No-Newbie MXP must be enforced before ledger commit"
+    mxp = read("compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/mxp/MxpService.java")
+    assert "ProgressionApi.awardMagic" in mxp, "Unified MXP must delegate to the authoritative ledger"
     api = read("compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/core/ProgressionApi.java")
     assert "anyJoined(ServerPlayer player)" in api and "NewbieMode.isNewbie(player)" in api
+    award = api.split("private static boolean awardMagic(", 1)[1].split("public static boolean awardExperience", 1)[0]
+    assert "NewbieMode.isNewbie(player)" in award and 'ModList.get().isLoaded("tmm_mxp")' in award, "No Newbie / duplicate legacy MXP award"
     native = read("compat/transformations/src/main/java/io/github/heatwaveqc/tmm/transformations/core/NativeSpeciesJoinGuard.java")
     assert "registerProgressionJoinVeto()" in native and "hasJoinedProgression(player)" in native
     assert "SpeciesEnrollmentPolicy.canJoinHumanPath" in native
@@ -97,13 +99,12 @@ def main():
         pinpath,
         "kubejs/data/tmm/smart_keep_inventory/condition/newbie.json",
         "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json",
-        "config/tyzs_skills/custom/skills/keepsake.json",
         "config/ftbquests/quests/chapters/intro.snbt",
         "config/ftbquests/quests/lang/en_us.snbt",
     ):
         digest = hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
         assert f'file = "{path}"\nhash = "{digest}"' in idx, path
-    print("PASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, Safekept disabled;")
+    print("PASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, retired Tyz Safekept absent;")
     print(f"{layouts['quest_count']} total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;")
     print("Newbie MXP and any-path species gates in source; every Packwiz index/root SHA256 matches")
     print("SOURCE ONLY — no NeoForge boot, client/Corail tests or installed first-party JAR evidence")

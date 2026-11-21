@@ -25,7 +25,7 @@ def selected(root=ROOT):
         d, mod = row["directory"], row["mod_id"]
         if not re.fullmatch(r"compat/[a-z0-9-]+", d) or not re.fullmatch(r"[a-z][a-z0-9_]+", mod):
             raise ValueError("Unsafe module path or mod ID")
-        if mod in ids or d in dirs or mod == "tmm_monk":
+        if mod in ids or d in dirs or mod in {"tmm_monk", "tmm_mxp"}:
             raise ValueError("Duplicate or retired module")
         ids.add(mod); dirs.add(d)
         directory = root / d

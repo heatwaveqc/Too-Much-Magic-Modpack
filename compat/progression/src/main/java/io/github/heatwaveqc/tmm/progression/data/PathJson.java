@@ -46,7 +46,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -54,8 +54,9 @@ public final class PathJson {
     public static Definition.Path read(String pathId, JsonObject source) {
         id(pathId);
         if (number(source,"schema",0) != 1) throw new IllegalArgumentException("schema must be 1");
-        if (!Set.of("admin","manual","sunset","potion").contains(str(source,"enrollment","admin")))
+        if (!Set.of("admin","manual","sunset","potion","automatic","food").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
+        FoodRiteSpec.parse(source);
         PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
         HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
         HunterMutationPolicy.parse(source); // blacklist, hunger and target must be safe
@@ -121,6 +122,23 @@ public final class PathJson {
             if (max < 1 || max > 100 || required < 1 || required > thresholds.size()
                 || base < 0 || step < 0 || (long) base + (long) max * step > Integer.MAX_VALUE)
                 throw new IllegalArgumentException("Invalid skill budget for " + sid);
+            List<Integer> prices=new ArrayList<>();
+            for(var cost:entries(j,"rank_costs")){
+                int n=cost.getAsBigDecimal().intValueExact();
+                if(n<0)throw new IllegalArgumentException("Negative rank price");
+                prices.add(n);
+            }
+            if(j.has("rank_costs")&&(prices.size()!=max||j.has("base_cost")||j.has("step_cost")))
+                throw new IllegalArgumentException("rank_costs must cover every rank and replace linear cost");
+            List<Integer> rankRequirements=new ArrayList<>();
+            for(var need:entries(j,"rank_level_requirements")){
+                int n=need.getAsBigDecimal().intValueExact();
+                if(n<1||n>thresholds.size()||!rankRequirements.isEmpty()&&n<rankRequirements.getLast())
+                    throw new IllegalArgumentException("Invalid rank level gate");
+                rankRequirements.add(n);
+            }
+            if(j.has("rank_level_requirements")&&(rankRequirements.size()!=max||j.has("required_rank")))
+                throw new IllegalArgumentException("rank_level_requirements must cover all ranks and replace required_rank");
             List<Definition.Effect> effects = new ArrayList<>();
             for (JsonElement effect : entries(j,"effects")) {
                 JsonObject f = effect.getAsJsonObject();
@@ -175,8 +193,34 @@ public final class PathJson {
                 if (type.equals("damage_bonus") &&
                     !Set.of("melee","arrow","any").contains(params.getOrDefault("delivery","melee")))
                     throw new IllegalArgumentException("Damage delivery must be melee, arrow or any");
-                effects.add(new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
-                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params));
+                List<Double> rankValues=new ArrayList<>();
+                for(var value:entries(f,"rank_values")){
+                    double n=value.getAsDouble();
+                    if(!Double.isFinite(n)||Math.abs(n)>1000000)throw new IllegalArgumentException("Unsafe rank value");
+                    rankValues.add(n);
+                }
+                if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
+                    throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
+                var parsedEffect=new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
+                    amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params,rankValues);
+                if(rankValues.isEmpty())MechanicalSpec.validate(parsedEffect);
+                else{
+                    // Only handlers whose numeric contribution is explicitly rank-scaled opt into this schema.
+                    if(!Set.of("attribute","melee_bonus","damage_bonus","damage_multiplier","break_speed",
+                        "magnet","heal_on_kill","heal_on_hit","critical_hit","status_on_hit","status_on_hurt",
+                        "damage_at_low_health","food_efficiency","vanilla_xp_bonus","crop_bonus","ordinary_drop_bonus",
+                        "virtual_fortune","virtual_looting","magic_cost_discount","hunger_efficiency",
+                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity").contains(type))
+                        throw new IllegalArgumentException("rank_values not supported for "+type);
+                    for(int rank=1;rank<=max;rank++){
+                        var effective=parsedEffect.atRank(rank);
+                        if(Math.abs(effective.amountPerRank())>10000||
+                            type.equals("damage_multiplier")&&(effective.amountPerRank()<0||effective.amountPerRank()>1))
+                            throw new IllegalArgumentException("Unsafe rank value for "+type);
+                        MechanicalSpec.validate(effective);
+                    }
+                }
+                effects.add(parsedEffect);
             }
             List<Integer> auto = new ArrayList<>();
             for (JsonElement r : entries(j,"auto_ranks")) {
@@ -193,7 +237,7 @@ public final class PathJson {
                     || !choiceGroup.isEmpty())))
                 throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites or choices");
             skills.add(new Definition.Skill(sid,max,required,base,step,strings(j,"requires_skills"),
-                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects));
+                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects,prices,rankRequirements));
         }
         for (Definition.Skill skill : skills) {
             for (String needed : skill.requiresSkills()) {
