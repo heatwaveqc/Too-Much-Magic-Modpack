@@ -60,7 +60,7 @@ public final class AstralDarknessPolicy {
         int target;
         if (stage == ILLUMINATION) {
             // Always noticeably darker than vanilla, but less severe than native darkness.
-            target = blend(darkened, vanilla, 0.44f);
+            target = blend(darkened, vanilla, 0.39f + moon * 0.10f);
         } else if (stage == RESONANCE) {
             // Very close to vanilla at full moon; still slightly dimmer at new moon.
             target = blend(darkened, vanilla, 0.90f + moon * 0.10f);
