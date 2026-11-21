@@ -2,6 +2,19 @@
 
 **Status:** source-audited **unindexed candidate**; no server smoke, Integration Assembly, Prism launch or gameplay acceptance. **This revision supersedes the incorrect 2026-11-21 forest-vegetarian/cave-raw-meat proposal.** The owner corrected the design: **Forest Dragons eat raw meat; Cave Dragons eat charred meat/seafood.** The source-authored active baseline already preserves native Forest raw meat. Do not remove those selectors.
 
+## Recurring reversal root-cause analysis (owner report 2026-11-21)
+
+This is the **second owner correction** of the same Forest/Cave inversion (also corrected on 2026-11-19). It was a contributor source-interpretation error, not an automated rollback of the in-pack data map:
+
+1. The initial [`docs/DRAGON-DIETS-2026-11-14.md`](../DRAGON-DIETS-2026-11-14.md) document focused its Forest section and nutrition table on **new produce integrations**, omitting the baseline `#c:foods/raw_meat` selector even though the compiled data-map JSON retained it. The early [PR #46](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/46) description likewise emphasized Forest fruits and Cave charring, inviting the mistaken simplification "Forest = vegetarian".
+2. The old `scripts/verify_dragon_diets.py` verified Forest fruit/sugar, Cave charred outputs and the absence of cooked meals but **did not assert Forest raw-meat admission or Cave raw-meat exclusion**. Its checks passed even if a contributor deleted native Forest meats and broadened Cave.
+3. The normal quick `.github/workflows/verify.yml` metadata job **did not execute the diet verifier**, so these invariants had no merge-blocking test even for changes that might be statically detected.
+4. Counting species `diet_entries.json` selectors (Cave 35 versus Forest 120) misrepresented the breadth of Cave **crafting inputs** through common cooked-meat/fish tags and native secondary charred recipes. A small direct-food selector list does not mean Cave is missing inputs.
+
+**Prevention staged in this PR:** explicit locked species rules at the top of `AGENTS.md`, corrected canonical prose in `docs/DRAGON-DIETS-2026-11-14.md`, new raw-versus-charred assertions in the existing `scripts/verify_dragon_diets.py`, a candidate verifier for the new food addons, and a source-only quick-CI step invoking both. No active diet JSON, binary pin, compiled mod, full smoke, or world is changed by this root-cause work.
+
+**Additional narrow audit item:** the old baseline verifier singles out `artifacts:everlasting_beef` as allowed for Cave but disallowed for Forest. This was inherited from earlier exception mapping and should be reviewed **separately** against the owner's "raw-meat dragon" intent; it is not evidence that Cave generally eats raw meat. Do not opportunistically flip magical-item exceptions in an unrelated food intake PR.
+
 ## Owner-selected mods and ownership
 
 - **Next owner-authorized comprehensive unstable test inclusion attempt REQUIRED:** Huaxia Delight 1.2.0; Crispy! 1.1; Dungeon's Delight 1.5.3; Ender's Delight 1.3.1; and mandatory RunicLib 5.0.7.
