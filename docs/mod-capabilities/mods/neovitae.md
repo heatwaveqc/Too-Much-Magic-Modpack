@@ -5,7 +5,7 @@
 **Pinned artifact:** `neovitae-1.21.1-1.1.53.jar`, Modrinth `FR26bWPa`, SHA-512 `f29b391e391476c232acbe9ba69c42c8539b5eefdd8ca324ab5e04c47dd0e708d7bd9f727cd358099c1c1066b80c759dc86d659549dee54affa17ba588ac5b0b`  
 **Upstream source:** exact `breakinblocks/NeoVitae@2744123bb6e4f72c602178b23384be41956eef23`; source declares 1.1.53, **not established identical to pinned JAR**  
 **Research status:** **source-backed partial pilot**. It proves the Atlas can represent concrete objects, typed resource storage and a full six-tier advancement outline. It is **NOT quest-source-ready**, because hundreds of per-recipe operations and several gates/tests are not exhausted. No new in-game tests in this pilot  
-**Related:** [existing deep comprehension](../../mod-comprehension/mods/neovitae.md), [full named block/item registry index](../inventories/neovitae-registries.md), [quest-authoring matrix](neovitae-quest-map.md), [Neo×JAWR report](../../mod-comprehension/interactions/neovitae--witchery-remake--vampire-blood.md)  
+**Related:** [existing deep comprehension](../../mod-comprehension/mods/neovitae.md), [full named block/item registry index](../inventories/neovitae-registries.md), [ritual/array/sigil registration index](../inventories/neovitae-operations.md), [quest-authoring matrix](neovitae-quest-map.md), [Neo×JAWR report](../../mod-comprehension/interactions/neovitae--witchery-remake--vampire-blood.md)  
 **Evidence shorthand:** `[S]` = exact frozen 1.1.53 source / generated assets; `[W]` = wiki committed at same source SHA (not necessarily generated data); `[R]` = prior exact-pin research; `[P]` = current pack manifest/pin; `[C]` = client/in-pack observation (**none performed here**)
 
 ## 1. What a player can do, and where to begin
@@ -75,7 +75,7 @@ A resource has an **identity, storage scope and typed path**. Neo Vitae contains
 
 ## 4. Actual blocks, items and devices: meaningful functional inventory
 
-The [declared registry index](../inventories/neovitae-registries.md) enumerates **211 named item and 90 block declarations** found in exact upstream source, with IDs and source lines. That is not a complete runtime registry or permission to turn every item into a mandatory quest. The tables below **explain operations** for core stations; minor variants, exact recipe patterns, registry IDs for dynamically generated materials and unused branches are tracked as gaps.
+The [declared registry index](../inventories/neovitae-registries.md) and [operation-family index](../inventories/neovitae-operations.md) list registrations for future detailed audits. The former enumerates **211 named item and 90 block declarations** found in exact upstream source, with IDs and source lines. That is not a complete runtime registry or permission to turn every item into a mandatory quest. The tables below **explain operations** for core stations; minor variants, exact recipe patterns, registry IDs for dynamically generated materials and unused branches are tracked as gaps.
 
 ### Blocks / machines / structures
 
