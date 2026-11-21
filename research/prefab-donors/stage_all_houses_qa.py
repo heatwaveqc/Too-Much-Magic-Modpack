@@ -42,7 +42,9 @@ def load_catalog() -> tuple[dict, list[dict]]:
     ids, filenames = set(), set()
     for h in homes:
         name = require_safe_filename(h.get("filename"), ".nbt")
-        source = h.get("source_dir")\n        if not (isinstance(source, str) and source.endswith(("-v1", "-v2")) and Path(source).name == source and ".." not in source):\n            raise ValueError(f"Unsafe source directory: {source!r}")
+        source = h.get("source_dir")
+        if not (isinstance(source, str) and source.endswith(("-v1", "-v2")) and Path(source).name == source and ".." not in source):
+            raise ValueError(f"Unsafe source directory: {source!r}")
         generator = h.get("generator")
         if not (isinstance(generator, str) and Path(generator).name == generator
                 and generator.endswith((".py", ".mjs"))):
@@ -85,7 +87,7 @@ def build_previews(homes: list[dict], work: Path) -> list[dict]:
         if len(data) > MAX_NBT_BYTES or len(data) < 100:
             raise ValueError(f"{house['id']}: invalid NBT size {len(data)}")
         raw = gzip.decompress(data)
-        if len(raw) < 100 or raw[:3] != b"\\x0a\\x00\\x00":
+        if len(raw) < 100 or raw[:3] != b"\x0a\x00\x00":
             raise ValueError(f"{house['id']}: invalid vanilla structure NBT root")
         if b"minecraft:command_block" in raw or b"minecraft:structure_block" in raw:
             raise ValueError(f"{house['id']}: prohibited structure/command block")
