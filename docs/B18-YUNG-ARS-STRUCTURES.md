@@ -1,5 +1,7 @@
 # B18 — All approved YUNG structure overhauls and universal Ars locating
 
+> **November 20 owner update:** The earlier conditional hold on **YUNG's Better End Island** is lifted for a **required next owner-authorized comprehensive unstable QA inclusion attempt**, using existing 1.21.1 NeoForge 3.1.2 with a staged unindexed packwiz candidate. **Live End main island, dragon, gateway/exit portal and BetterEnd: New Dawn compatibility remain mandatory** before gameplay PASS. See [current reconciliation](qa/OWNER-MOD-DISPOSITIONS-2026-11-20.md). Historical B18 wording below is preserved for provenance; no full build or smoke authorized.
+
 **Decision 2026-11-15:** add the eight remaining vanilla-exploration YUNG overhauls to the next test build, and stage YUNG's Better End Island conditionally with BetterEnd: New Dawn. Exact candidate releases are recorded in \`manifest/mods.json\`. **No new YUNG JAR is installed/pinned by this source PR.**
 
 ## New planned mods

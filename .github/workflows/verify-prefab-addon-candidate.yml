@@ -1,0 +1,31 @@
+name: Prefab Custom Addon — official pinned artifact audit
+
+on:
+  pull_request:
+    paths:
+      - 'mods/prefab-custom-addon.pw.toml'
+      - 'scripts/verify_prefab_addon_candidate.py'
+      - '.github/workflows/verify-prefab-addon-candidate.yml'
+  push:
+    branches:
+      - 'feature/owner-frozen-mod-reconciliation-20261120'
+    paths:
+      - 'mods/prefab-custom-addon.pw.toml'
+      - 'scripts/verify_prefab_addon_candidate.py'
+      - '.github/workflows/verify-prefab-addon-candidate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  official-jar-metadata-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m py_compile scripts/verify_prefab_addon_candidate.py
+      - name: Verify exact publisher JAR SHA512, mod ID and native dependencies (memory only)
+        run: python scripts/verify_prefab_addon_candidate.py
