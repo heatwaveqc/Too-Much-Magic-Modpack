@@ -100,6 +100,26 @@ class ResolverTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             resolver.scan_jar(jar("wrongmod"), "creature-feature")
 
+    def test_dependency_closure_accepts_blueprint_and_rejects_new_required_modules(self):
+        def row(slug):
+            result = resolver.official_file(version(slug), slug)
+            result["jar"] = {"mandatory": [
+                {"mod_id": "neoforge"}, {"mod_id": "minecraft"}
+            ]}
+            return result
+        creature = row("creature-feature")
+        blueprint = row("blueprint")
+        creature["dependencies"] = [
+            {"project_id": "VsM5EDoI", "version_id": "5JOCYuQM", "dependency_type": "required"},
+            {"project_id": "T9PomCSv", "version_id": None, "dependency_type": "optional"}
+        ]
+        resolver.verify_dependency_closure([creature, blueprint])
+        creature["dependencies"].append({
+            "project_id": "unknown", "version_id": "new", "dependency_type": "required"
+        })
+        with self.assertRaises(ValueError):
+            resolver.verify_dependency_closure([creature, blueprint])
+
     def test_no_download_during_offline_import(self):
         self.assertEqual(sorted(resolver.RELEASES), ["blueprint", "creature-feature"])
 
