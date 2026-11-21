@@ -1,5 +1,7 @@
 # TMM food/species compatibility matrix — corrected 2026-11-21
 
+> **SUPERSEDED DIET CANDIDATE — DO NOT PROMOTE.** Owner-approved [redesign #444](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/444) intentionally replaces this native-diet matrix. The **12 new raw terrestrial/End monster meat items** now belong to **Cave**, and the two new plant foods to **Forest**, subject to ingredient/processing audit. Sea is raw seafood plus **kelp and seagrass** with no privileged rice exception; sushi with rice is handled as a mixed dish. Raw preferred foods get high dragon-only nutrition/saturation; cooking lowers both; off-diet mixed dishes stay edible at reduced values. The candidate JSON and old verifiers retained in this branch represent **legacy runtime only**. They must not be merged or promoted as a new target. Four approved mod-inclusion candidates and RunicLib requirement remain in scope.
+
 **Status:** source-audited **unindexed candidate**; no server smoke, Integration Assembly, Prism launch or gameplay acceptance. **This revision supersedes the incorrect 2026-11-21 forest-vegetarian/cave-raw-meat proposal.** The owner corrected the design: **Forest Dragons eat raw meat; Cave Dragons eat charred meat/seafood.** The source-authored active baseline already preserves native Forest raw meat. Do not remove those selectors.
 
 ## Recurring reversal root-cause analysis (owner report 2026-11-21)
