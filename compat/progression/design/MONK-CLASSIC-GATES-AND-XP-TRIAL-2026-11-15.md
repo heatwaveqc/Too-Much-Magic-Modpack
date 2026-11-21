@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-15. **State:** experimental standalone core branch only; NOT merged into full integration.  
 **Code/source:** [Monk Mod 1.4 original configuration](https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java) and [requirement implementations](https://github.com/rwtema/Monk-Mod/tree/master/src/main/java/com/rwtema/monkmod/advancements/criteria).  
-**Contracts:** [exact 21-stage source audit](monk-original-21-gate-inventory-v1.json), [functional XP trial profile](monk-xp-functional-test-profile-v1.json), [real Monk path](../src/main/resources/data/tmm_progression/tmm_progression/paths/monk.json). [Full 25-ability design #100](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/100).
+**Contracts:** [exact 21-stage source audit](monk-original-21-gate-inventory-v1.json), [functional XP trial profile](monk-xp-functional-test-profile-v1.json), [real Monk path](../src/main/resources/data/tyr_progression/tyr_progression/paths/monk.json). [Full 25-ability design #100](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/100).
 
 ## 1. Original source: **21 stages, 0 through 20**, each a mandatory gate
 
@@ -50,15 +50,15 @@ The original Sunrise trial required **200 consecutive ticks aimed at the horizon
 | --- | ---: | --- |
 | `barehand_block_break` `#minecraft:logs` | 2 | Each real hand-broken log; no cooldown so genuine TreeChop removed logs can count individually |
 | `barehand_block_break` `#minecraft:mineable/pickaxe` | 1 | Each eligible hand-broken stone/ore-category block; verified post-break player signal |
-| `kill` `#tmm_progression:monk_training_hostiles` | 8 | Any credited enemy kill of curated hostile/neutral combat species; spell kills may qualify when player attribution works |
-| `unarmed_kill` `#tmm_progression:monk_training_hostiles` | 4 | Additional bonus ONLY for direct empty-main-hand melee; not arrows/spell projectiles |
+| `kill` `#tyr_progression:monk_training_hostiles` | 8 | Any credited enemy kill of curated hostile/neutral combat species; spell kills may qualify when player attribution works |
+| `unarmed_kill` `#tyr_progression:monk_training_hostiles` | 4 | Additional bonus ONLY for direct empty-main-hand melee; not arrows/spell projectiles |
 | `food_discovered` `*` | 10 | Once per distinct successfully consumed edible registry ID across saves/death |
 | `advancement` `*` | 25 | New advancement earned after enrollment; technical `recipes/` unlocks excluded |
 | `animal_petted` `*` | 2 | Only successful animal-affection server interactions; 20 unique animal requirement still incomplete |
 
 The implementation adds **two first-class trusted event types** to the generic path engine: `barehand_block_break` and `unarmed_kill`. The parser understands both. The former is sent from a non-canceled player-owned `BlockDropsEvent` with empty actual tool and empty main hand, **not** from the premature `BlockEvent.BreakEvent`. The latter is emitted on an actual attributed direct melee kill, not an arrow/spell. These signals retain real block/entity tags and do not let clients submit custom XP numbers.
 
-The vanilla pilot tag `#tmm_progression:monk_training_hostiles` combines existing undead/raider groups and extra vanilla combat mobs, not passive livestock; pack-wide modded mobs must be added through verified tag extension later.
+The vanilla pilot tag `#tyr_progression:monk_training_hostiles` combines existing undead/raider groups and extra vanilla combat mobs, not passive livestock; pack-wide modded mobs must be added through verified tag extension later.
 
 ### One-time classic-inspired milestones
 
@@ -99,19 +99,19 @@ These are **simulated reward budgets**, not estimates of elapsed playtime. Ordin
 
 ## 4. Disposable-world test walkthrough
 
-Run a dedicated NeoForge server with the new `tmm_progression` JAR + datapack from this branch. The full-integration manifest is **unchanged**. Enter as a survival player, watch sunset while empty-handed and unarmored for 200 ticks, then check:
+Run a dedicated NeoForge server with the new `tyr_progression` JAR + datapack from this branch. The full-integration manifest is **unchanged**. Enter as a survival player, watch sunset while empty-handed and unarmored for 200 ticks, then check:
 
 ```text
-/tmmprogress status tmm_progression:monk
+/tyrprogress status tyr_progression:monk
 ```
 
 Test ten real barehand logs first (**+2 each; tenth additionally +35**). Mine five stone by hand (**+1 each; fifth additionally +50**). Try the same breaks with real tools—those must not earn barehand XP. For 10 direct-fist undead kills, expect **8 hostile XP plus 4 fist XP per kill**, with an additional **120 one-time milestone XP** upon the tenth. Projectile or spell kills should not earn the fist bonus.
 
 Eat several distinct edible items, then repeat the same food; **only new registry IDs** yield +10. Earn a real visible advancement (+25), then unlock a recipe-only advancement (should be **zero**). After 100 legit logs, confirm the one-time 100-log reward and any rank-ups; relog and make sure no milestone pays twice.
 
-At the appropriate ranks, try `/tmmprogress power ordeal` and make **five direct-fist blinded hostile kills**, checking that rank 18 alone does not close the challenge. Try `/tmmprogress power treasure`, `/tmmprogress power armor`, and Creeper Kiss as additional server event checks. Ender Dragon advancement must be in the native completed-milestones set before gliding is legal even at rank 20.
+At the appropriate ranks, try `/tyrprogress power ordeal` and make **five direct-fist blinded hostile kills**, checking that rank 18 alone does not close the challenge. Try `/tyrprogress power treasure`, `/tyrprogress power armor`, and Creeper Kiss as additional server event checks. Ender Dragon advancement must be in the native completed-milestones set before gliding is legal even at rank 20.
 
-To bypass First Sunset strictly for testing, OP can use `/tmmprogress admin join tmm_progression:monk`. That is an operator cheat and not player enrollment. No general XP-grant command is needed for normal testing.
+To bypass First Sunset strictly for testing, OP can use `/tyrprogress admin join tyr_progression:monk`. That is an operator cheat and not player enrollment. No general XP-grant command is needed for normal testing.
 
 ## 5. Known real gaps that this configuration **does not hide**
 
@@ -124,7 +124,7 @@ To bypass First Sunset strictly for testing, OP can use `/tmmprogress admin join
 7. **Advancement abuse:** recipe IDs are filtered, but hidden modded technical advancements also need vetting before a broad pack release.
 8. **Balance after actual play:** use survival XP-per-hour logs across three progression styles before treating 14,300 as a fixed cap.
 
-**Engineering verification:** [MonkClassicXpTrialTest](../src/test/java/io/github/heatwaveqc/tmm/progression/MonkClassicXpTrialTest.java) parses the *live* Monk JSON and all 21 source gates, validates authorized signals and 15 milestone definitions, checks free classic automatic unlocks, and simulates three XP curves. A green JUnit/server-boot check is not an in-world XP rate audit.
+**Engineering verification:** [MonkClassicXpTrialTest](../src/test/java/io/github/heatwaveqc/tyr/progression/MonkClassicXpTrialTest.java) parses the *live* Monk JSON and all 21 source gates, validates authorized signals and 15 milestone definitions, checks free classic automatic unlocks, and simulates three XP curves. A green JUnit/server-boot check is not an in-world XP rate audit.
 
 ### New rank-17 native utility: Bedrock Rest
 

@@ -89,7 +89,7 @@ def retire(root: Path, manifest: dict) -> None:
             "form.sunlight": ("JAWR sunlight and equipment protection", "JAWR native sun behavior works without Vampire Forest special handling"),
             "form.werewolf": ("JAWR lycanthropy and forms", "JAWR lycanthrope form, diet, moon, cure and relog work"),
             "form.blood": ("JAWR-native blood and feeding", "No dual blood pool or duplicated cost; JAWR owns all feeding and expenditure"),
-            "monk.tree": ("Standalone Monk native tree", "tmm_progression skills, native XP and purchases work without Vampirism UI"),
+            "monk.tree": ("Standalone Monk native tree", "tyr_progression skills, native XP and purchases work without Vampirism UI"),
             "monk.sunset": ("Standalone Monk First Sunset", "First Sunset enrolls native Monk path, with no TeamLapen faction"),
         }
         for f in j.get("features", []):

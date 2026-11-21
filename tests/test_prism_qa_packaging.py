@@ -25,7 +25,7 @@ def main() -> None:
         bootstrap = folder / "bootstrap.jar"
         bootstrap.write_bytes(b"PK" + b"\x00" * (98989 - 2))
         addons = []
-        for base in ("tmm_progression-", "tmm_transformations-"):
+        for base in ("tyr_progression-", "tmm_transformations-"):
             jar = folder / (base + "0.1.0-dev.jar")
             with zipfile.ZipFile(jar, "w") as z:
                 z.writestr("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")

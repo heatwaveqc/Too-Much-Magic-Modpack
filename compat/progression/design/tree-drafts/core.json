@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:core",
+  "id": "tyr_progression:core",
   "title": "Core Skills",
   "legacy_eligibility": "universal",
   "notes": [
@@ -10,7 +10,7 @@
     "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
     "Exact four original attribute pilots translated separately; no normalization or new percent-based semantics approved."
   ],
-  "proposed_paid_currency": "tmm_progression:mxp",
+  "proposed_paid_currency": "tyr_progression:mxp",
   "native_level_gates_pending": false,
   "nodes": [
     {
@@ -39,7 +39,7 @@
         "handler_or_gap": "attribute, magic_stat"
       },
       "candidate_node": {
-        "id": "tmm_progression:tmm_magic_reservoir_1",
+        "id": "tyr_progression:tmm_magic_reservoir_1",
         "max_rank": 5,
         "rank_costs": [
           1,
@@ -48,7 +48,7 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
+        "xp_channel": "tyr_progression:mxp",
         "effects": [
           {
             "type": "attribute",
@@ -177,7 +177,7 @@
         "handler_or_gap": "attribute, magic_stat"
       },
       "candidate_node": {
-        "id": "tmm_progression:tmm_magic_wellspring_1",
+        "id": "tyr_progression:tmm_magic_wellspring_1",
         "max_rank": 5,
         "rank_costs": [
           1,
@@ -186,7 +186,7 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
+        "xp_channel": "tyr_progression:mxp",
         "effects": [
           {
             "type": "attribute",
@@ -339,7 +339,7 @@
         "handler_or_gap": "attribute, magic_cost_discount"
       },
       "candidate_node": {
-        "id": "tmm_progression:tmm_magic_thrift_1",
+        "id": "tyr_progression:tmm_magic_thrift_1",
         "max_rank": 5,
         "rank_costs": [
           1,
@@ -348,7 +348,7 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
+        "xp_channel": "tyr_progression:mxp",
         "effects": [
           {
             "type": "attribute",
@@ -453,7 +453,7 @@
         "handler_or_gap": "attribute, magic_stat"
       },
       "candidate_node": {
-        "id": "tmm_progression:tmm_magic_potency_1",
+        "id": "tyr_progression:tmm_magic_potency_1",
         "max_rank": 5,
         "rank_costs": [
           1,
@@ -462,7 +462,7 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
+        "xp_channel": "tyr_progression:mxp",
         "effects": [
           {
             "type": "attribute",

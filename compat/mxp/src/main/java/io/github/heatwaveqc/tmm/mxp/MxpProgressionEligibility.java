@@ -19,12 +19,12 @@ public final class MxpProgressionEligibility {
 
     public static boolean canEarn(ServerPlayer player) {
         if (player == null || player.getTags().contains("tmm_newbie")) return false;
-        if (!ModList.get().isLoaded("tmm_progression")) return true;
+        if (!ModList.get().isLoaded("tyr_progression")) return true;
         try {
             Method method = newbieGate;
             if (method == null) {
                 method = Class.forName(
-                    "io.github.heatwaveqc.tmm.progression.runtime.NewbieMode"
+                    "io.github.heatwaveqc.tyr.progression.runtime.NewbieMode"
                 ).getMethod("canEarnMxp", ServerPlayer.class);
                 newbieGate = method;
             }

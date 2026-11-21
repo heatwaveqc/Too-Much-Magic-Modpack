@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
-hash = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
+hash = "54af6d977ab0db44e483f5044c6492364245e59bfdbbfcd35b36ba234a6958c8"
 
 [[files]]
 file = "config/ftbchunks-client.snbt"
