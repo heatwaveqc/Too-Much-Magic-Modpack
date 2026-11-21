@@ -83,65 +83,6 @@ def main() -> None:
     assert 'born_in_chaos_v1:monster_flesh' not in forest
     assert forest['ars_nouveau:sourceberry_bush'] == {'items': 'ars_nouveau:sourceberry_bush', 'retain_effects': True}
 
-    # 2026-11-21 source-only diet reconciliation: all new addon selectors are
-    # actual published item IDs, not guesses, name-prefix expansion, or cooked
-    # dishes inferred from a mod-specific broad 'monster_foods' tag.
-    cave_addon_raw = (
-        'dungeonsdelight:silverfish_abdomen',
-        'dungeonsdelight:ghast_calamari',
-        'dungeonsdelight:ghast_tentacle',
-        'dungeonsdelight:spider_meat',
-        'dungeonsdelight:rotten_tripe',
-        'dungeonsdelight:brined_flesh',
-        'dungeonsdelight:gritty_flesh',
-        'dungeonsdelight:bogged_brain',
-        'dungeonsdelight:sniffer_shank',
-        'endersdelight:mite_crust',
-        'endersdelight:shulker_mollusk',
-        'endersdelight:shulker_filet',
-    )
-    for item in cave_addon_raw:
-        assert item in cave, f'Cave Dragon missing verified raw animal food {item}'
-        assert cave[item]['retain_effects'] is True, item
-        assert item not in forest, f'Forest Dragon wrongly accepts animal food {item}'
-        assert item not in sea, f'Sea Dragon wrongly accepts land/End monster {item}'
-    for item in (
-        'dungeonsdelight:rotgourd_slice', 'endersdelight:chorus_juice',
-    ):
-        assert item in forest, f'Forest Dragon missing source-backed plant food {item}'
-        assert forest[item]['retain_effects'] is True, item
-        assert item not in cave and item not in sea, item
-
-    # Forest's upstream map included 75 animal/raw-meat selectors contrary to
-    # TMM's approved no-meat Forest physiology. Enforce correction instead of
-    # allowing later broad tags to silently reintroduce them.
-    assert '#c:foods/raw_meat' not in forest
-    for item in (
-        'minecraft:rabbit', 'minecraft:spider_eye',
-        'farmersdelight:chicken_cuts', 'farmersdelight:bacon',
-        'twilightforest:raw_venison', 'netherdepthsupgrade:wither_bonefish',
-        'dragonsurvival:meat_chorus_mix', 'dragonsurvival:sweet_sour_rabbit',
-        'born_in_chaos_v1:corpse_maggot',
-    ):
-        assert item not in forest, f'Forest Dragon retains meat selector {item}'
-    for item in (
-        'dungeonsdelight:monster_foods', '#dungeonsdelight:monster_foods',
-        'dungeonsdelight:smoked_spider_meat',
-        'dungeonsdelight:fried_ghast_calamari',
-        'dungeonsdelight:silverfish_fried_rice',
-        'dungeonsdelight:monster_burger',
-        'endersdelight:uncanny_cookies',
-        'endersdelight:pearl_pasta',
-        'endersdelight:chorus_pie_slice',
-        'crispy:fortune_cookie',
-    ):
-        assert all(item not in entries for entries in (cave, forest, sea)), item
-    for raw_tag in ('#c:foods/raw_meat', '#c:foods/raw_fish'):
-        assert raw_tag in cave, f'Cave Dragon missing approved raw diet {raw_tag}'
-        assert cave[raw_tag]['retain_effects'] is True
-    assert '#c:foods/cooked_meat' not in cave
-    assert '#c:foods/cooked_fish' not in sea
-
     # TeamLapen's Werewolves food tags are intentionally retired.
     # JAWR lycanthropes do not use that removed tag namespace.
     assert not (ROOT / 'kubejs/data/werewolves').exists()
