@@ -39,6 +39,12 @@ jobs:
         run: python3 scripts/validate_quests.py
       - name: Verify quick QA starter rewards and recipe fixes (source-only)
         run: python3 scripts/verify_quick_repairs.py
+      - name: Guard native Forest raw-meat and Cave charred diets (source-only)
+        run: |
+          python3 scripts/verify_dragon_diets.py
+          if [ -f docs/qa/candidates/dragon-diet-entries-2026-11-21.json ] && [ -f scripts/verify_food_addon_diet_candidate.py ]; then
+            python3 scripts/verify_food_addon_diet_candidate.py
+          fi
       - name: Verify single Unified Progression XP authority and exact QA target
         run: |
           python3 scripts/verify_unified_progression.py
