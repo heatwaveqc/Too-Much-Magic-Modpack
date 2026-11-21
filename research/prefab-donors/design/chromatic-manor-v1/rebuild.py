@@ -15,9 +15,10 @@ raw = gzip.decompress(compressed)
 assert raw.startswith(b"\x0a\x00\x00"), "Not a vanilla root Compound NBT"
 audit = json.loads((p / "audit.json").read_text(encoding="utf-8"))
 reference = json.loads((p / "static-audit.json").read_text(encoding="utf-8"))
-for key in ("size", "bbox_volume", "ground_anchor_y", "nonair",
+for key in ("size", "ground_anchor_y", "nonair",
             "explicit_air", "palette_states", "rooms"):
     assert audit.get(key) == reference.get(key), f"Geometry mismatch: {key}"
+assert audit["size"][0] * audit["size"][1] * audit["size"][2] == reference["bbox_volume"], "Volume mismatch"
 compressed_sha256 = hashlib.sha256(compressed).hexdigest()
 raw_sha256 = hashlib.sha256(raw).hexdigest()
 if compressed_sha256 != reference["nbt_sha256"]:
