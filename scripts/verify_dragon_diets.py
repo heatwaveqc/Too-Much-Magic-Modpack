@@ -136,6 +136,9 @@ def main() -> None:
         'crispy:fortune_cookie',
     ):
         assert all(item not in entries for entries in (cave, forest, sea)), item
+    for raw_tag in ('#c:foods/raw_meat', '#c:foods/raw_fish'):
+        assert raw_tag in cave, f'Cave Dragon missing approved raw diet {raw_tag}'
+        assert cave[raw_tag]['retain_effects'] is True
     assert '#c:foods/cooked_meat' not in cave
     assert '#c:foods/cooked_fish' not in sea
 
