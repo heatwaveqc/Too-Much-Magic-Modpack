@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-21 Elemental Siren shrine
+
+- Added ars-elemental-pinned-siren.md: wild Sea Pickle conversion consumes Siren and drops1–2tokens, zero-Source Apparatus charm recipe, Prismarine conversion120ticks/tamed helper. Extra charms on shrine add helpers; Dispel returns color/name charm. MermaidTile progress30/default, channel100/cooldown100, passive1000tick increment/output, score2000ticks, post-output needsMana1000Source/80tick retry/range7. Adjacent insertion ignores remainder: full/missing inventory loses loot but resets/requests payment. Aquarium unique BlockStates/types; water variable counts score0/1 including AIR, not actual water minimum. Exact rolls/treasure/cap boundaries and unrun tests documented.
+- **Next finish Siren familiar native Binding route**: MermaidHolder accepts MermaidEntity; MermaidFamiliar +2Water damage and familiar-in-water60tick renewal gives owner/self GraceII600ticks. Trace exact native RitualBinding/capture prerequisites/cost/consumption/data; reconcile parent ritual companion. Then Firenando/Flashjack/FlashingWealdWalker, remaining devices/prism lenses/relays/bangles/bags/gear/worldgen/VexingCaves/pilot35–37/full review. All39glyphs+12tomes and21 companions do not make whole addon complete. Global Sauce bundled selection remains open.
+- Fetched integration ac86eaf279ad4f50bede2778cac309ca241916e9; compared Elemental/Ars pin paths against prior2e63c50f with no change. Exact Elemental SHA1 recomputed.9complete33researching/no hard blocker/hourly active. Docs only; no agents/assembly/launch/runtime edits/merge. Git log is actual pushed checkpoint; prior receipts below.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental twelve caster tomes
 
 - Added ars-elemental-pinned-tomes.md all12JSON/presettable/sixitem registry+casterprovider, nativeallnamespaceslootpool notcraftrecipes; survivaleditingcreativeonly. E_TOME_CASTER persistent/netcodec SchoolCasterTomeData→ETomeResolver schoolfromtool, hasFocus queriedISchoolFocus exactschool (overrideswornforbranch), ShaperManipulation; childgetNewResolver preservesschool. HeldISchoolFocus0discountcanpreemptwornfocus event, but inheritedCasterTome halfbaseitemdiscount and fullManaexception. ActualSUCCESSposteventdebitstillnormal/clamp. No guaranteeloot/preset/runtimePASS.

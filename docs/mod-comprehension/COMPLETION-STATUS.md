@@ -170,3 +170,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-20 — Elemental [glyph closure checkpoint](mods/ars-elemental-pinned-bubble-shield.md):39/39 packaged glyph recipe routes linked to operational audits, conditional Nullify and nonproduction Phalanx explicit.12tomes/helper/device/gear/worldgen/global dependency/finalreview still researching.9complete33researching; no runtime acceptance.
 
 - 2026-11-20 — Elemental [tome checkpoint](mods/ars-elemental-pinned-tomes.md):12records/sixschool items/bundled resolver and native pool/payment audited. Helpers/devices/gear/worldgen/global dependency/final review open.9complete33researching; no loot/casting acceptance.
+
+- 2026-11-21 — Elemental [Siren/shrine audit](mods/ars-elemental-pinned-siren.md): wild conversion, charm Apparatus/shrine, aquarium state/type scoring, Source repayment and lossy inventory overflow; familiar effect traced, Binding capture details remain open.21 companions;9/42 source-complete unchanged. No runtime acceptance.

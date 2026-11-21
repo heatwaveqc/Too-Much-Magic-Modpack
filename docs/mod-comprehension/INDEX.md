@@ -439,3 +439,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Bubble Shield/39glyph coverage map](mods/ars-elemental-pinned-bubble-shield.md): all39packaged glyph recipes source-audited, not whole-addon completion; actual damage/conditional debit versus10%debuff/raw-cost/blacklist, Phalanx development-only.12tomes/majorbranches open;9/42 unchanged.
 
 - 2026-11-20 — Elemental [12loot tome audit](mods/ars-elemental-pinned-tomes.md): exact data compositions/global pool, school resolver/component/focus and full-bar mana gate, survival editing blocked.39glyphs+12tomes covered;major addon branches still researching,9/42 unchanged.
+
+- 2026-11-21 — Elemental [Siren/shrine audit](mods/ars-elemental-pinned-siren.md): wild conversion, charm Apparatus/shrine, aquarium state/type scoring, Source repayment and lossy inventory overflow; familiar effect traced, Binding capture details remain open.21 companions;9/42 source-complete unchanged. No runtime acceptance.
