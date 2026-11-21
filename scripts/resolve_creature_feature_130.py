@@ -132,10 +132,15 @@ def verify_dependency_closure(rows: list[dict]) -> None:
         runtime_required = {d.get("mod_id") for d in row["jar"]["mandatory"]}
         require(runtime_required <= {"minecraft", "neoforge"},
                 f"{slug}: additional mandatory runtime module(s): {sorted(runtime_required)}")
+
+
+def verify_committed_pins(rows: list[dict]) -> None:
+    for row in rows:
+        slug = row["id"]
         pin = ROOT / "mods" / (slug + ".pw.toml")
-        if pin.is_file():
-            require(tomllib.loads(pin.read_text(encoding="utf-8")) == tomllib.loads(toml(row)),
-                    f"{slug}: committed Packwiz pin differs from verified official source")
+        require(pin.is_file(), f"{slug}: missing committed Packwiz proposal")
+        require(tomllib.loads(pin.read_text(encoding="utf-8")) == tomllib.loads(toml(row)),
+                f"{slug}: committed Packwiz pin differs from verified official source")
 
 
 def report() -> dict:
@@ -150,6 +155,7 @@ def report() -> dict:
         row["jar"] = scan_jar(payload, slug)
         entries.append(row)
     verify_dependency_closure(entries)
+    verify_committed_pins(entries)
     return {"schema": 1, "issue": 419, "source": "official Modrinth exact version API and CDN",
             "verified": entries}
 
