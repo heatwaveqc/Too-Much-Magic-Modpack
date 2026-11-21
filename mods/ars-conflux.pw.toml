@@ -1,0 +1,13 @@
+name = "Ars Conflux"
+filename = "ars-conflux-0.1.56-mc1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "97f3c31c624df19209db648e4fe6dd2e67e08d80"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9505585
+project-id = 1737308

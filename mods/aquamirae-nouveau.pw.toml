@@ -1,0 +1,13 @@
+name = "Aquamirae & Nouveau"
+filename = "aquamirae-nouveau-0.1.3-mc1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "932c37b798a04d13ca231d141d86590153e99fa3"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9470029
+project-id = 1767657
