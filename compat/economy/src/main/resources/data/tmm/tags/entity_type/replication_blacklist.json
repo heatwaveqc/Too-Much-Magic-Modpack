@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "#tmm:capture_blacklist",
+    {
+      "id": "occultism:afrit",
+      "required": false
+    },
+    {
+      "id": "occultism:djinni",
+      "required": false
+    },
+    {
+      "id": "occultism:foliot",
+      "required": false
+    },
+    {
+      "id": "occultism:marid",
+      "required": false
+    }
+  ]
+}
