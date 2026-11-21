@@ -1,0 +1,70 @@
+{
+  "gun.m1911.fire": {
+    "sounds": [
+      {
+        "name": "traders_vengeance:guns/m1911/fire_1"
+      },
+      {
+        "name": "traders_vengeance:guns/m1911/fire_2"
+      }
+    ],
+    "subtitle": "subtitles.traders_vengeance.gun.m1911.fire"
+  },
+  "reload.pistol.mag_out": {
+    "sounds": [
+      {
+        "name": "traders_vengeance:reload/pistol/mag_out_1"
+      },
+      {
+        "name": "traders_vengeance:reload/pistol/mag_out_2"
+      }
+    ],
+    "subtitle": "subtitles.traders_vengeance.reload.pistol.mag_out"
+  },
+  "reload.pistol.mag_in": {
+    "sounds": [
+      {
+        "name": "traders_vengeance:reload/pistol/mag_in_1"
+      },
+      {
+        "name": "traders_vengeance:reload/pistol/mag_in_2"
+      }
+    ],
+    "subtitle": "subtitles.traders_vengeance.reload.pistol.mag_in"
+  },
+  "reload.pistol.slide": {
+    "sounds": [
+      {
+        "name": "traders_vengeance:reload/pistol/slide_1"
+      },
+      {
+        "name": "traders_vengeance:reload/pistol/slide_2"
+      },
+      {
+        "name": "traders_vengeance:reload/pistol/slide_3"
+      },
+      {
+        "name": "traders_vengeance:reload/pistol/slide_4"
+      }
+    ],
+    "subtitle": "subtitles.traders_vengeance.reload.pistol.slide"
+  },
+  "minigun.loop": {
+    "sounds": [
+      "traders_vengeance:minigun/minigun"
+    ],
+    "subtitle": "subtitles.traders_vengeance.minigun.loop"
+  },
+  "minigun.stop": {
+    "sounds": [
+      "traders_vengeance:minigun/minigun_stop"
+    ],
+    "subtitle": "subtitles.traders_vengeance.minigun.stop"
+  },
+  "minigun.spinup": {
+    "sounds": [
+      "traders_vengeance:minigun/minigun_spinup"
+    ],
+    "subtitle": "subtitles.traders_vengeance.minigun.spinup"
+  }
+}

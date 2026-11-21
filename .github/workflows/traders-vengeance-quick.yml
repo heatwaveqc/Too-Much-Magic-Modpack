@@ -1,0 +1,50 @@
+name: Trader's Vengeance - Quick Compile (No Smoke)
+on:
+  push:
+    paths:
+      - 'compat/traders-vengeance/**'
+      - '.github/workflows/traders-vengeance-quick.yml'
+  pull_request:
+    paths:
+      - 'compat/traders-vengeance/**'
+      - '.github/workflows/traders-vengeance-quick.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  compile-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Validate natural spawn-only Mixin and safe goal registration
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('compat/traders-vengeance')
+          cfg=json.loads((root/'src/main/resources/traders_vengeance.mixins.json').read_text())
+          assert 'WanderingTraderSpawnerMixin' in cfg['mixins']
+          src=root/'src/main/java/io/github/heatwaveqc/traders/vengeance'
+          spawn=(src/'mixin/WanderingTraderSpawnerMixin.java').read_text()
+          assert '@Redirect' in spawn and 'method = "spawn"' in spawn
+          assert 'TraderSpawnRules.allowed' in spawn
+          join=(src/'runtime/VendettaEvents.java').read_text()
+          assert 'event.setCanceled(true)' not in join, 'Global EntityJoin trader ban is forbidden'
+          assert 'getAvailableGoals()' in join
+          ground=json.loads((root/'src/main/resources/data/traders_vengeance/tags/block/valid_trader_ground.json').read_text())
+          assert len(ground['values'])==len(set(ground['values']))
+          assert ground['replace'] is False
+          print('PASS: natural spawn-only rules, summon exemption, goal dedup, ground tag')
+          PY
+      - name: Compile and unit test the isolated module (NO SERVER BOOT)
+        working-directory: compat/traders-vengeance
+        run: gradle --no-daemon clean test build
