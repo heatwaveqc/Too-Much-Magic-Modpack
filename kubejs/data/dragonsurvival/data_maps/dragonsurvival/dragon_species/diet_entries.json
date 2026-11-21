@@ -294,6 +294,14 @@
         {
           "items": "endersdelight:shulker_filet",
           "retain_effects": true
+        },
+        {
+          "items": "#c:foods/raw_meat",
+          "retain_effects": true
+        },
+        {
+          "items": "#c:foods/raw_fish",
+          "retain_effects": true
         }
       ]
     },
