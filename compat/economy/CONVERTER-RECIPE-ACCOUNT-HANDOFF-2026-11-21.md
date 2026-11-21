@@ -26,14 +26,14 @@ Project Expansion's own upstream `BlockEntityEMCLink` does **not** supply a sepa
 
 References inspected:
 - Project Expansion upstream source `DonovanDMC/ProjectExpansion@168bcf2491b9fde679295fd412ad9c93fd3d93f1`: `util/Util.java`, `block/entity/BlockEntityEMCLink.java`, `block/entity/BlockEntityOwnable.java`.
-- Installed pinned `mods/project-expansion.pw.toml` selects `projectexpansion-1.21.1-1.0.6.jar` from official Modrinth file `F5C1OobM`, SHA-512 `97e832da2ca03309f4ef875b42a9250bba3798453f271f82b441e7c0bf739e103ee9f4274839b5e4d9a154a44167cc0f8169bd97ed37b3d16e7e09d34cfe3c85`. **No in-world verification of JAR behavior in this slice**.
+- Installed pinned `mods/project-expansion.pw.toml` selects `projectexpansion-1.21.1-1.0.6.jar` from official Modrinth file `F5C1OobM`, SHA-512 `97e832da2ca03309f4ef875b42a9250bba3798453f271f82b441e7c0bf739e103ee9f4274839b5e4d9a154a44167cc0f8169bd97ed37b3d16e7e09d34cfe3c85`. Exact pinned Java bytecode was subsequently audited without executing the mod; **no in-world verification of JAR behavior in this slice**.
 
 ## Source and QA checklist
 
 - [x] **A:** Exact recipe JSON and dual mod conditions asserted by `compat/economy/tools/verify_converter_contract.py` plus negative fixture tests; linked Economy Module CI runs them.
 - [x] **A:** Converter source retains native rates, `20 Mana / 1 EMC` and `4 Source / 3 EMC`; zero mutable EMC conversion algorithm edits.
 - [x] **A/source:** Read native Project Expansion account-resolution source and compare its offline access to the existing Economy bridge.
-- [ ] **A:** Validate the exact hash-pinned Project Expansion class/bytecode and any native offline account persistence interface before equating inspected source with exact release behavior.
+- [x] **A:** Verified the **exact hash-locked Project Expansion 1.0.6 JAR** with `compat/economy/tools/audit_native_emc_link_offline.py` using `javap` (read-only). `Util.getKnowledgeProvider(UUID)` invokes live `Util.getPlayer(UUID)` and returns null without it; `getPlayer(UUID)` resolves current server/online `PlayerList.getPlayer(uuid)`. The pinned EMC Link references that lookup. [Economy Module CI run 44928156902](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44928156902) audit step PASS; no offline provider is present in that route. This does not prove all possible third-party API routes or in-game synchronization.
 - [ ] **B/C, after separately authorized build:** Player A places both converters; compare active loaded EMC Link extraction and converter operation with A online, A logged out but chunks still loaded, A relogging, and player B online. Assert no owner substitution, zero EMC debit/receipt while provider inaccessible, no loss/duplication, redstone pause and native rate.
 - [ ] **B/C:** Craft each converter with precisely the two approved ingredients; test partial Mana Pool and Source Jar, empty wallet, dimension change/restart, break/re-place and new owner, filled Source Jar component, full pool and no artificial throughput cap.
 
