@@ -17,9 +17,10 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 **Neo Vitae pilot (2026-11-20) — source-backed partial, not yet quest-source-ready:**
 
 - [Neo Vitae 29-axis detailed capability dossier](mods/neovitae.md): typed block/player/item energy, six formal altar tiers, representative 21 multi-axis capability records, concrete objects, evidence and missing recipe coverage.
-- [Neo Vitae quest-authoring map](mods/neovitae-quest-map.md): 38 proposed main/optional teachable steps with exact player actions, observable outcomes, honest FTB detector uncertainty and safe reward directions. These are research IDs, not a committed quest chapter.
+- [Neo Vitae quest-authoring map](mods/neovitae-quest-map.md): 40 proposed main/optional teachable steps with exact player actions, observable outcomes, honest FTB detector uncertainty and safe reward directions. These are research IDs, not a committed quest chapter.
 - [Neo Vitae declared registry inventory](inventories/neovitae-registries.md): 211 statically named items, 90 blocks and six Orb data-map values from version-aligned upstream source; **not** a pin-matched JAR dump or evidence that every object is craftable.
 - [Neo Vitae operating-family registrations](inventories/neovitae-operations.md): 51 ritual declarations (48 regular, 3 imperfect), 26 array-effect items and 18 sigil items; an **identity/discovery index**, not a complete recipe/operation dossier.
+- [Neo Vitae mob-farm pipeline](inventories/neovitae-mob-farm-systems.md): connects **The Gathering** (`zephyr`, dropped item/XP orbs), **Vortex/Repulsion** arrays (mob pull/push), and Containment/Expulsion with EV harvest, XP Tome, actual activation costs, operational boundaries, and optional quest NV-39/40. Source-backed; no client acceptance.
 
 **New complete generated recipe indexes (second pass, 2026-11-20):**
 
