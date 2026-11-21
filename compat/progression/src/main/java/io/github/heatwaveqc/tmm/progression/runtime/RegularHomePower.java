@@ -6,6 +6,7 @@ import io.github.heatwaveqc.tmm.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tmm.progression.foundation.RegularHomePolicy;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -140,8 +141,8 @@ public final class RegularHomePower {
             throw new IllegalStateException("Approved NBT missing from prefab-extension/server-cache: " + name);
         CompoundTag nbt = NbtIo.readCompressed(source, NbtAccounter.create(64L * 1024L * 1024L));
         StructureTemplate template = new StructureTemplate();
-        template.load(player.serverLevel().registryAccess().registryOrThrow(Registries.BLOCK), nbt);
-        BlockPos size = template.getSize();
+        template.load(player.serverLevel().registryAccess().registryOrThrow(Registries.BLOCK).asLookup(), nbt);
+        Vec3i size = template.getSize();
         long volume = (long) size.getX() * size.getY() * size.getZ();
         if (size.getX() < 1 || size.getY() < 1 || size.getZ() < 1
             || size.getX() > 96 || size.getY() > 128 || size.getZ() > 96
@@ -184,7 +185,7 @@ public final class RegularHomePower {
         }
     }
 
-    private static void validateSite(ServerPlayer player, BlockPos origin, BlockPos size) {
+    private static void validateSite(ServerPlayer player, BlockPos origin, Vec3i size) {
         ServerLevel level = player.serverLevel();
         if (!Level.OVERWORLD.equals(level.dimension()))
             throw new IllegalStateException("Trial starter houses can only be placed in the Overworld");
@@ -224,7 +225,8 @@ public final class RegularHomePower {
                 throw new IllegalStateException("All four corners need a solid supporting platform");
         }
         var occupants = level.getEntitiesOfClass(LivingEntity.class,
-            new AABB(origin, max.offset(1, 1, 1)), LivingEntity::isAlive);
+            new AABB(origin.getX(), origin.getY(), origin.getZ(),
+                max.getX() + 1, max.getY() + 1, max.getZ() + 1), LivingEntity::isAlive);
         if (!occupants.isEmpty()) throw new IllegalStateException("Clear players and mobs from the site");
     }
 
