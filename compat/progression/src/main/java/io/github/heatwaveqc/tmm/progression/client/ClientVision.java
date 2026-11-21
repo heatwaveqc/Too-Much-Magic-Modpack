@@ -18,10 +18,11 @@ public final class ClientVision {
     private ClientVision(){}
     private static WeakReference<LocalPlayer> owner=new WeakReference<>(null);
     private static boolean night;
-    private static int lava,receivedTick;
-    public static void accept(boolean enhanced,int range){
+    private static int lava,receivedTick,astralStage;
+    public static void accept(boolean enhanced,int range,int stage){
         LocalPlayer player=Minecraft.getInstance().player;
         owner=new WeakReference<>(player);night=enhanced;lava=Math.max(0,Math.min(128,range));
+        astralStage=Math.max(-1,Math.min(4,stage));
         receivedTick=player==null?0:player.tickCount;
     }
     private static boolean valid(LivingEntity entity){
@@ -31,6 +32,11 @@ public final class ClientVision {
             &&!player.hasEffect(MobEffects.BLINDNESS)&&!player.hasEffect(MobEffects.DARKNESS);
     }
     public static boolean night(LivingEntity entity){return night&&valid(entity);}
+    /** A lease-bound server-projected stage, never inferred from local Astral UI. */
+    public static int astralStage(){
+        LocalPlayer player=Minecraft.getInstance().player;
+        return player!=null&&valid(player)?astralStage:0;
+    }
     @SubscribeEvent public static void lavaFog(ViewportEvent.RenderFog event){
         if(event.getCamera().getEntity() instanceof LivingEntity entity&&lava>0&&valid(entity))
             LavaFogHook.apply(event,true,lava);
