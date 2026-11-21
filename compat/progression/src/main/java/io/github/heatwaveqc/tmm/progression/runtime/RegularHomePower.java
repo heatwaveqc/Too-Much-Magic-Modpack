@@ -164,10 +164,16 @@ public final class RegularHomePower {
         try {
             Class<?> apiClass = Class.forName("dev.ftb.mods.ftbchunks.api.FTBChunksAPI");
             Object api = apiClass.getMethod("api").invoke(null);
-            Object manager = api.getClass().getMethod("getManager").invoke(api);
+            // Invoke public API interfaces, not implementation classes (whose
+            // access may be package-private in an otherwise compatible release).
+            Class<?> apiInterface = Class.forName(
+                "dev.ftb.mods.ftbchunks.api.FTBChunksAPI$API");
+            Object manager = apiInterface.getMethod("getManager").invoke(api);
+            Class<?> managerInterface = Class.forName(
+                "dev.ftb.mods.ftbchunks.api.ClaimedChunkManager");
             Class<?> protectionClass = Class.forName("dev.ftb.mods.ftbchunks.api.Protection");
             Field edit = protectionClass.getField("EDIT_BLOCK");
-            Method check = manager.getClass().getMethod("shouldPreventInteraction",
+            Method check = managerInterface.getMethod("shouldPreventInteraction",
                 net.minecraft.world.entity.Entity.class, InteractionHand.class,
                 BlockPos.class, protectionClass, net.minecraft.world.entity.Entity.class);
             return !Boolean.TRUE.equals(check.invoke(manager, player,
