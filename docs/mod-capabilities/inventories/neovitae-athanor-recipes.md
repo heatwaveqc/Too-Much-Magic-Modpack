@@ -80,3 +80,33 @@ Athanor is **not simply a furnace**: recipes specify a tool category (Resonator,
 | [`reverter/reversion/self_sac.json`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/generated/resources/data/neovitae/recipe/athanor/reverter/reversion/self_sac.json) | `#neovitae:athanor_tool/reverter` | `neovitae:rune_2_sacrifice_self` | — | — | 1× `neovitae:rune_sacrifice_self` | 1 × `{"count":1,"id":"neovitae:hellforged_parts"}`; 1 × `{"count":4,"id":"minecraft:netherite_scrap"}` | — |
 | [`reverter/reversion/speed.json`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/generated/resources/data/neovitae/recipe/athanor/reverter/reversion/speed.json) | `#neovitae:athanor_tool/reverter` | `neovitae:rune_2_speed` | — | — | 1× `neovitae:rune_speed` | 1 × `{"count":1,"id":"neovitae:hellforged_parts"}`; 1 × `{"count":4,"id":"minecraft:netherite_scrap"}` | — |
 | [`reverter/reversion/weak_blood_orb.json`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/generated/resources/data/neovitae/recipe/athanor/reverter/reversion/weak_blood_orb.json) | `#neovitae:athanor_tool/reverter` | `neovitae:blood_orb_weak` | — | — | 1× `minecraft:diamond` | — | — |
+
+## Owner-locked EMC exception — Nether Star transmutation (2026-11-20)
+
+**Decision:** The [`resonator/nether_star_from_diamond.json`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/generated/resources/data/neovitae/recipe/athanor/resonator/nether_star_from_diamond.json) recipe is an **explicitly intentional productive magical process**. Keep it accessible under Neo Vitae's **native actual ingredients/resources and progression gates**. **Never lower or recompute `minecraft:nether_star` EMC because this recipe is cheaper than its output.** This exception prevents recipe-based EMC inference from erasing the intended production profit; it does **not** declare all transmutations free or allow arbitrary bypassing of gates.
+
+**Static evidence in the current `test/full-integration` economy source:** `compat/economy/.../NeoVitaeIndustryMapper.java` explicitly skips any Athanor recipe whose `requiresTool()` is true **or** whose `getInputFluid().isPresent()` is true. This recipe requires a Resonator and **4,000 mB EV**, so **this first-party mapper does not currently submit it as an EMC price conversion**. This does not establish what other ProjectE native/third-party mappings or pack overrides might do on a loaded server.
+
+**Illustrative accounting against the 2026-11-18 surveyed EMC map and locked TMM rates:**
+
+| Source and unit | Debit EMC |
+| --- | ---: |
+| One `minecraft:diamond`, survey EMC = 8,192 | 8,192 |
+| One `neovitae:ingot_hellforged`, approved `#c:ingots/hellforged` anchor = 5,760 | 5,760 |
+| 4,000 mB Essentia Vitae × 1 EMC / 5 mB | 800 |
+| 50 Raw Spiritus × 1 EMC / Spiritus | 50 |
+| **Total ingredient + energy accounting** | **14,802** |
+| `minecraft:nether_star` EMC on 2026-11-18 survey | **139,264** |
+| **Intended source-cost margin** (before maintenance, equipment wear or logistics) | **+124,462** |
+
+This is a **source/calculated reference**; actual profit may differ with effective pack values, tool upkeep and any additional costs. The nonnegotiable design property is **positive net EMC after all actual consumables and reasonable operating costs, at unchanged native Nether Star EMC**. Do not fix a different total by silently repricing the Nether Star or nerfing the native recipe.
+
+**Acceptance test for Economy owner (#322), not an already-run test:**
+1. Export the final loaded ProjectE map with recipe **present**, recording `minecraft:nether_star`, diamond, Hellforged Ingot, and any other price inputs; compare the star against the same pinned environment's established baseline **before / without that Athanor conversion** (survey reference 139,264).
+2. Require **no difference in Nether Star EMC** from this new conversion, including after ProjectE mapper recalculation, world reload and relog. Do not globally disable exploit detection.
+3. Verify the finished recipe in a disposable runtime: correct Resonator, one diamond, one Hellforged Ingot, 4,000 mB EV **fluid** (not Anima), 50 Raw Spiritus, one Nether Star output. Inspect tool wear, fluid remainder, Aura debit and any unexpected recipe alternatives.
+4. Compute net **actual** EMC generated per successful operation, including consumable inputs, tool wear, returned containers, transport/energy overhead if priced; require it to remain **strictly positive**. Preserve the already-approved resource rates and vanilla Star EMC.
+5. Check any other mappers, custom conversion JSON, recipe-graph inference, Alkahestry/Tome and ProjectE transmutation learning or auto-synthesis pathways for price collapse, accidental duplicate output or a trivial reverse loop. Distinguish expected profitable production from unintended free/infinite exploits.
+6. Keep the lock and QA proof in the **Economy-owned** implementation stream. This Atlas branch only documents the decision; it does not edit economy module, ProjectE mapping config, install pins, quests or runtime scripts.
+
+**Status:** design approved; source skip identified and provisional margin computed; **actual in-pack EMC invariance and positive margin have not been runtime tested**.
