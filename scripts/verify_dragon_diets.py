@@ -40,6 +40,20 @@ def main() -> None:
     assert sea['aquaculture:fish_fillet_raw']['properties']['saturation'] == 2.0
     assert sea['aquaculture:sushi']['properties']['saturation'] == 5.0
 
+    # OWNER-LOCKED SPECIES DISTINCTION (reaffirmed Nov 16, 19, 21 2026):
+    # Forest is omnivorous and eats RAW MEAT as well as raw produce.
+    # Cave eats Dragon Survival's CHARRED outputs. The long list of cooked
+    # recipe inputs is NOT a long list of extra Cave food selectors.
+    # Do not infer diets from species names or the number of map entries.
+    assert '#c:foods/raw_meat' in forest, 'Forest must retain native raw meat diet'
+    for native_raw in ('minecraft:rabbit', 'farmersdelight:chicken_cuts',
+                       'farmersdelight:bacon', 'dragonsurvival:meat_chorus_mix'):
+        assert native_raw in forest, f'Forest native raw-meat selector lost: {native_raw}'
+    for wrong_cave_selector in ('#c:foods/raw_meat', '#c:foods/raw_fish',
+                                'minecraft:beef', 'minecraft:rabbit',
+                                'farmersdelight:chicken_cuts'):
+        assert wrong_cave_selector not in cave, (
+            f'Cave must use native charring, not direct raw eating: {wrong_cave_selector}')
     assert '#tmm:dragon_food/forest_produce' in forest
     assert 'minecraft:sugar' in forest
     # Ars Nouveau Sourceberries are registered as an edible block item rather
