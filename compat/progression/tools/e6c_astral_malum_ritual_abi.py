@@ -94,7 +94,7 @@ with tempfile.TemporaryDirectory() as d:
 if key=="astral": print("ASTRAL_PERSONAL_ABI_MATCH",flush=True)
 
 if key!="astral":
-    catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tmm/progression/mxp/core/MalumRitualCatalog.java").read_text()
+    catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tyr/progression/mxp/core/MalumRitualCatalog.java").read_text()
     mapped={}
     for recipe,effect,main,extras,spirits in re.findall(r'add\(out,"([^"]+)","([^"]+)",(\d+),List.of\(([\d,]*)\),List.of\(([\d,]*)\)\);',catalog):
         if effect.startswith(key+":"):

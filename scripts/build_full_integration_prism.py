@@ -70,7 +70,7 @@ Exact source SHAs and first-party JAR hashes: BUILD-MANIFEST.json
 NEXT TEST BUILD — STANDALONE MONK/HUNTER AND JAWR BRIDGE
 - Retired: TeamLapen Vampirism, Werewolves and Vampire's Delight; no
   TeamLapen vampire blood, hunter faction or companion GUI.
-- Included: tmm_progression with native Monk and Hunter class XP/skills.
+- Included: tyr_progression with native Monk and Hunter class XP/skills.
   Monk classic trials, Bedrock Rest, armor lock, First Sunset.
   Hunter Trial of Venom, creature specialties, silver training,
   craftable Bio-Mutagen, Mutagenic Brew, permanent mutation pilot.
@@ -83,14 +83,14 @@ NEXT TEST BUILD — STANDALONE MONK/HUNTER AND JAWR BRIDGE
 - No TeamLapen quests, village worldgen, stone outputs or food tags.
 
 OPERATOR/PLAYER QA:
-/tmmprogress list
-/tmmprogress admin join tmm_progression:monk
-/tmmprogress admin xp tmm_progression:monk 28000
-/tmmprogress status tmm_progression:monk
-/tmmprogress admin join tmm_progression:hunter
-/tmmprogress admin xp tmm_progression:hunter 1000
-/tmmprogress status tmm_progression:hunter
-/tmmprogress mutations
+/tyrprogress list
+/tyrprogress admin join tyr_progression:monk
+/tyrprogress admin xp tyr_progression:monk 28000
+/tyrprogress status tyr_progression:monk
+/tyrprogress admin join tyr_progression:hunter
+/tyrprogress admin xp tyr_progression:hunter 1000
+/tyrprogress status tyr_progression:hunter
+/tyrprogress mutations
 /tmmtransform status
 /tmmtransform vampire
 /tmmtransform werewolf

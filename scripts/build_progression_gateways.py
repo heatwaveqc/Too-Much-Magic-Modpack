@@ -67,7 +67,7 @@ def render(manifest: dict) -> dict[str, str]:
             "rewards": rewards,
             "failures": []}
         recipe = {
-            "type": "gateways:gate_recipe", "group": "tmm_progression_mobs",
+            "type": "gateways:gate_recipe", "group": "tyr_progression_mobs",
             "pattern": [" C ", "SMS", " E "],
             "key": {
                 "C": {"item": t["catalyst"]},
