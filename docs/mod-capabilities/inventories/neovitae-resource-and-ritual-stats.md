@@ -74,7 +74,7 @@ These cost entries **do not prove actual ritual activation, valid structure, fir
 
 **Divinus Activation Crystal (actual level 2; Hellfire Forge path):** 12 registered rituals: `deus_armour_evolve`, `deus_celerity`, `deus_crystallum_fractura`, `deus_enchanted_vitae`, `deus_felling`, `deus_green_grove`, `deus_magnetism`, `deus_meteor`, `deus_placer`, `deus_torment_nexus`, `deus_well_of_suffering`, `hellforging`.
 
-**Important topology clarification:** the first available Tier-III Endless Realm ritual (`neovitae:standard_dungeon`) is **absent** from the explicit data-map overrides. Its *default* cost and crystal level therefore derive from its ritual class, not from this table. Likewise `neovitae:simple_dungeon` is not in this data map. The ledger only enumerates the **48 explicitly serialized ritual-stat overrides**, and we must separately inspect the registered ritual classes for those 3+ omitted entries before claiming complete ritual cost coverage. It is **not** safe to assert `standard_dungeon` uses a Weak Crystal just because the default codec value is 0.
+**Important topology clarification:** the first available Tier-III Endless Realm ritual (`neovitae:standard_dungeon`) is **absent** from the explicit data-map overrides. Its *default* cost and crystal level therefore derive from its ritual class, not from this table. Likewise `neovitae:simple_dungeon` is not in this data map. The ledger only enumerates the **46 explicitly serialized ritual-stat overrides**, and we must separately inspect the registered ritual classes for those 2 omitted entries before claiming complete ritual cost coverage. It is **not** safe to assert `standard_dungeon` uses a Weak Crystal just because the default codec value is 0.
 
 ## Sigil data map: 14 overrides
 
@@ -122,7 +122,7 @@ A Sigil's `lp_cost` is the default documented per-use or configurable drain meas
 
 ## Explicit remaining evidence
 
-1. Resolve the **3 registered rituals without generated stats** (see next audit) and any defaults set by their classes, then map structure size/layout, actual on-success output and missing crystal gate.
+1. Both **registered dungeon rituals absent from generated stats** are now source-resolved: Weak Crystal level 0, 80,000/150,000 startup EV, respectively; still map exact rune layouts, valid portal area, on-success output, client behavior, return persistence and any pack overrides.
 2. Confirm **Awakened level 1** availability: review dungeon loot and pack recipes; no added Tier III shortcut should be assumed.
 3. Confirm actual installed data-map overrides and tooltip consistency for all sigils and Blood Orbs, including `fillRate`.
 4. Inspect the pinned binary or a disposable live client for recipe changed/replaced by the pack, plus exact FTB event-task support.
