@@ -39,6 +39,10 @@ jobs:
           python3 scripts/validate_progression_gates.py
           python3 scripts/validate_b19_gateways.py
           python3 scripts/verify_emc_coverage_audit.py
+      - name: Verify converter crafting and native owner-account contracts (Type A only)
+        run: |
+          python3 compat/economy/tools/verify_converter_contract.py
+          python3 -m unittest discover -s compat/economy/tools -p 'test_verify_converter_contract.py' -v
       - name: Fetch exact hash-locked compile classpath
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
       - name: Compile Economy and execute unit tests
