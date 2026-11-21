@@ -1,6 +1,5 @@
 package io.github.heatwaveqc.tyr.progression.mxp.hooks;
 
-import io.github.heatwaveqc.tyr.progression.mxp.MxpMod;
 import io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,8 +20,7 @@ public final class MagicCostPolicy {
 
     /** Evaluates one originating school; no other school is added for shared mana. */
     public static double rate(ServerPlayer player,String source){
-        if(!MxpMod.active()||ModList.get().isLoaded("tyzs_skills")||
-            !MxpPlayerPolicy.eligible(player)||NewbieMode.isNewbie(player))return 0;
+        if(!MxpPlayerPolicy.eligible(player)||NewbieMode.isNewbie(player))return 0;
         double rate=0;
         for(var active:EffectRuntime.active(player))
             if(active.effect().type().equals("magic_cost_discount")&&active.effect().selector().equals(source))

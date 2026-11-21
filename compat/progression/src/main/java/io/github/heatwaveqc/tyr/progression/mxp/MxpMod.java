@@ -7,7 +7,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.commands.Commands;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -19,11 +18,12 @@ import java.util.UUID;
 
 public final class MxpMod {
     public static final String ID = "tyr_progression";
-    public static boolean active(){return !net.neoforged.fml.ModList.get().isLoaded("tmm_mxp");}
+    // The unified engine is always the MXP authority. ProgressionMod rejects
+    // legacy providers on startup rather than disabling awards invisibly.
+    public static boolean active() { return true; }
     public static final Logger LOGGER = LoggerFactory.getLogger(MxpMod.class);
 
     public MxpMod(IEventBus bus, ModContainer container) {
-        if(!active())return;
         container.registerConfig(ModConfig.Type.COMMON, MxpSourceConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, MxpProgressionConfig.SPEC);
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
@@ -31,7 +31,7 @@ public final class MxpMod {
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,BossRewards::onDeath);
         NeoForge.EVENT_BUS.addListener(this::onServerStopping);
         NeoForge.EVENT_BUS.addListener(this::onTickEnd);
-        LOGGER.info("TMM MXP initialized (registry-projected boss/miniboss rewards)");
+        LOGGER.info("Tyr Progression MXP initialized (registry-projected boss/miniboss rewards)");
     }
 
     private static void clearPaymentScopes() {
@@ -49,7 +49,7 @@ public final class MxpMod {
     }
 
     private void registerCommands(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("tmmmxp")
+        event.getDispatcher().register(Commands.literal("tyrmxp")
             .then(Commands.literal("status").executes(ctx -> {
                 ServerPlayer player = ctx.getSource().getPlayerOrException();
                 Wallet account = MxpService.inspect(player);
@@ -71,7 +71,7 @@ public final class MxpMod {
                             // FIRST ritual, hence undivided. Not a survival source.
                             String unique = UUID.randomUUID().toString();
                             MxpService.AwardStatus award = MxpService.ritual(player,
-                                "tmm_mxp:diagnostic/" + unique,
+                                "tyr_progression:diagnostic/" + unique,
                                 "diagnostic:" + unique, amount, amount);
                             output(ctx.getSource(), award);
                             return award.accepted() ? 1 : 0;
@@ -82,7 +82,7 @@ public final class MxpMod {
                             ServerPlayer player = ctx.getSource().getPlayerOrException();
                             double amount = DoubleArgumentType.getDouble(ctx, "base");
                             MxpService.AwardStatus award = MxpService.resource(player,
-                                "tmm_mxp:diagnostic", "diagnostic:" + UUID.randomUUID(),
+                                "tyr_progression:diagnostic", "diagnostic:" + UUID.randomUUID(),
                                 amount, 1000, 1);
                             output(ctx.getSource(), award);
                             return award.accepted() ? 1 : 0;

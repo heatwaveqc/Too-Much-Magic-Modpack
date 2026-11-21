@@ -7,13 +7,11 @@ import io.github.heatwaveqc.tyr.progression.state.Discoveries;
 import io.github.heatwaveqc.tyr.progression.state.Modes;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
-import io.github.heatwaveqc.tyr.progression.runtime.TyzMonkBridge;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tyr.progression.state.Track;
 import io.github.heatwaveqc.tyr.progression.model.XpChannel;
-import net.neoforged.fml.ModList;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.HashMap;
 import java.util.Map;
@@ -177,7 +175,7 @@ public final class ProgressionApi {
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
                 if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
                 recent.put(cooldownKey,now);
-                long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),TyzMonkBridge.bonusMonkXp(player,required,source.xp()));
+                long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),source.xp());
                 next=ChannelEngine.grant(next,system,xp,0);
             }
         }
@@ -269,8 +267,7 @@ public final class ProgressionApi {
     private static boolean awardMagic(ServerPlayer player,String channelId,String tx,String first,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
         if(player==null || player.getServer()==null || !player.getServer().isSameThread()
-            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)
-            || ModList.get().isLoaded("tmm_mxp")) return false;
+            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return false;
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());

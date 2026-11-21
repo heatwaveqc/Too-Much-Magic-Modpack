@@ -36,7 +36,6 @@ public final class MxpService {
     }
     private static AwardStatus award(ServerPlayer player,String tx,String completion,double first,double repeat,
                                      boolean firstFixed,boolean repeatFixed){
-        if(!MxpMod.active())return ignored(player,"Legacy MXP installed");
         Wallet before=inspect(player);
         if(before.recentTransactions().contains(tx))return new AwardStatus(false,true,false,0,0,before.magicLevels(),before.magicProgress(),0,"Duplicate committed action");
         boolean accepted=completion==null?
@@ -76,7 +75,7 @@ public final class MxpService {
     /** Native dragon advancement only; persistent first key, explicitly zero repeat. */
     public static AwardStatus dragonAdvancement(ServerPlayer player,String advancementId){
         String key=io.github.heatwaveqc.tyr.progression.foundation.BossRewardPolicy.dragonAdvancementKey(advancementId);
-        if(key==null||!MxpMod.active()||player instanceof net.neoforged.neoforge.common.util.FakePlayer
+        if(key==null||player instanceof net.neoforged.neoforge.common.util.FakePlayer
             ||player.getServer()==null||!player.getServer().isSameThread()
             ||player.getServer().getPlayerList().getPlayer(player.getUUID())!=player)
             return ignored(player,"No eligible native dragon advancement");
@@ -91,7 +90,6 @@ public final class MxpService {
         return award(player,tx,null,base,base,false,false);
     }
     public static AwardStatus jawrCommittedBloodDebit(ServerPlayer player,String tx,double original,double actual){
-        if(!MxpMod.active())return ignored(player,"Legacy MXP installed");
         if(!player.server.isSameThread()||player.isCreative()||player.isSpectator()||
             !(io.github.heatwaveqc.tyr.progression.runtime.forms.JawrFormState.present(player,"vampire")||
               io.github.heatwaveqc.tyr.progression.runtime.forms.JawrFormState.present(player,"werewolf")))

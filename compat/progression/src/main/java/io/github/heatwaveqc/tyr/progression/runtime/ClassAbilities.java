@@ -183,7 +183,7 @@ public final class ClassAbilities {
         double rate=0;
         for(var a:EffectRuntime.active(p))if(a.effect().type().equals("hunger_efficiency"))
             rate+=a.effect().amountPerRank()*a.rank();
-        double scale=(nativeHunger?0.5*TyzMonkBridge.hungerMultiplier(p):1)*Math.max(.05,1-rate);
+        double scale=(nativeHunger?0.5:1)*Math.max(.05,1-rate);
         if (now > old && scale<1) {
             float reduced = old + (now - old) * (float)scale;
             p.getFoodData().setExhaustion(reduced);
@@ -267,8 +267,8 @@ public final class ClassAbilities {
         double levelFactor = Math.max(0.0, 1.0 - Math.pow(Math.abs(look.y) / 0.65, 2));
         if (horizontalLook < 0.2 || levelFactor <= 0.0) return;
 
-        // Monk's existing Tyz control skill improves the small thrust, not eligibility.
-        double monkControl = NewbieMode.isNewbie(p) ? 0.0 : TyzMonkBridge.glideSpeedBonus(p);
+        // Native, player-owned effects may improve small thrust; no retired Tyz rank bonus.
+        double monkControl = 0.0;
         for(var a:EffectRuntime.active(p))if(a.effect().type().equals("glide_control_bonus"))monkControl+=a.effect().amountPerRank()*a.rank();
         double forwardBoost = (0.016 + Math.min(0.1,Math.max(0,monkControl)) * 0.04) * levelFactor;
         Vec3 heading = new Vec3(look.x / horizontalLook, 0, look.z / horizontalLook);

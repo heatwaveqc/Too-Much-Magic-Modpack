@@ -31,7 +31,7 @@ public final class NativeLootBonuses {
                 || !HarvestAbilities.canHarvestBarehand(player, block))
             return 0;
 
-        return LootBonusMath.monkFortune(1, TyzMonkBridge.fortuneBonus(player),
+        return LootBonusMath.monkFortune(1, 0,
                 "fortune".equals(ProgressionApi.mode(player,
                         "tyr_progression:treasure_mode", "fortune")), true);
     }

@@ -95,7 +95,7 @@ public final class ProgressionEvents {
         }
     }
     private static void mobDrops(LivingDropsEvent event) {
-        if (!event.isCanceled()) { TyzMonkBridge.mobDrops(event); UtilityEffects.mobDrops(event); }
+        if (!event.isCanceled()) UtilityEffects.mobDrops(event);
     }
     private static void consumedFood(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -139,7 +139,6 @@ public final class ProgressionEvents {
             }
             HarvestAbilities.blockDrops(player,event);
             GildedMechanics.ore(player,event);
-            TyzMonkBridge.crops(event,player);
             UtilityEffects.crops(player,event);
             EffectHandlers.blockDrops(player,event);
         }
@@ -171,8 +170,7 @@ public final class ProgressionEvents {
         ProgressionApi.record(player,new io.github.heatwaveqc.tyr.progression.core.Signal(
                 "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
         String id=event.getAdvancement().id().toString();
-        if(io.github.heatwaveqc.tyr.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null
-            &&io.github.heatwaveqc.tyr.progression.mxp.MxpMod.active()){
+        if(io.github.heatwaveqc.tyr.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null){
             try {
                 var receipt=io.github.heatwaveqc.tyr.progression.mxp.MxpService.dragonAdvancement(player,id);
                 if(receipt.accepted())player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
@@ -195,13 +193,11 @@ public final class ProgressionEvents {
         if (event.isCanceled()) return;
         EffectRuntime.incoming(event);
         if (!event.isCanceled()) EffectHandlers.incoming(event);
-        if (!event.isCanceled()) TyzMonkBridge.incoming(event);
         if (!event.isCanceled()) MechanicalEffects.incoming(event);
         if (!event.isCanceled()) io.github.heatwaveqc.tyr.progression.runtime.forms.LichServantEffects.incoming(event);
     }
     private static void breakSpeed(PlayerEvent.BreakSpeed event) {
         EffectRuntime.breakSpeed(event);
-        TyzMonkBridge.breakSpeed(event);
         if (event.getEntity() instanceof ServerPlayer player)
             EffectHandlers.breakSpeed(player,event);
     }
@@ -213,7 +209,6 @@ public final class ProgressionEvents {
     private static void tick(PlayerTickEvent.Post event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
-            TyzMonkBridge.tick(player);
             Enrollment.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
@@ -241,7 +236,6 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
-            TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
@@ -273,7 +267,6 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
-            TyzMonkBridge.logout(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
