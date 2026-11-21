@@ -3015,6 +3015,21 @@
       "packwiz_slug": "ldlib2",
       "note": "REQUIRED LIBRARY for owner-selected Prefab Custom Addon, 2026-11-20. Candidate exact 1.21.1 NeoForge release LDLib2-1.21.1-2.2.46.a (Nov 7, 2026), official CF project 626676. Exact provider candidate file CF 9495128 (corroborated by secondary published pack manifests) is source-staged unindexed; independently verify jar hash, native loader ranges and any transitive dependencies before integration; do not accidentally select a 26.x branch. No independent gameplay use or activation implied.",
       "candidate_file_id": 9495128
+    },
+    {
+      "id": "born-in-chaos",
+      "name": "Born in Chaos",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.7.6",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/born-in-chaos/files/8268280",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "curseforge_project_id": 686437,
+      "candidate_file_id": 8268280,
+      "packwiz_slug": "born-in-chaos",
+      "note": "OWNER PROMOTION 2026-11-20: previous research hold is lifted. Born in Chaos 1.7.6, CurseForge project 686437/file 8268280, NeoForge Minecraft 1.21.1 is REQUIRED inclusion attempt in NEXT owner-authorized comprehensive unstable QA build for live evaluation. Official filename born_in_chaos_[Neoforge]_1.21.1_1.7.6.jar; SHA1 corroborated by published third-party modpack metadata only (73704f38ac368c03716f9cc8f537470d3b352fa2), verify actual publisher JAR bytes/metadata and license before activation. Native required GeckoLib already pinned at 4.9.3; JEI/JER optional already pinned, Better Combat optional and NOT approved by this selection. Initially preserve native mod features and document configurations before any aggressive spawn/structure balance changes. Live test early Newbie overworld spawn pressure, conflict with existing/newly staged Mowzie/Aquamirae/Sons of Sins/Graveyard/YUNG/Cataclysm, structure densities and cave safety, boss damage/loot, Hunter taxonomy/MXP/blood/spirits/capture/EMC, multiplayer/TPS and restart. Mark INCLUDED/BLOCKED with evidence, no automatic build authorization and no gameplay PASS until actually tested."
     }
   ],
   "excluded": [
