@@ -1,6 +1,6 @@
 # Too Much Magic — Potion and Alchemy Interoperability Matrix
 
-**Status:** Design/research v0.1, 2026-11-20. **No gameplay compatibility changes are approved by this document.** Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
+**Status:** Design/research v0.2, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
 
 ## Why this is not just a potion-container chart
 
@@ -106,6 +106,55 @@ A transaction test MUST record input item ID/components, effect registry IDs, po
 **I7 — Reject unsupported carriers BEFORE resource debit.** Any bridge must validate complete payload and charge/container behavior before mutating item, fluid, blood, Source or XP state. Failure explains incompatible data rather than replacing it with a weaker generic potion.
 
 **I8 — Advancement/quest gates cannot be laundered.** An eligible standard MobEffectInstance doesn't automatically authorize an alternate ritual, Witchery curse/ascension, Goety lich, or Hunter mutation acquisition. Validate registered recipe/authoritative progression as appropriate.
+
+## C.5. Balance-sensitive effect capabilities and laundering loops
+
+**Owner design direction (2026-11-20):** One-dose/carrier conservation **is necessary but insufficient**. **A Hunter must not acquire unrestricted or permanent creative flight through a Neo Vitae → EvilCraft → Occultism Demonic Partner chain**, or by adding future Hunter duration/potency/mutation skills to it. Preserve the deliberately supported native magical flight paths ([#330](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/330)) and other ordinary potion effects. No gameplay edits authorized merely by this documentation.
+
+### Source-confirmed Neo Vitae flight vector
+
+- [Neo Vitae 1.21.1 FlightEffect](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/effect/FlightEffect.java) grants **NeoForge CREATIVE_FLIGHT** by an attribute modifier of +1.0 while active, sets flying speed by amplifier, and clears fall distance.
+- [Neo Vitae flask recipe](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/flask/suspended_to_flight.json) synthesizes \`neovitae:flight\` from \`neovitae:suspended\` plus \`minecraft:levitation\` at **3,600 ticks**, with a Combinational Catalyst, 1,000 syphon, 200 processing ticks, \`upgradeLevel: 1\`. Its separate flight lengthening/potency recipes adjust this native effect. This is intended native temporary flight and is **not** to be removed globally.
+- [EvilCraft Purifier](https://github.com/CyclopsMC/EvilCraft/blob/master/src/main/java/org/cyclops/evilcraft/blockentity/tickaction/purifier/CollectPotionPurifyAction.java) extracts any **non-ambient** active effect into a fresh standard vanilla potion with custom-only PotionContents, limited to **6,000 ticks** (five minutes) by default **per extraction** and preserving the entity's remaining portion. It checks no creative-flight capability; it could make a generic bottle from native Neo Vitae flight.
+- [Occultism DemonicPartner](https://github.com/klikli-dev/occultism/blob/master/src/main/java/com/klikli_dev/occultism/common/entity/spirit/demonicpartner/DemonicPartner.java) reads that potion's PotionContents and applies non-instant effects at **5× supplied duration**. Therefore a 6,000-tick captured flight segment could become 30,000 ticks (25 min), given the source path and its costs. The exact infinite/repeated-cycle economics have **not** been measured; do not label it confirmed infinite or a runtime-executed exploit without pinned-binary QA.
+
+### Required compatibility policy (owner intent) and engineering proposal
+
+| Capability / source class | Normal consumption | EvilCraft active-effect extraction | Demonic Partner duration / amplifier magnification | Generic jars/fluids / Apotheosis charm | Hunter XP, mutagen or generic potion-enhancement skills |
+|---|---|---|---|---|---|
+| Ordinary status effects (e.g. Speed, Night Vision) | Preserve native behavior | Permit native eligible effect with blood/container costs | Permit native spouse behavior and dose-safe input | Permit lossless eligible conversion; native charm policy separately decided | Native XP/mutation source rules; improvement skills only as owner-approved |
+| **Creative-flight-granting MobEffects** (first known: \`neovitae:flight\`) | **Keep correctly gated native temporary flight** | **Propose deny/skip**, leaving effect active and not consuming blood/bottle for it | **Propose reject enhanced application**, without swallowing dose/vessel | **Propose no generic conversion/renewable charm** if privilege would be laundered; machine-native Neo Vitae recipes remain usable | **Exclude from permanent mutations, progression XP and generic Hunter duration/potency enhancements**; no bypass via splash/arrow/area carrier |
+| Other exceptionally privileged effects (invulnerability, teleport/progression bypass, transformation, dimension effects, world/resource generation; only where they actually use potion effects) | Preserve existing native progression | Require per-effect review | Require per-effect review | Require per-effect review | Fail closed unless explicitly allowlisted for Hunter |
+| Ordinary no-potency / special effect types | Preserve native behavior | Only with proven faithful semantics | Apply native type rules, not numeric modifier blindly | Lossless-only | Follow meaningful Hunter effect and source rules |
+
+**Important distinction:** This is **not a ban on flight or a retroactive nerf to Neo Vitae**; native Neo Vitae temporary flight, rituals and related resource costs remain available through their intended routes. The restrictions are on *exporting a privileged buff to otherwise generic effect carriers*, *cross-mod multiplication*, and *permanent Hunter acquisition* without an explicit class/boss/progression gate. Require owner sign-off before choosing a particular implementation (e.g. Purifier skip vs deny; Demonic Partner decline whole interaction vs apply unamplified).
+
+**Design mechanics (implementation not approved yet):**
+
+1. Introduce an explicit **data-driven privileged-effect registry/tag** in the existing compatibility/Progression subsystem rather than a global hardcoded potion blacklist. Seed \`neovitae:flight\` and audit all current effects that add \`neoforge:creative_flight\` or grant mayfly through callbacks; IDs alone are not exhaustive. Scope permissions by operation: \`allow_native_use\`, \`allow_generic_bottling\`, \`allow_crossmod_duration_multiplier\`, \`allow_reusable_charm\`, \`allow_hunter_mutation\`, \`allow_hunter_duration_skill\`, etc. Do not silently infer every mod effect is special, but review unknown privilege-bearing effects before allowing generically.
+2. Enforce a capability filter at **both endpoints**, especially on any reconstituted vanilla potion. EvilCraft and Iron's/Ars conversion may lose source-specific provenance, so a consumer must check *effect identities/capabilities*, not trust the incoming item ID or whether it looks vanilla. Mixed-effect bundles containing one restricted effect are denied as an atomic transaction, not partially converted into an apparently weaker potion.
+3. If a generic machine cannot represent a source's charges or effect privilege exactly, **refuse before debiting**; don't destroy the original flask, consume whole eight-use item, remove player effect, or spend blood/XP. Distinguish *safe regular enhancement* from *unearned capability activation*.
+4. Hunter **currently** has a whitelist-like brewing **source** gate but a blacklist-based **effect** policy: \`HunterMutationPolicy.eligible\` tests only non-instant and \`effect_blacklist\`, and \`hunter.json\` presently does **not** list \`neovitae:flight\`. Today the item/source gate prevents this particular flask/Purifier chain from directly becoming a mutagen, but a future registered brewing stand result or new adapter could accidentally admit it. Add **defense in depth**: deny known privileged effect IDs/capabilities in Hunter's mutation eligibility even when the brewing source is otherwise valid; ideally migrate to explicit permit-list/privilege tiers for permanent effects, preserving the existing owner-approved normal eligible potion roster.
+5. Hunter's periodic mutation application creates **ambient=true** MobEffectInstance; EvilCraft currently ignores ambient effects. Preserve this useful safety invariant, but do **not** use ambient as the only gate: Hunter's planned duration/potency skills and other mods may apply ordinary **non-ambient** effects that need independent privilege checks.
+6. Test effect-loop **economics** as well as a Boolean PASS/FAIL: measure source recipe tier, consumed inputs, EV, blood, time, full/remaining effect durations, refundable doses, number of Purifier iterations, partner item remainder, stacking/replacement, effect amplifier, and whether the destination bypasses a native skill/boss gate. A 5× duration result is not automatically an exploit for ordinary buffs; what matters is repeatability, privileges, and progression.
+
+### Dedicated QA vectors to add
+
+| Test | Pipeline | Must prove |
+|---|---|---|
+| B01 | Neo Vitae native Flight Flask → player | Native resource-gated temporary creative-style flight works; expiry removes flight cleanly |
+| B02 | Flight ACTIVE → EvilCraft Purifier | Privileged effect is not converted to a transferable generic bottle by the approved policy; no blood/bottle/effect consumed when refused |
+| B03 | Flight PC bottle (commands, alternate origin) → Demonic Partner | Cannot receive unrestricted fivefold flight; no silent item/dose loss on refusal |
+| B04 | Neo Vitae flask directly to Demonic Partner / Iron's cauldron | No whole-flask consumption; privilege + charge rules checked independently |
+| B05 | Flight potion or extracted effect → Apotheosis Charm / Ars Jar / Iron potion fluid | No route makes flight infinitely replenishable, duplicates charges or launders gate via vanilla potion |
+| B06 | Flight effect via registered stand recipe, edited PC or new potion mod → Hunter Bio-Mutagen | Denied by **effect eligibility** even if source detection succeeds; no mutagen progress |
+| B07 | Native Hunter mutation refresh → Purifier | Ambient state remains protected; no free re-bottle/XP |
+| B08 | Future Hunter potion-enhancement skills + Flight | Privileged duration/amplifier excluded; ordinary Speed/Strength still improve normally |
+| B09 | Two players, one with native flight progression and one without | No transfer of privileged unlock via rebottled or shared fluids; vanilla potions and native flight remain usable |
+| B10 | Native attribute flight plus temporary potion, and expiration/grounding | No stuck \`mayfly\` permission, forced fall on removal of one of two legitimate sources, or ability-state desynchronization |
+
+**The specific cross-mod block list and actual runtime patches remain to be reviewed against pinned JARs.** This is an owner-directed design guardrail and a source-backed high-risk QA plan, not an accepted implementation or an in-game exploit proof.
+
 
 ## D. Proposed investigation and test sequence
 
