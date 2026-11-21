@@ -55,7 +55,8 @@ public final class NewbieMode {
         if (!isNewbie(player)) return true;
         set(player, REGULAR);
         player.sendSystemMessage(Component.literal(
-            "You're now in Regular Mode. Newbie inventory and travel protection has ended."));
+            "You're now in Regular Mode. Newbie inventory and travel protection has ended."
+            + " Your one-time Starter Home is available via /tmmhome list."));
         return true;
     }
 
