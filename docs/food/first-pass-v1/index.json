@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "complete_initial_screen_review_only",
+  "provenance": {
+    "source_commit": "4dea85e9771baffc8931264f61e754a2f8a5658d",
+    "census_commit": "1ae3aa4569294b8904e6bf156a73b779758832f3",
+    "historical_installed_build": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+    "workflow_run": 44632389542,
+    "workflow_job": 135942133213
+  },
+  "columns": [
+    "id",
+    "status",
+    "traits",
+    "review_flags",
+    "batches"
+  ],
+  "summary": {
+    "alcohol_candidates": 58,
+    "batch_counts": {
+      "agriculture": 215,
+      "animal_products": 100,
+      "beverages": 218,
+      "intermediates": 38,
+      "prepared_meals": 436,
+      "supernatural_special": 36
+    },
+    "candidate_records": 2151,
+    "earlier_batch_entries_preserved": 346,
+    "exact_hints_missing": [
+      "pastel:magnificent_star_candy"
+    ],
+    "flag_counts": {
+      "alcohol_native_effect_review": 68,
+      "generic_identity_review_if_consumer_needs": 1250,
+      "grain_free_recipe_review": 2,
+      "historical_candidate_only": 79,
+      "not_ordinary_edible_evidence": 193,
+      "special_consumer_review": 36
+    },
+    "newly_surfaced": 1127,
+    "prior_candidates_lost": 0,
+    "registry_items": 23681,
+    "scope": "First-pass evidence only. Generic labels do not imply FOOD component, diet eligibility, or consumer authorization.",
+    "status_counts": {
+      "generic_candidate": 1250,
+      "no_food_evidence_not_classified": 21530,
+      "nonfood_or_planting_review": 193,
+      "provisional": 523,
+      "targeted_review": 185
+    }
+  },
+  "shards": [
+    {
+      "path": "docs/food/first-pass-v1/part-01.jsonl",
+      "count": 300,
+      "first_id": "alexscaves:atlatitan_egg",
+      "last_id": "cookingforblockheads:red_sink"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-02.jsonl",
+      "count": 300,
+      "first_id": "cookingforblockheads:sink",
+      "last_id": "minecraft:pumpkin"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-03.jsonl",
+      "count": 300,
+      "first_id": "minecraft:pumpkin_pie",
+      "last_id": "pamhc2foodcore:caramelpieitem"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-04.jsonl",
+      "count": 300,
+      "first_id": "pamhc2foodcore:caramelyogurtitem",
+      "last_id": "pamhc2foodextended:cheezepuffsitem"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-05.jsonl",
+      "count": 300,
+      "first_id": "pamhc2foodextended:cherrycoconutchocolatebaritem",
+      "last_id": "pamhc2foodextended:juniperberrysmoothieitem"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-06.jsonl",
+      "count": 300,
+      "first_id": "pamhc2foodextended:juniperberryyogurtitem",
+      "last_id": "pamhc2foodextended:saucedlambkebabitem"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-07.jsonl",
+      "count": 300,
+      "first_id": "pamhc2foodextended:sauerbratenitem",
+      "last_id": "theaurorian:silkshroom_stew"
+    },
+    {
+      "path": "docs/food/first-pass-v1/part-08.jsonl",
+      "count": 51,
+      "first_id": "theaurorian:soulless_flesh",
+      "last_id": "witchery:wormwood_seeds"
+    }
+  ]
+}
