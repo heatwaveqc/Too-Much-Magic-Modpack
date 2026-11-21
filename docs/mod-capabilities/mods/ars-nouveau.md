@@ -83,3 +83,147 @@ Each line identifies **actual named objects** plus the bottom/upper operation; a
 ## 5. Operational capability records (to be expanded below)
 
 These records are grouped by actual mechanism, not by a single arbitrary axis. They capture per-mechanism carrier, resource cost, minimum working setup, possible upper capability and a teachable action. The next record expansion is appended in this same Atlas branch.
+
+### spell-learning — Novice/Apprentice/Archmage Spell Books; Scribes Table; learned glyphs
+
+**Mechanics, carriers and costs:** Novice from Book and four iron tools; C opens the spell editor. At Scribes Table select one of 82 glyph recipes, pay vanilla XP 27/55/160 and ingredient items; crafting lasts 120 ticks once materials arrive. Collect and use glyph to add it permanently to player knowledge; cancelling can refund XP/materials.
+
+**Entry → mature capability:** Single valid Form+Effect Tier-1 cast → 2nd-tier spell after Apprentice → third-tier configurations after Archmage, retaining learned spells.
+
+**Quest use and bounds:** Show choosing recipe/XP debit/ingredient delivery, learned glyph in editor, valid target and player mana decrease. FTB ownership/advancement is never proof of cast. 82 recipes in dedicated exact JSON index.
+
+### source-network — Source Jar, Agronomic/Vitalic/Alchemical/Mycelial/Volcanic Sourcelinks, Relays
+
+**Mechanics, carriers and costs:** Source is numerically stored in Jar 10,000 and Sourcelink buffer 20,000. Agronomic: common crop +20, magic-tag crop +45; trees +50/+100. Vitalic: valid breed +600 and death +200. Alchemical: >=100 potion units consumed; Mycelial consumes food; Volcanic consumes fuel. Base transfer each 100 ticks, Manhattan search 5 and <=10,000 transferred.
+
+**Entry → mature capability:** Passive farm at one Jar → separately fuelled potion/food/fuel Source networks → linked relay and consumer networks.
+
+**Quest use and bounds:** Demonstrate actual qualifying trigger, power stored in Jar and one consumer, but do not schedule native stand-alone QA. TMM tag overrides and Source bridge patches justify focused pack tests only.
+
+### crafting-stations — Imbuement Chamber, Enchanting Apparatus, Arcane Core, Pedestals, Scribes Table
+
+**Mechanics, carriers and costs:** Imbuement processes Source Gem and elemental Essence recipes; ordinary Gem conversion may progress without an active powered producer. Essence catalyst pedestals may retain item inputs. For Apparatus, align Core adjacent, place materials on nearby pedestals (up to 3 blocks), central reagent in Apparatus and ensure Source for source-requiring recipe.
+
+**Entry → mature capability:** Basic gems → advanced Charm/armor/trinket and Essence recipes → addon Wixie Apparatus work.
+
+**Quest use and bounds:** Item ownership does not prove a successful Apparatus run. Source JSON material costs are in 36-device index; parent machine and recipe categories differ.
+
+### combat-spells — Forms Touch, Projectile, Self, Rune and others; Effects Harm, Ignite, Cold Snap, Wither, Lightning, Fangs, Explosion, Pull, Freeze, Heal; Augments Amplify, AoE, Pierce
+
+**Mechanics, carriers and costs:** Order of form, effect and augment determines target and mana; a learned glyph may require high book tier. Effects can be damage, movement/control, utility and support. Spell turrets and Elemental foci can change resulting effect and consumption.
+
+**Entry → mature capability:** Simple single-effect spell → multi-effect/projectile/area spell → automated turret and Elemental focus/Iron's school-power bridge.
+
+**Quest use and bounds:** Inspect actual spell class for per-glyph mana cost and level restrictions before asserting limits; recipe XP is not a casting cost.
+
+### mobility-travel — Leap, Launch, Blink, Glide, Slowfall, Warp Scroll, Portal, Warping/Flight rituals, Controle Holder
+
+**Mechanics, carriers and costs:** Direct movement consumes player mana. A native Warp Portal uses Sourcestone rectangle from 1×1 to 21×21, a full Source Jar nearby and a destination-bound Warp Scroll; source guide describes same-dimension portal path. Controle/ Additions enable different remote/travel routes.
+
+**Entry → mature capability:** Short cast mobility → warp scroll and portal → specialist spell prisms and cross-dimension remote targeting.
+
+**Quest use and bounds:** Separate player movement from spell projectile routing; do not promise a universal Waystones-like mechanism or unloaded destinations.
+
+### gear-armor — Arcanist/Battlemage/Sorcerer robes, Alteration Table and Threads, mana amulets/rings, Elemental focus and elemental armor
+
+**Mechanics, carriers and costs:** Alteration Table receives worn armor on a stand; apply threads to its display then remove armor to finalize, or remove thread with empty-hand interaction. Elemental foci boost one school with off-school tradeoff, while higher armor sets require recipe-based progression.
+
+**Entry → mature capability:** Basic robes → first thread slot/mana gear → selected school focus/full-set effects and Elemancy pair/four-element specialization.
+
+**Quest use and bounds:** Thread slots and source cost vary by gear; avoid assuming every set can accept unlimited threads or that focus gains permanent innate skills.
+
+### worker-automation — Starbuncle, Whirlisprig, Drygmy, Wixie, Mob Jar, Amethyst Golem
+
+**Mechanics, carriers and costs:** Starbuncle handles assigned item logistics; Whirlisprig habitat and plant diversity provide Source; Drygmy Henge can simulate eligible nearby natural/Mob-Jar mob loot and experience gems without killing. Wixie works via Cauldron and supported recipes. Workers require native token/charm, workstation, suitable inventory and sometimes Source.
+
+**Entry → mature capability:** One Starbuncle item route → Whirlisprig Source garden → Drygmy habitat and Wixie recipe automation.
+
+**Quest use and bounds:** Teach individual Charm acquisition and actual role, not just crafting Charm; inspect native role on source rather than asserting all worker functions are interchangeable.
+
+### mob-resource — Drygmy Henge, natural mobs, Mob Jar, Vitalic link, ritual containment, Elemental Siren Shrine
+
+**Mechanics, carriers and costs:** Drygmy Henge scans natural candidates approx 10 horizontal/6 vertical and Mob Jars Manhattan 10, uses workers and Source. Base code charges 1,000 Source per 20 progress output; target loot count 1 + 2×distinct entity types + min(5, nearby count), with vanilla XP converted at 1/4 to gems. Blacklist filter occurs late, so excluded mobs may affect population bonus; default blacklist only Iron Golem in researched base.
+
+**Entry → mature capability:** Breeding/death Source → common passive Henge → multiple worker variety/Mob-Jar and Siren aquatic loot.
+
+**Quest use and bounds:** High-risk TMM gating: fake-player loot, rare/boss drops and blacklists. This is source-derived and not a permission to farm protected mob drops. Missing storage may silently lose output remainders.
+
+### mining-world — Break, Fell, Cut, Crush, Harvest, Burrowing/Disintegration rituals
+
+**Mechanics, carriers and costs:** Break and Fell are direct block or tree actions; Cut and Crush transform allowed input by native or imported recipes; Burrowing/Disintegration are Source/ritual/worldwork effects, not synonymous with ore multiplication.
+
+**Entry → mature capability:** One block effect → selected tree/field and recipe batch → area ritual removal/earth changes.
+
+**Quest use and bounds:** Separate quarrying existing ores from generating new ore; gather actual per-spell mana and per-ritual world permission code before asserting protective behavior.
+
+### agriculture-world — Agronomic link, Magebloom, Sourceberries, Archwood, Grow/Harvest glyphs, Fertility/Overgrowth/Flowering rituals, Whirlisprig
+
+**Mechanics, carriers and costs:** Magebloom gives material fiber; Archwood and Sourceberry have world acquisition and growing processes. Agronomic Source arises from eligible successful crop/tree growth events. Growth and harvest spells/rituals alter target plant blocks or yield items; Whirlisprig favors plant diversity.
+
+**Entry → mature capability:** First Source/food crop → diversified plant and Magebloom field → repeated growth and farm automation.
+
+**Quest use and bounds:** TMM's Pam's/Farmer's crops need actual tag mapping before claiming 45 Source magic crop bonus. Do not count bone meal alone as a native growth event.
+
+### rituals-support — Ritual Brazier + 24 separately crafted tablets, augment items and Source Jar
+
+**Mechanics, carriers and costs:** Place Brazier and tablet, add optional/required augments before activation, activate with empty hand. Tablet consumed when ritual starts. Source-consuming rituals pull from eligible Jars within 6 blocks. Options include Flight, Sanctuary, Restoration, Harvest, Moonfall, Scrying, Burrowing, Containment, Warping, Conjure Island and Disintegration.
+
+**Entry → mature capability:** First low-risk ritual → personal support/field production → extended terrain/boss summon and Controle portable ritual relay.
+
+**Quest use and bounds:** All 24 tablet inputs indexed, but all 24 activation costs, augmentation behavior and entity prerequisites are **not** audited yet. Do not make a 24-ritual mandatory quest chain.
+
+### storage-logistics — Storage Lectern, Repository, Source Relays variants, Dominion Wand, Starbuncle, Warp Index, Scryer's Linkage
+
+**Mechanics, carriers and costs:** Lectern/Repository implement linked storage/crafting. Source Relays route energy with collector/deposit/splitter/warp variants, normally bound by Dominion Wand source then destination. Additions Warp Index reads a loaded remote Lectern; Controle Linkage can route eligible item/fluid/FE/redstone endpoints.
+
+**Entry → mature capability:** Local storage and one Jar → linked Source and items → cross-dimension special remote and compatible other capability networks.
+
+**Quest use and bounds:** Source remains its own magic energy. Do not add generic storage/FE infrastructure to TMM simply because a Control addon can transport it.
+
+### information — Sense Magic, Scrying ritual, Dowsing Rod, Scryer's Crystal/Oculus, Item Detector, Spell Sensor, Controle Temporal Stability Sensor
+
+**Mechanics, carriers and costs:** Diagnostics detect relevant magic/item/block targets; Scrying and Oculus expose information from afar; Sensor can feed comparator indicating server load for player-designed throttling. Item Detector/Spell Sensor drive redstone based on observed criteria.
+
+**Entry → mature capability:** Local targeting or magic inspection → remote scrying and scripted load-controlled machines.
+
+**Quest use and bounds:** Temporal Stability Sensor observes lag, does not fix server TPS by itself. Any custom CC:Tweaked interface is optional/integration-specific.
+
+### automated-combat — Spell Turret, Basic/Rotating/Timer variants, prisms, redstone, conditional Controle glyphs
+
+**Mechanics, carriers and costs:** Store a valid spell in a turret, provide firing activation and supported Source/mana mechanics, aim or set rotation/timing; prisms redirect incoming compatible spells. Controle can branch with NOT/OR/XOR/XNOR, height/Random filters and precise delay glyphs.
+
+**Entry → mature capability:** One triggered turret → rotating/timed area → conditional/remote projectile networks.
+
+**Quest use and bounds:** Need pinned source class costs, filtering and mob attribution for exact performance; don't interpret native automated damage as player MXP without a first-party bridge.
+
+### encounters — Wilden Horn/Spike/Wing, Summon Wilden tablet, Ritual Brazier, Wilden Chimera and Tribute
+
+**Mechanics, carriers and costs:** Craft tablet from Purple Archwood log, 3 Wilden-tag drops and lapis block. Ordinary activation summons a Wilden; with all three named Horn/Spike/Wing augments it summons destructive Chimera. The Archmage upgrade also requires its Tribute plus a Nether Star and Totem.
+
+**Entry → mature capability:** First Wilden creatures → controlled arena and Chimera → material unlock of Archmage Tier 3.
+
+**Quest use and bounds:** Separate actual boss kill advancement, Tribute inventory, source table inputs and arbitrary quest reward; don't freely reward tier-3 gating ingredients.
+
+### addon-bridges — Seven separately selected addons: Additions, Controle, Elemental, Elemancy, Ars 'n Spells, Ars Ocultas, Unification
+
+**Mechanics, carriers and costs:** Ars 'n Spells connects Iron's mana/casts, school power and inscription; Ocultas jars Occultism workers and can automate sacrifice flags; Unification imports installed Farmer's Delight Cut/Occultism Crusher conversions; Elemental adds Source→water, armor, pets; Elemancy seven specializations; Controle multi-capability links and control glyphs; Additions storage travel and glyph extensions.
+
+**Entry → mature capability:** One optional recipe/bridge → specialized multi-mod operation → guarded Source/loot and mana interactions.
+
+**Quest use and bounds:** Design holds: effective mana mode and damage stacking; nonconsuming Ocultas altar flags; Drygmy protected loot; Additions chunk-loading policy. Detailed 7-addon table is already separate.
+
+## 6. Research ledger and immediate source/owner gaps
+
+| Evidence | Source-first finding | Boundary |
+| --- | --- | --- |
+| [82 core glyph recipes](../inventories/ars-nouveau-glyph-recipes.md) | **82/82** generated recipes, XP distribution 39×27 / 28×55 / 15×160 | Learned glyph recipes are not the full cast-effect / mana cost audit; installed addons may add glyphs |
+| [24 ritual tablets and Brazier](../inventories/ars-nouveau-ritual-tablets.md) | **24 tablets + ritual_brazier** source recipes | Per-ritual ongoing Source/augment cost still needs source-class inventory |
+| [36 selected core machine/Source recipes](../inventories/ars-nouveau-core-infrastructure-recipes.md) | Source, books, workstations, relays, four workers, turrets and key items | Selected subset of 645 top-level recipe files; no claims of full recipe exhaustiveness |
+| [7-addon capability matrix](../inventories/ars-nouveau-addon-family.md) | All seven installed addon families, candidate low- to high-end routes and major cross-mod effects | Detailed addon recipe catalogs and high-impact version pin deltas remain |
+| [49 existing Ars quest records](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/ars_quest_pilot.json) | 29 base, 20 addon; 31 item, 17 advancement, 1 checkmark | **Current integration chapter is not empty**; separate PR #395 owns compact layout; do not generate duplicate GUIDs |
+
+**Specific next source research:** per-glyph cast effects/mana and augment applicability; all 24 ritual runtime costs/augmentation/shape; armor Threads and source production recipe families; addon exact glyph/registered-item lists. These are research tasks, not automatic native-functionality test obligations.
+
+**Owner-level decisions still distinct from source work:** (1) Drygmy loot from protected bosses and blacklist policy; (2) Ars Ocultas altar signals Occultism sacrifice/item-use flags for 5,000 Source without consuming the corresponding jarred entity/item; (3) Ars 'n Spells effective mana mode, damage and resonance stacking with TMM Progression; (4) chunk loading and Source production balance only if pack overrides them.
+
+**TMM QA scope:** This survey edits documentation only; do **not** re-test untouched upstream spellcasting, Henge, workers, ritual mechanics or native XP features. Add narrowly scoped tests only for TMM-owned recipes/config/blacklist/quest detectors, changed adapters or observed failures. No full build was authorized or launched.
