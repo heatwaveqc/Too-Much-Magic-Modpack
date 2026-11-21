@@ -2993,13 +2993,15 @@
       "desired": true,
       "version": "2.7.1",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/prefab-custom-addon/files/9284793",
+      "source": "https://modrinth.com/mod/prefab-custom-addon/version/oqFiI80X",
       "enabled_in_pack": false,
       "dependencies_verified": false,
       "curseforge_project_id": 1614764,
       "candidate_file_id": 9284793,
       "packwiz_slug": "prefab-custom-addon",
-      "note": "OWNER CLASSIFIED REQUIRED 2026-11-20 to deploy previously authored custom starter/school house and Adventurer's Inn blueprints through Prefab 1.0.9. Official NeoForge 1.21.1 prefab-custom-addon-2.7.1-cf.jar CF 1614764/9284793. Mandatory LDLib2 >=2.2 and active Prefab; confirm exact native declared ranges. Audit actual source branch and formats (.nbt/.schem/.litematic), house data install path, safe materials/permissions and no free progression loot, multiplayer upload/security and persistence. Existing houses being drafted isn't proof addon jar or packages are already installed."
+      "note": "OWNER CLASSIFIED REQUIRED 2026-11-20 to deploy previously authored custom starter/school house and Adventurer's Inn blueprints through Prefab 1.0.9. Official NeoForge 1.21.1 prefab-custom-addon-2.7.1-cf.jar CF 1614764/9284793. Mandatory LDLib2 >=2.2 and active Prefab; confirm exact native declared ranges. Audit actual source branch and formats (.nbt/.schem/.litematic), house data install path, safe materials/permissions and no free progression loot, multiplayer upload/security and persistence. Existing houses being drafted isn't proof addon jar or packages are already installed. Exact official Modrinth version oqFiI80X has filename prefab-custom-addon-2.7.1.jar and SHA512 6c52f5ea6445e49a5c21a2b156d4195e027234dc67b6f0042749c5d0ec9cd95240a841e38a0550bb6f158e3fcaaa399da788ba685b43e5f799be19e09b0eaa44 corroborated ONLY by secondary public prismnix project listing (qacow37/prismnix SHA 732eb396a1117cb0fbc006f3884f594639ae95d7), not independently recomputed from official downloaded bytes. Do not conflate this Modrinth artifact hash with potentially different CurseForge file 9284793. Source-only, unindexed; validate binary and native deps in integration.",
+      "modrinth_project_id": "i4msNeGb",
+      "modrinth_version_id": "oqFiI80X"
     },
     {
       "id": "ldlib2",
