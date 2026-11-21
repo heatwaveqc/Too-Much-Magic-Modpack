@@ -2,6 +2,13 @@
 
 This file applies to all AI agents, automated contributors, coding workflows, scheduled tasks, and branches in this repository. For detailed integration procedures read [the active integration branch contract](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/AGENTS.md) and [build channels](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/BUILD-CHANNELS-AND-TESTING.md).
 
+## Task selection: live design chats vs scheduled Work (owner guideline, 2026-11-20)
+
+- **Live, owner-attended chats are design-first by default.** When choosing an open item to tackle next in a live conversation, favor work that benefits from owner decisions: mechanics, progression, balance, mod inclusion, architecture, ambiguous requirements, and tradeoffs. Investigate options and obtain the owner's decision rather than silently inventing one.
+- **The hourly scheduled Work chat is execution-first by default.** Its first choice is already approved, well-specified work that needs no new owner design decision. Prefer current-sprint tasks, observe the scheduled task's eligibility/inactivity criteria, and verify existing Issues, PRs, branches, and assigned work before taking ownership to avoid duplicate implementations.
+- **This is a selection preference, not a prohibition.** If the owner explicitly requests coding, integration, fixes, testing, documentation, or other implementation in a live chat, do that work there under the normal branch/CI/QA and ownership rules. A live chat may also complete a straightforward task when appropriate; do not bounce an explicit request to automation.
+- **Escalate unresolved choices; do not guess.** Scheduled agents should document the design question and hand it to a live discussion, then select another unblocked execution task. Neither lane may override approved scope, designated writers, or the separate authorization gates for full builds and QA.
+
 ## Progression ownership and branch coordination (owner policy, 2026-11-16)
 
 - **All executable progression functionality belongs to the single `compat/progression` / `tmm_progression` engine**, including Java, API/schema, effect handlers, event hooks, mixins, networking, commands, adapters, runtime scripts and executable tests. Prefer reusable data-driven capabilities. Monk, Hunter, Gilded and all future paths are **config-only**: path/datapack JSON, Tyz skill-tree/config JSON, tags/data assets, localization, non-executable fixtures and documentation. Class/path branches do not own or add Java/KubeJS/other runtime code; if a path needs new behavior, implement it in a separate engine PR.
