@@ -12,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tyr.progression.state.Track;
 import io.github.heatwaveqc.tyr.progression.model.XpChannel;
-import net.neoforged.fml.ModList;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.HashMap;
 import java.util.Map;
@@ -268,8 +267,7 @@ public final class ProgressionApi {
     private static boolean awardMagic(ServerPlayer player,String channelId,String tx,String first,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
         if(player==null || player.getServer()==null || !player.getServer().isSameThread()
-            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)
-            || ModList.get().isLoaded("tmm_mxp")) return false;
+            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return false;
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());

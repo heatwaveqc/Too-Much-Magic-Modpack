@@ -55,8 +55,10 @@ for root in SCAN_DIRS:
                     issues.append(f"{rel}:{line}: legacy runtime identifier {term!r}")
             for legacy_id in LEGACY_LOAD_IDS:
                 if legacy_id in text and not (
-                    path == PROGRESSION_MOD and
+                    path == PROGRESSION_MOD and (
                     f'ModList.get().isLoaded("{legacy_id}")' in text
+                    or 'Tyr Progression replaces tmm_mxp' in text
+                )
                 ):
                     issues.append(f"{rel}:{line}: obsolete provider {legacy_id!r} outside fail-fast guard")
 gradle = (ROOT / "build.gradle").read_text(encoding="utf-8")

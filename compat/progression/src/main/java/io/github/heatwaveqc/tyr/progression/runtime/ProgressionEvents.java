@@ -170,8 +170,7 @@ public final class ProgressionEvents {
         ProgressionApi.record(player,new io.github.heatwaveqc.tyr.progression.core.Signal(
                 "advancement",event.getAdvancement().id().toString(),java.util.Set.of()));
         String id=event.getAdvancement().id().toString();
-        if(io.github.heatwaveqc.tyr.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null
-            &&io.github.heatwaveqc.tyr.progression.mxp.MxpMod.active()){
+        if(io.github.heatwaveqc.tyr.progression.foundation.BossRewardPolicy.dragonAdvancementKey(id)!=null){
             try {
                 var receipt=io.github.heatwaveqc.tyr.progression.mxp.MxpService.dragonAdvancement(player,id);
                 if(receipt.accepted())player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
