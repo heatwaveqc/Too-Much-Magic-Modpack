@@ -1,5 +1,7 @@
 # Food systems and alternate player physiology — design survey (2026-11-13)
 
+> **Dragon diet interpretation guard (owner reaffirmed 2026-11-21):** This November 13 design survey is **not** an exhaustive species food list. Forest Dragons **eat raw meat as well as plants**; Cave Dragons **eat charred foods**, with many cooked ingredients funneled into native charred outputs; Sea Dragons eat raw aquatic foods and approved rice-free sushi. Earlier prose listing only Forest plants is incomplete, not a vegetarian restriction. Use [the corrected canonical diet document](DRAGON-DIETS-2026-11-14.md), the current actual Dragon Survival data map and `scripts/verify_dragon_diets.py` before any change. Do not derive dietary permissions from a selector count or this outdated survey.
+
 **Status update:** The approved food/harvest mods were packwiz-installed and passed a combined dedicated-server boot in B6; the original survey below was authored while they were only planned. Species exclusivity and hybrid design are **proposed**, not implemented/locked. Minecraft 1.21.1 NeoForge. This document does not authorize adding unapproved species mods (including Origins) or nonselected addons.
 
 ## A. Approved food, farming and fishing roster (B7)
