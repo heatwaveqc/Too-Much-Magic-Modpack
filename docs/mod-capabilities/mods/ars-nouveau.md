@@ -77,7 +77,7 @@ Each line identifies **actual named objects** plus the bottom/upper operation; a
 | `world_manipulation` | present | Conjure Water, Place Block, Phantom Block, Exchange, Cloudshaping, Sunrise/Moonfall, island rituals | Small block effect → weather/time/terrain transformation | world-processing |
 | `world_content` | present | Archwood tree variants, Magebloom, Sourceberry, Wilden/Chimera, addon ruins and Vexing Caves | Early gathering → Wilden end-book boss → addon world exploration | encounters |
 | `death_respawn` | unknown | Healing is not death prevention/respawn; no verified player-resurrection path | Do not invent permanent death-bypass claims | support-rituals |
-| `trade_economy` | partial | Ars Ocultas can jar an Occultism Trader; independent Ars-native currency economy not established | Worker processing/trading is Occultism role integration | addon-bridges |
+| `trade_economy` | present, specific | Ritual of Restoration cures Zombie Villagers, with trade discount; Ars Ocultas can jar Occultism Trader, but independent Ars currency economy not established | Worker processing/trading is Occultism role integration | addon-bridges |
 | `progression_tiers` | present | Novice→Apprentice→Archmage books unlock Tier-1/2/3 glyphs; Focus and Elemancy are branches | Tier-1 casting → material upgrade → Wilden Tribute/Nether Star/Totem Tier-3 book | tier-graph |
 
 ## 5. Operational capability records (to be expanded below)
@@ -217,13 +217,42 @@ These records are grouped by actual mechanism, not by a single arbitrary axis. T
 | Evidence | Source-first finding | Boundary |
 | --- | --- | --- |
 | [82 core glyph recipes](../inventories/ars-nouveau-glyph-recipes.md) | **82/82** generated recipes, XP distribution 39×27 / 28×55 / 15×160 | Learned glyph recipes are not the full cast-effect / mana cost audit; installed addons may add glyphs |
-| [24 ritual tablets and Brazier](../inventories/ars-nouveau-ritual-tablets.md) | **24 tablets + ritual_brazier** source recipes | Per-ritual ongoing Source/augment cost still needs source-class inventory |
+| [24 ritual tablets and Brazier](../inventories/ars-nouveau-ritual-tablets.md) | **24 tablets + ritual_brazier** source recipes | 24 runtime classes now indexed, including 9 explicit getSourceCost override expressions; parent scheduling/activation and complete external augment validations remain |
 | [36 selected core machine/Source recipes](../inventories/ars-nouveau-core-infrastructure-recipes.md) | Source, books, workstations, relays, four workers, turrets and key items | Selected subset of 645 top-level recipe files; no claims of full recipe exhaustiveness |
 | [7-addon capability matrix](../inventories/ars-nouveau-addon-family.md) | All seven installed addon families, candidate low- to high-end routes and major cross-mod effects | Detailed addon recipe catalogs and high-impact version pin deltas remain |
 | [49 existing Ars quest records](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/manifest/ars_quest_pilot.json) | 29 base, 20 addon; 31 item, 17 advancement, 1 checkmark | **Current integration chapter is not empty**; separate PR #395 owns compact layout; do not generate duplicate GUIDs |
 
-**Specific next source research:** per-glyph cast effects/mana and augment applicability; all 24 ritual runtime costs/augmentation/shape; armor Threads and source production recipe families; addon exact glyph/registered-item lists. These are research tasks, not automatic native-functionality test obligations.
+**Specific next source research:** per-glyph cast effects/mana and augment applicability; parent charge cadence/complete augmentation geometry; armor Threads and source production recipe families; addon exact glyph/registered-item lists. These are research tasks, not automatic native-functionality test obligations.
 
 **Owner-level decisions still distinct from source work:** (1) Drygmy loot from protected bosses and blacklist policy; (2) Ars Ocultas altar signals Occultism sacrifice/item-use flags for 5,000 Source without consuming the corresponding jarred entity/item; (3) Ars 'n Spells effective mana mode, damage and resonance stacking with TMM Progression; (4) chunk loading and Source production balance only if pack overrides them.
 
 **TMM QA scope:** This survey edits documentation only; do **not** re-test untouched upstream spellcasting, Henge, workers, ritual mechanics or native XP features. Add narrowly scoped tests only for TMM-owned recipes/config/blacklist/quest detectors, changed adapters or observed failures. No full build was authorized or launched.
+
+## 7. Native ritual effect and Source-cost findings — all 24 runtime classes surveyed
+
+The [24-class frozen-source operational inventory](../inventories/ars-nouveau-ritual-operations.md) now complements the [24 actual tablet inputs](../inventories/ars-nouveau-ritual-tablets.md). These are source-class `getSourceCost()` return values and the native effect descriptions: they are **not universally charged each tick**, because parent activation and effect scheduling determine when Source is drawn. Absence of a local override does **not** mean zero Source; see the linked implementation.
+
+| Source native ritual | Named effect, size and material augment examples | Source-cost expression (when class overrides) | Axis interaction and useful quest lesson |
+| --- | --- | --- | --- |
+| **Sanctuary** (DenySpawn) | Denies natural hostile spawn within **32 blocks**; rotten flesh increases radius one per item up to **128**; charges on denied spawn per its timed rule | **500** | Defense and mob-farm management; can suppress legitimate mob Source/loot farms; no innate Torchmaster needed |
+| **Disintegration** | Destroys nearby monsters; produces **Experience Gems at 2× experience** but **no ordinary item drops** | **300** | Mob farming and XP economics; contrast with Drygmy item/XP gems and Vitalic death Source; no automatic MXP |
+| **Flight** | Gives nearby players temporary flight upon jumping; refreshes while near Brazier | **200** per source-class refresh effect | Movement; range-limited magical flying, not permanent unrestricted creative flight |
+| **Gravity** | Applies recurring downward pull to nearby players | **200** | Debuff/control; may conflict with flight or other movement effects |
+| **Harvest** | Harvests crops in area, routes drops into adjacent inventory if present, else ground | **100** per eligible harvest cycle | Agriculture, logistics, Source; **physical drops** differ from player XP rewards |
+| **Restoration** (RitualHealing) | Heals ordinary mobs/players, damages undead, **immediately cures Zombie Villagers** and offers nearby-player discounts | **200** | Healing, damage, **villager trade economics**; source-derived native benefit, not TMM currency |
+| **Containment** (RitualMobCapture) | Moves eligible nearby mob into a nearby **Mob Jar**; both jar and mob within **3 blocks**; requires ongoing Source after first capture | **500** | Physical entity capture → Drygmy habitat/Occultism jar bridge; honor TMM blacklist |
+| **Overgrowth** | Periodically bone-meals blocks; **Bone Block** catalyst turns it into baby-animal growth | **500** | Agriculture and age cycling; not directly an EV/MXP generator |
+| **Fertility** (RitualBreed) | Periodic animal breeding; will not act where **20+ animals** nearby | **500** | Livestock propagation → Vitalic Source events; bounded headcount |
+| **Scrying** | Tracks chosen block through walls via particle distance colors; Manipulation Essence extends effect to **15 minutes** | inherited/none locally | Detection, block search; player must specify sample block before start |
+| **Flowering** | Creates plants; Source Gems each +1 radius, sand switches to cactus/dead bushes | inherited/none locally | Resource landscaping, not automatic rarity/ore generation |
+| **Forestation** | Oak/Birch trees and growth in a roughly **7×7 circular** area; each Source Gem +1 radius; mushroom/glow berries change foliage/biome style | inherited/none locally | World growth and Source through Agronomic when real growth event fires |
+| **Plains/Desert Conjuration** | Generates **radius-7 island**; each Source Gem increases radius by 1, catalysts change climate/material | inherited/none locally | World creation, not a proved renewable-ore source; Source during block generation |
+| **Awakening** | Archwood into **Weald Walkers**; Budding Amethyst into **Amethyst Golems**; Book and Quill catalysts for **Bookwyrm Charm** | inherited/none locally | Actual permanent-helper acquisition from a ritual, not merely a creature-spawn egg |
+| **Challenge** (PillagerRaid) | Triggers a raid in village; Emerald raises difficulty, with possibility of Totems on lower difficulties | inherited/none locally | Mob farming and Archmage Totem sourcing; do not silently gate a native route via quest-only arrows |
+| **Burrowing** (RitualDig) | Digs four vertical shafts to bedrock and drops blocks | inherited/none locally | Powerful block-breaking, placement safety important when a TMM protection rule exists |
+| **Warping** | Uses **inscribed Warp Scroll** catalyst; moves all nearby entities to target | inherited/none locally | Group travel rather than single-person use |
+| **Wilden Summoning** | Ordinary wild Wilden summons; **Horn+Spike+Wing** produces a destructive Wilden Chimera | inherited/none locally | Native boss material gate and arena preparation |
+| **Moonfall/Sunrise/Cloudshaping** | Change time/weather; Lapis Block gives storm and Gunpowder gives rain | inherited/none locally | Environmental/world effects; available to players independent of book's upper glyphs |
+
+**One important energy detail:** The base class decides when the `getSourceCost` expression is charged; use the runtime source and named activation conditions rather than treating `500` as 500 Source/sec by default. Rituals can draw Source and sometimes route actual item drops or XP gems. **TMM MXP remains separate**, and untouched native rituals are not a new QA queue.
+
