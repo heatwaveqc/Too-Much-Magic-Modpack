@@ -1,6 +1,6 @@
 # Too Much Magic — Potion and Alchemy Interoperability Matrix
 
-**Status:** Design/research v0.5, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
+**Status:** Design/research v0.6, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
 
 ## Why this is not just a potion-container chart
 
@@ -150,6 +150,45 @@ Add **only** \`neovitae:flight\` to canonical \`hunter_mutations.effect_blacklis
 **Allowed automation:** Wixie may craft Bio-Mutagen and brew compatible ordinary potions. A player or native brewing stand must still combine the ingredient and eligible potion into the finished mutagen. No generic Wixie adapter for Iron's special cauldron or Neo Vitae stateful flask recipes has been approved. The separate Hunter `neovitae:flight` mutation blacklist requirement stays approved.
 
 **QA:** Confirm Wixie can craft Bio-Mutagen; that the Hunter stand produces and drinks a specialized Mutagenic Brew item; and that placing the finished-brew item on a Wixie request pedestal does **not** produce it by default. No gameplay code, config changes, or live test performed by this documentation revision.
+
+
+
+### Source audit: Neo Vitae Alchemy Flask renewal and recipe costs (2026-11-20)
+
+**Finding:** The Alchemy Flask is a reusable **eight-dose vessel with a resource-gated recharge loop**, not a free/automatic infinite potion source. Native refilling requires a *specific `neovitae:flask_fill` recipe* in a Tabula Vitae (except rinsing, which restores the empty vessel **and deletes all effects**). Every effect-creation, transformation, potency and duration operation likewise uses a dedicated Neo Vitae recipe with ingredients, EV and machine/tier constraints.
+
+| Mechanic / recipe | Input and prerequisite | Output / depletion | Direct processing cost |
+|---|---|---|---|
+| Native use | Existing Alchemy Flask with charges | Apply `FLASK_EFFECTS` contents, +1 item damage, 8 total doses | One charge; flask persists at zero doses |
+| Rinse by water interaction or vanilla water-bucket recipe | Damaged/filled flask + accessible water, or crafting with water bucket | **Clears both `neovitae:flask_effects` and mirrored `POTION_CONTENTS`, resets damage/charges**, yielding **empty** eight-use vessel | Water; does not replenish effects |
+| Create flask | `neovitae:ara_vitae/alchemy_flask`, glass bottle, Ara Vitae tier 1 | Empty eight-use Alchemy Flask | **4,000 blood** at native Ara Vitae, recipe-defined drain/craft parameters |
+| Brew Speed as illustrative effect | `neovitae:flask/speed_boost`, Simple Catalyst + sugar + existing Flask, Orb tier 1 | Adds a base **3,600-tick** Speed effect to flask | **500 EV**, **200 ticks** |
+| Weak Filling Agent craft | `neovitae:alchemytable/weak_filling`, Simple Catalyst, sugar cane, crimson fungus, warped fungus; Tabula Orb tier **2** | One `weak_filling_agent` | **2,000 EV**, **100 ticks** (plus precursor ingredients/costs) |
+| Weak refill | `neovitae:flask/fill_weak`, flask with at least one effect + one Weak Filling Agent | Resets flask to 8 doses; **retains only first effect** | **1,000 EV**, **200 ticks**, recipe minimum Orb tier 0; agent craft itself is tier 2 |
+| Standard Filling Agent craft | `neovitae:alchemytable/standard_filling`, Weak Filling Agent, Strengthened Catalyst, glowstone dust, chorus fruit; Tabula Orb tier **3** | One `standard_filling_agent` | **4,000 EV**, **200 ticks**, in addition to the already-crafted weak agent |
+| Standard refill | `neovitae:flask/fill_standard`, flask with at least one effect + one Standard Filling Agent | Resets to 8 doses; **retains first three effects only** | **3,000 EV**, **200 ticks**, refill recipe min tier 0; agent craft itself is tier 3 |
+| Layer/transform/strengthen | Bespoke `flask_effect`, `flask_effect_transform`, `flask_length`, `flask_potency`, `flask_cycle` | Recipe-specific modification; normal flask charges preserved unless filling/rinsing | Each recipe individually charges EV, processing ticks, reagents, and minimum tier |
+
+**Full native recharge-cost floor, excluding precursor production:** weak refill is **3,000 EV** (2k agent +1k refill); standard is **9,000 EV** (2k weak agent +4k standard agent +3k refill). These are not blanket potion balance values: each ingredient/catalyst requires its normal materials; filling an existing flask can be preferable to rebrewing complex effects, but incurs repeated resources. `FlaskFillRecipe.canModifyFlask` only requires a nonempty `FlaskEffects` list; there is no special requirement that the flask be completely depleted before filling. Filling resets native item damage to zero and trims retained effects to the recipe's `max`.
+
+**Critical state detail:** `ItemAlchemyFlask` uses `NVDataComponents.FLASK_EFFECTS` as the authoritative multi-effect state with duration/amplifier modifiers, item **damage** to track remaining charges, and **only mirrors ordinary PotionContents** for compatibility/tooltips. The mirrored PC **does not encode remaining doses or all native transformation/recharge semantics**. A generic item-to-fluid or bottle consumer cannot safely regard the flask as one disposable vanilla potion; nor should it turn a single recipe-composed native flask into free infinite generic fluid or duplicate eight doses. Native single-charge use and native refill mechanics must remain independent.
+
+**Matrix/adapter implications:**
+1. **No recipe-copy shortcut:** do not map arbitrary Neo Vitae flask effects into free Wixie/Iron generic potion crafting. Native effect construction and refill/length/potency/transform recipes should still require their own Tabula Vitae resources. This is separate from legitimate ordinary potion breeding via Ars Wixie.
+2. **Cross-mod flask consumers:** before a machine accepts a PC-bearing flask, prove either a dedicated *one real charge* transfer **with original item, FlaskEffects, damage and remaining charges conserved**, or a clean pre-consumption refusal. In particular, test the Occultism Demonic Husband/Wife `itemstack.shrink(1)` path and Iron's Cauldron PC-based fluid fill path against the pinned eight-dose item. Do not consume the whole flask and hand back a glass bottle as if it were one vanilla potion.
+3. **Automation:** the native Tabula Vitae exposes slot-side config and output push, so native recipes have in-mod item/logistics automation rather than requiring a Wixie universal transmutation shim. Do not presume unlimited throughput; verify bound Orb, EV supply and recipe tier per operation.
+4. **No new global cooldown or recharge ban approved:** the player has specifically endorsed cross-magic synergies. The issue is charge/item conservation and not bypassing native recipe costs. `neovitae:flight` remains separately denied as a **permanent Hunter mutation**, not a temporary potion effect.
+
+**Source evidence (1.21.1 upstream, pinned Neo Vitae 1.1.53 JAR still needs QA):**
+- [ItemAlchemyFlask: eight uses, rinse, durability and PC mirror](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/item/potion/ItemAlchemyFlask.java)
+- [FlaskFillRecipe: trim to maxEffects, reset damage](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/recipe/flask/FlaskFillRecipe.java)
+- [Weak/standard refill recipes](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/flask/fill_weak.json) / [standard](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/flask/fill_standard.json)
+- [Weak agent craft](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/alchemytable/weak_filling.json) / [standard agent craft](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/alchemytable/standard_filling.json)
+- [Speed recipe](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/flask/speed_boost.json) / [initial flask](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/generated/resources/data/neovitae/recipe/ara_vitae/alchemy_flask.json)
+- [Tabula Vitae machine recipe cost, Orb tier, syphon, ingredients](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/src/main/java/com/breakinblocks/neovitae/common/blockentity/TabulaVitaeBlockEntity.java)
+- [Official Neo Vitae Tabula Vitae and Flasks guide](https://github.com/breakinblocks/NeoVitae/blob/1.21.1/wiki/Tabula-Vitae-Flasks-and-Anointments.md)
+
+**QA tests to add:** normal use 8→7→0; zero-use item persists; water rinse resets to 8 but removes effects; weak fill 1/2/3+ effect flask (truncation), standard fill 1/3/4+ effects (truncation), partial-vs-empty recharge, costs and tier enforcement, noncreative vs creative, throwable flask uses, native machine item+orb automation, PC mirror stability after modification, and accidental whole-flask destruction through Iron and Occultism. No in-world results are claimed by this research.
 
 
 ## D. Proposed investigation and test sequence
