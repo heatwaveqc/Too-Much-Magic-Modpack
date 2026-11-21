@@ -437,3 +437,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Charm/Link/Phantom audit](mods/ars-elemental-pinned-anima.md): actual taming/rolls/Sauce allegiance, unrelated Remove-event thrall cleanup; Link split damage despite recipient rejection and direct references; Phantom inversion/exhaustion.38of39glyph recipes audited;9/42 unchanged.
 
 - 2026-11-20 — Elemental [Bubble Shield/39glyph coverage map](mods/ars-elemental-pinned-bubble-shield.md): all39packaged glyph recipes source-audited, not whole-addon completion; actual damage/conditional debit versus10%debuff/raw-cost/blacklist, Phalanx development-only.12tomes/majorbranches open;9/42 unchanged.
+
+- 2026-11-20 — Elemental [12loot tome audit](mods/ars-elemental-pinned-tomes.md): exact data compositions/global pool, school resolver/component/focus and full-bar mana gate, survival editing blocked.39glyphs+12tomes covered;major addon branches still researching,9/42 unchanged.

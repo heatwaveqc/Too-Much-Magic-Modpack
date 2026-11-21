@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental twelve caster tomes
+
+- Added ars-elemental-pinned-tomes.md all12JSON/presettable/sixitem registry+casterprovider, nativeallnamespaceslootpool notcraftrecipes; survivaleditingcreativeonly. E_TOME_CASTER persistent/netcodec SchoolCasterTomeData→ETomeResolver schoolfromtool, hasFocus queriedISchoolFocus exactschool (overrideswornforbranch), ShaperManipulation; childgetNewResolver preservesschool. HeldISchoolFocus0discountcanpreemptwornfocus event, but inheritedCasterTome halfbaseitemdiscount and fullManaexception. ActualSUCCESSposteventdebitstillnormal/clamp. No guaranteeloot/preset/runtimePASS.
+- **Next Siren/helper branch** MermaidEntity/MermaidRock/MermaidTile (SirenShrine), SirenCharm/familiar + recipes/acquire/tame/source/habitat/fishingloot/persistence; thenFirenando/Flashjack/FlashingWealdWalker. Thenremainingdevices/prismlenses/relays/bangles/bags/othergear/worldgen/VexingCaves/pilot35–37/fulladdonreview.39glyphpaths+12tomes through20companions sourceaudited butaddonstillresearching. GlobalSaucebundledselectionstillopen.
+- ExistingnativeCasterTome/CasterTomeData/CasterTomeRegistry/SpellResolver/ICasterTool/SpellCasterRegistry in ars-fresh-20261117; bundled SchoolCasterTome inclinner/data elemental-sauce-fresh, addon explicit6providersArsNouveauRegistry lines239–244. Integrationlatest2e63c50f7d154bd43871e88163049569609caa72.9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental glyph recipe closure
 
 - Added ars-elemental-pinned-bubble-shield.md finalglyph+39recipegroupmap. Tier2XP55mana400/statusmana_shield/targetManaCap;30+8duration. DamageC=max(0,350-.75*discountShieldOnly),min(amp+1,M/C) but requiresM≥C, debitactualReduction*C ONLYinvulncontainerinequality, removebelowC; zeroCNaNboundarynotfreeclaim. Debuff10%/balance≥700/rawcostdebit350/blacklistLevitation,Hymn,Sickness, MagicFireNeutralnewapplicationblockfree. No idleSourceinvented. MethodCarianPhalanx registeredONLY!production, no normal40thglyphpath.

@@ -168,3 +168,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-20 — Elemental [Anima checkpoint](mods/ars-elemental-pinned-anima.md):38of39glyph recipes audited;BubbleShield/12tomes/majorbranches researching.9complete33researching; actual Sauce Rage alliance override also reconciled, no runtime acceptance.
 
 - 2026-11-20 — Elemental [glyph closure checkpoint](mods/ars-elemental-pinned-bubble-shield.md):39/39 packaged glyph recipe routes linked to operational audits, conditional Nullify and nonproduction Phalanx explicit.12tomes/helper/device/gear/worldgen/global dependency/finalreview still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [tome checkpoint](mods/ars-elemental-pinned-tomes.md):12records/sixschool items/bundled resolver and native pool/payment audited. Helpers/devices/gear/worldgen/global dependency/final review open.9complete33researching; no loot/casting acceptance.
