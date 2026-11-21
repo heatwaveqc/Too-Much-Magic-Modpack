@@ -145,7 +145,7 @@
         "scripts/stage_monk_tyz.py"
       ],
       "mode": "archived-source-test-only-not-runtime",
-      "note": "Tyz 6.4.2 installed; 18 Monk Tyz IMMUTABLE skills use same global Tyz wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification. 2026-11-16 Newbie source reconciliation: Tyz Safekept active=false exact override now indexed in live config; do not rely solely on the excluded compat/magic source overlay. No full gameplay/client/server PASS. Superseded by owner-approved cutover; preserve historical generator/reference sources but never stage Tyz overlay or reinstall runtime.",
+      "note": "HISTORICAL (no longer active after #376): Tyz 6.4.2 had been installed with 18 Monk Tyz IMMUTABLE skills sharing its wallet. Keep the four Core Magic skills, stock categories and all Tyz native activity XP disabled. Pair with matching native tmm_progression bridge from this same branch. stage_monk_tyz installs 18 onto existing pinned Tyz before verification. 2026-11-16 Newbie source reconciliation: Tyz Safekept active=false exact override now indexed in live config; do not rely solely on the excluded compat/magic source overlay. No full gameplay/client/server PASS. Superseded by owner-approved cutover; preserve historical generator/reference sources but never stage Tyz overlay or reinstall runtime.",
       "merged_from": "feature/monk-tyz-full-tree-runtime-2026-11-16",
       "integrated_into_baseline": true,
       "merged_pr": 229,
@@ -237,12 +237,12 @@
         "compat/progression/"
       ],
       "mode": "compile-and-load",
-      "note": "Current coherent unified Progression donor (PRs #347, #344, #375). Native MXP ledger and paid-source/boss/ritual hooks selected; optional Tyz API retained source-only, standalone MXP excluded. Preserve Newbie, native Elytra, loot, diet, controls attributes and third-party licenses. Individual tree definitions and live acceptance remain separate.",
+      "note": "Unified Progression source cutover integrated via PR #376 at 5a9b4ba5680231cf65e5c5e40f1fda12cfc30eba; immutable dev/progression donor 1063355f7ba920e113baae38ce4a6f03ba2c8e44 (predecessor #375) preserved. Single native MXP wallet and ritual/boss hooks selected; Tyz and standalone MXP no longer runtime-selected; inert historical references remain. Preserve Newbie, Elytra, loot, diet, controls and licenses. Approved Tyr Progression namespace rename #424 and further Core/Monk/Hunter paths remain unintegrated. B/C gameplay acceptance not yet run.",
       "merged_from": "dev/progression",
       "integrated_into_baseline": true,
-      "merged_pr": 375,
-      "merged_commit": "1063355f7ba920e113baae38ce4a6f03ba2c8e44",
-      "latest_reconcile_pr": 286,
+      "merged_pr": 376,
+      "merged_commit": "5a9b4ba5680231cf65e5c5e40f1fda12cfc30eba",
+      "latest_reconcile_pr": 376,
       "source_commit": "1063355f7ba920e113baae38ce4a6f03ba2c8e44"
     },
     {
