@@ -531,6 +531,20 @@
       "packwiz_slug": "cocktails-delight"
     },
     {
+      "id": "crispy",
+      "name": "Crispy!",
+      "category": "food",
+      "desired": true,
+      "version": "1.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/crispy/files/6447126",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "crispy",
+      "candidate_file_id": 6447126,
+      "note": "Owner-approved inclusion 2026-11-21 as an explicit narrow exception to #390's 2026-11-20 scope freeze; not yet installed. Official 1.21.1 NeoForge Crispy-NeoForge-1.1. Fortune Cookie displays random message and grants Luck II; also adds other cookies. Verify exact publisher JAR bytes/hash, dependency closure, vanilla-cookie replacement, cooking/recipe overlaps, Luck II balance, EMC/duplication edges and diets. No custom fortunes or gameplay buffs authorized beyond native mod. Integrator owns Packwiz pin/index/hash reconciliation; no server or client QA yet."
+    },
+    {
       "id": "codechicken-lib-1-8",
       "name": "CodeChicken Lib 1.8.+",
       "category": "dependency",
@@ -915,6 +929,21 @@
       "dependencies_verified": false,
       "note": "B6 user-approved boot-test candidate. Food/farming or supporting framework; full gameplay interactions pending.",
       "packwiz_slug": "farmers-delight"
+    },
+    {
+      "id": "huaxia-delight",
+      "name": "Huaxia Delight",
+      "category": "food",
+      "desired": true,
+      "version": "1.2.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/huaxia-delight/files/8829017",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "packwiz_slug": "huaxia-delight",
+      "curseforge_project_id": 1685797,
+      "candidate_file_id": 8829017,
+      "note": "Owner-approved inclusion 2026-11-21 as an explicit narrow exception to #390's 2026-11-20 scope freeze; not yet installed. Official 1.21.1 NeoForge artifact; published requirements NeoForge 21.1.192–<21.2 and Farmer's Delight >=1.2.9,<1.4 match current pack versions, Java 21. Verify exact publisher JAR bytes/hash, metadata, optional interactions, Pam's/FD ingredient tags, worldgen and diet compatibility; integrator owns immutable Packwiz pin/index/hash reconciliation. Not live-tested or enabled."
     },
     {
       "id": "farming-for-blockheads",
