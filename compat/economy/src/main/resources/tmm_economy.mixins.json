@@ -25,7 +25,11 @@
     "StoredResourceGuardMixin",
     "CapturingForemanMixin",
     "ReliquaryCaptureMixin",
-    "NeoImprisonmentMixin"
+    "NeoImprisonmentMixin",
+    "EvilCraftVengeanceSpiritMixin",
+    "EvilCraftRandomSpiritMixin",
+    "EvilCraftSpiritFurnaceMixin",
+    "EvilCraftSpiritReanimatorMixin"
   ],
   "injectors": {
     "defaultRequire": 1
