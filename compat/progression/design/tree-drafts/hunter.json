@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:hunter",
+  "id": "tyr_progression:hunter",
   "title": "Hunter",
   "legacy_eligibility": "standalone Hunter progression; cross-form exclusivity not assumed",
   "notes": [
@@ -11,7 +11,7 @@
     "Glowing on nearby quarry is deliberately a high-level Hunt Tracking skill, not an always-on early-game radar.",
     "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
   ],
-  "proposed_paid_currency": "tmm_progression:mxp",
+  "proposed_paid_currency": "tyr_progression:mxp",
   "native_level_gates_pending": true,
   "nodes": [
     {

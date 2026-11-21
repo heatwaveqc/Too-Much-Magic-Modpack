@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "id": "tmm_progression:monk_cultivation_xp_trial_v1",
+  "id": "tyr_progression:monk_cultivation_xp_trial_v1",
   "state": "EXPERIMENTAL_LOADABLE_JSON_ACTIVE_ONLY_IF_BRANCH_SELECTED",
   "date": "2026-11-15",
   "locale": "en_us",
@@ -50,14 +50,14 @@
     },
     {
       "event": "kill",
-      "target": "#tmm_progression:monk_training_hostiles",
+      "target": "#tyr_progression:monk_training_hostiles",
       "xp_per_accepted_signal": 8,
       "cooldown_ticks": 0,
       "risk": "Only curated Minecraft vanilla mob list; modded mobs require opt-in tag extensions"
     },
     {
       "event": "unarmed_kill",
-      "target": "#tmm_progression:monk_training_hostiles",
+      "target": "#tyr_progression:monk_training_hostiles",
       "xp_per_accepted_signal": 4,
       "cooldown_ticks": 0,
       "risk": null
@@ -86,17 +86,17 @@
   ],
   "one_time_deeds": [
     {
-      "id": "tmm_progression:first_sunset",
+      "id": "tyr_progression:first_sunset",
       "criterion": {
         "event": "external",
-        "target": "tmm_progression:monk_first_sunset",
+        "target": "tyr_progression:monk_first_sunset",
         "count": 1
       },
       "xp_bonus": 0,
       "bonus_native_points": 1
     },
     {
-      "id": "tmm_progression:trial_ten_logs",
+      "id": "tyr_progression:trial_ten_logs",
       "criterion": {
         "event": "barehand_block_break",
         "target": "#minecraft:logs",
@@ -106,7 +106,7 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_five_stone",
+      "id": "tyr_progression:trial_five_stone",
       "criterion": {
         "event": "barehand_block_break",
         "target": "minecraft:stone",
@@ -116,7 +116,7 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:steady_hands",
+      "id": "tyr_progression:steady_hands",
       "criterion": {
         "event": "barehand_block_break",
         "target": "#minecraft:logs",
@@ -126,17 +126,17 @@
       "bonus_native_points": 2
     },
     {
-      "id": "tmm_progression:trial_ten_unarmed_undead",
+      "id": "tyr_progression:trial_ten_unarmed_undead",
       "criterion": {
         "event": "unarmed_kill",
-        "target": "#tmm_progression:undead",
+        "target": "#tyr_progression:undead",
         "count": 10
       },
       "xp_bonus": 120,
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_animal_friendship",
+      "id": "tyr_progression:trial_animal_friendship",
       "criterion": {
         "event": "animal_petted",
         "target": "*",
@@ -146,7 +146,7 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_four_iron_blocks",
+      "id": "tyr_progression:trial_four_iron_blocks",
       "criterion": {
         "event": "barehand_block_break",
         "target": "minecraft:iron_block",
@@ -156,7 +156,7 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_obsidian_hand",
+      "id": "tyr_progression:trial_obsidian_hand",
       "criterion": {
         "event": "barehand_block_break",
         "target": "minecraft:obsidian",
@@ -166,17 +166,17 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_creeper_kiss",
+      "id": "tyr_progression:trial_creeper_kiss",
       "criterion": {
         "event": "external",
-        "target": "tmm_progression:creeper_kissed",
+        "target": "tyr_progression:creeper_kissed",
         "count": 1
       },
       "xp_bonus": 175,
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_wither_victory",
+      "id": "tyr_progression:trial_wither_victory",
       "criterion": {
         "event": "kill",
         "target": "minecraft:wither",
@@ -186,17 +186,17 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:blind_ordeal_victory",
+      "id": "tyr_progression:blind_ordeal_victory",
       "criterion": {
         "event": "external",
-        "target": "tmm_progression:blind_hostile_kill",
+        "target": "tyr_progression:blind_hostile_kill",
         "count": 5
       },
       "xp_bonus": 270,
       "bonus_native_points": 2
     },
     {
-      "id": "tmm_progression:dragon_defeated",
+      "id": "tyr_progression:dragon_defeated",
       "criterion": {
         "event": "advancement",
         "target": "minecraft:end/kill_dragon",
@@ -206,17 +206,17 @@
       "bonus_native_points": 2
     },
     {
-      "id": "tmm_progression:training_twenty_hostiles",
+      "id": "tyr_progression:training_twenty_hostiles",
       "criterion": {
         "event": "kill",
-        "target": "#tmm_progression:monk_training_hostiles",
+        "target": "#tyr_progression:monk_training_hostiles",
         "count": 20
       },
       "xp_bonus": 100,
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:training_ten_advancements",
+      "id": "tyr_progression:training_ten_advancements",
       "criterion": {
         "event": "advancement",
         "target": "*",
@@ -226,7 +226,7 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:training_thirty_advancements",
+      "id": "tyr_progression:training_thirty_advancements",
       "criterion": {
         "event": "advancement",
         "target": "*",
@@ -236,10 +236,10 @@
       "bonus_native_points": 0
     },
     {
-      "id": "tmm_progression:trial_bedrock_sleep",
+      "id": "tyr_progression:trial_bedrock_sleep",
       "criterion": {
         "event": "external",
-        "target": "tmm_progression:bedrock_rest_completed",
+        "target": "tyr_progression:bedrock_rest_completed",
         "count": 1
       },
       "xp_bonus": 230,
@@ -326,13 +326,13 @@
   "test_only": true,
   "integration_manifest_unchanged": true,
   "new_native_feature": {
-    "id": "tmm_progression:bedrock_rest",
+    "id": "tyr_progression:bedrock_rest",
     "rank": 17,
     "free": true,
     "repeatable": true,
     "activation": "Empty-mainhand right-click two adjacent bedrock blocks with 2 blocks of clear space above at night or thunder, in dimension with normal safe bed sleep.",
     "effect": "Real sleeping pose/time skip/phantom rest without changing stored respawn; normal nearby monster and sleep-vote checks; valid only while unarmored.",
-    "one_time_deed": "tmm_progression:trial_bedrock_sleep +230 XP after sleep duration >= vanilla normal threshold, once per character.",
+    "one_time_deed": "tyr_progression:trial_bedrock_sleep +230 XP after sleep duration >= vanilla normal threshold, once per character.",
     "danger": "Real sleep server lifecycle and stopSleepInBed positioning must be manually verified on a dedicated client."
   }
 }

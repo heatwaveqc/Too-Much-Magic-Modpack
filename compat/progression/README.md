@@ -1,19 +1,21 @@
-# Standalone player-enhancement progression core — early implementation
+# Tyr Progression — reusable player progression engine
 
-> **Locked architecture update (2026-11-18):** [Unified Progression engine target](design/UNIFIED-PROGRESSION-ENGINE-TARGET.md) supersedes the separate external MXP/Tyz architecture below as a development target. Absorb MXP and permissively licensed donor functionality (Epiphany primary; Tyz paused pending clarification) into `tmm_progression`, retain the built-in shared MXP/SP wallet plus independently JSON-defined named XP systems (no fixed count), tree-wide default and per-skill currencies, source definitions independent from trees, ten configurable pack trees (one shared Lich tree), and scoped player-only reference mechanics plus enhanced night and lava vision. All first-party mods target MIT. Historical implementation descriptions below remain current-source evidence where applicable, not future architecture. No migration, dependency removal or live build has occurred.
+> **Identity:** Player-facing name **Tyr Progression**; NeoForge mod ID and resource namespace `tyr_progression`; Java package root `io.github.heatwaveqc.tyr.progression`. The reusable engine belongs to the Tyr family; Too Much Magic remains the modpack name.
+>
+> **Unified migration:** The approved single-engine cutover in PR #376 removes Tyz and standalone MXP runtime selection from the integration target. This module remains the one Progression engine; no separate `tyr_mxp` module is part of the design. Keep the documented implementation status and remaining QA gates below accurate; source compilation does not establish gameplay acceptance.
 
 > **JAWR-only Vampire/Werewolf form pilot (2026-11-16, PR #279):** The old standalone `compat/forms` executable module was NOT imported. Its 16 Vampire + 21 Werewolf Tyz source definitions and four provisional Werewolf gameplay handlers now belong to **this shared engine**, with [config-only catalog, preview generator, and tests](design/jawr-forms/catalog.json). Tyz prefabs remain **inactive by default** and are registered only when both Tyz and JAWR are present; JAWR state is checked again at purchase and effect time. Native milestone/cure/ability gaps remain fail-closed. MXP is the *separate global award ledger* (`compat/mxp`) feeding Tyz's one existing XP/SP wallet; it is not another form skill-point system. [Joint integration contract](../../docs/progression/JAWR-MXP-JOINT-CONTRACT-2026-11-16.md).
 
 
 > **Legacy PR reconciliation (2026-11-16):** The old eight-PR Monk/Hunter development stack (#127, #136, #141, #143, #148, #138, #142, #144) is mapped to this single Progression engine in [the consolidation ledger](../../docs/progression/LEGACY-PR-STACK-CONSOLIDATION-2026-11-16.md). The [historical audits](../../docs/archive/progression-pr-stack/README.md) are records, not active runtime or acceptance evidence. New path branches are config-only; all executable changes belong here.
 
-**Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tmm_progression`.
+**Status:** source-level implementation pilot; not activated as an integrated modpack JAR, no in-world parity or multiplayer/claim validation. Building and Java unit tests are necessary but not sufficient. **Target:** Minecraft 1.21.1, NeoForge 21.1.265, Java 21. Namespace: `tyr_progression`.
 
 ## Goal and ownership
 
-This is the **single executable Progression engine** for all data-defined player disciplines (Monk, Hunter, Gilded and later paths), not a separately coded Monk/Hunter mod or a Tyz skill wallet. **All runtime Java, mixins, event hooks, effect handlers, network code, integrations and behavior tests belong to Progression itself.** Each discipline is a **configuration-only package**: its path/datapack JSON, Tyz skill-tree/config JSON, tags/data assets, localization, docs and non-executable fixtures. Disciplines must not add their own Java classes, KubeJS/JavaScript/Python gameplay logic, or independent runtime modules. Reusable handlers added for any path are built and maintained by the shared Progression engine; their behavior is configured in data, not owned by that path. No mandatory Monk, Hunter, Vampirism, Werewolves, JAWR, Curios or Tyz dependency. The pack-global MXP/Tyz wallet remains separate in the current implementation only; the locked target consolidates it into this engine.
+This is the **single executable Progression engine** for all data-defined player disciplines (Monk, Hunter, Gilded and later paths), not a separately coded Monk/Hunter mod or a Tyz skill wallet. **All runtime Java, mixins, event hooks, effect handlers, network code, integrations and behavior tests belong to Progression itself.** Each discipline is a **configuration-only package**: its path/datapack JSON, Tyz skill-tree/config JSON, tags/data assets, localization, docs and non-executable fixtures. Disciplines must not add their own Java classes, KubeJS/JavaScript/Python gameplay logic, or independent runtime modules. Reusable handlers added for any path are built and maintained by the shared Progression engine; their behavior is configured in data, not owned by that path. No mandatory Monk, Hunter, Vampirism, Werewolves, JAWR, Curios or Tyz dependency. The approved integration target uses this engine as the single progression authority; the former Tyz and standalone MXP JAR selections are retired by the in-progress cutover.
 
-Development follows [the shared branch and path-ownership contract](../../docs/BRANCH-AND-PROGRESSION-WORKFLOW.md): core functionality goes through `feature/progression-*`, declarative class work through `feature/monk-*` / `feature/hunter-*` / `feature/gilded-*`, all merging into `dev/progression` before an authorized `test/full-integration` promotion. **Some existing code and this README's implementation examples predate that architecture; migration is pending and must not be misreported as complete.**
+Development follows [the shared branch and path-ownership contract](../../docs/BRANCH-AND-PROGRESSION-WORKFLOW.md): core functionality goes through `feature/progression-*`, declarative class work through `feature/monk-*` / `feature/hunter-*` / `feature/gilded-*`, all merging into `dev/progression` before an authorized `test/full-integration` promotion. **Current identity migration does not add a second engine or restore retired Tyz/standalone-MXP runtime selection.**
 
 **Long-term engine expressiveness target:** reuse useful player-effect, prerequisite, acquisition, and perk-graph mechanics from the reference mods. Full ownership parity is explicitly rejected. See [the scoped reference target](design/REFERENCE-CAPABILITY-PARITY-TARGET.md).
 
@@ -25,7 +27,7 @@ Development follows [the shared branch and path-ownership contract](../../docs/B
 
 ## Config / datapack interface
 
-Create `data/<your_namespace>/tmm_progression/paths/<path>.json`. See both sample files in `src/main/resources/data/tmm_progression/tmm_progression/paths/`: `monk.json` and `hunter.json`. JSON datapacks reload on `/reload`.
+Create `data/<your_namespace>/tyr_progression/paths/<path>.json`. See both sample files in `src/main/resources/data/tyr_progression/tyr_progression/paths/`: `monk.json` and `hunter.json`. JSON datapacks reload on `/reload`.
 
 | Key | Meaning |
 | --- | --- |
@@ -56,14 +58,14 @@ Any path may use `"enrollment": "potion"` plus a strictly validated `enrollment_
     "required_effect": "minecraft:regeneration",
     "required_advancement": "minecraft:adventure/kill_a_mob",
     "clear_effects": ["minecraft:poison"],
-    "completion_event": "tmm_progression:hunter_trial_of_venom"
+    "completion_event": "tyr_progression:hunter_trial_of_venom"
   }
 }
 ```
 
 The **logical server** evaluates `LivingEntityUseItemEvent.Finish` and the pre-consumption ItemStack's exact `DataComponents.POTION_CONTENTS` base-potion ID. Splash/lingering applications, interrupted drinks, food, arbitrary Poison status, custom-effect potions, creative/spectator and missing Advancement/Regeneration do not enroll. A successful `ProgressionApi.join` checks existing path exclusivity and registered `registerJoinVeto` callbacks before clearing Poison and recording the one-time external completion milestone.
 
-Hunter and Monk share `exclusive_group: "tmm_progression:human_disciplines"`, preventing dual enrollment. Other form providers (JAWR, vampire/werewolf/dragon, etc.) must register **trusted** joining vetoes with `ProgressionApi.registerJoinVeto((player,pathId) -> ...)`. The core intentionally does not depend on their classes. The potion hook alone is **not proof** that all third-party transformations have been checked; the pack's species arbitration adapter remains required before release. Administrative QA join still bypasses the *ritual*, but not registered join vetoes.
+Hunter and Monk share `exclusive_group: "tyr_progression:human_disciplines"`, preventing dual enrollment. Other form providers (JAWR, vampire/werewolf/dragon, etc.) must register **trusted** joining vetoes with `ProgressionApi.registerJoinVeto((player,pathId) -> ...)`. The core intentionally does not depend on their classes. The potion hook alone is **not proof** that all third-party transformations have been checked; the pack's species arbitration adapter remains required before release. Administrative QA join still bypasses the *ritual*, but not registered join vetoes.
 
 This milestone records initiation only. **Poison immunity, shortened harmful-effect durations and involuntary transformation prevention are separate Hunter abilities and provider adapters not implemented here.** Removing the trial's immediate Poison effect on successful enrollment should not be presented as permanent immunity. A rejected path consumes the potion normally; no item is restored or duplicated.
 
@@ -116,11 +118,11 @@ Saved per player: path enrollment, rank, cumulative XP, native technique points,
 
 ```text
 /tmmprogress list
-/tmmprogress status tmm_progression:monk
-/tmmprogress buy tmm_progression:hunter tmm_progression:undead_slayer
-/tmmprogress respec tmm_progression:hunter
-/tmmprogress admin join tmm_progression:monk        # OP-only
-/tmmprogress admin event tmm_progression:monk_first_sunset  # OP-only
+/tmmprogress status tyr_progression:monk
+/tmmprogress buy tyr_progression:hunter tyr_progression:undead_slayer
+/tmmprogress respec tyr_progression:hunter
+/tmmprogress admin join tyr_progression:monk        # OP-only
+/tmmprogress admin event tyr_progression:monk_first_sunset  # OP-only
 /tmmprogress specialty list                       # Available Hunter creature specialties
 /tmmprogress specialty undead                     # Select one free specialty
 /tmmprogress enroll <path>                         # Only for paths enrolled manually
@@ -136,7 +138,7 @@ To run the module from this directory with Gradle: `gradle --no-daemon build` th
 ## Incomplete / guarded behavior
 
 1. **Not full Monk or Hunter:** Many powers now have early Java handlers, not in-world verified parity. High-risk gaps remain: strict first-hotbar/armor click interception and full-inventory behavior, actual no-dupe treasure drops, water physics and Momentum Glide client prediction, Wither boss gaze exception, distinct Lava Protection, advanced Animal calming, class-specific GUI and Hunter tracking/camouflage/execute. None of these should be described as complete.
-2. **Tag semantics:** Pilot `tmm_progression:` tags cover a handful of vanilla entities/tools only. No claims about hundreds of modded mobs; consult Hunter taxonomy research. Do not assume external mods' tags exist.
+2. **Tag semantics:** Pilot `tyr_progression:` tags cover a handful of vanilla entities/tools only. No claims about hundreds of modded mobs; consult Hunter taxonomy research. Do not assume external mods' tags exist.
 3. **XP legitimacy:** Raw `BlockEvent.BreakEvent` remains a pre-break hook but no longer awards path XP; loot-post-commit `BlockDropsEvent` now awards XP. TreeChop/mass-break, claim-protection rules and automated block destruction still need verified adapters and anti-farm tests. Kill ownership currently credits the immediate source player; summon ownership/spell credit needs adapters. Activity cooldowns are process-local.
 4. **Equipment and compatibility:** Armor checks use four vanilla armor slots, not Curios. Mining tiers currently implement vanilla stone/iron/diamond checks and not every modded tool tier. Event interactions with other combat modifiers require dedicated integration testing.
 5. **UI, migration and safety:** Serverbound action keybinds exist but no visual skill-tree GUI or server-to-client progress sync, versioned progress migration, path-leave/cure/reset, configured respec price, anti-farm event dedupe, effect-handler hot reload/registration timing tests, or pack-manifest inclusion. No in-game QA has passed.
@@ -152,17 +154,17 @@ To run the module from this directory with Gradle: `gradle --no-daemon build` th
   "rank_xp": [0, 25, 75],
   "points_per_rank": 2,
   "activities": [
-    {"event":"kill","target":"#tmm_progression:undead","xp":5,"cooldown_ticks":0},
+    {"event":"kill","target":"#tyr_progression:undead","xp":5,"cooldown_ticks":0},
     {"event":"food_discovered","target":"*","xp":8,"cooldown_ticks":0}
   ],
   "skills": [
     {"id":"example:sword","required_rank":2,"choice_group":"example:stance",
-     "effects":[{"type":"damage_bonus","weapon":"#tmm_progression:swords",
-                 "target":"#tmm_progression:undead","per_rank":1,
+     "effects":[{"type":"damage_bonus","weapon":"#tyr_progression:swords",
+                 "target":"#tyr_progression:undead","per_rank":1,
                  "params":{"delivery":"melee"}}]},
     {"id":"example:bow","required_rank":2,"choice_group":"example:stance",
-     "effects":[{"type":"damage_bonus","weapon":"#tmm_progression:ranged_weapons",
-                 "target":"#tmm_progression:undead","per_rank":1,
+     "effects":[{"type":"damage_bonus","weapon":"#tyr_progression:ranged_weapons",
+                 "target":"#tyr_progression:undead","per_rank":1,
                  "params":{"delivery":"arrow"}}]}
   ]
 }
@@ -185,4 +187,4 @@ This is **an implementation skeleton and functional pilot**, not release-ready M
 
 ## Client-only default-unbound controls (2026-11-16)
 
-This dual-sided progression JAR also carries the client-only `ClientKeyDefaults` policy and separately registered `tmm_controls_defaults.mixins.json`. It reads the original `options.txt` key names at `Options.load()` HEAD, before Default Options can rewrite them; then inspects the **runtime** client key registry rather than maintaining a per-mod key list. It leaves all 34 vanilla 1.21.1 names unchanged. New standard modded keys start unbound and have an unbound Reset default, while any pre-existing saved key remains assigned. A failed options snapshot disables changes, rather than risking user settings. Custom out-of-registry hotkeys need separate adapters. Unit checks live in `ControlsDefaultsPolicyTest`, graphical client and KeySets persistence still require an authorized live test. The separate mixin config deliberately does not activate unrelated experimental progression mixins.
+This dual-sided progression JAR also carries the client-only `ClientKeyDefaults` policy and separately registered `tyr_controls_defaults.mixins.json`. It reads the original `options.txt` key names at `Options.load()` HEAD, before Default Options can rewrite them; then inspects the **runtime** client key registry rather than maintaining a per-mod key list. It leaves all 34 vanilla 1.21.1 names unchanged. New standard modded keys start unbound and have an unbound Reset default, while any pre-existing saved key remains assigned. A failed options snapshot disables changes, rather than risking user settings. Custom out-of-registry hotkeys need separate adapters. Unit checks live in `ControlsDefaultsPolicyTest`, graphical client and KeySets persistence still require an authorized live test. The separate mixin config deliberately does not activate unrelated experimental progression mixins.
