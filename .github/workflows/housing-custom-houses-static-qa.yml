@@ -45,3 +45,20 @@ jobs:
           assert len({x['filename'] for x in data['houses']}) == 18
           print('PASS: 18 independent NBT source builds; NO gameplay/loader/house grant tested')
           PY
+      - name: Stage all 18 into disposable client + server-cache paths (no game boot)
+        run: |
+          qa_dir="$(mktemp -d)"
+          trap 'rm -rf "$qa_dir"' EXIT
+          touch "$qa_dir/.tmm-disposable-qa"
+          python research/prefab-donors/stage_all_houses_qa.py --stage-qa-game-dir "$qa_dir" --target singleplayer > "$qa_dir/source-report.json"
+          python - "$qa_dir" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          report = json.loads((root / 'source-report.json').read_text())
+          names = {x['filename'] for x in report['houses']}
+          assert len(names) == 18
+          client = {p.name for p in (root / 'prefab-extension').glob('*.nbt')}
+          server = {p.name for p in (root / 'prefab-extension/server-cache').glob('*.nbt')}
+          assert client == server == names
+          print('PASS: 18 staged in client root, 18 staged in server-cache; disposable static file validation only')
+          PY
