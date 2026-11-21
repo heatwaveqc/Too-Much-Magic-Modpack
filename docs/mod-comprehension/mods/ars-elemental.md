@@ -59,3 +59,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Four elemental Source relays](ars-elemental-pinned-relays.md) covers exact upgrades/buffers, inherited directional loops and explicit capability registration; normal addon Warp capability path is lossless, legacy tile overload still has distance-loss code.
 
 [Five infused turrets](ars-elemental-pinned-turrets.md) closes school recipes/Sauce resolver/cost, block-type registration and addon Homing/Arc behavior extensions on native turrets.
+
+[Seven bangles](ars-elemental-pinned-bangles.md) covers exact resource gates, school attributes and player-attributed specials; [pouch/bag inventories](ars-elemental-pinned-bags.md) covers27/54slot data, open/upgrade/dye, GUI restrictions and client/server slot boundaries.

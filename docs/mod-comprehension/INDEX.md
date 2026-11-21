@@ -455,3 +455,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-21 — Elemental [four Source relays](mods/ars-elemental-pinned-relays.md): recipes/storage, inherited20tick collector/deposit/splitter, all4SOURCE_CAPABILITY registrations and Air lossless modern path versus retained legacy loss.27companions;9/42 unchanged; no transfer acceptance.
 
 - 2026-11-21 — Elemental [five infused turrets](mods/ars-elemental-pinned-turrets.md): exact recipes, matching35%/unmatched60%raw Source cost, virtual school focus/child resolver, valid-block event and Homing/Arc additions to native maps.28companions;9/42 unchanged; no operational acceptance.
+
+- 2026-11-21 — Elemental [bangles](mods/ars-elemental-pinned-bangles.md) and [pouch/bags](mods/ars-elemental-pinned-bags.md): seven recipes/attributes/specials, Curios data,27/54slot component inventories, content-preserving upgrade/dye and menu/handler/index boundaries.30companions;9/42 unchanged; no equipment/storage acceptance.
