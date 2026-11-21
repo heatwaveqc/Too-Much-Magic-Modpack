@@ -4,9 +4,9 @@
 
 **Purpose:** A usable authoring reference by **which exact family of pentacle, activation, prerequisite item, sacrifice/event, target entity/item, and actual resulting capability**. A generic “perform Afrit ritual” checkbox would miss the material and action differences below. We deliberately do **not** copy all 158 recipe rows (available in the pinned reference); this is their first/mid/high-end crosswalk.
 
-## 1. All 158 ritual recipes classified by 17 exact pentacle IDs
+## 1. All 158 ritual recipes classified by 18 exact ritual-use pentacles
 
-The native 158 recipes are distributed over **17** ritual-use pentacle identifiers, independent of the **20** serialized multiblock reference layouts (some references are demonstration/debug, and possession/summon/craft variants are distinct). Use the exact Dictionary preview *for that recipe*, not the tier's other circle.
+The native 158 recipes are distributed over **18** ritual-use pentacle identifiers, distinct from the **20** serialized multiblock reference layouts (some references are demonstration/debug, and possession/summon/craft variants are distinct). Use the exact Dictionary preview *for that recipe*, not the tier's other circle.
 
 | Native ritual pentacle ID (`occultism:` prefix) | Native JSONs | Acquired capability — examples | Correct level/story |
 | --- | ---: | --- | --- |
@@ -29,7 +29,7 @@ The native 158 recipes are distributed over **17** ritual-use pentacle identifie
 | `summon_unbound_afrit` | 1 | Hostile Afrit encounter→Afrit Essence via *mob kill/loot* | Different pattern than Afrit craft/summon |
 | `summon_unbound_marid` | 1 | Hostile Marid encounter→Marid Essence via *mob kill/loot* | Requires Trident-use event; not direct essence |
 
-**Counts:** 15+16+13+6+10+11+5+3+13+19+5+2+2+23+10+3+1+1 = **158**; these are 18 entries, *not 17*. Correct family count is **18**, counted directly from the source table and including `possess_unbound_afrit`, `summon_unbound_afrit` and `summon_unbound_marid` independently. 20 native multiblocks include storage demo/debug and possible pentacle variants; do not equate raw 20 layouts with 18 recipe-used IDs. The above row inventory, not the informal “17”, is authoritative.
+**Counts:** 15+16+13+6+10+11+5+3+13+19+5+2+2+23+10+3+1+1 = **158** across **18** ritual-use pentacles, including `possess_unbound_afrit`, `summon_unbound_afrit` and `summon_unbound_marid` separately. Do not equate the 20 serialized multiblock references (including storage/demo/debug) with 18 recipe-used pentacles.
 
 **Ritual output is not the JEI preview icon.** The native factory roster is 47 craft, 9 craft-with-spirit-name, 5 craft-miner-spirit, 4 repair, 3 upgrade, 29 summon, 17 summon-tamed, 26 summon-spirit-with-job, 15 summon-wild, 1 chance-of-chicken summon, and 2 resurrect-familiar = **158**. Item delivery, *world entity*, and virtual/conditional effect need different quest completion criteria. Duration JSON values below are **counters**, not wall-clock seconds for every Golden Bowl upgrade. Standard tier1 advances about one counter step/20 ticks at default duration multiplier and tier2 at 1/5 ticks; the advanced bowls use other source paths. The extra sacrifice or item-use is an **event**; entity drops/held-use events are not automatically an extra stack consumed by the ritual. Follow source and actual named rite.
 
