@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-20 Elemental Terrain/Spike
+
+- Added ars-elemental-pinned-terrain-spikes.md2recipes/routes. TerraindefaultTier1/mana20,AmplifyCOUNTselectsDirt/Cobble/CobbledDeep; consumednextrecognizedeffect Mud/Sand/Sandstone/Stone/Deep, Smelt0consumednochange; all4tagorElseThrow, exacttagmembers; Sauceplacehelperclaim/replaceable/unobstructed+Shaperchild. Javaplookupswitch confirmsCFRambiguousassignmentcorrect. SpikeTier2mana30,8+2.5amp supported/isAirsearch/entitypassesoriginalnotfoundpos; WatericeSlowness100amp1ifhurt. Lifetime20+10*durationTICKS(notseconds); contact5tickwindow; all4noSave. Fallingdropfalse/40maxonlyfallDamagepath, nativeimpactdifferentformula, icyfallingnoslowoverride.
+- **Next4glyphs +12tomes** BubbleShield,Charm,LifeLink,PhantomGrasp. SuggestedCharm/Link/Phantom actualeffects/context/eventconsumers thenShielddefense/mana/statusprotection.35of39routescovered through17companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37 finalreview. GlobalSauceversionselectionopen.
+- Alladdonclasses elemental-fresh; nativeEnchantedFallingBlock ars-fresh-20261117. Integrationrefetch unchanged7d1be155bf1334995b65ebe88566bd4d7ae54635;9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Water Jet/Geyser
 
 - Added ars-elemental-pinned-jet-geyser.md2recipes/routes fullentities. JetTier3mana80/damage4+amp,Splitcost40,1+split/originsradius1.5/hitY+1,nearest10boxinitialnoally/LOSfilter,RandomizedroundrobinnotRNG. Markerfireatcounter25/savedentityID/currentalive/≤12fromorigin/noRetarget; damagecanfailbutbeamstill, actualbypasses_armortag. Markerfireimmune/noSave/spawndataorigins/NBTtimeronly. GeyserTier2mana40/heightmax(0,4+2amp),nonairanchor/Sensitivefaces/backtracking; duration5+1*d waterONLYFirebase5. Pushboxes/component±.4/allalive/nofilters; Soaked40 vs Fireoverride+20fireticksnotSoaked; noSave. No physicalwater/upkeepSourceinvented.

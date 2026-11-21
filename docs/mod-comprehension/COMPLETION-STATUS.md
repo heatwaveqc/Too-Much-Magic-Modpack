@@ -162,3 +162,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-20 — Elemental [Water checkpoint](mods/ars-elemental-pinned-cavitation-grave.md):31of39glyph recipes audited;8otherglyphs/12tomes/majorbranches researching.9complete33researching; no runtime/permission acceptance.
 
 - 2026-11-20 — Elemental [Jet/Geyser checkpoint](mods/ars-elemental-pinned-jet-geyser.md):33of39glyph recipes audited;6otherglyphs/12tomes/majorbranches researching.9complete33researching; no client/combat/permission acceptance.
+
+- 2026-11-20 — Elemental [Earth checkpoint](mods/ars-elemental-pinned-terrain-spikes.md):35of39glyph recipes audited;4otherglyphs/12tomes/majorbranches researching.9complete33researching; no world/combat acceptance.
