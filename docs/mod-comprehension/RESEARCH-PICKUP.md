@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-20 Elemental Charm/Link/Phantom
+
+- Added ars-elemental-pinned-anima.md3recipes/routes. CharmPlayer/server/blacklist/maxhealth<150, hostileR=int10+100healthratio,B10+5amp(+50wornNecroundead); tameHorseonlysetTamed/notowner; Foxtrust/lovebranches. EnthrallEffect persistentthrallkey thenunrelated ANYMobEffect.Remove clearskey(!); expirykeyclear/persistenceflagnotreset. Saucefollow/target/alliedrecipient traced; ElementalconstructorENABLE_ENTHRALL=true. AlsoRageEntityMixinalliedfalse nowconfirmed correctingprioropenrecipient.
+- LinknormalownerShooter/targetHit,Sensitiveinverts,bothEntityCarry refs,30+8duration,Necroforce; targetheals halfowner/halfself, ownerdamagehalves evenifrecipienthurtfails (returnunchecked), sourcebypassskip; Cutbothends; no customserializedrefsupport. Phantom3+3amp healsinverted branch, elseMAGIC successfulPlayerexhaust2.5*(1.5+amp), noCasterlifesteal.
+- **Next finalglyphBubbleShield** fullEffectBubbleShield+DamageEvents mana reduction/statusProtect and ManaBubbleeffect/blacklist/actualcuring; then12tomes/registerednoglyphMethodCarianPhalanx scope.38of39routes through18companions. ThenSiren/helpers/devices/bangles/bags/worldgen/VexingCaves/pilot35–37/finalreview. GlobalSauceversionselectionopen.
+- Fetchedintegrationadvanced2e63c50f7d154bd43871e88163049569609caa72; Elemental/Arspinsunchanged versus7d1be155.9complete33researching/no blocker/hourlyactive; docs-only/no subagents/assembly/launch/runtimeedits/merge. Gitlog actual pushedhead; prior receipts follow.
+
+---
+
 # Latest checkpoint — 2026-11-20 Elemental Terrain/Spike
 
 - Added ars-elemental-pinned-terrain-spikes.md2recipes/routes. TerraindefaultTier1/mana20,AmplifyCOUNTselectsDirt/Cobble/CobbledDeep; consumednextrecognizedeffect Mud/Sand/Sandstone/Stone/Deep, Smelt0consumednochange; all4tagorElseThrow, exacttagmembers; Sauceplacehelperclaim/replaceable/unobstructed+Shaperchild. Javaplookupswitch confirmsCFRambiguousassignmentcorrect. SpikeTier2mana30,8+2.5amp supported/isAirsearch/entitypassesoriginalnotfoundpos; WatericeSlowness100amp1ifhurt. Lifetime20+10*durationTICKS(notseconds); contact5tickwindow; all4noSave. Fallingdropfalse/40maxonlyfallDamagepath, nativeimpactdifferentformula, icyfallingnoslowoverride.

@@ -47,3 +47,5 @@ Tick eligibility is duration%20==0 **or parent effect eligibility**. No added at
 ## Acceptance and remaining coverage
 
 Future explicit acceptance: recipes/tiers/config; Envenom first/second cast, Earth poison immunity, amplifier/duration and credit; initial Spores status gate, secondary box corners/allies, reused initial Venom bonus, canceled damage and blossom terrain; Rage players excluded, current-target preservation and actual combat targeting eligibility. **14 glyphs** remain: Bubble Shield, Cauterize, Cavitate, Charm, Conflagrate, Conjure Terrain, Discharge, Geyser, Life Link, Phantom Grasp, Spark, Spike, Watery Grave, Water Jet; plus12tomes and major helper/device/gear/worldgen branches. Addon stays researching; no quests/config/balance/runtime changes.
+
+Follow-up: [Charm/Anima recipient audit](ars-elemental-pinned-anima.md) confirms Elemental enables Sauce enthrall mixins; EntityMixin returns false from isAlliedTo for Rage targets. This closes the alliance-recipient uncertainty above while other combat targeting/AI boundaries remain.

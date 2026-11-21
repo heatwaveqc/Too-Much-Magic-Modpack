@@ -433,3 +433,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-20 — Elemental [Water Jet/Geyser](mods/ars-elemental-pinned-jet-geyser.md): saved-target delay/range, actual armor tag, round-robin Randomize; anchor/orientation/ownerless pushes, Fire variant ignores duration extension and replaces Soaked.33of39glyph recipes audited;9/42 unchanged.
 
 - 2026-11-20 — Elemental [Terrain/Spike](mods/ars-elemental-pinned-terrain-spikes.md): tag/lookahead consumption and claim/collision placement; supported versus falling source recipients, short tick-based extension and separate fall/impact damage paths.35of39glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Charm/Link/Phantom audit](mods/ars-elemental-pinned-anima.md): actual taming/rolls/Sauce allegiance, unrelated Remove-event thrall cleanup; Link split damage despite recipient rejection and direct references; Phantom inversion/exhaustion.38of39glyph recipes audited;9/42 unchanged.
