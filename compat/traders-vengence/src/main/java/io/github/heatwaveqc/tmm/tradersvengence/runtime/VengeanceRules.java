@@ -6,6 +6,7 @@ import java.util.UUID;
 public final class VengeanceRules {
     public static final int SEA_LEVEL_TOLERANCE = 10;
     public static final int SIGN_RADIUS = 32;
+    public static final double GOLEM_VENDETTA_RADIUS = 10.0D;
     // Each vanilla search checks up to ten columns; cap total work to 30.
     public static final int TRADER_POSITION_GROUPS = 3;
 
@@ -19,6 +20,12 @@ public final class VengeanceRules {
     /** A continuing Priest target is not a new crime after the Hero pardon. */
     public static boolean isNewPriestTarget(UUID lastTarget, UUID observedTarget) {
         return observedTarget != null && !observedTarget.equals(lastTarget);
+    }
+
+    /** Inclusive Euclidean boundary for proximity culpability at a golem death. */
+    public static boolean withinGolemVendettaRadius(double dx, double dy, double dz) {
+        return dx * dx + dy * dy + dz * dz
+            <= GOLEM_VENDETTA_RADIUS * GOLEM_VENDETTA_RADIUS;
     }
 
     public static boolean nearSeaLevel(int feetY, int seaLevel) {
