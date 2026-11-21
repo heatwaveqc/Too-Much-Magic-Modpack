@@ -128,7 +128,7 @@
 - [ ] **JAWR/Goety lich state and phylactery** (`form.lich`) — *Planned*. Lich upgrades, death/revival, diet, gear and storage functional without lost player state. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
 - [ ] **Exclusive primary physiology and safe transitions** (`form.exclusive`) — *Planned*. Reject incompatible cross-mod transformations; reversible conversions clean all flags; explicit exceptions only. [source](../docs/TRANSFORMATION-COMPATIBILITY.md)
 - [ ] **Standalone Monk First Sunset** (`monk.sunset`) — *Planned*. Sunset joins native Monk progression path. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
-- [ ] **Standalone Monk native tree** (`monk.tree`) — *Planned*. tmm_progression skills and XP persist; no Vampirism faction UI. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
+- [ ] **Standalone Monk native tree** (`monk.tree`) — *Planned*. tyr_progression skills and XP persist; no Vampirism faction UI. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk Step Assist +0.5 height** (`monk.step`) — *Player test partial*. Moves over allowed half-block heights only; armor and weapons may suppress where designed. [source](../docs/USER-TEST-LEDGER-2026-11-14.md)
 - [ ] **Monk training progression and graphical progress indicator** (`monk.training`) — *Source ready; gameplay unverified*. Actual cultivation earns native points; full UI progress ring replaces temporary actionbar counter. [source](../manifest/integration-sources.json)
 

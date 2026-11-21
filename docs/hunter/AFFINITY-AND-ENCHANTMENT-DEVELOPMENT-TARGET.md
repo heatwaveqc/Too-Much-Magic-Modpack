@@ -73,7 +73,7 @@ The 1.21 `exclusive_set` tag expresses incompatibility globally. If a mod's bypa
 
 ### Technical work packets (not started)
 
-1. **Taxonomy handoff:** import reviewed exact registry IDs from PR #97 into shared reloadable entity-category tags; preserve overlap, nonliving exclusions, and 11 unresolved lineages. Keep the Hunter's pilot `tmm_progression:undead`/raider tags distinct until a deliberate migration.
+1. **Taxonomy handoff:** import reviewed exact registry IDs from PR #97 into shared reloadable entity-category tags; preserve overlap, nonliving exclusions, and 11 unresolved lineages. Keep the Hunter's pilot `tyr_progression:undead`/raider tags distinct until a deliberate migration.
 2. **Affinity engine consolidation:** migrate old undead/vampire, fae/forest-dragon and demon/cave-dragon policy semantics into standalone shared progression hooks; add proposed Beast/werewolf policy only behind a real provider; robust owner, boss, retaliation and target-clearing guards.
 3. **Data-driven policies:** implement a reloadable table mapping attacker entity tag + target player identity/form/skill or target mob tag to non-aggression; per-rule exemptions; use the CSV as planning input only, not direct runtime JSON. Include the **Sea Dragon ↔ Aquatic** reciprocal pair and keep default Monk/Hunter AI unchanged.
 4. **Enchantment registry:** define approved specialist damage enchantments and baseline `exclusive_set/damage` membership; reuse vanilla Smite/Bane where appropriate; verify mod-specific available-damage enchantments do not introduce conflicts.
