@@ -86,7 +86,7 @@ This addon makes **six pairwise elemental specializations and one four-element c
 | **Mana Infusion** | **1,500 Source** ritual grants player mana | Fresh configurable grant 500, directed to chosen pool; addon has player award logic |
 | **Mana Well** | **2,000 Source** ritual; source-defined near-player ongoing mana gain | Source default range 8 AABB, **2 mana/tick/player = 40/sec** at 20 TPS while active; ritual duration and total cost not established. May affect cap/balance significantly |
 
-**Owner review / decision candidates:** lock the active TMM mana mode, school-power stacking, passive Mana Well throughput, and progression MXP interaction after inspecting live config and existing approved rules. These are **pack-owned cross-mod settings**, not reasons to regression-test unmodified native spells.
+**Owner operational clarification (2026-11-21):** Ars 'n Spells cross-mana is reported already working in TMM; **no new gameplay mode decision or rebalance is required to continue Atlas/quest authoring**. Distinguish unverified exact effective config enum from a broken implementation. School-power, Mana Well and TMM MXP interactions remain source/config evidence to explain when writing those lessons, and first-party changed-code QA applies only on real edits/observed bugs.
 
 ## Ars Ocultas — `ars_ocultas` 2.6.2
 
@@ -99,7 +99,7 @@ This addon makes **six pairwise elemental specializations and one four-element c
 | **Jarred Janitor / worker forwarding** | Spirit job plus nearby eligible item and adjacent inventory | Janitor moves held item; Crusher, Smelter, Crystallizer and Trader jobs can output adjacent | Input filter and overflow are **Occultism job** concerns, not generic free conversion |
 | **Silver↔Gold transformation** | Ars Imbuement input metal + Manipulation Essence + Spirit Attuned Gem + direction reagent, **2,000 Source** per ingot | One ingot in other metal | Explicitly 1-to-1; source economics not universally profitable |
 | **Occultism Tier-4 Storage Stabilizer** | Bound Marid book / appropriate pentacle and addon-specified ritual reagents | Access to `occultism:storage_stabilizer_tier4` | Must retain legitimate Occultism Marid tier; no skip merely from Ars Apparatus |
-| **Sacrificial Altar** | Craft with Golden Sacrificial Bowl + four Occultism Silver, two Sourcestone, Drygmy Shard, Mob Jar and **5,000 Source** | Converts another **5,000 Source per pending Occultism bowl sacrifice/item-use flag**; source implementation doesn't consume jarred entity or matching altar item | **Owner design decision**: is reusable nonconsuming sacrifice/item fulfillment intentional? Keep separate from native mod regression testing; can bypass TMM-designed consumable gates |
+| **Sacrificial Altar** | Craft with Golden Sacrificial Bowl + four Occultism Silver, two Sourcestone, Drygmy Shard, Mob Jar and **5,000 Source** | Converts another **5,000 Source per pending Occultism bowl sacrifice/item-use flag**; source implementation doesn't consume jarred entity or matching altar item | **Owner-approved intended mechanic:** Source-funded nonconsuming sacrifice/item fulfillment; teach the separate 5,000-Source operating payment, preserve the required native Occultism progression, no new design vote |
 | **Soul Gem ↔ Mob Jar bridge** | Empty/filled Occultism Soul Gem; config both directions enabled by default | Retains entity/job NBT for allowed targets; **source predicts potential data loss if placement rejects after removing stored entity data** | Specific code-order bug lead: do not promise safe denied transfer; escalate only if gated creatures/items depend on this path |
 
 The metadata contains an apparently narrow Minecraft version range despite the same artifact appearing in an official ATM10 1.21.1 inventory. **Do not assert a TMM load failure** from the range alone.
@@ -114,7 +114,7 @@ The metadata contains an apparently narrow Minecraft version range despite the s
 
 ## Review priority and scope
 
-1. **Design first:** Ars 'n Spells effective mode/mana multipliers; Ars Ocultas nonconsuming sacrificial altar vs TMM Occultism gates; Drygmy output blacklist; Ars Additions chunk loading policy; Elemental Source→water and Siren loot if economy-sensitive.
+1. **Design already settled / source documentation next:** Ars 'n Spells mana operational per owner; Ars Ocultas nonconsuming Source-for-sacrifice and native Siren fishing are allowed; Drygmy replication policy is shared with capture #373. Verify precise Source Spawner alternate consumer tag, avoid inventing a new balance hold. Arcane Permanence remains disabled by default, so do not make its quest mandatory without separate enablement.
 2. **Implementation-ready (research artifacts, not runtime):** assemble optional how-to source nodes for unpiloted addon surfaces; cross-link all seven addon profiles, preserve chapter GUIDs, avoid duplicate 49-node quest implementation from #395.
 3. **Only changed-code QA:** if TMM writes a custom source handler, recipe adapter, blacklist, XP/MXP bridge or quest detector, the narrow affected boundary needs testing. Do **not** add standalone native Tome-like verification of untouched addon behavior just because a user is taught how to operate it.
 
