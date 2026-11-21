@@ -17,11 +17,30 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 **Neo Vitae pilot (2026-11-20) — source-backed partial, not yet quest-source-ready:**
 
 - [Neo Vitae 29-axis detailed capability dossier](mods/neovitae.md): typed block/player/item energy, six formal altar tiers, representative 21 multi-axis capability records, concrete objects, evidence and missing recipe coverage.
-- [Neo Vitae quest-authoring map](mods/neovitae-quest-map.md): 36 proposed main/optional teachable steps with exact player actions, observable outcomes, honest FTB detector uncertainty and safe reward directions. These are research IDs, not a committed quest chapter.
+- [Neo Vitae quest-authoring map](mods/neovitae-quest-map.md): 38 proposed main/optional teachable steps with exact player actions, observable outcomes, honest FTB detector uncertainty and safe reward directions. These are research IDs, not a committed quest chapter.
 - [Neo Vitae declared registry inventory](inventories/neovitae-registries.md): 211 statically named items, 90 blocks and six Orb data-map values from version-aligned upstream source; **not** a pin-matched JAR dump or evidence that every object is craftable.
 - [Neo Vitae operating-family registrations](inventories/neovitae-operations.md): 51 ritual declarations (48 regular, 3 imperfect), 26 array-effect items and 18 sigil items; an **identity/discovery index**, not a complete recipe/operation dossier.
 
-**Remaining work before source-ready:** inspect pinned JAR recipes and book pages; map all required altar/Tabula/Forge/Athanor costs, major array/ritual families and their specific mechanics; reconcile actual pack overrides, creature/gate exclusions and real FTB detectors; follow the positive/boundary gameplay tests. Another researcher should fill these gaps rather than repeat the high-level profile.
+**New complete generated recipe indexes (second pass, 2026-11-20):**
+
+| Source recipe family | Full exact-data index | Source-generated files |
+| --- | --- | ---: |
+| Ara Vitae | [All altar conversions](inventories/neovitae-altar-recipes.md) | 31 |
+| Alchemy Array | [All offering pairs and effects](inventories/neovitae-array-recipes.md) | 48 |
+| Tabula Vitae | [All recipes: Orb tier, Anima EV, inputs, output, ticks](inventories/neovitae-tabula-recipes.md) | 116 |
+| Hellfire Forge | [All regular + transform recipes](inventories/neovitae-hellfire-forge-recipes.md) | 90 |
+| Athanor | [All tool/EV-fluid/Spiritus/outputs](inventories/neovitae-athanor-recipes.md) | 74 |
+| Flask | [All 113 effect/catalyst/transformation recipes](inventories/neovitae-flask-recipes.md) | 113 |
+| **Total** | 6 separate direct-source catalogs with one file link per recipe | **472** |
+
+Also see [starter/gating machine recipes](inventories/neovitae-core-station-recipes.md), [ritual/sigil/Orb data-map costs and native event hooks](inventories/neovitae-resource-and-ritual-stats.md), and [16-tier Blood Tank vs creative FE Blood Battery](inventories/neovitae-block-storage.md).
+
+**Important progression corrections:** A Tier-1 Discipulus Orb is needed for Tabula Scribe/Dagger, Binding Reagent needs tier-3 Magus Orb, and level-1 Awakened Activation Crystal's first source recipe is Tier IV. The dungeon rites use Weak Crystal (80,000/150,000 EV). These findings are now reflected in the Neo quest map; exact pack runtime exceptions and alternative loot remain unverified.
+
+**Creative/debug warning:** the Blood Battery generates FE from a redstone signal without consuming magical energy; it should not be treated as normal magic→FE conversion or used as a survival quest reward before an explicit reachability review. Its block storage is **10,000,000 FE**, distinct from EV fluid tanks and player Anima.
+
+
+**Remaining work before quest-source-ready:** the 472 generated recipe JSONs are now **exhaustively indexed for those six directories**; still compare against pinned JAR and actual pack recipe overrides, gather exact 3-D ritual and altar structures, resolve effect code and non-recipe capabilities, test effective creature/gate/EMC rules and truthful FTB per-player detection, and perform positive/boundary client gameplay. Another researcher should fill these gaps rather than restart the source catalog.
 
 ## The axis taxonomy — 29 research dimensions, no rankings
 
