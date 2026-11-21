@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "status": "qa_preview_only",
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "source_branch": "research/prefab-donors-20261118",
+  "source_baseline_commit": "6c16c7756ca5a491be760c59de10cd68ee226e4d",
+  "providers": {
+    "generic": "Prefab 1.0.9 + Cloth Config",
+    "custom": "Prefab Custom Addon 2.7.1 + LDLib2 2.2.46.a"
+  },
+  "native_generic": {
+    "id": "generic",
+    "addon_required": false,
+    "grant": false,
+    "styles_count": 15
+  },
+  "custom_houses": [
+    {
+      "id": "adventurers_inn",
+      "source_dir": "adventurers-inn-v1",
+      "generator": "rebuild.py",
+      "filename": "adventurers_inn.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Pending Bountiful board merge from PR #381; base house for static QA only"
+    },
+    {
+      "id": "arcane_forge",
+      "source_dir": "arcane-forge-v1",
+      "generator": "build_arcane_forge.mjs",
+      "filename": "arcane_forge.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "MIT Mimicry donor; preserve license before distribution"
+    },
+    {
+      "id": "arcane_sanctum",
+      "source_dir": "arcane-sanctum-v1",
+      "generator": "build_arcane_sanctum.mjs",
+      "filename": "arcane_sanctum.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Primal Magick/Totemic prototype"
+    },
+    {
+      "id": "castaways_retreat",
+      "source_dir": "castaways-retreat-v1",
+      "generator": "rebuild.py",
+      "filename": "castaways_retreat.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Shore placement and fishing chest balance unverified"
+    },
+    {
+      "id": "celestial_observatory",
+      "source_dir": "celestial-observatory-v2",
+      "generator": "build_observatory.mjs",
+      "filename": "celestial_observatory.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "V2 supersedes V1"
+    },
+    {
+      "id": "chromatic_manor",
+      "source_dir": "chromatic-manor-v1",
+      "generator": "rebuild.py",
+      "filename": "chromatic_manor.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Subsurface geode needs terrain/height placement test"
+    },
+    {
+      "id": "dark_citadel",
+      "source_dir": "dark-citadel-v1",
+      "generator": "build_dark_citadel.mjs",
+      "filename": "dark_citadel.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Static source only"
+    },
+    {
+      "id": "dwarven_foundry",
+      "source_dir": "dwarven-foundry-v1",
+      "generator": "build_dwarven_foundry.mjs",
+      "filename": "dwarven_foundry.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Dynamic shaft placement pending"
+    },
+    {
+      "id": "elven_garden",
+      "source_dir": "elven-garden-v1",
+      "generator": "build_elven_garden.mjs",
+      "filename": "elven_garden.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Static source only"
+    },
+    {
+      "id": "farmers_homestead",
+      "source_dir": "farmers-homestead-v1",
+      "generator": "rebuild.py",
+      "filename": "farmers_homestead.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Rice and kitchen acceptance pending"
+    },
+    {
+      "id": "hearthkeeper",
+      "source_dir": "hearthkeeper-v1",
+      "generator": "rebuild.py",
+      "filename": "hearthkeeper.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Thun MIT donor; keep LICENSE.txt"
+    },
+    {
+      "id": "mages_academy",
+      "source_dir": "mages-academy-v1",
+      "generator": "build_mages_academy.mjs",
+      "filename": "mages_academy.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Original build"
+    },
+    {
+      "id": "summoners_lodge",
+      "source_dir": "occult-tower-v1",
+      "generator": "rebuild_from_grid.py",
+      "filename": "summoners_lodge.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Large Occult tower; exact NBT placement 45x63x45 pending"
+    },
+    {
+      "id": "sanguine_temple",
+      "source_dir": "sanguine-temple-v1",
+      "generator": "build_sanguine_temple.mjs",
+      "filename": "sanguine_temple.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Static source only"
+    },
+    {
+      "id": "spirit_shrine",
+      "source_dir": "spirit-shrine-v1",
+      "generator": "rebuild.py",
+      "filename": "spirit_shrine.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Static source only"
+    },
+    {
+      "id": "witch_cottage",
+      "source_dir": "witchs-cottage-v1",
+      "generator": "rebuild.py",
+      "filename": "witch_cottage.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Original substitute for missing source donor"
+    },
+    {
+      "id": "witchs_manor",
+      "source_dir": "witchs-manor-v1",
+      "generator": "rebuild.py",
+      "filename": "witchs_manor.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Static source only"
+    },
+    {
+      "id": "wizards_tower",
+      "source_dir": "wizards-tower-v1",
+      "generator": "rebuild.py",
+      "filename": "wizards_tower.nbt",
+      "grant": false,
+      "addon_required": true,
+      "note": "Original substitute for missing source donor"
+    }
+  ],
+  "delivery": {
+    "client": "prefab-extension/",
+    "dedicatedServer": "prefab-extension/server-cache/",
+    "singleplayer": "both"
+  },
+  "safe_defaults": {
+    "grant": false,
+    "automatic_upload": false,
+    "free_build": false
+  }
+}
