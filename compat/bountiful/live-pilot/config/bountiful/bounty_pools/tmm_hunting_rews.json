@@ -1,0 +1,27 @@
+{
+  "content": {
+    "item_minecraft_arrow": {
+      "amount": {
+        "max": 16,
+        "min": 8
+      },
+      "content": "minecraft:arrow",
+      "rarity": "COMMON",
+      "repRequired": -30,
+      "type": "item",
+      "unitWorth": 0.875
+    },
+    "item_minecraft_leather": {
+      "amount": {
+        "max": 2,
+        "min": 2
+      },
+      "content": "minecraft:leather",
+      "rarity": "UNCOMMON",
+      "repRequired": 0,
+      "type": "item",
+      "unitWorth": 8
+    }
+  },
+  "replace": true
+}
