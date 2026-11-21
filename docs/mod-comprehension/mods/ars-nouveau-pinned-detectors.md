@@ -1,0 +1,37 @@
+# Ars Nouveau pinned inventory and spell detectors
+
+Exact5.13.5 JAR SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`. Evidence: ItemDetector/Tile, SpellSensor/Tile, ArsEvents registered cast/resolve subscribers, native recipes/occlusion tag, Documentation/en_us; CFR0.152. [Parent](ars-nouveau.md), [spell records](ars-nouveau-pinned-spell-records.md), [storage](ars-nouveau-pinned-bookwyrm-storage.md), [turrets](ars-nouveau-pinned-turrets.md). These are native redstone tools, not implemented FTB operation detectors. No actual wiring, comparator, save/reload or protected inventory acceptance.
+
+## Display Case / Item Detector
+
+Notebook **Crafting -> Display Case** (actual registered item `ars_nouveau:item_detector`), both configuration and Filter Scroll paragraphs. Recipe `item_detector` shaped `xxx/xyx/zzz`: five Glass-block-tag items, one Observer center, three Archwood Planks bottom. No Source/XP operating debit in inspected detector tick.
+
+1. Place case near an inventory exposing null-side NeoForge item handler. Dominion Wand **inventory first, case last**. Binder requires block entity+handler and distance<=30 in same level; it saves only BlockPos, not cross-dimensional address.
+2. Main-hand use an item on case to copy its full stack as filter without consuming it. Matching ordinary filter uses same item **and components**, not just registry ID; stack count isn't itself threshold. Allow/Deny/Mimic ItemScroll filter invokes its getSortPref with an empty CombinedInvWrapper and counts stacks when result!=INVALID. Read relevant scroll rules before promising general tag/NBT support.
+3. Empty-hand use increments neededCount1; sneaking increments8. Attack/punch decrements1 or8 sneaking; clamps minimum0. Ordinary gesture edits settings, not item inventory. Wand's tile callback toggles inverted (native guide specifies sneak Wand); output neighbor update follows.
+4. Server samples every20worldticks. Counts simulated extractable stacks slot-by-slot rather than blindly trusting all visible inventory contents. A special branch counts whole ghost stack when visible count exceeds simulated extraction and simulated count exactly equals max stack size; not a general guarantee for every virtual/infinite inventory.
+5. Normal output15 when accumulated found **strictly greater than** neededCount, else0. To enable at64items set neededCount63, not64. Inverted output is logical negation, so **found<=neededCount** outputs15, including equality. Native tooltip displays `<` for inversion, which omits this equality boundary. Don't teach it as strict less-than.
+
+Empty filter has its own meaning: matching empty stacks contributes1, so default empty filter can count empty slots, not all items. Set an explicit filter for ordinary item threshold. Missing target block entity/handler returns **without clearing previous powered state**, so removed inventory can leave stale redstone until valid sampling resumes. isPowered, inverted, neededCount, full filter and target persist; changing filter does not force immediate sample in setter. No extraction actually occurs during simulation here, and detector doesn't provide transport.
+
+Use for local stock thresholds with creature storage, not as proof a machine crafted something or consumed Source. A chest refilled externally can produce same signal. Native naming “Display Case” is presentation, not another generic storage mod or authorized logistics addition.
+
+## Spell Sensor: cast or resolve event pulse
+
+Notebook **Crafting -> Spell Sensor**; native registration aliases AUTOMATION to Crafting. Apparatus `spell_sensor`: Sculk Sensor reagent, **zero pedestal ingredients**, SourceCost0, keepNbt=false. Use actual recipe/empty-pedestal procedure from crafting companion; no speculative amethyst/Source Gem cost. Obtain Sculk Sensor through ordinary accessible route; pack exploration/claim constraints remain separate.
+
+Place Sensor and connect simple lamp/redstone consumer. Default detects **SpellCastEvent** near wrapped caster position; Dominion Wand toggles isOnResolve, switching to SpellResolveEvent.Post at resolver hitResult location. ArsEvents forwards both; null resolve hit result ignored. Native map searches range8 then onSignal checks distance from block center<=listenRange(default8) and occlusion. It adds itself to SENSOR_MAP each20server world ticks, so a just-placed sensor need not observe an immediate cast before registration.
+
+Default unfiltered signal strength is `spell.size()` (raw glyph count), not actual damage, personal mana, item count, hit quality or necessarily clamped15 in this method. Use Spell Parchment on Sensor to copy full stack without consumption; it filters by equality of ordered nonnull spell-part lists. Name/color/timeline are not part of this comparison. Matching filtered spell outputs15. Another player's identical composition can match: no player/owner/team filter in these handlers. A Parchment criterion doesn't prove restricted attribution.
+
+onSignal refuses while outputDuration>0 or onCooldown; accepted event sets duration40, strength, phase ACTIVE and updates neighbors. Each server tick decrements; at0sets strength0, marks cooldown, phase INACTIVE and schedules block tick after1. Block tick clears cooldown. No pulse extension/queue for casts during active interval. Native body doesn't expose a clear-filter empty-hand action; don't invent one. Reload saves duration/strength/mode/parchment but not onCooldown; investigate exact restart behavior before building event counters.
+
+Occlusion casts six tiny direction-offset lines between floored block centers: if **all** hit tagged blockers, signal rejected; any unblocked line allows. Native `ars_nouveau:occludes_spell_sensor` contains **Magebloom Block only**. Do not assume all vanilla wool/sound occlusion tags apply. Effective datapacks may extend it. Range/line checks and event stage make this distinct from vanilla sculk vibration detection.
+
+Cast event observer doesn't check damage/recipe success or cancellation in its own callback. Resolve Post is later but doesn't prove every desired effect changed target state. Some launchers resolve effects directly and may use different event/payment paths. Therefore these sensors alone aren't truthful “successful crafting/harvest/spell hit” quest detectors. Use actual state evidence plus properly scoped attribution where required.
+
+## Quest and acceptance handoff
+
+Optional control lesson: stock one ordinary filtered item -> bind case -> set threshold63 -> compare63/64 and inversion; separately cast harmless known spell -> observe40tick pulse -> copy Parchment -> switch cast/resolve mode. JEI and named Crafting pages are teaching references. Item tasks detect detector acquisition only; pulses/count outcomes need manual observation or dedicated instrumentation. Award XP and ordinary redstone/building supplies, not extra advanced detector as an operation proxy.
+
+Unrun boundaries:63/64/65and inversion equality, empty-slot filter, scroll filter, component mismatch, virtual/extract-restricted inventory, target removed/unloaded and retained output; exact bind range30. Sensor range8, Magebloom barrier versus ordinary wool, first registration delay, repeated casts within pulse, cast-event cancellation, same composition/different owner and name, resolve miss/null hit, multi-effect events, save/reload. Count actual signal/state and timestamps rather than infer from item possession or animation. Native feasibility isn't tested TMM wiring.

@@ -4,6 +4,8 @@
 
 **Snapshot:** 2026-11-15 updated selection (165 entries; 156 enabled, 9 inactive/planned). Exact runtime pins still require reconciliation. Alex's Caves Continued and CodxLib are planned but not yet installed; Bigger Reactors variants are excluded.
 
+**Current profile/artifact reconciliation:** see [completion receipt](COMPLETION-STATUS.md) for every linked profile, recomputed local pin hashes and remaining source gaps. The older roster snapshot below includes historical selections; it is not the current installed-mod list.
+
 ## Highest-value queue (suggested order)
 
 Work one substantial slice at a time; update corresponding coverage status and link. These are **research priorities**, not documented mechanics.
@@ -131,22 +133,22 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `mahou-tsukai` | Mahou Tsukai | magic | enabled flag | full | researching | [profile](mods/mahou-tsukai.md) |
 | `malum` | Malum | magic | enabled flag | full | researching | [profile](mods/malum.md) |
 | `neovitae` | Neo Vitae | magic | enabled flag | full | researching | [profile](mods/neovitae.md) |
-| `occultism` | Occultism | magic | enabled flag | full | researching | [profile](mods/occultism.md) |
+| `occultism` | Occultism | magic | enabled flag | full | source-complete | [profile](mods/occultism.md) |
 | `pastel` | Pastel | magic | enabled flag | full | researching | [profile](mods/pastel.md) |
 | `primal-magick` | Primal Magick | magic | enabled flag | full | researching | [profile](mods/primal-magick.md) |
 | `psi` | Psi | magic | enabled flag | full | researching | [profile](mods/psi.md) |
-| `roots-classic` | Roots Classic | magic | enabled flag | full | researching | [profile](mods/roots-classic.md) |
+| `roots-classic` | Roots Classic | magic | enabled flag | full | source-complete | [profile](mods/roots-classic.md) |
 | `scriptor-magicae` | Scriptor Magicae | magic | enabled flag | full | source-complete | [profile](mods/scriptor-magicae.md) |
 | `theurgy` | Theurgy | magic | enabled flag | full | researching | [profile](mods/theurgy.md) |
-| `totemic` | Totemic | magic | enabled flag | full | researching | [profile](mods/totemic.md) |
+| `totemic` | Totemic | magic | enabled flag | full | source-complete | [profile](mods/totemic.md) |
 | `witchery-remake` | Just Another Witchery Remake | magic | enabled flag | full | researching | [profile](mods/witchery-remake.md) |
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
-| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | researching | [profile](mods/ars-controle.md) |
+| `ars-controle` | Ars Controle | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
-| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | researching | [profile](mods/ars-n-spells.md) |
-| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | researching | [profile](mods/ars-ocultas.md) |
-| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | researching | [profile](mods/ars-unification.md) |
+| `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
+| `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-ocultas.md) |
+| `ars-unification` | Ars Unification | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-unification.md) |
 | `extra-botany-revived` | Extra Botany Revived | magic_addon | enabled flag | full | researching | [profile](mods/extra-botany-revived.md) |
 | `gaze-malum` | Gaze (Malum addon) | magic_addon | enabled flag | full | researching | [profile](mods/gaze-malum.md) |
 | `goety-cataclysm` | Goety Cataclysm | magic_addon | enabled flag | full | researching | [profile](mods/goety-cataclysm.md) |
@@ -190,7 +192,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `polymorph` | Polymorph | qol | enabled flag | focused | queued | — |
 | `trashslot` | TrashSlot | qol | enabled flag | focused | queued | — |
 | `treechop` | HT's TreeChop | qol | enabled flag | focused | queued | — |
-| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | researching | [profile](mods/summoning-rituals.md) |
+| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | source-complete | [profile](mods/summoning-rituals.md) |
 | `simple-backups` | Simple Backups | server_utility | enabled flag | interface | queued | — |
 | `spark` | spark | server_utility | enabled flag | interface | queued | — |
 | `improvable-skills` | Improvable Skills 3 | skills | enabled flag | full | queued | — |
@@ -205,12 +207,13 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 
 ## Cross-mod interaction reports
 
-No reports yet. Create one Markdown file per *specific, actionable interaction* under [interactions/](interactions/README.md) after confirming both sides of an I/O contract. Maintain a short list here as each is added, with status `candidate` / `source-supported` / `verified-in-pack` / `blocked` / `rejected` / `stale`.
+Reports below track individual evidence scopes. Create one Markdown file per *specific, actionable interaction* under [interactions/](interactions/README.md) after confirming both sides of an I/O contract. Maintain a short list here as each is added, with status `candidate` / `source-supported` / `verified-in-pack` / `blocked` / `rejected` / `stale`.
 
 | Interaction report | Participants | Status | Key finding |
 | --- | --- | --- | --- |
 | [Neo Vitae vampire blood sources](interactions/neovitae--witchery-remake--vampire-blood.md) | Neo Vitae + JAWR | source-supported | JAWR ships an Anima-powered Bloodstone Pendant ritual and vampire Orb/altar compatibility; exact blood/Anima transfer is untested |
 | [EvilCraft Rejuvenated Flesh](interactions/evilcraft--dragon-survival--rejuvenated-flesh.md) | EvilCraft + Dragon Survival | source-supported | Dragon species allowlist and custom Blood-food handler are both source-confirmed; the paired item-use behavior is untested |
+| [Staged-cast payment](interactions/goety--goety-cataclysm--staged-cast-payment.md) | Goety + Goety Cataclysm | source-supported | Four staged paths (including guarded Abyssal Beam) emit before parent completion payment; cancellation behavior differs. Economics require tests. |
 
 ## Quest/compatibility design handoffs
 
@@ -292,3 +295,147 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-16 — Goety 3.2.2 source audit now maps shared Dark Altar start, energy/XP debit cadence, staged pedestal consumption, and base interruption costs. Failed rites return the activation item but do not refund paid souls, XP or consumed pedestal inputs; recipe-specific outputs and ritual overrides remain open. No quest/runtime changes; see [profile](mods/goety.md) and the compatibility note.
 
 - 2026-11-16 — Goety Cataclysm addon review now carries forward the parent Goety 3.2.2 ritual transaction costs as an explicitly labeled inference for addon `goety:ritual` recipes. The official 1.21.1 release notes mention servant persistence and robe/crown healing fixes. The addon source repository exposes only a 1.20.1 branch and the exact pinned JAR is unavailable for code inspection, leaving Fabricator and class-level behavior blocked. No quest/runtime changes; see [profile](mods/goety-cataclysm.md).
+
+- 2026-11-16 — Local Windows JAR continuation: [access audit](LOCAL-ARTIFACT-AUDIT-2026-11-16.md) reconciles 159 current pins (156 locally matched; three UI/QoL artifacts missing), distinct from the older 161-pin QA checkout. [Goety Cataclysm](mods/goety-cataclysm.md) now has pinned-bytecode Fabricator operation and corrected ritual economics; [all 61 recipe routes](mods/goety-cataclysm-recipes.md) include 11 conversions. Blocked spawns can spend a queued entry without producing a Watcher; cap/sensor stalls preserve the queue. Researching, no client tests. [Resume notes](RESEARCH-PICKUP.md).
+
+- 2026-11-16 — Corrected [base Goety](mods/goety.md) ritual economics from the exact JAR: Arca 30 nominal Soul Energy, Forbidden Piece 50 and Potion of Transformation 60,000; the raw JSON values are rates per charged advance, with duration measured in advances once per 20 game ticks. Cursed Infuser cook times unchanged.
+
+- 2026-11-16 — [Goety altar/research walkthrough](mods/goety-ritual-gates.md) now closes Forge setup and the nine ritual families used by Goety Cataclysm, plus personal Bygone/Buried/Warred/Terminus gates. Necroturgy may deplete Grave Soil on completion; Ender Keeper blueprint delivery has a filled/missing-handler boundary. Researching; no gameplay tests.
+
+- 2026-11-16 — [Goety Cataclysm focus crosswalk](mods/goety-cataclysm-focuses.md) maps all 28 registrations, raw cost/cast/cooldown, accepted enchantments and producer effects. Distinguishes temporary focus summons from ritual companions, local cap checks/batch overshoot, recall/grounding, Summon Down and Ashen Breath charge cadence. Damage delegation and client acceptance remain open.
+
+- 2026-11-16 — [Goety Cataclysm servant care/recovery](mods/goety-cataclysm-servants.md) maps listed healing inputs/amounts, last-item post-shrink checks, death payloads, revival targets, Prowler cube and skull/head recognizers. Spirit revival and skull reconstruction have different failure debit order; Ancient Remnant skull yields a juvenile Modern Remnant. All gameplay acceptance remains open.
+
+- 2026-11-16 — [Goety ritual gates](mods/goety-ritual-gates.md) now covers all15 registered family predicates and shared conversion semantics, including entity-tag selection, caster ownership assignment, equipment clearing before spawn and ignored spawn-add failure. Divination candles are counted individually and extinguished on completion; enchanting contributions truncate per block. All boundary tests remain unrun.
+
+- 2026-11-16 — [Summoning Rituals](mods/summoning-rituals.md) is source-complete **for its unused framework baseline** after pinned binary lifecycle and current-content audit. No survival altar/ritual path is present in inspected scopes; future authored content requires new coverage. Corrected item debit timing, extraction denial, active-save gap and server command context. No client/world validation.
+
+- 2026-11-16 — [Mahou Tsukai pinned onboarding](mods/mahou-tsukai-pinned-onboarding.md) closes local-artifact access and starter instructions:33 crafting resources,53 counted/unordered catalyst registrations with53 named book matches,35 cloth-required flags and19 advancements. Hammer is cheap entry; Mortar/Pestle costs four Diamonds. Main profile remains researching pending full mana/spell/item progression and client acceptance.
+
+- 2026-11-16 — [Mahou mana/circuit contract](mods/mahou-tsukai-mana-circuits.md): exact payment branches, personal-only growth credit, donation, owner/shared access, strict horizontal range without Y filter, redstone inversion and native defaults. Regeneration cadence, gem lifecycle, spell callers and effective pack overrides remain open.
+
+- 2026-11-16 — Extended [Mahou mana research](mods/mahou-tsukai-mana-circuits.md) with100-game-tick regeneration cadence/formula, ley geometry, Fae spawn/loot supply, consumed Attuner, gem charging from circuits and Magitech interface scope. Formula-derived examples and unrun boundary tests remain separate from gameplay acceptance.
+
+- 2026-11-16 — [Pinned Caliburn/Morgan progression](mods/mahou-tsukai-caliburn-morgan.md): lake growth/funding, strict size guard, enchanted sword conversion, innate-cap offerings and pre-payment loss boundary, owned-pet conversion, villager growth, native guide/quest stages and unrun acceptance tests. Combat delegates/effective configs remain partial.
+
+- 2026-11-16 — [Mahou exchange/life-drain economy](mods/mahou-tsukai-exchange-life-drain.md): seven-powder random exchange and shrinking batch loop, durability tax/iteration limits and NORTH-side inventory, Drain Life payment/immunity/reward order and reward-after-failed-damage boundary. Native cap and unrun balance tests recorded.
+
+- 2026-11-16 — [Mahou Contract/Geas/scroll rules](mods/mahou-tsukai-contract-geas.md): two-player sequential payment/persistent recognition, contract-break attribution, Geas named/species/item identity and species-only regen bonus, paid vow removal/list, fire reset, stationary boundary-scroll placement/loss boundary. Multiplayer acceptance unrun.
+
+- 2026-11-16 — [Mahou artifact acquisition](mods/mahou-tsukai-artifact-acquisition.md): Clarent Dragon-owned cloud, Emrys strengthened offhand Stick/lightning event, Replica exact compound shield/counter/effect/armor checks and supporting Damage Exchange/Death Collection/Immunity Exchange. Cancellation ordering and gameplay remain unverified.
+
+- 2026-11-16 — [Mahou William/Kodoku economy](mods/mahou-tsukai-william-kodoku.md): dictionary-dependent fiction creation, fame0/copy/reader gates, carried vs deployed owner checks, negative-style drain, worm recipe/death accumulation and consumed fire payout to active circuits without owner check. Full text scoring/theater/misfortune and gameplay remain open.
+
+- 2026-11-16 — Recovered malformed Roots Classic Markdown; [pinned ritual audit](mods/roots-classic-pinned-rituals.md) corrects inventory46 rituals/22 components, maps all12 effect families and exact layouts, confirms Terra/staff defaults and identifies in-progress recipe reload and sacrifice-target indexing boundaries. Main remains researching.
+
+- 2026-11-16 — [Roots22 spells/items](mods/roots-classic-pinned-spells-items.md) maps every component, eight powered stones, Crystal Staff/Sylvan/Wildwood, all three mutations and direct-handler discrepancies. Narrow Focus/Forceful hooks remain to close; client tests separate.
+
+- 2026-11-16 — Roots Classic native source coverage completed after all22 spells/46 rituals/8stones/3mutations and major gear closure. Whole-JAR scans found no Focus/Forceful operation consumer; Engraved book recipe points at missing ID, so appendix provides actual JEI route. Known implementation gaps are findings; client/claims/quest acceptance remains unrun.
+
+- 2026-11-16 — [Occultism pinned rituals](mods/occultism-pinned-rituals.md):158 native records/11 factory channels, activation/ingredients/event gates, timing/refund/saved identity and actual entity vs display output. Exact hash now locally verified; full jobs/familiars/processing research open.
+
+- 2026-11-16 — [Occultism processing/miner crosswalk](mods/occultism-pinned-processing.md): all529 typed records/conditions/baseoutputs, exact worker/mineshaft/random-weight/capacity behavior, scoped sensitive-result scan. Full loaded tags and remaining helper/familiar/storage branches open.
+
+- 2026-11-16 — [Occultism familiar/tool lifecycle](mods/occultism-pinned-familiars-tools.md): owner/range/Curios capture-release,17 roles, upgrades/recovery/trades, Spirit Fire stack conversion and Chalk/Otherworld-tool contracts. [Whole-profile receipt](COMPLETION-STATUS.md) now verifies all42 local artifact hashes;39 profiles remain researching.
+
+- 2026-11-16 — [Occultism storage/harvest](mods/occultism-pinned-storage-harvest.md) verifies capacities, actual stabilizer search, remote selection/loading, Otherworld collection, soul/head and familiar resource hooks. Added two-sided [Roots→Mahou Emrys lightning](interactions/mahou-tsukai--roots-classic--emrys-lightning.md) event candidate with unrun positive/boundary tests.
+
+- 2026-11-17 — Occultism native profile completed against hash-rechecked1.227.0 JAR: full tier/optional walkthrough;931runtime recipes,230guide entries,20build references; worker/familiar/storage/device/trader/partner methods,115merchant offers and possession-loot material gates. Five/42profiles source-complete;37researching. Runtime/effective-pack acceptance separate and unrun.
+
+- 2026-11-17 — Ars5.13.5 exact-JAR companions now cover85glyph recipes/native guide,24ritual effects,5Source producers/5relays, Wixie/Whirlisprig/Bookwyrm/Starbuncle/Drygmy workers and six registered familiars. Parent remains researching for casting/processing/equipment/devices, seven addons and pilot/full-stage reconciliation. Five/42profiles source-complete,37researching; no runtime acceptance claimed.
+
+- 2026-11-17 — Ars crafting companion adds Imbuement/Apparatus operation and failure costs,13+82+96+1=192recipe records,30enchantment families with required sequential ranks, and first passive Source Gem setup. Parent remains researching. Prism instance artifacts disappeared during QA rotation; exact Ars file recovered transiently from pin file9521184 and SHA1 matched;297retained classes independently byte-matched recovered JAR. No source-access blocker.
+
+- 2026-11-17 — Ars now has fifteen exact-artifact companions, adding [four turret variants](mods/ars-nouveau-pinned-turrets.md) and [Warp Scroll/portal travel](mods/ars-nouveau-pinned-warp-portals.md). Source debit/failure ordering, timer controls, permanent versus temporary construction and destination/return boundaries are documented. Parent remains researching; 5/42 source-complete, 37 researching. No runtime acceptance claimed.
+
+- 2026-11-17 - Ars now has nineteen exact-binary companions: [Alakarkinos archaeology](mods/ars-nouveau-pinned-alakarkinos.md), [remote cameras/Eye](mods/ars-nouveau-pinned-scrying.md), [Planarium dimensions](mods/ars-nouveau-pinned-planarium.md) and [spell records/Tomes/Codex](mods/ars-nouveau-pinned-spell-records.md) added. Payment/failure ordering, dimension/return identities, all50fixed compositions and knowledge-transfer XP are explicit. Source completion remains5/42;37researching. No runtime acceptance.
+
+- 2026-11-18 - Ars now has twenty-one companions, adding [five Enchanter tools](mods/ars-nouveau-pinned-enchanter-tools.md) and [spell archery](mods/ars-nouveau-pinned-archery.md). Exact recipes, effects-only inscription, personal mana/repair, ammo and load/fire failure boundaries are source-backed. Counts remain5source-complete/37researching; no runtime acceptance.
+
+- 2026-11-18 - Ars now has twenty-three companions: [equipped curios/foci](mods/ars-nouveau-pinned-curios-foci.md) and [potion storage/delivery](mods/ars-nouveau-pinned-potion-devices.md) added. Native effect bodies and remaining devices/world/addon/stage crosswalks remain open. Counts5/42source-complete,37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-four companions, adding [nineteen status consumers and eighteen brewed variants](mods/ars-nouveau-pinned-potion-effects.md), including22Java brewing registrations and actual damage/heal/expiry/movement gates. Source count remains5/42complete,37researching; remaining devices/world/addon/stage work stays explicit.
+
+- 2026-11-18 - Ars now has twenty-six companions, adding [inventory/spell detectors](mods/ars-nouveau-pinned-detectors.md) and [prism/redstone/ritual controls](mods/ars-nouveau-pinned-routing-controls.md). Exact thresholds, pulse attribution, actual occlusion and routing/payment/failure behavior documented. Counts5source-complete/37researching unchanged; jars/world/addons/stage reconciliation remain.
+
+- 2026-11-18 - Ars now has twenty-seven companions with [Void and Light utility jars](mods/ars-nouveau-pinned-utility-jars.md). Item destruction/personal mana and portable light state boundaries source-backed; Mob Jar/all entity behaviors remain a distinct open branch. Counts5complete/37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-eight companions with [Containment Jar and all24native special entity roles](mods/ars-nouveau-pinned-mob-jars.md): capture/release/state, direct insertion, item production, trade, redstone and boss-role boundaries. Counts5source-complete/37researching unchanged; world acquisition/addons/fullstage work remains.
+
+- 2026-11-18 - Ars now has twenty-nine companions, adding [native plant/material acquisition](mods/ars-nouveau-pinned-plants.md): Archwood first pods versus saplings, Sourceberry location/growth/harvest and Magebloom seed-to-fiber/food consequences. Counts5source-complete/37researching unchanged; final core/stage/addon work remains.
+
+- 2026-11-18 - Ars now has thirty companions with [field tools/physical runes/four grates](mods/ars-nouveau-pinned-field-tools.md). Next is full native walkthrough/pilot consolidation and seven addon exact-binary routes, rather than repeated core inventory. Counts5complete/37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars native parent walkthrough consolidated against all30companions and [all49pilot IDs/tasks/rewards](mods/ars-nouveau-pilot-crosswalk.md). Pilot is physically source-present; PR74closed/unmerged, localvsintegrationsemanticdata identical except48positions. Native boss/Tribute endpoint source closed. Seven addon fullroutes remain before parent completion; counts5complete/37researching unchanged. No quest/runtime changes or gameplay acceptance.
+
+- 2026-11-18 — Ars Unification exact-binary import ordering/Cut batch execution/native Crush route and both hash-pinned recipe endpoints audited (106Cut/240Crush resource JSONs). Profile remains researching for final glyph acquisition/cost and recipient-default audit; counts5source-complete/37researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars Unification source-complete for two installed targets after final glyph/tier/mana acquisition, recipient serializer/multiplier, JEI and pilot audit. Important physical-vs-magical Cut probability distribution/tool difference documented. **6/42source-complete,36researching**; six Ars addon routes still open, parent researching. Runtime acceptance unrun.
+
+- 2026-11-18 — Ars n Spells direct-binary carrier/guide/advancement companion added: all7recipes,6legacy guide resources, Loom/transcription distinction, all4pilot criterion meanings and ritual/Table/command credit boundaries. Broader mana/damage/cooldown/parent lifecycle and Iron's endpoint audit remains; counts6source-complete/36researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars n Spells mana/lifecycle companion traces5mode routes, quote/payment reservations and exact Iron's3.16.3 mana event/clamp endpoint. Native Mana Well has no universal timer or recurring Source charge; finite Infusion distinct. Remaining regen/combat/caller lifecycle work explicit;6complete/36researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars n Spells actual cast caller/payment companion added: Ars reserve/commit/cleanup, pinned Iron's native write/effect boundary, pre-effect-only refunds, last paid channel/scroll completion and legacy-open alternative-payment limitations. Remaining regen/combat/cooldown/adapter scope explicit;6/42complete36researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells regen/equipment/HUD and tag-only Source proximity audited against native Iron's10tick cadence/defaultmultiplier. Documented nominal rate/timing discrepancy for acceptance; no measured rate or balance approval. Counts6complete36researching unchanged; combat/school/cooldown/adapter source coverage remains.
+
+- 2026-11-19 — Ars n Spells combat/school/resonance/cooldown source companion added, including event-credit limits, allschool decay behavior, multiplier versus additive directions and proxy/category cooldown distinction. Final optional-adapter/combined profile review remains;6/42complete36researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells source-complete for installed3.3.5 scope: consolidated5pinnedcompanions into full guide/Loom/bind/cast and optional utility/regen/schools/cooldown walkthrough.317non-gametest classMethodref audit found no activeAlternativePayment.reservecaller; Curios discount/tag and school mapping scope closed. **7/42source-complete,35researching**; five Ars addon routes and combined parent review remain. No runtime acceptance.
+
+- 2026-11-19 — Ars Controle exact1.6.16 binary nativeguide/glyph/sensor companion added: all15recipes, adaptive grammar, height/RNG/delay boundaries and unclamped sensor comparator formula. Five other device operation routes remain;7/42complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle Remote/Linkage binary companion added: order-specific dispatch, loaded crossdimension lookup, capability/context/class/blockblacklist/cache and outputredstone contracts. PortableRelay/ScrollHolder/WarpingPrism and finalcontrolreview remain;7complete35researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Controle Portable Relay lifecycle, blacklist, cache, moving context and actual Source/pause/toggle/range-query limitations documented. ScrollHolder/WarpingPrism and final review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle Holder/Prism binary companion covers portal frame/inventory/Source and projectile/ticket/cost/CC contracts. Source debit differences and cancellation/partial-frame limits explicit. Final Remote control and whole-addon walkthrough/pilot review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle source-complete for pinned1.6.16 installedscope: consolidated4binarycompanions into guide/acquisition/fulloptionalcontrolroutes and3pilotcrosswalk; left-clickair Remote reset/nativeSelectionHUD path closed. Known native limitations retained, not gameplay approval. **8/42source-complete,34researching**; four Ars addon routes/finalparentreview remain.
+
+- 2026-11-19 — Ocultas exact2.6.2 guide/recipe/Altar companion:4currentrecipes+1legacypluralfile, reusable Imbuement catalysts, nativeJava guide and both-end nonconsuming ritual flag bridge. Spirit/SoulGem/finalroute audit remains;8complete34researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
+
+- 2026-11-19 — Ars Elemental exact 0.7.10.4 artifact hash matched; native Notebook registration and Urn acquisition/linking/fluid/payment/manual bucket paths audited. Botania fallback is a stub; cauldron needs external fluid capability. New [companion](mods/ars-elemental-pinned-guide-urn.md); addon remains researching, total 9/42 source-complete.
+
+- 2026-11-19 — Elemental [focus companion](mods/ars-elemental-pinned-foci.md): exact recipes/Mark/Anima, whole-spell first-focus cost subtraction, greater passive conditions and Necrotic worn-versus-held/event boundaries. Embedded Sauce recipient audited; global dependency selection and remaining addon systems still open. 9/42 unchanged.
+
+- 2026-11-19 — Elemental [armor audit](mods/ars-elemental-pinned-armor.md) covers all48 tier-gated conversion recipes, retained components, light/medium/heavy slots and both attribute/tagged-damage response paths. Tooltip4 is not proof of stored tier3; matching school can mix weights. Three addon threads and other major systems remain open.
+
+- 2026-11-19 — Elemental [three-thread audit](mods/ars-elemental-pinned-threads.md): exact recipes/slot/status/expiry bolt paths and both summon-power consumers. Summoning Sickness reduction does not occur for slots1–3: integer division of native maximum slot by10. Addon remains researching, 9/42 unchanged.
+
+- 2026-11-19 — Elemental [empowering audit](mods/ars-elemental-pinned-empowering.md): native glyph substitutions, burn/freeze handlers, gravity query/velocity, exact five head recipes and inclusive RNG thresholds (6/11/21%, not nominal5/10/20). Remaining addon glyph/summon routes open;9/42 unchanged.
+
+- 2026-11-20 — Elemental [steed audit](mods/ars-elemental-pinned-steeds.md): all four focus substitutions, native summon acquisition/event order/duration, riding and noSave boundaries. SkeleHorse inherits Horse, no breathing override proved; combat summons still open.9/42 unchanged.
+
+- 2026-11-20 — Elemental [undead/Homing audit](mods/ars-elemental-pinned-undead-summons.md): revival includes expiry/dispel, inherited minimum400 and Vhex shadow lifetime, replay validates/posts events but bypasses mana precheck and debits summon capability if any; native provider only Player. Specific replay listener does not recurse.9/42 unchanged.
+
+- 2026-11-20 — Elemental [Homing/Propagate Homing](mods/ars-elemental-pinned-homing.md): two Tier3 recipes, split/ignore/direction/child context, exact native targeting squared-distance thresholds; actual lifetime uses native Projectile config default60s rather than unread addon30s field.9/42 unchanged.
+
+- 2026-11-20 — Elemental [Arc/Propagate Arc](mods/ars-elemental-pinned-arc.md): two Tier2 recipe routes, native bounce/Pierce/Sensitive semantics, propagated offsets and bytecode-confirmed anonymous constructor endpoints.4of39 glyph routes covered;12filters+23other effects remain, plus12tomes.9/42 unchanged.
+
+- 2026-11-20 — Elemental [12filter audit](mods/ars-elemental-pinned-filters.md): exact acquisition/predicates/tags, positive allows family and negative inversion despite reversed native descriptions, negative block allowance and legacy two-argument inversion omission.16of39 glyph routes covered;23effects/12tomes/other systems remain.9/42 unchanged.
+
+- 2026-11-20 — Elemental [Bee/Slime audit](mods/ars-elemental-pinned-bee-slime.md): two Tier2 glyph acquisitions, duration/sickness, custom AI/owner/nectar guards, variant/size and death-only split boundary.18of39 glyph routes covered;21effects/12tomes/other systems remain.9/42 unchanged.
+
+- 2026-11-20 — Elemental [four status/control routes](mods/ars-elemental-pinned-mist-rust-sliding.md): Mist actualradius4+AoE and19/20tick cadence/fog; Rust/entity versus10%claimed-block oxidation; Sliding friction; Nullify recipe disabled by default and field-only delay reset.22of39 recipe routes audited,9/42 complete unchanged.
+
+- 2026-11-20 — Elemental [Venom/Spores/Rage](mods/ars-elemental-pinned-venom-spores-rage.md): three recipe/status/AI routes, actual5+5Envenom config, Poison promotion, Spores initial gate/box/allies/reused bonus, Rage existing-target preservation.25of39 glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [four Fire/static routes](mods/ars-elemental-pinned-fire-static.md): Cauterize Holder/value tag mismatch bytecode-confirmed; Conflagrate fire-before-eligibility/Blast; Spark status after unchecked damage; Discharge FE extraction and Static removal before damage.29of39 glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Cavitate/Watery Grave](mods/ars-elemental-pinned-cavitation-grave.md): native occupied-Bubble hurt does not promise pop; damage-gated box shockwave versus unchecked secondary Soaked; motion/status/Zombie conversion before air/damage, dry status drain.31of39glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Water Jet/Geyser](mods/ars-elemental-pinned-jet-geyser.md): saved-target delay/range, actual armor tag, round-robin Randomize; anchor/orientation/ownerless pushes, Fire variant ignores duration extension and replaces Soaked.33of39glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Terrain/Spike](mods/ars-elemental-pinned-terrain-spikes.md): tag/lookahead consumption and claim/collision placement; supported versus falling source recipients, short tick-based extension and separate fall/impact damage paths.35of39glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Charm/Link/Phantom audit](mods/ars-elemental-pinned-anima.md): actual taming/rolls/Sauce allegiance, unrelated Remove-event thrall cleanup; Link split damage despite recipient rejection and direct references; Phantom inversion/exhaustion.38of39glyph recipes audited;9/42 unchanged.
+
+- 2026-11-20 — Elemental [Bubble Shield/39glyph coverage map](mods/ars-elemental-pinned-bubble-shield.md): all39packaged glyph recipes source-audited, not whole-addon completion; actual damage/conditional debit versus10%debuff/raw-cost/blacklist, Phalanx development-only.12tomes/majorbranches open;9/42 unchanged.
+
+- 2026-11-20 — Elemental [12loot tome audit](mods/ars-elemental-pinned-tomes.md): exact data compositions/global pool, school resolver/component/focus and full-bar mana gate, survival editing blocked.39glyphs+12tomes covered;major addon branches still researching,9/42 unchanged.

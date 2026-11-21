@@ -1,0 +1,172 @@
+# Major-magic research completion and artifact receipt
+
+Snapshot2026-11-16; research branch based on `cb8e2dcab59cc625500b3ca0329df1511823610b`, current fetched integration also changes branch-retirement policy and frozen sources but not these pins. This receipt supersedes the old INDEX snapshot's claim that runtime pins still await reconciliation **for the profile set below**. It is not a runtime installation/boot claim.
+
+All profiles linked from the roster below have an exact local JAR whose pin hash was recomputed successfully. Earlier profile language saying an artifact was missing describes earlier sessions; access is now resolved. An archive inventory is not a complete bytecode audit: unchanged profiles retain their explicit source-mechanics gaps. Recipe counts require `data/` and current singular `/recipe/` JSON paths (viewer asset lists excluded) and include optional/conditional data; guide counts include only JSON under Patchouli/Modonomicon/Modopedia book paths, so zero does not mean no native custom guide.
+
+The full research phase is **not complete** while required profiles remain researching. Source-complete requires native systems, whole progression and guide/build references with known broken native features stated; gameplay acceptance is a later, separately authorized level. “Has a Markdown” and “has exact artifact access” are now distinct from that bar. Inactive/rejected selections such as original Botania and currently unpinned standalone Vampirism/Werewolves are not silently reinstated by old index rows. Manifest intent and actual pin must both be checked before adding scope.
+
+| Manifest/profile ID | Profile | Exact artifact | Hash identity | Recipe resources | Book JSON resources | Research disposition |
+| --- | --- | --- | --- | ---: | ---: | --- |
+| `forbidden-magic` | [profile](mods/forbidden-magic.md) | `witchery_forbidden_magic-0.5.37+mc1.21.1.jar` | sha512 `f6604accc4bb7c65131a3f74a80aa3c0d1ae4daa6399f1bbb04a001ac98a8c47e88c55040fcfecd3e8832aaf4a89e1d1eda772f16407ab51c814ea3aa80ceead` | 13 | 24 | researching |
+| `project-expansion` | [profile](mods/project-expansion.md) | `projectexpansion-1.21.1-1.0.6.jar` | sha512 `97e832da2ca03309f4ef875b42a9250bba3798453f271f82b441e7c0bf739e103ee9f4274839b5e4d9a154a44167cc0f8169bd97ed37b3d16e7e09d34cfe3c85` | 248 | 0 | researching |
+| `ars-nouveau` | [profile](mods/ars-nouveau.md) | `ars_nouveau-1.21.1-5.13.5.jar` | sha1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3` | 709 | 0 | researching |
+| `astral-sorcery` | [profile](mods/astral-sorcery.md) | `AstralSorcery-2.0.3.59.jar` | sha1 `66f36655eae7cb404c9c16da6f33db31dff6ed9a` | 242 | 0 | researching |
+| `botania-revived` | [profile](mods/botania-revived.md) | `Botania-Revived-1.21.1-2.0.2-NeoForge.jar` | sha1 `b333e5ac4fd55b0e8822238ced0b25b193db9628` | 1703 | 314 | researching |
+| `eidolon-repraised` | [profile](mods/eidolon-repraised.md) | `eidolon_repraised-1.21.1-0.5.0.8.jar` | sha1 `12a816c11a064a7050e74c5c15cf07fb8269b6d4` | 278 | 0 | researching |
+| `enchanted-witchcraft` | [profile](mods/enchanted-witchcraft.md) | `enchanted-neoforge-1.21.1-4.2.7.jar` | sha1 `2380cb5a49c7eb86afa6f790a920d1872d5cb85e` | 113 | 125 | researching |
+| `evilcraft` | [profile](mods/evilcraft.md) | `evilcraft-1.21.1-neoforge-1.2.100.jar` | sha512 `14bdd2ae8e0b8c25883c8046c9ee2d3d7f8993e479c2d974d31940acf9d07aa13e4e42f6be993be56b1b7b53a169383e84f82c5fbe4a642f946880617226cb56` | 184 | 0 | researching |
+| `forbidden-arcanus` | [profile](mods/forbidden-arcanus.md) | `forbidden_arcanus-2.6.1.jar` | sha512 `012a1d5c779a0173a5c76ea79f429486753f040dfe59739bc45fd0817182d705a80110032f024757f0ac51a9bd10c546a11a730899aa9adbf7251a5040472724` | 190 | 0 | researching |
+| `goety` | [profile](mods/goety.md) | `goety-3.2.2.jar` | sha512 `d68103012faad1b74cf96017aa22711d80033d04035e98e5452f4f70d6fbc30c6523b4d3f561fedba798e116055caf598432b472b13e8a11dca07d00468b8b46` | 1912 | 2185 | researching |
+| `hexcast-neoforged` | [profile](mods/hexcast-neoforged.md) | `hexcast-neoforged-1.21.1-0.11.1-19+neoforge.1.21.1.jar` | sha512 `1b57619c9298d4ee7f77db44d0d860bcc7e0f48939a9a57657b6ae7ed386fcc14e4412d5358145cd58e3a85bf0f30c46ccde954a86cea53c6293534e81d2a889` | 207 | 91 | researching |
+| `hexerei` | [profile](mods/hexerei.md) | `hexerei-0.5.0.3.jar` | sha512 `6ad9f14ad23e84e693c8a02fa210871f7f9f7abb34acb342d9c72aacaa822dc4d06d203d78803ab40dd5eb334344961586a3f223ae877c362f1788b7be1dad6a` | 216 | 0 | researching |
+| `irons-spells` | [profile](mods/irons-spells.md) | `irons_spellbooks-1.21.1-3.16.3.jar` | sha512 `fd782f98c6c59b193c4832f33775291d2a7e639e1e23dd47510bfb494d99d182bec1253566b9394f96c733a0d0108be34bd729614b82dc29e55e096fdeb96f5b` | 262 | 40 | researching |
+| `mahou-tsukai` | [profile](mods/mahou-tsukai.md) | `mahoutsukai-1.21.1-v1.36.31.jar` | sha512 `0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a` | 33 | 0 | researching |
+| `malum` | [profile](mods/malum.md) | `malum-1.21.1-1.8.2.jar` | sha512 `dd9ccc1dea3b090f69f807be3e7a8b99ec6d3d7d6b047e2893cb49ca505860bbf640cf767082c1a32ea403b35e2a9f9d1755327890bbfb2f8778058a9597a99e` | 959 | 0 | researching |
+| `neovitae` | [profile](mods/neovitae.md) | `neovitae-1.21.1-1.1.53.jar` | sha512 `f29b391e391476c232acbe9ba69c42c8539b5eefdd8ca324ab5e04c47dd0e708d7bd9f727cd358099c1c1066b80c759dc86d659549dee54affa17ba588ac5b0b` | 771 | 237 | researching |
+| `occultism` | [profile](mods/occultism.md) | `occultism-1.21.1-neoforge-1.227.0.jar` | sha512 `063d775420e1efa916d1ed94f3f5bfc3b00b976b1de6fc333eda9886ea3665aa38254407a18469ed0a334bcac67b204392c9bf197fc10916ce36a9e29abd5ef0` | 931 | 240 | source-complete |
+| `pastel` | [profile](mods/pastel.md) | `Pastel-1.1.5.5.jar` | sha1 `53a582520b78aebd56c9be1fd041472047dca3d3` | 2369 | 418 | researching |
+| `primal-magick` | [profile](mods/primal-magick.md) | `primalmagick-neoforge-1.21.1-6.0.7.jar` | sha1 `165a849fe2b95355067ede9cda014dec08129731` | 970 | 0 | researching |
+| `psi` | [profile](mods/psi.md) | `Psi-neoforge-1.21.1-110.jar` | sha512 `2bbe6b40f230cd495a5342db61fb5a6c2a4d03fda0ee5fe0a21d8b7ccc8494d1d3e7fa5f54236d5f90cbe78a8bb75c27e3bb9cd9b85e4b6eed67aa976ffe857a` | 99 | 58 | researching |
+| `roots-classic` | [profile](mods/roots-classic.md) | `RootsClassic-1.21.1-1.5.10.jar` | sha1 `7d02ec46e4d276ebf556cdd529a75108b4724efd` | 84 | 0 | source-complete |
+| `scriptor-magicae` | [profile](mods/scriptor-magicae.md) | `scriptor-neoforge-2.0.14-1.21.1-sgd.jar` | sha1 `32fece570d3f1086cc59229b1b861fd277da41e8` | 58 | 0 | source-complete |
+| `theurgy` | [profile](mods/theurgy.md) | `theurgy-1.21.1-neoforge-1.79.0.jar` | sha512 `2e92aa0a3462d400feed398d4a675f9492dab3613ad698f24fcbcce34b565a079a7362fb637c4e268dbb71be5d11fc6630758f149ecccc8d6603f2e9d96f0569` | 1777 | 93 | researching |
+| `totemic` | [profile](mods/totemic.md) | `Totemic-neoforge-1.21.1-0.12.18.jar` | sha512 `4b3c4a6c926b8bf203b5593c558264b096f870ecfe74e6b6dbeef850825c9814a3b9a2d9f03c3a91680042dd684574f0259280210b9173750c921ff733e94896` | 31 | 34 | source-complete |
+| `witchery-remake` | [profile](mods/witchery-remake.md) | `witchery-0.5.39+mc1.21.1.jar` | sha512 `a3d50e65bb494b4d9b709163a295ddcecf53c498314df473d6de55633a4a5ebe810b9a0b5672f97f41786c03af01ef3ac91f0262216e074887e75d6afc35141d` | 314 | 233 | researching |
+| `ars-additions` | [profile](mods/ars-additions.md) | `ars_additions-1.21.1-21.3.0.jar` | sha512 `3f06e6e838c6a5bb14cb1f475f393c0ceeb7b78a7faf9f73df008adae69f68410382cde4511d2b73c0e99dd38732ba1e5d192aac941bb26f2ab771f8bbdbcc43` | 115 | 0 | researching |
+| `ars-controle` | [profile](mods/ars-controle.md) | `ars_controle-1.21.1-1.6.16.jar` | sha512 `458c5a878a1418ffce46d1dd109f4ae23bcbe10bd7153edcaff8d1ab49ab3032f37977488eee7cecdb550cd99672f560e9d851818d6775d5d7e222632285d1a6` | 15 | 0 | source-complete |
+| `ars-elemancy` | [profile](mods/ars-elemancy.md) | `ars_elemancy-1.21.1-1.18.3.jar` | sha1 `f7e01437c86fc74e2abb2ad93554dc20c30b214b` | 250 | 1 | researching |
+| `ars-elemental` | [profile](mods/ars-elemental.md) | `ars_elemental-1.21.1-0.7.10.4.jar` | sha1 `562f640916aa6f5c83b3b3ee2384ca828b870e01` | 183 | 2 | researching |
+| `ars-n-spells` | [profile](mods/ars-n-spells.md) | `ars_n_spells-3.3.5.jar` | sha512 `21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2` | 7 | 6 | source-complete |
+| `ars-ocultas` | [profile](mods/ars-ocultas.md) | `ars_ocultas-1.21.1-2.6.2.jar` | sha512 `4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5` | 4 | 0 | source-complete |
+| `ars-unification` | [profile](mods/ars-unification.md) | `ars_unification-1.2.23.jar` | sha512 `e1da13185d03936adc9fc96162348081c7b788bdf77175758b26b805198d129ab9de761324b21afd6bdf76f1af2ad51b954dcea05389c0fa91e80d8c87a83498` | 0 | 0 | source-complete |
+| `extra-botany-revived` | [profile](mods/extra-botany-revived.md) | `ExtraBotany-1.21.1-1.0.4-NeoForge.jar` | sha1 `246e372964413d09c5f2fa0c93b95a4c224d1949` | 297 | 130 | researching |
+| `gaze-malum` | [profile](mods/gaze-malum.md) | `gaze-1.1.7.1.jar` | sha512 `7e9ecdcc996f376e280bf46f5c0cfd328fb6f1228b1dac469390031458e7a81ad56acff03d9bb6b57b8209586798ab443be1e91fa8fe56297a9e7c9451db03e2` | 24 | 0 | researching |
+| `goety-cataclysm` | [profile](mods/goety-cataclysm.md) | `goety_cataclysm-1.21.1-1.8.4.jar` | sha512 `45e390fb44ea7aa6b5f81b95b57ca224489a527a66167de1bdcf9a53c71cb5a54f6d29b69fa30b3f342e853c30bee677cf2c3701d141edf76b0be8515b6b6b60` | 61 | 364 | researching |
+| `psi-tweaks` | [profile](mods/psi-tweaks.md) | `psitweaks-1.21.1-0.10.10-hotfix.jar` | sha512 `22800c1ec3a29c6b246dc0e56e0621b28f7a5ac17f13bdbdb88dfac9ff1b17b32860145fa3139fd063e0139f7847ff43ec8d1522b558cb8ae371cb0b8b7bf33e` | 346 | 247 | researching |
+| `feywild` | [profile](mods/feywild.md) | `feywild-1.21.1-5.6.4.jar` | sha1 `e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0` | 240 | 162 | researching |
+| `embers-re-ignited` | [profile](mods/embers-re-ignited.md) | `embers-reignited-1.21.1-1.5.9.jar` | sha512 `7e0f7b72f6c3516f28f3fc4b7539088c1ae320d557a0c80fb01dd80d5479ce504f4ff2a8bedf2a8f90bae9d8445baabe0fd887aef4afd61efa2d239fffcbf361` | 630 | 0 | researching |
+| `projecte` | [profile](mods/projecte.md) | `ProjectE-1.21.1-PE1.1.0.jar` | sha1 `24fb5997727453a15e956522761a3f586e646c2a` | 156 | 0 | researching |
+| `reliquary-reincarnations` | [profile](mods/reliquary-reincarnations.md) | `reliquary-1.21.1-2.0.85.1599.jar` | sha512 `75e4034ffff03d85ac4647fef6802e8921034de55baa650c32b7826f6eba4406b65fedcf4a8875d1ae8a3b850395a49fd0ad40587d60ffa1a1c62bb3e48c2e37` | 227 | 0 | researching |
+| `summoning-rituals` | [profile](mods/summoning-rituals.md) | `summoningrituals-neoforge-1.21.1-3.14.2.jar` | sha1 `f67fa7b8a90b231491932b848f76c68cfc935c23` | 0 | 0 | source-complete |
+| `draconic-evolution` | [profile](mods/draconic-evolution.md) | `Draconic-Evolution-1.21.1-3.1.4.633.jar` | sha1 `42ccf634a2a167db9cda533507909dd0524f2798` | 179 | 0 | researching |
+
+## Remaining work, in priority order
+
+1. Ars Nouveau + installed addons: complete exact guide/progression/resource gates; preserve each addon profile and two-sided integration evidence. Occultism now source-complete native research, with acceptance separately unrun.
+2. Core parents Ars Nouveau + seven addons, Neo Vitae, JAWR/Forbidden Magic: compare exact book/recipe/ritual/core classes against existing version-aligned source; complete branch costs and outputs. Preserve family-specific profiles and actual two-sided integration evidence.
+3. Botania/Extra Botany, Iron's, Astral, Mahou, EvilCraft, Primal, Pastel, Malum/Gaze, Hexerei/HexCast, Enchanted, Eidolon, Feywild, Embers, Theurgy, Psi/Tweaks, Reliquary and gated EMC/apex systems: close each profile's explicit source gaps without conflating client tests with research completion.
+4. Review cross-mod source-supported reports, especially transformation/food, Ars bridges, resource-processing and late boss gates; write positive/boundary test handoffs. Do not implement adapters/quests/configs in this phase.
+
+Progress and exact next files/classes remain in [pickup notes](RESEARCH-PICKUP.md). Source-complete Occultism, Roots, Totemic and unused Summoning framework have their scope/limitations in profiles; Scriptor's existing disposition is unchanged. No claim that every profiled mod is balanced, gameplay-tested or ready for a quest release.
+
+
+## Ars continuation receipt, 2026-11-17
+
+Ars Nouveau5.13.5 remains researching. Nine pinned companions now reconcile native guide/85glyph recipes, all24ritual effects,5Source producers/5relays, five main worker systems and six core-registered familiar roles. See parent current coverage table for exact links and remaining casting/processing/equipment/advanced-device, seven-addon and pilot/stage gaps. Zero Patchouli resources in the artifact table means zero counted Patchouli resources, **not absence of native Java documentation**. Count remains5source-complete/37researching; no profile promoted in this slice.
+
+
+### 20:37UTC continuation update
+
+Ars now has **eleven** direct-binary companions: added casting/book-tier/mana/validation and crafting/enchanting. The latter inventories all192 resources across13Imbuement,82ordinaryApparatus,96enchantmentranks(30families),1Reactive. Exact source data uses sequential rank+1 gates and separates reusable chamber catalysts from consumed apparatus inputs. Parent remains researching for equipment/advanced devices, seven-addon and full pilot/stage reconciliation. No source-completion count change.
+
+Original Prism instance was removed during concurrent launcher work; research recovered the identical Ars artifact transiently from pinned CurseForgefile9521184, verified SHA1cdc946c63e1eb676f0e29e4640335c0ce68d7de3 (19874860bytes), stored outsideGit in scratch/artifacts. All297 previously retained classes matched recoveredbytes. No user action/blocker; other artifacts can be rediscovered/recovered from exactpins.
+
+
+### 21:39UTC continuation update
+
+Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece slot layouts across3internal tiers,2sequential upgrade recipes,19functional thread recipes/effects plus Blank, precise Alteration Table controls/state-loss boundary and Reactive activation. Added Amethyst Golem worker:Awakening/charm/home,conversion/grow/harvest/pickup/deposit goals,native tags and timing. All19thread recipe IDs rechecked against pinned JAR. Full research UTF8,changed local links/docs-onlyscope/whitespace pass at f83d5924. Refetched integration2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; Ars pin unchanged. Parent still researching for other equipment/advanced devices,sevenaddons/pilot/fullstage. Counts5complete/37researching unchanged;no runtime acceptance.
+
+- 2026-11-17 — Ars now has fifteen exact-artifact companions, adding [four turret variants](mods/ars-nouveau-pinned-turrets.md) and [Warp Scroll/portal travel](mods/ars-nouveau-pinned-warp-portals.md). Source debit/failure ordering, timer controls, permanent versus temporary construction and destination/return boundaries are documented. Parent remains researching; 5/42 source-complete, 37 researching. No runtime acceptance claimed.
+
+- 2026-11-17 - Ars now has nineteen exact-binary companions: [Alakarkinos archaeology](mods/ars-nouveau-pinned-alakarkinos.md), [remote cameras/Eye](mods/ars-nouveau-pinned-scrying.md), [Planarium dimensions](mods/ars-nouveau-pinned-planarium.md) and [spell records/Tomes/Codex](mods/ars-nouveau-pinned-spell-records.md) added. Payment/failure ordering, dimension/return identities, all50fixed compositions and knowledge-transfer XP are explicit. Source completion remains5/42;37researching. No runtime acceptance.
+
+- 2026-11-18 - Ars now has twenty-one companions, adding [five Enchanter tools](mods/ars-nouveau-pinned-enchanter-tools.md) and [spell archery](mods/ars-nouveau-pinned-archery.md). Exact recipes, effects-only inscription, personal mana/repair, ammo and load/fire failure boundaries are source-backed. Counts remain5source-complete/37researching; no runtime acceptance.
+
+- 2026-11-18 - Ars now has twenty-three companions: [equipped curios/foci](mods/ars-nouveau-pinned-curios-foci.md) and [potion storage/delivery](mods/ars-nouveau-pinned-potion-devices.md) added. Native effect bodies and remaining devices/world/addon/stage crosswalks remain open. Counts5/42source-complete,37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-four companions, adding [nineteen status consumers and eighteen brewed variants](mods/ars-nouveau-pinned-potion-effects.md), including22Java brewing registrations and actual damage/heal/expiry/movement gates. Source count remains5/42complete,37researching; remaining devices/world/addon/stage work stays explicit.
+
+- 2026-11-18 - Ars now has twenty-six companions, adding [inventory/spell detectors](mods/ars-nouveau-pinned-detectors.md) and [prism/redstone/ritual controls](mods/ars-nouveau-pinned-routing-controls.md). Exact thresholds, pulse attribution, actual occlusion and routing/payment/failure behavior documented. Counts5source-complete/37researching unchanged; jars/world/addons/stage reconciliation remain.
+
+- 2026-11-18 - Ars now has twenty-seven companions with [Void and Light utility jars](mods/ars-nouveau-pinned-utility-jars.md). Item destruction/personal mana and portable light state boundaries source-backed; Mob Jar/all entity behaviors remain a distinct open branch. Counts5complete/37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars now has twenty-eight companions with [Containment Jar and all24native special entity roles](mods/ars-nouveau-pinned-mob-jars.md): capture/release/state, direct insertion, item production, trade, redstone and boss-role boundaries. Counts5source-complete/37researching unchanged; world acquisition/addons/fullstage work remains.
+
+- 2026-11-18 - Ars now has twenty-nine companions, adding [native plant/material acquisition](mods/ars-nouveau-pinned-plants.md): Archwood first pods versus saplings, Sourceberry location/growth/harvest and Magebloom seed-to-fiber/food consequences. Counts5source-complete/37researching unchanged; final core/stage/addon work remains.
+
+- 2026-11-18 - Ars now has thirty companions with [field tools/physical runes/four grates](mods/ars-nouveau-pinned-field-tools.md). Next is full native walkthrough/pilot consolidation and seven addon exact-binary routes, rather than repeated core inventory. Counts5complete/37researching unchanged; no gameplay acceptance.
+
+- 2026-11-18 - Ars native parent walkthrough consolidated against all30companions and [all49pilot IDs/tasks/rewards](mods/ars-nouveau-pilot-crosswalk.md). Pilot is physically source-present; PR74closed/unmerged, localvsintegrationsemanticdata identical except48positions. Native boss/Tribute endpoint source closed. Seven addon fullroutes remain before parent completion; counts5complete/37researching unchanged. No quest/runtime changes or gameplay acceptance.
+
+- 2026-11-18 — Ars Unification exact-binary import ordering/Cut batch execution/native Crush route and both hash-pinned recipe endpoints audited (106Cut/240Crush resource JSONs). Profile remains researching for final glyph acquisition/cost and recipient-default audit; counts5source-complete/37researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars Unification source-complete for two installed targets after final glyph/tier/mana acquisition, recipient serializer/multiplier, JEI and pilot audit. Important physical-vs-magical Cut probability distribution/tool difference documented. **6/42source-complete,36researching**; six Ars addon routes still open, parent researching. Runtime acceptance unrun.
+
+- 2026-11-18 — Ars n Spells direct-binary carrier/guide/advancement companion added: all7recipes,6legacy guide resources, Loom/transcription distinction, all4pilot criterion meanings and ritual/Table/command credit boundaries. Broader mana/damage/cooldown/parent lifecycle and Iron's endpoint audit remains; counts6source-complete/36researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars n Spells mana/lifecycle companion traces5mode routes, quote/payment reservations and exact Iron's3.16.3 mana event/clamp endpoint. Native Mana Well has no universal timer or recurring Source charge; finite Infusion distinct. Remaining regen/combat/caller lifecycle work explicit;6complete/36researching unchanged. No runtime acceptance.
+
+- 2026-11-18 — Ars n Spells actual cast caller/payment companion added: Ars reserve/commit/cleanup, pinned Iron's native write/effect boundary, pre-effect-only refunds, last paid channel/scroll completion and legacy-open alternative-payment limitations. Remaining regen/combat/cooldown/adapter scope explicit;6/42complete36researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells regen/equipment/HUD and tag-only Source proximity audited against native Iron's10tick cadence/defaultmultiplier. Documented nominal rate/timing discrepancy for acceptance; no measured rate or balance approval. Counts6complete36researching unchanged; combat/school/cooldown/adapter source coverage remains.
+
+- 2026-11-19 — Ars n Spells combat/school/resonance/cooldown source companion added, including event-credit limits, allschool decay behavior, multiplier versus additive directions and proxy/category cooldown distinction. Final optional-adapter/combined profile review remains;6/42complete36researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ars n Spells source-complete for installed3.3.5 scope: consolidated5pinnedcompanions into full guide/Loom/bind/cast and optional utility/regen/schools/cooldown walkthrough.317non-gametest classMethodref audit found no activeAlternativePayment.reservecaller; Curios discount/tag and school mapping scope closed. **7/42source-complete,35researching**; five Ars addon routes and combined parent review remain. No runtime acceptance.
+
+- 2026-11-19 — Ars Controle exact1.6.16 binary nativeguide/glyph/sensor companion added: all15recipes, adaptive grammar, height/RNG/delay boundaries and unclamped sensor comparator formula. Five other device operation routes remain;7/42complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle Remote/Linkage binary companion added: order-specific dispatch, loaded crossdimension lookup, capability/context/class/blockblacklist/cache and outputredstone contracts. PortableRelay/ScrollHolder/WarpingPrism and finalcontrolreview remain;7complete35researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Controle Portable Relay lifecycle, blacklist, cache, moving context and actual Source/pause/toggle/range-query limitations documented. ScrollHolder/WarpingPrism and final review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle Holder/Prism binary companion covers portal frame/inventory/Source and projectile/ticket/cost/CC contracts. Source debit differences and cancellation/partial-frame limits explicit. Final Remote control and whole-addon walkthrough/pilot review remain;7complete35researching unchanged. No runtime tests.
+
+- 2026-11-19 — Controle source-complete for pinned1.6.16 installedscope: consolidated4binarycompanions into guide/acquisition/fulloptionalcontrolroutes and3pilotcrosswalk; left-clickair Remote reset/nativeSelectionHUD path closed. Known native limitations retained, not gameplay approval. **8/42source-complete,34researching**; four Ars addon routes/finalparentreview remain.
+
+- 2026-11-19 — Ocultas exact2.6.2 guide/recipe/Altar companion:4currentrecipes+1legacypluralfile, reusable Imbuement catalysts, nativeJava guide and both-end nonconsuming ritual flag bridge. Spirit/SoulGem/finalroute audit remains;8complete34researchingunchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas worker/transfer companion maps four registered tiers, native jobs/output recipients/age, GUI filters, channel differences and Soul Gem failure ordering. Final full-route/pilot review remains;8complete34researching unchanged. No runtime tests.
+
+- 2026-11-19 — Ocultas source-complete for pinned2.6.2 installedscope, with known failure/metadata limits: two binary companions consolidated into full guide/worker/material/Altar/gem route and3pilotcrosswalk; current nativeTier4stabilizer recipe distinguished from addonlegacyfile. **9/42source-complete,33researching**; three Ars addons and finalparentreview remain. No runtime acceptance.
+
+2026-11-19 Elemental checkpoint: exact hash/353 binary classes/183 recipes recovered externally; [guide and Urn audit](mods/ars-elemental-pinned-guide-urn.md) completes this slice only. Other major addon systems remain researching. Counts unchanged: 9 complete, 33 researching. No runtime acceptance claimed.
+
+2026-11-19 Elemental foci checkpoint: [acquisition/modifier/passive/event companion](mods/ars-elemental-pinned-foci.md), including embedded Sauce 0.0.61.100 selection API. Still researching for armor, glyph effects, helpers, devices, worldgen and full progression review; global bundled Sauce selection unresolved. 9/42 unchanged.
+
+- 2026-11-19 — Elemental armor checkpoint: 48recipes and bundled Sauce serializer/JEI/mana/defense recipient audited in [companion](mods/ars-elemental-pinned-armor.md). Still researching; 9/42 source-complete unchanged. No runtime test.
+
+- 2026-11-19 — Elemental [thread checkpoint](mods/ars-elemental-pinned-threads.md) closes three optional thread routes with advertised sickness failure explicit; bundled dependency selection and remaining major addon routes still open. Counts unchanged:9 source-complete/33 researching.
+
+- 2026-11-19 — Elemental native-glyph empowering checkpoint [companion](mods/ars-elemental-pinned-empowering.md) added; status remains researching for addon glyphs/summon/helpers/devices/worldgen and final route review. No runtime/protection acceptance;9source-complete33researching.
+
+- 2026-11-20 — Elemental [four-mount checkpoint](mods/ars-elemental-pinned-steeds.md) closes travel branch source slice; no runtime riding/persistence acceptance, combat summons and remaining major addon routes still researching.9complete33researching unchanged.
+
+- 2026-11-20 — Elemental [combat summon checkpoint](mods/ars-elemental-pinned-undead-summons.md) closes revival/Homing recipient slice with Vhex timer caveat; addon glyph acquisition/helper/device/worldgen and global Sauce selection still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [Homing checkpoint](mods/ars-elemental-pinned-homing.md):2of39 glyph recipe routes audited, not full glyph completion. Remaining37/tomes/major systems still researching;9complete33researching, no runtime acceptance.
+
+- 2026-11-20 — Elemental [Arc checkpoint](mods/ars-elemental-pinned-arc.md):4of39 glyph recipe routes now audited; remaining35 and other major branches still researching,9complete33researching. No runtime acceptance.
+
+- 2026-11-20 — Elemental [filter checkpoint](mods/ars-elemental-pinned-filters.md):12routes source-audited with contextual/legacy discrepancy;16of39 glyph routes total, not full addon completion.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [combat Bee/Slime checkpoint](mods/ars-elemental-pinned-bee-slime.md):18of39 glyph recipes operationally audited;21other glyphs/tomes/remaining systems still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [status/control checkpoint](mods/ars-elemental-pinned-mist-rust-sliding.md):22of39 glyph recipes audited including conditionally unavailable default Nullify;17otherglyphs/12tomes/majorbranches researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [poison/Rage checkpoint](mods/ars-elemental-pinned-venom-spores-rage.md):25of39 glyph recipes source-audited;14otherglyphs/12tomes/majorbranches still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [Fire/static checkpoint](mods/ars-elemental-pinned-fire-static.md):29of39 glyph recipes source-audited,10otherglyphs/12tomes/majorbranches remain researching.9complete33researching; no runtime/protection/FE acceptance.
+
+- 2026-11-20 — Elemental [Water checkpoint](mods/ars-elemental-pinned-cavitation-grave.md):31of39glyph recipes audited;8otherglyphs/12tomes/majorbranches researching.9complete33researching; no runtime/permission acceptance.
+
+- 2026-11-20 — Elemental [Jet/Geyser checkpoint](mods/ars-elemental-pinned-jet-geyser.md):33of39glyph recipes audited;6otherglyphs/12tomes/majorbranches researching.9complete33researching; no client/combat/permission acceptance.
+
+- 2026-11-20 — Elemental [Earth checkpoint](mods/ars-elemental-pinned-terrain-spikes.md):35of39glyph recipes audited;4otherglyphs/12tomes/majorbranches researching.9complete33researching; no world/combat acceptance.
+
+- 2026-11-20 — Elemental [Anima checkpoint](mods/ars-elemental-pinned-anima.md):38of39glyph recipes audited;BubbleShield/12tomes/majorbranches researching.9complete33researching; actual Sauce Rage alliance override also reconciled, no runtime acceptance.
+
+- 2026-11-20 — Elemental [glyph closure checkpoint](mods/ars-elemental-pinned-bubble-shield.md):39/39 packaged glyph recipe routes linked to operational audits, conditional Nullify and nonproduction Phalanx explicit.12tomes/helper/device/gear/worldgen/global dependency/finalreview still researching.9complete33researching; no runtime acceptance.
+
+- 2026-11-20 — Elemental [tome checkpoint](mods/ars-elemental-pinned-tomes.md):12records/sixschool items/bundled resolver and native pool/payment audited. Helpers/devices/gear/worldgen/global dependency/final review open.9complete33researching; no loot/casting acceptance.
