@@ -1,14 +1,11 @@
 package io.github.heatwaveqc.tyr.progression;
 
 import io.github.heatwaveqc.tyr.progression.command.ProgressionCommands;
-import io.github.heatwaveqc.tyr.progression.runtime.forms.FormSkillRegistration;
-import io.github.heatwaveqc.tyr.progression.runtime.forms.FormSkillRuntime;
 import net.neoforged.fml.ModList;
 import io.github.heatwaveqc.tyr.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.runtime.ProgressionEvents;
-import io.github.heatwaveqc.tyr.progression.runtime.TyzMonkBridge;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
 import io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra;
 import io.github.heatwaveqc.tyr.progression.runtime.HunterBrewing;
@@ -28,6 +25,12 @@ public final class ProgressionMod {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public ProgressionMod(IEventBus modBus, net.neoforged.fml.ModContainer container) {
+        // Retired runtime providers must not silently suppress awards or open a
+        // second skill-point wallet. Fail with an actionable startup error.
+        if (ModList.get().isLoaded("tmm_mxp") || ModList.get().isLoaded("tyzs_skills")) {
+            throw new IllegalStateException(
+                    "Tyr Progression replaces tmm_mxp and Tyz's Skills; remove both retired JARs.");
+        }
         new io.github.heatwaveqc.tyr.progression.mxp.MxpMod(modBus,container);
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
@@ -44,14 +47,5 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
         NewbieMode.register();
-        TyzMonkBridge.register();
-        // JAWR/Tyz are optional; only install experimental form prefabs/listeners
-        // when both upstream mods are present. All 37 catalog skills are inactive
-        // by default and effect-time eligibility still checks live JAWR state.
-        if (ModList.get().isLoaded("tyzs_skills") && ModList.get().isLoaded("witchery")) {
-            modBus.addListener(FormSkillRegistration::onSetup);
-            NeoForge.EVENT_BUS.register(FormSkillRegistration.class);
-            NeoForge.EVENT_BUS.register(FormSkillRuntime.class);
-        }
     }
 }
