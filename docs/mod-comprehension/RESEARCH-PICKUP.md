@@ -1,3 +1,10 @@
+# Latest checkpoint — 2026-11-21 Elemental Source relays
+
+- Added ars-elemental-pinned-relays.md4upgrades nativecorrespondingrelay+2essence+2diamonds/Source0/noNBT; Fire4000/4000/3500,Earth5000/5000/2500,Water3500each,Air3000each(capacity/receive/extract), limitspercallnotpooledseconds. Native20tick FirecollectAFTERsend/range5, EarthlocaldepositAFTERsend/excluderelay, WaterrequiresnonemptydestBEFOREpull/integerdivision. **ModRegistry registers all4Sourcecapabilities returning SourceStorage**. Normal addonWarp→addonWarp process usesplain3argcaptransfer/no loss. Air2argcapoverride bypassesnativeWarpcode; legacy3argTileoverload NOToverridden stilldistance-lossbranch. No blanketcrossmod/dimension/unloaded promise or measuredtransfer.
+- **Next five FocusEnhancedSpellTurret variants** ModItems439+ constructorfromembeddedSauce/common/block/FocusEnhancedSpellTurret andtile; fire/water/air/earth/manipulation recipes/Notebook. Then bangles/bags/gear/worldgen/VexingCaves/pilot35–37/finalreview/globalSauceversionselection.27companions,39glyphs/12tomes/helpers not whole-addoncomplete.9complete33researching/no hardblocker/hourlyactive. Integration077a34d8706dba51b10ad65dde05a7d34cfb5c96 unchangedonfetch. Docs only/no agents/assembly/launch/runtimeedits/merge; gitlog actual pushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental prisms/lenses
 
 - Added ars-elemental-pinned-prisms.md exactAdvancedPrism5imbuement+ChainApparatus+Mirror2outputrecipes, sevenlensclasses/registeredRGBno recipe, aim/install/split1/remove/savedlens/plainblockloot. EmbeddedSauceSpellPrismLens defaultvelocitymax(.1,.55+.1min8acc), notpreserveincoming. Acc/Dec mutateresolver.spellonly atindex1; Arc merelygravitytrue notEntityGravityProjectile; Homingnewnativeentity/sameresolver/copiedagepierceRedirect/freshignores/discardold. Pierce gatecurrentpierce<10/Source6nativecost40default, effect++beforeuncheckedactualdebit.

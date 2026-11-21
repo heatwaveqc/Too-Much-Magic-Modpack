@@ -55,3 +55,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Three current elevators](ars-elemental-pinned-upstreams.md) covers exact recipes/stage gates, stack geometry, medium/crouch behavior, redstone and once-per-list Source payment/failed-effect cost.
 
 [Advanced Prism/lenses and Mirror](ars-elemental-pinned-prisms.md) traces recipes, aimed routing, seven lens implementations and native two-ended behavior; Mirror reflection overload misses native dispatch, Chaining mutates before unchecked actual debit.
+
+[Four elemental Source relays](ars-elemental-pinned-relays.md) covers exact upgrades/buffers, inherited directional loops and explicit capability registration; normal addon Warp capability path is lossless, legacy tile overload still has distance-loss code.
