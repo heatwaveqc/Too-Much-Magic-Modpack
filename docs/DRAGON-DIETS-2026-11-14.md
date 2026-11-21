@@ -1,5 +1,7 @@
 # Dragon Survival food compatibility — first implementation (2026-11-14)
 
+> **HISTORICAL / RUNTIME BASELINE ONLY — superseded by [new owner design #444](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/444) on 2026-11-21.** The owner intentionally replaced native species diets: **Cave prefers raw terrestrial meat; Sea prefers raw seafood plus kelp/seagrass; Forest prefers plant/fungus foods**, with very high raw nutrition/saturation for dragon players, lower after actual cooking, reduced-but-edible mixed off-diet foods and strong minimally processed single-source foods. **No special rice allowance for Sea sushi.** The earlier raw-Forest/Cave-charred and no-grain restrictions below apply to the still-indexed legacy runtime ONLY. They are NOT instructions for future diet candidate generation. See #444; retain active Packwiz files intact until replacement is validated and promoted atomically.
+
 > **Corrected 2026-11-21 owner clarification:** Forest Dragons accept **raw meat as well as raw produce** (native `#c:foods/raw_meat` and individual animal entries); Cave Dragons require **charred meat/seafood** via Dragon Survival's native processing. An earlier four-Delight intake mistakenly reversed this distinction; the corrected unindexed candidate **preserves every original Forest raw-meat selector**. See [corrected food/species matrix](qa/FOOD-ADDON-SPECIES-MATRIX-2026-11-21.md). The active indexed pack has not been changed and no gameplay test was run.
 
 **Status:** source-authored, untested in a NeoForge/Prism client. No stable release approval.
