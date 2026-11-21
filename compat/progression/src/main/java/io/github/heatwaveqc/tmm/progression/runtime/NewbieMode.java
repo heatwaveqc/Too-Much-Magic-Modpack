@@ -33,6 +33,7 @@ public final class NewbieMode {
     private NewbieMode() {}
 
     public static void register() {
+        RegularHomePower.register();
         NeoForge.EVENT_BUS.addListener(NewbieMode::onLogin);
         NeoForge.EVENT_BUS.addListener(NewbieMode::onClone);
         NeoForge.EVENT_BUS.addListener(NewbieMode::onRespawn);
