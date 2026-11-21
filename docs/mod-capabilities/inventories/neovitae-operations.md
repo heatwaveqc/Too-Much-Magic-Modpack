@@ -21,9 +21,9 @@
 | `BUTCHERING` | `neovitae:butchering` | `agriculture,automation_control`: Automated adult livestock cull while preserving configured breeding stock |
 | `FELLING` | `neovitae:felling` | `block_breaking,agriculture`: Fells trees in configured area |
 | `SUPPRESSION` | `neovitae:suppression` | `world_manipulation,defense`: Fluid suppression; validate placement and effect boundaries |
-| `CONTAINMENT` | `neovitae:containment` | `debuff_control`: Creature containment in ritual area |
-| `EXPULSION` | `neovitae:expulsion` | `debuff_control`: Pushes creatures out of an area |
-| `ZEPHYR` | `neovitae:zephyr` | `movement`: Registered motion/air ritual; exact behavior requires audit |
+| `CONTAINMENT` | `neovitae:containment` | `debuff_control,mob_farming`: pushes escaping nonplayer mobs back into an 11×5×11 area; 2,000 EV startup |
+| `EXPULSION` | `neovitae:expulsion` | `debuff_control,mob_farming`: pushes nonplayer mobs outward in a 21×11×21 area; 2,000 EV startup |
+| `ZEPHYR` | `neovitae:zephyr` | `mob_farming,logistics`: **The Gathering**—41×21×41 dropped-item + vanilla XP-orb collector; chest atop master inserts items, XP Tome in first slot can absorb XP. 1,000 EV startup; 2 EV base per active 5-tick collection pulse, plus source bonus per ten entities; no live mob motion |
 | `PUMP` | `neovitae:pump` | `logistics`: Draws and deposits fluids; actual volume/cost requires audit |
 | `CRYSTALLUM_FRACTURA` | **dynamic `RitualCrystallumFractura.NAME` — resolve in class** | `agriculture,energy`: Harvests Spiritus crystals and accelerates/reinforces Aura generation |
 | `DOWNGRADE` | `neovitae:downgrade` | `equipment_augmentation`: Registered downgrade-related rite; distinct from Penance and Extraction, exact details need audit |
@@ -73,7 +73,7 @@ These are item-registration IDs. An effect item registration is **not** proof of
 | `ARRAY_DAY` | `neovitae:array_day` | `world_manipulation` |
 | `ARRAY_NIGHT` | `neovitae:array_night` | `world_manipulation` |
 | `ARRAY_ELEVATOR` | `neovitae:array_elevator` | `movement` |
-| `ARRAY_REPULSION` | `neovitae:array_repulsion` | `debuff_control` |
+| `ARRAY_REPULSION` | `neovitae:array_repulsion` | `debuff_control,mob_farming`: Repulsion Array 5-block hostile-only outward push; iron base + lapis catalyst |
 | `ARRAY_COLLECTION` | `neovitae:array_collection` | `logistics` |
 | `ARRAY_LIGHT` | `neovitae:array_light` | `world_manipulation` |
 | `ARRAY_FURNACE` | `neovitae:array_furnace` | `ore_processing,crafting` |
@@ -87,7 +87,7 @@ These are item-registration IDs. An effect item registration is **not** proof of
 | `ARRAY_ENDLESS_FOUNTAIN` | `neovitae:array_endless_fountain` | `general_generation,logistics` |
 | `ARRAY_UNDERTOW` | `neovitae:array_undertow` | `movement,debuff_control` |
 | `ARRAY_LOYAL_FRIENDS` | `neovitae:array_loyal_friends` | `healing_recovery` |
-| `ARRAY_VORTEX` | `neovitae:array_vortex` | `debuff_control` |
+| `ARRAY_VORTEX` | `neovitae:array_vortex` | `debuff_control,mob_farming`: Vortex Sigil 8-block inward pull on living entities; Tabula Robur base + Blood Pearl catalyst; redstone pause and Tabula Rasa player exclusion |
 | `ARRAY_IMPRISONMENT` | `neovitae:array_imprisonment` | `debuff_control` |
 | `ARRAY_LIQUIFIED_EXPERIENCE` | `neovitae:array_liquified_experience` | `crafting` |
 | `ARRAY_MINER` | `neovitae:array_miner` | `block_breaking` |
@@ -117,6 +117,8 @@ Each Sigil needs its own detailed native/pack crafting, activation, owner Anima 
 | `SIGIL_NECROMANCY` | `neovitae:sigil_necromancy` | `temporary_pets` |
 | `SIGIL_BOUND_TREASURES` | `neovitae:sigil_bound_treasures` | `storage` |
 | `SIGIL_DAMNED` | `neovitae:sigil_damned` | `debuff_control` |
+
+**Mob-farm crosswalk correction:** the [detailed Neo mob-farm mechanisms](neovitae-mob-farm-systems.md) connect the item/XP **Gathering** (`ZEPHYR`) and `ARRAY_VORTEX`/ `ARRAY_REPULSION` living-mob transport to Well/Spike EV harvesting. These are source-derived physical effects, not a complete working farm or integrated QA pass.
 
 ## Items this inventory does **not** prove
 
