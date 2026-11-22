@@ -1,12 +1,16 @@
 # Too Much Magic — Weeping Angels native 1.21 teleport candidate (#387, PR #392).
 # LOCKED eligible destinations: Overworld, Aether, Bumblezone, Twilight Forest,
 # Aurorian, Eternal Starlight. This native blacklist is NOT an allowlist.
-# The entries below are only the seven source-confirmed exclusions.
-# INTEGRATION BLOCKER: enumerate the complete *loaded* dimension registry from
-# the exact candidate build, especially JAWR Spirit World and any runtime levels.
-# Add every loaded dimension other than the six approved destinations before merge.
-# Validate with python scripts/audit_weeping_angels_dimensions.py --census PATH
-# --require-census (see docs/dimensions/WEEPING-ANGELS-CENSUS-HANDOFF.md).
+# Live 2026-11-22 server.levelKeys census (#527): 19 IDs = 6 allowed + 13 banned.
+# Captured for experimental integration c56fb18ffc3b9f12f27317e7fb37f15c32576a8c.
+# Witchery dream_world / mirror_world / nightmare_world are real loaded IDs.
+# botania:skybox is not loaded (module disabled); proactively exclude its
+# known resource ID to guard against later enabling it without policy review.
+# Re-audit whenever pack mods, datapacks, or runtime dimension set change.
+# Witness: docs/dimensions/weeping-angels-live-census-c56fb18f.json.
+# Validation: python scripts/audit_weeping_angels_dimensions.py --census
+# docs/dimensions/weeping-angels-live-census-c56fb18f.json --require-census
+# --expect-integration-commit c56fb18ffc3b9f12f27317e7fb37f15c32576a8c
 # No custom teleport selector/fallback, weight or return override is permitted.
 # Stealing permanently off; block interaction is an unclaimed-only QA target.
 # FTB Chunks claim safety of native block interactions is NOT established.
@@ -19,11 +23,18 @@
     teleport_range = 400
     teleport_chance = 50
     banned_dimensions = [
-        "minecraft:the_nether",
-        "minecraft:the_end",
+        "botania:skybox",
         "deeperdarker:otherside",
-        "wardentools:abyssdim",
-        "voidscape:void",
-        "pastel:deeper_down",
+        "irons_spellbooks:pocket_dimension",
+        "mahoutsukai:reality_marble",
+        "minecraft:the_end",
+        "minecraft:the_nether",
         "neovitae:dungeon",
+        "pastel:deeper_down",
+        "unicornacademy:unicorn_island",
+        "voidscape:void",
+        "wardentools:abyssdim",
+        "witchery:dream_world",
+        "witchery:mirror_world",
+        "witchery:nightmare_world",
     ]
