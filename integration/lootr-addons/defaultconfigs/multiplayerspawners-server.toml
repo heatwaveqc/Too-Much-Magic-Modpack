@@ -1,0 +1,20 @@
+# Proposed Multiplayer Spawners 2.0.2 server configuration for TMM.
+# Integrator must install in the appropriate defaultconfig/world serverconfig location.
+# All keys verified against upstream v2.0.2 NeoForge source.
+
+[general]
+enableGroupDisabling = false
+groupDisablingRadius = 20
+treatPlacedSpawnersAsVanilla = true
+spawnerRespawnMinutes = 0
+showNotices = true
+oneShotSpawnerRange = 16
+spawnEggsChangeSpawners = true
+
+[breaking]
+requiredBreakAttempts = 2
+allowSpawnerBreakMessage = false
+breakWithSpawnerTools = false
+
+[torches]
+torchExtinguishDelaySeconds = 10
