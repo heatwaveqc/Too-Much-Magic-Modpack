@@ -10,8 +10,6 @@ on:
       - 'scripts/prism_qa_options.txt'
       - 'scripts/validate.py'
       - 'scripts/verify_qa_inventory.py'
-      - 'index.toml'
-      - 'pack.toml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -36,6 +34,5 @@ jobs:
         run: python3 scripts/test_packwiz_single_publisher_download.py cathobb --side client
       - name: Ensure isolated server-side Packwiz install skips Cathobb
         run: python3 scripts/test_packwiz_single_publisher_download.py cathobb --side server
-      - name: Diagnostic - try publisher download of owner-supplied Aquamirae Nouveau digest
-        continue-on-error: true
+      - name: Verify official publisher download exactly matches owner-supplied Aquamirae Nouveau digest
         run: python3 scripts/test_packwiz_single_publisher_download.py aquamirae-nouveau --side client
