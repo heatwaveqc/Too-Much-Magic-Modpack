@@ -37,7 +37,7 @@ def content_at_head(root: Path, path: str) -> str:
 
 def packwiz_update(index: str, slug: str, digest: str) -> str:
     pattern = (r'(?m)(^file = "mods/' + re.escape(slug) +
-               r'\\.pw\\.toml"\\n(?:hash-format = "[^"]+"\\n)?hash = ")[0-9a-f]{64}(")')
+               r'\.pw\.toml"\n(?:hash-format = "[^"]+"\n)?hash = ")[0-9a-f]{64}(")')
     # Use explicit string replacement instead of trusting a loose global hash
     # substitution. Each pack file must have one and only one indexed pin.
     result, count = re.subn(pattern, lambda m: m[1] + digest + m[2], index)
@@ -103,7 +103,7 @@ def build_plan(trial: Path, assembled: Path, candidate_sha: str) -> dict[str, st
             raise ValueError(f"Missing active assembly mod: {slug}")
     plan["manifest/mods.json"] = json.dumps(assembly_manifest, indent=2, ensure_ascii=False) + "\n"
     plan["index.toml"] = index
-    pattern = r'(?m)(^\\[index\\]\\nfile = "index.toml"\\nhash-format = "sha256"\\nhash = ")[0-9a-f]{64}(")'
+    pattern = r'(?m)(^\[index\]\nfile = "index.toml"\nhash-format = "sha256"\nhash = ")[0-9a-f]{64}(")'
     digest = hashlib.sha256(index.encode()).hexdigest()
     pack, count = re.subn(pattern, lambda m: m[1] + digest + m[2], pack)
     if count != 1:
