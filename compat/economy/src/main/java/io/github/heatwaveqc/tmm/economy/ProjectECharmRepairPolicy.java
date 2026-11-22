@@ -34,13 +34,7 @@ public final class ProjectECharmRepairPolicy {
             return false;
         }
         MobEffectInstance onlyEffect = effects.next();
-        return permits(true, stack.isDamageableItem(), stack.getDamageValue(),
+        return CharmRepairEligibility.permits(true, stack.isDamageableItem(), stack.getDamageValue(),
                 !effects.hasNext(), onlyEffect.getEffect().value().isInstantenous(), false);
-    }
-
-    static boolean permits(boolean potionCharm, boolean damageable, int damage,
-            boolean exactlyOneEffect, boolean instantEffect, boolean modeChanger) {
-        return potionCharm && damageable && damage > 0 && exactlyOneEffect
-                && !instantEffect && !modeChanger;
     }
 }

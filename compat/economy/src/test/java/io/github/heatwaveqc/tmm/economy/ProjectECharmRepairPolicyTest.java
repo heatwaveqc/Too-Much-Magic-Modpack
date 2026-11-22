@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 class ProjectECharmRepairPolicyTest {
     @Test
     void acceptsOnlyDamagedSingleNonInstantCharms() {
-        assertTrue(ProjectECharmRepairPolicy.permits(true, true, 1, true, false, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(false, true, 1, true, false, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(true, false, 1, true, false, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(true, true, 0, true, false, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(true, true, 1, false, false, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(true, true, 1, true, true, false));
-        assertFalse(ProjectECharmRepairPolicy.permits(true, true, 1, true, false, true));
+        assertTrue(CharmRepairEligibility.permits(true, true, 1, true, false, false));
+        assertFalse(CharmRepairEligibility.permits(false, true, 1, true, false, false));
+        assertFalse(CharmRepairEligibility.permits(true, false, 1, true, false, false));
+        assertFalse(CharmRepairEligibility.permits(true, true, 0, true, false, false));
+        assertFalse(CharmRepairEligibility.permits(true, true, 1, false, false, false));
+        assertFalse(CharmRepairEligibility.permits(true, true, 1, true, true, false));
+        assertFalse(CharmRepairEligibility.permits(true, true, 1, true, false, true));
     }
 }
