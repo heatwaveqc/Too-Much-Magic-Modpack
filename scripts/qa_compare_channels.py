@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Offline A-level QA for a frozen unstable checkout and an experimental checkout.
 
-Never assembles a pack, downloads mods, starts Minecraft, builds Prism, or edits
-either checkout. Source-identical checks are reused, not counted as game passes.
+Never assembles a pack, starts Minecraft, builds Prism, or edits
+either checkout. Optional first-party Gradle builds may fetch build dependencies.
+Source-identical checks are reused, not counted as game passes.
 """
 from __future__ import annotations
 
@@ -10,7 +11,6 @@ import argparse
 import hashlib
 import json
 import re
-import shutil
 import subprocess
 import sys
 import tomllib
