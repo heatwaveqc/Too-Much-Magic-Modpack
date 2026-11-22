@@ -131,6 +131,28 @@ class DragonFoodBudgetTest(unittest.TestCase):
         self.assertEqual(len(report["held"]), 2)
         self.assertNotIn("test:odd", [x["item"] for x in report["values"]])
 
+    def test_unregistered_or_ambiguous_output_cannot_get_raw_bonus(self):
+        self.add_recipe("test:unknown_recipe", "test:unknown_output", "minecraft:beef")
+        self.inventory["edibles"] = [x for x in self.inventory["edibles"]
+                                    if x["item"] != "test:unknown_output"]
+        self.add_recipe("test:ambiguous_recipe", "test:ambiguous_cut", "minecraft:beef")
+        self.inventory["roots"].append({
+            "item": "test:ambiguous_cut", "family": "terrestrial_animal",
+            "habitat": "terrestrial", "preparation": "raw",
+            "evidence": "separate fixture native registered food",
+        })
+        for ident, output in (("test:unknown_recipe", "test:unknown_output"),
+                              ("test:ambiguous_recipe", "test:ambiguous_cut")):
+            self.policy["cutting"].append({
+                "species": "cave_dragon", "item": output, "source": "minecraft:beef",
+                "recipe": ident, "native_whole_nutrition": 3,
+                "native_piece_nutrition": 2, "output_count": 2,
+                "evidence": "fixture checked ratio but unknown output",
+            })
+        result = plan(self.inventory, self.policy)
+        self.assertEqual(len(result["held"]), 2)
+        self.assertEqual(len(result["values"]), 3)
+
     def test_reversible_recipe_does_not_amplify_canonical_raw(self):
         self.add_recipe("test:cabbage_reverse", "test:carrot_juice", "minecraft:carrot", count=1)
         self.policy["combinations"].append({
