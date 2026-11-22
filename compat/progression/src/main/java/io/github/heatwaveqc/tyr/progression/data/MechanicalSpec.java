@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -77,6 +77,11 @@ public final class MechanicalSpec {
             case "ore_practice","lava_fishing_practice" -> {
                 bounded(a,0,1);if(type.equals("ore_practice"))scoped(fx);
                 if(!p.getOrDefault("event","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Explicit practice event ID required");
+            }
+            case "xp_growth_reduction" -> {
+                bounded(a,0,0.02);
+                if(!fx.selector().isEmpty()&&!fx.selector().equals("tyr_progression:mxp"))
+                    throw new IllegalArgumentException("Growth reduction applies only to global MXP");
             }
             case "experience_gain_bonus" -> {
                 bounded(a,0,2);
