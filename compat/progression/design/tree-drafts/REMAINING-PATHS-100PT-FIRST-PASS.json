@@ -1,14 +1,16 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v3",
+  "schema": "tmm_remaining_path_tree_blueprint_v4",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "Owner's newer balance-pass intent supersedes historical per-node weightings, previous target cap assertions and generator-reserved 50-point Luck allocation. Older catalogs are provenance only unless reconfirmed.",
+    "SEA DRAGON REBALANCE OPEN: 100-point mastery target, 60 currently authored ranks (10 Luck, 50 others) and 40 unallocated points pending deliberate reassignment to other Sea Dragon abilities. Do not mark Sea Dragon 100 fully costed.",
+    "OWNER OVERRIDE: Sea Dragon Abyssal Fortune has 10 ranks at one point each and provides its complete intended high-end Luck benefit. Old max_sp=50 / level_cap=50 are superseded historical references, NOT current budget allocations.",
     "OWNER RULE: every purchasable rank costs exactly ONE advancement point, with no escalating rank price and no expensive one-rank capstone. Every complete eligible non-Monk tree build has exactly 100 purchasable ranks and thus 100 total points.",
     "OWNER RULE: the 100 points cap describes a fully mastered single character, not the total of mutually exclusive visible alternatives. Hunter is 62 common + one 8-point training style + one 30-point favored-prey specialty.",
     "Reduced total mastery cost from legacy ~300-500 SP is the source of increased potency per point. Do NOT shrink rank counts while keeping purchase price if doing so would charge more than one point per rank.",
-    "Sea Dragon Abyssal Fortune is 50 one-point ranks for 50 total points. If owner wants fewer ranks within one named skill, distribute those 50 levels among distinct meaningful Luck skills after reviewing effects; do not charge 5 points for a rank.",
     "Ten fully costed first-pass non-Monk trees: universal Core + Hunter, Gilded, Vampire, Werewolf, shared Lich, three Dragon Survival species, Bare Zerker.",
     "Early native abilities, species states, Fury mechanics, Gilded base Fortune/Looting, and Hunter free specialty selections remain free and separate. Never relicense or reprice without owner review.",
     "Core is universal and independent of Newbie/Normie/Path identity; it is not a fifth dragon path or additional class.",
@@ -1791,7 +1793,7 @@
       "title": "Sea Dragon",
       "kind": "native_dragon_survival_path",
       "budget": 100,
-      "status": "fully_costed_design_only",
+      "status": "REBALANCE_IN_PROGRESS_40_POINTS_UNALLOCATED",
       "groups": [
         {
           "id": "group_1_universal_dragon_physiology_sorcery_species_local",
@@ -2448,10 +2450,10 @@
               "source_approval": "2026-11-15 design candidate, NOT runtime",
               "group_index": 5,
               "row_index": 0,
-              "points": 50,
-              "max_rank": 50,
+              "points": 10,
+              "max_rank": 10,
               "price_per_rank": 1,
-              "total_cost": 50,
+              "total_cost": 10,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
               "live": false,
@@ -2467,49 +2469,9 @@
                 1,
                 1,
                 1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "50 one-point ranks (50 SP) preserving the extraordinary owner-approved cumulative Luck investment. Increasing potency per point vs older 300-500-point tree requires gear/source calibration; never interpret as literal 50x item drops.",
+              "max_effect_target": "Ten one-point ranks deliver the FULL owner-intended Sea Dragon Luck capability. Historical 50 refers to an older point-cost proposal ONLY, not a mandatory spend or literal loot multiplier; final magnitude to be benchmarked against current gear.",
               "superseded_multi_point_rank_model": {
                 "old_rank_count": 10,
                 "old_rank_costs": [
@@ -2526,10 +2488,15 @@
                 ]
               },
               "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
-              "rank_count_rationale": "A 50-point investment requires 50 distinct one-point rank purchases. Fewer ranks per skill is only possible by splitting into genuinely distinct useful Luck abilities; do not invent duplicate filler skills."
+              "rank_count_rationale": "Owner specified one ten-rank skill carries the entire Luck concept; rank price =1, Luck spends 10 points total.",
+              "superseded_50point_allocation": {
+                "historic_points": 50,
+                "prior_draft_50_ranks": 50,
+                "note": "Old historical Tyz figure; superseded by current balance pass. NEVER inherit as a point requirement."
+              }
             }
           ],
-          "points": 50
+          "points": 10
         }
       ],
       "source": "Archived nine-tree design 2026-11-15",
@@ -2537,7 +2504,19 @@
       "special_note": "Abyssal Fortune deliberately reserves 50/100 points and 50 ranks per original extreme ×50 direction; actual Luck impact requires legal gear-ceiling validation.",
       "total_points": 100,
       "skill_count": 18,
-      "total_available_paid_ranks_per_character": 100
+      "unallocated_points": 40,
+      "assigned_points": 60,
+      "mastery_budget_note": "100-point target retained; only 60 ranks currently specified: 10 Luck + 50 other existing proposals. Allocate remaining 40 to meaningfully distinct other Sea Dragon skills during balance review, without restoring outdated Luck cost or inventing filler ranks.",
+      "previous_assigned_luck_points": 50,
+      "proposed_other_lanes_to_expand": [
+        "Draconic Body/Personal Sorcery",
+        "Tideshaping",
+        "Abyssal Defense",
+        "Swimmer's Grace",
+        "Tidal and Abyssal Magic"
+      ],
+      "additional_40_point_allocation_status": "OPEN__NO_AUTOMATIC_PROPORTIONAL_DISTRIBUTION",
+      "current_specified_one_point_ranks": 60
     },
     {
       "id": "forest_dragon",
@@ -8764,6 +8743,7 @@
     }
   ],
   "required_preimplementation_reviews": [
+    "Sea Dragon 40-point unallocated budget must be assigned deliberately to non-Luck abilities before claiming complete 100-point mastery; old 50-point Sea Luck is void.",
     "Hunter 238-to-100 repricing and existing 14 free specialty choices",
     "Source/provider registry and native form stage gates before activating dragon/vampire/werewolf/lich effects",
     "Gilded rite/food/lava-fishing exploration branch needs real new namespace/compat migration",
@@ -8786,8 +8766,35 @@
     "non_monk_target_purchasable_ranks": 100,
     "monk_target_points": 1000,
     "mechanism": "One rank = one point. To reduce rank counts in a given named skill while keeping 100 total points, provide more distinct meaningful skills rather than charging multi-point ranks.",
-    "sea_dragon_luck": "Abyssal Fortune = 50 one-point ranks; prior 10 ranks × 5 points draft was invalid.",
+    "sea_dragon_luck": "10 ranks × 1 SP =10 total SP for the entire Luck feature. Previous 50-point reservation invalidated. Remaining 40 are deliberately UNALLOCATED.",
     "exceptions": "None; all purchased ranks cost exactly one advancement point, including Core, Gilded, and capstones.",
-    "effect_goal": "Do not duplicate historical 300-500-point power pacing. Full-power target and +effect per *point* must be normalized and verified against source providers."
+    "effect_goal": "New 100-point balance pass, not preservation of obsolete historical point or raw effect ceilings; effect strengths need independent target/gear benchmarking."
+  },
+  "assumption_audit": {
+    "locked_owner_constraints": [
+      "Each skill rank costs one advancement point.",
+      "Non-Monk Path single-build mastery target is 100 points (Monk 1000).",
+      "Global Core and MXP economy independent of specialist Path identity; Newbie cannot gain MXP.",
+      "Original/native free abilities remain free; source mods retain their physiological implementations.",
+      "Design preference is passive/contextual skills over bespoke new activation hotkeys."
+    ],
+    "source_historical_not_locked": [
+      "Sea Dragon 50 Luck points or 50 ranks (invalidated: 10 ranks, full Luck benefit).",
+      "Historical per-tree point spreads, rank caps and strength ceilings from archived Tyz catalogs.",
+      "Gilded seven independent Fortune and seven Looting ranks should be treated as an earlier user preference to reconfirm during the current balance pass, not an unchangeable price.",
+      "Four Core magic families having five ranks each originates from a pilot and is provisional.",
+      "Monk exact 38-skill count, five-lane 200/200/150/110/340 budgets and any numerical max effects are draft organizational choices."
+    ],
+    "assistant_chosen_needs_review": [
+      "Hunter 62 shared + 8 training style + 30 prey specialty and 12/8/10 split within prey are illustrative allocations, not owner-locked.",
+      "One favoured prey choice is grounded in existing Hunter config; forcing permanent lifetime choice without respec is NOT approved.",
+      "All branches full mastery possible within one specialist Path is a planning assumption, not guaranteed when meaningful mutually exclusive alternatives exist.",
+      "Always preserve historical maximum effect when cutting overall point budgets is an unjustified conservation rule.",
+      "All non-Monk trees and universal Core sharing the exact same 100-point budget is a tentative balance organizational choice unless user confirms Core has that cap.",
+      "Sea Dragon water mobility, armor, personal magic and Luck should be balanced on gameplay role, not the previous 50/50 artificial split.",
+      "All rank-count ceilings and exact species branch weightings in this first-pass catalog are proposals, not immutable design locks.",
+      "Vampire/lich/dragon specialty names or source adapters are candidate effects, not final owner-approved content."
+    ],
+    "next_review": "Rebalance every Path from intended role and desired endgame effect first; then assign one-point rank budgets; mark former numbers as provenance, not implicit constraints."
   }
 }
