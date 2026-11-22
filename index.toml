@@ -1382,7 +1382,7 @@ hash = "564f8d6891e1235c470e9e19084976466dd7d68c69f8d947b084df1258c4a53e"
 
 [[files]]
 file = "kubejs/server_scripts/parchment_fishing.js"
-hash = "16b2dd78ece5939c13063ae8d2803c3061da74378c4c35811ff9e2a7c1e65d10"
+hash = "9467d98cc9c1d1bc9f3e63bcfe89a97f95f7230566142025b3f58fd6c4a98d19"
 
 [[files]]
 file = "kubejs/server_scripts/silver_equipment_unification.js"
