@@ -5,30 +5,35 @@
 	group: "544D101000000000"
 	icon: { id: "minecraft:oak_log" }
 	id: "544D4D1000000001"
-	images: [ ]
+	images: [
+		{ image: "minecraft:textures/item/book.png", x: -3.0d, y: -13.0d, width: 2.5d, height: 2.5d },
+		{ image: "minecraft:textures/item/iron_pickaxe.png", x: 8.0d, y: 16.0d, width: 2.5d, height: 2.5d },
+		{ image: "minecraft:textures/item/ender_eye.png", x: 6.0d, y: -13.0d, width: 2.5d, height: 2.5d }
+	]
 	order_index: 0
 	progression_mode: "flexible"
 	quest_links: [ ]
 	quests: [
 		{
 			id: "544D301000100001"
-			icon: { id: "minecraft:oak_log" }
+			icon: { id: "minecraft:enchanted_book" }
 			optional: true
+			shape: "gear"
+			size: 1.7d
 			rewards: [
 				{ id: "544D601000100001", type: "xp", xp: 5 }
 				{ id: "544D701000100002", type: "item", item: { id: "enigmaticlegacyplus:unwitnessed_amulet", count: 1 }, count: 1 }
 				{ id: "544D701000100003", type: "item", item: { id: "enigmaticlegacyplus:cursed_ring", count: 1 }, count: 1 }
 			]
-			size: 1.5d
 			tasks: [
 				{ id: "544D401000100001", type: "checkmark" }
 			]
-			x: 0.0d
+			x: -16.0d
 			y: 0.0d
 		}
 		{
 			id: "544D301000110001"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:lever" }
 			optional: true
 			rewards: [
 				{ id: "544D601000110001", type: "xp", xp: 5 }
@@ -37,14 +42,16 @@
 			tasks: [
 				{ id: "544D401000110001", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 0.0d
+			x: -16.0d
+			y: -8.0d
 		}
 
 		{
 			id: "544D309000100001"
 			icon: { id: "minecraft:iron_sword" }
 			optional: true
+			shape: "octagon"
+			size: 1.5d
 			rewards: [
 				{ id: "544D609000100001", type: "xp", xp: 5 }
 				{ id: "544D709000100001", type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false }
@@ -53,7 +60,7 @@
 				{ id: "544D409000100001", type: "checkmark" }
 			]
 			x: 12.0d
-			y: 0.0d
+			y: -8.0d
 		}
 		{
 			id: "544D4D1100000001"
@@ -65,13 +72,15 @@
 			tasks: [
 				{ id: "544D4D1200000001", type: "item", item: { components: { "ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)" }, count: 1, id: "ftbfiltersystem:smart_filter" } }
 			]
-			x: 0.0d
-			y: 3.0d
+			x: -12.0d
+			y: 0.0d
 		}
 		{
 			id: "544D501000300000"
 			icon: { id: "minecraft:crafting_table" }
 			dependencies: ["544D4D1100000001"]
+			shape: "diamond"
+			size: 1.3d
 			rewards: [
 				{ id: "544D601000300001", type: "xp", xp: 10 }
 				{ id: "544D701000300002", type: "item", item: { id: "minecraft:bowl", count: 1 }, count: 2 }
@@ -79,12 +88,13 @@
 			tasks: [
 				{ id: "544D801000300000", type: "item", item: { id: "minecraft:crafting_table", count: 1 } }
 			]
-			x: 0.0d
-			y: 6.0d
+			x: -8.0d
+			y: 0.0d
 		}
 		{
 			id: "544D501000400000"
 			icon: { id: "minecraft:wooden_pickaxe" }
+			optional: true
 			dependencies: ["544D501000300000"]
 			rewards: [
 				{ id: "544D601000400001", type: "xp", xp: 10 }
@@ -93,12 +103,13 @@
 			tasks: [
 				{ id: "544D801000400000", type: "item", item: { id: "minecraft:wooden_pickaxe", count: 1 } }
 			]
-			x: 0.0d
-			y: 9.0d
+			x: -8.0d
+			y: 8.0d
 		}
 		{
 			id: "544D501000500000"
 			icon: { id: "minecraft:cobblestone" }
+			optional: true
 			dependencies: ["544D501000400000"]
 			rewards: [
 				{ id: "544D601000500001", type: "xp", xp: 15 }
@@ -107,12 +118,13 @@
 			tasks: [
 				{ id: "544D801000500000", type: "item", item: { id: "minecraft:cobblestone", count: 1 }, count: 16L }
 			]
-			x: 0.0d
-			y: 12.0d
+			x: -4.0d
+			y: 8.0d
 		}
 		{
 			id: "544D501000600000"
 			icon: { id: "minecraft:stone_pickaxe" }
+			optional: true
 			dependencies: ["544D501000500000"]
 			rewards: [
 				{ id: "544D601000600001", type: "xp", xp: 15 }
@@ -122,11 +134,12 @@
 				{ id: "544D801000600000", type: "item", item: { id: "minecraft:stone_pickaxe", count: 1 } }
 			]
 			x: 0.0d
-			y: 15.0d
+			y: 8.0d
 		}
 		{
 			id: "544D501000700000"
 			icon: { id: "minecraft:chest" }
+			optional: true
 			dependencies: ["544D501000300000"]
 			rewards: [
 				{ id: "544D601000700001", type: "xp", xp: 15 }
@@ -135,12 +148,13 @@
 			tasks: [
 				{ id: "544D801000700000", type: "item", item: { id: "minecraft:chest", count: 1 } }
 			]
-			x: 4.0d
-			y: 6.0d
+			x: -12.0d
+			y: 12.0d
 		}
 		{
 			id: "544D501000800000"
 			icon: { id: "minecraft:furnace" }
+			optional: true
 			dependencies: ["544D501000500000"]
 			rewards: [
 				{ id: "544D601000800001", type: "xp", xp: 20 }
@@ -149,12 +163,13 @@
 			tasks: [
 				{ id: "544D801000800000", type: "item", item: { id: "minecraft:furnace", count: 1 } }
 			]
-			x: 4.0d
+			x: -4.0d
 			y: 12.0d
 		}
 		{
 			id: "544D501000900000"
 			icon: { id: "minecraft:raw_iron" }
+			optional: true
 			dependencies: ["544D501000600000"]
 			rewards: [
 				{ id: "544D601000900001", type: "xp", xp: 25 }
@@ -163,12 +178,13 @@
 			tasks: [
 				{ id: "544D801000900000", type: "item", item: { id: "minecraft:raw_iron", count: 1 }, count: 3L }
 			]
-			x: 0.0d
-			y: 18.0d
+			x: 4.0d
+			y: 8.0d
 		}
 		{
 			id: "544D501000A00000"
 			icon: { id: "minecraft:iron_pickaxe" }
+			optional: true
 			dependencies: ["544D501000900000"]
 			rewards: [
 				{ id: "544D601000A00001", type: "xp", xp: 30 }
@@ -177,12 +193,13 @@
 			tasks: [
 				{ id: "544D801000A00000", type: "item", item: { id: "minecraft:iron_pickaxe", count: 1 } }
 			]
-			x: 0.0d
-			y: 21.0d
+			x: 8.0d
+			y: 8.0d
 		}
 		{
 			id: "544D501000B00000"
 			icon: { id: "minecraft:book" }
+			optional: true
 			dependencies: ["544D501000300000"]
 			rewards: [
 				{ id: "544D601000B00001", type: "xp", xp: 15 }
@@ -191,8 +208,8 @@
 			tasks: [
 				{ id: "544D801000B00000", type: "item", item: { id: "minecraft:book", count: 1 } }
 			]
-			x: 8.0d
-			y: 6.0d
+			x: -8.0d
+			y: -8.0d
 		}
 		{
 			id: "544D501000C00000"
@@ -206,14 +223,16 @@
 			tasks: [
 				{ id: "544D801000C00000", type: "item", item: { id: "minecraft:bookshelf", count: 1 } }
 			]
-			x: 8.0d
-			y: 9.0d
+			x: -4.0d
+			y: -8.0d
 		}
 		{
 			id: "544D501000D00000"
-			icon: { id: "minecraft:enchanted_book" }
-			dependencies: ["544D501000A00000"]
+			icon: { id: "minecraft:amethyst_shard" }
+			dependencies: ["544D501000300000"]
 			optional: true
+			shape: "hexagon"
+			size: 1.6d
 			rewards: [
 				{ id: "544D601000D00001", type: "xp", xp: 20 }
 				{ id: "544D701000D00002", type: "item", item: { id: "minecraft:experience_bottle", count: 1 }, count: 2 }
@@ -221,12 +240,12 @@
 			tasks: [
 				{ id: "544D801000D00000", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 21.0d
+			x: -4.0d
+			y: 0.0d
 		}
 		{
 			id: "544D501000E00000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:glowstone_dust" }
 			dependencies: ["544D501000D00000"]
 			optional: true
 			rewards: [
@@ -236,14 +255,16 @@
 			tasks: [
 				{ id: "544D801000E00000", type: "checkmark" }
 			]
-			x: 8.0d
-			y: 21.0d
+			x: 0.0d
+			y: 0.0d
 		}
 		{
 			id: "544D501000F00000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:enchanting_table" }
 			dependencies: ["544D501000E00000"]
 			optional: true
+			shape: "hexagon"
+			size: 1.5d
 			rewards: [
 				{ id: "544D601000F00001", type: "xp", xp: 30 }
 				{ id: "544D701000F00002", type: "item", item: { id: "minecraft:golden_carrot", count: 1 }, count: 2 }
@@ -251,8 +272,8 @@
 			tasks: [
 				{ id: "544D801000F00000", type: "checkmark" }
 			]
-			x: 8.0d
-			y: 24.0d
+			x: 4.0d
+			y: 0.0d
 		}
 		{
 			id: "544D501001000000"
@@ -266,12 +287,12 @@
 			tasks: [
 				{ id: "544D801001000000", type: "item", item: { id: "minecraft:iron_chestplate", count: 1 } }
 			]
-			x: 4.0d
-			y: 24.0d
+			x: 12.0d
+			y: 12.0d
 		}
 		{
 			id: "544D501001100000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:filled_map" }
 			dependencies: ["544D501000D00000"]
 			optional: true
 			rewards: [
@@ -281,24 +302,25 @@
 			tasks: [
 				{ id: "544D801001100000", type: "checkmark" }
 			]
-			x: 4.0d
-			y: 27.0d
+			x: 0.0d
+			y: -8.0d
 		}
 		{
 			id: "544D501001200000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:compass" }
 			dependencies: ["544D501000F00000"]
 			optional: true
+			shape: "octagon"
+			size: 1.7d
 			rewards: [
 				{ id: "544D601001200001", type: "xp", xp: 30 }
 				{ id: "544D701001200002", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1 }
 			]
-			size: 1.5d
 			tasks: [
 				{ id: "544D801001200000", type: "checkmark" }
 			]
 			x: 8.0d
-			y: 27.0d
+			y: 0.0d
 		}
 	]
 }
