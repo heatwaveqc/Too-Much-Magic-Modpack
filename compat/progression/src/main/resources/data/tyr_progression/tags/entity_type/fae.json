@@ -2,15 +2,119 @@
   "replace": false,
   "values": [
     {
-      "id": "feywild:spring_pixie",
+      "id": "ars_elemental:siren_entity",
       "required": false
     },
     {
-      "id": "feywild:summer_pixie",
+      "id": "ars_elemental:siren_familiar",
       "required": false
     },
     {
-      "id": "feywild:winter_pixie",
+      "id": "ars_nouveau:alakarkinos",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:bookwyrm",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:drygmy",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_bookwyrm",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_drygmy",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_starbuncle",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_whirlisprig",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_wixie",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:gift_starby",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:lily",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:nook",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:starbuncle",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:whirlisprig",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_boss",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_guardian",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_hunter",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wilden_stalker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:wixie",
+      "required": false
+    },
+    {
+      "id": "botania:doppleganger",
+      "required": false
+    },
+    {
+      "id": "botania:pixie",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ego",
+      "required": false
+    },
+    {
+      "id": "extrabotany:ego_minion",
+      "required": false
+    },
+    {
+      "id": "extrabotany:gaia_3rd",
+      "required": false
+    },
+    {
+      "id": "extrabotany:gaia_legacy",
+      "required": false
+    },
+    {
+      "id": "extrabotany:pet_pixie",
+      "required": false
+    },
+    {
+      "id": "extrabotany:void_herrscher",
+      "required": false
+    },
+    {
+      "id": "feywild:ashen_lord",
       "required": false
     },
     {
@@ -18,11 +122,7 @@
       "required": false
     },
     {
-      "id": "feywild:shroomling",
-      "required": false
-    },
-    {
-      "id": "feywild:mandragora",
+      "id": "feywild:bee_knight",
       "required": false
     },
     {
@@ -30,15 +130,244 @@
       "required": false
     },
     {
-      "id": "feywild:bee_knight",
+      "id": "feywild:mab",
       "required": false
     },
     {
-      "id": "feywild:bee_mount",
+      "id": "feywild:mandragora",
+      "required": false
+    },
+    {
+      "id": "feywild:oberon",
+      "required": false
+    },
+    {
+      "id": "feywild:shroomling",
+      "required": false
+    },
+    {
+      "id": "feywild:spring_pixie",
       "required": false
     },
     {
       "id": "feywild:spring_tree_ent",
+      "required": false
+    },
+    {
+      "id": "feywild:sprite",
+      "required": false
+    },
+    {
+      "id": "feywild:summer_pixie",
+      "required": false
+    },
+    {
+      "id": "feywild:titania",
+      "required": false
+    },
+    {
+      "id": "feywild:winter_pixie",
+      "required": false
+    },
+    {
+      "id": "ghosts:kodama",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:fae_entity",
+      "required": false
+    },
+    {
+      "id": "mahoutsukai:familiar_entity",
+      "required": false
+    },
+    "minecraft:allay",
+    {
+      "id": "primalmagick:guardian_pixie_basic",
+      "required": false
+    },
+    {
+      "id": "primalmagick:guardian_pixie_grand",
+      "required": false
+    },
+    {
+      "id": "primalmagick:guardian_pixie_majestic",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_blood",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_earth",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_hallowed",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_infernal",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_moon",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_sea",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_sky",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_sun",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_basic_void",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_blood",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_earth",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_hallowed",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_infernal",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_moon",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_sea",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_sky",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_sun",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_grand_void",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_blood",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_earth",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_hallowed",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_infernal",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_moon",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_sea",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_sky",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_sun",
+      "required": false
+    },
+    {
+      "id": "primalmagick:pixie_majestic_void",
+      "required": false
+    },
+    {
+      "id": "theaurorian:crystalline_sprite",
+      "required": false
+    },
+    {
+      "id": "twilightforest:blockchain_goblin",
+      "required": false
+    },
+    {
+      "id": "twilightforest:kobold",
+      "required": false
+    },
+    {
+      "id": "twilightforest:lower_goblin_knight",
+      "required": false
+    },
+    {
+      "id": "twilightforest:redcap",
+      "required": false
+    },
+    {
+      "id": "twilightforest:redcap_sapper",
+      "required": false
+    },
+    {
+      "id": "twilightforest:troll",
+      "required": false
+    },
+    {
+      "id": "twilightforest:upper_goblin_knight",
+      "required": false
+    },
+    {
+      "id": "wardentools:temper",
+      "required": false
+    },
+    {
+      "id": "witchery:baba_yaga",
+      "required": false
+    },
+    {
+      "id": "witchery:ent",
+      "required": false
+    },
+    {
+      "id": "witchery:gulg",
+      "required": false
+    },
+    {
+      "id": "witchery:hobgoblin",
+      "required": false
+    },
+    {
+      "id": "witchery:horned_huntsman",
+      "required": false
+    },
+    {
+      "id": "witchery:mandrake",
+      "required": false
+    },
+    {
+      "id": "witchery:mog",
+      "required": false
+    },
+    {
+      "id": "feywild:bee_mount",
       "required": false
     },
     {
@@ -51,10 +380,6 @@
     },
     {
       "id": "feywild:winter_tree_ent",
-      "required": false
-    },
-    {
-      "id": "feywild:sprite",
       "required": false
     }
   ]
