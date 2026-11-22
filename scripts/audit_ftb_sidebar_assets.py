@@ -53,7 +53,7 @@ def pinned_ftb_files(root: Path) -> dict[str, dict]:
         if rel not in entries or not entries[rel].get("metafile"):
             raise ValueError(f"FTB mod not indexed as Packwiz metadata: {rel}")
         entry = entries[rel]
-        if file_hash(root / rel, entry["hash-format"]) != entry["hash"]:
+        if file_hash(root / rel, entry.get("hash-format", index["hash-format"])) != entry["hash"]:
             raise ValueError(f"stale Packwiz FTB pin digest: {rel}")
         pin = tomllib.loads((root / rel).read_text(encoding="utf-8"))
         filename = pin["filename"]
