@@ -29,6 +29,12 @@ TIP_CATEGORIES = {"qol", "utility"}
 EXPLORATION_CATEGORIES = {"worldgen"}
 # A specific mod's player-facing nature can override its catalog-wide category.
 CONTENT_OVERRIDES = {"bountiful": "chapter_or_section"}
+# These appear as QoL in the historical roster but are technical, cosmetic-only,
+# admin-only or performance helpers; they impose no quest-content obligation.
+NO_QUEST_SLUGS = {
+    "attributefix", "clumps", "colorful-hearts", "default-options",
+    "ftb-essentials", "get-it-together-drops", "lootjs", "more-darkness",
+}
 
 
 def require(condition: bool, message: str) -> None:
@@ -45,6 +51,8 @@ def load_toml(path: Path) -> dict:
 
 
 def policy_for(slug: str, category: str) -> str:
+    if slug in NO_QUEST_SLUGS:
+        return "technical_inventory_only"
     if slug in CONTENT_OVERRIDES:
         return CONTENT_OVERRIDES[slug]
     if category in NO_QUEST_CATEGORIES:
