@@ -2943,6 +2943,32 @@
       "dependencies_verified": false,
       "packwiz_slug": "nuit",
       "note": "Exact JAR hash pinned from second targeted byte audit job 135892920025. client side. Candidate only; actual loader/gameplay not tested. 2026-11-19: removed from this QA candidate as its sole newly introduced dependent Liroth is owner-deferred. Verified pin evidence retained for future intake."
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "category": "dependency",
+      "desired": true,
+      "version": "8.1.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/VsM5EDoI/version/5JOCYuQM",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved Creature Feature #419 dependency. Exact official NeoForge 1.21.1 Modrinth JAR and SHA-512 verified in source intake PR #435 at f6108960045cc5bb0c3a4fcd0e8bd73a89672553; source selected for next QA, not server/client/gameplay accepted.",
+      "packwiz_slug": "blueprint"
+    },
+    {
+      "id": "creature-feature",
+      "name": "Creature Feature",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.3.0",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/7nEkcq0F/version/WSnoKdtT",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner-approved #419 exception. Exact official NeoForge 1.21.1 Modrinth JAR and SHA-512 verified in PR #435. Requires Blueprint 8.1.0; Sable optional and uninstalled; embedded Hats JAR is not a separate pin. B/C testing outstanding (spawns, death/camera, clone/farm, loot, Hunter/capture).",
+      "packwiz_slug": "creature-feature"
     }
   ],
   "excluded": [

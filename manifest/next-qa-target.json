@@ -29,6 +29,7 @@
     "better-advanced-tooltips",
     "better-advancements",
     "betterend-new-dawn",
+    "blueprint",
     "bookshelf",
     "botania-revived",
     "bountiful",
@@ -51,6 +52,7 @@
     "cooking-for-blockheads",
     "corail-tombstone",
     "crafting-tweaks",
+    "creature-feature",
     "creeper-overhaul",
     "critters-and-companions",
     "crystalix",
@@ -322,6 +324,7 @@
     "Other unresolved desired/catalog-only mods outside this scope are not automatically activated. No required-mod omission may silently disappear from target.",
     "2026-11-19 owner approved excluding Deep Aether and Liroth: Revamped from this QA target; remove Nuit (newly added solely for Liroth) while keeping existing BetterEnd New Dawn libraries, Aether and owo-lib. Prior exact audit evidence retained. This is a current-QA deferral, not deletion of historical catalog entries.",
     "Owner-approved unified Progression cutover: remove Tyz and standalone tmm_mxp runtime; retain independent Pufferfish Attributes. Rebuilt tyr_progression owns MXP; no legacy save migration; fresh disposable QA world. Individual skill trees and gameplay parity tracked separately.",
-    "2026-11-21 namespace cutover: frozen dev/progression source bae3599dc9bb1520fd1fd0d16b7338b3fbb8e107 incorporates rename PR #424 and removal PR #432; not gameplay accepted or a new full-build authorization."
+    "2026-11-21 namespace cutover: frozen dev/progression source bae3599dc9bb1520fd1fd0d16b7338b3fbb8e107 incorporates rename PR #424 and removal PR #432; not gameplay accepted or a new full-build authorization.",
+    "2026-11-21 approved #419 inclusion: exact Creature Feature 1.3.0 and required Blueprint 8.1.0 official Modrinth JARs hash-verified by PR #435, indexed for the next owner-authorized QA build. No Minecraft boot, client or gameplay acceptance is claimed."
   ]
 }

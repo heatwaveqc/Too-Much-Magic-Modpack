@@ -1,0 +1,24 @@
+name: Weighted fishing treasure contract (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/server_scripts/parchment_fishing.js'
+      - 'tests/test_parchment_fishing.cjs'
+      - '.github/workflows/verify-parchment-fishing.yml'
+  push:
+    branches: ['test/full-integration']
+    paths:
+      - 'kubejs/server_scripts/parchment_fishing.js'
+      - 'tests/test_parchment_fishing.cjs'
+      - '.github/workflows/verify-parchment-fishing.yml'
+permissions:
+  contents: read
+jobs:
+  type-a-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline LootJS contract tests (no mod/download)
+        run: |
+          node --check kubejs/server_scripts/parchment_fishing.js
+          node --test tests/test_parchment_fishing.cjs
