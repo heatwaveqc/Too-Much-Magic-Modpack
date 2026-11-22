@@ -5,6 +5,7 @@ Historical design, archived sources, and non-shipped `compat/mxp` stay outside
 this scan intentionally. Integration-side pack/Packwiz checks belong to #376.
 """
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +36,20 @@ else:
     for legacy_id in LEGACY_LOAD_IDS:
         if f'ModList.get().isLoaded("{legacy_id}")' not in main:
             issues.append(f"missing fail-fast guard for {legacy_id}")
+
+# Runtime smoke 44976454994 caught a fatal @ModifyVariable handler descriptor mismatch.
+# The first int is the replacement value and the second is the original target
+# method's int argument. A plain Gradle build does not validate Mixin weaving.
+wear_path = JAVA / "io/github/heatwaveqc/tyr/progression/mixin/OwnedWearMixin.java"
+if not wear_path.is_file():
+    issues.append("missing OwnedWearMixin runtime handler")
+else:
+    wear = wear_path.read_text(encoding="utf-8")
+    if not re.search(
+        r"private\s+int\s+tmm\$ownedUnbreaking\s*\(\s*int\s+\w+\s*,\s*int\s+\w+\s*,\s*ServerLevel\s+\w+\s*,\s*ServerPlayer\s+\w+\s*,\s*Consumer<Item>\s+\w+\s*\)",
+        wear,
+    ):
+        issues.append("OwnedWearMixin must capture modified damage PLUS complete original ItemStack.hurtAndBreak arguments")
 
 for root in SCAN_DIRS:
     if not root.is_dir():
