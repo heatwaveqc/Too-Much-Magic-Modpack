@@ -63,3 +63,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Seven bangles](ars-elemental-pinned-bangles.md) covers exact resource gates, school attributes and player-attributed specials; [pouch/bag inventories](ars-elemental-pinned-bags.md) covers27/54slot data, open/upgrade/dye, GUI restrictions and client/server slot boundaries.
 
 [Enchanter's Horn](ars-elemental-pinned-horn.md) traces methodless scribing, area/charge, direct resolve admission and post-effect payment; [Reflection/Reactive/Soulbound](ars-elemental-pinned-enchantments.md) covers four exact enchantment recipes and event/death-return recipients.
+
+[Flashing wood/Flashpine/cave plants](ars-elemental-pinned-plants.md) traces initial natural fruit versus sapling no-pod branch, farming inputs/drops, food effects, Source-vine right-use output and weather sampling. Whole biome/mage/structure distribution still requires review.
