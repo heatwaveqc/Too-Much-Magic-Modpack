@@ -16,6 +16,10 @@
     {
       "directory": "compat/economy",
       "mod_id": "tmm_economy"
+    },
+    {
+      "directory": "compat/friendship-garden",
+      "mod_id": "tmm_friendship_garden"
     }
   ]
 }

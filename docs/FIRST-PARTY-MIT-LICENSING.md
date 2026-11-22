@@ -11,3 +11,7 @@ Create lava-fog donor research is recorded in the existing separate unified engi
 ## Current integration reconciliation — 2026-11-19
 
 The newly integrated fifth module, Economy, also ships MIT first-party code; preserve the original META-INF placement and verify its separate asset credits and Botania license, not MIT-relicense that art. This source merge adds a scoped third-party notice and verifies its exact contents. Current Trader source at #341 is MIT; pending armed Trader draft #351 has a distinct owner-approved GPL-3.0-only policy for that future revision and its own module-specific verification. Do not import that unmerged gameplay/art source or treat this older MIT decision as superseding the later approved GPL decision. The Progression writer still needs to reconcile notices into the active unified source.
+
+## Friendship Garden selected first-party module — 2026-11-22
+
+`compat/friendship-garden` / `tmm_friendship_garden` was selected as an additional standalone NeoForge 1.21.1 first-party module for the next owner-authorized assembly. It carries the original MIT `LICENSE`, `THIRD_PARTY_NOTICES.md` and an MIT native mod template. Original flower textures are **referenced from installed mods at rendering time**; they are not bundled. Vanilla block/particle assets are used for generic alternate appearances. The selected first-party module manifest now contains five entries. Runtime acceptance is pending; the mod is not a source-only mock.

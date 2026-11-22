@@ -69,6 +69,12 @@ public final class FriendshipBlock extends Block implements EntityBlock {
     @Override
     public BlockState updateShape(BlockState state, Direction dir, BlockState adjacent,
                                   LevelAccessor level, BlockPos pos, BlockPos adjacentPos) {
+        // The lower half must be removed when the upper block is broken;
+        // onRemove(lower) is the single authoritative bound-item drop.
+        if (tall && state.getValue(HALF) == DoubleBlockHalf.LOWER && dir == Direction.UP
+                && (!adjacent.is(this) || adjacent.getValue(HALF) != DoubleBlockHalf.UPPER)) {
+            return Blocks.AIR.defaultBlockState();
+        }
         return canSurvive(state, level, pos) ? state
                 : Blocks.AIR.defaultBlockState();
     }

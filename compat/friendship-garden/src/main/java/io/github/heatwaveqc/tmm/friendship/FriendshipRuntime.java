@@ -97,7 +97,7 @@ public final class FriendshipRuntime {
         int petalBudget = 48; // at most 48 loaded flower particle bursts per death
         for (FriendshipBlockEntity entity : List.copyOf(owned)) {
             if (entity.getLevel() instanceof ServerLevel level && !entity.isRemoved()) {
-                entity.onCrafterDeath(level, now, petalBudget-- > 0, false);
+                entity.onCrafterDeath(level, now, petalBudget-- > 0, server.isHardcore());
                 MOURNING.add(entity);
             }
         }

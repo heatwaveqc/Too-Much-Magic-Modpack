@@ -1,29 +1,17 @@
-# Friendship Garden policy foundation
+# Friendship Garden — first-party NeoForge module
 
-Source-only Java 21 policy for owner-approved issue #428. This isolated module
-defines the persistent binding/presence state machine and remote splash-potion
-authorization rules without depending on Minecraft classes.
+Minecraft 1.21.1 / NeoForge 21.1.265. Mod ID `tmm_friendship_garden`, version 0.1.0-dev. Owner-approved [issue #428](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/428), original immutable pure-state policy and tests from [PR #453](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/453), adapted as a loadable native module in PR #537.
 
-The frozen implementation base is `test/full-integration` at
-`077a34d8706dba51b10ad65dde05a7d34cfb5c96`.
+**Next build:** selected through `manifest/first-party-runtime.json` and `manifest/next-qa-target.json`. Gradle `clean build` and source-only JUnit pass; the normal source/first-party runtime integration will compile it and supply the JAR. Do **not** separately add it to `mods/*.pw.toml`, download it from Modrinth, or redistribute the other authors' original flower textures.
 
-Implemented here:
+- **Craft:** shapeless 1 bone meal + 1 rotten flesh + 1 eligible block flower from the flowers tag. Excludes magic-functional Botania-family plants and datapack `#tmm_friendship_garden:excluded_flowers`. Recognizes double-height flower source states. Normal/shift-click crafting binds actual crafter UUID + name *on taking the result*; automated crafting cannot claim a player UUID and unbound outputs cannot be placed.
+- **Give:** source block registry ID, bound crafter UUID/name and form remain on the item across gifting, placement, break/drop and replant. Breaking tall top or bottom must return a single bound flower. Shift-click and automated crafting still require gameplay QA.
+- **Display:** planted flower has a synchronized block entity, with original installed flower model while owner is online, generic vanilla-backed bud when offline, and wilted plant on death. Tall/source models render in two-block height; four alternate short/tall bud/wilt presentations reference existing vanilla assets, not modded art copies. Each block shows original species and binding name on use, UUID on advanced item tooltip. Owner event handlers, not per-flower every-tick polling, synchronize server states. Five-minute mourning is measured using saved world game time; permanent hardcore death remains wilted. Owner death emits bounded cherry-petal particles; optional Creaking sound intentionally **not** enabled before in-game audition.
+- **Sympathetic magic:** ordinary thrown splash potions whose radius covers one or more placed flowers transmit standard effects to represented online/alive players across dimensions. One effect per owner UUID per projectile; many players can receive the same splash. Configurable master/beneficial/cross-dimensional switches, potion/effect blacklists and allowlisted modded effects. Unknown/harmful effects require `/friendshipgarden harmful enable` **on the recipient** and server PvP permission. `disable` opts out. Modded custom-effect hooks not on the allowlist are fail-closed.
+- **Persistence and performance:** loaded-chunk-only flower lookup; no forced chunk loads, no offline queued delivery, no per-flower constant tick. World-saved crafter binding and mourning are authoritative; local event registry releases unloaded/removed block entities. No extra currency or power generation.
 
-- immutable crafter UUID, retained display name, original flower registry ID,
-  and short/tall form;
-- blooming/budding/wilted state with an exact 6,000-tick mourning interval and
-  explicit permanent-wilt handling for a future hardcore adapter;
-- standard splash-effect transmission to online, alive, non-mourning bound
-  players, deduplicated by player UUID and effect ID;
-- full preservation of duration/amplifier/instant metadata;
-- default-on beneficial and cross-dimension behavior, harmful/unknown opt-in
-  plus PvP checks, master switch, and potion/effect blacklists;
-- fail-closed exclusion of nonstandard scripted effects.
+## Implementation / test status
 
-Not implemented here: flower eligibility tags, crafting/automation behavior,
-NeoForge registration, blocks/items/components, placement/break persistence,
-rendering/assets, tooltip UX, join/leave/death event wiring, particles/sound,
-spatial splash detection, configuration files/screens, network synchronization,
-or any mod-specific potion compatibility. Those require exact registry/API
-work and later client/gameplay testing; this policy does not establish gameplay
-acceptance.
+Type A: selected module source and Gradle/JUnit checks (must be green on exact final PR commit); offline synthetic first-party packaging and license. **Type B/C are NOT RUN:** native recipe/shift craft automation, placement/drop both halves, chunk/relog/restart and two-player join/quit, death petal/wilt recovery, effect duplicate/opt-in/blacklists/cross dimension, render coverage/performance.
+
+No Integration Assembly, dedicated server boot, Prism package or gameplay acceptance is authorized by this module's PR alone. See `docs/qa/FRIENDSHIP-GARDEN-NEXT-BUILD-2026-11-22.md`.

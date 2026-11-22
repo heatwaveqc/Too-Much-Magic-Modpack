@@ -249,7 +249,8 @@
     "tyr_progression",
     "tmm_transformations",
     "traders_vengence",
-    "tmm_economy"
+    "tmm_economy",
+    "tmm_friendship_garden"
   ],
   "candidate_artifacts": [
     {
@@ -353,6 +354,7 @@
     "BLOCKED WITHOUT OWNER DESELECTION: Aquamirae & Nouveau 0.1.3 (#404/#406) official publisher file 9470029 returns HTTP 403; no exact binary digest/JAR metadata could be verified in this cycle. Ars Conflux library itself is verified/pinned. Preserve addon for a later exact-file reconciliation; do not fabricate its hash or imply gameplay PASS.",
     "Cathobb Unified 64x v40 #294 remains separately approved but resource-pack provider/hash/Packwiz new-instance preference handling are not verified in this recovery slice; no automatic redistribution or client QA assertion.",
     "2026-11-22 owner supplied Aquamirae & Nouveau NeoForge 0.1.3 JAR; exact SHA1/ZIP/native metadata verified locally and compatible with pinned Aquamirae + Ars Nouveau + Ars Conflux. Added source-indexed official CurseForge file 9470029, no JAR redistributed; isolated Packwiz installer bootstrap client download and digest verification PASSED Actions run 45074889623; game/client behavior untested.",
-    "2026-11-22 Cathobb Unified 64 v40 official CurseForge project 1771113/file 9411491 exact public 193200750-byte ZIP passed root pack.mcmeta/assets/CRC + SHA1 verification (Actions run 45074548445). Publisher-hosted client-only resourcepacks/cathobb-unified-64.pw.toml indexed; isolated Packwiz installer client downloaded with matching SHA1 and server-side skipped. Fresh Prism QA options seed enables Cathobb only on newly created instances, preserving existing options/preferences. Actual game client and graphical resource pack activation still need QA."
+    "2026-11-22 Cathobb Unified 64 v40 official CurseForge project 1771113/file 9411491 exact public 193200750-byte ZIP passed root pack.mcmeta/assets/CRC + SHA1 verification (Actions run 45074548445). Publisher-hosted client-only resourcepacks/cathobb-unified-64.pw.toml indexed; isolated Packwiz installer client downloaded with matching SHA1 and server-side skipped. Fresh Prism QA options seed enables Cathobb only on newly created instances, preserving existing options/preferences. Actual game client and graphical resource pack activation still need QA.",
+    "2026-11-22 owner-approved Friendship Garden #428: new standalone first-party NeoForge module tmm_friendship_garden from source policy #453 and runtime PR #537 is INCLUDED for NEXT owner-authorized integration build. Requires module JAR compile/license proof and next-build runtime B/C for binding, 2-high plant, joined/offline/death states, petals and remote potion safety. Explicitly NOT tested in Minecraft yet."
   ]
 }
