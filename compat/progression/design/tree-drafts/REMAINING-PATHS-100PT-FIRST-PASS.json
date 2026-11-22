@@ -1,10 +1,11 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v12",
+  "schema": "tmm_remaining_path_tree_blueprint_v13",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "HUNTER COMPLETE DESIGN v13: 13 shared/62 + one Training/8 + one favored-prey/30, 100 points per legal build; 57 paid visible skill IDs, 14 original free choices and source IDs kept. Existing live Hunter remains unmodified. Source MXP #475 requires rebalancing old maxHP/4; Fae category gap is explicit hold.",
     "BARE ZERKER COMPLETE DESIGN: 22 paid skills / 100 one-point ranks, branches 34/22/22/12/10; all 13 old IDs retained. Unpriced locked innate Fury, 1s/hit effects, full Totem >50 and unrestricted food preserved. Woad and blood power magnitudes await owner/source audit.",
     "GILDED COMPLETE DESIGN FIRST PASS: 22 paid skills, five branches 32/18/20/20/10 = 100 separate one-point ranks; all 12 historical skill IDs preserved; free gold diamond-equivalence, Fortune/Looting +3, Piglin friendship, Nether diet 2x gold nutrition, lava license and rank18 fire immunity not repurchased. Design only.",
     "FOREST DRAGON COMPLETE FIRST PASS: 26 skill options, six branches 20+19+18+19+14+10=100 one-point ranks; keeps all 20 original named IDs incl. Venomous Strike, Green Thumb and Shepherd's Blessing. Design only; native forest features source-owned.",
@@ -5627,7 +5628,7 @@
       "title": "Hunter",
       "kind": "specialist_path",
       "budget": 100,
-      "status": "owner_revision_favored_prey_one_of_14",
+      "status": "complete_57_option_role_first_design_only",
       "groups": [
         {
           "id": "shared_training",
@@ -6124,8 +6125,8 @@
           ]
         }
       ],
-      "source": "Live dev/progression/hunter.json and historical Hunter roles",
-      "native_guardrails": "Preserve all 14 existing zero-price specialty_* choice nodes, original prey taxonomy, monster victim/loot checks and poison+regeneration initiation. Current 17 purchased nodes cost 238; proposal retains their current ranks/effects while repricing to 91 plus 9 new tracking points. Never silently rewrite live costs.",
+      "source": "Current dev/progression Hunter runtime (31 nodes, 14 free specialties), historic Hunter taxonomy audit PR #97, MXP owner issue #475 and general decree issue #523",
+      "native_guardrails": "Trial of Venom (real poison potion under Regeneration with qualifying kill) remains normal enrollment; 14 free specialty_* prey choices must remain source-owning one-at-time. Shared 62 ranks + exactly one 8 Training Style + one 30 Favored Prey =100; Bountiful hunting decrees coins only and available to everyone, not a Hunter Path ability. Unified MXP default is independent of Path and requires recalibration of historic native Hunter maxHP/4 kill XP; 10h permanent Mutagenic Brews system separately owned and not sold as skill ranks.",
       "source_paid_cost_before": 238,
       "source_paid_cost_proposed": null,
       "free_specialty_nodes": 14,
@@ -6258,7 +6259,7 @@
                 {
                   "id": "tyr_progression:undead_slayer",
                   "name": "Undead Slayer",
-                  "description": "Strong offense against eligible undead",
+                  "description": "Actual sword melee against verified undead: +0.75 physical damage/rank (+9 full), preserving the source sword-restricted Slayer role.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6293,12 +6294,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Actual sword melee against verified undead: +0.75 physical damage/rank (+9 full), preserving the source sword-restricted Slayer role.",
+                  "required_source_or_handler_check": "Source undead tag and old undead_slayer, evasion_undead, ranged_quarry numerical reprice",
+                  "no_new_active_button": true,
+                  "effect_status": "live_handler_reprice_and_gate_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:evasion_undead",
                   "name": "Undead Evasion",
-                  "description": "Reflexes against undead attackers",
+                  "description": "+2 percentage points/rank (+16 pp full) to evade real undead-origin direct hits; not world/environment damage.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6327,12 +6334,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+2 percentage points/rank (+16 pp full) to evade real undead-origin direct hits; not world/environment damage.",
+                  "required_source_or_handler_check": "Source undead tag and old undead_slayer, evasion_undead, ranged_quarry numerical reprice",
+                  "no_new_active_button": true,
+                  "effect_status": "live_handler_reprice_and_gate_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:ranged_quarry",
                   "name": "Ranged Quarry",
-                  "description": "Verified ranged shots against undead; retain old bounded ranged-quarry rules",
+                  "description": "Actual Hunter-fired bow/crossbow arrow hit against undead: +0.30 damage/rank (+3 full), preserving the source Ranged Quarry arrow-delivery role.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6363,11 +6376,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Actual Hunter-fired bow/crossbow arrow hit against undead: +0.30 damage/rank (+3 full), preserving the source Ranged Quarry arrow-delivery role.",
+                  "required_source_or_handler_check": "Source undead tag and old undead_slayer, evasion_undead, ranged_quarry numerical reprice",
+                  "no_new_active_button": true,
+                  "effect_status": "live_handler_reprice_and_gate_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Source undead tag and old undead_slayer, evasion_undead, ranged_quarry numerical reprice"
             },
             {
               "id": "tyr_progression:hunter_favored_illager",
@@ -6381,7 +6404,7 @@
                 {
                   "id": "tyr_progression:raider_slayer",
                   "name": "Raider Slayer",
-                  "description": "Improve direct hits against confirmed raiders",
+                  "description": "Actual direct axe melee against genuine Illagers/raiders: +0.75 damage/rank (+9 full), preserving old Raider Slayer axe restriction.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6416,12 +6439,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Actual direct axe melee against genuine Illagers/raiders: +0.75 damage/rank (+9 full), preserving old Raider Slayer axe restriction.",
+                  "required_source_or_handler_check": "Illager taxonomy, raider direct hit and evoker projectile/fangs actual source; source IDs raider_slayer/evasion_raiders",
+                  "no_new_active_button": true,
+                  "effect_status": "live_handler_reprice_and_gate_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:evasion_raiders",
                   "name": "Raider Evasion",
-                  "description": "Evade raider attacks",
+                  "description": "+2 percentage points/rank (+16 pp full) evasion against raider-sourced incoming direct hit.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6450,12 +6479,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+2 percentage points/rank (+16 pp full) evasion against raider-sourced incoming direct hit.",
+                  "required_source_or_handler_check": "Illager taxonomy, raider direct hit and evoker projectile/fangs actual source; source IDs raider_slayer/evasion_raiders",
+                  "no_new_active_button": true,
+                  "effect_status": "live_handler_reprice_and_gate_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_illager_mastery",
                   "name": "Raidbreaker",
-                  "description": "Improve defense against valid raid weapons/magic; not global villager-raid immunity",
+                  "description": "-2% damage/rank (-20% full) from genuine Illager raid-projectile, evoker-fangs or Ravager-source attacks, excluding generic village raids.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6486,11 +6521,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% damage/rank (-20% full) from genuine Illager raid-projectile, evoker-fangs or Ravager-source attacks, excluding generic village raids.",
+                  "required_source_or_handler_check": "Illager taxonomy, raider direct hit and evoker projectile/fangs actual source; source IDs raider_slayer/evasion_raiders",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Illager taxonomy, raider direct hit and evoker projectile/fangs actual source; source IDs raider_slayer/evasion_raiders"
             },
             {
               "id": "tyr_progression:hunter_favored_dragon",
@@ -6504,7 +6549,7 @@
                 {
                   "id": "tyr_progression:hunter_dragon_slayer",
                   "name": "Drakebane",
-                  "description": "Damage legal Dragon taxonomy quarry",
+                  "description": "+3% legitimate Hunter direct/shot damage per rank (+36% full) to source-verified Dragon prey, never all bosses.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6539,12 +6584,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% legitimate Hunter direct/shot damage per rank (+36% full) to source-verified Dragon prey, never all bosses.",
+                  "required_source_or_handler_check": "Pinned dragons vs Chaos Guardian, Ender Dragon and transformed player PvP rules; native breath state",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_dragon_defense",
                   "name": "Scaled Hunter",
-                  "description": "Defend against verified dragon attacks, source-scoped",
+                  "description": "-2% damage/rank (-16% full) from actual Dragon-sourced breath, claw or melee hits, not ordinary fire.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6573,12 +6624,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% damage/rank (-16% full) from actual Dragon-sourced breath, claw or melee hits, not ordinary fire.",
+                  "required_source_or_handler_check": "Pinned dragons vs Chaos Guardian, Ender Dragon and transformed player PvP rules; native breath state",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_dragon_mastery",
                   "name": "Dragonbane Tactics",
-                  "description": "Improve genuine dragon-hunt timing and damage without affecting all bosses",
+                  "description": "When confirmed Dragon prey is performing its own verified breath, +1.5% legitimate Hunter direct/arrow damage per rank (+15% full) during its 4-second actual breath window.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6609,11 +6666,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "When confirmed Dragon prey is performing its own verified breath, +1.5% legitimate Hunter direct/arrow damage per rank (+15% full) during its 4-second actual breath window.",
+                  "required_source_or_handler_check": "Pinned dragons vs Chaos Guardian, Ender Dragon and transformed player PvP rules; native breath state",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Pinned dragons vs Chaos Guardian, Ender Dragon and transformed player PvP rules; native breath state"
             },
             {
               "id": "tyr_progression:hunter_favored_void",
@@ -6627,7 +6694,7 @@
                 {
                   "id": "tyr_progression:hunter_void_slayer",
                   "name": "Void Slayer",
-                  "description": "Damage confirmed End/void quarry",
+                  "description": "+3% eligible physical/shot damage/rank (+36% full) to tagged Void creatures; no free buff merely for being in End.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6662,12 +6729,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% eligible physical/shot damage/rank (+36% full) to tagged Void creatures; no free buff merely for being in End.",
+                  "required_source_or_handler_check": "Tagged Enderman/shulker/void entities, teleports and Dragon/Void taxonomy overlap, no player teleport shortcut",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_void_defense",
                   "name": "Voidwalker Guard",
-                  "description": "Defend against valid void creature attacks",
+                  "description": "-2% direct damage/rank (-16%) from actual Void-creature attack; NEVER prevents void-fall/kill-plane.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6696,12 +6769,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% direct damage/rank (-16%) from actual Void-creature attack; NEVER prevents void-fall/kill-plane.",
+                  "required_source_or_handler_check": "Tagged Enderman/shulker/void entities, teleports and Dragon/Void taxonomy overlap, no player teleport shortcut",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_void_mastery",
                   "name": "Rift Tracker",
-                  "description": "Keep marked teleporting quarry reacquirable within limits",
+                  "description": "On a genuine mark hit against Void prey that teleports, retain that same quarry's identity +2s/rank (+20s) within 24 blocks; no cross-dimension/unloaded x-ray.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6732,11 +6811,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "On a genuine mark hit against Void prey that teleports, retain that same quarry's identity +2s/rank (+20s) within 24 blocks; no cross-dimension/unloaded x-ray.",
+                  "required_source_or_handler_check": "Tagged Enderman/shulker/void entities, teleports and Dragon/Void taxonomy overlap, no player teleport shortcut",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Tagged Enderman/shulker/void entities, teleports and Dragon/Void taxonomy overlap, no player teleport shortcut"
             },
             {
               "id": "tyr_progression:hunter_favored_piglin",
@@ -6750,7 +6839,7 @@
                 {
                   "id": "tyr_progression:hunter_piglin_slayer",
                   "name": "Piglin Slayer",
-                  "description": "Damage approved Piglin/Hoglin quarry",
+                  "description": "+3% actual physical/shot damage/rank (+36%) against valid hostile Piglin/Hoglin/Zoglin quarry, not retaliation or kinship manipulation.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6785,12 +6874,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% actual physical/shot damage/rank (+36%) against valid hostile Piglin/Hoglin/Zoglin quarry, not retaliation or kinship manipulation.",
+                  "required_source_or_handler_check": "Piglin/Hoglin/Zoglin tags, human Gilded kinship and Beast overlap, ownership/friendly rules",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_piglin_defense",
                   "name": "Bastion Guard",
-                  "description": "Defend against Piglin/Hoglin attacks",
+                  "description": "-2% direct damage/rank (-16%) from true Piglin/Hoglin/Zoglin entity attacks, no AI anger alteration.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6819,12 +6914,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% direct damage/rank (-16%) from true Piglin/Hoglin/Zoglin entity attacks, no AI anger alteration.",
+                  "required_source_or_handler_check": "Piglin/Hoglin/Zoglin tags, human Gilded kinship and Beast overlap, ownership/friendly rules",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_piglin_mastery",
                   "name": "Hoglin Harrier",
-                  "description": "Improve direct melee vs those groups without inheriting Gilded's diplomacy",
+                  "description": "+1.5% direct melee damage/rank (+15%) against specifically verified Hoglin/Zoglin quarry with sword/axe, not against all Piglins.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6855,11 +6956,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+1.5% direct melee damage/rank (+15%) against specifically verified Hoglin/Zoglin quarry with sword/axe, not against all Piglins.",
+                  "required_source_or_handler_check": "Piglin/Hoglin/Zoglin tags, human Gilded kinship and Beast overlap, ownership/friendly rules",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Piglin/Hoglin/Zoglin tags, human Gilded kinship and Beast overlap, ownership/friendly rules"
             },
             {
               "id": "tyr_progression:hunter_favored_sculk",
@@ -6873,7 +6984,7 @@
                 {
                   "id": "tyr_progression:hunter_sculk_slayer",
                   "name": "Sculk Slayer",
-                  "description": "Damage approved Sculk prey, including genuine Warden where eligible",
+                  "description": "+3% actual hit damage/rank (+36%) against valid Sculk-associated creatures including Warden only if in source taxonomy; not blocks.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -6908,12 +7019,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% actual hit damage/rank (+36%) against valid Sculk-associated creatures including Warden only if in source taxonomy; not blocks.",
+                  "required_source_or_handler_check": "Warden boom damage source ID, Deep Dark creature registry and protections, no hostile mob spoof",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_sculk_defense",
                   "name": "Deepdark Vigilance",
-                  "description": "Resist verified Sculk/sonic damage types only",
+                  "description": "-2% received physical hit damage/rank (-16%) from confirmed Sculk creature source, not all sonic damage.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -6942,12 +7059,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% received physical hit damage/rank (-16%) from confirmed Sculk creature source, not all sonic damage.",
+                  "required_source_or_handler_check": "Warden boom damage source ID, Deep Dark creature registry and protections, no hostile mob spoof",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_sculk_mastery",
                   "name": "Sonic Defense",
-                  "description": "Recognize and evade valid sonic attacks without silencing arbitrary sensors",
+                  "description": "-2% actual Warden-sourced sonic boom damage/rank (-20%), with actual attacker receipt; do not silence sensors or waive stealth.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -6978,11 +7101,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% actual Warden-sourced sonic boom damage/rank (-20%), with actual attacker receipt; do not silence sensors or waive stealth.",
+                  "required_source_or_handler_check": "Warden boom damage source ID, Deep Dark creature registry and protections, no hostile mob spoof",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Warden boom damage source ID, Deep Dark creature registry and protections, no hostile mob spoof"
             },
             {
               "id": "tyr_progression:hunter_favored_aquatic",
@@ -6996,7 +7129,7 @@
                 {
                   "id": "tyr_progression:hunter_aquatic_slayer",
                   "name": "Aquatic Slayer",
-                  "description": "Damage actual aquatic prey taxonomy",
+                  "description": "+3% legitimate damage/rank (+36%) against actual Aquatic species prey, not anything temporarily submerged.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7031,12 +7164,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% legitimate damage/rank (+36%) against actual Aquatic species prey, not anything temporarily submerged.",
+                  "required_source_or_handler_check": "Aquatic prey registry and underwater source checks, real trident/arrow source snapshot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_aquatic_defense",
                   "name": "Deepwater Guard",
-                  "description": "Reduce underwater prey attacks, not all drowning",
+                  "description": "-2% direct damage/rank (-16%) from actual aquatic creature while the Hunter is underwater; not drowning or all water damage.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7065,12 +7204,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% direct damage/rank (-16%) from actual aquatic creature while the Hunter is underwater; not drowning or all water damage.",
+                  "required_source_or_handler_check": "Aquatic prey registry and underwater source checks, real trident/arrow source snapshot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_aquatic_mastery",
                   "name": "Harpoon Hunter",
-                  "description": "Improve actual underwater bow/trident/projectile fights with legal attribution",
+                  "description": "+2% genuine trident/arrow damage/rank (+20%) against Aquatic prey while Hunter really submerged, with weapon provenance.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7101,11 +7246,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+2% genuine trident/arrow damage/rank (+20%) against Aquatic prey while Hunter really submerged, with weapon provenance.",
+                  "required_source_or_handler_check": "Aquatic prey registry and underwater source checks, real trident/arrow source snapshot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Aquatic prey registry and underwater source checks, real trident/arrow source snapshot"
             },
             {
               "id": "tyr_progression:hunter_favored_construct",
@@ -7119,7 +7274,7 @@
                 {
                   "id": "tyr_progression:hunter_construct_slayer",
                   "name": "Construct Slayer",
-                  "description": "Damage eligible construct targets only",
+                  "description": "+3% damage/rank (+36%) versus audited living construct mobs only; not machines, blocks or owned players' golems.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7154,12 +7309,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% damage/rank (+36%) versus audited living construct mobs only; not machines, blocks or owned players' golems.",
+                  "required_source_or_handler_check": "Actual source construct entity IDs, target armor math, tamed/owner golem exclusion",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_construct_defense",
                   "name": "Construct Plating",
-                  "description": "Improve defense against authentic construct attacks",
+                  "description": "-2% true Construct-origin direct hit damage/rank (-16%), not blanket shield against all magical attacks.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7188,12 +7349,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% true Construct-origin direct hit damage/rank (-16%), not blanket shield against all magical attacks.",
+                  "required_source_or_handler_check": "Actual source construct entity IDs, target armor math, tamed/owner golem exclusion",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_construct_mastery",
                   "name": "Golem Breaker",
-                  "description": "Armor penetration against constructs if supported by native attribute and creature tags",
+                  "description": "Ignore 1.5% target armor *contribution* per rank (15% full) on legal physical hit of armored Construct, not invulnerable boss shields.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7224,11 +7391,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Ignore 1.5% target armor *contribution* per rank (15% full) on legal physical hit of armored Construct, not invulnerable boss shields.",
+                  "required_source_or_handler_check": "Actual source construct entity IDs, target armor math, tamed/owner golem exclusion",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Actual source construct entity IDs, target armor math, tamed/owner golem exclusion"
             },
             {
               "id": "tyr_progression:hunter_favored_beast",
@@ -7242,7 +7419,7 @@
                 {
                   "id": "tyr_progression:hunter_beast_slayer",
                   "name": "Beast Slayer",
-                  "description": "Damage actual eligible wild beasts, not pets",
+                  "description": "+3% legitimate damage/rank (+36%) against audited hostile wild beasts/dinosaurs, excluding owner pets and non-hostile livestock.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7277,12 +7454,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% legitimate damage/rank (+36%) against audited hostile wild beasts/dinosaurs, excluding owner pets and non-hostile livestock.",
+                  "required_source_or_handler_check": "Source Beast taxonomy with pets/domestics protected and real movement/target UUID",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_beast_defense",
                   "name": "Beast Evasion",
-                  "description": "Dodge real hostile beast attacks",
+                  "description": "+1.5 percentage points/rank (+12 pp) evasion against direct hostile wild Beast attacks.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7311,12 +7494,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+1.5 percentage points/rank (+12 pp) evasion against direct hostile wild Beast attacks.",
+                  "required_source_or_handler_check": "Source Beast taxonomy with pets/domestics protected and real movement/target UUID",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_beast_mastery",
                   "name": "Apex Pursuit",
-                  "description": "Improve tracking/close pursuit of valid beast quarry",
+                  "description": "After real hit marking Beast quarry, +2% chase speed/rank (+20%) while grounded approaching same living target inside 24 blocks; no flight.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7347,11 +7536,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "After real hit marking Beast quarry, +2% chase speed/rank (+20%) while grounded approaching same living target inside 24 blocks; no flight.",
+                  "required_source_or_handler_check": "Source Beast taxonomy with pets/domestics protected and real movement/target UUID",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Source Beast taxonomy with pets/domestics protected and real movement/target UUID"
             },
             {
               "id": "tyr_progression:hunter_favored_arthropod",
@@ -7365,7 +7564,7 @@
                 {
                   "id": "tyr_progression:hunter_arthropod_slayer",
                   "name": "Arthropod Slayer",
-                  "description": "Damage spiders/arthropods by verified taxonomy",
+                  "description": "+3% legitimate damage/rank (+36%) to tagged arthropod targets; not a spider biome or web blocks.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7400,12 +7599,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% legitimate damage/rank (+36%) to tagged arthropod targets; not a spider biome or web blocks.",
+                  "required_source_or_handler_check": "Actual spider poison/web provenance, source attacks and Bane of Arthropods stacking",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_arthropod_defense",
                   "name": "Venom Guard",
-                  "description": "Reduce arthropod-specific poison damage/effects",
+                  "description": "-2% legitimate Arthropod-origin poison damage/duration OR direct hit damage/rank (-16%), choose single eligible source to prevent double apply.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7434,12 +7639,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% legitimate Arthropod-origin poison damage/duration OR direct hit damage/rank (-16%), choose single eligible source to prevent double apply.",
+                  "required_source_or_handler_check": "Actual spider poison/web provenance, source attacks and Bane of Arthropods stacking",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_arthropod_mastery",
                   "name": "Webbreaker",
-                  "description": "Improve mobility when trapped by valid spider web sources",
+                  "description": "Reduce source-confirmed spider-web movement slowdown 6%/rank (60% full) while real hostile Arthropod prey has trapped player; no universal cobweb pass-through.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7470,11 +7681,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Reduce source-confirmed spider-web movement slowdown 6%/rank (60% full) while real hostile Arthropod prey has trapped player; no universal cobweb pass-through.",
+                  "required_source_or_handler_check": "Actual spider poison/web provenance, source attacks and Bane of Arthropods stacking",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Actual spider poison/web provenance, source attacks and Bane of Arthropods stacking"
             },
             {
               "id": "tyr_progression:hunter_favored_plant",
@@ -7488,7 +7709,7 @@
                 {
                   "id": "tyr_progression:hunter_plant_slayer",
                   "name": "Plant Slayer",
-                  "description": "Damage verified plant taxonomy including eligible Creepers",
+                  "description": "+3% real player-origin physical/shot damage/rank (+36%) to living Plant prey, including Creeper only by audited TMM taxonomy.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7523,12 +7744,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% real player-origin physical/shot damage/rank (+36%) to living Plant prey, including Creeper only by audited TMM taxonomy.",
+                  "required_source_or_handler_check": "Creeper classified as Plant by TMM, explosion actor source; no crop loot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_plant_defense",
                   "name": "Spore Guard",
-                  "description": "Limit effects from verified botanical attacks, not all poison",
+                  "description": "-2% real Plant-creature-origin direct hit damage/rank (-16%); not all poison or any plant block.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7557,12 +7784,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% real Plant-creature-origin direct hit damage/rank (-16%); not all poison or any plant block.",
+                  "required_source_or_handler_check": "Creeper classified as Plant by TMM, explosion actor source; no crop loot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_plant_mastery",
                   "name": "Creeper Ward",
-                  "description": "Reduce actual Creeper explosion source types only",
+                  "description": "-2% actual Creeper/charged Creeper-source explosion damage/rank (-20%); TNT, Ghasts and other explosions unchanged.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7593,11 +7826,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% actual Creeper/charged Creeper-source explosion damage/rank (-20%); TNT, Ghasts and other explosions unchanged.",
+                  "required_source_or_handler_check": "Creeper classified as Plant by TMM, explosion actor source; no crop loot",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Creeper classified as Plant by TMM, explosion actor source; no crop loot"
             },
             {
               "id": "tyr_progression:hunter_favored_elemental",
@@ -7611,7 +7854,7 @@
                 {
                   "id": "tyr_progression:hunter_elemental_slayer",
                   "name": "Elemental Slayer",
-                  "description": "Damage verified elemental prey",
+                  "description": "+3% real damage/rank (+36%) versus verified living elemental enemies, independent of current biome or spell animation color.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7646,12 +7889,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% real damage/rank (+36%) versus verified living elemental enemies, independent of current biome or spell animation color.",
+                  "required_source_or_handler_check": "Source elemental mob roster and factual per-element vulnerability IDs, no arbitrary element-name inference",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_elemental_defense",
                   "name": "Primordial Guard",
-                  "description": "Reduce actual tagged elemental-origin attack types with source evidence",
+                  "description": "-2% direct attack damage/rank (-16%) from valid living Elemental target as true attacker, not all elemental magic in world.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7680,12 +7929,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% direct attack damage/rank (-16%) from valid living Elemental target as true attacker, not all elemental magic in world.",
+                  "required_source_or_handler_check": "Source elemental mob roster and factual per-element vulnerability IDs, no arbitrary element-name inference",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_elemental_mastery",
                   "name": "Elemental Analysis",
-                  "description": "Boost effectiveness when countering selected verified elemental weaknesses",
+                  "description": "If Hunter actually uses a documented elemental weakness against corresponding live Elemental quarry, +2% hit damage/rank (+20%); unknown weaknesses fail closed.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7716,11 +7971,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "If Hunter actually uses a documented elemental weakness against corresponding live Elemental quarry, +2% hit damage/rank (+20%); unknown weaknesses fail closed.",
+                  "required_source_or_handler_check": "Source elemental mob roster and factual per-element vulnerability IDs, no arbitrary element-name inference",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Source elemental mob roster and factual per-element vulnerability IDs, no arbitrary element-name inference"
             },
             {
               "id": "tyr_progression:hunter_favored_ooze",
@@ -7734,7 +7999,7 @@
                 {
                   "id": "tyr_progression:hunter_ooze_slayer",
                   "name": "Ooze Slayer",
-                  "description": "Damage verified slime/ooze prey",
+                  "description": "+3% real hit damage/rank (+36%) against true Slime/Ooze prey, not all liquids.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7769,12 +8034,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% real hit damage/rank (+36%) against true Slime/Ooze prey, not all liquids.",
+                  "required_source_or_handler_check": "Ooze/Slime child-split farming and Sapient Slime owned ally protections; source sticky debuff tag",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_ooze_defense",
                   "name": "Slime Resilience",
-                  "description": "Reduce legitimate ooze melee/slowness effects",
+                  "description": "-2% authentic Ooze-origin direct damage/rank (-16%), not generic fall damage.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7803,12 +8074,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% authentic Ooze-origin direct damage/rank (-16%), not generic fall damage.",
+                  "required_source_or_handler_check": "Ooze/Slime child-split farming and Sapient Slime owned ally protections; source sticky debuff tag",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_ooze_mastery",
                   "name": "Viscous Tactics",
-                  "description": "Improve mobility and attacks when engulfed/slowed by ooze",
+                  "description": "+2% melee hit damage/rank (+20%) to Ooze quarry while player has a debuff truly inflicted by that ooze, not arbitrary Slowness potion.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7839,11 +8116,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+2% melee hit damage/rank (+20%) to Ooze quarry while player has a debuff truly inflicted by that ooze, not arbitrary Slowness potion.",
+                  "required_source_or_handler_check": "Ooze/Slime child-split farming and Sapient Slime owned ally protections; source sticky debuff tag",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Ooze/Slime child-split farming and Sapient Slime owned ally protections; source sticky debuff tag"
             },
             {
               "id": "tyr_progression:hunter_favored_demon",
@@ -7857,7 +8144,7 @@
                 {
                   "id": "tyr_progression:hunter_demon_slayer",
                   "name": "Demon Slayer",
-                  "description": "Damage verified demon prey",
+                  "description": "+3% true Hunter direct/shot damage/rank (+36%) to source-tagged Demon subtype creatures, not all Goety/Occultism or Nether mobs.",
                   "max_rank": 12,
                   "rank_costs": [
                     1,
@@ -7892,12 +8179,18 @@
                       3
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+3% true Hunter direct/shot damage/rank (+36%) to source-tagged Demon subtype creatures, not all Goety/Occultism or Nether mobs.",
+                  "required_source_or_handler_check": "Goety/Occultism demon classification, summoned actor/owner UUID and player-friendly checks",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching one free specialty license"
                 },
                 {
                   "id": "tyr_progression:hunter_demon_defense",
                   "name": "Infernal Guard",
-                  "description": "Reduce genuine demonic attacks using source IDs",
+                  "description": "-2% real Demon-creature-origin direct hit damage/rank (-16%), source-specific.",
                   "max_rank": 8,
                   "rank_costs": [
                     1,
@@ -7926,12 +8219,18 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "-2% real Demon-creature-origin direct hit damage/rank (-16%), source-specific.",
+                  "required_source_or_handler_check": "Goety/Occultism demon classification, summoned actor/owner UUID and player-friendly checks",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + offense purchase + adept milestone"
                 },
                 {
                   "id": "tyr_progression:hunter_demon_mastery",
                   "name": "Exorcist",
-                  "description": "Improve combat against demon summons without harming player-owned servants",
+                  "description": "+2% direct damage/rank (+20%) to genuine HOSTILE summoned Demon quarry with source summon owner, not friendly owned servants or every undead.",
                   "max_rank": 10,
                   "rank_costs": [
                     1,
@@ -7962,11 +8261,21 @@
                       5
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "+2% direct damage/rank (+20%) to genuine HOSTILE summoned Demon quarry with source summon owner, not friendly owned servants or every undead.",
+                  "required_source_or_handler_check": "Goety/Occultism demon classification, summoned actor/owner UUID and player-friendly checks",
+                  "no_new_active_button": true,
+                  "effect_status": "new_generic_handler_and_taxonomy_review",
+                  "source_approval": "2026-11-22 preliminary numeric review, design only",
+                  "native_gate_reference": "matching free license + defense purchase + mastery milestone"
                 }
               ],
               "max_spend": 30,
-              "rank_points_per_purchase": 1
+              "rank_points_per_purchase": 1,
+              "design_status": "complete_30_rank_source_review",
+              "free_choice_preserved": true,
+              "specialization_attribution": "Only one free specialty chosen; eligible entity/source matching from authoritative data; no adding benefits from two overlapping categories.",
+              "source_audit_requirements": "Goety/Occultism demon classification, summoned actor/owner UUID and player-friendly checks"
             }
           ]
         }
@@ -7985,7 +8294,21 @@
       "existing_skill_ids_preserved": true,
       "effect_implementation_warning": "Existing source-defined Hunter skills cannot be directly repriced by this blueprint. Group and gate change requires explicit rank/price/effect migration and QA acceptance.",
       "total_available_paid_ranks_per_character": 100,
-      "all_catalog_ranks": 498
+      "all_catalog_ranks": 498,
+      "role": "A professional monster hunter whose money comes from honest hunting contracts, core competence in armor/weapon handling and bounded tracking, and one favored quarry taxonomy with focused offensive, defense and pursuit mastery.",
+      "maturity": "COMPLETE_BALANCE_DRAFT_NOT_RUNTIME",
+      "current_runtime_hunter_skill_count": 31,
+      "paid_skill_options_breakdown": "13 shared + 2 mutually exclusive Training Style + 14*3 mutually exclusive favored prey = 57 displayed paid options; any one build owns 13 + 1 + 3 = 17 purchased nodes",
+      "source_verification_status": "Runtime historical IDs inspected; source effect descriptions retained separately. Full candidate effects require Progression adapter and owner balance review. No live Hunter JSON edited.",
+      "known_owner_design_holds": [
+        "Earlier owner Hunter concept included Fae. The 14 CURRENT specialty_* choices on dev/progression have NO Fae branch; adding a fifteenth requires deliberate source/owner decision and registered Fae entity taxonomy. No silent 15th.",
+        "Old native Hunter maxHP/4 and favored-prey doubling are not numerically portable to unified shared 1000-base-MXP-per-point #475; implement recalibrated eligible kill attribution and optional favored multiplier if retained, not duplicate wallet.",
+        "Favored-prey category overlaps and boss behavior: boss is not a category. Dragon/Void, Piglin/Beast, Sculk/Undead and pet/owner exclusions must be formally fixed.",
+        "Source `equipment_care` uses slot=all and `fast_hands` +0.20 coefficient. Both need pinned handler audit and correct source ownership before rank effects are activated.",
+        "Original 17 paid nodes use old escalating costs, 238-point catalog claim; new 1-SP-per-rank replacement is only design and requires explicit runtime data review and persistence/migration if any established worlds exist.",
+        "Hunter's real Trial of Venom and Mutagenic Brews 10-hour persistent mutation and hunger tax remain native/free mechanics, not purchases.",
+        "Bountiful ordinary Hunter Decree is a public general hunting contract with coins only; neither Hunter enrollment nor Path purchase required. #523 source writer owns implementation."
+      ]
     },
     {
       "id": "gilded",
@@ -9580,6 +9903,7 @@
     }
   ],
   "required_preimplementation_reviews": [
+    "Hunter: verify 14 free specialty_* IDs, 57 option IDs, 17 per legal build, 62+8+30; current 31 live skills intact. Review native Hunter kill XP vs unified MXP #475, missing Fae taxonomy, source weapon delivery and ammunition, real Trial of Venom, 10h mutagen state, bounty #523 ordinary coins and all-player access, target overlap/boss exclusions.",
     "Bare Zerker #454: confirm actual postmitigation damage/Fury receipt, overkill/absorption, unframed hits, one-second-on-damage Regen/Resistance amplifiers, full vanilla totem prehit >50 and all-Fury drain; clothing chafe and unequip, shield suppression, Neo Vitae 1.1.53 Woad per-upgrade parity and EvilCraft blood; magic-object XP registry.",
     "Gilded: verify free gold/Netherite effective parity and full virtual Fortune/Looting/Unbreaking/repair baseline; 1-per-event gold ore MXP, Piglin and Brute anger guard, 2x golden foods, correct lava rod providers and no double hooks, real native rank 18/20, no passive action/loot duplication.",
     "Forest Dragon: confirm Dragon Survival 2.0.74 native forest/sun breath/spike/Light in the Dark abilities, Stress/hunger and axe-claw, spell attribution, supported fae-owned summons, crop/breeding event dedup, #444 owner herbivorous food.",
@@ -9686,6 +10010,6 @@
         "budget": 100
       }
     ],
-    "notes": "100 per legal build, Hunter alternatives exclusive; Bare Zerker 34+22+22+12+10. No game runtime and no owner source-buff approval implied."
+    "notes": "Hunter exact legal build: 62 shared + exactly one 8-rank Training Style + exactly one 12+8+10=30 favored prey. 57 visible Hunter paid IDs, 17 per character; total visible 261 across ten draft categories unchanged. No executable gameplay claimed."
   }
 }
