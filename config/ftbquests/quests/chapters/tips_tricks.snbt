@@ -5,7 +5,13 @@
 	group: "544D101000000000"
 	icon: { id: "minecraft:book" }
 	id: "544D201000200000"
-	images: [ ]
+	images: [
+		{ image: "minecraft:textures/item/book.png", x: -22.0d, y: -15.0d, width: 2.0d, height: 2.0d },
+		{ image: "minecraft:textures/item/lever.png", x: 10.0d, y: -15.0d, width: 2.0d, height: 2.0d },
+		{ image: "minecraft:textures/item/chest.png", x: -22.0d, y: 2.0d, width: 2.0d, height: 2.0d },
+		{ image: "minecraft:textures/item/compass.png", x: 10.0d, y: 2.0d, width: 2.0d, height: 2.0d },
+		{ image: "minecraft:textures/item/blaze_powder.png", x: -14.0d, y: 15.0d, width: 2.0d, height: 2.0d }
+	]
 	order_index: 1
 	progression_mode: "flexible"
 	quest_links: [ ]
@@ -18,6 +24,7 @@
 				{ id: "544D602000100001", type: "xp", xp: 5 }
 				{ id: "544D702000100002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
 			]
+			size: 1.5d
 			tasks: [
 				{ id: "544D401000200001", type: "checkmark" }
 			]
@@ -26,7 +33,7 @@
 		}
 		{
 			id: "544D502000200000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:crafting_table" }
 			optional: true
 			rewards: [
 				{ id: "544D602000200001", type: "xp", xp: 5 }
@@ -35,12 +42,12 @@
 			tasks: [
 				{ id: "544D802000200000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 4.0d
+			x: -20.0d
+			y: -10.0d
 		}
 		{
 			id: "544D502000300000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:spyglass" }
 			optional: true
 			rewards: [
 				{ id: "544D602000300001", type: "xp", xp: 5 }
@@ -49,12 +56,12 @@
 			tasks: [
 				{ id: "544D802000300000", type: "checkmark" }
 			]
-			x: 3.0d
-			y: 4.0d
+			x: -16.0d
+			y: -10.0d
 		}
 		{
 			id: "544D502000400000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:chest" }
 			optional: true
 			rewards: [
 				{ id: "544D602000400001", type: "xp", xp: 5 }
@@ -63,12 +70,12 @@
 			tasks: [
 				{ id: "544D802000400000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 4.0d
+			x: -20.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000500000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:crafting_table" }
 			optional: true
 			rewards: [
 				{ id: "544D602000500001", type: "xp", xp: 5 }
@@ -77,12 +84,12 @@
 			tasks: [
 				{ id: "544D802000500000", type: "checkmark" }
 			]
-			x: 9.0d
-			y: 4.0d
+			x: -16.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000600000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:lever" }
 			optional: true
 			rewards: [
 				{ id: "544D602000600001", type: "xp", xp: 5 }
@@ -92,11 +99,11 @@
 				{ id: "544D802000600000", type: "checkmark" }
 			]
 			x: 12.0d
-			y: 4.0d
+			y: -10.0d
 		}
 		{
 			id: "544D502000700000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "akashictome:tome" }
 			optional: true
 			rewards: [
 				{ id: "544D602000700001", type: "xp", xp: 5 }
@@ -105,12 +112,12 @@
 			tasks: [
 				{ id: "544D802000700000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 8.0d
+			x: -12.0d
+			y: -10.0d
 		}
 		{
 			id: "544D502000800000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:ender_chest" }
 			optional: true
 			rewards: [
 				{ id: "544D602000800001", type: "xp", xp: 5 }
@@ -119,12 +126,12 @@
 			tasks: [
 				{ id: "544D802000800000", type: "checkmark" }
 			]
-			x: 3.0d
-			y: 8.0d
+			x: -8.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000900000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:map" }
 			optional: true
 			rewards: [
 				{ id: "544D602000900001", type: "xp", xp: 5 }
@@ -133,12 +140,12 @@
 			tasks: [
 				{ id: "544D802000900000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 8.0d
+			x: 12.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000A00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:chest" }
 			optional: true
 			rewards: [
 				{ id: "544D602000A00001", type: "xp", xp: 5 }
@@ -147,12 +154,12 @@
 			tasks: [
 				{ id: "544D802000A00000", type: "checkmark" }
 			]
-			x: 9.0d
-			y: 8.0d
+			x: 16.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000B00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:totem_of_undying" }
 			optional: true
 			rewards: [
 				{ id: "544D602000B00001", type: "xp", xp: 5 }
@@ -161,12 +168,12 @@
 			tasks: [
 				{ id: "544D802000B00000", type: "checkmark" }
 			]
-			x: 12.0d
-			y: 8.0d
+			x: 20.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000C00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:compass" }
 			optional: true
 			rewards: [
 				{ id: "544D602000C00001", type: "xp", xp: 5 }
@@ -175,12 +182,12 @@
 			tasks: [
 				{ id: "544D802000C00000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 12.0d
+			x: 24.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000D00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:cauldron" }
 			optional: true
 			rewards: [
 				{ id: "544D602000D00001", type: "xp", xp: 5 }
@@ -189,12 +196,12 @@
 			tasks: [
 				{ id: "544D802000D00000", type: "checkmark" }
 			]
-			x: 3.0d
-			y: 12.0d
+			x: -12.0d
+			y: 6.0d
 		}
 		{
 			id: "544D502000E00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:experience_bottle" }
 			optional: true
 			rewards: [
 				{ id: "544D602000E00001", type: "xp", xp: 5 }
@@ -203,12 +210,12 @@
 			tasks: [
 				{ id: "544D802000E00000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 12.0d
+			x: -12.0d
+			y: 19.0d
 		}
 		{
 			id: "544D502000F00000"
-			icon: { id: "minecraft:book" }
+			icon: { id: "minecraft:spyglass" }
 			optional: true
 			rewards: [
 				{ id: "544D602000F00001", type: "xp", xp: 5 }
@@ -217,8 +224,8 @@
 			tasks: [
 				{ id: "544D802000F00000", type: "checkmark" }
 			]
-			x: 9.0d
-			y: 12.0d
+			x: 16.0d
+			y: -10.0d
 		}
 		{
 			id: "544D502001000000"
@@ -229,12 +236,12 @@
 				{ id: "544D702001000002", type: "item", item: { id: "minecraft:clock", count: 1 }, count: 1 }
 			]
 			tasks: [{ id: "544D802001000000", type: "checkmark" }]
-			x: 12.0d
-			y: 12.0d
+			x: -8.0d
+			y: 19.0d
 		}
 		{
 			id: "544D502001100000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:furnace" }
 			optional: true
 			rewards: [
 				{ id: "544D602001100001", type: "xp", xp: 15 }
@@ -243,12 +250,12 @@
 			tasks: [
 				{ id: "544D802001100000", type: "checkmark" }
 			]
-			x: 0.0d
-			y: 17.0d
+			x: -4.0d
+			y: 19.0d
 		}
 		{
 			id: "544D502001200000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:raw_iron" }
 			optional: true
 			rewards: [
 				{ id: "544D602001200001", type: "xp", xp: 15 }
@@ -257,12 +264,12 @@
 			tasks: [
 				{ id: "544D802001200000", type: "checkmark" }
 			]
-			x: 3.0d
-			y: 17.0d
+			x: 0.0d
+			y: 19.0d
 		}
 		{
 			id: "544D502001300000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:feather" }
 			optional: true
 			rewards: [
 				{ id: "544D602001300001", type: "xp", xp: 10 }
@@ -271,12 +278,12 @@
 			tasks: [
 				{ id: "544D802001300000", type: "checkmark" }
 			]
-			x: 6.0d
-			y: 17.0d
+			x: 4.0d
+			y: 19.0d
 		}
 		{
 			id: "544D502001400000"
-			icon: { id: "minecraft:enchanted_book" }
+			icon: { id: "minecraft:diamond_pickaxe" }
 			optional: true
 			rewards: [
 				{ id: "544D602001400001", type: "xp", xp: 15 }
@@ -285,8 +292,193 @@
 			tasks: [
 				{ id: "544D802001400000", type: "checkmark" }
 			]
-			x: 9.0d
-			y: 17.0d
+			x: 8.0d
+			y: 19.0d
+		},
+		{
+			id: "544D502001500000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			shape: "gear"
+			size: 1.7d
+			rewards: [
+				{ id: "544D602001500001", type: "xp", xp: 10, team_reward: false },
+				{ id: "544D702001500002", type: "command", command: "execute as {p} run function tmm:rewards/starter_kit", permission_level: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001500000", type: "checkmark" }
+			]
+			x: 4.0d
+			y: 0.0d
+		},
+		{
+			id: "544D502001600000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001600001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001600000", type: "checkmark" }
+			]
+			x: 12.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502001700000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001700001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001700000", type: "checkmark" }
+			]
+			x: -20.0d
+			y: -6.0d
+		},
+		{
+			id: "544D502001800000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001800001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001800000", type: "checkmark" }
+			]
+			x: -16.0d
+			y: -6.0d
+		},
+		{
+			id: "544D502001900000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001900001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001900000", type: "checkmark" }
+			]
+			x: -12.0d
+			y: -6.0d
+		},
+		{
+			id: "544D502001A00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001A00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001A00000", type: "checkmark" }
+			]
+			x: 20.0d
+			y: -10.0d
+		},
+		{
+			id: "544D502001B00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001B00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001B00000", type: "checkmark" }
+			]
+			x: 12.0d
+			y: -6.0d
+		},
+		{
+			id: "544D502001C00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001C00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001C00000", type: "checkmark" }
+			]
+			x: -16.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502001D00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001D00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001D00000", type: "checkmark" }
+			]
+			x: 16.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502001E00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001E00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001E00000", type: "checkmark" }
+			]
+			x: 20.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502001F00000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602001F00001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802001F00000", type: "checkmark" }
+			]
+			x: 24.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502002000000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602002000001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802002000000", type: "checkmark" }
+			]
+			x: 28.0d
+			y: 10.0d
+		},
+		{
+			id: "544D502002100000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602002100001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802002100000", type: "checkmark" }
+			]
+			x: -8.0d
+			y: -6.0d
+		},
+		{
+			id: "544D502002200000"
+			icon: { id: "minecraft:book" }
+			optional: true
+			rewards: [
+				{ id: "544D602002200001", type: "xp", xp: 5, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D802002200000", type: "checkmark" }
+			]
+			x: 16.0d
+			y: -6.0d
 		}
 	]
 }
