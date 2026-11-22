@@ -1,7 +1,6 @@
 package io.github.heatwaveqc.tyr.progression.data;
 
 import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,7 +14,7 @@ import java.util.Set;
  * fractions. The food policy independently defines every nutrition rule.
  * Evidence is read from datapacks and can be expanded without new Java.
  */
-public record FoodSourceEvidence(ResourceLocation item, String provenance,
+public record FoodSourceEvidence(String item, String provenance,
     double sourceUnits, Set<String> inferredTags, Map<String, Double> preferredShares) {
 
     public FoodSourceEvidence {
@@ -59,7 +58,7 @@ public record FoodSourceEvidence(ResourceLocation item, String provenance,
                     throw new IllegalArgumentException("Invalid preferred share " + entry.getKey());
                 shares.put(entry.getKey(), share);
             }
-        return new FoodSourceEvidence(ResourceLocation.parse(item), provenance,
+        return new FoodSourceEvidence(item, provenance,
                 units, inferred, shares);
     }
 }

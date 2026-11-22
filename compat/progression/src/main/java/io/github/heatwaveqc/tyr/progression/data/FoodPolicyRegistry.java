@@ -99,7 +99,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                 FoodSourceEvidence evidence =
                     FoodSourceEvidence.parse(JsonParser.parseReader(reader).getAsJsonObject(),
                         rules.profiles().keySet());
-                FoodSourceEvidence old = sources.putIfAbsent(evidence.item(), evidence);
+                FoodSourceEvidence old = sources.putIfAbsent(ResourceLocation.parse(evidence.item()), evidence);
                 if (old != null) throw new IllegalArgumentException(
                     "Ambiguous food provenance for " + evidence.item()
                         + ": " + old.provenance() + " vs " + evidence.provenance());
