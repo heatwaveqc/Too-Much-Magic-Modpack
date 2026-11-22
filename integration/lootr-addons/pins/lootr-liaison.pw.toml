@@ -1,0 +1,13 @@
+name = "Lootr Liaison"
+filename = "lootr_liaison-1.3.0+1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+hash-format = "sha256"
+hash = "409699cf87d888dd547605ee82274ebfe9986d9333f148c9c27c38e1acf94bf7"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+project-id = 1445934
+file-id = 9028796
