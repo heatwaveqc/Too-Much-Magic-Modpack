@@ -1,10 +1,11 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v6",
+  "schema": "tmm_remaining_path_tree_blueprint_v7",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "WEREWOLF COMPLETE FIRST PASS: 20 paid skills, 100 one-point ranks, true native JAWR wolf form ownership and health regeneration; fifth Moon Apex branch passive and moon-specific. Design-only.",
     "VAMPIRE COMPLETED DESIGN: 19 paid skills in five branches 25/20/20/20/15, 100 one-point ranks; JAWR native blood, sunlight, BAT and feeding remain free. Source-only design.",
     "All ranks per one character cost one point; past Sea Dragon 50-point Luck reservation and 40 unallocated status are superseded. No historic rank distribution or source numeric effect automatically becomes a live cap.",
     "SEA DRAGON FIRST PASS COMPLETE: 22 meaningful paid skills, 100 one-point ranks, 10 total Sea Dragon Luck ranks. Complete Sea-specific design under stacked PR, not active runtime.",
@@ -4051,33 +4052,17 @@
       "title": "Werewolf",
       "kind": "native_form_path",
       "budget": 100,
-      "status": "fully_costed_design_only",
+      "status": "COMPLETE_FIRST_PASS_DESIGN_ONLY_100_PT_OWNER_REVIEW",
       "groups": [
         {
-          "id": "group_1_lupine_vitality",
+          "id": "werewolf_lupine_vitality",
           "name": "Lupine Vitality",
+          "points": 30,
           "skills": [
             {
               "id": "tyr_progression:werewolf_feral_vigor",
-              "source_id": "tmm_werewolf_feral_vigor",
               "name": "Feral Vigor",
-              "description": "Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 0,
-              "points": 8,
               "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
               "rank_costs": [
                 1,
                 1,
@@ -4088,659 +4073,135 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 8,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+3 max HP per rank (+24 HP = 12 hearts max) for legitimate JAWR lycanthropy; source form-state gating, avoid immediate free heal from attribute toggles.",
+              "mechanic": "conditional_attribute_max_health",
+              "verification": "generic_attribute_native_affliction_check",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_feral_vigor",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             },
             {
               "id": "tyr_progression:werewolf_regenerative_flesh",
-              "source_id": "tmm_werewolf_regenerative_flesh",
               "name": "Regenerative Flesh",
-              "description": "Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_feral_vigor",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
+              "max_rank": 7,
               "rank_costs": [
+                1,
+                1,
                 1,
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 7,
+              "stage": "entry",
+              "prerequisites": [
+                "tyr_progression:werewolf_feral_vigor"
+              ],
+              "description": "Recover +0.15 HP/sec per rank (+1.05 HP/sec max) while genuinely fed and in an eligible native JAWR wolf/werwolf shape; 50% rate for the first 5s after taking real hostile damage, none while starving. HEALTH regeneration, not mana or wolf blood.",
+              "mechanic": "conditional_health_regeneration",
+              "verification": "generic_regeneration_needs_native_shape_hunger_and_recent_hit",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_regenerative_flesh",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             },
             {
               "id": "tyr_progression:werewolf_unbreakable_beast",
-              "source_id": "tmm_werewolf_unbreakable_beast",
               "name": "Unbreakable Beast",
-              "description": "High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:werewolf_regenerative_flesh",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 17
-        },
-        {
-          "id": "group_2_feral_might",
-          "name": "Feral Might",
-          "skills": [
-            {
-              "id": "tyr_progression:werewolf_rending_claws",
-              "source_id": "tmm_werewolf_rending_claws",
-              "name": "Rending Claws",
-              "description": "Scale claw damage in valid wolf/beast form, respecting weapon modifiers.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_savage_momentum",
-              "source_id": "tmm_werewolf_savage_momentum",
-              "name": "Savage Momentum",
-              "description": "Short stacking melee bonus after actual hits, capped and reset out of combat.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 1,
-              "points": 5,
               "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
               "price_per_rank": 1,
               "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_rending_claws",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_primal_fury",
-              "source_id": "tmm_werewolf_primal_fury",
-              "name": "Primal Fury",
-              "description": "Timed burst consuming native appropriate resource or applying fatigue.",
               "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:werewolf_savage_momentum",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
+              "prerequisites": [
+                "tyr_progression:werewolf_regenerative_flesh"
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
+              "description": "Reduce remaining real non-silver physical damage by 2% per rank (10% max) when below 50% HP in wolf/werwolf form; never negate native silver/fire penalties or fatal damage.",
+              "mechanic": "low_health_physical_dr",
+              "verification": "existing_damage_multiplier_needs_eligibility_and_silver_source_check",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_unbreakable_beast",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 17
-        },
-        {
-          "id": "group_3_moonrunner",
-          "name": "Moonrunner",
-          "skills": [
-            {
-              "id": "tyr_progression:werewolf_predators_stride",
-              "source_id": "tmm_werewolf_predator_s_stride",
-              "name": "Predator's Stride",
-              "description": "Bonus mobility in valid wolf form.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "JAWR lycanthropy level>=8 or confirmed late milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             },
-            {
-              "id": "tyr_progression:werewolf_pouncing_leap",
-              "source_id": "tmm_werewolf_pouncing_leap",
-              "name": "Pouncing Leap",
-              "description": "Targeted controlled leap with landing safety.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_predators_stride",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_lunar_chase",
-              "source_id": "tmm_werewolf_lunar_chase",
-              "name": "Lunar Chase",
-              "description": "Short chase burst under moon conditions with weaker daytime counterpart.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:werewolf_pouncing_leap",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 17
-        },
-        {
-          "id": "group_4_wild_communion",
-          "name": "Wild Communion",
-          "skills": [
-            {
-              "id": "tyr_progression:werewolf_wild_attunement",
-              "source_id": "tmm_werewolf_wild_attunement",
-              "name": "Wild Attunement",
-              "description": "Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_rootsong",
-              "source_id": "tmm_werewolf_rootsong",
-              "name": "Rootsong",
-              "description": "Further increase player nature spell potency or healing, separate from ordinary combat regeneration.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_wild_attunement",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_grove_howl",
-              "source_id": "tmm_werewolf_grove_howl",
-              "name": "Grove Howl",
-              "description": "High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 2,
-              "points": 3,
-              "max_rank": 3,
-              "price_per_rank": 1,
-              "total_cost": 3,
-              "prerequisite": "tyr_progression:werewolf_rootsong",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 3,
-              "rank_costs": [
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  1,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 16
-        },
-        {
-          "id": "group_5_retained_lycan_skill_concepts_jawr_owned",
-          "name": "Retained Lycan Skill Concepts (JAWR-owned)",
-          "skills": [
             {
               "id": "tyr_progression:werewolf_bloodlust_recovery",
-              "source_id": "tmm_werewolf_bloodlust_recovery",
               "name": "Bloodlust Recovery",
-              "description": "Health restoration from actual player-credited hostile kill, with real cooldown.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 0,
-              "points": 5,
               "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
               "price_per_rank": 1,
               "total_cost": 5,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_rending_claws"
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "description": "After a genuine credited hostile kill while in wolf/werwolf form, heal 0.5 HP per rank (+2.5 HP max) with a 12-second cooldown; no credit from ownerless/farm/proxy deaths, natural entities without genuine hostile intent, or other player's kills.",
+              "mechanic": "heal_on_kill",
+              "verification": "generic_heal_on_kill_native_shape_attribution",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_bloodlust_recovery",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_bite_techniques",
-              "source_id": "tmm_werewolf_bite_techniques",
-              "name": "Bite Techniques",
-              "description": "Select either limited bleeding or brief stun enhancement on confirmed wolf bites.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_feral_excavation",
-              "source_id": "tmm_werewolf_feral_excavation",
-              "name": "Feral Excavation",
-              "description": "Boost permitted claw mining/harvest throughput while in real JAWR wolf form.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 2,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:werewolf_arrow_awareness",
-              "source_id": "tmm_werewolf_arrow_awareness",
-              "name": "Arrow Awareness",
-              "description": "Limited moving-projectile evasion with shared evasion budget.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 3,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_feral_excavation",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             },
             {
               "id": "tyr_progression:werewolf_tempered_against_silver",
-              "source_id": "tmm_werewolf_tempered_silver",
               "name": "Tempered Against Silver",
-              "description": "Partial damage mitigation against source-verified silver damage without erasing weakness.",
-              "stage": "mastery",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 4,
-              "points": 5,
               "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:werewolf_arrow_awareness",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
               "rank_costs": [
                 1,
                 1,
@@ -4748,45 +4209,74 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:werewolf_unbreakable_beast"
+              ],
+              "description": "Reduce remaining damage by 4% per rank (20% max) ONLY from provably source-identified silver weapons or hazards, leaving at least 80% of the original danger. If silver sources cannot be reliably identified, withhold rather than broadly reduce all melee.",
+              "mechanic": "silver_source_scoped_damage_multiplier",
+              "verification": "missing_pinned_silver_damage_identity_audit",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_tempered_silver",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "JAWR lycanthropy level>=8 or confirmed late milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             }
-          ],
-          "points": 28
+          ]
         },
         {
-          "id": "group_6_retained_tyz_6_4_2_source_skills",
-          "name": "Retained Tyz 6.4.2 source skills",
+          "id": "werewolf_feral_might",
+          "name": "Feral Might",
+          "points": 25,
           "skills": [
             {
-              "id": "tyr_progression:werewolf_rage",
-              "source_id": "rage",
-              "name": "Rage",
-              "description": "Increases damage by {damage_buff}% when health is below {health_threshold}%",
-              "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 5,
-              "row_index": 0,
-              "points": 5,
-              "max_rank": 5,
+              "id": "tyr_progression:werewolf_rending_claws",
+              "name": "Rending Claws",
+              "max_rank": 7,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
               "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
+              "total_cost": 7,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "Increase native legal empty-hand wolf/werwolf melee damage by 3% per rank (+21% max); use actual player_attack attribution, NOT arbitrary equipped weapons or wolf-type mobs.",
+              "mechanic": "jawr_wolf_melee_bonus",
+              "verification": "generic_native_attack_proxy_existing_source_verify",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_rending_claws",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_savage_momentum",
+              "name": "Savage Momentum",
+              "max_rank": 5,
               "rank_costs": [
                 1,
                 1,
@@ -4794,27 +4284,482 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_rending_claws"
+              ],
+              "description": "On successive actual qualifying wolf melee hits within 4s, gain a temporary +2% damage per stack per rank, at most 3 stacks (+30% full), expiring 4s after the last hit; no Fury economy or gain for misses.",
+              "mechanic": "hit_streak",
+              "verification": "generic_hit_streak_native_attack_scope",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_savage_momentum",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_bite_techniques",
+              "name": "Bite Techniques",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_rending_claws"
+              ],
+              "description": "On a true native wolf bite with verified damage owner, apply Slowness I to eligible hostile prey for 1 second per rank (5s full), at most once per target every 40 ticks; no free stun, permanent infection or new bite button.",
+              "mechanic": "native_wolf_bite_status",
+              "verification": "native_bite_damage_identity_to_verify",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_bite_techniques",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_primal_fury",
+              "name": "Primal Fury",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:werewolf_savage_momentum"
+              ],
+              "description": "While in wolf/werwolf shape and below 35% current HP, increase legal direct melee damage by 5% per rank (+20% max); passive injury threshold, NOT a separate Fury resource or activated burst.",
+              "mechanic": "damage_at_low_health",
+              "verification": "generic_native_attack_health_gate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_primal_fury",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
+              },
+              "native_conditions": "JAWR lycanthropy level>=8 or confirmed late milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_predators_focus",
+              "name": "Predator's Focus",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_bite_techniques"
+              ],
+              "description": "Against real hostiles below 50% max HP, gain +3% eligible native wolf melee damage per rank (+12% max); do not proc on nonhostiles, tamed wolves or friendly allies.",
+              "mechanic": "target_health_melee_bonus",
+              "verification": "generic_target_health_native_attack_predicate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
             }
-          ],
-          "points": 5
+          ]
+        },
+        {
+          "id": "werewolf_moonrunner",
+          "name": "Moonrunner",
+          "points": 20,
+          "skills": [
+            {
+              "id": "tyr_progression:werewolf_predators_stride",
+              "name": "Predator's Stride",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+4% grounded movement speed per rank (+20% full) while in actual JAWR WOLF/WEREWOLF form; not generic human walking or creative flight.",
+              "mechanic": "native_shape_ground_speed",
+              "verification": "generic_conditional_attribute",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_predator_s_stride",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_pouncing_leap",
+              "name": "Pouncing Leap",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "entry",
+              "prerequisites": [
+                "tyr_progression:werewolf_predators_stride"
+              ],
+              "description": "+0.25 block of genuine jump height per rank (+1 block full) during actual wolf movement, plus native fall handling; no new targeted leap hotkey or midair flight.",
+              "mechanic": "jawr_shape_jump_bonus",
+              "verification": "generic_jump_bonus_native_form_shape_check",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_pouncing_leap",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_lunar_chase",
+              "name": "Lunar Chase",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_predators_stride"
+              ],
+              "description": "+5% ground pursuit speed per rank (+20% full) when tracking a legitimate recently damaged hostile within 16 blocks under clear moonlit sky; no bonus indoors or in full daylight. Check exact lunar phase separately from simple night.",
+              "mechanic": "moonlit_pursuit_attribute",
+              "verification": "generic_target_recent_damage_and_moon_predicates_missing",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_lunar_chase",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
+              },
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_feral_excavation",
+              "name": "Feral Excavation",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+15% legal native empty-hand wolf claw break speed per rank (+60% full) only for blocks the claw can already harvest, no new tier, silk/fortune or ore-gate bypass.",
+              "mechanic": "jawr_wolf_claw_break_speed",
+              "verification": "generic_native_mining_existing_source_verify",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_feral_excavation",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_arrow_awareness",
+              "name": "Arrow Awareness",
+              "max_rank": 3,
+              "rank_costs": [
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 3,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_predators_stride"
+              ],
+              "description": "+2 percentage points evasion chance per rank (+6 pp max) against genuine moving projectiles while in wolf/werwolf shape, not area explosions or ownerless spells.",
+              "mechanic": "jawr_projectile_evasion",
+              "verification": "existing_evasion_native_shape_predicate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_arrow_awareness",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "werewolf_wild_communion",
+          "name": "Wild Communion",
+          "points": 20,
+          "skills": [
+            {
+              "id": "tyr_progression:werewolf_wild_attunement",
+              "name": "Wild Attunement",
+              "max_rank": 6,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 6,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+5% per rank (+30% full) to verified personally cast nature spell potency from source-registered Roots/Botania/nature classes while JAWR werewolf-afflicted; not passive Botania flowers or generating machine throughput.",
+              "mechanic": "personal_nature_magic_potency",
+              "verification": "provider_specific_nature_spell_registry_audit",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_wild_attunement",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified JAWR lycanthropy at native level>=1, and native shape where specifically needed",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_rootsong",
+              "name": "Rootsong",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_wild_attunement"
+              ],
+              "description": "+5% per rank (+25% full) to actual player-applied nature healing spell effects when spell provider and credited caster are verified. Do not count the intrinsic wolf HP regeneration twice.",
+              "mechanic": "nature_spell_heal_amplification",
+              "verification": "nature_heal_caster_source_audit",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_rootsong",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_grove_howl",
+              "name": "Grove Howl",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:werewolf_rootsong"
+              ],
+              "description": "When the werewolf legitimately casts an eligible owned nature spell, its already-tamed wolves within 12 blocks receive +5% direct damage per rank (+20% full) for 10s, refreshed on real casts only; no taming, new summoning, permanent wolf ownership, or new howl button.",
+              "mechanic": "owned_wolves_nature_spell_proc",
+              "verification": "pet_owner_nature_cast_adapter_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_werewolf_grove_howl",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
+              },
+              "native_conditions": "JAWR lycanthropy level>=8 or confirmed late milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            },
+            {
+              "id": "tyr_progression:werewolf_verdant_resilience",
+              "name": "Verdant Resilience",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:werewolf_wild_attunement"
+              ],
+              "description": "Reduce remaining ordinary physical damage by 3% per rank (+15% full) in native wolf shape while grounded on grass, moss or leaves; not environmental/fire/silver reduction, and no global biome-wide magic aura.",
+              "mechanic": "natural_ground_conditional_dr",
+              "verification": "ground_tag_and_damage_predicate_adapter",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "JAWR lycanthropy level>=4 or confirmed mid-stage milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "werewolf_moon_apex",
+          "name": "Moon Apex",
+          "points": 5,
+          "skills": [
+            {
+              "id": "tyr_progression:werewolf_moon_apex",
+              "name": "Moon Apex",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:werewolf_primal_fury",
+                "tyr_progression:werewolf_grove_howl"
+              ],
+              "description": "Under actual full-moon conditions and in JAWR WOLF/WEREWOLF form, add +4% eligible claw damage AND +4% native personal nature-spell potency per rank (both +20% full); no activation button, permanent bonus, global weather override, extra transformation or silver immunity.",
+              "mechanic": "full_moon_dual_passive",
+              "verification": "native_moon_phase_and_source_verified_attack_magic_adapters",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "JAWR lycanthropy level>=8 or confirmed late milestone; preserve per-effect native shape",
+              "constraints": [
+                "JAWR_owns_form_lycan_level_hunger_moon_transform",
+                "real_wolf_or_werwolf_source_for_claws",
+                "one_point_per_rank",
+                "no_new_custom_active_skill"
+              ]
+            }
+          ]
         }
       ],
       "source": "Archived nine-tree design 2026-11-15",
-      "native_guardrails": "Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.",
-      "special_note": null,
+      "native_guardrails": "JAWR alone owns lycan affliction, native level, actual WOLF/WEREWOLF shapes, natural forced/full-moon changes, wolf diet/hunger, native claws/bite, werewolf weaknesses and cures. Progression owns purchased passive upgrades ONLY. Feral Vigor/other true lycan state bonuses may apply beyond shape only where explicitly stated; wolf-claw, mining, jumping and pursuit require actual native WOLF/WEREWOLF form, not curse alone. Do not create another Fury, blood, mana, stamina or nature point wallet. Werewolf regeneration heals actual player health, never magical resources or machine power. Moon-phase bonuses require actual Minecraft lunar calendar/daylight/sky checks, not a tag that interprets every nighttime as full moon. Silver weakness remains real, only verified silver sources receive partial protection; wolves allied to player must be individually owned and genuine. Existing Curios and progression/equipment compatibility remain subject to normal Path rules; no creative flight, independent active pounce or forced taming.",
+      "special_note": "Old Tyz source 21-node and 300+ SP versions are strictly historical. Native wolf form is free. Moon Apex is 5 independently bought 1-point ranks, not a premium five-point purchase.",
       "total_points": 100,
-      "skill_count": 18,
-      "total_available_paid_ranks_per_character": 100
+      "skill_count": 20,
+      "total_available_paid_ranks_per_character": 100,
+      "assigned_points": 100,
+      "unallocated_points": 0,
+      "role": "Bestial bruiser: exceptional hearts and *health* regeneration, genuine wolf-form claws/terrain mobility, meaningful moonlight pursuit, nature spell healing, and owned pack cooperation.",
+      "maturity": "Generic Progression source handlers for max-health attributes, delayed regeneration, actual wolf melee proxy, wolf claw break speed, heal-on-kill and hit streak exist; actual JAWR bytecode, moon/nature/pet/silver adapters and gameplay remain unverified.",
+      "balance_policy": "New 100-point role-based balance pass: 20 paid skills, 100 distinct one-point ranks, no automatic conservation of archived November 15 SP weights, effects and capstones."
     },
     {
       "id": "lich",
