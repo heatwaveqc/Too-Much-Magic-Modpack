@@ -46,6 +46,38 @@ The branches start where the player can actually use them; don't hide a helpful 
 
 
 
+## 2A. FTB chapter layout reference — measured ATM10 source, translated into TMM rules
+
+**Source directly re-inspected:** owner-provided `quests.zip`, specifically all 67 `quests/chapters/*.snbt` and the matching English chapter-localization files, not external screenshots or a historical secondhand description. The archive's `quests/README.md` declares ATM10 quests and reward tables **All Rights Reserved**. Use only structural insights: **never copy quest prose, dependency IDs, exact coordinates, artwork, loot tables, or uniquely identifiable layouts**.
+
+**Observed source facts:** 67 chapters; 4,853 quest definitions; 1,318 positioned image placements across 65 of the 67 chapters; ten authored top-level groups, plus four ungrouped introductory/reference/combat chapters (Welcome, Tips and Tricks, Building Tips, Bounty Board). Forty of 67 chapters have at most three no-prerequisite entry quests, while broad catalog/reference chapters deliberately have more. Most substantive chapters use linked dependencies and spaced regions; the graphs are **not** all uniformly horizontal, nor is there a universally fixed meaning for hexagon/diamond/square/etc. in the source SNBT. The pack-level `quests/data.snbt` uses `progression_mode: "flexible"`.
+
+| ATM10 source chapter | Measured arrangement, without reproducing proprietary quest content | Useful TMM lesson |
+| --- | --- | --- |
+| `mainquestline_part_1.snbt` | 36 quest nodes, 36 within-chapter dependency edges, two roots; early survival steps lead to recognizable material milestones with offshoots into tools, power and exploration | **Regular Progress:** legible forward advancement spine, forks at real capability unlocks, optional side activities offset from the main line |
+| `occultism.snbt` | 64 nodes, 81 local dependency edges, two roots; a mostly left-to-right ritual backbone with clusters for storage, tools, familiars and an explicit Ars Ocultas item | **Mod-Focused:** core ritual tiers and meaningful separate item/addon/compat branches; TMM adds its own Philosopher's Stone crossover finale |
+| `neo_vitae.snbt` | 49 nodes, 48 local edges, two roots; visibly advancing altar/orb/ritual tiers with optional side equipment, automation, and specialized operations | **Mod-Focused:** tier ladder carries the narrative, optional equipment grouped near the stage where it becomes relevant |
+| `theurgy.snbt` | 45 nodes, 45 local edges, six roots; distinct clusters for alchemy/salts, divination, heat and Mercurial logistics, not a forced single straight chain | **Mod-Focused with multiple roots:** only genuine prerequisites connect parallel systems; make the core mainline obvious without flattening unrelated mechanics |
+| `ars_nouveau.snbt` | 130 nodes, 128 local edges; a substantial compact glyph matrix emanates from grouped unlock hubs, with a separate general equipment/progression route | **Repeatable visual patterns:** use tightly aligned mini-grids for enumerated glyphs/items instead of one long winding line per item |
+| `food_and_farming.snbt` | 35 nodes, 30 local edges, six roots; separate crop/animal/kitchen/fishing strands coexist in one thematic space | **Thematic:** grouped multi-mod activity lanes rather than a fake mandatory single mainline |
+| `bounty_board.snbt` | 50 nodes, 28 local edges, 22 roots; eight visible **four-rank** credited-kill columns (5/10/50/100), with separate one-off bosses/variants | **Monster Hunting:** align independent species ladders in a readable grid; do not confuse these permanent FTB milestones with TMM's **renewable native Bountiful contracts** |
+| `welcome.snbt`, `tips_and_tricks.snbt` | Six independent Welcome entries; Tips has 23 nodes and 21 entry nodes, with many independent information cards and a small aggregate dependency area | **Informational:** navigable cards, few or no artificial lesson prerequisites |
+| `basic_armor.snbt` | 128 nodes and **zero** dependency edges, a broad open equipment collection | **Challenge/reference catalog:** broad item sets may be honest browsable grids, not fake progression tiers |
+
+**Caveat:** the source is the text/coordinate/dependency model, not a client screenshot; it proves node placement and relationships, but not how comfortable each crowded area feels at the pinned TMM UI scale. ATM10 does **not** provide an explicit five-category Challenge design matching our choice. Its Bounty Board is an ungrouped, *one-time kill-task grid*, not a Bountiful repeatable-job implementation. Our **Challenge** split is an owner decision, not something proven by the ATM10 source.
+
+### Approved TMM visual grammar — reuse v3 authoring archetypes
+
+Apply the existing [Quest Presentation and Visual Authoring Standard v3](QUEST-PRESENTATION-STANDARD-V3.md), rather than inventing another conflicting art or node-shape standard:
+
+1. **Informational → open cards / loose hub.** A prominent orientation node and short independent tips. No invented completion chain. Use descriptive icons and compact visual grouping.
+2. **Regular Progress → forward spine with real forks.** Prefer left-to-right for TMM consistency. Each major gate/choice expands into nearby off-axis side routes; the reader sees the next core milestone without tracing a maze.
+3. **Mod-Focused → essential native progression spine + labeled side clusters.** Introduction/guide → tiered setup → significant rituals/machines → **hardest defining capstone**. Useful items, optional equipment, native addons, and verified **reciprocal** mod compatibility each have identifiable branches at the right tier. Special cases, such as Occultism → ProjectE Philosopher's Stone, explicitly mark the crossover as a TMM-defined capstone. A branching or multi-root native mod is not squeezed into a fictional single dependency.
+4. **Thematic → grouped activity lanes and compact task families.** Food by food mod/craft activity, Fishing by method/species, Monster Hunting by creature family and count ladder. Small grids make repetitive objectives scannable. Whole-catalog mastery is **Challenge**, never a thematic mandatory capstone.
+5. **Challenge → separate completionist displays and bounty board.** Permanent all-of-a-kind achievements use visible independent grids/convergent completion. Bountiful jobs remain renewable in its own native board; the FTB quest chapter should only teach and link to that system, not manufacture pseudo-repeatable FTB kill quests.
+
+**Visual consistency rules across all five types:** prominent recognizable entry; normal-sized recurring actions; distinct section/branch labels; major native tiers and final capstones made prominent by verified shape, relative size, icon and *original* chapter art; align repeated nodes; leave negative space between lanes; minimize dependency crossings; preserve real item/task semantics and existing quest IDs. The v3 standard already covers original header/panel art and source-backed icon validation. **No universal numeric spacing or shape-to-role key is locked until the pinned FTB client confirms readability.**
+
 ## 3. Food: its own multi-mod chapter
 
 The Food chapter is the **multi-lane, center-out** hub for growing, collecting, preparing, cooking and eating food. Its central onboarding teaches the actual controls and relevant JEI categories. Give each installed food system a *recognizable side branch*, such as:
