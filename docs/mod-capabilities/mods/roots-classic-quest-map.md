@@ -1,0 +1,68 @@
+# Roots Classic 1.5.10 — quest-source map (2026-11-21)
+
+**Status:** Source-backed **first-pass instructional Atlas**, not committed FTB quests. **34 unique research labels: 12 Core / 22 Optional, acyclic dependencies.** These are not quest GUIDs or a requirement to add 34 literal FTB nodes. Based on the [29-axis dossier](roots-classic.md), [pinned source-complete Comprehension profile](../../mod-comprehension/mods/roots-classic.md), [all 22 component spells](../../mod-comprehension/mods/roots-classic-pinned-spells-items.md) and [all 46 ritual recipes](../../mod-comprehension/mods/roots-classic-pinned-rituals.md). Exact active file `RootsClassic-1.21.1-1.5.10.jar` SHA-1 `7d02ec46e4d276ebf556cdd529a75108b4724efd`; no gameplay acceptance.
+
+**Existing integrated FTB chapter:** `config/ftbquests/quests/chapters/roots_classic.snbt` has one optional checkmark, 2 XP and Paper. No actual instructional steps, source event detectors, GUID or task changes are made by this research.
+
+## Two teachable paths, not one enormous linear checklist
+
+- **Spells:** RC-01 Tablet → RC-02 materials + RC-04 Mortar → RC-05 Powder → RC-06 Imbuer → RC-07 actual cast → RC-08 Terra and modifiers. Additional spell families are optional; one representative cast demonstrates the mechanic, not every one of 22 exact component recipes.
+- **Rituals:** RC-01/02/03 bark → RC-09 Altar/Braziers → RC-10 first level-0 Living Pickaxe → RC-11 eight Mundane stones and level1 ritual → RC-12 four raised Attuned stones and level2 ritual. Sources catalog all 46 native recipes but not each needs a quest.
+- **Important dependency exception:** RC-24 **crafts** Crystal Staff on a **level-2** altar; RC-25 **imbues** the already-crafted staff with Powder on a **level-1** ritual. RC-25 follows RC-24, never the reverse. Distinct optional gear, farm, utility and dangerous effects branch after the relevant tier.
+
+## Proposed instructional lessons
+
+**Detector guidance:** item/placement tasks prove possession/placement only; a successful cast or ritual needs confirmed matching advancement/event or clearly manual/action-based instructions. No Roots-specific FTB operation detector has been verified. Rewards are only small **XP plus ordinary thematic items**, never bypass items, bosses, Nether Stars, advanced gear, fully prepared staffs or gated magic supplies.
+
+| ID and goal | Route | Prerequisites | Exact player action | Tablet/JEI reference | What could honestly show completion | Safe reward idea |
+| --- | --- | --- | --- | --- | --- | --- |
+| **RC-01** Runic Tablet | Core | — | Break tall grass for Old Root and craft Tablet with one stone and three wheat seeds then open it in main hand | Natural Arts / Runic Tablet | Item proxy does not prove opening | XP + seeds |
+| **RC-02** Harvest natural materials | Core | RC-01 | Harvest mature crops for Verdant Sprigs and tall grass for Roots; learn native drop probabilities | Natural Arts / Rare Materials | Possession proxy not guaranteed drop | XP + crops |
+| **RC-03** Harvest bark | Core | RC-01 | Craft Bark Knife, use on log, collect species-specific bark for ritual incense | Natural Arts / Bark Harvesting | Bark item proxy; operation unverified | XP + logs |
+| **RC-04** Mortar and Pestle | Core | RC-01, RC-02 | Craft Mortar and Diorite Pestle, open exact component recipes in Tablet/JEI | Spellcraft / Mortar | Block+tool possession proxy | XP + flowers |
+| **RC-05** First Spell Powder | Core | RC-04 | Put flower plus exact side ingredients and Old Root mixing base in Mortar; grind encoded Powder | Spellcraft / chosen component | Powder item proxy not exact encoded spell proof | XP + common flower |
+| **RC-06** Staff Imbuer | Core | RC-05 | Put wooden rod plus finished powder into Imbuer, wait past 40 ticks, collect ordinary Staff | Spellcraft / Imbuer | Staff item proxy not machine operation | XP + sticks |
+| **RC-07** Cast your spell | Core | RC-06 | Hold Staff at least 13 ticks and release on permitted target; monitor Terra and finite charges | Spellcraft / Terra | Actual cast manual; item does not prove cast | XP + ordinary food |
+| **RC-08** Terra and modifiers | Core | RC-05, RC-07 | Compare cost and ordinary Staff use count with Verdant Sprig mixing base and Redstone efficiency | Spellcraft / Modifiers / Terra | Manual cast plus modified Powder proxy | XP + redstone |
+| **RC-09** Altar workspace | Core | RC-02, RC-03 | Craft Altar/Braziers, load exact items and individual lit incense at altar Y within four horizontal blocks | Rituals / Basic Ritual Mechanics | Block/ingredient proxies not structure proof | XP + flint |
+| **RC-10** First level-0 ritual | Core | RC-09 | Wooden Pickaxe + Verdant Sprig + Gold Nugget on Altar; two lit Oak Bark incenses; empty-hand sneak-use for 200 ticks | Rituals / Living Tools | Living Pickaxe possession proxy; no cast detector verified | XP + wood |
+| **RC-11** Eight Mundane Stones | Core | RC-10 | Place eight Mundane at offsets (±3,±3), (±3,0), (0,±3) and run legal level-1 ritual | Rituals / Standing Stones | Stone count is not structure/ritual proof | XP + stone |
+| **RC-12** Four raised Attuned Stones | Core | RC-11 | Keep Mundane ring and add Attuned at (±5,+1,0), (0,+1,±5); perform safe level-2 craft | Rituals / Enhanced Standing Stones | Item proxy is not successful layout proof | XP + stone |
+| **RC-13** Rare mixing bases | Optional | RC-05 | Compare Old Root 0, Verdant Sprig 1, Infernal Bulb 2, Dragon's Eye 3 modifier slots | Natural Arts / Rare Materials | Modified Powder inspection/manual | XP + common dust |
+| **RC-14** Safe mobility | Optional | RC-07 | Cast Chorus into clear safe space; inspect Dandelion entity movement on permitted target | Spellcraft / Chorus / Dandelion | Manual observed effect | XP + basic food |
+| **RC-15** Nature growth spell | Optional | RC-07 | Cast Lilac on approved crop; observe stochastic growth and beware high-potency bounds | Spellcraft / Lilac | Actual crop change manual | XP + seeds |
+| **RC-16** Common terrain changes | Optional | RC-07 | Test Lily Pad on replaceable spot or Blue Orchid on approved stone/dirt/sand/gravel not ores | Spellcraft / Lily Pad / Blue Orchid | Manual world change, claim policy unverified | XP + common blocks |
+| **RC-17** Targeting safety | Optional | RC-07 | Read hazards of Azure block deletion, real lightning and Flare explosions; no dangerous mandatory action | Spellcraft / Azure Bluet / Poisonous Potato | Informational checkmark only | XP + food |
+| **RC-18** Recovery magic | Optional | RC-07 | Use Peony flower healing or Pink Tulip under safe circumstances; Apple clears beneficial effects too | Spellcraft / Peony / Pink Tulip / Apple | Manual healing; item not cast proof | XP + ordinary recovery item |
+| **RC-19** Temporary skeletal summon | Optional | RC-07 | Cast Red Tulip in isolation, observe untamed Phantom Skeleton behavior | Spellcraft / Red Tulip | Manual spawned entity observation | XP + blocks |
+| **RC-20** Area crop ritual | Optional | RC-10 | Redstone + Bone Meal + Verdant Sprig on Altar; Wheat, Beetroot, Potato, Carrot incenses; inspect random growth | Rituals / Grow | Manual growth not guaranteed full-field maturity | XP + seeds |
+| **RC-21** Passive animal ritual | Optional | RC-11 | Cow example: Beef + Leather + Bone, Wheat Seeds + Nether Wart incenses; observe actual mob not egg | Rituals / Animal Summoning | No owner/operation event confirmed | XP + breeding food |
+| **RC-22** Change weather | Optional | RC-11 | Perform Cause Rain or Banish Rain exact level1 ritual, observe current level weather | Rituals / Rain | Manual observed world weather | XP + paper |
+| **RC-23** Time Shift caution | Optional | RC-11 | Study Clock-incense Time Shift changing every server level; avoid forced test in live shared world | Rituals / Time Shift | Informational checkmark not time proof | XP + paper |
+| **RC-24** Craft Crystal Staff | Optional | RC-12 | Level2 Diamond Block + Stick + Blaze Powder, Coal Block + Acacia Bark + Verdant Sprig + Birch Bark incense | Rituals / Crystal Staff | Crystal Staff item proxy | XP + common reagent |
+| **RC-25** Imbue Crystal Staff | Optional | RC-24 | Level1+ Altar existing staff + Verdant Sprig and one to four Powder incenses, then cycle and cast paying Terra | Rituals / Imbuer | Modified staff item proxy plus manual cast | XP + flower |
+| **RC-26** Sylvan or Wildwood armor | Optional | RC-12 | Choose level2 armor ritual; compare Sylvan full-set +1 potency with Wildwood self-repair/health recovery | Rituals / Sylvan / Wildwood | Armor item proxy not actual bonus proof | XP + standard armor supplies |
+| **RC-27** Powered standing stone | Optional | RC-12 | Craft and place Grower or Healer stone; observe periodic effect; note Healer buffs hostiles too | Rituals / Powered Stones | Manual effect scope; placement not proof | XP + stone |
+| **RC-28** Item motion is not storage | Optional | RC-27 | Craft Vacuum/Repulsor; demonstrate item-entity movement not inventory sorting/insertion | Rituals / Powered Stones | Manual motion observation | XP + ordinary chest |
+| **RC-29** Engraved Blade | Optional | RC-12 | Use JEI `ritual/crafting/engraved_crafting` actual recipe, choose bark modifier; do not promise Forceful | Rituals / Engraved Blade / JEI | Blade item proxy, modifier effect unverified | XP + ordinary combat food |
+| **RC-30** Runic Focus limits | Optional | RC-12 | Craft/inspect Runic Focus or Charged Focus; explain source found no charge/use consumer | Rituals / Runic Focus | Collection-only no claimed energy function | XP + paper |
+| **RC-31** Hostile rituals and safety | Optional | RC-12 | Research mob summoning without taming, unsafe Sacrifice entity indexing, Flare fire and Life Drain healing budget | Rituals / Monster Summoning / Sacrifice | Informational only; no dangerous obligation | XP + survival supplies |
+| **RC-32** Three mutated flowers | Optional | RC-01, RC-12 | Study dimension/time/effect requirements and Nether Star Mutating Powder; warn on stack consumption and raw Radiant daytime | Natural Arts / Mutating Powder | Information/flower proxy; no forced mutation | XP + basic flowers |
+| **RC-33** Mass Breeding | Optional | RC-12 | In controlled legal pen attempt level2 breeding ritual and observe actual Animal behavior | Rituals / Mass Breeding | Manual; no guaranteed offspring | XP + wheat |
+| **RC-34** Roots food and Dragon's Eye | Optional | RC-02 | Review berries, Poultice, Rooty Stew and Eye teleport; diet tagging belongs to Progression integration | Natural Arts / Berries / Stew | Food possession is not consumption or diet acceptance | XP + ordinary fruit |
+
+## Non-negotiable authoring corrections
+
+1. Native **player Terra** is 40 default, nominal **+1 every 5 ticks** per inspected event (not the apparent 15-tick config), while finite **item Staff uses** start at 15+15×efficiency. Casting requires held use at least 13 ticks. **Even failed insufficient-Terra releases can spend one finite Staff use.** These are not MXP, FE, Source or Botania mana.
+2. Mortar consumes its mixing base and component ingredients; Imbuer takes encoded Powder and wooden rod. Old Root/Verdant Sprig/Infernal Bulb/Dragon's Eye permit 0/1/2/3 modifier slots; Glowstone potency, Redstone efficiency, Gunpowder size.
+3. Ritual Braziers must be **lit**, at altar Y, within X/Z ±4, with exact incense. Altar is empty-main-hand sneak-activated and runs 200 ticks. Level1 has eight Mundane at (±3,±3),(±3,0),(0,±3); level2 adds four Attuned at (±5,+1,0),(0,+1,±5). Extra lit incense can invalidate matching; altar reload during progress may strand it.
+4. Crystal Staff does not pay finite uses, but **still pays Terra**. Source does *not* enforce the Tablet's natural-ground/health exception. Sylvan full set adds potency; Wildwood full set heals *health*, not Terra.
+5. **Do not require unsafe acts:** native Sacrifice loops may hurt the first queried living entity including a player; Flare burns friendly entities; Life Drain heals against requested damage rather than successful loss; no ritual-summoned hostile has proven ownership. Time Shift changes all server levels. Healer stone buffs *hostile* LivingEntities too.
+6. Engraved Blade native JEI recipe is `ritual/crafting/engraved_crafting`, not the Tablet's broken `ritual/engraved_blade` path; Forceful modifier's active effect has no demonstrated consumer. Runic Foci have recipes but no demonstrated universal energy transfer operation.
+7. Three mutated flowers are **optional**; Mutating Powder contains a Nether Star, consumes on failed uses and can delete whole dropped item entities. Radiant Daisy source uses raw world dayTime rather than modulo day cycle. No mandatory chapter quest should instruct a destructive experiment.
+
+## Completeness and QA boundary
+
+Research covers all 29 axes via dossier, all 22 component spells via linked exact-pin catalog, all 46 recipes / 12 ritual effect families, seven functional powered stones plus Aesthetic, staff/armor/blade/focus, native altar and Terra scopes, and TMM claim/faction/MXP/diet compatibility questions. **34 unique IDs validated as an ordered acyclic dependency graph**. Full ritual ingredient/JEI paths live in the linked pinned catalog rather than being retyped as unverified generic crafting shortcuts.
+
+No native mod JAR, code, KubeJS, recipe override, manifest, config, FTB Quest SNBT/GUIDs or full/client smoke was changed or tested. Follow-up real quest ownership must implement detectors and run TMM-specific QA when those files actually change.
