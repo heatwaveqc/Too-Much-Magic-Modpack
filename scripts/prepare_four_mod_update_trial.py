@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import subprocess
 import sys
@@ -124,11 +125,20 @@ def replace_index_hash(index: str, slug: str, digest: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apply", action="store_true", help="Write checked/rehashed pins into this isolated branch")
+    parser.add_argument("--ci", action="store_true", help="Allow owner-authorized detached exact-SHA QA runner")
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     active = subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip()
     if active != BRANCH:
-        raise RuntimeError(f"Unsafe checkout: expected branch {BRANCH}; got {active}")
+        # Exact-SHA detached checkout is allowed only for owner-comment QA runs.
+        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        approved = os.getenv("TMM_UPDATE_CANDIDATE_SHA", "")
+        if not (args.ci and args.apply and active == "" and os.getenv("GITHUB_ACTIONS") == "true"
+                and os.getenv("GITHUB_EVENT_NAME") == "issue_comment"
+                and re.fullmatch(r"[0-9a-f]{40}", approved) and approved == head):
+            raise RuntimeError(f"Unsafe checkout: expected {BRANCH} or authorized exact-SHA detached CI; got {active}")
+    if args.ci and not args.apply:
+        raise RuntimeError("--ci is allowed only with --apply")
     if subprocess.run(["git", "diff", "--quiet"], cwd=root, check=False).returncode:
         raise RuntimeError("Worktree is dirty; do not overwrite concurrent work")
     results = {}
