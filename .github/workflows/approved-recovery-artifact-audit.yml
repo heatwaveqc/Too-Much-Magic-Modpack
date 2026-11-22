@@ -22,6 +22,7 @@ on:
       - 'mods/prefab-custom-addon.pw.toml'
       - 'mods/yungs-better-end-island.pw.toml'
       - 'scripts/verify_approved_recovery_artifacts.py'
+      - 'scripts/probe_missing_approved_mods.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -36,6 +37,9 @@ jobs:
         run: python3 scripts/verify_approved_recovery_artifacts.py
       - name: Fetch only approved candidate JARs from official sources and verify
         run: python3 scripts/verify_approved_recovery_artifacts.py --verify-official --json-out approved-recovery-audit.json
+      - name: Probe three official missing dependencies/addons (no pack activation)
+        if: always()
+        run: python3 scripts/probe_missing_approved_mods.py
       - name: Preserve evidence for integration review
         if: always()
         uses: actions/upload-artifact@v4
