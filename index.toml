@@ -62,7 +62,7 @@ hash = "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
-hash = "a8ca544928575479471082fa94471d341202ee4b8691cd9e011e63419592d2f7"
+hash = "dfa53a3e9f5fcdf112f83b2943fab03b7bc3f943045799264a328e3381c4f936"
 
 [[files]]
 file = "config/ftbchunks-client.snbt"
