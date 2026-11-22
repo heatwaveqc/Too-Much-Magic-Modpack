@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = IItemExtension.class, priority = 900, remap = false)
 public interface DragonDrinkPermissionMixin {
     @ModifyReturnValue(method = "getFoodProperties", at = @At("RETURN"),
-        require = 0, remap = false)
+        require = 1, remap = false)
     private FoodProperties tmm$approvedDragonFood(FoodProperties nativeResult,
                                                   ItemStack stack, LivingEntity entity) {
         return DragonDietHook.restore(stack, entity, nativeResult);
