@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — Flashing Weald Walker
 
+**Version update:** Current0.7.11.3changes serialized spell visuals/color but preserves six-part mechanical sequence; see [current delta](ars-elemental-pinned-phalanx-worldgen.md).
+
 Exact addon SHA1 `562f640916aa6f5c83b3b3ee2384ca828b870e01`, native Ars5.13.5 SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; [artifact/guide](ars-elemental-pinned-guide-urn.md). Evidence: ModEntities, EntityAttributes, RitualAwakeningMixin and required mixin JSON, AEDocumentation, ModWorldgen; native exact RitualAwakening, WealdWalker, CastSpellGoal and SmashGoal (selected class/inner extraction and CFR0.152). Source routes only; no awakening/combat/client test.
 
 ## Awaken the golden tree

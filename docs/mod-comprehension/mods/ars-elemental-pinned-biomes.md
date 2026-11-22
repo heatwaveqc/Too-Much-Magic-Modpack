@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — five biomes, Vexing Caves and Starbuncle Shrine
 
+**Version update:** Current0.7.11.3reduces Vexing carver probability/height/horizontal multiplier and changes Blackstone radii; [current delta](ars-elemental-pinned-phalanx-worldgen.md).
+
 Exact addon SHA1 `562f640916aa6f5c83b3b3ee2384ca828b870e01`; [receipt](ars-elemental-pinned-guide-urn.md). Five biome JSON, configured/placed features, biome/structure tags, three structure/pool files, compressed shrine NBT parsed read-only; ArsElemental/TerrablenderAE/ModWorldgen, SourcestoneFormationFeature/QuartzSpikeFeature/BlackstoneFormation, required weather mixin and Breeze placement handler. No new world, terrain, spawn, structure or resource harvest acceptance. Mage combat/loot remains a separate next audit.
 
 ## Access and what generation actually adds

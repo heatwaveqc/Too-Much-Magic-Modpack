@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-22 23:17UTC current Phalanx/worldgen deltas
+
+- Added ars-elemental-pinned-phalanx-worldgen.md;40Elementalcompanions. **Current0.7.11.3UNCONDITIONALLY registersPhalanx**, javap144/147beforeemptyproduction240/246. Corrected priorcurrentConfluxreceipt: wrapperonlytogglesemptybranch now, optionstillgatesConflux160XPrecipe(defaultfalse). Phalanxnative3/175, currentHomingbasicIgnores(no oldanimalexclusion), compatiblePierce/Amplifyremoved, lifetime1200+200D, age20/indexstagger/half-lifeauto-launch, noSave/visuals. Confluxbilling/carrier overlaynotyetclosed.
+- WalkerBase64gzipdecodesJSON(!NBT), sixrecipepartsunchanged ProjectileSparkLaunchLaunchDelayWindShear/newspellRGB255,25,180/timelines; oldwalkermodelcolorassignmentremoved. Currentcarverprob.12/YaboveBottom8..80/horiz2..5; Blackstoneradius3..7/bound15. EvaporateMud→ClaynowcallsShapersFocuspropagatebeforecancel. ModItemsCFRbodyidentical. Native identifieddelta reviewed, fullrecipe184/pilot/profile consolidation stillopen.
+- Fetchedintegrationc11a95fc14955b3e646885d37e33636b9e37ddf1; noArspindelta17a564d8. No trackedconfig/defaultconfigs/kubejs Confluxoptionsoverridesfound, notactualgeneratedworldconfig/assembleddonorproof.
+- **Next currentConflux optionalcontent/4recipe/registration/guide and billing/budgets/carriers/discount/reflection**; APIsstillneedtwo-endednative+installedbridges. FullnewCFRconflux-0156-fresh; conditions3alreadyread (Phalanxstartupbool,Nearbybool,registeredglyph lookup). ThenElementalfull184recipe/registry/pilot/profile, Elemancy/Additions/Arscombined/othermajors.9complete33researching1staleof43/nohardblocker/hourlyactive. Docs only; GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — protected book/Crush and current Plinth
 
 - Added ars-elemental-pinned-book-crush.md: invincible_book actualsamebookcomponentcopy/P4Etrue,5pedestalNetherite+4Essences/2000Sourcebefore210counter, flagalreadytrue rejects. ItemEntity.hurt immunityexceptbypass-tag; expiryhandlerrequestssetUnlimitedLifetime/extraLife0 butloaderrecipientnotexactverified, no universalnolosspromise. JEIcustomcategory/nativeSpellBooksappendedpage. Crush3recipes expected3.5Powder/4Meal/3.5String, independentrolls/maxRange1; Sensitiveitemcap4+4AOE+4Pierce/consumeunitbeforespawn; ordinarywoolblockturnsAIR.39Elementalcompanions.
