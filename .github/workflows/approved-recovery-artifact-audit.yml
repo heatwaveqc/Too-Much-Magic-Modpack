@@ -26,6 +26,7 @@ on:
       - 'scripts/verify_approved_recovery_artifacts.py'
       - 'scripts/probe_missing_approved_mods.py'
       - 'scripts/audit_foundation_overlap.py'
+      - 'scripts/probe_furniture_unbundled.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -46,6 +47,10 @@ jobs:
         if: always()
         continue-on-error: true
         run: python3 scripts/probe_missing_approved_mods.py
+      - name: Probe official unbundled Furniture release for dependency remediation
+        if: always()
+        continue-on-error: true
+        run: python3 scripts/probe_furniture_unbundled.py
       - name: Audit pre-existing Let's Do JARs against standalone Foundation (no game boot)
         run: python3 scripts/audit_foundation_overlap.py
       - name: Preserve evidence for integration review
