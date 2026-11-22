@@ -1,0 +1,13 @@
+{
+  "canReveal": false,
+  "canSpawn": false,
+  "canWanderBuy": false,
+  "linkedProfessions": [],
+  "objectives": [
+    "tmm_ars_nouveau_objs"
+  ],
+  "replace": true,
+  "rewards": [
+    "tmm_ars_nouveau_rews"
+  ]
+}

@@ -41,6 +41,8 @@ def native_balance_family(family, spec, review, profile):
             raise ValueError("invalid contract quantity range")
         return lo, hi
     def make_entry(kind, ident, lo, hi, worth):
+        if isinstance(worth, float) and worth.is_integer():
+            worth = int(worth)
         return {"type":kind,"content":ident,"amount":{"min":lo,"max":hi},"unitWorth":worth}
     def key_for(kind, ident):
         return kind+"_"+re.sub(r"[^a-z0-9_]","_",ident)
@@ -61,7 +63,12 @@ def native_balance_family(family, spec, review, profile):
             raise ValueError("unknown native rarity")
         if ident in family.get("premium_reward_candidates",[]) and rank[tier] < rank["EPIC"]:
             raise ValueError("premium payout requires epic or legendary rarity")
-        emc=positive(prices[ident],ident)
+        emc=prices.get(ident)
+        if type(emc) is not int or emc < 0:
+            raise ValueError("invalid reward EMC: "+ident)
+        evidence = review.get("unpriced_reward_items",{}).get(ident)
+        if emc == 0 and (not isinstance(evidence, str) or not evidence.strip()):
+            raise ValueError("zero-EMC reward lacks explicit review evidence: "+ident)
         worth=max(emc,positive(tiers[tier]["floor_emc"],tier)/lo)/scale
         e=make_entry("item",ident,lo,hi,worth)
         e["rarity"]=tier
@@ -110,13 +117,13 @@ def native_balance_family(family, spec, review, profile):
             raise ValueError("duplicate objective ID")
         e=make_entry(kind,ident,lo,hi,emc/scale)
         if kind=="entity":
-            e["timeMult"]=3.0
+            e["timeMult"]=3
         elif kind=="gateway":
             e["type"]="criteria"
             e["content"]="gateways:finish_gateway"
             e["conditions"]={"gateway":ident}
             e["name"]=row.get("name","Complete "+ident)
-            e["timeMult"]=4.0
+            e["timeMult"]=4
         objs[key]=e
     if not objs:
         raise ValueError("empty objective pool")

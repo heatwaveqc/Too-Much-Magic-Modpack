@@ -1,0 +1,27 @@
+{
+  "content": {
+    "item_ars_nouveau_air_essence": {
+      "amount": {
+        "max": 2,
+        "min": 1
+      },
+      "content": "ars_nouveau:air_essence",
+      "rarity": "UNCOMMON",
+      "repRequired": 0,
+      "type": "item",
+      "unitWorth": 16
+    },
+    "item_ars_nouveau_source_gem": {
+      "amount": {
+        "max": 4,
+        "min": 2
+      },
+      "content": "ars_nouveau:source_gem",
+      "rarity": "COMMON",
+      "repRequired": -30,
+      "type": "item",
+      "unitWorth": 2
+    }
+  },
+  "replace": true
+}

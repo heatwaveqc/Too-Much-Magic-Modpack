@@ -1,0 +1,28 @@
+{
+  "content": {
+    "gateway_tmm_mob_ars_wilden_hunter": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "conditions": {
+        "gateway": "tmm:mob_ars_wilden_hunter"
+      },
+      "content": "gateways:finish_gateway",
+      "name": "Defeat the Wilden Hunter Gateway",
+      "timeMult": 4,
+      "type": "criteria",
+      "unitWorth": 64
+    },
+    "item_minecraft_lapis_lazuli": {
+      "amount": {
+        "max": 64,
+        "min": 4
+      },
+      "content": "minecraft:lapis_lazuli",
+      "type": "item",
+      "unitWorth": 54
+    }
+  },
+  "replace": true
+}

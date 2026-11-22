@@ -11,9 +11,9 @@ class TestPilot(unittest.TestCase):
     def setUp(self):
         self.output={p:json.loads(s) for p,s in pilot.build().items()}
         self.review=json.loads((ROOT/"manifest/bountiful-live-pilot-review.json").read_text())
-    def test_three_pools(self):
-        self.assertEqual(set(self.review["approved_entries"]),{"hunting","culinary","fishing"})
-        self.assertEqual(len(self.output),14)
+    def test_four_pools(self):
+        self.assertEqual(set(self.review["approved_entries"]),{"hunting","culinary","fishing","ars_nouveau"})
+        self.assertEqual(len(self.output),18)
     def test_no_village_boards_or_default_pools(self):
         cfg=self.output["config/bountiful/bountiful.json"]
         self.assertEqual(cfg["board"]["villageGenFrequency"],0)
@@ -33,7 +33,23 @@ class TestPilot(unittest.TestCase):
         self.assertFalse({"bountiful:bounty","bountiful:decree"}&set(self.review["effective_emc"]))
         for k in self.review["approved_entries"]:
             items=self.output[f"config/bountiful/bounty_pools/tmm_{k}_rews.json"]["content"]
-            self.assertTrue(all(i["unitWorth"]>0 and i["content"].startswith("minecraft:") for i in items.values()))
+            self.assertTrue(all(i["unitWorth"]>0 for i in items.values()))
+    def test_ars_custom_rewards_and_effort_bands(self):
+        rewards=self.output["config/bountiful/bounty_pools/tmm_ars_nouveau_rews.json"]["content"]
+        self.assertEqual({v["content"] for v in rewards.values()},
+            {"ars_nouveau:source_gem","ars_nouveau:air_essence"})
+        self.assertEqual({v["rarity"] for v in rewards.values()},{"COMMON","UNCOMMON"})
+        self.assertEqual(set(self.review["unpriced_reward_items"]),
+            {"ars_nouveau:source_gem","ars_nouveau:air_essence"})
+        objectives=self.output["config/bountiful/bounty_pools/tmm_ars_nouveau_objs.json"]["content"]
+        self.assertIn("item_minecraft_lapis_lazuli",objectives)
+        self.assertTrue(any(v["type"]=="criteria" and
+            v["conditions"]=={"gateway":"tmm:mob_ars_wilden_hunter"} for v in objectives.values()))
+        recipe=self.output["kubejs/data/tmm/recipe/bountiful/tmm_ars_nouveau.json"]
+        self.assertEqual(recipe["ingredients"],
+            [{"item":"minecraft:paper"},{"item":"ars_nouveau:source_gem"}])
+        self.assertEqual(recipe["result"]["components"]["bountiful:decree_data"],
+            {"ids":["tmm_ars_nouveau"],"rank":1})
     def test_paper_recipes(self):
         for k in self.review["approved_entries"]:
             recipe=self.output[f"kubejs/data/tmm/recipe/bountiful/tmm_{k}.json"]

@@ -7,7 +7,10 @@
   "decree_recipe_profile": "test_paper_reagent_v1",
   "qa_scope": "disposable_live_pilot_only_not_final_economy_or_prod_release",
   "valuation_source": "docs/qa/surveys-2026-11-18/projecte-mapped-entries.json historical actual mapped keys",
+  "unpriced_reward_source": "docs/qa/surveys-2026-11-18/items.csv rows for ars_nouveau:source_gem and ars_nouveau:air_essence",
   "registered_items": [
+    "ars_nouveau:air_essence",
+    "ars_nouveau:source_gem",
     "bountiful:decree",
     "minecraft:arrow",
     "minecraft:bone",
@@ -17,17 +20,21 @@
     "minecraft:cooked_chicken",
     "minecraft:golden_carrot",
     "minecraft:leather",
+    "minecraft:lapis_lazuli",
     "minecraft:nautilus_shell",
     "minecraft:paper",
     "minecraft:rotten_flesh",
     "minecraft:salmon"
   ],
   "effective_emc": {
+    "ars_nouveau:air_essence": 0,
+    "ars_nouveau:source_gem": 0,
     "minecraft:paper": 1,
     "minecraft:bone": 144,
     "minecraft:rotten_flesh": 32,
     "minecraft:arrow": 14,
     "minecraft:leather": 63,
+    "minecraft:lapis_lazuli": 864,
     "minecraft:bread": 12,
     "minecraft:cooked_beef": 64,
     "minecraft:cooked_chicken": 64,
@@ -37,11 +44,17 @@
     "minecraft:nautilus_shell": 1024
   },
   "approved_reward_items": [
+    "ars_nouveau:air_essence",
+    "ars_nouveau:source_gem",
     "minecraft:arrow",
     "minecraft:leather",
     "minecraft:golden_carrot",
     "minecraft:nautilus_shell"
   ],
+  "unpriced_reward_items": {
+    "ars_nouveau:air_essence": "November 18 same-build ProjectE export reports zero_api_value; native UNCOMMON effort floor supplies Bountiful matching worth pending final EMC mapping",
+    "ars_nouveau:source_gem": "November 18 same-build ProjectE export reports zero_api_value; native COMMON effort floor supplies Bountiful matching worth pending final EMC mapping"
+  },
   "registered_entities": [
     "minecraft:zombie"
   ],
@@ -64,6 +77,37 @@
     "tmm:mob_irons_cultist": 1024
   },
   "approved_entries": {
+    "ars_nouveau": {
+      "rewards": [
+        {
+          "item": "ars_nouveau:source_gem",
+          "min": 2,
+          "max": 4,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "ars_nouveau:air_essence",
+          "min": 1,
+          "max": 2,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "objectives": [
+        {
+          "type": "item",
+          "item": "minecraft:lapis_lazuli",
+          "min": 4,
+          "max": 64
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_hunter",
+          "min": 1,
+          "max": 1,
+          "name": "Defeat the Wilden Hunter Gateway"
+        }
+      ]
+    },
     "hunting": {
       "rewards": [
         {

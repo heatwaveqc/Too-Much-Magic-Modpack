@@ -15,13 +15,13 @@ def build():
     pin=tomllib.loads((ROOT/"mods/bountiful.pw.toml").read_text())
     assert pin["download"]["hash-format"]=="sha512"
     assert review["audit_hash"]==pin["download"]["hash"]
-    assert set(review["approved_entries"])=={"hunting","culinary","fishing"}
+    assert set(review["approved_entries"])=={"hunting","culinary","fishing","ars_nouveau"}
     for key in review["approved_gateway_ids"]:
         path=ROOT/"kubejs/data/tmm/gateways"/(key.split(":")[1]+".json")
         gateway=json.loads(path.read_text())
         assert gateway["type"]=="gateways:normal" and len(gateway["waves"])==3, key
     result=compile_candidate(catalog,{"bountiful":{"hashes":{"sha512":review["audit_hash"]}}},review)
-    assert len(result)==14, sorted(result)
+    assert len(result)==18, sorted(result)
     return result
 
 def main():

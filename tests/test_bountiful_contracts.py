@@ -119,6 +119,23 @@ class TestBountifulCompiler(unittest.TestCase):
         r["balance_profile"]="native_v1"
         r["approved_entries"]["farming"]["reward"]["rarity"]="EPIC"
         with self.assertRaisesRegex(ValueError,"no feasible objective"):m.compile_candidate(C,A,r)
+    def test_native_zero_emc_reward_requires_explicit_review(self):
+        r=copy.deepcopy(R)
+        r["balance_profile"]="native_v1"
+        r["registered_items"]=["ars_nouveau:source_gem","minecraft:lapis_lazuli"]
+        r["effective_emc"]={"ars_nouveau:source_gem":0,"minecraft:lapis_lazuli":864}
+        r["approved_reward_items"]=["ars_nouveau:source_gem"]
+        r["approved_entries"]={"ars_nouveau":{"rewards":[
+            {"item":"ars_nouveau:source_gem","min":2,"max":4,"rarity":"COMMON"}],
+            "objectives":[{"item":"minecraft:lapis_lazuli","min":4,"max":64}]}}
+        with self.assertRaisesRegex(ValueError,"explicit review evidence"):
+            m.compile_candidate(C,A,r)
+        r["unpriced_reward_items"]={"ars_nouveau:source_gem":"same-build zero_api_value"}
+        files=m.compile_candidate(C,A,r)
+        reward=next(iter(json.loads(files[
+            "config/bountiful/bounty_pools/tmm_ars_nouveau_rews.json"])["content"].values()))
+        self.assertEqual(reward["unitWorth"],2)
+        self.assertEqual(reward["rarity"],"COMMON")
     def test_native_premium_only_has_no_rep_deadlock(self):
         r=copy.deepcopy(R)
         r["balance_profile"]="native_v1"
