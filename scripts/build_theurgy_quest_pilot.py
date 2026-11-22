@@ -81,6 +81,17 @@ def check_spec(spec: dict) -> None:
             assert node["criterion"]["type"] == "checkmark"
     assert not (item_tasks & {x["reward"]["item"] for x in quests})
     assert spec["existing_orientation"]["quest_id"] == id_for("quest", "TH-00")
+    # Art is background-like composition, never a click-blocking overlay.
+    for name, x, y, width, height in ASSETS:
+        for node in quests:
+            role = node["node_role"]
+            size = (1.6 if role == "orientation" else
+                    1.7 if role == "advanced_capstone" else
+                    1.4 if role in ("first_capstone", "core_capstone") else 1.0)
+            px, py = node["position"]
+            collides = (abs(x - px) < (width + size) / 2 + 0.1 and
+                        abs(y - py) < (height + size) / 2 + 0.1)
+            assert not collides, f"{name} overlaps quest {node['key']}"
 
 
 def render(spec: dict) -> dict[str, str]:
