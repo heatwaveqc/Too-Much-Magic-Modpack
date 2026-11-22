@@ -201,7 +201,7 @@ public final class MechanicalSpec {
     public static int nextStreak(int prior,int cap,boolean sameSequence){return Math.min(cap,sameSequence?Math.max(0,prior)+1:1);}
     /** Apply a single bounded positive duration bonus; preserve infinite/invalid durations. */
     public static int increasedDuration(int ticks,double bonus){
-        if(ticks<=0)return ticks;
+        if(ticks<=1)return ticks;
         double multiplier=1+Math.min(0.95,Math.max(0,bonus));
         return (int)Math.min(Integer.MAX_VALUE,Math.ceil((double)ticks*multiplier));
     }
