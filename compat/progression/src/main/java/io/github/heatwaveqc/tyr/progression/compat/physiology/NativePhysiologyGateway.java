@@ -45,9 +45,9 @@ public final class NativePhysiologyGateway {
             joinedPaths(player), NativePhysiologyObservations.observe(player), form, rules);
     }
 
-    /** First-class Newbie and Normie names are not specialist enrollment. */
+    /** Baseline Newbie/Normie and universal Core are never specialist admission vetoes. */
     public static Rules withApprovedPairData(Map<String, Set<Form>> approvedPairs) {
-        return new Rules(Set.of("tyr_progression:newbie", "tyr_progression:normie"),
+        return new Rules(Set.of("tyr_progression:newbie", "tyr_progression:normie", "tyr_progression:core"),
             approvedPairs);
     }
 }
