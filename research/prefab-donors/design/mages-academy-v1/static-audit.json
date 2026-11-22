@@ -1,0 +1,245 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    47,
+    33,
+    36
+  ],
+  "surfaceY": 1,
+  "nonair": 6004,
+  "explicitAir": 12442,
+  "paletteStates": 28,
+  "counts": {
+    "minecraft:stone_bricks": 1655,
+    "minecraft:dark_oak_planks": 1479,
+    "minecraft:air": 12442,
+    "minecraft:chiseled_stone_bricks": 12,
+    "minecraft:crafting_table": 2,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 19,
+    "minecraft:white_bed[facing=north,occupied=false,part=head]": 2,
+    "minecraft:white_bed[facing=north,occupied=false,part=foot]": 2,
+    "minecraft:barrel[facing=north,open=false]": 6,
+    "minecraft:dark_oak_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]": 16,
+    "irons_spellbooks:inscription_table[facing=north,type=right,waterlogged=false]": 1,
+    "minecraft:furnace[facing=north,lit=false]": 1,
+    "irons_spellbooks:inscription_table[facing=north,type=left,waterlogged=false]": 1,
+    "minecraft:chest[facing=north,type=single,waterlogged=false]": 1,
+    "irons_spellbooks:scroll_forge[facing=south]": 1,
+    "minecraft:purple_terracotta": 804,
+    "irons_spellbooks:nether_brick_pillar[axis=y]": 344,
+    "irons_spellbooks:wisewood_bookshelf": 18,
+    "minecraft:barrel[facing=south,open=false]": 1,
+    "minecraft:lectern[facing=south,has_book=false,powered=false]": 1,
+    "minecraft:purple_stained_glass": 580,
+    "minecraft:deepslate_tile_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 351,
+    "minecraft:deepslate_tile_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 363,
+    "minecraft:deepslate_tiles": 301,
+    "minecraft:yellow_terracotta": 1,
+    "minecraft:sand": 24,
+    "minecraft:water[level=0]": 12,
+    "minecraft:sugar_cane[age=0]": 6
+  },
+  "starterChest": {
+    "pos": [
+      7,
+      2,
+      21
+    ],
+    "nbt": {
+      "id": "minecraft:chest",
+      "Items": [
+        {
+          "Slot": 0,
+          "id": "irons_spellbooks:graybeard_staff",
+          "count": 1
+        },
+        {
+          "Slot": 1,
+          "id": "irons_spellbooks:copper_spell_book",
+          "count": 1
+        },
+        {
+          "Slot": 2,
+          "id": "irons_spellbooks:scroll",
+          "count": 1,
+          "components": {
+            "irons_spellbooks:spell_container": {
+              "maxSpells": 1,
+              "spellWheel": false,
+              "mustEquip": false,
+              "data": [
+                {
+                  "id": "irons_spellbooks:spectral_hammer",
+                  "index": 0,
+                  "level": 1,
+                  "locked": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Slot": 3,
+          "id": "irons_spellbooks:common_ink",
+          "count": 5
+        },
+        {
+          "Slot": 4,
+          "id": "minecraft:blaze_rod",
+          "count": 3
+        },
+        {
+          "Slot": 5,
+          "id": "irons_spellbooks:frozen_bone",
+          "count": 3
+        },
+        {
+          "Slot": 6,
+          "id": "irons_spellbooks:lightning_bottle",
+          "count": 3
+        },
+        {
+          "Slot": 7,
+          "id": "irons_spellbooks:divine_pearl",
+          "count": 3
+        },
+        {
+          "Slot": 8,
+          "id": "minecraft:ender_pearl",
+          "count": 3
+        },
+        {
+          "Slot": 9,
+          "id": "irons_spellbooks:blood_vial",
+          "count": 3
+        },
+        {
+          "Slot": 10,
+          "id": "minecraft:emerald",
+          "count": 3
+        },
+        {
+          "Slot": 11,
+          "id": "minecraft:poisonous_potato",
+          "count": 3
+        }
+      ]
+    }
+  },
+  "schoolCount": 8,
+  "scroll": {
+    "spell": "irons_spellbooks:spectral_hammer",
+    "level": 1,
+    "rarity": "UNCOMMON"
+  },
+  "cane": [
+    [
+      35,
+      2,
+      22
+    ],
+    [
+      35,
+      2,
+      24
+    ],
+    [
+      38,
+      2,
+      22
+    ],
+    [
+      38,
+      2,
+      24
+    ],
+    [
+      41,
+      2,
+      22
+    ],
+    [
+      41,
+      2,
+      24
+    ]
+  ],
+  "stairs": 16,
+  "zones": [
+    {
+      "name": "Apothic Enchanting adjustable library",
+      "bounds": [
+        15,
+        10,
+        10,
+        27,
+        15,
+        20
+      ],
+      "air": 858
+    },
+    {
+      "name": "Practice court",
+      "bounds": [
+        34,
+        2,
+        6,
+        44,
+        32,
+        16
+      ],
+      "air": 3751
+    },
+    {
+      "name": "Iron cauldron future position",
+      "bounds": [
+        5,
+        2,
+        17,
+        5,
+        3,
+        17
+      ],
+      "air": 2
+    },
+    {
+      "name": "Iron arcane anvil future position",
+      "bounds": [
+        9,
+        2,
+        17,
+        9,
+        3,
+        17
+      ],
+      "air": 2
+    },
+    {
+      "name": "Scriptor writing table reservation",
+      "bounds": [
+        24,
+        2,
+        16,
+        26,
+        4,
+        18
+      ],
+      "air": 27
+    }
+  ],
+  "limitations": [
+    "Faerithia donor binary not audited/available; original academy, no donor geometry or rights claim.",
+    "Exact pinned-source items/codec verified; client scroll and inventory load/claim/duplication, inscription halves, modded states, default tile initialization and import untested.",
+    "Eldritch focus excluded by owner; no research unlocked or addon school focus included.",
+    "Native simple Nether Brick Pillar and Wisewood Bookshelf used; no bulk Wisewood Planks with unverified survival recipe. EMC/material parity pending.",
+    "Scriptor writing desk and advanced Iron/Apothic devices reserved not placed; full secondary functional pattern/automation needs live QA.",
+    "One-time mutually exclusive starter claim must be enforced before deployment; no runtime or grants wired."
+  ],
+  "nbtRoundtrip": {
+    "voxelCount": 18446,
+    "chestCount": 1,
+    "stacks": 12,
+    "items": 32
+  },
+  "nbtBytes": 666882
+}

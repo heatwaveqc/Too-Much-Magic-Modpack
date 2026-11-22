@@ -1,0 +1,87 @@
+{
+  "pos": [
+    7,
+    2,
+    21
+  ],
+  "nbt": {
+    "id": "minecraft:chest",
+    "Items": [
+      {
+        "Slot": 0,
+        "id": "irons_spellbooks:graybeard_staff",
+        "count": 1
+      },
+      {
+        "Slot": 1,
+        "id": "irons_spellbooks:copper_spell_book",
+        "count": 1
+      },
+      {
+        "Slot": 2,
+        "id": "irons_spellbooks:scroll",
+        "count": 1,
+        "components": {
+          "irons_spellbooks:spell_container": {
+            "maxSpells": 1,
+            "spellWheel": false,
+            "mustEquip": false,
+            "data": [
+              {
+                "id": "irons_spellbooks:spectral_hammer",
+                "index": 0,
+                "level": 1,
+                "locked": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "Slot": 3,
+        "id": "irons_spellbooks:common_ink",
+        "count": 5
+      },
+      {
+        "Slot": 4,
+        "id": "minecraft:blaze_rod",
+        "count": 3
+      },
+      {
+        "Slot": 5,
+        "id": "irons_spellbooks:frozen_bone",
+        "count": 3
+      },
+      {
+        "Slot": 6,
+        "id": "irons_spellbooks:lightning_bottle",
+        "count": 3
+      },
+      {
+        "Slot": 7,
+        "id": "irons_spellbooks:divine_pearl",
+        "count": 3
+      },
+      {
+        "Slot": 8,
+        "id": "minecraft:ender_pearl",
+        "count": 3
+      },
+      {
+        "Slot": 9,
+        "id": "irons_spellbooks:blood_vial",
+        "count": 3
+      },
+      {
+        "Slot": 10,
+        "id": "minecraft:emerald",
+        "count": 3
+      },
+      {
+        "Slot": 11,
+        "id": "minecraft:poisonous_potato",
+        "count": 3
+      }
+    ]
+  }
+}

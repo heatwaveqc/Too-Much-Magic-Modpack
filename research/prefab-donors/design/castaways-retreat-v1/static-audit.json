@@ -1,0 +1,211 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    35,
+    16,
+    33
+  ],
+  "surfaceY": 3,
+  "deckY": 4,
+  "nonair": 1897,
+  "nativeBlocks": 1683,
+  "explicitAir": 5633,
+  "omitted": 10950,
+  "belowDeckAir": 0,
+  "paletteStates": 25,
+  "zones": {
+    "palm_bar": [
+      24,
+      5,
+      9,
+      26,
+      7,
+      10
+    ],
+    "fridge": [
+      27,
+      5,
+      5,
+      27,
+      7,
+      6
+    ],
+    "seafood_prep": [
+      20,
+      5,
+      5,
+      22,
+      7,
+      7
+    ],
+    "keg": [
+      23,
+      5,
+      5,
+      23,
+      7,
+      7
+    ],
+    "tackle_box": [
+      9,
+      5,
+      18,
+      10,
+      7,
+      19
+    ],
+    "casting_end": [
+      15,
+      5,
+      28,
+      19,
+      15,
+      32
+    ]
+  },
+  "routeGoals": {
+    "bedroom": [
+      6,
+      8
+    ],
+    "living_room": [
+      12,
+      8
+    ],
+    "bar": [
+      25,
+      12
+    ],
+    "kitchen": [
+      24,
+      6
+    ],
+    "tackle": [
+      9,
+      19
+    ],
+    "sun_deck": [
+      26,
+      19
+    ],
+    "pier_end": [
+      17,
+      32
+    ],
+    "rear_porch": [
+      10,
+      16
+    ]
+  },
+  "starterChest": {
+    "pos": [
+      8,
+      5,
+      18
+    ],
+    "items": [
+      {
+        "Slot": 0,
+        "id": "aquaculture:iron_fishing_rod",
+        "count": 1,
+        "components": {
+          "minecraft:custom_name": "{\"text\":\"Castaway's Rod\",\"italic\":false}",
+          "minecraft:enchantments": {
+            "levels": {
+              "minecraft:mending": 1,
+              "minecraft:unbreaking": 3,
+              "minecraft:luck_of_the_sea": 3,
+              "minecraft:lure": 3
+            }
+          }
+        }
+      },
+      {
+        "Slot": 1,
+        "id": "aquaculture:tackle_box",
+        "count": 1
+      },
+      {
+        "Slot": 2,
+        "id": "aquaculture:iron_fillet_knife",
+        "count": 1
+      },
+      {
+        "Slot": 3,
+        "id": "beachparty:palm_bar",
+        "count": 1
+      },
+      {
+        "Slot": 4,
+        "id": "beachparty:mini_fridge",
+        "count": 1
+      },
+      {
+        "Slot": 5,
+        "id": "beachparty:beach_chair",
+        "count": 2
+      },
+      {
+        "Slot": 6,
+        "id": "beachparty:beach_parasol",
+        "count": 1
+      },
+      {
+        "Slot": 7,
+        "id": "farmersdelight:cutting_board",
+        "count": 1
+      },
+      {
+        "Slot": 8,
+        "id": "farmersdelight:cooking_pot",
+        "count": 1
+      },
+      {
+        "Slot": 9,
+        "id": "farmersdelight:stove",
+        "count": 1
+      },
+      {
+        "Slot": 10,
+        "id": "brewinandchewin:keg",
+        "count": 1
+      },
+      {
+        "Slot": 11,
+        "id": "minecraft:oak_boat",
+        "count": 1
+      }
+    ]
+  },
+  "decodedNbtBlocks": 7530,
+  "rawSha256": "a285dd32c1eb4660b90b04165447fd195f2f6ed3b706cbe22bcf79d74137e4aa",
+  "gzipSha256": "95055b0c3e04e0e52674482a9de1fbadd87439a1ef5b4582a4e6927d4304d6b3",
+  "gzipBytes": 20376,
+  "counts": {
+    "beachparty:palm_log[axis=y]": 527,
+    "beachparty:palm_planks": 648,
+    "beachparty:thatch": 136,
+    "beachparty:thatch_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 186,
+    "beachparty:thatch_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 186,
+    "minecraft:air": 5633,
+    "minecraft:barrel[facing=up,open=false]": 8,
+    "minecraft:birch_door[facing=north,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:birch_door[facing=north,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:birch_door[facing=south,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:birch_door[facing=south,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:birch_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 7,
+    "minecraft:birch_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 10,
+    "minecraft:birch_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]": 2,
+    "minecraft:bookshelf": 1,
+    "minecraft:chest[facing=south,type=single,waterlogged=false]": 1,
+    "minecraft:crafting_table": 3,
+    "minecraft:cyan_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:cyan_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:cyan_terracotta": 65,
+    "minecraft:cyan_wool": 4,
+    "minecraft:glass": 24,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 10,
+    "minecraft:smoker[facing=south,lit=false]": 1,
+    "minecraft:white_terracotta": 70
+  }
+}

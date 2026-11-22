@@ -52,6 +52,15 @@ if [[ "${SMOKE_WITH_MODS:-0}" == "1" ]]; then
     mkdir -p "$WORK_DIR/defaultconfigs"
     cp -a "$ROOT/defaultconfigs/." "$WORK_DIR/defaultconfigs/"
   fi
+  # The next OWNER-AUTHORIZED full smoke stages custom blueprints into this
+  # already-empty, disposable server work directory. No user's world is touched.
+  if [[ -f "$ROOT/research/prefab-donors/stage_all_houses_qa.py" ]]; then
+    printf 'DISPOSABLE QA ONLY\n' > "$WORK_DIR/.tmm-disposable-qa"
+    python3 "$ROOT/research/prefab-donors/stage_all_houses_qa.py" \
+      --stage-qa-game-dir "$WORK_DIR" --target server > "$WORK_DIR/housing-previews-static.json"
+    test "$(find "$WORK_DIR/prefab-extension/server-cache" -maxdepth 1 -name '*.nbt' -type f | wc -l)" -eq 18
+    echo 'Staged 18 approved custom-house NBTs for authorized modded smoke (not granted)'
+  fi
   echo "Starting hash-pinned MODDED dedicated server"
 else
   echo "Starting loader-only dedicated server (no mods installed)"

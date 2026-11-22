@@ -1,0 +1,127 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    62,
+    16,
+    42
+  ],
+  "surfaceY": 0,
+  "nonair": 2843,
+  "explicitAir": 23550,
+  "paletteStates": 30,
+  "counts": {
+    "minecraft:grass_block[snowy=false]": 610,
+    "primalmagick:marble_bricks": 250,
+    "primalmagick:marble_runed": 88,
+    "primalmagick:marble_raw": 521,
+    "primalmagick:marble_tiles": 56,
+    "primalmagick:marble_chiseled": 12,
+    "minecraft:air": 23550,
+    "primalmagick:marble_pillar[type=bottom]": 11,
+    "primalmagick:marble_pillar[type=base]": 22,
+    "primalmagick:marble_pillar[type=top]": 11,
+    "minecraft:dirt_path": 123,
+    "totemic:cedar_planks": 640,
+    "totemic:cedar_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]": 153,
+    "minecraft:crafting_table": 1,
+    "minecraft:furnace[facing=east,lit=false]": 1,
+    "minecraft:barrel[facing=east,open=false]": 1,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 11,
+    "minecraft:bookshelf": 10,
+    "minecraft:barrel[facing=north,open=false]": 2,
+    "minecraft:green_bed[facing=north,occupied=false,part=head]": 2,
+    "minecraft:green_bed[facing=north,occupied=false,part=foot]": 2,
+    "totemic:cedar_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]": 153,
+    "totemic:cedar_log[axis=y]": 70,
+    "minecraft:orange_stained_glass": 37,
+    "minecraft:coarse_dirt": 40,
+    "minecraft:moss_block": 8,
+    "minecraft:poppy": 2,
+    "minecraft:azure_bluet": 2,
+    "minecraft:dandelion": 2,
+    "minecraft:oxeye_daisy": 2
+  },
+  "nativeMarble": 971,
+  "nativeCedar": 1016,
+  "zones": [
+    {
+      "name": "Primal ritual court",
+      "bounds": [
+        2,
+        1,
+        2,
+        34,
+        15,
+        34
+      ],
+      "air": 16335,
+      "pass": true
+    },
+    {
+      "name": "Totemic dance grove",
+      "bounds": [
+        43,
+        1,
+        21,
+        59,
+        15,
+        37
+      ],
+      "air": 4335,
+      "pass": true
+    },
+    {
+      "name": "Research aid/workbench cluster",
+      "bounds": [
+        46,
+        1,
+        6,
+        54,
+        4,
+        11
+      ],
+      "air": 216,
+      "pass": true
+    },
+    {
+      "name": "Growth ceremony extension",
+      "bounds": [
+        18,
+        1,
+        37,
+        27,
+        4,
+        41
+      ],
+      "air": 200,
+      "pass": true
+    }
+  ],
+  "ritual": {
+    "center": [
+      18,
+      1,
+      18
+    ],
+    "manhattanRange": 15,
+    "safeSalt": 16,
+    "horizontalCells": 481
+  },
+  "totemic": {
+    "center": [
+      51,
+      1,
+      29
+    ],
+    "maxPoleSize": 5
+  },
+  "walkableConnectedCells": 1703,
+  "limitations": [
+    "No active ancient shrine/font, dust, arcane workbench, research station, ritual altar, props or carved totems; player obtains initiation and unlocks normally.",
+    "Primal ritual range is theoretical Manhattan distance, not a required filled salt pattern; avoid >16 salt unless stabilized. Gameplay and vertical/prop scan validation pending.",
+    "Totemic exact-tag MAX_POLE_SIZE=5; default effect range 5–10, music acceptance depends on actual instrument range; ceremony geometry/expanded effects and pack restrictions need live QA.",
+    "Primal research aids within five blocks; actual aid types, stations and magitech expansion are player-built, not a complete lab. Exact other device requirements pending.",
+    "Native decorative palette and recoverable material balance pending; source aligned, not game-tested.",
+    "Terrain/anchor/rotation, sky, full geometry, lighting, stairs/roof and NBT import pending."
+  ]
+}

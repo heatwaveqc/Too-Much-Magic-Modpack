@@ -1,0 +1,230 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    49,
+    27,
+    43
+  ],
+  "grade": 6,
+  "nonair": 7263,
+  "explicitAir": 10766,
+  "omitted": 38860,
+  "paletteStates": 53,
+  "decodedNbtBlocks": 18029,
+  "thermalCenters": [
+    [
+      9,
+      2,
+      15
+    ],
+    [
+      18,
+      2,
+      15
+    ],
+    [
+      27,
+      2,
+      15
+    ]
+  ],
+  "thermalCells": 375,
+  "regulatorSockets": 12,
+  "cheesePositions": 8,
+  "kitchenFloor": 132,
+  "kitchenGraph": 143,
+  "stationPlacement": {
+    "table": [
+      4,
+      7,
+      24
+    ],
+    "counter1": [
+      5,
+      7,
+      24
+    ],
+    "oven1": [
+      6,
+      7,
+      24
+    ],
+    "counter2": [
+      7,
+      7,
+      24
+    ],
+    "sink": [
+      8,
+      7,
+      24
+    ],
+    "fridge": [
+      9,
+      7,
+      24
+    ],
+    "counter3": [
+      10,
+      7,
+      24
+    ],
+    "oven2": [
+      11,
+      7,
+      24
+    ],
+    "pantry_counter": [
+      13,
+      7,
+      24
+    ],
+    "rack": [
+      5,
+      8,
+      24
+    ]
+  },
+  "provider": [
+    14,
+    7,
+    23
+  ],
+  "prep": {
+    "stove": [
+      5,
+      7,
+      15
+    ],
+    "pot": [
+      5,
+      8,
+      15
+    ],
+    "skillet_heat": [
+      7,
+      7,
+      15
+    ],
+    "skillet": [
+      7,
+      8,
+      15
+    ],
+    "board": [
+      9,
+      8,
+      15
+    ]
+  },
+  "irrigationCenters": [
+    [
+      42,
+      6,
+      6
+    ],
+    [
+      42,
+      6,
+      11
+    ]
+  ],
+  "farmland": 58,
+  "planted": 40,
+  "stairChecks": 24,
+  "routeChecks": 29,
+  "chest": [
+    13,
+    7,
+    17
+  ],
+  "items": [
+    [
+      "cookingforblockheads:cooking_table",
+      1
+    ],
+    [
+      "cookingforblockheads:counter",
+      4
+    ],
+    [
+      "cookingforblockheads:white_oven",
+      2
+    ],
+    [
+      "cookingforblockheads:white_fridge",
+      1
+    ],
+    [
+      "cookingforblockheads:sink",
+      1
+    ],
+    [
+      "cookingforblockheads:tool_rack",
+      1
+    ],
+    [
+      "farmersdelight:stove",
+      1
+    ],
+    [
+      "farmersdelight:cooking_pot",
+      1
+    ],
+    [
+      "farmersdelight:skillet",
+      1
+    ],
+    [
+      "farmersdelight:cutting_board",
+      1
+    ],
+    [
+      "farmersdelight:iron_knife",
+      1
+    ],
+    [
+      "brewinandchewin:keg",
+      1
+    ],
+    [
+      "brewinandchewin:keg",
+      1
+    ],
+    [
+      "brewinandchewin:keg",
+      1
+    ],
+    [
+      "brewinandchewin:tankard",
+      4
+    ],
+    [
+      "brewinandchewin:coaster",
+      4
+    ],
+    [
+      "minecraft:glass_bottle",
+      3
+    ],
+    [
+      "farmersdelight:rice",
+      1
+    ],
+    [
+      "minecraft:brown_mushroom",
+      1
+    ],
+    [
+      "minecraft:red_mushroom",
+      1
+    ],
+    [
+      "minecraft:pumpkin_seeds",
+      1
+    ]
+  ],
+  "rawSha256": "c13847924de17b043f32f15c75792738a654d122f42be45ec15191cb9feeb902",
+  "gzipSha256": "e2c1d04b057189608f945b2fc4b6d027b2d3a14aa61a35ee8da2d9b5ca86fe1e",
+  "gzipBytes": 53939
+}

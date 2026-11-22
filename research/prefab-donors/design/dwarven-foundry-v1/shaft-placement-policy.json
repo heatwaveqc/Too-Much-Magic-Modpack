@@ -1,0 +1,41 @@
+{
+  "status": "STOCK_DEPTH_ACCEPTED_INTEGRATION_PENDING",
+  "onlyHouse": "dwarven_foundry",
+  "otherHouses": false,
+  "stockShaft": true,
+  "localSurfaceY": 3,
+  "hatch": [
+    24,
+    3,
+    32
+  ],
+  "ladderTop": [
+    24,
+    2,
+    32
+  ],
+  "templateBottomLadder": [
+    24,
+    0,
+    32
+  ],
+  "ladderFacing": "south",
+  "supportOffset": [
+    0,
+    0,
+    -1
+  ],
+  "sourceReference": {
+    "prefab": "b8a6892ae43f34aacc6cea10503bfb5116909f62",
+    "method": "BuildingMethods.PlaceMineShaft",
+    "stockBottom": "minBuildHeight+21",
+    "customAddon": "9ed295e1d3f9ca5f5b55eb18863a4c468c47d5f6"
+  },
+  "requirements": [
+    "Owner accepted stock Prefab starting mineshaft depth (minBuildHeight+21, standard Overworld Y -43); player excavates the remaining distance and establishes natural bedrock Bore site. No custom bedrock-reaching extension or bottom Bore chamber required.",
+    "Use existing stock shaft implementation if compatible with custom housing placement, or an equivalent stock-depth integration; do not assume standalone custom NBT automatically invokes StructureHouse. Only Dwarven Foundry, no shaft for other starter houses.",
+    "Explicitly use the marked hatch at local (24,3,32), not the first decorative/service trapdoor. Apply placement rotation to hatch and ladder backing; avoid competing stock auto-selection. Verify actual depth and connection to top ladder.",
+    "Server-side one-shot claim, claim/protection checks, safe fluid containment, preserved bedrock and player structures. Disable optional mineshaft chest; no free excavation-loot reward. Validate actual stock behavior and permissions before release."
+  ],
+  "bedrockReachRequired": false
+}

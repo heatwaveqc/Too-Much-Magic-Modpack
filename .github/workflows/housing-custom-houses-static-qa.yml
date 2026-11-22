@@ -1,0 +1,71 @@
+name: Housing eighteen approved Prefab NBT designs and Bountiful Inn overlay (source only)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/housing-custom-houses-static-qa.yml'
+      - 'research/prefab-donors/**'
+      - 'scripts/build_full_integration_prism.py'
+      - 'scripts/smoke_server.sh'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  housing-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 18 unique nonfree approved house choices, safe paths, no overwrites
+        run: python3 research/prefab-donors/test_houses_qa.py
+      - name: Validate one Bountiful board and exactly three initial decree slots
+        run: python3 research/prefab-donors/design/adventurers-inn-v1/test_bountiful_board.py
+      - name: Rebuild ALL 18 NBT previews and hash/CRC check every root, no Minecraft or binaries uploaded
+        run: |
+          python3 research/prefab-donors/stage_all_houses_qa.py --verify-only > "$RUNNER_TEMP/housing-verified.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          j=json.loads((Path(os.environ['RUNNER_TEMP'])/'housing-verified.json').read_text())
+          assert j['status']=='STATIC_QA_PREVIEW_ONLY'
+          assert j['generated_houses']==18 and j['no_free_grants']
+          assert len({p['filename'] for p in j['houses']})==18
+          assert {x['id'] for x in j['houses']}>={'adventurers_inn','wizards_tower','witch_cottage'}
+          print('PASS: exactly 18 approved, uniquely sourced and successfully generated NBT houses')
+          PY
+      - name: Static-check authorized server/Prism packaging hooks and 36 paired QA blueprint files
+        run: |
+          python3 -m py_compile scripts/build_full_integration_prism.py
+          bash -n scripts/smoke_server.sh
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from build_full_integration_prism import build_approved_housing_previews
+          assets = build_approved_housing_previews(Path('.').resolve())
+          assert len(assets) == 36, len(assets)
+          assert all(k.startswith('minecraft/prefab-extension/') and k.endswith('.nbt') for k in assets)
+          for name in {p.rsplit('/', 1)[-1] for p in assets}:
+              assert assets['minecraft/prefab-extension/' + name] == assets['minecraft/prefab-extension/server-cache/' + name]
+          print('PASS: actual authorized Prism builder preflight generates all 36 preview-only entries')
+          PY
+      - name: Stage all 18 into BOTH roots of a marked disposable instance (NO GAME BOOT)
+        run: |
+          mkdir -p "$RUNNER_TEMP/qa-only"
+          touch "$RUNNER_TEMP/qa-only/.tmm-disposable-qa"
+          python3 research/prefab-donors/stage_all_houses_qa.py --stage-qa-game-dir "$RUNNER_TEMP/qa-only" --target singleplayer > "$RUNNER_TEMP/staged-houses.json"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          r=Path(os.environ['RUNNER_TEMP'])/'qa-only/prefab-extension'
+          a={p.name:p.read_bytes() for p in r.glob('*.nbt')}
+          b={p.name:p.read_bytes() for p in (r/'server-cache').glob('*.nbt')}
+          assert len(a)==len(b)==18 and a==b, (len(a),len(b))
+          assert 'adventurers_inn.nbt' in a
+          print('PASS: 18 exact NBT pairs safely staged without copying into a real user instance')
+          PY

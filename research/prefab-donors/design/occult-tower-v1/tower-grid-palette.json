@@ -1,0 +1,257 @@
+{
+  "size": [
+    45,
+    63,
+    45
+  ],
+  "palette": [
+    {
+      "Name": "crystalix:clear_crystalix_glass",
+      "Properties": {
+        "ghost": "block_all",
+        "invisible": "false",
+        "light": "light",
+        "shadeless": "false",
+        "transparent": "true",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:air"
+    },
+    {
+      "Name": "minecraft:allium"
+    },
+    {
+      "Name": "minecraft:azure_bluet"
+    },
+    {
+      "Name": "minecraft:barrel"
+    },
+    {
+      "Name": "minecraft:barrel",
+      "Properties": {
+        "facing": "up",
+        "open": "false"
+      }
+    },
+    {
+      "Name": "minecraft:bookshelf"
+    },
+    {
+      "Name": "minecraft:chest",
+      "Properties": {
+        "facing": "east",
+        "type": "single",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:chest",
+      "Properties": {
+        "facing": "south",
+        "type": "single",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:chiseled_polished_blackstone"
+    },
+    {
+      "Name": "minecraft:cobbled_deepslate"
+    },
+    {
+      "Name": "minecraft:cobblestone"
+    },
+    {
+      "Name": "minecraft:cornflower"
+    },
+    {
+      "Name": "minecraft:crafting_table"
+    },
+    {
+      "Name": "minecraft:dandelion"
+    },
+    {
+      "Name": "minecraft:dark_oak_door",
+      "Properties": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "left",
+        "open": "false",
+        "powered": "false"
+      }
+    },
+    {
+      "Name": "minecraft:dark_oak_door",
+      "Properties": {
+        "facing": "north",
+        "half": "lower",
+        "hinge": "right",
+        "open": "false",
+        "powered": "false"
+      }
+    },
+    {
+      "Name": "minecraft:dark_oak_door",
+      "Properties": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "left",
+        "open": "false",
+        "powered": "false"
+      }
+    },
+    {
+      "Name": "minecraft:dark_oak_door",
+      "Properties": {
+        "facing": "north",
+        "half": "upper",
+        "hinge": "right",
+        "open": "false",
+        "powered": "false"
+      }
+    },
+    {
+      "Name": "minecraft:dark_oak_slab",
+      "Properties": {
+        "type": "top",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:dark_oak_stairs",
+      "Properties": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:deepslate_bricks"
+    },
+    {
+      "Name": "minecraft:dirt"
+    },
+    {
+      "Name": "minecraft:farmland",
+      "Properties": {
+        "moisture": "7"
+      }
+    },
+    {
+      "Name": "minecraft:furnace"
+    },
+    {
+      "Name": "minecraft:grass_block",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    {
+      "Name": "minecraft:ladder",
+      "Properties": {
+        "facing": "east",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:mossy_stone_bricks"
+    },
+    {
+      "Name": "minecraft:nether_bricks"
+    },
+    {
+      "Name": "minecraft:oxeye_daisy"
+    },
+    {
+      "Name": "minecraft:pink_tulip"
+    },
+    {
+      "Name": "minecraft:polished_deepslate"
+    },
+    {
+      "Name": "minecraft:poppy"
+    },
+    {
+      "Name": "minecraft:purple_bed",
+      "Properties": {
+        "facing": "north",
+        "occupied": "false",
+        "part": "foot"
+      }
+    },
+    {
+      "Name": "minecraft:purple_bed",
+      "Properties": {
+        "facing": "north",
+        "occupied": "false",
+        "part": "head"
+      }
+    },
+    {
+      "Name": "minecraft:smoker"
+    },
+    {
+      "Name": "minecraft:stone_brick_stairs",
+      "Properties": {
+        "facing": "north",
+        "half": "bottom",
+        "shape": "straight",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:stone_brick_stairs",
+      "Properties": {
+        "facing": "south",
+        "half": "bottom",
+        "shape": "straight",
+        "waterlogged": "false"
+      }
+    },
+    {
+      "Name": "minecraft:stone_bricks"
+    },
+    {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:wheat",
+      "Properties": {
+        "age": "0"
+      }
+    },
+    {
+      "Name": "minecraft:white_tulip"
+    },
+    {
+      "Name": "occultism:datura",
+      "Properties": {
+        "age": "0"
+      }
+    },
+    {
+      "Name": "occultism:otherrock"
+    },
+    {
+      "Name": "occultism:otherstone"
+    },
+    {
+      "Name": "occultism:sacrificial_bowl"
+    },
+    {
+      "Name": "psi:cad_assembler"
+    },
+    {
+      "Name": "psi:programmer"
+    }
+  ],
+  "grid_sha256": "fb8f5caa4235b9d0561b5ec886cf55527dc304a3c28072f2264ffc18dc836365",
+  "uncompressed_nbt_sha256": "2b9bbdd1528795a670fb2fa623941897669d78bbe81418ab7f02dea3ac366ea2",
+  "packed_grid_git_blob": "e50a72e7e2fcc2635f3a41bc47bebc1c7e81a0cd"
+}
