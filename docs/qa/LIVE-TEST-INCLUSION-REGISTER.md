@@ -2,6 +2,8 @@
 
 ## Revised full Monk tree: 38 paid skills, exact-type wards and Meditative Elixir — latest owner decision 2026-11-22
 
+**2026-11-22 source-intake update:** #479, #480, #481 and #486 are merged into `dev/progression`, alongside the complete #485 engine behavior reconciled through green [#490](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/490), current dev head `eac88556c36490e752dac8cab3040d28726e919d`. The earlier PR head SHAs below are preserved as historical source provenance, not the current donor selection. Runtime import into `test/full-integration`, new server smoke, Prism and owner gameplay acceptance are **not established** by this register.
+
 **LATEST / SUPERSEDES THE 29-TRAIT PARTIAL SLICE BELOW** for the next owner-authorized unstable build. The earlier 60-node/868-point #481 entry documents a superseded intermediate state and must not be the default selection if the coherent full source passes owner/integration preflight.
 
 **Owner's next QA target:** Complete **67-node Monk datapack: 29 existing automatic abilities + 38 purchased traits, exactly 1,000 purchased points**. No Stone Resonance or Overworld Bounty. Four independently purchasable wards match only the actual vanilla damage type: `minecraft:magic`, `minecraft:indirect_magic`, `minecraft:wither`, `minecraft:dragon_breath`. Existing Elemental Tempering handles fire/explosion separately. New Meditative Elixir gives up to +20% duration to all newly **received beneficial** MobEffects regardless of origin, not just consumed potions. Fortune+3 via existing loot connector must shut off completely in Monk's Silk Touch mode; Piercing Palm uses `apothic_attributes:armor_shred` conditioned on empty hand and no conventional armor.
