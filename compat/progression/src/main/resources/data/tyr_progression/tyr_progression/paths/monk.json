@@ -759,6 +759,42 @@
           "unarmored": true
         }
       ]
+    },
+    {
+      "id": "tyr_progression:enlightenment",
+      "title": "Enlightenment",
+      "description": "Early Monk cultivation: each rank reduces the growth factor that divides future ordinary global MXP awards by 0.001, without changing previously earned lifetime MXP levels. At base 1.020, 18 ranks yield 1.002; minimum 1.000.",
+      "lane": "Magical Cultivation",
+      "max_rank": 18,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "xp_growth_reduction",
+          "per_rank": 0.001
+        }
+      ]
     }
   ],
   "enrollment": "sunset",
