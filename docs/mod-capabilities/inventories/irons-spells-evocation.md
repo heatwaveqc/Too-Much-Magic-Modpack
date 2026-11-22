@@ -1,0 +1,25 @@
+# Iron's 3.16.3 — EVOCATION school spell source defaults
+
+Exact [v1.21.1-3.16.3 registry](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/api/registry/SpellRegistry.java) and linked source classes; defaults before TMM spell configuration, rarity rolls, mana multipliers and player attributes. Mana cost is `base + perLevel × (level−1)` before config. Cooldown is seconds, cast time ticks. No assumption every spell is craftable at Scroll Forge.
+
+| Spell ID | Class | Min rarity | Max level | Mana base +/level | CD s | Cast ticks |
+| --- | --- | --- | ---: | --- | ---: | ---: |
+| `irons_spellbooks:chain_creeper` | [`ChainCreeperSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ChainCreeperSpell.java) | UNCOMMON | 6 | 40 + 10 | 15 | 30 |
+| `irons_spellbooks:fang_strike` | [`FangStrikeSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/FangStrikeSpell.java) | COMMON | 10 | 30 + 3 | 5 | 15 |
+| `irons_spellbooks:fang_ward` | [`FangWardSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/FangWardSpell.java) | COMMON | 8 | 45 + 5 | 15 | 15 |
+| `irons_spellbooks:firecracker` | [`FirecrackerSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/FirecrackerSpell.java) | COMMON | 10 | 20 + 2 | 1.5 | 0 |
+| `irons_spellbooks:gust` | [`GustSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/GustSpell.java) | UNCOMMON | 10 | 30 + 5 | 12 | 15 |
+| `irons_spellbooks:invisibility` | [`InvisibilitySpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/InvisibilitySpell.java) | RARE | 6 | 35 + 8 | 45 | 40 |
+| `irons_spellbooks:lob_creeper` | [`LobCreeperSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/LobCreeperSpell.java) | UNCOMMON | 10 | 20 + 2 | 2 | 0 |
+| `irons_spellbooks:shield` | [`ShieldSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ShieldSpell.java) | COMMON | 10 | 35 + 5 | 8 | 0 |
+| `irons_spellbooks:spectral_hammer` | [`SpectralHammerSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/SpectralHammerSpell.java) | UNCOMMON | 5 | 15 + 5 | 2 | 0 |
+| `irons_spellbooks:summon_horse` | [`SummonHorseSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/SummonHorseSpell.java) | COMMON | 5 | 50 + 2 | 20 | 20 |
+| `irons_spellbooks:summon_vex` | [`SummonVexSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/SummonVexSpell.java) | RARE | 5 | 50 + 10 | 150 | 20 |
+| `irons_spellbooks:slow` | [`SlowSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/SlowSpell.java) | EPIC | 4 | 50 + 10 | 80 | 30 |
+| `irons_spellbooks:arrow_volley` | [`ArrowVolleySpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ArrowVolleySpell.java) | UNCOMMON | 6 | 40 + 10 | 15 | 30 |
+| `irons_spellbooks:wololo` | [`WololoSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/WololoSpell.java) | LEGENDARY | 1 | 10 + 5 | 10 | 30 |
+| `irons_spellbooks:throw` | [`ThrowSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ThrowSpell.java) | COMMON | 5 | 10 + 5 | 8 | 5 |
+| `irons_spellbooks:fang_swirl` | [`FangSwirlSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/FangSwirlSpell.java) | EPIC | 8 | 55 + 8 | 28 | 20 |
+| `irons_spellbooks:scapegoat` | [`ScapegoatSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ScapegoatSpell.java) | RARE | 3 | 30 + 15 | 45 | 0 |
+
+**Source verification:** 17 active fields, 17 class sources, 17 actual spell resource IDs. — means unparsed/unspecified, not zero.
