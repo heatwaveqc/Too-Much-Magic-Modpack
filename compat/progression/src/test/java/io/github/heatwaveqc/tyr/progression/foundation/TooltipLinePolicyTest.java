@@ -48,6 +48,27 @@ final class TooltipLinePolicyTest {
         assertFalse(TooltipLinePolicy.removeReplicationComponent("othermod:MatterTooltipComponent", false));
     }
 
+    @Test void machineOperationAndJeiRecipeCostsAreNotItemValuations() {
+        // Project Expansion's Jade provider projectexpansion:provider reports
+        // stored EMC, generation, import/export limits and relay rates.
+        // Replication's Jade matter_tank is a stored-tank readout.
+        // ProjectE's JEI collector upgrade value is a recipe cost.
+        // None is a personal per-item appraisal or a learned marker.
+        for (String key : Set.of(
+                "text.projectexpansion.emc_storage",
+                "text.projectexpansion.emc_per_second",
+                "text.projectexpansion.emc_import_limit",
+                "text.projectexpansion.emc_transfer_rate",
+                "text.projectexpansion.relay_bonus",
+                "tooltip.replication.tank.amount",
+                "tooltip.replication.tank.matter",
+                "emc.projecte.emc")) {
+            Kind kind = TooltipLinePolicy.classify(key);
+            assertEquals(Kind.UNRELATED, kind, key);
+            assertFalse(TooltipLinePolicy.remove(kind, false, false, false));
+        }
+    }
+
     @Test void neverStripOtherProjecteExpansionOrVanillaTooltipLines() {
         for (String key : Set.of(
                 "pedestal.projecte.on_pedestal", "text.projectexpansion.alchemical_collection",
