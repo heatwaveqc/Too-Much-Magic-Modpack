@@ -22,10 +22,12 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 
 /**
- * Exact two-mod right-click compatibility for #508. Hexerei stores native
- * hexerei:blood_fluid, while EvilCraft's Blood Extractor accepts only
- * evilcraft:blood. Native generic FluidUtil therefore cannot fill the extractor
- * from that cauldron, even though the TMM bucket-emptying recipe works.
+ * Exact two-mod right-click compatibility for #508. The cauldron can contain
+ * either native hexerei:blood_fluid (Blood Sigil / bucket conversion) OR
+ * evilcraft:blood (directly deposited from an extractor). EvilCraft's
+ * extractor only accepts evilcraft:blood. Hexerei's generic item transfer
+ * cannot normalize the former and has an upstream success-path defect for
+ * one-tank item handlers in the inspected 1.21 source.
  *
  * Hook before Hexerei's useItemOn and its generic item-handler fallback.
  * A strict item+block+source-fluid guard avoids any global fluid rewrites.
@@ -76,7 +78,11 @@ public final class HexereiEvilCraftBloodBridge {
         if (!(blockEntity instanceof IFluidHandler cauldron) || cauldron.getTanks() != 1)
             return;
         FluidStack source = cauldron.getFluidInTank(0);
-        if (source.isEmpty() || !HEXEREI_BLOOD.equals(BuiltInRegistries.FLUID.getKey(source.getFluid())))
+        if (source.isEmpty()) return;
+        // Native Hexerei blood needs conversion. Extractor-deposited EvilCraft
+        // blood must also be supported for the OWNER'S EXACT round trip.
+        ResourceLocation sourceFluidId = BuiltInRegistries.FLUID.getKey(source.getFluid());
+        if (!HEXEREI_BLOOD.equals(sourceFluidId) && !EVILCRAFT_BLOOD.equals(sourceFluidId))
             return;
         // Do not silently strip native/custom fluid components.
         if (!FluidStack.isSameFluidSameComponents(source, new FluidStack(source.getFluid(), 1)))
