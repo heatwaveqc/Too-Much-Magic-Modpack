@@ -21,6 +21,8 @@ on:
       - 'mods/lets-do-farm-and-charm.pw.toml'
       - 'mods/prefab-custom-addon.pw.toml'
       - 'mods/yungs-better-end-island.pw.toml'
+      - 'mods/lets-do-foundation.pw.toml'
+      - 'mods/ars-conflux.pw.toml'
       - 'scripts/verify_approved_recovery_artifacts.py'
       - 'scripts/probe_missing_approved_mods.py'
   workflow_dispatch:
@@ -37,8 +39,9 @@ jobs:
         run: python3 scripts/verify_approved_recovery_artifacts.py
       - name: Fetch only approved candidate JARs from official sources and verify
         run: python3 scripts/verify_approved_recovery_artifacts.py --verify-official --json-out approved-recovery-audit.json
-      - name: Probe three official missing dependencies/addons (no pack activation)
+      - name: Probe remaining Aquamirae Nouveau addon (diagnostic only)
         if: always()
+        continue-on-error: true
         run: python3 scripts/probe_missing_approved_mods.py
       - name: Preserve evidence for integration review
         if: always()
