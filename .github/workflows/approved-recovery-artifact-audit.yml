@@ -25,6 +25,7 @@ on:
       - 'mods/ars-conflux.pw.toml'
       - 'scripts/verify_approved_recovery_artifacts.py'
       - 'scripts/probe_missing_approved_mods.py'
+      - 'scripts/audit_foundation_overlap.py'
   workflow_dispatch:
 permissions:
   contents: read
@@ -43,6 +44,8 @@ jobs:
         if: always()
         continue-on-error: true
         run: python3 scripts/probe_missing_approved_mods.py
+      - name: Audit pre-existing Let's Do JARs against standalone Foundation (no game boot)
+        run: python3 scripts/audit_foundation_overlap.py
       - name: Preserve evidence for integration review
         if: always()
         uses: actions/upload-artifact@v4
