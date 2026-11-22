@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v8`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v9`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -18,7 +18,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Tree | Displayed paid skills | Cost to master one eligible build |
 |---|---:|---:|
 | Core Skills | 27 | **100** |
-| Cave Dragon | 17 | **100** |
+| Cave Dragon | 25 | **100** |
 | Sea Dragon | 22 | **100** |
 | Forest Dragon | 20 | **100** |
 | Vampire | 19 | **100** |
@@ -28,7 +28,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **228 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **236 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -236,51 +236,63 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 | Safekept (`tyr_progression:core_safekept`) | 2 | 2 | Safeguards the first {saved_slots} slot(s) of your inventory upon death |
 | Haggler (`tyr_progression:core_haggler`) | 2 | 2 | Holding an Emerald attracts villagers within a {block_radius} block radius.  They will follow you with a {villager_speed}% speed bonus |
 
-### Cave Dragon — 100 ranks / 100 points
+### Cave Dragon — complete 100 ranks / 100 points
 
-*Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
+**Role:** fire-breathing underground excavator, durable stone defender and high-capacity personal spellcaster with narrow infernal affinity. Native Cave Dragon status, breath/fireball/skin/lava vision, cave-claw pickaxe, Cave Athletics, growth, fireproofing and water/rain/snow weakness stay source-owned and free. TMM's raw land-meat Cave diet under issue #444 is not changed by this tree.
 
-#### Universal Dragon Physiology & Sorcery (species-local) — 37 points
+[Complete 25-skill Cave Dragon design, per-rank numerical candidates and adapter QA crosswalk](CAVE-DRAGON-COMPLETE-100PT-2026-11-22.md). This is design-only: the pinned 1.21.1 ability registry must be checked before any purchase works.
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Draconic Reservoir (`tyr_progression:cave_dragon_draconic_reservoir`) | 6 | 6 | Massive bonus to personally usable maximum magic resource capacity; never machine/world storage. |
-| Draconic Potency (`tyr_progression:cave_dragon_draconic_potency`) | 4 | 4 | Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion. |
-| Draconic Scales (`tyr_progression:cave_dragon_draconic_scales`) | 8 | 8 | Species natural armor; deliberately inefficient per SP versus specialized martial defense. |
-| Draconic Claws (`tyr_progression:cave_dragon_draconic_claws`) | 8 | 8 | Real dragon form physical strike boost; not global magic damage. |
-| Draconic Talons (`tyr_progression:cave_dragon_draconic_talons`) | 11 | 11 | Improve legal dragon claw harvest rate, not tool-tier bypass. |
+#### Draconic Body & Personal Sorcery — 20 points
 
-#### Claw & Fang — 17 points
+| Purchased skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Draconic Reservoir** (`tyr_progression:cave_dragon_draconic_reservoir`) | 6 | +10% per rank (+60% full) to existing eligible personal spell-resource maximums, including Dragon Survival native mana only where source-safe. Excludes machines, Arca, phylacteries and nonplayer mana grids. |
+| **Draconic Potency** (`tyr_progression:cave_dragon_draconic_potency`) | 5 | +4% per rank (+20% full) to verified personally cast magic output, additive in the same bonus bucket as Core, before typed fire/infernal bonuses; not passive machines, automatic summons or double spell events. |
+| **Draconic Scales** (`tyr_progression:cave_dragon_draconic_scales`) | 3 | +1 natural armor per rank (+3 full) in actual Cave Dragon form, subject to configured cap. This is additional purchased armor, not charging for native Cave scales, levels or fire immunity. |
+| **Draconic Claws** (`tyr_progression:cave_dragon_draconic_claws`) | 3 | +1 physical attack damage per rank (+3 full) on verified Cave Dragon natural claw/bite melee only, respecting source claw weapon-slot precedence; not sword-held normal attacks or magic casts. |
+| **Draconic Talons** (`tyr_progression:cave_dragon_draconic_talons`) | 3 | +15% per rank (+45% full) to legal native Cave pickaxe-claw block mining speed only. No mining-tier upgrade, Fortune, Silk, ore-gen permission or tool durability bypass. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Stone Claws (`tyr_progression:cave_dragon_stone_claws`) | 8 | 8 | Scale unarmed/claw damage only in dragon body; no weapon-wide bonus. |
-| Crushing Bite (`tyr_progression:cave_dragon_crushing_bite`) | 5 | 5 | Bounded armor/knockback pressure on confirmed bite hits. |
-| Seismic Pounce (`tyr_progression:cave_dragon_seismic_pounce`) | 4 | 4 | Cooldown-limited landing shockwave against entities; terrain damage off by default. |
+#### Pyroclastic Combat — 23 points
 
-#### Stone Scales — 16 points
+| Purchased skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Nether Breath** (`tyr_progression:cave_dragon_nether_breath`) | 5 | +4% per rank (+20% full) damage from a verified already-learned native Cave Dragon flame breath. Does not unlock breath, increase terrain burning or permit casting in rain/water when source forbids it. |
+| **Fireball Mastery** (`tyr_progression:cave_dragon_fireball_mastery`) | 4 | +5% per rank (+20% full) to confirmed native Cave Fireball direct entity impact damage after source unlock. Explosion terrain effects, ignition footprint and block destruction remain native only. |
+| **Burning Wake** (`tyr_progression:cave_dragon_burning_wake`) | 4 | +0.5 second per rank (+2 seconds full) to the existing burn on legitimate hostile targets hit by native Cave fire abilities; does not add independent passive ignition or extend beyond configured source fire cap. |
+| **Stone Claws** (`tyr_progression:cave_dragon_stone_claws`) | 3 | +0.1 knockback strength per rank (+0.3 full) to confirmed direct natural Cave Dragon claw attacks against legal hostiles; separate from Draconic Claws' raw damage. Does not affect mined blocks or hand-held weapons. |
+| **Crushing Bite** (`tyr_progression:cave_dragon_crushing_bite`) | 4 | +3% per rank (+12% full) direct bite damage against verified armored hostile mobs; preserve vanilla source armor calculation, no armor-bypass tag and no bonus to ordinary unarmored targets. |
+| **Seismic Pounce** (`tyr_progression:cave_dragon_seismic_pounce`) | 3 | On a genuine already-unlocked Dragon Survival Flight Spin contacting a hostile while landing on eligible stone, apply Slowness I for +0.5 second per rank (1.5 seconds full), 15-second player cooldown. No new pounce key or terrain shockwave. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Stonehide (`tyr_progression:cave_dragon_stonehide`) | 8 | 8 | Incremental natural armor; respect equipment stacking caps. |
-| Earthbound Poise (`tyr_progression:cave_dragon_earthbound_poise`) | 5 | 5 | Reduce knockback and fall damage while grounded. |
-| Mountain Bastion (`tyr_progression:cave_dragon_mountain_bastion`) | 3 | 3 | Short defensive stance with a resource cost and meaningful cooldown, not permanent immunity. |
+#### Stone Scales & Hearth — 19 points
 
-#### Excavation — 19 points
+| Purchased skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Stonehide** (`tyr_progression:cave_dragon_stonehide`) | 5 | +0.5 armor toughness per rank (+2.5 full) in real Cave Dragon form, under effective defensive caps. Unlike Draconic Scales, this does not raise ordinary armor points. |
+| **Earthbound Poise** (`tyr_progression:cave_dragon_earthbound_poise`) | 4 | -5% per rank (-20% full) ordinary fall damage only when landing on a verified eligible stone block; no void protection, immunity or separate flight permission. |
+| **Mountain Bastion** (`tyr_progression:cave_dragon_mountain_bastion`) | 4 | After taking one genuine hostile hit while grounded on natural stone, gain 3% per rank (12% full) reduction to subsequent eligible direct physical damage for 5 seconds, with 20-second cooldown. The triggering hit is not retroactively reduced. |
+| **Hearthskin** (`tyr_progression:cave_dragon_hearthskin`) | 3 | +8% per rank (+24% full) duration to the actual earned native Cave Sturdy Skin protective effect when legitimately activated; leave source target selection, cooldown, cost and effect strength unchanged. |
+| **Water Temperance** (`tyr_progression:cave_dragon_water_temperance`) | 3 | -4% per rank (-12% full) of explicitly source-tagged Cave Dragon water, rain and snow weakness damage; partial mitigation only, never weather immunity or extinguishing native penalties. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Tunneler (`tyr_progression:cave_dragon_tunneler`) | 11 | 11 | Improve legal claw-mining speed; preserve vanilla/tool harvest checks. |
-| Vein Sense (`tyr_progression:cave_dragon_vein_sense`) | 5 | 5 | Short-range, timed ore awareness without unrestricted x-ray or chunk scans. |
-| Deep Excavation (`tyr_progression:cave_dragon_deep_excavation`) | 3 | 3 | Controlled multi-block excavation; count actual blocks, honor claims and server limits. |
+#### Excavation & Depth — 22 points
 
-#### Infernal Attunement — 11 points
+| Purchased skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Tunneler** (`tyr_progression:cave_dragon_tunneler`) | 5 | +4% per rank (+20% full) movement speed while already benefiting from earned native Cave Athletics on stone and grounded below open sky; does not grant Cave Athletics or invent extra Speed when inactive. |
+| **Vein Sense** (`tyr_progression:cave_dragon_vein_sense`) | 4 | After actually mining an eligible ore block with legal Cave claws, briefly (3 seconds) reveal up to 2 additional connected identical ore blocks per rank within five blocks of the broken block. Never global x-ray/chunk scan or excluded gated ores. |
+| **Deep Excavation** (`tyr_progression:cave_dragon_deep_excavation`) | 4 | After breaking three real stone-like blocks consecutively with native legal Cave claws, gain +5% per rank (+20% full) claw mining speed for five seconds. No automated extra block breaks, vein miner or bypass of individual durability/hunger. |
+| **Clawkeeper** (`tyr_progression:cave_dragon_clawkeeper`) | 4 | 5% chance per rank (20% full) to prevent precisely one durability expenditure on the actual equipped native Cave pickaxe-claw tool on a successful legal break. Never repairs items or changes fake slot visuals. |
+| **Understone Sight** (`tyr_progression:cave_dragon_understone_sight`) | 5 | After three seconds in genuinely dark enclosed underground terrain, gain server-authorized enhanced night vision lasting +2 seconds per rank (10 seconds full), refreshed only while conditions hold. Distinct from free native lava vision. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Infernal Resonance (`tyr_progression:cave_dragon_infernal_resonance`) | 6 | 6 | Bonus to source-verified demonic/infernal personal magic, beyond shared dragon arcane power but not world rituals. |
-| Hellbound Command (`tyr_progression:cave_dragon_hellbound_command`) | 3 | 3 | Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions. |
-| Infernal Dominion (`tyr_progression:cave_dragon_infernal_dominion`) | 2 | 2 | Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated. |
+#### Infernal Sorcery — 16 points
+
+| Purchased skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Infernal Resonance** (`tyr_progression:cave_dragon_infernal_resonance`) | 5 | +4% per rank (+20% full) personally cast explicitly source-tagged demon/infernal magic potency (e.g. verified Goety or Occultism personal actions), additive with Draconic Potency and not a blanket bonus to all Goety/Occultism rituals. |
+| **Hellbound Command** (`tyr_progression:cave_dragon_hellbound_command`) | 4 | +4% per rank (+16% full) direct damage from eligible player-owned demonic servants summoned by verified personal provider actions; not wild demons, every Goety undead, bosses or other players' summons. |
+| **Infernal Dominion** (`tyr_progression:cave_dragon_infernal_dominion`) | 3 | +5% per rank (+15% full) additional direct damage to eligible personally cast demonic/infernal spells when in the actual Nether or on source-verified hot stone, applied additively alongside Infernal Resonance. |
+| **Furnace Focus** (`tyr_progression:cave_dragon_furnace_focus`) | 4 | -3% per rank (-12% full) real personally paid fire/infernal spell resource debit while on verified hot Nether/Cave terrain. Never discounts ritual/machine costs, native diet, dragon resurrection, or world aura generation. |
+
+**Total: 25 distinct purchased skills, exactly 100 separate 1-point ranks.** Exact values and source predicates await pinned Dragon Survival and Progression engine audits. Do not duplicate native fire immunity, native breath unlocks, harvest tiers, water weakness mitigation beyond stated partial cap, or generic vein mining.
 
 ### Sea Dragon — 100 ranks / 100 points
 
