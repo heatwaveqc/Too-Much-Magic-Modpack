@@ -250,7 +250,7 @@ hash = "028d93472b4f19dded775f70e459e0284640e6e4c5758f4c8021e40bf36d5bbe"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
-hash = "e1d26a2b47fbbb1a81ee6b795a8542742933f01337fcd59d03ccbb0fdc66ba14"
+hash = "150ede6726dd9945d1f918eb79656555c8ab18fc9a534549afb0912708a74701"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/totemic.snbt"
@@ -262,7 +262,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "ee82be59eb4364de88f434f4c93da5e0cfd13f36e607c6c85ec1d1bb2e9d1a8d"
+hash = "90f118a0aedb829e2a2aecefcebf30abda0895b2b28c1949044e5d1b43528aab"
 
 [[files]]
 file = "config/improvableskills.cfg"
@@ -710,7 +710,7 @@ hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/starter_kit.json"
-hash = "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
+hash = "6b638589cc764c8fea6f5d3b643cf83d289f24bceecba417367c9a1488cd5eb7"
 
 [[files]]
 file = "kubejs/data/tmm/curios/entities/player.json"
@@ -722,7 +722,7 @@ hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
-hash = "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
+hash = "4fdcdb0beb12591f3a211481670311ca32322f7fac9f89cf4fd3055c8f923519"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/caerbannog.json"
@@ -2638,3 +2638,15 @@ metafile = true
 file = "resourcepacks/cathobb-unified-64.pw.toml"
 hash = "4e414e3b03da6cbd0c30f9562686e461b03790765ef1b733137190e381734f01"
 metafile = true
+
+[[files]]
+file = "kubejs/data/tmm/advancement/starter_first_login.json"
+hash = "f4dbe39184a4e170104d078cda7e658c9517aec8cc4e66b896dd49c48835aac6"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/starter_kit_claimed.json"
+hash = "36125bb252999a147ca8469ee96bc7f714d8b36d2e82d636ea130959c86d716a"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/starter_first_login.mcfunction"
+hash = "3f5b324642ee237cfc9f68ccd141a388a60fd8e6d1cf95527aa447729930e9fc"
