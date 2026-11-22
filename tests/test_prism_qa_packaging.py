@@ -156,6 +156,7 @@ def main() -> None:
                 assert not any(l.startswith("narrator:") for l in opts.splitlines()), "Never force narrator off"
                 assert "guiScale:3" in opts
                 assert "soundCategory_master:0.55" in opts
+                assert opts.splitlines().count('resourcePacks:["vanilla","file/cathobbs-Unified-v40-64x-CANDIDATE.zip"]') == 1
                 assert not any(l.startswith("key_") for l in opts.splitlines())
                 cfg = z.read("instance.cfg").decode()
                 assert "PreLoadCommand=powershell.exe " in cfg
