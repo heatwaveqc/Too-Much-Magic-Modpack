@@ -330,7 +330,7 @@ hash = "2ee49d93fe81c76bc0743548b464618332d3b82b67d4fd7556bad1ea54250c0a"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "9494b6c7e9edcfa5c0438905e6fedb89e2bfeab1fb11b59ca0f4e3be3517864f"
+hash = "c2d1df8df0e2580e38caff45f22aa8e5785ab6d0bd3a6b33d1dbd4bb740fd08d"
 
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
@@ -507,6 +507,10 @@ hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
 hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json"
+hash = "612a3423492b90fe67ace897145a0093ea1c5edc4bc74aaa9e52d58a6a81c160"
 
 [[files]]
 file = "kubejs/data/projecte/pe_custom_conversions/defaults.json"
