@@ -2,12 +2,12 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v3`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v4`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
 - **One advancement point purchases exactly one skill rank. There are NO 2-point, 3-point, 4-point or 5-point ranks.** A five-point capstone must have five incremental 1-point ranks, or be split into genuinely distinct skills; it is not one costly rank.
-- For every non-Monk tree, **full eligible mastery = exactly 100 purchasable ranks = exactly 100 advancement points**. Monk is the established exception at **1,000 points**, also at one point per rank.
+- For non-Monk specialist trees, **the mastery target is 100 purchasable one-point ranks**. Monk is the established 1,000-point exception. **Sea Dragon currently has only 60 assigned ranks and 40 deliberately unallocated**, while its post-Luck balance pass remains open; do not claim Sea Dragon is finished.
 - When a tree displays mutually exclusive alternatives, only the compatible combination available to **one character** needs to cost 100 points. Alternative specializations may make the entire displayed catalog exceed 100.
 - Relative to the original 300–500-point trees, the intended effect per advancement point rises. **Do not** accomplish 'fewer levels' by charging more than one point per rank: if a named skill should have fewer ranks, redistribute its remaining points among distinct useful abilities.
 - Some per-skill totals still span 10–50 ranks. Those are *one-point increments*, and the intended cumulative power remains a balancing target to verify against the actual provider and gear, **not** a promise the previous absolute `per_rank` can be copied unchanged.
@@ -19,7 +19,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 |---|---:|---:|
 | Core Skills | 27 | **100** |
 | Cave Dragon | 17 | **100** |
-| Sea Dragon | 18 | **100** |
+| Sea Dragon | 18 | **100 target; 60 allocated / 40 open** |
 | Forest Dragon | 20 | **100** |
 | Vampire | 17 | **100** |
 | Werewolf | 18 | **100** |
@@ -282,11 +282,11 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 | Hellbound Command (`tyr_progression:cave_dragon_hellbound_command`) | 3 | 3 | Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions. |
 | Infernal Dominion (`tyr_progression:cave_dragon_infernal_dominion`) | 2 | 2 | Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated. |
 
-### Sea Dragon — 100 ranks / 100 points
+### Sea Dragon — 100-point mastery target; 60 ranks assigned, 40 unallocated
 
 *Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
 
-**Abyssal Fortune:** 50 one-point ranks = 50 points. The earlier 10-rank ×5-point idea was invalid. If lower rank counts are desirable, create genuinely different Luck abilities to share this investment; no dummy tier division or escalating rank costs.
+**Abyssal Fortune: exactly 10 one-point ranks (10 points), providing the full intended extreme Luck benefit.** The older 50-point cost is superseded, not conserved. Of the 100-point intended Sea Dragon mastery budget, **50 ranks are already assigned to the other five branches and 40 are currently unallocated** pending new balance work on aquatic powers and magic. Do **not** reassign those 40 to Luck, assume the earlier power cap is immutable, or fabricate filler skills to reach 100.
 
 #### Universal Dragon Physiology & Sorcery (species-local) — 19 points
 
@@ -330,11 +330,13 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 | Stormcalling (`tyr_progression:sea_dragon_stormcalling`) | 2 | 2 | Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control. |
 | Abyssal Sovereignty (`tyr_progression:sea_dragon_abyssal_sovereignty`) | 1 | 1 | High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic. |
 
-#### Abyssal Fortune — 50 points
+#### Abyssal Fortune — 10 points
 
 | Skill | Number of 1-point ranks | Full cost | Design intent |
 |---|---:|---:|---|
-| Abyssal Fortune (`tyr_progression:sea_dragon_abyssal_fortune`) | 50 | 50 | Extremely high Sea Dragon luck; powerful personal Luck-stat and source-verified luck-sensitive results, but no unconditional duplicate item generation or boss/quest gate bypass. |
+| Abyssal Fortune (`tyr_progression:sea_dragon_abyssal_fortune`) | **10** | **10** | Each rank gives one-tenth of the **entire desired extreme Luck power**, subject to real native effect testing; no duplicate item generation or boss/quest gate bypass. |
+
+**Design gap:** 40 of Sea Dragon's 100 points are reserved for thoughtful non-Luck abilities or deeper existing aquatic disciplines; no provisional numbers have been treated as settled. **The tree is not yet fully budgeted.**
 
 ### Forest Dragon — 100 ranks / 100 points
 
@@ -618,3 +620,17 @@ The design-only identities below have owner-decisions outstanding. We do not ass
 - Nothing in this design PR edits FTB Quests, coins, progression runtime, actual Path configs, client, Prism or integration state. A point-shop proposal is separate, requires a trusted server bridge and explicit coin pricing approval.
 
 **Related:** [PR #495](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/495), [Monk #478](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/478), [MXP #475](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/475), [Hunter QA #271](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/271).
+
+## Balance-pass assumptions audit — separate firm decisions from inherited guesses
+
+**Confirmed constraints:** (a) every rank costs one advancement point; (b) 100-point per-build mastery for ordinary specialist Paths, Monk 1,000; (c) Core/MXP are independent of Path identity, Newbie XP prohibition; (d) known free abilities remain free and source mods own form physiology; (e) mostly passive, contextual or mod-enhancing improvements rather than inventing new attack buttons. These constraints do **not** prescribe exact skill lists or branch weights.
+
+**Superseded historical figures (not new commitments):** the old archived Tyz trees' per-skill SP/rank totals, **50-point Sea Dragon Luck**, former 300–500+ point totals, and their relative proportion of skills to Path power. The current new balance pass explicitly authorizes changing all of these. Older maximum effect values are *references*, not automatically preserved caps or exact numerical targets.
+
+**Earlier user preferences to reconfirm, not automatically extrapolate:** the older Gilded seven independent Fortune and seven Looting ranks; the very strong Sea Dragon Luck identity (now exactly ten ranks), Core Reservoir/Wellspring/Thrift/Potency as families, existing transformation and innate abilities. A prior seven-rank decision does not imply every future skill needs seven ranks.
+
+**Assistant-chosen structural scaffolding, not owner-locked:** Hunter **62 shared / 8 training / 30 prey** and **12/8/10** within the prey branch; exact rank distributions in every other Path; assumptions that all Paths need the same number of skill nodes or that every named node must have enough ranks to consume its old SP allocation; treating **universal Core as automatically subject to a separate 100-point mastery cap**; expecting old capped effects to transfer unchanged; the arbitrary existing Monk five-lane **200/200/150/110/340** balance and **38 purchased node count**. These need a gameplay-role review.
+
+**Meaningful distinction:** the engine already has mutually exclusive Hunter choices, so supporting distinct prey specialties is grounded. The **specific budget split**, irreversible selection or lifetime rigidity is not. A single-build 100-point budget is about what the player may actually purchase after valid choices, not the sum of visible alternatives.
+
+**Planning standard for future edits:** when the owner proposes a new balance pass, first identify which earlier numbers are revoked. Draft the intended *effect at mastery*, then choose a meaningful number of one-point ranks, then distribute the remaining Path budget among different useful gameplay capabilities. Never 'conserve' an obsolete skill's cost without a new design reason.
