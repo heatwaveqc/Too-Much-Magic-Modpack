@@ -15,7 +15,7 @@
     {
       "chapter": "Getting Started",
       "title": "Welcome to Too Much Magic",
-      "description": "Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag once the starter-hub update is installed, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path.",
+      "description": "Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path.",
       "criterion": {
         "type": "checkmark"
       },
@@ -2280,7 +2280,7 @@
     {
       "chapter": "Getting Started",
       "title": "The Rest of the Pack Is Yours",
-      "description": "Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. The separate five-category navigation redesign may arrive later. This orientation capstone does not finish the pack, require all side branches or force Normie graduation.",
+      "description": "Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. This orientation capstone does not finish the pack, require all side branches or force Normie graduation.",
       "criterion": {
         "type": "checkmark"
       },
