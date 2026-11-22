@@ -1,0 +1,41 @@
+name: Exact Packwiz publisher download - Aquamirae Nouveau and Cathobb (NO GAME BOOT)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/verify-single-packwiz-publisher-download.yml'
+      - 'scripts/test_packwiz_single_publisher_download.py'
+      - 'resourcepacks/cathobb-unified-64.pw.toml'
+      - 'mods/aquamirae-nouveau.pw.toml'
+      - 'scripts/prism_qa_options.txt'
+      - 'scripts/validate.py'
+      - 'scripts/verify_qa_inventory.py'
+      - 'index.toml'
+      - 'pack.toml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-installer-download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 33
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact Packwiz root index, mod JAR roster and client-only pack metadata
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+      - name: Mimic Prism prelaunch Packwiz bootstrap downloading only Cathobb official ZIP
+        run: python3 scripts/test_packwiz_single_publisher_download.py cathobb --side client
+      - name: Ensure isolated server-side Packwiz install skips Cathobb
+        run: python3 scripts/test_packwiz_single_publisher_download.py cathobb --side server
+      - name: Diagnostic - try publisher download of owner-supplied Aquamirae Nouveau digest
+        continue-on-error: true
+        run: python3 scripts/test_packwiz_single_publisher_download.py aquamirae-nouveau --side client
