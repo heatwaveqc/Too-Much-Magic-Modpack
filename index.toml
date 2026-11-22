@@ -701,6 +701,10 @@ file = "kubejs/data/reliquary/recipe/alkahestry/drain/redstone.json"
 hash = "2dbf7cb56a128a113b488ac05417276d74df84db595280d3ab85674d2f07bc70"
 
 [[files]]
+file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
+hash = "e1adfad141d2074d45058e7673a464820625f2380b5a8a9f19645d48e9791519"
+
+[[files]]
 file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
 hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
 
