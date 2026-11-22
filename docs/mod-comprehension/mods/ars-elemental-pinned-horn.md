@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — Enchanter's Horn
 
+**Version update:** Current0.7.11.3 sound-tuning delta and preserved cast-body comparison: [impact review](ars-elemental-pinned-07113-impact.md). Newly installed [Conflux](ars-conflux.md) combined behavior remains under research.
+
 Exact addon SHA1 `562f640916aa6f5c83b3b3ee2384ca828b870e01`; native Ars5.13.5 and embedded Sauce0.0.61.100 [receipt](ars-elemental-pinned-guide-urn.md). SpellHorn, provider registration, AEDocumentation and recipe/lang; native ICasterTool/SpellResolver/SpellContext/LivingCaster/SpellStats, Sauce GlyphEffectUtil filter path and addon OrderEffect reviewed. No casting/cooldown/mana/client acceptance; selected global Sauce remains open.
 
 ## Craft and inscribe an effect fragment

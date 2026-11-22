@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — Homing Projectile and Propagate Homing
 
+**Version update:** Current0.7.11.3 adds Sauce allies/creative-spectator avoidance and conditional team predicate; [impact review](ars-elemental-pinned-07113-impact.md). Newly installed [Conflux](ars-conflux.md) combined behavior remains under research.
+
 Exact hash scope: [guide receipt](ars-elemental-pinned-guide-urn.md), bundled Sauce [receipt](ars-elemental-pinned-foci.md). Direct MethodHomingProjectile/PropagatorHoming and two glyph recipes; exact Ars5.13.5 EntityHomingProjectileSpell freshly decompiled externally in `elemental-parent-fresh`, existing EntityProjectileSpell/MethodProjectile/SpellContext recipient; bundled IPropagator child-context bridge. This audits **two of39 addon glyph recipe routes**, not the full glyph set. No projectile/client tests.
 
 ## Learn and build

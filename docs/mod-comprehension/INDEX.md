@@ -145,6 +145,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
+| `ars-conflux` | Ars Conflux | library with execution overlays | current integration pin | partial receipt | researching | [profile](mods/ars-conflux.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | stale | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-ocultas.md) |
@@ -471,3 +472,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-22 — Current integration2e922405 upgrades Elemental0.7.11.3/Sauce74.113. Exact new hash checked; [six utility rituals + delta](mods/ars-elemental-pinned-utility-rituals.md) audited/revalidated. Source-after-batch, no-debit Detection and Zapping collateral explicit. Historical profile stale pending changed recipient/Sauce/forest/full reconciliation;9complete/33unfinished, no gameplay acceptance.
 
 - 2026-11-22 — [Current Archwood rituals](mods/ars-elemental-pinned-forest-rituals.md): all8ritual implementations now audited; island50Source after5terrain, pod biome input, Forestation0Source finite features/selection-order and persistence/placement boundaries.37Elementalcompanions, profile still stale for other upgraded recipients;9complete/33unfinished.
+
+- 2026-11-22 — Current integration17a564d8 adds [Ars Conflux](mods/ars-conflux.md): exact pin/metadata/startup/initial execution overlay receipt, full combined audit open. Scope now43profiles:9complete/33researching/1stale. [Elemental impact](mods/ars-elemental-pinned-07113-impact.md) and [Sauce74.113](mods/ars-family-pinned-sauce-74113.md) close Horn sound tuning, configured LifeLink/Homing allies, Book of Friends UI/damage guard and dimension boundary; remaining source gaps explicit.

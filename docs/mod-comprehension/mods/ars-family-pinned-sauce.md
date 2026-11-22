@@ -1,6 +1,6 @@
 # Pinned Ars family — bundled Sauce identity and scope
 
-**Historical snapshot:** integration `2e922405a01ded8893aef08cb06ae0278b9d96ef` upgrades Elemental to0.7.11.3 with Sauce74.113/[74,). The61.100 family-candidate conclusion below no longer describes that current pin; see [delta receipt](ars-elemental-pinned-utility-rituals.md). Remaining family pins were unchanged in the targeted comparison; new Sauce recipient audit remains.
+**Historical snapshot:** integration `2e922405a01ded8893aef08cb06ae0278b9d96ef` upgrades Elemental to0.7.11.3 with Sauce74.113/[74,). The61.100 family-candidate conclusion below no longer describes that current pin; see [delta receipt](ars-elemental-pinned-utility-rituals.md). Remaining family pins were unchanged in the targeted comparison; new recipient changes and bounded identity comparison are now recorded in [current74.113 report](ars-family-pinned-sauce-74113.md).
 
 Research2026-11-22. Exact packwiz filenames/download hashes were recomputed for native Ars plus all seven installed Ars addons: Nouveau5.13.5, Elemental0.7.10.4, Elemancy1.18.3, Additions21.3.0, Controle1.6.16, n Spells3.3.5, Ocultas2.6.2 and Unification1.2.23. Local copied/downloaded artifacts remain outside Git. Relevant fetched integration `4bd316fb7811451442c4b030d59a2b3a0ede5571`; Elemental/Nouveau pin paths unchanged versus prior integration checkpoint. This is metadata/source analysis, not a new loader/assembly run.
 

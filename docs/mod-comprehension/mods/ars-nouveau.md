@@ -1,6 +1,6 @@
 # Ars Nouveau - mechanics, full native route and research status
 
-**Status: researching.** Native progression and major optional systems are now consolidated against thirty exact-binary companions. Seven-addon full-route audits remain open; source completeness and actual gameplay acceptance are separate. This current profile replaces the contradictory historical survey (82glyphs/Patchouli absence/old caster limits/pilot-only-on-PR claims). Earlier evidence remains in Git history; use current companions for exact mechanics.
+**Status: researching.** Native progression and major optional systems are now consolidated against thirty exact-binary companions. Eight-addon installed-scope review remains open after new Conflux pin; source completeness and actual gameplay acceptance are separate. This current profile replaces the contradictory historical survey (82glyphs/Patchouli absence/old caster limits/pilot-only-on-PR claims). Earlier evidence remains in Git history; use current companions for exact mechanics.
 
 | Field | Current evidence |
 | --- | --- |
@@ -10,7 +10,7 @@
 | Method / reviewed | Hash-matched local distribution resources, selected CFR0.152 decompilation with inner siblings and consequential javap checks;2026-11-18 |
 | Native inventory | 709data recipe resources,85glyph recipes,24rituals; counts don't imply every optional recipe is mandatory |
 | Current source baseline | Research basedcb8e2dcab59cc625500b3ca0329df1511823610b; latest fetched integration2f662b9e8b73cee47a1e23bf6d1f3510dd41d8ae; no Ars pin change |
-| Quest chapter | Ars Nouveau; base plus7addons. [All49pilot-node source/ID/task/reward crosswalk](ars-nouveau-pilot-crosswalk.md). Files physically present in integration source; actual client/actions/claims untested |
+| Quest chapter | Ars Nouveau; historical pilot covers base plus7addons; current source adds8th [Conflux](ars-conflux.md). [All49pilot-node source/ID/task/reward crosswalk](ars-nouveau-pilot-crosswalk.md). Files physically present in integration source; actual client/actions/claims untested |
 | Earlier upstream source | baileyholl/Ars-Nouveau4d323fba9200c3293a4f4848cf1e0fe70beb7098 declares5.13.5; version alignment doesn't prove binary build identity and is superseded by direct artifact when differing |
 
 ## Player value and two separate economies
@@ -106,7 +106,7 @@ Useful native combinations: Agronomic plus a real growing garden ->Jar->processi
 
 ## Addon scope and compatibility leads
 
-All seven are separately pinned profiles and part of completion scope. Unification, Ars n Spells, Controle and Ocultas are source-complete for pinned installed scopes; three addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
+The original seven are separately pinned profiles; current integration17a564d8 adds eighth [Conflux](ars-conflux.md), whose execution overlays and optional glyphs require combined review. Unification, Ars n Spells, Controle and Ocultas are source-complete for pinned installed scopes; three addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
 
 | Addon | Remaining full-route focus |
 | --- | --- |
@@ -124,7 +124,7 @@ Existing [Botania mana bridge candidate](../interactions/botania-revived--ars-no
 
 [Full49node crosswalk](ars-nouveau-pilot-crosswalk.md) verifies canonical/resolved/generated source IDs, criteria, rewards and current integration comparison. Pilot is source-present, PR74closed/unmerged; neither fact proves player acceptance. One orientation,31itemtasks,17advancementtasks;11native advancement conditions are inventory_changed. Dedicated Notebook acquisition/opening missing, many operation lessons use equipment proxies, and major optional routes outgrow original pilot. Exact advancement presence isn't proof of correct attribution/action credit.
 
-Current research remains incomplete until seven-addon routes and final combined stage/pilot reconciliation close. Native ordinary choices already have detailed route/build contracts; any discovered mandatory path gap gets targeted source check. Do not promote this parent because it has thirty companion documents or because a registry probe loaded49quests. Whole project receipt remains5source-complete/37researching.
+Current research remains incomplete until current eight-addon routes and final combined stage/pilot reconciliation close. Native ordinary choices already have detailed route/build contracts; any discovered mandatory path gap gets targeted source check. Do not promote this parent because it has thirty companion documents or because a registry probe loaded49quests. Current project receipt:9/43source-complete,33researching and1stale after new Conflux scope.
 
 ## Evidence ledger and verification
 

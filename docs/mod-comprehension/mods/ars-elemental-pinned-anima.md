@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — Charm, Life Link and Phantom Grasp
 
+**Version update:** Current0.7.11.3 replaces hard-coded half sharing with configurable dmg_link/heal_link(default0.5); [impact review](ars-elemental-pinned-07113-impact.md). Newly installed [Conflux](ars-conflux.md) combined behavior remains under research.
+
 Exact artifact/hash [receipt](ars-elemental-pinned-guide-urn.md). Direct three glyphs, EnthrallEffect/LifeLinkEffect and recipes; bundled Sauce EntityCarryMEI/EnthrallUtil/GenericEventHandler/goal and alliance mixins. Dependency-version scope in [focus receipt](ars-elemental-pinned-foci.md). No taming, AI, healing or multiplayer tests. **38of39 glyph recipes audited**; Bubble Shield remains, plus other major addon routes.
 
 ## Learn the three optional branches
