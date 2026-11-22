@@ -31,9 +31,10 @@ def main() -> int:
             names = jar.namelist()
             nested_jars = [name for name in names if name.endswith(".jar")]
             foundation_files = [name for name in names
-                                if name.lower().startswith(("dev/letsshare/foundation/", "net/satisfy/foundation/",
-                                                             "com/letsdo/foundation/", "com/letsshare/foundation/"))
-                                or "/foundation/" in name.lower()]
+                                if name.lower().endswith(".class") and (
+                                   name.lower().startswith(("dev/letsshare/foundation/", "net/satisfy/foundation/",
+                                                            "com/letsdo/foundation/", "com/letsshare/foundation/"))
+                                   or "/foundation/" in name.lower())]
         info = jar_metadata(data)
         native_ids[slug] = info.get("mod_ids", [])
         results.append({"slug": slug, "publisher": url, "bytes": len(data),
