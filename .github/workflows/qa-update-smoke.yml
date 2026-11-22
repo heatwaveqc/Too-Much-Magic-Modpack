@@ -88,11 +88,41 @@ jobs:
           python3 scripts/validate.py
           python3 scripts/verify_qa_inventory.py --strict-target
 
-      - name: Assemble existing immutable first-party sources with updated third-party pins
-        working-directory: trial
+      # Keep the canonical assembler's clean-branch invariant intact. This
+      # separate checkout is never promoted or pushed; the verified candidate
+      # pins are applied only after source assembly in the disposable runner.
+      - name: Checkout pristine current test/full-integration for normal assembly
+        uses: actions/checkout@v4
+        with:
+          ref: test/full-integration
+          fetch-depth: 0
+          path: assembly
+          persist-credentials: false
+
+      - name: Assemble existing frozen first-party sources using normal clean integration contract
+        working-directory: assembly
         run: |
           set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+          python3 scripts/validate_integration_sources.py
           python3 scripts/assemble_integration.py
+          python3 scripts/validate.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+
+      - name: Overlay only the four SHA-512-verified mod updates after clean assembly
+        env:
+          TMM_UPDATE_CANDIDATE_SHA: ${{ steps.authorization.outputs.sha }}
+        run: |
+          set -euo pipefail
+          python3 authorization/scripts/apply_qa_update_overlay.py \
+            --trial trial --assembled assembly --candidate-sha "$TMM_UPDATE_CANDIDATE_SHA"
+
+      - name: Validate assembled integration plus four updates (isolated QA)
+        working-directory: assembly
+        run: |
+          set -euo pipefail
           python3 scripts/verify_qa_inventory.py --strict-target
           python3 scripts/validate.py
           python3 scripts/verify_next_test_roster.py
@@ -110,7 +140,7 @@ jobs:
           fi
 
       - name: Verify four upgrade pins survived assembly (do not silently revert)
-        working-directory: trial
+        working-directory: assembly
         run: |
           python3 - <<'PY'
           import json, pathlib, tomllib
@@ -130,14 +160,14 @@ jobs:
           PY
 
       - name: Compile and unit test all selected first-party runtime modules
-        working-directory: trial
+        working-directory: assembly
         run: |
           python3 scripts/first_party_runtime.py build
           paths="$(python3 scripts/first_party_runtime.py paths)"
           echo "SMOKE_EXTRA_MOD_JARS=$paths" >> "$GITHUB_ENV"
 
       - name: Capture exact candidate metadata and rollback provenance BEFORE boot
-        working-directory: trial
+        working-directory: assembly
         env:
           TMM_UPDATE_CANDIDATE_SHA: ${{ steps.authorization.outputs.sha }}
           TMM_UPDATE_CANDIDATE_BRANCH: ${{ steps.authorization.outputs.branch }}
@@ -149,15 +179,15 @@ jobs:
             cp "mods/$name.pw.toml" "${{ runner.temp }}/tmm-update-evidence/$name.pw.toml"
           done
           git diff --binary -- manifest/mods.json index.toml pack.toml mods/neovitae.pw.toml mods/evilcraft.pw.toml mods/goety.pw.toml mods/ars-elemental.pw.toml > "${{ runner.temp }}/tmm-update-evidence/packwiz-changes.patch"
-          printf '%s\n' "SOURCE_SHA=$TMM_UPDATE_CANDIDATE_SHA" "SOURCE_BRANCH=$TMM_UPDATE_CANDIDATE_BRANCH" "ROLLBACK_BASE=2373d50732866e460dc9e9454f7187f9045e1cdc" > "${{ runner.temp }}/tmm-update-evidence/provenance.txt"
+          printf '%s\n' "SOURCE_SHA=$TMM_UPDATE_CANDIDATE_SHA" "SOURCE_BRANCH=$TMM_UPDATE_CANDIDATE_BRANCH" "ASSEMBLED_BASE=$(git rev-parse HEAD)" "ROLLBACK_BASE=2373d50732866e460dc9e9454f7187f9045e1cdc" > "${{ runner.temp }}/tmm-update-evidence/provenance.txt"
           sha256sum pack.toml index.toml mods/neovitae.pw.toml mods/evilcraft.pw.toml mods/goety.pw.toml mods/ars-elemental.pw.toml | tee "${{ runner.temp }}/tmm-update-evidence/checksums.txt"
 
       - name: OWNER-AUTHORIZED full NeoForge server boot with four upgraded mods and first-party jars
-        working-directory: trial
+        working-directory: assembly
         run: bash scripts/smoke_server.sh
 
       - name: Verify first-party JARs actually loaded and mandatory retirement rules
-        working-directory: trial
+        working-directory: assembly
         run: |
           set -euo pipefail
           python3 scripts/first_party_runtime.py verify-smoke --mods-dir "$WORK_DIR/mods"
