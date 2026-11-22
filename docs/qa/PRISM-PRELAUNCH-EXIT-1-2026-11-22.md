@@ -1,6 +1,6 @@
 # November 22 U/E launch failure: Windows pre-launch process regression
 
-Status: root cause traced; **no corrective code or instance changes applied**. Owner requested diagnosis and publication of findings, not an ad-hoc bypass or another game launch. No Minecraft client/server, world, smoke or packaging run was started during this investigation.
+Status at investigation: root cause traced; **no corrective code or instance changes were applied during the investigation**. Later engineering follow-up is [PR #491](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/491), which replaces the unset `$LASTEXITCODE` assumption with synchronous `Start-Process -Wait -PassThru`; isolated Windows Java GUI/console process regression tests passed. **A corrected full Prism client build and in-game launch have not been performed.** Owner requested diagnosis and publication of findings, not an ad-hoc bypass or another game launch. No Minecraft client/server, world, smoke or packaging run was started during this investigation.
 
 ## Finding
 
