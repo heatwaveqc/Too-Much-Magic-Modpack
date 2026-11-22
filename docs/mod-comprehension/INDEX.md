@@ -469,3 +469,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-22 — [Ars family Sauce receipt](mods/ars-family-pinned-sauce.md): eight exact family JAR hashes checked, only Elemental/Elemancy supply Sauce; range intersection permits61.100 and excludes supplied29.73. Global159-pin/runtime selection not claimed verified;9/42 unchanged.
 
 - 2026-11-22 — Current integration2e922405 upgrades Elemental0.7.11.3/Sauce74.113. Exact new hash checked; [six utility rituals + delta](mods/ars-elemental-pinned-utility-rituals.md) audited/revalidated. Source-after-batch, no-debit Detection and Zapping collateral explicit. Historical profile stale pending changed recipient/Sauce/forest/full reconciliation;9complete/33unfinished, no gameplay acceptance.
+
+- 2026-11-22 — [Current Archwood rituals](mods/ars-elemental-pinned-forest-rituals.md): all8ritual implementations now audited; island50Source after5terrain, pod biome input, Forestation0Source finite features/selection-order and persistence/placement boundaries.37Elementalcompanions, profile still stale for other upgraded recipients;9complete/33unfinished.

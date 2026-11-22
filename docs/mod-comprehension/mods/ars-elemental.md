@@ -73,3 +73,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Shared Sauce metadata receipt](ars-family-pinned-sauce.md) checks all eight family artifacts: Elemental61.100 and Elemancy29.73 bundles, intersection excludes29.73;61.100 is the only supplied family candidate, with whole-runtime selection still unverified.
 
 [Six utility rituals and current-pin delta](ars-elemental-pinned-utility-rituals.md) adds actionable acquisition, effects, Source-after-batch order, free Detection path and Zapping collateral. Two forest rituals remain; both changed in0.7.11.3. New embedded Sauce74.113 invalidates historical61.100 family candidate conclusion for the current pin.
+
+[Current Archwood island and Forestation](ars-elemental-pinned-forest-rituals.md) completes8ritual implementations: pod-versus-fruit input, radius/terrain/Source50-after5, selected-sapling admission-order/reload and finite zero-Source feature pass.37companions including two current-version ritual reports; remaining version-delta/recipe/full-profile review still open.

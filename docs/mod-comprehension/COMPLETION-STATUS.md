@@ -200,3 +200,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-22 — [Ars family Sauce receipt](mods/ars-family-pinned-sauce.md): eight exact family JAR hashes checked, only Elemental/Elemancy supply Sauce; range intersection permits61.100 and excludes supplied29.73. Global159-pin/runtime selection not claimed verified;9/42 unchanged.
 
 2026-11-22 current integration2e922405 changes Elemental0.7.11.3/Sauce74.113; exact new artifact hash matched. [Six utility rituals](mods/ars-elemental-pinned-utility-rituals.md) revalidated via byte-identical classes/resources and native recipients; forest/Horn/LifeLink/Phalanx and new Sauce impact remain.9/42complete;32researching+1stale(33unfinished). Old35companions retained as version-scoped evidence. No hard blocker or runtime tests.
+
+Current0.7.11.3 [two forest rituals](mods/ars-elemental-pinned-forest-rituals.md) close8registeredrituals across37companions; inherited native feature/biome recipients inspected. Version-change impact on other systems still open; no completion promotion.

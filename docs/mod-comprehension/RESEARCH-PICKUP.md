@@ -1,3 +1,10 @@
+# Latest checkpoint — current0.7.11.3 forest rituals
+
+- Added ars-elemental-pinned-forest-rituals.md; **all8rituals now audited**,37Elementalcompanions. Native island usesGrass/DirtY−5..−1/radius7+gems/replaceableonly,50SourceAFTER5placements, podBlockItemnotfruit→biome; helperquartpalette/no automaticfeatures. Forestationfinite0Sourcefeatures, radius7not7×7,5variantregistry/newdefaultallplants/pods, actualRandomTree ignoresstored.8chance, fake-playerplacementunchecked, saplingselectioncanbeclearedbylatergem/rejecteditemandnotpersisted. Native feature/persistence/spacing/biome recipients audited. No actual yield/biome/claimPASS.
+- **Next changed0.7.11.3 recipients** Horn+SetHornRecipe/JEI, LifeLink/Homing/Phalanx/Rainbow/registry/worldgen and embeddedSauce74.113 (fullnewSaucedecompile needed). Then InvincibleBook/customrecipe/ItemEntityMixin,3Crush/basicrecipe reconciliation, fullprofile/pilot. Six utilityritual report and livepin-delta below are current; earlier35companions historicalpendingimpactreview.9complete32researching1stale;nohardblocker/hourlyactive. GitloghaspushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-22 21:16UTC utility rituals / live pin change
 
 - Fetched integration2e922405a01ded8893aef08cb06ae0278b9d96ef: **Elemental upgraded0.7.10.4→0.7.11.3, Sauce61.100→74.113**. Only Elemental Ars-family pin differs from research HEAD. Exact new2,383,221byte JAR downloaded/hash512matched. Full external CFR `elemental-07113-fresh`, delta `elemental-07113-delta.txt`; no pin edits/rebase. Old35companions historical, profile/index now stale.9complete/32researching+1stale=33unfinished.
