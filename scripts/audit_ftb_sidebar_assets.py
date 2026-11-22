@@ -4,7 +4,7 @@
 Source-only mode verifies the Packwiz lock and searches pack-owned asset
 overrides. --mods-dir additionally verifies exact installed FTB JAR hashes and
 examines sidebar JSON and direct texture paths across installed client mods.
-Symbolic icon names and renderer/shader failures require real client QA.
+Inspects packaged atlas source declarations; renderer/shader failures still require client QA.
 """
 from __future__ import annotations
 
@@ -24,11 +24,15 @@ FTB_PIN_SLUGS = (
     "ftb-teams-forge",
     "ftb-chunks-forge",
     "ftb-essentials",
+    "ftb-filter-system",
+    "ftb-xmod-compat",
 )
 DIRECT_TEXTURE = re.compile(r"^([a-z0-9_.-]+):textures/([a-z0-9_./-]+[.]png)$")
 SIDEBAR_FILE = re.compile(r"^assets/([a-z0-9_.-]+)/sidebar_buttons/.+[.]json$")
 ASSET_FILE = re.compile(r"^assets/[a-z0-9_.-]+/.+")
 MAX_SIDEBAR_JSON_BYTES = 512 * 1024
+BLOCK_ATLAS_FILE = "assets/minecraft/atlases/blocks.json"
+ATLAS_ID = re.compile(r"^([a-z0-9_.-]+):([a-z0-9_./-]+)$")
 
 
 def file_hash(path: Path, algorithm: str) -> str:
@@ -96,16 +100,35 @@ def icon_tokens(data: object) -> list[str]:
 
 
 def audit_sidebar_resources(archives: dict[str, dict[str, bytes]]) -> dict:
-    """Inspect an already read resource index; reusable by synthetic tests."""
+    """Inspect already-read resources. Atlas evidence != proof of live stitching."""
     providers: dict[str, list[str]] = {}
+    atlas_sources = []
+    bad_atlases = []
     definitions = []
     missing_direct = []
     symbolic = []
+    atlas_evidence = []
     malformed = []
     for provider, resources in sorted(archives.items()):
-        for name in resources:
+        for name, raw in resources.items():
             if ASSET_FILE.fullmatch(name):
                 providers.setdefault(name, []).append(provider)
+            if name != BLOCK_ATLAS_FILE:
+                continue
+            try:
+                parsed = json.loads(raw)
+                if not isinstance(parsed, dict) or not isinstance(parsed.get("sources"), list):
+                    raise ValueError("atlas must have a sources array")
+                for entry in parsed["sources"]:
+                    if isinstance(entry, dict) and entry.get("type") == "directory":
+                        source, prefix = entry.get("source"), entry.get("prefix")
+                        if isinstance(source, str) and isinstance(prefix, str):
+                            atlas_sources.append({
+                                "provider": provider, "source": source, "prefix": prefix,
+                            })
+            except (ValueError, UnicodeDecodeError) as exc:
+                bad_atlases.append({"provider": provider, "reason": str(exc)})
+
     for provider, resources in sorted(archives.items()):
         for name, raw in sorted(resources.items()):
             if not SIDEBAR_FILE.fullmatch(name):
@@ -119,21 +142,61 @@ def audit_sidebar_resources(archives: dict[str, dict[str, bytes]]) -> dict:
                 malformed.append({"provider": provider, "path": name, "reason": str(exc)})
                 continue
             direct = []
-            unresolved = []
+            atlas_icons = []
             for icon in icons:
-                match = DIRECT_TEXTURE.fullmatch(icon)
+                # The compiled FTB Library Icon.getIcon(String) parser splits
+                # semicolon properties before resolving PNG vs atlas sprite.
+                base = icon.split(";", 1)[0].strip()
+                match = DIRECT_TEXTURE.fullmatch(base)
                 if match:
                     resource = f"assets/{match.group(1)}/textures/{match.group(2)}"
                     direct.append(resource)
                     if resource not in providers:
                         missing_direct.append({"provider": provider, "path": name, "missing": resource})
+                    continue
+
+                # Any remaining standard namespace:path ID is an AtlasSpriteIcon.
+                # Sprite IDs may be registered by minecraft's own blocks atlas or
+                # other installed packs, so absence from these JARs is not an
+                # unconditional texture error.
+                atlas_icons.append(icon)
+                parsed_id = ATLAS_ID.fullmatch(base)
+                if not parsed_id:
+                    atlas_evidence.append({
+                        "provider": provider, "path": name, "icon": base,
+                        "status": "other_icon_expression_needs_runtime_resolution",
+                    })
+                    continue
+                namespace, sprite = parsed_id.groups()
+                candidates = []
+                for source in atlas_sources:
+                    prefix = source["prefix"]
+                    if sprite.startswith(prefix):
+                        candidate = (
+                            f"assets/{namespace}/textures/{source['source']}/"
+                            f"{sprite[len(prefix):]}.png"
+                        )
+                        if candidate in providers:
+                            candidates.append({"path": candidate, "atlas_provider": source["provider"]})
+                if candidates:
+                    status = "candidate_png_and_packaged_atlas_source_present"
                 else:
-                    # e.g. ftblibrary:icons/... is a renderer-specific symbolic
-                    # icon, not a literal PNG; do not label it as a missing file.
-                    unresolved.append(icon)
-            if unresolved:
-                symbolic.append({"provider": provider, "path": name, "icons": unresolved})
-            definitions.append({"provider": provider, "path": name, "direct_textures": direct, "symbolic_count": len(unresolved)})
+                    png = f"assets/{namespace}/textures/{sprite}.png"
+                    status = (
+                        "candidate_png_present_but_atlas_source_not_in_scanned_jars"
+                        if png in providers
+                        else "no_candidate_png_in_scanned_jars"
+                    )
+                atlas_evidence.append({
+                    "provider": provider, "path": name, "icon": base,
+                    "status": status, "candidate_sources": candidates,
+                })
+            if atlas_icons:
+                symbolic.append({"provider": provider, "path": name, "icons": atlas_icons})
+            definitions.append({
+                "provider": provider, "path": name,
+                "direct_textures": direct, "symbolic_count": len(atlas_icons),
+            })
     duplicates = [
         {"path": name, "providers": owners}
         for name, owners in sorted(providers.items())
@@ -143,6 +206,9 @@ def audit_sidebar_resources(archives: dict[str, dict[str, bytes]]) -> dict:
         "sidebar_definitions": definitions,
         "missing_direct_textures": missing_direct,
         "symbolic_icons_needing_runtime_resolution": symbolic,
+        "atlas_icon_evidence": atlas_evidence,
+        "packaged_block_atlas_directory_sources": atlas_sources,
+        "malformed_block_atlases": bad_atlases,
         "ambiguous_asset_overrides": duplicates,
         "malformed_definitions": malformed,
     }
@@ -166,7 +232,7 @@ def scan_installed(mods_dir: Path, pins: dict[str, dict]) -> dict:
                 for name in z.namelist():
                     if not ASSET_FILE.fullmatch(name):
                         continue
-                    if SIDEBAR_FILE.fullmatch(name):
+                    if SIDEBAR_FILE.fullmatch(name) or name == BLOCK_ATLAS_FILE:
                         info = z.getinfo(name)
                         if info.file_size > MAX_SIDEBAR_JSON_BYTES:
                             resources[name] = b" " * (MAX_SIDEBAR_JSON_BYTES + 1)
@@ -199,7 +265,8 @@ def main() -> int:
             "pack_ftb_asset_overrides": asset_overrides(args.pack_root),
             "limitations": [
                 "Source/ZIP analysis does not verify live icon renderer, atlas, font, shader, resource-pack priority or click behavior.",
-                "Symbolic FTB icon IDs are not literal file paths and are not declared broken by this audit.",
+                "Packaged atlas source + PNG presence does not prove final loaded/stiched Minecraft block atlas.",
+                "Atlas sprite IDs from vanilla or other packs require full resource pack evaluation.",
                 "A clean client GUI and personal-profile comparison remain required for #507.",
             ],
         }
@@ -210,7 +277,10 @@ def main() -> int:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(rendered, encoding="utf-8")
         print(rendered, end="")
-        if args.mods_dir and (report["missing_direct_textures"] or report["malformed_definitions"]):
+        if args.mods_dir and (
+            report["missing_direct_textures"] or report["malformed_definitions"]
+            or report["malformed_block_atlases"]
+        ):
             return 1
         return 0
     except (OSError, ValueError, KeyError, TypeError, tomllib.TOMLDecodeError) as exc:
