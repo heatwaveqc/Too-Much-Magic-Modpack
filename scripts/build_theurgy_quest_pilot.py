@@ -21,9 +21,9 @@ SPEC = ROOT / "manifest/theurgy_quest_pilot.json"
 OUT = ROOT / "docs/quest-pilots/theurgy/generated"
 ASSETS = [
     ("title.png", 0.0, -15.0, 13.5, 3.3),
-    ("vessels.png", 12.0, -4.0, 8.0, 2.4),
+    ("vessels.png", 13.0, -8.5, 8.0, 2.4),
     ("niter.png", 18.0, 11.0, 11.5, 2.5),
-    ("reformation.png", 29.0, -10.5, 8.0, 2.8),
+    ("reformation.png", 30.0, -13.0, 8.0, 2.8),
     ("wires.png", 19.0, -16.5, 11.2, 2.4),
 ]
 PREFIX = {"quest": "544D3A150000", "task": "544D4A150000",
