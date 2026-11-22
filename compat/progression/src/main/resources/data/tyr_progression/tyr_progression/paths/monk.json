@@ -2301,7 +2301,7 @@
       "id": "tyr_progression:fortunate_hands",
       "title": "Fortunate Hands",
       "description": "Adds up to three virtual Fortune levels to the barehand Treasure Hand Fortune mode, using the original loot roll; inactive in Silk Touch mode and when using an equipped tool.",
-      "lane": "Hands as Tools",
+      "lane": "Hands As Tools",
       "max_rank": 10,
       "required_rank": 12,
       "rank_costs": [
