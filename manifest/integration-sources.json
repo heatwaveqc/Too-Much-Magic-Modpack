@@ -742,6 +742,21 @@
       "merged_from": "feature/astral-dimension-sky-config-2026-11-19",
       "merged_pr": 361,
       "note": "Exact corrected source and preserved audit; rendering is not gameplay permission."
+    },
+    {
+      "name": "theurgy-atlas-quest-chapter",
+      "branch": "test/full-integration",
+      "paths": [
+        "manifest/theurgy_quest_pilot.json",
+        "scripts/build_theurgy_quest_pilot.py",
+        "scripts/build_theurgy_quest_art.py"
+      ],
+      "mode": "source-verified-baseline-runtime-theurgy-quest",
+      "note": "Theurgy first full 20-node Atlas-based FTB chapter, source PR #494 at 08d7245022bedd32f6d35742982dc8d307b00d42 and v3 visual rules PR #489 at f08107be3662479e49c1f42faa2a47ada4b1e9f5. Integration-authoring branch composes existing canonical shared quest content/resolved, first-party language and Theurgy FTB chapter without overwriting other chapter owners. Preserve existing overview IDs and 2 XP+paper reward. 15 item criteria and 5 honest manual objectives. Generate five original PNGs on approved assembly into kubejs/assets/tmm/textures/questpics/theurgy before packwiz index and immutable snapshot; never copy proprietary ATM quest art. Source ready for owner-authorized Experimental server smoke/Prism; no client/gameplay PASS.",
+      "source_commit": "08d7245022bedd32f6d35742982dc8d307b00d42",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/quest-theurgy-atlas-pilot-20261122",
+      "pending_review_pr": 494
     }
   ],
   "covered_by_baseline": {

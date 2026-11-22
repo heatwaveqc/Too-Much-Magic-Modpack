@@ -20,7 +20,7 @@ AUTHOR = json.loads((ROOT / "manifest/quest_content.json").read_text(encoding="u
 RESOLVED = json.loads((ROOT / "manifest/quest_content_resolved.json").read_text(encoding="utf-8"))
 BY_AUTHOR = {(q["chapter"], q["title"]): q for q in AUTHOR["quests"]}
 BY_ID = {q["quest_id"]: q for q in RESOLVED["quests"]}
-BLOCK = re.compile(r"\n\t\t\{\n.*?\n\t\t\}", flags=re.S)
+BLOCK = re.compile(r'\n\t\t\{\n\t\t\tid: "[0-9A-F]{16}".*?\n\t\t\}', flags=re.S)
 INLINE_TITLE = re.compile(r'\n\t\t\ttitle: "(?:\\.|[^"\\])*"')
 ROOT_TITLE = re.compile(r'\n\ttitle: "(?:\\.|[^"\\])*"')
 ROOT_SUBTITLE = re.compile(r'\n\tsubtitle: "(?:\\.|[^"\\])*"')
@@ -227,10 +227,14 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     # The Ars pilot owns its full layout and keeps the current Alcohol chapter intact.
     for row in json.loads((ROOT / "manifest/ars_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
         put("Ars Nouveau", row["title"], *row["position"])
+    # Theurgy pilot positions are first-class source; never flatten its branching graph.
+    for node in json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
+        put("Theurgy", node["title"], *node["position"])
     return result
 
 
 SUBTITLE = {
+    "Theurgy": "Hermetica, alchemical vessels, Niter, Reformation, and mercurial logistics.",
     "Goety": "Dark arts, soul rituals and summoning; see Skills & Factions for lichdom.",
     "Just Another Witchery Remake": "Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations.",
     "ProjectE": "EMC, Project Expansion and ProjectE Energy Converters.",
@@ -397,8 +401,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 240 or intro_count != 201:
-        raise ValueError(f"Expected 240 objects / 201 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 259 or intro_count != 221:
+        raise ValueError(f"Expected 259 objects / 221 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:

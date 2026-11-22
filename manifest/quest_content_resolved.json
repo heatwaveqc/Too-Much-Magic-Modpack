@@ -3958,6 +3958,485 @@
       },
       "depends": null,
       "optional": true
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Hermetica: Your Alchemical Field Guide",
+      "quest_id": "544D303001500001",
+      "task_id": "544D403001500001",
+      "xp_reward_id": "544D903001500001",
+      "item_reward_id": "544DA03001500002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 2,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-00",
+      "prerequisites": []
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Light a Pyromantic Brazier",
+      "quest_id": "544D3A1500000001",
+      "task_id": "544D4A1500000001",
+      "xp_reward_id": "544D6A1500000001",
+      "item_reward_id": "544D7A1500000001",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:pyromantic_brazier",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:charcoal",
+        "count": 4
+      },
+      "depends": "Hermetica: Your Alchemical Field Guide",
+      "optional": false,
+      "source_key": "TH-01",
+      "prerequisites": [
+        "Hermetica: Your Alchemical Field Guide"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Distill Mercury from Stone",
+      "quest_id": "544D3A1500000002",
+      "task_id": "544D4A1500000002",
+      "xp_reward_id": "544D6A1500000002",
+      "item_reward_id": "544D7A1500000002",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:distiller",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:stone",
+        "count": 8
+      },
+      "depends": "Light a Pyromantic Brazier",
+      "optional": false,
+      "source_key": "TH-02",
+      "prerequisites": [
+        "Light a Pyromantic Brazier"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Calcine the Four Salt Families",
+      "quest_id": "544D3A1500000003",
+      "task_id": "544D4A1500000003",
+      "xp_reward_id": "544D6A1500000003",
+      "item_reward_id": "544D7A1500000003",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:calcination_oven",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:granite",
+        "count": 8
+      },
+      "depends": "Light a Pyromantic Brazier",
+      "optional": false,
+      "source_key": "TH-03",
+      "prerequisites": [
+        "Light a Pyromantic Brazier"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Collect Sal Ammoniac",
+      "quest_id": "544D3A1500000004",
+      "task_id": "544D4A1500000004",
+      "xp_reward_id": "544D6A1500000004",
+      "item_reward_id": "544D7A1500000004",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:sal_ammoniac_accumulator",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "depends": "Hermetica: Your Alchemical Field Guide",
+      "optional": false,
+      "source_key": "TH-04",
+      "prerequisites": [
+        "Hermetica: Your Alchemical Field Guide"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Liquefy a Material into Sulfur",
+      "quest_id": "544D3A1500000005",
+      "task_id": "544D4A1500000005",
+      "xp_reward_id": "544D6A1500000005",
+      "item_reward_id": "544D7A1500000005",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:liquefaction_cauldron",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass_bottle",
+        "count": 3
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "TH-05",
+      "prerequisites": [
+        "Light a Pyromantic Brazier",
+        "Collect Sal Ammoniac"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Assemble the Three-Vessel Incubator",
+      "quest_id": "544D3A1500000006",
+      "task_id": "544D4A1500000006",
+      "xp_reward_id": "544D6A1500000006",
+      "item_reward_id": "544D7A1500000006",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:incubator",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:coal",
+        "count": 6
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "TH-06",
+      "prerequisites": [
+        "Distill Mercury from Stone",
+        "Calcine the Four Salt Families",
+        "Liquefy a Material into Sulfur"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Incubate an Oak Log",
+      "quest_id": "544D3A1500000007",
+      "task_id": "544D4A1500000007",
+      "xp_reward_id": "544D6A1500000007",
+      "item_reward_id": "544D7A1500000007",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:oak_sapling",
+        "count": 2
+      },
+      "depends": "Assemble the Three-Vessel Incubator",
+      "optional": false,
+      "source_key": "TH-07",
+      "prerequisites": [
+        "Assemble the Three-Vessel Incubator"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Repeat with Another Material",
+      "quest_id": "544D3A1500000008",
+      "task_id": "544D4A1500000008",
+      "xp_reward_id": "544D6A1500000008",
+      "item_reward_id": "544D7A1500000008",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:gold_nugget",
+        "count": 4
+      },
+      "depends": "Incubate an Oak Log",
+      "optional": false,
+      "source_key": "TH-08",
+      "prerequisites": [
+        "Incubate an Oak Log"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Ferment Your First Niter",
+      "quest_id": "544D3A1500000009",
+      "task_id": "544D4A1500000009",
+      "xp_reward_id": "544D6A1500000009",
+      "item_reward_id": "544D7A1500000009",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:fermentation_vat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:sand",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-09",
+      "prerequisites": [
+        "Collect Sal Ammoniac",
+        "Liquefy a Material into Sulfur"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Digest Gold for Reagents",
+      "quest_id": "544D3A150000000A",
+      "task_id": "544D4A150000000A",
+      "xp_reward_id": "544D6A150000000A",
+      "item_reward_id": "544D7A150000000A",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:digestion_vat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:gold_nugget",
+        "count": 6
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-10",
+      "prerequisites": [
+        "Ferment Your First Niter",
+        "Calcine the Four Salt Families"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Exalt Niter, Not Your Tool Tier",
+      "quest_id": "544D3A150000000B",
+      "task_id": "544D4A150000000B",
+      "xp_reward_id": "544D6A150000000B",
+      "item_reward_id": "544D7A150000000B",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:flint",
+        "count": 4
+      },
+      "depends": "Digest Gold for Reagents",
+      "optional": true,
+      "source_key": "TH-11",
+      "prerequisites": [
+        "Digest Gold for Reagents"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Build a Mercury Flux Supply",
+      "quest_id": "544D3A150000000C",
+      "task_id": "544D4A150000000C",
+      "xp_reward_id": "544D6A150000000C",
+      "item_reward_id": "544D7A150000000C",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:mercury_catalyst",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:redstone",
+        "count": 6
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-12",
+      "prerequisites": [
+        "Distill Mercury from Stone",
+        "Incubate an Oak Log"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Reform with a Real Target Sample",
+      "quest_id": "544D3A150000000D",
+      "task_id": "544D4A150000000D",
+      "xp_reward_id": "544D6A150000000D",
+      "item_reward_id": "544D7A150000000D",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:reformation_target_pedestal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:iron_nugget",
+        "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-13",
+      "prerequisites": [
+        "Exalt Niter, Not Your Tool Tier",
+        "Build a Mercury Flux Supply"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Scan with a Basic Divination Rod",
+      "quest_id": "544D3A150000000E",
+      "task_id": "544D4A150000000E",
+      "xp_reward_id": "544D6A150000000E",
+      "item_reward_id": "544D7A150000000E",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:divination_rod_t1",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "depends": "Hermetica: Your Alchemical Field Guide",
+      "optional": true,
+      "source_key": "TH-14",
+      "prerequisites": [
+        "Hermetica: Your Alchemical Field Guide"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Upgrade Your Divination",
+      "quest_id": "544D3A150000000F",
+      "task_id": "544D4A150000000F",
+      "xp_reward_id": "544D6A150000000F",
+      "item_reward_id": "544D7A150000000F",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:divination_rod_t2",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "depends": "Scan with a Basic Divination Rod",
+      "optional": true,
+      "source_key": "TH-15",
+      "prerequisites": [
+        "Scan with a Basic Divination Rod"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Heat with a Caloric Flux Emitter",
+      "quest_id": "544D3A1500000010",
+      "task_id": "544D4A1500000010",
+      "xp_reward_id": "544D6A1500000010",
+      "item_reward_id": "544D7A1500000010",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:caloric_flux_emitter",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:charcoal",
+        "count": 10
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-16",
+      "prerequisites": [
+        "Light a Pyromantic Brazier",
+        "Build a Mercury Flux Supply"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Move Items with Mercurial Wiring",
+      "quest_id": "544D3A1500000011",
+      "task_id": "544D4A1500000011",
+      "xp_reward_id": "544D6A1500000011",
+      "item_reward_id": "544D7A1500000011",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:logistics_item_extractor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glass",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-17",
+      "prerequisites": [
+        "Distill Mercury from Stone",
+        "Incubate an Oak Log"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Route Fluids Without Pretending They Are Items",
+      "quest_id": "544D3A1500000012",
+      "task_id": "544D4A1500000012",
+      "xp_reward_id": "544D6A1500000012",
+      "item_reward_id": "544D7A1500000012",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:logistics_fluid_inserter",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-18",
+      "prerequisites": [
+        "Move Items with Mercurial Wiring",
+        "Collect Sal Ammoniac"
+      ]
+    },
+    {
+      "chapter": "Theurgy",
+      "title": "Rare Materials: Templates Before Replication",
+      "quest_id": "544D3A1500000013",
+      "task_id": "544D4A1500000013",
+      "xp_reward_id": "544D6A1500000013",
+      "item_reward_id": "544D7A1500000013",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:quartz",
+        "count": 4
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "TH-19",
+      "prerequisites": [
+        "Exalt Niter, Not Your Tool Tier",
+        "Reform with a Real Target Sample"
+      ]
     }
   ]
 }

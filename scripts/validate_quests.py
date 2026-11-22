@@ -96,7 +96,20 @@ def main() -> None:
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
     ensure(len(groups) == 5 and len(chapters) == 44, "Expected five groups and 44 chapters")
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 201, "Expected 201 authored quests with Ars and Alcohol is Magic")
+    from build_theurgy_quest_pilot import check_spec as check_theurgy_spec, render as render_theurgy
+    pilot = json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))
+    check_theurgy_spec(pilot)
+    expected_theurgy = render_theurgy(pilot)["theurgy.snbt"]
+    actual_theurgy = (QUESTS / "chapters" / "theurgy.snbt").read_text(encoding="utf-8")
+    ensure(actual_theurgy == expected_theurgy, "Theurgy live chapter differs from reviewed pilot source")
+    art_dir = ROOT / "kubejs/assets/tmm/textures/questpics/theurgy"
+    if art_dir.exists():
+        expected_art = {"title.png", "vessels.png", "niter.png", "reformation.png", "wires.png"}
+        actual_art = {f.name for f in art_dir.iterdir() if f.is_file()}
+        ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
+        ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
+
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 221, "Expected 221 authored quests including 20 Theurgy lessons")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -114,10 +127,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 240,
+    ensure(len(translated_titles) == len(translated_desc) == 259,
            f"Expected 240 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 240 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 259 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -158,7 +171,7 @@ def main() -> None:
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 20, "Tips & Tricks": 20, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
-                    "Skills & Factions": 18, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
+                    "Skills & Factions": 18, "Theurgy": 20, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
         for block in blocks:
@@ -240,13 +253,13 @@ def main() -> None:
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
             if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Alcohol is Magic", "Basic Progression",
-                                 "Advanced Progression", "Endgame Roadmap", "Skills & Factions", "Artifacts", "ProjectE", "A Sufficiently Advanced Magic", "Ars Nouveau"}:
+                                 "Advanced Progression", "Endgame Roadmap", "Skills & Factions", "Artifacts", "ProjectE", "A Sufficiently Advanced Magic", "Ars Nouveau", "Theurgy"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 240, f"Expected 240 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 259, f"Expected 259 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -269,6 +282,19 @@ def main() -> None:
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
+        if q["chapter"] == "Theurgy":
+            predecessors = q.get("prerequisites", [])
+            ids = []
+            for predecessor in predecessors:
+                match = next((x for x in resolved["quests"] if x["chapter"] == "Theurgy" and x["title"] == predecessor), None)
+                ensure(match is not None, f"Theurgy unknown prerequisite: {predecessor}")
+                ids.append(match["quest_id"])
+            if ids:
+                expected_deps = "dependencies: [" + ", ".join(json.dumps(x) for x in ids) + "]"
+                ensure(expected_deps in block, f"Theurgy dropped/changed prerequisites: {q['title']}")
+            else:
+                ensure("dependencies:" not in block, "Unexpected Theurgy root quest dependency")
+
         if q["criterion"]["type"] == "item":
             ensure(q["criterion"]["id"] in item_tasks and (qid, q["criterion"].get("count", 1)) in item_tasks[q["criterion"]["id"]], f"Wrong task for {q['title']}")
             if q.get("consume_items"):
@@ -294,7 +320,7 @@ def main() -> None:
     ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     expected_advancement_tasks = {q["criterion"]["id"]: q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "advancement"}
     ensure(advancement_tasks == expected_advancement_tasks, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 100, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 115, f"Unexpected unique item-task count: {len(item_tasks)}")
     ensure([q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "item_tag"] == ["544D4D1100000001"],
            "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
@@ -362,6 +388,7 @@ def main() -> None:
     ensure(len(chapter_titles) == len(set(chapter_titles)) == len(chapters)
            and set(chapter_titles) == {c["chapter_id"] for c in chapters},
            "Chapter translation IDs must match all runtime chapters exactly")
+    print("PASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated")
     print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
     print("PASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")
