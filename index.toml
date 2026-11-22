@@ -290,7 +290,11 @@ hash = "1a506c651bb81a5cc3edf0bf5f59bc91203af4a95f4027b3a38548c2d583b574"
 
 [[files]]
 file = "config/wover/client.json"
-hash = "2d38184b7ac950ffe845869f8ab925b41d5825bc45f959cae0f91ea3049da68e"
+hash = "ab52947f0f8bc795e2e52f3fa874fb3ab7627afb061efb1a7e9d73e1646faf12"
+
+[[files]]
+file = "config/wover/main.json"
+hash = "0497f3137c9150105e877a79362303b8fc49f141890d7e098f6a8ae9cf8d8e45"
 
 [[files]]
 file = "defaultconfigs/ProjectE/mapping.toml"
@@ -1417,6 +1421,10 @@ file = "kubejs/startup_scripts/silver_equipment_stats.js"
 hash = "2fd11767cb03ffd7206c2700eec52ef6eba05cdbcb8ec4bc58228b298cc552a4"
 
 [[files]]
+file = "kubejs/startup_scripts/vanilla_item_qol.js"
+hash = "bfc1c97ba840aa0d5972db08b5ed074ca2d02c27ed7e50691b7a1c5615673d7c"
+
+[[files]]
 file = "mods/aether.pw.toml"
 hash = "cc3f6e6e8f1838d16e47cce9241e32176279673efb1438ff4451ccffa9579b14"
 metafile = true
@@ -1464,6 +1472,11 @@ metafile = true
 [[files]]
 file = "mods/aquaculture.pw.toml"
 hash = "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff"
+metafile = true
+
+[[files]]
+file = "mods/arcane-archives-reborn.pw.toml"
+hash = "2c834fb26c43d687fe45e5b9d1f88e921482783124da32e8763dcdcc60fe5fc8"
 metafile = true
 
 [[files]]

@@ -1,0 +1,13 @@
+name = "Arcane Archives: Reborn"
+filename = "ArcaneArchives-1.0.2+Neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "082f5f560981c04c487b9c1f5e5ec9976f8ec2db"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8985321
+project-id = 1696190

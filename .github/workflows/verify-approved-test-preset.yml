@@ -1,0 +1,35 @@
+name: Next-test Arcane, WorldWeaver and item QoL contracts (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'mods/arcane-archives-reborn.pw.toml'
+      - 'config/wover/**'
+      - 'kubejs/startup_scripts/vanilla_item_qol.js'
+      - 'scripts/verify_arcane_archives_candidate.py'
+      - 'scripts/verify_worldweaver_preset_candidate.py'
+      - '.github/workflows/verify-approved-test-preset.yml'
+  push:
+    branches: ['test/full-integration']
+    paths:
+      - 'mods/arcane-archives-reborn.pw.toml'
+      - 'config/wover/**'
+      - 'kubejs/startup_scripts/vanilla_item_qol.js'
+      - 'scripts/verify_arcane_archives_candidate.py'
+      - 'scripts/verify_worldweaver_preset_candidate.py'
+      - '.github/workflows/verify-approved-test-preset.yml'
+permissions:
+  contents: read
+jobs:
+  source-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact source locks and packwiz (no game)
+        run: |
+          python3 scripts/verify_arcane_archives_candidate.py
+          python3 scripts/verify_worldweaver_preset_candidate.py
+          python3 scripts/validate.py
+          node --check kubejs/startup_scripts/vanilla_item_qol.js
