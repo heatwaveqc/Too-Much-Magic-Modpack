@@ -1,0 +1,8 @@
+name = "Multiplayer Spawners"
+filename = "Multiplayer.Spawners.-.NeoForge.-.1.21.1.-.2.0.2.jar"
+side = "both"
+
+[download]
+url = "https://github.com/The-Plum-Team/Multiplayer-Spawners-Mod/releases/download/v2.0.2/Multiplayer.Spawners.-.NeoForge.-.1.21.1.-.2.0.2.jar"
+hash-format = "sha256"
+hash = "3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67"
