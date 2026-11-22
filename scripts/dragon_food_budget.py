@@ -88,7 +88,12 @@ def plan(inventory: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
 
     def valid_recipe(recipe_id: str, output: str, ingredients: Counter[str]) -> bool:
         recipe = recipes.get(recipe_id)
-        if not recipe or recipe.get("output") != output or not recipe.get("evidence"):
+        item_report = edible.get(output)
+        # An otherwise valid recipe is not authority to override an unregistered
+        # output or one whose other recipes leave family/preparation unresolved.
+        if (not recipe or recipe.get("output") != output or not recipe.get("evidence")
+                or item_report is None or item_report["status"] != "resolved"
+                or len(item_report["variants"]) != 1):
             return False
         if (recipe.get("preparation") not in ("raw", "minimally_processed")
                 or recipe["type"] in THERMAL_RECIPES):
