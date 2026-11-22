@@ -63,7 +63,7 @@
 	chapter.544D203001400000.title: "Scriptor Magicae"
 	chapter.544D203001400000.chapter_subtitle: ["Explore Scriptor Magicae; more quests are being authored."]
 	chapter.544D203001500000.title: "Theurgy"
-	chapter.544D203001500000.chapter_subtitle: ["Explore Theurgy; more quests are being authored."]
+	chapter.544D203001500000.chapter_subtitle: ["Hermetica, alchemical vessels, Niter, Reformation, and mercurial logistics."]
 	chapter.544D203001600000.title: "Totemic"
 	chapter.544D203001600000.chapter_subtitle: ["Explore Totemic; more quests are being authored."]
 	chapter.544D203001700000.title: "Just Another Witchery Remake"
@@ -512,8 +512,46 @@
 	quest.544D303001300001.quest_desc: ["An introduction to Roots Classic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001400001.title: "Chapter Overview"
 	quest.544D303001400001.quest_desc: ["An introduction to Scriptor Magicae in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303001500001.title: "Chapter Overview"
-	quest.544D303001500001.quest_desc: ["An introduction to Theurgy in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001500001.title: "Hermetica: Your Alchemical Field Guide"
+	quest.544D303001500001.quest_desc: ["Craft the Hermetica guide with a Book and two accepted sand-tag items. Open Getting Started and Spagyrics: Theurgy separates heat, Mercury, Salt, Sulfur, and fluid Sal Ammoniac. Identify each before buying machinery. Check this orientation when you have located those pages. This is a manual reading acknowledgement, not a detector for opening the guide. You are free to explore other schools afterward."]
+	quest.544D3A1500000001.title: "Light a Pyromantic Brazier"
+	quest.544D3A1500000001.quest_desc: ["Craft a Pyromantic Brazier and place it beneath a Theurgy machine with a heat receiver. Supply ordinary furnace fuel. This supplies Theurgy heat, not Forge Energy or Mercury Flux. In Hermetica, use Getting Started and Spagyrics' heat instructions to check spacing and accepted fuels. Task: possess the Brazier; FTB does not verify that a machine has heated up."]
+	quest.544D3A1500000002.title: "Distill Mercury from Stone"
+	quest.544D3A1500000002.quest_desc: ["Craft a Mercury Distiller and place it over a working heat source. In Hermetica or JEI, find Distillation and feed a supported material: the tagged-release default example uses ten stone-tag blocks or fifteen sand-tag items for one Mercury Shard. Collect the output. The quest detects the Distiller item, not successful Mercury production; consult JEI in the installed pack for the effective recipe."]
+	quest.544D3A1500000003.title: "Calcine the Four Salt Families"
+	quest.544D3A1500000003.quest_desc: ["Build and heat a Calcination Oven. Compare stone to Strata Salt, tagged ores/raw materials to Mineral Salt, plants to Plant Salt and eligible creature materials to Creature Salt in JEI/Spagyrics. The tagged source example grants three Mineral Salt for a qualifying ore; this is not a promise of universal ore doubling. Task: acquire the oven. Check a real output in-game yourself."]
+	quest.544D3A1500000004.title: "Collect Sal Ammoniac"
+	quest.544D3A1500000004.quest_desc: ["Craft a Sal Ammoniac Accumulator and its Tank, connect the tank as Hermetica shows, and supply water. The tagged-source baseline converts 1000 mB Water to 100 mB Sal Ammoniac without crystal assistance. A crystal-assisted recipe yields more but its exact reuse behavior needs runtime verification. Use the fluid gauges; owning an Accumulator does not establish that fluid was generated."]
+	quest.544D3A1500000005.title: "Liquefy a Material into Sulfur"
+	quest.544D3A1500000005.quest_desc: ["Make and heat a Liquefaction Cauldron. Supply stored Sal Ammoniac and an eligible source—an Oak Log is a useful beginner example—and retrieve its identity-specific Alchemical Sulfur. Check Liquefaction in JEI and Hermetica for the amount; many ordinary logs use 10 mB in tagged source. This is not generic Sulfur interchangeable between all targets. Quest task checks acquisition of the cauldron, not that liquefaction happened."]
+	quest.544D3A1500000006.title: "Assemble the Three-Vessel Incubator"
+	quest.544D3A1500000006.quest_desc: ["Craft the two-block Incubator and its Mercury, Salt and Sulfur vessels. Place the three named vessels adjacent to the Incubator's lower block, with effective heat beneath; use Hermetica's Incubation layout instead of assuming the decorative shape is enough. Fill each vessel with its own material class. The task detects an Incubator item only; placement, correct adjacency and heating must be checked in-world."]
+	quest.544D3A1500000007.title: "Incubate an Oak Log"
+	quest.544D3A1500000007.quest_desc: ["Use the three vessels with a Mercury Shard, Plant Salt and the Alchemical Sulfur made from an Oak Log. Run the heated Incubator and collect the Oak Log from its output. The tagged-release example takes 100 ticks, but your installed JEI/Hermetica is authoritative. This manual checkmark is an honest observation of your first recreation, not proof supplied by FTB. You now know a complete Theurgy production loop."]
+	quest.544D3A1500000008.title: "Repeat with Another Material"
+	quest.544D3A1500000008.quest_desc: ["Choose a second eligible material in JEI. Work backward from its Incubation recipe to the correct Salt class, source-specific Sulfur, Mercury and heat. Build only the missing components and observe the real output. Materials such as logs, ores and animal drops have different valid recipes and costs. Manually check this after completing a second loop; an ordinary inventory possession task cannot prove which workstation produced an item."]
+	quest.544D3A1500000009.title: "Ferment Your First Niter"
+	quest.544D3A1500000009.quest_desc: ["Craft a Fermentation Vat. Use its JEI/Hermetica recipe with an eligible Alchemical Sulfur, organic starter/crop/seed/sugar material and the correct Water amount. The tagged-release recipes vary from 125 to 1000 mB; the output is a material-family Niter, not a free universal substance. The item task checks the Vat, not an actual completed fermentation batch."]
+	quest.544D3A150000000A.title: "Digest Gold for Reagents"
+	quest.544D3A150000000A.quest_desc: ["Craft a Digestion Vat. In JEI, inspect the Purified Gold recipe: tagged-release source uses a Gold Ingot, compatible Alchemical Salt and 1000 mB Water for twenty Purified Gold. Operate the machine and collect output; the item task verifies possession of the vat, not its operation. Pay attention to the Vat's open/closed state when you later automate it."]
+	quest.544D3A150000000B.title: "Exalt Niter, Not Your Tool Tier"
+	quest.544D3A150000000B.quest_desc: ["Use a matching Niter family and Purified Gold to perform one legal Digestion rank upgrade. The common early source ratio is four lower-rank Niter to one higher-rank Niter with Sal Ammoniac; mob families and higher ranks can cost more. Abundant, Common, Rare and Precious are Niter categories, not the Stone/Iron/Diamond/Netherite divination-rod levels. Checkmark is manual: verify the real resulting Niter yourself."]
+	quest.544D3A150000000C.title: "Build a Mercury Flux Supply"
+	quest.544D3A150000000C.quest_desc: ["Build the Mercury Catalyst and use a Mercury Shard to fill its independent Mercury Flux store; tagged-release source converts one shard to 800 Mercury Flux. This is not Forge Energy and cannot be assumed compatible with Draconic energy machinery. Study Hermetica's Reformation apparatus and JEI before building the Sulfuric Flux Emitter and its three pedestal roles. The item task proves you acquired the catalyst, not a measured Flux transfer."]
+	quest.544D3A150000000D.title: "Reform with a Real Target Sample"
+	quest.544D3A150000000D.quest_desc: ["Build the Sulfuric Flux Emitter and separate Source, Target and Result Pedestals. Place a real pre-existing target Alchemical Sulfur or Niter in the Target Pedestal, compatible source reagents in Source, and supply sufficient Mercury Flux; collect an eligible result. Tagged source pricing varies by tier (50/100/150/200 Flux). The target sample is retained, but must exist first. This quest only detects possession of the Target Pedestal; it does not certify successful Reformation."]
+	quest.544D3A150000000E.title: "Scan with a Basic Divination Rod"
+	quest.544D3A150000000E.quest_desc: ["Craft the Stone-tier Divination Rod and use it on an allowed target. Consult Hermetica's Divination section for target tags and how scan results are shown. The tagged-source baseline describes a 96-block scan range and 40-tick duration; loaded configuration may differ. Possessing the rod is the FTB task; observing an actual scan is separate."]
+	quest.544D3A150000000F.title: "Upgrade Your Divination"
+	quest.544D3A150000000F.quest_desc: ["Upgrade to the Iron-tier Divination Rod and perform a scan against an eligible material. Compare Diamond and Netherite tiers and the specialized sulfur-attuned or Amethyst rods in JEI; those are separate tool categories, not Niter upgrades. The quest requires a Tier 2 rod item; higher and specialized models are optional follow-up exploration. It does not detect a successful scan."]
+	quest.544D3A1500000010.title: "Heat with a Caloric Flux Emitter"
+	quest.544D3A1500000010.quest_desc: ["Craft a Caloric Flux Emitter, select a legitimate heat-receiving Theurgy machine, supply its own Mercury Flux and observe heating without an ordinary Brazier fuel stack. The source uses 100 Flux per heating operation; follow Hermetica for target selection and range. The emitter provides Theurgy heat, not a generic FE energy grid. This item task verifies you obtained the emitter, not its action."]
+	quest.544D3A1500000011.title: "Move Items with Mercurial Wiring"
+	quest.544D3A1500000011.quest_desc: ["Craft a Mercurial Wand, Copper Wire, connection node and Item Extractor/Inserter. Use the Wand to set matching frequency, modes and sides, then move an item between machine inventories that actually expose the required capabilities. See Hermetica's Logistics section. The item task recognizes the Extractor only; it does not prove a successful transfer, infinite throughput or chunk loading."]
+	quest.544D3A1500000012.title: "Route Fluids Without Pretending They Are Items"
+	quest.544D3A1500000012.quest_desc: ["Craft Fluid Extractor and Inserter connectors and attach them to suitable Sal Ammoniac or Water tanks. Configure sides, frequency and any supported filters with the Mercurial Wand, then verify that actual fluid—not inventory item stacks—travels. Theurgy's native fluid routing is distinct from its item connectors and does not imply FE support. Quest task detects the Fluid Inserter item; verify transfer independently."]
+	quest.544D3A1500000013.title: "Rare Materials: Templates Before Replication"
+	quest.544D3A1500000013.quest_desc: [undefined]
 	quest.544D303001600001.title: "Chapter Overview"
 	quest.544D303001600001.quest_desc: ["An introduction to Totemic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001700001.title: "Chapter Overview"
