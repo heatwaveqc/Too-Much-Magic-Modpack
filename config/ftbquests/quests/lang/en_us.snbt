@@ -93,7 +93,7 @@
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
-	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this welcome entry to claim an Unwitnessed Amulet and a Ring of the Seven Curses. Equipping the cursed ring is optional and has significant drawbacks."]
+	quest.544D301000100001.quest_desc: ["Too Much Magic is a magic-first Minecraft world. Visit Tips & Tricks immediately to claim your personal Akashic Tome, two steaks and a portable sleeping bag, then explore the independent magic, survival and world chapters. This Welcome quest separately rewards the Unwitnessed Amulet and cursed ring; wearing the ring is optional and carries serious consequences. The Prefab native starter-house and introductory Curios reward are separate."]
 	quest.544D4D1100000001.title: "Punch a Tree"
 	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to complete this quest, then claim a 27-slot Trinkets Pouch and 10 XP. No hidden advancement or automatic item delivery is used. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
 	quest.544D501000300000.title: "Make a Crafting Table"
@@ -129,19 +129,19 @@
 	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
 	quest.544D501001200000.quest_desc: ["Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration & Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."]
 	quest.544D301000200001.title: "Tips & Tricks Index"
-	quest.544D301000200001.quest_desc: ["These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."]
+	quest.544D301000200001.quest_desc: ["Welcome to the TMM starter and convenience hub. Start by claiming your personal supplies, then browse the independent groups: books and discovery, controls and interface, inventory/crafting, comfort and survival, and practical magic shortcuts. Nothing here is required for specialization or endgame progress."]
 	quest.544D502000200000.title: "Find Recipes with JEI"
 	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
 	quest.544D502000300000.title: "Identify Blocks with Jade"
 	quest.544D502000300000.quest_desc: ["Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information."]
 	quest.544D502000400000.title: "Sort Your Inventory"
-	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling."]
+	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed supplies inventory sorting and replenishment conveniences; Mouse Tweaks changes item dragging and wheel interactions. Configure their keybindings to avoid overlapping native inventory controls and test sorting in an ordinary chest before using unusual modded storage."]
 	quest.544D502000500000.title: "Use Crafting Tweaks"
 	quest.544D502000500000.quest_desc: ["Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface."]
 	quest.544D502000600000.title: "Search the Controls Screen"
-	quest.544D502000600000.quest_desc: ["Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles."]
+	quest.544D502000600000.quest_desc: ["Open Options > Controls to search and resolve conflicting keys with Controlling. KeyBind Bundles and KeySets are available for deliberate grouping or switching where configured; the pack should not require all dozens of mod shortcuts to be assigned. Set spellcasting, skills, inventory and zoom keys you actually use."]
 	quest.544D502000700000.title: "Gather Your Guidebooks"
-	quest.544D502000700000.quest_desc: ["Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually."]
+	quest.544D502000700000.quest_desc: ["Your starting Akashic Tome is supplied by the personal Starter Supplies quest. TMM's separate guidebook integration is preparing a populated Tome with eligible introductory manuals, including Occultism and Roots Classic. Open the Tome's selector and switch among the books actually present. Some guides are gameplay tools or research-gated books rather than eligible starter manuals; don't assume every book is preloaded."]
 	quest.544D502000800000.title: "Curios and Portable Bags"
 	quest.544D502000800000.quest_desc: ["Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release."]
 	quest.544D502000900000.title: "Claim Your Base"
@@ -149,17 +149,17 @@
 	quest.544D502000A00000.title: "Understand Lootr Chests"
 	quest.544D502000A00000.quest_desc: ["Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container."]
 	quest.544D502000B00000.title: "Plan for Death"
-	quest.544D502000B00000.quest_desc: ["Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review."]
+	quest.544D502000B00000.quest_desc: ["Corail Tombstone handles graves and recovery, while Smart Keep Inventory adds conditional retention and magical forms may have special death-resurrection rules. Do not assume all deaths have identical recovery behavior. Store irreplaceable equipment safely and read the relevant native-form chapter before dangerous bosses."]
 	quest.544D502000C00000.title: "Search Biomes"
 	quest.544D502000C00000.quest_desc: ["Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system."]
 	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
 	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
 	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["Core Magic (Tyz's Skills) and ordinary-experience Improvable Skills 3 are available to everyone in Regular Mode. Specializations use a single exclusive choice pool with only explicit exceptions; see Skills & Factions."]
+	quest.544D502000E00000.quest_desc: ["New players begin in the Newbie baseline Path and graduate personally to Normie through the Introduction quest. Universal MXP and the shared Core progression are not tied to a specialty Path; Newbies do not earn MXP. Specialist Paths, compatible native transformations and their skill trees are coordinated by Tyr Progression. Improvable Skills uses its own progression. See Paths & Transformations for actual initiation and compatibility."]
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
-	quest.544D502001000000.quest_desc: ["Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."]
+	quest.544D502001000000.quest_desc: ["TMM is migrating from the older Quest Shop to Q Shop with personal wallets. On builds with Q Shop installed, use /qshop open tmm to browse six tabs; older builds use /hqs shop and team wallets. The current server's installed mod determines which command works. Neither interface overrides boss-recipe or first-acquisition gates."]
 	quest.544D502001100000.title: "Smelt Without Fuel: Scriptor Lectern"
 	quest.544D502001100000.quest_desc: ["Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."]
 	quest.544D502001200000.title: "Double Raw Ore: Occultism or Mahou?"
@@ -168,6 +168,34 @@
 	quest.544D502001300000.quest_desc: ["EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls."]
 	quest.544D502001400000.title: "Vengeance Pickaxe: Fortune with a Price"
 	quest.544D502001400000.quest_desc: ["EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions."]
+	quest.544D502001500000.title: "Claim Your Starter Supplies"
+	quest.544D502001500000.quest_desc: ["This is TMM's one-time personal starting-kit claim. Claim it to receive one Akashic Tome, two ordinary steaks and one white Comforts sleeping bag. The Tome is being populated with all eligible introductory guidebooks through the separate source-verified starter-guide project; this quest uses that same starter-kit function. Your Prefab house and existing first-log Curios reward remain separate. Claim once per player; no Eternal Steak, boss resources or special powers are granted."]
+	quest.544D502001600000.title: "Comforts: Sleep Away from Home"
+	quest.544D502001600000.quest_desc: ["A Comforts sleeping bag lets you sleep while travelling without setting a new respawn location. Its hammocks serve a different purpose: using daytime rest to advance toward night, subject to the current config and time restrictions. Start with the free white sleeping bag from the Starter Supplies quest; keep a normal bed at home to control your spawn point."]
+	quest.544D502001700000.title: "AppleSkin: Know When to Eat"
+	quest.544D502001700000.quest_desc: ["AppleSkin adds hunger and saturation previews to food tooltips and the hunger HUD. Actual restoration can change under TMM's native-form dietary rules, so use the displayed information as guidance, not a promise that a Dragon or Vampire may eat every food."]
+	quest.544D502001800000.title: "Where Do Ores and Villager Trades Come From?"
+	quest.544D502001800000.quest_desc: ["Just Enough Resources (JER) complements JEI with world resources and mob-drop information, while Just Enough Professions (JEP) helps identify which villager profession can offer an item. Search an item and inspect the available usages/categories. Worldgen and trade displays are informational; TMM's actual datapacks and server gates determine obtainability."]
+	quest.544D502001900000.title: "Read Enchantments and Detailed Tooltips"
+	quest.544D502001900000.quest_desc: ["Enchantment Descriptions and Better Advanced Tooltips help explain unusual enchantments and components before you spend rare materials. Advanced information appears through the applicable tooltip controls, including Minecraft's advanced tooltips where enabled. Apotheosis and other mods may add their own meanings; consult the relevant mod's chapter for the mechanics."]
+	quest.544D502001A00000.title: "Quiet the World with Extreme Sound Muffler"
+	quest.544D502001A00000.quest_desc: ["Extreme Sound Muffler can suppress selected sound events without making every source silent. Open its installed controls or settings and mute the repetitive effect that bothers you; this changes your listening experience, not mob AI, sound propagation or danger detection."]
+	quest.544D502001B00000.title: "Use KeySets and KeyBind Bundles"
+	quest.544D502001B00000.quest_desc: ["TMM includes Controlling, KeyBind Bundles and KeySets to make dozens of mod shortcuts manageable. Open the Controls screen, identify duplicate assignments and choose deliberate bindings for spellcasting, inventory, zoom and quest/navigation controls. Profile or bundle actions are not assumed to have a default key on every machine."]
+	quest.544D502001C00000.title: "TrashSlot: Delete Only What You Mean To"
+	quest.544D502001C00000.quest_desc: ["TrashSlot provides a convenient place to dispose of unwanted items. Keep rare magical reagents and items with components out of the trash until you've checked JEI; trashing an item is not the same as exchanging it for EMC, coins or mana. Verify the exact open/close and delete controls in-game."]
+	quest.544D502001D00000.title: "Harvest with Ease"
+	quest.544D502001D00000.quest_desc: ["Harvest with Ease can simplify collecting mature crops while keeping farmland useful. Look for its supported harvesting interaction in the actual installed control settings. It does not mean every magical plant, crop, bee or modded block follows the same harvesting rules."]
+	quest.544D502001E00000.title: "TreeChop and Leaves Be Gone"
+	quest.544D502001E00000.quest_desc: ["HT's TreeChop changes how you fell trees, while Leaves Be Gone speeds leaf decay. Try the tree-cutting action on an ordinary trunk before relying on it for a rare enchanted tree; verify whether its harvesting counts as separate blocks for tool wear or progression skills. Leaf cleanup is automatic and needs no special quest task."]
+	quest.544D502001F00000.title: "What Does Smart Keep Inventory Protect?"
+	quest.544D502001F00000.quest_desc: ["Smart Keep Inventory changes selected item-retention behavior, while Corail Tombstone and other magic can influence deaths or recovery. TMM intentionally distinguishes normal deaths from boss and transformation interactions. Read the current in-game behavior before risking unique equipment; this card is guidance, not a promise that every inventory item is safe."]
+	quest.544D502002000000.title: "Prefab: A Head Start on Housing"
+	quest.544D502002000000.quest_desc: ["Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips & Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house."]
+	quest.544D502002100000.title: "Browse Better Advancements"
+	quest.544D502002100000.quest_desc: ["Better Advancements improves the vanilla advancement interface and navigation. Advancements record their own progress; they are not the same as FTB Quest claims, Progression Paths or MXP. Use both interfaces as complementary ways to understand what you've discovered."]
+	quest.544D502002200000.title: "Keep Controls Across Updates"
+	quest.544D502002200000.quest_desc: ["Default Options can supply a pack-wide baseline while your personal keybind changes remain your choice. After a mod update, search for newly added or conflicting actions with Controlling and review KeySets/KeyBind Bundles rather than assuming a missing shortcut is a broken mod. The pack's initial keybind defaults may be intentionally unassigned."]
 	quest.544D301000300001.title: "Food & Fishing Index"
 	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
 	quest.544D503000200000.title: "Start with Seeds"
