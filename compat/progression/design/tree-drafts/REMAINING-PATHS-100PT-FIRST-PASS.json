@@ -1,10 +1,11 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v9",
+  "schema": "tmm_remaining_path_tree_blueprint_v10",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "FOREST DRAGON COMPLETE FIRST PASS: 26 skill options, six branches 20+19+18+19+14+10=100 one-point ranks; keeps all 20 original named IDs incl. Venomous Strike, Green Thumb and Shepherd's Blessing. Design only; native forest features source-owned.",
     "CAVE DRAGON COMPLETE DESIGN FIRST PASS: 25 paid skills across 20/23/19/22/16-point branches; 100 one-point ranks; native fire, claw tools, Cave Athletics and vulnerabilities respected. Raw land-meat preferred diet #444 is separate; not executable.",
     "LICH COMPLETE DESIGN FIRST PASS: 21 paid skills, five branches 25/20/25/20/10, 100 one-point ranks; one common Lich tree with non-interchangeable Goety Soul Energy/Arca and JAWR phylactery/soul bottle; native resurrection unchanged; not executable.",
     "WEREWOLF COMPLETE FIRST PASS: 20 paid skills, 100 one-point ranks, true native JAWR wolf form ownership and health regeneration; fifth Moon Apex branch passive and moon-specific. Design-only.",
@@ -2664,22 +2665,22 @@
       "title": "Forest Dragon",
       "kind": "native_dragon_survival_path",
       "budget": 100,
-      "status": "fully_costed_design_only",
+      "status": "complete_role_first_design_only",
       "groups": [
         {
-          "id": "group_1_universal_dragon_physiology_sorcery_species_local",
-          "name": "Universal Dragon Physiology & Sorcery (species-local)",
+          "id": "forest_body_sorcery",
+          "name": "Draconic Body & Personal Sorcery",
           "skills": [
             {
               "id": "tyr_progression:forest_dragon_draconic_reservoir",
               "source_id": "tmm_dragon_forest_draconic_reservoir",
               "name": "Draconic Reservoir",
-              "description": "Massive bonus to personally usable maximum magic resource capacity; never machine/world storage.",
+              "description": "+10% per rank (max +60%) eligible personal spell-resource capacity, including native Dragon Survival mana only if source modifier supports it; no machine, grid, or world storage.",
               "stage": "entry",
               "historic_points": 25,
               "historic_ranks": 25,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 0,
               "row_index": 0,
               "points": 6,
@@ -2687,7 +2688,7 @@
               "price_per_rank": 1,
               "total_cost": 6,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 6,
@@ -2699,35 +2700,28 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+10% per rank (max +60%) eligible personal spell-resource capacity, including native Dragon Survival mana only if source modifier supports it; no machine, grid, or world storage.",
+              "required_source_or_handler_check": "Personal mana/cap adapter and Core stacking",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_potency",
               "source_id": "tmm_dragon_forest_draconic_potency",
               "name": "Draconic Potency",
-              "description": "Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion.",
+              "description": "+4% per rank (max +20%) personally cast verified spell potency, additive with other magic modifiers; exclude world rituals and passive machines.",
               "stage": "entry",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 0,
               "row_index": 1,
-              "points": 4,
-              "max_rank": 4,
+              "points": 5,
+              "max_rank": 5,
               "price_per_rank": 1,
-              "total_cost": 4,
+              "total_cost": 5,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -2735,177 +2729,128 @@
                 1,
                 1,
                 1,
+                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+4% per rank (max +20%) personally cast verified spell potency, additive with other magic modifiers; exclude world rituals and passive machines.",
+              "required_source_or_handler_check": "Real personal cast IDs, source spell output and stacking",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_scales",
               "source_id": "tmm_dragon_forest_draconic_scales",
               "name": "Draconic Scales",
-              "description": "Species natural armor; deliberately inefficient per SP versus specialized martial defense.",
+              "description": "+1 natural armor per rank (max +3) only in verified Forest Dragon form; normal native body armor and fall/thorn defenses remain innate.",
               "stage": "entry",
               "historic_points": 50,
               "historic_ranks": 25,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 0,
               "row_index": 2,
-              "points": 8,
-              "max_rank": 8,
+              "points": 3,
+              "max_rank": 3,
               "price_per_rank": 1,
-              "total_cost": 8,
+              "total_cost": 3,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 8,
               "rank_costs": [
                 1,
                 1,
-                1,
-                1,
-                1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+1 natural armor per rank (max +3) only in verified Forest Dragon form; normal native body armor and fall/thorn defenses remain innate.",
+              "required_source_or_handler_check": "Forest shape/armor attribute cleanup",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_claws",
               "source_id": "tmm_dragon_forest_draconic_claws",
               "name": "Draconic Claws",
-              "description": "Real dragon form physical strike boost; not global magic damage.",
+              "description": "+1 native physical claw/bite melee damage per rank (max +3), excluding held swords, breath and poison ticks.",
               "stage": "entry",
               "historic_points": 50,
               "historic_ranks": 25,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 0,
               "row_index": 3,
-              "points": 8,
-              "max_rank": 8,
+              "points": 3,
+              "max_rank": 3,
               "price_per_rank": 1,
-              "total_cost": 8,
+              "total_cost": 3,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 8,
               "rank_costs": [
                 1,
                 1,
-                1,
-                1,
-                1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+1 native physical claw/bite melee damage per rank (max +3), excluding held swords, breath and poison ticks.",
+              "required_source_or_handler_check": "Forest native melee/held-tool identity",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_talons",
               "source_id": "tmm_dragon_forest_draconic_talons",
               "name": "Draconic Talons",
-              "description": "Improve legal dragon claw harvest rate, not tool-tier bypass.",
+              "description": "+15% legal Forest axe-claw chop speed per rank (max +45%), only on wood/plant blocks already harvestable by native claws; no treecapitator/ore tier bypass.",
               "stage": "entry",
               "historic_points": 100,
               "historic_ranks": 50,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 0,
               "row_index": 4,
-              "points": 11,
-              "max_rank": 11,
+              "points": 3,
+              "max_rank": 3,
               "price_per_rank": 1,
-              "total_cost": 11,
+              "total_cost": 3,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 11,
               "rank_costs": [
                 1,
                 1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 6,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+15% legal Forest axe-claw chop speed per rank (max +45%), only on wood/plant blocks already harvestable by native claws; no treecapitator/ore tier bypass.",
+              "required_source_or_handler_check": "Native axe claw, claims, harvest tier, tool precedence",
+              "no_new_active_button": true
             }
           ],
-          "points": 37
+          "points": 20
         },
         {
-          "id": "group_2_verdant_vitality",
+          "id": "forest_verdant_vitality",
           "name": "Verdant Vitality",
           "skills": [
             {
               "id": "tyr_progression:forest_dragon_green_recovery",
               "source_id": "tmm_dragon_forest_green_recovery",
               "name": "Green Recovery",
-              "description": "Small recovery benefit in living biomes, not in all dimensions.",
+              "description": "+0.15 HP/s per rank (max +0.75) while grounded in natural living vegetation during daylight, after eight seconds without hostile damage.",
               "stage": "entry",
               "historic_points": 50,
               "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 1,
               "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
+              "points": 5,
+              "max_rank": 5,
               "price_per_rank": 1,
-              "total_cost": 8,
+              "total_cost": 5,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 8,
@@ -2914,41 +2859,30 @@
                 1,
                 1,
                 1,
-                1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+0.15 HP/s per rank (max +0.75) while grounded in natural living vegetation during daylight, after eight seconds without hostile damage.",
+              "required_source_or_handler_check": "HP regen, true plants, light and last-hit predicate",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_living_bark",
               "source_id": "tmm_dragon_forest_living_bark",
               "name": "Living Bark",
-              "description": "Situational natural defense near vegetation, with stacking caps.",
-              "stage": "advanced",
+              "description": "+0.5 armor toughness per rank (max +2.5) near verified natural trees in Forest form; distinct from Draconic Scales armor.",
+              "stage": "entry",
               "historic_points": 20,
               "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 1,
               "row_index": 1,
               "points": 5,
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
-              "prerequisite": "tyr_progression:forest_dragon_green_recovery",
-              "effect_status": "concept_to_verify",
+              "prerequisite": "tyr_progression:forest_dragon_draconic_scales",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 5,
@@ -2959,27 +2893,20 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+0.5 armor toughness per rank (max +2.5) near verified natural trees in Forest form; distinct from Draconic Scales armor.",
+              "required_source_or_handler_check": "Natural vegetation and armor-toughness cap",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_elder_grove",
               "source_id": "tmm_dragon_forest_elder_grove",
               "name": "Elder Grove",
-              "description": "Time-limited regeneration/support pulse, costing dragon resource.",
+              "description": "After a successfully paid personal Nature spell, grant self Regeneration I for one second per rank (max four seconds), 20-second player cooldown; no ability key.",
               "stage": "mastery",
               "historic_points": 10,
               "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported late Forest growth/earned ability and relevant paid prerequisite",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 1,
               "row_index": 2,
               "points": 4,
@@ -2987,7 +2914,7 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_living_bark",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -2997,41 +2924,67 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "After a successfully paid personal Nature spell, grant self Regeneration I for one second per rank (max four seconds), 20-second player cooldown; no ability key.",
+              "required_source_or_handler_check": "Nature caster debit receipt and cooldown",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_sunfed_resilience",
+              "source_id": null,
+              "name": "Sunfed Resilience",
+              "description": "-2% ordinary physical hit damage per rank (max -10%) only while grounded under actual direct daylight in Forest Dragon form; not in artificial light or other dimensions.",
+              "stage": "advanced",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 1,
+              "row_index": 3,
+              "points": 5,
+              "max_rank": 5,
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "prerequisite": "tyr_progression:forest_dragon_green_recovery",
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": null,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "-2% ordinary physical hit damage per rank (max -10%) only while grounded under actual direct daylight in Forest Dragon form; not in artificial light or other dimensions.",
+              "required_source_or_handler_check": "Real sky light, weather/day, vulnerability exclusions",
+              "no_new_active_button": true
             }
           ],
-          "points": 17
+          "points": 19
         },
         {
-          "id": "group_3_thorn_root",
+          "id": "forest_thorn_root",
           "name": "Thorn & Root",
           "skills": [
             {
               "id": "tyr_progression:forest_dragon_bramble_claw",
               "source_id": "tmm_dragon_forest_bramble_claw",
               "name": "Bramble Claw",
-              "description": "Add a bounded nature-themed status to confirmed claw attacks.",
+              "description": "Legitimate native Forest natural claw hits inflict Slowness I for 0.5 second per rank (max two seconds), with 40-tick cooldown per hostile target.",
               "stage": "entry",
               "historic_points": 25,
               "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 2,
               "row_index": 0,
-              "points": 6,
-              "max_rank": 6,
+              "points": 4,
+              "max_rank": 4,
               "price_per_rank": 1,
-              "total_cost": 6,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "total_cost": 4,
+              "prerequisite": "tyr_progression:forest_dragon_draconic_claws",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 6,
@@ -3039,31 +2992,22 @@
                 1,
                 1,
                 1,
-                1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "Legitimate native Forest natural claw hits inflict Slowness I for 0.5 second per rank (max two seconds), with 40-tick cooldown per hostile target.",
+              "required_source_or_handler_check": "Native claw hit vs held item, status attribution",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_entangling_breath",
               "source_id": "tmm_dragon_forest_entangling_breath",
               "name": "Entangling Breath",
-              "description": "Native breath enhancer applying short slows only where source breath supports it.",
+              "description": "Source-verified already-unlocked Forest Breath applies Slowness I for 0.5 second per rank (max two seconds) to hostile targets; native poison behavior stays unchanged.",
               "stage": "advanced",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 2,
               "row_index": 1,
               "points": 4,
@@ -3071,7 +3015,7 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_bramble_claw",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -3081,67 +3025,118 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "Source-verified already-unlocked Forest Breath applies Slowness I for 0.5 second per rank (max two seconds) to hostile targets; native poison behavior stays unchanged.",
+              "required_source_or_handler_check": "Pinned native Forest Breath cast/effect identifiers",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_thornstorm",
               "source_id": "tmm_dragon_forest_thornstorm",
               "name": "Thornstorm",
-              "description": "Cooldown-limited small-area crowd control with no world block destruction.",
+              "description": "A native Forest Spike projectile direct hostile hit may slow at most one additional nearby hostile within 2.5 blocks for 0.5 second per rank (max 1.5 seconds), 15-second caster cooldown; no new projectile or block changes.",
               "stage": "mastery",
               "historic_points": 5,
               "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported late Forest growth/earned ability and relevant paid prerequisite",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 2,
               "row_index": 2,
-              "points": 2,
-              "max_rank": 2,
+              "points": 3,
+              "max_rank": 3,
               "price_per_rank": 1,
-              "total_cost": 2,
+              "total_cost": 3,
               "prerequisite": "tyr_progression:forest_dragon_entangling_breath",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 2,
               "rank_costs": [
                 1,
+                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 1,
-                "old_rank_costs": [
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "A native Forest Spike projectile direct hostile hit may slow at most one additional nearby hostile within 2.5 blocks for 0.5 second per rank (max 1.5 seconds), 15-second caster cooldown; no new projectile or block changes.",
+              "required_source_or_handler_check": "True spike projectile/owner and bounded AoE",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_venomous_strike",
+              "source_id": "venomous_attack",
+              "name": "Venomous Strike",
+              "description": "+5 percentage-point chance per rank (max 20%) for real natural claw melee to apply Poison I for three seconds to legal hostile targets; no bleed-through from poison ticks or allies.",
+              "stage": "entry",
+              "historic_points": 10,
+              "historic_ranks": 10,
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 2,
+              "row_index": 3,
+              "points": 4,
+              "max_rank": 4,
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "prerequisite": null,
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "+5 percentage-point chance per rank (max 20%) for real natural claw melee to apply Poison I for three seconds to legal hostile targets; no bleed-through from poison ticks or allies.",
+              "required_source_or_handler_check": "Original Tyz venomous_attack source handler and source attack identity",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_forest_breath_mastery",
+              "source_id": null,
+              "name": "Forest Breath Mastery",
+              "description": "+4% per rank (max +12%) real source-identified Forest Breath poison damage, after native breath has been learned; not every poison effect or Sun Breath.",
+              "stage": "advanced",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 2,
+              "row_index": 4,
+              "points": 3,
+              "max_rank": 3,
+              "price_per_rank": 1,
+              "total_cost": 3,
+              "prerequisite": "tyr_progression:forest_dragon_venomous_strike",
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": null,
+              "rank_costs": [
+                1,
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "+4% per rank (max +12%) real source-identified Forest Breath poison damage, after native breath has been learned; not every poison effect or Sun Breath.",
+              "required_source_or_handler_check": "Native breath caster/poison ticks and direct source attribution",
+              "no_new_active_button": true
             }
           ],
-          "points": 12
+          "points": 18
         },
         {
-          "id": "group_4_fertility_bounty",
+          "id": "forest_fertility_bounty",
           "name": "Fertility & Bounty",
           "skills": [
             {
               "id": "tyr_progression:forest_dragon_germination_touch",
               "source_id": "tmm_dragon_forest_germination_touch",
               "name": "Germination Touch",
-              "description": "Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth.",
+              "description": "5% per rank chance (max 20%) to refund exactly one bonemeal consumed in one successful, claim-allowed player crop-growth application; no free growth without real use.",
               "stage": "entry",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 3,
               "row_index": 0,
               "points": 4,
@@ -3149,7 +3144,7 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -3159,26 +3154,20 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "5% per rank chance (max 20%) to refund exactly one bonemeal consumed in one successful, claim-allowed player crop-growth application; no free growth without real use.",
+              "required_source_or_handler_check": "Confirmed item consumption/use and permissions",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_breeders_blessing",
               "source_id": "tmm_dragon_forest_breeder_s_blessing",
               "name": "Breeder's Blessing",
-              "description": "Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents.",
+              "description": "After personally triggering a legitimate fed breeding pair, reduce both parents' normal subsequent breeding cooldown by 5% per rank (max 20%) subject to a floor; no extra child spawned.",
               "stage": "advanced",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 3,
               "row_index": 1,
               "points": 4,
@@ -3186,7 +3175,7 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_germination_touch",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -3196,34 +3185,28 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "After personally triggering a legitimate fed breeding pair, reduce both parents' normal subsequent breeding cooldown by 5% per rank (max 20%) subject to a floor; no extra child spawned.",
+              "required_source_or_handler_check": "Two-parent breeding credit, no duplicate event, native cooldown floor",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_harvest_bounty",
               "source_id": "tmm_dragon_forest_harvest_bounty",
               "name": "Harvest Bounty",
-              "description": "Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks.",
-              "stage": "mastery",
+              "description": "+5% chance per rank (max 20%) of exactly one extra ordinary edible fruit/berry for one legally harvested mature shrub/vine/fruit tree; excludes conventional field crops and hidden loot.",
+              "stage": "advanced",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 3,
               "row_index": 2,
               "points": 4,
               "max_rank": 4,
               "price_per_rank": 1,
               "total_cost": 4,
-              "prerequisite": "tyr_progression:forest_dragon_breeders_blessing",
-              "effect_status": "concept_to_verify",
+              "prerequisite": "tyr_progression:forest_dragon_germination_touch",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -3233,41 +3216,96 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+5% chance per rank (max 20%) of exactly one extra ordinary edible fruit/berry for one legally harvested mature shrub/vine/fruit tree; excludes conventional field crops and hidden loot.",
+              "required_source_or_handler_check": "Mature non-field fruit categories, single-use harvest receipts",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_green_thumb",
+              "source_id": "green_thumb",
+              "name": "Green Thumb",
+              "description": "+4 percentage-point chance per rank (max 16%) to duplicate normal edible produce from one personally harvested mature planted field crop, not shrub berries, rare loot or automation.",
+              "stage": "entry",
+              "historic_points": 10,
+              "historic_ranks": 10,
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 3,
+              "row_index": 3,
+              "points": 4,
+              "max_rank": 4,
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "prerequisite": null,
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": 3,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "+4 percentage-point chance per rank (max 16%) to duplicate normal edible produce from one personally harvested mature planted field crop, not shrub berries, rare loot or automation.",
+              "required_source_or_handler_check": "Preserve historic Tyz green_thumb attribution; no Harvest Bounty overlap",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_shepherds_blessing",
+              "source_id": "shepherd_s_blessing",
+              "name": "Shepherd’s Blessing",
+              "description": "+8% juvenile livestock growth rate per rank (max 24%) only for player-owned/cared-for legitimate juveniles within 12 blocks; bounded refresh, no instant maturity.",
+              "stage": "advanced",
+              "historic_points": 10,
+              "historic_ranks": 10,
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 3,
+              "row_index": 4,
+              "points": 3,
+              "max_rank": 3,
+              "price_per_rank": 1,
+              "total_cost": 3,
+              "prerequisite": "tyr_progression:forest_dragon_breeders_blessing",
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": 3,
+              "rank_costs": [
+                1,
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "+8% juvenile livestock growth rate per rank (max 24%) only for player-owned/cared-for legitimate juveniles within 12 blocks; bounded refresh, no instant maturity.",
+              "required_source_or_handler_check": "Preserve historic shepherd_s_blessing attribution, owner and baby-age accounting",
+              "no_new_active_button": true
             }
           ],
-          "points": 12
+          "points": 19
         },
         {
-          "id": "group_5_fae_affinity",
+          "id": "forest_fae_affinity",
           "name": "Fae Affinity",
           "skills": [
             {
               "id": "tyr_progression:forest_dragon_fey_courtesy",
               "source_id": "tmm_dragon_forest_fey_courtesy",
               "name": "Fey Courtesy",
-              "description": "Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification.",
+              "description": "+3% beneficial status duration per rank (max +15%) for personally cast, source-tagged Fae spells; no blanket mob friendliness or bonus to every Roots/Botania action.",
               "stage": "entry",
               "historic_points": 25,
               "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 4,
               "row_index": 0,
-              "points": 6,
-              "max_rank": 6,
+              "points": 5,
+              "max_rank": 5,
               "price_per_rank": 1,
-              "total_cost": 6,
+              "total_cost": 5,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 6,
@@ -3276,30 +3314,22 @@
                 1,
                 1,
                 1,
-                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+3% beneficial status duration per rank (max +15%) for personally cast, source-tagged Fae spells; no blanket mob friendliness or bonus to every Roots/Botania action.",
+              "required_source_or_handler_check": "Exact Fae secondary tag and personal spell carrier",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_fey_conduit",
               "source_id": "tmm_dragon_forest_fey_conduit",
               "name": "Fey Conduit",
-              "description": "Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP.",
+              "description": "+4% per rank (max +16%) verified personal Fae spell healing or damage within six blocks of natural vegetation, additive with Core and Draconic Potency.",
               "stage": "advanced",
               "historic_points": 10,
               "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 4,
               "row_index": 1,
               "points": 4,
@@ -3307,7 +3337,7 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_fey_courtesy",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 4,
@@ -3317,67 +3347,86 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+4% per rank (max +16%) verified personal Fae spell healing or damage within six blocks of natural vegetation, additive with Core and Draconic Potency.",
+              "required_source_or_handler_check": "Source Fae spell ID, vegetation and additive caps",
+              "no_new_active_button": true
             },
             {
               "id": "tyr_progression:forest_dragon_grove_guardian",
               "source_id": "tmm_dragon_forest_grove_guardian",
               "name": "Grove Guardian",
-              "description": "Bounded fae-aligned personal magic and allied-support synergy without taking over world production.",
+              "description": "After a paid personal Nature/Fae support spell, grant at most two nearby valid allies +2% physical hit mitigation per rank (max 6%) for five seconds, 25-second cooldown, no permanent aura.",
               "stage": "mastery",
               "historic_points": 5,
               "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "native_gate_reference": "source-supported late Forest growth/earned ability and relevant paid prerequisite",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 4,
               "row_index": 2,
-              "points": 2,
-              "max_rank": 2,
+              "points": 3,
+              "max_rank": 3,
               "price_per_rank": 1,
-              "total_cost": 2,
+              "total_cost": 3,
               "prerequisite": "tyr_progression:forest_dragon_fey_conduit",
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
               "previous_draft_ranks": 2,
               "rank_costs": [
                 1,
+                1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 1,
-                "old_rank_costs": [
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "After a paid personal Nature/Fae support spell, grant at most two nearby valid allies +2% physical hit mitigation per rank (max 6%) for five seconds, 25-second cooldown, no permanent aura.",
+              "required_source_or_handler_check": "Personal cast, allied player/owned companion tags and targeting",
+              "no_new_active_button": true
+            },
+            {
+              "id": "tyr_progression:forest_dragon_woodland_accord",
+              "source_id": null,
+              "name": "Woodland Accord",
+              "description": "+5% max HP per rank (max +10%) to genuine player-owned, source-confirmed Fae summons only; none for wild fae, villagers or generic pets, and no ghost rank if provider lacks them.",
+              "stage": "advanced",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
+              "group_index": 4,
+              "row_index": 3,
+              "points": 2,
+              "max_rank": 2,
+              "price_per_rank": 1,
+              "total_cost": 2,
+              "prerequisite": "tyr_progression:forest_dragon_fey_courtesy",
+              "effect_status": "source_and_generic_handler_verification_required",
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true,
+              "previous_draft_ranks": null,
+              "rank_costs": [
+                1,
+                1
+              ],
+              "effect_per_rank_candidate": "+5% max HP per rank (max +10%) to genuine player-owned, source-confirmed Fae summons only; none for wild fae, villagers or generic pets, and no ghost rank if provider lacks them.",
+              "required_source_or_handler_check": "Actual eligible summoned fae provider and UUID ownership; HOLD if none",
+              "no_new_active_button": true
             }
           ],
-          "points": 12
+          "points": 14
         },
         {
-          "id": "group_6_retained_tyz_6_4_2_source_skills",
-          "name": "Retained Tyz 6.4.2 source skills",
+          "id": "forest_light_shade",
+          "name": "Light & Shadow",
           "skills": [
             {
-              "id": "tyr_progression:forest_dragon_venomous_strike",
-              "source_id": "venomous_attack",
-              "name": "Venomous Strike",
-              "description": "Adds a {success_probability}% chance to poison targets on hit",
+              "id": "tyr_progression:forest_dragon_gloam_endurance",
+              "source_id": null,
+              "name": "Gloam Endurance",
+              "description": "Reduce only source-native darkness Stress *extra hunger drain* by 5% per rank (max 20%); never cancel Stress, ordinary hunger, or native Light in the Dark's identity.",
               "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "real source FOREST species + relevant earned native permissions",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 5,
               "row_index": 0,
               "points": 4,
@@ -3385,108 +3434,95 @@
               "price_per_rank": 1,
               "total_cost": 4,
               "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
+              "previous_draft_ranks": null,
               "rank_costs": [
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "Reduce only source-native darkness Stress *extra hunger drain* by 5% per rank (max 20%); never cancel Stress, ordinary hunger, or native Light in the Dark's identity.",
+              "required_source_or_handler_check": "Native stress and extra hunger debit, earned Light in the Dark behavior",
+              "no_new_active_button": true
             },
             {
-              "id": "tyr_progression:forest_dragon_green_thumb",
-              "source_id": "green_thumb",
-              "name": "Green Thumb",
-              "description": "Adds a {success_probability}% chance to double drops when harvesting crops and plants",
-              "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "id": "tyr_progression:forest_dragon_sunward_focus",
+              "source_id": null,
+              "name": "Sunward Focus",
+              "description": "Reduce cooldown of already-earned, actual native Sun Breath by 4% per rank (max 12%) in direct daylight; do not expand growth/transmutation targets or create the breath ability.",
+              "stage": "advanced",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "source-supported mid Forest growth/earned ability, and paid prerequisite if specified",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 5,
               "row_index": 1,
               "points": 3,
               "max_rank": 3,
               "price_per_rank": 1,
               "total_cost": 3,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "prerequisite": "tyr_progression:forest_dragon_gloam_endurance",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 3,
+              "previous_draft_ranks": null,
               "rank_costs": [
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  1,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "Reduce cooldown of already-earned, actual native Sun Breath by 4% per rank (max 12%) in direct daylight; do not expand growth/transmutation targets or create the breath ability.",
+              "required_source_or_handler_check": "Pinned Sun Breath ability ID, genuine cooldown and daylight",
+              "no_new_active_button": true
             },
             {
-              "id": "tyr_progression:forest_dragon_shepherds_blessing",
-              "source_id": "shepherd_s_blessing",
-              "name": "Shepherd’s Blessing",
-              "description": "Baby animals grow {growth_speed}% faster",
-              "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
+              "id": "tyr_progression:forest_dragon_lantern_keeper",
+              "source_id": null,
+              "name": "Lantern Keeper",
+              "description": "+3% per rank (max +9%) personal source-verified Nature support-spell duration while sheltered in artificial block light level 11+, not a blanket magic buff or source Stress immunity.",
+              "stage": "mastery",
+              "historic_points": null,
+              "historic_ranks": null,
+              "native_gate_reference": "source-supported late Forest growth/earned ability and relevant paid prerequisite",
+              "source_approval": "2026-11-22 role-first balance proposal; pinned native runtime hooks unverified",
               "group_index": 5,
               "row_index": 2,
               "points": 3,
               "max_rank": 3,
               "price_per_rank": 1,
               "total_cost": 3,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
+              "prerequisite": "tyr_progression:forest_dragon_gloam_endurance",
+              "effect_status": "source_and_generic_handler_verification_required",
               "live": false,
               "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 3,
+              "previous_draft_ranks": null,
               "rank_costs": [
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  1,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "effect_per_rank_candidate": "+3% per rank (max +9%) personal source-verified Nature support-spell duration while sheltered in artificial block light level 11+, not a blanket magic buff or source Stress immunity.",
+              "required_source_or_handler_check": "Separate block light/sky light and valid personal support spells",
+              "no_new_active_button": true
             }
           ],
           "points": 10
         }
       ],
-      "source": "Archived nine-tree design 2026-11-15",
-      "native_guardrails": "Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.",
-      "special_note": null,
+      "source": "Archived PR #88 / Tyz rehome history + Dragon Survival developer forest features + TMM owner diet #444",
+      "native_guardrails": "Source Forest dragon axe claws, forest and sun breaths, spikes, native hunter/haste, growth and darkness Stress/Light in the Dark remain free. #444 herbivorous diet overrides native legacy food map. No novel active skills or mana regeneration; one Forest + one legal Lich tree for Dracolich.",
+      "special_note": "Source native ability IDs in pinned Dragon Survival 2.0.74 are data-defined and not verified. Forest Breath, Sun Breath, Spike, source Stress extra hunger and owned fae summons have explicit implementation holds. Harvest bonus fields are mutually exclusive.",
       "total_points": 100,
-      "skill_count": 20,
-      "total_available_paid_ranks_per_character": 100
+      "skill_count": 26,
+      "total_available_paid_ranks_per_character": 100,
+      "assigned_points": 100,
+      "unallocated_points": 0,
+      "role": "Light-loving wooden-scaled dragon: poison and nature magic, renewable self-defense, real crop/animal cultivation, careful fae support, partial darkness tolerance.",
+      "maturity": "COMPLETE_BALANCE_DRAFT_NOT_EXECUTABLE",
+      "balance_policy": "Every purchased rank costs one SP, exactly 100 per fully mastered Forest. Values provisional; native permissions/skills always free."
     },
     {
       "id": "vampire",
@@ -8905,6 +8941,7 @@
     }
   ],
   "required_preimplementation_reviews": [
+    "Forest Dragon: confirm Dragon Survival 2.0.74 native forest/sun breath/spike/Light in the Dark abilities, Stress/hunger and axe-claw, spell attribution, supported fae-owned summons, crop/breeding event dedup, #444 owner herbivorous food.",
     "Cave Dragon verify pinned Dragon Survival v2.0.74 Cave ability IDs/receipts, native pickaxe-claw precedence and durability, Cave Athletics, spin, weather weakness and partial water resistance, constrained ore sensing/gated uranium and personal infernal school tags.",
     "Lich dual-provider audit: exact Goety Soul Energy/recovery and separate Arca, JAWR native necromancy costs/soul bottle/phylactery, summon ownership, native stage gates and one-rescue receipts; no inert bought skills.",
     "Hunter 238-to-100 repricing and existing 14 free specialty choices",
@@ -9008,6 +9045,6 @@
         "budget": 100
       }
     ],
-    "notes": "All design-only full builds are 100; Hunter exclusive choices count only one eligible training and one favored prey branch. Cave is 20+23+19+22+16; Sea is 20+18+18+17+17+10. No playable version asserted."
+    "notes": "Complete design allocations only; Hunter alternatives are exclusive. Forest 20+19+18+19+14+10, Cave 20+23+19+22+16, Sea 20+18+18+17+17+10; not executable."
   }
 }
