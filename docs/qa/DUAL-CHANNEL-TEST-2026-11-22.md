@@ -6,10 +6,10 @@
 
 | Channel | Source / package | What is actually proven |
 | --- | --- | --- |
-| **U — Unstable control** | Immutable *assembled/server-tested* snapshot **c78479f52f9592ca1f139a6b874d630422c34042** (from repaired integration source **2373d50732866e460dc9e9454f7187f9045e1cdc**, tag **integration-qa/44980284571-1**). Code on the rolling branch has advanced and is intentionally NOT selected. | [Server smoke PASS #44980284571](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44980284571). **Matching 222-mod Unstable Prism PACKAGE PASS:** [run #44995616598](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44995616598), direct-import artifact [14742659598](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44995616598/artifacts/14742659598), SHA-256 `6270f7b1b3699b2a5d86337cb45c68eccb6a1d1d795d6d959676be003ec6544f`; no new smoke run. Published rolling Unstable remains an older Nov 17/205-pin generation; never use it as the 222-mod control. |
-| **E — Experimental four updates** | Exact updated, server-tested Packwiz commit **beb5682b77056fbf54830aa671fa0efe6e2eaaa8**, immutable QA tag **qa-update-prism/44985722108-1**. [Prism package run #44985722108](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44985722108), artifact **Too-Much-Magic-Four-Mod-Update-Prism-EXPERIMENTAL** ID **14739742394**, ZIP SHA-256 **bfa2195fb414e72c77624687af8ea3ddd368d10021bb80dadb410e9a581f16ee**. | Server PASS and Prism PACKAGE PASS. **No client launch or gameplay PASS.** Ars Elemental beta not approved for promotion. |
+| **U — Unstable control** | Immutable assembled and server-tested snapshot **f34a369d037bee0bab32069f50f9a558f4cd5e85**, from owner-authorized integration source **4bd316fb7811451442c4b030d59a2b3a0ede5571**, tag **integration-qa/45040091425-1**. All four formerly broken CurseForge client pins now use exact SHA-1-locked direct ForgeCDN URLs. | **Server smoke PASS, Prism package PASS:** [run #45040091425](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45040091425), [single-level Prism ZIP artifact #14761341894](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45040091425/artifacts/14761341894), SHA-256 `009d56261cde2b70523e5bce1206c04e533e8fdd82dcb216da946100d17239f6`. **Not client/gameplay tested.** The rolling Unstable release is not a matching control. |
+| **E — Experimental four updates** | Exact assembled and server-tested updated Packwiz snapshot **69e1fd20f0c012f9ad4b1cc0095199a6fe4719ee**, tag **qa-update-prism/45039435320-1**. The same four corrected download URLs, plus only the four deliberate mod-version changes below. | **Server smoke PASS, Prism package PASS:** [run #45039435320](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45039435320), [single-level Prism ZIP artifact #14760609954](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45039435320/artifacts/14760609954), SHA-256 `6394d10e2d7fb956c1b548c206577ddbffadb21e43ecefbb63dc57704633da7a`. **Not client/gameplay tested; Ars Elemental beta not approved for promotion.** |
 
-The draft experiment PR #461 head contains trial tooling but **not the updated pins**. Test the frozen E commit above, never a source-only PR head. This document does **not** authorize another full smoke or Prism build. Use only the [successful direct Prism control artifact #14742659598](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44995616598/artifacts/14742659598) from package-only run #44995616598; its BUILD-MANIFEST pins the frozen U assembled snapshot. Never substitute the old rolling release. All client/gameplay cases are **NOT RUN** until the owner launches Prism.
+The experiment PR #461 head contains preparation tooling but **not the assembled four updated pins**. For both channels import **only the two newly repaired immutable ZIP artifacts above**; old Unstable #14742659598 and old Experimental #14739742394 retain broken `metadata:curseforge` links and are superseded. The final frozen U and E snapshots have each been inspected to confirm all four direct URLs. [Client URL download/sha1 CI #45039252909](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45039252909) **PASS**. This document does not authorize another smoke, Prism build, or gameplay PASS. All actual owner-run B/C client cases remain **NOT RUN**.
 
 ### The complete experimental pin delta
 
@@ -20,7 +20,7 @@ The draft experiment PR #461 head contains trial tooling but **not the updated p
 | Goety | 3.2.2 | **3.2.3** | Offline API/pin compatibility; **no dedicated manual Goety test** unless TMM lich/path integration breaks or an attributable bug is reported |
 | Ars Elemental | 0.7.10.4 | **0.7.11.3 beta** | One focused Ars/Progression spell-to-MXP integration and known server-crash boundary; beta is the exception to release-version trust |
 
-Actual frozen snapshot also updates Economy's exact-EvilCraft-name compile allowlist and generated Packwiz/index/lock/provenance files. No other external mod pin is supposed to change.
+Both rebuilt snapshots have exactly the same four download-link repairs (Arcane Archives: Reborn, Lava Fishing, Scarlet Springs Equestrian Decor, Unicorn Academy: Bonded Magic), with **no JAR/version changes** from those repairs. E additionally changes exactly four mod versions; it also updates Economy's EvilCraft compile allowlist and generated Packwiz/index/lock/provenance files.
 
 ## Deduplication rule
 
@@ -33,10 +33,10 @@ New runner: [scripts/qa_compare_channels.py](../../scripts/qa_compare_channels.p
 Run on the runner's feature branch (or after merge) with both immutable commits locally available. These are disposable, detached worktrees. Windows PowerShell can use the same Python command on one line; use Java 21 if compiling modules.
 
 ~~~bash
-git worktree add --detach ../tmm-u c78479f52f9592ca1f139a6b874d630422c34042
-git worktree add --detach ../tmm-e beb5682b77056fbf54830aa671fa0efe6e2eaaa8
+git worktree add --detach ../tmm-u f34a369d037bee0bab32069f50f9a558f4cd5e85
+git worktree add --detach ../tmm-e 69e1fd20f0c012f9ad4b1cc0095199a6fe4719ee
 python tests/test_qa_compare_channels.py
-python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha c78479f52f9592ca1f139a6b874d630422c34042 --experimental ../tmm-e --experimental-sha beb5682b77056fbf54830aa671fa0efe6e2eaaa8 --require-four-updates --run-a --report ../tmm-two-build-a-results.json
+python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha f34a369d037bee0bab32069f50f9a558f4cd5e85 --experimental ../tmm-e --experimental-sha 69e1fd20f0c012f9ad4b1cc0095199a6fe4719ee --require-four-updates --run-a --report ../tmm-two-build-a-results.json
 ~~~
 
 For optional first-party Gradle compile/unit checks, add **--build-modules**. Omit **--run-a** for a harmless plan and diff. The runner **never** launches Minecraft, donor assembly, server smoke or Prism packaging. Normal A validators operate locally; optional --build-modules may fetch Gradle and compile-classpath dependencies. Compare local client mod-folder bytes and bundled JARs separately with existing verify_qa_inventory.py against the matching source checkout, using actual first-party JAR paths as extras. A correct pin hash is not proof that an installed JAR matches.
@@ -57,7 +57,7 @@ For optional first-party Gradle compile/unit checks, add **--build-modules**. Om
 
 | Case / type | U — test TMM once | E — only changed TMM seam |
 | --- | --- | --- |
-| **T01 C BOTH** | [ ] Import the exact frozen U package; confirm our four first-party JARs are loaded and loader/integration logs have no TMM errors | [ ] Import E separately; verify exact four changed pins and no newly failing TMM mixins/registry hooks |
+| **T01 C BOTH** | [ ] Import **new repaired U artifact #14761341894**, confirm the four formerly missing mods and our four first-party JARs installed; no TMM loader/installer errors | [ ] Import **new repaired E artifact #14760609954** separately; verify the same formerly missing mods, changed versions, and no newly failing TMM mixins/registries |
 | **T02 C BOTH** | [ ] One disposable world: join, save, rejoin; confirm **TMM** player state, injected recipes/registry and KubeJS initialization survive | [ ] Same minimal TMM state/world persistence and startup check; no general mod functionality tour |
 | **T03 B U** | [ ] TMM Newbie/Regular state, MXP denial/graduation, personal quest, configured FTB travel limits and Tyz wallet persistence | E one MXP/Progression hook only if a changed pin can affect it (T20) |
 | **T04 B/C U** | [ ] TMM Monk initiation, armor/fist restrictions, owned powers, skill purchases and MXP attribution | No repeat without a changed dependency or issue |
