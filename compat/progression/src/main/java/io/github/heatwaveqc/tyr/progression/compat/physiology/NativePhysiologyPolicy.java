@@ -34,8 +34,10 @@ public final class NativePhysiologyPolicy {
             Objects.requireNonNull(states, "states");
             EnumMap<Form, Presence> verified = new EnumMap<>(Form.class);
             for (Form form : Form.values()) {
-                verified.put(form, Objects.requireNonNull(
-                    states.get(form), "missing observation: " + form));
+                Presence state = states.get(form);
+                if (state == null)
+                    throw new IllegalArgumentException("Missing observation: " + form);
+                verified.put(form, state);
             }
             states = Map.copyOf(verified);
         }
