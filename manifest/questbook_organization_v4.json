@@ -376,7 +376,7 @@
     },
     {
       "target_chapter": "Bounties & Contracts",
-      "target_group": "Informational",
+      "target_group": "Challenge",
       "new_chapter_id": null,
       "status": "design_only",
       "role": "bountiful_native_repeatable_contracts_and_board_onboarding_with_intro_crosslink"
@@ -389,8 +389,8 @@
       "role": "move_existing_fish_nodes_preserve_ids_plus_five_caught_per_eligible_species"
     },
     {
-      "target_chapter": "Mob Hunts",
-      "target_group": "Mod-Focused",
+      "target_chapter": "Monster Hunting",
+      "target_group": "Thematic",
       "new_chapter_id": null,
       "status": "design_only",
       "role": "thematic_per_species_credited_kill_ladders_one_time_not_bountiful_not_completionist_global_bestiary"
