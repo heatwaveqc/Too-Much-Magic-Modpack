@@ -17,6 +17,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -24,3 +26,10 @@ jobs:
         run: python -m py_compile scripts/qa_compare_channels.py tests/test_qa_compare_channels.py
       - name: Run differential selection and metadata integrity unit tests
         run: python tests/test_qa_compare_channels.py
+      - name: Checkout frozen 222-mod control and experimental packwiz snapshots
+        run: |
+          git worktree add --detach ../tmm-u 2373d50732866e460dc9e9454f7187f9045e1cdc
+          git worktree add --detach ../tmm-e beb5682b77056fbf54830aa671fa0efe6e2eaaa8
+      - name: Verify actual four-pin diff and Packwiz hash chain (plan only)
+        run: |
+          python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha 2373d50732866e460dc9e9454f7187f9045e1cdc --experimental ../tmm-e --experimental-sha beb5682b77056fbf54830aa671fa0efe6e2eaaa8 --require-four-updates --report "$RUNNER_TEMP/tmm-two-build-plan.json"
