@@ -1,0 +1,2527 @@
+{
+  "schema_version": 1,
+  "evidence_level": "A/source: Packwiz-indexed metadata, not installed JAR or client",
+  "sources": {
+    "packwiz_index": "index.toml",
+    "packwiz_index_sha256": "cee20ed08d7b460463ae1f72cb6988c4a5b8476b6c9904c4839e683ae6194fd8",
+    "packwiz_target_minecraft": "1.21.1",
+    "packwiz_target_neoforge": "21.1.265",
+    "catalog": "manifest/mods.json",
+    "catalog_date": "2026-11-15",
+    "quest_chapters": "manifest/quest_chapters.json",
+    "scope_freeze": "issue #390 (frozen eligibility universe, not an install roster)"
+  },
+  "counts": {
+    "indexed_third_party_mods": 222,
+    "not_indexed_catalog_entries": 12,
+    "policy": {
+      "chapter_or_section": 96,
+      "exploration_section_or_chapter": 12,
+      "technical_inventory_only": 77,
+      "tips_or_section": 37
+    },
+    "coverage": {
+      "mapped": 85,
+      "needs_coverage_review": 60,
+      "not_required": 77
+    }
+  },
+  "mods": [
+    {
+      "slug": "aether",
+      "name": "The Aether",
+      "packwiz_path": "mods/aether.pw.toml",
+      "packwiz_metadata_sha256": "cc3f6e6e8f1838d16e47cce9241e32176279673efb1438ff4451ccffa9579b14",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "akashic-tome",
+      "name": "Akashic Tome",
+      "packwiz_path": "mods/akashic-tome.pw.toml",
+      "packwiz_metadata_sha256": "039ecee245a68300feddca1ea7c7c98de9420cde01fbf32d9e01a1ff79e6c80f",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "alexs-caves-continued",
+      "name": "Alex's Caves Continued",
+      "packwiz_path": "mods/alexs-caves-continued.pw.toml",
+      "packwiz_metadata_sha256": "49d4c3483faf58ba3cc7131ccf438edcc6c944fe92e97b2e18b5e4d19a27d7ba",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "almostunified",
+      "name": "Almost Unified",
+      "packwiz_path": "mods/almostunified.pw.toml",
+      "packwiz_metadata_sha256": "3805fe2877cffdae5e7bf74d85069a2535daa39a0f3ed766755be49294a07680",
+      "source_category": "compatibility",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "apotheosis",
+      "name": "Apotheosis",
+      "packwiz_path": "mods/apotheosis.pw.toml",
+      "packwiz_metadata_sha256": "e154d7fb16dc7eb6ace7b88b3896955bb66f58c2daafe93c7ae3327ee418a509",
+      "source_category": "power",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Apotheosis"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "apothic-attributes",
+      "name": "Apothic Attributes",
+      "packwiz_path": "mods/apothic-attributes.pw.toml",
+      "packwiz_metadata_sha256": "8f5f05a72596ecc0dd11be483785c8a521e987dc2fe6d2fef212c2a382a0c779",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Apotheosis"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "apothic-enchanting",
+      "name": "Apothic-Enchanting",
+      "packwiz_path": "mods/apothic-enchanting.pw.toml",
+      "packwiz_metadata_sha256": "0d3ca07f510b7674932be8e109f394ab23aa4cd1aee04020ea0d509a0d1dd619",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Apotheosis"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "apothic-spawners",
+      "name": "Apothic-Spawners",
+      "packwiz_path": "mods/apothic-spawners.pw.toml",
+      "packwiz_metadata_sha256": "e3cf8a1207e85580723e384bf59688be26b80373b49c1d64972528cdc0dcac6d",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Apotheosis"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "appleskin",
+      "name": "AppleSkin",
+      "packwiz_path": "mods/appleskin.pw.toml",
+      "packwiz_metadata_sha256": "716d930feff599bf9ce732e05979fbae8025dc8a3c13ccf4f1cb207a70883bc6",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "aquaculture",
+      "name": "Aquaculture 2",
+      "packwiz_path": "mods/aquaculture.pw.toml",
+      "packwiz_metadata_sha256": "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "arcane-archives-reborn",
+      "name": "Arcane Archives: Reborn",
+      "packwiz_path": "mods/arcane-archives-reborn.pw.toml",
+      "packwiz_metadata_sha256": "095a0658b7bc1ca874fe574bfbaacbcca4b6a3d718ec0405307b1c92663e8d9a",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "architectury-api",
+      "name": "Architectury API",
+      "packwiz_path": "mods/architectury-api.pw.toml",
+      "packwiz_metadata_sha256": "657a01a86bbf8617e4726c77df08f708e43a3db12db74b837eebd8eb1d93faae",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ars-additions",
+      "name": "Ars Additions",
+      "packwiz_path": "mods/ars-additions.pw.toml",
+      "packwiz_metadata_sha256": "08f46822b355882721807489cbf64a7e8ac03efc1476136e60acbc8dd7dc2880",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-controle",
+      "name": "Ars Controle",
+      "packwiz_path": "mods/ars-controle.pw.toml",
+      "packwiz_metadata_sha256": "1dc7877ebc378ee58a9286a4da56e10060f34113d3a5f40e56cbed779b31ac49",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-elemancy",
+      "name": "Ars Elemancy",
+      "packwiz_path": "mods/ars-elemancy.pw.toml",
+      "packwiz_metadata_sha256": "12caf58c8583c17a41aebe2a836d0b48b4996334137e97b76c62e6b5b62791b5",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-elemental",
+      "name": "Ars Elemental",
+      "packwiz_path": "mods/ars-elemental.pw.toml",
+      "packwiz_metadata_sha256": "8e9f867e9c0ff53e08e779ae54fd1bbead92f1d7323b75369e64ade719d5d7c1",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-n-spells",
+      "name": "Ars 'n Spells",
+      "packwiz_path": "mods/ars-n-spells.pw.toml",
+      "packwiz_metadata_sha256": "bdc153a6636772ab81ff78a63e7c41a9de4f821a63e02b2ed3317e5dbe377f83",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-nouveau",
+      "name": "Ars Nouveau",
+      "packwiz_path": "mods/ars-nouveau.pw.toml",
+      "packwiz_metadata_sha256": "13dc68f3429beff58fd9d02b2d48318087fc7e1281163587f07df40fd1e6a44a",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-ocultas",
+      "name": "Ars Ocultas",
+      "packwiz_path": "mods/ars-ocultas.pw.toml",
+      "packwiz_metadata_sha256": "e63cfbcd739a2d839cfbdb845a354038481c2939af265732f4af14b2c315f4f9",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ars-unification",
+      "name": "Ars Unification",
+      "packwiz_path": "mods/ars-unification.pw.toml",
+      "packwiz_metadata_sha256": "c0cdd482e2a57617f89c296eeb0a6dfe260534439041929609fd2d62cf6e95fb",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Ars Nouveau"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "artifacts",
+      "name": "Artifacts",
+      "packwiz_path": "mods/artifacts.pw.toml",
+      "packwiz_metadata_sha256": "416b7f130791397fb2ceb9e89ce3fd0e870f207c8e40b759c069cb58b7544314",
+      "source_category": "power",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Artifacts"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "astral-sorcery",
+      "name": "Astral Sorcery",
+      "packwiz_path": "mods/astral-sorcery.pw.toml",
+      "packwiz_metadata_sha256": "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Astral Sorcery"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "attributefix",
+      "name": "AttributeFix",
+      "packwiz_path": "mods/attributefix.pw.toml",
+      "packwiz_metadata_sha256": "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "balm",
+      "name": "Balm",
+      "packwiz_path": "mods/balm.pw.toml",
+      "packwiz_metadata_sha256": "fc8954e0d3fa66b917d2c84ee04d07b073a9eb6f719d09e1ff85527c1d61a10e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "bclib-new-dawn",
+      "name": "BCLib: New Dawn",
+      "packwiz_path": "mods/bclib-new-dawn.pw.toml",
+      "packwiz_metadata_sha256": "561ad31048950924972bdf9f0c156ca9bc11ebbb5928c76e00e58f5b1afb12c3",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "better-advanced-tooltips",
+      "name": "Better Advanced Tooltips",
+      "packwiz_path": "mods/better-advanced-tooltips.pw.toml",
+      "packwiz_metadata_sha256": "03084ff4f74cedc1b8ac6c85a98842f75956fb4fa811d285d8ca7caa8d54da5d",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "better-advancements",
+      "name": "Better Advancements",
+      "packwiz_path": "mods/better-advancements.pw.toml",
+      "packwiz_metadata_sha256": "5f30c1c0363dd44c10db196a8d8a7f164ff06e06b0b80234a519d9e49b2a7f84",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "betterend-new-dawn",
+      "name": "BetterEnd: New Dawn",
+      "packwiz_path": "mods/betterend-new-dawn.pw.toml",
+      "packwiz_metadata_sha256": "c25a5ce6962539cb7d30bcad8aa15eb0c5ddedef1d6afbc3d0648c30975abc6d",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "blueprint",
+      "name": "Blueprint",
+      "packwiz_path": "mods/blueprint.pw.toml",
+      "packwiz_metadata_sha256": "0ab9d26c800d8bfc998341bf2d34c91238dbcba1f646f2c57705c1760148cc17",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "bookshelf",
+      "name": "Bookshelf",
+      "packwiz_path": "mods/bookshelf.pw.toml",
+      "packwiz_metadata_sha256": "cf914684c4151076b726116a66f7bc81a6116655551bcce70a9e64e34e5aa308",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "botania-revived",
+      "name": "Botania Revived",
+      "packwiz_path": "mods/botania-revived.pw.toml",
+      "packwiz_metadata_sha256": "1afaf5985c453bb3aa86d411c543be420a26f41f3f0005746d6399046f5ebf33",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Botania Revived"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "bountiful",
+      "name": "Bountiful",
+      "packwiz_path": "mods/bountiful.pw.toml",
+      "packwiz_metadata_sha256": "ba3b9990bc44bedb8eacbe11b2beffb7457cc6ddd854e78fcaf8d73d8f2578db",
+      "source_category": "qol",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "brandons-core",
+      "name": "Brandon's Core",
+      "packwiz_path": "mods/brandons-core.pw.toml",
+      "packwiz_metadata_sha256": "7904c140247e0d8a87231cf4d36718fc018e0f851dbec2517b673acdc25547df",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "brewin-and-chewin",
+      "name": "Brewin' And Chewin'",
+      "packwiz_path": "mods/brewin-and-chewin.pw.toml",
+      "packwiz_metadata_sha256": "22d9510588b081cf9905f6549d24bc11012aa8d9c7d38a8619ab9db5ccb7b9a8",
+      "source_category": "food_beverage",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Alcohol is Magic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "caelus",
+      "name": "Caelus API",
+      "packwiz_path": "mods/caelus.pw.toml",
+      "packwiz_metadata_sha256": "86cf2ae835b8f3d981af2e88a4d19fdc3dc4f5aa3904c6ba30e25d77d3e9fcbb",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "cc-tweaked",
+      "name": "CC: Tweaked",
+      "packwiz_path": "mods/cc-tweaked.pw.toml",
+      "packwiz_metadata_sha256": "100b5d463f36754b5e53b631056efdc06dc5b2799a5b4eb629873da58bbcde11",
+      "source_category": "technology",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "A Sufficiently Advanced Magic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "cloth-config",
+      "name": "Cloth Config API (Fabric/Forge/NeoForge)",
+      "packwiz_path": "mods/cloth-config.pw.toml",
+      "packwiz_metadata_sha256": "22286fa216349c0767808903a0a38662857d2adee54950a18cbf26c167a06029",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "clumps",
+      "name": "Clumps",
+      "packwiz_path": "mods/clumps.pw.toml",
+      "packwiz_metadata_sha256": "2acaff560bbda5741538528a2967355ec86a8f7564adba0b2316989c66892374",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "cobblegen-galore",
+      "name": "Cobblegen Galore",
+      "packwiz_path": "mods/cobblegen-galore.pw.toml",
+      "packwiz_metadata_sha256": "8ee8facb80c02593751f4cb8eddd681868be2b725791ebf1c35060be4fa7efaa",
+      "source_category": "performance_resource_generation",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "cobweb",
+      "name": "Cobweb",
+      "packwiz_path": "mods/cobweb.pw.toml",
+      "packwiz_metadata_sha256": "40802547d9f1f916dfeefea8e0c52499edfc6940daca5b7f60e5c365a4ead296",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "cocktails-delight",
+      "name": "Cocktails Delight",
+      "packwiz_path": "mods/cocktails-delight.pw.toml",
+      "packwiz_metadata_sha256": "e18ad62cc2ea0a113d100652f5e4adc08ca67ca35422981b87c0478dc62ca511",
+      "source_category": "food_beverage",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Alcohol is Magic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "codechicken-lib-1-8",
+      "name": "CodeChicken Lib 1.8.+",
+      "packwiz_path": "mods/codechicken-lib-1-8.pw.toml",
+      "packwiz_metadata_sha256": "107f1089debe869dc912e119eedbc3f6b523dbdd8193719ba51ce476914f4f5a",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "codxlib",
+      "name": "CodxLib",
+      "packwiz_path": "mods/codxlib.pw.toml",
+      "packwiz_metadata_sha256": "884f0b4159ea237cdc6921ce4c9747c6924d2d6eb8108f2ddd4f750c92e870f2",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "colorful-hearts",
+      "name": "Colorful Hearts",
+      "packwiz_path": "mods/colorful-hearts.pw.toml",
+      "packwiz_metadata_sha256": "3f6e74711a0c2677548ec3a5ef36a3fbf79b5a9f2b406aab73b1ca678fc518f9",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "comforts",
+      "name": "Comforts",
+      "packwiz_path": "mods/comforts.pw.toml",
+      "packwiz_metadata_sha256": "36f2f6e74b7dbeccb504572d47006582207544fa234a095093b97adfc7ecd5ac",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "common-network",
+      "name": "Common Network",
+      "packwiz_path": "mods/common-network.pw.toml",
+      "packwiz_metadata_sha256": "e5052ab66811e9217d662d712781796c72f7105fbbc81e1de3469ccf6178d5a0",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "controlling",
+      "name": "Controlling",
+      "packwiz_path": "mods/controlling.pw.toml",
+      "packwiz_metadata_sha256": "65c8086d2ec3d39acc7bd36c7a0306ccc43b602b38fa07d13291bc478ef7dfff",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "cooking-for-blockheads",
+      "name": "Cooking for Blockheads",
+      "packwiz_path": "mods/cooking-for-blockheads.pw.toml",
+      "packwiz_metadata_sha256": "43e394e100190d49d216c0b646868ac134d3ae82f2361c3bd807ff1b1449c3e0",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "corail-tombstone",
+      "name": "Corail Tombstone",
+      "packwiz_path": "mods/corail-tombstone.pw.toml",
+      "packwiz_metadata_sha256": "7b4e74ebfc923568149d8a27a90217788713f184af1333d2f93708dfbab83dfd",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "crafting-tweaks",
+      "name": "Crafting Tweaks",
+      "packwiz_path": "mods/crafting-tweaks.pw.toml",
+      "packwiz_metadata_sha256": "9942062b933fc042f551ff9539c81ca37ef8e97eec7d35f7800805a9d285b956",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "creature-feature",
+      "name": "Creature Feature",
+      "packwiz_path": "mods/creature-feature.pw.toml",
+      "packwiz_metadata_sha256": "a008e552886008e5ffe2b6b7a7ea5245971e5bf503e86608fd0bedb2e14e1b39",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "creeper-overhaul",
+      "name": "Creeper Overhaul",
+      "packwiz_path": "mods/creeper-overhaul.pw.toml",
+      "packwiz_metadata_sha256": "cd4c4ec6ef26d2b61e0cb0bdd398e8d528b88ebf739fc0898bc8cb2f7a88debb",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "critters-and-companions",
+      "name": "Critters and Companions",
+      "packwiz_path": "mods/critters-and-companions.pw.toml",
+      "packwiz_metadata_sha256": "3f4a84b4344b129792d44a66fd0809d3f58a903707848b6905b493759814034d",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "crystalix",
+      "name": "Crystalix",
+      "packwiz_path": "mods/crystalix.pw.toml",
+      "packwiz_metadata_sha256": "4f26c7dac908030d9f2849db8d8ebb32d1710030347b828d22cf4ccd4fa69fba",
+      "source_category": "decoration_glass",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "cucumber",
+      "name": "Cucumber Library",
+      "packwiz_path": "mods/cucumber.pw.toml",
+      "packwiz_metadata_sha256": "b2059d79bf6e41281a26b5b75a8f0cb20804079fe49a22042a26aa5ce28ba7f5",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "curios",
+      "name": "Curios API",
+      "packwiz_path": "mods/curios.pw.toml",
+      "packwiz_metadata_sha256": "36debf7653e95a855b4fedacc19027cf2e01960fc0b6d55ef2ffbffbcb455690",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "cyclops-core",
+      "name": "Cyclops Core",
+      "packwiz_path": "mods/cyclops-core.pw.toml",
+      "packwiz_metadata_sha256": "88a342c59afdff0638c444ca7b05e2daac045a58a74774eef5a8293c5f16bea8",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "databank",
+      "name": "Databank",
+      "packwiz_path": "mods/databank.pw.toml",
+      "packwiz_metadata_sha256": "df84f9d64a961ce5b2bfa546319f35bfa047715a106b175d95241514329775d2",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "deeperdarker",
+      "name": "Deeper and Darker",
+      "packwiz_path": "mods/deeperdarker.pw.toml",
+      "packwiz_metadata_sha256": "a9ecc4476d26e707189e9f988c19f22961c33dfd5e5b4db1dfd6f87c6a81c545",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Deeper and Darker"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "default-options",
+      "name": "Default Options",
+      "packwiz_path": "mods/default-options.pw.toml",
+      "packwiz_metadata_sha256": "a6967d761dde867ccc1af53dc9f4e530eb9917a9cb21d0fc15708e8cd2c0f2ba",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "dive-into-the-abyss",
+      "name": "Dive Into the Abyss",
+      "packwiz_path": "mods/dive-into-the-abyss.pw.toml",
+      "packwiz_metadata_sha256": "285503fbd050f19c1351879215cbef9d077cfbf5eec3d5db3096586e2247aa68",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "draconic-evolution",
+      "name": "Draconic Evolution",
+      "packwiz_path": "mods/draconic-evolution.pw.toml",
+      "packwiz_metadata_sha256": "5b4d79435b6c6307cdcb141561b46a536fcf317a5661dbcafe33dfcde3cfe80f",
+      "source_category": "technology",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "A Sufficiently Advanced Magic",
+        "Draconic Evolution"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "dragon-survival",
+      "name": "Dragon Survival",
+      "packwiz_path": "mods/dragon-survival.pw.toml",
+      "packwiz_metadata_sha256": "d0c3a7c57607057d8358fde72ec0386db27fe9176ac75a96d11f631c4ee45552",
+      "source_category": "supernatural",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Skills & Factions"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "eidolon-repraised",
+      "name": "Eidolon: Repraised",
+      "packwiz_path": "mods/eidolon-repraised.pw.toml",
+      "packwiz_metadata_sha256": "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Eidolon: Repraised"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "embeddium",
+      "name": "Embeddium",
+      "packwiz_path": "mods/embeddium.pw.toml",
+      "packwiz_metadata_sha256": "778c42263b2ba7c9e73553bdcd70f48a3e485ba52b6a83474160d48be696b71f",
+      "source_category": "performance",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "embers-re-ignited",
+      "name": "Embers Re-Ignited",
+      "packwiz_path": "mods/embers-re-ignited.pw.toml",
+      "packwiz_metadata_sha256": "ca8d4b29f55c79a5b5534e7542e908fb77e0d66c9c68a10a6bfd91a8c08b149d",
+      "source_category": "magic_industry",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Embers Re-Ignited"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "enchanted-witchcraft",
+      "name": "Enchanted: Witchcraft",
+      "packwiz_path": "mods/enchanted-witchcraft.pw.toml",
+      "packwiz_metadata_sha256": "4a082b19098f0cfac6bf8b65fa154e1e06ecb5cd7b6636942e2d373d72f00253",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Enchanted: Witchcraft"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "enchantment-descriptions",
+      "name": "Enchantment Descriptions",
+      "packwiz_path": "mods/enchantment-descriptions.pw.toml",
+      "packwiz_metadata_sha256": "2e137ea0702d21a9be7943d997bedf98f2c47751a621341081020a2bb53db4ae",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "enderman-overhaul",
+      "name": "Enderman Overhaul",
+      "packwiz_path": "mods/enderman-overhaul.pw.toml",
+      "packwiz_metadata_sha256": "1045ba1bb46eb77e2fea9be04268c2c73c161b94f3bceddbd4c3dbff1c0bf555",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "enigmaticlegacy-plus",
+      "name": "Enigmatic Legacy+",
+      "packwiz_path": "mods/enigmaticlegacy-plus.pw.toml",
+      "packwiz_metadata_sha256": "8514d86365986f1eac584f4a5a3c38d24e7963685b814210b1a7b03ebc045f4b",
+      "source_category": "power",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Enigmatic Legacy+"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "entityculling",
+      "name": "Entity Culling",
+      "packwiz_path": "mods/entityculling.pw.toml",
+      "packwiz_metadata_sha256": "d518db51c2502b5b04d6ca4add6a2b3e862a0af15e7a65f0ab83180778adb604",
+      "source_category": "performance",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "eternal-starlight",
+      "name": "Eternal Starlight",
+      "packwiz_path": "mods/eternal-starlight.pw.toml",
+      "packwiz_metadata_sha256": "6e1beac08fed14accc3edb3b5cd75220c3476d2ff27ce3b415c035623da41cda",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "evilcraft",
+      "name": "EvilCraft",
+      "packwiz_path": "mods/evilcraft.pw.toml",
+      "packwiz_metadata_sha256": "b6b98117b5932b6dc144a13bffe6bcbcaec86fa35dd43eb6b4cbf04a9b3be677",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "EvilCraft"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "exclusions-lib",
+      "name": "Exclusions Lib",
+      "packwiz_path": "mods/exclusions-lib.pw.toml",
+      "packwiz_metadata_sha256": "b9363f3ba7f2ac384cca83c42054485d1b6473d114064cf3aec7933924932bc2",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "extra-botany-revived",
+      "name": "Extra Botany Revived",
+      "packwiz_path": "mods/extra-botany-revived.pw.toml",
+      "packwiz_metadata_sha256": "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Botania Revived"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "extreme-sound-muffler",
+      "name": "Extreme Sound Muffler",
+      "packwiz_path": "mods/extreme-sound-muffler.pw.toml",
+      "packwiz_metadata_sha256": "8babbd9434008158cabb000d44ad5c54df1a60f2dfab019687fb5a3d37ebd13a",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "farmers-delight",
+      "name": "Farmer's Delight",
+      "packwiz_path": "mods/farmers-delight.pw.toml",
+      "packwiz_metadata_sha256": "d9ed9ac8e0db9db29078dafa22bc2d86ac702f10863ae7cb1d5245111c5ea17b",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "farming-for-blockheads",
+      "name": "Farming for Blockheads",
+      "packwiz_path": "mods/farming-for-blockheads.pw.toml",
+      "packwiz_metadata_sha256": "d47898356c10a7decf6d4c9aeee4f753df6a716be4c90a3609f15573c8e56345",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "fenns_totemic",
+      "name": "Totemic",
+      "packwiz_path": "mods/fenns_totemic.pw.toml",
+      "packwiz_metadata_sha256": "97691b1ad518bd03fa1c85a6b0af69049939483641eaf1bf5a7755627dac7de6",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Totemic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ferrite-core",
+      "name": "FerriteCore",
+      "packwiz_path": "mods/ferrite-core.pw.toml",
+      "packwiz_metadata_sha256": "73360e397134d238ee8fd21d33fd7f9275e9441f74f8f1b6ed92278877c0b9f1",
+      "source_category": "performance",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "feywild",
+      "name": "Feywild",
+      "packwiz_path": "mods/feywild.pw.toml",
+      "packwiz_metadata_sha256": "40fbad98093648e6d1c606cbe19897ff4cfc9eba104bf9f5cb14ade22c4b6d18",
+      "source_category": "magic_adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Feywild"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "forbidden-arcanus",
+      "name": "Forbidden & Arcanus",
+      "packwiz_path": "mods/forbidden-arcanus.pw.toml",
+      "packwiz_metadata_sha256": "1781b20756b9c2b0bd930e18bbe7cd8c66d822018d95d74b5ffbbfac19aa94ff",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Forbidden & Arcanus"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "ftb-chunks-forge",
+      "name": "FTB Chunks (NeoForge)",
+      "packwiz_path": "mods/ftb-chunks-forge.pw.toml",
+      "packwiz_metadata_sha256": "fe87173e15a7e2a7543c553708cc3f49a346bcb686cec4977fce6c3efafe4521",
+      "source_category": "infrastructure",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ftb-essentials",
+      "name": "FTB Essentials (NeoForge)",
+      "packwiz_path": "mods/ftb-essentials.pw.toml",
+      "packwiz_metadata_sha256": "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "ftb-filter-system",
+      "name": "FTB Filter System",
+      "packwiz_path": "mods/ftb-filter-system.pw.toml",
+      "packwiz_metadata_sha256": "9cb8d355c77067b00a96d96db398f60db62a6ee238dabff45ade33dd8d9f9e3b",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ftb-library-forge",
+      "name": "FTB Library (NeoForge)",
+      "packwiz_path": "mods/ftb-library-forge.pw.toml",
+      "packwiz_metadata_sha256": "df64ca595f6f0f79e3a4a844fd0a887b44f5e007f5deb9ac011b5cf67b3a2127",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ftb-quests-forge",
+      "name": "FTB Quests (NeoForge)",
+      "packwiz_path": "mods/ftb-quests-forge.pw.toml",
+      "packwiz_metadata_sha256": "ce69874826195a0aed63a54128c8656b80e564cd32db59c1f9cfe3367150fd5e",
+      "source_category": "infrastructure",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Getting Started"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ftb-teams-forge",
+      "name": "FTB Teams (NeoForge)",
+      "packwiz_path": "mods/ftb-teams-forge.pw.toml",
+      "packwiz_metadata_sha256": "d1665d3000a0857df2d4ea5d3b3a6c5e2b0a60b0c83f8c0f30f05b5305b1878f",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ftb-xmod-compat",
+      "name": "FTB XMod Compat",
+      "packwiz_path": "mods/ftb-xmod-compat.pw.toml",
+      "packwiz_metadata_sha256": "2cfad52dbc5bd12df95bf3b3f8de574bb7d185a90caaf32829a9b19bc98aebe8",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "fusion-connected-textures",
+      "name": "Fusion (Connected Textures)",
+      "packwiz_path": "mods/fusion-connected-textures.pw.toml",
+      "packwiz_metadata_sha256": "108739f2fdaa6a885a3217ae692b2521ab10b8e71fa1222c67274ea0562649a5",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "gateways-to-eternity",
+      "name": "Gateways to Eternity",
+      "packwiz_path": "mods/gateways-to-eternity.pw.toml",
+      "packwiz_metadata_sha256": "677912b683eeda568c6e81d235c2411461c1d212608b5440a79d5abbd2c5fc1d",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Gateways to Eternity"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "gaze-a-malum-addon",
+      "name": "Gaze (Malum addon)",
+      "packwiz_path": "mods/gaze-a-malum-addon.pw.toml",
+      "packwiz_metadata_sha256": "c367923085af785c1e969e992536e3e10a053003d1bd1cdb055ffe1f2ce9c362",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Malum"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "geckolib",
+      "name": "Geckolib",
+      "packwiz_path": "mods/geckolib.pw.toml",
+      "packwiz_metadata_sha256": "4cf7eb494f48576e28895ee5f362878f95c6bad65372666106140fdae82d0c4c",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "get-it-together-drops",
+      "name": "Get It Together, Drops!",
+      "packwiz_path": "mods/get-it-together-drops.pw.toml",
+      "packwiz_metadata_sha256": "1f805479ca7f01f27c1bf662d7d9ccb9e3935e7007e05b469b1072ca09e9e421",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "ghost",
+      "name": "Ghost",
+      "packwiz_path": "mods/ghost.pw.toml",
+      "packwiz_metadata_sha256": "895a8abebb82f5cd662e71f765b0d1ae8e3bf5e9c7a1bff3270f4fa329cab0cd",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "goety-cataclysm",
+      "name": "Goety Cataclysm",
+      "packwiz_path": "mods/goety-cataclysm.pw.toml",
+      "packwiz_metadata_sha256": "4499bf187e4403821a6070199853ce4a1fd5ea0b9c5627e0bf7e84ac617039c1",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Goety"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "goety",
+      "name": "Goety — The Dark Arts",
+      "packwiz_path": "mods/goety.pw.toml",
+      "packwiz_metadata_sha256": "269e6225a8f6ef2bff759a8870e3db2300a72a782600b84e875e79cfbe819591",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Goety",
+        "Skills & Factions"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "golem-overhaul",
+      "name": "Golem Overhaul",
+      "packwiz_path": "mods/golem-overhaul.pw.toml",
+      "packwiz_metadata_sha256": "1dd77e06dcd06a82bd5e635e0a10ff6fbcefd607fbda7cca542316c4f4c4ab74",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "hammer-lib",
+      "name": "HammerLib",
+      "packwiz_path": "mods/hammer-lib.pw.toml",
+      "packwiz_metadata_sha256": "1e43aa344f623cf2fa46e0ec8b5afeb28e629310faf754b20f8ad58e54746d8e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "harvest-with-ease",
+      "name": "Harvest with Ease",
+      "packwiz_path": "mods/harvest-with-ease.pw.toml",
+      "packwiz_metadata_sha256": "6dce3c6a38846be3777d4daef77e848d7f054628a7b058d74f77c2dd3bf34152",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "hexcast-neoforged",
+      "name": "HexCast NEOFORGED",
+      "packwiz_path": "mods/hexcast-neoforged.pw.toml",
+      "packwiz_metadata_sha256": "4e4a30448deb52c54122c16c29467023e5861de25d6daa1dd1ec999c9fc73bcc",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Hex Casting"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "hexerei",
+      "name": "Hexerei",
+      "packwiz_path": "mods/hexerei.pw.toml",
+      "packwiz_metadata_sha256": "bd496127dfae8939188c1eb6d6e77930a2f89514308169abed5d27a7b3199ac2",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Hexerei"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "packwiz_path": "mods/immediatelyfast.pw.toml",
+      "packwiz_metadata_sha256": "4601b9be31b6e131dca8a148c974d015444bcac7c82fcb66fbd8751a67933a5d",
+      "source_category": "performance",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "improvable-skills",
+      "name": "Improvable Skills 3",
+      "packwiz_path": "mods/improvable-skills.pw.toml",
+      "packwiz_metadata_sha256": "9bdb65981e4b9a93c82021d509ae02a3dcd18402ba9f579571fa44974b27d118",
+      "source_category": "skills",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Skills & Factions"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "inventory-tweaks-refoxed",
+      "name": "Inventory Tweaks — ReFoxed",
+      "packwiz_path": "mods/inventory-tweaks-refoxed.pw.toml",
+      "packwiz_metadata_sha256": "445b323ba9a34faa2ad10207f41aac9da7eeac8e13cd66c771ba026e8bccaaf1",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "irons-lib",
+      "name": "Iron's Lib",
+      "packwiz_path": "mods/irons-lib.pw.toml",
+      "packwiz_metadata_sha256": "8941da7290825037921249274369a39440567f667df2eead412cf54423168f7e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "irons-spells-n-spellbooks",
+      "name": "Iron's Spells 'n Spellbooks",
+      "packwiz_path": "mods/irons-spells-n-spellbooks.pw.toml",
+      "packwiz_metadata_sha256": "4623bbc102dd3b7648a96569a1ab49b868774d46355b305ac40c4c79ad1c74e2",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Iron's Spells 'n Spellbooks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "jade",
+      "name": "Jade",
+      "packwiz_path": "mods/jade.pw.toml",
+      "packwiz_metadata_sha256": "4de3e4a1a49e332c1ad313283e0403c4273b628d634c17a9ff0c9da3d6b67f9a",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "jawr-forbidden-magic",
+      "name": "JAWR: Forbidden Magic",
+      "packwiz_path": "mods/jawr-forbidden-magic.pw.toml",
+      "packwiz_metadata_sha256": "2b3863afe380785b94944c1793be81a17a4dc977212e2bd99c96368120bd0fc7",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Just Another Witchery Remake",
+        "Skills & Factions"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "jei",
+      "name": "Just Enough Items",
+      "packwiz_path": "mods/jei.pw.toml",
+      "packwiz_metadata_sha256": "58333a1b7c35bd5940e63b498cf44da16b1f2464c73d72203d1fed84ccfd352a",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "just-another-witchery-remake",
+      "name": "Just Another Witchery Remake",
+      "packwiz_path": "mods/just-another-witchery-remake.pw.toml",
+      "packwiz_metadata_sha256": "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Just Another Witchery Remake",
+        "Skills & Factions"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "just-enough-resources-jer",
+      "name": "Just Enough Resources (JER)",
+      "packwiz_path": "mods/just-enough-resources-jer.pw.toml",
+      "packwiz_metadata_sha256": "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "just-zoom",
+      "name": "Just Zoom",
+      "packwiz_path": "mods/just-zoom.pw.toml",
+      "packwiz_metadata_sha256": "4c64dc39ebe1d44d39b5876848695d3f8d4670be71019509bf74905309ac2791",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "kambrik",
+      "name": "Kambrik",
+      "packwiz_path": "mods/kambrik.pw.toml",
+      "packwiz_metadata_sha256": "8a5e76693f22343bb2306011ad8018337971256a6f3b25cb03680b1d7d7470c1",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "keybind-bundles",
+      "name": "KeyBind Bundles",
+      "packwiz_path": "mods/keybind-bundles.pw.toml",
+      "packwiz_metadata_sha256": "eaeb7a2dd935df6966439540a9682c8db4eb9a310573a37e1ee44dd2a105865f",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "keysets",
+      "name": "KeySets",
+      "packwiz_path": "mods/keysets.pw.toml",
+      "packwiz_metadata_sha256": "47c24d04888f7e7242cfc9b281e359a0251f6674c7b6026d3a35eb5df959fda7",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "konkrete",
+      "name": "Konkrete",
+      "packwiz_path": "mods/konkrete.pw.toml",
+      "packwiz_metadata_sha256": "054a1887da4f14b791910660a2a7a2035ac1382461b881a65fe07b224c03735f",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "kotlin-for-forge",
+      "name": "Kotlin for Forge",
+      "packwiz_path": "mods/kotlin-for-forge.pw.toml",
+      "packwiz_metadata_sha256": "1506a3d749a45bc760b3ad57ef1fbb959f0c166b6d1d4955114fd66db7a4855d",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "kubejs",
+      "name": "KubeJS",
+      "packwiz_path": "mods/kubejs.pw.toml",
+      "packwiz_metadata_sha256": "be9f3f981dd69822b4a3e5ab6fd677ec69a4e01dcf66c62e239b6ef65f31f0fd",
+      "source_category": "infrastructure",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "l_enders-cataclysm",
+      "name": "L_Ender's Cataclysm",
+      "packwiz_path": "mods/l_enders-cataclysm.pw.toml",
+      "packwiz_metadata_sha256": "f262b49b1038ef9f67704e0629da6aafa84cf4f760273589f5d73530ca5d74b5",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "L_Ender's Cataclysm"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "lava-fishing",
+      "name": "Lava Fishing",
+      "packwiz_path": "mods/lava-fishing.pw.toml",
+      "packwiz_metadata_sha256": "a35f98abe79767c8306731d76cd02c5a87ac1645c99a8007a89d8bf66c3f9cc9",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "leaves-be-gone",
+      "name": "Leaves Be Gone",
+      "packwiz_path": "mods/leaves-be-gone.pw.toml",
+      "packwiz_metadata_sha256": "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "lets-do-beachparty",
+      "name": "[Let's Do] Beachparty",
+      "packwiz_path": "mods/lets-do-beachparty.pw.toml",
+      "packwiz_metadata_sha256": "fd2a321d4abc440ff159e477dc75ebc9d32a9efa246e61ceeb6142391c55bfcf",
+      "source_category": "decoration_beach",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Alcohol is Magic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "lets-do-furniture",
+      "name": "[Let's Do] Furniture",
+      "packwiz_path": "mods/lets-do-furniture.pw.toml",
+      "packwiz_metadata_sha256": "2b28e81ed8fe72b4e53fe36b05f0615097cac431f1cc840950288da3c2b28886",
+      "source_category": "decoration_furniture",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "lionfish-api",
+      "name": "Lionfish-API",
+      "packwiz_path": "mods/lionfish-api.pw.toml",
+      "packwiz_metadata_sha256": "64acab1580ca6edd8b1dd185e914aeee7aa551a88a7cd7f0f9370a82aaadfef6",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "lithostitched",
+      "name": "Lithostitched",
+      "packwiz_path": "mods/lithostitched.pw.toml",
+      "packwiz_metadata_sha256": "c0611d8448bc043f372a008a435e14aa238ba8fca52fd1d79634424576ea9e12",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "lodestonelib",
+      "name": "Lodestone",
+      "packwiz_path": "mods/lodestonelib.pw.toml",
+      "packwiz_metadata_sha256": "f5d0701055478e980b50849f199f266e6ab1940277a17ad2e5060df0d978be83",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "lootjs",
+      "name": "LootJS",
+      "packwiz_path": "mods/lootjs.pw.toml",
+      "packwiz_metadata_sha256": "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "lootr",
+      "name": "Lootr",
+      "packwiz_path": "mods/lootr.pw.toml",
+      "packwiz_metadata_sha256": "0d3683a8c533e1fb67bf0b1668089a322fc5f594f9610d441657378ab4f64383",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "mahou-tsukai",
+      "name": "Mahou Tsukai",
+      "packwiz_path": "mods/mahou-tsukai.pw.toml",
+      "packwiz_metadata_sha256": "35241e0a2e68fb7a253bda3a1d0eaf8e2597bf4aa4e385a53bc901f00fbe985a",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Mahou Tsukai"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "malum",
+      "name": "Malum",
+      "packwiz_path": "mods/malum.pw.toml",
+      "packwiz_metadata_sha256": "0213b6ecb4784b9f57bf3d66444c61ce357b365c8bef2d10363d0c7f20b86e58",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Malum"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "mezzconfig",
+      "name": "MezzConfig",
+      "packwiz_path": "mods/mezzconfig.pw.toml",
+      "packwiz_metadata_sha256": "f1fecbcbee6806a14efb3bd38ccf10166b48004967fbe72b6c31224e5e9fc5ea",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "modernfix",
+      "name": "ModernFix",
+      "packwiz_path": "mods/modernfix.pw.toml",
+      "packwiz_metadata_sha256": "ef65836e005bd42a0f40df30a94eba1ad7ee5ed3194b11eafbeadc64edb44252",
+      "source_category": "performance",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "modonomicon",
+      "name": "Modonomicon",
+      "packwiz_path": "mods/modonomicon.pw.toml",
+      "packwiz_metadata_sha256": "1f4795c499834ae0728af24e31a645ff281555255eaf0945571502e35493ef32",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "modopedia",
+      "name": "Modopedia",
+      "packwiz_path": "mods/modopedia.pw.toml",
+      "packwiz_metadata_sha256": "547f54d0587d4f4201073b2bc498831a6e22b67630699e01d9e1f0afbe36b7d8",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "more-darkness",
+      "name": "More Darkness",
+      "packwiz_path": "mods/more-darkness.pw.toml",
+      "packwiz_metadata_sha256": "fb7931b3a4acb5f6cff55e1e84bff75074db84e71baec2130ba1dc941cf98ffd",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "more-overlays-updated",
+      "name": "More Overlays Updated",
+      "packwiz_path": "mods/more-overlays-updated.pw.toml",
+      "packwiz_metadata_sha256": "a9b5d9fb791c757bcc59b20d0cf3b1fc42f026feb7514c7ce59ee43726f3366d",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "packwiz_path": "mods/mouse-tweaks.pw.toml",
+      "packwiz_metadata_sha256": "6bc414cc0f2d4c078fe83f384d786343f701f371d657c5279b5b0df1595804bd",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "my-nethers-delight",
+      "name": "My Nether's Delight",
+      "packwiz_path": "mods/my-nethers-delight.pw.toml",
+      "packwiz_metadata_sha256": "622f66a4a2c21655005b1b56af83361e7daae270d375d0d5bf38c8a1f78d40cf",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "natures-compass",
+      "name": "Nature's Compass",
+      "packwiz_path": "mods/natures-compass.pw.toml",
+      "packwiz_metadata_sha256": "2e9a8daaa0e0cc9cdfb67422e0f928f2db6a1f2984b8636eb2b5091c5fb23e29",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "neovitae",
+      "name": "Neo Vitae",
+      "packwiz_path": "mods/neovitae.pw.toml",
+      "packwiz_metadata_sha256": "6a4769ed8d8428836a28846d31db03592a6a84025342bab5d9203b9d5f59d3af",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Neo Vitae"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "nether-depths-upgrade",
+      "name": "Nether Depths Upgrade",
+      "packwiz_path": "mods/nether-depths-upgrade.pw.toml",
+      "packwiz_metadata_sha256": "48c2ab25456fb7ace4367153a3de95a990cba360bdf1fb78264850c4392512d1",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "observerlib",
+      "name": "ObserverLib",
+      "packwiz_path": "mods/observerlib.pw.toml",
+      "packwiz_metadata_sha256": "ff407a1e06ce5a70fd10e60a9c822a69d2722d8d1b5751918ff65145a976036e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "occult-cooking",
+      "name": "Occult Cooking",
+      "packwiz_path": "mods/occult-cooking.pw.toml",
+      "packwiz_metadata_sha256": "336012b59c5f539d9c916b86be2259a20394e7abca79c65527e8a3d61d591ca5",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "occultism",
+      "name": "Occultism",
+      "packwiz_path": "mods/occultism.pw.toml",
+      "packwiz_metadata_sha256": "8fe81a20b0b75c13f8be5f3473edc12966695ab07c4575368ac7ec0fb2254215",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Occultism"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "octolib",
+      "name": "ShatterLib | OctoLib",
+      "packwiz_path": "mods/octolib.pw.toml",
+      "packwiz_metadata_sha256": "3f552bbdc42f07fd7d5695ced1d27d774af63cff5460be45817939e5f8e4f9de",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "oracle-index",
+      "name": "Oracle Index",
+      "packwiz_path": "mods/oracle-index.pw.toml",
+      "packwiz_metadata_sha256": "2e77758dc91190a81b67b6f329832b625404adfaaee894900be90ff3a94f7523",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "owo-lib",
+      "name": "oωo (owo-lib)",
+      "packwiz_path": "mods/owo-lib.pw.toml",
+      "packwiz_metadata_sha256": "6514f98b34602b789fc2dbcafe7a67468d1c94d74965a0142a79b7ab23628a9a",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "pams-harvestcraft-2-crops",
+      "name": "Pam's HarvestCraft 2 — Crops",
+      "packwiz_path": "mods/pams-harvestcraft-2-crops.pw.toml",
+      "packwiz_metadata_sha256": "6f9626c4489bfad0bdf6e1f0718f54c6652ba54ca51a18b14face54893a5f182",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "pams-harvestcraft-2-food-core",
+      "name": "Pam's HarvestCraft 2 — Food Core",
+      "packwiz_path": "mods/pams-harvestcraft-2-food-core.pw.toml",
+      "packwiz_metadata_sha256": "eb045b8823c41b658530d231ce14c53f43deb2981c17f03eb48d12cebb18f296",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "pams-harvestcraft-2-food-extended",
+      "name": "Pam's HarvestCraft 2 — Food Extended",
+      "packwiz_path": "mods/pams-harvestcraft-2-food-extended.pw.toml",
+      "packwiz_metadata_sha256": "5fe860bdef3f16ae211dbe360061f8225b68e3b5a3b699ffeb5d8926536bd91b",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "pams-harvestcraft-2-trees",
+      "name": "Pam's HarvestCraft 2 — Trees",
+      "packwiz_path": "mods/pams-harvestcraft-2-trees.pw.toml",
+      "packwiz_metadata_sha256": "d48697a0d75267fe97428fa6b8442ec419846d7396e2dc9b4dd2c90e13f17daa",
+      "source_category": "food",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Food & Fishing"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "pastel",
+      "name": "Pastel",
+      "packwiz_path": "mods/pastel.pw.toml",
+      "packwiz_metadata_sha256": "aef91b49956d6a5ddb71b2b0b8b60fffb045de7af8ebd9ec8946b2d579ed8f4c",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Pastel"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "patchouli",
+      "name": "Patchouli",
+      "packwiz_path": "mods/patchouli.pw.toml",
+      "packwiz_metadata_sha256": "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "paucal",
+      "name": "PAUCAL",
+      "packwiz_path": "mods/paucal.pw.toml",
+      "packwiz_metadata_sha256": "0ed2f660db1882809d337791ee06cc9ba49a36fb32d6e919cb9a8eb51e72d7ab",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "placebo",
+      "name": "Placebo",
+      "packwiz_path": "mods/placebo.pw.toml",
+      "packwiz_metadata_sha256": "d94791108548d174758d587440c656f1a56884083fa3151bf90b515126482435",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "playeranimator",
+      "name": "playerAnimator",
+      "packwiz_path": "mods/playeranimator.pw.toml",
+      "packwiz_metadata_sha256": "93284ca7f2f23f0bb76d42b797cabf2aea1914ee9825bec82bf6ffe4c60dda0d",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "polymorph",
+      "name": "Polymorph",
+      "packwiz_path": "mods/polymorph.pw.toml",
+      "packwiz_metadata_sha256": "d935e4ce118d15c88b10809df85e801f0e9577855f870f3c28e5a0bd5e7fecf6",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "prefab",
+      "name": "Prefab",
+      "packwiz_path": "mods/prefab.pw.toml",
+      "packwiz_metadata_sha256": "d258c79d7a3c084c10cdc1f35358561b2020dbc98288984d6d7997fca6fb4926",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "prickle",
+      "name": "Prickle",
+      "packwiz_path": "mods/prickle.pw.toml",
+      "packwiz_metadata_sha256": "eab2f56ff9135b3b7253ea5a73deae2f887e2876f5f0432936044a6e926937b4",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "primal-magick",
+      "name": "Primal Magick",
+      "packwiz_path": "mods/primal-magick.pw.toml",
+      "packwiz_metadata_sha256": "69f24286f25e7fe5041e17ae45b01c59e79b1e551da6c8db8e5adf95bb1713cf",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Primal Magick"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "project-expansion",
+      "name": "Project Expansion",
+      "packwiz_path": "mods/project-expansion.pw.toml",
+      "packwiz_metadata_sha256": "ef0c68778d0e0ed3855fe43d6bf33450739a6129655d30db19abb58a18ae2991",
+      "source_category": "emc_progression",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "ProjectE"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "projecte-energy-converters",
+      "name": "ProjectE Energy Converters",
+      "packwiz_path": "mods/projecte-energy-converters.pw.toml",
+      "packwiz_metadata_sha256": "c1ab06d900afc5ca4b5ed67357b755cc1b51307d09f26f0e1b66acbd20700032",
+      "source_category": "emc_progression",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "ProjectE"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "projecte",
+      "name": "ProjectE",
+      "packwiz_path": "mods/projecte.pw.toml",
+      "packwiz_metadata_sha256": "bdca798ffe4124bf43ea13f1fa5f0593a7539762240edb56c47b1976b413ebc4",
+      "source_category": "magic_progression",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "ProjectE"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "psi",
+      "name": "Psi",
+      "packwiz_path": "mods/psi.pw.toml",
+      "packwiz_metadata_sha256": "40c7f3e1346a776603fc6fc510709fc445a6084fc30c6817f64dd1a24651e7d8",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Psi"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "psitweaks",
+      "name": "Psi: Tweaks and Additions",
+      "packwiz_path": "mods/psitweaks.pw.toml",
+      "packwiz_metadata_sha256": "4fadd0b789a63993b2a8f44ccc5e1d91345e653851719042ea997f62b530a5d5",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Psi"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "puffish-attributes",
+      "name": "Pufferfish's Attributes",
+      "packwiz_path": "mods/puffish-attributes.pw.toml",
+      "packwiz_metadata_sha256": "22d273512f73d6ea8b27dddb628dce14639a35894bb4c27368f7c7a47bb3c2df",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Skills & Factions"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "puzzles-lib",
+      "name": "Puzzles Lib",
+      "packwiz_path": "mods/puzzles-lib.pw.toml",
+      "packwiz_metadata_sha256": "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "quest-giver",
+      "name": "Quest Giver",
+      "packwiz_path": "mods/quest-giver.pw.toml",
+      "packwiz_metadata_sha256": "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [
+        "Feywild"
+      ],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "quest-shop",
+      "name": "Quest Shop",
+      "packwiz_path": "mods/quest-shop.pw.toml",
+      "packwiz_metadata_sha256": "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9",
+      "source_category": "utility",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [
+        "Tips & Tricks"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "rechiseled",
+      "name": "Rechiseled",
+      "packwiz_path": "mods/rechiseled.pw.toml",
+      "packwiz_metadata_sha256": "55fcb8b7508262d7e384f81dc86c0cf0c28ec98194d2dd842208b96291931c0c",
+      "source_category": "decoration",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "relics",
+      "name": "Relics",
+      "packwiz_path": "mods/relics.pw.toml",
+      "packwiz_metadata_sha256": "c30858734b69e6f40e307c5e8bad02ad3df860c7a4ec529d0b1cb311a84f74f1",
+      "source_category": "power",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Artifacts"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "reliquary-reincarnations",
+      "name": "Reliquary Reincarnations",
+      "packwiz_path": "mods/reliquary-reincarnations.pw.toml",
+      "packwiz_metadata_sha256": "5ab3535bed848d85b137819f8247dcd6d2ab62f05aae285e9fcdda64c00f9ef5",
+      "source_category": "magic_utility",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Reliquary Reincarnations"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "reliquified-artifacts",
+      "name": "Reliquified Artifacts",
+      "packwiz_path": "mods/reliquified-artifacts.pw.toml",
+      "packwiz_metadata_sha256": "6332130dba21e2ee04b9fae4ecc88a652a5bb39fc7423f14723362969badece5",
+      "source_category": "power",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Artifacts"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "replication",
+      "name": "Replication",
+      "packwiz_path": "mods/replication.pw.toml",
+      "packwiz_metadata_sha256": "93bca87a0adcabe6dab9fb8302d65a3a54742df555d8855f4fe12cba6758526f",
+      "source_category": "late_ore",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Replication"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "resourceful-config",
+      "name": "Resourceful Config",
+      "packwiz_path": "mods/resourceful-config.pw.toml",
+      "packwiz_metadata_sha256": "27721caca5a03b743bf25888e1d984142948069dace31453f103f94f7f24d2ce",
+      "source_category": "library",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "resourceful-lib",
+      "name": "Resourceful Lib",
+      "packwiz_path": "mods/resourceful-lib.pw.toml",
+      "packwiz_metadata_sha256": "c0b066684294c33972d562e0cb08ea17b2d31bcf86cd1d6c63b8e968f0eac7a2",
+      "source_category": "library",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "rhino",
+      "name": "Rhino",
+      "packwiz_path": "mods/rhino.pw.toml",
+      "packwiz_metadata_sha256": "e55ca32b338a0e0540f4fec5170675d860566255ae0f45692a00cb4ebf2eb535",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "ribbits",
+      "name": "Ribbits",
+      "packwiz_path": "mods/ribbits.pw.toml",
+      "packwiz_metadata_sha256": "6a598c073aabc968d8ee736141d238c517e13662f3de0feb81796cb9c0d6f4f0",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "roots-classic",
+      "name": "Roots Classic",
+      "packwiz_path": "mods/roots-classic.pw.toml",
+      "packwiz_metadata_sha256": "74823eb3d7c7d27a842fb935e6627a466c209ebb0e640833a4e1382d1f593601",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Roots Classic"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "scarlet-springs-equestrian-decor-ssed",
+      "name": "Scarlet Springs Equestrian Decor (SSED)",
+      "packwiz_path": "mods/scarlet-springs-equestrian-decor-ssed.pw.toml",
+      "packwiz_metadata_sha256": "c4d35bf766e0d409507f42e81a49f63293073d9ff2a05ed736afd332887c07e6",
+      "source_category": "decoration",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "scriptor-magicae",
+      "name": "Scriptor Magicae",
+      "packwiz_path": "mods/scriptor-magicae.pw.toml",
+      "packwiz_metadata_sha256": "1bf49dde596fb80f964f1982cbd98127c9ab0da2d5afffb58760f2fa96e9a619",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Scriptor Magicae"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "searchables",
+      "name": "Searchables",
+      "packwiz_path": "mods/searchables.pw.toml",
+      "packwiz_metadata_sha256": "ce9ddada6ffd55a512149cc474c6a453281a997a5fdf1b7b4a2cc73f875e704a",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "simple-backups",
+      "name": "Simple Backups",
+      "packwiz_path": "mods/simple-backups.pw.toml",
+      "packwiz_metadata_sha256": "0d76b6f0f8b2cbe44931c7094c416aab1d1534c47cbee499f01c546e5e09b42b",
+      "source_category": "server_utility",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "smart-keep-inventory",
+      "name": "Smart Keep Inventory",
+      "packwiz_path": "mods/smart-keep-inventory.pw.toml",
+      "packwiz_metadata_sha256": "41027efd8599ce97dcbafc4f917784518889ea30d4a03571b5286caa84e53779",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "smartbrainlib",
+      "name": "SmartBrainLib",
+      "packwiz_path": "mods/smartbrainlib.pw.toml",
+      "packwiz_metadata_sha256": "6e7ce9c2aee5bb72d2698eb89035c9b2458d20daa0782e1a03cfba7a6647621e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "spark",
+      "name": "spark",
+      "packwiz_path": "mods/spark.pw.toml",
+      "packwiz_metadata_sha256": "6d9eaf43c14c66465e87bf03cc5cb5ecef57b3f2e8063c52f6332d33689d30be",
+      "source_category": "server_utility",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "stateobserver",
+      "name": "StateObserver",
+      "packwiz_path": "mods/stateobserver.pw.toml",
+      "packwiz_metadata_sha256": "322a7defbd55448f14fcf447fd4514156aa6c083fb095a3347aebdf04e10069b",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "summoningrituals",
+      "name": "Summoning Rituals",
+      "packwiz_path": "mods/summoningrituals.pw.toml",
+      "packwiz_metadata_sha256": "59b49692f23195e2d53945afef3d8c29ecfd942305c5c3daa1d52275e939d7d6",
+      "source_category": "ritual_framework",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Advanced Progression"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "supermartijn642s-config-lib",
+      "name": "SuperMartijn642's Config Lib",
+      "packwiz_path": "mods/supermartijn642s-config-lib.pw.toml",
+      "packwiz_metadata_sha256": "62bd7012826fdcccf17a089055be67f87fb7335c88e73efc52bc9e51a1bf3188",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "supermartijn642s-core-lib",
+      "name": "SuperMartijn642's Core Lib",
+      "packwiz_path": "mods/supermartijn642s-core-lib.pw.toml",
+      "packwiz_metadata_sha256": "0b8161b7e8c71379084080673b304a090e187b1ad45ddc2bb90ebae11f401f6f",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "swem-addendum",
+      "name": "SWEM Addendum",
+      "packwiz_path": "mods/swem-addendum.pw.toml",
+      "packwiz_metadata_sha256": "af2a846bed7b4d6d41dd8c81dc302900d07391992ae14487b14100fa059c04ee",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "swem",
+      "name": "Star Worm Equestrian (Upgrading Horses)",
+      "packwiz_path": "mods/swem.pw.toml",
+      "packwiz_metadata_sha256": "8bce490425f51594f58e9cd35ad00b0aece7f64d024b269a7c9a2c86411758fd",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "tectonic",
+      "name": "Tectonic",
+      "packwiz_path": "mods/tectonic.pw.toml",
+      "packwiz_metadata_sha256": "dd46fad79cf33a00123be0a74c73581da72cd98503ef23822a624a08f4b10ff2",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "the-aurorian-unofficial-port",
+      "name": "The Aurorian (unofficial port)",
+      "packwiz_path": "mods/the-aurorian-unofficial-port.pw.toml",
+      "packwiz_metadata_sha256": "02c23152c4e87fcd4d1cde48237a1897697c708bc13aed7327d8860aa8a2ff33",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "the-bumblezone",
+      "name": "The Bumblezone",
+      "packwiz_path": "mods/the-bumblezone.pw.toml",
+      "packwiz_metadata_sha256": "6542133c0bc532709b91a71c50356e98b5fea7ca178a7514e3589c4540fa61e2",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "theurgy-kubejs",
+      "name": "Theurgy KubeJS",
+      "packwiz_path": "mods/theurgy-kubejs.pw.toml",
+      "packwiz_metadata_sha256": "f909ef0be750564936dc5e9f5990db8c69daee0f7b220c869592531ccdad8e44",
+      "source_category": "infrastructure",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "theurgy",
+      "name": "Theurgy",
+      "packwiz_path": "mods/theurgy.pw.toml",
+      "packwiz_metadata_sha256": "793effcf3667ae09d344798a180d819eb25c37bdfbc39be83027fd72ff51a5b0",
+      "source_category": "magic",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [
+        "Theurgy"
+      ],
+      "coverage": "mapped"
+    },
+    {
+      "slug": "titanium",
+      "name": "Titanium",
+      "packwiz_path": "mods/titanium.pw.toml",
+      "packwiz_metadata_sha256": "1b2e04e6d7ecdc77dd2a0396a1b592309013aa72eb4811ec0f52959cac995c99",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "trashslot",
+      "name": "TrashSlot",
+      "packwiz_path": "mods/trashslot.pw.toml",
+      "packwiz_metadata_sha256": "c1e0c805d5ccd49535a6820aa8a2461a516437f90312fcadd393f928e3ce7bf2",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "treechop",
+      "name": "HT's TreeChop",
+      "packwiz_path": "mods/treechop.pw.toml",
+      "packwiz_metadata_sha256": "da1c1cf28e8d5ffe377998d29d59eae29a2020f2de7a0aea7f7253acdc695cfd",
+      "source_category": "qol",
+      "quest_policy": "tips_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "twilight-forest-final-boss-remake",
+      "name": "Twilight Forest Final Boss (remake)",
+      "packwiz_path": "mods/twilight-forest-final-boss-remake.pw.toml",
+      "packwiz_metadata_sha256": "26f7198c490914731ef41e6bb599975172fb13025a84185b1bf90ecd2cce3f5d",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "twilight-forest",
+      "name": "The Twilight Forest",
+      "packwiz_path": "mods/twilight-forest.pw.toml",
+      "packwiz_metadata_sha256": "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "unfocused",
+      "name": "Unfocused",
+      "packwiz_path": "mods/unfocused.pw.toml",
+      "packwiz_metadata_sha256": "e2fb0625e1da1902e7522d1f0bc02bfde9dd9ed2fd9ecc486be42c80c20d1b3e",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "unicorn-academy-bonded-magic-unofficial",
+      "name": "Unicorn Academy: Bonded Magic (unofficial)",
+      "packwiz_path": "mods/unicorn-academy-bonded-magic-unofficial.pw.toml",
+      "packwiz_metadata_sha256": "d0c5715d4f667ad627eda2800c88479563b7b6222d58efa4d74bcfede6673396",
+      "source_category": "magic_addon",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "valhelsia-core",
+      "name": "Valhelsia Core",
+      "packwiz_path": "mods/valhelsia-core.pw.toml",
+      "packwiz_metadata_sha256": "f05197caaa06d6cf3807ae2d81928c4f5eff1336597b863207c6320ab7f2e4b0",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "voidscape",
+      "name": "Voidscape",
+      "packwiz_path": "mods/voidscape.pw.toml",
+      "packwiz_metadata_sha256": "b5de0d9da27c96dd83f2843372d3022801163636d3399851616072da2e80e319",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "winter-overhaul",
+      "name": "Winter Overhaul",
+      "packwiz_path": "mods/winter-overhaul.pw.toml",
+      "packwiz_metadata_sha256": "cef75a3276f7464779f2a293d508d1a5aa6c5504718d24977725a060397c5794",
+      "source_category": "adventure",
+      "quest_policy": "chapter_or_section",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "worldweaver-new-dawn",
+      "name": "WorldWeaver: New Dawn",
+      "packwiz_path": "mods/worldweaver-new-dawn.pw.toml",
+      "packwiz_metadata_sha256": "74d696169d84d7893843d322cb8062415e2903603da43128ea665205ff27482f",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "wunderlib-new-dawn",
+      "name": "WunderLib: New Dawn",
+      "packwiz_path": "mods/wunderlib-new-dawn.pw.toml",
+      "packwiz_metadata_sha256": "2327c95d7332226e1d8c0372909367ee84c1ecedea9eacd84ddb8328a28d1350",
+      "source_category": "dependency",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "yacl",
+      "name": "YetAnotherConfigLib (YACL)",
+      "packwiz_path": "mods/yacl.pw.toml",
+      "packwiz_metadata_sha256": "1f47c89af2b4c6ab92735d68e58412d0b369f7035818e58d02f5982f7fc1186a",
+      "source_category": "library",
+      "quest_policy": "technical_inventory_only",
+      "existing_chapters": [],
+      "coverage": "not_required"
+    },
+    {
+      "slug": "yungs-api",
+      "name": "YUNG's API",
+      "packwiz_path": "mods/yungs-api.pw.toml",
+      "packwiz_metadata_sha256": "dde31f05114c72cb2f58e522417487730b872e456f77fdd02c032c9235791f6c",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-desert-temples",
+      "name": "YUNG's Better Desert Temples",
+      "packwiz_path": "mods/yungs-better-desert-temples.pw.toml",
+      "packwiz_metadata_sha256": "c2cb28859e7bcc0eb4ce59c5792f90fa5f8ab8865f5867ba26a5a345ec60b498",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-dungeons",
+      "name": "YUNG's Better Dungeons",
+      "packwiz_path": "mods/yungs-better-dungeons.pw.toml",
+      "packwiz_metadata_sha256": "9127aa866fb8ce86f3333729994b24a88041989d484e3336cf12b3b65262393b",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-jungle-temples",
+      "name": "YUNG's Better Jungle Temples",
+      "packwiz_path": "mods/yungs-better-jungle-temples.pw.toml",
+      "packwiz_metadata_sha256": "af40d7877a18df930df0895e9b98c6eb32c37440437ca36397d077fdbd6df278",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-mineshafts",
+      "name": "YUNG's Better Mineshafts",
+      "packwiz_path": "mods/yungs-better-mineshafts.pw.toml",
+      "packwiz_metadata_sha256": "e839608ebc974e9e7819adc7bf29132ea86fc41b46af540fe0fa39b2007b2439",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-nether-fortresses",
+      "name": "YUNG's Better Nether Fortresses",
+      "packwiz_path": "mods/yungs-better-nether-fortresses.pw.toml",
+      "packwiz_metadata_sha256": "50c1731148d91a4ef05cfc47f759ca8fb3dad254e15ce4ecc5732d6fbfa68637",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-ocean-monuments",
+      "name": "YUNG's Better Ocean Monuments",
+      "packwiz_path": "mods/yungs-better-ocean-monuments.pw.toml",
+      "packwiz_metadata_sha256": "3b77b8c1bae2bb27e45eafd5c88fdec6dab7d79201c2b2f020fb3eb2af3cee6b",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-strongholds",
+      "name": "YUNG's Better Strongholds",
+      "packwiz_path": "mods/yungs-better-strongholds.pw.toml",
+      "packwiz_metadata_sha256": "03084966c05070b5c4b17cd89234f3c0d813940a2d76b405a6699deac10a0ab8",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-better-witch-huts",
+      "name": "YUNG's Better Witch Huts",
+      "packwiz_path": "mods/yungs-better-witch-huts.pw.toml",
+      "packwiz_metadata_sha256": "9854b699d5a067c46ac99b1dedeeb529bff3fc18dd079e29b438c4cbf9725f68",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-bridges",
+      "name": "YUNG's Bridges",
+      "packwiz_path": "mods/yungs-bridges.pw.toml",
+      "packwiz_metadata_sha256": "dc006d4f5e14091dbfb16a8eee15e379d2bdab93f99b4ed6d95f254924e4477f",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    },
+    {
+      "slug": "yungs-extras",
+      "name": "YUNG's Extras",
+      "packwiz_path": "mods/yungs-extras.pw.toml",
+      "packwiz_metadata_sha256": "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d",
+      "source_category": "worldgen",
+      "quest_policy": "exploration_section_or_chapter",
+      "existing_chapters": [],
+      "coverage": "needs_coverage_review"
+    }
+  ],
+  "not_indexed_catalog_entries": [
+    {
+      "slug": "botania",
+      "name": "Botania",
+      "source_category": "magic",
+      "release_status": "unverified",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "construction-gadgets",
+      "name": "Construction Gadgets",
+      "source_category": "qol",
+      "release_status": "unverified",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "deep-aether",
+      "name": "Deep Aether",
+      "source_category": "adventure",
+      "release_status": "verified_release",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "formation-wand",
+      "name": "Formation Wand",
+      "source_category": "qol",
+      "release_status": "unverified",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "liroth-revamped",
+      "name": "Liroth: Revamped",
+      "source_category": "adventure",
+      "release_status": "verified_release",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "magical-satchel",
+      "name": "Magical satchel / Surprisingly Substantial Satchel",
+      "source_category": "storage",
+      "release_status": "identity_unresolved",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "nuit",
+      "name": "Nuit",
+      "source_category": "dependency",
+      "release_status": "experimental_release",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "puffish-skills",
+      "name": "Pufferfish's Skills",
+      "source_category": "infrastructure",
+      "release_status": "experimental_release",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "roguelike-dungeons",
+      "name": "Roguelike-style dungeon provider",
+      "source_category": "adventure",
+      "release_status": "identity_unresolved",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "starlight-structures",
+      "name": "Starlight / Stalwart Dungeons candidate",
+      "source_category": "adventure",
+      "release_status": "identity_unresolved",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "tyzs-skills",
+      "name": "Tyz's Skills",
+      "source_category": "skills",
+      "release_status": "verified_release",
+      "packwiz_indexed": false
+    },
+    {
+      "slug": "yungs-better-end-island",
+      "name": "YUNG's Better End Island",
+      "source_category": "worldgen",
+      "release_status": "verified_release",
+      "packwiz_indexed": false
+    }
+  ]
+}
