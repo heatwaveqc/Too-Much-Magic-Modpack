@@ -352,7 +352,7 @@
 			size: 1.7d
 			rewards: [
 				{ id: "544D6A1500000013", type: "xp", xp: 70, team_reward: false }
-				{ id: "544D7A1500000013", type: "item", item: { id: "reformation", count: 1 }, count: Understand high-cost post-acquisition duplication, team_reward: false }
+				{ id: "544D7A1500000013", type: "item", item: { id: "minecraft:quartz", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
 				{ id: "544D4A1500000013", type: "checkmark" }
