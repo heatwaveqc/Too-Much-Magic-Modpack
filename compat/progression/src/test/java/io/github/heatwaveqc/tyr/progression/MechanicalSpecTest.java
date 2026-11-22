@@ -57,6 +57,26 @@ class MechanicalSpecTest {
         assertDoesNotThrow(()->parse("{\"type\":\"virtual_unbreaking\",\"target\":\"test:gear\",\"per_rank\":1}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"virtual_unbreaking\",\"per_rank\":1}"));
     }
+    @Test void beneficialDurationUsesTheExistingEffectPipelineSafely(){
+        assertDoesNotThrow(() -> parse("{\"type\":\"beneficial_duration_bonus\",\"per_rank\":0.02}"));
+        assertDoesNotThrow(() -> parse("{\"type\":\"beneficial_duration_bonus\",\"target\":\"minecraft:speed\",\"per_rank\":0.02}"));
+        assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"per_rank\":0.5}"));
+        assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"target\":\"#minecraft:speed\",\"per_rank\":0.02}"));
+        assertEquals(120, MechanicalSpec.increasedDuration(100,0.2));
+        assertEquals(122, MechanicalSpec.increasedDuration(101,0.2));
+        assertEquals(1, MechanicalSpec.increasedDuration(1,0.2));
+        assertEquals(-1, MechanicalSpec.increasedDuration(-1,0.2));
+        assertEquals(100, MechanicalSpec.increasedDuration(100,-0.2));
+        assertEquals(195, MechanicalSpec.increasedDuration(100,8));
+        assertEquals(Integer.MAX_VALUE, MechanicalSpec.increasedDuration(Integer.MAX_VALUE,0.2));
+    }
+    @Test void virtualFortuneModeGuardSchema(){
+        String effect = "{\"type\":\"virtual_fortune\",\"target\":\"#minecraft:mineable/pickaxe\",\"empty_hand\":true,\"per_rank\":0.3,\"params\":{\"mode_key\":\"tyr_progression:treasure_mode\",\"mode_value\":\"fortune\",\"max_total\":3}}";
+        assertDoesNotThrow(() -> parse(effect));
+        assertThrows(IllegalArgumentException.class, () -> parse(effect.replace(",\"mode_value\":\"fortune\"","")));
+        assertThrows(IllegalArgumentException.class, () -> parse(effect.replace("tyr_progression:treasure_mode","unqualified_mode")));
+        assertThrows(IllegalArgumentException.class, () -> parse(effect.replace("fortune","silk|fortune")));
+    }
     @Test void gildedMechanicsSchema(){
         assertDoesNotThrow(()->parse("{\"type\":\"piglin_kinship\"}"));
         assertDoesNotThrow(()->parse("{\"type\":\"held_harvest_tier\",\"target\":\"#minecraft:mineable/pickaxe\",\"weapon\":\"minecraft:golden_pickaxe\",\"tier\":3}"));
