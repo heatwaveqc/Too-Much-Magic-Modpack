@@ -5638,7 +5638,7 @@
             {
               "id": "tyr_progression:rooted",
               "name": "Rooted",
-              "description": "attribute",
+              "description": "+0.10 knockback resistance per rank (+0.50 full), only while genuinely Hunter; use source attribute, no armor or knockback immunity granted.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5646,7 +5646,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:rooted",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5667,12 +5667,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.10 knockback resistance per rank (+0.50 full), only while genuinely Hunter; use source attribute, no armor or knockback immunity granted.",
+              "required_source_or_handler_check": "Source `minecraft:knockback_resistance` 0.1/rank and total attribute cap",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:monster_resilience",
               "name": "Monster Resilience",
-              "description": "attribute",
+              "description": "+1 armor point per rank (+5 full), player-owned Hunter effect; distinct from separately selected Fortified Training.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5680,7 +5685,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:monster_resilience",
               "source_current_price": 20,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5701,12 +5706,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+1 armor point per rank (+5 full), player-owned Hunter effect; distinct from separately selected Fortified Training.",
+              "required_source_or_handler_check": "Source `minecraft:armor` 1/rank, stacking against Fortified",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:sword_specialist",
               "name": "Sword Specialist",
-              "description": "damage_bonus",
+              "description": "+0.5 damage per rank (+2.5 full) on genuine direct sword melee; the actual weapon and player must be the attack source.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5714,7 +5724,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:sword_specialist",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5735,12 +5745,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.5 damage per rank (+2.5 full) on genuine direct sword melee; the actual weapon and player must be the attack source.",
+              "required_source_or_handler_check": "Real mainhand swords tag and `delivery:melee`",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:axe_specialist",
               "name": "Axe Specialist",
-              "description": "damage_bonus",
+              "description": "+0.5 damage per rank (+2.5 full) on genuine direct axe melee; no bonus to mining or throwable axes.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5748,7 +5763,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:axe_specialist",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5769,12 +5784,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.5 damage per rank (+2.5 full) on genuine direct axe melee; no bonus to mining or throwable axes.",
+              "required_source_or_handler_check": "Real axe tag and direct hit identity",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:scythe_specialist",
               "name": "Scythe Specialist",
-              "description": "damage_bonus",
+              "description": "+0.5 damage per rank (+2.5 full) only with eligible scythe item on direct melee; no arbitrary AoE or extra mob drops.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5782,7 +5802,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:scythe_specialist",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5803,12 +5823,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.5 damage per rank (+2.5 full) only with eligible scythe item on direct melee; no arbitrary AoE or extra mob drops.",
+              "required_source_or_handler_check": "Current scythe weapon tag IDs and direct-hit scope",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:bow_specialist",
               "name": "Bow Specialist",
-              "description": "damage_bonus",
+              "description": "+0.5 per rank (+2.5 full) for arrows truly fired from a bow by this Hunter, using shot-time source weapon rather than current hand on hit.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5816,7 +5841,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:bow_specialist",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5837,12 +5862,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.5 per rank (+2.5 full) for arrows truly fired from a bow by this Hunter, using shot-time source weapon rather than current hand on hit.",
+              "required_source_or_handler_check": "Player-shot bow arrows/UUID snapshots and direct damage handler",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:crossbow_specialist",
               "name": "Crossbow Specialist",
-              "description": "damage_bonus",
+              "description": "+0.5 per rank (+2.5 full) for actual crossbow arrows; firework rockets or other ammunition require explicit provider verification.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5850,7 +5880,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:crossbow_specialist",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5871,12 +5901,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.5 per rank (+2.5 full) for actual crossbow arrows; firework rockets or other ammunition require explicit provider verification.",
+              "required_source_or_handler_check": "Player-fired crossbow arrow origin; exclude fireworks by default",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:fast_hands_bow",
               "name": "Fast Hands Bow",
-              "description": "fast_hands",
+              "description": "+0.20 source `fast_hands` rate units per rank (+1.0 units full) for real bow draw; exact draw-time conversion and power floor require pinned engine audit.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5884,7 +5919,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:fast_hands_bow",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5905,12 +5940,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.20 source `fast_hands` rate units per rank (+1.0 units full) for real bow draw; exact draw-time conversion and power floor require pinned engine audit.",
+              "required_source_or_handler_check": "Verify 0.20 source multiplier semantics, bow power and real draw ticks",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:fast_hands_crossbow",
               "name": "Fast Hands Crossbow",
-              "description": "fast_hands",
+              "description": "+0.20 source `fast_hands` rate units per rank (+1.0 units full) for real crossbow reload; must respect Quick Charge and native minimum charge.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5918,7 +5958,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:fast_hands_crossbow",
               "source_current_price": 5,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5939,12 +5979,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+0.20 source `fast_hands` rate units per rank (+1.0 units full) for real crossbow reload; must respect Quick Charge and native minimum charge.",
+              "required_source_or_handler_check": "Verify 0.20 source reload math, Quick Charge and live reloading",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:silver_hunter",
               "name": "Silver Hunter",
-              "description": "damage_bonus",
+              "description": "+1 direct melee damage per rank (+5 full) with a genuine tagged silver weapon against tagged lycanthrope creatures; never global silver damage.",
               "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
@@ -5952,7 +5997,7 @@
               "prerequisite": null,
               "source_id": "tyr_progression:silver_hunter",
               "source_current_price": 20,
-              "effect_status": "live_effect_reprice_ONLY",
+              "effect_status": "live_handler_numeric_review_required",
               "live": false,
               "rank_costs": [
                 1,
@@ -5973,12 +6018,17 @@
                   1
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "+1 direct melee damage per rank (+5 full) with a genuine tagged silver weapon against tagged lycanthrope creatures; never global silver damage.",
+              "required_source_or_handler_check": "Canonical silver-weapon tags and JAWR lycan taxonomy",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:hunter_monster_lore",
               "name": "Monster Lore",
-              "description": "Discover verified prey types and weaknesses without revealing arbitrary boss registries.",
+              "description": "Passively show verified target taxonomy and source-known weakness at 8 + 4 blocks per rank (24 full) when target is genuinely seen, without spoiling hidden bosses.",
               "max_rank": 4,
               "rank_costs": [
                 1,
@@ -5991,7 +6041,7 @@
               "stage": "adept",
               "prerequisite": null,
               "handler_hint": "needs_verified_hud",
-              "effect_status": "concept_to_verify",
+              "effect_status": "new_generic_handler_source_review",
               "live": false,
               "superseded_multi_point_rank_model": {
                 "old_rank_count": 2,
@@ -6000,12 +6050,17 @@
                   2
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "Passively show verified target taxonomy and source-known weakness at 8 + 4 blocks per rank (24 full) when target is genuinely seen, without spoiling hidden bosses.",
+              "required_source_or_handler_check": "Safe server/client taxonomy HUD, verified creature weaknesses",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:hunter_quarry_mark",
               "name": "Quarry Mark",
-              "description": "Mark one verified visible enemy quarry as the target of follow-on tracking bonuses.",
+              "description": "After one successful direct Hunter attack, passively remember exactly one living hostile target for 4 + 2 seconds per rank (12 seconds full), replacing earlier quarry; no new key.",
               "max_rank": 4,
               "rank_costs": [
                 1,
@@ -6018,7 +6073,7 @@
               "stage": "adept",
               "prerequisite": null,
               "handler_hint": "quarry_mark",
-              "effect_status": "concept_to_verify",
+              "effect_status": "new_generic_handler_source_review",
               "live": false,
               "superseded_multi_point_rank_model": {
                 "old_rank_count": 2,
@@ -6027,12 +6082,17 @@
                   2
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "After one successful direct Hunter attack, passively remember exactly one living hostile target for 4 + 2 seconds per rank (12 seconds full), replacing earlier quarry; no new key.",
+              "required_source_or_handler_check": "Source hit receipt, one target UUID, expiry/death cleanup",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             },
             {
               "id": "tyr_progression:hunter_hunter_tracking",
               "name": "Hunter Tracking",
-              "description": "Reveal eligible prey with temporary Glowing within safe bounded range and count.",
+              "description": "For favored prey or the one real marked quarry, privately outline at most 1 + rank legal targets within 8 + 4×rank blocks (up to five, 24 blocks); source-check every 40 ticks and never reveal all players.",
               "max_rank": 4,
               "rank_costs": [
                 1,
@@ -6045,7 +6105,7 @@
               "stage": "adept",
               "prerequisite": null,
               "handler_hint": "status_pulse",
-              "effect_status": "concept_to_verify",
+              "effect_status": "new_generic_handler_source_review",
               "live": false,
               "superseded_multi_point_rank_model": {
                 "old_rank_count": 2,
@@ -6054,7 +6114,12 @@
                   2
                 ]
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+              "effect_per_rank_candidate": "For favored prey or the one real marked quarry, privately outline at most 1 + rank legal targets within 8 + 4×rank blocks (up to five, 24 blocks); source-check every 40 ticks and never reveal all players.",
+              "required_source_or_handler_check": "Client-only private target outline, range, visibility and safe entity cap",
+              "no_new_active_button": true,
+              "source_approval": "2026-11-22 design candidate, not executable",
+              "native_gate_reference": "verified Hunter enrollment and source native skill gate"
             }
           ]
         }
@@ -6081,7 +6146,7 @@
                 {
                   "id": "tyr_progression:equipment_care",
                   "name": "Equipment Care",
-                  "description": "gear_durability",
+                  "description": "Repair exactly one real point of worn armor or active mainhand equipment durability every (220 - 20×rank) ticks, 200 at rank1 to 60 at rank8; no offhand, inventory or broken-item resurrection.",
                   "max_rank": 8,
                   "price_per_rank": 1,
                   "total_cost": 8,
@@ -6089,7 +6154,7 @@
                   "prerequisite": null,
                   "source_id": "tyr_progression:equipment_care",
                   "source_current_price": 9,
-                  "effect_status": "live_effect_reprice_ONLY",
+                  "effect_status": "existing_handler_scope_and_one_point_reprice_review",
                   "live": false,
                   "rank_costs": [
                     1,
@@ -6112,7 +6177,12 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Repair exactly one real point of worn armor or active mainhand equipment durability every (220 - 20×rank) ticks, 200 at rank1 to 60 at rank8; no offhand, inventory or broken-item resurrection.",
+                  "required_source_or_handler_check": "Existing handler `slot: all` needs safe armor+mainhand scope, no duplicate repair on same gear",
+                  "no_new_active_button": true,
+                  "native_gate_reference": "one owned Training Style; switching requires respec/refund",
+                  "source_approval": "2026-11-22 balance candidate"
                 }
               ],
               "max_spend": 8,
@@ -6126,7 +6196,7 @@
                 {
                   "id": "tyr_progression:fortified_training",
                   "name": "Fortified Training",
-                  "description": "attribute",
+                  "description": "Gain +0.5 armor points per rank (+4 at rank8) as a player-owned attribute, distinct from Monster Resilience, with no permanent armor item.",
                   "max_rank": 8,
                   "price_per_rank": 1,
                   "total_cost": 8,
@@ -6134,7 +6204,7 @@
                   "prerequisite": null,
                   "source_id": "tyr_progression:fortified_training",
                   "source_current_price": 9,
-                  "effect_status": "live_effect_reprice_ONLY",
+                  "effect_status": "existing_handler_scope_and_one_point_reprice_review",
                   "live": false,
                   "rank_costs": [
                     1,
@@ -6157,7 +6227,12 @@
                       4
                     ]
                   },
-                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+                  "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider.",
+                  "effect_per_rank_candidate": "Gain +0.5 armor points per rank (+4 at rank8) as a player-owned attribute, distinct from Monster Resilience, with no permanent armor item.",
+                  "required_source_or_handler_check": "Existing 3-rank armor source reprice; stacking cap with common armor",
+                  "no_new_active_button": true,
+                  "native_gate_reference": "one owned Training Style; switching requires respec/refund",
+                  "source_approval": "2026-11-22 balance candidate"
                 }
               ],
               "max_spend": 8,
