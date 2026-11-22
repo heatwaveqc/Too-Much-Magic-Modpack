@@ -1,5 +1,25 @@
 # Next live-test inclusion register
 
+## Theurgy Atlas chapter — owner-required inclusion in today's test build (2026-11-22)
+
+**REQUIRED NEXT OWNER-AUTHORIZED TEST INCLUSION ATTEMPT (owner request 2026-11-22):** Owner explicitly directed the new Theurgy quest chapter to go into today's test build. Include the **20-node Theurgy Atlas quest pilot**, not the existing one-placeholder chapter. **Current source is STAGED, NOT INSTALLABLE AS-IS.** If the integrator cannot complete the required source/generator/resource reconciliation in time, record **BLOCKED** with exact causes and ask the owner before narrowing the stated test scope. Do not silently omit the chapter or label the full build comprehensive.
+
+**Exact donor:** [Theurgy PR #494](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/494), `feature/quest-theurgy-atlas-pilot-20261122` head at intake `08d7245022bedd32f6d35742982dc8d307b00d42` (re-check current SHA/preflight at assembly). Depends on [visual standards PR #489](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/489) and [Atlas PR #411](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/411); read the [pilot's integration ledger](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/feature/quest-theurgy-atlas-pilot-20261122/docs/quest-pilots/theurgy/README.md). All 20 authoring records are in `manifest/theurgy_quest_pilot.json`; staged SNBT/locale fragment/ID map in `docs/quest-pilots/theurgy/generated/`; generator `scripts/build_theurgy_quest_pilot.py`; procedural art generator `scripts/build_theurgy_quest_art.py`. Pinned Theurgy 1.79.0 tagged-source research, live registry/JAR parity still to verify.
+
+**Mandatory packaging work before inclusion (integration writer; not automatic authorization):**
+1. Reconcile source against latest `test/full-integration` + `manifest/integration-sources.json`, existing quest generator and manifest, stable Theurgy chapter/overview quest/task/claim IDs, existing source PRs (particularly Ars layout #395). The old builder's 240-object/201-authored count and old chapter-placeholder assumptions must be updated, not bypassed.
+2. Generate/package **five original Theurgy artwork PNGs** in the actual client KubeJS/resource location, merge the 20 quest definitions into canonical FTB SNBT, integrate the fragment into canonical `config/ftbquests/quests/lang/en_us.snbt`, and update Packwiz/index/hash chains. Check final icon registry IDs, FTB node shapes and image rendering syntax against the pinned installed client.
+3. Run authorized source-level QA and preflight; verify the final combined quest roster and no reward-to-objective chain or missing localized titles. Freeze the exact assembled selection. Avoid treating the proposed preview data as a live installed chapter before this work.
+
+**Acceptance:**
+- **A:** 20 nodes, nine core + 11 optional, acyclic prerequisites, original stable overview/claim IDs, five packaged artwork resources, correct theme-specific icons, localization and correct 1.21.1 FTB parser, idempotent generator and Packwiz hashes; no false auto-complete or progression gate.
+- **B:** FTB item possession tasks and individual one-time rewards report honestly without double claims or unintended team-sharing; check negative item/reward boundaries.
+- **C:** In disposable Prism client, confirm full left-to-right core from Hermetica through Incubator and second-material walkthrough; Niter/Reformation/Divination/Logistics separate optional branches; 5 images render without covering quests/lines at normal and reduced zoom. Tasks that are manual checks are **not** reported as actual operation detections.
+
+**Status at intake:** `OWNER-REQUIRED NEXT TEST / PRE-INTEGRATION SOURCE CANDIDATE`. No assembly, server smoke, Prism package or gameplay PASS follows from this note; the owner's desire for inclusion is **not by itself a fresh authorization to dispatch an otherwise gated build**. If the ongoing build is already separately authorized, its writer should include the candidate in its reconciled scope. If not, request the normal build authorization before running it.
+
+---
+
 ## Revised full Monk tree: 38 paid skills, exact-type wards and Meditative Elixir — latest owner decision 2026-11-22
 
 **2026-11-22 source-intake update:** #479, #480, #481 and #486 are merged into `dev/progression`, alongside the complete #485 engine behavior reconciled through green [#490](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/490), current dev head `eac88556c36490e752dac8cab3040d28726e919d`. The earlier PR head SHAs below are preserved as historical source provenance, not the current donor selection. Runtime import into `test/full-integration`, new server smoke, Prism and owner gameplay acceptance are **not established** by this register.
