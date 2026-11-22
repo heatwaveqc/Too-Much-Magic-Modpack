@@ -31,7 +31,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000100001", type: "xp", xp: 5, team_reward: true }
-				{ id: "544D704000100002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000100002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000100000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
 			x: 0.0d
@@ -44,7 +44,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000200001", type: "xp", xp: 10, team_reward: true }
-				{ id: "544D704000200002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000200002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000200000", type: "item", item: { id: "minecraft:copper_ingot", count: 1 }, count: 32L, consume_items: true, task_screen_only: false }]
 			x: 3.0d
@@ -57,7 +57,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000300001", type: "xp", xp: 15, team_reward: true }
-				{ id: "544D704000300002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000300002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000300000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
 			x: 6.0d
@@ -72,7 +72,7 @@
 			repeat_cooldown: 2
 			rewards: [
 				{ id: "544D604000400001", type: "xp", xp: 1, team_reward: true }
-				{ id: "544D704000400002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000400002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000400000", type: "item", item: { id: "minecraft:copper_block", count: 1 }, count: 256L, consume_items: true, task_screen_only: false }]
 			x: 9.0d
@@ -84,7 +84,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000500001", type: "xp", xp: 5, team_reward: true }
-				{ id: "544D704000500002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000500002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000500000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 2L, consume_items: true, task_screen_only: false }]
 			x: 0.0d
@@ -97,7 +97,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000600001", type: "xp", xp: 10, team_reward: true }
-				{ id: "544D704000600002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000600002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000600000", type: "item", item: { id: "minecraft:emerald", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
 			x: 3.0d
@@ -110,7 +110,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000700001", type: "xp", xp: 15, team_reward: true }
-				{ id: "544D704000700002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000700002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000700000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 16L, consume_items: true, task_screen_only: false }]
 			x: 6.0d
@@ -125,7 +125,7 @@
 			repeat_cooldown: 2
 			rewards: [
 				{ id: "544D604000800001", type: "xp", xp: 1, team_reward: true }
-				{ id: "544D704000800002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000800002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000800000", type: "item", item: { id: "minecraft:emerald_block", count: 1 }, count: 128L, consume_items: true, task_screen_only: false }]
 			x: 9.0d
@@ -137,7 +137,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000900001", type: "xp", xp: 5, team_reward: true }
-				{ id: "544D704000900002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000900002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000900000", type: "item", item: { id: "minecraft:diamond", count: 1 }, consume_items: true, task_screen_only: false }]
 			x: 0.0d
@@ -150,7 +150,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000A00001", type: "xp", xp: 10, team_reward: true }
-				{ id: "544D704000A00002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000A00002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000A00000", type: "item", item: { id: "minecraft:diamond", count: 1 }, count: 4L, consume_items: true, task_screen_only: false }]
 			x: 3.0d
@@ -163,7 +163,7 @@
 			optional: true
 			rewards: [
 				{ id: "544D604000B00001", type: "xp", xp: 15, team_reward: true }
-				{ id: "544D704000B00002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000B00002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000B00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 8L, consume_items: true, task_screen_only: false }]
 			x: 6.0d
@@ -178,7 +178,7 @@
 			repeat_cooldown: 2
 			rewards: [
 				{ id: "544D604000C00001", type: "xp", xp: 1, team_reward: true }
-				{ id: "544D704000C00002", type: "command", command: "hqs coins add {p} 1", permission_level: 2, team_reward: true }
+				{ id: "544D704000C00002", type: "command", command: "qshop currency give {p} coins 1", permission_level: 2, team_reward: false }
 			]
 			tasks: [{ id: "544D804000C00000", type: "item", item: { id: "minecraft:diamond_block", count: 1 }, count: 64L, consume_items: true, task_screen_only: false }]
 			x: 9.0d

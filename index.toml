@@ -110,7 +110,7 @@ hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "2d2b764602485f8127188f0bcd0dfbcad2d9d673322c318123566520e7fe3a26"
+hash = "90e362f54c1a527c1da5cce84bbddcfff76fc1e743030f762b06fcfc38e67154"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -262,7 +262,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "ee82be59eb4364de88f434f4c93da5e0cfd13f36e607c6c85ec1d1bb2e9d1a8d"
+hash = "1e7e079bbbc853cf4a6e976dace88e48f5980e1014cc1404abd71ac289b649f2"
 
 [[files]]
 file = "config/improvableskills.cfg"
@@ -273,8 +273,12 @@ file = "config/neovitae/materials.json"
 hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
 
 [[files]]
-file = "config/questshop-common.toml"
-hash = "baf2ee1f68c9ae107f46dc5d553bdeb98a85e8d1c5ff1eeaaafa164e8f657a6b"
+file = "config/qshop/currencies.json"
+hash = "7fc38f1cf0430f89b8a8b4f1c753f0ebcad25c10a77feddfe5839dbbfeaab63b"
+
+[[files]]
+file = "config/qshop/shops/tmm.json"
+hash = "af8eac5346e233f3f5c0bb2ab19540b2554509f6eec45a14618c21a1d91810e1"
 
 [[files]]
 file = "config/relics.yaml"
@@ -881,54 +885,6 @@ file = "kubejs/data/tmm/pe_custom_conversions/vanilla_experience_items.json"
 hash = "3a362cebb6b41e29feb133844cc12e1848dd247504b7828020e69aa3d56e022a"
 
 [[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/artifacts.json"
-hash = "25a22f67bdbeb7a9b60e9238379337264be47948a97f1ffb2a61d0e755b4d605"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/exploration.json"
-hash = "70f3d6c825bd7e10d549c32cdc810655b120845406247e9662637b81e1259ff5"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/food.json"
-hash = "52d2a83ab9214a3d1a56ad11de2dd88ae50b31da418f276d71ed20d9b5961985"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/ores.json"
-hash = "109a39d371617838d10893e52e30390feacf42ce2b599daacf0079d0117e74a6"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/reagents.json"
-hash = "d8976beca10a891f519ab5ec257f7da472011bcdaad1e9fbe25b31da24ff4d34"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_categories/supplies.json"
-hash = "7d9bb39837474b4e6faada766a4b56b491c1fe332b8709e60788e36e706d2309"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/artifacts.json"
-hash = "30904cd41aa65ce4e91e764a085a79e59e649aae0695a690ddfa09cdd2a7f53e"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/exploration.json"
-hash = "efb6704902f43c813b68dd6ad33355f13c63f60112880e40b26c86b5d2b40aa7"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/food.json"
-hash = "7ce9fc49e8869cba4b203f8ebf4234703432892043a0d9e5ae7c3130348e8af4"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/ores.json"
-hash = "793950980a69031b7977976db2eb0ea3ba545722c82fb199103666c13f8bee00"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/reagents.json"
-hash = "89960c1e990de96dfe4851d03628d89e9794c637429e26e846a96aa5461d30a9"
-
-[[files]]
-file = "kubejs/data/tmm/questshop/shop_entries/supplies.json"
-hash = "aca07da8c8456de7c38b9f411db3779bbd582849a5ac819babddfff247874596"
-
-[[files]]
 file = "kubejs/data/tmm/recipe/alkahestry/betterend__thallasium_raw.json"
 hash = "3fba42a353a02c70846802d2257d337b729e0d798634f05f6f30414aaaeb12c4"
 
@@ -1470,8 +1426,18 @@ hash = "716d930feff599bf9ce732e05979fbae8025dc8a3c13ccf4f1cb207a70883bc6"
 metafile = true
 
 [[files]]
+file = "mods/aquaculture-delight.pw.toml"
+hash = "ff922921641f00ce799061a7cb2da483d2a1a240fbfa135f376579e1aa0917b6"
+metafile = true
+
+[[files]]
 file = "mods/aquaculture.pw.toml"
 hash = "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff"
+metafile = true
+
+[[files]]
+file = "mods/aquamirae.pw.toml"
+hash = "a98156f7d9d9a37ec6bde1e64ce69ad4d7448935fd59227f981dba9913170e9f"
 metafile = true
 
 [[files]]
@@ -1487,6 +1453,11 @@ metafile = true
 [[files]]
 file = "mods/ars-additions.pw.toml"
 hash = "08f46822b355882721807489cbf64a7e8ac03efc1476136e60acbc8dd7dc2880"
+metafile = true
+
+[[files]]
+file = "mods/ars-conflux.pw.toml"
+hash = "43fbd7a0a2263296df055c787b5ba32208ace9ea506bc5cf607ab033bd8c561d"
 metafile = true
 
 [[files]]
@@ -1540,6 +1511,11 @@ hash = "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1"
 metafile = true
 
 [[files]]
+file = "mods/aura-cascade-reimagined.pw.toml"
+hash = "b3d5c4c37cc8becafa382fd7d8abc2fb910d63ec3306769f55ad80656a4ee8dd"
+metafile = true
+
+[[files]]
 file = "mods/balm.pw.toml"
 hash = "fc8954e0d3fa66b917d2c84ee04d07b073a9eb6f719d09e1ff85527c1d61a10e"
 metafile = true
@@ -1572,6 +1548,11 @@ metafile = true
 [[files]]
 file = "mods/bookshelf.pw.toml"
 hash = "cf914684c4151076b726116a66f7bc81a6116655551bcce70a9e64e34e5aa308"
+metafile = true
+
+[[files]]
+file = "mods/born-in-chaos.pw.toml"
+hash = "4a7d85fc2f67432dad21dd3b316a557ff73d1b4992a54cc1e0877d2ae0c8207a"
 metafile = true
 
 [[files]]
@@ -1740,6 +1721,11 @@ hash = "d0c3a7c57607057d8358fde72ec0386db27fe9176ac75a96d11f631c4ee45552"
 metafile = true
 
 [[files]]
+file = "mods/dungeon-crawl.pw.toml"
+hash = "9f6b261565c185ab137b1f4ceceec488e4d6d262b14ef3349c4a88afdac958ae"
+metafile = true
+
+[[files]]
 file = "mods/eidolon-repraised.pw.toml"
 hash = "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5"
 metafile = true
@@ -1832,6 +1818,11 @@ metafile = true
 [[files]]
 file = "mods/forbidden-arcanus.pw.toml"
 hash = "1781b20756b9c2b0bd930e18bbe7cd8c66d822018d95d74b5ffbbfac19aa94ff"
+metafile = true
+
+[[files]]
+file = "mods/fragmentum-neoforge.pw.toml"
+hash = "a83c16ba9b935718ff09ab69b2dd124c0a0217e9b7fafcb25f84579eb190bb72"
 metafile = true
 
 [[files]]
@@ -1980,6 +1971,11 @@ hash = "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566"
 metafile = true
 
 [[files]]
+file = "mods/just-enough-professions.pw.toml"
+hash = "5831aa23204273af1ce6aeb9e3615425271689105ea9035fdb7d6ea871d08a3c"
+metafile = true
+
+[[files]]
 file = "mods/just-enough-resources-jer.pw.toml"
 hash = "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b"
 metafile = true
@@ -2030,6 +2026,11 @@ hash = "a35f98abe79767c8306731d76cd02c5a87ac1645c99a8007a89d8bf66c3f9cc9"
 metafile = true
 
 [[files]]
+file = "mods/ldlib2.pw.toml"
+hash = "7e17d5d53a425ffc9c846feac5b2699bbebaf368646eacfe2d4af550a521279f"
+metafile = true
+
+[[files]]
 file = "mods/leaves-be-gone.pw.toml"
 hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
 metafile = true
@@ -2040,8 +2041,28 @@ hash = "fd2a321d4abc440ff159e477dc75ebc9d32a9efa246e61ceeb6142391c55bfcf"
 metafile = true
 
 [[files]]
+file = "mods/lets-do-brewery.pw.toml"
+hash = "8bf83d3b68faf5379a95b9a03ced0ebd678c629de8e8f2f457822d9b0b4d7206"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-farm-and-charm.pw.toml"
+hash = "8467bdb999c38e0f5e0d774459a9658d6c957f2614a25e873c53dcd7810e8ac9"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-foundation.pw.toml"
+hash = "1462d783a4cf72595fb4380717d9e399c57b5018aa8a1d662b1379b6fb9e7fbf"
+metafile = true
+
+[[files]]
 file = "mods/lets-do-furniture.pw.toml"
 hash = "d59e92a3c0ffd24f5f9fcc6a7e3ebae18f7f9565173e56a27ed9ecd836206969"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-herbalbrews.pw.toml"
+hash = "07fc69a01793756af0af13d5fafaab08f7d548f9ee2d38662c4b58b3872a292b"
 metafile = true
 
 [[files]]
@@ -2112,6 +2133,11 @@ metafile = true
 [[files]]
 file = "mods/mouse-tweaks.pw.toml"
 hash = "6bc414cc0f2d4c078fe83f384d786343f701f371d657c5279b5b0df1595804bd"
+metafile = true
+
+[[files]]
+file = "mods/mowzies-mobs.pw.toml"
+hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
 metafile = true
 
 [[files]]
@@ -2215,6 +2241,11 @@ hash = "d935e4ce118d15c88b10809df85e801f0e9577855f870f3c28e5a0bd5e7fecf6"
 metafile = true
 
 [[files]]
+file = "mods/prefab-custom-addon.pw.toml"
+hash = "989855ba48bcda003343712eca71fb677b9e5b72b8f41fb5f637c83a69fe6b94"
+metafile = true
+
+[[files]]
 file = "mods/prefab.pw.toml"
 hash = "d258c79d7a3c084c10cdc1f35358561b2020dbc98288984d6d7997fca6fb4926"
 metafile = true
@@ -2265,13 +2296,13 @@ hash = "391e5d415c0754ad210b8efa54fc9ded4f99e6ab8562d6faf960f3b65d84a66a"
 metafile = true
 
 [[files]]
-file = "mods/quest-giver.pw.toml"
-hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
+file = "mods/q-shop.pw.toml"
+hash = "0cd326902bac9a273ac84388195dc9b0e8c44892e20091de0b4154a4fed57a87"
 metafile = true
 
 [[files]]
-file = "mods/quest-shop.pw.toml"
-hash = "7e96c7faaee0274f8ebee2f13033cbb2dc1774046793120d5065301800b1a0d9"
+file = "mods/quest-giver.pw.toml"
+hash = "8d0a15aa9cbaabad3736032d1da1c5a9a838c4b0dec013de3895b68f205cb3ea"
 metafile = true
 
 [[files]]
@@ -2355,6 +2386,11 @@ hash = "6e7ce9c2aee5bb72d2698eb89035c9b2458d20daa0782e1a03cfba7a6647621e"
 metafile = true
 
 [[files]]
+file = "mods/sons-of-sins.pw.toml"
+hash = "c12b9677a3945c9debecf0ad9e7149696bbaab9b9c751e3b175a7987c98eec49"
+metafile = true
+
+[[files]]
 file = "mods/spark.pw.toml"
 hash = "6d9eaf43c14c66465e87bf03cc5cb5ecef57b3f2e8063c52f6332d33689d30be"
 metafile = true
@@ -2402,6 +2438,11 @@ metafile = true
 [[files]]
 file = "mods/the-bumblezone.pw.toml"
 hash = "6542133c0bc532709b91a71c50356e98b5fea7ca178a7514e3589c4540fa61e2"
+metafile = true
+
+[[files]]
+file = "mods/the-graveyard.pw.toml"
+hash = "17cdbc9137104a4fd010abdf39c7fd958b17351b5d8888ce886d87d9a2303963"
 metafile = true
 
 [[files]]
@@ -2455,6 +2496,11 @@ hash = "f05197caaa06d6cf3807ae2d81928c4f5eff1336597b863207c6320ab7f2e4b0"
 metafile = true
 
 [[files]]
+file = "mods/villagerstradingplus.pw.toml"
+hash = "636b0829f32622ec1d6cab431ce48c0b41bbec2972d87917695488b2dc403d1c"
+metafile = true
+
+[[files]]
 file = "mods/voidscape.pw.toml"
 hash = "b5de0d9da27c96dd83f2843372d3022801163636d3399851616072da2e80e319"
 metafile = true
@@ -2495,6 +2541,11 @@ hash = "9127aa866fb8ce86f3333729994b24a88041989d484e3336cf12b3b65262393b"
 metafile = true
 
 [[files]]
+file = "mods/yungs-better-end-island.pw.toml"
+hash = "03d964cba45be30fbcbef52f89f3953185737f55c8934d12e199b67194c2b368"
+metafile = true
+
+[[files]]
 file = "mods/yungs-better-jungle-temples.pw.toml"
 hash = "af40d7877a18df930df0895e9b98c6eb32c37440437ca36397d077fdbd6df278"
 metafile = true
@@ -2532,99 +2583,4 @@ metafile = true
 [[files]]
 file = "mods/yungs-extras.pw.toml"
 hash = "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d"
-metafile = true
-
-[[files]]
-file = "mods/aquaculture-delight.pw.toml"
-hash = "ff922921641f00ce799061a7cb2da483d2a1a240fbfa135f376579e1aa0917b6"
-metafile = true
-
-[[files]]
-file = "mods/aquamirae.pw.toml"
-hash = "a98156f7d9d9a37ec6bde1e64ce69ad4d7448935fd59227f981dba9913170e9f"
-metafile = true
-
-[[files]]
-file = "mods/ars-conflux.pw.toml"
-hash = "43fbd7a0a2263296df055c787b5ba32208ace9ea506bc5cf607ab033bd8c561d"
-metafile = true
-
-[[files]]
-file = "mods/aura-cascade-reimagined.pw.toml"
-hash = "b3d5c4c37cc8becafa382fd7d8abc2fb910d63ec3306769f55ad80656a4ee8dd"
-metafile = true
-
-[[files]]
-file = "mods/born-in-chaos.pw.toml"
-hash = "4a7d85fc2f67432dad21dd3b316a557ff73d1b4992a54cc1e0877d2ae0c8207a"
-metafile = true
-
-[[files]]
-file = "mods/dungeon-crawl.pw.toml"
-hash = "9f6b261565c185ab137b1f4ceceec488e4d6d262b14ef3349c4a88afdac958ae"
-metafile = true
-
-[[files]]
-file = "mods/fragmentum-neoforge.pw.toml"
-hash = "a83c16ba9b935718ff09ab69b2dd124c0a0217e9b7fafcb25f84579eb190bb72"
-metafile = true
-
-[[files]]
-file = "mods/just-enough-professions.pw.toml"
-hash = "5831aa23204273af1ce6aeb9e3615425271689105ea9035fdb7d6ea871d08a3c"
-metafile = true
-
-[[files]]
-file = "mods/ldlib2.pw.toml"
-hash = "7e17d5d53a425ffc9c846feac5b2699bbebaf368646eacfe2d4af550a521279f"
-metafile = true
-
-[[files]]
-file = "mods/lets-do-brewery.pw.toml"
-hash = "8bf83d3b68faf5379a95b9a03ced0ebd678c629de8e8f2f457822d9b0b4d7206"
-metafile = true
-
-[[files]]
-file = "mods/lets-do-farm-and-charm.pw.toml"
-hash = "8467bdb999c38e0f5e0d774459a9658d6c957f2614a25e873c53dcd7810e8ac9"
-metafile = true
-
-[[files]]
-file = "mods/lets-do-foundation.pw.toml"
-hash = "1462d783a4cf72595fb4380717d9e399c57b5018aa8a1d662b1379b6fb9e7fbf"
-metafile = true
-
-[[files]]
-file = "mods/lets-do-herbalbrews.pw.toml"
-hash = "07fc69a01793756af0af13d5fafaab08f7d548f9ee2d38662c4b58b3872a292b"
-metafile = true
-
-[[files]]
-file = "mods/mowzies-mobs.pw.toml"
-hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
-metafile = true
-
-[[files]]
-file = "mods/prefab-custom-addon.pw.toml"
-hash = "989855ba48bcda003343712eca71fb677b9e5b72b8f41fb5f637c83a69fe6b94"
-metafile = true
-
-[[files]]
-file = "mods/sons-of-sins.pw.toml"
-hash = "c12b9677a3945c9debecf0ad9e7149696bbaab9b9c751e3b175a7987c98eec49"
-metafile = true
-
-[[files]]
-file = "mods/the-graveyard.pw.toml"
-hash = "17cdbc9137104a4fd010abdf39c7fd958b17351b5d8888ce886d87d9a2303963"
-metafile = true
-
-[[files]]
-file = "mods/villagerstradingplus.pw.toml"
-hash = "636b0829f32622ec1d6cab431ce48c0b41bbec2972d87917695488b2dc403d1c"
-metafile = true
-
-[[files]]
-file = "mods/yungs-better-end-island.pw.toml"
-hash = "03d964cba45be30fbcbef52f89f3953185737f55c8934d12e199b67194c2b368"
 metafile = true

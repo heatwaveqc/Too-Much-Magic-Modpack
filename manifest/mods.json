@@ -1954,17 +1954,17 @@
       "packwiz_slug": "quest-giver"
     },
     {
-      "id": "quest-shop",
-      "name": "Quest Shop",
+      "id": "q-shop",
+      "name": "Q Shop",
       "category": "utility",
       "desired": true,
-      "version": "questshop-1.4.0",
+      "version": "qshop-neoforge-1.21.1-1.8.5",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/quest-shop/files/9046797",
+      "source": "https://github.com/QLNPLUS/Q-shop/releases/tag/v1.8.5-neoforge-1.21.1",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "note": "User-approved 2026-11-14 quest purchase and reward currency mod. NeoForge 1.21.1 CF project 1338320 file 9046797. Coins are FTB-Team shared in upstream integration. Exact hash-pinned and combined 140-mod dedicated-server smoked PASS in GitHub Actions run 43610383608; client, gameplay, item registration and economy still unverified.",
-      "packwiz_slug": "quest-shop"
+      "note": "Owner-approved 2026-11-22 personal-wallet replacement. NeoForge 1.21.1, official GitHub SHA256 pin, native tabs. All 48 buy offers/amounts/prices retained. Per-player coin reward uses FTB native op2 command bridge pending native FTB ABI audit. No server/client gameplay test yet.",
+      "packwiz_slug": "q-shop"
     },
     {
       "id": "rechiseled",

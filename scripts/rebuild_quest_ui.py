@@ -298,8 +298,8 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
     if any(not x or x.strip() == "undefined" for x in description):
         raise ValueError(f"Broken localized description: {chapter} / {title}")
     if ledger is not None and "coin" in ledger.get("reward", {}):
-        expected = f'command: "hqs coins add {{p}} {ledger["reward"]["coin"]}", permission_level: 2, team_reward: true'
-        if expected not in block or 'type: "questshop:coins"' in block:
+        expected = f'command: "qshop currency give {{p}} coins {ledger["reward"]["coin"]}", permission_level: 2, team_reward: false'
+        if expected not in block or 'type: "qshop:money"' in block or 'type: "questshop:coins"' in block:
             raise ValueError(f"Unsupported coin reward ABI on {chapter} / {title}: use native command reward")
     start = block.find("\n\t\t\tdescription:")
     if start >= 0:

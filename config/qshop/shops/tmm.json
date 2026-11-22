@@ -1,0 +1,531 @@
+{
+  "id": "tmm",
+  "uuid": "bf5bb0e1-0429-4a67-9630-4a14c928e6b2",
+  "displayName": "Too Much Magic - Adventurers' Shop",
+  "currency": "coins",
+  "icon": "minecraft:emerald",
+  "tabs": [
+    {
+      "uuid": "tmm-supplies",
+      "name": "Supplies & Building",
+      "icon": "minecraft:bricks",
+      "entries": [
+        {
+          "uuid": "tmm-supplies-minecraft-cobblestone",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:cobblestone",
+            "count": 64
+          },
+          "currency": "coins",
+          "price": 2
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-oak_planks",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:oak_planks",
+            "count": 64
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-torch",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:torch",
+            "count": 32
+          },
+          "currency": "coins",
+          "price": 2
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-glass",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:glass",
+            "count": 32
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-leather",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:leather",
+            "count": 8
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-string",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:string",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-coal",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:coal",
+            "count": 32
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-supplies-minecraft-arrow",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:arrow",
+            "count": 64
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-supplies-bountiful-bountyboard",
+          "type": "BUY",
+          "item": {
+            "item": "bountiful:bountyboard",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-reagents",
+      "name": "Common Magical Materials",
+      "icon": "minecraft:amethyst_shard",
+      "entries": [
+        {
+          "uuid": "tmm-reagents-minecraft-amethyst_shard",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:amethyst_shard",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-reagents-minecraft-lapis_lazuli",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:lapis_lazuli",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-reagents-minecraft-quartz",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:quartz",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-reagents-minecraft-glowstone_dust",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:glowstone_dust",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-reagents-minecraft-slime_ball",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:slime_ball",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-reagents-minecraft-prismarine_shard",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:prismarine_shard",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 8
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-ores",
+      "name": "Ore Blocks & Mining",
+      "icon": "minecraft:iron_ore",
+      "entries": [
+        {
+          "uuid": "tmm-ores-minecraft-coal_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:coal_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 1
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_coal_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_coal_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 1
+        },
+        {
+          "uuid": "tmm-ores-minecraft-copper_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:copper_ore",
+            "count": 2
+          },
+          "currency": "coins",
+          "price": 1
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_copper_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_copper_ore",
+            "count": 2
+          },
+          "currency": "coins",
+          "price": 1
+        },
+        {
+          "uuid": "tmm-ores-minecraft-iron_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:iron_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_iron_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_iron_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-gold_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:gold_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_gold_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_gold_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-ores-minecraft-redstone_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:redstone_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_redstone_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_redstone_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-lapis_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:lapis_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_lapis_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_lapis_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-diamond_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:diamond_ore",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 10
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_diamond_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_diamond_ore",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 10
+        },
+        {
+          "uuid": "tmm-ores-minecraft-emerald_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:emerald_ore",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 10
+        },
+        {
+          "uuid": "tmm-ores-minecraft-deepslate_emerald_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:deepslate_emerald_ore",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 10
+        },
+        {
+          "uuid": "tmm-ores-minecraft-nether_quartz_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:nether_quartz_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        },
+        {
+          "uuid": "tmm-ores-minecraft-nether_gold_ore",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:nether_gold_ore",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 3
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-exploration",
+      "name": "Exploration Finds",
+      "icon": "minecraft:compass",
+      "entries": [
+        {
+          "uuid": "tmm-exploration-minecraft-heart_of_the_sea",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:heart_of_the_sea",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 80
+        },
+        {
+          "uuid": "tmm-exploration-minecraft-nautilus_shell",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:nautilus_shell",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 15
+        },
+        {
+          "uuid": "tmm-exploration-minecraft-name_tag",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:name_tag",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 12
+        },
+        {
+          "uuid": "tmm-exploration-minecraft-saddle",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:saddle",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 15
+        },
+        {
+          "uuid": "tmm-exploration-minecraft-prismarine_crystals",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:prismarine_crystals",
+            "count": 16
+          },
+          "currency": "coins",
+          "price": 8
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-artifacts",
+      "name": "Artifacts",
+      "icon": "artifacts:cloud_in_a_bottle",
+      "entries": [
+        {
+          "uuid": "tmm-artifacts-artifacts-cloud_in_a_bottle",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:cloud_in_a_bottle",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 90
+        },
+        {
+          "uuid": "tmm-artifacts-artifacts-charm_of_sinking",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:charm_of_sinking",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 80
+        },
+        {
+          "uuid": "tmm-artifacts-artifacts-digging_claws",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:digging_claws",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 90
+        },
+        {
+          "uuid": "tmm-artifacts-artifacts-night_vision_goggles",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:night_vision_goggles",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 90
+        },
+        {
+          "uuid": "tmm-artifacts-artifacts-everlasting_beef",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:everlasting_beef",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 120
+        },
+        {
+          "uuid": "tmm-artifacts-artifacts-crystal_heart",
+          "type": "BUY",
+          "item": {
+            "item": "artifacts:crystal_heart",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 120
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-food",
+      "name": "Food & Farming",
+      "icon": "minecraft:bread",
+      "entries": [
+        {
+          "uuid": "tmm-food-minecraft-bread",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:bread",
+            "count": 8
+          },
+          "currency": "coins",
+          "price": 4
+        },
+        {
+          "uuid": "tmm-food-minecraft-cooked_beef",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:cooked_beef",
+            "count": 8
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-food-minecraft-bone_meal",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:bone_meal",
+            "count": 32
+          },
+          "currency": "coins",
+          "price": 5
+        },
+        {
+          "uuid": "tmm-food-minecraft-honey_bottle",
+          "type": "BUY",
+          "item": {
+            "item": "minecraft:honey_bottle",
+            "count": 4
+          },
+          "currency": "coins",
+          "price": 6
+        }
+      ]
+    }
+  ]
+}

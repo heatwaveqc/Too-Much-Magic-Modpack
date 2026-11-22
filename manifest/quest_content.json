@@ -888,7 +888,7 @@
     {
       "chapter": "Tips & Tricks",
       "title": "Use the Quest Shop",
-      "description": "Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins.",
+      "description": "Use /qshop open tmm to browse the Too Much Magic shop. Choose a tab for supplies, magical materials, ores, exploration, artifacts or food. Shop coins belong to your personal Q Shop wallet, not your FTB Team; resource-sale quests grant coins and Bountiful contract payments are being integrated separately.",
       "criterion": {
         "type": "checkmark"
       },
@@ -946,7 +946,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper I — First Trade",
-      "description": "Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_ingot",
@@ -967,7 +967,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper II — Regular Buyer",
-      "description": "Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_ingot",
@@ -988,7 +988,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper III — Packed Shipment",
-      "description": "Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_block",
@@ -1032,7 +1032,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds I — First Trade",
-      "description": "Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald",
@@ -1053,7 +1053,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds II — Regular Buyer",
-      "description": "Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald",
@@ -1074,7 +1074,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds III — Packed Shipment",
-      "description": "Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald_block",
@@ -1118,7 +1118,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds I — First Trade",
-      "description": "Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond",
@@ -1139,7 +1139,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds II — Regular Buyer",
-      "description": "Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond",
@@ -1160,7 +1160,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds III — Packed Shipment",
-      "description": "Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond_block",

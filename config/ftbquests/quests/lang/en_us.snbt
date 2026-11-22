@@ -159,7 +159,7 @@
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
-	quest.544D502001000000.quest_desc: ["Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."]
+	quest.544D502001000000.quest_desc: ["Use /qshop open tmm to browse the Too Much Magic shop. Choose a tab for supplies, magical materials, ores, exploration, artifacts or food. Shop coins belong to your personal Q Shop wallet, not your FTB Team; resource-sale quests grant coins and Bountiful contract payments are being integrated separately."]
 	quest.544D502001100000.title: "Smelt Without Fuel: Scriptor Lectern"
 	quest.544D502001100000.quest_desc: ["Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."]
 	quest.544D502001200000.title: "Double Raw Ore: Occultism or Mahou?"
@@ -253,27 +253,27 @@
 	quest.544D302000100001.title: "Chapter Overview"
 	quest.544D302000100001.quest_desc: ["An introduction to Basic Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D504000100000.title: "Sell Copper I — First Trade"
-	quest.544D504000100000.quest_desc: ["Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000100000.quest_desc: ["Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000200000.title: "Sell Copper II — Regular Buyer"
-	quest.544D504000200000.quest_desc: ["Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000200000.quest_desc: ["Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000300000.title: "Sell Copper III — Packed Shipment"
-	quest.544D504000300000.quest_desc: ["Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000300000.quest_desc: ["Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000400000.title: "Sell Copper IV — Industrial Exchange"
 	quest.544D504000400000.quest_desc: ["Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
 	quest.544D504000500000.title: "Sell Emeralds I — First Trade"
-	quest.544D504000500000.quest_desc: ["Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000500000.quest_desc: ["Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000600000.title: "Sell Emeralds II — Regular Buyer"
-	quest.544D504000600000.quest_desc: ["Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000600000.quest_desc: ["Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000700000.title: "Sell Emeralds III — Packed Shipment"
-	quest.544D504000700000.quest_desc: ["Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000700000.quest_desc: ["Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000800000.title: "Sell Emeralds IV — Industrial Exchange"
 	quest.544D504000800000.quest_desc: ["Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
 	quest.544D504000900000.title: "Sell Diamonds I — First Trade"
-	quest.544D504000900000.quest_desc: ["Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000900000.quest_desc: ["Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000A00000.title: "Sell Diamonds II — Regular Buyer"
-	quest.544D504000A00000.quest_desc: ["Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000A00000.quest_desc: ["Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000B00000.title: "Sell Diamonds III — Packed Shipment"
-	quest.544D504000B00000.quest_desc: ["Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000B00000.quest_desc: ["Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
 	quest.544D504000C00000.title: "Sell Diamonds IV — Industrial Exchange"
 	quest.544D504000C00000.quest_desc: ["Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
 	quest.544D504000D00000.title: "Choose a Magical Tradition"

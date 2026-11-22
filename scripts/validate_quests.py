@@ -208,9 +208,9 @@ def main() -> None:
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
             # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
             # FTB Quests 2101.1.38 expects boolean; use its native command reward
-            # to invoke Quest Shop's /hqs coins add until the addon is updated.
-            coins = re.search(r'type: "command", command: "hqs coins add \{p\} (\d+)", permission_level: 2, team_reward: true', rewards)
-            ensure('type: "questshop:coins"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
+            # to invoke Quest Shop's /qshop currency give until the addon is updated.
+            coins = re.search(r'type: "command", command: "qshop currency give \{p\} coins (\d+)", permission_level: 2, team_reward: false', rewards)
+            ensure('type: "questshop:coins"' not in rewards and 'type: "qshop:money"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
             ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
             newbie_graduation = qid == "544D309000100001" and (
                 'type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in rewards
@@ -235,7 +235,8 @@ def main() -> None:
                 reward_items.extend((qid, item_id, int(count)) for item_id, count in item_matches)
             elif coins is not None:
                 coin_quests.add(qid)
-                ensure(rewards.count("team_reward: true") == 2, f"Sale XP + coin claims must be team-shared on {qid}")
+                ensure(rewards.count("team_reward: true") == 1 and rewards.count("team_reward: false") == 1,
+                       f"Sale XP remains team-shared but coin claims must be personal on {qid}")
                 ensure("consume_items: true" in tasks, f"Sale input must be consumed on {qid}")
                 ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             else:
@@ -270,7 +271,7 @@ def main() -> None:
         if "item" in q["reward"]:
             ensure(f'id: "{q["reward"]["item"]}"' in block, f"Wrong item reward in {q['title']}")
         elif "coin" in q["reward"]:
-            ensure(qid in coin_quests and f'command: "hqs coins add {{p}} {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
+            ensure(qid in coin_quests and f'command: "qshop currency give {{p}} coins {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
         elif "command" in q["reward"]:
             ensure(qid == "544D309000100001"
                    and q["reward"]["command"] == "tmmnewbie admin graduate {p}"
@@ -341,24 +342,29 @@ def main() -> None:
     ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
     for commodity in intentional_sale_ids:
         ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
-    shop = json.loads((ROOT / "manifest" / "quest_shop_catalog.json").read_text(encoding="utf-8"))
-    # Pre-assembly baseline has five categories; the approved ore stream adds a sixth.
-    # Both states are valid, but a half-installed ore category is not.
-    category_ids = {x["id"] for x in shop["categories"]}
-    expected_categories = 6 if "ores" in category_ids else 5
-    ensure(len(shop["categories"]) == expected_categories,
-           "Shop categories must be five at baseline or six with the complete approved ore category")
-    for category in shop["categories"]:
-        cat = category["id"]
-        catfile = ROOT / "kubejs" / "data" / "tmm" / "questshop" / "shop_categories" / (cat + ".json")
-        entriesfile = ROOT / "kubejs" / "data" / "tmm" / "questshop" / "shop_entries" / (cat + ".json")
-        ensure(catfile.is_file() and entriesfile.is_file(), f"Missing shop datapack files for {cat}")
-        parsed = json.loads(entriesfile.read_text(encoding="utf-8"))
-        ensure(len(parsed) == len(category["entries"]), f"Shop item count mismatch for {cat}")
-        for product in parsed:
-            ensure(product["category"] == "tmm:" + cat, f"Wrong namespaced shop category in {cat}")
-            ensure(product["amount"] > 0 and product["cost"] > 0, "Invalid shop quantity/price")
-            ensure(not product["item"].startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:")), f"Shop progression bypass item {product['item']}")
+    shop = json.loads((ROOT / "manifest/quest_shop_catalog.json").read_text(encoding="utf-8"))
+    qshop = json.loads((ROOT / "config/qshop/shops/tmm.json").read_text(encoding="utf-8"))
+    currencies = json.loads((ROOT / "config/qshop/currencies.json").read_text(encoding="utf-8"))
+    ensure(shop["currency"] == "coins" and shop["team_shared"] is False, "Q Shop wallet must be personal")
+    ensure([x["id"] for x in currencies["currencies"]] == ["coins"], "No second shop currency")
+    ensure(qshop["id"] == "tmm" and qshop["currency"] == "coins", "Wrong Q Shop id/currency")
+    ensure(len(qshop["tabs"]) == len(shop["categories"]) == 6, "Expected six matching Q Shop tabs")
+    offers = []
+    for category, tab in zip(shop["categories"], qshop["tabs"]):
+        ensure(tab["uuid"] == "tmm-" + category["id"] and tab["name"] == category["display"], "Wrong Q Shop tab")
+        rows = []
+        for entry in tab["entries"]:
+            ensure(entry["type"] == "BUY" and entry["currency"] == "coins", "Unexpected shop trade")
+            rows.append([entry["item"]["item"], entry["item"]["count"], entry["price"]])
+        ensure(rows == category["entries"], f"Shop drift in {category['id']}")
+        offers.extend(rows)
+    ensure(len(offers) == 48 and len({item for item, _, _ in offers}) == 48, "48 original offers must survive")
+    ensure(not any(i.startswith(("projecte:", "projectexpansion:", "reavaritia:", "extendedcrafting:"))
+                   for i, _, _ in offers), "Shop progression bypass")
+    ensure(not (ROOT / "mods/quest-shop.pw.toml").exists() and (ROOT / "mods/q-shop.pw.toml").exists(),
+           "Old shop pin or missing Q Shop")
+    ensure(not (ROOT / "config/questshop-common.toml").exists()
+           and not (ROOT / "kubejs/data/tmm/questshop").exists(), "Old shop config remains")
     ensure(not (ROOT / "kubejs/data/tmm/function/rewards/first_log.mcfunction").exists(),
            "Obsolete empty first-log reward function must not be shipped")
     pouch = all_blocks["544D4D1100000001"]
