@@ -23,3 +23,5 @@ Exact [v1.21.1-3.16.3 registry](https://github.com/iron431/irons-spells-n-spellb
 | `irons_spellbooks:scapegoat` | [`ScapegoatSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/evocation/ScapegoatSpell.java) | RARE | 3 | 30 + 15 | 45 | 0 |
 
 **Source verification:** 17 active fields, 17 class sources, 17 actual spell resource IDs. — means unparsed/unspecified, not zero.
+
+**Special route for `irons_spellbooks:fang_swirl`:** Source `setAllowCrafting(false)` and `allowLooting() == false` exclude Scroll Forge and generic random scroll pools. **Ominous Dead King** supplementary loot specifically creates a Fang Swirl Scroll on eligible player-kill chance; the source loot filter's explicitly named spell list bypasses the generic no-looting restriction. See [source-matched exception and boss analysis](irons-spells-special-acquisition-and-boss-closure.md). This is *late, optional special player loot*, not an ordinary Evocation starting spell.
