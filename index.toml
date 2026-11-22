@@ -2628,3 +2628,13 @@ metafile = true
 file = "mods/yungs-better-end-island.pw.toml"
 hash = "03d964cba45be30fbcbef52f89f3953185737f55c8934d12e199b67194c2b368"
 metafile = true
+
+[[files]]
+file = "mods/aquamirae-nouveau.pw.toml"
+hash = "1173f78d8a383d5b98ea3213c928dd5d5b427e79e567770f99e698811c9ae73a"
+metafile = true
+
+[[files]]
+file = "resourcepacks/cathobb-unified-64.pw.toml"
+hash = "4e414e3b03da6cbd0c30f9562686e461b03790765ef1b733137190e381734f01"
+metafile = true
