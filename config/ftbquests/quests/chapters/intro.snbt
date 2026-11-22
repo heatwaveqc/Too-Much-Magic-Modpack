@@ -79,7 +79,7 @@
 			id: "544D501000300000"
 			icon: { id: "minecraft:crafting_table" }
 			dependencies: ["544D4D1100000001"]
-			shape: "diamond"
+			shape: "hexagon"
 			size: 1.3d
 			rewards: [
 				{ id: "544D601000300001", type: "xp", xp: 10 }
