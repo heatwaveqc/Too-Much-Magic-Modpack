@@ -14,7 +14,14 @@ neoForge {
     }
     mods { "${mod_id}" { sourceSet(sourceSets.main) } }
 }
+// Source-only optional integration with the exact 1.21.1 Jade pin from
+// test/full-integration/mods/jade.pw.toml. Compile against the native API;
+// never bundle Jade or require it for Progression-only installs.
+repositories {
+    maven { url = 'https://api.modrinth.com/maven' }
+}
 dependencies {
+    compileOnly('maven.modrinth:jade:15.10.6+neoforge') { transitive = false }
     testImplementation 'com.google.code.gson:gson:2.11.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
