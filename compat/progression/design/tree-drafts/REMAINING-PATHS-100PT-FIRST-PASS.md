@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v6`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v7`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -22,13 +22,13 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Sea Dragon | 22 | **100** |
 | Forest Dragon | 20 | **100** |
 | Vampire | 19 | **100** |
-| Werewolf | 18 | **100** |
+| Werewolf | 20 | **100** |
 | Lich | 12 | **100** |
 | Hunter | 57 | **100** |
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **217 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **219 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -401,56 +401,36 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 Native Vampire health/feeding/HUD and Lilith initiation are never purchased again. Sunshroud is at most partial mitigation and daylight remains dangerous. No independent active vampire buttons, no duplicate ordinary blood or MXP awards, no blanket classification of all blood-mod recipes as personal spells, and no source-free native shape/flight grants.
 ### Werewolf — 100 ranks / 100 points
 
-*Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
+**Complete role-first rebalance:** full JAWR Werewolf identity is focused on high maximum health and actual physical regeneration, source-owned wolf claws and bites, moon-phase mobility, and verified personal nature magic. Unlike the archived Tyz source, every rank costs one point; no Fury wallet or bonus transformation/hotkey is sold.
 
-#### Lupine Vitality — 17 points
+Detailed source status, numeric candidate magnitudes, prerequisites and gameplay checklist: [Werewolf complete 100-point draft](WEREWOLF-COMPLETE-100PT-2026-11-22.md).
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Feral Vigor (`tyr_progression:werewolf_feral_vigor`) | 8 | 8 | Large additional maximum health / extra hearts, materially more per SP than universal vitality boosts. |
-| Regenerative Flesh (`tyr_progression:werewolf_regenerative_flesh`) | 5 | 5 | Strong, bounded actual HP regeneration under verified werewolf physiology and legal feeding/hunger rules; not mana regen. |
-| Unbreakable Beast (`tyr_progression:werewolf_unbreakable_beast`) | 4 | 4 | High-level extra HP and in-combat wound recovery with caps and meaningful werewolf vulnerabilities. |
+| Branch | Skill | One-point ranks | Candidate effect |
+|---|---|---:|---|
+| Lupine Vitality | **Feral Vigor** | 8 | +3 max HP per rank (+24 HP = 12 hearts max) for legitimate JAWR lycanthropy; source form-state gating, avoid immediate free heal from attribute toggles. |
+| Lupine Vitality | **Regenerative Flesh** | 7 | Recover +0.15 HP/sec per rank (+1.05 HP/sec max) while genuinely fed and in an eligible native JAWR wolf/werewolf shape; 50% rate for the first 5s after taking real hostile damage, none while starving. HEALTH regeneration, not mana or wolf blood. |
+| Lupine Vitality | **Unbreakable Beast** | 5 | Reduce remaining real non-silver physical damage by 2% per rank (10% max) when below 50% HP in wolf/werewolf form; never negate native silver/fire penalties or fatal damage. |
+| Lupine Vitality | **Bloodlust Recovery** | 5 | After a genuine credited hostile kill while in wolf/werewolf form, heal 0.5 HP per rank (+2.5 HP max) with a 12-second cooldown; no credit from ownerless/farm/proxy deaths, natural entities without genuine hostile intent, or other player's kills. |
+| Lupine Vitality | **Tempered Against Silver** | 5 | Reduce remaining damage by 4% per rank (20% max) ONLY from provably source-identified silver weapons or hazards, leaving at least 80% of the original danger. If silver sources cannot be reliably identified, withhold rather than broadly reduce all melee. |
+| Feral Might | **Rending Claws** | 7 | Increase native legal empty-hand wolf/werewolf melee damage by 3% per rank (+21% max); use actual player_attack attribution, NOT arbitrary equipped weapons or wolf-type mobs. |
+| Feral Might | **Savage Momentum** | 5 | On successive actual qualifying wolf melee hits within 4s, gain a temporary +2% damage per stack per rank, at most 3 stacks (+30% full), expiring 4s after the last hit; no Fury economy or gain for misses. |
+| Feral Might | **Bite Techniques** | 5 | On a true native wolf bite with verified damage owner, apply Slowness I to eligible hostile prey for 1 second per rank (5s full), at most once per target every 40 ticks; no free stun, permanent infection or new bite button. |
+| Feral Might | **Primal Fury** | 4 | While in wolf/werewolf shape and below 35% current HP, increase legal direct melee damage by 5% per rank (+20% max); passive injury threshold, NOT a separate Fury resource or activated burst. |
+| Feral Might | **Predator's Focus** | 4 | Against real hostiles below 50% max HP, gain +3% eligible native wolf melee damage per rank (+12% max); do not proc on nonhostiles, tamed wolves or friendly allies. |
+| Moonrunner | **Predator's Stride** | 5 | +4% grounded movement speed per rank (+20% full) while in actual JAWR WOLF/WEREWOLF form; not generic human walking or creative flight. |
+| Moonrunner | **Pouncing Leap** | 4 | +0.25 block of genuine jump height per rank (+1 block full) during actual wolf movement, plus native fall handling; no new targeted leap hotkey or midair flight. |
+| Moonrunner | **Lunar Chase** | 4 | +5% ground pursuit speed per rank (+20% full) when tracking a legitimate recently damaged hostile within 16 blocks under clear moonlit sky; no bonus indoors or in full daylight. Check exact lunar phase separately from simple night. |
+| Moonrunner | **Feral Excavation** | 4 | +15% legal native empty-hand wolf claw break speed per rank (+60% full) only for blocks the claw can already harvest, no new tier, silk/fortune or ore-gate bypass. |
+| Moonrunner | **Arrow Awareness** | 3 | +2 percentage points evasion chance per rank (+6 pp max) against genuine moving projectiles while in wolf/werewolf shape, not area explosions or ownerless spells. |
+| Wild Communion | **Wild Attunement** | 6 | +5% per rank (+30% full) to verified personally cast nature spell potency from source-registered Roots/Botania/nature classes while JAWR werewolf-afflicted; not passive Botania flowers or generating machine throughput. |
+| Wild Communion | **Rootsong** | 5 | +5% per rank (+25% full) to actual player-applied nature healing spell effects when spell provider and credited caster are verified. Do not count the intrinsic wolf HP regeneration twice. |
+| Wild Communion | **Grove Howl** | 4 | When the werewolf legitimately casts an eligible owned nature spell, its already-tamed wolves within 12 blocks receive +5% direct damage per rank (+20% full) for 10s, refreshed on real casts only; no taming, new summoning, permanent wolf ownership, or new howl button. |
+| Wild Communion | **Verdant Resilience** | 5 | Reduce remaining ordinary physical damage by 3% per rank (+15% full) in native wolf shape while grounded on grass, moss or leaves; not environmental/fire/silver reduction, and no global biome-wide magic aura. |
+| Moon Apex | **Moon Apex** | 5 | Under actual full-moon conditions and in JAWR WOLF/WEREWOLF form, add +4% eligible claw damage AND +4% native personal nature-spell potency per rank (both +20% full); no activation button, permanent bonus, global weather override, extra transformation or silver immunity. |
 
-#### Feral Might — 17 points
+| **Total** | **20 paid skills** | **100** | **Health regeneration, claws, moon and nature; native JAWR forms stay free** |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Rending Claws (`tyr_progression:werewolf_rending_claws`) | 8 | 8 | Scale claw damage in valid wolf/beast form, respecting weapon modifiers. |
-| Savage Momentum (`tyr_progression:werewolf_savage_momentum`) | 5 | 5 | Short stacking melee bonus after actual hits, capped and reset out of combat. |
-| Primal Fury (`tyr_progression:werewolf_primal_fury`) | 4 | 4 | Timed burst consuming native appropriate resource or applying fatigue. |
-
-#### Moonrunner — 17 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Predator's Stride (`tyr_progression:werewolf_predators_stride`) | 8 | 8 | Bonus mobility in valid wolf form. |
-| Pouncing Leap (`tyr_progression:werewolf_pouncing_leap`) | 5 | 5 | Targeted controlled leap with landing safety. |
-| Lunar Chase (`tyr_progression:werewolf_lunar_chase`) | 4 | 4 | Short chase burst under moon conditions with weaker daytime counterpart. |
-
-#### Wild Communion — 16 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Wild Attunement (`tyr_progression:werewolf_wild_attunement`) | 8 | 8 | Increase eligible nature magic potency (Botania/Roots personal effects) while werewolf state is valid. |
-| Rootsong (`tyr_progression:werewolf_rootsong`) | 5 | 5 | Further increase player nature spell potency or healing, separate from ordinary combat regeneration. |
-| Grove Howl (`tyr_progression:werewolf_grove_howl`) | 3 | 3 | High-level synergy between wolf pack allies and personally cast nature magic, bounded to eligible owners/effects. |
-
-#### Retained Lycan Skill Concepts (JAWR-owned) — 28 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Bloodlust Recovery (`tyr_progression:werewolf_bloodlust_recovery`) | 5 | 5 | Health restoration from actual player-credited hostile kill, with real cooldown. |
-| Bite Techniques (`tyr_progression:werewolf_bite_techniques`) | 5 | 5 | Select either limited bleeding or brief stun enhancement on confirmed wolf bites. |
-| Feral Excavation (`tyr_progression:werewolf_feral_excavation`) | 8 | 8 | Boost permitted claw mining/harvest throughput while in real JAWR wolf form. |
-| Arrow Awareness (`tyr_progression:werewolf_arrow_awareness`) | 5 | 5 | Limited moving-projectile evasion with shared evasion budget. |
-| Tempered Against Silver (`tyr_progression:werewolf_tempered_against_silver`) | 5 | 5 | Partial damage mitigation against source-verified silver damage without erasing weakness. |
-
-#### Retained Tyz 6.4.2 source skills — 5 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Rage (`tyr_progression:werewolf_rage`) | 5 | 5 | Increases damage by {damage_buff}% when health is below {health_threshold}% |
-
+**Explicit holds before live activation:** exact JAWR bite identity, true lunar/source form conditions, silver-weapon hazard source, and player-owned nature spells / wolves. Generic Progression health attributes, regen, source-scoped claw melee, legal claw mining, heal on kill and hit streak are reusable; source tests are not equivalent to gameplay proof.
 ### Lich — 100 ranks / 100 points
 
 *Native guardrails:* Shared ONE Lich tree for either provider/Archlich; native death priority is unchanged.
