@@ -61,3 +61,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Five infused turrets](ars-elemental-pinned-turrets.md) closes school recipes/Sauce resolver/cost, block-type registration and addon Homing/Arc behavior extensions on native turrets.
 
 [Seven bangles](ars-elemental-pinned-bangles.md) covers exact resource gates, school attributes and player-attributed specials; [pouch/bag inventories](ars-elemental-pinned-bags.md) covers27/54slot data, open/upgrade/dye, GUI restrictions and client/server slot boundaries.
+
+[Enchanter's Horn](ars-elemental-pinned-horn.md) traces methodless scribing, area/charge, direct resolve admission and post-effect payment; [Reflection/Reactive/Soulbound](ars-elemental-pinned-enchantments.md) covers four exact enchantment recipes and event/death-return recipients.
