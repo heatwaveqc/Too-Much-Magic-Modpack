@@ -59,6 +59,8 @@ public final class NativeLootBonuses {
         for(var a:EffectRuntime.active(player)){
             var fx=a.effect();
             if(fx.type().equals("virtual_fortune")&&(!fx.emptyHand()||tool.isEmpty())&&
+                (!fx.params().containsKey("mode_key")||fx.params().get("mode_value").equals(
+                    ProgressionApi.mode(player,fx.params().get("mode_key"),"")))&&
                 Selectors.block(fx.selector(),block)&&Selectors.item(fx.weapon(),tool)){
                 total+=fx.amountPerRank()*a.rank();cap=Math.max(cap,io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.integer(fx.params(),"max_total",8,1,32));
             }
