@@ -11,7 +11,7 @@
     "OWNER RULE: every purchasable rank costs exactly ONE advancement point, with no escalating rank price and no expensive one-rank capstone. Every complete eligible non-Monk tree build has exactly 100 purchasable ranks and thus 100 total points.",
     "OWNER RULE: the 100 points cap describes a fully mastered single character, not the total of mutually exclusive visible alternatives. Hunter is 62 common + one 8-point training style + one 30-point favored-prey specialty.",
     "Reduced total mastery cost from legacy ~300-500 SP is the source of increased potency per point. Do NOT shrink rank counts while keeping purchase price if doing so would charge more than one point per rank.",
-    "Ten fully costed first-pass non-Monk trees: universal Core + Hunter, Gilded, Vampire, Werewolf, shared Lich, three Dragon Survival species, Bare Zerker.",
+    "Ten proposed non-Monk trees: NINE have fully assigned 100-point per-character drafts, while Sea Dragon is undergoing balance review at 60 assigned plus 40 open (100 target).",
     "Early native abilities, species states, Fury mechanics, Gilded base Fortune/Looting, and Hunter free specialty selections remain free and separate. Never relicense or reprice without owner review.",
     "Core is universal and independent of Newbie/Normie/Path identity; it is not a fifth dragon path or additional class.",
     "Costs for every possible Hunter specialty cannot be summed as a playable 100-point build; the 498-point visible alternative catalog is intentionally greater than 100."
@@ -2502,7 +2502,7 @@
       "source": "Archived nine-tree design 2026-11-15",
       "native_guardrails": "Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.",
       "special_note": "Abyssal Fortune deliberately reserves 50/100 points and 50 ranks per original extreme ×50 direction; actual Luck impact requires legal gear-ceiling validation.",
-      "total_points": 100,
+      "total_points": 60,
       "skill_count": 18,
       "unallocated_points": 40,
       "assigned_points": 60,
@@ -8796,5 +8796,68 @@
       "Vampire/lich/dragon specialty names or source adapters are candidate effects, not final owner-approved content."
     ],
     "next_review": "Rebalance every Path from intended role and desired endgame effect first; then assign one-point rank budgets; mark former numbers as provenance, not implicit constraints."
+  },
+  "design_budget_validation": {
+    "all_tree_count": 10,
+    "fully_allocated_tree_count": 9,
+    "incomplete_tree_ids": [
+      "sea_dragon"
+    ],
+    "total_authorized_target_points": 1000,
+    "total_explicitly_allocated_single_build_points": 960,
+    "total_open_points": 40,
+    "per_tree_single_build": [
+      {
+        "id": "core",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "cave_dragon",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "sea_dragon",
+        "playable": 60,
+        "target": 100
+      },
+      {
+        "id": "forest_dragon",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "vampire",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "werewolf",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "lich",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "hunter",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "gilded",
+        "playable": 100,
+        "target": 100
+      },
+      {
+        "id": "bare_zerker",
+        "playable": 100,
+        "target": 100
+      }
+    ],
+    "note": "Hunter's exclusive alternative branches must not be summed together. Sea Dragon's old 50-point Luck is superseded."
   }
 }
