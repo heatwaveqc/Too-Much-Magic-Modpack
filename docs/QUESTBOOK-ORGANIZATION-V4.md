@@ -1,4 +1,4 @@
-# TMM Questbook Organization v4 — coverage, specializations, hunts and completionism
+# TMM Questbook Organization v4.1 — five structural categories, mod capstones and completionism
 
 **Owner design directions — 2026-11-22.** Architecture and authoring requirements for Too Much Magic (TMM) Minecraft 1.21.1 NeoForge. **Design-only:** proposed chapter groups and new tasks are **not** present in the shipped FTB questbook merely because this document exists. The currently installed scaffold uses five groups and 44 chapters. Preserve its stable chapter, quest, task, reward and per-player claim IDs when rearranging; migrate chapter group/position without deleting historical progress. This proposal supersedes the *organizational choices* in [QUEST-ARCHITECTURE.md](QUEST-ARCHITECTURE.md), not the current manifest, and complements [QUEST-DESIGN-RULES.md](QUEST-DESIGN-RULES.md), [QUEST-WALKTHROUGH-STANDARD.md](QUEST-WALKTHROUGH-STANDARD.md), and the [v3 visual standard](QUEST-PRESENTATION-STANDARD-V3.md) (PR #489).
 
@@ -11,27 +11,40 @@
 5. **Stable and achievable catalogs.** Generate fish, foods, spells/glyphs, mob types and game-content eligibility from the exact pinned/loaded mod set plus documented owner inclusion/exclusion policy. Exclude unregistered, technical/test-only, unobtainable or no-real-player-route entries from **obligatory** completion sets, with evidence. Keep a reviewable reason list for exclusions; do not silently omit hard-but-attainable content. Freeze a catalog version for stable saved progress, and migrate denominators/identities explicitly on catalog updates.
 6. **Paths/form access and diets are respected.** Challenges must not accidentally require simultaneous mutually exclusive player forms. The all-food challenge needs special review when the shared food policy/diets are reopened; until then it is a design target, not a code-ready task. Transformations remain actual mechanics enforced in Progression/native mods; an FTB quest does not grant a form, bypass a step or create an alternative mode.
 
-### Baseline coverage diagnostic (not the final installed census)
+### Selected-mod coverage diagnostic — current Packwiz source inventory
 
-For the dated `manifest/mods.json` currently on `test/full-integration` (**roster date 2026-11-15**, therefore not the latest authoritative current pin set), **222 of 234 roster entries** have `enabled_in_pack: true`. An exact `id`/`packwiz_slug` join against the 44-chapter `manifest/quest_chapters.json` accounts for **93**; **129** do not join. This is a **candidate gap/worklist, not proof that 129 mods lack player-facing quests**. The unmatched include 56 `dependency` and three `library` rows, five `performance` rows, many QoL/structure mods and meaningful content systems not yet in the old chapter map.
+[Type-A roster PR #500](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/500) enumerates all **222** selected external `mods/*.pw.toml` entries on the current Packwiz index, checks their SHA-256 metafile chain, and matches all 222 against the 222 enabled records in `manifest/mods.json`. The 12 unindexed catalog entries are separate from the installed-pin list, as are approved-but-not-yet-pinned scope-freeze candidates. This is source metadata verification, not a claim about downloaded JAR loading, first-party modules or December inclusion.
 
-High-value **coverage-review examples** from those unmatched names: The Aether, The Twilight Forest, Eternal Starlight, BetterEnd, The Aurorian, The Bumblezone, Alex's Caves Continued, SWEM, Bountiful, My Nether's Delight, Arcane Archives: Reborn, and Cave/Ocean/Nether exploration providers. Audit their **actual selected pins**, not their old desired state; decide chapter vs subsection vs credits. A robust coverage audit must use current Packwiz indexed files as the installed roster and a curated alias table rather than relying only on this dated `mods.json`. No new chapter is automatically approved merely because a name appears here.
+For quest planning, the complete 222-row classification reports **96** main gameplay chapter/section candidates, **12** exploration/worldgen candidates, **29** useful player-facing tip/section candidates and **85** technical, optimization, library or administration-only entries that **do not need quests**. Of those, 85 have direct existing chapter map references; 52 player-facing entries need section/alias/coverage review; 85 are technical no-quest. These are **review queues**, not proof of missing quests. Actual mod coverage stays keyed to the latest installed Packwiz selection and reviewed runtime features, not historic catalog rows.
 
-## 2. Proposed top-level navigation
+## 2. Five category *types* and their distinct quest grammar
 
-**Proposed seven category groups (pending technical migration/UI review):** use chapters only for coherent subjects, not each individual mod addon. This is a more navigable evolution of the **current five groups**; exactly where Bounties and the new Challenge hub sit can be polished without changing their subject ownership.
+**Owner correction 2026-11-22:** Replace the proposed seven top-level topic groups with **five top-level categories by quest purpose**. This is a structural authoring rule, not simply a rebranding of the old Magic/Endgame grouping. Keep real mod chapters intact, preserve all 44 existing chapter IDs, and revise source group assignments only through a separately reviewed FTB migration. The category order below is intentional; the Challenge category is last.
 
-| Proposed group | Chapter plan | Migration from current source |
+| Category | Example chapters | Required shape and authoring contract |
 | --- | --- | --- |
-| **Introduction** | Welcome to TMM; Getting Started; Tips & Tricks; Bounties & Contracts | Extract orientation material from existing Getting Started without changing existing IDs; preserve current Tips; new Bountiful orientation only |
-| **Living World** | **Food**; **Fishing**; Alcohol is Magic; optional Building & Decoration index | Split current **Food & Fishing** while preserving existing quest IDs, ownership and completion; keep existing Alcohol branch (19 currently authored quests) |
-| **Progression** | Basic Progression; Advanced Progression; **Paths & Transformations**; Endgame Roadmap; A Sufficiently Advanced Magic; optional Economy/Commerce orientation | Evolve existing Skills & Factions into one complete Paths & Transformations chapter; leave shared resources/gates in their own chapters; commodity contracts may be grouped without rebuying rewards |
-| **Magic** | One chapter for each major magic school, including current Ars, Neo Vitae, Theurgy, Occultism, Iron's, Botania, etc.; meaningful addon lanes | Retain current 25 main magic chapter IDs, expand Atlas-backed walkthroughs and link integrations in both directions |
-| **Exploration & Combat** | **Mob Hunts**; dimension, dungeon/boss, Gateway and artifact chapters | Existing Cataclysm, Feywild, Apotheosis, artifacts etc. stay; hunting is distinct from Bountiful, Hunter Path and boss-native progression |
-| **Endgame** | Draconic Evolution; ProjectE and Project Expansion; Replication; substantive crossmod climax links | Keep canonical late-game chapters and current recipe-first gating; do not reimpose superseded blanket all-post-Chaos ProjectE condition |
-| **Challenges** (last) | Completionist Overview; Master Angler; Master Chef; Master of Glyphs; Bestiary; further verified all-of-a-kind achievements | **New and opt-in**. No universal chapter-unlock requirements and no ordinary mod walkthrough dependency on a completionist challenge |
+| **Informational** | Welcome to TMM; Getting Started; Tips & Tricks | Browse-first short reference cards, navigation links and verified mechanics; no invented possession chores or unnecessary linear prerequisites. The personal Newbie→Normie graduation task is a legitimate explicit exception, with authoritative Progression state rather than a mere instructional checkmark. |
+| **Regular Progress** | Basic Progression; Advanced Progression; Paths & Transformations; Endgame Roadmap; A Sufficiently Advanced Magic | **One pack-wide advancement spine** from survival into endgame with sensible choice points and pointers to mod-focused chapters. Don't copy full specialist lines or rewards. The Paths chapter shows how to acquire each currently implemented Path/form, their limitations and exceptional combinations. |
+| **Mod-Focused** | Ars Nouveau; Theurgy; Occultism; Botania; Cataclysm; Draconic Evolution; ProjectE; Replication | **One central mod mainline** containing its essential tiers, techniques, structures and rituals. End on the **hardest or most defining meaningful craft/ritual/achievement the mod treats as its capstone**, not merely the highest-cost recipe. Attach separate optional branches for **useful items**, **addons** and **explicit compatibility with other mods**, at their actual introduction points. The mainline's finale should mention and link to any meaningful TMM crossover/endgame integration. |
+| **Thematic** | Food; Fishing; Monster Hunting (Mob Hunts); Alcohol is Magic | Wide, frequently non-linear multi-mod activity families. Food has clear branches for each relevant food mod, Fishing for fishing systems/species families, and Mob Hunts for credited kill-count ladders. Local milestones can be substantial, but **all-of-a-kind completionist goals belong in Challenge**, not at the end of these ordinary topical lines. |
+| **Challenge** | Bounties & Contracts; Master Angler; Master Chef; Master of Glyphs; Bestiary | Entirely separate, opt-in late-book category with **two subtypes**: one-time, persistent completionist **Challenges**, and **Bounties** (renewable Bountiful contracts with native timers and rewards). Teach Bountiful mechanics here; Introduction may include a simple link, not a second bounty chapter. No ordinary progression prerequisite can depend on completing either subtype. |
 
-**Navigation notes:** Chapter order is intentionally independent of progression lock order: beginners should be able to browse Magic or Challenges immediately. The Challenges group belongs at the **end**, deliberately separated from normal tutorials and Bountiful. If the pinned FTB Quests UI has a hard technical limit on groups, preserve this logical seven-group taxonomy in source even if a temporary grouping compromise is required in client; do not assert a limit without proof.
+### Mod-Focused spine and branches — the default chapter template
+
+```text
+MOD INTRO → FOUNDATION → CORE TECHNIQUES / TIERS → HIGHER RITES → CAPSTONE
+                   ├── Useful items and optional craftable tools
+                   ├── Addons and native expansions
+                   └── Explicit integrations / reciprocal links to other mod chapters
+```
+
+The branches start where the player can actually use them; don't hide a helpful early item behind late-game tasks or require an addon for vanilla mod progress. Branches may have their own advanced mini-goals. If a cross-mod integration has a genuine required dependency in TMM, represent that dependency honestly; **optional** compat routes do not become a mainline gate merely because they are interesting. The final mainline should be the **meaningful hardest ritual/craft**, even if cheaper than another item. It includes a short "Where to go next" entry or reciprocal links to TMM-specific integrations rather than making every cross-mod experiment mandatory.
+
+**Occultism example (owner proposed):** Native Occultism ritual tiers, spirit summoning, and high-tier **Eldritch Ancient Miner** lead to a **TMM-specific Philosopher's Stone crossover finale**. The Stone is a **ProjectE item**, not an Occultism-native craft; treating it as Occultism's final mainline quest is an **intentional TMM extension/exception** to the native-capstone rule. It should point into ProjectE and any boss-token/recipe dependencies; preserve their actual independent server-side gates. Place dimensional storage/remote access, spirit services, material processing, miner/Replication interactions and Theurgy logistics in meaningful **useful items / integration side branches**, with a reciprocal entry in their respective mod chapters. Avoid duplicating first-time rewards/claims across ProjectE and Occultism for the same craft.
+
+**Five types are not five exclusivity rules for mechanics.** A thematic Food quest can link to a mod-focused Farmer's Delight lane if depth warrants one; an introductory page can point to Challenge bounties; and a final craft can legitimately be a crossover. The categories define **the reader's expectation and layout**, not mutually exclusive mod lists.
+
+
 
 ## 3. Food: its own multi-mod chapter
 
@@ -52,11 +65,11 @@ Fishing is a separate sprawling, branching chapter, organized by **native fishin
 
 **Catch detection:** a five-fish item task proves only inventory possession, not five fish legitimately caught. The preferred implementation is a verified native catch event or a minimal shared, per-player catch receipt/counter (TMM-owned code, not a new independent progression engine). It must identify the actual loot/result, item counts, rod/fishing system and attribution; ignore crafted, traded, EMC-duplicated, looted, gifted or admin-spawned fish. Account for multiple output stacks, fishing loot modifiers, non-vanilla fishing methods, multiplayer and inventory overflow. Don't invent a working FTB task type before an exact current API audit. If catch events can't be evidenced, classify those tasks as **detection-blocked** rather than quietly using possession.
 
-**Fishing capstone:** `Catch Every Fish` should live in **Challenges → Master Angler** and be informed by independently completed Fishing species tasks; it is never a required gate to move into Magic, Food or later rods. **Proposed distinctive prize:** **one Apotheosis Godforged Pearl**, candidate item `apotheosis:godforged_pearl`. Exact item ID and availability must be verified against TMM's installed 1.21.1 registry and economy/reward shortcut policy. This is a candidate reward, not permission to grant a late-game rarity item before the current balance review; the owner can retain this reward after the audit.
+**Fishing completionist challenge:** `Catch Every Fish` should live in **Challenge → Master Angler** and be informed by independently completed Fishing species tasks; it is never a required gate to move into Magic, Food or later rods. **Proposed distinctive prize:** **one Apotheosis Godforged Pearl**, candidate item `apotheosis:godforged_pearl`. Exact item ID and availability must be verified against TMM's installed 1.21.1 registry and economy/reward shortcut policy. This is a candidate reward, not permission to grant a late-game rarity item before the current balance review; the owner can retain this reward after the audit.
 
 ## 5. Mob Hunts (persistent FTB feats), not Bountiful
 
-Use a separate **Mob Hunts** chapter under Exploration & Combat. The user-supplied ATM10 `bounty_board.snbt` is a **layout/mechanics reference only**: it contains **50 quests, 87 native FTB `type: "kill"` tasks over 63 named entity IDs** and escalating **5 → 10 → 50 → 100** kill ladders for ordinary mobs, plus boss encounters. Reuse neither ATM's own IDs, text, images, reward tables nor unsafe selection of NPC targets.
+Use a separate **Mob Hunts** chapter under **Thematic**, titled **Monster Hunting** in navigation if desired. The user-supplied ATM10 `bounty_board.snbt` is a **layout/mechanics reference only**: it contains **50 quests, 87 native FTB `type: "kill"` tasks over 63 named entity IDs** and escalating **5 → 10 → 50 → 100** kill ladders for ordinary mobs, plus boss encounters. Reuse neither ATM's own IDs, text, images, reward tables nor unsafe selection of NPC targets.
 
 - Per eligible common hostile mob, use a legible short independent tier ladder. Provisional challenge counts **5, 10, 50, 100** from the reference; tune per mob rarity, invulnerability, spawn category and player enjoyment. Rare bosses normally deserve a **first eligible kill/defeat** quest, not forced repeat 100 kills.
 - Native `type: "kill"` task with `entity` and `value` is demonstrated by the ATM10 archive, but must be confirmed on TMM's pinned FTB 2101.x before promotion. Don't confuse Hunter Path XP with FTB kill count: both may receive the same real event without double-awarding a quest.
@@ -64,7 +77,7 @@ Use a separate **Mob Hunts** chapter under Exploration & Combat. The user-suppli
 - Keep mobs visible by family or dimension (Undead, Illagers, Nether, End/Void, beasts, etc.) and distinguish native boss progression from optional personal combat-volume feats.
 - Each ladder is **permanent, one-time rewardable** (not repeatable job tickets). A player may progress independently of Bountiful job selection. Native FTB personal/team credit semantics, source attribution, farmed mob handling and claimant permissions require explicit QA.
 
-**Bounties & Contracts** in Introduction is only an onboarding chapter: craft/find the board, learn Decrees, accept one native Bountiful job, deliver, redeem and understand expirations. All repeatable tasks, board job lotteries, payouts, refresh and reputation remain in Bountiful's native runtime, currently with **three** live basic decree families: Hunting, Fishing, Culinary. It is distinct from Mob Hunts and from the **Hunter** specialty Path.
+**Bounties & Contracts** belongs under **Challenge**, alongside but mechanically distinct from permanent completionist achievements: find/craft the board, learn Decrees, accept native Bountiful jobs, deliver, redeem and understand expirations. Introduction merely links players to the bounty area. All repeatable tasks, board job lotteries, payouts, refresh and reputation remain in Bountiful's native runtime, currently with **three** live basic decree families: Hunting, Fishing, Culinary. It is distinct from Mob Hunts and from the **Hunter** specialty Path.
 
 ## 6. Paths & Transformations: one authoritative how-to chapter
 
@@ -74,9 +87,9 @@ Each branch must explicitly state: prerequisites, exact initiation action, wheth
 
 Mirror cross-mod initiation in both places: e.g. JAWR chapter describes the **native ritual/witchcraft** and Paths & Transformations describes the player's **actual form transition**. Goety and Forbidden Magic teach their respective Lich crafting/ritual mechanics; the central chapter owns the character choice, combined forms and mutual exclusion. Subsequent core skills remain global and not tied to Path as required by Progression.
 
-## 7. Challenges last: complete catalogs, not curriculum
+## 7. Challenge category last: completionist feats and native bounties
 
-**Chapter group at the very end**, with introductory explanation that these are persistent optional achievements and are designed to be undertaken over many hours. Proposed core achievements:
+**Last top-level category**, entirely independent of core progression. Its **Challenges** subsection contains persistent, optional one-time feats designed for many hours; its **Bounties** subsection introduces and links to renewable native Bountiful jobs and Decrees. These two systems must not share the same quest completion semantics. Proposed core one-time achievements:
 
 | Challenge | Correct evidence | Separate source chapter |
 | --- | --- | --- |
@@ -111,10 +124,11 @@ Other first-edge audit candidates already motivated by TMM's decisions/research:
 - [x] Food and Fishing must be separate chapters; Food has a relevant branch for each installed culinary/farming mod, with **Alcohol is Magic** still a distinct full subdiscipline.
 - [x] Fishing teaches each fish family and has a **five legitimately caught of every eligible species** goal; entire fish catalog completion belongs to optional Challenges.
 - [x] Introduce **Mob Hunts** with per-species credited kills, separate from renewable Bountiful jobs and the personal Hunter Path. ATM10 tier ladder is a design reference.
-- [x] Create a **final Challenges** category for eating foods, catching fish, learning glyphs and defeating mobs.
-- [x] Every installed mod must have accountable coverage; high-depth mods get chapters, minor playerside mods get sections, libraries/technical pins get an index record.
+- [x] Create a **final Challenge** category for permanent eat/catch/learn/kill mastery plus a separate **Bounties & Contracts** area with native renewable Bountiful gameplay.
+- [x] Every installed mod must have accountable coverage; high-depth mods get chapters, minor playerside mods get sections, libraries/technical pins get an index record. Type-A source roster [PR #500](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/500) validates the currently selected mod identities.
 - [x] One **Paths & Transformations** chapter teaches how to enter each current path/form, including exclusions and explicit allowed combinations.
 - [x] Bidirectional explicit-integration explanations, tracked by one evidence-backed compatibility registry.
+- [x] Five category structures: Informational, Regular Progress, Mod-Focused, Thematic, Challenge. Mod mainline ends with a defining difficult capstone; useful items, addons and compat are separate side branches. Occultism's ProjectE Philosopher's Stone finale is an explicit TMM crossover.
 - [ ] Audit exact live Packwiz index and installed registries, reconcile all roster entries with chapters, research holds, aliases and mod additions; produce machine-readable **mod coverage manifest + gap report**.
 - [ ] Stage split Food/Fishing and migrated Paths chapter with stable IDs, source-owned layouts, right art and updated deterministic canonical generators/locales/Packwiz through the designated quest/integration writers.
 - [ ] Add Mob Hunts/Challenges source catalogs and proven native/first-party counter adapters, assigning owner for shared Progression or quest events without a second XP engine.
@@ -126,7 +140,7 @@ Other first-edge audit candidates already motivated by TMM's decisions/research:
 - Exact kill milestone counts outside common farmable mobs; proposed 5/10/50/100 based on ATM10.
 - Whether an entire challenge's final reward should be one Godforged Pearl or additional cosmetics/trophies, after reward economy review.
 - Catalog policy for special fish caught by non-rod methods and food that is permanently restricted by chosen physiology; preserve “catch” and “eat” integrity.
-- Whether the new seven top-level groups render better than a smaller regrouped layout in the pinned FTB client. Source subject ownership is settled regardless.
+- Verify layout/scrolling of the new five categories in the pinned FTB client; category types and source ownership are settled, but rendered positions and cross-category link affordances require client review.
 
 ### A/B/C test acceptance
 
