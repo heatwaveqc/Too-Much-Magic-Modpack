@@ -98,7 +98,7 @@ Numbers are **explicit balance candidates**, *not installed attribute magnitudes
 
 ## Gate map
 
-**Entry:** available after verified Sea Dragon initiation and enrollment; these include basic body, movement, defense, and one-point future Fortune investment if the native species gate permits. **Adept:** available after demonstrated source-native growth plus a relevant earlier rank in the branch; don't require a hidden second spendable XP currency. **Mastery:** reserved for an attained native late Dragon milestone and the listed prerequisite, never handed out for merely having lots of MXP. Gate identifiers are **to be resolved against actual Dragon Survival provider data**, not invented in this document.
+**Entry:** available after verified Sea Dragon initiation and enrollment; these include basic body, movement and defense; **Abyssal Fortune starts at the Adept stage**, after appropriate native Sea Dragon development, but has no unrelated paid-skill prerequisite. **Adept:** available after demonstrated source-native growth plus a relevant earlier rank in the branch; don't require a hidden second spendable XP currency. **Mastery:** reserved for an attained native late Dragon milestone and the listed prerequisite, never handed out for merely having lots of MXP. Gate identifiers are **to be resolved against actual Dragon Survival provider data**, not invented in this document.
 
 Skill purchases must become **inactive** if the character is no longer eligible for Sea Dragon (subject to the approved Path compatibility matrix); ownership does not evaporate. A legitimate Sea Dragon Dracolich should retain its Sea Dragon tree while its Lich tree is independently governed. No species switching exploit to keep old species bonuses.
 
