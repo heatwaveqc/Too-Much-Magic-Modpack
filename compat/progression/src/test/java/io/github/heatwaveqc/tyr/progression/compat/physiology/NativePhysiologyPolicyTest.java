@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 /** Pure tests: neither optional mods nor a Minecraft runtime are required. */
 class NativePhysiologyPolicyTest {
-    private static final Rules RULES = new Rules(
-        Set.of("tyr_progression:newbie", "tyr_progression:normie"),
+    private static final Rules RULES = NativePhysiologyGateway.withApprovedPairData(
         Map.of(
             "tyr_progression:dryad", Set.of(Form.FOREST_DRAGON),
             "tyr_progression:sexy_demon", Set.of(Form.CAVE_DRAGON),
@@ -23,6 +22,14 @@ class NativePhysiologyPolicyTest {
         for (Form form : Form.values()) states.put(form, Presence.ABSENT);
         states.put(present, Presence.PRESENT);
         return new Snapshot(states);
+    }
+
+    @Test void universalCoreIsNotASecondSpecialist() {
+        assertEquals(Decision.ALLOW, mayJoin(false, "tyr_progression:core",
+            snapshot(Form.SEA_DRAGON), RULES));
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:core"), Snapshot.allAbsent(),
+            Form.JAWR_VAMPIRE, RULES));
     }
 
     @Test void ordinaryGraduatedPlayersMayAcquireAForm() {

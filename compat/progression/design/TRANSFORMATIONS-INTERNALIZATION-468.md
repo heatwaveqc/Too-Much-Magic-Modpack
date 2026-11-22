@@ -22,7 +22,7 @@ lich pools, original mechanics, and active abilities.
 - Mob alliances, retaliation, tag-driven exceptions and native form diagnostics
 - JAWR bottle bridging, original Cave/Center Dracolich geometry, renderer and network
 - Botania Thermalily and Mahou Catalyst native magic patches, not Path features
-- All 10 transplanted JUnit files, mixin definition and full original client assets
+- Nine retained transformation JUnit suites, mixin definitions and full original client assets; the obsolete human-only SpeciesEnrollmentPolicy test and implementation are intentionally retired
 
 Optional target mixins are pinned to known-native revisions and denied on unknown
 versions. The old independent `tmm_transformations` JAR must be **removed** from
@@ -32,7 +32,7 @@ the integration writer reconciles built artifacts, lock files and source manifes
 
 ## Validation gates
 
-- [ ] **A** complete Progression compile/test CI including 10 imported unit suites
+- [x] **A** Progression compile/test CI passed on checkpoint `99ca6db` (run 45067015422), including retained imported unit suites; rerun on each subsequent source commit
 - [ ] **A** static one-NeoForge-entry, mixin/plugin and asset validation
 - [ ] **A** integration writer reconcile pack/Packwiz/hash/source inventory to one JAR
 - [ ] **B** server launch without optional mods and representative subsets

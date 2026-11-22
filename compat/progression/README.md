@@ -207,8 +207,6 @@ unused placeholder Path IDs or grant other combinations implicitly.
 
 Invalid IDs, duplicates, and malformed arrays reject the *entire* data reload.
 Join checks use the existing server-only `ProgressionApi.join` veto and the
-native observation snapshots from #470. **Native-form acquisition interception
-is not yet wired** and the separate Transformations module is not retired by
-this source slice. Integration remains gated on that work and optional-mod,
+native observation snapshots from #470. **Native-form acquisition interception is wired in the stacked #515 source branch** and the separate Transformations module is source-internalized in stacked PR #515; its deployed JAR still awaits integration removal. Integration remains gated on that work and optional-mod,
 death-order, one-JAR, client, and gameplay verification. No additional button
 or standalone skill is introduced.
