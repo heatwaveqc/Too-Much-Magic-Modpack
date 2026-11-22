@@ -417,7 +417,7 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 259 or intro_count != 221:
+    if len(seen) != 273 or intro_count != 235:
         raise ValueError(f"Expected 259 objects / 221 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
