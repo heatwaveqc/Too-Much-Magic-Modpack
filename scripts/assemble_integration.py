@@ -19,7 +19,7 @@ RECORD = ROOT / "manifest/integration-lock.json"
 # Research branches are documentation workstreams, not runtime feature heads.
 # Explicit feature/fix/design/audit branches still require classification.
 TRACKED_PREFIXES = ("feature/", "fix/", "design/", "audit/")
-PACK_DIRS = ("config", "defaultconfigs", "kubejs", "mods")
+PACK_DIRS = ("config", "defaultconfigs", "kubejs", "mods", "resourcepacks")
 
 def git(*args: str, check: bool = True) -> str:
     cp = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
@@ -54,9 +54,9 @@ def refresh_packwiz_index() -> None:
     for name in entries:
         parts.extend(["[[files]]", 'file = "' + name + '"',
                       'hash = "' + sha256(ROOT / name) + '"'])
-        if name.startswith("mods/"):
+        if name.startswith(("mods/", "resourcepacks/")):
             if not name.endswith(".pw.toml"):
-                raise RuntimeError("Invalid mod file: " + name)
+                raise RuntimeError("Invalid downloaded metadata file: " + name)
             parts.append("metafile = true")
         parts.append("")
     (ROOT / "index.toml").write_text("\n".join(parts), encoding="utf-8")
