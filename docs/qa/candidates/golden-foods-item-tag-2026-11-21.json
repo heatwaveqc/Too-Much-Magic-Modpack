@@ -7,6 +7,14 @@
     {
       "id": "spectrum:enchanted_golden_carrot",
       "required": false
+    },
+    {
+      "id": "mynethersdelight:golden_egg",
+      "required": false
+    },
+    {
+      "id": "mynethersdelight:enchanted_golden_egg",
+      "required": false
     }
   ]
 }
