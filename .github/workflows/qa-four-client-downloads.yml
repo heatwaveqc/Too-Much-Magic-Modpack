@@ -1,0 +1,34 @@
+name: QA - verify four direct client download links
+on:
+  pull_request:
+    paths:
+      - 'mods/arcane-archives-reborn.pw.toml'
+      - 'mods/lava-fishing.pw.toml'
+      - 'mods/scarlet-springs-equestrian-decor-ssed.pw.toml'
+      - 'mods/unicorn-academy-bonded-magic-unofficial.pw.toml'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'scripts/verify_client_download_links.py'
+      - '.github/workflows/qa-four-client-downloads.yml'
+  push:
+    branches: ['fix/qa-cur-seforge-client-direct-downloads-20261122']
+permissions:
+  contents: read
+jobs:
+  exact-client-downloads:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate exact Packwiz metadata chain, hashes and official URLs offline
+        run: |
+          python3 -m py_compile scripts/verify_client_download_links.py
+          python3 scripts/verify_client_download_links.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+      - name: Actually download the four links as a Prism client would
+        run: python3 scripts/verify_client_download_links.py --download
+      - name: Do not assemble, boot or publish Minecraft here
+        run: echo "PASS: four repaired official ForgeCDN URLs work and original binary SHA-1s match. No game smoke authorized by PR."
