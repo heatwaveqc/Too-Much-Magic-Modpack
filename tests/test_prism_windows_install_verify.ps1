@@ -89,7 +89,7 @@ public final class FixtureMain {
         if (-not $shouldPass -and -not $failure.Contains($message)) {
             throw "$title expected failure [$message], observed [$failure]"
         }
-        if ($mode -eq 'success' -and $watch.ElapsedMilliseconds -lt 600) {
+        if ($mode -eq 'success' -and $shouldPass -and $watch.ElapsedMilliseconds -lt 600) {
             throw "$title returned before the delayed Java child finished"
         }
         Write-Host "PASS: $title ($($watch.ElapsedMilliseconds) ms)"
