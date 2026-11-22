@@ -93,7 +93,7 @@
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
-	quest.544D301000100001.quest_desc: ["Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag once the starter-hub update is installed, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path."]
+	quest.544D301000100001.quest_desc: ["Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path."]
 	quest.544D4D1100000001.title: "Punch a Tree"
 	quest.544D4D1100000001.quest_desc: ["Collect any qualifying log or stem to claim the separate 27-slot Curios pouch and 10 XP. This is an actual item-tag objective, not a fake first-log advancement. Avoid nesting portable bags. The Tome, two steaks and sleeping bag come from Tips & Tricks instead; completing this step does not force you to progress through every mining tier."]
 	quest.544D501000300000.title: "Make a Crafting Table"
@@ -127,7 +127,7 @@
 	quest.544D501001100000.title: "Take Your Magic Into the World"
 	quest.544D501001100000.quest_desc: ["Explore for magical materials, unusual biomes, structures or a first field adventure. Nature's Compass, FTB Chunks, and the exploration chapters help. You do not need an iron pickaxe or any specific specialty Path just to choose an exploratory route."]
 	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
-	quest.544D501001200000.quest_desc: ["Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. The separate five-category navigation redesign may arrive later. This orientation capstone does not finish the pack, require all side branches or force Normie graduation."]
+	quest.544D501001200000.quest_desc: ["Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. This orientation capstone does not finish the pack, require all side branches or force Normie graduation."]
 	quest.544D301000200001.title: "Tips & Tricks Index"
 	quest.544D301000200001.quest_desc: ["Welcome to the TMM starter and convenience hub. Start by claiming your personal supplies, then browse the independent groups: books and discovery, controls and interface, inventory/crafting, comfort and survival, and practical magic shortcuts. Nothing here is required for specialization or endgame progress."]
 	quest.544D502000200000.title: "Find Recipes with JEI"
