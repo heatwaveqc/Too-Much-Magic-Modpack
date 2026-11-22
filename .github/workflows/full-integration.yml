@@ -28,6 +28,8 @@ on:
       - 'manifest/first-party-runtime.json'
       - 'scripts/first_party_runtime.py'
       - 'tests/test_prism_qa_packaging.py'
+      - 'scripts/audit_client_inventory.py'
+      - 'tests/test_audit_client_inventory.py'
       - 'kubejs/server_scripts/silver_equipment_unification.js'
       - 'kubejs/startup_scripts/silver_equipment_stats.js'
       - 'scripts/build_full_integration_prism.py'
