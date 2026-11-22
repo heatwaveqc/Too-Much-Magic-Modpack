@@ -1,5 +1,5 @@
-name: Manual Owner-Authorized Mod Update Smoke
-run-name: Update smoke owner comment ${{ github.event.comment.id }}
+name: Manual Owner-Authorized Mod Update QA
+run-name: Update QA owner comment ${{ github.event.comment.id }}
 on:
   issue_comment:
     types: [created]
@@ -7,14 +7,14 @@ permissions:
   contents: read
 
 # An owner command is the sole entrypoint. No push, PR, schedule, or automatic retry
-# can assemble/download the entire mod roster or boot the game.
+# can assemble/download the entire mod roster, boot the game, or package Prism.
 concurrency:
   group: owner-authorized-update-smoke
   cancel-in-progress: false
 
 jobs:
   candidate-update-smoke:
-    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.event.issue.number == 291 && !github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' && github.event.comment.user.id == 22598785 && github.event.sender.id == 22598785 && startsWith(github.event.comment.body, '/tmm-update smoke ') && github.run_attempt == 1 }}
+    if: ${{ github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.event.issue.number == 291 && !github.event.issue.pull_request && github.event.comment.author_association == 'OWNER' && github.event.comment.user.id == 22598785 && github.event.sender.id == 22598785 && (startsWith(github.event.comment.body, '/tmm-update smoke ') || startsWith(github.event.comment.body, '/tmm-update prism ')) && github.run_attempt == 1 }}
     runs-on: ubuntu-latest
     timeout-minutes: 100
     permissions:
@@ -97,7 +97,9 @@ jobs:
           ref: test/full-integration
           fetch-depth: 0
           path: assembly
-          persist-credentials: false
+          # Only trusted, owner-authorized QA may push the isolated immutable
+          # snapshot tag. Never push shared branch heads or release assets.
+          persist-credentials: true
 
       - name: Assemble existing frozen first-party sources using normal clean integration contract
         working-directory: assembly
@@ -201,6 +203,126 @@ jobs:
           python3 scripts/verify_retirement.py
           printf '%s\n' "## Four-mod update trial: SERVER BOOT SMOKE PASSED" >> "$GITHUB_STEP_SUMMARY"
           printf '%s\n' "Candidate source: ${{ steps.authorization.outputs.sha }}; no integration branch writes, no Prism/client gameplay." >> "$GITHUB_STEP_SUMMARY"
+
+      # A client instance must reference a reachable immutable commit that
+      # contains *the updated* Packwiz index and the exact server-tested pins.
+      # This is a separate QA-only tag, never a shared branch push, promotion,
+      # rolling prerelease, or implicit approval of Ars Elemental beta.
+      - name: Freeze immutable isolated four-update Prism QA snapshot
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        working-directory: assembly
+        env:
+          QA_NONCE: ${{ steps.authorization.outputs.nonce }}
+          QA_CANDIDATE_SHA: ${{ steps.authorization.outputs.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$QA_NONCE"
+          test "$GITHUB_RUN_ATTEMPT" = 1
+          test "$(git branch --show-current)" = test/full-integration
+          test "$(git rev-parse HEAD)" = "$(git rev-parse refs/remotes/origin/test/full-integration)"
+          git add -- mods config defaultconfigs kubejs
+          # Record only the already completed server step as evidence. Never
+          # describe this artifact as client-tested, stable, or beta-approved.
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path('manifest/integration-lock.json')
+          data = json.loads(path.read_text())
+          trial = data['update_trial']
+          assert trial['candidate_sha'] == os.environ['QA_CANDIDATE_SHA']
+          assert trial['smoke_tested'] is False
+          trial['smoke_tested'] = True
+          trial['server_smoke_run_id'] = os.environ['GITHUB_RUN_ID']
+          trial['beta_ars_elemental_promotion_approved'] = False
+          data['client_tested'] = False
+          data['stable_promoted'] = False
+          path.write_text(json.dumps(data, indent=2) + '\n')
+          PY
+          git add -- manifest/mods.json manifest/integration-lock.json pack.toml index.toml compat/economy/build.gradle
+          # The immutable source must include all server-tested changes,
+          # but must not include compiled JARs or any unreviewed assets.
+          git diff --exit-code
+          if git diff --cached --quiet; then
+            echo "Refusing a Prism snapshot with no staged integration/update changes"
+            exit 1
+          fi
+          python3 scripts/validate.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+          git commit -m "test: freeze four-mod owner-authorized server-smoked Prism QA snapshot"
+          SNAPSHOT="$(git rev-parse HEAD)"
+          test "$SNAPSHOT" != "$QA_CANDIDATE_SHA"
+          git diff --exit-code HEAD
+          python3 scripts/validate.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+          TAG="qa-update-prism/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git tag -a "$TAG" -m "EXPERIMENTAL four-mod server-smoked Prism QA snapshot; includes Ars Elemental BETA; source $QA_CANDIDATE_SHA"
+          # Explicit tag-only push: the remote test/full-integration branch is
+          # not updated, and no stable/rolling prerelease is overwritten.
+          git push origin "refs/tags/$TAG"
+          test "$(git ls-remote --tags origin "refs/tags/$TAG^{}" | cut -f1)" = "$SNAPSHOT"
+          echo "QA_PRISM_SNAPSHOT=$SNAPSHOT" >> "$GITHUB_ENV"
+          echo "QA_PRISM_TAG=$TAG" >> "$GITHUB_ENV"
+          echo "Isolated Prism source commit: $SNAPSHOT"
+          echo "Isolated owner-only QA tag: $TAG"
+
+      - name: Obtain exact official packwiz installer bootstrap (experimental Prism only)
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+
+      - name: Verify immutable GitHub Packwiz snapshot is reachable
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        working-directory: assembly
+        run: |
+          set -euo pipefail
+          curl -fL --retry 5 --retry-delay 2 --retry-all-errors \
+            -o "${{ runner.temp }}/four-mod-remote-pack.toml" \
+            "https://raw.githubusercontent.com/heatwaveqc/Too-Much-Magic-Modpack/$QA_PRISM_SNAPSHOT/pack.toml"
+          cmp pack.toml "${{ runner.temp }}/four-mod-remote-pack.toml"
+
+      - name: Produce single-level directly importable experimental four-mod Prism ZIP
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        working-directory: assembly
+        env:
+          TMM_UPDATE_CANDIDATE_SHA: ${{ steps.authorization.outputs.sha }}
+        run: |
+          set -euo pipefail
+          IFS=: read -r -a jars <<< "$SMOKE_EXTRA_MOD_JARS"
+          test "${#jars[@]}" -eq 4
+          python3 scripts/build_full_integration_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "$QA_PRISM_SNAPSHOT" "${jars[@]}"
+          test -f "${{ runner.temp }}/Too-Much-Magic-Full-Integration-Prism.zip/instance.cfg"
+          test -f "${{ runner.temp }}/Too-Much-Magic-Full-Integration-Prism.zip/BUILD-MANIFEST.json"
+          python3 - <<'PY'
+          import json, os, pathlib
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'Too-Much-Magic-Full-Integration-Prism.zip'
+          meta = json.loads((root/'BUILD-MANIFEST.json').read_text())
+          assert meta['integration_commit'] == os.environ['QA_PRISM_SNAPSHOT']
+          assert meta['update_trial']['candidate_sha'] == os.environ['TMM_UPDATE_CANDIDATE_SHA']
+          assert len(meta['custom_jar_sha256']) == 4
+          assert meta['client_tested'] is False and meta['stable_promoted'] is False
+          assert meta['personal_settings']['public_release'] is False
+          print('PASS: experimental client ZIP locked to exact four-mod server-smoked snapshot')
+          PY
+
+      - name: Upload experimental four-mod Prism QA ZIP (no public release)
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-Four-Mod-Update-Prism-EXPERIMENTAL
+          path: ${{ runner.temp }}/Too-Much-Magic-Full-Integration-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Report experimental Prism QA package as built, NOT client-tested
+        if: ${{ steps.authorization.outputs.mode == 'prism' }}
+        run: |
+          echo "## Experimental four-mod Prism QA package PASSED; no client launch or gameplay acceptance" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source commit: \`$QA_PRISM_SNAPSHOT\`; immutable tag: \`$QA_PRISM_TAG\`. Includes Ars Elemental beta; no promotion." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Retain update hashes, Packwiz diff and server logs (never third-party JARs)
         if: ${{ always() }}

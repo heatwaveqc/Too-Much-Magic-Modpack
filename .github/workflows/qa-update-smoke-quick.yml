@@ -10,6 +10,7 @@ on:
       - 'tests/test_prepare_qa_update_economy_compile.py'
       - '.github/workflows/qa-update-smoke.yml'
       - '.github/workflows/qa-update-smoke-quick.yml'
+      - 'docs/MOD-UPDATE-QA-PROCESS.md'
   push:
     branches:
       - 'feature/manual-update-smoke-20261121'
@@ -22,6 +23,7 @@ on:
       - 'tests/test_prepare_qa_update_economy_compile.py'
       - '.github/workflows/qa-update-smoke.yml'
       - '.github/workflows/qa-update-smoke-quick.yml'
+      - 'docs/MOD-UPDATE-QA-PROCESS.md'
 permissions:
   contents: read
 jobs:
@@ -47,7 +49,12 @@ jobs:
           for other in ('  push:', '  pull_request:', '  schedule:', '  workflow_call:'):
               assert other not in text, f'Automatic or reusable game run event {other}'
           for rule in ('github.event.comment.user.id == 22598785', "github.run_attempt == 1",
-                       '/tmm-update smoke ', 'ref: ${{ steps.authorization.outputs.sha }}'):
+                       '/tmm-update smoke ', '/tmm-update prism ',
+                       'ref: ${{ steps.authorization.outputs.sha }}',
+                       "steps.authorization.outputs.mode == 'prism'",
+                       'git push origin "refs/tags/$TAG"',
+                       'python3 scripts/build_full_integration_prism.py',
+                       'Too-Much-Magic-Four-Mod-Update-Prism-EXPERIMENTAL'):
               assert rule in text, f'Missing exact-SHA guard: {rule}'
-          print('PASS: update server boot is owner-only, single-attempt and SHA-locked')
+          print('PASS: update smoke and experimental Prism are owner-only, single-attempt, server-gated and SHA-locked')
           PY

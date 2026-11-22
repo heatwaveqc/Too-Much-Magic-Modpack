@@ -64,8 +64,10 @@ class Fake:
 
 class GuardTests(unittest.TestCase):
     def test_exact_command_only(self):
-        self.assertEqual(m.parse(COMMAND), (BRANCH,SHA,NONCE))
+        self.assertEqual(m.parse(COMMAND), ("smoke",BRANCH,SHA,NONCE))
+        self.assertEqual(m.parse(COMMAND.replace(" smoke "," prism ")), ("prism",BRANCH,SHA,NONCE))
         for value in [COMMAND+"\nexit 0", COMMAND+" extra",
+                      COMMAND.replace(" smoke "," quick "), COMMAND.replace(" smoke "," promote "),
                       COMMAND.replace(SHA,SHA[:-1]), COMMAND.upper(),
                       "/tmm-update smoke refs/heads/main "+SHA+" "+NONCE,
                       "/tmm-update smoke experiment/x "+SHA+" "+NONCE]:
@@ -75,7 +77,9 @@ class GuardTests(unittest.TestCase):
         e = event()
         f = Fake(e)
         with patch.object(m, "get", side_effect=f):
-            self.assertEqual(m.validate(e,"token",NOW),(BRANCH,SHA,NONCE))
+            self.assertEqual(m.validate(e,"token",NOW),("smoke",BRANCH,SHA,NONCE))
+            e["comment"]["body"] = COMMAND.replace(" smoke "," prism ")
+            self.assertEqual(m.validate(e,"token",NOW),("prism",BRANCH,SHA,NONCE))
         self.assertEqual(f.writes, [])
     def test_fail_closed(self):
         modifiers=[
