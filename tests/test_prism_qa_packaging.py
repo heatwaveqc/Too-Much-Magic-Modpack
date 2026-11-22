@@ -143,7 +143,6 @@ def main() -> None:
                 assert "mmc-pack.json" in z.namelist()
                 expected = {
                     "minecraft/options.txt",
-                    "minecraft/tmm-qa-install-verify.ps1",
                     "minecraft/tmm-qa-expected-mods.json",
                     "minecraft/tmm-qa-preferences.ps1",
                     "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd",
@@ -160,11 +159,19 @@ def main() -> None:
                 cfg = z.read("instance.cfg").decode()
                 assert "PreLoadCommand=powershell.exe " in cfg
                 assert "PostExitCommand=powershell.exe " in cfg
-                assert 'PreLaunchCommand=powershell.exe ' in cfg and "tmm-qa-install-verify.ps1" in cfg
+                expected_launch = (f'PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar '
+                                   f'-s client https://raw.githubusercontent.com/heatwaveqc/Too-Much-Magic-Modpack/{commit}/pack.toml')
+                assert cfg.splitlines().count(expected_launch) == 1, "Prism must use direct frozen Packwiz prelaunch"
+                assert "PreLaunchCommand=powershell.exe" not in cfg
+                assert "tmm-qa-install-verify.ps1" not in cfg
+                assert "minecraft/tmm-qa-install-verify.ps1" not in z.namelist()
                 from verify_qa_inventory import inventory, for_side
                 expected_mods = json.loads(z.read("minecraft/tmm-qa-expected-mods.json"))
                 assert expected_mods == {"schema": 1, "source_commit": commit, "mods": for_side(inventory(ROOT), "client", addons)}
                 assert "raw.githubusercontent.com" in cfg and commit in cfg
+                guide = z.read("INSTALL-AND-TEST.txt").decode()
+                assert "scripts/audit_client_inventory.py" in guide, "Optional manual QA audit instructions missing"
+                assert "Windows QA pre-launch checks" not in guide
                 meta = json.loads(z.read("BUILD-MANIFEST.json"))
                 assert meta["personal_settings"]["public_release"] is False
                 assert meta["dev_only_preferences"] if "dev_only_preferences" in meta else True
