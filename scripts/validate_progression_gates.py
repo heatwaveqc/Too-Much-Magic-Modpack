@@ -19,6 +19,32 @@ def main():
         recipe = read(f"kubejs/data/projecte/recipe/{key}.json")
         assert recipe["neoforge:conditions"] == [{"type": "neoforge:false"}]
         assert recipe["result"]["id"] == "projecte:philosophers_stone"
+    mk1_gates = {
+        "collector_mk1": {
+            "pattern": ["GPG", "GDG", "GFG"],
+            "keys": {
+                "D": {"tag": "c:storage_blocks/diamond"},
+                "F": {"item": "minecraft:furnace"},
+                "G": {"item": "minecraft:glowstone"},
+                "P": {"item": "projecte:philosophers_stone"},
+            },
+        },
+        "relay_mk1": {
+            "pattern": ["OPO", "ODO", "OOO"],
+            "keys": {
+                "D": {"tag": "c:storage_blocks/diamond"},
+                "O": {"tag": "c:obsidians/normal"},
+                "P": {"item": "projecte:philosophers_stone"},
+            },
+        },
+    }
+    for name, expected in mk1_gates.items():
+        recipe = read(f"kubejs/data/projecte/recipe/{name}.json")
+        assert recipe["type"] == "minecraft:crafting_shaped" and recipe["category"] == "misc"
+        assert recipe["pattern"] == expected["pattern"] and recipe["key"] == expected["keys"]
+        assert sum(row.count("P") for row in recipe["pattern"]) == 1
+        assert recipe["pattern"][0][1] == "P"
+        assert recipe["result"] == {"count": 1, "id": f"projecte:{name}"}
     ritual = read("kubejs/data/tmm/recipe/ritual/equivalent_exchange.json")
     assert ritual["type"] == "occultism:ritual" and ritual["ritual_type"] == "occultism:craft"
     assert ritual["activation_item"] == {"item": stone["activation_item"]} and ritual["duration"] == 600
@@ -50,7 +76,7 @@ def main():
         assert p in names and (ROOT / p).exists()
     features = {f["id"]:f["state"] for f in read("manifest/feature-checklist.json")["features"]}
     assert all(features.get(name) != "player_pass" for name in ("end.projecte_start", "end.projecte_high"))
-    print("PASS: source-only native ritual, both grid suppressions, 12 closed tags/40 alternatives, 14 direct flowers + Red upgrade, no obsolete script.")
+    print("PASS: source-only native ritual, both grid suppressions, Stone-gated MK1 Collector/Relay, 12 closed tags/40 alternatives, 14 direct flowers + Red upgrade, no obsolete script.")
     print("PENDING: actual loaded recipes, acquisition, transmutation and Matter Upgrader bypasses.")
 
 if __name__ == "__main__":
