@@ -1,3 +1,11 @@
+# Latest checkpoint — Conflux optional glyphs / Additions learning bridge
+
+- Added ars-conflux-pinned-content.md;4recipesall160XP+exactconditions, defaultNearby/Phalanxfalse, actualNEGabsent/currentnooverridesboundedsearch. NearbyTier3/base30/clamp8+3AOE1..32/spherecenterexecutor/casterexcluded/sortedtargets/cloneperbranch. Alliesnativeownerchain/team/provider; noAllies.registercallerandnoSauceSavedDataread, NOTBookfriendsalias.
+- **Two-sidedAdditions discovery:** ConfluxdynamicdefaultselectedBOTTOMpackwritesmergedforgotten_knowledge exclusiontag fornamespacesConflux+7absentcompatfamilies, NOTars_elemental. AdditionsCodexgetPossible filtersregistered/enabled/not-tagged/notstarting/unknown, thenmatchingTier; AncientTier3fallback480XP. Therefore currentPhalanxregisteredTier3 may beAncientCodexcandidate evenConfluxScribesrecipefalse; source-supportedconditionalpath, no fullcodexacquisition/liveunlockclaim. AddedcorrectionElementalPhalanxreport/linkAdditionsprofile. FullAdditionsCFRexternal additions-2130-fresh nowready.
+- **Next Conflux billing/budgets/carriers/discount/reflection/installedoptionalbridges**, nativegeometry andeffectpayment recipients; currentcontentbranchclosednotwholeprofile. ThenElementalfull184recipe/registry/progression/pilotconsolidation, Elemancy/Additionsfullroutes/combinedArs/othermajors. Current9complete33researching1staleof43/nohardblocker/hourlyactive.40Elementalcompanions/1Confluxcompanion; GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-22 23:17UTC current Phalanx/worldgen deltas
 
 - Added ars-elemental-pinned-phalanx-worldgen.md;40Elementalcompanions. **Current0.7.11.3UNCONDITIONALLY registersPhalanx**, javap144/147beforeemptyproduction240/246. Corrected priorcurrentConfluxreceipt: wrapperonlytogglesemptybranch now, optionstillgatesConflux160XPrecipe(defaultfalse). Phalanxnative3/175, currentHomingbasicIgnores(no oldanimalexclusion), compatiblePierce/Amplifyremoved, lifetime1200+200D, age20/indexstagger/half-lifeauto-launch, noSave/visuals. Confluxbilling/carrier overlaynotyetclosed.

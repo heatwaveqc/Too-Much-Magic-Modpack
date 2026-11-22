@@ -209,3 +209,5 @@ Current0.7.11.3 [two forest rituals](mods/ars-elemental-pinned-forest-rituals.md
 Elemental custom book/3Crush and Sauce Plinth recipients now audited in linked companions;39Elementalcompanions. Current9/43complete unchanged; remaining delta/Conflux/fullwalkthrough gaps remain.
 
 Current Elemental remaining identified native version deltas now traced in [Phalanx/worldgen receipt](mods/ars-elemental-pinned-phalanx-worldgen.md);40companions. Full184recipe/registry/profile/pilot and Conflux combined review still open; current9/43complete unchanged.
+
+Conflux optionalcontent/all4recipes and AdditionsCodex recipient now traced in [content companion](mods/ars-conflux-pinned-content.md); fullConfluxbilling/carriers/installedcompat/nativeAdditionsroute remain open. No profile promotion.
