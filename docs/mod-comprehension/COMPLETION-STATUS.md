@@ -205,3 +205,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 Current0.7.11.3 [two forest rituals](mods/ars-elemental-pinned-forest-rituals.md) close8registeredrituals across37companions; inherited native feature/biome recipients inspected. Version-change impact on other systems still open; no completion promotion.
 
 2026-11-22 integration17a564d85b5ee3f0f4f830b68397e54a824a768e adds Ars Conflux0.1.56: exact552542byte artifact hash matched, metadata/config/initial mixin receipt added; not source-complete. **Current43profiles:9complete,33researching,1stale (34unfinished).** Historical42counts predate added scope. Current Elemental Horn/LifeLink/Homing and Sauce74.113 recipient review recorded;38Elementalcompanions. No runtime acceptance or hard blocker.
+
+Elemental custom book/3Crush and Sauce Plinth recipients now audited in linked companions;39Elementalcompanions. Current9/43complete unchanged; remaining delta/Conflux/fullwalkthrough gaps remain.

@@ -1,3 +1,11 @@
+# Latest checkpoint — protected book/Crush and current Plinth
+
+- Added ars-elemental-pinned-book-crush.md: invincible_book actualsamebookcomponentcopy/P4Etrue,5pedestalNetherite+4Essences/2000Sourcebefore210counter, flagalreadytrue rejects. ItemEntity.hurt immunityexceptbypass-tag; expiryhandlerrequestssetUnlimitedLifetime/extraLife0 butloaderrecipientnotexactverified, no universalnolosspromise. JEIcustomcategory/nativeSpellBooksappendedpage. Crush3recipes expected3.5Powder/4Meal/3.5String, independentrolls/maxRange1; Sensitiveitemcap4+4AOE+4Pierce/consumeunitbeforespawn; ordinarywoolblockturnsAIR.39Elementalcompanions.
+- Sauce74.113reportnowPlinthrecipe/use/fullstackdirectset/inheritedmaxStack1 capabilityboundary, unchangedApparatusPedestalPatch consume1ifstack>1/remainderspawn. Existing61.100recipebutmissingcurrentblockclass; no measuredautomation/throughput. NewselectednativeSingleItemTile andCrushRecipeinclinners inelemental-parent-fresh.
+- **Next:** Elemental remainingdelta registry/Phalanxstyles/ModWorldgen/Vexingcarver/Evaporate; currentConflux fullbilling/carrier/config/4recipeconditions andinstalledbridges; full184recipe/registry/pilot/profile consolidation. Book/3Crush/Plinthno longerpending. ThenElemancy/Additions/combinedArs/othermajors. Current9complete33researching1staleof43;nohardblocker/hourlyactive. GitlogpushedSHA. Loaderupstreammovingbranchconsultedonlyforuncertainty, notpromotedasexact21.1runtimeproof.
+
+---
+
 # Latest checkpoint — 2026-11-22 22:15UTC current recipients and Conflux scope
 
 - Fetched17a564d85b5ee3f0f4f830b68397e54a824a768e; **NEW Ars Conflux0.1.56** manifest/pin, exact552542bytes/SHA1 97f3c31c624df19209db648e4fe6dd2e67e08d80 downloaded externally. FullCFRconflux-0156-fresh; nojarjar, metadata/config/initialmixins/4recipeinventory documentedin ars-conflux.md. Installed scope now43profiles=9complete33researching1stale. Parentstillresearching; old42scopehistorical.
