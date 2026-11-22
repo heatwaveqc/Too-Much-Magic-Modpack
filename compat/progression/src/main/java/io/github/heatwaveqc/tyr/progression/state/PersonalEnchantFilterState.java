@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import io.github.heatwaveqc.tyr.progression.foundation.PersonalEnchantFilterPolicy;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -74,9 +73,9 @@ public final class PersonalEnchantFilterState {
      */
     public Set<ResourceLocation> exclusions(boolean skillUnlocked) {
         if (!skillUnlocked) return Set.of();
-        Set<ResourceLocation> result = new LinkedHashSet<>();
-        for (ItemStack book : slots) enchantmentId(book).ifPresent(result::add);
-        return Set.copyOf(result);
+        List<ResourceLocation> bookIds = new ArrayList<>(SLOTS);
+        for (ItemStack book : slots) bookIds.add(enchantmentId(book).orElse(null));
+        return PersonalEnchantFilterPolicy.excluded(true, bookIds);
     }
 
     /** Call only from a server-validated escrow transaction. */
