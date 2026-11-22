@@ -1,0 +1,13 @@
+name = "Cathobb's Unified 64 v40 (public CurseForge release)"
+filename = "cathobbs-Unified-v40-64x-CANDIDATE.zip"
+side = "client"
+
+[download]
+url = "https://mediafilez.forgecdn.net/files/9411/491/cathobbs-Unified-v40-64x-CANDIDATE.zip"
+hash-format = "sha1"
+hash = "6195e347306d2567a74d3e49542eec36c33b9e51"
+
+[update]
+[update.curseforge]
+file-id = 9411491
+project-id = 1771113

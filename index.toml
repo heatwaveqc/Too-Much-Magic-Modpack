@@ -1436,6 +1436,11 @@ hash = "764c9077757330d64191b2461bb5d2277025bd9fe140c80d4a65a14e9502e8ff"
 metafile = true
 
 [[files]]
+file = "mods/aquamirae-nouveau.pw.toml"
+hash = "1173f78d8a383d5b98ea3213c928dd5d5b427e79e567770f99e698811c9ae73a"
+metafile = true
+
+[[files]]
 file = "mods/aquamirae.pw.toml"
 hash = "a98156f7d9d9a37ec6bde1e64ce69ad4d7448935fd59227f981dba9913170e9f"
 metafile = true
@@ -2583,4 +2588,9 @@ metafile = true
 [[files]]
 file = "mods/yungs-extras.pw.toml"
 hash = "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d"
+metafile = true
+
+[[files]]
+file = "resourcepacks/cathobb-unified-64.pw.toml"
+hash = "4e414e3b03da6cbd0c30f9562686e461b03790765ef1b733137190e381734f01"
 metafile = true
