@@ -795,6 +795,1462 @@
           "per_rank": 0.001
         }
       ]
+    },
+    {
+      "id": "tyr_progression:empty_hand_force",
+      "title": "Empty Hand Force",
+      "description": "+0.30 unarmed damage per rank (+15 max), no normal armor. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 50,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 0.175,
+          "operation": "add_value",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:flowing_counter",
+      "title": "Flowing Counter",
+      "description": "Retaliation against real hostile melee hits, capped 10 damage, 40-tick cooldown. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:empty_hand_force"
+      ],
+      "effects": [
+        {
+          "type": "counter_attack",
+          "per_rank": 0.2,
+          "target": "#tyr_progression:monk_training_hostiles",
+          "unarmored": true,
+          "params": {
+            "max_damage": "4",
+            "cooldown_ticks": "40",
+            "chance": "1",
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:empty_hand_precision",
+      "title": "Empty Hand Precision",
+      "description": "+1 percentage point/rank chance of 1.5x fist strike (20% max). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:empty_hand_force"
+      ],
+      "effects": [
+        {
+          "type": "critical_hit",
+          "per_rank": 0.005,
+          "target": "*",
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "multiplier": "1.5",
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:fist_tempo",
+      "title": "Fist Tempo",
+      "description": "+0.5% fist attack speed/rank (10% max). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 20,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:empty_hand_force"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_speed",
+          "per_rank": 0.005,
+          "operation": "add_multiplied_base",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:paragon_force",
+      "title": "Paragon Force",
+      "description": "+2%/rank final fist damage (20% max), not duplicate of native Iron Palm. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 10,
+      "required_rank": 17,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:empty_hand_precision"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 0.02,
+          "operation": "add_multiplied_base",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:pressure_points",
+      "title": "Pressure Points",
+      "description": "+1%/rank chance of short Slowness after real fist hit (5% max), bosses excluded. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 5,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:empty_hand_precision"
+      ],
+      "effects": [
+        {
+          "type": "status_on_hit",
+          "per_rank": 0.01,
+          "target": "*",
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "effect": "minecraft:slowness",
+            "duration_ticks": "40",
+            "amplifier": "0",
+            "chance": "1",
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:empty_hand_paragon",
+      "title": "Empty Hand Paragon",
+      "description": "+5 fist damage and +3 armor unarmored; Curios allowed; Dragon + late milestones required. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Martial Body",
+      "max_rank": 1,
+      "required_rank": 20,
+      "rank_costs": [
+        5
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:paragon_force",
+        "tyr_progression:iron_body"
+      ],
+      "requires_milestones": [
+        "tyr_progression:dragon_defeated"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:attack_damage",
+          "per_rank": 5,
+          "operation": "add_value",
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 3,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:natural_poise",
+      "title": "Natural Poise",
+      "description": "+0.4 natural armor/rank (+16); effective defense audited versus already free armor. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 40,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 0.25,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:iron_body",
+      "title": "Iron Body",
+      "description": "+0.25 armor toughness/rank (+10), no normal armor. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 40,
+      "required_rank": 5,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:natural_poise"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor_toughness",
+          "per_rank": 0.25,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_vitality",
+      "title": "Inner Vitality",
+      "description": "+0.5 maximum health/rank (+20 HP), no normal armor. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 40,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:natural_poise"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:max_health",
+          "per_rank": 0.5,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:quick_recovery",
+      "title": "Quick Recovery",
+      "description": "+0.1 HP per second/rank passive regeneration (+2 HP/s). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 20,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_vitality"
+      ],
+      "effects": [
+        {
+          "type": "delayed_regeneration",
+          "per_rank": 0.1,
+          "unarmored": true,
+          "params": {
+            "interval_ticks": "20",
+            "after_damage_ticks": "80"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:elemental_tempering",
+      "title": "Elemental Tempering",
+      "description": "+0.75%/rank reduction of remaining fire, explosion and magic damage (15% max). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 20,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:iron_body"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.00625,
+          "damage_tag": "#minecraft:is_fire",
+          "unarmored": true
+        },
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.00625,
+          "damage_tag": "#minecraft:is_explosion",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:hunger_mastery",
+      "title": "Hunger Mastery",
+      "description": "+1%/rank reduction in remaining exhaustion (20% max), above free Hunger Discipline. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Conditioning",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_vitality"
+      ],
+      "effects": [
+        {
+          "type": "hunger_efficiency",
+          "per_rank": 0.02,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:body_speed",
+      "title": "Body Speed",
+      "description": "+0.4%/rank base movement speed (+12%), conditionally unarmored. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 30,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:movement_speed",
+          "per_rank": 0.0025,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:balanced_landing",
+      "title": "Balanced Landing",
+      "description": "+1%/rank reduction of remaining fall damage (20% max), after free Feather Fall. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:body_speed"
+      ],
+      "effects": [
+        {
+          "type": "fall_reduction",
+          "per_rank": 0.5,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:evasion",
+      "title": "Evasion",
+      "description": "+0.5%/rank dodge against eligible direct attacks (10% max), not an immunity. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:body_speed"
+      ],
+      "effects": [
+        {
+          "type": "evasion",
+          "per_rank": 0.005,
+          "target": "#tyr_progression:monk_training_hostiles",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:glide_control",
+      "title": "Glide Control",
+      "description": "+1%/rank post-Dragon Momentum Glide control (20% max). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 20,
+      "required_rank": 17,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:balanced_landing"
+      ],
+      "requires_milestones": [
+        "tyr_progression:dragon_defeated"
+      ],
+      "effects": [
+        {
+          "type": "glide_control_bonus",
+          "per_rank": 0.005,
+          "unarmored": true,
+          "params": {
+            "requires_milestone": "tyr_progression:dragon_defeated"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:momentum_step",
+      "title": "Momentum Step",
+      "description": "+1%/rank sprint/strafe control bonus (20% max), no creative flight. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 20,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:body_speed"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:movement_speed",
+          "per_rank": 0.01,
+          "operation": "add_multiplied_base",
+          "unarmored": true,
+          "params": {
+            "requires_sprinting": "true"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:graceful_step",
+      "title": "Graceful Step",
+      "description": "+0.015 knockback resistance/rank (0.30 maximum). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Footwork",
+      "max_rank": 20,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:knockback_resistance",
+          "per_rank": 0.015,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:barehand_efficiency",
+      "title": "Barehand Efficiency",
+      "description": "+5%/rank legitimate final fist mining speed (+150% max), above free Hand Mining. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Hands As Tools",
+      "max_rank": 30,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "break_speed",
+          "per_rank": 0.05,
+          "target": "*",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:looting_palm",
+      "title": "Looting Palm",
+      "description": "+1.25%/rank chance for one extra ordinary mob drop on direct fist kill (25%), no boss loot. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Hands As Tools",
+      "max_rank": 20,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:barehand_efficiency"
+      ],
+      "effects": [
+        {
+          "type": "ordinary_drop_bonus",
+          "per_rank": 0.01,
+          "target": "#tyr_progression:monk_training_hostiles",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:toolless_reach",
+      "title": "Toolless Reach",
+      "description": "+0.075 block reach/rank (+1.5 blocks), while fist is empty. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Hands As Tools",
+      "max_rank": 20,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:block_interaction_range",
+          "per_rank": 0.075,
+          "operation": "add_value",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:worldly_cultivation",
+      "title": "Worldly Cultivation",
+      "description": "+1%/rank chance of additional ordinary mature-crop drop (20%). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Hands As Tools",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:toolless_reach"
+      ],
+      "effects": [
+        {
+          "type": "crop_bonus",
+          "per_rank": 0.01,
+          "target": "minecraft:wheat",
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "crop_bonus",
+          "per_rank": 0.01,
+          "target": "minecraft:carrots",
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "crop_bonus",
+          "per_rank": 0.01,
+          "target": "minecraft:potatoes",
+          "empty_hand": true,
+          "unarmored": true
+        },
+        {
+          "type": "crop_bonus",
+          "per_rank": 0.01,
+          "target": "minecraft:beetroots",
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_reservoir",
+      "title": "Inner Reservoir",
+      "description": "Extends every global Core Reservoir capacity family, much higher personal mana/EV/Psi endgame limits; no external tanks. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 30,
+      "required_rank": 1,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:enlightenment"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "per_rank": 5,
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 5,
+          "unarmored": true,
+          "attribute": "irons_spellbooks:max_mana",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 50,
+          "unarmored": true,
+          "attribute": "psi:total_psi",
+          "operation": "add_value"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_wellspring",
+      "title": "Inner Wellspring",
+      "description": "Extends every global Core Wellspring regeneration family, improved personal recovery. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 30,
+      "required_rank": 1,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:enlightenment"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "per_rank": 0.2,
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 0.1,
+          "unarmored": true,
+          "attribute": "irons_spellbooks:mana_regen",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 1,
+          "unarmored": true,
+          "attribute": "psi:regen",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 0.1,
+          "unarmored": true,
+          "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+          "operation": "add_value"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_thrift",
+      "title": "Inner Thrift",
+      "description": "Extends every Core Thrift efficiency family; provisional +1%/rank bounded actual cost discount (20%), MXP tracks nominal. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_reservoir"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "per_rank": 0.003,
+          "unarmored": true,
+          "attribute": "goety:soul_discount",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 40,
+          "unarmored": true,
+          "attribute": "neovitae:sigil_cost_reduction",
+          "operation": "add_value"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_potency",
+      "title": "Inner Potency",
+      "description": "Extends every Core Potency family; provisional +1%/rank magic potency (20%). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 20,
+      "required_rank": 5,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_wellspring"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "per_rank": 0.2,
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 0.05,
+          "unarmored": true,
+          "attribute": "irons_spellbooks:spell_power",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 2,
+          "unarmored": true,
+          "attribute": "goety:spell_potency",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 0.05,
+          "unarmored": true,
+          "attribute": "eidolon_repraised:magic_power",
+          "operation": "add_value"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:arcane_attunement",
+      "title": "Arcane Attunement",
+      "description": "+0.5%/rank native casting speed/cooldown throughput where provider supports it (5%). QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 10,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_potency"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "per_rank": 0.005,
+          "unarmored": true,
+          "attribute": "irons_spellbooks:cast_time_reduction",
+          "operation": "add_value"
+        },
+        {
+          "type": "attribute",
+          "per_rank": 0.005,
+          "unarmored": true,
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "operation": "add_value"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:inner_fortune",
+      "title": "Inner Fortune",
+      "description": "+1 true Luck attribute per rank (+10); not Fortune or Looting. QA candidate: source handler present; numbers pending player testing.",
+      "lane": "Magical Cultivation",
+      "max_rank": 10,
+      "required_rank": 17,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_thrift"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:luck",
+          "per_rank": 1,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
     }
   ],
   "enrollment": "sunset",
