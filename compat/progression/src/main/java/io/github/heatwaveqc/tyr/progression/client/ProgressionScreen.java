@@ -112,9 +112,21 @@ public final class ProgressionScreen extends Screen {
         if(n.get("auto").getAsBoolean())return 0xFF283C5B;
         return 0xFF302E3B;
     }
+    /**
+     * Our progression canvas supplies its own opaque backdrop in render().
+     * Screen.render() calls renderBackground() before rendering widgets;
+     * invoking the vanilla implementation here would draw the menu blur
+     * OVER the already-painted skills when super.render() runs at the end.
+     * Keep this no-op so super.render() still draws buttons and handles
+     * narration without a second blur/darkening pass.
+     */
+    @Override public void renderBackground(GuiGraphics g,int mx,int my,float partial){
+        // Intentionally no blur, panorama or additional background draw.
+    }
     @Override public void render(GuiGraphics g,int mx,int my,float partial){
-        renderBackground(g,mx,my,partial);
-        g.fill(4,4,width-4,height-4,0xF21A1725);
+        // Fully opaque: never show a blurred/dimmed world through the skills.
+        g.fill(0,0,width,height,0xFF13101D);
+        g.fill(4,4,width-4,height-4,0xFF1A1725);
         line(g,"PROGRESSION",12,12,width-24,0xFFE8DFC9);
         line(g,title(data,pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
         JsonObject chosen=nodes.get(selection);
