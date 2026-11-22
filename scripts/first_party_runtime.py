@@ -165,32 +165,55 @@ def main():
     args = p.parse_args()
     rows = selected()
     if args.action == "build":
-        for directory, mod, jar in rows:
-            if mod == "tmm_economy":
-                # The server can boot even if an optional *client* dependency
-                # is present with a rejected qualified native version.
-                subprocess.run([sys.executable, "-m", "unittest", "discover",
-                                "-s", str(directory / "tools"),
-                                "-p", "test_verify_client_dependency_closure.py", "-v"],
-                               cwd=ROOT, check=True)
-                with tempfile.TemporaryDirectory(prefix="tmm-economy-classpath-") as temp:
-                    mods = Path(temp) / "verified-mods"
-                    subprocess.run([sys.executable, str(directory / "tools/fetch_compile_classpath.py"), str(mods)], cwd=ROOT, check=True)
-                    subprocess.run(["gradle", "--no-daemon", f"-PtmmCompileModsDir={mods}", "clean", "build"], cwd=directory, check=True)
-                    # Gate the exact packaged metadata against the *real*
-                    # hash-verified Jade JAR, including Implementation-Version.
+        # All provider archives are first verified against their selected
+        # Packwiz hashes. Keep them until *all* first-party JARs are built, so
+        # one common gate can inspect every compiled dependency declaration.
+        with tempfile.TemporaryDirectory(prefix="tmm-firstparty-closure-") as temp:
+            mods = Path(temp) / "verified-mods"
+            for directory, mod, jar in rows:
+                if mod == "tmm_economy":
+                    subprocess.run([sys.executable, "-m", "unittest", "discover",
+                                    "-s", str(directory / "tools"),
+                                    "-p", "test_verify_client_dependency_closure.py", "-v"],
+                                   cwd=ROOT, check=True)
+                    subprocess.run([sys.executable,
+                                    str(directory / "tools/fetch_compile_classpath.py"),
+                                    str(mods)], cwd=ROOT, check=True)
+                    subprocess.run(["gradle", "--no-daemon",
+                                    f"-PtmmCompileModsDir={mods}", "clean", "build"],
+                                   cwd=directory, check=True)
+                    # Retain the focused Jade ABI/metadata test as a stricter
+                    # subsystem-specific guard in addition to shared closure.
                     subprocess.run([sys.executable,
                                     str(directory / "tools/verify_client_dependency_closure.py"),
                                     "--module-jar", str(jar),
                                     "--provider-jar", str(mods / "Jade-1.21.1-NeoForge-15.10.6.jar"),
                                     "--pin", str(ROOT / "mods/jade.pw.toml")],
                                    cwd=ROOT, check=True)
-            else:
-                subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
-            validate_jar(jar, mod)
-            validate_jar_license(directory, jar)
-            if mod == "traders_vengence":
-                verify_trader_irons_pin(jar)
+                else:
+                    subprocess.run(["gradle", "--no-daemon", "clean", "build"],
+                                   cwd=directory, check=True)
+                validate_jar(jar, mod)
+                validate_jar_license(directory, jar)
+                if mod == "traders_vengence":
+                    verify_trader_irons_pin(jar)
+
+            # Source tests alone cannot prove loader acceptance. Verify each
+            # compiled module against the real native versions in the pinned,
+            # hash-verified provider JARs *before* any authorized full smoke.
+            subprocess.run([sys.executable, "-m", "unittest", "discover",
+                            "-s", str(ROOT / "tests"),
+                            "-p", "test_first_party_dependency_closure.py", "-v"],
+                           cwd=ROOT, check=True)
+            pairs = Path(temp) / "native-dependencies.tsv"
+            subprocess.run([sys.executable,
+                            str(ROOT / "scripts/verify_first_party_dependency_closure.py"),
+                            "--providers-dir", str(mods), "--pairs-out", str(pairs)],
+                           cwd=ROOT, check=True)
+            environment = dict(os.environ, TMM_DEPENDENCY_PAIRS=str(pairs))
+            subprocess.run(["gradle", "--no-daemon", "-p",
+                            str(ROOT / "tools/dependency-closure"), "run"],
+                           cwd=ROOT, env=environment, check=True)
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
         verify_packaging_inputs(paths)
