@@ -69,6 +69,17 @@ class TheurgyLayoutA(unittest.TestCase):
         self.generator.check_spec(self.content)
         self.assertEqual(self.content["layout_review"]["after_crossings"], 1)
 
+    def test_canonical_quest_sources_use_same_direct_arrows(self):
+        expected = {q["title"]: q["dependencies"] for q in self.content["quests"]}
+        key_title = {q["key"]: q["title"] for q in self.content["quests"]}
+        for name in ("quest_content.json", "quest_content_resolved.json"):
+            catalog = json.loads((ROOT / "manifest" / name).read_text(encoding="utf-8"))
+            actual = {q["title"]: q.get("prerequisites", [])
+                      for q in catalog["quests"] if q["chapter"] == "Theurgy"}
+            mapped = {title: [key_title[k] for k in deps]
+                      for title, deps in expected.items()}
+            self.assertEqual(actual, mapped, f"Stale Theurgy direct edges in {name}")
+
     def test_stable_ids_and_reproducible_outputs(self):
         outputs = self.generator.render(self.content)
         self.assertEqual(outputs["theurgy.snbt"], LIVE.read_text(encoding="utf-8"))
