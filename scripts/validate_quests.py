@@ -109,7 +109,7 @@ def main() -> None:
         ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
         ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 221, "Expected 221 authored quests including 20 Theurgy lessons")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 235, "Expected 235 authored quests including 20 Theurgy and 34 Tips & Tricks lessons")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -127,10 +127,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 259,
-           f"Expected 240 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 273,
+           f"Expected 273 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 259 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 273 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -169,7 +169,7 @@ def main() -> None:
             global_ids.add(ident)
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
-        expected = {"Getting Started": 20, "Tips & Tricks": 20, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
+        expected = {"Getting Started": 20, "Tips & Tricks": 34, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
                     "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
                     "Skills & Factions": 18, "Theurgy": 20, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
@@ -216,15 +216,25 @@ def main() -> None:
                 'type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in rewards
                 and 'type: "checkmark"' in tasks and c["name"] == "Getting Started"
             )
+            starter_kit_claim = (
+                qid == "544D502001500000" and c["name"] == "Tips & Tricks"
+                and 'type: "command", command: "execute as {p} run function tmm:rewards/starter_kit", permission_level: 2, team_reward: false' in rewards
+                and 'type: "checkmark"' in tasks
+            )
+            info_rewardless = (
+                c["name"] == "Tips & Tricks" and qid.startswith("544D50200")
+                and int(qid[9:11], 16) in range(0x16, 0x23)
+                and 'type: "checkmark"' in tasks and itm is None and coins is None
+            )
             ensure((itm is not None and int(itm.group(2)) > 0) or (coins is not None and int(coins.group(1)) > 0)
-                   or qid == "544D303000100001" or newbie_graduation,
+                   or qid == "544D303000100001" or newbie_graduation or starter_kit_claim or info_rewardless,
                    f"Missing fixed item or approved command reward on {qid}")
             # Only the two existing Getting Started quests may carry an extra starter item.
             starter_rewards = {
                 "544D301000100001": {("enigmaticlegacyplus:unwitnessed_amulet", "1"),
                                      ("enigmaticlegacyplus:cursed_ring", "1")},
             }
-            expected_reward_count = 0 if qid == "544D303000100001" else (2 if qid in starter_rewards else 1)
+            expected_reward_count = (0 if qid == "544D303000100001" or info_rewardless else (2 if qid in starter_rewards else 1))
             ensure(rewards.count('type: "xp"') == 1 and
                    rewards.count('type: "item"') + rewards.count('type: "command"') == expected_reward_count,
                    f"Unexpected rewards on {qid}")
@@ -240,7 +250,7 @@ def main() -> None:
                 ensure("can_repeat: true" not in block or "repeat_cooldown: 2" in block, f"Sale cooldown missing on {qid}")
             else:
                 ensure((qid == "544D303000100001" and 'type: "checkmark"' in tasks)
-                       or newbie_graduation, "Unapproved no-item quest reward")
+                       or newbie_graduation or starter_kit_claim or info_rewardless, "Unapproved no-item quest reward")
             for item_id, required in re.findall(r'item: \{ id: "([^"]+)", count: 1 \}(?:, count: (\d+)L)?', tasks):
                 count = int(required) if required else 1
                 existing = item_tasks.get(item_id, [])
@@ -259,12 +269,12 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 259, f"Expected 259 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 273, f"Expected 273 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
         block = all_blocks[qid]
-        for key in ("task_id", "xp_reward_id") + (("item_reward_id",) if "item_reward_id" in q else ()):
+        for key in ("task_id", "xp_reward_id") + (("item_reward_id",) if "item_reward_id" in q else ()) + (("command_reward_id",) if "command_reward_id" in q else ()):
             ensure(f'id: "{q[key]}"' in block, f"Lost stable {key} in {q['title']}")
         ensure(f'xp: {q["reward"]["xp"]}' in block, f"Wrong XP in {q['title']}")
         if "item" in q["reward"]:
@@ -272,13 +282,18 @@ def main() -> None:
         elif "coin" in q["reward"]:
             ensure(qid in coin_quests and f'command: "hqs coins add {{p}} {q["reward"]["coin"]}"' in block, f"Wrong coin command reward in {q['title']}")
         elif "command" in q["reward"]:
-            ensure(qid == "544D309000100001"
-                   and q["reward"]["command"] == "tmmnewbie admin graduate {p}"
-                   and 'team_reward: false' in block,
-                   "Graduation command must be personal and admin-authorized")
+            good_command = (
+                (qid == "544D309000100001"
+                 and q["reward"]["command"] == "tmmnewbie admin graduate {p}")
+                or (qid == "544D502001500000"
+                    and q["reward"]["command"] == "execute as {p} run function tmm:rewards/starter_kit")
+            )
+            ensure(good_command and 'team_reward: false' in block,
+                   "Unexpected/nonpersonal quest command reward")
         else:
-            ensure(qid == "544D303000100001" and q["reward"] == {"xp": 5},
-                   "Only Ars orientation is XP-only")
+            info_xp_only = q["chapter"] == "Tips & Tricks" and qid.startswith("544D50200") and int(qid[9:11], 16) in range(0x16, 0x23)
+            ensure((qid == "544D303000100001" and q["reward"] == {"xp": 5}) or info_xp_only,
+                   "Unexpected XP-only quest reward")
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
