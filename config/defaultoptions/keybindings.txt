@@ -41,8 +41,8 @@ key_key.ars_nouveau.next_slot:key.keyboard.unknown:
 key_key.ars_nouveau.open_book:key.keyboard.unknown:
 key_key.ars_nouveau.open_documentation:key.keyboard.unknown:
 key_key.ars_nouveau.previous_slot:key.keyboard.unknown:
-key_key.ars_nouveau.qc10:key.keyboard.unknown:
 key_key.ars_nouveau.qc1:key.keyboard.unknown:
+key_key.ars_nouveau.qc10:key.keyboard.unknown:
 key_key.ars_nouveau.qc2:key.keyboard.unknown:
 key_key.ars_nouveau.qc3:key.keyboard.unknown:
 key_key.ars_nouveau.qc4:key.keyboard.unknown:
@@ -171,13 +171,13 @@ key_key.invtweaks_sort_either.desc:key.keyboard.unknown:
 key_key.invtweaks_sort_inventory.desc:key.keyboard.unknown:
 key_key.invtweaks_sort_player.desc:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_bar_modifier:key.keyboard.unknown:
+key_key.irons_spellbooks.spell_quick_cast_1:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_10:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_11:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_12:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_13:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_14:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_15:key.keyboard.unknown:
-key_key.irons_spellbooks.spell_quick_cast_1:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_2:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_3:key.keyboard.unknown:
 key_key.irons_spellbooks.spell_quick_cast_4:key.keyboard.unknown:
@@ -196,10 +196,10 @@ key_key.jade.show_overlay:key.keyboard.unknown:
 key_key.jade.show_recipes:key.keyboard.unknown:
 key_key.jade.show_uses:key.keyboard.unknown:
 key_key.jade.toggle_liquid:key.keyboard.unknown:
-key_key.jei.cheatItemStack2:key.keyboard.unknown:
 key_key.jei.cheatItemStack:key.keyboard.unknown:
-key_key.jei.cheatOneItem2:key.keyboard.unknown:
+key_key.jei.cheatItemStack2:key.keyboard.unknown:
 key_key.jei.cheatOneItem:key.keyboard.unknown:
+key_key.jei.cheatOneItem2:key.keyboard.unknown:
 key_key.jei.copy.recipe.id:key.keyboard.unknown:
 key_key.jei.maxTransferRecipeBookmark:key.keyboard.unknown:
 key_key.jei.maxTransferRecipeGui:key.keyboard.unknown:
