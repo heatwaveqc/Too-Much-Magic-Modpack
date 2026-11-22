@@ -4310,8 +4310,8 @@
       },
       "reward": {
         "xp": 70,
-        "item": "reformation",
-        "count": "Understand high-cost post-acquisition duplication"
+        "item": "minecraft:quartz",
+        "count": 4
       },
       "depends": null,
       "optional": true,
@@ -4326,7 +4326,8 @@
         32,
         -5
       ],
-      "icon": "minecraft:nether_star"
+      "icon": "minecraft:nether_star",
+      "description": "This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded."
     }
   ]
 }
