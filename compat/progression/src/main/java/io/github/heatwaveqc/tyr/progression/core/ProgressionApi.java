@@ -271,7 +271,8 @@ public final class ProgressionApi {
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get()),tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
+        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(player,
+            io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get())),tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
         if(next==prior) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
