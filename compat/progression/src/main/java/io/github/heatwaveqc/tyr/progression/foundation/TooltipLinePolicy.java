@@ -41,6 +41,6 @@ public final class TooltipLinePolicy {
     }
 
     public static boolean removeReplicationComponent(String className, boolean replicaUnlocked) {
-        return !replicaUnlocked && "com.buuz135.replication.client.render.MatterTooltipComponent".equals(className);
+        return !replicaUnlocked && "com.buuz135.replication.client.MatterTooltipComponent".equals(className);
     }
 }
