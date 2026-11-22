@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -93,6 +93,12 @@ public final class MechanicalSpec {
             case "area_pull","landing_shockwave" -> {bounded(a,0,2);scoped(fx);number(p,"radius",4,0.5,16);integer(p,"max_targets",8,1,16);integer(p,"interval_ticks",20,10,200);number(p,"min_fall_distance",3,1,64);proc(p);}
             case "detection_range" -> {bounded(a,0,0.95);scoped(fx);number(p,"reference_range",16,1,64);}
             case "status_duration_reduction" -> {bounded(a,0,0.95);scoped(fx);if(!fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Exact status ID required");}
+            case "beneficial_duration_bonus" -> {
+                bounded(a,0,0.25);
+                if (!fx.selector().isEmpty() && !fx.selector().equals("*") &&
+                    !fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                    throw new IllegalArgumentException("Beneficial effect duration needs wildcard or exact effect ID");
+            }
             case "virtual_unbreaking" -> {bounded(a,0,32);scoped(fx);if(!Set.of("mainhand","offhand","armor","equipped").contains(p.getOrDefault("slot","equipped")))throw new IllegalArgumentException("Invalid wear slot");integer(p,"max_total",32,1,64);}
             case "glide_control_bonus" -> bounded(a,0,0.1);
             case "backstab" -> {bounded(a,0,2);number(p,"min_rear_cosine",0.5,0,1);}
@@ -187,6 +193,12 @@ public final class MechanicalSpec {
     }
     public static boolean crossesBelow(double before,double after,double threshold){return before>threshold&&after<=threshold;}
     public static int nextStreak(int prior,int cap,boolean sameSequence){return Math.min(cap,sameSequence?Math.max(0,prior)+1:1);}
+    /** Apply a single bounded positive duration bonus; preserve infinite/invalid durations. */
+    public static int increasedDuration(int ticks,double bonus){
+        if(ticks<=0)return ticks;
+        double multiplier=1+Math.min(0.95,Math.max(0,bonus));
+        return (int)Math.min(Integer.MAX_VALUE,Math.ceil((double)ticks*multiplier));
+    }
     public static int reducedDuration(int ticks,double fraction){
         if(ticks<=0)return ticks;
         return Math.max(1,(int)Math.ceil(ticks*(1-Math.min(0.95,Math.max(0,fraction)))));
