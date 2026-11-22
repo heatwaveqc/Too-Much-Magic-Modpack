@@ -2,8 +2,8 @@
   "schema_version": 1,
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
-  "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 240,
+  "notes": "Stable signed IDs and layouts: 259 quests / 221 authored; includes the 20-node Atlas-derived Theurgy branch and 5 original procedural quest backgrounds. Updated by scripts/rebuild_quest_ui.py; client rendering not yet tested.",
+  "quest_count": 259,
   "chapters": 44,
   "positions": [
     {
@@ -1480,7 +1480,178 @@
         0,
         0
       ],
-      "authored": false
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000001",
+      "chapter": "Theurgy",
+      "position": [
+        4,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000002",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        -3
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000003",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000004",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        3
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000005",
+      "chapter": "Theurgy",
+      "position": [
+        12,
+        3
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000006",
+      "chapter": "Theurgy",
+      "position": [
+        16,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000007",
+      "chapter": "Theurgy",
+      "position": [
+        20,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000008",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000009",
+      "chapter": "Theurgy",
+      "position": [
+        14,
+        7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000A",
+      "chapter": "Theurgy",
+      "position": [
+        18,
+        7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000B",
+      "chapter": "Theurgy",
+      "position": [
+        22,
+        7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000C",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        -5
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000D",
+      "chapter": "Theurgy",
+      "position": [
+        28,
+        -5
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000E",
+      "chapter": "Theurgy",
+      "position": [
+        4,
+        -7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000F",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        -7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000010",
+      "chapter": "Theurgy",
+      "position": [
+        27,
+        -9
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000011",
+      "chapter": "Theurgy",
+      "position": [
+        20,
+        -11
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000012",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        -11
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000013",
+      "chapter": "Theurgy",
+      "position": [
+        32,
+        -5
+      ],
+      "authored": true
     },
     {
       "quest_id": "544D303001600001",
