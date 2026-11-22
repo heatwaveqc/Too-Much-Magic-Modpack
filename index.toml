@@ -246,7 +246,7 @@ hash = "a8e62cecde60a12153e8a5f6e03b61af7f0366c71da280a6198078accfb8c7ee"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
-hash = "b9a3d6d2985ee0c29a34ac6a50c6340a9ae91e65cd629f448f62f333a2c137fa"
+hash = "028d93472b4f19dded775f70e459e0284640e6e4c5758f4c8021e40bf36d5bbe"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"
@@ -262,7 +262,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "6588d3658778ef7a85c9fb855aed727e3d364fcd2afbe57df1376977be634470"
+hash = "ee82be59eb4364de88f434f4c93da5e0cfd13f36e607c6c85ec1d1bb2e9d1a8d"
 
 [[files]]
 file = "config/improvableskills.cfg"
