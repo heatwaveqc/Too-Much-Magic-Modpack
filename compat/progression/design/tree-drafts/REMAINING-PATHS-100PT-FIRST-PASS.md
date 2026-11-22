@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v5`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v6`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -21,14 +21,14 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Cave Dragon | 17 | **100** |
 | Sea Dragon | 22 | **100** |
 | Forest Dragon | 20 | **100** |
-| Vampire | 17 | **100** |
+| Vampire | 19 | **100** |
 | Werewolf | 18 | **100** |
 | Lich | 12 | **100** |
 | Hunter | 57 | **100** |
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **215 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **217 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -372,55 +372,33 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 
 ### Vampire — 100 ranks / 100 points
 
-*Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
+**Vampire has been fully rewritten for the new 100-point balance pass**, not merely repriced from old Tyz. It is a blood-managed nighttime predator whose JAWR native blood, sunlight and BAT rules remain free and authoritative. Four JAWR adapters and the bat duration adapter are already source-backed; exact gameplay and the other generic handlers require separate verification. Full design, numeric candidate effects and source/QA handoff: [Vampire full skill tree](VAMPIRE-COMPLETE-100PT-2026-11-22.md).
 
-#### Bloodcraft — 18 points
+| Branch | Skill | One-point ranks | Intended result |
+|---|---|---:|---|
+| Bloodcraft | **Efficient Feeding** | 6 | +5% accepted native blood gain per rank (+30% max) from one verified JAWR feeding event, including recognized bottles, bites and valid player/nonplayer donors; no bonus on unrelated passive transfers or synthetic blood. |
+| Bloodcraft | **Deep Reservoir** | 6 | +8% native maximum blood capacity per rank (+48% full), computed from JAWR's level baseline instead of multiplying existing bonuses; require native vampire level at least 2. |
+| Bloodcraft | **Blood Thrift** | 6 | -3% verified native personal self-blood expenditure per rank (-18% max), only hunger/healing/approved timed ability charges, never donor blood extraction or orb/altar transfers; positive costs pay at least one unit. |
+| Bloodcraft | **Crimson Renewal** | 7 | On a real completed feeding transaction that increases native blood, heal 0.5 HP per rank (+3.5 HP max), once per 20 seconds; no failed/full-pool, self-feeding or reentrant reward. |
+| Predation | **Fang Training** | 5 | Successful native bite marks the same hostile prey for five seconds; the next real melee hit on that victim gains +4% damage/rank (+20% max), then consumes the mark. Drinking bottles does not trigger this. |
+| Predation | **Blood Duelist** | 5 | +4% direct melee damage/rank (+20% max) against a real hostile whose current health is below half its maximum health; no self-damage or fake hostile target. |
+| Predation | **Predatory Precision** | 5 | +2 percentage points real direct-melee critical chance per rank (+10 pp max), active only during genuine night/darkness. |
+| Predation | **Blood Trail** | 5 | On a verified native bite against a hostile nonplayer, apply Glowing for 2 seconds/rank (10 seconds max). No global mob radar, no duplicate target marking and PvP exclusions configurable. |
+| Nightstalker | **Shadow Stalker** | 6 | Reduce eligible hostile mobs' initial acquisition distance by 5%/rank (-30% max) while crouching in genuine darkness; cease after combat aggro and do not mask boss targeting. |
+| Nightstalker | **Night Runner** | 5 | +3% grounded movement speed/rank (+15% max) during genuine darkness/night only; not constant daytime speed or free flight. |
+| Nightstalker | **Bat Mastery** | 5 | +20% duration/rank (+100% max) on already-unlocked native JAWR BAT shape, using existing native BAT_FORM_DURATION attribute; does not enable flying or independently change steering. |
+| Nightstalker | **Night Veil** | 4 | +2.5 percentage points projectile evasion/rank (+10 pp max) when crouching in genuine darkness; never negates area damage or sunlight. |
+| Undead Constitution | **Pale Resilience** | 5 | Shorten newly applied finite harmful Wither, Weakness and Slowness by 5%/rank (-25% full), if JAWR vampire is actually susceptible; do not buy immunity it already has. |
+| Undead Constitution | **Sunshroud** | 5 | -8% native ordinary sunlight tick damage/rank (-40% max); not immunity, no suppression of native lethal-special sunlight check or vampire forest exposure, no independent blood drain discount. |
+| Undead Constitution | **Bloodbound Vitality** | 5 | +2 maximum health/rank (+10 HP or 5 hearts) only when the authoritative native JAWR blood reservoir is ≥50% full; no free healing when buffs toggle. |
+| Undead Constitution | **Elder Presence** | 5 | On true melee hit at night against ordinary hostile targets, apply Weakness I for 1 second/rank (5 seconds max), once per 40 ticks per target; no boss pacification or PvP aura. |
+| Sanguine Arts | **Sanguine Attunement** | 5 | +5% personally cast and actually blood-paid spell potency/rank (+25% full) for source-verified Neo Vitae/EvilCraft blood spell categories. Not all spells or machine/ritual throughput. |
+| Sanguine Arts | **Hematic Efficiency** | 5 | -3% real personally paid blood spell costs/rank (-15% full); not JAWR hunger/heal, donors, stationary rituals or resources not consumed. Preserve MXP payment accounting. |
+| Sanguine Arts | **Midnight Invocation** | 5 | +4% speed/cooldown throughput per rank (+20% full) for eligible personally cast blood spells at night/in actual darkness. No invented active spell, free ritual acceleration or global spell cooldown change. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Efficient Feeding (`tyr_progression:vampire_efficient_feeding`) | 9 | 9 | Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions. |
-| Deep Reservoir (`tyr_progression:vampire_deep_reservoir`) | 5 | 5 | Increase one authoritative usable blood capacity, not two independent HUD pools. |
-| Crimson Renewal (`tyr_progression:vampire_crimson_renewal`) | 4 | 4 | Trade a real measured blood debit for bounded emergency healing. |
+| **Total** | **19 paid skills** | **100** | **One JAWR blood pool; native state and acquired BAT remain free** |
 
-#### Nightstalker — 21 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Nocturnal Vision (`tyr_progression:vampire_nocturnal_vision`) | 12 | 12 | Better low-light perception with native-sunlight penalties untouched. |
-| Shadow Stalker (`tyr_progression:vampire_shadow_stalker`) | 5 | 5 | Short stealth advantage in darkness; avoid invisibility in full daylight. |
-| Bat Mastery (`tyr_progression:vampire_bat_mastery`) | 4 | 4 | Improve native bat-form controls/efficiency after that native ability is acquired. |
-
-#### Predation — 17 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Fang Training (`tyr_progression:vampire_fang_training`) | 8 | 8 | Scale only verified vampire bite/melee attacks. |
-| Measured Feast (`tyr_progression:vampire_measured_feast`) | 5 | 5 | Limited post-kill blood recovery from eligible kills, with transaction deduplication. |
-| Blood Duelist (`tyr_progression:vampire_blood_duelist`) | 4 | 4 | Focused single-target bonuses under low blood; prevent intentional zero-cost loops. |
-
-#### Undead Constitution — 17 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Pale Resilience (`tyr_progression:vampire_pale_resilience`) | 8 | 8 | Bounded poison/disease-type mitigation where the source system allows it. |
-| Sunshroud (`tyr_progression:vampire_sunshroud`) | 5 | 5 | Short resource-funded sunlight resistance; never erase core daylight tradeoffs. |
-| Elder Presence (`tyr_progression:vampire_elder_presence`) | 4 | 4 | Bounded defensive/control aura with cooldown, not full charm immunity. |
-
-#### Retained Vampire Skill Concepts (JAWR-owned) — 22 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Blood Thrift (`tyr_progression:vampire_blood_thrift`) | 5 | 5 | Reduce only real JAWR blood expenditure/hunger cost on verified committed actions. |
-| Predatory Finesse (`tyr_progression:vampire_predatory_finesse`) | 5 | 5 | Blood-funded vampire-specific melee attack speed, not spell casting speed. |
-| Night Runner (`tyr_progression:vampire_night_runner`) | 8 | 8 | Improved vampire walking/running mobility in darkness; no universal free speed. |
-| Crimson Surge (`tyr_progression:vampire_crimson_surge`) | 4 | 4 | Blood-paid high-stage predatory burst, supplementing Blood Regent without minions. |
-
-#### Retained Tyz 6.4.2 source skills — 5 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Bloodlust (`tyr_progression:vampire_bloodlust`) | 5 | 5 | Killing a hostile mob regenerates {health_percentage}% of its max health |
-
+Native Vampire health/feeding/HUD and Lilith initiation are never purchased again. Sunshroud is at most partial mitigation and daylight remains dangerous. No independent active vampire buttons, no duplicate ordinary blood or MXP awards, no blanket classification of all blood-mod recipes as personal spells, and no source-free native shape/flight grants.
 ### Werewolf — 100 ranks / 100 points
 
 *Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
