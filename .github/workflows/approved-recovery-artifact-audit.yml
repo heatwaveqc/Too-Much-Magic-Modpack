@@ -38,6 +38,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify candidate metadata without downloading
         run: python3 scripts/verify_approved_recovery_artifacts.py
+      - name: Read-only Integration Preflight
+        run: python3 scripts/validate_integration_sources.py
       - name: Fetch only approved candidate JARs from official sources and verify
         run: python3 scripts/verify_approved_recovery_artifacts.py --verify-official --json-out approved-recovery-audit.json
       - name: Probe remaining Aquamirae Nouveau addon (diagnostic only)
