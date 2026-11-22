@@ -15,4 +15,19 @@
 | [`minecraft_zombie_head`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_zombie_head.json) | `minecraft:skeleton_skull` | 1000 | 1 | 500 | `minecraft:zombie_head` | 1 |
 | [`minecraft_ender_pearl`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_ender_pearl.json) | `evilcraft:potentia_sphere` | 2000 | 1 | 1000 | `minecraft:ender_pearl` | 1 |
 
-<!-- ADD_9_REMAINING_CONVENIENCE_RECIPES -->
+| [`minecraft_grass_block`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_grass_block.json) | `minecraft:dirt` | 350 | 1 | 300 | `minecraft:grass_block` | 0.1 |
+| [`minecraft_creeper_head`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_creeper_head.json) | `minecraft:zombie_head` | 5000 | 2 | 1000 | `minecraft:creeper_head` | 2 |
+| [`evilcraft_blood_potash`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/evilcraft_blood_potash.json) | `minecraft:bone_meal` | 800 | 1 | 50 | `evilcraft:blood_potash` | 0.05 |
+| [`minecraft_red_mushroom`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_red_mushroom.json) | `minecraft:brown_mushroom` | 2000 | 1 | 150 | `minecraft:red_mushroom` | 0.1 |
+| [`evilcraft_blood_waxed_coal`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/evilcraft_blood_waxed_coal.json) | `#minecraft:coals` | 375 | 1 | 100 | `evilcraft:blood_waxed_coal` | 0.2 |
+| [`minecraft_fermented_spider_eye`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_fermented_spider_eye.json) | `minecraft:spider_eye` | 1500 | 2 | 500 | `minecraft:fermented_spider_eye` | 0.3 |
+| [`minecraft_leather_from_humanoid`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_leather_from_humanoid.json) | `evilcraft:flesh_humanoid` | 375 | 1 | 200 | `minecraft:leather` | 0.25 |
+| [`minecraft_wither_skeleton_skull`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/minecraft_wither_skeleton_skull.json) | `minecraft:creeper_head` | 25000 | 3 | 1000 | `minecraft:wither_skeleton_skull` | 3 |
+| [`evilcraft_blood_waxed_coal_block`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/convenience/evilcraft_blood_waxed_coal_block.json) | `minecraft:coal_block` | 3375 | 1 | 900 | `evilcraft:blood_waxed_coal_block` | 2 |
+
+## Practical implications and boundaries
+
+- **Wither Skeleton Skull:** `minecraft:creeper_head` + **25,000 mB Blood** through a **tier-3** Infuser yields `minecraft:wither_skeleton_skull` after **1,000 ticks**. This is **not** an actual Wither Skeleton/Wither kill. Other conversions have their own costs/tier requirements, all enumerated above.
+- **Three source families total:** this table contains **19 convenience recipes**; [base/core 17](evilcraft-blood-infuser-base-core.md) include first Dark Power Gem (250 mB) and Garmonbozia (50,000 mB, tier3). Combined **36/36** native Blood Infuser JSON contents, in agreement with earlier pinned JAR survey. This is **not** all 127 crafting recipes or world loot tables.
+- **No arbitrary item creation:** an Infuser must have a registered recipe, correct input ingredient, enough exact Fluid Blood and machine tier. Vanilla XP from the recipe isn't global MXP; a trophy/item acquisition quest must not impersonate a boss kill or first-kill advancement.
+
