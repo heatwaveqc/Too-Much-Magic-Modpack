@@ -19,3 +19,5 @@ Exact [v1.21.1-3.16.3 registry](https://github.com/iron431/irons-spells-n-spellb
 | `irons_spellbooks:raise_hell` | [`RaiseHellSpell`](https://github.com/iron431/irons-spells-n-spellbooks/blob/v1.21.1-3.16.3/src/main/java/io/redspace/ironsspellbooks/spells/fire/RaiseHellSpell.java) | LEGENDARY | 5 | 90 + 45 | 25 | 16 |
 
 **Source verification:** 13 active fields, 13 class sources, 13 actual spell resource IDs. — means unparsed/unspecified, not zero.
+
+**Special route for `irons_spellbooks:raise_hell`:** Source `setAllowCrafting(false)` and `allowLooting() == false` exclude Scroll Forge and generic random scroll pools. However the **Decrepit-Key Cinderous Vault** loot table explicitly selects a Raise Hell Scroll; [source-matched exception and boss analysis](irons-spells-special-acquisition-and-boss-closure.md). This is **obtainable as special player loot**, not Mob-only. The Fire Boss-held `hellrazor` has 0 equipment drop chance but that does not bar vault Scrolls.
