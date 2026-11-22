@@ -10,6 +10,15 @@ public final class BloodCauldronTransferPolicy {
     private BloodCauldronTransferPolicy() {}
 
     /**
+     * The cauldron's native Blood Sigil and an extractor-deposited pool have
+     * distinct fluid registry keys. Only these two ordinary identities may
+     * return to an EvilCraft Blood Extractor through this bridge.
+     */
+    public static boolean supportedSource(String registryId) {
+        return "hexerei:blood_fluid".equals(registryId) || "evilcraft:blood".equals(registryId);
+    }
+
+    /**
      * Return how much of the server-observed cauldron source may safely move.
      * Negative/bogus handler reports fail closed. A partial source or partially
      * filled extractor is accepted, rather than demanding one full bucket.
