@@ -41,8 +41,17 @@ public final class NativePhysiologyGateway {
     }
 
     public static Decision mayAcquire(ServerPlayer player, Form form, Rules rules) {
+        return mayAcquire(player, form, rules, NativePhysiologyObservations.observe(player));
+    }
+
+    /**
+     * Allows the native-transition preflight and Path admission to share one
+     * consistent observation. No additional provider read or shadow state.
+     */
+    public static Decision mayAcquire(ServerPlayer player, Form form, Rules rules,
+                                      NativePhysiologyPolicy.Snapshot observations) {
         return NativePhysiologyPolicy.mayAcquire(NewbieMode.isNewbie(player),
-            joinedPaths(player), NativePhysiologyObservations.observe(player), form, rules);
+            joinedPaths(player), observations, form, rules);
     }
 
     /** Baseline Newbie/Normie and universal Core are never specialist admission vetoes. */
