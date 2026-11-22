@@ -35,8 +35,11 @@ jobs:
         run: |
           python3 scripts/validate_integration_sources.py
           python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
-      - name: Validate five-group FTB Quests navigation
-        run: python3 scripts/validate_quests.py
+      - name: Validate five-group FTB Quests navigation and Theurgy preview + 5 original PNGs (offline)
+        run: |
+          python3 scripts/validate_quests.py
+          python3 scripts/build_theurgy_quest_pilot.py --check
+          python3 tests/test_theurgy_quest_runtime.py
       - name: Verify quick QA starter rewards and recipe fixes (source-only)
         run: python3 scripts/verify_quick_repairs.py
       - name: Verify single Unified Progression XP authority and exact QA target
