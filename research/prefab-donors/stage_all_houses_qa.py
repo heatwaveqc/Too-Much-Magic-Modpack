@@ -80,6 +80,20 @@ def build_previews(homes: list[dict], work: Path) -> list[dict]:
         except subprocess.TimeoutExpired as exc:
             raise RuntimeError(f"{house['id']}: generator timed out") from exc
 
+        # Apply the owner-approved Adventurer's Inn Bountiful office board
+        # only AFTER the original hash-verified structure has been rebuilt.
+        # This overlay checks the exact original raw NBT digest and fails
+        # closed on source drift; no double application is allowed.
+        if house["id"] == "adventurers_inn":
+            overlay = design_dir / "add_bountiful_board.py"
+            if not overlay.is_file():
+                raise FileNotFoundError("Missing Bountiful Inn overlay")
+            result = subprocess.run(
+                [sys.executable, str(overlay)], cwd=design_dir,
+                capture_output=True, text=True, check=True, timeout=120,
+            )
+            print(result.stdout.strip(), file=sys.stderr)
+
         nbt = design_dir / "prefab-extension" / house["filename"]
         if not nbt.is_file():
             raise FileNotFoundError(f"{house['id']}: expected output missing: {nbt}")
