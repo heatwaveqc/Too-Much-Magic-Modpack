@@ -18,4 +18,6 @@ These files preserve superseded and historical issue bodies **for provenance, no
 | [#294 — Cathobb and Twilight Forest Final Boss](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/294) | [exact body](issues/294/snapshot-2026-11-22.md) | [decision record](issues/294/DECISIONS.md); finale addon source pin already indexed, resource pack is not |
 | [#236 — Newbie, progression gates and housing](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/236) | [exact body](issues/236/snapshot-2026-11-22.md) | [extraction map](issues/236/DECISIONS.md); this complex parent requires topic-by-topic rehoming before full compaction |
 
+| [#387 — Six-mod intake and Weeping Angels](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/387) | [exact body](issues/387/snapshot-2026-11-22.md) | [decision record](issues/387/DECISIONS.md); original teleport alternatives superseded, Arcane Archives already indexed |
+
 Snapshots were taken from current issue bodies on November 22, 2026. Each issue's original `updated_at` is recorded in its decision note. A later edit to a live issue does **not** alter the snapshot.
