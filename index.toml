@@ -337,6 +337,26 @@ file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
 hash = "a8620f2e2e7a6f777085ff36f9bba5969d950599820be5b1ca37e5009ee6064c"
 
 [[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/niter.png"
+hash = "398add376f5f8d46566a8fce642387cd7c4967b6f70091674cbfc9bee1d81213"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/reformation.png"
+hash = "1952a88eb207ee49a6ad10f17cd612530539cd353e55c77afcb86c4266ce1b8c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/title.png"
+hash = "9b6d61d790006bda18df6adda9eec450a746c0be263bbcd9a9d5f3be2119ad6c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/vessels.png"
+hash = "15fa710162c9c8407755d2410f4da7f1cdaced8f4fe9f59b1b154ee70199c80c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/wires.png"
+hash = "3db6bfa79693ce47a6cb408204b0f47013f4bba17284f1adc6226e4fe7882c4c"
+
+[[files]]
 file = "kubejs/data/ars_additions/tags/worldgen/structure/desert_temple.json"
 hash = "98711b03da7e61f0c2c2049e739c20f075192d7702cc54427821e9d8e706879b"
 
@@ -699,6 +719,10 @@ hash = "2dbf7cb56a128a113b488ac05417276d74df84db595280d3ab85674d2f07bc70"
 [[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/drain/redstone.json"
 hash = "2dbf7cb56a128a113b488ac05417276d74df84db595280d3ab85674d2f07bc70"
+
+[[files]]
+file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
+hash = "e1adfad141d2074d45058e7673a464820625f2380b5a8a9f19645d48e9791519"
 
 [[files]]
 file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
@@ -1501,7 +1525,7 @@ metafile = true
 
 [[files]]
 file = "mods/ars-elemental.pw.toml"
-hash = "8e9f867e9c0ff53e08e779ae54fd1bbead92f1d7323b75369e64ade719d5d7c1"
+hash = "08c39f8d5f23c8ffb57066d2a2fe05d53db3e5efd86286a484ac43a493fec92e"
 metafile = true
 
 [[files]]
@@ -1786,7 +1810,7 @@ metafile = true
 
 [[files]]
 file = "mods/evilcraft.pw.toml"
-hash = "b6b98117b5932b6dc144a13bffe6bcbcaec86fa35dd43eb6b4cbf04a9b3be677"
+hash = "33059cd0e19a24a49e53aafd2b096cc1d4eb3f28199e4acbed9050ffef7613de"
 metafile = true
 
 [[files]]
@@ -1906,7 +1930,7 @@ metafile = true
 
 [[files]]
 file = "mods/goety.pw.toml"
-hash = "269e6225a8f6ef2bff759a8870e3db2300a72a782600b84e875e79cfbe819591"
+hash = "e41fde783f2f9c53e3b4f887cd05f5063c758810a07e97f1710aa679874a9cc6"
 metafile = true
 
 [[files]]
@@ -2126,7 +2150,7 @@ metafile = true
 
 [[files]]
 file = "mods/neovitae.pw.toml"
-hash = "6a4769ed8d8428836a28846d31db03592a6a84025342bab5d9203b9d5f59d3af"
+hash = "c7fc52e7609ffe319a34c4f8e1a0babe334646ebbdc21c2bf9a3b5c2346a0633"
 metafile = true
 
 [[files]]
