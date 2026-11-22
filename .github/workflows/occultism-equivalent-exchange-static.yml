@@ -1,0 +1,34 @@
+name: Equivalent Exchange ritual and book contract (static only)
+
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/equivalent_exchange.json'
+      - 'kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/**'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'kubejs/data/projecte/recipe/philosophers_stone*.json'
+      - 'tests/test_occultism_equivalent_exchange_book.py'
+      - '.github/workflows/occultism-equivalent-exchange-static.yml'
+  push:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/equivalent_exchange.json'
+      - 'kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/**'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'kubejs/data/projecte/recipe/philosophers_stone*.json'
+      - 'tests/test_occultism_equivalent_exchange_book.py'
+      - '.github/workflows/occultism-equivalent-exchange-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-book-and-ritual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate native ritual source, guide link and no old grid bypass
+        run: python3 -m unittest discover -s tests -p 'test_occultism_equivalent_exchange_book.py' -v
