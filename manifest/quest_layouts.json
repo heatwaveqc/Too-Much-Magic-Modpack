@@ -10,7 +10,7 @@
       "quest_id": "544D301000100001",
       "chapter": "Getting Started",
       "position": [
-        0,
+        -16,
         0
       ],
       "authored": true
@@ -19,8 +19,8 @@
       "quest_id": "544D301000110001",
       "chapter": "Getting Started",
       "position": [
-        4,
-        0
+        -16,
+        -8
       ],
       "authored": true
     },
@@ -29,7 +29,7 @@
       "chapter": "Getting Started",
       "position": [
         12,
-        0
+        -8
       ],
       "authored": true
     },
@@ -37,8 +37,8 @@
       "quest_id": "544D4D1100000001",
       "chapter": "Getting Started",
       "position": [
-        0,
-        3
+        -12,
+        0
       ],
       "authored": true
     },
@@ -46,8 +46,8 @@
       "quest_id": "544D501000300000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        6
+        -8,
+        0
       ],
       "authored": true
     },
@@ -55,8 +55,8 @@
       "quest_id": "544D501000400000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        9
+        -8,
+        8
       ],
       "authored": true
     },
@@ -64,8 +64,8 @@
       "quest_id": "544D501000500000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        12
+        -4,
+        8
       ],
       "authored": true
     },
@@ -74,7 +74,7 @@
       "chapter": "Getting Started",
       "position": [
         0,
-        15
+        8
       ],
       "authored": true
     },
@@ -82,8 +82,8 @@
       "quest_id": "544D501000700000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        6
+        -12,
+        12
       ],
       "authored": true
     },
@@ -91,7 +91,7 @@
       "quest_id": "544D501000800000",
       "chapter": "Getting Started",
       "position": [
-        4,
+        -4,
         12
       ],
       "authored": true
@@ -100,8 +100,8 @@
       "quest_id": "544D501000900000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        18
+        4,
+        8
       ],
       "authored": true
     },
@@ -109,8 +109,8 @@
       "quest_id": "544D501000A00000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        21
+        8,
+        8
       ],
       "authored": true
     },
@@ -118,8 +118,8 @@
       "quest_id": "544D501000B00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        6
+        -8,
+        -8
       ],
       "authored": true
     },
@@ -127,8 +127,8 @@
       "quest_id": "544D501000C00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        9
+        -4,
+        -8
       ],
       "authored": true
     },
@@ -136,8 +136,8 @@
       "quest_id": "544D501000D00000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        21
+        -4,
+        0
       ],
       "authored": true
     },
@@ -145,8 +145,8 @@
       "quest_id": "544D501000E00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        21
+        0,
+        0
       ],
       "authored": true
     },
@@ -154,8 +154,8 @@
       "quest_id": "544D501000F00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        24
+        4,
+        0
       ],
       "authored": true
     },
@@ -163,8 +163,8 @@
       "quest_id": "544D501001000000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        24
+        12,
+        12
       ],
       "authored": true
     },
@@ -172,8 +172,8 @@
       "quest_id": "544D501001100000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        27
+        0,
+        -8
       ],
       "authored": true
     },
@@ -182,7 +182,7 @@
       "chapter": "Getting Started",
       "position": [
         8,
-        27
+        0
       ],
       "authored": true
     },
