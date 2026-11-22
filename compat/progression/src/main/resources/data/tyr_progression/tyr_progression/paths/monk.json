@@ -1,6 +1,6 @@
 {
-  "xp_channel": "tyr_progression:monk",
   "schema": 1,
+  "xp_channel": "tyr_progression:monk",
   "exclusive_group": "",
   "milestones": [
     {
