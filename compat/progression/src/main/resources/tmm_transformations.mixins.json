@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "io.github.heatwaveqc.tmm.transformations.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "GoetyDracolichAcquisitionMixin",
+    "ForbiddenMagicDracolichAcquisitionMixin",
+    "DragonSurvivalDeathRepeatMixin",
+    "BotaniaThermalilyFiftyEndoflamesMixin",
+    "BotaniaThermalilyNoCooldownMixin",
+    "NewbieVampireAcquisitionMixin",
+    "NewbieWerewolfAcquisitionMixin",
+    "NewbieDragonAcquisitionMixin",
+    "MahouCatalystExchangeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "io.github.heatwaveqc.tmm.transformations.mixin.DracolichMixinPlugin",
+  "client": [
+    "DracolichModelLoadMixin",
+    "DracolichDragonModelMixin",
+    "DracolichGlowLayerMixin",
+    "DracolichArmorLayerMixin"
+  ]
+}

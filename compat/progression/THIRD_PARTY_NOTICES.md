@@ -64,3 +64,16 @@ Full original notice: third_party_licenses/Create.txt.
 
 ## Batch 5 activation (2026-11-18)
 `EnhancedNightVisionMixin.java` adapts the JustDireThings LightTextureMixin pinned above; `MechanicalEffects` uses the previously attributed EverlastingAbilities `MagnetMotion` and existing Create `LavaFogHook` is connected by `ClientVision`. Original full notices remain packaged. No additional upstream assets or Tyz source copied.
+
+## TMM transformation compatibility consolidation (2026-11-22)
+
+First-party code and the original TMM Dracolich art were transferred from
+`compat/transformations` in this repository to `compat/progression` (issue #468),
+using the immutable `test/full-integration` source commit
+`2e922405a01ded8893aef08cb06ae0278b9d96ef`.
+The original 2026-11-21 module's notices and historical design/art documents
+remain in its source tree and are preserved within Progression's internalization
+docs. No third-party mod JARs, native textures or upstream source are imported.
+JAWR, Dragon Survival, GeckoLib, Goety, Forbidden Magic, Botania and Mahou
+retain independent licenses and native state authority. Review historical
+first-party art ownership before external distribution.

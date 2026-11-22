@@ -44,3 +44,7 @@ config="tyr_progression_vision.mixins.json"
 # Optional Dragon Survival beverage permission hook.
 [[mixins]]
 config="tyr_progression_diet.mixins.json"
+
+# Optional transformation, Dracolich rendering and magic compat; each mixin is version-gated.
+[[mixins]]
+config="tmm_transformations.mixins.json"

@@ -27,6 +27,10 @@ public final class ProgressionMod {
     public ProgressionMod(IEventBus modBus, net.neoforged.fml.ModContainer container) {
         // Retired runtime providers must not silently suppress awards or open a
         // second skill-point wallet. Fail with an actionable startup error.
+        if (ModList.get().isLoaded("tmm_transformations")) {
+            throw new IllegalStateException(
+                "Standalone tmm_transformations conflicts with Progression's built-in native form adapters; remove that retired JAR.");
+        }
         if (ModList.get().isLoaded("tmm_mxp") || ModList.get().isLoaded("tyzs_skills")) {
             throw new IllegalStateException(
                     "Tyr Progression replaces tmm_mxp and Tyz's Skills; remove both retired JARs.");
@@ -51,6 +55,9 @@ public final class ProgressionMod {
             (player, path) -> io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway
                 .mayJoin(player, path, PathRegistry.nativeCompatibilityRules())
                 == io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Decision.ALLOW);
+        // Optional native form, death, mob-allegiance, magic and visual hooks.
+        // Exactly one registration site in the one-JAR target architecture.
+        io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
         ProgressionEvents.register();
         NewbieMode.register();
     }
