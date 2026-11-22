@@ -21,7 +21,7 @@ ISSUE = 291
 SHA = r"[0-9a-f]{40}"
 NONCE = r"[0-9a-f]{32}"
 BRANCH = r"experiment/[a-z0-9][a-z0-9-]{4,75}"
-COMMAND = re.compile(r"/tmm-update smoke (" + BRANCH + r") (" + SHA + r") (" + NONCE + r")\Z")
+COMMAND = re.compile(r"/tmm-update (smoke|prism) (" + BRANCH + r") (" + SHA + r") (" + NONCE + r")\Z")
 ACTIVE = ("queued", "in_progress", "waiting", "pending", "requested")
 BLOCKED_WORKFLOWS = ("full-integration-launcher.yml", "full-integration.yml", "qa-update-smoke.yml")
 
@@ -30,12 +30,12 @@ class Refused(RuntimeError):
     pass
 
 
-def parse(body: str) -> tuple[str, str, str]:
+def parse(body: str) -> tuple[str, str, str, str]:
     if not isinstance(body, str) or "\n" in body or "\r" in body:
         raise Refused("Command must occupy exactly one line")
     match = COMMAND.fullmatch(body.strip())
     if not match:
-        raise Refused("Expected /tmm-update smoke experiment/<branch> <40hex-sha> <32hex-nonce>")
+        raise Refused("Expected /tmm-update smoke|prism experiment/<branch> <40hex-sha> <32hex-nonce>")
     return match.groups()
 
 
@@ -63,7 +63,7 @@ def owner(user: dict) -> bool:
             and user.get("type") == "User")
 
 
-def validate(event: dict, token: str, now: dt.datetime) -> tuple[str, str, str]:
+def validate(event: dict, token: str, now: dt.datetime) -> tuple[str, str, str, str]:
     issue, comment = event.get("issue", {}), event.get("comment", {})
     repository = event.get("repository", {})
     if (event.get("action") != "created" or repository.get("full_name") != REPO
@@ -72,7 +72,7 @@ def validate(event: dict, token: str, now: dt.datetime) -> tuple[str, str, str]:
         or comment.get("author_association") != "OWNER" or not owner(comment.get("user", {}))
         or not owner(event.get("sender", {}))):
         raise Refused("Untrusted owner, issue or repository")
-    branch, sha, nonce = parse(comment.get("body"))
+    mode, branch, sha, nonce = parse(comment.get("body"))
     if not isinstance(comment.get("id"), int):
         raise Refused("Missing comment ID")
     live = get(f"issues/comments/{comment['id']}", token)
@@ -120,7 +120,7 @@ def validate(event: dict, token: str, now: dt.datetime) -> tuple[str, str, str]:
                 raise Refused("Another full QA launcher is already active")
     if get("git/ref/heads/" + branch, token).get("object", {}).get("sha") != sha:
         raise Refused("Candidate HEAD advanced while checking")
-    return branch, sha, nonce
+    return mode, branch, sha, nonce
 
 
 def main() -> int:
@@ -128,16 +128,16 @@ def main() -> int:
         raise Refused("Re-running update smoke command is prohibited")
     event = json.load(open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8"))
     token = os.environ["GH_TOKEN"]
-    branch, sha, nonce = validate(event, token, dt.datetime.now(dt.timezone.utc))
+    mode, branch, sha, nonce = validate(event, token, dt.datetime.now(dt.timezone.utc))
     # Unique one-shot receipt, atomically create-only; never clean up or retry.
     get("git/refs", token, "POST", {"ref": "refs/tags/qa-update-request/" + nonce, "sha": sha})
     if get("git/ref/heads/" + branch, token).get("object", {}).get("sha") != sha:
         raise Refused("Candidate moved after receipt; authorization consumed, no smoke")
     output = os.environ["GITHUB_OUTPUT"]
     with open(output, "a", encoding="utf-8") as handle:
-        for name, val in (("branch", branch), ("sha", sha), ("nonce", nonce)):
+        for name, val in (("mode", mode), ("branch", branch), ("sha", sha), ("nonce", nonce)):
             handle.write(name + "=" + val + "\n")
-    print(json.dumps({"status":"OWNER-AUTHORIZED", "branch":branch,
+    print(json.dumps({"status":"OWNER-AUTHORIZED", "mode":mode, "branch":branch,
                       "candidate_sha":sha, "one_shot_nonce":nonce}))
     return 0
 
