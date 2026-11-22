@@ -57,6 +57,19 @@ class MechanicalSpecTest {
         assertDoesNotThrow(()->parse("{\"type\":\"virtual_unbreaking\",\"target\":\"test:gear\",\"per_rank\":1}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"virtual_unbreaking\",\"per_rank\":1}"));
     }
+    @Test void beneficialDurationUsesTheExistingEffectPipelineSafely(){
+        assertDoesNotThrow(() -> parse("{\"type\":\"beneficial_duration_bonus\",\"per_rank\":0.02}"));
+        assertDoesNotThrow(() -> parse("{\"type\":\"beneficial_duration_bonus\",\"target\":\"minecraft:speed\",\"per_rank\":0.02}"));
+        assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"per_rank\":0.5}"));
+        assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"target\":\"#minecraft:speed\",\"per_rank\":0.02}"));
+        assertEquals(120, MechanicalSpec.increasedDuration(100,0.2));
+        assertEquals(121, MechanicalSpec.increasedDuration(101,0.2));
+        assertEquals(1, MechanicalSpec.increasedDuration(1,0.2));
+        assertEquals(-1, MechanicalSpec.increasedDuration(-1,0.2));
+        assertEquals(100, MechanicalSpec.increasedDuration(100,-0.2));
+        assertEquals(195, MechanicalSpec.increasedDuration(100,8));
+        assertEquals(Integer.MAX_VALUE, MechanicalSpec.increasedDuration(Integer.MAX_VALUE,0.2));
+    }
     @Test void gildedMechanicsSchema(){
         assertDoesNotThrow(()->parse("{\"type\":\"piglin_kinship\"}"));
         assertDoesNotThrow(()->parse("{\"type\":\"held_harvest_tier\",\"target\":\"#minecraft:mineable/pickaxe\",\"weapon\":\"minecraft:golden_pickaxe\",\"tier\":3}"));
