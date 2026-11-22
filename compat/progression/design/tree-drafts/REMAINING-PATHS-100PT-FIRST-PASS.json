@@ -1,10 +1,11 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v5",
+  "schema": "tmm_remaining_path_tree_blueprint_v6",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "VAMPIRE COMPLETED DESIGN: 19 paid skills in five branches 25/20/20/20/15, 100 one-point ranks; JAWR native blood, sunlight, BAT and feeding remain free. Source-only design.",
     "All ranks per one character cost one point; past Sea Dragon 50-point Luck reservation and 40 unallocated status are superseded. No historic rank distribution or source numeric effect automatically becomes a live cap.",
     "SEA DRAGON FIRST PASS COMPLETE: 22 meaningful paid skills, 100 one-point ranks, 10 total Sea Dragon Luck ranks. Complete Sea-specific design under stacked PR, not active runtime.",
     "Owner's newer balance-pass intent supersedes historical per-node weightings, previous target cap assertions and generator-reserved 50-point Luck allocation. Older catalogs are provenance only unless reconfirmed.",
@@ -3390,37 +3391,18 @@
       "title": "Vampire",
       "kind": "native_form_path",
       "budget": 100,
-      "status": "fully_costed_design_only",
+      "status": "COMPLETE_FIRST_PASS_DESIGN_ONLY_100_PT_OWNER_REVIEW",
       "groups": [
         {
-          "id": "group_1_bloodcraft",
+          "id": "vampire_bloodcraft",
           "name": "Bloodcraft",
+          "points": 25,
           "skills": [
             {
               "id": "tyr_progression:vampire_efficient_feeding",
-              "source_id": "tmm_vampire_efficient_feeding",
               "name": "Efficient Feeding",
-              "description": "Improve real blood gained from eligible feeding transactions; cannot create blood from empty actions.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 0,
-              "points": 9,
-              "max_rank": 9,
-              "price_per_rank": 1,
-              "total_cost": 9,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 9,
+              "max_rank": 6,
               "rank_costs": [
-                1,
-                1,
-                1,
                 1,
                 1,
                 1,
@@ -3428,672 +3410,340 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 5,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 6,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+5% accepted native blood gain per rank (+30% max) from one verified JAWR feeding event, including recognized bottles, bites and valid player/nonplayer donors; no bonus on unrelated passive transfers or synthetic blood.",
+              "mechanic": "jawr_feeding_bonus",
+              "verification": "existing_source_hook",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_efficient_feeding",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             },
             {
               "id": "tyr_progression:vampire_deep_reservoir",
-              "source_id": "tmm_vampire_deep_reservoir",
               "name": "Deep Reservoir",
-              "description": "Increase one authoritative usable blood capacity, not two independent HUD pools.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:vampire_efficient_feeding",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
+              "max_rank": 6,
               "rank_costs": [
+                1,
                 1,
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 6,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_efficient_feeding"
+              ],
+              "description": "+8% native maximum blood capacity per rank (+48% full), computed from JAWR's level baseline instead of multiplying existing bonuses; require native vampire level at least 2.",
+              "mechanic": "jawr_blood_capacity",
+              "verification": "existing_source_hook",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_deep_reservoir",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_blood_thrift",
+              "name": "Blood Thrift",
+              "max_rank": 6,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 6,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "-3% verified native personal self-blood expenditure per rank (-18% max), only hunger/healing/approved timed ability charges, never donor blood extraction or orb/altar transfers; positive costs pay at least one unit.",
+              "mechanic": "jawr_blood_thrift",
+              "verification": "existing_source_hook",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_blood_thrift",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             },
             {
               "id": "tyr_progression:vampire_crimson_renewal",
-              "source_id": "tmm_vampire_crimson_renewal",
               "name": "Crimson Renewal",
-              "description": "Trade a real measured blood debit for bounded emergency healing.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 0,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:vampire_deep_reservoir",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
+              "max_rank": 7,
               "rank_costs": [
+                1,
+                1,
+                1,
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 7,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:vampire_efficient_feeding"
+              ],
+              "description": "On a real completed feeding transaction that increases native blood, heal 0.5 HP per rank (+3.5 HP max), once per 20 seconds; no failed/full-pool, self-feeding or reentrant reward.",
+              "mechanic": "heal_on_verified_feeding",
+              "verification": "generic_adapter_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_crimson_renewal",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native vampire level>=8 or verified late source milestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             }
-          ],
-          "points": 18
+          ]
         },
         {
-          "id": "group_2_nightstalker",
-          "name": "Nightstalker",
-          "skills": [
-            {
-              "id": "tyr_progression:vampire_nocturnal_vision",
-              "source_id": "tmm_vampire_nocturnal_vision",
-              "name": "Nocturnal Vision",
-              "description": "Better low-light perception with native-sunlight penalties untouched.",
-              "stage": "entry",
-              "historic_points": 50,
-              "historic_ranks": 50,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 0,
-              "points": 12,
-              "max_rank": 12,
-              "price_per_rank": 1,
-              "total_cost": 12,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 12,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 6,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_shadow_stalker",
-              "source_id": "tmm_vampire_shadow_stalker",
-              "name": "Shadow Stalker",
-              "description": "Short stealth advantage in darkness; avoid invisibility in full daylight.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:vampire_nocturnal_vision",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_bat_mastery",
-              "source_id": "tmm_vampire_bat_mastery",
-              "name": "Bat Mastery",
-              "description": "Improve native bat-form controls/efficiency after that native ability is acquired.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 1,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:vampire_shadow_stalker",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 21
-        },
-        {
-          "id": "group_3_predation",
+          "id": "vampire_predation",
           "name": "Predation",
+          "points": 20,
           "skills": [
             {
               "id": "tyr_progression:vampire_fang_training",
-              "source_id": "tmm_vampire_fang_training",
               "name": "Fang Training",
-              "description": "Scale only verified vampire bite/melee attacks.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
+              "max_rank": 5,
               "rank_costs": [
-                1,
-                1,
-                1,
                 1,
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_measured_feast",
-              "source_id": "tmm_vampire_measured_feast",
-              "name": "Measured Feast",
-              "description": "Limited post-kill blood recovery from eligible kills, with transaction deduplication.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
               "price_per_rank": 1,
               "total_cost": 5,
-              "prerequisite": "tyr_progression:vampire_fang_training",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "Successful native bite marks the same hostile prey for five seconds; the next real melee hit on that victim gains +4% damage/rank (+20% max), then consumes the mark. Drinking bottles does not trigger this.",
+              "mechanic": "bite_melee_followup",
+              "verification": "generic_native_bite_bridge_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_fang_training",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             },
             {
               "id": "tyr_progression:vampire_blood_duelist",
-              "source_id": "tmm_vampire_blood_duelist",
               "name": "Blood Duelist",
-              "description": "Focused single-target bonuses under low blood; prevent intentional zero-cost loops.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 2,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:vampire_measured_feast",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
+              "max_rank": 5,
               "rank_costs": [
+                1,
                 1,
                 1,
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_fang_training"
+              ],
+              "description": "+4% direct melee damage/rank (+20% max) against a real hostile whose current health is below half its maximum health; no self-damage or fake hostile target.",
+              "mechanic": "health_threshold_melee_bonus",
+              "verification": "generic_damage_predicate_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_blood_duelist",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_predatory_precision",
+              "name": "Predatory Precision",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_blood_duelist"
+              ],
+              "description": "+2 percentage points real direct-melee critical chance per rank (+10 pp max), active only during genuine night/darkness.",
+              "mechanic": "conditional_critical_hit",
+              "verification": "existing_effect_needs_light_gate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_blood_trail",
+              "name": "Blood Trail",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_fang_training"
+              ],
+              "description": "On a verified native bite against a hostile nonplayer, apply Glowing for 2 seconds/rank (10 seconds max). No global mob radar, no duplicate target marking and PvP exclusions configurable.",
+              "mechanic": "verified_bite_target_glowing",
+              "verification": "generic_native_bite_bridge_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             }
-          ],
-          "points": 17
+          ]
         },
         {
-          "id": "group_4_undead_constitution",
-          "name": "Undead Constitution",
+          "id": "vampire_nightstalker",
+          "name": "Nightstalker",
+          "points": 20,
           "skills": [
             {
-              "id": "tyr_progression:vampire_pale_resilience",
-              "source_id": "tmm_vampire_pale_resilience",
-              "name": "Pale Resilience",
-              "description": "Bounded poison/disease-type mitigation where the source system allows it.",
+              "id": "tyr_progression:vampire_shadow_stalker",
+              "name": "Shadow Stalker",
+              "max_rank": 6,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 6,
               "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": "verified eligible transformation or faction",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 0,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
+              "prerequisites": [],
+              "description": "Reduce eligible hostile mobs' initial acquisition distance by 5%/rank (-30% max) while crouching in genuine darkness; cease after combat aggro and do not mask boss targeting.",
+              "mechanic": "conditional_detection_reduction",
+              "verification": "generic_mob_detection_adapter_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_shadow_stalker",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_sunshroud",
-              "source_id": "tmm_vampire_sunshroud",
-              "name": "Sunshroud",
-              "description": "Short resource-funded sunlight resistance; never erase core daylight tradeoffs.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": "verified mid native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:vampire_pale_resilience",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_elder_presence",
-              "source_id": "tmm_vampire_elder_presence",
-              "name": "Elder Presence",
-              "description": "Bounded defensive/control aura with cooldown, not full charm immunity.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": "verified late native form rank + prerequisite rank",
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 3,
-              "row_index": 2,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:vampire_sunshroud",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 17
-        },
-        {
-          "id": "group_5_retained_vampire_skill_concepts_jawr_owned",
-          "name": "Retained Vampire Skill Concepts (JAWR-owned)",
-          "skills": [
-            {
-              "id": "tyr_progression:vampire_blood_thrift",
-              "source_id": "tmm_vampire_blood_thrift",
-              "name": "Blood Thrift",
-              "description": "Reduce only real JAWR blood expenditure/hunger cost on verified committed actions.",
-              "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 0,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_predatory_finesse",
-              "source_id": "tmm_vampire_predatory_finesse",
-              "name": "Predatory Finesse",
-              "description": "Blood-funded vampire-specific melee attack speed, not spell casting speed.",
-              "stage": "advanced",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 1,
-              "points": 5,
-              "max_rank": 5,
-              "price_per_rank": 1,
-              "total_cost": 5,
-              "prerequisite": "tyr_progression:vampire_blood_thrift",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             },
             {
               "id": "tyr_progression:vampire_night_runner",
-              "source_id": "tmm_vampire_night_runner",
               "name": "Night Runner",
-              "description": "Improved vampire walking/running mobility in darkness; no universal free speed.",
-              "stage": "entry",
-              "historic_points": 25,
-              "historic_ranks": 25,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 2,
-              "points": 8,
-              "max_rank": 8,
-              "price_per_rank": 1,
-              "total_cost": 8,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 8,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 4,
-                "old_rank_costs": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            },
-            {
-              "id": "tyr_progression:vampire_crimson_surge",
-              "source_id": "tmm_vampire_crimson_surge",
-              "name": "Crimson Surge",
-              "description": "Blood-paid high-stage predatory burst, supplementing Blood Regent without minions.",
-              "stage": "mastery",
-              "historic_points": 5,
-              "historic_ranks": 5,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 4,
-              "row_index": 3,
-              "points": 4,
-              "max_rank": 4,
-              "price_per_rank": 1,
-              "total_cost": 4,
-              "prerequisite": "tyr_progression:vampire_predatory_finesse",
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 4,
-              "rank_costs": [
-                1,
-                1,
-                1,
-                1
-              ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 2,
-                "old_rank_costs": [
-                  2,
-                  2
-                ]
-              },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
-            }
-          ],
-          "points": 22
-        },
-        {
-          "id": "group_6_retained_tyz_6_4_2_source_skills",
-          "name": "Retained Tyz 6.4.2 source skills",
-          "skills": [
-            {
-              "id": "tyr_progression:vampire_bloodlust",
-              "source_id": "bloodlust",
-              "name": "Bloodlust",
-              "description": "Killing a hostile mob regenerates {health_percentage}% of its max health",
-              "stage": "entry",
-              "historic_points": 10,
-              "historic_ranks": 10,
-              "native_gate_reference": null,
-              "source_approval": "2026-11-15 design candidate, NOT runtime",
-              "group_index": 5,
-              "row_index": 0,
-              "points": 5,
               "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
               "price_per_rank": 1,
               "total_cost": 5,
-              "prerequisite": null,
-              "effect_status": "concept_to_verify",
-              "live": false,
-              "native_source_mechanics_preserved_as_separate_authority": true,
-              "previous_draft_ranks": 5,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+3% grounded movement speed/rank (+15% max) during genuine darkness/night only; not constant daytime speed or free flight.",
+              "mechanic": "conditional_movement_speed",
+              "verification": "existing_attribute_needs_light_predicate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_night_runner",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_bat_mastery",
+              "name": "Bat Mastery",
+              "max_rank": 5,
               "rank_costs": [
                 1,
                 1,
@@ -4101,27 +3751,300 @@
                 1,
                 1
               ],
-              "max_effect_target": "preserve_previous_draft_cumulative_effect_subject_to_provider_and_balance_review",
-              "superseded_multi_point_rank_model": {
-                "old_rank_count": 3,
-                "old_rank_costs": [
-                  1,
-                  2,
-                  2
-                ]
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [],
+              "description": "+20% duration/rank (+100% max) on already-unlocked native JAWR BAT shape, using existing native BAT_FORM_DURATION attribute; does not enable flying or independently change steering.",
+              "mechanic": "jawr_bat_duration",
+              "verification": "existing_source_hook",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_bat_mastery",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
               },
-              "mastery_target": "1 advancement point = 1 skill rank. Proposed whole-skill power preserved but must be explicitly rebalanced for each provider."
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_night_veil",
+              "name": "Night Veil",
+              "max_rank": 4,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 4,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:vampire_shadow_stalker"
+              ],
+              "description": "+2.5 percentage points projectile evasion/rank (+10 pp max) when crouching in genuine darkness; never negates area damage or sunlight.",
+              "mechanic": "conditional_projectile_evasion",
+              "verification": "existing_evasion_needs_light_gate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native vampire level>=8 or verified late source milestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
             }
-          ],
-          "points": 5
+          ]
+        },
+        {
+          "id": "vampire_undead_constitution",
+          "name": "Undead Constitution",
+          "points": 20,
+          "skills": [
+            {
+              "id": "tyr_progression:vampire_pale_resilience",
+              "name": "Pale Resilience",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "Shorten newly applied finite harmful Wither, Weakness and Slowness by 5%/rank (-25% full), if JAWR vampire is actually susceptible; do not buy immunity it already has.",
+              "mechanic": "specific_harmful_effect_duration_reduction",
+              "verification": "existing_exact_effect_handler",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_pale_resilience",
+                "archive_ranks": 25,
+                "obsolete_sp": 25
+              },
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_sunshroud",
+              "name": "Sunshroud",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_pale_resilience"
+              ],
+              "description": "-8% native ordinary sunlight tick damage/rank (-40% max); not immunity, no suppression of native lethal-special sunlight check or vampire forest exposure, no independent blood drain discount.",
+              "mechanic": "jawr_sun_resistance",
+              "verification": "existing_source_hook",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_sunshroud",
+                "archive_ranks": 10,
+                "obsolete_sp": 10
+              },
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_bloodbound_vitality",
+              "name": "Bloodbound Vitality",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+2 maximum health/rank (+10 HP or 5 hearts) only when the authoritative native JAWR blood reservoir is ≥50% full; no free healing when buffs toggle.",
+              "mechanic": "conditional_max_health",
+              "verification": "existing_attribute_needs_blood_predicate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_elder_presence",
+              "name": "Elder Presence",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:vampire_bloodbound_vitality"
+              ],
+              "description": "On true melee hit at night against ordinary hostile targets, apply Weakness I for 1 second/rank (5 seconds max), once per 40 ticks per target; no boss pacification or PvP aura.",
+              "mechanic": "night_conditional_weakness_on_hit",
+              "verification": "existing_status_handler_needs_night_gate",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": {
+                "archive_id": "tmm_vampire_elder_presence",
+                "archive_ranks": 5,
+                "obsolete_sp": 5
+              },
+              "native_conditions": "verified native vampire level>=8 or verified late source milestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "vampire_sanguine_arts",
+          "name": "Sanguine Arts",
+          "points": 15,
+          "skills": [
+            {
+              "id": "tyr_progression:vampire_sanguine_attunement",
+              "name": "Sanguine Attunement",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "entry",
+              "prerequisites": [],
+              "description": "+5% personally cast and actually blood-paid spell potency/rank (+25% full) for source-verified Neo Vitae/EvilCraft blood spell categories. Not all spells or machine/ritual throughput.",
+              "mechanic": "personal_blood_spell_potency",
+              "verification": "provider_catalog_audit_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native JAWR vampire level>=1",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_hematic_efficiency",
+              "name": "Hematic Efficiency",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "adept",
+              "prerequisites": [
+                "tyr_progression:vampire_sanguine_attunement"
+              ],
+              "description": "-3% real personally paid blood spell costs/rank (-15% full); not JAWR hunger/heal, donors, stationary rituals or resources not consumed. Preserve MXP payment accounting.",
+              "mechanic": "personal_blood_spell_discount",
+              "verification": "provider_cost_audit_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native vampire level>=4 or provider-confirmed midmilestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            },
+            {
+              "id": "tyr_progression:vampire_midnight_invocation",
+              "name": "Midnight Invocation",
+              "max_rank": 5,
+              "rank_costs": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "price_per_rank": 1,
+              "total_cost": 5,
+              "stage": "mastery",
+              "prerequisites": [
+                "tyr_progression:vampire_hematic_efficiency"
+              ],
+              "description": "+4% speed/cooldown throughput per rank (+20% full) for eligible personally cast blood spells at night/in actual darkness. No invented active spell, free ritual acceleration or global spell cooldown change.",
+              "mechanic": "personal_blood_cast_speed",
+              "verification": "provider_speed_audit_needed",
+              "status": "DESIGN_ONLY_NOT_LIVE",
+              "source_provenance": null,
+              "native_conditions": "verified native vampire level>=8 or verified late source milestone",
+              "owner_constraints": [
+                "single_native_JAWR_blood_pool",
+                "one_rank_one_point",
+                "never_rebuy_native_ability",
+                "no_new_independent_hotkey"
+              ]
+            }
+          ]
         }
       ],
       "source": "Archived nine-tree design 2026-11-15",
-      "native_guardrails": "Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.",
-      "special_note": null,
+      "native_guardrails": "JAWR alone owns the actual native vampire transformation, native levels, blood/hunger, feeding/bite, sunlight, BAT form unlock, death and cure; Progression owns only player skill investments and optional validated adapters. Do not add a second blood meter, native vampire progress currency, duplicate bottles/food, free blood from passive transfers or donor debit discount; measured paid events must stay transactional. Source mods retain provider authority. New vampire effects suspend on lost eligibility and re-enable on valid return without inventing world-save migration for disposable pre-stable worlds. Sunshroud never cancels native daylight checks, vampire forest sunlight or lethal-source hits; no full sunlight immunity at rank five. Retired TeamLapen Vampirism/Werewolves must not be reintroduced for old tree content; Blood Arts require actual personal blood-spell IDs, not guesswork.",
+      "special_note": "Five E5 reusable JAWR adapters are source-verified; the remaining mechanics require generic condition/provider audits before activation. Native vampire baseline remains free. Vampire's Delight, canonical EvilCraft blood, JAWR bottles and cuisine remain separate food/integration responsibilities.",
       "total_points": 100,
-      "skill_count": 17,
-      "total_available_paid_ranks_per_character": 100
+      "skill_count": 19,
+      "total_available_paid_ranks_per_character": 100,
+      "assigned_points": 100,
+      "unallocated_points": 0,
+      "role": "A real blood-fed predator who hunts in darkness, survives by managing one JAWR blood pool, and enhances personally paid blood spells. Sunlight and native thirst remain real costs.",
+      "maturity": "Existing E5 source-backed JAWR adapters cover five proposed skills (feeding, capacity, thrift, sun, bat duration), but their in-world behavior and live skill definitions have not been tested as this tree.",
+      "balance_policy": "100 actual one-point rank purchases across five newly balanced roles. Historical November 15 rank/cost ratios are provenance only. All effect numbers are test candidates, not historical immutable caps."
     },
     {
       "id": "werewolf",
