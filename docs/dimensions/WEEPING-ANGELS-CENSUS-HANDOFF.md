@@ -1,37 +1,38 @@
-# Weeping Angels — dimension exclusion audit and integration handoff
+# Weeping Angels — verified current-build dimension census and integration handoff
 
-**Scope:** source/config-only checkpoint for #387 / draft PR #392. No game assembly, server boot, Prism package, in-world acceptance, or proof of official Weeping Angels 1.0.5 binary parity. **Do not merge/declare a strict six-destination policy until the full runtime level census is present.**
+**2026-11-22 checkpoint:** The owner ran `/reload` and `/tmm_dimension_registry` in the experimental disposable world. [PR #527](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/527) records a **live `server.levelKeys()` 19-ID capture** at `2026-11-22T21:43:16.855382100Z`, matching the 19 persisted save registry keys with zero errors. The exact build was `c56fb18ffc3b9f12f27317e7fb37f15c32576a8c` (manifest SHA-256 `1728619fdbb48b95873fa46b7e2f93d3211cb1893e29744b395d89793e1c8fc3`). This supersedes the former 'unknown JAWR ID' blocker for **this exact build only**; other/new/lazy-loaded dimensions require a renewed census.
 
-## Locked rules and source status
+- **Witness:** `docs/dimensions/weeping-angels-live-census-c56fb18f.json` is a deliberately compact format adaptation of PR #527's `docs/dimensions/exports/c56fb18f-2026-11-22/live-dimension-registry.json`, not a second server capture. Original Git blob SHA: `02d8413cecd343591aef20a41f49e8f92bc9a3ae`; original PR head: `8bdc44e758617b5a971332b2847b6d4de08184d6`.
+- **Loaded permit set (6):** `minecraft:overworld`, `aether:the_aether`, `the_bumblezone:the_bumblezone`, `twilightforest:twilight_forest`, `theaurorian:the_aurorian`, `eternal_starlight:starlight`.
+- **Loaded deny set (13):** `deeperdarker:otherside`, `irons_spellbooks:pocket_dimension`, `mahoutsukai:reality_marble`, `minecraft:the_end`, `minecraft:the_nether`, `neovitae:dungeon`, `pastel:deeper_down`, `unicornacademy:unicorn_island`, `voidscape:void`, `wardentools:abyssdim`, `witchery:dream_world`, `witchery:mirror_world`, `witchery:nightmare_world`.
+- **Proactive additional exclusion:** `botania:skybox` is a known conditional resource but **not loaded**; PR #527 found `modules.skybox=false`. It is blacklisted defensively, not counted in the 19.
+- **Witchery/JAWR:** `witchery:dream_world`, `witchery:mirror_world`, and `witchery:nightmare_world` are the loaded IDs. No invented `witchery:spirit_world` entry.
 
-Native teleport only, both local and interdimensional, 50% native chance, 400-block local displacement, no custom weighting, destination selector, fallback or return mechanic. Exactly six destinations are authorized: `minecraft:overworld`, `aether:the_aether`, `the_bumblezone:the_bumblezone`, `twilightforest:twilight_forest`, `theaurorian:the_aurorian`, `eternal_starlight:starlight`. The candidate TOML excludes seven source-confirmed non-target levels; **it does not yet include JAWR Spirit World** because no exact registry ID was verified, nor can it prove there are no more levels.
+## Repeatable source check
 
-`angel_theft=false` is permanent; `block_breaking=true` is a conditional unclaimed-world QA target, not claim-safety proof. `config/weeping-angels-spawns.toml` disables Snow Angels; the `neoforge:none` same-ID biome modifier suppresses regular biome spawns. These files are intended for authored statue traps only; they do not create traps or implement scoped damage-source handling.
+From the Weeping Angels feature branch, run:
 
-## Complete the negative list (integration writer)
-
-1. Freeze the candidate **exact indexed modpack / datapacks** and verify official 1.21.1 NeoForge Weeping Angels 1.0.5 JAR bytes/hash, loader metadata/dependencies and generated config keys. Candidate: CurseForge project 291249, file 8962702, `forge-weeping_angels-mc1.21-v1.0.5-forge.jar`; the published third-party SHA-1 `2f5843d18e0fe3905d3569cc19022d4f2f7e7570` is **not an independently verified pin**. Indexing, packwiz hash and manifest edits are integration-writer owned.
-2. **Read all actual loaded `ResourceKey<Level>` IDs** from the complete candidate runtime registry. Include data pack and programmatically created dimensions, JAWR Spirit World (pinned Witchery 0.5.39), possible additional JAWR realms, Feywild, Pastel and any new/modded worlds. A scan of `data/*/dimension/*.json` inside JARs is useful preflight evidence, not a substitute for the loaded-level registry.
-3. Save the complete **witnessed** registry as JSON, with the exact current integration commit and *actual* resource IDs, e.g.:
-
-```json
-{
-  "schema": 1,
-  "source": "runtime_loaded_level_registry",
-  "integration_commit": "0000000000000000000000000000000000000000",
-  "dimensions": ["minecraft:overworld", "minecraft:the_nether", "minecraft:the_end"]
-}
+```sh
+python -m unittest discover -s scripts/tests -p 'test_weeping_angels_dimensions.py'
+python scripts/audit_weeping_angels_dimensions.py \\
+  --census docs/dimensions/weeping-angels-live-census-c56fb18f.json \\
+  --require-census \\
+  --expect-integration-commit c56fb18ffc3b9f12f27317e7fb37f15c32576a8c
 ```
 
-The example is **incomplete dummy data and MUST NOT be used as evidence**. Do not insert guessed IDs into this file or the native TOML.
+**Interpretation:** A successful source audit establishes that all loaded levels in this frozen build are covered by the approved six or the native blacklist. It is **not** a verified Weeping Angels loaded-mod behavior test: the 1.0.5 NeoForge binary is not installed/pinned by this PR. The blacklist is not fail-closed against later added dimensions. Re-run against the exact candidate build and its full runtime keys before promotion; fail integration if any allowed realm disappears or any new realm is unaccounted for. No dimension-weighting or teleport patch is permitted.
 
-4. Run `python scripts/audit_weeping_angels_dimensions.py --census path/to/observed.json --require-census`. The audit checks the native config and computes **actual loaded dimensions minus (six authorized + native blacklist)**; **any** unlisted loaded realm FAILS, as does a missing approved realm. Add every observed excluded ID to `banned_dimensions`, recheck and record source SHA, exact IDs, witness and date. Without a runtime census, `python scripts/audit_weeping_angels_dimensions.py` checks only the source candidate and prints `CENSUS BLOCKED`. `--require-census` exits nonzero without evidence. Optional `--jar-dir` only surveys dimension JSON files from already-available local JARs; it never downloads files or asserts a loaded dimension.
-5. Verify native failure fallback and local vs interdimensional destination behavior during separately authorized B/C QA. Adding a seventh eligible destination, changing the native selector, or granting automatic Newbie travel exceptions is **not** implied by successful config validation.
+## Integration-writer owned tasks
 
-## Other independent work, not config acceptance
+1. Independently download and verify the exact official 1.21.1 NeoForge Weeping Angels 1.0.5 JAR and metadata/dependency closure; candidate CurseForge project 291249 / file 8962702 (`forge-weeping_angels-mc1.21-v1.0.5-forge.jar`). Third-party SHA-1 `2f5843d18e0fe3905d3569cc19022d4f2f7e7570` remains **unverified**, not a valid pin by itself. Check runtime config filename, keys and same-ID `neoforge:none` spawn modifier behavior.
+2. Reconcile this config and the source-only Angel files, index/Packwiz/manifest and inclusion matrix against latest `test/full-integration` with single-writer ownership and required quick CI/preflight. PR #527 is **stacked on PR #504**, so preserve its witness/provenance without merging unrelated QA work into PR #392.
+3. Re-capture the full dimension registry if the assembled candidate differs from `c56fb18ffc3b9f12f27317e7fb37f15c32576a8c`; compare **loaded − six allowed** against the native `banned_dimensions` and ensure no new/lazy-loaded world is eligible. A later Botania skybox activation is already proactively denied, but all other new IDs still need an explicit update.
 
-- **Source implementation:** dedicated damage-source adapter for pickaxes, genuine fists/Monk hits, Dragon Survival bites/claws; reject sword/projectile/ordinary spell false positives while preserving generator and admin/void exceptions. No `ANYTHING` blanket override. Owner/design blocker: none; pinned native attribution/compat engineering is unresolved.
-- **Structure authoring:** two verifiable dormant statue trap templates, calibrated footstep sculk chamber and hidden tripwire corridor, with correct block entities, redstone persistence and repeat/stealth/chunk tests.
-- **B/C gameplay after authorized build:** no natural or Snow Angel spawns, no theft, six native teleport targets and five naked return routes; Newbie gating; claimed/unclaimed FTB Chunks block breaking, lights, candles and levers; damage-source attribution, mob/structure integration and save/reload.
+## Separate implementation and in-world QA remaining
 
-A successful offline audit is **source policy verification**, not gameplay PASS, claim safety, actual JAR pin verification or permission to run Integration Assembly/Smoke/Prism. Keep PR #392 **draft** while these integration prerequisites remain unresolved.
+- Physical-only damage: pickaxes, genuine unarmed/Monk fists, Dragon Survival claws/bites, native generator/admin exceptions; ordinary swords/arrows/spells rejected. No blanket `ANYTHING`.
+- Two dormant `weeping_angels:statue` traps: calibrated sculk footstep chamber and concealed tripwire corridor; proper NBT, single activation, reload, sneaking, false positives and claim handling.
+- FTB Chunks: with `mobGriefing=true`, Angels may alter unclaimed lights/switches/candles but **never** claimed world blocks, without suppressing statue activation/combat.
+- Authorized B/C gameplay: exactly six effective teleport destinations, native local/fallback behavior, no natural or Snow Angels, no theft, five naked return routes and Newbie travel behavior. Live dimension export was a B PASS *for the census only*.
+
+**Scope:** config and read-only checks only. No Integration Assembly, server smoke, Prism package, Angel gameplay validation or binary pin was done in this work slice. Keep PR #392 draft until independent integration conditions are met.
