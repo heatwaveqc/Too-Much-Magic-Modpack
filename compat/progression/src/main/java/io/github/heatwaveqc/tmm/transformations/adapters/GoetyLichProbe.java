@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.ModList;
 
-/** Goety 3.2.2 native LichdomHelper state, read-only and version-pinned. */
+/** Goety 3.2.3 native LichdomHelper state, read-only and version-pinned. */
 public final class GoetyLichProbe implements TransformationProbe {
     @Override public ProviderState state() {
         return ProviderState.GOETY_LICH;
@@ -15,7 +15,7 @@ public final class GoetyLichProbe implements TransformationProbe {
 
     @Override public Observation observe(ServerPlayer player) {
         if (ModList.get().getModContainerById("goety")
-                .filter(mod -> mod.getModInfo().getVersion().toString().startsWith("3.2.2"))
+                .filter(mod -> mod.getModInfo().getVersion().toString().startsWith("3.2.3"))
                 .isEmpty()) return Observation.UNKNOWN;
         try {
             Class<?> lich = Class.forName("com.Polarice3.Goety.utils.LichdomHelper");
