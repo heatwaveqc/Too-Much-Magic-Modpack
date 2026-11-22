@@ -129,7 +129,7 @@
       ],
       "position": [
         8,
-        1
+        0
       ],
       "icon": "theurgy:calcination_oven",
       "icon_reason": "Keep material classes separate",
@@ -308,7 +308,7 @@
       ],
       "position": [
         16,
-        10
+        8
       ],
       "icon": "theurgy:fermentation_vat",
       "icon_reason": "Begin advanced alchemical inputs",
@@ -339,7 +339,7 @@
       ],
       "position": [
         20,
-        10
+        8
       ],
       "icon": "theurgy:digestion_vat",
       "icon_reason": "Prepare an exaltation reagent",
@@ -369,7 +369,7 @@
       ],
       "position": [
         24,
-        10
+        8
       ],
       "icon": "theurgy:digestion_vat",
       "icon_reason": "Understand material ranks",
@@ -633,8 +633,11 @@
     "locked_policy": "docs/QUESTBOOK-ORGANIZATION-V4.md (PR #498)",
     "archetype": "left-to-right mod mainline with separate divination, Niter, reformation and logistics regions",
     "edge_policy": "remove only transitively implied edges; preserve all effective prerequisites and quest IDs",
-    "evidence": "Type-A layout graph and art clearance audit; no UI/client QA",
+    "evidence": "Type-A graph/line-node/art clearance audit; no client visual acceptance",
     "before_crossings": 12,
-    "after_crossings": 0
+    "after_crossings": 1,
+    "before_max_edge": 24.7,
+    "after_max_edge": 14.42,
+    "min_nonincident_edge_node_clearance": 1.1
   }
 }
