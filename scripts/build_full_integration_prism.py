@@ -26,7 +26,6 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
     # Personal options are shipped ONLY by the UNSTABLE QA client builder.
     qa_assets = {
         "minecraft/options.txt": root / "scripts/prism_qa_options.txt",
-        "minecraft/tmm-qa-install-verify.ps1": root / "scripts/tmm_qa_install_verify.ps1",
         "minecraft/tmm-qa-preferences.ps1": root / "scripts/tmm_qa_preferences.ps1",
         "minecraft/IMPORT-OLD-TMM-PREFERENCES.cmd": root / "scripts/IMPORT-OLD-TMM-PREFERENCES.cmd",
     }
@@ -107,7 +106,10 @@ Client, multiplayer, third-party binary behavior, native death/cure
 and mutation persistence are NOT proven by server smoke alone.
 
 Other mods download by packwiz; selected first-party JARs bundled.
-Windows QA pre-launch checks every expected client JAR byte hash and rejects missing/extra JARs.
+Packwiz installs/updates mods directly from the immutable hash-pinned pack.
+Full client inventory verification is optional and can be run offline with
+scripts/audit_client_inventory.py from the TMM repository after installation;
+the packaged tmm-qa-expected-mods.json records the expected client JAR hashes.
 WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
 plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
@@ -117,7 +119,7 @@ InstanceType=OneSix
 name=Too Much Magic - Full Integration DEV - Test Worlds ONLY
 OverrideCommands=true
 PreLoadCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode apply -OptionsPath "$INST_MC_DIR/options.txt"
-PreLaunchCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-install-verify.ps1" -JavaPath "$INST_JAVA" -PackUrl {pack} -InstancePath "$INST_MC_DIR"
+PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar -s client {pack}
 PostExitCommand=powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$INST_MC_DIR/tmm-qa-preferences.ps1" -Mode save -OptionsPath "$INST_MC_DIR/options.txt"
 OverrideMemory=true
 MinMemAlloc=2048
@@ -149,8 +151,14 @@ MaxMemAlloc=8192
                 raise RuntimeError("First-party jar changed during packaging")
         if json.loads(z.read("minecraft/tmm-qa-expected-mods.json")) != expected:
             raise RuntimeError("Client inventory changed during packaging")
-        if pack.encode() not in z.read("instance.cfg"):
-            raise RuntimeError("Installer is not commit locked")
+        conf = z.read("instance.cfg")
+        expected_launch = f'PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar -s client {pack}'
+        if conf.decode("utf-8").splitlines().count(expected_launch) != 1:
+            raise RuntimeError("Expected exactly one direct, commit-locked Packwiz prelaunch command")
+        if b'tmm-qa-install-verify.ps1' in conf or b'PreLaunchCommand=powershell.exe' in conf:
+            raise RuntimeError("Mandatory client PowerShell verifier unexpectedly enabled")
+        if "minecraft/tmm-qa-install-verify.ps1" in names:
+            raise RuntimeError("Legacy client installer/verifier must not be bundled")
         for arcname, source in qa_assets.items():
             if z.read(arcname) != source.read_bytes():
                 raise RuntimeError("QA asset changed during packaging: " + arcname)
