@@ -1,0 +1,635 @@
+{
+  "schema_version": 1,
+  "chapter": "Theurgy",
+  "chapter_id": "544D203001500000",
+  "group_id": "544D103000000000",
+  "existing_orientation": {
+    "quest_id": "544D303001500001",
+    "task_id": "544D403001500001",
+    "xp_reward_id": "544D903001500001",
+    "item_reward_id": "544DA03001500002"
+  },
+  "source_ref": "docs/mod-capabilities/mods/theurgy-quest-map.md (Atlas PR #411, release-tag 1.79.0)",
+  "visual_contract": "docs/QUEST-PRESENTATION-STANDARD-V3.md (PR #489)",
+  "progression": "flexible",
+  "archetype": "left-to-right branching",
+  "status": "source candidate; not integrated or client validated",
+  "art_direction": {
+    "palette": [
+      "copper",
+      "brass",
+      "mercury blue",
+      "chalk white"
+    ],
+    "header": "original procedural visual with hermetic three-vessel emblem",
+    "sections": [
+      "divination",
+      "core alchemy",
+      "niter exaltation",
+      "reformation",
+      "mercurial logistics"
+    ],
+    "asset_namespace": "tmm",
+    "asset_prefix": "kubejs/assets/tmm/textures/questpics/theurgy/",
+    "no_atm_asset_reuse": true
+  },
+  "quests": [
+    {
+      "key": "TH-00",
+      "title": "Hermetica: Your Alchemical Field Guide",
+      "lane": "main",
+      "dependencies": [],
+      "position": [
+        0,
+        0
+      ],
+      "icon": "minecraft:book",
+      "icon_reason": "Read the actual instructions, not the apparatus label",
+      "section": "orientation",
+      "node_role": "orientation",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 2,
+        "item": "minecraft:paper",
+        "count": 1
+      },
+      "description": "Craft the Hermetica guide with a Book and two accepted sand-tag items. Open Getting Started and Spagyrics: Theurgy separates heat, Mercury, Salt, Sulfur, and fluid Sal Ammoniac. Identify each before buying machinery. Check this orientation when you have located those pages. This is a manual reading acknowledgement, not a detector for opening the guide. You are free to explore other schools afterward.",
+      "atlas_source": "TH-00",
+      "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-01",
+      "title": "Light a Pyromantic Brazier",
+      "lane": "main",
+      "dependencies": [
+        "TH-00"
+      ],
+      "position": [
+        4,
+        0
+      ],
+      "icon": "theurgy:pyromantic_brazier",
+      "icon_reason": "Begin fuel-driven heat",
+      "section": "heat",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:pyromantic_brazier",
+        "count": 1
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:charcoal",
+        "count": 4
+      },
+      "description": "Craft a Pyromantic Brazier and place it beneath a Theurgy machine with a heat receiver. Supply ordinary furnace fuel. This supplies Theurgy heat, not Forge Energy or Mercury Flux. In Hermetica, use Getting Started and Spagyrics' heat instructions to check spacing and accepted fuels. Task: possess the Brazier; FTB does not verify that a machine has heated up.",
+      "atlas_source": "TH-01",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-02",
+      "title": "Distill Mercury from Stone",
+      "lane": "main",
+      "dependencies": [
+        "TH-01"
+      ],
+      "position": [
+        8,
+        -3
+      ],
+      "icon": "theurgy:distiller",
+      "icon_reason": "Set up a real distillation station",
+      "section": "mercury",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:distiller",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:stone",
+        "count": 8
+      },
+      "description": "Craft a Mercury Distiller and place it over a working heat source. In Hermetica or JEI, find Distillation and feed a supported material: the tagged-release default example uses ten stone-tag blocks or fifteen sand-tag items for one Mercury Shard. Collect the output. The quest detects the Distiller item, not successful Mercury production; consult JEI in the installed pack for the effective recipe.",
+      "atlas_source": "TH-02",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-03",
+      "title": "Calcine the Four Salt Families",
+      "lane": "main",
+      "dependencies": [
+        "TH-01"
+      ],
+      "position": [
+        8,
+        0
+      ],
+      "icon": "theurgy:calcination_oven",
+      "icon_reason": "Keep material classes separate",
+      "section": "salts",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:calcination_oven",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:granite",
+        "count": 8
+      },
+      "description": "Build and heat a Calcination Oven. Compare stone to Strata Salt, tagged ores/raw materials to Mineral Salt, plants to Plant Salt and eligible creature materials to Creature Salt in JEI/Spagyrics. The tagged source example grants three Mineral Salt for a qualifying ore; this is not a promise of universal ore doubling. Task: acquire the oven. Check a real output in-game yourself.",
+      "atlas_source": "TH-03",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-04",
+      "title": "Collect Sal Ammoniac",
+      "lane": "main",
+      "dependencies": [
+        "TH-00"
+      ],
+      "position": [
+        8,
+        3
+      ],
+      "icon": "theurgy:sal_ammoniac_accumulator",
+      "icon_reason": "Water becomes the solvent for sulfur",
+      "section": "solvent",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:sal_ammoniac_accumulator",
+        "count": 1
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "description": "Craft a Sal Ammoniac Accumulator and its Tank, connect the tank as Hermetica shows, and supply water. The tagged-source baseline converts 1000 mB Water to 100 mB Sal Ammoniac without crystal assistance. A crystal-assisted recipe yields more but its exact reuse behavior needs runtime verification. Use the fluid gauges; owning an Accumulator does not establish that fluid was generated.",
+      "atlas_source": "TH-04",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-05",
+      "title": "Liquefy a Material into Sulfur",
+      "lane": "main",
+      "dependencies": [
+        "TH-01",
+        "TH-04"
+      ],
+      "position": [
+        12,
+        3
+      ],
+      "icon": "theurgy:liquefaction_cauldron",
+      "icon_reason": "Record an item's exact identity",
+      "section": "sulfur",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:liquefaction_cauldron",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:glass_bottle",
+        "count": 3
+      },
+      "description": "Make and heat a Liquefaction Cauldron. Supply stored Sal Ammoniac and an eligible source—an Oak Log is a useful beginner example—and retrieve its identity-specific Alchemical Sulfur. Check Liquefaction in JEI and Hermetica for the amount; many ordinary logs use 10 mB in tagged source. This is not generic Sulfur interchangeable between all targets. Quest task checks acquisition of the cauldron, not that liquefaction happened.",
+      "atlas_source": "TH-05",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-06",
+      "title": "Assemble the Three-Vessel Incubator",
+      "lane": "main",
+      "dependencies": [
+        "TH-02",
+        "TH-03",
+        "TH-05"
+      ],
+      "position": [
+        16,
+        0
+      ],
+      "icon": "theurgy:incubator",
+      "icon_reason": "Make the chemistry physically connect",
+      "section": "incubation",
+      "node_role": "core",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:incubator",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:coal",
+        "count": 6
+      },
+      "description": "Craft the two-block Incubator and its Mercury, Salt and Sulfur vessels. Place the three named vessels adjacent to the Incubator's lower block, with effective heat beneath; use Hermetica's Incubation layout instead of assuming the decorative shape is enough. Fill each vessel with its own material class. The task detects an Incubator item only; placement, correct adjacency and heating must be checked in-world.",
+      "atlas_source": "TH-06",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-07",
+      "title": "Incubate an Oak Log",
+      "lane": "main",
+      "dependencies": [
+        "TH-06"
+      ],
+      "position": [
+        20,
+        0
+      ],
+      "icon": "minecraft:oak_log",
+      "icon_reason": "Prove one full material-to-material loop",
+      "section": "incubation",
+      "node_role": "first_capstone",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 60,
+        "item": "minecraft:oak_sapling",
+        "count": 2
+      },
+      "description": "Use the three vessels with a Mercury Shard, Plant Salt and the Alchemical Sulfur made from an Oak Log. Run the heated Incubator and collect the Oak Log from its output. The tagged-release example takes 100 ticks, but your installed JEI/Hermetica is authoritative. This manual checkmark is an honest observation of your first recreation, not proof supplied by FTB. You now know a complete Theurgy production loop.",
+      "atlas_source": "TH-07",
+      "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-08",
+      "title": "Repeat with Another Material",
+      "lane": "main",
+      "dependencies": [
+        "TH-07"
+      ],
+      "position": [
+        24,
+        0
+      ],
+      "icon": "theurgy:alchemical_salt_plant",
+      "icon_reason": "Learn to generalize rather than memorize one recipe",
+      "section": "incubation",
+      "node_role": "core_capstone",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:gold_nugget",
+        "count": 4
+      },
+      "description": "Choose a second eligible material in JEI. Work backward from its Incubation recipe to the correct Salt class, source-specific Sulfur, Mercury and heat. Build only the missing components and observe the real output. Materials such as logs, ores and animal drops have different valid recipes and costs. Manually check this after completing a second loop; an ordinary inventory possession task cannot prove which workstation produced an item.",
+      "atlas_source": "TH-08",
+      "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-09",
+      "title": "Ferment Your First Niter",
+      "lane": "optional",
+      "dependencies": [
+        "TH-04",
+        "TH-05"
+      ],
+      "position": [
+        14,
+        7
+      ],
+      "icon": "theurgy:fermentation_vat",
+      "icon_reason": "Begin advanced alchemical inputs",
+      "section": "niter",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:fermentation_vat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:sand",
+        "count": 8
+      },
+      "description": "Craft a Fermentation Vat. Use its JEI/Hermetica recipe with an eligible Alchemical Sulfur, organic starter/crop/seed/sugar material and the correct Water amount. The tagged-release recipes vary from 125 to 1000 mB; the output is a material-family Niter, not a free universal substance. The item task checks the Vat, not an actual completed fermentation batch.",
+      "atlas_source": "TH-09",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-10",
+      "title": "Digest Gold for Reagents",
+      "lane": "optional",
+      "dependencies": [
+        "TH-09",
+        "TH-03"
+      ],
+      "position": [
+        18,
+        7
+      ],
+      "icon": "theurgy:digestion_vat",
+      "icon_reason": "Prepare an exaltation reagent",
+      "section": "niter",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:digestion_vat",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:gold_nugget",
+        "count": 6
+      },
+      "description": "Craft a Digestion Vat. In JEI, inspect the Purified Gold recipe: tagged-release source uses a Gold Ingot, compatible Alchemical Salt and 1000 mB Water for twenty Purified Gold. Operate the machine and collect output; the item task verifies possession of the vat, not its operation. Pay attention to the Vat's open/closed state when you later automate it.",
+      "atlas_source": "TH-10",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-11",
+      "title": "Exalt Niter, Not Your Tool Tier",
+      "lane": "optional",
+      "dependencies": [
+        "TH-10"
+      ],
+      "position": [
+        22,
+        7
+      ],
+      "icon": "theurgy:digestion_vat",
+      "icon_reason": "Understand material ranks",
+      "section": "niter",
+      "node_role": "optional",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:flint",
+        "count": 4
+      },
+      "description": "Use a matching Niter family and Purified Gold to perform one legal Digestion rank upgrade. The common early source ratio is four lower-rank Niter to one higher-rank Niter with Sal Ammoniac; mob families and higher ranks can cost more. Abundant, Common, Rare and Precious are Niter categories, not the Stone/Iron/Diamond/Netherite divination-rod levels. Checkmark is manual: verify the real resulting Niter yourself.",
+      "atlas_source": "TH-11",
+      "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-12",
+      "title": "Build a Mercury Flux Supply",
+      "lane": "optional",
+      "dependencies": [
+        "TH-02",
+        "TH-07"
+      ],
+      "position": [
+        24,
+        -5
+      ],
+      "icon": "theurgy:mercury_catalyst",
+      "icon_reason": "Convert Mercury without crossing into FE",
+      "section": "reformation",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:mercury_catalyst",
+        "count": 1
+      },
+      "reward": {
+        "xp": 50,
+        "item": "minecraft:redstone",
+        "count": 6
+      },
+      "description": "Build the Mercury Catalyst and use a Mercury Shard to fill its independent Mercury Flux store; tagged-release source converts one shard to 800 Mercury Flux. This is not Forge Energy and cannot be assumed compatible with Draconic energy machinery. Study Hermetica's Reformation apparatus and JEI before building the Sulfuric Flux Emitter and its three pedestal roles. The item task proves you acquired the catalyst, not a measured Flux transfer.",
+      "atlas_source": "TH-12",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-13",
+      "title": "Reform with a Real Target Sample",
+      "lane": "optional",
+      "dependencies": [
+        "TH-11",
+        "TH-12"
+      ],
+      "position": [
+        28,
+        -5
+      ],
+      "icon": "theurgy:reformation_target_pedestal",
+      "icon_reason": "The target is a physical retained reagent",
+      "section": "reformation",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:reformation_target_pedestal",
+        "count": 1
+      },
+      "reward": {
+        "xp": 70,
+        "item": "minecraft:iron_nugget",
+        "count": 8
+      },
+      "description": "Build the Sulfuric Flux Emitter and separate Source, Target and Result Pedestals. Place a real pre-existing target Alchemical Sulfur or Niter in the Target Pedestal, compatible source reagents in Source, and supply sufficient Mercury Flux; collect an eligible result. Tagged source pricing varies by tier (50/100/150/200 Flux). The target sample is retained, but must exist first. This quest only detects possession of the Target Pedestal; it does not certify successful Reformation.",
+      "atlas_source": "TH-13",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-14",
+      "title": "Scan with a Basic Divination Rod",
+      "lane": "optional",
+      "dependencies": [
+        "TH-00"
+      ],
+      "position": [
+        4,
+        -7
+      ],
+      "icon": "theurgy:divination_rod_t1",
+      "icon_reason": "Locate ores without inventing a new mining tier",
+      "section": "divination",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:divination_rod_t1",
+        "count": 1
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:torch",
+        "count": 8
+      },
+      "description": "Craft the Stone-tier Divination Rod and use it on an allowed target. Consult Hermetica's Divination section for target tags and how scan results are shown. The tagged-source baseline describes a 96-block scan range and 40-tick duration; loaded configuration may differ. Possessing the rod is the FTB task; observing an actual scan is separate.",
+      "atlas_source": "TH-14",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-15",
+      "title": "Upgrade Your Divination",
+      "lane": "optional",
+      "dependencies": [
+        "TH-14"
+      ],
+      "position": [
+        8,
+        -7
+      ],
+      "icon": "theurgy:divination_rod_t2",
+      "icon_reason": "Choose the right tool for the target",
+      "section": "divination",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:divination_rod_t2",
+        "count": 1
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:compass",
+        "count": 1
+      },
+      "description": "Upgrade to the Iron-tier Divination Rod and perform a scan against an eligible material. Compare Diamond and Netherite tiers and the specialized sulfur-attuned or Amethyst rods in JEI; those are separate tool categories, not Niter upgrades. The quest requires a Tier 2 rod item; higher and specialized models are optional follow-up exploration. It does not detect a successful scan.",
+      "atlas_source": "TH-15",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-16",
+      "title": "Heat with a Caloric Flux Emitter",
+      "lane": "optional",
+      "dependencies": [
+        "TH-01",
+        "TH-12"
+      ],
+      "position": [
+        27,
+        -9
+      ],
+      "icon": "theurgy:caloric_flux_emitter",
+      "icon_reason": "Replace some fuel handling with alchemy",
+      "section": "heat",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:caloric_flux_emitter",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:charcoal",
+        "count": 10
+      },
+      "description": "Craft a Caloric Flux Emitter, select a legitimate heat-receiving Theurgy machine, supply its own Mercury Flux and observe heating without an ordinary Brazier fuel stack. The source uses 100 Flux per heating operation; follow Hermetica for target selection and range. The emitter provides Theurgy heat, not a generic FE energy grid. This item task verifies you obtained the emitter, not its action.",
+      "atlas_source": "TH-16",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-17",
+      "title": "Move Items with Mercurial Wiring",
+      "lane": "optional",
+      "dependencies": [
+        "TH-02",
+        "TH-07"
+      ],
+      "position": [
+        20,
+        -11
+      ],
+      "icon": "theurgy:logistics_item_extractor",
+      "icon_reason": "Move one real item from A to B",
+      "section": "logistics",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:logistics_item_extractor",
+        "count": 1
+      },
+      "reward": {
+        "xp": 40,
+        "item": "minecraft:glass",
+        "count": 4
+      },
+      "description": "Craft a Mercurial Wand, Copper Wire, connection node and Item Extractor/Inserter. Use the Wand to set matching frequency, modes and sides, then move an item between machine inventories that actually expose the required capabilities. See Hermetica's Logistics section. The item task recognizes the Extractor only; it does not prove a successful transfer, infinite throughput or chunk loading.",
+      "atlas_source": "TH-17",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-18",
+      "title": "Route Fluids Without Pretending They Are Items",
+      "lane": "optional",
+      "dependencies": [
+        "TH-17",
+        "TH-04"
+      ],
+      "position": [
+        24,
+        -11
+      ],
+      "icon": "theurgy:logistics_fluid_inserter",
+      "icon_reason": "Build a second, fluid-specific connection",
+      "section": "logistics",
+      "node_role": "optional",
+      "criterion": {
+        "type": "item",
+        "id": "theurgy:logistics_fluid_inserter",
+        "count": 1
+      },
+      "reward": {
+        "xp": 45,
+        "item": "minecraft:bucket",
+        "count": 1
+      },
+      "description": "Craft Fluid Extractor and Inserter connectors and attach them to suitable Sal Ammoniac or Water tanks. Configure sides, frequency and any supported filters with the Mercurial Wand, then verify that actual fluid—not inventory item stacks—travels. Theurgy's native fluid routing is distinct from its item connectors and does not imply FE support. Quest task detects the Fluid Inserter item; verify transfer independently.",
+      "atlas_source": "TH-18",
+      "completion_honesty": "item possession only; operation described but not detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    },
+    {
+      "key": "TH-19",
+      "title": "Rare Materials: Templates Before Replication",
+      "lane": "optional",
+      "dependencies": [
+        "TH-11",
+        "TH-13"
+      ],
+      "position": [
+        32,
+        -5
+      ],
+      "icon": "minecraft:nether_star",
+      "section": "This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded.",
+      "node_role": "advanced_capstone",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 70,
+        "item": "reformation",
+        "count": "Understand high-cost post-acquisition duplication"
+      },
+      "atlas_source": "TH-19",
+      "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
+      "status": "source-authored; loaded registry and client QA pending"
+    }
+  ]
+}
