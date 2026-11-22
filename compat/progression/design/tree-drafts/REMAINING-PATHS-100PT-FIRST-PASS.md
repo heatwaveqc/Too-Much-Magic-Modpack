@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v11`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v12`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -26,9 +26,9 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Lich | 21 | **100** |
 | Hunter | 57 | **100** |
 | Gilded | 22 | **100** |
-| Bare Zerker | 13 | **100** |
+| Bare Zerker | 22 | **100** |
 
-The ten draft catalogs display **252 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **261 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -562,75 +562,58 @@ Full skill-by-skill numerical candidate effects, stage gates and provider blocke
 
 **Gilded total: 22 skills / 100 purchased ranks, each 1 SP.** Both virtual Fortune and Looting have exactly **seven** independent purchases beyond +3 free and reach +10. Never duplicate innate gold equipment equivalence, first lava-fishing permission, golden food nutrition, or rank18 Undying Ember.
 
-### Bare Zerker — 100 ranks / 100 points
+### Bare Zerker — complete 100 ranks / 100 points
 
-*Native guardrails:* Free locked innate: Fury capacity100; +Fury from actual post-mitigation damage DEALT only; 1 Fury/sec decay; each actual received hit adds 1s Regeneration I+Resistance I; >50 pre-hit Fury would-be death triggers full vanilla Totem and drains all Fury. Do not sell innate abilities or alter their formulas. Chest chafing, allowed clothes, Red Cap and woad are separate form mechanics.
+**Owner-locked baseline is FREE:** Fury max 100; +1 Fury per actual post-mitigation damage dealt to a real target ONLY; decays 1/s. Each distinct real incoming damage instance adds exactly 1s of Regeneration I and 1s of Resistance I, with normal hurt i-frames removed. A would-be fatal hit at **pre-hit Fury >50** triggers a **complete vanilla Totem of Undying**, drains the entire Fury bar and has no fixed cooldown. Chest items chafe, eligible clothes other than Cap dislodge on damage, a shield disables sword/axe Path bonuses, and Woad/Red Cap are temporary owner/source-governed mechanics. **No Bare Zerker dietary limits.**
 
-#### Fury Combat — 40 points
+[Full Bare Zerker Fury, Woad, blood magic and Magebreaker skill specification](BARE-ZERKER-COMPLETE-100PT-2026-11-22.md). Numeric per-rank effects are design candidates; pinned Neo Vitae/EvilCraft, Woad upgrade parity and magic-object MXP require source audit and owner decisions.
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Reckless Sword (`tyr_progression:bare_zerker_reckless_sword`) | 10 | 10 | Improve shieldless sword damage under approved chest-empty rules, Fury still only from actual dealt HP. |
-| Cleaving Axe (`tyr_progression:bare_zerker_cleaving_axe`) | 10 | 10 | Improve shieldless axe damage, no new source of free Fury. |
-| Battle Rhythm (`tyr_progression:bare_zerker_battle_rhythm`) | 10 | 10 | Bounded consecutive real-hit damage bonuses, no proc from mere incoming hits. |
-| Bloodied Drive (`tyr_progression:bare_zerker_bloodied_drive`) | 10 | 10 | Brief valid kill-triggered combat momentum, no Fury injections. |
+#### Fury Combat — 34 points
 
-#### Endurance Under Fire — 30 points
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Reckless Sword** (tyr_progression:bare_zerker_reckless_sword) | 6 | +3% direct melee sword damage per rank (+18% max), only with empty chest and no shield; never a separate Fury award. |
+| **Cleaving Axe** (tyr_progression:bare_zerker_cleaving_axe) | 6 | +3% direct melee axe damage per rank (+18% max), chest empty and shield absent; no extra Fury. |
+| **Battle Rhythm** (tyr_progression:bare_zerker_battle_rhythm) | 5 | Actual successful shieldless sword/axe direct hits within six seconds build up to three nonstacking-renewal Rhythm stacks; each stack grants +1.5% damage per purchased rank (+22.5% at three stacks and five ranks). No stack from missed/blocked/non-damaging hits. |
+| **Bloodied Drive** (tyr_progression:bare_zerker_bloodied_drive) | 5 | On a real personally credited hostile kill by direct sword or axe, +3% movement speed per rank (+15%) for five seconds; refresh, never stack. Kill itself adds no Fury. |
+| **Fury Finesse** (tyr_progression:bare_zerker_fury_finesse) | 5 | While real Fury >=25, chest empty and shield absent, +2% sword/axe attack speed per rank (+10% max). No change to Fury decay, max, or gain. |
+| **Headsplitter** (tyr_progression:bare_zerker_headsplitter) | 4 | At actual Fury >=50, +3% axe direct melee damage per rank (+12% max) against genuinely armored hostile mobs, with normal armor mitigation retained. |
+| **Relentless Pursuit** (tyr_progression:bare_zerker_relentless_pursuit) | 3 | Following actual hostile direct sword/axe hit, +3% sprint speed per rank (+9% max) for up to three seconds while approaching the same living target. No dash button. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Skin Hardened (`tyr_progression:bare_zerker_skin_hardened`) | 10 | 10 | Actual innate mitigation while chest-empty, no conventional armor buffs. |
-| Regeneration Amplifier (`tyr_progression:bare_zerker_regen_amplifier`) | 10 | 10 | Improve amplifier of owner-approved incoming-hit regeneration, preserving +1s per hit duration. |
-| Resistance Amplifier (`tyr_progression:bare_zerker_resistance_amplifier`) | 10 | 10 | Improve amplifier of owner-approved incoming-hit Resistance, preserving +1s per hit duration. |
+#### Endurance Under Fire — 22 points
 
-#### Blood and Woad — 20 points
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Skin Hardened** (tyr_progression:bare_zerker_skin_hardened) | 6 | -2% eligible direct physical damage taken per rank (-12% max) while chest empty, before damage response; no wearable armor item. |
+| **Regeneration Amplifier** (tyr_progression:bare_zerker_regen_amplifier) | 2 | Rank 1 upgrades FREE on-damage Regeneration I to II; rank 2 to III. Each actual distinct incoming damage instance still adds exactly ONE SECOND and no duration increase. |
+| **Resistance Amplifier** (tyr_progression:bare_zerker_resistance_amplifier) | 2 | Rank 1 upgrades FREE on-damage Resistance I to II; rank 2 to III. Each actual distinct incoming damage instance still adds exactly ONE SECOND; cannot retroactively negate triggering damage. |
+| **No Armor No Fear** (tyr_progression:bare_zerker_no_armor_no_fear) | 5 | +2 max HP per rank (+10 HP full) while enrolled and chest empty, with health clamping and no equipment-owned trait. |
+| **Pain Into Purpose** (tyr_progression:bare_zerker_pain_into_purpose) | 4 | Following a qualifying hostile damage instance, +2% shieldless sword/axe melee damage per rank (+8% max) for three seconds; refresh only, no stacks or Fury from received pain. |
+| **Unbroken Stance** (tyr_progression:bare_zerker_unbroken_stance) | 3 | Following real hostile incoming hit, +10 percentage points of knockback resistance per rank (+30 pp) for four seconds; no invulnerability frames added. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Red Cap Fortitude (`tyr_progression:bare_zerker_redcap_fortitude`) | 5 | 5 | Improve blood-dipped Red Cap temporary powers; duration/cost owner review. |
-| Woad Attunement (`tyr_progression:bare_zerker_woad_attunement`) | 5 | 5 | Enhance source-verified Neo Vitae Sentient Armor-equivalent woad benefits without equipping armor. |
-| Neo Vitae Bloodmaster (`tyr_progression:bare_zerker_neo_bloodmaster`) | 5 | 5 | Improve verified Neo Vitae blood magic interactions, with genuine costs. |
-| EvilCraft Hematurgy (`tyr_progression:bare_zerker_evilcraft_bloodcraft`) | 5 | 5 | Improve verified EvilCraft blood transactions/ritual effects with no duplicate blood credit. |
+#### Blood & Woad — 22 points
+
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Red Cap Fortitude** (tyr_progression:bare_zerker_redcap_fortitude) | 5 | +10% per rank (+50% max) to owner-verified temporary blood-dipped Red Cap Strength/Resistance duration while Cap worn; does not sell base cap or effects. |
+| **Woad Attunement** (tyr_progression:bare_zerker_woad_attunement) | 5 | +10% per rank (+50% max) to genuine blue Woad application's duration, once pinned Neo Vitae 1.1.53 Sentient Armor-equivalent ability matrix is owner-approved; no fake armor slot or invented powers. |
+| **Neo Vitae Bloodmaster** (tyr_progression:bare_zerker_neo_bloodmaster) | 6 | CANDIDATE +3% per rank (+18% max) to actual personally performed source-verified Neo Vitae blood magic beneficial effect output, with real EV payment and no altar/machine resource inflation. |
+| **EvilCraft Hematurgy** (tyr_progression:bare_zerker_evilcraft_bloodcraft) | 6 | CANDIDATE +3% per rank (+18% max) to actual verified personal EvilCraft blood-powered effect duration or strength; real blood debit required; no infuser/ritual-machine output multiplication. |
+
+#### Magebreaker — 12 points
+
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Antimagic Grit** (tyr_progression:bare_zerker_antimagic_grit) | 5 | -3% per rank (-15% max) source-tagged direct magical damage with chest empty, not a blanket reduction against every modded caster or true damage. |
+| **Spellbreaker** (tyr_progression:bare_zerker_spellbreaker) | 4 | +4% per rank (+16% max) shieldless direct sword/axe damage to a target actively performing a confirmed real spell cast, not simply wearing a mage item. |
+| **Hex Shatter** (tyr_progression:bare_zerker_hex_shatter) | 3 | -8% per rank (-24% max) duration of source-confirmed incoming harmful SPELL-origin status effects, without removing curses, ordinary potion effects or objective magic rules. |
 
 #### Berserk Mastery — 10 points
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Antimagic Grit (`tyr_progression:bare_zerker_antimagic_grit`) | 5 | 5 | Bounded mitigation for specified applied incoming magic damage types, not mod-caster origin. |
-| Last Stand Mastery (`tyr_progression:bare_zerker_last_stand_mastery`) | 5 | 5 | Improve recovery after real Too Angry to Die event, without altering >50 rule, full totem effects, or complete Fury drain. |
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Last Stand Mastery** (tyr_progression:bare_zerker_last_stand_mastery) | 5 | For three seconds after a genuine FREE Too Angry to Die full vanilla Totem activation, +4% shieldless sword/axe direct melee damage per rank (+20% max). Does not alter >50 prehit condition, full Fury drain, Totem effects or zero cooldown. |
+| **Red Mist** (tyr_progression:bare_zerker_red_mist) | 5 | While actual Fury strictly >75, chest empty and no shield, +3% sword/axe direct melee damage per rank (+15% max); threshold loss immediately disables. No Fury generation or decay alteration. |
 
-## Newer Path shells — deliberately not priced
+**Total:** 22 purchased skills, exactly 100 one-point ranks; 13 original IDs preserved and 9 distinct additions. Regeneration/Resistance amplification changes **levels** only; it never changes the free one-second-per-hit duration. The +1 Fury per actual dealt damage, 1/s decay, >50 lethal full Totem and all-Fury drain are not purchases.
 
-The design-only identities below have owner-decisions outstanding. We do not assign fake points or active ranks to them before their mechanics are agreed.
-
-| Path | Proposed lanes | Unresolved design |
-|---|---|---|
-| **Sapient Slime** | Body Mass / Biomass; Reactive Allied Slimes; Absorption and Ooze Kinship | real initiation; biomass cap; spawn bound and loot/XP; entity ownership; size/player rendering |
-| **Sexy Demon (Incubus/Succubus)** | Infernal Body; Ranged Charm (one mob, 600 ticks); Right-click Permanent Taming; Companion Command | tame target allowlist; cost; max followers; charm cast/delivery; AI and raids |
-| **Dryad** | Photosynthesis and Saturation; Greening Footsteps; Plant/Fae Diplomacy; Nature Magic | initiation; hunger/saturation scale; terrain and claims; precise fire weakness; magic affinities |
-| **Spawn** | Shared natural armor and regeneration trunk; Cephalid; Deep One; Shoggoth; Mi-Go | mutation slot number; actual anatomical skills; initiation; respec/persistence; appearance; choice/exclusivity |
-
-## Implementation and economy guardrails
-
-- Source rank-cost tests must enforce **`price(rank) === 1` for all purchasable Path ranks** in the approved mode. No implicit `base_cost + step_cost * rank` escalation for individual skill purchases.
-- Per-path total purchase budget must be computed over **simultaneously eligible skill sets**, not all incompatible options. Hunter choice groups must enforce exactly one paid training branch and one paid prey branch; respec must not allow duplicated refunds or cross-specialty stacking.
-- Verify old live player saves before migrating Hunter from 238-point prices; do not silently change existing earned/spent balances, free selections, or invalidate achievements.
-- The actual strength per point has to be source-calibrated, rather than blindly dividing/multiplying old effect amounts. Sea Dragon Luck in particular must respect the optimized gear/Curios comparison and Monk's agreed 85% relation.
-- Gilded retains the owner-established independently seven-rank Fortune and Looting upgrades; native +3 to each remains free. Dragons and JAWR/Goety forms retain physiology and state authority; Bare Zerker Fury/Totem are innate, not new paid abilities.
-- Nothing in this design PR edits FTB Quests, coins, progression runtime, actual Path configs, client, Prism or integration state. A point-shop proposal is separate, requires a trusted server bridge and explicit coin pricing approval.
-
-**Related:** [PR #495](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/495), [Monk #478](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/478), [MXP #475](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/475), [Hunter QA #271](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/271).
-
-## Balance-pass assumptions audit — separate firm decisions from inherited guesses
-
-**Confirmed constraints:** (a) every rank costs one advancement point; (b) 100-point per-build mastery for ordinary specialist Paths, Monk 1,000; (c) Core/MXP are independent of Path identity, Newbie XP prohibition; (d) known free abilities remain free and source mods own form physiology; (e) mostly passive, contextual or mod-enhancing improvements rather than inventing new attack buttons. These constraints do **not** prescribe exact skill lists or branch weights.
-
-**Superseded historical figures (not new commitments):** the old archived Tyz trees' per-skill SP/rank totals, **50-point Sea Dragon Luck**, former 300–500+ point totals, and their relative proportion of skills to Path power. The current new balance pass explicitly authorizes changing all of these. Older maximum effect values are *references*, not automatically preserved caps or exact numerical targets.
-
-**Earlier user preferences to reconfirm, not automatically extrapolate:** the older Gilded seven independent Fortune and seven Looting ranks; the very strong Sea Dragon Luck identity (now exactly ten ranks), Core Reservoir/Wellspring/Thrift/Potency as families, existing transformation and innate abilities. A prior seven-rank decision does not imply every future skill needs seven ranks.
-
-**Assistant-chosen structural scaffolding, not owner-locked:** Hunter **62 shared / 8 training / 30 prey** and **12/8/10** within the prey branch; exact rank distributions in every other Path; assumptions that all Paths need the same number of skill nodes or that every named node must have enough ranks to consume its old SP allocation; treating **universal Core as automatically subject to a separate 100-point mastery cap**; expecting old capped effects to transfer unchanged; the arbitrary existing Monk five-lane **200/200/150/110/340** balance and **38 purchased node count**. These need a gameplay-role review.
-
-**Meaningful distinction:** the engine already has mutually exclusive Hunter choices, so supporting distinct prey specialties is grounded. The **specific budget split**, irreversible selection or lifetime rigidity is not. A single-build 100-point budget is about what the player may actually purchase after valid choices, not the sum of visible alternatives.
-
-**Planning standard for future edits:** when the owner proposes a new balance pass, first identify which earlier numbers are revoked. Draft the intended *effect at mastery*, then choose a meaningful number of one-point ranks, then distribute the remaining Path budget among different useful gameplay capabilities. Never 'conserve' an obsolete skill's cost without a new design reason.
