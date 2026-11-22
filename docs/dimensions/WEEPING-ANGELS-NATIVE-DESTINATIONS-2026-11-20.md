@@ -1,6 +1,6 @@
 # Weeping Angels: initial native dimension blacklist and return-route audit
 
-**Decision date:** 2026-11-20. **Status: candidate config, NOT a verified exhaustive blacklist or runtime PASS.** Owner explicitly wants native Weeping Angels behavior (both local and cross-dimension teleportation), no custom teleport patch. Initial allowed destinations: Overworld, Aether, Bumblezone, Twilight Forest, Aurorian and Eternal Starlight **only**. Newbie dimension exceptions remain to be tested separately. See [#387](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/387) and [Dimension Access & Survival Registry PR #389](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/389).
+**Decision date:** 2026-11-20. **2026-11-22 update:** a same-build live 19-dimension census in PR #527 now supplies the missing IDs. The native blacklist in PR #392 covers all 13 loaded non-targets plus dormant Botania skybox. This is source-policy coverage for experimental build c56fb18f, **not a verified Angel teleport or binary/runtime PASS**. Owner explicitly wants native Weeping Angels behavior (both local and cross-dimension teleportation), no custom teleport patch. Initial allowed destinations: Overworld, Aether, Bumblezone, Twilight Forest, Aurorian and Eternal Starlight **only**. Newbie dimension exceptions remain to be tested separately. See [#387](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/387) and [Dimension Access & Survival Registry PR #389](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/389).
 
 ## Config candidate
 
@@ -14,7 +14,7 @@ Source: [`config/weeping_angels-common.toml`](../../config/weeping_angels-common
 - `theaurorian:the_aurorian` — self-built Aurorian portal
 - `eternal_starlight:starlight` — Starlight Portal, potentially difficult to create after involuntary entry
 
-### Confirmed excluded IDs already in candidate config
+### Initial exclusions (now expanded to 13 loaded IDs + dormant Botania guard)
 - `minecraft:the_nether`; `minecraft:the_end`
 - `deeperdarker:otherside`
 - `wardentools:abyssdim` (Dive Into the Abyss — source's MOD_ID is wardentools, not abyss)
@@ -22,7 +22,7 @@ Source: [`config/weeping_angels-common.toml`](../../config/weeping_angels-common
 - `pastel:deeper_down`
 - `neovitae:dungeon`
 
-**Hard blocker before treating this config as complete:** determine exact 1.21.1 installed registry ID(s) for JAWR Spirit World (and other possibly loaded JAWR levels); check every third-party mod for additional dimension JSON and runtime-registered levels, including speculative Feywild and alternate Pastel content. The source project is a blacklist, not an allowlist: any unlisted new dimension silently becomes eligible. **Do not merge/release the config as a strict six-destination policy until the loaded dimension census has proved that every excluded world is present in the list**, and the exact Weeping Angels 1.21.1 NeoForge mod has been pinned/tested. This is an implementation-ready partial config, not a guarantee.
+**Census blocker resolved for the observed experimental snapshot:** PR #527 live `server.levelKeys()` returned 19 exact IDs (six approved + 13 excluded), including `witchery:dream_world`, `witchery:mirror_world`, `witchery:nightmare_world`, `irons_spellbooks:pocket_dimension`, `mahoutsukai:reality_marble` and `unicornacademy:unicorn_island`. No separate `witchery:spirit_world` key was loaded. `botania:skybox` remains disabled and is also proactively blacklisted. The source-policy audit uses `docs/dimensions/weeping-angels-live-census-c56fb18f.json`; a new build or lazy-loaded realm still requires a fresh live census. **Exact Weeping Angels NeoForge artifact pinning, config parity, and in-game teleport QA remain required before integration acceptance.**
 
 ## Getting home after an involuntary Angel teleport (no entry portal)
 
