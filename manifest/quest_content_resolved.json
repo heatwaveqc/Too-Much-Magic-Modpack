@@ -4427,8 +4427,8 @@
       },
       "reward": {
         "xp": 70,
-        "item": "reformation",
-        "count": "Understand high-cost post-acquisition duplication"
+        "item": "minecraft:quartz",
+        "count": 4
       },
       "depends": null,
       "optional": true,
