@@ -17,7 +17,7 @@
       "license": "All Rights Reserved",
       "distribution": "publisher-hosted external download only; no ZIP or derived textures redistributed",
       "archive_validation": "2026-11-22 GitHub Actions public official ForgeCDN ZIP 193200750 bytes SHA1/SHA512 and CRC verified; contains root pack.mcmeta and assets, 19218 entries",
-      "runtime_acceptance": "pending isolated Packwiz installer download and owner-authorized Prism client"
+      "runtime_acceptance": "2026-11-22 isolated Packwiz installer bootstrap client download SHA1 PASS and server-side skip PASS, Actions run 45074889623; actual Prism UI/Minecraft pack activation awaits authorized player QA"
     }
   ]
 }
