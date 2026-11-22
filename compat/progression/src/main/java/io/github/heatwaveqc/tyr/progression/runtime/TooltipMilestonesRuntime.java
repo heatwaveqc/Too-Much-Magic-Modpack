@@ -34,6 +34,7 @@ public final class TooltipMilestonesRuntime {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::login);
         NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::tick);
+        NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::crafted);
         NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::clonePlayer);
         NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::respawn);
         NeoForge.EVENT_BUS.addListener(TooltipMilestonesRuntime::dimension);
@@ -71,8 +72,27 @@ public final class TooltipMilestonesRuntime {
     }
 
     private static void tick(PlayerTickEvent.Post event) {
-        if (event.getEntity() instanceof ServerPlayer player && player.tickCount % 20 == 0)
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        TooltipMilestones state = player.getData(ProgressionAttachments.TOOLTIP_MILESTONES.get());
+        // Until both independent milestones are known, scan each tick so a
+        // short-lived trade or pickup cannot slip between 20-tick samples.
+        if (player.tickCount % 20 == 0 || !state.projecte() || !state.replication())
             reconcile(player, false);
+    }
+
+    private static void crafted(PlayerEvent.ItemCraftedEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        ItemStack result = event.getCrafting();
+        if (result.isEmpty()) return;
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(result.getItem());
+        boolean stone = STONE.equals(id), replica = REPLICA.equals(id);
+        if (!stone && !replica) return;
+        TooltipMilestones prior = player.getData(ProgressionAttachments.TOOLTIP_MILESTONES.get());
+        TooltipMilestones next = prior.discover(stone, replica);
+        if (next == prior) return;
+        player.setData(ProgressionAttachments.TOOLTIP_MILESTONES.get(), next);
+        LAST.put(player.getUUID(), next);
+        TooltipMilestoneNetwork.send(player, next.projecte(), next.replication());
     }
 
     private static void clonePlayer(PlayerEvent.Clone event) {
