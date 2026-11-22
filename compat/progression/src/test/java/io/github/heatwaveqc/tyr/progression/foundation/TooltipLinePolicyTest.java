@@ -42,9 +42,9 @@ final class TooltipLinePolicyTest {
         assertTrue(TooltipLinePolicy.remove(Kind.REPLICATION_HINT, true, true, false));
         assertFalse(TooltipLinePolicy.remove(Kind.REPLICATION_HINT, false, false, true));
         assertTrue(TooltipLinePolicy.removeReplicationComponent(
-                "com.buuz135.replication.client.render.MatterTooltipComponent", false));
+                "com.buuz135.replication.client.MatterTooltipComponent", false));
         assertFalse(TooltipLinePolicy.removeReplicationComponent(
-                "com.buuz135.replication.client.render.MatterTooltipComponent", true));
+                "com.buuz135.replication.client.MatterTooltipComponent", true));
         assertFalse(TooltipLinePolicy.removeReplicationComponent("othermod:MatterTooltipComponent", false));
     }
 
