@@ -1476,7 +1476,7 @@ metafile = true
 
 [[files]]
 file = "mods/arcane-archives-reborn.pw.toml"
-hash = "2c834fb26c43d687fe45e5b9d1f88e921482783124da32e8763dcdcc60fe5fc8"
+hash = "095a0658b7bc1ca874fe574bfbaacbcca4b6a3d718ec0405307b1c92663e8d9a"
 metafile = true
 
 [[files]]
@@ -2026,7 +2026,7 @@ metafile = true
 
 [[files]]
 file = "mods/lava-fishing.pw.toml"
-hash = "7a9e09d127173f97b30bbca41741e32a35a20aa5ae443e25d3565501463a8cf8"
+hash = "a35f98abe79767c8306731d76cd02c5a87ac1645c99a8007a89d8bf66c3f9cc9"
 metafile = true
 
 [[files]]
@@ -2326,7 +2326,7 @@ metafile = true
 
 [[files]]
 file = "mods/scarlet-springs-equestrian-decor-ssed.pw.toml"
-hash = "f2e308df8a680dfa6309f1d52554fe5a107833978ee86445e235f0eee9861f1e"
+hash = "c4d35bf766e0d409507f42e81a49f63293073d9ff2a05ed736afd332887c07e6"
 metafile = true
 
 [[files]]
@@ -2446,7 +2446,7 @@ metafile = true
 
 [[files]]
 file = "mods/unicorn-academy-bonded-magic-unofficial.pw.toml"
-hash = "fb2f1b2b786a02fbfc15a72e02f5caed2da6d137201232cbbe9c3268e1afb0c0"
+hash = "d0c5715d4f667ad627eda2800c88479563b7b6222d58efa4d74bcfede6673396"
 metafile = true
 
 [[files]]
