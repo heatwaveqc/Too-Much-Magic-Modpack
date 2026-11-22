@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "status": "design_only_not_generator_input",
+  "effective_date": "2026-11-22",
+  "source_manifest": "manifest/quest_chapters.json",
+  "source_note": "44 existing chapters from test/full-integration; preserve all stable IDs; not current installed build acceptance",
+  "design_source": "docs/QUESTBOOK-ORGANIZATION-V4.md",
+  "groups_order": [
+    "Introduction",
+    "Living World",
+    "Progression",
+    "Magic",
+    "Exploration & Combat",
+    "Endgame",
+    "Challenges"
+  ],
+  "existing_chapter_migration": [
+    {
+      "source_chapter": "Getting Started",
+      "target_chapter": "Getting Started",
+      "target_group": "Introduction",
+      "existing_chapter_id": "544D4D1000000001",
+      "existing_file": "intro.snbt",
+      "action": "extract_welcome_content_preserve_existing_ids"
+    },
+    {
+      "source_chapter": "Tips & Tricks",
+      "target_chapter": "Tips & Tricks",
+      "target_group": "Introduction",
+      "existing_chapter_id": "544D201000200000",
+      "existing_file": "tips_tricks.snbt",
+      "action": "visual_topic_grouping_preserve_all_ids"
+    },
+    {
+      "source_chapter": "Food & Fishing",
+      "target_chapter": "Food",
+      "target_group": "Living World",
+      "existing_chapter_id": "544D201000300000",
+      "existing_file": "food_fishing.snbt",
+      "action": "split_fish_quests_into_new_chapter_preserve_ids"
+    },
+    {
+      "source_chapter": "Alcohol is Magic",
+      "target_chapter": "Alcohol is Magic",
+      "target_group": "Living World",
+      "existing_chapter_id": "21C0000000000000",
+      "existing_file": "alcohol_is_magic.snbt",
+      "action": "move_group_preserve_chapter_and_quest_ids"
+    },
+    {
+      "source_chapter": "Basic Progression",
+      "target_chapter": "Basic Progression",
+      "target_group": "Progression",
+      "existing_chapter_id": "544D202000100000",
+      "existing_file": "basic_progression.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Advanced Progression",
+      "target_chapter": "Advanced Progression",
+      "target_group": "Progression",
+      "existing_chapter_id": "544D202000200000",
+      "existing_file": "advanced_progression.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Endgame Roadmap",
+      "target_chapter": "Endgame Roadmap",
+      "target_group": "Progression",
+      "existing_chapter_id": "544D202000300000",
+      "existing_file": "endgame_roadmap.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Skills & Factions",
+      "target_chapter": "Paths & Transformations",
+      "target_group": "Progression",
+      "existing_chapter_id": "544D202000400000",
+      "existing_file": "skills_advancement.snbt",
+      "action": "rename_and_expand_preserve_chapter_and_quest_ids"
+    },
+    {
+      "source_chapter": "A Sufficiently Advanced Magic",
+      "target_chapter": "A Sufficiently Advanced Magic",
+      "target_group": "Progression",
+      "existing_chapter_id": "544D202000500000",
+      "existing_file": "a_sufficiently_advanced_magic.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Ars Nouveau",
+      "target_chapter": "Ars Nouveau",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000100000",
+      "existing_file": "ars_nouveau.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Astral Sorcery",
+      "target_chapter": "Astral Sorcery",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000200000",
+      "existing_file": "astral_sorcery.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Botania Revived",
+      "target_chapter": "Botania Revived",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000300000",
+      "existing_file": "botania_revived.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Eidolon: Repraised",
+      "target_chapter": "Eidolon: Repraised",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000400000",
+      "existing_file": "eidolon_repraised.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Enchanted: Witchcraft",
+      "target_chapter": "Enchanted: Witchcraft",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000500000",
+      "existing_file": "enchanted_witchcraft.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "EvilCraft",
+      "target_chapter": "EvilCraft",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000600000",
+      "existing_file": "evilcraft.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Forbidden & Arcanus",
+      "target_chapter": "Forbidden & Arcanus",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000700000",
+      "existing_file": "forbidden_arcanus.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Goety",
+      "target_chapter": "Goety",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000800000",
+      "existing_file": "goety.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Hex Casting",
+      "target_chapter": "Hex Casting",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000900000",
+      "existing_file": "hex_casting.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Hexerei",
+      "target_chapter": "Hexerei",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000A00000",
+      "existing_file": "hexerei.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Iron's Spells 'n Spellbooks",
+      "target_chapter": "Iron's Spells 'n Spellbooks",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000B00000",
+      "existing_file": "irons_spells_n_spellbooks.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Mahou Tsukai",
+      "target_chapter": "Mahou Tsukai",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000C00000",
+      "existing_file": "mahou_tsukai.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Malum",
+      "target_chapter": "Malum",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000D00000",
+      "existing_file": "malum.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Neo Vitae",
+      "target_chapter": "Neo Vitae",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000E00000",
+      "existing_file": "neo_vitae.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Occultism",
+      "target_chapter": "Occultism",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203000F00000",
+      "existing_file": "occultism.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Pastel",
+      "target_chapter": "Pastel",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001000000",
+      "existing_file": "pastel.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Primal Magick",
+      "target_chapter": "Primal Magick",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001100000",
+      "existing_file": "primal_magick.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Psi",
+      "target_chapter": "Psi",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001200000",
+      "existing_file": "psi.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Roots Classic",
+      "target_chapter": "Roots Classic",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001300000",
+      "existing_file": "roots_classic.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Scriptor Magicae",
+      "target_chapter": "Scriptor Magicae",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001400000",
+      "existing_file": "scriptor_magicae.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Theurgy",
+      "target_chapter": "Theurgy",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001500000",
+      "existing_file": "theurgy.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Totemic",
+      "target_chapter": "Totemic",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001600000",
+      "existing_file": "totemic.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Just Another Witchery Remake",
+      "target_chapter": "Just Another Witchery Remake",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001700000",
+      "existing_file": "just_another_witchery_remake.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Embers Re-Ignited",
+      "target_chapter": "Embers Re-Ignited",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001800000",
+      "existing_file": "embers_re_ignited.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Reliquary Reincarnations",
+      "target_chapter": "Reliquary Reincarnations",
+      "target_group": "Magic",
+      "existing_chapter_id": "544D203001900000",
+      "existing_file": "reliquary_reincarnations.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "L_Ender's Cataclysm",
+      "target_chapter": "L_Ender's Cataclysm",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000100000",
+      "existing_file": "l_enders_cataclysm.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Deeper and Darker",
+      "target_chapter": "Deeper and Darker",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000200000",
+      "existing_file": "deeper_and_darker.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Gateways to Eternity",
+      "target_chapter": "Gateways to Eternity",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000300000",
+      "existing_file": "gateways_to_eternity.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Feywild",
+      "target_chapter": "Feywild",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000400000",
+      "existing_file": "feywild.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Apotheosis",
+      "target_chapter": "Apotheosis",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000500000",
+      "existing_file": "apotheosis.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Artifacts",
+      "target_chapter": "Artifacts",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000600000",
+      "existing_file": "artifacts.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Enigmatic Legacy+",
+      "target_chapter": "Enigmatic Legacy+",
+      "target_group": "Exploration & Combat",
+      "existing_chapter_id": "544D204000700000",
+      "existing_file": "enigmatic_legacy.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Draconic Evolution",
+      "target_chapter": "Draconic Evolution",
+      "target_group": "Endgame",
+      "existing_chapter_id": "544D205000100000",
+      "existing_file": "draconic_evolution.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "ProjectE",
+      "target_chapter": "ProjectE",
+      "target_group": "Endgame",
+      "existing_chapter_id": "544D205000200000",
+      "existing_file": "projecte.snbt",
+      "action": "preserve"
+    },
+    {
+      "source_chapter": "Replication",
+      "target_chapter": "Replication",
+      "target_group": "Endgame",
+      "existing_chapter_id": "544D205000300000",
+      "existing_file": "replication.snbt",
+      "action": "preserve"
+    }
+  ],
+  "new_chapter_candidates": [
+    {
+      "target_chapter": "Welcome to Too Much Magic",
+      "target_group": "Introduction",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "orientation_and_cross_category_navigation"
+    },
+    {
+      "target_chapter": "Bounties & Contracts",
+      "target_group": "Introduction",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "bountiful_first_time_tutorial_not_repeatable_contracts"
+    },
+    {
+      "target_chapter": "Fishing",
+      "target_group": "Living World",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "move_existing_fish_nodes_preserve_ids_plus_five_caught_per_eligible_species"
+    },
+    {
+      "target_chapter": "Mob Hunts",
+      "target_group": "Exploration & Combat",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "per_species_kill_ladders_not_bountiful"
+    },
+    {
+      "target_chapter": "Completionist Challenges",
+      "target_group": "Challenges",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "overview_and_catalogs"
+    },
+    {
+      "target_chapter": "Master Angler",
+      "target_group": "Challenges",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "all_fish_capstone"
+    },
+    {
+      "target_chapter": "Master Chef",
+      "target_group": "Challenges",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "all_eaten_food_pending_diet_engine"
+    },
+    {
+      "target_chapter": "Master of Glyphs",
+      "target_group": "Challenges",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "all_learned_ars_glyphs"
+    },
+    {
+      "target_chapter": "Bestiary",
+      "target_group": "Challenges",
+      "new_chapter_id": null,
+      "status": "design_only",
+      "role": "defeat_every_eligible_mob"
+    }
+  ],
+  "policy": {
+    "mod_coverage": "all_enabled_mods_listed_in_at_least_one_quest_section_or_technical_credits",
+    "crossmod_edges": "both_directions_with_versioned_evidence",
+    "rare_completionist": "optional_achievements_last",
+    "fish_catch_per_species": 5,
+    "fish_capstone_reward_candidate": "apotheosis:godforged_pearl",
+    "first_person_kills": "native_kill_tasks_if_verified",
+    "mob_ladder_default_proposal": [
+      5,
+      10,
+      50,
+      100
+    ],
+    "forbidden_proxy": [
+      "catch_via_inventory",
+      "eat_via_inventory",
+      "learn_via_item",
+      "kill_via_drop"
+    ],
+    "preserve_existing_claim_ids": true
+  },
+  "not_in_scope": [
+    "new_gameplay_mechanics",
+    "runtime_quest_rewrite",
+    "new_licenses_or_mod_pins",
+    "full_build_authorization"
+  ]
+}
