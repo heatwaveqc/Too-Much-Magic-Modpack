@@ -36,6 +36,13 @@ ARS = {
 }
 ## Goety 3.2.3 is ~94 MB; permit large first-party game content, still cap size.
 MAX_JAR_BYTES = 160 * 1024 * 1024
+# These four official CurseForge release files are selected, exact upstream
+# source metadata. Modrinth may not have published matching versions yet.
+CURSEFORGE_FILES = {
+    "neovitae": (1404763, 9687147),
+    "evilcraft": (74610, 9631379),
+    "goety": (586095, 9668015),
+}
 
 def fetch(url: str, *, jar: bool = False) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "TooMuchMagic-UpdateTrial/1.0"})
@@ -92,6 +99,16 @@ def verify_jar(data: bytes, expected: str) -> None:
                    ("META-INF/neoforge.mods.toml", "META-INF/mods.toml")):
             raise RuntimeError(f"{expected}: no NeoForge/Forge mod metadata in archive")
 
+def cf_candidate(slug: str, filename: str) -> dict:
+    project, file_id = CURSEFORGE_FILES[slug]
+    url = f"https://mediafilez.forgecdn.net/files/{file_id // 1000}/{file_id % 1000:03d}/{filename}"
+    binary = fetch(url, jar=True)
+    verify_jar(binary, filename)
+    return {"filename": filename, "url": url,
+            "sha512": hashlib.sha512(binary).hexdigest(), "provider": "curseforge",
+            "project": project, "file": file_id, "channel": "release"}
+
+
 def ars_candidate() -> dict:
     # Exact project/file ID and filename verified from the official CurseForge file page.
     # This is the only BETA candidate. Construct the documented ForgeCDN file-ID path.
@@ -143,7 +160,15 @@ def main() -> None:
         raise RuntimeError("Worktree is dirty; do not overwrite concurrent work")
     results = {}
     for slug, (project, filename, _, _) in BASE_MODS.items():
-        results[slug] = modrinth_candidate(project, filename)
+        # Preserve the pinned Modrinth provider when the exact stable file exists.
+        # An absent version may be sourced from its documented *official*
+        # CurseForge exact file ID; never downgrade or silently accept bad bytes.
+        try:
+            results[slug] = modrinth_candidate(project, filename)
+        except RuntimeError as exc:
+            if "expected one official stable" not in str(exc):
+                raise
+            results[slug] = cf_candidate(slug, filename)
     results["ars-elemental"] = ars_candidate()
     print(json.dumps({"base":"test/full-integration@2373d50732866e460dc9e9454f7187f9045e1cdc",
                       "four_candidates":results}, indent=2))
