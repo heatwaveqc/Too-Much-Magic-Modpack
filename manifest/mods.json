@@ -2969,6 +2969,19 @@
       "dependencies_verified": true,
       "note": "Owner-approved #419 exception. Exact official NeoForge 1.21.1 Modrinth JAR and SHA-512 verified in PR #435. Requires Blueprint 8.1.0; Sable optional and uninstalled; embedded Hats JAR is not a separate pin. B/C testing outstanding (spawns, death/camera, clone/farm, loot, Hunter/capture).",
       "packwiz_slug": "creature-feature"
+    },
+    {
+      "id": "arcane-archives-reborn",
+      "name": "Arcane Archives: Reborn",
+      "category": "magic_addon",
+      "desired": true,
+      "version": "1.0.2",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/arcane-archives-reborn/files/8985321",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "arcane-archives-reborn",
+      "note": "Owner-approved #387. Exact CurseForge 1696190/8985321 NeoForge JAR and SHA-1/SHA-256 verified by #441 at 175a0da617385efef3b431f01afd3405032997ce. Existing Modonomicon 1.123.0 meets >=1.120.5; next-QA runtime/client/storage/EMC acceptance outstanding."
     }
   ],
   "excluded": [
