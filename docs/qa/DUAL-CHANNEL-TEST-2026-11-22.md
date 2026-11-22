@@ -39,7 +39,7 @@ python tests/test_qa_compare_channels.py
 python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha 2373d50732866e460dc9e9454f7187f9045e1cdc --experimental ../tmm-e --experimental-sha beb5682b77056fbf54830aa671fa0efe6e2eaaa8 --require-four-updates --run-a --report ../tmm-two-build-a-results.json
 ~~~
 
-For optional first-party Gradle compile/unit checks, add **--build-modules**. Omit **--run-a** for a harmless plan and diff. The runner **never** invokes Minecraft, network downloads, donor assembly, server smoke or Prism packaging. Compare local client mod-folder bytes and bundled JARs separately with existing verify_qa_inventory.py against the matching source checkout, using actual first-party JAR paths as extras. A correct pin hash is not proof that an installed JAR matches.
+For optional first-party Gradle compile/unit checks, add **--build-modules**. Omit **--run-a** for a harmless plan and diff. The runner **never** launches Minecraft, donor assembly, server smoke or Prism packaging. Normal A validators operate locally; optional --build-modules may fetch Gradle and compile-classpath dependencies. Compare local client mod-folder bytes and bundled JARs separately with existing verify_qa_inventory.py against the matching source checkout, using actual first-party JAR paths as extras. A correct pin hash is not proof that an installed JAR matches.
 
 | A IDs | Scope | Experimental reuse |
 | --- | --- | --- |
