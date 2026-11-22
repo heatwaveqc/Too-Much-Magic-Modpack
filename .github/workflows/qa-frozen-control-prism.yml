@@ -1,0 +1,141 @@
+name: Frozen 222-mod Unstable Prism control
+on:
+  pull_request:
+    paths: ['scripts/package_frozen_control.py', 'tests/test_package_frozen_control.py', '.github/workflows/qa-frozen-control-prism.yml']
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tmm-frozen-control-prism
+  cancel-in-progress: false
+
+jobs:
+  quick-contract:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python3 -m py_compile scripts/package_frozen_control.py tests/test_package_frozen_control.py
+          python3 tests/test_package_frozen_control.py
+  package-only:
+    if: >-
+      ${{ github.event_name == 'issue_comment' &&
+        github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' &&
+        github.event.issue.number == 291 &&
+        !github.event.issue.pull_request &&
+        github.event.comment.author_association == 'OWNER' &&
+        github.event.comment.user.id == 22598785 &&
+        github.event.sender.id == 22598785 &&
+        startsWith(github.event.comment.body, '/tmm-frozen-prism ') &&
+        github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      issues: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require fresh owner command and previously passing smoke; reserve one-shot nonce
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/package_frozen_control.py
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.guard.outputs.snapshot }}
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Verify exact 222-mod immutable snapshot and historic pins
+        env:
+          FROZEN_SHA: ${{ steps.guard.outputs.snapshot }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$FROZEN_SHA"
+          test -z "$(git status --porcelain)"
+          python3 scripts/validate.py
+          python3 scripts/verify_qa_inventory.py --strict-target
+          python3 - <<'PY'
+          import json, pathlib, tomllib
+          root = pathlib.Path('.')
+          lock = json.loads((root / 'manifest/integration-lock.json').read_text())
+          assert lock['baseline_sha'] == '2373d50732866e460dc9e9454f7187f9045e1cdc'
+          assert lock['pinned_mod_count'] == 222
+          old = {'neovitae': '1.1.53', 'evilcraft': '1.2.100', 'goety': '3.2.2', 'ars-elemental': '0.7.10.4'}
+          for slug, version in old.items():
+              pin = tomllib.loads((root / 'mods' / (slug + '.pw.toml')).read_text())
+              assert version in pin['filename'], (slug, pin['filename'])
+          modules = json.loads((root / 'manifest/first-party-runtime.json').read_text())['modules']
+          assert {x['mod_id'] for x in modules} == {'tyr_progression', 'tmm_transformations', 'traders_vengence', 'tmm_economy'}
+          print('PASS: previous server-smoked 222-mod snapshot and original versions')
+          PY
+      - name: Compile original four selected first-party modules (NO Minecraft server)
+        run: python3 scripts/first_party_runtime.py build
+      - name: Verify first-party packages and offline Prism fixture
+        run: |
+          python3 scripts/first_party_runtime.py paths
+          python3 tests/test_prism_qa_packaging.py
+      - name: Download official tiny Packwiz bootstrap (NOT third-party game JARs)
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -o "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
+          test "$(stat -c %s "${{ runner.temp }}/packwiz-installer-bootstrap.jar")" -eq 98989
+      - name: Build direct-import Prism ZIP, no assembly or smoke
+        env:
+          FROZEN_SHA: ${{ steps.guard.outputs.snapshot }}
+        run: |
+          set -euo pipefail
+          paths="$(python3 scripts/first_party_runtime.py paths)"
+          IFS=: read -r -a jars <<< "$paths"
+          python3 scripts/build_full_integration_prism.py \
+            "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
+            "${{ runner.temp }}" "$FROZEN_SHA" "${jars[@]}"
+      - name: Validate package identity
+        env:
+          FROZEN_SHA: ${{ steps.guard.outputs.snapshot }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          directory = pathlib.Path(os.environ['RUNNER_TEMP']) / 'Too-Much-Magic-Full-Integration-Prism.zip'
+          assert directory.is_dir() and not list(directory.glob('*.zip'))
+          meta = json.loads((directory / 'BUILD-MANIFEST.json').read_text())
+          assert meta['integration_commit'] == os.environ['FROZEN_SHA']
+          assert meta['pinned_mod_count'] == 222
+          assert meta['client_tested'] is False and meta['stable_promoted'] is False
+          jars = list((directory / 'minecraft/mods').glob('*.jar'))
+          assert len(jars) == 4
+          for jar in jars:
+              assert hashlib.sha256(jar.read_bytes()).hexdigest() == meta['custom_jar_sha256'][jar.name]
+          print('PASS: direct-import 222-mod control, frozen Packwiz and 4 first-party JARs')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Too-Much-Magic-222-Mod-Unstable-Matched-Control
+          path: ${{ runner.temp }}/Too-Much-Magic-Full-Integration-Prism.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Explain evidence boundary
+        run: |
+          echo 'Original server smoke PASS 44980284571, package-only from frozen snapshot.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No assembly, new server launch, rolling release, client or gameplay PASS.' >> "$GITHUB_STEP_SUMMARY"
