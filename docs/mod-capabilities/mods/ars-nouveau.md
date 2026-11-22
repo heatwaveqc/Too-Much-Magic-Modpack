@@ -1,6 +1,8 @@
-# Ars Nouveau and seven addons — Mod Capability Atlas, first pass
+# Ars Nouveau and seven addons — Mod Capability Atlas (source research COMPLETE)
 
-**Survey date:** 2026-11-21. **TMM:** Minecraft 1.21.1, NeoForge; base Ars Nouveau 5.13.5 and seven selected add-ons. **Evidence state: source-backed partial** — not a score/ranking and not a complete game-accepted quest chapter.
+**Survey date:** 2026-11-21. **TMM:** Minecraft 1.21.1, NeoForge; base Ars Nouveau 5.13.5 and seven selected add-ons. **Evidence state: source Atlas COMPLETE for quest authoring, separate TMM and client acceptance pending** — not a score/ranking and not a complete game-accepted quest chapter.
+
+**Completion decision (2026-11-21):** The [source-research closure audit](../inventories/ars-nouveau-source-closure.md) reconciles all 29 axes, actual Novice→Archmage progression, player mana versus Source, 133 cross-family glyph learning recipes, 24 ritual implementations, all seven addon capability routes, and 49 existing quest records with 52 instructional editorial candidates. Parsing every one of 1,283 discovered recipe JSONs is **not** a requirement to teach all material first/tier/top-end capabilities. Existing references to a partial first/second/third pilot below describe its historical state before the closure. Remaining source-JAR/client parity, tag consumer (#373), disabled Arcane Permanence, first-party mana/XP bridges and FTB task changes are separate tracks. This is **NOT gameplay acceptance**.
 
 ## 1. Scope, provenance and existing ownership
 
