@@ -17,13 +17,13 @@
     "policy": {
       "chapter_or_section": 96,
       "exploration_section_or_chapter": 12,
-      "technical_inventory_only": 77,
-      "tips_or_section": 37
+      "technical_inventory_only": 85,
+      "tips_or_section": 29
     },
     "coverage": {
       "mapped": 85,
-      "needs_coverage_review": 60,
-      "not_required": 77
+      "needs_coverage_review": 52,
+      "not_required": 85
     }
   },
   "mods": [
@@ -287,9 +287,9 @@
       "packwiz_path": "mods/attributefix.pw.toml",
       "packwiz_metadata_sha256": "a445471ac6843bcf9fb76eabb4357de0357dfa7782be536a7827a26764fe45c1",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "balm",
@@ -445,9 +445,9 @@
       "packwiz_path": "mods/clumps.pw.toml",
       "packwiz_metadata_sha256": "2acaff560bbda5741538528a2967355ec86a8f7564adba0b2316989c66892374",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "cobblegen-galore",
@@ -507,9 +507,9 @@
       "packwiz_path": "mods/colorful-hearts.pw.toml",
       "packwiz_metadata_sha256": "3f6e74711a0c2677548ec3a5ef36a3fbf79b5a9f2b406aab73b1ca678fc518f9",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "comforts",
@@ -677,9 +677,9 @@
       "packwiz_path": "mods/default-options.pw.toml",
       "packwiz_metadata_sha256": "a6967d761dde867ccc1af53dc9f4e530eb9917a9cb21d0fc15708e8cd2c0f2ba",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "dive-into-the-abyss",
@@ -948,9 +948,9 @@
       "packwiz_path": "mods/ftb-essentials.pw.toml",
       "packwiz_metadata_sha256": "6fa984dc1b5905ae909b417ed1cd92d6b536ba4832ed8c8d95aa9d424ad789df",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "ftb-filter-system",
@@ -1054,9 +1054,9 @@
       "packwiz_path": "mods/get-it-together-drops.pw.toml",
       "packwiz_metadata_sha256": "1f805479ca7f01f27c1bf662d7d9ccb9e3935e7007e05b469b1072ca09e9e421",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "ghost",
@@ -1429,9 +1429,9 @@
       "packwiz_path": "mods/lootjs.pw.toml",
       "packwiz_metadata_sha256": "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "lootr",
@@ -1515,9 +1515,9 @@
       "packwiz_path": "mods/more-darkness.pw.toml",
       "packwiz_metadata_sha256": "fb7931b3a4acb5f6cff55e1e84bff75074db84e71baec2130ba1dc941cf98ffd",
       "source_category": "qol",
-      "quest_policy": "tips_or_section",
+      "quest_policy": "technical_inventory_only",
       "existing_chapters": [],
-      "coverage": "needs_coverage_review"
+      "coverage": "not_required"
     },
     {
       "slug": "more-overlays-updated",
