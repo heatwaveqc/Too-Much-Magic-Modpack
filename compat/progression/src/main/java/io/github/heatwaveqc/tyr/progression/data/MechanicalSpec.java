@@ -129,6 +129,12 @@ public final class MechanicalSpec {
                     throw new IllegalArgumentException("Virtual enchantment requires a scoped target");
                 if(fx.weapon().isEmpty()&&!fx.emptyHand())
                     throw new IllegalArgumentException("Virtual enchantment requires weapon or empty hand condition");
+                if(p.containsKey("mode_key")!=p.containsKey("mode_value"))
+                    throw new IllegalArgumentException("Mode restriction needs both key and value");
+                if(p.containsKey("mode_key") &&
+                    (!type.equals("virtual_fortune") || !p.get("mode_key").matches("[a-z0-9_.-]+:[a-z0-9_./-]+") ||
+                     !p.get("mode_value").matches("[a-z0-9_-]{1,40}")))
+                    throw new IllegalArgumentException("Invalid virtual Fortune mode restriction");
             }
             case "magic_cost_discount" -> {
                 bounded(a,0,0.95);
