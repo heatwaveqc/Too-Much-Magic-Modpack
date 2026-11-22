@@ -45,6 +45,12 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
+        // Single server-authoritative Path admission gate. The native provider
+        // setter hooks will use this same registry at the one-JAR cutover.
+        io.github.heatwaveqc.tyr.progression.core.ProgressionApi.registerJoinVeto(
+            (player, path) -> io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway
+                .mayJoin(player, path, PathRegistry.nativeCompatibilityRules())
+                == io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Decision.ALLOW);
         ProgressionEvents.register();
         NewbieMode.register();
     }

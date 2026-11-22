@@ -3,6 +3,10 @@ package io.github.heatwaveqc.tyr.progression.data;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativeCompatibilityDeclarations;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Form;
 import io.github.heatwaveqc.tyr.progression.model.Definition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -18,6 +22,13 @@ import net.minecraft.server.level.ServerPlayer;
 /** data/<namespace>/tyr_progression/paths/<name>.json -> <namespace>:<name>. */
 public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,Definition.Path> active = Map.of();
+    private static volatile NativePhysiologyPolicy.Rules nativeCompatibilityRules =
+        NativePhysiologyGateway.withApprovedPairData(Map.of());
+
+    /** The last fully validated data reload, shared by join and native-form preflight. */
+    public static NativePhysiologyPolicy.Rules nativeCompatibilityRules() {
+        return nativeCompatibilityRules;
+    }
     private static volatile Map<String,String> enrollmentModes = Map.of();
     private static volatile Map<String,PotionEnrollmentTrigger> potionTriggers = Map.of();
     private static volatile Map<String,HunterXpPolicy> hunterXpPolicies = Map.of();
@@ -90,6 +101,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterXpPolicy> xpPolicies = new HashMap<>();
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
+        Map<String,java.util.Set<Form>> nativePairs=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
@@ -153,6 +165,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                     }
                 }
                 nextGates.putAll(localGates);
+                var permittedForms = NativeCompatibilityDeclarations.read(raw);
+                if (!permittedForms.isEmpty()) nativePairs.put(path.id(), permittedForms);
                 rawPaths.put(path.id(),raw);
                 next.put(path.id(),path);
                 modes.put(path.id(),element.getAsJsonObject().has("enrollment") ?
@@ -178,6 +192,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         hunterXpPolicies = Map.copyOf(xpPolicies);
         mutationPolicies = Map.copyOf(mutations);
         enrollmentModes = Map.copyOf(modes);
+        nativeCompatibilityRules = NativePhysiologyGateway.withApprovedPairData(nativePairs);
         active = Map.copyOf(next);
         io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics.clearFoodCache();
         ProgressionMod.LOGGER.info("Loaded {} progression path definitions",active.size());
