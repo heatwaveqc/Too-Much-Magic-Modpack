@@ -192,3 +192,5 @@ Ars now has **thirteen** binary companions. Added armor/threads/Reactive:12piece
 - 2026-11-21 — Elemental [Horn](mods/ars-elemental-pinned-horn.md) and [enchantments](mods/ars-elemental-pinned-enchantments.md): charge/direct resolve/payment, shield event/reflection/Reactive and drop/clone Soulbound routes.32companions;9/42 unchanged; no casting/shield/death acceptance.
 
 - 2026-11-21 — Elemental [plant/material routes](mods/ars-elemental-pinned-plants.md): exact tree/pod recipient and natural-versus-sapling distinction, support/loot/light, food effects, vine harvest-versus-break and rain-gated FlashLightning.33companions;9/42 unchanged; whole biome/mage/structure review open.
+
+- 2026-11-21 — Elemental [biomes/caves/shrine](mods/ars-elemental-pinned-biomes.md): exact five-biome data/TerraBlender gating, spawn/feature recipients, Vexing resource branch and parsed shrine NBT/structure tags.34companions;9/42 unchanged; no world-generation acceptance.

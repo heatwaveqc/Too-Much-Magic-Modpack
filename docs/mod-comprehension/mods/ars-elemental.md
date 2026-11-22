@@ -65,3 +65,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Enchanter's Horn](ars-elemental-pinned-horn.md) traces methodless scribing, area/charge, direct resolve admission and post-effect payment; [Reflection/Reactive/Soulbound](ars-elemental-pinned-enchantments.md) covers four exact enchantment recipes and event/death-return recipients.
 
 [Flashing wood/Flashpine/cave plants](ars-elemental-pinned-plants.md) traces initial natural fruit versus sapling no-pod branch, farming inputs/drops, food effects, Source-vine right-use output and weather sampling. Whole biome/mage/structure distribution still requires review.
+
+[Five biomes/Vexing Caves/Starbuncle Shrine](ars-elemental-pinned-biomes.md) maps enabled generation, ecology/hazards/material features, shrine template and structure-tag bridges. Mage combat/loot is still pending.

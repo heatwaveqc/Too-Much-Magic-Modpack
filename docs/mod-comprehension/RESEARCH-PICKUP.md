@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-21 Elemental biomes/caves/shrine
+
+- Added ars-elemental-pinned-biomes.md fiveexactJSON +TerraBlendergatingloaded+extra_biomes>0(default1), regionclimate/surfacerules, notworldYorencounterprobability. Tree/material/hazardfeaturelists/spawntables, Flashjack35inFlashingversusmodifier7, Breeze rejectsY<45 ORdark ORairbelow. Vexingall4mages/Wildenweight100/100/80; ceilingtree105/short75/vine88attempts with12scan/offsets notactualcounts. Sourcestoneore64/2attempts/uptoY30; nativeformationheight6..17/lamptop8; Quartz4..9/calcite/diorite/quartz, Blackstone10%gilded/lavahazard.
+- ShrinecommentedJSONreadasraw(notstrictjsonerrorblocker), jigsawsize2/spacing100sep50/salt294539046/forest+villageplainseligible. Transientstandard-librarygzipNBTparser verified13cube/presetuntamedStarbuncles/nochestBE/26SourceberryBush+2RawGold+Anvil. No copiedNBTorassetscommitted. NativeMansion/JungleTemple/SwampHut biomeextensions andoptionalAdditionsLibrary/Nexus one-sidedtags recordedforAdditionsfollowup. No actualworld/structure/spawnPASS.
+- **Next four Mage combat/loot recipients** common/entity/mages EntityMageBase/AirMage/FireMage/WaterMage/EarthMage, customgoals/armor/resolver/spawn/drop/guide refs; then remainingrecipe/registry reconciliation, globalSaucebundledselection/pilot35–37/fullElementalconsolidation; Elemancy/Additions/Arsfinalreview/othermajors.34companions/39glyphs/12tomes notwholeaddoncomplete.9complete33researching/no hardblocker/hourlyactive. Fetchedintegration82b747dbd0ab6bb9fbf38f73a7804167ccd41d59; comparedArs/Elementalpinsagainst077a34d8unchanged. Docs only/no agents/assembly/launch/runtime edits/merge; gitlog actualpushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental plants and materials
 
 - Added ars-elemental-pinned-plants.md Flashing rare/common modifier/tree bootstrap exactdata + selectednativeMagicTrunkPlacer/MagicLeaves/ArchfruitPod. Natural isWorldGen=true attachespods7%perfacecall/layers2..height-3/airrequired/randomage0..2; saplingfalse DOESNOT naturallycreatepods. Retain/replantinitialnaturalFlashpine, cocoa-derivedpodtag4woodvariants/age2drops3else1; leaves5/6.25/8.333/10%saplingFortune0..3/shearsSilkdropLeaves. Defaultlightlog6/stripped8/leaves6. Food4/.6/alwaysEat, NightVision40%Glowing40%Shocked80%Static20%,600ticks—notblanketsafefood.
