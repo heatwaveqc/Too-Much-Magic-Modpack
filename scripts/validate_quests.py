@@ -107,7 +107,7 @@ def main() -> None:
         expected_art = {"title.png", "vessels.png", "niter.png", "reformation.png", "wires.png"}
         actual_art = {f.name for f in art_dir.iterdir() if f.is_file()}
         ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
-        ensure(all((art_dir / name).read_bytes().startswith(b"\\x89PNG\\r\\n\\x1a\\n") for name in expected_art), "Invalid Theurgy PNG")
+        ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
     ensure(len(authored["quests"]) == len(resolved["quests"]) == 221, "Expected 221 authored quests including 20 Theurgy lessons")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
