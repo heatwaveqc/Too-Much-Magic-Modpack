@@ -1,8 +1,9 @@
-# TMM once-per-player starter kit. Earned minecraft:tick advancement persists on the player.
-# Keep this separate from tmm:first_log (the one-time Trinkets Pouch on first log).
-# Two *ordinary* steaks; do not grant the rare Eternal Steak or its quest reward.
-give @s akashictome:tome 1
-give @s minecraft:cooked_beef 2
-# Improvable Skills 3's own operator command sets the saved hasCraftedSkillBook flag.
-# Last boolean = silent. No skills, scrolls, or levels are granted.
-improvableskills book unlock @s true
+# Claimable one-time personal TMM starter supplies, invoked by Tips & Tricks.
+# The tmm:starter_kit advancement is a LEGACY marker for old first-login automatic
+# Tome + steaks. Do not double-grant those items on existing test-world players.
+# Newly created profiles do not earn that legacy impossible advancement.
+# The separate tmm:starter_kit_claimed advancement makes this function idempotent.
+execute unless entity @s[advancements={tmm:starter_kit_claimed=true}] unless entity @s[advancements={tmm:starter_kit=true}] run give @s akashictome:tome 1
+execute unless entity @s[advancements={tmm:starter_kit_claimed=true}] unless entity @s[advancements={tmm:starter_kit=true}] run give @s minecraft:cooked_beef 2
+execute unless entity @s[advancements={tmm:starter_kit_claimed=true}] run give @s comforts:sleeping_bag_white 1
+advancement grant @s only tmm:starter_kit_claimed
