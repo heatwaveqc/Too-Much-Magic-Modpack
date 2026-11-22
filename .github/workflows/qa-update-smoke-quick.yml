@@ -1,0 +1,43 @@
+name: Manual Update Smoke Guard CI (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa_update_smoke_guard.py'
+      - 'tests/test_qa_update_smoke_guard.py'
+      - '.github/workflows/qa-update-smoke.yml'
+      - '.github/workflows/qa-update-smoke-quick.yml'
+  push:
+    branches:
+      - 'feature/manual-update-smoke-20261121'
+    paths:
+      - 'scripts/qa_update_smoke_guard.py'
+      - 'tests/test_qa_update_smoke_guard.py'
+      - '.github/workflows/qa-update-smoke.yml'
+      - '.github/workflows/qa-update-smoke-quick.yml'
+permissions:
+  contents: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python guard syntax and isolated contract tests
+        run: |
+          python3 -m py_compile scripts/qa_update_smoke_guard.py tests/test_qa_update_smoke_guard.py
+          python3 -m unittest discover -s tests -p 'test_qa_update_smoke_guard.py' -v
+      - name: Confirm no automatic game-run events are configured
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/qa-update-smoke.yml').read_text()
+          assert '  issue_comment:' in text, 'Owner-only manual comment entrypoint missing'
+          for other in ('  push:', '  pull_request:', '  schedule:', '  workflow_call:'):
+              assert other not in text, f'Automatic or reusable game run event {other}'
+          for rule in ('github.event.comment.user.id == 22598785', "github.run_attempt == 1",
+                       '/tmm-update smoke ', 'ref: ${{ steps.authorization.outputs.sha }}'):
+              assert rule in text, f'Missing exact-SHA guard: {rule}'
+          print('PASS: update server boot is owner-only, single-attempt and SHA-locked')
+          PY
