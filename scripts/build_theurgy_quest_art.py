@@ -2,8 +2,8 @@
 """Create original TMM Theurgy chapter artwork (five RGBA PNGs, stdlib only).
 
 These are original geometric illustrations: no copied ATM10 questpic texture.
-Generation is deliberately explicit and reproducible. Assets are STAGED until the
-quest integration writer packages them and updates the packwiz hash index.
+Generation is deterministic and called during approved integration assembly. The
+resulting PNGs are staged in kubejs, indexed by packwiz and frozen into the QA tag.
 """
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs/quest-pilots/theurgy/generated/assets"
+OUT = ROOT / "kubejs/assets/tmm/textures/questpics/theurgy"
 SIZE = {"title.png": (384, 104), "vessels.png": (240, 92),
         "niter.png": (240, 92), "reformation.png": (240, 92),
         "wires.png": (240, 92)}
