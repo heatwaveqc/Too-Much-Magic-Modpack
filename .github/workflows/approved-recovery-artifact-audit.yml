@@ -1,0 +1,45 @@
+name: Approved Recovery Artifact Audit (targeted, no Minecraft build)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/approved-recovery-artifact-audit.yml'
+      - 'mods/aquamirae.pw.toml'
+      - 'mods/fragmentum-neoforge.pw.toml'
+      - 'mods/mowzies-mobs.pw.toml'
+      - 'mods/sons-of-sins.pw.toml'
+      - 'mods/the-graveyard.pw.toml'
+      - 'mods/villagerstradingplus.pw.toml'
+      - 'mods/aura-cascade-reimagined.pw.toml'
+      - 'mods/lets-do-herbalbrews.pw.toml'
+      - 'mods/aquaculture-delight.pw.toml'
+      - 'mods/born-in-chaos.pw.toml'
+      - 'mods/dungeon-crawl.pw.toml'
+      - 'mods/just-enough-professions.pw.toml'
+      - 'mods/ldlib2.pw.toml'
+      - 'mods/lets-do-brewery.pw.toml'
+      - 'mods/lets-do-farm-and-charm.pw.toml'
+      - 'mods/prefab-custom-addon.pw.toml'
+      - 'mods/yungs-better-end-island.pw.toml'
+      - 'scripts/verify_approved_recovery_artifacts.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate-artifact-hashes-and-native-dependencies:
+    name: Candidate JAR hashes and required dependencies (not boot/assembly)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify candidate metadata without downloading
+        run: python3 scripts/verify_approved_recovery_artifacts.py
+      - name: Fetch only approved candidate JARs from official sources and verify
+        run: python3 scripts/verify_approved_recovery_artifacts.py --verify-official --json-out approved-recovery-audit.json
+      - name: Preserve evidence for integration review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-recovery-candidate-audit
+          path: approved-recovery-audit.json
+          if-no-files-found: ignore
