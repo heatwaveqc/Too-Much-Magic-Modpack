@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-22 Elemental Mages
+
+- Added ars-elemental-pinned-mages.md fourNPCs: dirtbelow/Y>45/blocklight<=6, matchingfocus held+firstCurio reducesproactiveaggro/defaulttrue, different-schoolmages/retaliation/others priorities. 150health/follow48/XPbase15; fixedmediumschoolarmor/swordTouchKnockback/Apprenticebook, javaparmor switchcorrectsCFRlocalartifact. AllretaincommonProjectileHarmAmplify; pools4/5/6/6=21 orderedentries. MageResolver enoughMana bypassbutnormalonCastgrammar/events, virtualsameschoolfocus+ShaperALLmages, childpreserved. Rangedvisibility20/animation5/cooldown20 evenfailed; sharedself60/heal<=33%, Firepurify<80%harmfulMilk, Watershield<80% but nativeManaCaponlyPlayer andBubbleShieldrequirestargetcap—no promisedNPCshield.
+- shouldDropLoot=false/no packagedMage table NOT blanketallequipment/XPdisabled: vanillaequipment/externaldroppath acceptanceopen, do notteachrarefocus/armor farming. No nativeguideencounterpageobserved; futurequestsuppliesinstructions/optionalno mandatorykillgate. Prior interrupteduntrackedMagefile recovered/validated/committedthisrun.
+- **Next registry/recipe reconciliation and globalSauce selection** exact installedaddonJARmetadata/bundledversions beforefullElementalprofile rewrite and35companioncoverageindex/pilot35–37. ThenElemancy/Additions/Arsfinalreview/othermajors.9complete33researching/nohardblocker/hourlyactive. Fetchedintegration4bd316fb7811451442c4b030d59a2b3a0ede5571; Ars/Elementalpinsunchangedagainst82b747db. Docs only/no agents/assembly/launch/runtimeedits/merge; gitlog actualpushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-21 Elemental biomes/caves/shrine
 
 - Added ars-elemental-pinned-biomes.md fiveexactJSON +TerraBlendergatingloaded+extra_biomes>0(default1), regionclimate/surfacerules, notworldYorencounterprobability. Tree/material/hazardfeaturelists/spawntables, Flashjack35inFlashingversusmodifier7, Breeze rejectsY<45 ORdark ORairbelow. Vexingall4mages/Wildenweight100/100/80; ceilingtree105/short75/vine88attempts with12scan/offsets notactualcounts. Sourcestoneore64/2attempts/uptoY30; nativeformationheight6..17/lamptop8; Quartz4..9/calcite/diorite/quartz, Blackstone10%gilded/lavahazard.

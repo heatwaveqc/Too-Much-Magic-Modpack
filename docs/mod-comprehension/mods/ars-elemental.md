@@ -67,3 +67,5 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 [Flashing wood/Flashpine/cave plants](ars-elemental-pinned-plants.md) traces initial natural fruit versus sapling no-pod branch, farming inputs/drops, food effects, Source-vine right-use output and weather sampling. Whole biome/mage/structure distribution still requires review.
 
 [Five biomes/Vexing Caves/Starbuncle Shrine](ars-elemental-pinned-biomes.md) maps enabled generation, ecology/hazards/material features, shrine template and structure-tag bridges. Mage combat/loot is still pending.
+
+[Four wandering Mages](ars-elemental-pinned-mages.md) covers spawn/light/focus hostility,21attack-pool entries, fixed medium equipment, school resolver and conditional self-support, without inventing normal rare loot.
