@@ -1,6 +1,5 @@
 package io.github.heatwaveqc.tyr.progression.client;
 
-import com.mojang.datafixers.util.Either;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import io.github.heatwaveqc.tyr.progression.foundation.TooltipLinePolicy;
 import io.github.heatwaveqc.tyr.progression.foundation.TooltipLinePolicy.Kind;
@@ -50,8 +49,12 @@ public final class TooltipValueHider {
         if (event.getToolTip().stream().noneMatch(component ->
                 classify(component) != Kind.UNRELATED)) return;
         Player owner = Minecraft.getInstance().player;
-        // Do not trust another player's supplied ItemTooltipEvent entity.
-        boolean nativeKnows = owner != null && owner == event.getEntity()
+        // Ingredient viewers may fire with a null event entity. The current
+        // local player (already bound to the server lease) remains the owner;
+        // never use another entity's knowledge if the event names one.
+        boolean correctOwner = owner != null
+            && (event.getEntity() == null || owner == event.getEntity());
+        boolean nativeKnows = correctOwner
             && ClientTooltipMilestones.mayShowProjecteLearned(true)
             && NativeProjecteKnowledge.hasKnowledge(owner, stack);
         boolean stone = ClientTooltipMilestones.mayShowProjecteLearned(true);
