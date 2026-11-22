@@ -23,6 +23,8 @@ jobs:
           python-version: '3.12'
       - name: Verify manifest, packwiz hash chain and exclusions
         run: python3 scripts/validate.py
+      - name: First-party native dependency metadata closure fixtures (A / offline)
+        run: python3 -m unittest discover -s tests -p 'test_first_party_dependency_closure.py' -v
       - name: Guard legacy Bxx game boots and Prism packaging (source-only)
         run: |
           python3 scripts/audit_smoke_workflows.py
