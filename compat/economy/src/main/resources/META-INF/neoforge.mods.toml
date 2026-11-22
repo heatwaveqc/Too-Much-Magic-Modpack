@@ -146,9 +146,12 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.tmm_economy]]
+# Jade embeds its loader-visible version in JAR Implementation-Version; the
+# selected 15.10.6 NeoForge artifact reports 15.10.6+neoforge, not 15.10.6.
+# Keep this an exact optional-present/client-only match; never widen silently.
 modId="jade"
 type="optional"
-versionRange="[15.10.6]"
+versionRange="[15.10.6+neoforge]"
 ordering="AFTER"
 side="CLIENT"
 
