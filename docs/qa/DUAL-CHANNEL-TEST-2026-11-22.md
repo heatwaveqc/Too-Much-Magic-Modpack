@@ -1,6 +1,6 @@
 # November 22 — unified Unstable + Experimental QA
 
-**Status:** planned, no new in-game PASS. **A:** Codex offline; **B:** paste-ready in-game commands; **C:** manual client/setup/play. Follow [QA execution standard](QA-EXECUTION-TYPES.md), [historical B/C command recipes](UNSTABLE-QA-2026-11-17.md) and [live inclusion policy](LIVE-TEST-INCLUSION-REGISTER.md). Record evidence against the actual installed BUILD-MANIFEST, not a moving branch.
+**Status:** planned, no new in-game PASS. **A:** Codex offline; **B:** paste-ready in-game commands; **C:** manual client/setup/play. Follow [QA execution standard](QA-EXECUTION-TYPES.md), [historical command syntax only](UNSTABLE-QA-2026-11-17.md) and [live inclusion policy](LIVE-TEST-INCLUSION-REGISTER.md). Record evidence against the actual installed BUILD-MANIFEST, not a moving branch. This is a **TMM-owned QA checklist**, not a certification suite for upstream mods.
 
 ## Exact builds and mandatory identity check
 
@@ -13,18 +13,18 @@ The draft experiment PR #461 head contains trial tooling but **not the updated p
 
 ### The complete experimental pin delta
 
-| Mod | U | E | Main regression risk |
+| Mod | U | E | TMM-owned compatibility boundary — not a native feature test |
 | --- | --- | --- | --- |
-| Neo Vitae | 1.1.53 | **1.1.54** | Athanor idle, EV/Spiritus, Tabula, Ara Vitae, rituals |
-| EvilCraft | 1.2.100 | **1.2.102** | Blood storage/interoperability, recipes, guides/JEI |
-| Goety | 3.2.2 | **3.2.3** | Natural mobs/structures, summoning, Tectonic/YUNG |
-| Ars Elemental | 0.7.10.4 | **0.7.11.3 beta** | Elemental casting, Ars addons, server crash regression |
+| Neo Vitae | 1.1.53 | **1.1.54** | Our canonical dust mapping, Mahou circle adapter and MXP/EV spend bridge, **only if shipped** |
+| EvilCraft | 1.2.100 | **1.2.102** | Our EvilCraft-canonical blood conversion/containers with JAWR, Hexerei and other TMM bridges |
+| Goety | 3.2.2 | **3.2.3** | Offline API/pin compatibility; **no dedicated manual Goety test** unless TMM lich/path integration breaks or an attributable bug is reported |
+| Ars Elemental | 0.7.10.4 | **0.7.11.3 beta** | One focused Ars/Progression spell-to-MXP integration and known server-crash boundary; beta is the exception to release-version trust |
 
 Actual frozen snapshot also updates Economy's exact-EvilCraft-name compile allowlist and generated Packwiz/index/lock/provenance files. No other external mod pin is supposed to change.
 
 ## Deduplication rule
 
-**BOTH:** only client import/launch, world creation and rejoin, loaded versions, and logs in each build. **U:** full normal acceptance once. **E Δ:** the four changed mods and a very small core cross-mod regression; use U as a control only if E has a failure or ambiguity. **CONDITIONAL:** first verify it shipped in the exact installed artifact; absent source-ready PR work is **NOT BUILT**. Do not replay previously accepted unaffected mechanics or confuse A source PASS with in-game PASS.
+**Trust released upstream mods by default.** Do **not** ask the player to prove an upstream mod's normal crafting, machines, entities, structures, spells, JEI pages, HUD or built-in mechanics work. Test (1) code/configuration/data TMM authors or overrides, (2) our integrations between mods, (3) pack startup and data persistence at the integration boundary, and (4) a narrowly reproducible reported upstream/TMM bug, documenting its link and affected version. A **beta/prerelease** may get a short targeted compatibility check; this is not a blanket native-feature test. **BOTH:** only verify client import/launch, world creation/rejoin, installed versions and integration errors. **U:** run TMM-owned acceptance once. **E Δ:** retest only affected TMM integration seams and the beta boundary; use U as a control if E fails or differs. **CONDITIONAL:** verify the feature was shipped in the exact artifact; absent work is **NOT BUILT**. Green A or an upstream release label is not a client PASS.
 
 ## A — automated Codex CLI
 
@@ -48,37 +48,36 @@ For optional first-party Gradle compile/unit checks, add **--build-modules**. Om
 | A06–A08 | Canonical blood, materials/Neo dust and silver | Rerun changed EvilCraft/Neo cases; reuse unchanged silver |
 | A09–A11 | Newbie/MXP, boss gating and current dragon food fixtures | No assumed food-engine rewrite; recheck changed dependencies only |
 | A12–A13 | Offline Prism packaging fixture, optional first-party builds | Recheck E compile ABI for four new JAR filenames, especially EvilCraft in Economy |
-| A14 — A manual audit | **Astral Sorcery perk count and hard cap:** count distinct reachable perk definitions from exact installed version/JAR/source, compare config hard cap, record raw count and method. No guessed total and no claim new purchasable perk-point feature is installed |
+| A14 — offline **design-input inventory**, no player QA | Count reachable Astral Sorcery perks and its configured hard cap **only to implement TMM's planned purchasable perk-point feature**. Record method, source and raw count; this does not test whether Astral Sorcery's native perk tree functions |
 | A15 — A artifact audit | Inspect BUILD-MANIFEST, final source SHA/tag, actual local JAR hashes, bundled first-party JARs, client logs and already existing server evidence. No new Minecraft process |
 
-## One B/C checklist — U baseline plus E focused difference
+## One B/C checklist — TMM-authored behavior and integration only
 
-Check each box only with observations, exact build and log/screenshots. Use separate disposable worlds and, for modes/forms, separate fresh characters.
+**Do not test upstream release functionality in isolation.** Keep a mod's native behavior as a *setup step* only when necessary to exercise our own hook, with the assertion explicitly on TMM's result. Owner-reported or upstream bugs can restore one narrowly scoped case with an issue link and exact version. B/C observations are distinct from offline A checks.
 
-| Case / type | U — do ONCE | E — only what differs |
+| Case / type | U — test TMM once | E — only changed TMM seam |
 | --- | --- | --- |
-| **T01 C BOTH** | [ ] Import true 222-mod U ZIP, Java 21, menu, four first-party mods, clean logs | [ ] Import **single-level** E ZIP directly in Prism; verify changed mod versions, logs/mixins |
-| **T02 C BOTH** | [ ] Fresh world create, save, exit/rejoin, JEI/recipe init, no KubeJS failures | [ ] Fresh E world create/rejoin, no registry/mixin/save errors |
-| **T03 B U** | [ ] Fresh Newbie read-only status and permissions, MXP refusal; graduation via personal quest versus OP synthetic fixture, one-home/RTp limits, Tyz wallet, relog | One selected MXP/mode check only in E (T22) |
-| **T04 B/C U** | [ ] Monk natural sunset enrollment, gear restrictions, barehand logs, fortune/silk, powers and K GUI purchase, rank/XP | Skip unchanged |
-| **T05 C U** | [ ] TreeChop multi-block progress bar/Jade visibility and completion XP; Bedrock Rest and glide if truly unlocked | Skip unchanged |
-| **T06 B/C U** | [ ] Hunter poison enrollment, specialty, last-hit XP, Looting/silver, Bio-Mutagen nine ingredients and Brewing Stand-only potion, saved mutation state | Skip unchanged |
-| **T07 C U** | [ ] JAWR vampire Lilith blood acquisition: immediate pool/HUD before and after relog, blood healing, cure and sun/shade; Archlich/Dracolich death anchors and exclusivity | E retests only affected EvilCraft blood bridge (T18) |
-| **T08 C U** | [ ] Dragon ritual-only choice, fish/kelp/sushi for Sea, enchanted carrot/sourceberries for Forest, seasoned fish variants, three Sources of Magic | Skip new food-engine design (unfinished) and waived Hot Dragon Rod/Spearman upstream quirks |
-| **T09 C U** | [ ] Five quest groups, starter Tome/two beef, first-log/Nether stem, localized Ars/Alcohol chapters, single claims, shop coins/ore stock, no ghost recipes | E one representative quest/JEI claim only |
-| **T10 C U** | [ ] Trader six guarantees/four premium categories, banned ring, natural No Soliciting and vendetta, Bountiful board/decrees if actually installed | Skip unchanged |
-| **T11 C U** | [ ] Gateways arena/loot, natural Tectonic/YUNG/BetterEnd/dimension/rare ore worldgen, seven added mobs | E **Goety** changed worldgen/summons (T19); don't reexplore all dimensions |
-| **T12 C U** | [ ] ProjectE three trophy centers/orientations, MK3+ Chaos Shard, bypasses, CC Eldritch/Replication progression and EMC export if available | Skip unchanged |
-| **T13 C U** | [ ] Mahou Catalyst native mana/count; Thermalily lava rig output and cooldown, FE conversion | Skip unless E machine cross-mod recipe is broken |
-| **T14 C U** | [ ] KeySets/Default Options, vanilla key defaults, Jade/Curios/FTB HUD and K interface, saved remaps; check prior invalid-key log flood | E verify separate QA profile, no leaked personal preferences |
-| **T15 C U** | [ ] Comforts, JER, Colorful Hearts, Eternal Steak and installed cooking systems | Skip unfinished dietary refactor |
-| **T16 C U** | [ ] Two players: personal graduation/path/forms/XP, team coin/quests, restart/save and permission boundaries | E multiplayer only for Ars Elemental crash control |
-| **T17 C E Δ** | EvilCraft 1.2.100 reference only if E fails | [ ] **EvilCraft 1.2.102:** capture/store/transfer blood, stands, guide+JEI, blood-powered recipe, JAWR/Hexerei containers and no duplication |
-| **T18 C E Δ** | Neo Vitae 1.1.53 reference only if E fails | [ ] **Neo Vitae 1.1.54:** Ara Vitae/Tabula/Hellfire/Athanor output, resource draw EV/Spiritus, ritual, idle and unload/rejoin behavior, dust integration |
-| **T19 C E Δ** | Goety 3.2.2 reference only if E fails | [ ] **Goety 3.2.3:** naturally generated mob/structure in fresh chunks, summon/owner/combat and worldgen coexistence |
-| **T20 C E Δ** | Ars Elemental 0.7.10.4 reference only if E fails | [ ] **Ars Elemental 0.7.11.3 beta:** glyph/focus/JEI, entity/block spells, mana use, relog, actual multiplayer/dedicated casting if available (server-crash regression) |
-| **T21 C E Δ** | Control known-good recipe, spell, player and quest state from U | [ ] E representative spell->MXP, quest claim, JEI recipe, blood container and save/reload; expand only if changed behavior |
-| **T22 C CONDITIONAL** | [ ] **Only if in exact built package:** QoL blaze rod/fire, mushroom stew stacks, foliage attacks; Prefab houses; cross-bag prevention; player EMC tooltip/Jade; six-book enchant filter; Friendship Flower; Bountiful custom board; Astral extra perk-point grants | Mark NOT BUILT unless actual runtime code/config and pins shipped; source-ready and draft PRs are **not** acceptance |
+| **T01 C BOTH** | [ ] Import the exact frozen U package; confirm our four first-party JARs are loaded and loader/integration logs have no TMM errors | [ ] Import E separately; verify exact four changed pins and no newly failing TMM mixins/registry hooks |
+| **T02 C BOTH** | [ ] One disposable world: join, save, rejoin; confirm **TMM** player state, injected recipes/registry and KubeJS initialization survive | [ ] Same minimal TMM state/world persistence and startup check; no general mod functionality tour |
+| **T03 B U** | [ ] TMM Newbie/Regular state, MXP denial/graduation, personal quest, configured FTB travel limits and Tyz wallet persistence | E one MXP/Progression hook only if a changed pin can affect it (T20) |
+| **T04 B/C U** | [ ] TMM Monk initiation, armor/fist restrictions, owned powers, skill purchases and MXP attribution | No repeat without a changed dependency or issue |
+| **T05 C U** | [ ] Our TreeChop XP/progress + Jade adapter, Monk Bedrock Rest/glide **where TMM implements these** | No repeat without a changed dependency or issue |
+| **T06 B/C U** | [ ] TMM Hunter initiation/specialty, XP attribution, silver bonus, custom Bio-Mutagen recipe/mutation persistence | Skip native potion/Brewing Stand tests outside our recipe/handler |
+| **T07 C U** | [ ] Our JAWR acquisition vetoes, blood healing/containers, vampire pool/HUD integration before/after relog (**previous player-reported issue**), TMM lich/dracolich exclusivity and death priority | E retest only changed EvilCraft-canonical blood bridge (T17); Goety lich integration **only if an actual TMM regression is observed** |
+| **T08 C CONDITIONAL U** | [ ] Only shipped **TMM diet/recipe override** behavior: Sea fish/kelp/sushi, Forest enchanted carrot/sourceberries, and our seasoned-fish handling. Ritual-only choice config if shipped | Unfinished food-engine redesign = NOT BUILT; **do not test native Dragon Survival Sources of Magic, Hot Dragon Rod or Spearman crafting** |
+| **T09 C U** | [ ] Our authored starter kit, quests, Ars/Alcohol localization, one-time rewards, quest-shop coins and custom ore recipes | E only an Ars-dependent **TMM** quest/recipe if dependency changed |
+| **T10 C U** | [ ] **Our** Wandering Trader stock/blacklist, vendetta and No Soliciting spawn restrictions; custom Bountiful contracts only if shipped | No vanilla/upstream trader mechanics sweep |
+| **T11 C U** | [ ] **Our** Gateways custom wave definitions, Chaos Bunny reward/trophy and scripted loot; custom worldgen/biome overrides **only if authored by TMM** | **No native Goety mobs/structures or Tectonic/YUNG/BetterEnd/dimension exploration**; bug-driven exception only |
+| **T12 C U** | [ ] Our ProjectE trophy recipes/bypass prevention, Chaos Shard requirement, gated CC Eldritch/Replication/EMC rules and custom shop interactions **where installed** | No native ProjectE or Replication operation checks |
+| **T13 C U** | [ ] **Our** Mahou-to-Neo dust exchange adapter and altered Thermalily output/cooldown; custom FE/MXP conversion only if shipped | Do not test native Mahou Catalyst, Botania or Psi machinery on its own |
+| **T14 C U** | [ ] Our Prism QA options scripts, remap preservation, customized default-key rules and TMM-specific Jade/Curios/FTB/Progression UI integration | E verify separate QA instance identity, no preference leakage |
+| **T16 C U** | [ ] Two players only for **our** path, mode, team quest/coin, MXP attribution, per-player permissions and save-boundary isolation | Multiplayer E only where an Ars Elemental beta + TMM hook exposes a reproducible server problem (T20) |
+| **T17 C E Δ** | Use U EvilCraft bridge as control **only if E differs** | [ ] **Our** EvilCraft blood canonicalization with JAWR/Hexerei containers, healing, transfer rules and duping protection; **skip native EvilCraft machines/guide/recipes** |
+| **T18 C E Δ** | Use U Neo dust adapter as control **only if E differs** | [ ] **Our** Neo Vitae dust recipes/tags, Mahou circle compatibility, EV/Spiritus-to-MXP donor rules if shipped; **skip native Athanor/Tabula/Ara Vitae rituals** |
+| **T20 B/C E Δ beta** | U stable Ars baseline only if beta integration fails | [ ] A representative Ars Elemental beta spell exercising **our** spell-to-MXP/Ars compatibility bridge and any known server-crash reproduction; **no all-glyph/spell/functionality survey** |
+| **T22 C CONDITIONAL** | [ ] **Only if actually shipped:** our blaze/fire, stew/foliage tweaks; Prefab restrictions; bag-nesting guard; personal EMC/Jade tooltip; custom enchant filter; Friendship Flower; Bountiful custom board; Astral perk-point purchases | Mark NOT BUILT for source-only designs and PRs; do not test the underlying release mods |
+
+**Removed player-test cases:** old T15 (native Comforts/JER/Colorful Hearts/cooking functionality), T19 (native Goety mob/structure/summoning functionality) and T21 (duplicate E spell/MXP/recipe/blood/save checks already covered by T02/T09/T17/T18/T20). Also removed native-only subchecks from T07, T08, T11, T13, T14, T17 and T18. IDs remain stable for evidence history; removed IDs are **not mandatory coverage**.
 
 ### Verified source-era command fixtures (operator only where indicated)
 
@@ -104,7 +103,7 @@ To compare synthetic Newbie versus graduated XP on a throwaway OP profile (not p
 /tmmmxp status
 ~~~
 
-Use source-verified Monk/Hunter/merchant/structure command sequences in [the earlier B01–B10 playbook](UNSTABLE-QA-2026-11-17.md) as appropriate; repeat nothing merely for coverage theater.
+Use historical B01–B10 [command syntax](UNSTABLE-QA-2026-11-17.md) **only** for the TMM-owned cases above. Its upstream-mod and native-behavior tasks are superseded by this scope; do not restore them just because they appear in an older list.
 
 ### Explicit NOT BUILT / future readiness checks
 
@@ -112,4 +111,4 @@ New first-class **Newbie and Normie Paths** and MXP-independent Core tree semant
 
 ## Evidence and pass gate
 
-For **each** tested T case record: channel, immutable BUILD-MANIFEST source SHA + ZIP checksum, B/C, action and player state, expected vs observed, PASS/FAIL/PARTIAL/BLOCKED/NOT BUILT/NOT RUN, screenshot/log location and exact versions; enter in the per-build QA results ledger. Report A JSON separately. A serious E launch crash, data loss, dupe, worldgen error, broken blood economy, or server-only Ars spell crash blocks E promotion; preserve logs and reproduce on U if possible. Neither a server PASS nor green A output approves beta Ars Elemental or replaces the unstable ZIP.
+For **each** tested T case record: channel, immutable BUILD-MANIFEST source SHA + ZIP checksum, B/C, action and player state, expected vs observed, PASS/FAIL/PARTIAL/BLOCKED/NOT BUILT/NOT RUN, screenshot/log location and exact versions; enter in the per-build QA results ledger. Report A JSON separately. A serious E client/server integration crash, TMM state/data loss, **TMM bridge** duplication, broken canonical blood economy, or beta Ars spell crash affecting TMM blocks E promotion; preserve logs and reproduce on U if possible. An unmodified released mod's native feature is not a mandatory QA gate absent a reproducible linked bug. Neither a server PASS nor green A output approves beta Ars Elemental or replaces the unstable ZIP.
