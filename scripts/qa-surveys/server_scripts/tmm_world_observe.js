@@ -1,17 +1,16 @@
 // Temporary QA command, no grants/teleports/world mutations. Explicit OP gate.
-ServerEvents.basicCommand('tmm_world_observe', event => {
-  if (!event.player || !event.player.hasPermissions(2)) { event.cancel('Operator permission required'); return }
+function tmmObserveWorld(p, server) {
   let R = Java.loadClass('net.minecraft.core.registries.BuiltInRegistries')
-  let p = event.player
   let level = p.serverLevel()
-  let result = {schema: 1, status: 'OBSERVATION_ONLY', players: [], commands: [], recipes: [], errors: []}
+  let result = {schema: 1, status: 'OBSERVATION_ONLY', build: JsonIO.read('kubejs/config/tmm-survey-build.json'), players: [], commands: [], recipes: [], errors: []}
   try {
     let biome = level.getBiome(p.blockPosition())
-    let row = {dimension: String(level.dimension().location()), biome: String(biome.unwrapKey().get().location()),
+    let row = {dimension: String(level.dimension), biome: String(biome.unwrapKey().get().location()),
       nearbyEntities: [], biomeSpawns: [], effects: [], inventory: []}
+    result.players.push(row) // Preserve completed fields if a later adapter is unsupported.
     level.getAllEntities().forEach(entity => {
       if (entity === p || entity.distanceToSqr(p) > 4096) return
-      row.nearbyEntities.push({id: String(R.ENTITY_TYPE.getKey(entity.getType())), name: String(entity.getType().getDescription().getString()),
+      row.nearbyEntities.push({id: String(entity.type),
         distance: Math.round(Math.sqrt(entity.distanceToSqr(p))),
         tags: String(entity.getTags())})
     })
@@ -28,20 +27,24 @@ ServerEvents.basicCommand('tmm_world_observe', event => {
       let stack = inv.getItem(i)
       if (!stack.isEmpty()) row.inventory.push({slot: i, id: String(R.ITEM.getKey(stack.getItem())), count: stack.getCount()})
     }
-    result.players.push(row)
   } catch (e) { result.errors.push('world snapshot: ' + e) }
-  event.server.getCommands().getDispatcher().getRoot().getChildren().forEach(c => result.commands.push(String(c.getName())))
-  event.server.getRecipeManager().getRecipes().forEach(holder => {
+  server.getCommands().getDispatcher().getRoot().getChildren().forEach(c => result.commands.push(String(c.getName())))
+  server.getRecipeManager().getRecipes().forEach(holder => {
     let row = {id: String(holder.id())}
     try {
       let recipe = holder.value()
       row.type = String(R.RECIPE_TYPE.getKey(recipe.getType()))
-      let out = recipe['getResultItem(net.minecraft.core.HolderLookup$Provider)'](event.server.registryAccess())
+      let out = recipe['getResultItem(net.minecraft.core.HolderLookup$Provider)'](server.registryAccess())
       row.output = String(R.ITEM.getKey(out.getItem()))
       row.count = out.getCount()
     } catch (e) { row.error = String(e).slice(0, 300) }
     result.recipes.push(row)
   })
   JsonIO.write('kubejs/export/tmm-world-observe.json', result)
+  return result
+}
+ServerEvents.basicCommand('tmm_world_observe', event => {
+  if (!event.player || !event.player.hasPermissions(2)) { event.cancel('Operator permission required'); return }
+  let result = tmmObserveWorld(event.player, event.server)
   event.cancel('TMM world observation saved; ' + result.errors.length + ' limitations')
 })

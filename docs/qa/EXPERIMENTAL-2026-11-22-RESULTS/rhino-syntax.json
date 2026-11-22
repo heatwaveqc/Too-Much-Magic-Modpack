@@ -1,0 +1,113 @@
+{
+  "scope": "SYNTAX_ONLY_NOT_EXECUTION",
+  "rhino": "rhino-2101.2.7-build.85.jar",
+  "checked": 21,
+  "failed": 1,
+  "results": [
+    {
+      "file": "kubejs/client_scripts/main.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\client_scripts\\main.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/ban_seven_sins_ring.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\ban_seven_sins_ring.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/bootstrap.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\bootstrap.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/caerbannog_boss.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\caerbannog_boss.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/dragon_diets.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\dragon_diets.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/dragon_seasoned_fish.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\dragon_seasoned_fish.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\mahou_neo_vitae_circle_bridge.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/material_processing_cleanup.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\material_processing_cleanup.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/material_unification.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\material_unification.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/parchment_fishing.js",
+      "exit": 1,
+      "detail": "Exception in thread \"main\" dev.latvian.mods.rhino.EvaluatorException: SyntaxError: invalid object initializer (<minecraft>\\kubejs\\server_scripts\\parchment_fishing.js#43)\n\tat dev.latvian.mods.rhino.DefaultErrorReporter.runtimeError(DefaultErrorReporter.java:67)\n\tat dev.latvian.mods.rhino.DefaultErrorReporter.error(DefaultErrorReporter.java:58)\n\tat dev.latvian.mods.rhino.Parser.addError(Parser.java:281)\n\tat dev.latvian.mods.rhino.Parser.reportError(Parser.java:335)\n\tat dev.latvian.mods.rhino.Parser.reportError(Parser.java:326)\n\tat dev.latvian.mods.rhino.Parser.reportError(Parser.java:319)\n\tat dev.latvian.mods.rhino.Parser.plainProperty(Parser.java:3239)\n\tat dev.latvian.mods.rhino.Parser.objectLiteral(Parser.java:3165)\n\tat dev.latvian.mods.rhino.Parser.primaryExpr(Parser.java:2701)\n\tat dev.latvian.mods.rhino.Parser.memberExpr(Parser.java:2515)\n\tat dev.latvian.mods.rhino.Parser.unaryExpr(Parser.java:2453)\n\tat dev.latvian.mods.rhino.Parser.mulExpr(Parser.java:2396)\n\tat dev.latvian.mods.rhino.Parser.addExpr(Parser.java:2382)\n\tat dev.latvian.mods.rhino.Parser.shiftExpr(Parser.java:2366)\n\tat dev.latvian.mods.rhino.Parser.relExpr(Parser.java:2342)\n\tat dev.latvian.mods.rhino.Parser.eqExpr(Parser.java:2326)\n\tat dev.latvian.mods.rhino.Parser.bitAndExpr(Parser.java:2317)\n\tat dev.latvian.mods.rhino.Parser.bitXorExpr(Parser.java:2308)\n\tat dev.latvian.mods.rhino.Parser.bitOrExpr(Parser.java:2299)\n\tat dev.latvian.mods.rhino.Parser.powExpr(Parser.java:2290)\n\tat dev.latvian.mods.rhino.Parser.andExpr(Parser.java:2281)\n\tat dev.latvian.mods.rhino.Parser.orExpr(Parser.java:2272)\n\tat dev.latvian.mods.rhino.Parser.ncoExpr(Parser.java:2263)\n\tat dev.latvian.mods.rhino.Parser.condExpr(Parser.java:2226)\n\tat dev.latvian.mods.rhino.Parser.assignExpr(Parser.java:2184)\n\tat dev.latvian.mods.rhino.Parser"
+    },
+    {
+      "file": "kubejs/server_scripts/silver_equipment_unification.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\silver_equipment_unification.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/tmm_structure_registry_export.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\tmm_structure_registry_export.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\tmm_wandering_trader_magic_stock.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/zz_tmm_world_observe.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\zz_tmm_world_observe.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/bootstrap.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\bootstrap.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/caerbannog_trophy.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\caerbannog_trophy.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/drinkable_blood_vial.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\drinkable_blood_vial.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/eldritch_logic_core.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\eldritch_logic_core.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/replica_nugget.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\replica_nugget.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/silver_equipment_stats.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\silver_equipment_stats.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/vanilla_item_qol.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\vanilla_item_qol.js\n"
+    }
+  ]
+}

@@ -44,7 +44,7 @@ def nearby_saved_entities(world, position):
                     if not pos: continue
                     distance=math.dist(position,pos)
                     if distance<=128:
-                        found.append({'id':entity.get('id'),'distance':round(distance,1)})
+                        found.append({'id':entity.get('id'),'distance':round(distance,1),'heightOffset':round(pos[1]-position[1],1)})
             except (ValueError,EOFError,struct.error,zlib.error) as exc:
                 errors.append({'region':region.name,'slot':slot,'error':str(exc)})
     return {'status':'SAVED_ENTITIES_NOT_LIVE','radius':128,'entities':found,'counts':dict(collections.Counter(e['id'] for e in found)),

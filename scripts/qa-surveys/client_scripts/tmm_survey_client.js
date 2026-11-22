@@ -30,7 +30,7 @@ var TMMQAClient = (function () {
       .map(k => ({binding: k, keys: conflicts[k]}));
     let duplicateNames = Object.keys(counts).filter(k => counts[k] > 1);
     let file = root + 'client-keys-' + nonce.replace(/[^a-zA-Z0-9_-]/g, '_') + '.json';
-    JsonIO.write(file, {schema: 1, suite: '1.0.0', status: 'OBSERVATION_ONLY', requestNonce: nonce,
+    JsonIO.write(file, {schema: 1, suite: '1.1.0', status: 'OBSERVATION_ONLY', requestNonce: nonce,
       capturedUtc: String(Java.loadClass('java.time.Instant').now()), keys: keys,
       sharedBindings: shared, duplicateTranslationKeys: duplicateNames,
       limits: ['Shared bindings may be valid in disjoint conflict contexts; this is not an automatic conflict verdict.',
@@ -44,7 +44,7 @@ var TMMQAClient = (function () {
     if (!ready) { initialize(); return; }
     if (++ticks % 20 !== 0) return;
     let r = request();
-    if (r == null || r.suite !== '1.0.0' || String(r.nonce) === previous) return;
+    if (r == null || r.suite !== '1.1.0' || String(r.nonce) === previous) return;
     let nonce = String(r.nonce);
     if (!/^[0-9TZ:.\-]{10,40}$/.test(nonce)) { previous = nonce; return; }
     previous = nonce;

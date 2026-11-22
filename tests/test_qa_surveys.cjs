@@ -12,7 +12,7 @@ const clientText = fs.readFileSync(path.join(root, 'client_scripts/tmm_survey_cl
 function harness(enabled = false) {
   const files = new Map(), writes = [], handlers = {}, registered = [], errors = [];
   files.set('kubejs/config/tmm-surveys.json', {enabled});
-  files.set('../BUILD-MANIFEST.json', {integration_commit: 'a'.repeat(40)});
+  files.set('kubejs/config/tmm-survey-build.json', {integration_commit: 'a'.repeat(40)});
   let clock = 1000;
   class JString {constructor(s) {this.value=s;} getBytes() {return Buffer.from(this.value);}}
   const component = {literal: s=>s};
@@ -20,6 +20,7 @@ function harness(enabled = false) {
     return {name, requires(f) {this.guard=f;return this;}, executes(f) {this.action=f;return this;}, then(child) {this.child=child;return this;}};
   }
   const classes = {
+    'com.google.common.hash.Hashing': {sha256: ()=>({hashUnencodedChars: s=>({toString: ()=>crypto.createHash('sha256').update(Buffer.from(s,'utf16le')).digest('hex')})})},
     'java.lang.String': JString,
     'java.security.MessageDigest': {getInstance: ()=>({digest: bytes=>crypto.createHash('sha256').update(bytes).digest()})},
     'java.lang.System': {currentTimeMillis: ()=>++clock},
@@ -30,7 +31,8 @@ function harness(enabled = false) {
     'com.mojang.brigadier.arguments.StringArgumentType': {greedyString: ()=>({}), getString: (ctx, key)=>ctx[key]}
   };
   const player = {
-    getUUID: ()=>'private-player-uuid', getActiveEffects: ()=>[],
+    uuid: 'private-player-uuid',
+    getActiveEffects: ()=>[],
     getHealth: ()=>20, getFoodData: ()=>({getFoodLevel: ()=>20, getSaturationLevel: ()=>5}),
     experienceLevel: 2, experienceProgress: 0.5, totalExperience: 9,
     getInventory: ()=>({getContainerSize: ()=>0})
@@ -93,7 +95,7 @@ test('comparison rejects another build and missing baseline', ()=>{
   const h=harness(true), q=h.sandbox.TMMQA;
   assert.equal(q.execute('tree',h.context,'after absent'),0);
   q.execute('tree',h.context,'before logs1');
-  h.files.set('../BUILD-MANIFEST.json',{integration_commit:'b'.repeat(40)});
+  h.files.set('kubejs/config/tmm-survey-build.json',{integration_commit:'b'.repeat(40)});
   assert.equal(q.execute('tree',h.context,'after logs1'),0);
   assert(h.errors.at(-1).includes('differs'));
 });
@@ -123,6 +125,21 @@ test('missing recipes produce seven explicit unsupported observations, never mat
   assert.equal(rows.length,7);
   assert(rows.every(row=>row.status==='UNSUPPORTED'));
 });
+test('Tyr namespace uses LedgerCodec and MutationLedger without constructing attachments', ()=>{
+  const h=harness(true), prefix='io.github.heatwaveqc.tyr.progression.state.';
+  const holders={};for(const name of ['LEDGER','PLAYER_MODES','MUTATIONS','FOOD_HISTORY']) holders[name]={get: ()=>name};
+  h.classes[prefix+'ProgressionAttachments']=holders;
+  h.classes['com.mojang.serialization.JsonOps']={INSTANCE:{}};
+  const codec={encodeStart: (_ops,value)=>({getOrThrow: ()=>JSON.stringify(value)})};
+  for(const name of ['LedgerCodec','Modes','Discoveries']) h.classes[prefix+name]={CODEC:codec};
+  h.classes[prefix+'MutationLedger']={codec: ()=>codec};
+  h.player['hasData(net.neoforged.neoforge.attachment.AttachmentType)']=()=>true;
+  h.player['getData(net.neoforged.neoforge.attachment.AttachmentType)']=holder=>({observed:holder});
+  assert.equal(h.sandbox.TMMQA.execute('player',h.context,'before tyr1'),1);
+  const baseline=h.files.get(h.writes.find(p=>p.endsWith('-before.json')));
+  assert.equal(baseline.payload.attachments.LEDGER.value.data.observed,'LEDGER');
+  assert.equal(baseline.payload.attachments.MUTATIONS.value.data.observed,'MUTATIONS');
+});
 test('monitor summary reports net storage rate and interruptions without a generation PASS', ()=>{
   const h=harness();
   const observed=(elapsed,mana)=>({elapsed,observation:{status:'OBSERVED',value:{
@@ -150,7 +167,7 @@ test('client request refuses dedicated servers and does not report successful ca
 test('client ignores stale requests; exports once per new request without changing bindings', ()=>{
   const h=harness(true);
   const req='kubejs/export/tmm-surveys/client-request.json';
-  h.files.set(req,{suite:'1.0.0',nonce:'2026-11-18T20:00:00Z'});
+  h.files.set(req,{suite:'1.1.0',nonce:'2026-11-18T20:00:00Z'});
   vm.runInContext(clientText,h.sandbox);
   h.handlers.login({});
   const key={getKey: ()=>({getName: ()=>'key.keyboard.k'}),getDefaultKey: ()=>({getName: ()=>'key.keyboard.unknown'}),
@@ -158,7 +175,7 @@ test('client ignores stale requests; exports once per new request without changi
   const event={client:{options:{keyMappings:[key]}}};
   for(let i=0;i<20;i++) h.handlers.clientTick(event);
   assert.equal(h.writes.length,0);
-  h.files.set(req,{suite:'1.0.0',nonce:'2026-11-18T20:00:01Z'});
+  h.files.set(req,{suite:'1.1.0',nonce:'2026-11-18T20:00:01Z'});
   for(let i=0;i<40;i++) h.handlers.clientTick(event);
   assert.equal(h.writes.length,1);
   assert.equal(h.files.get(h.writes[0]).keys[0].changed,true);

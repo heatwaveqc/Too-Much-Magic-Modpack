@@ -1,7 +1,7 @@
 // QA ONLY. Copy manually into a disposable instance, never into a release pack.
 // No commands are executed on behalf of a player. No progression/items/world data are changed.
 var TMMQA = (function () {
-  let VERSION = '1.0.0';
+  let VERSION = '1.1.0';
   let ROOT = 'kubejs/export/tmm-surveys/';
   let watches = {};
   let sequence = 0;
@@ -12,11 +12,7 @@ var TMMQA = (function () {
     catch (e) { return {status: 'UNSUPPORTED', reason: error(e)}; }
   }
   function token(value) {
-    let bytes = cls('java.security.MessageDigest').getInstance('SHA-256')
-      .digest(new (cls('java.lang.String'))(String(value)).getBytes('UTF-8'));
-    let out = '';
-    for (let i = 0; i < bytes.length; i++) out += ('0' + (bytes[i] & 255).toString(16)).slice(-2);
-    return out;
+    return String(cls('com.google.common.hash.Hashing').sha256().hashUnencodedChars(String(value)).toString());
   }
   function validLabel(label) { return /^[a-z0-9_-]{1,32}$/.test(label); }
   function validateArgs(args, count) {
@@ -30,13 +26,13 @@ var TMMQA = (function () {
     let server = ctx.getSource().getServer();
     let player = ctx.getSource().getPlayerOrException();
     let path = server.getWorldPath(cls('net.minecraft.world.level.storage.LevelResource').ROOT);
-    return {world: token(path), subject: token(player.getUUID())};
+    return {world: token(path), subject: token(player.uuid)};
   }
   function envelope(ctx, kind, payload) {
     return {schema: 1, suite: VERSION, kind: kind, status: 'OBSERVATION_ONLY',
       identity: identity(ctx), capturedUtc: String(cls('java.time.Instant').now()),
       tick: time(ctx.getSource().getServer()),
-      build: probe(() => JsonIO.read('../BUILD-MANIFEST.json')),
+      build: probe(() => JsonIO.read('kubejs/config/tmm-survey-build.json')),
       payload: payload};
   }
   function base(ctx) {
@@ -75,15 +71,20 @@ var TMMQA = (function () {
   }
   function attachments(player) {
     let result = {};
-    let entries = [['LEDGER', 'Ledger'], ['PLAYER_MODES', 'Modes'],
-      ['HUNTER_MUTATIONS', 'HunterMutationState'], ['FOOD_HISTORY', 'Discoveries']];
+    let namespace = 'io.github.heatwaveqc.tyr.progression.state.';
+    let holders;
+    try { holders = cls(namespace + 'ProgressionAttachments'); }
+    catch (_) { namespace = 'io.github.heatwaveqc.tmm.progression.state.'; }
+    let tyr = namespace.indexOf('.tyr.') >= 0;
+    let entries = [['LEDGER', tyr ? 'LedgerCodec' : 'Ledger'], ['PLAYER_MODES', 'Modes'],
+      [tyr ? 'MUTATIONS' : 'HUNTER_MUTATIONS', tyr ? 'MutationLedger' : 'HunterMutationState'], ['FOOD_HISTORY', 'Discoveries']];
     entries.forEach(pair => {
       result[pair[0]] = probe(() => {
-        let holder = cls('io.github.heatwaveqc.tmm.progression.state.ProgressionAttachments')[pair[0]].get();
+        let holder = cls(namespace + 'ProgressionAttachments')[pair[0]].get();
         // getData can initialize absent attachments. Never call it until presence is established.
         if (!player['hasData(net.neoforged.neoforge.attachment.AttachmentType)'](holder)) return {present: false};
-        let stateType = cls('io.github.heatwaveqc.tmm.progression.state.' + pair[1]);
-        let codec = pair[0] === 'HUNTER_MUTATIONS' ? stateType.codec() : stateType.CODEC;
+        let stateType = cls(namespace + pair[1]);
+        let codec = pair[0] === 'HUNTER_MUTATIONS' || pair[0] === 'MUTATIONS' ? stateType.codec() : stateType.CODEC;
         let json = codec.encodeStart(cls('com.mojang.serialization.JsonOps').INSTANCE,
           player['getData(net.neoforged.neoforge.attachment.AttachmentType)'](holder)).getOrThrow();
         return {present: true, data: JSON.parse(String(json))};
@@ -111,7 +112,7 @@ var TMMQA = (function () {
       // get loads an existing record or returns null; never computeIfAbsent/get(server).
       let saved = ctx.getSource().getServer().overworld().getDataStorage().get(factory, 'tmm_mxp_players_v1');
       if (saved == null) return {present: false};
-      let account = saved.snapshot(p.getUUID());
+      let account = saved.snapshot(p.uuid);
       return {present: true, lifetimeLevels: String(account.counter().lifetimeLevels()),
         progress: account.counter().progress(), pendingDelivery: account.pendingDelivery(),
         recentTransactionCount: account.recentTransactions().size()};
@@ -160,7 +161,8 @@ var TMMQA = (function () {
     let server = ctx.getSource().getServer(), commands = [];
     server.getCommands().getDispatcher().getRoot().getChildren().forEach(n => commands.push(String(n.getName())));
     let mods = [];
-    cls('net.neoforged.fml.ModList').get().getMods().forEach(m => mods.push({id: String(m.getModId()), version: String(m.getVersion())}));
+    // FML ModList is intentionally blocked by KubeJS's class filter. Inventory is audited offline.
+    mods = {status: 'NOT_CAPTURED', reason: 'Use hash-verified installed inventory; FML ModList is class-filtered.'};
     let structures = [];
     server.registryAccess().registryOrThrow(cls('net.minecraft.core.registries.Registries').STRUCTURE)
       .keySet().forEach(k => structures.push(String(k)));
@@ -176,7 +178,7 @@ var TMMQA = (function () {
     ['cod', 'salmon', 'tropical_fish', 'pufferfish', 'cooked_cod', 'cooked_salmon'].forEach(fish => {
       cases.push({recipe: 'dragonsurvival:seasoned_fish', items: ['minecraft:' + fish, 'minecraft:ink_sac', 'minecraft:kelp'], expected: fish.indexOf('cooked_') !== 0});
     });
-    cases.push({recipe: 'tmm_progression:bio_mutagen', items: [
+    cases.push({recipe: server.getRecipeManager().byKey(resource('tyr_progression:bio_mutagen')).isPresent() ? 'tyr_progression:bio_mutagen' : 'tmm_progression:bio_mutagen', items: [
       'minecraft:moss_block', 'minecraft:moss_block', 'minecraft:moss_block', 'minecraft:moss_block',
       'minecraft:rotten_flesh', 'minecraft:rotten_flesh', 'minecraft:rotten_flesh', 'minecraft:rotten_flesh', 'minecraft:spider_eye'], expected: true});
     if (args.length) {
@@ -200,7 +202,7 @@ var TMMQA = (function () {
           }
         }
         let input = cls('net.minecraft.world.item.crafting.CraftingInput').of(3, 3, list);
-        return Boolean(opt.get().value()['matches(net.minecraft.world.item.crafting.CraftingInput,net.minecraft.world.level.Level)'](input, player.level()));
+        return Boolean(opt.get().value()['matches(net.minecraft.world.item.crafting.CraftingInput,net.minecraft.world.level.Level)'](input, player.serverLevel()));
       });
       return {case: c, observed: observed, status: observed.status !== 'OBSERVED' ? 'UNSUPPORTED'
         : observed.value === c.expected ? 'PASS_RECIPE_MATCH_ONLY' : 'FAIL_RECIPE_MATCH'};
@@ -215,7 +217,7 @@ var TMMQA = (function () {
         // getOffers lazily rolls stock. Reading saved Offers avoids creating or rerolling trades.
         let saved = new (cls('net.minecraft.nbt.CompoundTag'))();
         t.saveWithoutId(saved);
-        rows.push({subject: token(t.getUUID()), type: String(registry().ENTITY_TYPE.getKey(type)),
+        rows.push({subject: token(t.uuid), type: String(registry().ENTITY_TYPE.getKey(type)),
           offersPresent: saved.contains('Offers'), offersSnbt: String(saved.getCompound('Offers'))});
       });
     return write(ctx, 'traders', {radius: 16, traders: rows, status: rows.length ? 'OBSERVATION_ONLY' : 'SETUP_MISSING',
@@ -230,7 +232,7 @@ var TMMQA = (function () {
     let nearby = probe(() => {
       let p = ctx.getSource().getPlayerOrException();
       p.level().getEntitiesOfClass(cls('dev.shadowsoffire.gateways.entity.GatewayEntity'), p.getBoundingBox().inflate(32)).forEach(g => {
-        entities.push({subject: token(g.getUUID()), wave: g.getWave(), activeEnemies: g.getActiveEnemies(),
+        entities.push({subject: token(g.uuid), wave: g.getWave(), activeEnemies: g.getActiveEnemies(),
           lives: g.getRemainingLives(), ticksActive: g.getTicksActive(), waveActive: g.isWaveActive(),
           valid: g.isValid(), completed: g.isCompleted(), failureReason: String(g.getFailureReason())});
       });
