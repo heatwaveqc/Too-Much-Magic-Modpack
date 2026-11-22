@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v7`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v8`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -431,41 +431,59 @@ Detailed source status, numeric candidate magnitudes, prerequisites and gameplay
 | **Total** | **20 paid skills** | **100** | **Health regeneration, claws, moon and nature; native JAWR forms stay free** |
 
 **Explicit holds before live activation:** exact JAWR bite identity, true lunar/source form conditions, silver-weapon hazard source, and player-owned nature spells / wolves. Generic Progression health attributes, regen, source-scoped claw melee, legal claw mining, heal on kill and hit streak are reusable; source tests are not equivalent to gameplay proof.
-### Lich — 100 ranks / 100 points
+### Lich — complete first-pass 100 ranks / 100 points
 
-*Native guardrails:* Shared ONE Lich tree for either provider/Archlich; native death priority is unchanged.
+*Native guardrails:* **ONE shared Lich tree** for Goety, JAWR/Forbidden Magic, Archlich, Gilded Piglich, and one compatible Dracolich. Goety personal Soul Energy, Goety Arca, JAWR phylactery and Soul in a Bottle remain separate; the death controller and source-native progression remain authoritative. No bought second death save or active skill buttons.
+
+Full skill-by-skill numerical candidate effects, stage gates and provider blockers: [`LICH-COMPLETE-100PT-2026-11-22.md`](LICH-COMPLETE-100PT-2026-11-22.md). Unsupported provider benefits are not safe to sell until a verified effect exists.
 
 #### Soul Economy — 25 points
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
+| Skill | 1-point ranks | Full cost | Candidate per-rank effect |
 |---|---:|---:|---|
-| Soul Conservation (`tyr_progression:lich_soul_conservation`) | 12 | 12 | Lower eligible personal necromancy spell costs, not global ritual/machine cost. |
-| Soul Reserve (`tyr_progression:lich_soul_reserve`) | 8 | 8 | Bounded native personal soul/Arca resource capacity where extensible. |
-| Soul Treasury (`tyr_progression:lich_soul_treasury`) | 5 | 5 | Small high-level sustain on committed necromantic actions, no passive self-funding loop. |
+| Soul Conservation (`tyr_progression:lich_soul_conservation`) | 6 | 6 | -3% per rank (maximum -18%) of eligible personally paid Goety Soul Energy necromancy cast costs; JAWR uses only an actually verified paid native necromantic cost, never phylactery, ritual or resurrection expense. |
+| Soul Reserve (`tyr_progression:lich_soul_reserve`) | 5 | 5 | Goety: +4% per rank (maximum +20%) to verified personal Soul Energy storage, explicitly excluding Arca. JAWR: +4% per rank (maximum +20%) to duration of genuine personally cast native necromantic self-buffs, if such a source effect exists. |
+| Soul Recovery (`tyr_progression:lich_soul_recovery`) | 5 | 5 | Goety: +4% per rank of legitimate credited native Soul Energy recovery; JAWR: +4% per rank of verified actual Soul-in-a-Bottle healing. Only amplify an existing successful provider transaction. |
+| Soul Treasury (`tyr_progression:lich_soul_treasury`) | 5 | 5 | +3% per rank (maximum +15%) to eligible personally cast necromancy buff duration after a real, accepted source cast and paid costs; never machinery, rituals, passive auras or resurrections. |
+| Death's Dividend (`tyr_progression:lich_deaths_dividend`) | 4 | 4 | One real hostile killed directly by an eligible personal necromancy spell may grant Goety 0.5% maximum native Soul Energy per rank or JAWR 0.5 HP per rank; 20-second player cooldown, no player/owned minion/farm-credit triggers. |
 
-#### Blood & Nature Opposition — 25 points
+#### Sanguine Necromancy — 20 points
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
+| Skill | 1-point ranks | Full cost | Candidate per-rank effect |
 |---|---:|---:|---|
-| Sanguine Attunement (`tyr_progression:lich_sanguine_attunement`) | 12 | 12 | Improve verified blood-based personal magic (Neo Vitae/EvilCraft where actual hooks apply) while applying a meaningful reduction to this lich's personal Botania/Roots nature spell power. |
-| Crimson Channel (`tyr_progression:lich_crimson_channel`) | 8 | 8 | Strengthen source-verified blood magic further with proportionate nature-magic potency tradeoff; not passive blood machine throughput. |
-| Verdant Severance (`tyr_progression:lich_verdant_severance`) | 5 | 5 | High blood-magic specialization at a stronger self-inflicted Botania/Roots nature power penalty; no world-machine or other-player debuff. |
+| Sanguine Attunement (`tyr_progression:lich_sanguine_attunement`) | 6 | 6 | +3% per rank (maximum +18%) personally cast verified blood-magic damage; in exchange -2% per rank (maximum -12%) personally cast Roots/Botania nature-magic potency. No other player's spells or machine effects. |
+| Crimson Channel (`tyr_progression:lich_crimson_channel`) | 5 | 5 | +3% per rank (maximum +15%) personal necromantic spell potency, and -2% per rank (maximum -10%) personal nature-magic healing. Does not multiply all generic magic or ally casts. |
+| Verdant Severance (`tyr_progression:lich_verdant_severance`) | 4 | 4 | +4% per rank (maximum +16%) personal blood/necromantic spell damage while imposing -4% per rank (maximum -16%) personal nature spell potency; cumulative self-only tradeoff, clamped against zero. |
+| Grave Sorcery (`tyr_progression:lich_grave_sorcery`) | 5 | 5 | +3% per rank (maximum +15%) to qualifying harmful necromantic status durations that this player personally inflicts with genuine accepted spells; excludes instant damage and friendly effects. |
 
 #### Undead Host — 25 points
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
+| Skill | 1-point ranks | Full cost | Candidate per-rank effect |
 |---|---:|---:|---|
-| Bone Captain (`tyr_progression:lich_bone_captain`) | 12 | 12 | Modest bonus to personally owned undead servants. |
-| Grave Regiment (`tyr_progression:lich_grave_regiment`) | 8 | 8 | Improved servant coordination/leash and bounded count efficiency. |
-| Death Host (`tyr_progression:lich_death_host`) | 5 | 5 | Late temporary enhancement to current owned minions with hard entity budget. |
+| Bone Captain (`tyr_progression:lich_bone_captain`) | 6 | 6 | +3% per rank (maximum +18%) damage from personally owned, verified summoned undead servants; never naturally spawned hostile undead or another player's units. |
+| Grave Regiment (`tyr_progression:lich_grave_regiment`) | 5 | 5 | +4% per rank (maximum +20%) to supported native follow/leash range for already-authorized personally owned undead; never raises summon cap, chunk-loads or overrides native command controls. |
+| Death Host (`tyr_progression:lich_death_host`) | 5 | 5 | After a verified personal necromantic cast with real cost, owned eligible undead gain +2% damage per rank (maximum +10%) for eight seconds; refresh at most once per 15 seconds. |
+| Grave Intercession (`tyr_progression:lich_grave_intercession`) | 5 | 5 | When an actual hostile attack damages the Lich, one nearby eligible owned undead may legitimately retaliate with +2% attack speed per rank for five seconds; 15-second cooldown, no PvP/claims bypass. |
+| Grave Vigil (`tyr_progression:lich_grave_vigil`) | 4 | 4 | +4% per rank (maximum +16%) max health for player-owned eligible undead summons; apply once on native creation/update, remove cleanly on owner loss; no mob cap increase. |
 
-#### Soul Preservation — 25 points
+#### Deathless Form — 20 points
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
+| Skill | 1-point ranks | Full cost | Candidate per-rank effect |
 |---|---:|---:|---|
-| Cold Persistence (`tyr_progression:lich_cold_persistence`) | 12 | 12 | Limited tolerance of wither/undead hazards, preserving explicit weaknesses. |
-| Anchor Attunement (`tyr_progression:lich_anchor_attunement`) | 8 | 8 | Improve diagnostics or controlled anchor maintenance; never bypass native phylactery/Arca cost. |
-| Final Passage (`tyr_progression:lich_final_passage`) | 5 | 5 | Minor post-rescue recovery *after* an authoritative successful resurrection; no extra death-save trigger. |
+| Cold Persistence (`tyr_progression:lich_cold_persistence`) | 6 | 6 | -3% per rank (maximum -18%) duration of verified harmful necrotic/wither-like status effects not already negated by native Lich immunity. Preserve Smite, daylight, fire and other actual source weaknesses. |
+| Ossuary Skin (`tyr_progression:lich_ossuary_skin`) | 5 | 5 | 1.5% per rank (maximum 7.5%) reduction to ordinary incoming physical hits in an authenticated Lich state, after eligible mitigation; exclude true damage, void, native Smite weakness and fatal-event decisions. |
+| Grave Resilience (`tyr_progression:lich_grave_resilience`) | 5 | 5 | After a direct, credited hostile kill by the player or an eligible owned undead, heal this Lich 0.5 HP per rank (maximum 2.5 HP) at most once every 12 seconds. |
+| Unquiet Stride (`tyr_progression:lich_unquiet_stride`) | 4 | 4 | +2% per rank (maximum +8%) grounded movement speed in natural darkness or below open sky; no speed in flight, no new flight permission, no night-vision duplication. |
+
+#### Soul Preservation — 10 points
+
+| Skill | 1-point ranks | Full cost | Candidate per-rank effect |
+|---|---:|---:|---|
+| Anchor Attunement (`tyr_progression:lich_anchor_attunement`) | 4 | 4 | +2% knockback resistance per rank (maximum +8%) only while native provider confirms a charged, currently valid Lich anchor (JAWR phylactery or Goety Arca); never creates, charges or substitutes an anchor. |
+| Final Passage (`tyr_progression:lich_final_passage`) | 3 | 3 | Only after the native unified death controller actually records one successful Lich rescue, restore +2 HP per rank (maximum +6 HP), capped at max health, once for that event. |
+| Second Witness (`tyr_progression:lich_second_witness`) | 3 | 3 | Only after the same single native rescue receipt, grant +3 seconds per rank (maximum nine seconds) of Resistance I to cover the dangerous return; respect actual native spawn/world rules. |
+
+**Total Lich: 21 skills / 100 one-point ranks.** Source/behavior verification needed before engine activation. Complete design only.
 
 ### Gilded — 100 ranks / 100 points
 
