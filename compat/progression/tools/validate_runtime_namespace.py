@@ -46,7 +46,7 @@ if not wear_path.is_file():
 else:
     wear = wear_path.read_text(encoding="utf-8")
     if not re.search(
-        r"private\\s+int\\s+tmm\\$ownedUnbreaking\\s*\\(\\s*int\\s+\\w+\\s*,\\s*int\\s+\\w+\\s*,\\s*ServerLevel\\s+\\w+\\s*,\\s*ServerPlayer\\s+\\w+\\s*,\\s*Consumer<Item>\\s+\\w+\\s*\\)",
+        r"private\s+int\s+tmm\$ownedUnbreaking\s*\(\s*int\s+\w+\s*,\s*int\s+\w+\s*,\s*ServerLevel\s+\w+\s*,\s*ServerPlayer\s+\w+\s*,\s*Consumer<Item>\s+\w+\s*\)",
         wear,
     ):
         issues.append("OwnedWearMixin must capture modified damage PLUS complete original ItemStack.hurtAndBreak arguments")
