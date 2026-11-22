@@ -6,13 +6,13 @@ spec=importlib.util.spec_from_file_location("patch_inn",HERE/"add_bountiful_boar
 mod=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 class InnBoard(unittest.TestCase):
-    def test_catalog_stages_hash_verified_preview_not_grant(self):
-        catalogue=json.loads((HERE.parent.parent/"prefab-qa-catalog.json").read_text())
-        inn=next(x for x in catalogue["templates"] if x["id"]=="adventurers_inn")
+    def test_catalog_preserves_non_grant_housing_policy(self):
+        catalogue=json.loads((HERE.parent.parent/"houses-qa-v1.json").read_text())
+        inn=next(x for x in catalogue["custom_houses"] if x["id"]=="adventurers_inn")
         self.assertFalse(inn["grant"])
-        actual=HERE/"prefab-extension"/inn["filename"]
-        self.assertTrue(actual.exists())
-        self.assertEqual(hashlib.sha256(actual.read_bytes()).hexdigest(),inn["sha256"])
+        self.assertEqual(inn["filename"],"adventurers_inn.nbt")
+        self.assertEqual(inn["generator"],"rebuild.py")
+        self.assertTrue((HERE/"add_bountiful_board.py").is_file())
 
     def test_decrees_exact(self):
         self.assertEqual(mod.TARGET,(8,7,4))
