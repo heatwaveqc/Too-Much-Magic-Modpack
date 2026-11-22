@@ -206,11 +206,11 @@ def main() -> None:
             item_matches = re.findall(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             itm = re.search(r'type: "item", item: \{ id: "([^"]+)", count: 1 \}, count: (\d+)', rewards)
             ensure(xp is not None and int(xp.group(1)) > 0, f"Missing positive XP on {qid}")
-            # Quest Shop 1.4.0 implements the obsolete void Reward.claim ABI.
+            # Q Shop's published 1.21.1 FTB reward still risks the void/boolean ABI mismatch.
             # FTB Quests 2101.1.38 expects boolean; use its native command reward
-            # to invoke Quest Shop's /qshop currency give until the addon is updated.
+            # to invoke Q Shop's personal-wallet command until the native reward is verified.
             coins = re.search(r'type: "command", command: "qshop currency give \{p\} coins (\d+)", permission_level: 2, team_reward: false', rewards)
-            ensure('type: "questshop:coins"' not in rewards and 'type: "qshop:money"' not in rewards, f"Incompatible Quest Shop reward ABI on {qid}")
+            ensure('type: "questshop:coins"' not in rewards and 'type: "qshop:money"' not in rewards, f"Unsafe native shop reward ABI on {qid}")
             ensure(re.search(r'\bteam: true\b', rewards) is None, f"Legacy team key on {qid}; expected team_reward")
             newbie_graduation = qid == "544D309000100001" and (
                 'type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false' in rewards
