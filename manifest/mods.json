@@ -1413,12 +1413,12 @@
       "name": "[Let's Do] Furniture",
       "category": "decoration_furniture",
       "desired": true,
-      "version": "letsdo-furniture-neoforge-1.1.10.jar",
+      "version": "letsdo-furniture-neoforge-1.1.11.jar",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/lets-do-furniture/version/FxbGZtS6",
+      "source": "https://modrinth.com/mod/lets-do-furniture/version/vVtpdidG",
       "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "note": "Owner-approved B13 candidate (2026-11-15). Pending exact packwiz pin, dependency closure and server/client verification; no active JAR until pinned.",
+      "dependencies_verified": true,
+      "note": "2026-11-22 PR #524 owner-approved dependency remediation: previous official Furniture 1.1.10 embeds META-INF/jars/foundation-neoforge-1.0.7.jar, causing a duplicate with required standalone Foundation 1.1.0. Furniture 1.1.11 official Modrinth vVtpdidG, SHA512 verified from publisher JAR, declares standalone Foundation [1.1.0,), contains NO nested JARs, preserves same native mod ID furniture. Runtime/world save compatibility needs owner-authorized gameplay QA.",
       "packwiz_slug": "lets-do-furniture"
     },
     {
