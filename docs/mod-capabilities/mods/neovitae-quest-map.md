@@ -114,3 +114,7 @@ The **NV-37 / NV-38** optional sources teach the 16-tier Blood Tank and Nether S
 | Actual FTB quests | Existing placeholder checked | **Not authored** | Approved quest write workstream and detection contract |
 
 **Status conclusion:** This is **substantial source-based quest drafting material**, NOT a claim that a complete 40-quest chapter can be implemented without further inspection. The unresolved material is explicit so a future Work research iteration can fill individual gaps rather than repeating high-level survey work.
+
+## Narrowed Atlas source gap after 2026-11-21 review
+
+[**Source layout handoff: six altar tiers and 48 regular rune layout JSONs**](../inventories/neovitae-layout-source-handoff.md) establishes the immutable paths needed to complete spatial instructions. Map these to runtime activation/effect behavior, especially 48 ordinary rites + 3 imperfect rites and 26 Array Effect items/18 Sigils, then update only affected NV lesson text. This is the **remaining source research**, not a repeat of 472 fully catalogued recipe JSONs and not a demand to test unchanged native Minecraft mechanics. Missing native-client runtime parity, actual FTB task events/per-player credit and TMM EMC, capture, blood, dust/Path and Mine Key gates belong to separate implementation/QA workstreams. Source Atlas remains partial until the relevant operational/layout paths have a usable how-to and effect/cost crosswalk.
