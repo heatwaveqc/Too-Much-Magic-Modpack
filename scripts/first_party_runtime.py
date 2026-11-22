@@ -167,10 +167,24 @@ def main():
     if args.action == "build":
         for directory, mod, jar in rows:
             if mod == "tmm_economy":
+                # The server can boot even if an optional *client* dependency
+                # is present with a rejected qualified native version.
+                subprocess.run([sys.executable, "-m", "unittest", "discover",
+                                "-s", str(directory / "tools"),
+                                "-p", "test_verify_client_dependency_closure.py", "-v"],
+                               cwd=ROOT, check=True)
                 with tempfile.TemporaryDirectory(prefix="tmm-economy-classpath-") as temp:
                     mods = Path(temp) / "verified-mods"
                     subprocess.run([sys.executable, str(directory / "tools/fetch_compile_classpath.py"), str(mods)], cwd=ROOT, check=True)
                     subprocess.run(["gradle", "--no-daemon", f"-PtmmCompileModsDir={mods}", "clean", "build"], cwd=directory, check=True)
+                    # Gate the exact packaged metadata against the *real*
+                    # hash-verified Jade JAR, including Implementation-Version.
+                    subprocess.run([sys.executable,
+                                    str(directory / "tools/verify_client_dependency_closure.py"),
+                                    "--module-jar", str(jar),
+                                    "--provider-jar", str(mods / "Jade-1.21.1-NeoForge-15.10.6.jar"),
+                                    "--pin", str(ROOT / "mods/jade.pw.toml")],
+                                   cwd=ROOT, check=True)
             else:
                 subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
             validate_jar(jar, mod)
