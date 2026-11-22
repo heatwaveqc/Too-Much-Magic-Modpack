@@ -1,0 +1,64 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    65,
+    51,
+    61
+  ],
+  "bbox_volume": 202215,
+  "ground_anchor_y": 16,
+  "nonair": 19136,
+  "explicit_air": 35691,
+  "palette_states": 47,
+  "nbt_bytes": 145129,
+  "nbt_sha256": "5d260834ea95a8d2982473ee61d61d90996a101844794ec065443b28b254fb2f",
+  "nbt_git_blob_sha1": "e6c86b736532aba6dbdbe2e22e850f3f2db13172",
+  "generator_sha256": "5b92122a1cb6ad25a9a4ad4bb67f2b4faf865e70b77fcd6375f1411b82fe942f",
+  "budding_amethyst": 12,
+  "ordinary_amethyst": 807,
+  "independent_nbt_roundtrip": true,
+  "geometry_check": "all five reserved volumes, exposed budding faces, 46 stair treads and two-block headroom",
+  "live_test": false,
+  "rooms": {
+    "pedestal": [
+      9,
+      25,
+      17,
+      25,
+      9,
+      25
+    ],
+    "enchanter": [
+      40,
+      54,
+      28,
+      34,
+      9,
+      23
+    ],
+    "spirit_instiller": [
+      10,
+      21,
+      28,
+      34,
+      9,
+      21
+    ],
+    "fusion_shrine": [
+      7,
+      19,
+      17,
+      23,
+      46,
+      58
+    ],
+    "cinderhearth": [
+      54,
+      61,
+      17,
+      23,
+      46,
+      54
+    ]
+  }
+}

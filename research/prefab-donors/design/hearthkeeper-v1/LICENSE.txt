@@ -1,0 +1,25 @@
+Hearthkeeper — renovation of Thun's Structures Hobbit Hole (1.1.0).
+Original architecture copyright (c) 2025 Thun (https://modrinth.com/user/thun).
+Original source: https://modrinth.com/datapack/thuns-structures/version/1.1.0
+Source member: data/thunstructures/structure/hobbithole.nbt
+Original member SHA256: 82fd7d21e21460fd29dc2a7c43e6875a572c62199ecd78d82ea6f2278d41c0c6
+The original archive contains no copyright notice; attribution reconstructed from the public creator and release date. MIT license advertised at exact release page. Renovation: translated donor, normalized block entity data for MC 1.21.1, removed loot, paintings, bell and empty signs, replaced sand with sandstone, moved two workstations, extended interior and exterior facilities. Static QA preview only, not game-tested.
+SPDX-License-Identifier: MIT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
