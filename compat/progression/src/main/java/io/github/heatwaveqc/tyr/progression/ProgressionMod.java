@@ -45,6 +45,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
+        io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
         NewbieMode.register();
     }
