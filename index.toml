@@ -2533,3 +2533,98 @@ metafile = true
 file = "mods/yungs-extras.pw.toml"
 hash = "96968019a1f0613cf803481ec97cbe457e6a02e95eea10aff5fb4332deb9fb5d"
 metafile = true
+
+[[files]]
+file = "mods/aquaculture-delight.pw.toml"
+hash = "ff922921641f00ce799061a7cb2da483d2a1a240fbfa135f376579e1aa0917b6"
+metafile = true
+
+[[files]]
+file = "mods/aquamirae.pw.toml"
+hash = "a98156f7d9d9a37ec6bde1e64ce69ad4d7448935fd59227f981dba9913170e9f"
+metafile = true
+
+[[files]]
+file = "mods/ars-conflux.pw.toml"
+hash = "43fbd7a0a2263296df055c787b5ba32208ace9ea506bc5cf607ab033bd8c561d"
+metafile = true
+
+[[files]]
+file = "mods/aura-cascade-reimagined.pw.toml"
+hash = "b3d5c4c37cc8becafa382fd7d8abc2fb910d63ec3306769f55ad80656a4ee8dd"
+metafile = true
+
+[[files]]
+file = "mods/born-in-chaos.pw.toml"
+hash = "4a7d85fc2f67432dad21dd3b316a557ff73d1b4992a54cc1e0877d2ae0c8207a"
+metafile = true
+
+[[files]]
+file = "mods/dungeon-crawl.pw.toml"
+hash = "9f6b261565c185ab137b1f4ceceec488e4d6d262b14ef3349c4a88afdac958ae"
+metafile = true
+
+[[files]]
+file = "mods/fragmentum-neoforge.pw.toml"
+hash = "a83c16ba9b935718ff09ab69b2dd124c0a0217e9b7fafcb25f84579eb190bb72"
+metafile = true
+
+[[files]]
+file = "mods/just-enough-professions.pw.toml"
+hash = "5831aa23204273af1ce6aeb9e3615425271689105ea9035fdb7d6ea871d08a3c"
+metafile = true
+
+[[files]]
+file = "mods/ldlib2.pw.toml"
+hash = "7e17d5d53a425ffc9c846feac5b2699bbebaf368646eacfe2d4af550a521279f"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-brewery.pw.toml"
+hash = "8bf83d3b68faf5379a95b9a03ced0ebd678c629de8e8f2f457822d9b0b4d7206"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-farm-and-charm.pw.toml"
+hash = "8467bdb999c38e0f5e0d774459a9658d6c957f2614a25e873c53dcd7810e8ac9"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-foundation.pw.toml"
+hash = "1462d783a4cf72595fb4380717d9e399c57b5018aa8a1d662b1379b6fb9e7fbf"
+metafile = true
+
+[[files]]
+file = "mods/lets-do-herbalbrews.pw.toml"
+hash = "07fc69a01793756af0af13d5fafaab08f7d548f9ee2d38662c4b58b3872a292b"
+metafile = true
+
+[[files]]
+file = "mods/mowzies-mobs.pw.toml"
+hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
+metafile = true
+
+[[files]]
+file = "mods/prefab-custom-addon.pw.toml"
+hash = "989855ba48bcda003343712eca71fb677b9e5b72b8f41fb5f637c83a69fe6b94"
+metafile = true
+
+[[files]]
+file = "mods/sons-of-sins.pw.toml"
+hash = "c12b9677a3945c9debecf0ad9e7149696bbaab9b9c751e3b175a7987c98eec49"
+metafile = true
+
+[[files]]
+file = "mods/the-graveyard.pw.toml"
+hash = "17cdbc9137104a4fd010abdf39c7fd958b17351b5d8888ce886d87d9a2303963"
+metafile = true
+
+[[files]]
+file = "mods/villagerstradingplus.pw.toml"
+hash = "636b0829f32622ec1d6cab431ce48c0b41bbec2972d87917695488b2dc403d1c"
+metafile = true
+
+[[files]]
+file = "mods/yungs-better-end-island.pw.toml"
+hash = "03d964cba45be30fbcbef52f89f3953185737f55c8934d12e199b67194c2b368"
+metafile = true
