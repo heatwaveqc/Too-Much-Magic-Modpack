@@ -1,0 +1,56 @@
+name: Food provenance census — source evidence only
+
+on:
+  push:
+    branches:
+      - feature/food-provenance-census-444-20261122
+  pull_request:
+    paths:
+      - 'scripts/food_provenance_census.py'
+      - 'tests/test_food_provenance_census.py'
+      - 'docs/qa/FOOD-PROVENANCE-CENSUS-2026-11-22.md'
+      - '.github/workflows/verify-food-provenance-census.yml'
+      - 'docs/qa/candidates/dragon-food-source-pilot-v1.json'
+      - 'kubejs/data/**'
+      - 'index.toml'
+      - 'mods/*.pw.toml'
+
+permissions:
+  contents: read
+
+jobs:
+  census:
+    name: Offline food source census and evidence integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit test source parsing, hash refusal, and unknown edible denominator
+        run: python3 -m unittest discover -s tests -p 'test_food_provenance_census.py' -v
+      - name: Read-only census of current checked-in pack sources
+        run: |
+          python3 scripts/food_provenance_census.py \
+            --repo . \
+            --output /tmp/tmm-food-provenance-census.json
+          python3 - /tmp/tmm-food-provenance-census.json <<'PY'
+          import json,sys
+          r=json.load(open(sys.argv[1], encoding='utf-8'))
+          assert r["scope"]=="source_only_incomplete_food_provenance_census"
+          assert r["runtime_food_map_generated"] is False
+          assert r["minecraft_booted"] is False
+          assert r["packwiz"]["indexed_mod_pins"] > 50
+          assert r["source_pilot"]["count"] == 9
+          assert r["registry_export"]["authoritative_edible_denominator"] is None
+          assert r["legacy_dragon_diet"]["found"] is True
+          assert r["jar_audit"]["counts"].get("verified_and_scanned", 0) == 0
+          print("PASS: checked-in sources audited; JAR and edible registry coverage honestly unknown")
+          PY
+      - name: Publish source-only JSON report, not a runtime datapack
+        uses: actions/upload-artifact@v4
+        with:
+          name: food-provenance-source-census
+          path: /tmp/tmm-food-provenance-census.json
+          if-no-files-found: error
