@@ -23,9 +23,13 @@ def main():
     assert not any(x.startswith("kubejs/data/werewolves/") for x in index)
     locale = data("kubejs/assets/tmm/lang/en_us.json")
     assert set(("curios.identifier.bundle", "tmm.caerbannog", "tmm.chaos_bunny")) <= locale.keys()
-    shop = data("kubejs/data/tmm/questshop/shop_entries/ores.json")
-    assert len(shop) == 18 and all(x["item"].startswith("minecraft:") for x in shop)
-    assert not any(x["item"] == "minecraft:ancient_debris" for x in shop)
+    shop = data("config/qshop/shops/tmm.json")
+    ore_tab = next(t for t in shop["tabs"] if t["uuid"] == "tmm-ores")
+    ores = [entry["item"]["item"] for entry in ore_tab["entries"]]
+    assert len(ores) == 18 and all(item.startswith("minecraft:") for item in ores)
+    assert "minecraft:ancient_debris" not in ores
+    assert len(shop["tabs"]) == 6
+    assert sum(len(tab["entries"]) for tab in shop["tabs"]) == 48
     kit = read("kubejs/data/tmm/function/rewards/starter_kit.mcfunction")
     assert "give @s akashictome:tome 1" in kit and "give @s minecraft:cooked_beef 2" in kit
     assert "improvableskills book unlock @s true" in kit

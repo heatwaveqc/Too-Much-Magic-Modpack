@@ -41,11 +41,11 @@
       "branch": "test/full-integration",
       "paths": [
         "manifest/quest_shop_catalog.json",
-        "kubejs/data/tmm/questshop/shop_categories/ores.json",
-        "kubejs/data/tmm/questshop/shop_entries/ores.json"
+        "config/qshop/currencies.json",
+        "config/qshop/shops/tmm.json"
       ],
-      "mode": "runtime-experimental",
-      "note": "18 user-approved vanilla ore block offers in a dedicated sixth custom shop category (47 offers overall), including stone/deepslate and Nether ores; no ancient debris or forbidden boss resources. Test player purchase and ore-processing/exchange loops in disposable world. Consolidated 2026-11-19. Exact reviewed frozen source; future gameplay acceptance remains required where applicable.",
+      "mode": "runtime-experimental-qshop-successor",
+      "note": "Original 18 approved vanilla ore offers remain at exact counts/prices in the Q Shop personal-wallet successor catalog, now 48 total offers in six native tabs. Original frozen donor SHA, PR #369 provenance and baseline integration remain historic and unchanged. Current active runtime is config/qshop/shops/tmm.json with currency config; old Quest Shop datapack source removed by owner-approved PR #531. Gameplay QA, personal coin credit and Ore processing/EMC loops still require next authorized build.",
       "source_commit": "dfb9d0eb9c3ec2a8aa2185ed89f97746f8fe6bd9",
       "integrated_into_baseline": true,
       "merged_from": "feature/questshop-vanilla-ore-blocks",
