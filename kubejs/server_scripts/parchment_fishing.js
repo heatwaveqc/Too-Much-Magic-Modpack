@@ -40,7 +40,8 @@ LootJS.lootTables(event => {
       return
     }
     totalWeight += weight
-    originals.push({entry, weight, quality})
+    // KubeJS Rhino 2101.2.7 does not accept object-property shorthand.
+    originals.push({entry: entry, weight: weight, quality: quality})
   }
 
   if (totalWeight === 0) {
