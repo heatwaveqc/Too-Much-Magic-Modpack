@@ -104,16 +104,20 @@ def validate(event: dict, token: str, now: dt.datetime) -> tuple[str, str, str]:
     last = max(verify, key=lambda r: (r.get("run_number", 0), r.get("run_attempt", 1), r.get("id", 0)))
     if last.get("status") != "completed" or last.get("conclusion") != "success":
         raise Refused("Exact-candidate bootstrap CI not green")
+    # Only manually dispatched integration builds can conflict with this
+    # owner-comment smoke. Unrelated quick PR/push checks are *not* server runs
+    # and may legitimately exceed one GitHub API page. This workflow has its
+    # own serial concurrency group, so excluding issue_comment runs also avoids
+    # falsely detecting the current candidate job as its own competitor.
     for status in ACTIVE:
         result = get("actions/runs?" + urllib.parse.urlencode(
-            {"status": status, "per_page": 100}), token)
+            {"event": "workflow_dispatch", "status": status, "per_page": 100}), token)
         runs = result.get("workflow_runs", [])
         if result.get("total_count", len(runs)) > len(runs):
-            raise Refused("Cannot establish complete active-run inventory")
+            raise Refused("Cannot establish complete manually dispatched active-run inventory")
         for run in runs:
-            if run.get("name") and (run.get("path", "").split("@", 1)[0].rsplit("/", 1)[-1]
-                                    in BLOCKED_WORKFLOWS):
-                raise Refused("Another full QA / update smoke is already active")
+            if run.get("path", "").split("@", 1)[0].rsplit("/", 1)[-1] in BLOCKED_WORKFLOWS:
+                raise Refused("Another full QA launcher is already active")
     if get("git/ref/heads/" + branch, token).get("object", {}).get("sha") != sha:
         raise Refused("Candidate HEAD advanced while checking")
     return branch, sha, nonce
