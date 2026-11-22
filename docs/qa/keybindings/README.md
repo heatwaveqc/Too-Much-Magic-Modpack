@@ -20,3 +20,9 @@ No live settings/profile were changed; no mod added, client launched, test build
 ## Integration update — observed baseline staged
 
 These 315 snapshot entries are now installed at `config/defaultoptions/keybindings.txt` in the next packwiz integration source, checked by `scripts/validate_defaultoptions_keybindings.py`. **Do not infer complete final-roster coverage**: this is only the observed source inventory, with a mandatory final-client key registration reconciliation and first-run personal-persistence test remaining. The earlier warning against treating this dated inventory as an **exhaustive** next-roster list remains in force.
+
+## 2026-11-22 approved JEI exception (#510)
+
+Supersedes the former blanket JEI-unbind policy above. Freshly imported clients keep JEI's **native** recipe (R), uses (U), search focus, bookmarking, overlay and recipe navigation/history defaults by omitting the 20 user-facing mapping IDs from `config/defaultoptions/keybindings.txt`. No shortcuts are forced: a native-unbound mapping stays unbound. Cheat/edit/debug and duplicate `showRecipe2`/`showUses2` mappings stay explicitly unbound, as do all other observed mod controls (except separately approved future exceptions).
+
+`scripts/generate_defaultoptions_keybindings.py` is the source of the exclusion allowlist; `scripts/validate_defaultoptions_keybindings.py` and `tests/test_defaultoptions_jei_keys.py` guard source, fixture, and pack defaults. The full-file Packwiz SHA-256 chain is updated with this source change. The designated integration writer must reconcile `index.toml` and `pack.toml` against the newest shared branch at merge. Default Options applies to new profiles; the change does not edit existing `options.txt` or saved QA preferences. Type C still requires a disposable profile verifying JEI R/U, search, bookmarks, navigation and click targets while cheat functions remain unbound.
