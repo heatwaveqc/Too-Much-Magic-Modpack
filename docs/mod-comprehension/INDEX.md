@@ -145,7 +145,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
-| `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemental.md) |
+| `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | stale | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-ocultas.md) |
 | `ars-unification` | Ars Unification | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-unification.md) |
@@ -467,3 +467,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-22 — Elemental [four Mages](mods/ars-elemental-pinned-mages.md): spawn/focus hostility, fixed equipment,21pool entries and native resolver/self-support; no guaranteed armor/rare drop farm or NPC mana shield.35companions;9/42 unchanged; no combat acceptance.
 
 - 2026-11-22 — [Ars family Sauce receipt](mods/ars-family-pinned-sauce.md): eight exact family JAR hashes checked, only Elemental/Elemancy supply Sauce; range intersection permits61.100 and excludes supplied29.73. Global159-pin/runtime selection not claimed verified;9/42 unchanged.
+
+- 2026-11-22 — Current integration2e922405 upgrades Elemental0.7.11.3/Sauce74.113. Exact new hash checked; [six utility rituals + delta](mods/ars-elemental-pinned-utility-rituals.md) audited/revalidated. Source-after-batch, no-debit Detection and Zapping collateral explicit. Historical profile stale pending changed recipient/Sauce/forest/full reconciliation;9complete/33unfinished, no gameplay acceptance.
