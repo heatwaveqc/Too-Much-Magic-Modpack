@@ -5,6 +5,7 @@ import net.neoforged.fml.ModList;
 import io.github.heatwaveqc.tyr.progression.network.AbilityNetwork;
 import io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
+import io.github.heatwaveqc.tyr.progression.data.FoodPolicyRegistry;
 import io.github.heatwaveqc.tyr.progression.runtime.ProgressionEvents;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
 import io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra;
@@ -47,7 +48,10 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
-        NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
+        NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> {
+            e.addListener(new PathRegistry());
+            e.addListener(new FoodPolicyRegistry());
+        });
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
         // Single server-authoritative Path admission gate. The native provider
         // setter hooks will use this same registry at the one-JAR cutover.

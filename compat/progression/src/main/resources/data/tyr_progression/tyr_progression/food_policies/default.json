@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "preferred_raw": {
+    "nutrition": 6,
+    "saturation_modifier": 2
+  },
+  "stage_multipliers": {
+    "raw": 1,
+    "cooked": 0.5,
+    "charred": 0.25
+  },
+  "mixed": {
+    "off_diet_contribution": 0.5
+  },
+  "family_tags": {
+    "terrestrial": [
+      "#c:foods/raw_meat",
+      "#c:foods/meat",
+      "#tmm:foods/terrestrial_monster"
+    ],
+    "marine": [
+      "#c:foods/raw_fish",
+      "#c:foods/fish",
+      "#tmm:foods/seafood",
+      "#tmm:foods/shellfish"
+    ],
+    "plant": [
+      "#c:foods/fruit",
+      "#c:foods/vegetable",
+      "#tmm:foods/grains",
+      "#tmm:foods/nuts"
+    ],
+    "fungus": [
+      "#tmm:foods/fungi"
+    ],
+    "marine_plant": [
+      "#tmm:foods/sea_plants"
+    ]
+  },
+  "profiles": {
+    "cave_dragon": [
+      "terrestrial"
+    ],
+    "sea_dragon": [
+      "marine",
+      "marine_plant"
+    ],
+    "forest_dragon": [
+      "plant",
+      "fungus"
+    ]
+  },
+  "preparation_tags": {
+    "raw": [
+      "#tmm:foods/raw",
+      "#c:foods/raw_meat",
+      "#c:foods/raw_fish",
+      "#c:foods/fruit",
+      "#c:foods/vegetable"
+    ],
+    "cooked": [
+      "#tmm:foods/cooked"
+    ],
+    "charred": [
+      "#tmm:foods/charred"
+    ]
+  },
+  "magical_tags": [
+    "#tmm:foods/magical"
+  ]
+}
