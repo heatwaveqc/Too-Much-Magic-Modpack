@@ -39,6 +39,7 @@ public final class ProgressionMod {
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.TooltipMilestoneNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
