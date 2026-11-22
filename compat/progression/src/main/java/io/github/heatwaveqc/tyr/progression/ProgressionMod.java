@@ -47,6 +47,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         NewbieMode.register();
     }
 }
