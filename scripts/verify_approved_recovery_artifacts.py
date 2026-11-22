@@ -72,6 +72,36 @@ def download(pin: dict) -> tuple[bytes, str]:
             return data, url
         except (URLError, HTTPError, TimeoutError, ValueError, OSError) as exc:
             errors.append(f"{url}: {exc}")
+
+    # Official alternate publisher CDN, not a third-party mirror.
+    # Preserve the original candidate hash comparison after download.
+    if pin.get("name") == "[Let's Do] HerbalBrews":
+        try:
+            req = Request("https://api.modrinth.com/v2/project/lets-do-herbalbrews/version",
+                          headers={"User-Agent": "TMM-Approval-Audit/1.0"})
+            with urlopen(req, timeout=TIMEOUT) as response:
+                versions = json.load(response)
+            releases = [v for v in versions if "1.21.1" in v.get("game_versions", [])
+                        and "neoforge" in v.get("loaders", [])
+                        and "1.1.4" in v.get("version_number", "")]
+            for v in releases:
+                for file in v.get("files", []):
+                    if file.get("filename") == pin["filename"] and file.get("url", "").startswith("https://cdn.modrinth.com/"):
+                        url = file["url"]
+                        with urlopen(Request(url, headers={"User-Agent": "TMM-Approval-Audit/1.0"}),
+                                     timeout=TIMEOUT) as response:
+                            data = response.read(MAX_ONE_FILE + 1)
+                        if len(data) > MAX_ONE_FILE or len(data) < 100:
+                            raise ValueError("Bad official Modrinth file size")
+                        # Verify Modrinth's own published exact SHA too.
+                        remote_sha = file.get("hashes", {}).get("sha1")
+                        if remote_sha and hashlib.sha1(data).hexdigest() != remote_sha:
+                            raise ValueError("Modrinth official SHA1 mismatched downloaded bytes")
+                        return data, url
+            errors.append("No exact official 1.1.4 NeoForge Modrinth binary matched expected filename")
+        except (URLError, HTTPError, TimeoutError, ValueError, OSError, KeyError) as exc:
+            errors.append(f"Official Modrinth fallback: {exc}")
+
     raise RuntimeError("Publisher download failed: " + " ; ".join(errors))
 
 
