@@ -1,0 +1,8 @@
+{
+  "criteria": {
+    "claimed": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "sends_telemetry_event": false
+}
