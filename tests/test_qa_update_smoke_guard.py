@@ -55,6 +55,9 @@ class Fake:
                                      "run_number":2, "status":"completed",
                                      "conclusion":"success" if self.green else "failure"}]}
         if path.startswith("actions/runs?"):
+            # Unrelated 100+ push/PR runs must not block an authorized game
+            # smoke or make the current owner-comment run reject itself.
+            assert "event=workflow_dispatch" in path
             active=[{"id":5,"path":".github/workflows/full-integration-launcher.yml","name":"QA Smoke"}] if self.active else []
             return {"total_count":len(active),"workflow_runs":active}
         raise AssertionError(path)
