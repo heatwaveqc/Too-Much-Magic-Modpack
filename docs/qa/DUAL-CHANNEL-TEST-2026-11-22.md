@@ -6,10 +6,10 @@
 
 | Channel | Source / package | What is actually proven |
 | --- | --- | --- |
-| **U — Unstable control** | 222-mod repaired integration base **2373d50732866e460dc9e9454f7187f9045e1cdc**. Current integration head **be5d7c90c0f1f76b260b4e43a6c3b9ca07585d73** adds QA documentation only. | [Server smoke PASS #44980284571](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44980284571). **A matching 222-mod Unstable Prism ZIP has not been established.** Published rolling Unstable is still an older Nov 17 / 205-pin generation. Do not use it as an exact 222-mod control. |
+| **U — Unstable control** | Immutable *assembled/server-tested* snapshot **c78479f52f9592ca1f139a6b874d630422c34042** (from repaired integration source **2373d50732866e460dc9e9454f7187f9045e1cdc**, tag **integration-qa/44980284571-1**). Code on the rolling branch has advanced and is intentionally NOT selected. | [Server smoke PASS #44980284571](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44980284571). **Package-only matching 222-mod Unstable Prism build dispatched in [run #44995616598](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44995616598); artifact availability must be confirmed before gameplay.** Published rolling Unstable remains an older Nov 17/205-pin generation; never use it as the 222-mod control. |
 | **E — Experimental four updates** | Exact updated, server-tested Packwiz commit **beb5682b77056fbf54830aa671fa0efe6e2eaaa8**, immutable QA tag **qa-update-prism/44985722108-1**. [Prism package run #44985722108](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44985722108), artifact **Too-Much-Magic-Four-Mod-Update-Prism-EXPERIMENTAL** ID **14739742394**, ZIP SHA-256 **bfa2195fb414e72c77624687af8ea3ddd368d10021bb80dadb410e9a581f16ee**. | Server PASS and Prism PACKAGE PASS. **No client launch or gameplay PASS.** Ars Elemental beta not approved for promotion. |
 
-The draft experiment PR #461 head contains trial tooling but **not the updated pins**. Test the frozen E commit above, never a source-only PR head. This document does **not** authorize another full smoke or Prism build. If the fresh 222-mod U client package is unavailable, U client tests are **BLOCKED**, not silently replaced by old release acceptance.
+The draft experiment PR #461 head contains trial tooling but **not the updated pins**. Test the frozen E commit above, never a source-only PR head. This document does **not** authorize another full smoke or Prism build. Use only the direct Prism artifact from package-only run #44995616598 once its status is successful and its BUILD-MANIFEST pins the frozen U assembled snapshot. If unavailable, U client tests are **BLOCKED**, not silently replaced by old release acceptance.
 
 ### The complete experimental pin delta
 
@@ -33,10 +33,10 @@ New runner: [scripts/qa_compare_channels.py](../../scripts/qa_compare_channels.p
 Run on the runner's feature branch (or after merge) with both immutable commits locally available. These are disposable, detached worktrees. Windows PowerShell can use the same Python command on one line; use Java 21 if compiling modules.
 
 ~~~bash
-git worktree add --detach ../tmm-u 2373d50732866e460dc9e9454f7187f9045e1cdc
+git worktree add --detach ../tmm-u c78479f52f9592ca1f139a6b874d630422c34042
 git worktree add --detach ../tmm-e beb5682b77056fbf54830aa671fa0efe6e2eaaa8
 python tests/test_qa_compare_channels.py
-python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha 2373d50732866e460dc9e9454f7187f9045e1cdc --experimental ../tmm-e --experimental-sha beb5682b77056fbf54830aa671fa0efe6e2eaaa8 --require-four-updates --run-a --report ../tmm-two-build-a-results.json
+python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha c78479f52f9592ca1f139a6b874d630422c34042 --experimental ../tmm-e --experimental-sha beb5682b77056fbf54830aa671fa0efe6e2eaaa8 --require-four-updates --run-a --report ../tmm-two-build-a-results.json
 ~~~
 
 For optional first-party Gradle compile/unit checks, add **--build-modules**. Omit **--run-a** for a harmless plan and diff. The runner **never** launches Minecraft, donor assembly, server smoke or Prism packaging. Normal A validators operate locally; optional --build-modules may fetch Gradle and compile-classpath dependencies. Compare local client mod-folder bytes and bundled JARs separately with existing verify_qa_inventory.py against the matching source checkout, using actual first-party JAR paths as extras. A correct pin hash is not proof that an installed JAR matches.
