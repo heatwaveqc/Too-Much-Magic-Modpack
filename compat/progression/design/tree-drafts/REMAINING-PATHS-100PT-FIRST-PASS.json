@@ -8,10 +8,10 @@
     "Hunter 100 is the fully purchasable maximum PER CHARACTER, NOT the price of the full visible alternative catalogue. 62 shared + choose one 8-point training style + one of 14 mutually exclusive 30-point Favored Prey branches = 100. 498 catalog point sum is unpurchasable on a single character.",
     "Owner revision: fewer, materially stronger ranks, with preservation of each skill's prior *full cap* as an explicit balance target; costs redistributed across larger rank-purchases, not cheaper power or more total MXP. Valid rank_costs arrays sum to each old 100-point tree budget.",
     "Ten fully costed first-pass non-Monk trees: universal Core + Hunter, Gilded, Vampire, Werewolf, shared Lich, three Dragon Survival species, Bare Zerker.",
-    "These proposed 100-point totals are candidates only, and historical Tyz spending was much higher. No engine/runtime code, active datapacks, MXP rates, or original player ranks modified.",
     "Source-first rank-budget normalization uses one point per rank unless historical one-rank five-point capstone; Sea Dragon keeps Abyssal Fortune 50 ranks; Core Reservoir/Wellspring/Thrift/Potency each keep five ranks.",
     "Early native abilities, species states, Fury mechanics, Gilded base Fortune/Looting, and Hunter free specialty selections remain free and separate. Never relicense or reprice without owner review.",
-    "Core is universal and independent of Newbie/Normie/Path identity; it is not a fifth dragon path or additional class."
+    "Core is universal and independent of Newbie/Normie/Path identity; it is not a fifth dragon path or additional class.",
+    "Costs for every possible Hunter specialty cannot be summed as a playable 100-point build; the 498-point visible alternative catalog is intentionally greater than 100."
   ],
   "historical_sources": [
     "docs/archive/pr-83-tyz-nine-trees/docs/tyzs/nine-tree-strength-first-pass-v1.json",
@@ -4405,10 +4405,10 @@
       "source": "Live dev/progression/hunter.json and historical Hunter roles",
       "native_guardrails": "Preserve all 14 existing zero-price specialty_* choice nodes, original prey taxonomy, monster victim/loot checks and poison+regeneration initiation. Current 17 purchased nodes cost 238; proposal retains their current ranks/effects while repricing to 91 plus 9 new tracking points. Never silently rewrite live costs.",
       "source_paid_cost_before": 238,
-      "source_paid_cost_proposed": 91,
+      "source_paid_cost_proposed": null,
       "free_specialty_nodes": 14,
       "total_points": 100,
-      "skill_count": 20,
+      "skill_count": 57,
       "exclusive_choice_groups": [
         {
           "id": "tyr_progression:hunter_training_style",
@@ -5515,7 +5515,13 @@
       "catalog_skill_count": 57,
       "max_purchasable_in_one_build": 17,
       "spending_full_catalog": 498,
-      "free_licenses": "14 zero-cost existing choice_group=tyr_progression:hunter_favored_enemy selectors; no new separate XP or specialty currency. Do not silently change current live player choices."
+      "free_licenses": "14 zero-cost existing choice_group=tyr_progression:hunter_favored_enemy selectors; no new separate XP or specialty currency. Do not silently change current live player choices.",
+      "source_paid_cost_proposed_explanation": "Superseded: previous all-skills 91 rank-points notion invalid; new model is 62 shared + 8 chosen training style + 30 chosen prey specialty.",
+      "maximum_displayed_catalog_points": 498,
+      "one_character_max_purchased_points": 100,
+      "previous_budget_model": "17 current paid skill IDs repriced to 91, plus 9 tracking points, assumed every skill was available together. Superseded.",
+      "existing_skill_ids_preserved": true,
+      "effect_implementation_warning": "Existing source-defined Hunter skills cannot be directly repriced by this blueprint. Group and gate change requires explicit rank/price/effect migration and QA acceptance."
     },
     {
       "id": "gilded",
