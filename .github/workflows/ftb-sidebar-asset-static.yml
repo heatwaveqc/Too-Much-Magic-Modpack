@@ -1,0 +1,35 @@
+name: FTB sidebar icon provenance (static only)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - 'scripts/audit_ftb_sidebar_assets.py'
+      - 'tests/test_ftb_sidebar_assets.py'
+      - 'docs/qa/FTB-SIDEBAR-ICONS-507.md'
+      - 'mods/ftb-*.pw.toml'
+      - 'index.toml'
+      - 'pack.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: FTB sidebar resource parser and override tests (no JARs)
+        run: python3 -m unittest discover -s tests -p 'test_ftb_sidebar_assets.py'
+      - name: Verify exact FTB Packwiz pins and pack-owned asset paths (no downloads)
+        run: python3 scripts/audit_ftb_sidebar_assets.py --output ftb-sidebar-source-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ftb-sidebar-source-audit
+          path: ftb-sidebar-source-audit.json
+          if-no-files-found: warn
