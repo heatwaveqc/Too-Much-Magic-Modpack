@@ -66,6 +66,8 @@ The branches start where the player can actually use them; don't hide a helpful 
 
 **Caveat:** the source is the text/coordinate/dependency model, not a client screenshot; it proves node placement and relationships, but not how comfortable each crowded area feels at the pinned TMM UI scale. ATM10 does **not** provide an explicit five-category Challenge design matching our choice. Its Bounty Board is an ungrouped, *one-time kill-task grid*, not a Bountiful repeatable-job implementation. Our **Challenge** split is an owner decision, not something proven by the ATM10 source.
 
+> **OWNER-LOCKED 2026-11-22 — chapter visual grammar.** A chapter's graph must make its reading order, main route, optional branches, and endpoint apparent before opening quest descriptions. Treat this as an acceptance requirement, not merely an art suggestion. The five category archetypes below govern authoring; mod-focused chapters retain a defining hard craft/ritual capstone, and Theurgy is the first retrofit case. Type-A review checks that dependency edges retain their *effective* prerequisites, remain readable with minimal line crossings, keep art outside nodes/links, and preserve stable IDs; Type-C in-client readability still needs a player-visible check at normal/reduced zoom.
+
 ### Approved TMM visual grammar — reuse v3 authoring archetypes
 
 Apply the existing [Quest Presentation and Visual Authoring Standard v3](QUEST-PRESENTATION-STANDARD-V3.md), rather than inventing another conflicting art or node-shape standard:
