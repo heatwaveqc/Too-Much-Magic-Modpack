@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v10`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v11`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -25,10 +25,10 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Werewolf | 20 | **100** |
 | Lich | 21 | **100** |
 | Hunter | 57 | **100** |
-| Gilded | 12 | **100** |
+| Gilded | 22 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **242 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **252 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -507,36 +507,60 @@ Full skill-by-skill numerical candidate effects, stage gates and provider blocke
 
 **Total Lich: 21 skills / 100 one-point ranks.** Source/behavior verification needed before engine activation. Complete design only.
 
-### Gilded — 100 ranks / 100 points
+### Gilded — complete 100-rank gold-and-Nether skill tree
 
-*Native guardrails:* FREE native/Path abilities: Nether golden-armor+gold-food successful initiation, baseline diamond-equivalent gold, +3 virtual Fortune and +3 virtual Looting, Piglin/Brute peace, immediate lava-fishing license, rank18 full fire-tag immunity. Do not charge points for these again.
+**Free, never purchasable:** Nether four-gold-armor+gold-food enrollment; diamond-effective gold while equipped, +3 virtual Fortune for gold/Netherite tools and +3 virtual Looting for golden swords/axes, base extra virtual Unbreaking and actual equal gold/Netherite durability repair, Piglin/Brute friendship and protected gold/chest anger exemption, native initiation lava fishing, gold-qualified foods 2× normal hunger and saturation **points**, native Gilded rank18 Undying Ember fire-tag immunity. Normal attack retaliation still occurs, lava fish and ore XP remain source/event-authenticated.
 
-#### Goldcraft — 44 points
+[Full Gilded 22-skill design, numeric candidates, native source crosswalk, QA and unresolved provider holds](GILDED-COMPLETE-100PT-2026-11-22.md). Design only; no installed Gilded Path config or hooks.
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Fortune Mastery (`tyr_progression:gilded_fortune_mastery`) | 7 | 7 | Increase legal gold/Netherite virtual Fortune +3→+10, one per purchase; Silk prevails. |
-| Looting Mastery (`tyr_progression:gilded_looting_mastery`) | 7 | 7 | Increase golden sword/axe direct-melee virtual Looting +3→+10, independent of Fortune. |
-| Lasting Gilt (`tyr_progression:gilded_lasting_gilt`) | 10 | 10 | Raise virtual Unbreaking on equipped gold/Netherite gear only. |
-| Golden Renewal (`tyr_progression:gilded_golden_renewal`) | 10 | 10 | Increase actual equipped gold/Netherite repair at equal rates. |
-| Gilded Grip Mastery (`tyr_progression:gilded_gilded_grip_mastery`) | 10 | 10 | Supplement free diamond-equivalence with bounded legitimate equipped-gold handling; do not repurchase free parity. |
+#### Goldcraft & Enchantment — 32 points
 
-#### Nether Society — 45 points
+| Skill | Purchased one-point ranks | Proposed effect |
+|---|---:|---|
+| **Fortune Mastery** (`tyr_progression:gilded_fortune_mastery`) | 7 | +1 virtual Fortune level per rank, from FREE +3 at initiation to +10 purchased maximum, for real gold/Netherite mining tools only. Stored Fortune levels add without an artificial cap; Silk Touch wins. Exactly one player-owned eligible block-loot context; no drop multiplication after loot. |
+| **Looting Mastery** (`tyr_progression:gilded_looting_mastery`) | 7 | +1 virtual Looting level per rank, from FREE +3 at initiation to +10 purchased maximum, for actual direct melee kills with golden sword or axe only. Stored Looting adds; never projectiles, spell kills, offhand gold held during other kills or another player's loot. |
+| **Lasting Gilt** (`tyr_progression:gilded_lasting_gilt`) | 5 | +1 additional virtual Unbreaking level per rank on legitimately worn gold/Netherite armor or actively held mainhand gold/Netherite tool, *above* the FREE baseline extra Unbreaking. Do not alter stored enchantment, speed or durability max. |
+| **Golden Renewal** (`tyr_progression:gilded_golden_renewal`) | 5 | Reduce the source-configured FREE base interval between each legal equipped gold/Netherite 1-point durability repair by 10% per rank (max 50% shorter interval), with identical actual ticks/amounts for both materials and bounded min interval. Never repair backpack/offhand/container gear. |
+| **Gilded Grip Mastery** (`tyr_progression:gilded_gilded_grip_mastery`) | 4 | +5% per rank (max +20%) ordinary mining speed with correctly held golden pickaxe/axe/shovel/hoe on legally harvestable blocks *after* FREE diamond-tier equivalence. Preserve golden tool's already high speed; no harvest tier increase from purchases. |
+| **Metallurgist** (`tyr_progression:gilded_metallurgist`) | 4 | +4% per rank (max +16%) direct physical damage with a genuinely held golden sword or axe against legal hostile mobs, without changing base item material, offhand weapon or all Netherite tools; no damage from passive fire or distant projectiles. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Piglin Diplomacy (`tyr_progression:gilded_piglin_diplomacy`) | 5 | 5 | Improve barter/trade interactions while preserving baseline Piglin/Brute friendliness. |
-| Lava Angler (`tyr_progression:gilded_lava_angler`) | 10 | 10 | Improve lawful lava catch utility; baseline fishing stays free. |
-| Gold Nourishment (`tyr_progression:gilded_gold_nourishment`) | 10 | 10 | Improve recovery from gold-qualified food without undoing locked restrictions or duplicating potion effects. |
-| Nether Affinity (`tyr_progression:gilded_nether_affinity`) | 10 | 10 | Bounded environmental movement and defense in Nether; separate from rank18 fire immunity. |
-| Metallurgist (`tyr_progression:gilded_metallurgist`) | 10 | 10 | Improve verified golden tool/weapon performance without altering global item tiers. |
+#### Piglin Kinship & Barter — 18 points
 
-#### Sovereignty — 11 points
+| Skill | Purchased one-point ranks | Proposed effect |
+|---|---:|---|
+| **Piglin Diplomacy** (`tyr_progression:gilded_piglin_diplomacy`) | 5 | -5% per rank (max -25%) to *ordinary Piglin*'s normal processing/wait time after it has actually accepted a legitimate gold ingot barter, respecting native minimum delay. Brutes do not trade. Innate Piglin/Brute friendship is FREE and unchanged. |
+| **Barter Acumen** (`tyr_progression:gilded_barter_acumen`) | 4 | +3 percentage points per rank (max +12 pp) to award exactly one extra *common, allowed* item from an ordinary Piglin barter response when the original common reward has actually resolved; excluded rare tiers, boss ingredients and guaranteed high-value loops. |
+| **Hoglin Pursuit** (`tyr_progression:gilded_hoglin_pursuit`) | 4 | +4% per rank (max +16%) direct melee damage against source-tagged hostile Hoglins/Zoglins when wielding a real golden sword/axe; does not apply to Piglins, friendly companions or every Nether creature. |
+| **Warband Camaraderie** (`tyr_progression:gilded_warband_camaraderie`) | 5 | Reduce ordinary incoming direct physical hit damage by 1% per rank (max 5%) while physically within eight blocks of at least two non-angry genuine Piglins/Brutes in the Nether. No AI mind control or global Piglin invulnerability. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Glittering Luck (`tyr_progression:gilded_glittering_luck`) | 6 | 6 | True player Luck improvements, not virtual Fortune or Looting. |
-| Gilded Sovereign (`tyr_progression:gilded_gilded_sovereign`) | 5 | 5 | Proposed post-Nether late-game golden mastery capstone; exact effect requires owner review. |
+#### Lava Livelihood & Food — 20 points
+
+| Skill | Purchased one-point ranks | Proposed effect |
+|---|---:|---|
+| **Lava Angler** (`tyr_progression:gilded_lava_angler`) | 5 | -4% per rank (max -20%) normal bite/wait interval for an eligible *real lava* fishing bobber from the selected providers, never water rods or ordinary fishing reward loops. Permission to fish lava is FREE at initiation. |
+| **Magma Linecraft** (`tyr_progression:gilded_magma_linecraft`) | 4 | 5% chance per rank (max 20%) to prevent one actual fishing-rod durability loss on a *completed, eligible lava catch*, no effect on casts, canceled reels, empty catches or water fishing; no free repair. |
+| **Ember Salvage** (`tyr_progression:gilded_ember_salvage`) | 4 | +2 percentage points per rank (max +8 pp) to legal *ordinary* treasure-category odds within the original provider's lava fishing table, renormalizing other legal categories; never generate banned ores, boss items or unlisted loot and never duplicate an entire catch. |
+| **Gold Nourishment** (`tyr_progression:gilded_gold_nourishment`) | 4 | Heal +0.5 HP per rank (max +2 HP) after one actually consumed, qualified gold-containing food, with 30-second personal cooldown; FREE 2× hunger + 2× saturation-points policy remains unchanged and special potion effects run once. |
+| **Nether Forager** (`tyr_progression:gilded_nether_forager`) | 3 | +5% per rank (max +15%) theoretical saturation points from one legitimately eaten qualifying *non-gold* Nether food; ordinary hunger value unchanged, gold foods excluded and vanilla actual saturation clamp preserved. |
+
+#### Nether Mastery — 20 points
+
+| Skill | Purchased one-point ranks | Proposed effect |
+|---|---:|---|
+| **Nether Affinity** (`tyr_progression:gilded_nether_affinity`) | 5 | +3% grounded walking speed per rank (max +15%) only in the actual Nether while standing on native Nether rock/soil; no flight/glide boost, no free fire immunity and no generic Overworld speed. |
+| **Basalt Footing** (`tyr_progression:gilded_basalt_footing`) | 4 | -5% ordinary fall damage per rank (max -20%) when physically landing on verified basalt/blackstone or analogous natural Nether stone; no cancel of void/kill-plane and no new flight permission. |
+| **Molten Reflex** (`tyr_progression:gilded_molten_reflex`) | 4 | +2 percentage points per rank (max +8 pp) to evade legitimately incoming projectile hits while in the Nether **after** FREE native rank-18 Undying Ember is already earned; no dodge of fire-tagged damage that immunity already cancels. |
+| **Prospector's Practice** (`tyr_progression:gilded_prospectors_practice`) | 4 | +5% per rank (max +20%) to the *one real, qualifying per-block* Gilded gold-ore activity XP/MXP credit under configured XP mode, never a second grant, no Fortune/yield amplification, and no Silk Touch or canceled/failed break credit. |
+| **Ashen Resolve** (`tyr_progression:gilded_ashen_resolve`) | 3 | -3% direct ordinary physical damage per rank (max -9%) when the enrolled Gilded is below half max health and in the Nether, excluding void, bypass-armor and innate #minecraft:is_fire negations. |
+
+#### Sovereignty — 10 points
+
+| Skill | Purchased one-point ranks | Proposed effect |
+|---|---:|---|
+| **Glittering Luck** (`tyr_progression:gilded_glittering_luck`) | 4 | +0.25 player Luck attribute per rank (+1.0 total); only effects whose legal loot/ability code truly consults the Luck attribute. No virtual Fortune/Looting levels, automatic rare-drop duplication or Sea Dragon-level luck. |
+| **Gilded Sovereign** (`tyr_progression:gilded_gilded_sovereign`) | 6 | After genuine native Gilded level 20, while wearing a complete four-piece golden armor set AND directly holding a golden sword/axe in the Nether, gain +3% direct gold melee damage and -2% incoming ordinary physical damage per rank (max +18% and -12%). Netherite armor or weapon does not trigger this *gold-regalia* capstone. |
+
+**Gilded total: 22 skills / 100 purchased ranks, each 1 SP.** Both virtual Fortune and Looting have exactly **seven** independent purchases beyond +3 free and reach +10. Never duplicate innate gold equipment equivalence, first lava-fishing permission, golden food nutrition, or rank18 Undying Ember.
 
 ### Bare Zerker — 100 ranks / 100 points
 
