@@ -4113,7 +4113,7 @@
               "prerequisites": [
                 "tyr_progression:werewolf_feral_vigor"
               ],
-              "description": "Recover +0.15 HP/sec per rank (+1.05 HP/sec max) while genuinely fed and in an eligible native JAWR wolf/werwolf shape; 50% rate for the first 5s after taking real hostile damage, none while starving. HEALTH regeneration, not mana or wolf blood.",
+              "description": "Recover +0.15 HP/sec per rank (+1.05 HP/sec max) while genuinely fed and in an eligible native JAWR wolf/werewolf shape; 50% rate for the first 5s after taking real hostile damage, none while starving. HEALTH regeneration, not mana or wolf blood.",
               "mechanic": "conditional_health_regeneration",
               "verification": "generic_regeneration_needs_native_shape_hunger_and_recent_hit",
               "status": "DESIGN_ONLY_NOT_LIVE",
@@ -4147,7 +4147,7 @@
               "prerequisites": [
                 "tyr_progression:werewolf_regenerative_flesh"
               ],
-              "description": "Reduce remaining real non-silver physical damage by 2% per rank (10% max) when below 50% HP in wolf/werwolf form; never negate native silver/fire penalties or fatal damage.",
+              "description": "Reduce remaining real non-silver physical damage by 2% per rank (10% max) when below 50% HP in wolf/werewolf form; never negate native silver/fire penalties or fatal damage.",
               "mechanic": "low_health_physical_dr",
               "verification": "existing_damage_multiplier_needs_eligibility_and_silver_source_check",
               "status": "DESIGN_ONLY_NOT_LIVE",
@@ -4181,7 +4181,7 @@
               "prerequisites": [
                 "tyr_progression:werewolf_rending_claws"
               ],
-              "description": "After a genuine credited hostile kill while in wolf/werwolf form, heal 0.5 HP per rank (+2.5 HP max) with a 12-second cooldown; no credit from ownerless/farm/proxy deaths, natural entities without genuine hostile intent, or other player's kills.",
+              "description": "After a genuine credited hostile kill while in wolf/werewolf form, heal 0.5 HP per rank (+2.5 HP max) with a 12-second cooldown; no credit from ownerless/farm/proxy deaths, natural entities without genuine hostile intent, or other player's kills.",
               "mechanic": "heal_on_kill",
               "verification": "generic_heal_on_kill_native_shape_attribution",
               "status": "DESIGN_ONLY_NOT_LIVE",
@@ -4256,7 +4256,7 @@
               "total_cost": 7,
               "stage": "entry",
               "prerequisites": [],
-              "description": "Increase native legal empty-hand wolf/werwolf melee damage by 3% per rank (+21% max); use actual player_attack attribution, NOT arbitrary equipped weapons or wolf-type mobs.",
+              "description": "Increase native legal empty-hand wolf/werewolf melee damage by 3% per rank (+21% max); use actual player_attack attribution, NOT arbitrary equipped weapons or wolf-type mobs.",
               "mechanic": "jawr_wolf_melee_bonus",
               "verification": "generic_native_attack_proxy_existing_source_verify",
               "status": "DESIGN_ONLY_NOT_LIVE",
@@ -4357,7 +4357,7 @@
               "prerequisites": [
                 "tyr_progression:werewolf_savage_momentum"
               ],
-              "description": "While in wolf/werwolf shape and below 35% current HP, increase legal direct melee damage by 5% per rank (+20% max); passive injury threshold, NOT a separate Fury resource or activated burst.",
+              "description": "While in wolf/werewolf shape and below 35% current HP, increase legal direct melee damage by 5% per rank (+20% max); passive injury threshold, NOT a separate Fury resource or activated burst.",
               "mechanic": "damage_at_low_health",
               "verification": "generic_native_attack_health_gate",
               "status": "DESIGN_ONLY_NOT_LIVE",
@@ -4554,7 +4554,7 @@
               "prerequisites": [
                 "tyr_progression:werewolf_predators_stride"
               ],
-              "description": "+2 percentage points evasion chance per rank (+6 pp max) against genuine moving projectiles while in wolf/werwolf shape, not area explosions or ownerless spells.",
+              "description": "+2 percentage points evasion chance per rank (+6 pp max) against genuine moving projectiles while in wolf/werewolf shape, not area explosions or ownerless spells.",
               "mechanic": "jawr_projectile_evasion",
               "verification": "existing_evasion_native_shape_predicate",
               "status": "DESIGN_ONLY_NOT_LIVE",
