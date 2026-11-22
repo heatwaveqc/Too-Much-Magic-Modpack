@@ -40,6 +40,6 @@ jobs:
               assert jar.testzip() is None
           cfg = json.loads(pathlib.Path("config/wover/client.json").read_text())
           assert cfg["internal"]["did_present_welcome_screen"] is True
-          assert cfg["general"]["force_betterx_world_type"] is False
+          assert cfg["general"]["force_betterx_world_type"] is True
           print("PASS: same official converter JAR SHA-1 and nested WorldWeaver config; no game boot")
           PY
