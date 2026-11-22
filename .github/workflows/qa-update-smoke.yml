@@ -286,6 +286,8 @@ jobs:
       - name: Produce single-level directly importable experimental four-mod Prism ZIP
         if: ${{ steps.authorization.outputs.mode == 'prism' }}
         working-directory: assembly
+        env:
+          TMM_UPDATE_CANDIDATE_SHA: ${{ steps.authorization.outputs.sha }}
         run: |
           set -euo pipefail
           IFS=: read -r -a jars <<< "$SMOKE_EXTRA_MOD_JARS"
@@ -300,7 +302,7 @@ jobs:
           root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'Too-Much-Magic-Full-Integration-Prism.zip'
           meta = json.loads((root/'BUILD-MANIFEST.json').read_text())
           assert meta['integration_commit'] == os.environ['QA_PRISM_SNAPSHOT']
-          assert meta['update_trial']['candidate_sha'] == 'bdb07f2823540a3dde422a6702f5eed8375883ca'
+          assert meta['update_trial']['candidate_sha'] == os.environ['TMM_UPDATE_CANDIDATE_SHA']
           assert len(meta['custom_jar_sha256']) == 4
           assert meta['client_tested'] is False and meta['stable_promoted'] is False
           assert meta['personal_settings']['public_release'] is False
