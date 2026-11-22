@@ -22,7 +22,7 @@ public final class ProgressionAttachments {
             .serialize(MutationLedger.codec()).copyOnDeath().build());
     public static final Supplier<AttachmentType<TooltipMilestones>> TOOLTIP_MILESTONES =
         ATTACHMENTS.register("tooltip_milestones", () -> AttachmentType.builder(TooltipMilestones::empty)
-            .serialize(TooltipMilestones.CODEC).copyOnDeath().build());
+            .serialize(TooltipMilestonesCodec.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(LedgerCodec.CODEC).copyOnDeath().build());
