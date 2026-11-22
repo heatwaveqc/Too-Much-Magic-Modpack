@@ -551,7 +551,7 @@
 	quest.544D3A1500000012.title: "Route Fluids Without Pretending They Are Items"
 	quest.544D3A1500000012.quest_desc: ["Craft Fluid Extractor and Inserter connectors and attach them to suitable Sal Ammoniac or Water tanks. Configure sides, frequency and any supported filters with the Mercurial Wand, then verify that actual fluid—not inventory item stacks—travels. Theurgy's native fluid routing is distinct from its item connectors and does not imply FE support. Quest task detects the Fluid Inserter item; verify transfer independently."]
 	quest.544D3A1500000013.title: "Rare Materials: Templates Before Replication"
-	quest.544D3A1500000013.quest_desc: [undefined]
+	quest.544D3A1500000013.quest_desc: ["This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded."]
 	quest.544D303001600001.title: "Chapter Overview"
 	quest.544D303001600001.quest_desc: ["An introduction to Totemic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001700001.title: "Chapter Overview"
