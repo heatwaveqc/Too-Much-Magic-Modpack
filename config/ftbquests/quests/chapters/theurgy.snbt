@@ -3,27 +3,362 @@
 	default_quest_shape: "rsquare"
 	filename: "theurgy"
 	group: "544D103000000000"
-	icon: { id: "minecraft:blaze_powder" }
+	icon: { id: "theurgy:alchemical_sulfur_sulfur" }
 	id: "544D203001500000"
-	images: [ ]
+	images: [
+		{
+			image: "tmm:textures/questpics/theurgy/title.png"
+			x: 0.0d
+			y: -15.0d
+			width: 13.5d
+			height: 3.3d
+			rotation: 0.0d
+		},
+		{
+			image: "tmm:textures/questpics/theurgy/vessels.png"
+			x: 13.0d
+			y: -8.5d
+			width: 8.0d
+			height: 2.4d
+			rotation: 0.0d
+		},
+		{
+			image: "tmm:textures/questpics/theurgy/niter.png"
+			x: 18.0d
+			y: 11.0d
+			width: 11.5d
+			height: 2.5d
+			rotation: 0.0d
+		},
+		{
+			image: "tmm:textures/questpics/theurgy/reformation.png"
+			x: 30.0d
+			y: -13.0d
+			width: 8.0d
+			height: 2.8d
+			rotation: 0.0d
+		},
+		{
+			image: "tmm:textures/questpics/theurgy/wires.png"
+			x: 19.0d
+			y: -16.5d
+			width: 11.2d
+			height: 2.4d
+			rotation: 0.0d
+		}
+	]
 	order_index: 20
 	progression_mode: "flexible"
 	quest_links: [ ]
 	quests: [
 		{
 			id: "544D303001500001"
-			icon: { id: "minecraft:blaze_powder" }
+			icon: { id: "minecraft:book" }
 			optional: true
+			shape: "gear"
+			size: 1.6d
 			rewards: [
-				{ id: "544D903001500001", type: "xp", xp: 2 }
-				{ id: "544DA03001500002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1 }
+				{ id: "544D903001500001", type: "xp", xp: 2, team_reward: false }
+				{ id: "544DA03001500002", type: "item", item: { id: "minecraft:paper", count: 1 }, count: 1, team_reward: false }
 			]
-			size: 1.5d
 			tasks: [
 				{ id: "544D403001500001", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 0.0d
+		},
+		{
+			id: "544D3A1500000001"
+			icon: { id: "theurgy:pyromantic_brazier" }
+			dependencies: ["544D303001500001"]
+			rewards: [
+				{ id: "544D6A1500000001", type: "xp", xp: 20, team_reward: false }
+				{ id: "544D7A1500000001", type: "item", item: { id: "minecraft:charcoal", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000001", type: "item", item: { id: "theurgy:pyromantic_brazier", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 4.0d
+			y: 0.0d
+		},
+		{
+			id: "544D3A1500000002"
+			icon: { id: "theurgy:distiller" }
+			dependencies: ["544D3A1500000001"]
+			rewards: [
+				{ id: "544D6A1500000002", type: "xp", xp: 30, team_reward: false }
+				{ id: "544D7A1500000002", type: "item", item: { id: "minecraft:stone", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000002", type: "item", item: { id: "theurgy:distiller", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: -3.0d
+		},
+		{
+			id: "544D3A1500000003"
+			icon: { id: "theurgy:calcination_oven" }
+			dependencies: ["544D3A1500000001"]
+			rewards: [
+				{ id: "544D6A1500000003", type: "xp", xp: 30, team_reward: false }
+				{ id: "544D7A1500000003", type: "item", item: { id: "minecraft:granite", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000003", type: "item", item: { id: "theurgy:calcination_oven", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 0.0d
+		},
+		{
+			id: "544D3A1500000004"
+			icon: { id: "theurgy:sal_ammoniac_accumulator" }
+			dependencies: ["544D303001500001"]
+			rewards: [
+				{ id: "544D6A1500000004", type: "xp", xp: 30, team_reward: false }
+				{ id: "544D7A1500000004", type: "item", item: { id: "minecraft:bucket", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000004", type: "item", item: { id: "theurgy:sal_ammoniac_accumulator", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: 3.0d
+		},
+		{
+			id: "544D3A1500000005"
+			icon: { id: "theurgy:liquefaction_cauldron" }
+			dependencies: ["544D3A1500000001", "544D3A1500000004"]
+			rewards: [
+				{ id: "544D6A1500000005", type: "xp", xp: 35, team_reward: false }
+				{ id: "544D7A1500000005", type: "item", item: { id: "minecraft:glass_bottle", count: 1 }, count: 3, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000005", type: "item", item: { id: "theurgy:liquefaction_cauldron", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 12.0d
+			y: 3.0d
+		},
+		{
+			id: "544D3A1500000006"
+			icon: { id: "theurgy:incubator" }
+			dependencies: ["544D3A1500000002", "544D3A1500000003", "544D3A1500000005"]
+			rewards: [
+				{ id: "544D6A1500000006", type: "xp", xp: 50, team_reward: false }
+				{ id: "544D7A1500000006", type: "item", item: { id: "minecraft:coal", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000006", type: "item", item: { id: "theurgy:incubator", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 16.0d
+			y: 0.0d
+		},
+		{
+			id: "544D3A1500000007"
+			icon: { id: "minecraft:oak_log" }
+			dependencies: ["544D3A1500000006"]
+			shape: "hexagon"
+			size: 1.4d
+			rewards: [
+				{ id: "544D6A1500000007", type: "xp", xp: 60, team_reward: false }
+				{ id: "544D7A1500000007", type: "item", item: { id: "minecraft:oak_sapling", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000007", type: "checkmark" }
+			]
+			x: 20.0d
+			y: 0.0d
+		},
+		{
+			id: "544D3A1500000008"
+			icon: { id: "theurgy:alchemical_salt_plant" }
+			dependencies: ["544D3A1500000007"]
+			shape: "hexagon"
+			size: 1.4d
+			rewards: [
+				{ id: "544D6A1500000008", type: "xp", xp: 40, team_reward: false }
+				{ id: "544D7A1500000008", type: "item", item: { id: "minecraft:gold_nugget", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000008", type: "checkmark" }
+			]
+			x: 24.0d
+			y: 0.0d
+		},
+		{
+			id: "544D3A1500000009"
+			icon: { id: "theurgy:fermentation_vat" }
+			dependencies: ["544D3A1500000004", "544D3A1500000005"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A1500000009", type: "xp", xp: 40, team_reward: false }
+				{ id: "544D7A1500000009", type: "item", item: { id: "minecraft:sand", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000009", type: "item", item: { id: "theurgy:fermentation_vat", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 14.0d
+			y: 7.0d
+		},
+		{
+			id: "544D3A150000000A"
+			icon: { id: "theurgy:digestion_vat" }
+			dependencies: ["544D3A1500000009", "544D3A1500000003"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000A", type: "xp", xp: 45, team_reward: false }
+				{ id: "544D7A150000000A", type: "item", item: { id: "minecraft:gold_nugget", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000A", type: "item", item: { id: "theurgy:digestion_vat", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 18.0d
+			y: 7.0d
+		},
+		{
+			id: "544D3A150000000B"
+			icon: { id: "theurgy:digestion_vat" }
+			dependencies: ["544D3A150000000A"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000B", type: "xp", xp: 50, team_reward: false }
+				{ id: "544D7A150000000B", type: "item", item: { id: "minecraft:flint", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000B", type: "checkmark" }
+			]
+			x: 22.0d
+			y: 7.0d
+		},
+		{
+			id: "544D3A150000000C"
+			icon: { id: "theurgy:mercury_catalyst" }
+			dependencies: ["544D3A1500000002", "544D3A1500000007"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000C", type: "xp", xp: 50, team_reward: false }
+				{ id: "544D7A150000000C", type: "item", item: { id: "minecraft:redstone", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000C", type: "item", item: { id: "theurgy:mercury_catalyst", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 24.0d
+			y: -5.0d
+		},
+		{
+			id: "544D3A150000000D"
+			icon: { id: "theurgy:reformation_target_pedestal" }
+			dependencies: ["544D3A150000000B", "544D3A150000000C"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000D", type: "xp", xp: 70, team_reward: false }
+				{ id: "544D7A150000000D", type: "item", item: { id: "minecraft:iron_nugget", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000D", type: "item", item: { id: "theurgy:reformation_target_pedestal", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 28.0d
+			y: -5.0d
+		},
+		{
+			id: "544D3A150000000E"
+			icon: { id: "theurgy:divination_rod_t1" }
+			dependencies: ["544D303001500001"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000E", type: "xp", xp: 25, team_reward: false }
+				{ id: "544D7A150000000E", type: "item", item: { id: "minecraft:torch", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000E", type: "item", item: { id: "theurgy:divination_rod_t1", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 4.0d
+			y: -7.0d
+		},
+		{
+			id: "544D3A150000000F"
+			icon: { id: "theurgy:divination_rod_t2" }
+			dependencies: ["544D3A150000000E"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A150000000F", type: "xp", xp: 35, team_reward: false }
+				{ id: "544D7A150000000F", type: "item", item: { id: "minecraft:compass", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A150000000F", type: "item", item: { id: "theurgy:divination_rod_t2", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 8.0d
+			y: -7.0d
+		},
+		{
+			id: "544D3A1500000010"
+			icon: { id: "theurgy:caloric_flux_emitter" }
+			dependencies: ["544D3A1500000001", "544D3A150000000C"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A1500000010", type: "xp", xp: 45, team_reward: false }
+				{ id: "544D7A1500000010", type: "item", item: { id: "minecraft:charcoal", count: 1 }, count: 10, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000010", type: "item", item: { id: "theurgy:caloric_flux_emitter", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 27.0d
+			y: -9.0d
+		},
+		{
+			id: "544D3A1500000011"
+			icon: { id: "theurgy:logistics_item_extractor" }
+			dependencies: ["544D3A1500000002", "544D3A1500000007"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A1500000011", type: "xp", xp: 40, team_reward: false }
+				{ id: "544D7A1500000011", type: "item", item: { id: "minecraft:glass", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000011", type: "item", item: { id: "theurgy:logistics_item_extractor", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 20.0d
+			y: -11.0d
+		},
+		{
+			id: "544D3A1500000012"
+			icon: { id: "theurgy:logistics_fluid_inserter" }
+			dependencies: ["544D3A1500000011", "544D3A1500000004"]
+			optional: true
+			shape: "rsquare"
+			rewards: [
+				{ id: "544D6A1500000012", type: "xp", xp: 45, team_reward: false }
+				{ id: "544D7A1500000012", type: "item", item: { id: "minecraft:bucket", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000012", type: "item", item: { id: "theurgy:logistics_fluid_inserter", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 24.0d
+			y: -11.0d
+		},
+		{
+			id: "544D3A1500000013"
+			icon: { id: "minecraft:nether_star" }
+			dependencies: ["544D3A150000000B", "544D3A150000000D"]
+			optional: true
+			shape: "octagon"
+			size: 1.7d
+			rewards: [
+				{ id: "544D6A1500000013", type: "xp", xp: 70, team_reward: false }
+				{ id: "544D7A1500000013", type: "item", item: { id: "reformation", count: 1 }, count: Understand high-cost post-acquisition duplication, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D4A1500000013", type: "checkmark" }
+			]
+			x: 32.0d
+			y: -5.0d
 		}
 	]
 }
