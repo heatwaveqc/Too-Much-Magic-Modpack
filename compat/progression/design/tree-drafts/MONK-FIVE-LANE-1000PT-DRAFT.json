@@ -6,7 +6,7 @@
   "source_branch": "dev/progression",
   "first_purchase": "tyr_progression:enlightenment",
   "total_purchased_points": 1000,
-  "total_purchased_nodes": 37,
+  "total_purchased_nodes": 38,
   "existing_native_automatic_nodes": 29,
   "existing_purchased_node": "tyr_progression:focus",
   "existing_purchased_focus_cost": 20,
@@ -24,7 +24,7 @@
   },
   "core": "Extend all current and future approved universal Core families; pilot PR #379 identifies Reservoir, Wellspring, Thrift, Potency. Do not duplicate their Core purchases.",
   "balance": "80-90% legal optimized gear/specialist effective endgame outcomes; high-end solo Chaos Guardian with no normal weapons/armor; Curios permitted.",
-  "note": "All effect values except existing Focus and approved Enlightenment formula are provisional and require source audits. Do not install preview data as a live path until generic engine hooks and three-mode XP policy exist.",
+  "note": "All effect values except existing Focus and approved Enlightenment formula are provisional and require source audits. Do not install preview data as a live path until generic engine hooks and three-mode XP policy exist. Revised Nov 22: owner-approved remove 2 redundant mining nodes and add 3 exact vanilla damage-type wards; Meditative Elixir now extends all finite BENEFICIAL MobEffects, regardless of origin. See #485 (generic engine) / #486 (Monk config).",
   "lanes": [
     {
       "id": "martial_body",
@@ -497,7 +497,7 @@
           "cost_total": 20,
           "phase": "mastery",
           "prerequisite": "tyr_progression:iron_body",
-          "effect_proposal": "+0.75%/rank reduction of remaining fire, explosion and magic damage (15% max).",
+          "effect_proposal": "Reduce damage based on vanilla #minecraft:is_fire and #minecraft:is_explosion tags, independently of four direct vanilla-type wards. No magic-source inference.",
           "engine_status": "requires_source_audit_before_runtime"
         },
         {
@@ -763,7 +763,7 @@
     {
       "id": "hands_as_tools",
       "name": "Hands As Tools",
-      "points": 150,
+      "points": 110,
       "skills": [
         {
           "id": "tyr_progression:barehand_efficiency",
@@ -924,77 +924,13 @@
           "prerequisite": "tyr_progression:toolless_reach",
           "effect_proposal": "+1%/rank chance of additional ordinary mature-crop drop (20%).",
           "engine_status": "requires_source_audit_before_runtime"
-        },
-        {
-          "id": "tyr_progression:stone_resonance",
-          "name": "Stone Resonance",
-          "max_rank": 20,
-          "rank_costs": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
-          "cost_total": 20,
-          "phase": "mastery",
-          "prerequisite": "tyr_progression:barehand_efficiency",
-          "effect_proposal": "+1%/rank mining speed for block hardness >=5 (+20%); does not modify XP reward hardness.",
-          "engine_status": "requires_source_audit_before_runtime"
-        },
-        {
-          "id": "tyr_progression:overworld_bounty",
-          "name": "Overworld Bounty",
-          "max_rank": 20,
-          "rank_costs": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-          ],
-          "cost_total": 20,
-          "phase": "mastery",
-          "prerequisite": "tyr_progression:worldly_cultivation",
-          "effect_proposal": "+1%/rank chance of one extra eligible ordinary ore drop (20%), no machine/boss loot.",
-          "engine_status": "requires_source_audit_before_runtime"
         }
       ]
     },
     {
       "id": "magical_cultivation",
       "name": "Magical Cultivation",
-      "points": 300,
+      "points": 340,
       "skills": [
         {
           "id": "tyr_progression:enlightenment",
@@ -1199,8 +1135,8 @@
           "cost_total": 32,
           "phase": "mastery",
           "prerequisite": "tyr_progression:inner_thrift",
-          "effect_proposal": "+1%/rank reduction of remaining magical damage (16%), after other passive effects.",
-          "engine_status": "requires_source_audit_before_runtime"
+          "effect_proposal": "Reduce remaining damage *only* for exact minecraft:magic by 1% per rank (16% maximum); not fire/explosion or mod-caster inference.",
+          "engine_status": "code_ready_generic_damage_multiplier"
         },
         {
           "id": "tyr_progression:arcane_attunement",
@@ -1243,8 +1179,8 @@
           "cost_total": 20,
           "phase": "mastery",
           "prerequisite": "tyr_progression:inner_wellspring",
-          "effect_proposal": "+2%/rank duration of beneficial consumed potions (20%); no new active skill.",
-          "engine_status": "requires_source_audit_before_runtime"
+          "effect_proposal": "Extend all finite beneficial MobEffect durations applied to the Monk, from any source, by 2% per rank (+20%).",
+          "engine_status": "generic_beneficial_duration_bonus_PR_485"
         },
         {
           "id": "tyr_progression:inner_fortune",
@@ -1267,6 +1203,62 @@
           "prerequisite": "tyr_progression:spellward",
           "effect_proposal": "+1 true Luck attribute per rank (+10); not Fortune or Looting.",
           "engine_status": "requires_source_audit_before_runtime"
+        },
+        {
+          "id": "tyr_progression:alchemical_ward",
+          "name": "Alchemical Ward",
+          "max_rank": 10,
+          "rank_costs": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "cost_total": 20,
+          "phase": "mastery",
+          "prerequisite": "tyr_progression:spellward",
+          "effect_proposal": "Reduce remaining incoming minecraft:indirect_magic damage by 1% per rank, up to 10%.",
+          "engine_status": "code_ready_generic_damage_multiplier"
+        },
+        {
+          "id": "tyr_progression:withering_ward",
+          "name": "Withering Ward",
+          "max_rank": 5,
+          "rank_costs": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "cost_total": 10,
+          "phase": "mastery",
+          "prerequisite": "tyr_progression:spellward",
+          "effect_proposal": "Reduce remaining incoming minecraft:wither damage by 1% per rank, up to 5%.",
+          "engine_status": "code_ready_generic_damage_multiplier"
+        },
+        {
+          "id": "tyr_progression:dragonbreath_ward",
+          "name": "Dragonbreath Ward",
+          "max_rank": 5,
+          "rank_costs": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "cost_total": 10,
+          "phase": "mastery",
+          "prerequisite": "tyr_progression:spellward",
+          "effect_proposal": "Reduce remaining incoming minecraft:dragon_breath damage by 1% per rank, up to 5%.",
+          "engine_status": "code_ready_generic_damage_multiplier"
         }
       ]
     }
