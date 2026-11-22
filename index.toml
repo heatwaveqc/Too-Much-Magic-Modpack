@@ -701,6 +701,10 @@ file = "kubejs/data/reliquary/recipe/alkahestry/drain/redstone.json"
 hash = "2dbf7cb56a128a113b488ac05417276d74df84db595280d3ab85674d2f07bc70"
 
 [[files]]
+file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
+hash = "e1adfad141d2074d45058e7673a464820625f2380b5a8a9f19645d48e9791519"
+
+[[files]]
 file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
 hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
 
@@ -1501,7 +1505,7 @@ metafile = true
 
 [[files]]
 file = "mods/ars-elemental.pw.toml"
-hash = "8e9f867e9c0ff53e08e779ae54fd1bbead92f1d7323b75369e64ade719d5d7c1"
+hash = "08c39f8d5f23c8ffb57066d2a2fe05d53db3e5efd86286a484ac43a493fec92e"
 metafile = true
 
 [[files]]
@@ -1786,7 +1790,7 @@ metafile = true
 
 [[files]]
 file = "mods/evilcraft.pw.toml"
-hash = "b6b98117b5932b6dc144a13bffe6bcbcaec86fa35dd43eb6b4cbf04a9b3be677"
+hash = "33059cd0e19a24a49e53aafd2b096cc1d4eb3f28199e4acbed9050ffef7613de"
 metafile = true
 
 [[files]]
@@ -1906,7 +1910,7 @@ metafile = true
 
 [[files]]
 file = "mods/goety.pw.toml"
-hash = "269e6225a8f6ef2bff759a8870e3db2300a72a782600b84e875e79cfbe819591"
+hash = "e41fde783f2f9c53e3b4f887cd05f5063c758810a07e97f1710aa679874a9cc6"
 metafile = true
 
 [[files]]
@@ -2126,7 +2130,7 @@ metafile = true
 
 [[files]]
 file = "mods/neovitae.pw.toml"
-hash = "6a4769ed8d8428836a28846d31db03592a6a84025342bab5d9203b9d5f59d3af"
+hash = "c7fc52e7609ffe319a34c4f8e1a0babe334646ebbdc21c2bf9a3b5c2346a0633"
 metafile = true
 
 [[files]]
