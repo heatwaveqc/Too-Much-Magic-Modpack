@@ -80,6 +80,6 @@ class FoodPolicyRulesTest {
         var adjustable=FoodPolicyRules.parse(root);
         check(adjustable.evaluate("forest_dragon",Set.of("#c:foods/fruit","#tmm:foods/cooked"),1,null)
             .orElseThrow(),5,18);
-        check(adjustable.evaluate("forest_dragon",Set.of("#c:foods/fruit"),1,0).orElseThrow(),2,6);
+        check(adjustable.evaluate("forest_dragon",Set.of("#c:foods/fruit"),1,0.0).orElseThrow(),2,6);
     }
 }
