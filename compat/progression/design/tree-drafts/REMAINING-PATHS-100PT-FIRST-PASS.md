@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v12`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v13`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -30,166 +30,188 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 
 The ten draft catalogs display **261 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
-## Hunter — 62 shared + 8 training style + 30 favored prey = 100
+## Hunter — complete specialization design: 62 shared + 8 training + 30 favored prey = 100
 
-**Hunter's existing `dev/progression` data remains unchanged.** The current 17 paid Hunter skills use 238 total points under the old escalating rank-cost formula. This is a proposed **full repricing/rebalancing**, requiring owner review, skill/milestone migration and tests before any code PR may replace it. The 14 free `specialty_*` choices are retained, one at a time.
+**Design-only:** Existing `dev/progression` Hunter runtime source is unchanged. This new first-pass spec has per-rank effects, specific 14-prey gates, source IDs, and QA holds—not an executable Path update. The live old paid-source curve must be reconciled before new 1-SP purchases become real.
 
-### Shared training — 62 ranks (62 points)
+[Complete Hunter tree, 57 visible skills, one-of-14 specialization catalog, source and QA handoff](HUNTER-COMPLETE-100PT-2026-11-22.md).
 
-| Skill | Ranks | Cost/rank | Total | Intended outcome |
-|---|---:|---:|---:|---|
-| **Rooted** (`tyr_progression:rooted`) | 5 | 1 | 5 | attribute |
-| **Monster Resilience** (`tyr_progression:monster_resilience`) | 5 | 1 | 5 | attribute |
-| **Sword Specialist** (`tyr_progression:sword_specialist`) | 5 | 1 | 5 | damage_bonus |
-| **Axe Specialist** (`tyr_progression:axe_specialist`) | 5 | 1 | 5 | damage_bonus |
-| **Scythe Specialist** (`tyr_progression:scythe_specialist`) | 5 | 1 | 5 | damage_bonus |
-| **Bow Specialist** (`tyr_progression:bow_specialist`) | 5 | 1 | 5 | damage_bonus |
-| **Crossbow Specialist** (`tyr_progression:crossbow_specialist`) | 5 | 1 | 5 | damage_bonus |
-| **Fast Hands Bow** (`tyr_progression:fast_hands_bow`) | 5 | 1 | 5 | fast_hands |
-| **Fast Hands Crossbow** (`tyr_progression:fast_hands_crossbow`) | 5 | 1 | 5 | fast_hands |
-| **Silver Hunter** (`tyr_progression:silver_hunter`) | 5 | 1 | 5 | damage_bonus |
-| **Monster Lore** (`tyr_progression:hunter_monster_lore`) | 4 | 1 | 4 | Discover verified prey types and weaknesses without revealing arbitrary boss registries. |
-| **Quarry Mark** (`tyr_progression:hunter_quarry_mark`) | 4 | 1 | 4 | Mark one verified visible enemy quarry as the target of follow-on tracking bonuses. |
-| **Hunter Tracking** (`tyr_progression:hunter_hunter_tracking`) | 4 | 1 | 4 | Reveal eligible prey with temporary Glowing within safe bounded range and count. |
+**Owner-locked/free:** Real Trial of Venom (poison while under regeneration, required prior hunt) is enrollment; 14 existing `specialty_*` choice licenses remain price zero and strictly exclusive. Mutagenic Brews with 10-hour buildup are independent of bought nodes. Unified MXP #475's 1,000-point calibration **supersedes copying** legacy Hunter `maxHP/4` numbers unchanged. General Bountiful Hunter Decrees under #523 pay coins and are available to non-Hunters. **No separate special Hunter bounty wallet.**
 
-### Training style — select ONE, 8 ranks (8 points)
+### Shared Hunter Training — 13 skills / 62 ranks
 
-| Choice | Ranks | Cost/rank | Total |
-|---|---:|---:|---:|
-| **Equipment Care** | 8 | 1 | 8 |
-| **Fortified Training** | 8 | 1 | 8 |
+| Paid skill | One-point ranks | Proposed actual gameplay effect |
+|---|---:|---|
+| **Rooted** (`tyr_progression:rooted`) | 5 | +0.10 knockback resistance per rank (+0.50 full), only while genuinely Hunter; use source attribute, no armor or knockback immunity granted. |
+| **Monster Resilience** (`tyr_progression:monster_resilience`) | 5 | +1 armor point per rank (+5 full), player-owned Hunter effect; distinct from separately selected Fortified Training. |
+| **Sword Specialist** (`tyr_progression:sword_specialist`) | 5 | +0.5 damage per rank (+2.5 full) on genuine direct sword melee; the actual weapon and player must be the attack source. |
+| **Axe Specialist** (`tyr_progression:axe_specialist`) | 5 | +0.5 damage per rank (+2.5 full) on genuine direct axe melee; no bonus to mining or throwable axes. |
+| **Scythe Specialist** (`tyr_progression:scythe_specialist`) | 5 | +0.5 damage per rank (+2.5 full) only with eligible scythe item on direct melee; no arbitrary AoE or extra mob drops. |
+| **Bow Specialist** (`tyr_progression:bow_specialist`) | 5 | +0.5 per rank (+2.5 full) for arrows truly fired from a bow by this Hunter, using shot-time source weapon rather than current hand on hit. |
+| **Crossbow Specialist** (`tyr_progression:crossbow_specialist`) | 5 | +0.5 per rank (+2.5 full) for actual crossbow arrows; firework rockets or other ammunition require explicit provider verification. |
+| **Fast Hands Bow** (`tyr_progression:fast_hands_bow`) | 5 | +0.20 source `fast_hands` rate units per rank (+1.0 units full) for real bow draw; exact draw-time conversion and power floor require pinned engine audit. |
+| **Fast Hands Crossbow** (`tyr_progression:fast_hands_crossbow`) | 5 | +0.20 source `fast_hands` rate units per rank (+1.0 units full) for real crossbow reload; must respect Quick Charge and native minimum charge. |
+| **Silver Hunter** (`tyr_progression:silver_hunter`) | 5 | +1 direct melee damage per rank (+5 full) with a genuine tagged silver weapon against tagged lycanthrope creatures; never global silver damage. |
+| **Monster Lore** (`tyr_progression:hunter_monster_lore`) | 4 | Passively show verified target taxonomy and source-known weakness at 8 + 4 blocks per rank (24 full) when target is genuinely seen, without spoiling hidden bosses. |
+| **Quarry Mark** (`tyr_progression:hunter_quarry_mark`) | 4 | After one successful direct Hunter attack, passively remember exactly one living hostile target for 4 + 2 seconds per rank (12 seconds full), replacing earlier quarry; no new key. |
+| **Hunter Tracking** (`tyr_progression:hunter_hunter_tracking`) | 4 | For favored prey or the one real marked quarry, privately outline at most 1 + rank legal targets within 8 + 4×rank blocks (up to five, 24 blocks); source-check every 40 ticks and never reveal all players. |
 
-### Favored prey — select ONE of 14, 30 ranks (30 points)
+### Training Style — choose ONE of TWO, 8 ranks
 
-The existing free Favored Prey choice must gate purchases and activation on the server, not merely change UI visibility. Each of the 14 prey specializations includes **12 offense + 8 defense + 10 mastery ranks**, all cost one point each.
+| Skill | One-point ranks | Proposed effect |
+|---|---:|---|
+| **Equipment Care** (`tyr_progression:equipment_care`) | 8 | Repair exactly one real point of worn armor or active mainhand equipment durability every (220 - 20×rank) ticks, 200 at rank1 to 60 at rank8; no offhand, inventory or broken-item resurrection. |
+| **Fortified Training** (`tyr_progression:fortified_training`) | 8 | Gain +0.5 armor points per rank (+4 at rank8) as a player-owned attribute, distinct from Monster Resilience, with no permanent armor item. |
 
-#### Undead specialty (30 points)
-Free license: `tyr_progression:specialty_undead`
+### Favored Prey — choose ONE of FOURTEEN, 30 ranks
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Undead Slayer** (`tyr_progression:undead_slayer`) | 12 | 1 | 12 | Strong offense against eligible undead |
-| **Undead Evasion** (`tyr_progression:evasion_undead`) | 8 | 1 | 8 | Reflexes against undead attackers |
-| **Ranged Quarry** (`tyr_progression:ranged_quarry`) | 10 | 1 | 10 | Verified ranged shots against undead; retain old bounded ranged-quarry rules |
+Each selected free specialty opens exactly 12 **offense** + 8 **defense** + 10 **mastery** one-point ranks. Other branches are neither purchasable nor active. Switch only by legally refunding and clearing the old paid branch. No blanket all-boss group; faction overlaps must follow source tags and one selected specialty.
 
-#### Raider specialty (30 points)
-Free license: `tyr_progression:specialty_illager`
+#### Undead specialty — 12 + 8 + 10 = 30 points
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Raider Slayer** (`tyr_progression:raider_slayer`) | 12 | 1 | 12 | Improve direct hits against confirmed raiders |
-| **Raider Evasion** (`tyr_progression:evasion_raiders`) | 8 | 1 | 8 | Evade raider attacks |
-| **Raidbreaker** (`tyr_progression:hunter_illager_mastery`) | 10 | 1 | 10 | Improve defense against valid raid weapons/magic; not global villager-raid immunity |
+Free required specialty: `tyr_progression:specialty_undead`. Source audit: Source undead tag and old undead_slayer, evasion_undead, ranged_quarry numerical reprice.
 
-#### Drakebane specialty (30 points)
-Free license: `tyr_progression:specialty_dragon`
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Undead Slayer** (`tyr_progression:undead_slayer`) | 12 | Actual sword melee against verified undead: +0.75 physical damage/rank (+9 full), preserving the source sword-restricted Slayer role. |
+| **Undead Evasion** (`tyr_progression:evasion_undead`) | 8 | +2 percentage points/rank (+16 pp full) to evade real undead-origin direct hits; not world/environment damage. |
+| **Ranged Quarry** (`tyr_progression:ranged_quarry`) | 10 | Actual Hunter-fired bow/crossbow arrow hit against undead: +0.30 damage/rank (+3 full), preserving the source Ranged Quarry arrow-delivery role. |
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Drakebane** (`tyr_progression:hunter_dragon_slayer`) | 12 | 1 | 12 | Damage legal Dragon taxonomy quarry |
-| **Scaled Hunter** (`tyr_progression:hunter_dragon_defense`) | 8 | 1 | 8 | Defend against verified dragon attacks, source-scoped |
-| **Dragonbane Tactics** (`tyr_progression:hunter_dragon_mastery`) | 10 | 1 | 10 | Improve genuine dragon-hunt timing and damage without affecting all bosses |
+#### Raider specialty — 12 + 8 + 10 = 30 points
 
-#### Void specialty (30 points)
-Free license: `tyr_progression:specialty_void`
+Free required specialty: `tyr_progression:specialty_illager`. Source audit: Illager taxonomy, raider direct hit and evoker projectile/fangs actual source; source IDs raider_slayer/evasion_raiders.
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Void Slayer** (`tyr_progression:hunter_void_slayer`) | 12 | 1 | 12 | Damage confirmed End/void quarry |
-| **Voidwalker Guard** (`tyr_progression:hunter_void_defense`) | 8 | 1 | 8 | Defend against valid void creature attacks |
-| **Rift Tracker** (`tyr_progression:hunter_void_mastery`) | 10 | 1 | 10 | Keep marked teleporting quarry reacquirable within limits |
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Raider Slayer** (`tyr_progression:raider_slayer`) | 12 | Actual direct axe melee against genuine Illagers/raiders: +0.75 damage/rank (+9 full), preserving old Raider Slayer axe restriction. |
+| **Raider Evasion** (`tyr_progression:evasion_raiders`) | 8 | +2 percentage points/rank (+16 pp full) evasion against raider-sourced incoming direct hit. |
+| **Raidbreaker** (`tyr_progression:hunter_illager_mastery`) | 10 | -2% damage/rank (-20% full) from genuine Illager raid-projectile, evoker-fangs or Ravager-source attacks, excluding generic village raids. |
 
-#### Piglin specialty (30 points)
-Free license: `tyr_progression:specialty_piglin`
+#### Drakebane specialty — 12 + 8 + 10 = 30 points
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Piglin Slayer** (`tyr_progression:hunter_piglin_slayer`) | 12 | 1 | 12 | Damage approved Piglin/Hoglin quarry |
-| **Bastion Guard** (`tyr_progression:hunter_piglin_defense`) | 8 | 1 | 8 | Defend against Piglin/Hoglin attacks |
-| **Hoglin Harrier** (`tyr_progression:hunter_piglin_mastery`) | 10 | 1 | 10 | Improve direct melee vs those groups without inheriting Gilded's diplomacy |
+Free required specialty: `tyr_progression:specialty_dragon`. Source audit: Pinned dragons vs Chaos Guardian, Ender Dragon and transformed player PvP rules; native breath state.
 
-#### Sculk specialty (30 points)
-Free license: `tyr_progression:specialty_sculk`
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Drakebane** (`tyr_progression:hunter_dragon_slayer`) | 12 | +3% legitimate Hunter direct/shot damage per rank (+36% full) to source-verified Dragon prey, never all bosses. |
+| **Scaled Hunter** (`tyr_progression:hunter_dragon_defense`) | 8 | -2% damage/rank (-16% full) from actual Dragon-sourced breath, claw or melee hits, not ordinary fire. |
+| **Dragonbane Tactics** (`tyr_progression:hunter_dragon_mastery`) | 10 | When confirmed Dragon prey is performing its own verified breath, +1.5% legitimate Hunter direct/arrow damage per rank (+15% full) during its 4-second actual breath window. |
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Sculk Slayer** (`tyr_progression:hunter_sculk_slayer`) | 12 | 1 | 12 | Damage approved Sculk prey, including genuine Warden where eligible |
-| **Deepdark Vigilance** (`tyr_progression:hunter_sculk_defense`) | 8 | 1 | 8 | Resist verified Sculk/sonic damage types only |
-| **Sonic Defense** (`tyr_progression:hunter_sculk_mastery`) | 10 | 1 | 10 | Recognize and evade valid sonic attacks without silencing arbitrary sensors |
+#### Void specialty — 12 + 8 + 10 = 30 points
 
-#### Aquatic specialty (30 points)
-Free license: `tyr_progression:specialty_aquatic`
+Free required specialty: `tyr_progression:specialty_void`. Source audit: Tagged Enderman/shulker/void entities, teleports and Dragon/Void taxonomy overlap, no player teleport shortcut.
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Aquatic Slayer** (`tyr_progression:hunter_aquatic_slayer`) | 12 | 1 | 12 | Damage actual aquatic prey taxonomy |
-| **Deepwater Guard** (`tyr_progression:hunter_aquatic_defense`) | 8 | 1 | 8 | Reduce underwater prey attacks, not all drowning |
-| **Harpoon Hunter** (`tyr_progression:hunter_aquatic_mastery`) | 10 | 1 | 10 | Improve actual underwater bow/trident/projectile fights with legal attribution |
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Void Slayer** (`tyr_progression:hunter_void_slayer`) | 12 | +3% eligible physical/shot damage/rank (+36% full) to tagged Void creatures; no free buff merely for being in End. |
+| **Voidwalker Guard** (`tyr_progression:hunter_void_defense`) | 8 | -2% direct damage/rank (-16%) from actual Void-creature attack; NEVER prevents void-fall/kill-plane. |
+| **Rift Tracker** (`tyr_progression:hunter_void_mastery`) | 10 | On a genuine mark hit against Void prey that teleports, retain that same quarry's identity +2s/rank (+20s) within 24 blocks; no cross-dimension/unloaded x-ray. |
 
-#### Construct specialty (30 points)
-Free license: `tyr_progression:specialty_construct`
+#### Piglin specialty — 12 + 8 + 10 = 30 points
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Construct Slayer** (`tyr_progression:hunter_construct_slayer`) | 12 | 1 | 12 | Damage eligible construct targets only |
-| **Construct Plating** (`tyr_progression:hunter_construct_defense`) | 8 | 1 | 8 | Improve defense against authentic construct attacks |
-| **Golem Breaker** (`tyr_progression:hunter_construct_mastery`) | 10 | 1 | 10 | Armor penetration against constructs if supported by native attribute and creature tags |
+Free required specialty: `tyr_progression:specialty_piglin`. Source audit: Piglin/Hoglin/Zoglin tags, human Gilded kinship and Beast overlap, ownership/friendly rules.
 
-#### Beast specialty (30 points)
-Free license: `tyr_progression:specialty_beast`
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Piglin Slayer** (`tyr_progression:hunter_piglin_slayer`) | 12 | +3% actual physical/shot damage/rank (+36%) against valid hostile Piglin/Hoglin/Zoglin quarry, not retaliation or kinship manipulation. |
+| **Bastion Guard** (`tyr_progression:hunter_piglin_defense`) | 8 | -2% direct damage/rank (-16%) from true Piglin/Hoglin/Zoglin entity attacks, no AI anger alteration. |
+| **Hoglin Harrier** (`tyr_progression:hunter_piglin_mastery`) | 10 | +1.5% direct melee damage/rank (+15%) against specifically verified Hoglin/Zoglin quarry with sword/axe, not against all Piglins. |
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Beast Slayer** (`tyr_progression:hunter_beast_slayer`) | 12 | 1 | 12 | Damage actual eligible wild beasts, not pets |
-| **Beast Evasion** (`tyr_progression:hunter_beast_defense`) | 8 | 1 | 8 | Dodge real hostile beast attacks |
-| **Apex Pursuit** (`tyr_progression:hunter_beast_mastery`) | 10 | 1 | 10 | Improve tracking/close pursuit of valid beast quarry |
+#### Sculk specialty — 12 + 8 + 10 = 30 points
 
-#### Arthropod specialty (30 points)
-Free license: `tyr_progression:specialty_arthropod`
+Free required specialty: `tyr_progression:specialty_sculk`. Source audit: Warden boom damage source ID, Deep Dark creature registry and protections, no hostile mob spoof.
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Arthropod Slayer** (`tyr_progression:hunter_arthropod_slayer`) | 12 | 1 | 12 | Damage spiders/arthropods by verified taxonomy |
-| **Venom Guard** (`tyr_progression:hunter_arthropod_defense`) | 8 | 1 | 8 | Reduce arthropod-specific poison damage/effects |
-| **Webbreaker** (`tyr_progression:hunter_arthropod_mastery`) | 10 | 1 | 10 | Improve mobility when trapped by valid spider web sources |
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Sculk Slayer** (`tyr_progression:hunter_sculk_slayer`) | 12 | +3% actual hit damage/rank (+36%) against valid Sculk-associated creatures including Warden only if in source taxonomy; not blocks. |
+| **Deepdark Vigilance** (`tyr_progression:hunter_sculk_defense`) | 8 | -2% received physical hit damage/rank (-16%) from confirmed Sculk creature source, not all sonic damage. |
+| **Sonic Defense** (`tyr_progression:hunter_sculk_mastery`) | 10 | -2% actual Warden-sourced sonic boom damage/rank (-20%), with actual attacker receipt; do not silence sensors or waive stealth. |
 
-#### Plant specialty (30 points)
-Free license: `tyr_progression:specialty_plant`
+#### Aquatic specialty — 12 + 8 + 10 = 30 points
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Plant Slayer** (`tyr_progression:hunter_plant_slayer`) | 12 | 1 | 12 | Damage verified plant taxonomy including eligible Creepers |
-| **Spore Guard** (`tyr_progression:hunter_plant_defense`) | 8 | 1 | 8 | Limit effects from verified botanical attacks, not all poison |
-| **Creeper Ward** (`tyr_progression:hunter_plant_mastery`) | 10 | 1 | 10 | Reduce actual Creeper explosion source types only |
+Free required specialty: `tyr_progression:specialty_aquatic`. Source audit: Aquatic prey registry and underwater source checks, real trident/arrow source snapshot.
 
-#### Elemental specialty (30 points)
-Free license: `tyr_progression:specialty_elemental`
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Aquatic Slayer** (`tyr_progression:hunter_aquatic_slayer`) | 12 | +3% legitimate damage/rank (+36%) against actual Aquatic species prey, not anything temporarily submerged. |
+| **Deepwater Guard** (`tyr_progression:hunter_aquatic_defense`) | 8 | -2% direct damage/rank (-16%) from actual aquatic creature while the Hunter is underwater; not drowning or all water damage. |
+| **Harpoon Hunter** (`tyr_progression:hunter_aquatic_mastery`) | 10 | +2% genuine trident/arrow damage/rank (+20%) against Aquatic prey while Hunter really submerged, with weapon provenance. |
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Elemental Slayer** (`tyr_progression:hunter_elemental_slayer`) | 12 | 1 | 12 | Damage verified elemental prey |
-| **Primordial Guard** (`tyr_progression:hunter_elemental_defense`) | 8 | 1 | 8 | Reduce actual tagged elemental-origin attack types with source evidence |
-| **Elemental Analysis** (`tyr_progression:hunter_elemental_mastery`) | 10 | 1 | 10 | Boost effectiveness when countering selected verified elemental weaknesses |
+#### Construct specialty — 12 + 8 + 10 = 30 points
 
-#### Ooze specialty (30 points)
-Free license: `tyr_progression:specialty_ooze`
+Free required specialty: `tyr_progression:specialty_construct`. Source audit: Actual source construct entity IDs, target armor math, tamed/owner golem exclusion.
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Ooze Slayer** (`tyr_progression:hunter_ooze_slayer`) | 12 | 1 | 12 | Damage verified slime/ooze prey |
-| **Slime Resilience** (`tyr_progression:hunter_ooze_defense`) | 8 | 1 | 8 | Reduce legitimate ooze melee/slowness effects |
-| **Viscous Tactics** (`tyr_progression:hunter_ooze_mastery`) | 10 | 1 | 10 | Improve mobility and attacks when engulfed/slowed by ooze |
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Construct Slayer** (`tyr_progression:hunter_construct_slayer`) | 12 | +3% damage/rank (+36%) versus audited living construct mobs only; not machines, blocks or owned players' golems. |
+| **Construct Plating** (`tyr_progression:hunter_construct_defense`) | 8 | -2% true Construct-origin direct hit damage/rank (-16%), not blanket shield against all magical attacks. |
+| **Golem Breaker** (`tyr_progression:hunter_construct_mastery`) | 10 | Ignore 1.5% target armor *contribution* per rank (15% full) on legal physical hit of armored Construct, not invulnerable boss shields. |
 
-#### Demon specialty (30 points)
-Free license: `tyr_progression:specialty_demon`
+#### Beast specialty — 12 + 8 + 10 = 30 points
 
-| Skill | Ranks | Cost/rank | Total | Purpose |
-|---|---:|---:|---:|---|
-| **Demon Slayer** (`tyr_progression:hunter_demon_slayer`) | 12 | 1 | 12 | Damage verified demon prey |
-| **Infernal Guard** (`tyr_progression:hunter_demon_defense`) | 8 | 1 | 8 | Reduce genuine demonic attacks using source IDs |
-| **Exorcist** (`tyr_progression:hunter_demon_mastery`) | 10 | 1 | 10 | Improve combat against demon summons without harming player-owned servants |
+Free required specialty: `tyr_progression:specialty_beast`. Source audit: Source Beast taxonomy with pets/domestics protected and real movement/target UUID.
 
-**Hunter budget proof:** Any one character can purchase 62 shared ranks + one 8-rank Training Style + one 30-rank prey specialty = **100 ranks / 100 points**. The 57 paid options in the full catalog sum to 498 ranks only because mutually exclusive alternatives are shown together; a character cannot buy all those alternatives. Existing choices, switch behavior, refunds and specialty gating must be validated by the Progression integrator.
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Beast Slayer** (`tyr_progression:hunter_beast_slayer`) | 12 | +3% legitimate damage/rank (+36%) against audited hostile wild beasts/dinosaurs, excluding owner pets and non-hostile livestock. |
+| **Beast Evasion** (`tyr_progression:hunter_beast_defense`) | 8 | +1.5 percentage points/rank (+12 pp) evasion against direct hostile wild Beast attacks. |
+| **Apex Pursuit** (`tyr_progression:hunter_beast_mastery`) | 10 | After real hit marking Beast quarry, +2% chase speed/rank (+20%) while grounded approaching same living target inside 24 blocks; no flight. |
+
+#### Arthropod specialty — 12 + 8 + 10 = 30 points
+
+Free required specialty: `tyr_progression:specialty_arthropod`. Source audit: Actual spider poison/web provenance, source attacks and Bane of Arthropods stacking.
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Arthropod Slayer** (`tyr_progression:hunter_arthropod_slayer`) | 12 | +3% legitimate damage/rank (+36%) to tagged arthropod targets; not a spider biome or web blocks. |
+| **Venom Guard** (`tyr_progression:hunter_arthropod_defense`) | 8 | -2% legitimate Arthropod-origin poison damage/duration OR direct hit damage/rank (-16%), choose single eligible source to prevent double apply. |
+| **Webbreaker** (`tyr_progression:hunter_arthropod_mastery`) | 10 | Reduce source-confirmed spider-web movement slowdown 6%/rank (60% full) while real hostile Arthropod prey has trapped player; no universal cobweb pass-through. |
+
+#### Plant specialty — 12 + 8 + 10 = 30 points
+
+Free required specialty: `tyr_progression:specialty_plant`. Source audit: Creeper classified as Plant by TMM, explosion actor source; no crop loot.
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Plant Slayer** (`tyr_progression:hunter_plant_slayer`) | 12 | +3% real player-origin physical/shot damage/rank (+36%) to living Plant prey, including Creeper only by audited TMM taxonomy. |
+| **Spore Guard** (`tyr_progression:hunter_plant_defense`) | 8 | -2% real Plant-creature-origin direct hit damage/rank (-16%); not all poison or any plant block. |
+| **Creeper Ward** (`tyr_progression:hunter_plant_mastery`) | 10 | -2% actual Creeper/charged Creeper-source explosion damage/rank (-20%); TNT, Ghasts and other explosions unchanged. |
+
+#### Elemental specialty — 12 + 8 + 10 = 30 points
+
+Free required specialty: `tyr_progression:specialty_elemental`. Source audit: Source elemental mob roster and factual per-element vulnerability IDs, no arbitrary element-name inference.
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Elemental Slayer** (`tyr_progression:hunter_elemental_slayer`) | 12 | +3% real damage/rank (+36%) versus verified living elemental enemies, independent of current biome or spell animation color. |
+| **Primordial Guard** (`tyr_progression:hunter_elemental_defense`) | 8 | -2% direct attack damage/rank (-16%) from valid living Elemental target as true attacker, not all elemental magic in world. |
+| **Elemental Analysis** (`tyr_progression:hunter_elemental_mastery`) | 10 | If Hunter actually uses a documented elemental weakness against corresponding live Elemental quarry, +2% hit damage/rank (+20%); unknown weaknesses fail closed. |
+
+#### Ooze specialty — 12 + 8 + 10 = 30 points
+
+Free required specialty: `tyr_progression:specialty_ooze`. Source audit: Ooze/Slime child-split farming and Sapient Slime owned ally protections; source sticky debuff tag.
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Ooze Slayer** (`tyr_progression:hunter_ooze_slayer`) | 12 | +3% real hit damage/rank (+36%) against true Slime/Ooze prey, not all liquids. |
+| **Slime Resilience** (`tyr_progression:hunter_ooze_defense`) | 8 | -2% authentic Ooze-origin direct damage/rank (-16%), not generic fall damage. |
+| **Viscous Tactics** (`tyr_progression:hunter_ooze_mastery`) | 10 | +2% melee hit damage/rank (+20%) to Ooze quarry while player has a debuff truly inflicted by that ooze, not arbitrary Slowness potion. |
+
+#### Demon specialty — 12 + 8 + 10 = 30 points
+
+Free required specialty: `tyr_progression:specialty_demon`. Source audit: Goety/Occultism demon classification, summoned actor/owner UUID and player-friendly checks.
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Demon Slayer** (`tyr_progression:hunter_demon_slayer`) | 12 | +3% true Hunter direct/shot damage/rank (+36%) to source-tagged Demon subtype creatures, not all Goety/Occultism or Nether mobs. |
+| **Infernal Guard** (`tyr_progression:hunter_demon_defense`) | 8 | -2% real Demon-creature-origin direct hit damage/rank (-16%), source-specific. |
+| **Exorcist** (`tyr_progression:hunter_demon_mastery`) | 10 | +2% direct damage/rank (+20%) to genuine HOSTILE summoned Demon quarry with source summon owner, not friendly owned servants or every undead. |
+
+**Hunter budget proof:** 13 shared paid nodes = 62 ranks; exactly ONE of two training nodes = 8; exactly THREE nodes from ONE selected Favored Prey category = 30; one full Hunter buys **17 paid nodes / 100 one-point ranks**. The catalog shows **57 paid options**, with 498 possible displayed rank slots because most branches are mutually exclusive. The original 14 free licenses do not cost advancement points.
+
+**Fae source discrepancy:** the earlier Hunter concept included Fae, but the current `dev/progression` fourteen free choices do **not**. Do not silently create `specialty_fae`, reassign an established ID, or guess which mobs count; ask owner/source taxonomy review before extending the registry.
+
+**Important source holds:** Hunter old 17 bought nodes were 238 points under old escalating costs, and the current 31-node live Hunter must not be overwritten by this design. Verify `equipment_care` `slot:all`, bow/crossbow `fast_hands` true semantics, source rarity/armor stacking, real player-shot arrows, Monster Lore private UI and no free x-ray, pet/hostile taxonomy, native Trial of Venom, source 10-hour mutagen handling, and unified MXP kill-vs-prey doubling rebalancing.
 
 ## Other eight specialist Paths and universal Core
 
