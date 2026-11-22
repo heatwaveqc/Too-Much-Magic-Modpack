@@ -107,9 +107,11 @@ and mutation persistence are NOT proven by server smoke alone.
 
 Other mods download by packwiz; selected first-party JARs bundled.
 Packwiz installs/updates mods directly from the immutable hash-pinned pack.
-Full client inventory verification is optional and can be run offline with
-scripts/audit_client_inventory.py from the TMM repository after installation;
-the packaged tmm-qa-expected-mods.json records the expected client JAR hashes.
+Full client inventory verification is optional, not an executable launch gate.
+From a TMM repository checkout after installing the Prism instance, run:
+  py -3 scripts/audit_client_inventory.py "C:\\path\\to\\Prism instance\\.minecraft"
+This read-only audit uses the packaged tmm-qa-expected-mods.json to verify the
+installed client JAR set and hashes; it never starts Minecraft or Packwiz.
 WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
 plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
