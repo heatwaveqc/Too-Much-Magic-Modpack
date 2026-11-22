@@ -31,4 +31,5 @@ jobs:
       - name: Actually download the four links as a Prism client would
         run: python3 scripts/verify_client_download_links.py --download
       - name: Do not assemble, boot or publish Minecraft here
-        run: echo "PASS: four repaired official ForgeCDN URLs work and original binary SHA-1s match. No game smoke authorized by PR."
+        run: |
+          echo "PASS: four repaired official ForgeCDN URLs work and original binary SHA-1s match. No game smoke authorized by PR."
