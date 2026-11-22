@@ -1,0 +1,46 @@
+# Tooltip / overlay provider audit for #237 — Progression promotion handoff
+
+**Scope / status:** 2026-11-21 source-level audit of installed **ProjectE PE1.1.0**, **Project Expansion 1.0.6**, **Replication 1.2.7**, **Jade 15.10.6**, and **JEI 19.64.0.455**. Source-backed compatibility policy is **reviewable for promotion to `dev/progression`** after quick CI, but NOT verified with published upstream binary bytecode, server launch, client rendering or multiplayer tests. Do not promote directly into `test/full-integration` without designated integration writer's reconciled frozen donor/review.
+
+## Source receipts and provider verdicts
+
+| Provider / native entry point | Runtime readout | Per-item valuation leak? | Decision / existing guard |
+|---|---|---|---|
+| ProjectE `events/ToolTipEvent.java` | `emc.projecte.tooltip[.stack][.with_sell]`, knowledge lines, `emc.projecte.stored` | **Yes**, price for current stack | `TooltipValueHider` removes exact numeric and knowledge keys pre Stone; after Stone requires **current native learned item** for price. Stored EMC remains after Stone even if item unlearned. Pedestal/tag text and Divining Rod **chat** unchanged |
+| Project Expansion `events/ItemTooltipEvents.java` | LOW-priority appended checkmark or translated `text.projectexpansion.learned/not_learned` | **Yes**, independently emitted learned state | Item-tooltip LOWEST filter removes only exact learned status before Stone; alchemical collection unaffected |
+| Replication `client/ClientEvents.java` | `RenderTooltipEvent.GatherComponents` `MatterTooltipComponent` or `tooltip.replication.matter_value` Shift hint | **Yes**, ingredient's matter valuation | LOWEST gather-components filter removes source type and exact key before **separate** first Replica Ingot, including terminal-hover items; after ingot honors native display options |
+| ProjectE `integration/jade/JadeDataProvider.java` | Jade `projecte:emc_provider` block's `IEMCProxy` value | **Yes**, block valuation independent from item tooltip | `ProjecteEmcJadePlugin` post-collection filter removes **only native tagged element** without Stone, without native knowledge of block item, or if lease/viewer invalid. No generic Jade disable |
+| Project Expansion `integrations/jade/JadeDataProvider.java` → `integrations/Common.registerCommonTooltips` | `projectexpansion:provider`: stored EMC, generation rate, relay bonus, capacity, import/export limits, color, matter, owner, NBT filter | **No individual stack appraisal** (operational block state) | **Preserve** machine/owner diagnostics, not a second ProjectE block-price feed. Do not remove the entire provider (would strip unrelated diagnostics) |
+| Replication `compat/jade/MatterTankComponentProvider.java` | `replication:matter_tank` amount/progress bar, tank material | **No ingredient matter valuation**, only stored tank contents | **Preserve** legitimate tank status; native item-tank storage description also preserved |
+| ProjectE `integration/recipe_viewer/jei/PEJeiPlugin.java` | Recipe categories, catalysts, subtypes and GUI click targets; standard hovered item stacks use regular item tooltip event | **No independent ingredient appraisal** found | Reuse native item tooltip gate; JEI hover with null event entity uses current local player's native knowledge |
+| Project Expansion `integrations/jei/JeiPlugin.java` | Recipe transfer, ingredient search | **No additional item-price provider** | No separate adapter |
+| Replication `compat/JEICompat.java` | Subtype identity for tank/blueprint and terminal extra areas | **No item matter-valuation provider** | No separate adapter |
+| ProjectE `integration/recipe_viewer/jei/CollectorRecipeCategory.java` + Project Expansion `mixin/CollectorRecipeCategoryMixin.java` | `FuelUpgradeRecipe.upgradeEMC()`: **collector fuel upgrade recipe cost** in JEI's recipe extras | **Not an ingredient item's standalone appraised EMC**, but *is* a numerical EMC figure | **Explicit scope distinction**, not silently censored: current personal learned-only rule concerns per-item appraisal, while this is recipe/upgrade cost. If owner wants all JEI recipe-cost numbers hidden before Stone, that is a **separate requested UX scope**; don't inject competing cancelable mixins into the two upstream handlers without that choice |
+| Project Expansion `block/BlockCollector.java`, `BlockPowerFlower.java`, `BlockRelay.java`, `BlockEMCLink.java` | Native item hover on machine production/transfer/storage capacities, stack production | **Not native EMC appraisal**, but shows production/resource specifications | Preserve useful operational equipment stats; unrelated `emc.projecte.tooltip...` appraisals on these items are still personally gated |
+| Project Expansion `gui/EMCDisplay.java` | Top-corner **personal EMC wallet balance** and gain/loss per second | **Not per-item valuation** | Preserve wallet HUD under user's native client setting, no global config mutation. Test for no stale data across logout |
+| ProjectE `gameObjs/gui/AbstractCollectorScreen.java` | Live collector and Klein Star **stored** EMC values | **Not per-item valuation** | Preserve actual machine operation |
+| ProjectE Energy Converters `projecte-energy-0.1.4.jar` | Additional machine readouts may exist | **Unverified** | Exact pinned 0.1.4 binary-only source unavailable in this audit; **do not assert no alternate value overlay**. Manual B/C inspection required, and a source follow-up if an actual independent item-price overlay is found |
+| ProjectE/Project Expansion The One Probe integrations and ProjectE EMI collector recipe | Source paths exist upstream, but **TOP/EMI are not pinned installed mods** | Not a current installed Jade/JEI runtime path | Defer unless roster changes; don't add unnecessary third-party hooks |
+
+## Pinned module receipts
+
+All pins read from `test/full-integration/mods/*.pw.toml`:
+
+- `ProjectE-1.21.1-PE1.1.0.jar` (CurseForge 6611984; SHA1 `24fb5997727453a15e956522761a3f586e646c2a`)
+- `projectexpansion-1.21.1-1.0.6.jar` (Modrinth F5C1OobM; SHA512 `97e832da2ca03309f4ef875b42a9250bba3798453f271f82b441e7c0bf739e103ee9f4274839b5e4d9a154a44167cc0f8169bd97ed37b3d16e7e09d34cfe3c85`)
+- `Replication-1.21.1-1.2.7.jar` (CurseForge 7662870; SHA1 `bb433ec94394e960ba26fc2e7fd5537fcb7fbe50`)
+- `Jade-1.21.1-NeoForge-15.10.6.jar` (Modrinth eYz2YBGT; SHA512 `dad9755dce8d85d914fc4df2baa0211f13e5839a71c1925fdd01f69081a95e30a2934e6273f8b01f0169adebe7a9dae57a8d904de0c4cb36dc17369bb474f0f2`)
+- `jei-1.21.1-neoforge-19.64.0.455.jar` (Modrinth iv3KiVkE; SHA512 `fdd02e57ce4dcf20b69860a5ace1b97d9a771486241179cf9edfe71e30c69bb4003b046d0cce8d8c4913b9689f1d8b04cf0542b0b04a6cf0b3b0465f3bb11702`)
+- `projecte-energy-0.1.4.jar` (CurseForge 9072881; SHA1 `22e6a476508b9d9d9fa35cbfdecf5677ec5c623c`).
+
+**Provider source audit:** `sinkillerj/ProjectE:mc1.21.1`, `DonovanDMC/ProjectExpansion@168bcf2491b9fde679295fd412ad9c93fd3d93f1`, `Buuz135/Replication:1.21`, and `Snownee/Jade:1.21-neoforge`. These are upstream source snapshots, **not proof** of the actual published artifact bytes. CI did compile against exact pinned Jade's Modrinth compile-only artifact, not against all remaining published external jars.
+
+## Readiness and engineering constraints
+
+- **Code ready:** the owner-approved per-item appraisal, learned indicator, Jade ProjectE block-value and Replication item matter gate have a single feature PR #464 against `dev/progression`. Nothing in the source audit justifies new global config switches, unrelated Jade-provider removal or broad text regexes. Added pure `TooltipLinePolicyTest` regressions to protect this boundary.
+- **Still technically pending:** published ProjectE/Expansion/Replication/JEI runtime binary parity, actual JEI ItemTooltipEvent invocation path, ProjectE Energy Converters' custom readouts, and optional plugin registration/priority in a real client. These are **engineering and QA evidence gaps**; not proven PASS.
+- **Possible owner UX decision (outside approved per-item tooltip scope):** should JEI `FuelUpgradeRecipe.upgradeEMC` **recipe costs** be suppressed before Stone? Current source preserves them; don't present this as a demonstrated per-item price leak.
+- **B (verified in-world):** attachment/network persistence, four independent milestone combinations, optional Jade/ProjectE runtime module load, no crash/registry conflict. **C (manual):** new player/Stone/learned/unlearned/forgotten/Tome, Shift, JEI item stack preview, Project Expansion item output, live Jade block name and price, Replication terminal/Shift and tank info, machine diagnostics, personal wallet HUD, logout/new world, two players and native Divining Rod numerical chat exception.
+- **Owner authorization:** no comprehensive pack assembly, server boot, Prism client package or gameplay acceptance authorized by this audit. A quick-CI-green feature PR is **eligible for review**, not automatically merged or marked gameplay complete. The designated Progression writer merges to `dev/progression`; designated full integration writer later reconciles and promotes a frozen coherent donor.
+
+**Live implementation pointer:** [PR #464](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/464) at the latest head in its PR. Do not infer current SHA from this source report; read actual PR status/CI at merge time.
