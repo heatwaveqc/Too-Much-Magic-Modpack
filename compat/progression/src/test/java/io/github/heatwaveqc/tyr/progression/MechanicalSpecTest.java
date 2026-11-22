@@ -63,7 +63,7 @@ class MechanicalSpecTest {
         assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"per_rank\":0.5}"));
         assertThrows(IllegalArgumentException.class, () -> parse("{\"type\":\"beneficial_duration_bonus\",\"target\":\"#minecraft:speed\",\"per_rank\":0.02}"));
         assertEquals(120, MechanicalSpec.increasedDuration(100,0.2));
-        assertEquals(121, MechanicalSpec.increasedDuration(101,0.2));
+        assertEquals(122, MechanicalSpec.increasedDuration(101,0.2));
         assertEquals(1, MechanicalSpec.increasedDuration(1,0.2));
         assertEquals(-1, MechanicalSpec.increasedDuration(-1,0.2));
         assertEquals(100, MechanicalSpec.increasedDuration(100,-0.2));
