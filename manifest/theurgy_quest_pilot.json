@@ -617,19 +617,21 @@
         -5
       ],
       "icon": "minecraft:nether_star",
-      "section": "This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded.",
+      "section": "reformation",
       "node_role": "advanced_capstone",
       "criterion": {
         "type": "checkmark"
       },
       "reward": {
         "xp": 70,
-        "item": "reformation",
-        "count": "Understand high-cost post-acquisition duplication"
+        "item": "minecraft:quartz",
+        "count": 4
       },
       "atlas_source": "TH-19",
       "completion_honesty": "manual acknowledgement of described operation/knowledge; no operation event detected",
-      "status": "source-authored; loaded registry and client QA pending"
+      "status": "source-authored; loaded registry and client QA pending",
+      "description": "This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded.",
+      "icon_reason": "The Nether Star is a sample-gated example, never a quest reward"
     }
   ]
 }
