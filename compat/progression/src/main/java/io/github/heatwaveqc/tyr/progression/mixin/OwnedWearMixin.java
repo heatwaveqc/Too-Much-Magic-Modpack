@@ -12,7 +12,10 @@ import java.util.function.Consumer;
 @Mixin(ItemStack.class)
 public abstract class OwnedWearMixin {
     @ModifyVariable(method="hurtAndBreak(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;Ljava/util/function/Consumer;)V",at=@At("HEAD"),argsOnly=true,ordinal=0)
-    private int tmm$ownedUnbreaking(int damage,ServerLevel level,ServerPlayer player,Consumer<Item> onBreak){
+    // Mixin's @ModifyVariable captures the modified value, then the ORIGINAL target arguments.
+    // Even though the original damage is not otherwise needed, its int slot is required
+    // before ServerLevel. Without this slot, Mixin aborts during ItemStack transformation.
+    private int tmm$ownedUnbreaking(int damage,int originalDamage,ServerLevel level,ServerPlayer player,Consumer<Item> onBreak){
         return OwnedWear.filter(player,level,(ItemStack)(Object)this,damage);
     }
 }
