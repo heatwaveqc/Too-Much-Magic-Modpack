@@ -32,7 +32,8 @@ def git(root: Path, *args: str) -> str:
 
 
 def content_at_head(root: Path, path: str) -> str:
-    return git(root, "show", "HEAD:" + path)
+    # Preserve trailing newline in the immutable Git blob when comparing pins.
+    return subprocess.check_output(["git", "-C", str(root), "show", "HEAD:" + path], text=True)
 
 
 def packwiz_update(index: str, slug: str, digest: str) -> str:
