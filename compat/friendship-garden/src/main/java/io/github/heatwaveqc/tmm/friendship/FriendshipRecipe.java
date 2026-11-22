@@ -40,6 +40,9 @@ public final class FriendshipRecipe extends CustomRecipe {
     }
 
     @Override
+    public boolean canCraftInDimensions(int width, int height) { return width * height >= 3; }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
         return FriendshipGardenMod.FLOWER_RECIPE.get();
     }
