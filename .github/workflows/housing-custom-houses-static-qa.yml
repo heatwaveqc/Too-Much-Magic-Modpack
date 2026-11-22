@@ -38,6 +38,22 @@ jobs:
           assert {x['id'] for x in j['houses']}>={'adventurers_inn','wizards_tower','witch_cottage'}
           print('PASS: exactly 18 approved, uniquely sourced and successfully generated NBT houses')
           PY
+      - name: Static-check authorized server/Prism packaging hooks and 36 paired QA blueprint files
+        run: |
+          python3 -m py_compile scripts/build_full_integration_prism.py
+          bash -n scripts/smoke_server.sh
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,'scripts')
+          from build_full_integration_prism import build_approved_housing_previews
+          assets = build_approved_housing_previews(Path('.').resolve())
+          assert len(assets) == 36, len(assets)
+          assert all(k.startswith('minecraft/prefab-extension/') and k.endswith('.nbt') for k in assets)
+          for name in {p.rsplit('/', 1)[-1] for p in assets}:
+              assert assets['minecraft/prefab-extension/' + name] == assets['minecraft/prefab-extension/server-cache/' + name]
+          print('PASS: actual authorized Prism builder preflight generates all 36 preview-only entries')
+          PY
       - name: Stage all 18 into BOTH roots of a marked disposable instance (NO GAME BOOT)
         run: |
           mkdir -p "$RUNNER_TEMP/qa-only"
