@@ -9,6 +9,7 @@ on:
       - 'kubejs/assets/tmm/lang/en_us.json'
       - 'kubejs/data/projecte/recipe/philosophers_stone*.json'
       - 'tests/test_occultism_equivalent_exchange_book.py'
+      - 'scripts/audit_occultism_recipe_census.py'
       - '.github/workflows/occultism-equivalent-exchange-static.yml'
   push:
     paths:
@@ -32,3 +33,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate native ritual source, guide link and no old grid bypass
         run: python3 -m unittest discover -s tests -p 'test_occultism_equivalent_exchange_book.py' -v
+      - name: Inspect frozen Experimental live recipe census (read-only)
+        run: |
+          # Only fetch the immutable QA commit from #504; no game/smoke/build.
+          git fetch --no-tags --depth=1 origin 014213fe8b82d85eabddf478243a4e7bdfa27a79
+          git show FETCH_HEAD:docs/qa/EXPERIMENTAL-2026-11-22-RESULTS/live-command-recipe-census.json.gz > "$RUNNER_TEMP/experimental-census.json.gz"
+          python3 scripts/audit_occultism_recipe_census.py "$RUNNER_TEMP/experimental-census.json.gz"
