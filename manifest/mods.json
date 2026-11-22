@@ -2832,7 +2832,7 @@
       "note": "Owner-required next QA restoration; exact file 9539454, existing pin_next_test_mods.py hash; GeckoLib already pinned. Current client Dracolich model/skin requires this mod. Exact artifact recheck and live QA required.",
       "desired": true,
       "enabled_in_pack": true,
-      "dependencies_verified": false,
+      "dependencies_verified": true,
       "packwiz_slug": "dragon-survival"
     },
     {
