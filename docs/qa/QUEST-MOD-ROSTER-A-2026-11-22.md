@@ -71,8 +71,8 @@ Runs automatically on relevant source PR changes via `.github/workflows/quest-mo
 **Owner design blockers:** None to run the Type-A source test or maintain the roster. Individual new mod inclusion still requires the usual owner approval and exact freeze policy; quest chapter designs are separate.
 
 **QA statuses**
-- A-QMOD-00 source index/catalog membership parity: **SOURCE-INSPECTED (222/222), not full local hash audit**.
-- A-QMOD-01/02/03: **NOT RUN at a checked-out full repository in this handoff until CI reports an exact run**. `--check` verifies exact pinned source hashes and determinism, but is not a smoke test.
+- A-QMOD-00 source index/catalog membership parity: **PASS (222/222), original connector inspection corroborated by test job**.
+- A-QMOD-01/02/03: **PASS — automated source-only test** on PR #500 head `09a7471ad2a56618ea1360b65af079d3b1806530`, [GitHub Actions run #45047008348](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45047008348). The run completed **success**; both `Type A (source-only) full indexed roster audit` and `Test Type A roster fixtures` steps independently reported **success**. This validates indexed Packwiz metafile bytes/hash chains and deterministic snapshot for this source SHA only, *not* downloaded jar bytes or the assembled build.
 - B/C: **NOT APPLICABLE** to an offline inventory itself. Any mod's actual runtime loading/quest navigation belongs to the separately authorized assembled-build B/C plan.
 
 **No new assembly, smoke, Prism package or client launch was triggered.**
