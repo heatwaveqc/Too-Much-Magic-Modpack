@@ -50,7 +50,8 @@ public final class HexereiEvilCraftBloodBridge {
 
     public static void register() {
         if (ModList.get().isLoaded("hexerei") && ModList.get().isLoaded("evilcraft")) {
-            NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, HexereiEvilCraftBloodBridge::rightClick);
+            // Observe prior claim/protection cancellations before handling the click.
+            NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, HexereiEvilCraftBloodBridge::rightClick);
         }
     }
 
