@@ -115,7 +115,7 @@
         "count": 2
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -135,7 +135,7 @@
         "count": 8
       },
       "depends": "Make a Wooden Pickaxe",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -155,7 +155,7 @@
         "count": 2
       },
       "depends": "Gather Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -175,7 +175,7 @@
         "count": 1
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -195,7 +195,7 @@
         "count": 3
       },
       "depends": "Gather Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -215,7 +215,7 @@
         "count": 3
       },
       "depends": "Upgrade to Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -235,7 +235,7 @@
         "count": 2
       },
       "depends": "Find Your First Iron",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -255,7 +255,7 @@
         "count": 2
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Tips & Tricks",
@@ -2233,7 +2233,7 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Iron Is Only the Beginning",
+      "title": "Pick Your First Magic",
       "quest_id": "544D501000D00000",
       "task_id": "544D801000D00000",
       "xp_reward_id": "544D601000D00001",
@@ -2246,7 +2246,7 @@
         "item": "minecraft:experience_bottle",
         "count": 2
       },
-      "depends": "Iron Pickaxe",
+      "depends": "Make a Crafting Table",
       "optional": true
     },
     {
@@ -2264,7 +2264,7 @@
         "item": "minecraft:glowstone_dust",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Pick Your First Magic",
       "optional": true
     },
     {
@@ -2320,7 +2320,7 @@
         "item": "minecraft:firework_rocket",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Pick Your First Magic",
       "optional": true
     },
     {
