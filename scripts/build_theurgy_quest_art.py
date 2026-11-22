@@ -81,7 +81,7 @@ class Panel:
             raw.append(0)
             raw.extend(self.data[y * self.w * 4: (y + 1) * self.w * 4])
         hdr = struct.pack(">IIBBBBB", self.w, self.h, 8, 6, 0, 0, 0)
-        out = (b"\\x89PNG\\r\\n\\x1a\\n" + png_chunk(b"IHDR", hdr)
+        out = (b"\x89PNG\r\n\x1a\n" + png_chunk(b"IHDR", hdr)
                + png_chunk(b"IDAT", zlib.compress(bytes(raw), 9))
                + png_chunk(b"IEND", b""))
         path.parent.mkdir(parents=True, exist_ok=True)
