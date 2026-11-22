@@ -2,12 +2,12 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v4`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v5`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
 - **One advancement point purchases exactly one skill rank. There are NO 2-point, 3-point, 4-point or 5-point ranks.** A five-point capstone must have five incremental 1-point ranks, or be split into genuinely distinct skills; it is not one costly rank.
-- For non-Monk specialist trees, **the mastery target is 100 purchasable one-point ranks**. Monk is the established 1,000-point exception. **Sea Dragon currently has only 60 assigned ranks and 40 deliberately unallocated**, while its post-Luck balance pass remains open; do not claim Sea Dragon is finished.
+- For non-Monk specialist trees, **the mastery target is 100 purchasable one-point ranks**. Monk is the established 1,000-point exception. **Sea Dragon's completed draft now has 100 individually priced ranks** across 22 abilities, only ten of which belong to Luck; numerical effects remain to be source-verified.
 - When a tree displays mutually exclusive alternatives, only the compatible combination available to **one character** needs to cost 100 points. Alternative specializations may make the entire displayed catalog exceed 100.
 - Relative to the original 300–500-point trees, the intended effect per advancement point rises. **Do not** accomplish 'fewer levels' by charging more than one point per rank: if a named skill should have fewer ranks, redistribute its remaining points among distinct useful abilities.
 - Some per-skill totals still span 10–50 ranks. Those are *one-point increments*, and the intended cumulative power remains a balancing target to verify against the actual provider and gear, **not** a promise the previous absolute `per_rank` can be copied unchanged.
@@ -19,7 +19,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 |---|---:|---:|
 | Core Skills | 27 | **100** |
 | Cave Dragon | 17 | **100** |
-| Sea Dragon | 18 | **100 target; 60 allocated / 40 open** |
+| Sea Dragon | 22 | **100** |
 | Forest Dragon | 20 | **100** |
 | Vampire | 17 | **100** |
 | Werewolf | 18 | **100** |
@@ -28,7 +28,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **211 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **215 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -282,62 +282,40 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 | Hellbound Command (`tyr_progression:cave_dragon_hellbound_command`) | 3 | 3 | Strengthen eligible player-owned demonic servants and source-verified infernal spell interactions. |
 | Infernal Dominion (`tyr_progression:cave_dragon_infernal_dominion`) | 2 | 2 | Late specialization in demon-affiliated spell potency; strong, narrowly classified and gated. |
 
-### Sea Dragon — 100-point mastery target; 60 ranks assigned, 40 unallocated
+### Sea Dragon — 100 ranks / 100 points
 
-*Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
+**Full balance-pass rewrite, not proportional redistribution.** The old 50-point Luck investment is **obsolete**. One 10-rank Abyssal Fortune skill delivers the complete intended extreme Luck ability at **10 points total**; 90 points buy independent Sea Dragon combat, movement, survivability, dragon body and magic capabilities. This is a **source-review candidate**, not runnable JSON.
 
-**Abyssal Fortune: exactly 10 one-point ranks (10 points), providing the full intended extreme Luck benefit.** The older 50-point cost is superseded, not conserved. Of the 100-point intended Sea Dragon mastery budget, **50 ranks are already assigned to the other five branches and 40 are currently unallocated** pending new balance work on aquatic powers and magic. Do **not** reassign those 40 to Luck, assume the earlier power cap is immutable, or fabricate filler skills to reach 100.
+[Complete Sea Dragon balance rationale and QA matrix](SEA-DRAGON-COMPLETE-100PT-2026-11-22.md).
 
-#### Universal Dragon Physiology & Sorcery (species-local) — 19 points
+| Branch | Skill | Ranks | Cost per rank | Candidate effect |
+|---|---|---:|---:|---|
+| Dragon Body & Personal Sorcery | **Draconic Reservoir** | 6 | **1** | +10% per rank to eligible personal magic resource maximums (+60% full); never to machinery/world tanks. |
+| Dragon Body & Personal Sorcery | **Draconic Potency** | 5 | **1** | +4% per rank eligible personally cast spell potency (+20% full); do not multiply by aquatic affinity recursively. |
+| Dragon Body & Personal Sorcery | **Draconic Scales** | 3 | **1** | +1 natural armor per rank (+3 total) while in verified Sea Dragon form; does not sell native scales again. |
+| Dragon Body & Personal Sorcery | **Draconic Claws** | 3 | **1** | +1 physical attack damage per rank (+3) on confirmed native dragon claw attacks only. |
+| Dragon Body & Personal Sorcery | **Draconic Talons** | 3 | **1** | +15% per rank claw mining speed (+45%) only for blocks native Sea Dragon can already harvest; no new tier permissions. |
+| Oceanic Movement | **Sleek Form** | 5 | **1** | +8% per rank normal submerged swim speed (+40% full), within configured movement cap; distinct from water-flow handling. |
+| Oceanic Movement | **Current Rider** | 5 | **1** | +6% per rank effective swimming movement against verified flowing water/current forces (+30% full), not a blanket speed multiplier. |
+| Oceanic Movement | **Slipstream** | 4 | **1** | +2% dodge chance per rank (+8%) against real qualifying direct hits while actively swimming; no immunity, no independent dash action. |
+| Oceanic Movement | **Ocean Leap** | 4 | **1** | +0.25 block per rank (+1 block) legal water-exit jump height or native breach control; no extra flight, wall bypass or free creative movement. |
+| Tideshaping Combat | **Tidal Strike** | 6 | **1** | +3% per rank confirmed melee damage (+18%) when Sea Dragon and prey are in water; no boost to unrelated ranged attacks. |
+| Tideshaping Combat | **Undertow** | 4 | **1** | On confirmed native claw/bite hit while swimming, apply Slowness I for +0.5 s per rank (2 s full) to valid enemies, at most once per 40 ticks per target; no new cast button. |
+| Tideshaping Combat | **Storm Channel** | 5 | **1** | +4% per rank (+20%) to verified *native* Sea Dragon lightning/breath damage when the relevant ability has been earned; no free weather control or invented storm attack. |
+| Tideshaping Combat | **Wakebreaker** | 3 | **1** | +5% per rank native Flight Spin contact damage (+15%) *while submerged*, after native Spin is legitimately unlocked; no new active attack. |
+| Abyssal Survival | **Brine Scales** | 5 | **1** | Reduce remaining eligible direct physical damage by 3% per rank (15% full) while submerged; no invulnerability or extra damage outside water. |
+| Abyssal Survival | **Deepwater Refuge** | 4 | **1** | Recover +0.2 HP/s per rank (+0.8 HP/s) while submerged after 8 s without hostile damage; never heals through lethal hit or duplicates totem effect. |
+| Abyssal Survival | **Dryland Endurance** | 5 | **1** | Increase real native Sea Dragon safe dry-land hydration duration by 10% per rank (+50% full); dehydration still occurs and cannot be disabled. |
+| Abyssal Survival | **Pressure Adaptation** | 3 | **1** | +20% per rank (+60%) underwater mining throughput where native water penalty exists; no fictitious vanilla 'pressure damage' reduction and no harvest-tier bypass. |
+| Tidal & Abyssal Magic | **Tidal Attunement** | 5 | **1** | +4% per rank (+20%) to *verified* player-cast water/cold spell effects; spell school IDs must be traced from installed providers. |
+| Tidal & Abyssal Magic | **Stormcalling** | 4 | **1** | +4% per rank (+16%) to *verified* player-cast lightning/storm spell effects; does not grant control of thunderstorms or any new cast button. |
+| Tidal & Abyssal Magic | **Conduit Resonance** | 4 | **1** | -3% real personal mana spend per rank (-12% full) only while the actual vanilla Conduit Power effect is active; MXP credit remains based on real, source-verified nominal cost. |
+| Tidal & Abyssal Magic | **Abyssal Sovereignty** | 4 | **1** | -5% per rank verified native Sea Dragon breath cooldown (-20% full) while submerged, capped by the source mod's minimum cooldown; no new native permissions. |
+| Abyssal Fortune | **Abyssal Fortune** | 10 | **1** | TEN ranks, ONE point each, for the ENTIRE extreme Sea Dragon Luck capability. Each rank grants 1/10 of the *newly calibrated* final native Luck target; legitimate Luck-sensitive vanilla/modded results only, no raw drop duplication. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Draconic Reservoir (`tyr_progression:sea_dragon_draconic_reservoir`) | 3 | 3 | Massive bonus to personally usable maximum magic resource capacity; never machine/world storage. |
-| Draconic Potency (`tyr_progression:sea_dragon_draconic_potency`) | 2 | 2 | Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion. |
-| Draconic Scales (`tyr_progression:sea_dragon_draconic_scales`) | 4 | 4 | Species natural armor; deliberately inefficient per SP versus specialized martial defense. |
-| Draconic Claws (`tyr_progression:sea_dragon_draconic_claws`) | 4 | 4 | Real dragon form physical strike boost; not global magic damage. |
-| Draconic Talons (`tyr_progression:sea_dragon_draconic_talons`) | 6 | 6 | Improve legal dragon claw harvest rate, not tool-tier bypass. |
+| **Total** | **22 paid skills** | **100** | **1** | **10-point full Luck feature, 90 points other Sea Dragon capabilities** |
 
-#### Tideshaping — 8 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Current Rider (`tyr_progression:sea_dragon_current_rider`) | 4 | 4 | Improve movement control in water, including currents. |
-| Tidal Strike (`tyr_progression:sea_dragon_tidal_strike`) | 2 | 2 | Enhance wet-target combat and native aquatic attacks, not generic damage. |
-| Undertow (`tyr_progression:sea_dragon_undertow`) | 2 | 2 | Cooldown-limited pull/slow applied to legal targets without moving world water blocks. |
-
-#### Abyssal Defense — 8 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Pressure Adaptation (`tyr_progression:sea_dragon_pressure_adaptation`) | 4 | 4 | Reduce underwater environmental penalties. |
-| Brine Scales (`tyr_progression:sea_dragon_brine_scales`) | 2 | 2 | Situational protection while submerged; no blanket armor bonus on land. |
-| Deepwater Refuge (`tyr_progression:sea_dragon_deepwater_refuge`) | 2 | 2 | Bounded underwater healing or defense with a meaningful resource/cooldown cost. |
-
-#### Swimmer's Grace — 9 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Sleek Form (`tyr_progression:sea_dragon_sleek_form`) | 5 | 5 | Increase underwater speed, capped against sprint/exotic gear. |
-| Slipstream (`tyr_progression:sea_dragon_slipstream`) | 2 | 2 | Short burst dodge in water with collision safety. |
-| Ocean Leap (`tyr_progression:sea_dragon_ocean_leap`) | 2 | 2 | Leap from water and control reentry without free flight. |
-
-#### Tidal & Abyssal Magic — 6 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Tidal Attunement (`tyr_progression:sea_dragon_tidal_attunement`) | 3 | 3 | Enhance verified water, ocean and cold-themed personal spell damage/effects, not arbitrary wet status. |
-| Stormcalling (`tyr_progression:sea_dragon_stormcalling`) | 2 | 2 | Enhance verified lightning/storm magic and aquatic control where supported; no unconditional world weather control. |
-| Abyssal Sovereignty (`tyr_progression:sea_dragon_abyssal_sovereignty`) | 1 | 1 | High-level sea/abyssal spell focus, not an assumption that Occultism automatically counts as ocean magic. |
-
-#### Abyssal Fortune — 10 points
-
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Abyssal Fortune (`tyr_progression:sea_dragon_abyssal_fortune`) | **10** | **10** | Each rank gives one-tenth of the **entire desired extreme Luck power**, subject to real native effect testing; no duplicate item generation or boss/quest gate bypass. |
-
-**Design gap:** 40 of Sea Dragon's 100 points are reserved for thoughtful non-Luck abilities or deeper existing aquatic disciplines; no provisional numbers have been treated as settled. **The tree is not yet fully budgeted.**
-
+**Native abilities remain free:** underwater breathing, sea vision, growth, hydration, flight/spin, storm breath, existing species claws/diet and any provider mana regeneration. No duplicate native unlocks, no new standalone attack hotkeys, no unsourced water-school tags, and no fake pressure damage. Abilities requiring Dragon Survival hooks must be verified against the exact pinned binary before gameplay activation.
 ### Forest Dragon — 100 ranks / 100 points
 
 *Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
