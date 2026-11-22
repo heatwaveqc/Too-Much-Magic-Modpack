@@ -178,7 +178,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "5a6ae3f15dd2f181c910257735f0dc5d38be698ef9c4a9e5927e4341578b17c2"
+hash = "13465c68200588ed60e4bb916023aa21454e1cfe2f8dae284b3031808e8bf7f1"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -262,7 +262,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "90f118a0aedb829e2a2aecefcebf30abda0895b2b28c1949044e5d1b43528aab"
+hash = "88fe5fc566a54a3c5897ae34c8b5e15d4abcb30c8e54c90605582318ece2f490"
 
 [[files]]
 file = "config/improvableskills.cfg"
