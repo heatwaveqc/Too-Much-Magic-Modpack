@@ -2,7 +2,7 @@
 
 **Working branch:** `test/full-integration`. **Target:** Minecraft 1.21.1 / NeoForge 21.1.265 / Java 21.
 
-> **Next owner playtest — 2026-11-22:** [ONE Unstable + Experimental differential checklist](DUAL-CHANNEL-TEST-2026-11-22.md) and [Codex offline A runner](../../scripts/qa_compare_channels.py). This is the current planned **dual-channel** worklist, superseding the 2026-11-17 worksheet only for the upcoming playtest. It does **not** supersede old test evidence, authorize any server/Prism build, or assert a matching 222-mod Unstable Prism ZIP has been published. Both channels must be identified by their installed immutable source SHA. The older Unstable release is not a comparable 222-mod control.
+> **Next owner playtest — 2026-11-22:** [ONE Unstable + Experimental differential checklist](DUAL-CHANNEL-TEST-2026-11-22.md) and [Codex offline A runner](../../scripts/qa_compare_channels.py). **Only test TMM-authored code, configuration and cross-mod integration** plus focused reported bugs and the Ars Elemental beta risk. Trust released upstream mods' native mechanics without routine manual regression tests. The new checklist supersedes the 2026-11-17 worksheet **for this upcoming playtest** without erasing older evidence. Both exact 222-mod artifacts exist: [frozen U control #14742659598](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44995616598/artifacts/14742659598) and [four-update E #14739742394](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44985722108/artifacts/14739742394). Both are packages, **not client or gameplay PASS**. The older rolling Unstable release is not a valid control.
 
 
 ## Start here
@@ -11,7 +11,7 @@
 - **[Required QA execution type standard](QA-EXECUTION-TYPES.md):** A/B/C for every future build; separate from canonical testing levels.
 
 - **[Canonical QA/test levels](TEST-LEVELS-AND-TERMINOLOGY.md):** Repository CI, Module CI, Integration Preflight, manual Integration Assembly, Server Boot Smoke, Prism QA Package, Client Launch Smoke and Gameplay Acceptance. Record exactly which level ran.
-- **[Codex next-test checklist](NEXT-TEST-CODEX-CHECKLIST.md):** ordered, executable quick checks, branch/readiness gates, in-game command recipes, and minimal setup tests. Codex should read it before testing or proposing a new QA build.
+- **[Codex next-test checklist](NEXT-TEST-CODEX-CHECKLIST.md):** ordered, executable quick checks, branch/readiness gates, in-game command recipes, and minimal setup tests. Codex should read it only for historical source/command context; the November 22 differential checklist is the active owner execution scope and excludes native-only upstream testing.
 - **[Current test status](CURRENT-TEST-STATUS.md):** living, date- and SHA-scoped handoff. Record each attempted case, result, exact evidence, and unresolved blockers. It is not a substitute for historical test records.
 - **[Live-test inclusion register](LIVE-TEST-INCLUSION-REGISTER.md):** required intake for features that any development chat or PR reports **ready for a live test**. All such features must be attempted for the next comprehensive live build, regardless of earlier `deferred_pending_runtime` classification.
 - [Historical test ledger](../TESTING.md): past GitHub Actions runs and bounded smoke results.
