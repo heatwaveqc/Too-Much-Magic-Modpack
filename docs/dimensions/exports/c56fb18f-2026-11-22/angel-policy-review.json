@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "REVIEW_INPUT_NOT_APPLIED",
+  "policy_source": "docs/dimensions/ACCESS-SURVIVAL-REGISTRY.md: initial owner-selected six destinations",
+  "approved_allow_ids_observed_in_save": [
+    "aether:the_aether",
+    "eternal_starlight:starlight",
+    "minecraft:overworld",
+    "the_bumblezone:the_bumblezone",
+    "theaurorian:the_aurorian",
+    "twilightforest:twilight_forest"
+  ],
+  "saved_registry_complement_for_native_banned_dimensions_review": [
+    "deeperdarker:otherside",
+    "irons_spellbooks:pocket_dimension",
+    "mahoutsukai:reality_marble",
+    "minecraft:the_end",
+    "minecraft:the_nether",
+    "neovitae:dungeon",
+    "pastel:deeper_down",
+    "unicornacademy:unicorn_island",
+    "voidscape:void",
+    "wardentools:abyssdim",
+    "witchery:dream_world",
+    "witchery:mirror_world",
+    "witchery:nightmare_world"
+  ],
+  "resource_only_unconfirmed": [
+    "botania:skybox"
+  ],
+  "note": "Complement is exhaustive only for this saved registry. Native blacklist is not fail-closed for future dimensions. No config changes."
+}
