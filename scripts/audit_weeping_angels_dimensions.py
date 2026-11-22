@@ -134,6 +134,8 @@ def main() -> int:
     parser.add_argument("--require-census", action="store_true",
                         help="Fail closed if no runtime registry evidence was supplied")
     parser.add_argument("--jar-dir", type=Path, help="Optional read-only JAR dimension JSON survey (advisory)")
+    parser.add_argument("--expect-integration-commit",
+                        help="Exact frozen build SHA required for the supplied census; reject mismatched snapshots")
     options = parser.parse_args()
     try:
         banned = source_check()
@@ -149,6 +151,11 @@ def main() -> int:
             print("CENSUS BLOCKED: no loaded registry supplied; JAWR Spirit World and other dynamic levels unverified")
             return 2 if options.require_census else 0
         loaded, sha = read_census(options.census)
+        if options.expect_integration_commit:
+            demand(SHA.fullmatch(options.expect_integration_commit) is not None,
+                   "Expected integration commit must be a full 40-character SHA")
+            demand(sha == options.expect_integration_commit,
+                   f"Census is for build {sha}, not expected {options.expect_integration_commit}")
         check_loaded(loaded, banned)
         print(f"POLICY PASS for supplied loaded-registry census at {sha}: "
               f"{len(ALLOWED)} permitted / {len(loaded) - len(ALLOWED)} excluded loaded dimensions")
