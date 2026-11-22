@@ -2,6 +2,9 @@
 
 **Working branch:** `test/full-integration`. **Target:** Minecraft 1.21.1 / NeoForge 21.1.265 / Java 21.
 
+> **Next owner playtest — 2026-11-22:** [ONE Unstable + Experimental differential checklist](DUAL-CHANNEL-TEST-2026-11-22.md) and [Codex offline A runner](../../scripts/qa_compare_channels.py). This is the current planned **dual-channel** worklist, superseding the 2026-11-17 worksheet only for the upcoming playtest. It does **not** supersede old test evidence, authorize any server/Prism build, or assert a matching 222-mod Unstable Prism ZIP has been published. Both channels must be identified by their installed immutable source SHA. The older Unstable release is not a comparable 222-mod control.
+
+
 ## Start here
 
 - **[Active unstable QA checklist — run 44108614695](UNSTABLE-QA-2026-11-17.md):** Codex A offline/source, owner B exact in-game commands, owner C play/setup. Frozen installed SHA `322cf3f9`; update its [results ledger](UNSTABLE-QA-RESULTS-2026-11-17.md). This supersedes yesterday's worksheet for this build, not the historical evidence.
