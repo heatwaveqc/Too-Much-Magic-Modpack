@@ -6,6 +6,8 @@ on:
       - 'tests/test_qa_update_smoke_guard.py'
       - 'scripts/apply_qa_update_overlay.py'
       - 'tests/test_apply_qa_update_overlay.py'
+      - 'scripts/prepare_qa_update_economy_compile.py'
+      - 'tests/test_prepare_qa_update_economy_compile.py'
       - '.github/workflows/qa-update-smoke.yml'
       - '.github/workflows/qa-update-smoke-quick.yml'
   push:
@@ -16,6 +18,8 @@ on:
       - 'tests/test_qa_update_smoke_guard.py'
       - 'scripts/apply_qa_update_overlay.py'
       - 'tests/test_apply_qa_update_overlay.py'
+      - 'scripts/prepare_qa_update_economy_compile.py'
+      - 'tests/test_prepare_qa_update_economy_compile.py'
       - '.github/workflows/qa-update-smoke.yml'
       - '.github/workflows/qa-update-smoke-quick.yml'
 permissions:
@@ -32,6 +36,7 @@ jobs:
         run: |
           python3 -m py_compile scripts/qa_update_smoke_guard.py tests/test_qa_update_smoke_guard.py scripts/apply_qa_update_overlay.py tests/test_apply_qa_update_overlay.py
           python3 -m unittest discover -s tests -p 'test_apply_qa_update_overlay.py' -v
+          python3 -m unittest discover -s tests -p 'test_prepare_qa_update_economy_compile.py' -v
           python3 -m unittest discover -s tests -p 'test_qa_update_smoke_guard.py' -v
       - name: Confirm no automatic game-run events are configured
         run: |
