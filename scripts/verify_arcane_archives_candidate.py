@@ -28,7 +28,7 @@ assert arcane["side"] == "both"
 assert arcane["download"] == {
     "hash-format": "sha1",
     "hash": "082f5f560981c04c487b9c1f5e5ec9976f8ec2db",
-    "mode": "metadata:curseforge",
+    "url": "https://mediafilez.forgecdn.net/files/8985/321/ArcaneArchives-1.0.2%2BNeoforge-1.21.1.jar",
 }
 assert arcane["update"]["curseforge"] == {
     "file-id": 8985321,
