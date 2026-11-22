@@ -16,8 +16,8 @@
 		},
 		{
 			image: "tmm:textures/questpics/theurgy/vessels.png"
-			x: 12.0d
-			y: -4.0d
+			x: 13.0d
+			y: -8.5d
 			width: 8.0d
 			height: 2.4d
 			rotation: 0.0d
@@ -32,8 +32,8 @@
 		},
 		{
 			image: "tmm:textures/questpics/theurgy/reformation.png"
-			x: 29.0d
-			y: -10.5d
+			x: 30.0d
+			y: -13.0d
 			width: 8.0d
 			height: 2.8d
 			rotation: 0.0d
