@@ -33,7 +33,8 @@ ARS = {
     "filename": "ars_elemental-1.21.1-0.7.11.3.jar",
     "version": "ars_elemental-1.21.1-0.7.11.3",
 }
-MAX_JAR_BYTES = 40 * 1024 * 1024
+## Goety 3.2.3 is ~94 MB; permit large first-party game content, still cap size.
+MAX_JAR_BYTES = 160 * 1024 * 1024
 
 def fetch(url: str, *, jar: bool = False) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "TooMuchMagic-UpdateTrial/1.0"})
