@@ -115,8 +115,10 @@ def render(spec: dict) -> dict[str, str]:
     for i, node in enumerate(quests):
         key = node["key"]
         xid = id_for("quest", key)
-        mapping[key] = {field + "_id" if field != "quest" else "quest_id":
-                        id_for(field, key) for field in PREFIX}
+        mapping[key] = {"quest_id": id_for("quest", key),
+                        "task_id": id_for("task", key),
+                        "xp_reward_id": id_for("xp", key),
+                        "item_reward_id": id_for("item", key)}
         lines = [
             "\t\t{",
             f"\t\t\tid: {q(xid)}",
