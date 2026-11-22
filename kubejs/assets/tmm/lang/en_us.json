@@ -1,4 +1,10 @@
 {
+  "book.tmm.equivalent_exchange.description": "The twelve offerings needed to bargain for the Philosopher's Stone.",
+  "book.tmm.equivalent_exchange.guidance": "Each of the twelve offerings comes from a different, closed item tag. Alternatives within one category are interchangeable, but no category replaces another. Place the offerings in the ritual bowls, then begin the 600-second ritual with a bound Marid book. This is a shared-world ritual gate, not a personal boss-kill check.",
+  "book.tmm.equivalent_exchange.guidance_title": "Twelve Tributes",
+  "book.tmm.equivalent_exchange.name": "Ritual of Equivalent Exchange",
+  "book.tmm.equivalent_exchange.recipe": "Use a bound Marid book and the Marid Crafting pentacle. Supply exactly one offering from each of the twelve tribute categories.",
+  "book.tmm.equivalent_exchange.spotlight": "The Philosopher's Stone must be forged through the Ritual of Equivalent Exchange, not a crafting grid.",
   "curios.identifier.bundle": "Bundle",
   "tmm.caerbannog": "Gateway of Caerbannog",
   "tmm.chaos_bunny": "Gateway of the Chaos Bunny of Caerbannog",
