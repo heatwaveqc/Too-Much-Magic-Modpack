@@ -47,9 +47,17 @@ jobs:
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
       - name: Audit pinned Project Expansion EMC Link account resolution (Type A bytecode only)
         run: python3 compat/economy/tools/audit_native_emc_link_offline.py "$RUNNER_TEMP/economy-compile-mods/projectexpansion-1.21.1-1.0.6.jar"
+      - name: Client optional-present and qualified native-version regression fixtures (offline)
+        run: python3 -m unittest discover -s compat/economy/tools -p 'test_verify_client_dependency_closure.py' -v
       - name: Compile Economy and execute unit tests
         working-directory: compat/economy
         run: gradle --no-daemon "-PtmmCompileModsDir=$RUNNER_TEMP/economy-compile-mods" clean build
+      - name: Verify packaged Economy dependency against exact hash-verified Jade provider
+        run: |
+          python3 compat/economy/tools/verify_client_dependency_closure.py \
+            --module-jar compat/economy/build/libs/tmm_economy-0.1.0-dev.jar \
+            --provider-jar "$RUNNER_TEMP/economy-compile-mods/Jade-1.21.1-NeoForge-15.10.6.jar" \
+            --pin mods/jade.pw.toml
       - name: Verify first-party module ID
         run: |
           python3 - <<'PY'
