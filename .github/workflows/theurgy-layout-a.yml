@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "manifest/theurgy_quest_pilot.json"
+      - "manifest/quest_content.json"
+      - "manifest/quest_content_resolved.json"
       - "manifest/quest_layouts.json"
       - "scripts/build_theurgy_quest_pilot.py"
       - "docs/quest-pilots/theurgy/**"
@@ -27,5 +29,7 @@ jobs:
           python-version: "3.11"
       - name: Regenerate Theurgy preview check (Type A only)
         run: python scripts/build_theurgy_quest_pilot.py --check
+      - name: Validate integrated FTB quest content (Type A only)
+        run: python scripts/validate_quests.py
       - name: Source/graph/FTB/Packwiz contract (Type A only)
         run: python -m unittest discover -s tests -p test_theurgy_layout_a.py -v
