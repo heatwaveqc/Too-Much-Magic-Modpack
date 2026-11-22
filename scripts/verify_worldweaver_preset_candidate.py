@@ -60,11 +60,15 @@ assert main == {"server": {"force_default_world_preset": True}}
 runtime_client = load_json(ROOT / "config" / "wover" / "client.json")
 assert runtime_client["internal"]["did_present_welcome_screen"] is True
 runtime_selected = runtime_client["general"]["force_betterx_world_type"] is True
+assert runtime_selected, "The active QA preset must select the source-reviewed BetterX composition"
+runtime_main = load_json(ROOT / "config" / "wover" / "main.json")
+assert runtime_main == main, "Active server world preset must match reviewed candidate"
 
 with (ROOT / "index.toml").open("rb") as handle:
     index = tomllib.load(handle)
 indexed = {row["file"] for row in index["files"]}
 assert not any(path.startswith("docs/qa/candidates/worldweaver-304/") for path in indexed)
+assert {"config/wover/client.json", "config/wover/main.json"} <= indexed, "Both active WorldWeaver configurations must be in Packwiz"
 assert not any(ROOT.rglob("worldweaver-21.0.25.jar")), "third-party JAR must not be committed"
 
 state = "runtime already selects BetterX" if runtime_selected else "candidate awaits integration"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static verification for the unindexed Arcane Archives candidate.
+"""Static verification for the selected Arcane Archives next-QA pin.
 
 This does not download the artifact, assemble the pack, or start Minecraft.
 """
@@ -7,6 +7,8 @@ This does not download the artifact, assemble the pack, or start Minecraft.
 from pathlib import Path
 import re
 import tomllib
+import json
+import hashlib
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,9 +37,12 @@ assert arcane["update"]["curseforge"] == {
 
 index = load_toml(ROOT / "index.toml")
 indexed_paths = {entry["file"] for entry in index["files"]}
-assert "mods/arcane-archives-reborn.pw.toml" not in indexed_paths, (
-    "candidate must stay inactive until the integration writer reconciles shared files"
-)
+assert "mods/arcane-archives-reborn.pw.toml" in indexed_paths, "Approved Arcane Archives pin must be indexed"
+assert next(row for row in index["files"] if row["file"] == "mods/arcane-archives-reborn.pw.toml")["hash"] == hashlib.sha256(PIN.read_bytes()).hexdigest()
+manifest = json.loads((ROOT / "manifest/mods.json").read_text(encoding="utf-8"))
+assert any(row["id"] == "arcane-archives-reborn" and row["enabled_in_pack"] for row in manifest["mods"])
+required = json.loads((ROOT / "manifest/next-qa-target.json").read_text(encoding="utf-8"))["required_mod_ids"]
+assert "arcane-archives-reborn" in required
 assert not (ROOT / arcane["filename"]).exists(), "third-party JAR must not be committed"
 
 modonomicon = load_toml(MODONOMICON_PIN)
@@ -58,5 +63,5 @@ assert pack["versions"]["minecraft"] == "1.21.1"
 print(
     "PASS: exact Arcane Archives 1.0.2 candidate metadata; "
     f"Modonomicon {'.'.join(match.groups())} and NeoForge {pack['versions']['neoforge']} "
-    "satisfy declared minimums; candidate remains unindexed"
+    "satisfy declared minimums; pin is indexed for next QA (not gameplay accepted)"
 )
