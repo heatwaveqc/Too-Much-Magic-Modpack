@@ -1,0 +1,33 @@
+name: Type A Quest Mod Roster
+
+on:
+  pull_request:
+    paths:
+      - 'mods/**'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'manifest/mods.json'
+      - 'manifest/quest_chapters.json'
+      - 'manifest/quest_mod_roster_current.json'
+      - 'scripts/audit_quest_mod_roster.py'
+      - 'tests/test_quest_mod_roster_a.py'
+      - '.github/workflows/quest-mod-roster-a.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quest-mod-roster-a:
+    name: A-QMOD source roster & coverage inventory
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Type A (source-only) full indexed roster audit
+        run: python scripts/audit_quest_mod_roster.py --check
+      - name: Test Type A roster fixtures
+        run: python -m unittest discover -s tests -p 'test_quest_mod_roster_a.py' -v
