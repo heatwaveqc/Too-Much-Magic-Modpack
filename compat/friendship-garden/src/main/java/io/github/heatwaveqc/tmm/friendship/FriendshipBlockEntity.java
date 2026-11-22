@@ -59,10 +59,10 @@ public final class FriendshipBlockEntity extends BlockEntity {
         }
     }
 
-    public void onCrafterDeath(ServerLevel server, long now, boolean permanent) {
+    public void onCrafterDeath(ServerLevel server, long now, boolean petals, boolean permanent) {
         if (flower == null) return;
         flower = flower.onCrafterDeath(now, permanent);
-        updateFromServer(server, true);
+        updateFromServer(server, petals);
         setChanged();
     }
 
