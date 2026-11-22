@@ -7,6 +7,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BloodCauldronTransferPolicyTest {
     @Test
+    void handlesBothOwnerObservedOrdinaryBloodSources() {
+        org.junit.jupiter.api.Assertions.assertTrue(
+            BloodCauldronTransferPolicy.supportedSource("hexerei:blood_fluid"));
+        org.junit.jupiter.api.Assertions.assertTrue(
+            BloodCauldronTransferPolicy.supportedSource("evilcraft:blood"));
+    }
+
+    @Test
+    void ignoresAllOtherNativeAndExceptionalFluids() {
+        org.junit.jupiter.api.Assertions.assertFalse(
+            BloodCauldronTransferPolicy.supportedSource("irons_spellbooks:blood"));
+        org.junit.jupiter.api.Assertions.assertFalse(
+            BloodCauldronTransferPolicy.supportedSource("neovitae:essentia_vitae_source"));
+        org.junit.jupiter.api.Assertions.assertFalse(
+            BloodCauldronTransferPolicy.supportedSource("minecraft:water"));
+        org.junit.jupiter.api.Assertions.assertFalse(
+            BloodCauldronTransferPolicy.supportedSource(null));
+    }
+
+    @Test
     void emptySourceDoesNothing() {
         assertEquals(0, BloodCauldronTransferPolicy.transferable(0, 8000));
     }
