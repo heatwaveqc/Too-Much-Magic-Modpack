@@ -182,6 +182,10 @@ def main() -> None:
     # Run after imports and exact pinning, otherwise the assembler can revive them.
     from retire_teamlapen import retire
     retire(ROOT, manifest)
+    # Render original Theurgy panels before indexing resources and freezing a
+    # server-tested snapshot; no binary assets are checked into source PRs.
+    from build_theurgy_quest_art import main as install_theurgy_quest_art
+    install_theurgy_quest_art()
     git("add", "-A", "--", "mods", "config", "defaultconfigs", "kubejs",
         "manifest/quest_chapters.json", "manifest/feature-checklist.json",
         "manifest/stone_generation_policy.json", "manifest/material-ore-audit.json",
