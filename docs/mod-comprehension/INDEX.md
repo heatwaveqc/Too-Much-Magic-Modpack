@@ -465,3 +465,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-21 — Elemental [biomes/caves/shrine](mods/ars-elemental-pinned-biomes.md): exact five-biome data/TerraBlender gating, spawn/feature recipients, Vexing resource branch and parsed shrine NBT/structure tags.34companions;9/42 unchanged; no world-generation acceptance.
 
 - 2026-11-22 — Elemental [four Mages](mods/ars-elemental-pinned-mages.md): spawn/focus hostility, fixed equipment,21pool entries and native resolver/self-support; no guaranteed armor/rare drop farm or NPC mana shield.35companions;9/42 unchanged; no combat acceptance.
+
+- 2026-11-22 — [Ars family Sauce receipt](mods/ars-family-pinned-sauce.md): eight exact family JAR hashes checked, only Elemental/Elemancy supply Sauce; range intersection permits61.100 and excludes supplied29.73. Global159-pin/runtime selection not claimed verified;9/42 unchanged.

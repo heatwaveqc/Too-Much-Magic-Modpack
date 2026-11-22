@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-22 Ars family Sauce metadata
+
+- Added ars-family-pinned-sauce.md all8familyartifacts rehashed; recoveredexactElemancy792016bytes/f7e01437c86fc74e2abb2ad93554dc20c30b214b andAdditions1458261bytes/sha512pin intoexternalartifacts. OnlyElementalSauce61.100[61,) andElemancy29.73[29,) nestedproviders, samecoordinate; intersection[61,) excludes29.73 and leaves61.100solefamilysuppliedcandidate. Bothnestedhashesrecorded/no furtherjarjar. Full159pinoutsidefamilybinaryscan/runtimeclasspathnotclaimed; no loaderboot neededforboundedmetadatareceipt. Elemancyfuturerecipientaudit MUSTusecombined61.100, notjustoldembedded29.
+- Magecheckpoint8b03ead6alreadycommitted/pushed;35Elementalcompanions (familyreceiptseparate). Profileheader/evidenceupdatedtostopclaimingalready-auditedfoci/glyphs/devicesstillmissing. Historicaltable/prose awaitfullconsolidation.
+- **Next Elemental final recipe/registry and pilot35–37 reconciliation +profile rewrite** use183singularrecipes/types alreadycounted; mapremainderstocompanions/conditionalJEED/BotanyPots/debugboundary, ensurefullguide-to-endpointsubsystem+questmatrix, sourcecompleteonlywhenreviewfinished. ActualglobalSauce/runtimeacceptancelimits remainseparate. ThenElemancy1.18.3/Additions21.3.0/Arscombinedreview/othermajors.9complete33researching/nohardblocker/hourlyactive. Integration4bd316fb7811451442c4b030d59a2b3a0ede5571; relevantArspinsunchanged. Docs only/no agents/assembly/launch/runtimeedits/merge; gitlog actualpushedcheckpoint.
+
+---
+
 # Latest checkpoint — 2026-11-22 Elemental Mages
 
 - Added ars-elemental-pinned-mages.md fourNPCs: dirtbelow/Y>45/blocklight<=6, matchingfocus held+firstCurio reducesproactiveaggro/defaulttrue, different-schoolmages/retaliation/others priorities. 150health/follow48/XPbase15; fixedmediumschoolarmor/swordTouchKnockback/Apprenticebook, javaparmor switchcorrectsCFRlocalartifact. AllretaincommonProjectileHarmAmplify; pools4/5/6/6=21 orderedentries. MageResolver enoughMana bypassbutnormalonCastgrammar/events, virtualsameschoolfocus+ShaperALLmages, childpreserved. Rangedvisibility20/animation5/cooldown20 evenfailed; sharedself60/heal<=33%, Firepurify<80%harmfulMilk, Watershield<80% but nativeManaCaponlyPlayer andBubbleShieldrequirestargetcap—no promisedNPCshield.
