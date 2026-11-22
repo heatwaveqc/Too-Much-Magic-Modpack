@@ -3,6 +3,9 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 import io.github.heatwaveqc.tyr.progression.state.PersonalEnchantFilterState;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import java.util.Set;
+import java.util.List;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -30,6 +33,20 @@ public final class PersonalEnchantFilterService {
 
     public static boolean excludes(ServerPlayer player, ResourceLocation enchantment) {
         return enchantment != null && excluded(player).contains(enchantment);
+    }
+
+    /**
+     * Invoke only during native random-candidate assembly, *after* all native
+     * eligibility/tag/exclusivity filtering and *before* seeded selection.
+     * Deliberate book application and existing enchantments must not call it.
+     * Caller uses the same method for server preview and commit.
+     */
+    public static boolean removeExcludedRandomCandidates(ServerPlayer owner,
+            List<Holder<Enchantment>> nativeCandidates) {
+        Set<ResourceLocation> excluded = excluded(owner);
+        if (excluded.isEmpty()) return false;
+        return nativeCandidates.removeIf(holder -> holder != null
+            && holder.unwrapKey().map(key -> excluded.contains(key.location())).orElse(false));
     }
 
     /**
