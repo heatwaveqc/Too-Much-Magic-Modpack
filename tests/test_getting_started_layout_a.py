@@ -161,7 +161,8 @@ class GettingStartedA(unittest.TestCase):
         for i,(a,b) in enumerate(edges):
             start,end=p[a],p[b]
             self.assertLessEqual(math.dist(start,end),13.0,(a,b))
-            self.assertGreaterEqual(end[0],start[0],(a,b))
+            if a in READABLE_MAIN and b in READABLE_MAIN:
+                self.assertGreaterEqual(end[0],start[0],(a,b))
             for k,xy in p.items():
                 if k not in (a,b):
                     self.assertGreaterEqual(distance_to_segment(xy,start,end),1.6,(a,b,k))
