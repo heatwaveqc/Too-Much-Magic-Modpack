@@ -221,6 +221,22 @@ jobs:
           test "$(git branch --show-current)" = test/full-integration
           test "$(git rev-parse HEAD)" = "$(git rev-parse refs/remotes/origin/test/full-integration)"
           git add -- mods config defaultconfigs kubejs
+          # Record only the already completed server step as evidence. Never
+          # describe this artifact as client-tested, stable, or beta-approved.
+          python3 - <<'PY'
+          import json, os, pathlib
+          path = pathlib.Path('manifest/integration-lock.json')
+          data = json.loads(path.read_text())
+          trial = data['update_trial']
+          assert trial['candidate_sha'] == os.environ['QA_CANDIDATE_SHA']
+          assert trial['smoke_tested'] is False
+          trial['smoke_tested'] = True
+          trial['server_smoke_run_id'] = os.environ['GITHUB_RUN_ID']
+          trial['beta_ars_elemental_promotion_approved'] = False
+          data['client_tested'] = False
+          data['stable_promoted'] = False
+          path.write_text(json.dumps(data, indent=2) + '\n')
+          PY
           git add -- manifest/mods.json manifest/integration-lock.json pack.toml index.toml compat/economy/build.gradle
           # The immutable source must include all server-tested changes,
           # but must not include compiled JARs or any unreviewed assets.
