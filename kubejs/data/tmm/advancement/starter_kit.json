@@ -1,11 +1,8 @@
 {
   "criteria": {
-    "first_tick": {
-      "trigger": "minecraft:tick"
+    "legacy_auto_grant": {
+      "trigger": "minecraft:impossible"
     }
-  },
-  "rewards": {
-    "function": "tmm:rewards/starter_kit"
   },
   "sends_telemetry_event": false
 }
