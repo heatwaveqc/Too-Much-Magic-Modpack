@@ -1,0 +1,784 @@
+{
+  "apotheosis_jar": "Apotheosis-1.21.1-8.9.0.jar",
+  "jar_sha256": "23a8b4a21d0d8744f097c77c8a96fcba14c4b95f3b1bb542412f40dab272872e",
+  "saved_mod_versions": {
+    "apothic_enchanting": "1.6.4",
+    "apothic_attributes": "2.11.0",
+    "apothic_spawners": "1.4.0",
+    "apotheosis": "8.9.0"
+  },
+  "saved_datapacks": {
+    "Disabled": [
+      "bundle",
+      "trade_rebalance",
+      "mod/lootr:datapacks/lootr_no_advancements",
+      "mod/lootr:datapacks/lootr_no_suspicious_blocks",
+      "builtin/aether_temporary_freezing",
+      "builtin/aether_ruined_portal",
+      "mod/computercraft:resourcepacks/turtle_storage",
+      "mod/dragonsurvival:data/dragonsurvival/datapacks/ancient_stage_no_crushing",
+      "mod/dragonsurvival:data/dragonsurvival/datapacks/no_penalties",
+      "mod/forbidden_arcanus:data/forbidden_arcanus/datapacks/preview"
+    ],
+    "Enabled": [
+      "vanilla",
+      "mod_data",
+      "mod/yungsapi:locate_replacer",
+      "tectonic",
+      "neovitae_materials",
+      "voidscape_aether_compat",
+      "mod/dragonsurvival:data/dragonsurvival/datapacks/ancient_stage",
+      "mod/dragonsurvival:data/dragonsurvival/datapacks/unlock_wings"
+    ]
+  },
+  "competing_resources": [],
+  "saved_traders": {
+    "entity_regions": 24,
+    "entity_chunks": 660,
+    "traders": 1,
+    "diamond_gear_offers": [],
+    "read_errors": []
+  },
+  "named_enchanted_gear": [
+    {
+      "name": "Arachnid's Fear",
+      "item": "minecraft:diamond_sword",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_sword"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "minecraft:bane_of_arthropods": 10,
+        "minecraft:fire_aspect": 5,
+        "minecraft:looting": 5,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/arachnids_fear.json",
+      "resource_sha256": "b20c29477d58caa9f048da2a434b6a43021e5181aac7230491af24c91f583a40"
+    },
+    {
+      "name": "Arachnid's Fear",
+      "item": "minecraft:diamond_sword",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_sword"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "minecraft:bane_of_arthropods": 10,
+        "minecraft:fire_aspect": 5,
+        "minecraft:looting": 5,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/arachnids_fear.json",
+      "resource_sha256": "b20c29477d58caa9f048da2a434b6a43021e5181aac7230491af24c91f583a40"
+    },
+    {
+      "name": "Bonesplitter",
+      "item": "minecraft:diamond_axe",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_axe"
+        },
+        {
+          "count": 64,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:scavenger": 2,
+        "apothic_spawners:capturing": 2,
+        "minecraft:looting": 5,
+        "minecraft:mending": 1,
+        "minecraft:sharpness": 10,
+        "minecraft:unbreaking": 3
+      },
+      "required_mods": [
+        "apothic_enchanting",
+        "apothic_spawners"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/bonesplitter.json",
+      "resource_sha256": "63ea0975802d6dffad14f49da3df3b36bf0636a25c1215087be85dbfb708b069"
+    },
+    {
+      "name": "Bonesplitter",
+      "item": "minecraft:diamond_axe",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_axe"
+        },
+        {
+          "count": 64,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:scavenger": 2,
+        "apothic_spawners:capturing": 2,
+        "minecraft:looting": 5,
+        "minecraft:mending": 1,
+        "minecraft:sharpness": 10,
+        "minecraft:unbreaking": 3
+      },
+      "required_mods": [
+        "apothic_enchanting",
+        "apothic_spawners"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/bonesplitter.json",
+      "resource_sha256": "63ea0975802d6dffad14f49da3df3b36bf0636a25c1215087be85dbfb708b069"
+    },
+    {
+      "name": "Captive Dreams",
+      "item": "minecraft:diamond_sword",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_sword"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_spawners:capturing": 5,
+        "minecraft:looting": 4,
+        "minecraft:mending": 1,
+        "minecraft:sharpness": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_spawners"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/captive_dreams.json",
+      "resource_sha256": "55aefa6d03c3edf0bfb952a69a1c65967343e9dd0dec3d9ae8b5bac82ca982ee"
+    },
+    {
+      "name": "Captive Dreams",
+      "item": "minecraft:diamond_sword",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_sword"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_spawners:capturing": 5,
+        "minecraft:looting": 4,
+        "minecraft:mending": 1,
+        "minecraft:sharpness": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_spawners"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/captive_dreams.json",
+      "resource_sha256": "55aefa6d03c3edf0bfb952a69a1c65967343e9dd0dec3d9ae8b5bac82ca982ee"
+    },
+    {
+      "name": "Eternal Vigilance",
+      "item": "minecraft:diamond_sword",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 64,
+          "id": "minecraft:diamond"
+        },
+        {
+          "count": 32,
+          "id": "minecraft:phantom_membrane"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:life_mending": 5,
+        "apothic_enchanting:scavenger": 5,
+        "minecraft:looting": 5,
+        "minecraft:sharpness": 10,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 1000,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/eternal_vigilance.json",
+      "resource_sha256": "32ba43b30d854929065e46c60f01609a10ada8cee60d53d6c7869332bccd9aae"
+    },
+    {
+      "name": "Eternal Vigilance",
+      "item": "minecraft:diamond_sword",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 64,
+          "id": "minecraft:diamond"
+        },
+        {
+          "count": 32,
+          "id": "minecraft:phantom_membrane"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:life_mending": 5,
+        "apothic_enchanting:scavenger": 5,
+        "minecraft:looting": 5,
+        "minecraft:sharpness": 10,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 1000,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/eternal_vigilance.json",
+      "resource_sha256": "32ba43b30d854929065e46c60f01609a10ada8cee60d53d6c7869332bccd9aae"
+    },
+    {
+      "name": "Greatplate of Eternity",
+      "item": "minecraft:diamond_chestplate",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_chestplate"
+        },
+        {
+          "count": 55,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:berserkers_fury": 2,
+        "minecraft:mending": 1,
+        "minecraft:projectile_protection": 5,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/greatplate_of_eternity.json",
+      "resource_sha256": "a210fb5b4074af9ea2f860ba266346a860732d537e55f9333e24cfb49f08c52a"
+    },
+    {
+      "name": "Greatplate of Eternity",
+      "item": "minecraft:diamond_chestplate",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_chestplate"
+        },
+        {
+          "count": 55,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:berserkers_fury": 2,
+        "minecraft:mending": 1,
+        "minecraft:projectile_protection": 5,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/greatplate_of_eternity.json",
+      "resource_sha256": "a210fb5b4074af9ea2f860ba266346a860732d537e55f9333e24cfb49f08c52a"
+    },
+    {
+      "name": "Rune-Forged Greaves",
+      "item": "minecraft:diamond_boots",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_boots"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:stable_footing": 1,
+        "minecraft:feather_falling": 5,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/rune_forged_greaves.json",
+      "resource_sha256": "e2b614edab4c5dc1337fab588a53f00c21d9c35637158af9617cc118e84e5b85"
+    },
+    {
+      "name": "Rune-Forged Greaves",
+      "item": "minecraft:diamond_boots",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_boots"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:stable_footing": 1,
+        "minecraft:feather_falling": 5,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/rune_forged_greaves.json",
+      "resource_sha256": "e2b614edab4c5dc1337fab588a53f00c21d9c35637158af9617cc118e84e5b85"
+    },
+    {
+      "name": "Stonebreaker",
+      "item": "minecraft:diamond_pickaxe",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_pickaxe"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:boon_of_the_earth": 4,
+        "minecraft:efficiency": 5,
+        "minecraft:fortune": 4,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/stonebreaker.json",
+      "resource_sha256": "87c0a4ae3fc45dbb1b684ac402ff3c3ec9207baca2298c319089b487e99acf87"
+    },
+    {
+      "name": "Stonebreaker",
+      "item": "minecraft:diamond_pickaxe",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_pickaxe"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:boon_of_the_earth": 4,
+        "minecraft:efficiency": 5,
+        "minecraft:fortune": 4,
+        "minecraft:mending": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/stonebreaker.json",
+      "resource_sha256": "87c0a4ae3fc45dbb1b684ac402ff3c3ec9207baca2298c319089b487e99acf87"
+    },
+    {
+      "name": "Thunder-Forged Legguards",
+      "item": "minecraft:diamond_leggings",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_leggings"
+        },
+        {
+          "count": 55,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:rebounding": 10,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/thunder_forged_legguards.json",
+      "resource_sha256": "c768487bc1155723dc5b93bd3b917746ed93c13112a6db996f7ba1010ae85a02"
+    },
+    {
+      "name": "Thunder-Forged Legguards",
+      "item": "minecraft:diamond_leggings",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_leggings"
+        },
+        {
+          "count": 55,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:rebounding": 10,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/thunder_forged_legguards.json",
+      "resource_sha256": "c768487bc1155723dc5b93bd3b917746ed93c13112a6db996f7ba1010ae85a02"
+    },
+    {
+      "name": "Timeworn Visage",
+      "item": "minecraft:diamond_helmet",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_helmet"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "minecraft:aqua_affinity": 1,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:respiration": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/timeworn_visage.json",
+      "resource_sha256": "edfe8f71a7a6d7798d755c9f1f9ea0e8ec2cc57f9d2ca5e9ef6e7c24bbb06f9c"
+    },
+    {
+      "name": "Timeworn Visage",
+      "item": "minecraft:diamond_helmet",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_helmet"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "minecraft:aqua_affinity": 1,
+        "minecraft:mending": 1,
+        "minecraft:protection": 5,
+        "minecraft:respiration": 5,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/timeworn_visage.json",
+      "resource_sha256": "edfe8f71a7a6d7798d755c9f1f9ea0e8ec2cc57f9d2ca5e9ef6e7c24bbb06f9c"
+    },
+    {
+      "name": "Treecapitator",
+      "item": "minecraft:diamond_axe",
+      "tier": "summit",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_axe"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:chainsaw": 1,
+        "minecraft:efficiency": 10,
+        "minecraft:mending": 1,
+        "minecraft:silk_touch": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/treecapitator.json",
+      "resource_sha256": "31e83b804631aa77a20a59e343d0d8c39cc1bc08bb48e65fd8d0e0fbf634bd15"
+    },
+    {
+      "name": "Treecapitator",
+      "item": "minecraft:diamond_axe",
+      "tier": "pinnacle",
+      "inputs": [
+        {
+          "count": 1,
+          "id": "minecraft:diamond_axe"
+        },
+        {
+          "count": 45,
+          "id": "minecraft:emerald"
+        }
+      ],
+      "enchantments": {
+        "apothic_enchanting:chainsaw": 1,
+        "minecraft:efficiency": 10,
+        "minecraft:mending": 1,
+        "minecraft:silk_touch": 1,
+        "minecraft:unbreaking": 5
+      },
+      "required_mods": [
+        "apothic_enchanting"
+      ],
+      "conditions_met": true,
+      "rare": true,
+      "xp": 500,
+      "resource": "data/apotheosis/wanderer_trades/rare_gear/treecapitator.json",
+      "resource_sha256": "31e83b804631aa77a20a59e343d0d8c39cc1bc08bb48e65fd8d0e0fbf634bd15"
+    }
+  ],
+  "random_affix_diamond_bases": {
+    "data/apotheosis/affix_loot_entries/diamond_axe.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_axe"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_boots.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_boots"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_chestplate.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_chestplate"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_helmet.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_helmet"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_leggings.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_leggings"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_pickaxe.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_pickaxe"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_shovel.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_shovel"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    },
+    "data/apotheosis/affix_loot_entries/diamond_sword.json": {
+      "type": "apotheosis:affix_loot_entry",
+      "stack": {
+        "count": 1,
+        "id": "minecraft:diamond_sword"
+      },
+      "weights": {
+        "ascent": {
+          "weight": 25
+        },
+        "summit": {
+          "weight": 25
+        },
+        "pinnacle": {
+          "weight": 5
+        }
+      }
+    }
+  }
+}
