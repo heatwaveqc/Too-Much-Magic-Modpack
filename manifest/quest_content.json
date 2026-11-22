@@ -508,217 +508,6 @@
       "first_log": false
     },
     {
-      "chapter": "Tips & Tricks",
-      "title": "Claim Your Starter Supplies",
-      "description": "This is TMM's one-time personal starting-kit claim. Claim it to receive one Akashic Tome, two ordinary steaks and one white Comforts sleeping bag. The Tome is being populated with all eligible introductory guidebooks through the separate source-verified starter-guide project; this quest uses that same starter-kit function. Your Prefab house and existing first-log Curios reward remain separate. Claim once per player; no Eternal Steak, boss resources or special powers are granted.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 10,
-        "command": "execute as {p} run function tmm:rewards/starter_kit"
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Comforts: Sleep Away from Home",
-      "description": "A Comforts sleeping bag lets you sleep while travelling without setting a new respawn location. Its hammocks serve a different purpose: using daytime rest to advance toward night, subject to the current config and time restrictions. Start with the free white sleeping bag from the Starter Supplies quest; keep a normal bed at home to control your spawn point.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "AppleSkin: Know When to Eat",
-      "description": "AppleSkin adds hunger and saturation previews to food tooltips and the hunger HUD. Actual restoration can change under TMM's native-form dietary rules, so use the displayed information as guidance, not a promise that a Dragon or Vampire may eat every food.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Where Do Ores and Villager Trades Come From?",
-      "description": "Just Enough Resources (JER) complements JEI with world resources and mob-drop information, while Just Enough Professions (JEP) helps identify which villager profession can offer an item. Search an item and inspect the available usages/categories. Worldgen and trade displays are informational; TMM's actual datapacks and server gates determine obtainability.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Read Enchantments and Detailed Tooltips",
-      "description": "Enchantment Descriptions and Better Advanced Tooltips help explain unusual enchantments and components before you spend rare materials. Advanced information appears through the applicable tooltip controls, including Minecraft's advanced tooltips where enabled. Apotheosis and other mods may add their own meanings; consult the relevant mod's chapter for the mechanics.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Quiet the World with Extreme Sound Muffler",
-      "description": "Extreme Sound Muffler can suppress selected sound events without making every source silent. Open its installed controls or settings and mute the repetitive effect that bothers you; this changes your listening experience, not mob AI, sound propagation or danger detection.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Use KeySets and KeyBind Bundles",
-      "description": "TMM includes Controlling, KeyBind Bundles and KeySets to make dozens of mod shortcuts manageable. Open the Controls screen, identify duplicate assignments and choose deliberate bindings for spellcasting, inventory, zoom and quest/navigation controls. Profile or bundle actions are not assumed to have a default key on every machine.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "TrashSlot: Delete Only What You Mean To",
-      "description": "TrashSlot provides a convenient place to dispose of unwanted items. Keep rare magical reagents and items with components out of the trash until you've checked JEI; trashing an item is not the same as exchanging it for EMC, coins or mana. Verify the exact open/close and delete controls in-game.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Harvest with Ease",
-      "description": "Harvest with Ease can simplify collecting mature crops while keeping farmland useful. Look for its supported harvesting interaction in the actual installed control settings. It does not mean every magical plant, crop, bee or modded block follows the same harvesting rules.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "TreeChop and Leaves Be Gone",
-      "description": "HT's TreeChop changes how you fell trees, while Leaves Be Gone speeds leaf decay. Try the tree-cutting action on an ordinary trunk before relying on it for a rare enchanted tree; verify whether its harvesting counts as separate blocks for tool wear or progression skills. Leaf cleanup is automatic and needs no special quest task.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "What Does Smart Keep Inventory Protect?",
-      "description": "Smart Keep Inventory changes selected item-retention behavior, while Corail Tombstone and other magic can influence deaths or recovery. TMM intentionally distinguishes normal deaths from boss and transformation interactions. Read the current in-game behavior before risking unique equipment; this card is guidance, not a promise that every inventory item is safe.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Prefab: A Head Start on Housing",
-      "description": "Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips & Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Browse Better Advancements",
-      "description": "Better Advancements improves the vanilla advancement interface and navigation. Advancements record their own progress; they are not the same as FTB Quest claims, Progression Paths or MXP. Use both interfaces as complementary ways to understand what you've discovered.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Tips & Tricks",
-      "title": "Keep Controls Across Updates",
-      "description": "Default Options can supply a pack-wide baseline while your personal keybind changes remain your choice. After a mod update, search for newly added or conflicting actions with Controlling and review KeySets/KeyBind Bundles rather than assuming a missing shortcut is a broken mod. The pack's initial keybind defaults may be intentionally unassigned.",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 5
-      },
-      "depends": null,
-      "optional": true,
-      "overview": false,
-      "first_log": false
-    },
-    {
       "chapter": "Food & Fishing",
       "title": "Food & Fishing Index",
       "description": "Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes.",
@@ -2567,6 +2356,217 @@
         "xp": 15,
         "item": "minecraft:torch",
         "count": 8
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Claim Your Starter Supplies",
+      "description": "This is TMM's one-time personal starting-kit claim. Claim it to receive one Akashic Tome, two ordinary steaks and one white Comforts sleeping bag. The Tome is being populated with all eligible introductory guidebooks through the separate source-verified starter-guide project; this quest uses that same starter-kit function. Your Prefab house and existing first-log Curios reward remain separate. Claim once per player; no Eternal Steak, boss resources or special powers are granted.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "command": "execute as {p} run function tmm:rewards/starter_kit"
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Comforts: Sleep Away from Home",
+      "description": "A Comforts sleeping bag lets you sleep while travelling without setting a new respawn location. Its hammocks serve a different purpose: using daytime rest to advance toward night, subject to the current config and time restrictions. Start with the free white sleeping bag from the Starter Supplies quest; keep a normal bed at home to control your spawn point.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "AppleSkin: Know When to Eat",
+      "description": "AppleSkin adds hunger and saturation previews to food tooltips and the hunger HUD. Actual restoration can change under TMM's native-form dietary rules, so use the displayed information as guidance, not a promise that a Dragon or Vampire may eat every food.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Where Do Ores and Villager Trades Come From?",
+      "description": "Just Enough Resources (JER) complements JEI with world resources and mob-drop information, while Just Enough Professions (JEP) helps identify which villager profession can offer an item. Search an item and inspect the available usages/categories. Worldgen and trade displays are informational; TMM's actual datapacks and server gates determine obtainability.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Read Enchantments and Detailed Tooltips",
+      "description": "Enchantment Descriptions and Better Advanced Tooltips help explain unusual enchantments and components before you spend rare materials. Advanced information appears through the applicable tooltip controls, including Minecraft's advanced tooltips where enabled. Apotheosis and other mods may add their own meanings; consult the relevant mod's chapter for the mechanics.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Quiet the World with Extreme Sound Muffler",
+      "description": "Extreme Sound Muffler can suppress selected sound events without making every source silent. Open its installed controls or settings and mute the repetitive effect that bothers you; this changes your listening experience, not mob AI, sound propagation or danger detection.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use KeySets and KeyBind Bundles",
+      "description": "TMM includes Controlling, KeyBind Bundles and KeySets to make dozens of mod shortcuts manageable. Open the Controls screen, identify duplicate assignments and choose deliberate bindings for spellcasting, inventory, zoom and quest/navigation controls. Profile or bundle actions are not assumed to have a default key on every machine.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "TrashSlot: Delete Only What You Mean To",
+      "description": "TrashSlot provides a convenient place to dispose of unwanted items. Keep rare magical reagents and items with components out of the trash until you've checked JEI; trashing an item is not the same as exchanging it for EMC, coins or mana. Verify the exact open/close and delete controls in-game.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Harvest with Ease",
+      "description": "Harvest with Ease can simplify collecting mature crops while keeping farmland useful. Look for its supported harvesting interaction in the actual installed control settings. It does not mean every magical plant, crop, bee or modded block follows the same harvesting rules.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "TreeChop and Leaves Be Gone",
+      "description": "HT's TreeChop changes how you fell trees, while Leaves Be Gone speeds leaf decay. Try the tree-cutting action on an ordinary trunk before relying on it for a rare enchanted tree; verify whether its harvesting counts as separate blocks for tool wear or progression skills. Leaf cleanup is automatic and needs no special quest task.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "What Does Smart Keep Inventory Protect?",
+      "description": "Smart Keep Inventory changes selected item-retention behavior, while Corail Tombstone and other magic can influence deaths or recovery. TMM intentionally distinguishes normal deaths from boss and transformation interactions. Read the current in-game behavior before risking unique equipment; this card is guidance, not a promise that every inventory item is safe.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Prefab: A Head Start on Housing",
+      "description": "Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips & Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Browse Better Advancements",
+      "description": "Better Advancements improves the vanilla advancement interface and navigation. Advancements record their own progress; they are not the same as FTB Quest claims, Progression Paths or MXP. Use both interfaces as complementary ways to understand what you've discovered.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Keep Controls Across Updates",
+      "description": "Default Options can supply a pack-wide baseline while your personal keybind changes remain your choice. After a mod update, search for newly added or conflicting actions with Controlling and review KeySets/KeyBind Bundles rather than assuming a missing shortcut is a broken mod. The pack's initial keybind defaults may be intentionally unassigned.",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
       },
       "depends": null,
       "optional": true,
