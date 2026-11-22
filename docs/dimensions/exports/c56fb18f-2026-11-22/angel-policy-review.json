@@ -28,5 +28,7 @@
   "resource_only_unconfirmed": [
     "botania:skybox"
   ],
-  "note": "Complement is exhaustive only for this saved registry. Native blacklist is not fail-closed for future dimensions. No config changes."
+  "note": "Complement is exhaustive only for this saved registry. Native blacklist is not fail-closed for future dimensions. No config changes.",
+  "live_confirmed_utc": "2026-11-22T21:43:16.855382100Z",
+  "live_registry_matches_saved": true
 }

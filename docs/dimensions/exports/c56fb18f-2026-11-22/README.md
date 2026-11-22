@@ -1,5 +1,16 @@
 # Saved dimension registry and installed-build evidence — November 22
 
+## Live confirmation — 14:43:16 America/Phoenix
+
+The owner subsequently opened the same test world and ran `/reload`, then `/tmm_dimension_registry`. The actual `server.levelKeys()` export completed at `2026-11-22T21:43:16.855382100Z` with **19 sorted unique dimension IDs, zero capture errors, and an exact match to all 19 saved IDs**. Both integration commit and BUILD-MANIFEST hash match the saved/build audit. No fallback path was needed.
+
+- **[live-dimension-registry.json](live-dimension-registry.json)** — actual same-build server level keys, capture time and build identity.
+- **[live-versus-saved.json](live-versus-saved.json)** — no live-only or saved-only IDs; source export file hash retained.
+
+The existing `dimension-ids.txt`, CSV and six-allow/thirteen-complement review set are therefore also confirmed against the **current live server pool**. `botania:skybox` is absent from both live and saved sets. No extra `witchery:spirit_world` key appeared in the live pool; future/lazy realms still need a fresh census if later created.
+
+The investigator did not use screen capture or move/teleport the player for this confirmation; the owner entered the commands. Temporary instance probe/enable flag were removed afterward, with the exported result retained locally. No Angel config, dimension setting or gameplay policy was changed. Registry capture is **B PASS for dimension export only**, not an Angel teleport/filter/return-route gameplay PASS. The closed-client limitation below describes the initial offline export and is now superseded for the live confirmation only.
+
 **19 dimension IDs exported from the current test save.** Installed experimental source: `c56fb18ffc3b9f12f27317e7fb37f15c32576a8c`, baseline `74165da57a97228559562e016e1f7b796f60e652`. Minecraft was closed when this request was investigated, so this is **persisted WorldGenSettings dimension-stem registry evidence plus installed resource/config evidence**, not a freshly executed `server.levelKeys()` dump. No client/world was started or save edited.
 
 ## Use these files
@@ -39,4 +50,4 @@ It reads only `Data.WorldGenSettings.dimensions`, build identity, installed dime
 
 **Design blockers:** none for exporting these facts. This report does not supersede the prior six-destination decision; any new allowed destination or changed policy belongs to the owner.
 
-**B/C queue:** live level-key capture **NOT RUN / awaiting an open authorized test world**; actual Angel candidate filtering and return-route tests **NOT RUN**. No teleportation, spawn, entry/return behavior, world creation or mod functionality was tested here.
+**B/C queue:** live level-key capture **B PASS for export on 2026-11-22**, superseding the original NOT RUN status; actual Angel candidate filtering and return-route tests **NOT RUN**. No teleportation, spawn, entry/return behavior, world creation or mod functionality was tested here.

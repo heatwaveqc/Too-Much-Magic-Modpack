@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "LIVE_SERVER_LEVEL_KEYS",
+  "build": {
+    "integration_commit": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+    "baseline_sha": "74165da57a97228559562e016e1f7b796f60e652",
+    "manifest_sha256": "1728619fdbb48b95873fa46b7e2f93d3211cb1893e29744b395d89793e1c8fc3"
+  },
+  "capturedUtc": "2026-11-22T21:43:16.855382100Z",
+  "dimensions": [
+    "aether:the_aether",
+    "deeperdarker:otherside",
+    "eternal_starlight:starlight",
+    "irons_spellbooks:pocket_dimension",
+    "mahoutsukai:reality_marble",
+    "minecraft:overworld",
+    "minecraft:the_end",
+    "minecraft:the_nether",
+    "neovitae:dungeon",
+    "pastel:deeper_down",
+    "the_bumblezone:the_bumblezone",
+    "theaurorian:the_aurorian",
+    "twilightforest:twilight_forest",
+    "unicornacademy:unicorn_island",
+    "voidscape:void",
+    "wardentools:abyssdim",
+    "witchery:dream_world",
+    "witchery:mirror_world",
+    "witchery:nightmare_world"
+  ],
+  "limitations": []
+}

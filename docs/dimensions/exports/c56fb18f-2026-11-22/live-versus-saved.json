@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+  "capture_utc": "2026-11-22T21:43:16.855382100Z",
+  "live_count": 19,
+  "saved_count": 19,
+  "live_only": [],
+  "saved_only": [],
+  "same_ids": true,
+  "live_export_file_sha256": "5444bacf9e396afa9e8108546c529775afb43b37c00f47519ef747466cddb46b",
+  "capture_errors": []
+}
