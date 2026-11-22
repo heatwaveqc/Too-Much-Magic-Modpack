@@ -1,6 +1,6 @@
 # My Nether's Delight 1.10.4.1 food provenance — TMM source audit (2026-11-21)
 
-**Status:** Source-based, **unindexed candidate only** on PR #439; **not** an integration-ready runtime verdict, client/server smoke, or gameplay approval. **Parent owner design:** [#444](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/444). Relevant target tags: `#tmm:foods/nether`, `#tmm:foods/golden`, `#tmm:foods/magical`.
+**Status:** Source-based, **unindexed candidate only** on PR #439; **not** an integration-ready runtime verdict, client/server smoke, or gameplay approval. **Parent owner design:** [#444](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/444). **UPDATED OWNER TAG ARCHITECTURE:** classify foods into shared `#c:foods/nether_only` (at least one fully Nether route), `#c:foods/with_nether` (every crafting route requires a Nether ingredient), `#c:foods/raw_nether` (raw Nether-obtainable), and existing `#c:foods/golden`; `#tmm:foods/magical` remains universal. The former `#tmm:foods/nether` is a legacy candidate only; reclassify its 50 staged IDs before live tag migration. Individual diets read tags, not item rosters.
 
 ## Pack verification
 
@@ -54,7 +54,7 @@ These **explicitly require non-Nether inputs** under the pack's Nether-provenanc
 
 **Feast blocks** such as `mynethersdelight:striderloaf`, `mynethersdelight:cold_striderloaf`, `mynethersdelight:ghasta_with_cream`, `mynethersdelight:bread_loaf`, `mynethersdelight:roast_stuffed_hoglin`, `mynethersdelight:magma_cake_block` are **not** necessarily normal food-component stack consumables; serving and plate slices require a source-aware gameplay gate and registry ID audit. Some block IDs on web pages differ from in-source item registry IDs; source wins. Also `ghasmati`, `pepper_powder`, `raw_stuffed_hoglin`, and `hoglin_hide` are ingredients/craft steps rather than automatically edible player food.
 
-**Cross-diet tag trap:** My Nether's Delight places **Strider Slice and Ghasta into an upstream `c:foods/raw_fish` tag** for other integrations, even though those are lava-walking Strider/Ghast products, **not marine seafood**. TMM's **Sea Dragon** 6/2.0 preferred-fish rule must not trust this tag without a source-backed **marine-origin filter**, and Cave/other terrestrial decisions must use its independent taxonomy. This is a **code/QA guard**, not an owner-design question.
+**Owner decision — intentional Sea Dragon raw-fish interoperability:** My Nether's Delight puts **Strider Slice and Ghasta** into `#c:foods/raw_fish` despite their Nether creature provenance. **The owner explicitly wants both to count as preferred raw fish for Sea Dragons**, including as Nether food. Respect the shared raw-fish tag and apply Sea's preferred **6 hunger / 2.0 modifier** to appropriate whole raw sources; preserve individual Cutting Board portion ratios. The former **marine-origin exclusion was incorrect and is superseded.**
 
 ### Golden eligibility and existing native tag
 
@@ -68,8 +68,8 @@ The source's `src/generated/resources/data/c/tags/item/foods/golden.json` alread
 - [x] Source-only Golden candidate updated with 2 Golden Egg IDs at `docs/qa/candidates/golden-foods-item-tag-2026-11-21.json`.
 - [ ] Confirm exact **pinned 1.10.4.1** JAR recipe item/tag/loot parity; especially Ghast onion drop, Strider egg alternatives, Nether bread route, Nether ham availability, and ingredient tag expansion. Clear 2 holds or add explicit notes.
 - [ ] Audit edible feast blocks/placed-serving events separately.
-- [ ] Integrate canonical `#tmm:foods/nether` and `#tmm:foods/golden` with legacy `tmm_progression:gilded_nether_foods` and `gilded_gold_foods` as transitional aliases, not duplicate authorities, through the designated writer. Do not alter current indexed recipes or Packwiz hashes from this isolated source-only review.
+- [ ] Use the recipe classifier to generate `#c:foods/nether_only`, `#c:foods/with_nether`, `#c:foods/raw_nether` and existing `#c:foods/golden`; make Dragon Survival and Gilded eligibility tag-driven. Replace legacy `#tmm:foods/nether`/`tmm_progression:gilded_nether_foods` with `#c:foods/nether_only` aliases as needed, and migrate legacy Gilded Golden to `#c:foods/golden` without duplicate authorities. Do not alter indexed runtime recipes, hashes, or full build from this source-only review.
 - [ ] Test Golden Egg 2× once, enchanted Golden Egg original potion effects applied once (and all native custom negative-effect conversion) plus Gilded + universal Magical overlap.
-- [ ] Guard against Sea Dragon mistakenly inheriting Strider/Ghasta as marine raw-fish preferred, and against nonedible Nether materials accidentally receiving food values.
+- [ ] **Positive** QA: Sea Dragon inherits Strider Slice and Ghasta through `#c:foods/raw_fish`; mod/datapack additions to diet-related common tags are recognized after reload, without explicit item-per-diet assignments. Continue to guard against nonedible Nether materials accidentally receiving food values.
 
 **Acceptance:** static source-backed classification is **not** in-game eligibility acceptance. No game boot, client smoke, Integration Assembly, or stable/release authorization was granted.
