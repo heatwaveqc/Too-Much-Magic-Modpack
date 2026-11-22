@@ -47,8 +47,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_wellspring_i",
@@ -68,8 +68,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_thrift_i",
@@ -89,8 +89,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_potency_i",
@@ -110,8 +110,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_quickening",
@@ -131,8 +131,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_projection",
@@ -152,8 +152,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_persistence",
@@ -173,8 +173,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_conjuration",
@@ -194,8 +194,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_warding",
@@ -215,8 +215,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 37
@@ -243,8 +243,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_oxygen_boost",
@@ -264,8 +264,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_block_reach",
@@ -285,8 +285,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_attack_damage",
@@ -306,8 +306,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_sneaking_speed",
@@ -327,8 +327,8 @@
               "total_cost": 7,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_speed_boost",
@@ -348,8 +348,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_step_height",
@@ -369,8 +369,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_swim_speed",
@@ -390,8 +390,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_excavation",
@@ -411,8 +411,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_swift_learning",
@@ -432,8 +432,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_metabolism",
@@ -453,8 +453,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_wisdom",
@@ -474,8 +474,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_stealth",
@@ -495,8 +495,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_magnet",
@@ -516,8 +516,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_spare_parts",
@@ -537,8 +537,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_twist_of_fate",
@@ -558,8 +558,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_safekept",
@@ -579,8 +579,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:core_haggler",
@@ -600,8 +600,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 63
@@ -642,8 +642,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_draconic_potency",
@@ -663,8 +663,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_draconic_scales",
@@ -684,8 +684,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_draconic_claws",
@@ -705,8 +705,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_draconic_talons",
@@ -726,8 +726,8 @@
               "total_cost": 11,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 37
@@ -754,8 +754,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_crushing_bite",
@@ -775,8 +775,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:cave_dragon_stone_claws",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_seismic_pounce",
@@ -796,8 +796,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:cave_dragon_crushing_bite",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -824,8 +824,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_earthbound_poise",
@@ -845,8 +845,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:cave_dragon_stonehide",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_mountain_bastion",
@@ -866,8 +866,8 @@
               "total_cost": 3,
               "prerequisite": "tyr_progression:cave_dragon_earthbound_poise",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 16
@@ -894,8 +894,8 @@
               "total_cost": 11,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_vein_sense",
@@ -915,8 +915,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:cave_dragon_tunneler",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_deep_excavation",
@@ -936,8 +936,8 @@
               "total_cost": 3,
               "prerequisite": "tyr_progression:cave_dragon_vein_sense",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 19
@@ -964,8 +964,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_hellbound_command",
@@ -985,8 +985,8 @@
               "total_cost": 3,
               "prerequisite": "tyr_progression:cave_dragon_infernal_resonance",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:cave_dragon_infernal_dominion",
@@ -1006,8 +1006,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:cave_dragon_hellbound_command",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 11
@@ -1048,8 +1048,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_draconic_potency",
@@ -1069,8 +1069,8 @@
               "total_cost": 2,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_draconic_scales",
@@ -1090,8 +1090,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_draconic_claws",
@@ -1111,8 +1111,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_draconic_talons",
@@ -1132,8 +1132,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 19
@@ -1160,8 +1160,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_tidal_strike",
@@ -1181,8 +1181,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_current_rider",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_undertow",
@@ -1202,8 +1202,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_tidal_strike",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 8
@@ -1230,8 +1230,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_brine_scales",
@@ -1251,8 +1251,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_pressure_adaptation",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_deepwater_refuge",
@@ -1272,8 +1272,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_brine_scales",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 8
@@ -1300,8 +1300,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_slipstream",
@@ -1321,8 +1321,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_sleek_form",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_ocean_leap",
@@ -1342,8 +1342,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_slipstream",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 9
@@ -1370,8 +1370,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_stormcalling",
@@ -1391,8 +1391,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:sea_dragon_tidal_attunement",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:sea_dragon_abyssal_sovereignty",
@@ -1412,8 +1412,8 @@
               "total_cost": 1,
               "prerequisite": "tyr_progression:sea_dragon_stormcalling",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 6
@@ -1440,8 +1440,8 @@
               "total_cost": 50,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 50
@@ -1482,8 +1482,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_potency",
@@ -1503,8 +1503,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_scales",
@@ -1524,8 +1524,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_claws",
@@ -1545,8 +1545,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_draconic_talons",
@@ -1566,8 +1566,8 @@
               "total_cost": 11,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 37
@@ -1594,8 +1594,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_living_bark",
@@ -1615,8 +1615,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:forest_dragon_green_recovery",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_elder_grove",
@@ -1636,8 +1636,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_living_bark",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -1664,8 +1664,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_entangling_breath",
@@ -1685,8 +1685,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_bramble_claw",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_thornstorm",
@@ -1706,8 +1706,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:forest_dragon_entangling_breath",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 12
@@ -1734,8 +1734,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_breeders_blessing",
@@ -1755,8 +1755,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_germination_touch",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_harvest_bounty",
@@ -1776,8 +1776,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_breeders_blessing",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 12
@@ -1804,8 +1804,8 @@
               "total_cost": 6,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_fey_conduit",
@@ -1825,8 +1825,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:forest_dragon_fey_courtesy",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_grove_guardian",
@@ -1846,8 +1846,8 @@
               "total_cost": 2,
               "prerequisite": "tyr_progression:forest_dragon_fey_conduit",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 12
@@ -1874,8 +1874,8 @@
               "total_cost": 4,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_green_thumb",
@@ -1895,8 +1895,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:forest_dragon_shepherds_blessing",
@@ -1916,8 +1916,8 @@
               "total_cost": 3,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 10
@@ -1958,8 +1958,8 @@
               "total_cost": 9,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_deep_reservoir",
@@ -1979,8 +1979,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:vampire_efficient_feeding",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_crimson_renewal",
@@ -2000,8 +2000,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:vampire_deep_reservoir",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 18
@@ -2028,8 +2028,8 @@
               "total_cost": 12,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_shadow_stalker",
@@ -2049,8 +2049,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:vampire_nocturnal_vision",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_bat_mastery",
@@ -2070,8 +2070,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:vampire_shadow_stalker",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 21
@@ -2098,8 +2098,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_measured_feast",
@@ -2119,8 +2119,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:vampire_fang_training",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_blood_duelist",
@@ -2140,8 +2140,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:vampire_measured_feast",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -2168,8 +2168,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_sunshroud",
@@ -2189,8 +2189,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:vampire_pale_resilience",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_elder_presence",
@@ -2210,8 +2210,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:vampire_sunshroud",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -2238,8 +2238,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_predatory_finesse",
@@ -2259,8 +2259,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:vampire_blood_thrift",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_night_runner",
@@ -2280,8 +2280,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:vampire_crimson_surge",
@@ -2301,8 +2301,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:vampire_predatory_finesse",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 22
@@ -2329,8 +2329,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 5
@@ -2371,8 +2371,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_regenerative_flesh",
@@ -2392,8 +2392,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_feral_vigor",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_unbreakable_beast",
@@ -2413,8 +2413,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:werewolf_regenerative_flesh",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -2441,8 +2441,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_savage_momentum",
@@ -2462,8 +2462,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_rending_claws",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_primal_fury",
@@ -2483,8 +2483,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:werewolf_savage_momentum",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -2511,8 +2511,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_pouncing_leap",
@@ -2532,8 +2532,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_predators_stride",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_lunar_chase",
@@ -2553,8 +2553,8 @@
               "total_cost": 4,
               "prerequisite": "tyr_progression:werewolf_pouncing_leap",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 17
@@ -2581,8 +2581,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_rootsong",
@@ -2602,8 +2602,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_wild_attunement",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_grove_howl",
@@ -2623,8 +2623,8 @@
               "total_cost": 3,
               "prerequisite": "tyr_progression:werewolf_rootsong",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 16
@@ -2651,8 +2651,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_bite_techniques",
@@ -2672,8 +2672,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_feral_excavation",
@@ -2693,8 +2693,8 @@
               "total_cost": 8,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_arrow_awareness",
@@ -2714,8 +2714,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_feral_excavation",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:werewolf_tempered_against_silver",
@@ -2735,8 +2735,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:werewolf_arrow_awareness",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 28
@@ -2763,8 +2763,8 @@
               "total_cost": 5,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 5
@@ -2805,8 +2805,8 @@
               "total_cost": 12,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_soul_reserve",
@@ -2826,8 +2826,8 @@
               "total_cost": 8,
               "prerequisite": "tyr_progression:lich_soul_conservation",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_soul_treasury",
@@ -2847,8 +2847,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:lich_soul_reserve",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 25
@@ -2875,8 +2875,8 @@
               "total_cost": 12,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_crimson_channel",
@@ -2896,8 +2896,8 @@
               "total_cost": 8,
               "prerequisite": "tyr_progression:lich_sanguine_attunement",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_verdant_severance",
@@ -2917,8 +2917,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:lich_crimson_channel",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 25
@@ -2945,8 +2945,8 @@
               "total_cost": 12,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_grave_regiment",
@@ -2966,8 +2966,8 @@
               "total_cost": 8,
               "prerequisite": "tyr_progression:lich_bone_captain",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_death_host",
@@ -2987,8 +2987,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:lich_grave_regiment",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 25
@@ -3015,8 +3015,8 @@
               "total_cost": 12,
               "prerequisite": null,
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_anchor_attunement",
@@ -3036,8 +3036,8 @@
               "total_cost": 8,
               "prerequisite": "tyr_progression:lich_cold_persistence",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             },
             {
               "id": "tyr_progression:lich_final_passage",
@@ -3057,8 +3057,8 @@
               "total_cost": 5,
               "prerequisite": "tyr_progression:lich_anchor_attunement",
               "effect_status": "concept_to_verify",
-              "baseline_native_owned": true,
-              "live": false
+              "live": false,
+              "native_source_mechanics_preserved_as_separate_authority": true
             }
           ],
           "points": 25
