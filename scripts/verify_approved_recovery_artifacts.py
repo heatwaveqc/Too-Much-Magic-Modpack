@@ -28,6 +28,7 @@ CANDIDATES = [
     "dungeon-crawl", "just-enough-professions", "ldlib2",
     "lets-do-brewery", "lets-do-farm-and-charm",
     "prefab-custom-addon", "yungs-better-end-island",
+    "lets-do-foundation", "ars-conflux",
 ]
 # Informational: the exact publisher binaries remain the source of truth.
 KNOWN_BASELINE_DEPS = {
