@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "resourcepacks": [
+    {
+      "id": "cathobb-unified-64",
+      "name": "Cathobb's Unified 64",
+      "version": "v40",
+      "source": "https://www.curseforge.com/minecraft/texture-packs/cathobbs-unified/files/9411491",
+      "provider": "curseforge",
+      "curseforge_project_id": 1771113,
+      "curseforge_file_id": 9411491,
+      "filename": "cathobbs-Unified-v40-64x-CANDIDATE.zip",
+      "sha1": "6195e347306d2567a74d3e49542eec36c33b9e51",
+      "side": "client",
+      "new_prism_instances_default_enabled": true,
+      "existing_instance_preferences_untouched": true,
+      "license": "All Rights Reserved",
+      "distribution": "publisher-hosted external download only; no ZIP or derived textures redistributed",
+      "archive_validation": "2026-11-22 GitHub Actions public official ForgeCDN ZIP 193200750 bytes SHA1/SHA512 and CRC verified; contains root pack.mcmeta and assets, 19218 entries",
+      "runtime_acceptance": "pending isolated Packwiz installer download and owner-authorized Prism client"
+    }
+  ]
+}
