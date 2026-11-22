@@ -1356,7 +1356,7 @@
     {
       "id": "tyr_progression:elemental_tempering",
       "title": "Elemental Tempering",
-      "description": "+0.75%/rank reduction of remaining fire, explosion and magic damage (15% max). QA candidate: source handler present; numbers pending player testing.",
+      "description": "Reduce remaining fire and explosion damage, based solely on the damage type's vanilla fire/explosion tags. Exact-type spell wards are purchased separately.",
       "lane": "Conditioning",
       "max_rank": 20,
       "required_rank": 10,
@@ -1799,7 +1799,7 @@
       "xp_channel": "tyr_progression:mxp",
       "level_system": "tyr_progression:monk",
       "requires_skills": [
-        "tyr_progression:barehand_efficiency"
+        "tyr_progression:fortunate_hands"
       ],
       "effects": [
         {
@@ -2240,7 +2240,7 @@
       "xp_channel": "tyr_progression:mxp",
       "level_system": "tyr_progression:monk",
       "requires_skills": [
-        "tyr_progression:inner_thrift"
+        "tyr_progression:spellward"
       ],
       "effects": [
         {
@@ -2248,6 +2248,251 @@
           "attribute": "minecraft:luck",
           "per_rank": 1,
           "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:piercing_palm",
+      "title": "Piercing Palm",
+      "description": "Each rank grants 1 percentage point of unarmed armor shredding while unarmored. Uses the existing Apothic Attributes armor_shred attribute; never converts magic/fire damage into armor penetration.",
+      "lane": "Martial Body",
+      "max_rank": 20,
+      "required_rank": 10,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:flowing_counter"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "apothic_attributes:armor_shred",
+          "operation": "add_value",
+          "per_rank": 0.01,
+          "unarmored": true,
+          "empty_hand": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:fortunate_hands",
+      "title": "Fortunate Hands",
+      "description": "Adds up to three virtual Fortune levels to the barehand Treasure Hand Fortune mode, using the original loot roll; inactive in Silk Touch mode and when using an equipped tool.",
+      "lane": "Hands as Tools",
+      "max_rank": 10,
+      "required_rank": 12,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:barehand_efficiency"
+      ],
+      "effects": [
+        {
+          "type": "virtual_fortune",
+          "target": "#minecraft:mineable/pickaxe",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 0.3,
+          "params": {
+            "max_total": "3",
+            "mode_key": "tyr_progression:treasure_mode",
+            "mode_value": "fortune"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:spellward",
+      "title": "Spellward",
+      "description": "Reduce remaining damage of the exact vanilla minecraft:magic damage type by 1% per rank, to 16%. Does not classify spells by caster, fire, explosion or projectile origin.",
+      "lane": "Magical Cultivation",
+      "max_rank": 16,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_thrift"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.01,
+          "damage_tag": "minecraft:magic",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:alchemical_ward",
+      "title": "Alchemical Ward",
+      "description": "Reduce remaining damage of the exact vanilla minecraft:indirect_magic damage type by 1% per rank, to 10%.",
+      "lane": "Magical Cultivation",
+      "max_rank": 10,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:spellward"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.01,
+          "damage_tag": "minecraft:indirect_magic",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:withering_ward",
+      "title": "Withering Ward",
+      "description": "Reduce remaining damage of the exact vanilla minecraft:wither damage type by 1% per rank, to 5%; not unrelated wither skull impact damage.",
+      "lane": "Magical Cultivation",
+      "max_rank": 5,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:spellward"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.01,
+          "damage_tag": "minecraft:wither",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:dragonbreath_ward",
+      "title": "Dragonbreath Ward",
+      "description": "Reduce remaining damage of the exact vanilla minecraft:dragon_breath damage type by 1% per rank, to 5%; not dragon melee hits.",
+      "lane": "Magical Cultivation",
+      "max_rank": 5,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:spellward"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "per_rank": 0.01,
+          "damage_tag": "minecraft:dragon_breath",
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:meditative_elixir",
+      "title": "Meditative Elixir",
+      "description": "Extend every newly applied finite beneficial MobEffect duration on the Monk by 2% per rank, to +20%, whether from potions, splash, spells or other effects. Only applies while the Monk's effect is active.",
+      "lane": "Magical Cultivation",
+      "max_rank": 10,
+      "required_rank": 10,
+      "rank_costs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:monk",
+      "requires_skills": [
+        "tyr_progression:inner_wellspring"
+      ],
+      "effects": [
+        {
+          "type": "beneficial_duration_bonus",
+          "target": "*",
+          "per_rank": 0.02,
           "unarmored": true
         }
       ]
