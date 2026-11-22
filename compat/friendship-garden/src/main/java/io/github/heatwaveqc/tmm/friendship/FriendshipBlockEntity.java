@@ -49,6 +49,16 @@ public final class FriendshipBlockEntity extends BlockEntity {
         }
     }
 
+    /** Logout fires before the player list necessarily removes the player. */
+    public void onCrafterLogout(ServerLevel server) {
+        if (flower == null || flower.mourning(server.getServer().overworld().getGameTime())) return;
+        if (appearance != FriendshipFlower.Appearance.BUDDING) {
+            appearance = FriendshipFlower.Appearance.BUDDING;
+            setChanged();
+            server.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        }
+    }
+
     public void onCrafterDeath(ServerLevel server, long now, boolean permanent) {
         if (flower == null) return;
         flower = flower.onCrafterDeath(now, permanent);
