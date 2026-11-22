@@ -99,7 +99,7 @@
       ],
       "position": [
         8,
-        -3
+        -2
       ],
       "icon": "theurgy:distiller",
       "icon_reason": "Set up a real distillation station",
@@ -129,7 +129,7 @@
       ],
       "position": [
         8,
-        0
+        1
       ],
       "icon": "theurgy:calcination_oven",
       "icon_reason": "Keep material classes separate",
@@ -158,8 +158,8 @@
         "TH-00"
       ],
       "position": [
-        8,
-        3
+        4,
+        4
       ],
       "icon": "theurgy:sal_ammoniac_accumulator",
       "icon_reason": "Water becomes the solvent for sulfur",
@@ -190,7 +190,7 @@
       ],
       "position": [
         12,
-        3
+        4
       ],
       "icon": "theurgy:liquefaction_cauldron",
       "icon_reason": "Record an item's exact identity",
@@ -304,12 +304,11 @@
       "title": "Ferment Your First Niter",
       "lane": "optional",
       "dependencies": [
-        "TH-04",
         "TH-05"
       ],
       "position": [
-        14,
-        7
+        16,
+        10
       ],
       "icon": "theurgy:fermentation_vat",
       "icon_reason": "Begin advanced alchemical inputs",
@@ -339,8 +338,8 @@
         "TH-03"
       ],
       "position": [
-        18,
-        7
+        20,
+        10
       ],
       "icon": "theurgy:digestion_vat",
       "icon_reason": "Prepare an exaltation reagent",
@@ -369,8 +368,8 @@
         "TH-10"
       ],
       "position": [
-        22,
-        7
+        24,
+        10
       ],
       "icon": "theurgy:digestion_vat",
       "icon_reason": "Understand material ranks",
@@ -394,12 +393,11 @@
       "title": "Build a Mercury Flux Supply",
       "lane": "optional",
       "dependencies": [
-        "TH-02",
         "TH-07"
       ],
       "position": [
         24,
-        -5
+        4
       ],
       "icon": "theurgy:mercury_catalyst",
       "icon_reason": "Convert Mercury without crossing into FE",
@@ -430,7 +428,7 @@
       ],
       "position": [
         28,
-        -5
+        6
       ],
       "icon": "theurgy:reformation_target_pedestal",
       "icon_reason": "The target is a physical retained reagent",
@@ -460,7 +458,7 @@
       ],
       "position": [
         4,
-        -7
+        -6
       ],
       "icon": "theurgy:divination_rod_t1",
       "icon_reason": "Locate ores without inventing a new mining tier",
@@ -490,7 +488,7 @@
       ],
       "position": [
         8,
-        -7
+        -6
       ],
       "icon": "theurgy:divination_rod_t2",
       "icon_reason": "Choose the right tool for the target",
@@ -516,12 +514,11 @@
       "title": "Heat with a Caloric Flux Emitter",
       "lane": "optional",
       "dependencies": [
-        "TH-01",
         "TH-12"
       ],
       "position": [
-        27,
-        -9
+        28,
+        1
       ],
       "icon": "theurgy:caloric_flux_emitter",
       "icon_reason": "Replace some fuel handling with alchemy",
@@ -547,12 +544,11 @@
       "title": "Move Items with Mercurial Wiring",
       "lane": "optional",
       "dependencies": [
-        "TH-02",
         "TH-07"
       ],
       "position": [
-        20,
-        -11
+        24,
+        -5
       ],
       "icon": "theurgy:logistics_item_extractor",
       "icon_reason": "Move one real item from A to B",
@@ -578,12 +574,11 @@
       "title": "Route Fluids Without Pretending They Are Items",
       "lane": "optional",
       "dependencies": [
-        "TH-17",
-        "TH-04"
+        "TH-17"
       ],
       "position": [
-        24,
-        -11
+        28,
+        -5
       ],
       "icon": "theurgy:logistics_fluid_inserter",
       "icon_reason": "Build a second, fluid-specific connection",
@@ -609,12 +604,11 @@
       "title": "Rare Materials: Templates Before Replication",
       "lane": "optional",
       "dependencies": [
-        "TH-11",
         "TH-13"
       ],
       "position": [
         32,
-        -5
+        7
       ],
       "icon": "minecraft:nether_star",
       "section": "reformation",
@@ -633,5 +627,14 @@
       "description": "This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded.",
       "icon_reason": "The Nether Star is a sample-gated example, never a quest reward"
     }
-  ]
+  ],
+  "layout_review": {
+    "revision": 2,
+    "locked_policy": "docs/QUESTBOOK-ORGANIZATION-V4.md (PR #498)",
+    "archetype": "left-to-right mod mainline with separate divination, Niter, reformation and logistics regions",
+    "edge_policy": "remove only transitively implied edges; preserve all effective prerequisites and quest IDs",
+    "evidence": "Type-A layout graph and art clearance audit; no UI/client QA",
+    "before_crossings": 12,
+    "after_crossings": 0
+  }
 }
