@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "legacy_auto_grant": {
+    "first_tick": {
       "trigger": "minecraft:impossible"
     }
   },
