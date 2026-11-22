@@ -25,8 +25,10 @@ jobs:
       SMOKE_WITH_MODS: '1'
       VERIFY_FULL_QA_INVENTORY: '1'
       SMOKE_TIMEOUT_SECONDS: '900'
-      WORK_DIR: ${{ runner.temp }}/tmm-update-smoke
     steps:
+      - name: Set disposable server directory
+        run: echo "WORK_DIR=$RUNNER_TEMP/tmm-update-smoke" >> "$GITHUB_ENV"
+
       - name: Checkout reviewed authorization guard from trusted main
         uses: actions/checkout@v4
         with:
