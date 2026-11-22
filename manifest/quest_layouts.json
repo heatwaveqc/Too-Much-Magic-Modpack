@@ -1496,7 +1496,7 @@
       "chapter": "Theurgy",
       "position": [
         8,
-        -3
+        -2
       ],
       "authored": true
     },
@@ -1513,8 +1513,8 @@
       "quest_id": "544D3A1500000004",
       "chapter": "Theurgy",
       "position": [
-        8,
-        3
+        4,
+        4
       ],
       "authored": true
     },
@@ -1523,7 +1523,7 @@
       "chapter": "Theurgy",
       "position": [
         12,
-        3
+        4
       ],
       "authored": true
     },
@@ -1558,8 +1558,8 @@
       "quest_id": "544D3A1500000009",
       "chapter": "Theurgy",
       "position": [
-        14,
-        7
+        16,
+        8
       ],
       "authored": true
     },
@@ -1567,8 +1567,8 @@
       "quest_id": "544D3A150000000A",
       "chapter": "Theurgy",
       "position": [
-        18,
-        7
+        20,
+        8
       ],
       "authored": true
     },
@@ -1576,8 +1576,8 @@
       "quest_id": "544D3A150000000B",
       "chapter": "Theurgy",
       "position": [
-        22,
-        7
+        24,
+        8
       ],
       "authored": true
     },
@@ -1586,7 +1586,7 @@
       "chapter": "Theurgy",
       "position": [
         24,
-        -5
+        4
       ],
       "authored": true
     },
@@ -1595,7 +1595,7 @@
       "chapter": "Theurgy",
       "position": [
         28,
-        -5
+        6
       ],
       "authored": true
     },
@@ -1604,7 +1604,7 @@
       "chapter": "Theurgy",
       "position": [
         4,
-        -7
+        -6
       ],
       "authored": true
     },
@@ -1613,7 +1613,7 @@
       "chapter": "Theurgy",
       "position": [
         8,
-        -7
+        -6
       ],
       "authored": true
     },
@@ -1621,8 +1621,8 @@
       "quest_id": "544D3A1500000010",
       "chapter": "Theurgy",
       "position": [
-        27,
-        -9
+        28,
+        1
       ],
       "authored": true
     },
@@ -1630,8 +1630,8 @@
       "quest_id": "544D3A1500000011",
       "chapter": "Theurgy",
       "position": [
-        20,
-        -11
+        24,
+        -5
       ],
       "authored": true
     },
@@ -1639,8 +1639,8 @@
       "quest_id": "544D3A1500000012",
       "chapter": "Theurgy",
       "position": [
-        24,
-        -11
+        28,
+        -5
       ],
       "authored": true
     },
@@ -1649,7 +1649,7 @@
       "chapter": "Theurgy",
       "position": [
         32,
-        -5
+        7
       ],
       "authored": true
     },
