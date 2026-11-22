@@ -2,7 +2,7 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v9`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v10`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
@@ -20,7 +20,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Core Skills | 27 | **100** |
 | Cave Dragon | 25 | **100** |
 | Sea Dragon | 22 | **100** |
-| Forest Dragon | 20 | **100** |
+| Forest Dragon | 26 | **100** |
 | Vampire | 19 | **100** |
 | Werewolf | 20 | **100** |
 | Lich | 21 | **100** |
@@ -28,7 +28,7 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **236 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **242 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -328,59 +328,69 @@ Every rank in the following tables costs **1 point**. A `Full cost` of 5 means f
 | **Total** | **22 paid skills** | **100** | **1** | **10-point full Luck feature, 90 points other Sea Dragon capabilities** |
 
 **Native abilities remain free:** underwater breathing, sea vision, growth, hydration, flight/spin, storm breath, existing species claws/diet and any provider mana regeneration. No duplicate native unlocks, no new standalone attack hotkeys, no unsourced water-school tags, and no fake pressure damage. Abilities requiring Dragon Survival hooks must be verified against the exact pinned binary before gameplay activation.
-### Forest Dragon — 100 ranks / 100 points
+### Forest Dragon — complete 100 ranks / 100 points
 
-*Native guardrails:* Keep JAWR/Goety/Dragon Survival authority over native physiology and progression; bought ranks enhance, not replace.
+**Role:** a poison-breathing woodland guardian, daylight regenerator, crop and animal caretaker, and source-verified Fae spellcaster. Native axe claws, native Forest/Sun Breaths, forest darkness Stress and native Light in the Dark remain free. Strict vegetarian preferred diet #444 is separately owned; not implemented by the tree.
 
-#### Universal Dragon Physiology & Sorcery (species-local) — 37 points
+[Complete Forest Dragon skills, per-rank effects, source gates and QA](FOREST-DRAGON-COMPLETE-100PT-2026-11-22.md). Design only; no live skills.
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Draconic Reservoir (`tyr_progression:forest_dragon_draconic_reservoir`) | 6 | 6 | Massive bonus to personally usable maximum magic resource capacity; never machine/world storage. |
-| Draconic Potency (`tyr_progression:forest_dragon_draconic_potency`) | 4 | 4 | Very high general personal spell potency per SP; additive by same reference with typed affinity, not multiplicative recursion. |
-| Draconic Scales (`tyr_progression:forest_dragon_draconic_scales`) | 8 | 8 | Species natural armor; deliberately inefficient per SP versus specialized martial defense. |
-| Draconic Claws (`tyr_progression:forest_dragon_draconic_claws`) | 8 | 8 | Real dragon form physical strike boost; not global magic damage. |
-| Draconic Talons (`tyr_progression:forest_dragon_draconic_talons`) | 11 | 11 | Improve legal dragon claw harvest rate, not tool-tier bypass. |
+#### Draconic Body & Personal Sorcery — 20 points
 
-#### Verdant Vitality — 17 points
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Draconic Reservoir** (`tyr_progression:forest_dragon_draconic_reservoir`) | 6 | +10% per rank (max +60%) eligible personal spell-resource capacity, including native Dragon Survival mana only if source modifier supports it; no machine, grid, or world storage. |
+| **Draconic Potency** (`tyr_progression:forest_dragon_draconic_potency`) | 5 | +4% per rank (max +20%) personally cast verified spell potency, additive with other magic modifiers; exclude world rituals and passive machines. |
+| **Draconic Scales** (`tyr_progression:forest_dragon_draconic_scales`) | 3 | +1 natural armor per rank (max +3) only in verified Forest Dragon form; normal native body armor and fall/thorn defenses remain innate. |
+| **Draconic Claws** (`tyr_progression:forest_dragon_draconic_claws`) | 3 | +1 native physical claw/bite melee damage per rank (max +3), excluding held swords, breath and poison ticks. |
+| **Draconic Talons** (`tyr_progression:forest_dragon_draconic_talons`) | 3 | +15% legal Forest axe-claw chop speed per rank (max +45%), only on wood/plant blocks already harvestable by native claws; no treecapitator/ore tier bypass. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Green Recovery (`tyr_progression:forest_dragon_green_recovery`) | 8 | 8 | Small recovery benefit in living biomes, not in all dimensions. |
-| Living Bark (`tyr_progression:forest_dragon_living_bark`) | 5 | 5 | Situational natural defense near vegetation, with stacking caps. |
-| Elder Grove (`tyr_progression:forest_dragon_elder_grove`) | 4 | 4 | Time-limited regeneration/support pulse, costing dragon resource. |
+#### Verdant Vitality — 19 points
 
-#### Thorn & Root — 12 points
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Green Recovery** (`tyr_progression:forest_dragon_green_recovery`) | 5 | +0.15 HP/s per rank (max +0.75) while grounded in natural living vegetation during daylight, after eight seconds without hostile damage. |
+| **Living Bark** (`tyr_progression:forest_dragon_living_bark`) | 5 | +0.5 armor toughness per rank (max +2.5) near verified natural trees in Forest form; distinct from Draconic Scales armor. |
+| **Elder Grove** (`tyr_progression:forest_dragon_elder_grove`) | 4 | After a successfully paid personal Nature spell, grant self Regeneration I for one second per rank (max four seconds), 20-second player cooldown; no ability key. |
+| **Sunfed Resilience** (`tyr_progression:forest_dragon_sunfed_resilience`) | 5 | -2% ordinary physical hit damage per rank (max -10%) only while grounded under actual direct daylight in Forest Dragon form; not in artificial light or other dimensions. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Bramble Claw (`tyr_progression:forest_dragon_bramble_claw`) | 6 | 6 | Add a bounded nature-themed status to confirmed claw attacks. |
-| Entangling Breath (`tyr_progression:forest_dragon_entangling_breath`) | 4 | 4 | Native breath enhancer applying short slows only where source breath supports it. |
-| Thornstorm (`tyr_progression:forest_dragon_thornstorm`) | 2 | 2 | Cooldown-limited small-area crowd control with no world block destruction. |
+#### Thorn & Root — 18 points
 
-#### Fertility & Bounty — 12 points
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Bramble Claw** (`tyr_progression:forest_dragon_bramble_claw`) | 4 | Legitimate native Forest natural claw hits inflict Slowness I for 0.5 second per rank (max two seconds), with 40-tick cooldown per hostile target. |
+| **Entangling Breath** (`tyr_progression:forest_dragon_entangling_breath`) | 4 | Source-verified already-unlocked Forest Breath applies Slowness I for 0.5 second per rank (max two seconds) to hostile targets; native poison behavior stays unchanged. |
+| **Thornstorm** (`tyr_progression:forest_dragon_thornstorm`) | 3 | A native Forest Spike projectile direct hostile hit may slow at most one additional nearby hostile within 2.5 blocks for 0.5 second per rank (max 1.5 seconds), 15-second caster cooldown; no new projectile or block changes. |
+| **Venomous Strike** (`tyr_progression:forest_dragon_venomous_strike`) | 4 | +5 percentage-point chance per rank (max 20%) for real natural claw melee to apply Poison I for three seconds to legal hostile targets; no bleed-through from poison ticks or allies. |
+| **Forest Breath Mastery** (`tyr_progression:forest_dragon_forest_breath_mastery`) | 3 | +4% per rank (max +12%) real source-identified Forest Breath poison damage, after native breath has been learned; not every poison effect or Sun Breath. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Germination Touch (`tyr_progression:forest_dragon_germination_touch`) | 4 | 4 | Enhance actual bonemeal application efficiency/area/yield without free unbounded creation of growth. |
-| Breeder's Blessing (`tyr_progression:forest_dragon_breeders_blessing`) | 4 | 4 | Improve legal animal breeding/cooldown or food efficiency via real pair interaction; never spawn animals without parents. |
-| Harvest Bounty (`tyr_progression:forest_dragon_harvest_bounty`) | 4 | 4 | Increase real crop harvest outcomes with explicit per-block credit and cooldown/caps; preserve claim and mature crop checks. |
+#### Fertility & Bounty — 19 points
 
-#### Fae Affinity — 12 points
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Germination Touch** (`tyr_progression:forest_dragon_germination_touch`) | 4 | 5% per rank chance (max 20%) to refund exactly one bonemeal consumed in one successful, claim-allowed player crop-growth application; no free growth without real use. |
+| **Breeder's Blessing** (`tyr_progression:forest_dragon_breeders_blessing`) | 4 | After personally triggering a legitimate fed breeding pair, reduce both parents' normal subsequent breeding cooldown by 5% per rank (max 20%) subject to a floor; no extra child spawned. |
+| **Harvest Bounty** (`tyr_progression:forest_dragon_harvest_bounty`) | 4 | +5% chance per rank (max 20%) of exactly one extra ordinary edible fruit/berry for one legally harvested mature shrub/vine/fruit tree; excludes conventional field crops and hidden loot. |
+| **Green Thumb** (`tyr_progression:forest_dragon_green_thumb`) | 4 | +4 percentage-point chance per rank (max 16%) to duplicate normal edible produce from one personally harvested mature planted field crop, not shrub berries, rare loot or automation. |
+| **Shepherd’s Blessing** (`tyr_progression:forest_dragon_shepherds_blessing`) | 3 | +8% juvenile livestock growth rate per rank (max 24%) only for player-owned/cared-for legitimate juveniles within 12 blocks; bounded refresh, no instant maturity. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Fey Courtesy (`tyr_progression:forest_dragon_fey_courtesy`) | 6 | 6 | Improve source-verified fae-aligned personal magic effects and fae relations; no universal mob pacification. |
-| Fey Conduit (`tyr_progression:forest_dragon_fey_conduit`) | 4 | 4 | Specialize fae-aligned spell potency and owned fae summons at higher benefit per SP. |
-| Grove Guardian (`tyr_progression:forest_dragon_grove_guardian`) | 2 | 2 | Bounded fae-aligned personal magic and allied-support synergy without taking over world production. |
+#### Fae Affinity — 14 points
 
-#### Retained Tyz 6.4.2 source skills — 10 points
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Fey Courtesy** (`tyr_progression:forest_dragon_fey_courtesy`) | 5 | +3% beneficial status duration per rank (max +15%) for personally cast, source-tagged Fae spells; no blanket mob friendliness or bonus to every Roots/Botania action. |
+| **Fey Conduit** (`tyr_progression:forest_dragon_fey_conduit`) | 4 | +4% per rank (max +16%) verified personal Fae spell healing or damage within six blocks of natural vegetation, additive with Core and Draconic Potency. |
+| **Grove Guardian** (`tyr_progression:forest_dragon_grove_guardian`) | 3 | After a paid personal Nature/Fae support spell, grant at most two nearby valid allies +2% physical hit mitigation per rank (max 6%) for five seconds, 25-second cooldown, no permanent aura. |
+| **Woodland Accord** (`tyr_progression:forest_dragon_woodland_accord`) | 2 | +5% max HP per rank (max +10%) to genuine player-owned, source-confirmed Fae summons only; none for wild fae, villagers or generic pets, and no ghost rank if provider lacks them. |
 
-| Skill | Number of 1-point ranks | Full cost | Design intent |
-|---|---:|---:|---|
-| Venomous Strike (`tyr_progression:forest_dragon_venomous_strike`) | 4 | 4 | Adds a {success_probability}% chance to poison targets on hit |
-| Green Thumb (`tyr_progression:forest_dragon_green_thumb`) | 3 | 3 | Adds a {success_probability}% chance to double drops when harvesting crops and plants |
-| Shepherd’s Blessing (`tyr_progression:forest_dragon_shepherds_blessing`) | 3 | 3 | Baby animals grow {growth_speed}% faster |
+#### Light & Shadow — 10 points
+
+| Skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Gloam Endurance** (`tyr_progression:forest_dragon_gloam_endurance`) | 4 | Reduce only source-native darkness Stress *extra hunger drain* by 5% per rank (max 20%); never cancel Stress, ordinary hunger, or native Light in the Dark's identity. |
+| **Sunward Focus** (`tyr_progression:forest_dragon_sunward_focus`) | 3 | Reduce cooldown of already-earned, actual native Sun Breath by 4% per rank (max 12%) in direct daylight; do not expand growth/transmutation targets or create the breath ability. |
+| **Lantern Keeper** (`tyr_progression:forest_dragon_lantern_keeper`) | 3 | +3% per rank (max +9%) personal source-verified Nature support-spell duration while sheltered in artificial block light level 11+, not a blanket magic buff or source Stress immunity. |
+
+**Total: 26 paid skills / 100 one-point ranks.** All 20 earlier named skills retained, including three stock Tyz provenance entries. Inert purchases must remain disabled until native adapters exist.
 
 ### Vampire — 100 ranks / 100 points
 
