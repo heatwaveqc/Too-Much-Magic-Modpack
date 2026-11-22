@@ -1964,22 +1964,25 @@
       ],
       "effects": [
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 5,
-          "target": "tyr_progression:ars_capacity",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 5,
-          "target": "tyr_progression:irons_capacity",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "irons_spellbooks:max_mana",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 50,
-          "target": "tyr_progression:psi_capacity",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "psi:total_psi",
+          "operation": "add_value"
         }
       ]
     },
@@ -2029,28 +2032,32 @@
       ],
       "effects": [
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.2,
-          "target": "tyr_progression:ars_regeneration",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.1,
-          "target": "tyr_progression:irons_regeneration",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "irons_spellbooks:mana_regen",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 1,
-          "target": "tyr_progression:psi_regeneration",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "psi:regen",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.1,
-          "target": "tyr_progression:aureal_regeneration",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+          "operation": "add_value"
         }
       ]
     },
@@ -2090,16 +2097,18 @@
       ],
       "effects": [
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.003,
-          "target": "tyr_progression:goety_cost_discount",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "goety:soul_discount",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
-          "per_rank": 0.4,
-          "target": "tyr_progression:neo_cost_discount",
-          "unarmored": true
+          "type": "attribute",
+          "per_rank": 40,
+          "unarmored": true,
+          "attribute": "neovitae:sigil_cost_reduction",
+          "operation": "add_value"
         }
       ]
     },
@@ -2139,28 +2148,32 @@
       ],
       "effects": [
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.2,
-          "target": "tyr_progression:ars_potency",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.05,
-          "target": "tyr_progression:irons_potency",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "irons_spellbooks:spell_power",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 2,
-          "target": "tyr_progression:goety_potency",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "goety:spell_potency",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.05,
-          "target": "tyr_progression:eidolon_potency",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "eidolon_repraised:magic_power",
+          "operation": "add_value"
         }
       ]
     },
@@ -2190,16 +2203,18 @@
       ],
       "effects": [
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.005,
-          "target": "tyr_progression:irons_cast_speed",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "irons_spellbooks:cast_time_reduction",
+          "operation": "add_value"
         },
         {
-          "type": "magic_stat",
+          "type": "attribute",
           "per_rank": 0.005,
-          "target": "tyr_progression:irons_cooldown_reduction",
-          "unarmored": true
+          "unarmored": true,
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "operation": "add_value"
         }
       ]
     },
