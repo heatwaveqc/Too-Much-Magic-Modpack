@@ -43,8 +43,6 @@ public final class HexereiEvilCraftBloodBridge {
             ResourceLocation.fromNamespaceAndPath("hexerei", "mixing_cauldron");
     private static final ResourceLocation EVILCRAFT_EXTRACTOR =
             ResourceLocation.fromNamespaceAndPath("evilcraft", "blood_extractor");
-    private static final ResourceLocation HEXEREI_BLOOD =
-            ResourceLocation.fromNamespaceAndPath("hexerei", "blood_fluid");
     private static final ResourceLocation EVILCRAFT_BLOOD =
             ResourceLocation.fromNamespaceAndPath("evilcraft", "blood");
 
@@ -82,7 +80,7 @@ public final class HexereiEvilCraftBloodBridge {
         // Native Hexerei blood needs conversion. Extractor-deposited EvilCraft
         // blood must also be supported for the OWNER'S EXACT round trip.
         ResourceLocation sourceFluidId = BuiltInRegistries.FLUID.getKey(source.getFluid());
-        if (!HEXEREI_BLOOD.equals(sourceFluidId) && !EVILCRAFT_BLOOD.equals(sourceFluidId))
+        if (!BloodCauldronTransferPolicy.supportedSource(sourceFluidId.toString()))
             return;
         // Do not silently strip native/custom fluid components.
         if (!FluidStack.isSameFluidSameComponents(source, new FluidStack(source.getFluid(), 1)))
