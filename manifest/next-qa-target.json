@@ -14,6 +14,7 @@
     "aquaculture",
     "aquaculture-delight",
     "aquamirae",
+    "aquamirae-nouveau",
     "arcane-archives-reborn",
     "architectury-api",
     "ars-additions",
@@ -350,6 +351,7 @@
     "2026-11-22 PR #524: the 19 approved third-party mod pins, including dependency libraries Fragmentum, VillagersTradingPlus, LDLib2, Farm & Charm, Foundation and Ars Conflux, have exact official binary hash verification in targeted Type-A audit and are included in source index/roster. No assembled runtime/client/gameplay result yet. Preserve the Experimental-tested four updated baseline mod pins and newer Unstable source.",
     "OWNER EXCLUSION FOR THIS INTEGRATION: Weeping Angels / #392 deferred; native six-dimension blacklist, claimed-block safety, trap and physical-damage compatibility remain separately pending. Do not mark as installed or silently restore old staged config.",
     "BLOCKED WITHOUT OWNER DESELECTION: Aquamirae & Nouveau 0.1.3 (#404/#406) official publisher file 9470029 returns HTTP 403; no exact binary digest/JAR metadata could be verified in this cycle. Ars Conflux library itself is verified/pinned. Preserve addon for a later exact-file reconciliation; do not fabricate its hash or imply gameplay PASS.",
-    "Cathobb Unified 64x v40 #294 remains separately approved but resource-pack provider/hash/Packwiz new-instance preference handling are not verified in this recovery slice; no automatic redistribution or client QA assertion."
+    "Cathobb Unified 64x v40 #294 remains separately approved but resource-pack provider/hash/Packwiz new-instance preference handling are not verified in this recovery slice; no automatic redistribution or client QA assertion.",
+    "2026-11-22 owner supplied Aquamirae & Nouveau NeoForge 0.1.3 JAR; exact SHA1/ZIP/native metadata verified locally and compatible with pinned Aquamirae + Ars Nouveau + Ars Conflux. Added source-indexed official CurseForge file 9470029, no JAR redistributed; remote provider/Packwiz downloader outcome still needs independent check."
   ]
 }
