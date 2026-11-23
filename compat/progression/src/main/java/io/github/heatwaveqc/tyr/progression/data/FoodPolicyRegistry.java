@@ -150,6 +150,33 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
         return state.rules().universallyPermitted(effectiveTags(stack, source));
     }
 
+    /** Only reviewed named native custom-use consumables enter strict
+     * policy arbitration. Ordinary potions, wands and unrelated abilities
+     * are not retroactively classified as food.
+     */
+    public static boolean customUse(ItemStack stack) {
+        return stack != null && !stack.isEmpty()
+            && stack.getTags().anyMatch(tag ->
+                tag.location().toString().equals("tmm:foods/custom_use"));
+    }
+
+    public static FoodDecisionResolver.Decision decideCustomUse(
+            Set<String> profiles, ItemStack stack) {
+        State state=active;
+        if (state==null || profiles==null || profiles.isEmpty()
+                || !customUse(stack))
+            return FoodDecisionResolver.Decision.nativeResult();
+        Set<String> observed=effectiveTags(stack,state.sourceEvidence().get(
+            BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()));
+        boolean recognized=profiles.stream().anyMatch(state.strictPolicies()::containsKey)
+            ||profiles.stream().anyMatch(state.rules().profiles()::containsKey);
+        if(!recognized) return FoodDecisionResolver.Decision.nativeResult();
+        boolean denied=profiles.stream().map(state.strictPolicies()::get)
+            .filter(java.util.Objects::nonNull).anyMatch(policy->policy.denies(observed));
+        return NativeDietPolicy.specialUse(true,
+            state.rules().universallyPermitted(observed),denied);
+    }
+
     /** Explicit source units from a trusted recipe graph, for integration adapters. */
     public static Optional<FoodPolicyRules.Nutrition> evaluate(
             String profile, ItemStack stack, double rawSourceUnits, Double preferredShare) {
