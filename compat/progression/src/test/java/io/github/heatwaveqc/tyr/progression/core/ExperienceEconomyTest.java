@@ -157,6 +157,26 @@ class ExperienceEconomyTest {
         assertEquals(2, ExperienceEconomy.available(mixed, MXP));
     }
 
+    @Test void onePathChangeCanWipeFreeMxpButPreserveOtherSystemsFreeXp() {
+        var state = earnFixed(ExperienceEconomy.Ledger.empty(), MXP,
+                "test:earned_mxp", 4500);
+        state = earnFixed(state, CULTIVATION, "test:earned_cultivation", 250);
+        state = buyMany(state, MXP, "test:core", "test:core_stat", 1);
+        state = buyMany(state, MXP, "test:monk", "test:monk_power", 2);
+        state = ExperienceEconomy.buy(state, CULTIVATION,
+                "test:monk", "test:meditation", 1, 3, 3);
+
+        var after = ExperienceEconomy.transition(state,
+                Map.of(MXP.id(), MXP, CULTIVATION.id(), CULTIVATION),
+                Set.of("test:monk"), Map.of(),
+                ExperienceEconomy.DeparturePolicy.FORFEIT,
+                Set.of(MXP.id()), true);
+        assertEquals(1000, after.currentXp().get(MXP.id()).intValueExact());
+        assertEquals(150, after.currentXp().get(CULTIVATION.id()).intValueExact());
+        assertEquals(0, ExperienceEconomy.available(after, MXP));
+        assertEquals(1, ExperienceEconomy.available(after, CULTIVATION));
+    }
+
     @Test void firstCompletionReceiptsSurviveResetAndCannotBeReplayed() {
         var first = ExperienceEconomy.earn(ExperienceEconomy.Ledger.empty(), MXP,
                 "test:first_tx", "test:boss_first", new BigDecimal("1000"), true, 1.02);
