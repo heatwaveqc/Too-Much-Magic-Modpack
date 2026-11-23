@@ -62,7 +62,8 @@ use cannot be credited. Never alter JAWR blood or native potion effects.
 
 If the recipe/profile already establishes separate legitimate nourishment,
 or the item is universally magical, the permission does not erase it.
-Unknown, no-FOOD potion-style items are left entirely to native use. The
+Unknown, no-FOOD potion-style items are left entirely to native use. A dedicated S2C `B` permission-only entry keeps the DRINK action enabled
+even at full hunger, with 0/0 food and untouched effects/container. The
 drink category is guarded by actual `UseAnim.DRINK`, granted permission
 and active physiological form; merely holding a drink or a broad tag
 does not award nutrition.
