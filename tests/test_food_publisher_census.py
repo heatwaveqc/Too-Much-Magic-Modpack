@@ -155,6 +155,30 @@ version="1.2.0"
             self.assertEqual(mismatched["status"], "held")
             self.assertFalse(mismatched["native_version_matches_approved"])
 
+    def test_uploaded_huaxia_native_food_source_list_is_not_nutrition_map(self):
+        d = json.loads((ROOT / "docs/qa/candidates/huaxia-native-food-source-v1.json")
+                       .read_text(encoding="utf-8"))
+        self.assertFalse(d["verified_in_game"])
+        self.assertFalse(d["runtime_data_generated"])
+        native = d["source_native_food_items"]
+        regen = d["source_native_regeneration_effect_items"]
+        bowl = d["native_returns_bowl_items"]
+        nonfood = d["source_non_food_direct_ingredients"]
+        self.assertEqual((len(native), len(regen), len(bowl), len(nonfood)),
+                         (51, 29, 22, 11))
+        self.assertEqual(len(set(native)), len(native))
+        self.assertTrue(set(regen).issubset(native))
+        self.assertTrue(set(bowl).issubset(native))
+        self.assertTrue(set(native).isdisjoint(nonfood))
+        self.assertEqual(d["provenance"]["sha1"],
+                         "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919")
+        self.assertNotIn("nutrition_values", d)
+        receipt = json.loads((ROOT / "integration/food-candidates/approved-food-candidates.json")
+                             .read_text(encoding="utf-8"))
+        uploaded = next(x for x in receipt["candidates"] if x["slug"] == "huaxia-delight")
+        self.assertEqual(uploaded["native_food_component_registration_count"], 51)
+        self.assertEqual(uploaded["native_regeneration_food_items"], 29)
+
     def test_invalid_zip_rejected(self):
         with self.assertRaises(Exception):
             audit_resources(b"not a jar")

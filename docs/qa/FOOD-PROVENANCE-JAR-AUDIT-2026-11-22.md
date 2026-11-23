@@ -47,3 +47,15 @@ No additional design choice is needed for the census. Source inability or ambigu
 - **Source status:** genuine readable, self-consistent local uploaded JAR; not independent proof of identity with official CurseForge file 8829017. The source-only pin hash has exactly this provenance.
 - **Important graph holds:** Seven recipe-output IDs have multiple production routes. In particular `huaxiadelight:cooking_oil` comes from alternative recipes returning **one or two** units, and `huaxiadelight:dough_wrapper` comes from routes yielding **one or two** units. Neither can get an unconditional global `source_units` value without proving equivalent per-item nutrition. `huaxiadelight:processing` also distinguishes wok-heated dishes from barrel-fermented cooking wine; do not auto-label everything raw/cooked from recipe type alone.
 - **Raw source evidence:** locally generated structured JSON inventory holds all 71 native recipe paths, inputs, outputs, yield counts, recipe type/station/tool, 54 item-tag expansions, seven loot-table paths and conditional recipe declarations. Its source can be independently regenerated from the uploaded binary; no copyrighted binary is stored in git.
+
+
+### Source-declared edible registrations (native bytecode, not a game boot)
+
+Read-only `javap -c -p dev.huaxiadelight.Content` on the exact uploaded SHA1, cross-checked against `HuaxiaDelight.ingredient` and its `lambda$ingredient$5` item factory:
+- **57 direct ingredient registrations**: **46 have positive hunger and receive actual `DataComponents.FOOD`** in the item constructor; **11** have hunger zero and therefore do *not* receive that component (e.g. cooking wine, oil, flour, unbaked wrappers and raw baozi).
+- **Five crop registrations** (`chili`, `soybean`, `ginger`, `garlic`, `scallion`) call the same `ingredient(name,1,0.2,false)` and contribute **five additional native food items**.
+- **51 source-declared registered native food items total**, distinct from the 64 distinct *recipe output candidates*. The 51 is exact for the inspected registration code, **not** authoritative proof of the assembled game's expanded registry.
+- **29 source-declared food items attach native Regeneration (160 ticks) through the FoodProperties builder.** The shared food handler must preserve these native effects, as well as the return-bowl/return-bottle semantics, while replacing only allowed dietary nutrition. Do not treat regeneration as an automatic universal Magical-food permission.
+- Source-only tables of all 51 food IDs and their original native FoodProperties are available in the owner audit export, not in a gameplay nutrition matrix; our rule engine still uses configurable families, source ratios and preparation stages.
+
+This fills the Huaxia source census without promoting any gameplay change, and avoids mistaking `cooking_wine` or `raw_baozi` for directly food-component-backed edible items. The separate complete same-build registry denominator remains pending.

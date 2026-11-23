@@ -33,7 +33,14 @@
       "optional_dependencies": [
         "butchercraft [2.6.5,2.7)"
       ],
-      "linkage": "Approved official CurseForge project/file IDs came from PR #439 and are not an independent SHA attestation."
+      "linkage": "Approved official CurseForge project/file IDs came from PR #439 and are not an independent SHA attestation.",
+      "native_food_component_registration_count": 51,
+      "native_positive_nutrition_direct_items": 46,
+      "native_positive_nutrition_crop_items": 5,
+      "native_zero_food_component_ingredients": 11,
+      "native_regeneration_food_items": 29,
+      "native_registration_evidence": "Static bytecode HuaxiaDelight.ingredient attaches FoodProperties only with nutrition>0; Content.register calls ingredient 57 times (46 >0), and crop(name) adds five positive-food produce items.",
+      "native_regeneration_evidence": "HuaxiaDelight.lambda$ingredient$5 attaches Regeneration when flagged; preserve source effects when overriding nutrition."
     },
     {
       "slug": "crispy",
@@ -89,7 +96,9 @@
     "targeted_sources_verified": 20,
     "publisher_verified_jars": 19,
     "owner_uploaded_source_jars": 1,
-    "huaxia_source_item_tags": 54
+    "huaxia_source_item_tags": 54,
+    "huaxia_declared_native_foods": 51,
+    "huaxia_native_regeneration_foods": 29
   },
   "source_provenance_note": "Four additions and 15 pinned verified through official source downloads, Huaxia independently inspected as user upload only. No full game registry count."
 }
