@@ -4,6 +4,7 @@ import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tyr.progression.data.MechanicalSpec;
 import io.github.heatwaveqc.tyr.progression.model.Definition;
 import io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions;
+import io.github.heatwaveqc.tyr.progression.data.FoodPolicyRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.MinecraftServer;
@@ -39,8 +40,7 @@ public final class GildedMechanics {
     private static final Map<MinecraftServer,Map<UUID,Long>> CAUGHT=new WeakHashMap<>();
     public static void clearFoodCache(){synchronized(GOLD){GOLD.clear();}}
     public static void register(){
-        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST,GildedMechanics::foodStart);
-        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST,GildedMechanics::foodTick);
+        // Dietary event gating is now registered once by NativeDietAdapters.
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST,GildedMechanics::caught);
     }
     private static boolean usable(ServerPlayer p){
@@ -114,18 +114,48 @@ public final class GildedMechanics {
         var data=stack.get(DataComponents.CUSTOM_DATA);
         return data!=null&&data.copyTag().getBoolean(LAVA_CAUGHT);
     }
-    private static boolean foodAllowed(ServerPlayer p,ItemStack stack){
+    /** Source-faithful stack restriction, called by the shared dietary gate. */
+    public static boolean foodAllowed(ServerPlayer p,ItemStack stack){
         if(!usable(p)||(!baseFood(stack)&&stack.getFoodProperties(p)==null))return true;
         for(var a:EffectRuntime.active(p)){
             var fx=a.effect();if(!fx.type().equals("food_restriction"))continue;
             boolean beverage=stack.getUseAnimation()==UseAnim.DRINK&&MechanicalSpec.bool(fx.params(),"drink_permission",false)
                 &&(DietPermissions.permits(p,stack,"alcohol")||DietPermissions.permits(p,stack,"recreational_drink"));
-            if(Selectors.item(fx.selector(),stack)||beverage||MechanicalSpec.bool(fx.params(),"gold_recipes",false)&&goldRecipe(p,stack)
+            // Universal magical nutrition is permission-only; no Golden bonus
+            // or blood/other meter credit follows from the tag itself.
+            boolean magical=FoodPolicyRegistry.universallyPermitted(stack);
+            boolean alcohol=stack.getUseAnimation()==UseAnim.DRINK
+                && MechanicalSpec.bool(fx.params(),"baseline_alcohol",false)
+                && Selectors.item("#c:food/alcohol",stack);
+            if(magical||Selectors.item(fx.selector(),stack)||beverage||alcohol
+                ||MechanicalSpec.bool(fx.params(),"gold_recipes",false)&&goldRecipe(p,stack)
                 ||MechanicalSpec.bool(fx.params(),"lava_caught",false)&&lavaCaught(stack))continue;
             return false;
         }
         return true;
     }
+    /** Dynamic stack provenance cannot be represented as a per-item client veto. */
+    public static boolean hasPotentialStackException(ServerPlayer p) {
+        if (!usable(p)) return false;
+        return EffectRuntime.active(p).stream().anyMatch(a ->
+            a.effect().type().equals("food_restriction")
+            && MechanicalSpec.bool(a.effect().params(),"lava_caught",false));
+    }
+
+    /** Exact active effects are part of the client projection invalidation key. */
+    public static String foodPolicyFingerprint(ServerPlayer p) {
+        if (!usable(p)) return "";
+        return EffectRuntime.active(p).stream()
+            .filter(a -> Set.of("food_restriction","diet_permission").contains(a.effect().type()))
+            .map(a -> a.id() + "=" + a.rank() + ":" + a.effect())
+            .sorted().collect(java.util.stream.Collectors.joining("\\n"));
+    }
+
+    public static boolean hasFoodRestrictions(ServerPlayer p) {
+        return usable(p) && EffectRuntime.active(p).stream()
+            .anyMatch(a -> a.effect().type().equals("food_restriction"));
+    }
+
     public static void foodStart(LivingEntityUseItemEvent.Start e){
         if(e.getEntity() instanceof ServerPlayer p&&!foodAllowed(p,e.getItem()))e.setCanceled(true);
     }
