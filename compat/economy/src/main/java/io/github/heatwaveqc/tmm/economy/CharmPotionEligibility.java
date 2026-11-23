@@ -8,6 +8,11 @@ package io.github.heatwaveqc.tmm.economy;
 public final class CharmPotionEligibility {
     private CharmPotionEligibility() {}
 
+    /** Vanilla Resistance V+ (amplifier >=4) is effectively invulnerable. */
+    public static boolean privilegedAmplifier(String effectId, int amplifier) {
+        return "minecraft:resistance".equals(effectId) && amplifier >= 4;
+    }
+
     public static boolean permits(
             int effectiveEffects,
             boolean instantaneous,
