@@ -402,23 +402,22 @@ def compile_one(recipe, index, available, roots, registered_ids=None, processing
     return compiled
 
 
-def process(audit, checked_sources, checked_routes, registry=None):
+def process(audit, checked_sources, checked_routes, registry=None, processing=None):
+    processing = processing or load_processing_config()
     releases = audit["releases"]
     index = TagIndex(releases, runtime=registry)
     # Positive native *tag evidence* is not equivalent to a registered FOOD
     # component. It is a separate review class, never universal edibility.
     native_food_tagged = set()
-    for tag in ("c:foods", "c:juices", "farmersdelight:meals"):
+    for tag in processing["native_food_target_tags"]:
         try:
             native_food_tagged.update(index.expand(tag))
         except Hold:
             pass
     # Prevent tracing seeds and containers into bogus "crafted food" tags.
     # Some Pam's crop seed IDs are tagged only as villager plantable seeds.
-    nonfood_outputs = set(NEUTRAL_ITEMS)
-    for tag in ("c:seeds", "minecraft:villager_plantable_seeds",
-                "farmersdelight:serving_containers",
-                "herbalbrews:container_items"):
+    nonfood_outputs = set(processing["neutral_item_ids"])
+    for tag in processing["nonfood_output_tags"]:
         try:
             nonfood_outputs.update(index.expand(tag))
         except Hold:
@@ -428,7 +427,7 @@ def process(audit, checked_sources, checked_routes, registry=None):
         known_ns.update(release.get("native_versions", {}))
     sources = dict(checked_sources)
     added_sources = material_sources(index, sources, known_ns,
-                                    registry["ids"] if registry else None)
+                                    registry["ids"] if registry else None, processing=processing)
     sources.update(added_sources)
     recipes = defaultdict(list)
     for release in releases:
@@ -457,21 +456,20 @@ def process(audit, checked_sources, checked_routes, registry=None):
             for recipe in recipes[item]:
                 try:
                     raw_routes.extend(compile_one(recipe, index, available, sources,
-                        registry["ids"] if registry else None))
+                        registry["ids"] if registry else None, processing=processing))
                 except Hold as failure:
                     reason = str(failure)
                     break
             if reason:
                 reasons[item] = reason
                 continue
+            # Every active recipe ID matters even if the nutrition is equal.
+            # No collapsing furnace/smoker/campfire receipt evidence.
             by_key = {}
             for route in raw_routes:
-                # Many furnace/campfire/smoker recipes are nutritionally
-                # identical. Keep one deterministic receipt per equivalence.
-                key = (route["method"], route["result_count"],
+                key = (route["receipt"], route["method"], route["result_count"],
                        tuple((x["item"], x["count"]) for x in route["ingredients"]))
-                if key not in by_key or route["receipt"] < by_key[key]["receipt"]:
-                    by_key[key] = route
+                by_key.setdefault(key, route)
             choices = sorted(by_key.values(), key=lambda r: (
                 r["receipt"], r["method"], str(r["ingredients"])))
             if not choices or len(choices) > MAX_ALTERNATIVES:
@@ -479,8 +477,10 @@ def process(audit, checked_sources, checked_routes, registry=None):
                 continue
             accepted[item] = {
                 "schema": 1, "item": item,
-                "identity": "unfavored_all" if IDENTITY_RE.search(item.split(":")[1])
-                            else "ordinary",
+                "identity": "unfavored_all" if any(
+                    re.search(pattern, item.split(":")[1], re.I)
+                    for pattern in processing["identity_unfavored_patterns"])
+                    else "ordinary",
                 "complete": True, "routes": choices,
             }
             reasons.pop(item, None)
@@ -525,14 +525,16 @@ def process(audit, checked_sources, checked_routes, registry=None):
             for part in ([raw] if isinstance(raw, dict) else raw):
                 if not isinstance(part, dict):
                     continue
-                if set(part) == {"tag"} and part["tag"].startswith("c:tool_"):
+                if set(part) == {"tag"} and any(
+                        part["tag"].startswith(prefix)
+                        for prefix in processing["neutral_tag_prefixes"]):
                     continue
                 try:
                     options = index.ingredient(part)
                 except Hold:
                     continue
                 for ingredient in options:
-                    if ingredient not in available_final and ingredient not in NEUTRAL_ITEMS:
+                    if ingredient not in available_final and ingredient not in processing["neutral_item_ids"]:
                         missing.add(ingredient)
         if missing:
             unresolved_by_food[item] = sorted(missing)
@@ -609,6 +611,8 @@ def main():
     parser.add_argument("--registry-json", type=Path,
                         help="Optional authoritative loaded-server default-stack FOOD census")
     parser.add_argument("--out", required=True, type=Path)
+    parser.add_argument("--processing-config", type=Path, default=DEFAULT_PROCESSING_CONFIG,
+                        help="Reviewed shared processing methods/tool tag taxonomy")
     args = parser.parse_args()
     audit = json.loads(args.audit.read_text(encoding="utf-8"))
     verify_pins(audit, args.pin_snapshot or args.repo)
@@ -617,7 +621,9 @@ def main():
     existing = read_records(native / ROUTES)
     registry = (load_runtime_food_registry(args.registry_json)
                 if args.registry_json else None)
-    files, summary = process(audit, roots, existing, registry=registry)
+    processing = load_processing_config(args.processing_config)
+    files, summary = process(audit, roots, existing, registry=registry,
+                             processing=processing)
     for rel, data in sorted(files.items()):
         target = args.out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
