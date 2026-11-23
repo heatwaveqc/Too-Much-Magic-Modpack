@@ -2,7 +2,6 @@ package io.github.heatwaveqc.tyr.progression.runtime.forms;
 
 import io.github.heatwaveqc.tyr.progression.data.FoodDecisionResolver;
 import io.github.heatwaveqc.tyr.progression.data.FoodPolicyRegistry;
-import io.github.heatwaveqc.tyr.progression.foundation.Condition;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,9 +22,8 @@ public final class JawrDietPenaltyAdapter {
 
     public static boolean suppress(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)
-                || player.getServer() == null || !player.getServer().isSameThread()
-                || ProviderFlags.nativeDragon(player) == Condition.Result.UNAVAILABLE
-                    && false) return false; // No other provider's form is a prerequisite.
+                || player.getServer() == null || !player.getServer().isSameThread())
+            return false;
         if (!JawrFormState.present(player,"vampire")) return false;
         ItemStack stack = event.getItem();
         if (stack.isEmpty() || stack.get(DataComponents.FOOD) == null
