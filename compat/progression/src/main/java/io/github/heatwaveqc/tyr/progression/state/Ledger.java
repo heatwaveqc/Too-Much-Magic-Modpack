@@ -78,6 +78,13 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets,
         list.add((permanent?"!":"")+currency+"|"+paid);copy.put(key,list);
         return new Ledger(paths,wallets,copy,economy);
     }
+    /** Path forfeiture removes ALL payment ownership, including non-refundable ranks. */
+    public Ledger clearAllReceipts(String path) {
+        var copy = new HashMap<>(payments);
+        copy.keySet().removeIf(key -> key.startsWith(path + "|"));
+        return new Ledger(paths,wallets,copy,economy);
+    }
+
     public Ledger clearReceipts(String path) {
         var copy = new HashMap<>(payments);
         for (var key : new java.util.ArrayList<>(copy.keySet())) if(key.startsWith(path+"|")) {
