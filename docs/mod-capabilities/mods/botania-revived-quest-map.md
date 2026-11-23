@@ -1,6 +1,6 @@
-# Botania Revived — quest-source teaching map (first pass, 22 research labels)
+# Botania Revived — quest-source teaching map (Botania-family source handoff, 29 research labels)
 
-**Not FTB Quests content or GUIDs.** These 22 internal `BR-xx` labels are an Atlas editorial DAG, not a commitment to author 22 extra in-game nodes; existing Botania tasks must be crosswalked before implementation. **Source evidence:** [Botania Atlas dossier](botania-revived.md), [hash-pinned Mod Comprehension profile](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/research/mod-comprehension-local-jars-20261116/docs/mod-comprehension/mods/botania-revived.md), immutable [2.0.2 source](https://github.com/Velron-Devs/Botania-Revived/tree/5f803227d484598da1f1093a91d5d7cf5cf9600d). Lexica/JEI is the actual recipe authority. No claimed client or pack walkthrough PASS.
+**Not FTB Quests content or GUIDs.** These 29 internal `BR-xx` labels are an Atlas editorial DAG, not a commitment to author 29 extra in-game nodes; existing Botania tasks must be crosswalked before implementation. **Source evidence:** [Botania Atlas dossier](botania-revived.md), [hash-pinned Mod Comprehension profile](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/research/mod-comprehension-local-jars-20261116/docs/mod-comprehension/mods/botania-revived.md), immutable [2.0.2 source](https://github.com/Velron-Devs/Botania-Revived/tree/5f803227d484598da1f1093a91d5d7cf5cf9600d). Lexica/JEI is the actual recipe authority. No claimed client or pack walkthrough PASS.
 
 ## Required instructional spine (12 source lessons)
 
@@ -19,7 +19,7 @@
 | **BR-11** (BR-09, BR-10): Terrasteel | Build a formed Terrestrial Agglomeration Plate arrangement with Natura Pylons, deliver sufficient Mana, make Terrasteel. | Terrasteel output; constructing Plate alone inadequate. | Small XP, non-gating ingredient; preserve material investment. |
 | **BR-12** (BR-11): Gaia Guardian | Build actual Beacon + four Gaia Pylons arena, summon by Terrasteel Ingot, win player-owned fight. | Real kill/advancement from participating player's event; **never** Life Essence possession alone as first-kill evidence. | XP/commemorative reward; native contributor loot already given, don't duplicate boss-gated rewards. |
 
-## Optional branches and cross-mod instruction (10 source lessons)
+## Optional branches and cross-mod instruction (17 source lessons)
 
 | ID and prerequisites | Actual branch and learning goal | Proof boundary / source work left |
 | --- | --- | --- |
@@ -32,7 +32,14 @@
 | **BR-19** (BR-07): Mana Fluxfield → FE | Craft `botania:mana_fluxfield` (4 Livingrock +4 Redstone Blocks +1 Manasteel Ingot), bind Spreader, transfer burst to adjacent FE receiver. | Real accepted FE measurement; source 10 FE/Mana, 12,800 FE buffer, up to 1,600 FE/tick attempted export. No free-energy assumption. |
 | **BR-20** (BR-07): Ars Mana/Source interoperability | Set up the exact Botania Revived/Ars integration and demonstrate a valid paid resource transfer or player-item cost. | Cross-mod source includes optional adapter; effective TMM acceptance needs actual before/after both pools. Do not infer blanket conversion or free MXP. |
 | **BR-21** (BR-09): Botania Revived modules | Visit one *currently enabled* port-only module branch and complete an actual recipe/operation with valid survival provenance. | **Conditional**, not mandatory until startup config and creative/Asgard/exploration reachability established. |
-| **BR-22** (BR-12): Extra Botany Revived handoff | Introduce the addon only once its first exact 1.0.4 unlock and Lexica/Patchouli recipe are source-traced; branch toward Gaia III/Ego/Herrscher where actually gated. | **Research hold inside this map** until separate addon dossier establishes recipes, first unlocks, boss paths and reward limits; no forced guessed prerequisite. |
+| **BR-22** (BR-12): Extra Botany Revived handoff | Open the addon Lexica section and create one confirmed 1.0.4 native flower; demonstrate a real operation and review its separate Nature Aura/Fluided Mana domains. | [Addon dossier](extra-botany-revived.md) and [20-flower audit](../inventories/extra-botany-1.0.4-flora.md); source-ready operation *type*, item output remains a weaker possession detector. |
+| **BR-23** (BR-12, BR-22): Gaia III | Craft Challenge Ticket (4 Life Essence +2 Shadowium +2 Photonium +1 Gaia Ingot); summon at validated radius-15 arena and defeat Gaia III. | Real contributor kill and reward bag; Pandora's Box item alone does not prove ownership. |
+| **BR-24** (BR-22): Nature Orb / Nature Aura | Craft Nature Orb (4 Terrasteel Ingots, 4 Dragonstone Gems, Mana Pearl), charge it on its proper pedestal and demonstrate one equipped tier effect. | Monitor actual Nature Aura balance and tier, not merely possessing the Orb. |
+| **BR-25** (BR-24): Ego fight | Accumulate 200,000 Nature Aura, sneak-use the equipped/held Orb at a valid Beacon, defeat the last stage of Ego. | True final-stage boss kill; not early phase/no-drop reward. |
+| **BR-26** (BR-23): Hero Medal and Voidcaller | Open eligible Pandora's Box to obtain Hero Medal; craft 3 Voidcallers using 4 Life Essence, 2 Shadowium, 2 Photonium, 1 Medal. | [Exact static native recipe](https://github.com/Velron-Devs/Extra-Botany-Revived/blob/b58857d3658479f6e8684d3b45f6d3138a294548/src/main/resources/data/extrabotany/recipe/voidcaller.json); first-craft proxy, not kill credit. |
+| **BR-27** (BR-26): Herrscher of the Void | Sneak-use `extrabotany:voidcaller` at a valid Beacon, pass strict inventory/arena checks, defeat Herrscher. | Real owner kill, Core of Void **2% loot** is optional rare reward, never guaranteed quest key. |
+| **BR-28** (BR-12): Creative Mana capstone | If owner keeps default `creative` module, use 1,000,000 paid Mana + recipe items on Terrestrial Plate for Creative Mana Pool; demonstrate native infinite store. | **Owner decision on deliberate post-Gaia infinite Mana** pending; keep optional, not a mandatory FTB quest until settled. |
+| **BR-29** (BR-09): Alternative renewable ore/loot | Demonstrate Orechid's weighted real ore-block conversion (native default **100 Mana**/operation) and Loonium direct dungeon/structure loot (**35,000 Mana**/cycle) as optional item economy routes. | Pack output/loot tables may be changed in TMM; [#339](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/339) **stages**, does not integrate, Draconium/Replica ore alternatives. Owner permits lateral paths; don't make Occultism mandatory. |
 
 ## Practical detector hierarchy
 
@@ -40,4 +47,4 @@
 
 **Crosswalk still required:** query the live `manifest/quest_chapters.json`, integrated Botania chapter SNBT and existing FTB IDs before merging/deleting/inserting any nodes. Preserve authored IDs and player claims when migrating chapters. The current map deliberately contains *no* signed GUID, position or final reward amount.
 
-**Structural validation:** 22 unique labels; 12 core +10 optional; every dependency listed above references an earlier label; no cycle. **Research maturity:** accurate main spine and several source-backed optional actions, but full flora/device/gear and Extra Botany detail still unresolved. The absence of standalone regression for unchanged native Botania is intentional; implementer owns new TMM-specific client/quest checks.
+**Structural validation:** 29 unique labels; 12 core +17 optional; every dependency listed above references an earlier label; no cycle. **Research maturity:** source-backed full flower, major resource and three-addon-boss route; exact equipment item and recipe variants remain native reference/JEI, and TMM-effective configs and client checks remain implementation-owned. The absence of standalone regression for unchanged native Botania is intentional; implementer owns new TMM-specific client/quest checks.
