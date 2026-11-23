@@ -109,6 +109,48 @@ class ConfiguredEconomyRuntimeTest {
         assertTrue(departed.economy().rewardReceipts().stream().anyMatch(x->x.endsWith("test:boss_first")));
     }
 
+    @Test void departureMayForfeitOneCurrencyAndRetainAnotherWithoutRestoringLostPoints() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var policy=ExperienceEconomyConfig.read(JsonParser.parseString("""
+                {"systems":[
+                  {"id":"tyr_progression:mxp","xp_per_point":1000},
+                  {"id":"test:cultivation","xp_per_point":100}
+                ],
+                "default_path_change":{"on_leave":"forfeit","on_respec":"refund","wipe_unallocated":true},
+                "path_changes":[{"path":"test:discipline","system":"test:cultivation",
+                  "on_leave":"retain","wipe_unallocated":false}],
+                "skills":[{"path":"test:discipline","skill":"test:wellspring",
+                  "total_rank_cap":8,
+                  "purchases":[
+                    {"system":"tyr_progression:mxp","max_ranks":5},
+                    {"system":"test:cultivation","max_ranks":3}
+                  ]}]}
+                """).getAsJsonObject());
+            ExperienceEconomyRuntime.install(policy);
+            Ledger l=Ledger.empty();
+            l=ChannelEngine.awardConfigured(l,policy,XpChannel.MXP,"test:mana",
+                "test:mana_one",null,new BigDecimal("1500"),true,1.02);
+            l=ChannelEngine.awardConfigured(l,policy,CULT,"test:practice",
+                "test:practice_one",null,new BigDecimal("200"),true,1.02);
+            l=ChannelEngine.join(l,tree(),XpChannel.mxp(1.02));
+            l=ChannelEngine.buy(l,tree(),config(),SKILL,XpChannel.MXP);
+            l=ChannelEngine.buy(l,tree(),config(),SKILL,CULT);
+            assertEquals(2,ChannelEngine.view(l,tree(),config()).skillRank(SKILL));
+            var left=ChannelEngine.depart(l,tree(),policy);
+            assertFalse(left.get(PATH).joined());
+            assertEquals(0,left.economy().currentXp().get(XpChannel.MXP).intValueExact());
+            assertEquals(200,left.economy().currentXp().get(CULT).intValueExact());
+            assertEquals(1,ExperienceEconomy.effectiveRank(left.economy(),PATH,SKILL));
+            assertEquals(1,left.payments().get(PATH+"|"+SKILL).size());
+            var returned=ChannelEngine.join(left,tree(),XpChannel.mxp(1.02));
+            assertEquals(1,ChannelEngine.view(returned,tree(),config()).skillRank(SKILL));
+            assertEquals(0,ExperienceEconomy.contributedRanks(returned.economy(),PATH,SKILL,XpChannel.MXP));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
     @Test void shippedUnifiedPresetIsAnActualPackResource() throws Exception {
         try(var reader=new java.io.InputStreamReader(
                 getClass().getResourceAsStream(
