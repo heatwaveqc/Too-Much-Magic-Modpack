@@ -5,6 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerPlayer;
+import io.github.heatwaveqc.tyr.progression.foundation.Condition;
 import net.minecraft.core.registries.BuiltInRegistries;
 import io.github.heatwaveqc.tyr.progression.network.FoodPreviewWire;
 import net.minecraft.resources.ResourceLocation;
@@ -31,11 +33,13 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                          Map<String, FoodSourceEvidence> sourceEvidence,
                          Map<String, FoodRecipeEvidence> recipeEvidence,
                          Map<String, StrictDietPolicy> strictPolicies,
+                         Map<String, Condition<ServerPlayer>> strictActivations,
                          long generation) {
         private State {
             sourceEvidence = Map.copyOf(sourceEvidence);
             recipeEvidence = Map.copyOf(recipeEvidence);
             strictPolicies = Map.copyOf(strictPolicies);
+            strictActivations = Map.copyOf(strictActivations);
         }
     }
     private static volatile State active;
@@ -52,6 +56,26 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     public static Optional<FoodPolicyRules> current() {
         State state = active;
         return state == null ? Optional.empty() : Optional.of(state.rules());
+    }
+
+    /**
+     * Read-only, server-authoritative active strict diets. An unbound policy
+     * remains dormant; unknown or unready provider flags do not authorize it.
+     * Path membership/eligibility and native form probes are evaluated live.
+     */
+    public static Set<String> activeStrictProfiles(ServerPlayer player) {
+        State state = active;
+        if (state == null || player == null || player.getServer() == null
+                || !player.getServer().isSameThread()) return Set.of();
+        Set<String> activeProfiles = new HashSet<>();
+        for (var entry : state.strictActivations().entrySet()) {
+            try {
+                if (entry.getValue().test(player)) activeProfiles.add(entry.getKey());
+            } catch (RuntimeException | LinkageError unavailable) {
+                // Never activate an unverified native or Path gate.
+            }
+        }
+        return Set.copyOf(activeProfiles);
     }
 
     /** Live item tags: pack-provided tags remain authoritative after /reload. */
@@ -198,6 +222,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
         // Datapacks may supply more profiles without new Java. They cannot
         // shadow an affinity profile or each other; publication is atomic.
         Map<String, StrictDietPolicy> strict = new HashMap<>();
+        Map<String, Condition<ServerPlayer>> activations = new HashMap<>();
         final String constraintDirectory = "tyr_progression/food_constraints";
         for (var resource : manager.listResources(constraintDirectory,
                     key -> key.getPath().endsWith(".json")).entrySet()) {
@@ -208,6 +233,8 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                         || strict.putIfAbsent(rule.profile(), rule) != null)
                     throw new IllegalArgumentException(
                         "Duplicate/overlapping dietary profile " + rule.profile());
+                if (rule.when() != null)
+                    activations.put(rule.profile(), Eligibility.parse(rule.when()));
             } catch (IOException bad) {
                 throw new IllegalArgumentException(
                     "Cannot read strict food policy " + resource.getKey(), bad);
@@ -215,7 +242,8 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
         }
         // One volatile publish; an invalid route or root record never exposes
         // a partially updated diet policy on /reload.
-        active = new State(rules, sources, recipes, strict, NEXT_GENERATION.incrementAndGet());
+        active = new State(rules, sources, recipes, strict, activations,
+            NEXT_GENERATION.incrementAndGet());
         ProgressionMod.LOGGER.info(
             "Loaded shared food policy schema {}: {} affinity profiles, {} strict profiles, {} roots, {} recipes",
             rules.schema(), rules.profiles().size(), strict.size(), sources.size(), recipes.size());
