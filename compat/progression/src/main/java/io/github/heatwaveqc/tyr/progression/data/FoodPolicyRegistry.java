@@ -30,10 +30,12 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     private record State(FoodPolicyRules rules,
                          Map<String, FoodSourceEvidence> sourceEvidence,
                          Map<String, FoodRecipeEvidence> recipeEvidence,
+                         Map<String, StrictDietPolicy> strictPolicies,
                          long generation) {
         private State {
             sourceEvidence = Map.copyOf(sourceEvidence);
             recipeEvidence = Map.copyOf(recipeEvidence);
+            strictPolicies = Map.copyOf(strictPolicies);
         }
     }
     private static volatile State active;
@@ -84,71 +86,71 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     }
 
     /**
-     * Complete evidence-driven lookup. Never assumes a food is one whole source:
-     * recipes may cut, combine or heat input units, and ambiguous sources must
-     * not receive a fabricated default nutrition value.
+     * Shared policy decision for an authorized set of native/form/Path profiles.
+     * Only component-backed food is interpreted; custom-use items are still
+     * owned by their native mod and remain outside this nutrition projection.
      */
+    public static FoodDecisionResolver.Decision decide(Set<String> profiles, ItemStack stack) {
+        State state = active;
+        if (state == null || stack.isEmpty() || stack.get(DataComponents.FOOD) == null)
+            return FoodDecisionResolver.Decision.nativeResult();
+        String item = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        return resolver(state, input -> {
+            if (input.equals(item)) return tags(stack);
+            ResourceLocation id = ResourceLocation.tryParse(input);
+            if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
+            return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
+        }).decide(profiles, item);
+    }
+
+    private static FoodDecisionResolver resolver(State state,
+            java.util.function.Function<String, Set<String>> observedTags) {
+        return new FoodDecisionResolver(state.rules(), state.strictPolicies(),
+            state.sourceEvidence(), state.recipeEvidence(), observedTags);
+    }
+
+    /** Preserve the previously published single-profile nutrition adapter. */
     public static Optional<FoodPolicyRules.Nutrition> evaluateSource(
             String profile, ItemStack stack) {
-        State state = active;
-        if (state == null || stack.isEmpty()) return Optional.empty();
-        String item = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-        // Every output item has one result per dietary profile, independently
-        // of how a particular stack was crafted. Resolve the lower envelope
-        // of every verified alternative; incomplete evidence keeps native.
-        return new FoodRecipeEvaluator(state.rules(), state.sourceEvidence(),
-                state.recipeEvidence(), input -> {
-                    if (input.equals(item)) return tags(stack);
-                    ResourceLocation id = ResourceLocation.parse(input);
-                    if (!BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
-                    return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
-                }).evaluate(profile, item);
+        if (profile == null) return Optional.empty();
+        FoodDecisionResolver.Decision decision = decide(Set.of(profile), stack);
+        return decision.outcome() == FoodDecisionResolver.Outcome.NUTRITION
+            ? Optional.of(decision.nutrition()) : Optional.empty();
     }
 
     /**
-     * Server-owned, snapshot-only client preview. Derive food values from the
-     * same immutable datapack evidence and rules as the consumption hook.
-     * Never transmit raw rules, recipe graphs, client-side entitlements or
-     * mutable item components. Unverified foods remain native on the client.
+     * Build the exact same server-derived decision for every native FOOD item
+     * from a single atomically loaded policy snapshot. When strict profiles
+     * apply, explicit denies are transmitted too, even without source recipes.
+     * The client never runs its own food policy or imports provenance.
      */
-    public static Map<String, FoodPreviewWire.Entry> clientPreview(String profile) {
+    public static Map<String, FoodPreviewWire.Entry> clientPreview(Set<String> profiles) {
         State state = active;
-        if (state == null || profile == null
-                || !state.rules().profiles().containsKey(profile)) return Map.of();
-
-        var evaluator = new FoodRecipeEvaluator(state.rules(), state.sourceEvidence(),
-            state.recipeEvidence(), input -> {
-                ResourceLocation id = ResourceLocation.tryParse(input);
-                if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
-                return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
-            });
+        if (state == null || profiles == null || profiles.isEmpty()) return Map.of();
+        var evaluator = resolver(state, input -> {
+            ResourceLocation id = ResourceLocation.tryParse(input);
+            if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
+            return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
+        });
         Map<String, FoodPreviewWire.Entry> projected = new HashMap<>();
-        Set<String> evidenced = new HashSet<>(state.sourceEvidence().keySet());
-        evidenced.addAll(state.recipeEvidence().keySet());
-        for (String item : evidenced) {
-            ResourceLocation id = ResourceLocation.tryParse(item);
-            if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) continue;
-            ItemStack stack = BuiltInRegistries.ITEM.get(id).getDefaultInstance();
-            if (stack.get(DataComponents.FOOD) == null) continue;
-            FoodSourceEvidence root = state.sourceEvidence().get(item);
-            if (state.rules().universallyPermitted(effectiveTags(stack, root))) {
-                projected.put(item, FoodPreviewWire.Entry.permitNative());
-                continue;
-            }
-            evaluator.evaluate(profile, item).ifPresent(value ->
-                projected.put(item, FoodPreviewWire.Entry.nourishment(
-                    value.hunger(), value.saturationModifier())));
-        }
-        // A magical food may have no source/route record. As on the server,
-        // the exemption is permission-only: preserve its actual native food.
         for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
             ItemStack stack = BuiltInRegistries.ITEM.get(id).getDefaultInstance();
             if (stack.get(DataComponents.FOOD) == null) continue;
-            if (state.rules().universallyPermitted(effectiveTags(
-                    stack, state.sourceEvidence().get(id.toString()))))
-                projected.put(id.toString(), FoodPreviewWire.Entry.permitNative());
+            var decision = evaluator.decide(profiles, id.toString());
+            switch (decision.outcome()) {
+                case NATIVE -> { }
+                case DENY -> projected.put(id.toString(), FoodPreviewWire.Entry.deny());
+                case PERMIT_NATIVE -> projected.put(id.toString(), FoodPreviewWire.Entry.permitNative());
+                case NUTRITION -> projected.put(id.toString(), FoodPreviewWire.Entry.nourishment(
+                    decision.nutrition().hunger(), decision.nutrition().saturationModifier()));
+            }
         }
         return Map.copyOf(projected);
+    }
+
+    /** Existing dragon-only client call; hybrid profiles use the set overload. */
+    public static Map<String, FoodPreviewWire.Entry> clientPreview(String profile) {
+        return profile == null ? Map.of() : clientPreview(Set.of(profile));
     }
 
     @Override
@@ -192,11 +194,30 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                     "Cannot read food recipe routes " + resource.getKey(), bad);
             }
         }
+        // Independent strict diets (Dryad, Gilded-style gates, future Paths).
+        // Datapacks may supply more profiles without new Java. They cannot
+        // shadow an affinity profile or each other; publication is atomic.
+        Map<String, StrictDietPolicy> strict = new HashMap<>();
+        final String constraintDirectory = "tyr_progression/food_constraints";
+        for (var resource : manager.listResources(constraintDirectory,
+                    key -> key.getPath().endsWith(".json")).entrySet()) {
+            try (var reader = resource.getValue().openAsReader()) {
+                StrictDietPolicy rule = StrictDietPolicy.parse(
+                    JsonParser.parseReader(reader).getAsJsonObject());
+                if (rules.profiles().containsKey(rule.profile())
+                        || strict.putIfAbsent(rule.profile(), rule) != null)
+                    throw new IllegalArgumentException(
+                        "Duplicate/overlapping dietary profile " + rule.profile());
+            } catch (IOException bad) {
+                throw new IllegalArgumentException(
+                    "Cannot read strict food policy " + resource.getKey(), bad);
+            }
+        }
         // One volatile publish; an invalid route or root record never exposes
         // a partially updated diet policy on /reload.
-        active = new State(rules, sources, recipes, NEXT_GENERATION.incrementAndGet());
+        active = new State(rules, sources, recipes, strict, NEXT_GENERATION.incrementAndGet());
         ProgressionMod.LOGGER.info(
-            "Loaded shared food policy schema {}: {} profiles, {} source roots, {} recipe outputs",
-            rules.schema(), rules.profiles().size(), sources.size(), recipes.size());
+            "Loaded shared food policy schema {}: {} affinity profiles, {} strict profiles, {} roots, {} recipes",
+            rules.schema(), rules.profiles().size(), strict.size(), sources.size(), recipes.size());
     }
 }
