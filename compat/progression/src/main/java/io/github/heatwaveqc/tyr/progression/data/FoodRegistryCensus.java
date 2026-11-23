@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.storage.LevelResource;
 
 import java.io.IOException;
@@ -68,6 +69,48 @@ public final class FoodRegistryCensus {
     }
 
     /**
+     * Inspect the effective recipe manager after datapack conditions and pack
+     * runtime recipe mutations. getResultItem is only an output *preview*:
+     * dynamic recipes may return EMPTY or a different result at assemble-time.
+     */
+    public static void appendRecipeOutputPreviews(JsonObject report,
+            net.minecraft.server.MinecraftServer server) {
+        List<RecipeHolder<?>> holders = new ArrayList<>(
+            server.getRecipeManager().getRecipes());
+        holders.sort(Comparator.comparing(holder -> holder.id().toString()));
+        JsonArray preview = new JsonArray();
+        JsonArray unresolved = new JsonArray();
+        int foodOutputs = 0;
+        for (RecipeHolder<?> holder : holders) {
+            try {
+                ItemStack stack = holder.value().getResultItem(server.registryAccess());
+                if (stack.isEmpty()) {
+                    unresolved.add(holder.id().toString());
+                    continue;
+                }
+                JsonObject entry = new JsonObject();
+                entry.addProperty("recipe", holder.id().toString());
+                entry.addProperty("item", BuiltInRegistries.ITEM.getKey(
+                    stack.getItem()).toString());
+                entry.addProperty("food", stack.get(DataComponents.FOOD) != null);
+                entry.addProperty("count", stack.getCount());
+                preview.add(entry);
+                if (stack.get(DataComponents.FOOD) != null) foodOutputs++;
+            } catch (RuntimeException notPreviewable) {
+                // Never treat a dynamic or failing output preview as nonfood.
+                unresolved.add(holder.id().toString());
+            }
+        }
+        report.addProperty("recipe_result_previews_examined", true);
+        report.addProperty("loaded_recipe_count", holders.size());
+        report.addProperty("recipe_preview_count", preview.size());
+        report.addProperty("recipe_preview_food_count", foodOutputs);
+        report.addProperty("recipe_preview_unresolved_count", unresolved.size());
+        report.add("recipe_result_previews", preview);
+        report.add("unresolved_recipe_result_previews", unresolved);
+    }
+
+    /**
      * Only invoked by /tyrprogress admin foodcensus; no unattended boot,
      * scheduled world write or automatic full integration workflow.
      * The report is saved inside the active world's reports directory.
@@ -77,6 +120,7 @@ public final class FoodRegistryCensus {
             .resolve("reports").resolve("tmm-food-registry-v1.json");
         try {
             JsonObject snapshot = snapshot();
+            appendRecipeOutputPreviews(snapshot, source.getServer());
             Files.createDirectories(destination.getParent());
             Path temporary = Files.createTempFile(destination.getParent(),
                 ".tmm-food-registry-", ".json.tmp");
@@ -96,7 +140,10 @@ public final class FoodRegistryCensus {
             int total = snapshot.get("item_count").getAsInt();
             source.sendSuccess(() -> Component.literal(
                 "TMM food census: " + foods + "/" + total
-                + " default-stack items have FOOD; JSON at " + destination), false);
+                + " default-stack items have FOOD; "
+                + snapshot.get("recipe_preview_food_count").getAsInt()
+                + " active recipe result previews have FOOD; JSON at "
+                + destination), false);
             return foods;
         } catch (IOException ex) {
             source.sendFailure(Component.literal(
