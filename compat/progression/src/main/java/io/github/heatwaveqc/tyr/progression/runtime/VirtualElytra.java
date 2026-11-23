@@ -1,7 +1,6 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
-import io.github.heatwaveqc.tyr.progression.client.ClientPassivePowers;
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tyr.progression.core.VirtualElytraPolicy;
 import java.util.Set;
@@ -65,7 +64,7 @@ public final class VirtualElytra {
         if (wearer instanceof ServerPlayer server)
             return PassivePowers.active(server, POWER);
         if (wearer.level().isClientSide())
-            return ClientPassivePowers.active(wearer, POWER);
+            return ClientPowerSnapshot.active(wearer, POWER);
         return false;
     }
 
