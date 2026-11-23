@@ -18,6 +18,11 @@ import net.minecraft.server.level.ServerPlayer;
 /** data/<namespace>/tyr_progression/paths/<name>.json -> <namespace>:<name>. */
 public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,Definition.Path> active = Map.of();
+    private static volatile PathCompatibility.Rules compatibility =
+            new PathCompatibility.Rules(Map.of(),Map.of());
+    public static boolean canCoexist(String first,String second) {
+        return compatibility.canCoexist(active,first,second);
+    }
     private static volatile Map<String,String> enrollmentModes = Map.of();
     private static volatile Map<String,PotionEnrollmentTrigger> potionTriggers = Map.of();
     private static volatile Map<String,HunterXpPolicy> hunterXpPolicies = Map.of();
@@ -194,9 +199,11 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         }
         if(!economy.systems().containsKey(XpChannel.MXP))
             throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
+        var nextCompatibility=PathCompatibility.parse(rawPaths,next);
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        compatibility=nextCompatibility;
         ExperienceEconomyRuntime.install(economy);
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
