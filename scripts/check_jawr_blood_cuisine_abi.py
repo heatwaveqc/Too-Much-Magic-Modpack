@@ -76,8 +76,17 @@ def class_text(jar: Path, clazz: str) -> str:
     # Fail if the exact class does not exist in the pinned binary.
     entry = clazz.replace(".", "/") + ".class"
     with ZipFile(jar) as archive:
-        if entry not in archive.namelist():
-            raise ValueError(jar.name + ": missing class " + clazz)
+        all_entries = archive.namelist()
+        if entry not in all_entries:
+            needles = ("AgingCask", "WineItem", "BnCWine", "brewinandchewin",
+                       "META-INF/jarjar/", "META-INF/jars/")
+            matches = [name for name in all_entries if any(needle in name for needle in needles)]
+            raise ValueError(
+                jar.name + ": missing class " + clazz
+                + "; related ZIP entries (" + str(len(matches)) + "): "
+                + repr(matches[:75])
+                + "; archive starts: " + repr(all_entries[:20])
+            )
     result = subprocess.run(["javap", "-p", "-s", "-classpath", str(jar), clazz],
                             capture_output=True, text=True, timeout=35, check=False)
     if result.returncode:
