@@ -709,6 +709,10 @@ file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
 
 [[files]]
+file = "kubejs/data/tmm/advancement/chaos_bunny_slayer.json"
+hash = "c135741e116fa5ae503358620ec0292c4114f8b5a3a44d985da0eedc23a8832c"
+
+[[files]]
 file = "kubejs/data/tmm/advancement/starter_kit.json"
 hash = "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
 
@@ -719,6 +723,10 @@ hash = "f9deb243e0f7737918c45cf68c9487e754dc503e771eecd1d02717f2da58ede0"
 [[files]]
 file = "kubejs/data/tmm/curios/slots/bundle.json"
 hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
+
+[[files]]
+file = "kubejs/data/tmm/function/rewards/chaos_bunny_trophy.mcfunction"
+hash = "caa08096ae23fcaefb6a0cbd3ae2777b4876be2ecacc42229f19b1d5a5960e1e"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
