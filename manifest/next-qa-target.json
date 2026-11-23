@@ -61,6 +61,7 @@
     "crafting-tweaks",
     "creature-feature",
     "creeper-overhaul",
+    "crispy",
     "critters-and-companions",
     "crystalix",
     "cucumber",
@@ -73,12 +74,14 @@
     "draconic-evolution",
     "dragon-survival",
     "dungeon-crawl",
+    "dungeons-delight",
     "eidolon-repraised",
     "embeddium",
     "embers-re-ignited",
     "enchanted-witchcraft",
     "enchantment-descriptions",
     "enderman-overhaul",
+    "enders-delight",
     "enigmatic-legacy-plus",
     "entity-culling",
     "eternal-starlight",
@@ -113,6 +116,7 @@
     "harvest-with-ease",
     "hexcast-neoforged",
     "hexerei",
+    "huaxia-delight",
     "immediatelyfast",
     "improvable-skills",
     "inventory-tweaks-refoxed",
@@ -196,6 +200,7 @@
     "rhino",
     "ribbits",
     "roots-classic",
+    "runiclib",
     "scarlet-springs-equestrian-decor-ssed",
     "scriptor-magicae",
     "searchables",
@@ -356,6 +361,7 @@
     "2026-11-22 owner supplied Aquamirae & Nouveau NeoForge 0.1.3 JAR; exact SHA1/ZIP/native metadata verified locally and compatible with pinned Aquamirae + Ars Nouveau + Ars Conflux. Added source-indexed official CurseForge file 9470029, no JAR redistributed; isolated Packwiz installer bootstrap client download and digest verification PASSED Actions run 45074889623; game/client behavior untested.",
     "2026-11-22 Cathobb Unified 64 v40 official CurseForge project 1771113/file 9411491 exact public 193200750-byte ZIP passed root pack.mcmeta/assets/CRC + SHA1 verification (Actions run 45074548445). Publisher-hosted client-only resourcepacks/cathobb-unified-64.pw.toml indexed; isolated Packwiz installer client downloaded with matching SHA1 and server-side skipped. Fresh Prism QA options seed enables Cathobb only on newly created instances, preserving existing options/preferences. Actual game client and graphical resource pack activation still need QA.",
     "2026-11-22 owner-approved Friendship Garden #428: new standalone first-party NeoForge module tmm_friendship_garden from source policy #453 and runtime PR #537 is INCLUDED for NEXT owner-authorized integration build. Requires module JAR compile/license proof and next-build runtime B/C for binding, 2-high plant, joined/offline/death states, petals and remote potion safety. Explicitly NOT tested in Minecraft yet.",
-    "2026-11-22 owner-approved #523: source PR #531 migrates 48 offers to Q Shop 1.8.5 with personal wallets, native tabs and op2 FTB coin command bridge. Test next build only after integration review; old FTB team coin balances are not auto-transferred."
+    "2026-11-22 owner-approved #523: source PR #531 migrates 48 offers to Q Shop 1.8.5 with personal wallets, native tabs and op2 FTB coin command bridge. Test next build only after integration review; old FTB team coin balances are not auto-transferred.",
+    "2026-11-23 selected five owner-approved #439/#444 food additions via verified-source #551: Crispy! 1.1, Dungeon's Delight 1.5.3-labeled (filename ends 1.5.2), Ender's Delight 1.3.1, RunicLib 5.0.7 and Huaxia Delight 1.2.0. Four official provider JAR SHA1 checks passed; Huaxia exact SHA1 from owner-uploaded JAR, upstream SHA not independently available (publisher CDN HTTP403). No gameplay pass; Ender's Delight Farmer's Delight version-range parsing and Huaxia installer delivery must be checked at first authorized server/Prism run. New dragon food provenance/classifier remains a separate incomplete runtime workstream; do not copy obsolete #439 diet matrix."
   ]
 }
