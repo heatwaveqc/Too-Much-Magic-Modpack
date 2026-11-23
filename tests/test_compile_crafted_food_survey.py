@@ -98,6 +98,17 @@ class CompilerTest(unittest.TestCase):
         data, _ = m.process(audit([r], tags), roots, {})
         self.assertEqual(len(data[str(m.ROUTES / "test/juice.json")]["routes"]), 2)
 
+    def test_malformed_native_tag_is_held_without_poisoning_unrelated_food(self):
+        raw = audit([
+            recipe("test:bad_soup", "test:bad", [{"tag": "c:bad"}]),
+            recipe("test:good_soup", "test:good", [{"item": "test:fish"}]),
+        ], [{"tag": "c:bad", "values": ["test:fish", "minecraft:INVALID"]}])
+        files, report = m.process(raw, {
+            "test:fish": source("test:fish", "#c:foods/raw_fish")}, {})
+        self.assertEqual(report["held_outputs"]["test:bad_soup"],
+                         "malformed_native_tag:c:bad")
+        self.assertIn(str(m.ROUTES / "test/good_soup.json"), files)
+
     def test_material_tags_generate_source_records_not_native_food_components(self):
         tags = m.TagIndex([{"source_evidence": {"item_tags": [
             {"tag": "c:crops/rice", "values": ["test:rice"]},

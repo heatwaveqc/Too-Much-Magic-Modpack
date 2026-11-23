@@ -105,6 +105,7 @@ class TagIndex:
     """Exact recursive item-tag closure. Unknown tags and cycles are holds."""
     def __init__(self, releases):
         merged = defaultdict(set)
+        invalid = set()
         for release in releases:
             for tag in release["source_evidence"]["item_tags"]:
                 for value in tag["values"]:
@@ -113,12 +114,20 @@ class TagIndex:
                     if not isinstance(value, str) or not (
                             value.startswith("#") and identifier(value[1:])
                             or identifier(value)):
-                        raise ValueError(f"Unrecognized tag member in {tag['tag']}")
+                        # A source JAR can ship malformed tags (Pam Crops'
+                        # rabbit_food uses uppercase IDs and stray spaces).
+                        # Fail *that tag's closure*, not the entire survey;
+                        # never silently accept an incomplete alternative set.
+                        invalid.add(tag["tag"])
+                        continue
                     merged[tag["tag"]].add(value)
         self.items = dict(merged)
+        self.invalid = frozenset(invalid)
         self.cache = {}
 
     def expand(self, tag, visiting=()):
+        if tag in self.invalid:
+            raise Hold(f"malformed_native_tag:{tag}")
         if tag in self.cache:
             return self.cache[tag]
         if tag in visiting:
