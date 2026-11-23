@@ -432,7 +432,8 @@ def process(audit, checked_sources, checked_routes, registry=None):
         if not changed:
             break
 
-    # Scope *finished dietary overrides* to food-tagged outputs. Internal
+    # Scope finished overrides to runtime FOOD items, or known food tags when
+    # a live census is unavailable. Internal
     # recipe graph work still includes untagged intermediates so a food can
     # depend on flour, dough or another ingredient with traceable ancestry.
     # Only transitively necessary intermediates are emitted as support records.
@@ -519,7 +520,7 @@ def process(audit, checked_sources, checked_routes, registry=None):
         "runtime_registered_item_ids": len(registry["ids"]) if registry else None,
         "runtime_default_food_item_ids": len(registry["foods"]) if registry else None,
         "generated_candidate_recipe_outputs": len(candidates),
-        "native_food_tagged_candidates": len(candidates),
+        "native_food_tagged_candidates": len(candidates & native_food_tagged),
         "generated_support_recipe_outputs": len(support),
         "emitted_recipe_route_records": len(emitted),
         "support_ids": sorted(support),
