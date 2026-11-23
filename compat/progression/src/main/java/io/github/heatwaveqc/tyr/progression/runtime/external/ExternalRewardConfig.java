@@ -25,6 +25,7 @@ public final class ExternalRewardConfig {
 
     public static Map<String, ExternalRewardPolicy.Offer> parse(ResourceManager manager) {
         Map<String, ExternalRewardPolicy.Offer> result = new HashMap<>();
+        Set<String> kinds = new java.util.HashSet<>();
         var resources = manager.listResources("tyr_progression/external_rewards",
                 path -> path.getPath().endsWith(".json"));
         for (var entry : resources.entrySet()) {
@@ -43,6 +44,8 @@ public final class ExternalRewardConfig {
                         id, requiredString(row,"kind"), requiredString(row,"currency"),
                         requiredInt(row,"base_points"), requiredInt(row,"step_points"),
                         requiredInt(row,"max_purchases"));
+                if (!kinds.add(offer.kind()))
+                    throw new IllegalArgumentException("Duplicate native external reward kind " + offer.kind());
                 if (result.putIfAbsent(id, offer) != null)
                     throw new IllegalArgumentException("Duplicate external reward " + id);
             } catch (IOException io) {
