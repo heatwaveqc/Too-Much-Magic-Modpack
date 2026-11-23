@@ -1,6 +1,6 @@
 # Neo Vitae — primary quest-source map (Atlas pilot, v0.1)
 
-**Status:** **research proposal**, not a quest implementation, detector test, gameplay PASS, reward approval, or final complete chapter. Part of [Neo Vitae capability dossier](neovitae.md), [registry index](../inventories/neovitae-registries.md) and [29-axis field guide](../AXIS-FIELD-GUIDE.md). Source aligned with the current TMM pin **1.21.1-1.1.53** but exact compiled JAR match and in-world behavior are unverified. All quest IDs below are **research IDs**, not FTB's real GUIDs; they cannot be pasted into an SNBT chapter without separate authoring and stable-ID reconciliation.
+**Status:** **SOURCE QUEST MAP READY for FTB authoring (1.1.54-native, 40 source-only lessons)**, *not* a finished FTB chapter, approved reward, detector validation, effective loaded-pack recipe proof or gameplay PASS. Atlas [Neo Vitae dossier](neovitae.md), [current 1.1.54 class delta](../inventories/neovitae-1.1.54-version-delta-and-creative-policy.md), [geometry](../inventories/neovitae-1.1.54-altar-tiers.md), [48+3 ritual effects](../inventories/neovitae-1.1.54-ritual-effects.md), [26 Arrays](../inventories/neovitae-1.1.54-array-effects.md), [18 Sigils](../inventories/neovitae-1.1.54-sigils.md).
 
 ## Existing pack quest crosswalk
 
@@ -87,34 +87,35 @@ The **NV-37 / NV-38** optional sources teach the 16-tier Blood Tank and Nether S
 
 **Mob-farming gap resolved for documentation, not runtime:** The Gathering was previously present only under logistics, and Vortex/Repulsion effects were only under crowd control. Each now has exact source behavior, entry/high-end role and specific player operation. The Gathering collects item entities and vanilla XP orbs, and **Tome of Peritia** holds that vanilla XP in slot 0 of a compatible inventory; vanilla XP **does not grant MXP**. The Vortex/Repulsion effects move living mobs. A true quest's task must not falsely claim to verify physical collection or entity movement if it checks only an item. **Test any TMM-authored task detector, not native Neo Vitae functionality itself.**
 
-## Most urgent extractions before these can become a real chapter
+## Completed native source extraction; remaining *implementation* handoff
 
-1. **Every Ara tier transition's physical geometry and pack parity**: all **31** generated Ara recipe JSON records are now cataloged, including Orb and Tabula chains; still extract the **exact 3-D rune positions**, compare recipes to the pinned JAR and in-pack overrides, and verify Orb ingredient crafting-remainder behavior.
-2. **Starter source recipes now collected; verify actual client usability**: Ara Vitae, Scriptura, first Orb, Tier I Scribe and Daggers, Petty Gem, Hellfire Forge, Athanor, Weak Crystal and Master Ritual Stone have direct generated recipe evidence in new catalogs. **Only client/JAR parity and recipe replacement/ingredient remainder** remain before claiming exact live input actions.
-3. **Ritual geometry and effects**: 48 regular rituals are registered; 46 have generated stat overrides, and both dungeon classes supply direct default startup/crystal levels. Still extract each ritual's actual rune layout, trigger, output and owner/persistence contract, plus pack-effective values and blacklists.
-4. **Array and sigil *runtime effects***: all **48 generated Array JSON** and 14 direct Sigil stat overrides are now indexed. Their actual entity/world state change, ownership, persistence, resource-payment timing and pack eligibility still require code/client review.
-5. **Resource distinctness**: test item Orb EV, block basin+hidden buffer+overflow, Anima network and Spiritus gem/Aura/accumulator as separate stores. Verify the actual installed release's UI and persisted data; do not infer using one means filling another.
-6. **Actual pack restrictions**: inspect the pack's mob capture/replication blacklist, source-dust unification, currency/EMC, gating, allowed dimensions and accidental farming loops before making material farming and Mine Key rewards real.
-7. **FTB mechanics**: inspect the exact FTB 1.21.1 build and capabilities for event/advancement predicates, custom effect/dimension requirements and team/repeatable credit. Distinguish an explicit checkmark from a true gameplay task.
-8. **A/B/C staged tests**: Type A static source checks first; Type B disposable operator commands only after confirming exact command and mode; Type C normal survival first-play and multiplayer interactions. No full NeoForge server boot or Prism package is requested/authorized by this research.
+**1.1.54 native effect-closure update:** all six altar structures and all 48 regular ritual layouts now have exact tagged block positions and runtime class effect descriptions; see [altar-tier instructions](../inventories/neovitae-1.1.54-altar-tiers.md), [layout A](../inventories/neovitae-1.1.54-ritual-layouts-a.md)/[B](../inventories/neovitae-1.1.54-ritual-layouts-b.md)/[C](../inventories/neovitae-1.1.54-ritual-layouts-c.md), [all regular/imperfect ritual effects](../inventories/neovitae-1.1.54-ritual-effects.md), [Array effects](../inventories/neovitae-1.1.54-array-effects.md), and [Sigil behavior](../inventories/neovitae-1.1.54-sigils.md). For ritual lessons, use the actual source player-attributed `RitualEvent.Activated` where an FTB adapter exists, **not merely Master Ritual Stone possession**. For Arrays use an observed world/inventory/redstone change, not effect-item possession. `RitualMagnetism` is **Endless Quarry** not item pickup; `SigilMagnetism` does portable drop/XP pickup; `zephyr` gathers loose items/XP without moving living mobs. `Imprisonment` rewrites a vanilla spawner after eligible Mob death next to the array, not a prison. **None of these event predicates is yet confirmed implemented in current FTB.**
 
-## Readiness ledger for the pilot
+1. **No additional native source survey needed for the 40-node candidate guide:** all 472 source generated recipes, six tier layouts, 48 ritual layouts, 48+3 ritual behavior paths, 26 array effect classes and 18 Sigils are now source documented. Highest tier is a native multi-block *position* requirement, not an FTB checkmark unlock.
+2. **Still needed by the FTB author:** create chapter with preserved/assigned actual FTB GUIDs and actionable instructions; choose true task types, validated native advancement predicates or a new TMM-owned event bridge. Item possession is only a clearly labeled proxy when that is the best available predicate. Native use and owner network credits must not accidentally award the whole team or an unrelated player.
+3. **Exact loaded-pack parity still needed by integration/QA:** reconcile 1.1.54 JAR, effective installed source/JEI/EMI, server configs, TMM source-dust, personal Anima/MXP, creative-only Blood Battery policy #596, mob capture/replication, ward/blood, Nether Star productive recipe/EMC floor, dimension gates, and source-tier workarounds.
+4. **Acceptance later, not in this research PR:** static CI/readback first; owner-authorized survival/client negative and positive interaction cases later. No server boot/smoke/Prism package authorized here.
 
-| Subsystem | Source/map coverage | Quest-source status | Next proof |
-| --- | --- | --- | --- |
-| Guide/first Orb/altar Tier 0 | Strong source/version-aligned, exact guide recipe and first Orb EV known | **Conditional draft** | Current recipe/ritual JAR and client render |
-| Ara Vitae tiers I–V | Structure counts/materials documented, not all exact spatial coordinates/recipes | **Partial** | Pin-matched tier layouts and all mandatory inputs |
-| Item EV + player Anima | Distinct storage values and source event flow documented | **Strong partial** | Real tooltip/UI, transfer and relog |
-| Spiritus 5 gem tiers/Aura | Source wiki and registered items, quantitative ranges | **Partial** | Exact 1.21.1 recipe and growth config, client |
-| Tabula/Forge/Athanor | Core operations and example ore yields | **Partial** | All major recipe IDs and item handler behavior |
-| Arrays, Sigils and rituals | Representative feature map; hundreds of individual operations not exhausted | **Not complete** | Typed per-recipe catalog with mode/branch matrix |
-| Sentient items/armor | Names/tiers/training and top-end states known | **Partial** | Every upgrade/downgrade, category and costs |
-| Dungeon progression | Starter/Endless/Mine Key chain and return pillar known | **Partial** | Real-world structures/key sources/portal restoration |
-| External bridges | Neo/JAWR/Occultism/Ars/CC source leads | **Unverified in pack** | Two-sided exact pinned JAR tests |
-| Actual FTB quests | Existing placeholder checked | **Not authored** | Approved quest write workstream and detection contract |
 
-**Status conclusion:** This is **substantial source-based quest drafting material**, NOT a claim that a complete 40-quest chapter can be implemented without further inspection. The unresolved material is explicit so a future Work research iteration can fill individual gaps rather than repeating high-level survey work.
+## Quest-source handoff ledger — source proof versus pack/game proof
 
-## Narrowed Atlas source gap after 2026-11-21 review
+| Subsystem | Native 1.1.54 source research | Remaining FTB/integration/QA |
+|---|---|---|
+| First guide, Tier-0 altar, six Orb route | **SOURCE READY:** real initial recipes, EV and item vs network contracts | Confirm installed current recipes, in-game interaction and player attribution |
+| Ara Vitae tiers I–V | **SOURCE READY:** complete six tier 3-D coordinates, rune-stat/optional flags and 31 altar recipes | Loaded tags and structure acceptance at six tiers |
+| Personal Anima, EV and 5-aspect Spiritus | **SOURCE READY:** separated player/item/block/chunk stores, six Orb stats, gem/accumulator flows | Effective economy/skill bridge, UI/relog and full per-player tests |
+| Tabula/Forge/Athanor, flasks | **SOURCE READY:** 116+90+74+113 recipes and major Java operations | JAR/pack recipe parity, exact rewards and serialized output cost |
+| 48 regular +3 imperfect rituals | **SOURCE READY:** exact rune coordinates, 48 effects, three imperfect requirements and 46 native stat overrides | Actual FTB ritual-activation predicate, protected blocks and per-player credit |
+| 26 Alchemy Arrays | **SOURCE READY:** all 26 effects including event-driven spawner rewriting and Ender Sever | First-use predicates, actual capability/cross-mod target allowlists |
+| 18 Sigils | **SOURCE READY:** each use, target, special inventory and owner Anima costs | Curios and selected item permissions in loaded build |
+| Sentient armor and gear | **SOURCE READY:** tier crafting, progression, trainer/catalyst extraction vs destructive reset, Deus/Hellforge endstate | Effective modded stat/augmentation balance and client UI |
+| Dungeon progression | **SOURCE READY:** Weak Crystal and cost, portal structures and return mechanism | World generation and specific Nether/Demon gate acceptance |
+| Runtime FTB chapter | **NOT AUTHORED** (40 candidate labels only, all DAG dependencies preserved) | Quest-owner production and approved rewards/detectors; no task GUIDs added here |
+| TMM bridges and gameplay acceptance | **NOT TESTED/INTEGRATED by Atlas** | Source owners and an owner-authorized QA candidate |
 
-[**Source layout handoff: six altar tiers and 48 regular rune layout JSONs**](../inventories/neovitae-layout-source-handoff.md) establishes the immutable paths needed to complete spatial instructions. Map these to runtime activation/effect behavior, especially 48 ordinary rites + 3 imperfect rites and 26 Array Effect items/18 Sigils, then update only affected NV lesson text. This is the **remaining source research**, not a repeat of 472 fully catalogued recipe JSONs and not a demand to test unchanged native Minecraft mechanics. Missing native-client runtime parity, actual FTB task events/per-player credit and TMM EMC, capture, blood, dust/Path and Mine Key gates belong to separate implementation/QA workstreams. Source Atlas remains partial until the relevant operational/layout paths have a usable how-to and effect/cost crosswalk.
+**Source research closure verdict:** the 40 lessons are a sufficiently complete authoring blueprint when accompanied by linked exact-recipe/geometry/effect inventories. **This is not a statement that 40 FTB quests were authored, pack tested or that live runtime mechanics passed.**
+
+
+## Former Neo source gap — resolved on 2026-11-23
+
+The 1.1.53 handoff previously held only the filenames for 6 altar-tier and 48 ritual layout JSONs and had no finished per-class operations for the 48 regular/3 imperfect rites, 26 Arrays and 18 Sigils. The [1.1.54 audited inventories](../inventories/neovitae-1.1.54-version-delta-and-creative-policy.md) now close this finite source gap, and all 40 original quest-source IDs and their acyclic prerequisites are preserved. Later B/C tests should target **pack-authored** changes, integration boundaries, observed bugs or new quest predicates, rather than demand replay of untouched upstream features. No runtime/quest code was written.
