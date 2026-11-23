@@ -5,6 +5,11 @@ import io.github.heatwaveqc.tyr.progression.model.XpChannel;
 import io.github.heatwaveqc.tyr.progression.state.Ledger;
 import io.github.heatwaveqc.tyr.progression.state.Track;
 import io.github.heatwaveqc.tyr.progression.state.Wallet;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Map;
 import io.github.heatwaveqc.tyr.progression.data.ChannelConfig;
 import java.util.List;
@@ -28,6 +33,10 @@ public final class ChannelEngine {
                 ranks,raw.milestones(),raw.counters());
     }
     public static Ledger initialize(Ledger ledger,XpChannel system){
+        if (system.magic()) {
+            var state=ExperienceEconomy.initialize(ledger.economy(),ExperienceEconomy.SystemSpec.mxp());
+            if(state!=ledger.economy()) ledger=ledger.withEconomy(state);
+        }
         return ledger.wallet(system.id())==null ? ledger.withWallet(system.id(),Wallet.initial(system)):ledger;
     }
     public static Ledger join(Ledger ledger,Definition.Path path,XpChannel channel) {
@@ -60,7 +69,17 @@ public final class ChannelEngine {
         var after=ProgressionMath.buy(tree,before,skillId);if(after==before)return ledger;
         Wallet reward=binding.awardCurrency()==null?null:ledger.wallet(binding.awardCurrency().id());
         if(binding.awardPoints()>0&&(reward==null||reward.points()>Integer.MAX_VALUE-binding.awardPoints()))return ledger;
-        var next=ownership(ledger,tree,after).withWallet(binding.currency().id(),w.points(after.points()))
+        ExperienceEconomy.Ledger xpState=ledger.economy();
+        if(binding.currency().magic()) {
+            // The canonical current-XP ledger charges by commitment, not by
+            // decrementing XP; the legacy view remains a read-only projection.
+            xpState=ExperienceEconomy.buy(xpState,ExperienceEconomy.SystemSpec.mxp(),
+                tree.id(),skillId,skill.price(view.skillRank(skillId)),skill.maxRank(),skill.maxRank());
+            if(xpState==ledger.economy())return ledger;
+        }
+        var next=ownership(ledger,tree,after)
+              .withWallet(binding.currency().id(),w.points(after.points()))
+              .withEconomy(xpState)
               .receipt(tree.id(),skillId,binding.currency().id(),w.points()-after.points(),binding.permanent());
         if(binding.awardPoints()>0)next=next.withWallet(binding.awardCurrency().id(),reward.points(reward.points()+binding.awardPoints()));
         return next;
@@ -69,30 +88,65 @@ public final class ChannelEngine {
         if(!ledger.get(tree.id()).joined())return ledger;
         var prefix=tree.id()+"|";var next=ledger;
         var permanentRanks=new java.util.HashMap<String,Integer>();
+        // Respec refunds purchased ranks to their original XP system while
+        // retaining explicitly irreversible grants. XP itself never increases.
+        var retained=new ArrayList<ExperienceEconomy.PaidRank>();
+        for(var rank:ledger.economy().paidRanks()){
+            if(!rank.path().equals(tree.id())){
+                retained.add(rank);continue;
+            }
+            var receipts=ledger.payments().getOrDefault(tree.id()+"|"+rank.skill(),List.of());
+            boolean permanent=receipts.stream().anyMatch(value ->
+                value.startsWith("!")&&value.startsWith("!"+rank.system()+"|"));
+            if(permanent)retained.add(rank);
+        }
+        var previous=ledger.economy();
+        next=next.withEconomy(new ExperienceEconomy.Ledger(previous.currentXp(),retained,
+            previous.achievements(),previous.rewardReceipts(),previous.recentTransactions()));
         for(var row:ledger.payments().entrySet())if(row.getKey().startsWith(prefix))for(String receipt:row.getValue()){
             if(receipt.startsWith("!")){permanentRanks.merge(row.getKey().substring(prefix.length()),1,Integer::sum);continue;}
             int sep=receipt.lastIndexOf('|');String id=receipt.substring(0,sep);int amount=Integer.parseInt(receipt.substring(sep+1));
             Wallet w=next.wallet(id);if(w==null||amount<0)throw new IllegalStateException("Invalid purchase receipt");
-            next=next.withWallet(id,w.points((int)Math.min(Integer.MAX_VALUE,(long)w.points()+amount)));
+            if(!XpChannel.MXP.equals(id))
+                next=next.withWallet(id,w.points((int)Math.min(Integer.MAX_VALUE,(long)w.points()+amount)));
         }
         var raw=ledger.get(tree.id());
         return next.with(tree.id(),new Track(true,0,0,0,permanentRanks,raw.milestones(),raw.counters())).clearReceipts(tree.id());
     }
     public static Ledger magic(Ledger ledger,XpChannel channel,String tx,String firstKey,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
-        if(!channel.magic()) throw new IllegalArgumentException("Not MXP");
-        checkId(tx); if(firstKey!=null) checkId(firstKey);
-        Wallet wallet=ledger.wallet(channel.id());
-        if(wallet==null) wallet=Wallet.initial(channel);
-        if(wallet.recentTransactions().contains(tx)) return ledger;
-        boolean first=firstKey!=null && !wallet.firstCompletions().contains(firstKey);
-        // A first-only milestone has no repeat payment and must not reach positive-only arithmetic.
-        if(firstKey!=null && !first && repeatBase==0) return ledger;
-        var award=MxpMath.apply(new MxpMath.Counter(wallet.magicLevels(),wallet.magicProgress()),
-                first?firstBase:repeatBase,first?firstFixed:repeatFixed,channel.growth());
-        if(award.effectiveXP()<=0) return ledger;
-        return ledger.withWallet(channel.id(),wallet.magic(award.state().lifetimeLevels(),
-                award.state().progress(),tx,first?firstKey:null));
+        return magic(ledger,channel,"tyr_progression:default",tx,firstKey,
+                firstBase,repeatBase,firstFixed,repeatFixed);
+    }
+
+    /** One verified category may credit one player once per committed operation. */
+    public static Ledger magic(Ledger ledger,XpChannel channel,String sourceCategory,
+            String tx,String firstKey,double firstBase,double repeatBase,
+            boolean firstFixed,boolean repeatFixed) {
+        if(!channel.magic())throw new IllegalArgumentException("Not a configurable MXP source");
+        checkId(tx);if(firstKey!=null)checkId(firstKey);
+        ledger=initialize(ledger,channel);
+        String firstReceipt=firstKey==null?null:channel.id()+"|"+sourceCategory+"|"+firstKey;
+        var state=ledger.economy();
+        boolean first=firstReceipt!=null&&!state.rewardReceipts().contains(firstReceipt);
+        if(firstReceipt!=null&&!first&&repeatBase==0)return ledger;
+        double base=first?firstBase:repeatBase;
+        var result=ExperienceEconomy.earn(state,ExperienceEconomy.SystemSpec.mxp(),
+                sourceCategory,tx,first?firstKey:null,BigDecimal.valueOf(base),
+                first?firstFixed:repeatFixed,channel.growth());
+        return result.accepted()?ledger.withEconomy(result.ledger()):ledger;
+    }
+
+    /** Owner's TMM default: actual membership change forfeits free MXP and
+     * all departed Path purchases while preserving Core/other active Paths and
+     * permanent achievement/first-completion receipts. */
+    public static Ledger pathChange(Ledger ledger,Set<String> departed){
+        var old=ledger.economy();
+        if(old.currentXp().isEmpty())return ledger;
+        var after=ExperienceEconomy.transition(old,
+            Map.of(XpChannel.MXP,ExperienceEconomy.SystemSpec.mxp()),departed,
+            Map.of(),ExperienceEconomy.DeparturePolicy.FORFEIT,true,true);
+        return ledger.withEconomy(after);
     }
     private static void checkId(String key) {
         if(key==null || key.length()>240 || !key.matches("[a-zA-Z0-9_.:/#@-]+"))
