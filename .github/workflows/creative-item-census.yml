@@ -1,9 +1,10 @@
-name: Creative Item Census — historical registry audit (Type A)
+name: Creative Item Census — provenance-safe historical audit (Type A)
 
 on:
   pull_request:
     paths:
       - 'scripts/index_creative_registry.py'
+      - 'scripts/test_index_creative_registry.py'
       - 'docs/qa/CREATIVE-ITEM-CENSUS-2026-11-18.json'
       - 'docs/qa/CREATIVE-ITEM-CENSUS.md'
       - 'docs/qa/surveys-2026-11-18/items.csv'
@@ -22,6 +23,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Unit test capture metadata and candidate comparison
+        run: |
+          python3 -m unittest discover -s scripts -p 'test_index_creative_registry.py' -v
       - name: Verify registered-item creative candidates against frozen installed inventory
         run: |
           python3 scripts/index_creative_registry.py --check
