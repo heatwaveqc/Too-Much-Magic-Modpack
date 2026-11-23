@@ -1,18 +1,22 @@
-# Lich — complete first-pass 100-point shared skill tree
+# Lich — complete 100-point regular tier in one 200-point Archlich-eligible tree
 
 **Too Much Magic · 2026-11-22 · DESIGN ONLY / NOT LIVE / NUMERICAL BALANCE CANDIDATES**
 
-One machine-readable source: `REMAINING-PATHS-100PT-FIRST-PASS.json`, schema v8, on `feature/lich-100pt-complete-tree-20261122`. This design PR stacks on Werewolf #520 → Vampire #518 → Sea Dragon #514 → parent #495. This adds no runtime Path JSON, Java code, KubeJS, mod pins, assembled pack, test authorization, or in-game skills.
+Current authoritative continuation: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema **v14** on `feature/archlich-ascendancy-100pt-extension-20261122` (stacked on Hunter #554, following original Lich #526). **The 21 nodes in this document remain the unchanged 100-point REGULAR tier** of the single Lich tree. The new **Archlich-only extra 100-point tier** is documented in [ARCHLICH-ASCENDANCY-ADDITIONAL-100PT-2026-11-22.md](ARCHLICH-ASCENDANCY-ADDITIONAL-100PT-2026-11-22.md). The original #526 100-point maximum claim for Archlich is now superseded by the owner's 2026-11-22 clarification. Design only, no runtime files, engine code or game tests.
 
 ## Role and native boundaries
 
 The Lich is a **personally funded necromancer** with a durable undead host, optional blood-magic specialization with a real nature-magic tradeoff, moderate deathless combat mitigation, and mastery support after a legitimate resurrection. Lich relies on resource discipline and followers rather than Werewolf's bodily regeneration or Vampire's feeding. All abilities are passive, event-triggered or modifiers to actual source abilities; there are **zero new active hotbar buttons**.
 
-- **One shared purchased tree** whether the player has Goety lichdom, JAWR/Forbidden Magic lichdom, or both (Archlich). Two native sources are NOT two sets of 100 points. Gilded→Piglich→Arch-Piglich retains a single Lich tree. Dracolich has exactly one Lichdom and therefore one shared Lich tree alongside its one legal Dragon tree. Other Lich must remain unavailable to Dracolich.
+- **ONE shared purchased Lich tree with TWO gated tiers.** These 21 regular nodes / 100 points are available to any legal Goety OR JAWR/Forbidden Magic Lich, including Dracolich's one Lichdom alongside its Dragon tree and legal Piglich hybrids. The **same tree** has 20 new Archlich-only nodes / 100 ADDITIONAL points, unlocked **only with BOTH genuine native Goety and JAWR/Forbidden Magic Lichdoms** on the same player. A complete Archlich may thus spend 200 points, without duplicating either native form or buying the original 100 twice. Dracolich cannot acquire the second native Lichdom under the current compatibility policy. Gilded→Piglich→Arch-Piglich may invest in both tiers only after genuinely acquiring both providers.
 - **Goety Soul Energy**, Goety **Arca** death anchor, JAWR/Forbidden Magic **soul-filled phylactery**, and legitimate **Soul in a Bottle** remain distinct native objects/values. There is no unified soul wallet, new soul bar, synthetic resurrection, independent shadow cost or second native progression.
 - Source owns its natural lichdom rite, level/ritual gates, summons, resource debits, soul capture, cures, death/return rules, and actual damage/environment vulnerabilities. Source-native paid levels or innate abilities are not repurchased.
 - **One rescue per fatal event**. Archlich death priority: a valid JAWR phylactery rescue FIRST, Goety Arca only as fallback; never debit both. For Dracolich, Dragon Survival's own anti-death result resolves before the selected Lich backend. Skills may see a confirmed successful rescue receipt afterward but never decide or repeat it.
 - There is no general second set of Core ranks for Lich. MXP is global and Path-agnostic after Newbie. A later cure/respec rule must preserve Core and avoid double refunds or free cross-form rank persistence; exact Lich cure ownership should be tested against current Progression policy.
+
+## Owner-approved 100+100 correction, same tree
+
+**Do not treat this file's 100-point regular Lich design as the entire Archlich tree.** The owner has now locked 100 regular + **100 MORE Archlich-only** ranks; Archlich's section is in the SAME tree and requires both confirmed source Lichdoms, while Dracolich and other legal single-provider hybrids have full access to all 100 REGULAR ranks. The extra tier's **20 proposed** high-end skill effects are documented separately at [Archlich Ascendancy](ARCHLICH-ASCENDANCY-ADDITIONAL-100PT-2026-11-22.md) and require owner/source review; the added-point count and native gate are not proposals.
 
 ## Exact rank budget
 
@@ -25,7 +29,7 @@ The Lich is a **personally funded necromancer** with a durable undead host, opti
 | Soul Preservation | 3 | 10 |
 | **Total** | **21** | **100** |
 
-Every rank costs exactly **1 advancement point** (21 purchased nodes, 100 separate one-point ranks). These 100 points describe the maximum legal one-character shared Lich tree. The old 12-skill 25/25/25/25 proportional placeholder is superseded, as are historical Tyz point prices. Numerical effects must be audited before integration.
+Every rank costs exactly **1 advancement point**. The existing **21 regular purchased nodes / 100 one-point ranks** are the maximum for a legal **single-provider** Lich, not the complete Archlich ceiling. The gated extension contributes **20 additional nodes / 100 ranks**, so a genuine dual-provider Archlich may master **41 skills / 200 purchased ranks IN THIS ONE TREE**. Native conversion grants eligibility, never free points. The old 12-skill proportional placeholder is superseded; effects still require source review.
 
 ## All proposed skills and effects
 
@@ -93,15 +97,15 @@ All missing generic handlers belong to `feature/progression-*` and the shared `c
 
 ## Tests required before any executable purchase
 
-1. **Source probe/gates:** JAWR-only, Goety-only, Archlich, Gilded Piglich and Dracolich resolve correct native identity without double eligibility; mundane/unknown fail closed.
-2. **Rank/accounting:** exactly 21 unique skill IDs and 100 total one-point ranks; prerequisite IDs resolve and cannot be purchased without actual native gates; no skill crosses eligible alternative budgets.
+1. **Source probe/gates:** JAWR-only and Goety-only have ordinary 100. A real Archlich (either acquisition order) gains access to extra Archlich 100 in same tree after BOTH positive native Lichdoms; Gilded Piglich and Dracolich keep their legal provider limits; mundane/unknown fail closed.
+2. **Rank/accounting:** this regular section retains exactly 21 unique skill IDs and 100 one-point ranks unchanged. The SAME tree holds another 20 Archlich-gated skills /100 one-point ranks; all 41 IDs are unique and only genuinely dual-source Archlich may spend 200. Server-side dual-form snapshot and prerequisites must fail closed.
 3. **Resource identity:** source-verified Soul Energy spends/recovery and JAWR bottle healing only; Arca and phylactery expenses unchanged and never affected by spell-cost discounts; canceled casts no effect.
 4. **Purchased utility is real:** test each benefit under both JAWR-only and Goety-only conditions; mark unsupported distinct backend choices as blocked rather than exposing zero-effect UI.
 5. **Blood/nature tradeoff:** source-identified personal casts only; verify penalties and bonuses stack arithmetically with caps, do not affect others, passive machines, ritual infrastructure or unrelated magic.
 6. **Summon ownership:** test multiple casters, logout/rejoin, summoned undead vs wild mobs, minion death, portal/claim changes, no ownerless buffs or recursive entity creation, no summon-cap creep.
 7. **Damage/defense:** normal melee/projectile, Smite, sunlight/fire, fall/void, harmful effects; keep native liabilities, caps and correct mitigation order.
 8. **Single rescue:** Archlich phylactery then Arca fallback, never both; Dracolich Dragon Survival anti-death before one selected Lich; single receipt triggers recovery once; deliberate true death still possible.
-9. **Persistence/respec:** one invested Lich tree per player, no double refund when adding/removing native provider, no Core loss, no resurrection perk retained after full native cure unless explicitly approved.
+9. **Persistence/respec:** exactly one invested Lich tree per player, 100 regular +100 conditional Archlich max. Losing one provider makes Archlich powers immediately dormant, without double refund or Core loss; ordinary Lich ranks remain while one legal provider exists. No resurrection perk retained after full native cure unless explicitly approved.
 10. **Authorized game tests:** only after integration writer reconciles versioned binary APIs, content/handlers and separately authorized test build; CI validation is not gameplay acceptance.
 
 ## Historical IDs preserved
