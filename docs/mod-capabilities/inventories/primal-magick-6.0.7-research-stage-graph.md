@@ -16,7 +16,7 @@
 | Registered project templates | 38 | See dedicated project inventory; randomized Research Table projects |
 | Discipline finales | 7 main paths + Theory of Everything | Finale semantics and hidden research in source; native completion must be checked |
 
-## Uncategorized (298)
+## Fundamentals (25)
 
 | Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
 | --- | --- | --- | --- |
@@ -45,6 +45,11 @@
 | [`secrets_of_the_universe`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L480) | — | **1** `requiredResearch(SOTU_DISCOVER_BLOOD)`; `requiredResearch(SOTU_DISCOVER_INFERNAL)`; `requiredResearch(SOTU_DISCOVER_VOID)`; `requiredResearch(SOTU_RESEARCH_ARCANOMETER)`; `requiredResearch(SOTU_RESEARCH_HEXIUM)`; `requiredResearch(SOTU_RESEARCH_POWER_RUNE)`; `requiredResearch(SOTU_RESEARCH_SANGUINE_CRUCIBLE)`; `requiredResearch(SOTU_RESEARCH_CLEANSING_RITE)`; `requiredResearch(SOTU_SCAN_HALLOWED_ORB)` · **2** `attunement(Source:HALLOWED, 4)` | hidden |
 | [`complete_basics`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L486) | — | **1** `requiredObservations(1)` · **2** `attunement(Source:EARTH, 1)`; `attunement(Source:SEA, 1)`; `attunement(Source:SKY, 1)`; `attunement(Source:SUN, 1)`; `attunement(Source:MOON, 1)`; `attunement(Source:BLOOD, 1)`; `attunement(Source:INFERNAL, 1)`; `attunement(Source:VOID, 1)`; `attunement(Source:HALLOWED, 1)` | hidden; finale discipline |
 | [`theory_of_everything`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L491) | — | **1** `requiredObservations(1)` · **2** `attunement(Source:EARTH, 2)`; `attunement(Source:SEA, 2)`; `attunement(Source:SKY, 2)`; `attunement(Source:SUN, 2)`; `attunement(Source:MOON, 2)`; `attunement(Source:BLOOD, 2)`; `attunement(Source:INFERNAL, 2)`; `attunement(Source:VOID, 2)`; `attunement(Source:HALLOWED, 2)` | hidden; finale ResearchDisciplines.BASICS, ResearchDisciplines.ALCHEMY, ResearchDisciplines.MAGITECH, ResearchDisciplines.MANAWEAVING, ResearchDisciplines.RITUAL, ResearchDisciplines.RUNEWORKING, ResearchDisciplines.SORCERY |
+
+## Manaweaving (51)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_manaweaving`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L502) | `unlock_manaweaving` | **1** *no explicit requirement methods*; reveals 1 recipe ref | tier BASIC |
 | [`expert_manaweaving`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L505) | `mana_arrows`, `wand_charger` | **1** `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods*; reveals 12 recipe refs | tier EXPERT |
 | [`master_manaweaving`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L512) | `wand_cap_gold`, `wand_gem_adept` | **1** `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods*; reveals 12 recipe refs | tier MASTER |
@@ -96,6 +101,11 @@
 | [`mana_orb_adept`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L790) | `expert_manaweaving`, `mana_orb_apprentice`, `wand_gem_adept` | **1** `requiredTheories(1)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier EXPERT |
 | [`mana_orb_wizard`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L795) | `master_manaweaving`, `mana_orb_adept`, `wand_gem_wizard` | **1** `requiredTheories(2)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier MASTER |
 | [`mana_orb_archmage`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L800) | `supreme_manaweaving`, `mana_orb_wizard`, `wand_gem_archmage` | **1** `requiredTheories(3)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier SUPREME |
+
+## Alchemy (32)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_alchemy`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L809) | `unlock_alchemy` | **1** `requiredCraft(PM:ESSENCE_FURNACE)` · **2** *no explicit requirement methods* | tier BASIC |
 | [`expert_alchemy`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L813) | `calcinator_basic`, `stonemelding` | **1** `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods* | tier EXPERT |
 | [`master_alchemy`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L817) | `calcinator_enchanted`, `primalite` | **1** `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods* | tier MASTER |
@@ -128,6 +138,11 @@
 | [`sanguine_core_aliens`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1030) | `sanguine_crucible` | **1** `requiredTheories(1)` · **2** `attunement(Source:VOID, 2)`; reveals 3 recipe refs | tier MASTER |
 | [`ignyx`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1034) | `expert_alchemy`, `calcinator_basic`, `stonemelding`, `discover_infernal` | **1** `requiredItem(ItemTags.COALS)`; `requiredTheories(1)` · **2** `attunement(Source:INFERNAL, 2)`; reveals 4 recipe refs | tier EXPERT |
 | [`synthetic_gem_buds`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1039) | `master_alchemy`, `shard_synthesis`, `stonemelding` | **1** `requiredItem(#c:GEMS_AMETHYST)`; `requiredTheories(2)` · **2** `attunement(SourceList.builder().withEarth(3).withSun(3).build())`; reveals 4 recipe refs | tier MASTER |
+
+## Sorcery (35)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_sorcery`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1054) | `unlock_sorcery` | **1** `attunement(Source:EARTH, 1)`; reveals 2 recipe refs | — |
 | [`expert_sorcery`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1057) | `spell_payload_lightning`, `spell_payload_frost` | **1** `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods* | — |
 | [`master_sorcery`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1061) | `spell_vehicle_projectile`, `spell_mod_amplify` | **1** `requiredStat(Stat:SPELLS_CRAFTED_MAX_COST, 50)`; `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods* | — |
@@ -163,6 +178,11 @@
 | [`spell_mod_quicken`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1184) | `master_sorcery`, `spell_mod_amplify` | **1** `requiredTheories(2)` · **2** *no explicit requirement methods* | — |
 | [`spell_mod_burst`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1188) | `master_sorcery`, `spell_mod_mine` | **1** `requiredTheories(2)` · **2** *no explicit requirement methods* | — |
 | [`spell_mod_fork`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1192) | `supreme_sorcery`, `spell_mod_quicken`, `spell_mod_burst` | **1** `requiredTheories(3)` · **2** *no explicit requirement methods* | — |
+
+## Runeworking (30)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_runeworking`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1200) | `unlock_runeworking` | **1** *no explicit requirement methods*; reveals 3 recipe refs | tier BASIC |
 | [`expert_runeworking`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1203) | `rune_earth`, `rune_project`, `rune_item` | **1** `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier EXPERT |
 | [`master_runeworking`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1208) | `rune_absorb`, `rune_creature` | **1** `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier MASTER |
@@ -193,6 +213,11 @@
 | [`recall_stone`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1314) | `expert_runeworking`, `rune_summon`, `rune_self` | **1** `requiredCraft(ItemTags.BEDS)`; `requiredTheories(1)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier EXPERT |
 | [`runic_trim`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1319) | `expert_runeworking`, `imbued_wool`, `rune_earth`, `rune_sea`, `rune_sky`, `rune_sun`, `rune_moon` | **1** `requiredItem(PM:RUNE_EARTH)`; `requiredItem(PM:RUNE_SEA)`; `requiredItem(PM:RUNE_SKY)`; `requiredItem(PM:RUNE_SUN)`; `requiredItem(PM:RUNE_MOON)`; `requiredTheories(1)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier EXPERT |
 | [`enderward`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1325) | `master_runeworking`, `rune_dispel`, `discover_void` | **1** `requiredTheories(2)` · **2** `attunement(Source:VOID, 3)`; reveals 1 recipe ref | tier MASTER |
+
+## Ritual Magick (38)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_ritual`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1337) | `unlock_ritual` | **1** *no explicit requirement methods*; reveals 2 recipe refs | tier BASIC |
 | [`expert_ritual`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1340) | `ritual_candles`, `incense_brazier` | **1** `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods* | tier EXPERT |
 | [`master_ritual`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1344) | `ritual_lectern`, `ritual_bell` | **1** `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods* | tier MASTER |
@@ -231,6 +256,11 @@
 | [`hydromelon`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1579) | `expert_ritual`, `ritual_candles`, `ritual_bell`, `rune_sea`, `shard_synthesis` | **1** `requiredItem(PM:SUNWOOD_SAPLING)`; `requiredItem(PM:MOONWOOD_SAPLING)`; `requiredItem(Items.MELON)`; `requiredTheories(1)` · **2** `attunement(Source:SEA, 2)`; reveals 3 recipe refs | tier EXPERT |
 | [`blood_rose`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1584) | `discover_blood`, `expert_ritual`, `hydromelon`, `ritual_bell`, `rune_blood` | **1** `requiredItem(Items.ROSE_BUSH)`; `requiredTheories(1)` · **2** `attunement(Source:BLOOD, 2)`; reveals 1 recipe ref | tier EXPERT |
 | [`emberflower`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1589) | `discover_infernal`, `expert_ritual`, `hydromelon`, `ritual_bell`, `rune_infernal` | **1** `requiredItem(Items.SUNFLOWER)`; `requiredTheories(1)` · **2** `attunement(Source:INFERNAL, 2)`; reveals 2 recipe refs | tier EXPERT |
+
+## Magitech (32)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`basic_magitech`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1598) | `unlock_magitech` | **1** *no explicit requirement methods*; reveals 1 recipe ref | tier BASIC |
 | [`expert_magitech`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1601) | `desalinator`, `seascribe_pen` | **1** `requiredResearch(SCAN_PRIMALITE)`; `requiredExpertise(discipline, EXPERT)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier EXPERT |
 | [`master_magitech`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1605) | `arcanometer`, `primalite_golem` | **1** `requiredResearch(DISCOVER_FORBIDDEN)`; `requiredResearch(SCAN_HEXIUM)`; `requiredExpertise(discipline, MASTER)` · **2** *no explicit requirement methods*; reveals 1 recipe ref | tier MASTER |
@@ -263,6 +293,11 @@
 | [`forbidden_mana_networking`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1819) | `master_magitech`, `advanced_mana_networking`, `hexium`, `crystal_synthesis` | **1** `requiredTheories(2)` · **2** *no explicit requirement methods*; reveals 2 recipe refs | tier MASTER |
 | [`heavenly_mana_networking`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1824) | `supreme_magitech`, `forbidden_mana_networking`, `hallowsteel`, `cluster_synthesis` | **1** `requiredTheories(3)` · **2** *no explicit requirement methods*; reveals 2 recipe refs | tier SUPREME |
 | [`desalinator`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1829) | `basic_magitech` | **1** `requiredObservations(1)`; `requiredItem(Items.WATER_BUCKET)` · **2** *no explicit requirement methods*; reveals 2 recipe refs | tier BASIC |
+
+## Scans (17)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`raw_marble`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1837) | `unlock_scans` | **1** *no explicit requirement methods*; reveals 12 recipe refs | hidden |
 | [`hallowed_orb`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1842) | `unlock_scans` | **1** *no explicit requirement methods*; reveals 1 recipe ref | hidden |
 | [`hallowood_trees`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1845) | `unlock_scans` | **1** *no explicit requirement methods*; reveals 6 recipe refs | hidden |
@@ -280,6 +315,11 @@
 | [`mystical_relic`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1889) | `unlock_scans` | **1** *no explicit requirement methods*; reveals 1 recipe ref | hidden |
 | [`humming_artifact`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1892) | `unlock_scans` | **1** *no explicit requirement methods*; reveals 5 recipe refs | hidden |
 | [`treefolk`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1900) | `unlock_scans` | **1** *no explicit requirement methods* | hidden |
+
+## Internal (38)
+
+| Entry key (source line) | Parent keys | Stages (explicit criteria + count of exposed recipes) | Flags / finales |
+| --- | --- | --- | --- |
 | [`unlock_scans`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1906) | — |  | internal |
 | [`unlock_rune_enchantments`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1907) | — |  | internal |
 | [`discover_blood`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1908) | — | **1** *no explicit requirement methods* | internal; siblings DISCOVER_FORBIDDEN, SOTU_DISCOVER_BLOOD |
@@ -318,7 +358,6 @@
 | [`siphon_prompt`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1947) | — |  | internal |
 | [`unknown_rune`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1948) | — |  | internal |
 | [`unknown_research`](https://github.com/daedalus4096/PrimalMagick/blob/5977468bda968b994e54066236ec5719295ac9c3/common/src/main/java/com/verdantartifice/primalmagick/common/research/ResearchEntries.java#L1949) | — |  | internal |
-
 
 ## Implementation/QA boundary
 
