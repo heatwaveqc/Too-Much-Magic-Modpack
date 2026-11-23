@@ -2,6 +2,20 @@
 
 **Status:** Owner-approved economy direction and design specification; design-only PR, **not implemented, built or gameplay tested**. Supersedes earlier "three XP modes" as fixed engine alternatives, the historical/lifetime MXP-level growth divisor, and the default dormant-purchased-Path-ranks assumption. Tracks #455 and #475. Keep the Progression implementation solely under `compat/progression`; Path packs supply data, not Java.
 
+## Owner-approved universal configuration rule — 2026-11-23
+
+> **If a rule determines what a player can earn, buy, unlock, retain, combine, or lose, it should generally be configurable. If it determines whether an action is authentic, safe and correctly synchronized, it belongs in the engine.**
+
+Treat this as a **general Progression architecture principle**, not an invitation to create untrusted script execution. Implement one generic server-authoritative mechanism per kind of rule and bind gameplay content to it through validated data. Native compatibility adapters may be coded, but their mappings and gameplay thresholds should be data-configurable when safe.
+
+**Consolidated P0/P1 scope:** arbitrary XP ledgers/source routing (without special-casing MXP), current-XP-derived purchasing and levels, multiple currencies and caps per skill, Path membership compatibility/replacement and configurable enter/leave/respec loss policy, achievement/level/flag-based automatic unlocks, and composable experience-growth/earning modifiers (target, priority, stacking/caps). TMM shipped preset remains the owner-locked one-wallet MXP configuration with destructive loss of departed Path investments and unallocated XP.
+
+**Defer to follow-up slices:** boss reward entity/advancement catalogs and rarity bands; general trusted advancement adapters replacing the Monk-only Tyz marker bridge; Newbie-protected command list and other baseline convenience policy. These should be data where suitable, but **not** a reason to delay the central engine cutover.
+
+**Safety boundaries remain code-owned:** authoritative event receipts, legitimate committed actions and cancellation/protection checks, non-replayable first-completion rewards, anti-overflow and finite-growth limits, atomic transactions, persist/clone/reload correctness, native mod version checks, effect scheduling and client synchronization. Bounded parsing and maximum computational work are engine safeguards, not gameplay tuning defaults.
+
+**Current source audit:** `XpChannel` reserves MXP via `source==null`; `ProgressionApi.join` implements one exclusive group; `ChannelEngine.view` derives auto ranks from wallet rank only; `ProgressionApi.respec` always refunds; `ExperienceBonuses` excludes MXP and caps +200%; `ExperienceGrowth` assumes additive-only reduction with a floor of 1; `BossRewardPolicy` has hardcoded boss advancement mappings and elite rarity values; `NewbieMode` hardcodes six command roots; `ProgressionApi.awardMonkTyzPointOnce` hardcodes Monk and rank 17. Existing JSON eligibility and effect handler registries already offer many expressive features; extend them rather than duplicating.
+
 ## 1. One generic XP system, arbitrarily many instances
 
 An XP system is a named configuration-defined resource (for example `tyr_progression:mxp`, `tyr_progression:cultivation`, `tyr_progression:hunting`). There is no hard-coded distinction between generic, native, magic, hybrid or separate currencies. A TMM default can configure one MXP system buying all accessible trees; an alternate pack can configure any number of systems and bind any tree/skill to one or more of them. This configuration supersedes the earlier special-case `unified`, `hybrid`, `separate` economy-mode switch; those are **presets/possible configurations**, not three required separate execution paths.
