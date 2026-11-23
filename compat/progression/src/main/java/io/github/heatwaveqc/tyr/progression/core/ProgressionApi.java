@@ -48,19 +48,23 @@ public final class ProgressionApi {
     }
 
     public static boolean hasJoinedPaths(Ledger ledger) {
-        return ledger.paths().values().stream().anyMatch(Track::joined);
+        return BaselinePaths.hasSpecialist(ledger);
     }
 
     public static boolean join(ServerPlayer player, String pathId) {
+        // Only the personal graduation/admin gateway may change baseline Paths.
+        if(BaselinePaths.isBaseline(pathId))return false;
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
         if (path == null || channel==null || !PathRegistry.eligible(player,pathId)) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if (ledger.get(pathId).joined()) return true;
         if (NewbieMode.isNewbie(player)) return false;
-        for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
-            if (!veto.test(player,pathId)) return false;
-        if (!path.exclusiveGroup().isBlank()) {
+        // Core is a universal graduate tree, not a specialist enrollment.
+        if (!BaselinePaths.isCore(pathId))
+            for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
+                if (!veto.test(player,pathId)) return false;
+        if (!BaselinePaths.isCore(pathId) && !path.exclusiveGroup().isBlank()) {
             for (Definition.Path other : PathRegistry.all().values()) {
                 if (!pathId.equals(other.id()) && path.exclusiveGroup().equals(other.exclusiveGroup())
                     && ledger.get(other.id()).joined()) return false;
@@ -69,7 +73,12 @@ public final class ProgressionApi {
         // Join is a real Path change: TMM's configured default sacrifices
         // unallocated MXP, but never already purchased Core/retained Path ranks.
         Ledger next=ChannelEngine.join(ledger,path,channel);
-        next=ChannelEngine.pathChange(next,java.util.Set.of());
+        if(!BaselinePaths.isCore(pathId)) {
+            // Actual specialist enrollment forfeits any unallocated MXP.
+            next=ChannelEngine.pathChange(next,java.util.Set.of());
+            // Normie is only the graduated, unspecialized fallback.
+            next=BaselinePaths.reconcile(next,false);
+        }
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
@@ -82,13 +91,16 @@ public final class ProgressionApi {
     public static boolean leave(ServerPlayer player,String pathId) {
         if(player==null || player.getServer()==null || !player.getServer().isSameThread())return false;
         Definition.Path path=PathRegistry.get(pathId);
-        if(path==null || "automatic".equals(PathRegistry.enrollment(pathId)))return false;
+        if(path==null || BaselinePaths.isBaseline(pathId)
+            || BaselinePaths.isCore(pathId)
+            || "automatic".equals(PathRegistry.enrollment(pathId)))return false;
         Ledger old=player.getData(ProgressionAttachments.LEDGER.get());
         Track track=old.get(pathId);
         if(!track.joined())return false;
         Track dormant=new Track(false,0,0,0,Map.of(),track.milestones(),track.counters());
         Ledger changed=old.with(pathId,dormant).clearAllReceipts(pathId);
         changed=ChannelEngine.pathChange(changed,java.util.Set.of(pathId));
+        changed=BaselinePaths.reconcile(changed,false);
         player.setData(ProgressionAttachments.LEDGER.get(),changed);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
