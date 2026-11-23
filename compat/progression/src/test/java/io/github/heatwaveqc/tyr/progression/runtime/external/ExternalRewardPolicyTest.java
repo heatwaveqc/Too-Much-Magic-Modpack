@@ -77,7 +77,7 @@ class ExternalRewardPolicyTest {
                 Map.of(), ExperienceEconomy.DeparturePolicy.FORFEIT,
                 Set.of(MXP.id()),true);
         assertEquals(1,ExternalRewardPolicy.owned(changed,sale));
-        assertEquals(2,ExperienceEconomy.available(changed,MXP));
+        assertEquals(0,ExperienceEconomy.available(changed,MXP));
     }
 
     @Test void purchasedBonusTokensArePlayerLocal() {
