@@ -94,7 +94,9 @@ public final class ApotheosisCharmPotionBridge {
                 || "neovitae:flight".equals(effectId.toString())
                 || "minecraft:bad_omen".equals(effectId.toString())
                 || "minecraft:raid_omen".equals(effectId.toString())
-                || "minecraft:trial_omen".equals(effectId.toString());
+                || "minecraft:trial_omen".equals(effectId.toString())
+                || (customOnly && CharmPotionEligibility.privilegedAmplifier(
+                        effectId.toString(), effect.getAmplifier()));
         boolean ordinary = "minecraft".equals(effectId.getNamespace())
                 || effect.getEffect().is(CUSTOM_EFFECT_ALLOWLIST);
         return CharmPotionEligibility.permits(
