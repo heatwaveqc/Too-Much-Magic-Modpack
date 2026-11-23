@@ -98,24 +98,24 @@ Examples to **preserve unless a specific confirmed exploit changes the design**:
 
 | Registry ID | Source evidence | Classification / census boundary |
 |---|---|---|
-| \`neovitae:blood_battery\` | Neo Vitae 1.1.54 \`BloodBatteryBlock\` labels this **Creative Only**; its \`BloodBatteryBlockEntity\` refills FE on a redstone signal, without regular EV/Anima/Spiritus debit. Recorded on issue #596. | **Creative-class by source behavior**, registered in the historical item survey, but **not found by creative-name/infinity-name patterns**. No survival acquisition proven by this inventory. |
+| `neovitae:blood_battery` | Neo Vitae 1.1.54 `BloodBatteryBlock` labels this **Creative Only**; its `BloodBatteryBlockEntity` refills FE on a redstone signal, without regular EV/Anima/Spiritus debit. Recorded on issue #596. | **Creative-class by source behavior**, registered in the historical item survey, but **not found by creative-name/infinity-name patterns**. No survival acquisition proven by this inventory. |
 
 This source-backed item is a **third independent candidate lane**, not a 24th literal creative-named item and not one of the 41 semantic-name watches. Source inspection establishes intended creative power, not a loaded recipe or ProjectE mapping. Confirm native config/recipe/loot/reward/EMC handling only in a later acquisition-path phase.
 
 ## E. Reusable capture and comparison contract
 
-\`scripts/index_creative_registry.py --check\` still rederives the frozen November 18 JSON from its exact historical CSV. **The hardcoded November 18 date, integration commit and 209 installed JARs now apply only when the input is that exact frozen CSV path.** A new installed-world export must use \`--input\` and explicit \`--metadata\` pointing to a JSON object with keys \`source\`, \`capture_date\`, \`installed_build_sha\` (exact 40-character lowercase commit), and \`source_installed_jar_count\` (positive integer). This fails closed instead of accidentally publishing old provenance for a fresh export. The owner/QA operator must supply verified capture metadata, not guess it from the current repo HEAD.
+`scripts/index_creative_registry.py --check` still rederives the frozen November 18 JSON from its exact historical CSV. **The hardcoded November 18 date, integration commit and 209 installed JARs now apply only when the input is that exact frozen CSV path.** A new installed-world export must use `--input` and explicit `--metadata` pointing to a JSON object with keys `source`, `capture_date`, `installed_build_sha` (exact 40-character lowercase commit), and `source_installed_jar_count` (positive integer). This fails closed instead of accidentally publishing old provenance for a fresh export. The owner/QA operator must supply verified capture metadata, not guess it from the current repo HEAD.
 
 Example after an *already authorized* build's item survey is collected (paths are illustrative, not claimed to exist):
 
-\`\`\`bash
+```bash
 python3 scripts/index_creative_registry.py \
   --input docs/qa/new-installed-survey/items.csv \
   --metadata docs/qa/new-installed-survey/capture-metadata.json \
   --output docs/qa/new-creative-census.json \
   --compare docs/qa/CREATIVE-ITEM-CENSUS-2026-11-18.json \
   --diff-output docs/qa/new-creative-diff.json
-\`\`\`
+```
 
 The optional comparison reports registered item-count delta and added/removed **candidate IDs**, including the source-backed and component-variant lanes. It does not equate registry drift with craftability, acquisition or EMC learnability. Native creative-only component creation, creative-tab stack variants and behavioral source sweeps still need explicit investigation; the input CSV alone cannot prove completeness.
 
