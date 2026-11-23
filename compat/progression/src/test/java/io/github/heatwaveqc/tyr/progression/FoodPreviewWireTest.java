@@ -28,7 +28,7 @@ class FoodPreviewWireTest {
             "example:fish", FoodPreviewWire.Entry.lavaConditional(null),
             "example:enchanted_fish", FoodPreviewWire.Entry.lavaConditional(
                 FoodPreviewWire.Entry.nourishment(3,1.5f)),
-            "example:neutral_drink", FoodPreviewWire.Entry.nourishment(0,0));
+            "example:neutral_drink", FoodPreviewWire.Entry.permitBeverage());
         var output = FoodPreviewWire.parse(String.join("",FoodPreviewWire.chunks(input)));
         assertEquals(input,output);
         assertTrue(output.get("example:fish").lavaConditional());
