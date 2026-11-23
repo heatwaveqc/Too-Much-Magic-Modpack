@@ -29,7 +29,11 @@ Rich exploration via Cataclysm, Stalwart/Starlight themed structures and Deeper 
 Borrow the *idea* of ATM10's tested performance, mapping, chunk claims and UI infrastructure, not the whole ATM10 mod list or proprietary assets. Candidate libraries/performance mods: ModernFix, FerriteCore, Embeddium, Entity Culling, ImmediatelyFast; candidate QoL: JEI, Jade, AppleSkin, Mouse Tweaks, Just Zoom, FTB Chunks. Verify dependency graph and current 1.21.1 loader builds individually.
 
 ## Storage
-Occultism storage is central. Magical satchels, named magical bags, and portable storage from approved magic mods are allowed after compatibility and balance review. Generic backpacks and generic storage/logistics are not.
+Occultism storage is central. Magical satchels, named magical bags, and portable storage from approved magic mods are allowed after compatibility and balance review.
+
+**Owner clarification (2026-11-23):** The exclusions on **generic backpacks and generic item logistics** are **mod-selection exclusions**: do not install a standalone mod whose primary/only purpose is to provide generic backpacks or a general-purpose logistics network. **Do not interpret the exclusion as a ban on storage items or incidental transfer mechanics within already-selected multi-system magic mods.** In particular, the native `malum:soulwoven_pouch`, `malum:ravenous_pouch` and Gaze addon `gaze:spirit_channel_pouch` are permitted survival features, despite ordinary-item storage and the Spirit-Channel Pouch's bound-position, same-dimension dropped-item delivery. They need no separate exception or source recipe removal. Ars and Occultism personal storage follow the same principle.
+
+**Independent non-nesting rule (release blocker [#16](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/16)):** no portable bag may be placed inside any other portable bag, even within the same mod or across mods. All three Malum/Gaze pouches join the compatibility/tag/acceptance coverage; no nested storage, silent item deletion, or dupes. Ordinary chests and approved stationary storage are outside this blanket prohibition. This owner decision permits native survival acquisition; it does not automatically award pouches as starter items or quest rewards.
 
 ## Reproducibility
 Eventually every resource, boss drop and progression item has at least one renewable or reproducible route, with multiple distinctive magical paths where practical. Some paths should be expensive or late-game. Renewable != instantly cheap or farmable without limits.
