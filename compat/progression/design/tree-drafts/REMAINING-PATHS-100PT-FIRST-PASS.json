@@ -1,10 +1,11 @@
 {
-  "schema": "tmm_remaining_path_tree_blueprint_v13",
+  "schema": "tmm_remaining_path_tree_blueprint_v14",
   "status": "DESIGN_ONLY_ONE_POINT_PER_RANK_AND_100_POINT_MASTERY",
   "date": "2026-11-22",
   "repo": "heatwaveqc/Too-Much-Magic-Modpack",
   "source_branch": "dev/progression",
   "notes": [
+    "OWNER CORRECTION 2026-11-22: LICH IS A SINGLE 200-RANK MAX TREE: existing 21 regular skills / 100 points unchanged and usable by one-provider Lich hybrids including Dracolich; an EXTRA 20 proposed Archlich Ascendancy skills / 100 one-point ranks in SAME tree unlock ONLY with genuine both Goety+JAWR Lichdoms. User approved gating and budget, NOT the specific newly drafted 20 Archlich powers/numbers. Scope-only design.",
     "HUNTER COMPLETE DESIGN v13: 13 shared/62 + one Training/8 + one favored-prey/30, 100 points per legal build; 57 paid visible skill IDs, 14 original free choices and source IDs kept. Existing live Hunter remains unmodified. Source MXP #475 requires rebalancing old maxHP/4; Fae category gap is explicit hold.",
     "BARE ZERKER COMPLETE DESIGN: 22 paid skills / 100 one-point ranks, branches 34/22/22/12/10; all 13 old IDs retained. Unpriced locked innate Fury, 1s/hit effects, full Totem >50 and unrestricted food preserved. Woad and blood power magnitudes await owner/source audit.",
     "GILDED COMPLETE DESIGN FIRST PASS: 22 paid skills, five branches 32/18/20/20/10 = 100 separate one-point ranks; all 12 historical skill IDs preserved; free gold diamond-equivalence, Fortune/Looting +3, Piglin friendship, Nether diet 2x gold nutrition, lava license and rank18 fire immunity not repurchased. Design only.",
@@ -4905,8 +4906,8 @@
       "id": "lich",
       "title": "Lich",
       "kind": "native_form_path",
-      "budget": 100,
-      "status": "complete_role_first_design_only_source_audit_pending",
+      "budget": 200,
+      "status": "complete_regular_100_plus_proposed_archlich_100_design_only",
       "groups": [
         {
           "id": "lich_soul_economy",
@@ -5611,17 +5612,759 @@
           "points": 10
         }
       ],
-      "source": "Archived 2026-11-15 concept plus owner 2026-11-22 100-rank balance target and native dual-lich policy",
-      "native_guardrails": "Exactly ONE shared tree for JAWR/Forbidden Magic Lich and Goety Lich including Archlich and Gilded Piglich; Dracolich has one Lich plus one legal Dragon tree. Native Arca and phylactery retain separate resources, source-defined costs and death priority.",
+      "source": "owner-locked 100+100 dual-Lich correction 2026-11-22; earlier Lich PR #526 + native consolidation/Goety 3.2.3 pin PR #540",
+      "native_guardrails": "One SHARED Lich tree. First 100 one-point ranks available to ANY legally compatible single-provider native Lich (Goety OR JAWR/Forbidden Magic), including Dracolich and Piglich. Additional 100 Archlich ONLY with BOTH genuine native Goety AND JAWR/Forbidden Magic Lichdoms on same player, regardless of their order. No second tree/wallet: normal 100 remain unchanged. Native resources and one rescue phylactery first then Arca fallback, Dragon anti-death before one Lich in Dracolich, no extra copies of native source abilities. Lost dual eligibility immediately disables Archlich ranks.",
       "special_note": "GOETY Soul Energy != Arca != JAWR Phylactery souls/Soul in a Bottle. Every paid skill must function for the actual provider or be withheld pending a source-backed substitute. Archlich phylactery-first, Arca fallback; Dragon Survival anti-death before Dracolich. No paid extra death save.",
-      "total_points": 100,
-      "skill_count": 21,
-      "total_available_paid_ranks_per_character": 100,
+      "total_points": 200,
+      "skill_count": 41,
+      "total_available_paid_ranks_per_character": 200,
       "assigned_points": 100,
       "unallocated_points": 0,
       "role": "Late-game necromantic summoner, blood-specialized caster and death-resistant survivor, with bounded owned undead command and truly native resurrection.",
       "maturity": "COMPLETE_BALANCE_DRAFT_NOT_EXECUTABLE",
-      "balance_policy": "One point per rank, numbers are testable proposals, not source-verified limits. Existing free native lichdom progression and resurrection never re-licensed."
+      "balance_policy": "One point per rank, numbers are testable proposals, not source-verified limits. Existing free native lichdom progression and resurrection never re-licensed.",
+      "archlich_extension": {
+        "id": "tyr_progression:lich_archlich_ascendancy",
+        "title": "Archlich Ascendancy",
+        "location": "SAME purchased Lich tree, locked second tier/section, NOT a separately enrolled Progression Path",
+        "gating_source": "native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom on SAME player, both TRUE; one must not be inferred from source resource or cosmetic tag. UNKNOWN fails closed.",
+        "ordinary_lich_access": "Goety-only, JAWR-only, Dracolich, Piglich and other legal single-provider Lich hybrids purchase only regular 100-point section.",
+        "eligibility": "both_native_lichdoms_verified_true_and_legal",
+        "hard_gate": {
+          "operator": "all",
+          "provider_flags": [
+            "goety_lich",
+            "jawr_lich"
+          ],
+          "player_state": "same_player",
+          "require_not_unknown": true,
+          "requires_regular_lich_maxed": false
+        },
+        "unlock_cost": 0,
+        "additional_purchased_budget": 100,
+        "total_one_point_ranks": 100,
+        "skill_count": 20,
+        "groups": [
+          {
+            "id": "archlich_dual_soul_convergence",
+            "name": "Dual Soul Convergence",
+            "points": 25,
+            "skills": [
+              {
+                "id": "tyr_progression:archlich_twin_soul_synthesis",
+                "name": "Twin Soul Synthesis",
+                "description": "+4% personally paid, source-confirmed Goety necromantic spell potency per rank (up to +24%) while both real Goety and JAWR Lichdoms are active; not a free Soul Energy cast and never a second Soul Energy pool.",
+                "effect_per_rank_candidate": "+4% personally paid, source-confirmed Goety necromantic spell potency per rank (up to +24%) while both real Goety and JAWR Lichdoms are active; not a free Soul Energy cast and never a second Soul Energy pool.",
+                "max_rank": 6,
+                "points": 6,
+                "price_per_rank": 1,
+                "total_cost": 6,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:lich_soul_conservation",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Exact native Goety personal paid necromancy receipt, dual-form snapshot and legitimate damage/effect order.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 0,
+                "row_index": 0
+              },
+              {
+                "id": "tyr_progression:archlich_dual_anchor_bulwark",
+                "name": "Dual Anchor Bulwark",
+                "description": "-2% ordinary eligible direct physical damage per rank (up to -10%) ONLY when both genuine native death anchors are independently valid and charged; neither anchor is spent, cloned, recharged or invoked by this bonus.",
+                "effect_per_rank_candidate": "-2% ordinary eligible direct physical damage per rank (up to -10%) ONLY when both genuine native death anchors are independently valid and charged; neither anchor is spent, cloned, recharged or invoked by this bonus.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_twin_soul_synthesis",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Read-only source-true Arca and soul-filled phylactery validity without changing rescue priority, costs or source-native weaknesses.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 0,
+                "row_index": 1
+              },
+              {
+                "id": "tyr_progression:archlich_soul_tithe",
+                "name": "Soul Tithe",
+                "description": "Once per 25 seconds, an actual hostile killed directly by an authorized personally owned native undead may restore +0.75% of the player's real personal Goety Soul Energy capacity per purchased rank (up to +3.75%); no reanimated minions, fake kills or phantom soul income.",
+                "effect_per_rank_candidate": "Once per 25 seconds, an actual hostile killed directly by an authorized personally owned native undead may restore +0.75% of the player's real personal Goety Soul Energy capacity per purchased rank (up to +3.75%); no reanimated minions, fake kills or phantom soul income.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_twin_soul_synthesis",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Real owner/kill attribution, personal cap, actual source recovery hook; exclude farm/dummy, Arca storage, death anchor.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 0,
+                "row_index": 2
+              },
+              {
+                "id": "tyr_progression:archlich_phylactery_confluence",
+                "name": "Phylactery Confluence",
+                "description": "When a genuine paid Goety necromancy cast and a legitimate JAWR Soul-in-a-Bottle heal have both completed within 20 seconds, gain +3% personally cast necromancy output per rank (up to +15%) for the next 10 seconds; consume this qualifying pair once, 30-second cooldown.",
+                "effect_per_rank_candidate": "When a genuine paid Goety necromancy cast and a legitimate JAWR Soul-in-a-Bottle heal have both completed within 20 seconds, gain +3% personally cast necromancy output per rank (up to +15%) for the next 10 seconds; consume this qualifying pair once, 30-second cooldown.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_dual_anchor_bulwark",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "JAWR authentic soul-bottle receipt and paid Goety spell transaction; neither is fabricated, refunded or substituted with phylactery death charge.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 0,
+                "row_index": 3
+              },
+              {
+                "id": "tyr_progression:archlich_crown_of_two_souls",
+                "name": "Crown of Two Souls",
+                "description": "While both Lichdoms and both legitimate charged native anchors are present, +3% personal necromantic spell damage and +2% authorized owned-undead damage per rank (up to +12%/+8%); revert immediately when any native condition becomes false.",
+                "effect_per_rank_candidate": "While both Lichdoms and both legitimate charged native anchors are present, +3% personal necromantic spell damage and +2% authorized owned-undead damage per rank (up to +12%/+8%); revert immediately when any native condition becomes false.",
+                "max_rank": 4,
+                "points": 4,
+                "price_per_rank": 1,
+                "total_cost": 4,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_phylactery_confluence",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Native snapshots on relog/cure/charge, valid paid damage sources, summon ownership and bounded stacking.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 0,
+                "row_index": 4
+              }
+            ]
+          },
+          {
+            "id": "archlich_undead_dominion",
+            "name": "Undead Dominion",
+            "points": 25,
+            "skills": [
+              {
+                "id": "tyr_progression:archlich_grave_legion",
+                "name": "Grave Legion",
+                "description": "+5% direct attack damage per rank (up to +30%) from genuinely owned Goety/JAWR native undead minions while the Archlich is valid; never wild mobs, other players' pets or all undead everywhere.",
+                "effect_per_rank_candidate": "+5% direct attack damage per rank (up to +30%) from genuinely owned Goety/JAWR native undead minions while the Archlich is valid; never wild mobs, other players' pets or all undead everywhere.",
+                "max_rank": 6,
+                "points": 6,
+                "price_per_rank": 1,
+                "total_cost": 6,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:lich_bone_captain",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Source-verified summoned minion ownership, legal damage origin and capped multipliers.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 1,
+                "row_index": 0
+              },
+              {
+                "id": "tyr_progression:archlich_ossuary_host",
+                "name": "Ossuary Host",
+                "description": "+5% max health per rank (up to +25%) for real personally owned summoned undead while legally active; one modifier per actual minion, clean removal on logout/owner loss, no free healing when reapplied.",
+                "effect_per_rank_candidate": "+5% max health per rank (up to +25%) for real personally owned summoned undead while legally active; one modifier per actual minion, clean removal on logout/owner loss, no free healing when reapplied.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_grave_legion",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Server native minion lifecycle and owner UUID, real max-HP restoration rules.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 1,
+                "row_index": 1
+              },
+              {
+                "id": "tyr_progression:archlich_throne_of_bones",
+                "name": "Throne of Bones",
+                "description": "PROPOSED major Archlich-only gate: +1 additional *legally active* personally summoned undead slot per rank (up to +5) ONLY for native providers that expose a safe dynamic cap; every added summon still requires its real source spell/material/Soul Energy cost, and no autonomous spawn is granted.",
+                "effect_per_rank_candidate": "PROPOSED major Archlich-only gate: +1 additional *legally active* personally summoned undead slot per rank (up to +5) ONLY for native providers that expose a safe dynamic cap; every added summon still requires its real source spell/material/Soul Energy cost, and no autonomous spawn is granted.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_ossuary_host",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "explicit_owner_source_hold",
+                "provider_and_implementation_hold": "OWNER/SOURCE HOLD: exact Goety summon cap/JAWR support, world/AI performance, claim safety and potential entity caps; disabled if cannot raise source cap safely.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 1,
+                "row_index": 2
+              },
+              {
+                "id": "tyr_progression:archlich_bonewall_intercession",
+                "name": "Bonewall Intercession",
+                "description": "Once per two seconds, when legitimate physical damage would land on Archlich, redirect 3% of that damage per rank (up to 15%) onto one nearby, physically present, genuinely owned undead within six blocks; real minion takes actual damage. No minion means no reduction; no death/true damage bypass.",
+                "effect_per_rank_candidate": "Once per two seconds, when legitimate physical damage would land on Archlich, redirect 3% of that damage per rank (up to 15%) onto one nearby, physically present, genuinely owned undead within six blocks; real minion takes actual damage. No minion means no reduction; no death/true damage bypass.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_throne_of_bones",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Generic trusted damage redirection and recursion guard, summon range, minion death, owner/PvP permission; no damage duplication.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 1,
+                "row_index": 3
+              },
+              {
+                "id": "tyr_progression:archlich_king_of_the_host",
+                "name": "King of the Host",
+                "description": "After a real *paid, successful* personally owned native undead summon, all other already-owned qualifying undead within 16 blocks gain +4% melee movement and +4% damage per rank (max +16% each) for eight seconds; refresh at most once per 20 seconds, never spawn extra servants.",
+                "effect_per_rank_candidate": "After a real *paid, successful* personally owned native undead summon, all other already-owned qualifying undead within 16 blocks gain +4% melee movement and +4% damage per rank (max +16% each) for eight seconds; refresh at most once per 20 seconds, never spawn extra servants.",
+                "max_rank": 4,
+                "points": 4,
+                "price_per_rank": 1,
+                "total_cost": 4,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_bonewall_intercession",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Actual source summon success/payment and owner-bound minion effects; no fake summons, chunk-load, AI control bypass.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 1,
+                "row_index": 4
+              }
+            ]
+          },
+          {
+            "id": "archlich_black_apotheosis",
+            "name": "Black Apotheosis",
+            "points": 25,
+            "skills": [
+              {
+                "id": "tyr_progression:archlich_soulstorm",
+                "name": "Soulstorm",
+                "description": "On one genuine personally paid Goety necromancy hit against a hostile, once every ten seconds, a second eligible hostile within four blocks takes one additional nonrecursive source-tagged death-magic hit of +2 real damage per rank (up to 12 HP); payment is an additional verified Soul Energy debit, no damage without paid source action.",
+                "effect_per_rank_candidate": "On one genuine personally paid Goety necromancy hit against a hostile, once every ten seconds, a second eligible hostile within four blocks takes one additional nonrecursive source-tagged death-magic hit of +2 real damage per rank (up to 12 HP); payment is an additional verified Soul Energy debit, no damage without paid source action.",
+                "max_rank": 6,
+                "points": 6,
+                "price_per_rank": 1,
+                "total_cost": 6,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:lich_sanguine_attunement",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "explicit_owner_source_hold",
+                "provider_and_implementation_hold": "OWNER/SOURCE HOLD: valid second damage target, cost debit and no recursive spells/kill loop, protection, bosses and PvP.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 2,
+                "row_index": 0
+              },
+              {
+                "id": "tyr_progression:archlich_plague_crown",
+                "name": "Plague Crown",
+                "description": "+0.5 seconds per rank (up to +2.5s) to genuine personal necromancy-spell harmful status duration on legal hostile victims, clamped to provider-supported max; never spread unrelated poison, permanent curses or buffs.",
+                "effect_per_rank_candidate": "+0.5 seconds per rank (up to +2.5s) to genuine personal necromancy-spell harmful status duration on legal hostile victims, clamped to provider-supported max; never spread unrelated poison, permanent curses or buffs.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_soulstorm",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Verified source spell effect and caster, duration stacking ceilings and harmless cancellation.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 2,
+                "row_index": 1
+              },
+              {
+                "id": "tyr_progression:archlich_crypt_surge",
+                "name": "Crypt Surge",
+                "description": "With at least three actually alive, personally owned summoned undead within 12 blocks, +3% personal necromantic spell potency per rank (up to +15%); no synthetic minions or free command/follow range.",
+                "effect_per_rank_candidate": "With at least three actually alive, personally owned summoned undead within 12 blocks, +3% personal necromantic spell potency per rank (up to +15%); no synthetic minions or free command/follow range.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_plague_crown",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Owner minion proximity, source spell attribution, server-safe bounds, no passive farm credit.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 2,
+                "row_index": 2
+              },
+              {
+                "id": "tyr_progression:archlich_grave_cascade",
+                "name": "Grave Cascade",
+                "description": "Once every 30 seconds following a genuine *personally cast and paid necromancy spell kill*, send one nonrecursive death-wave to at most one additional eligible nearby hostile per rank (max five within six blocks), dealing up to two actual death-magic damage per rank (max ten HP) to each; no repeated waves from wave kills.",
+                "effect_per_rank_candidate": "Once every 30 seconds following a genuine *personally cast and paid necromancy spell kill*, send one nonrecursive death-wave to at most one additional eligible nearby hostile per rank (max five within six blocks), dealing up to two actual death-magic damage per rank (max ten HP) to each; no repeated waves from wave kills.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_crypt_surge",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "explicit_owner_source_hold",
+                "provider_and_implementation_hold": "OWNER/SOURCE HOLD: event dedup, spread damage and one-wave-only chain guard, target caps, protections, loot/XP exploit safety.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 2,
+                "row_index": 3
+              },
+              {
+                "id": "tyr_progression:archlich_eclipse_of_undeath",
+                "name": "Eclipse of Undeath",
+                "description": "After an actual successful paid personal necromancy cast, the NEXT accepted personally paid necromancy cast within eight seconds has +6% actual necromantic effect potency per rank (up to +24%) but its verified normal resource cost is 25% higher; consume the charge once, 25-second cooldown.",
+                "effect_per_rank_candidate": "After an actual successful paid personal necromancy cast, the NEXT accepted personally paid necromancy cast within eight seconds has +6% actual necromantic effect potency per rank (up to +24%) but its verified normal resource cost is 25% higher; consume the charge once, 25-second cooldown.",
+                "max_rank": 4,
+                "points": 4,
+                "price_per_rank": 1,
+                "total_cost": 4,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_grave_cascade",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Dual paid source cast receipts, nonrefundable increased cost, source rounding and per-player charge/cooldown; no free spell.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 2,
+                "row_index": 4
+              }
+            ]
+          },
+          {
+            "id": "archlich_deathless_majesty",
+            "name": "Deathless Majesty",
+            "points": 25,
+            "skills": [
+              {
+                "id": "tyr_progression:archlich_deathless_tyrant",
+                "name": "Deathless Tyrant",
+                "description": "+3 maximum HP per rank (up to +18 HP) while genuinely both Lichdoms; remove/adjust correctly on cure, loss, respec, death or relog, with no bonus health restoration exploit.",
+                "effect_per_rank_candidate": "+3 maximum HP per rank (up to +18 HP) while genuinely both Lichdoms; remove/adjust correctly on cure, loss, respec, death or relog, with no bonus health restoration exploit.",
+                "max_rank": 6,
+                "points": 6,
+                "price_per_rank": 1,
+                "total_cost": 6,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:lich_cold_persistence",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Server-native dual-lich eligibility and reversible MAX_HEALTH attribute, no immutable mutation.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 3,
+                "row_index": 0
+              },
+              {
+                "id": "tyr_progression:archlich_shroud_of_ages",
+                "name": "Shroud of Ages",
+                "description": "-3% direct ordinary physical damage taken per rank (up to -15%) while dual lich; does not mitigate Smite-specific weakness, fire/sun vulnerability, void, kill-plane or unrelated true damage, and cannot confer generic immortality.",
+                "effect_per_rank_candidate": "-3% direct ordinary physical damage taken per rank (up to -15%) while dual lich; does not mitigate Smite-specific weakness, fire/sun vulnerability, void, kill-plane or unrelated true damage, and cannot confer generic immortality.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_deathless_tyrant",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Source native damage types and mitigation stacking with ordinary Lich Ossuary Skin.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 3,
+                "row_index": 1
+              },
+              {
+                "id": "tyr_progression:archlich_twinned_requiem",
+                "name": "Twinned Requiem",
+                "description": "Only AFTER one confirmed native rescue event completes (phylactery first or Arca fallback), restore +2 actual HP per rank (up to +10 HP), capped at current max. This modifies post-rescue recovery ONLY: it never recharges an anchor, decides the rescue, or grants a second save.",
+                "effect_per_rank_candidate": "Only AFTER one confirmed native rescue event completes (phylactery first or Arca fallback), restore +2 actual HP per rank (up to +10 HP), capped at current max. This modifies post-rescue recovery ONLY: it never recharges an anchor, decides the rescue, or grants a second save.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_shroud_of_ages",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Exactly one native post-rescue receipt from #540 provenance, provider priority and total bonus after regular Final Passage.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 3,
+                "row_index": 2
+              },
+              {
+                "id": "tyr_progression:archlich_grave_return",
+                "name": "Grave Return",
+                "description": "For ten seconds after a real native death rescue, +5% personal grounded movement speed and +3% actual necromantic spell damage per rank (max +25%/+15%); effects occur after the one real rescue and never stop the next legitimate lethal hit.",
+                "effect_per_rank_candidate": "For ten seconds after a real native death rescue, +5% personal grounded movement speed and +3% actual necromantic spell damage per rank (max +25%/+15%); effects occur after the one real rescue and never stop the next legitimate lethal hit.",
+                "max_rank": 5,
+                "points": 5,
+                "price_per_rank": 1,
+                "total_cost": 5,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_twinned_requiem",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Actual post-rescue callback, one trigger per death, no fake invulnerability, no potion-effect UI.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 3,
+                "row_index": 3
+              },
+              {
+                "id": "tyr_progression:archlich_sovereign_eclipse",
+                "name": "Sovereign Eclipse",
+                "description": "For fifteen seconds after that one valid native resurrection, up to ten currently existing personally owned summoned undead within 12 blocks gain +8% actual melee damage per rank (up to +32%); no new summons, no extra Totem, Arca use, paid resurrection or automatic chunk-load.",
+                "effect_per_rank_candidate": "For fifteen seconds after that one valid native resurrection, up to ten currently existing personally owned summoned undead within 12 blocks gain +8% actual melee damage per rank (up to +32%); no new summons, no extra Totem, Arca use, paid resurrection or automatic chunk-load.",
+                "max_rank": 4,
+                "points": 4,
+                "price_per_rank": 1,
+                "total_cost": 4,
+                "rank_costs": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "stage": "archlich_ascendancy",
+                "prerequisite": "tyr_progression:archlich_grave_return",
+                "requires_native_lichdoms": [
+                  "goety",
+                  "jawr_forbidden_magic"
+                ],
+                "requires_all_flags_true": true,
+                "requires_archlich": true,
+                "requires_full_regular_lich_mastery": false,
+                "native_gate_reference": "same player native Goety Lichdom AND native JAWR/Forbidden Magic Lichdom both verified TRUE, fail closed on unknown; provider transition must be legal",
+                "source_approval": "owner-locked 2026-11-22 EXTRA 100 Archlich ranks and dual-native gate; specific powers/numbers PROPOSED ONLY pending review",
+                "effect_status": "source_and_engine_audit_required",
+                "provider_and_implementation_hold": "Native sole-rescue receipt, genuine owned undead count, explicit minion cap and duration cleanup.",
+                "no_new_active_button": true,
+                "live": false,
+                "group_index": 3,
+                "row_index": 4
+              }
+            ]
+          }
+        ],
+        "recommended_progression": "Basic Lich skills remain accessible in same UI. Four Archlich lineages each attach to an ordinary Lich branch at its first rank; each Archlich rank and effect separately requires dual-Lich state. No full 100-point regular prerequisite is silently introduced; owner may later choose that additional lock.",
+        "lose_one_lichdom": "all Archlich bonuses are immediately dormant; invested ranks remain in same wallet ledger pending normal respec/cure refund policy. Never automatically grant another 100 points or refund twice.",
+        "magic_and_death_ownership": "native Goety Soul Energy, Goety Arca, JAWR phylactery/Soul in Bottle remain separate; native sole rescue priority phylactery then Arca; no synthetic soul wallet, double rescue, new active keys or copied source abilities",
+        "status": "DESIGN_ONLY_OWNER_APPROVAL_REQUIRED_FOR_SKILL_EFFECTS"
+      },
+      "base_regular_budget": 100,
+      "archlich_bonus_budget": 100,
+      "normal_lich_skill_count": 21,
+      "archlich_skill_count": 20,
+      "budget_rule": "Ordinary Lich or any legal single-provider hybrid: max 100 spent across 21 regular nodes. Archlich: same tree, 21 original/100 regular +20 gated/100 additional =41 nodes, 200 maximum when eligible. Each point purchases exactly one rank; neither dual conversion nor unlock itself grants points.",
+      "archlich_owner_design_rule": "2026-11-22 user correction: another 100 paid ranks beyond the standard Lich 100, in same tree, locked behind becoming both kinds; Archlich exclusively receives the high fantasy powers. Specific Archlich skill effects are provisional proposals, not separately approved."
     },
     {
       "id": "hunter",
@@ -9903,6 +10646,7 @@
     }
   ],
   "required_preimplementation_reviews": [
+    "Archlich extra 100 ranks: source-check real Goety 3.2.3 and JAWR 0.5.39 dual-native snapshots, both acquisition orders and cures; no Archlich unlock on false/unknown/Dracolich, no purchase/benefit when one source lost, no duplicate wallet/refund or dual rescue; owner review proposed massive summons/casts/damage redirection/death-wave and effect guards; basic Lich 100 unchanged.",
     "Hunter: verify 14 free specialty_* IDs, 57 option IDs, 17 per legal build, 62+8+30; current 31 live skills intact. Review native Hunter kill XP vs unified MXP #475, missing Fae taxonomy, source weapon delivery and ammunition, real Trial of Venom, 10h mutagen state, bounty #523 ordinary coins and all-player access, target overlap/boss exclusions.",
     "Bare Zerker #454: confirm actual postmitigation damage/Fury receipt, overkill/absorption, unframed hits, one-second-on-damage Regen/Resistance amplifiers, full vanilla totem prehit >50 and all-Fury drain; clothing chafe and unequip, shield suppression, Neo Vitae 1.1.53 Woad per-upgrade parity and EvilCraft blood; magic-object XP registry.",
     "Gilded: verify free gold/Netherite effective parity and full virtual Fortune/Looting/Unbreaking/repair baseline; 1-per-event gold ore MXP, Piglin and Brute anger guard, 2x golden foods, correct lava rod providers and no double hooks, real native rank 18/20, no passive action/loot duplication.",
@@ -10010,6 +10754,6 @@
         "budget": 100
       }
     ],
-    "notes": "Hunter exact legal build: 62 shared + exactly one 8-rank Training Style + exactly one 12+8+10=30 favored prey. 57 visible Hunter paid IDs, 17 per character; total visible 261 across ten draft categories unchanged. No executable gameplay claimed."
+    "notes": "Base nine other 100-point drafts unchanged; Lich original 21/100, gated Archlich 20/100 extra on same tree (total 41/200 for genuinely dual-lich). Hunter 62+8+30. Visible paid catalog 281 with Hunter alternatives counted once. All one-point ranks."
   }
 }
