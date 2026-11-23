@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import io.github.heatwaveqc.tyr.progression.client.ClientPassivePowers;
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tyr.progression.core.VirtualElytraPolicy;
 import java.util.Set;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
@@ -47,13 +48,11 @@ public final class VirtualElytra {
 
     /** Resolves real entitlement on each authoritative server query. */
     public static Set<String> sources(ServerPlayer player) {
-        if (player == null || !player.isAlive() || player.isCreative() || player.isSpectator())
-            return Set.of();
-        if (NewbieMode.isNewbie(player)) return Set.of(NEWBIE);
-        if (ClassAbilities.unlocked(player, "momentum_glide")
-                && "on".equals(ProgressionApi.mode(player,
-                        "tyr_progression:momentum_glide", "off"))) return Set.of(MONK);
-        return Set.of();
+        if (player == null) return Set.of();
+        return VirtualElytraPolicy.sources(player.isAlive(),player.isCreative(),
+                player.isSpectator(),NewbieMode.isNewbie(player),
+                ClassAbilities.unlocked(player,"momentum_glide"),
+                "on".equals(ProgressionApi.mode(player,"tyr_progression:momentum_glide","off")));
     }
 
     /** Compatibility API for the existing Monk gentle propulsion logic. */

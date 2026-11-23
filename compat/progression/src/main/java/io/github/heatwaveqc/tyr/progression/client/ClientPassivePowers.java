@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.client;
 
 import io.github.heatwaveqc.tyr.progression.core.PassivePowerGrants;
+import io.github.heatwaveqc.tyr.progression.core.PassivePowerLease;
 import java.lang.ref.WeakReference;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
@@ -36,8 +37,8 @@ public final class ClientPassivePowers {
         LocalPlayer player = Minecraft.getInstance().player;
         return player != null && entity == player && owner.get() == player
                 && player.isAlive() && !player.isSpectator() && !player.isCreative()
-                && receivedAt >= 0 && player.tickCount >= receivedAt
-                && player.tickCount - receivedAt <= 40 && active.contains(power);
+                && PassivePowerLease.valid(receivedAt, player.tickCount)
+                && active.contains(power);
     }
 
     public static void clear() {
