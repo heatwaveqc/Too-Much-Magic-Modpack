@@ -52,6 +52,10 @@ jobs:
           python3 compat/economy/tools/audit_repair_talisman_charm.py \
             "$RUNNER_TEMP/economy-compile-mods/ProjectE-1.21.1-PE1.1.0.jar" \
             "$RUNNER_TEMP/economy-compile-mods/Apotheosis-1.21.1-8.9.0.jar"
+      - name: Audit pinned Apotheosis potion charm crafting ABI (Type A only)
+        run: |
+          python3 compat/economy/tools/audit_potion_charm_recipe.py \
+            "$RUNNER_TEMP/economy-compile-mods/Apotheosis-1.21.1-8.9.0.jar"
       - name: Client optional-present and qualified native-version regression fixtures (offline)
         run: python3 -m unittest discover -s compat/economy/tools -p 'test_verify_client_dependency_closure.py' -v
       - name: Compile Economy and execute unit tests
