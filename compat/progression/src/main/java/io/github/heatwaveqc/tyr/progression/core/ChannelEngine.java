@@ -41,6 +41,16 @@ public final class ChannelEngine {
             if(level!=null)for(int at:skill.autoRanks())if(level.rank()>=at)earned++;
             if(earned>0)ranks.put(skill.id(),earned);else ranks.remove(skill.id());
         }
+        for(var skill:path.skills()){
+            var keys=config.achievements().get(new ChannelConfig.SkillKey(path.id(),skill.id()));
+            if(keys==null)continue;
+            int earned=0;
+            for(String key:keys)
+                if(ledger.economy().achievements().contains(key)||raw.milestones().contains(key))
+                    earned++;
+            if(earned>0)ranks.put(skill.id(),Math.min(earned,skill.maxRank()));
+            else ranks.remove(skill.id());
+        }
         return new Track(true,w==null?0:w.xp(),w==null?0:w.rank(),w==null?0:w.points(),
                 ranks,raw.milestones(),raw.counters());
     }
@@ -71,11 +81,19 @@ public final class ChannelEngine {
         return ledger.withWallet(system.id(),w.curve(after));
     }
     public static Ledger ownership(Ledger ledger,Definition.Path path,Track after){
+        return ownership(ledger,path,after,ChannelConfig.empty());
+    }
+    public static Ledger ownership(Ledger ledger,Definition.Path path,Track after,ChannelConfig config){
         var skills=new java.util.HashMap<>(after.skills());
-        for(var skill:path.skills())if(!skill.autoRanks().isEmpty())skills.remove(skill.id());
+        for(var skill:path.skills())
+            if(!skill.autoRanks().isEmpty()
+                || config.achievements().containsKey(new ChannelConfig.SkillKey(path.id(),skill.id())))
+                skills.remove(skill.id());
         return ledger.with(path.id(),new Track(after.joined(),0,0,0,skills,after.milestones(),after.counters()));
     }
     public static Ledger buy(Ledger ledger,Definition.Path tree,ChannelConfig config,String skillId){
+        if(config.achievements().containsKey(new ChannelConfig.SkillKey(tree.id(),skillId)))
+            return ledger;
         var rule=ExperienceEconomyRuntime.current().skills()
                 .get(new ExperienceEconomyConfig.SkillKey(tree.id(),skillId));
         if(rule!=null)return buy(ledger,tree,config,skillId,rule.sources().getFirst().system());
@@ -96,7 +114,7 @@ public final class ChannelEngine {
                 tree.id(),skillId,skill.price(view.skillRank(skillId)),skill.maxRank(),skill.maxRank());
             if(xpState==ledger.economy())return ledger;
         }
-        var next=ownership(ledger,tree,after)
+        var next=ownership(ledger,tree,after,config)
               .withWallet(binding.currency().id(),w.points(after.points()))
               .withEconomy(xpState)
               .receipt(tree.id(),skillId,binding.currency().id(),w.points()-after.points(),binding.permanent());
@@ -119,7 +137,9 @@ public final class ChannelEngine {
             return buy(ledger,tree,config,skillId);
         }
         var skill=tree.skill(skillId);
-        if(skill==null || !skill.autoRanks().isEmpty() || !ledger.get(tree.id()).joined())return ledger;
+        if(skill==null || !skill.autoRanks().isEmpty()
+            || config.achievements().containsKey(new ChannelConfig.SkillKey(tree.id(),skillId))
+            || !ledger.get(tree.id()).joined())return ledger;
         ExperienceEconomyConfig.PurchaseSource source=null;
         for(var candidate:rules.sources())if(candidate.system().equals(systemId)){
             source=candidate;break;
@@ -144,7 +164,7 @@ public final class ChannelEngine {
         if(paid==ledger.economy())return ledger;
         var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
         boolean permanent=binding!=null && binding.permanent();
-        return ownership(ledger,tree,nextRank).withEconomy(paid)
+        return ownership(ledger,tree,nextRank,config).withEconomy(paid)
                 .receipt(tree.id(),skillId,systemId,source.pointsPerRank(),permanent);
     }
 
