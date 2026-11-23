@@ -8,7 +8,7 @@ import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/** Protect the reviewed four-node Core candidate against stale tmm_progression imports. */
+/** Protect the reviewed four-node Core candidate against obsolete namespaced imports. */
 class CoreMagicPilotTest {
     @Test void sourceBackedCoreFundamentalsArePlayableAndCostOnePerRank() throws Exception {
         String path = "/data/tyr_progression/tyr_progression/paths/core.json";
