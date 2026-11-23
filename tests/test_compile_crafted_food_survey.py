@@ -109,6 +109,24 @@ class CompilerTest(unittest.TestCase):
                          "malformed_native_tag:c:bad")
         self.assertIn(str(m.ROUTES / "test/good_soup.json"), files)
 
+    def test_seed_and_container_outputs_are_not_automatically_food(self):
+        seed = recipe("test:seed", "test:grow_seed", [{"item": "test:fruit"}])
+        bottle = recipe("minecraft:glass_bottle", "test:bottle",
+                        [{"item": "test:fruit"}])
+        meal = recipe("test:fruit_juice", "test:fruit_juice",
+                      [{"item": "test:fruit"}])
+        tags = [
+            {"tag": "minecraft:villager_plantable_seeds", "values": ["test:seed"]},
+            {"tag": "c:juices", "values": ["test:fruit_juice"]},
+        ]
+        generated, summary = m.process(audit([seed, bottle, meal], tags),
+                                       {"test:fruit": source("test:fruit")}, {})
+        self.assertNotIn(str(m.ROUTES / "test/seed.json"), generated)
+        self.assertNotIn(str(m.ROUTES / "minecraft/glass_bottle.json"), generated)
+        self.assertIn(str(m.ROUTES / "test/fruit_juice.json"), generated)
+        self.assertEqual(summary["native_food_tagged_candidates"], 1)
+        self.assertEqual(summary["excluded_known_nonfood_or_vanilla_outputs"], 2)
+
     def test_material_tags_generate_source_records_not_native_food_components(self):
         tags = m.TagIndex([{"source_evidence": {"item_tags": [
             {"tag": "c:crops/rice", "values": ["test:rice"]},

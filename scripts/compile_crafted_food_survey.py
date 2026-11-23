@@ -289,6 +289,24 @@ def compile_one(recipe, index, available, roots):
 def process(audit, checked_sources, checked_routes):
     releases = audit["releases"]
     index = TagIndex(releases)
+    # Positive native *tag evidence* is not equivalent to a registered FOOD
+    # component. It is a separate review class, never universal edibility.
+    native_food_tagged = set()
+    for tag in ("c:foods", "c:juices", "farmersdelight:meals"):
+        try:
+            native_food_tagged.update(index.expand(tag))
+        except Hold:
+            pass
+    # Prevent tracing seeds and containers into bogus "crafted food" tags.
+    # Some Pam's crop seed IDs are tagged only as villager plantable seeds.
+    nonfood_outputs = set(NEUTRAL_ITEMS)
+    for tag in ("c:seeds", "minecraft:villager_plantable_seeds",
+                "farmersdelight:serving_containers",
+                "herbalbrews:container_items"):
+        try:
+            nonfood_outputs.update(index.expand(tag))
+        except Hold:
+            pass
     known_ns = {"minecraft"}
     for release in releases:
         known_ns.update(release.get("native_versions", {}))
@@ -304,11 +322,18 @@ def process(audit, checked_sources, checked_routes):
     existing = set(checked_routes)
     accepted = {}
     reasons = {}
+    excluded = set()
     while True:
         changed = False
         available = set(sources) | set(checked_routes) | set(accepted)
         for item in sorted(recipes):
             if item in sources or item in existing or item in accepted:
+                continue
+            # Recipes from vanilla and other unscanned mods cannot be proven
+            # complete solely from the 15 audited food JARs.
+            if item.startswith("minecraft:") or item in nonfood_outputs:
+                excluded.add(item)
+                reasons.pop(item, None)
                 continue
             raw_routes = []
             reason = None
@@ -347,7 +372,9 @@ def process(audit, checked_sources, checked_routes):
 
     category = defaultdict(set)
     for item, document in accepted.items():
-        category["crafted"].add(item)
+        category["crafted_candidate"].add(item)
+        if item in native_food_tagged:
+            category["native_food_tag_candidate"].add(item)
         kinds = {r["method"] for r in document["routes"]}
         for kind in kinds:
             category[kind].add(item)
@@ -374,6 +401,9 @@ def process(audit, checked_sources, checked_routes):
         "generated_material_sources": len(added_sources),
         "existing_reviewed_recipe_outputs": len(checked_routes),
         "generated_candidate_recipe_outputs": len(accepted),
+        "native_food_tagged_candidates": len(set(accepted) & native_food_tagged),
+        "excluded_known_nonfood_or_vanilla_outputs": len(excluded),
+        "excluded_output_ids": sorted(excluded),
         "held_output_ids": len(reasons),
         "hold_reasons": reason_counts,
         "held_outputs": {k: reasons[k] for k in sorted(reasons)},
@@ -404,7 +434,7 @@ def main():
     (args.out / "crafted-food-survey-report.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("Food survey:", {k: v for k, v in summary.items()
-                           if k not in ("held_outputs", "generated_ids")})
+                           if k not in ("held_outputs", "generated_ids", "excluded_output_ids")})
 
 
 if __name__ == "__main__":
