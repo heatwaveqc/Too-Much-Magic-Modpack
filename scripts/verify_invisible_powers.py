@@ -24,7 +24,7 @@ def require(path: str, *tokens: str) -> None:
 def main() -> None:
     ve = read("runtime/VirtualElytra.java")
     for bad in ("new MobEffectInstance(", "player.addEffect(", "player.hasEffect(ACCESS)",
-                "return wearer.hasEffect", "mayfly"):
+                "return wearer.hasEffect", "getAbilities().mayfly"):
         if bad in ve:
             raise AssertionError("Virtual Elytra must not grant/require a potion or creative flight: " + bad)
     for necessary in ("PassivePowers.register(POWER", "PassivePowers.active(server, POWER)",
