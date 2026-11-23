@@ -67,6 +67,33 @@ class CompilerTest(unittest.TestCase):
         self.assertEqual(v["identity"], "unfavored_all")
         self.assertEqual(v["routes"][0]["method"], "heat")
 
+    def test_real_food_source_holds_name_missing_ingredients(self):
+        # The tag identifies the finished edible candidate; the reason names
+        # exactly which underlying source IDs we must classify next.
+        meal = recipe("test:meal", "test:meal", [
+            {"item": "test:fish"}, {"item": "test:missing_sauce"},
+            {"item": "test:missing_sauce"}])
+        generated, report = m.process(audit([meal]), {
+            "test:fish": source("test:fish", "#c:foods/raw_fish")}, {})
+        self.assertNotIn(str(m.ROUTES / "test/meal.json"), generated)
+        self.assertEqual(
+            report["unresolved_source_inputs_by_tagged_food"]["test:meal"],
+            ["test:missing_sauce"])
+        self.assertEqual(
+            report["missing_source_input_occurrences"]["test:missing_sauce"], 1)
+        self.assertEqual(report["untagged_recipe_outputs_by_namespace"], {})
+
+    def test_untagged_output_count_does_not_bloat_food_hold_ledger(self):
+        raw = audit([
+            recipe("test:edible", "test:edible", [{"item": "test:fruit"}]),
+            recipe("another:box", "another:box", [{"item": "test:fruit"}]),
+        ], [{"tag": "c:foods", "values": ["test:edible"]}], tag_outputs=False)
+        _, report = m.process(raw, {"test:fruit": source("test:fruit")}, {})
+        self.assertEqual(report["generated_ids"], ["test:edible"])
+        self.assertEqual(report["untagged_recipe_outputs_by_namespace"],
+                         {"another": 1})
+        self.assertEqual(report["held_output_ids"], 0)
+
     def test_incomplete_alternative_holds_the_whole_finished_item(self):
         roots = {"test:fish": source("test:fish", "#c:foods/raw_fish")}
         routes = [recipe("test:meal", "test:good", [{"item": "test:fish"}]),
