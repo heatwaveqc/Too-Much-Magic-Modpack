@@ -68,12 +68,12 @@ public final class FoodPreviewWire {
                 case PERMIT_NATIVE -> "P";
                 case DENY -> "D";
                 case LAVA_NATIVE -> "L";
-                case LAVA_NUTRITION -> "LN\\t" + e.hunger() + "\\t"
+                case LAVA_NUTRITION -> "LN\t" + e.hunger() + "\t"
                     + Float.toString(e.saturationModifier());
-                case NUTRITION -> e.hunger() + "\\t"
+                case NUTRITION -> e.hunger() + "\t"
                     + Float.toString(e.saturationModifier());
             };
-            String line = row.getKey() + "\\t" + encoded + "\\n";
+            String line = row.getKey() + "\t" + encoded + "\n";
             if (line.length() > CHUNK_CHARS)
                 throw new IllegalArgumentException("Oversized dietary preview record");
             if (current.length() + line.length() > CHUNK_CHARS) {
