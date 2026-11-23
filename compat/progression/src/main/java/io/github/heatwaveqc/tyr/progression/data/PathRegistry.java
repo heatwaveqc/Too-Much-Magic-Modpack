@@ -42,6 +42,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,Condition<ServerPlayer>> economyGates=Map.of();
     private static volatile Map<SourceKey,Condition<ServerPlayer>> sourceGates=Map.of();
     public static boolean economyEligible(ServerPlayer player,String id){
+        if(ExperienceEconomyRuntime.current().systems().containsKey(id))
+            return economy(id)!=null;
         if(XpChannel.MXP.equals(id))return economy(id)!=null;
         var condition=economyGates.get(id);return condition!=null&&condition.test(player);
     }
@@ -107,7 +109,23 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 experience.put(id,com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
             }catch(java.io.IOException bad){throw new IllegalArgumentException("Cannot read XP system "+id,bad);}
         }
-        var systems=ChannelConfig.definitions(experience,1.02);
+        var economyResource=manager.getResource(ResourceLocation.parse("tyr_progression:tyr_progression/economy.json"))
+                .orElseThrow(()->new IllegalArgumentException("Missing bundled progression economy.json"));
+        ExperienceEconomyConfig.Catalog economy;
+        try(var reader=economyResource.openAsReader()){
+            economy=ExperienceEconomyConfig.read(
+                com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
+        }catch(java.io.IOException error){
+            throw new IllegalArgumentException("Cannot load Progression economy configuration",error);
+        }
+        var registeredSystems=new HashMap<>(ChannelConfig.definitions(experience,1.02));
+        // Any XP ledger may be bound by a tree, even without a legacy
+        // experience_systems native curve or a hard-coded MXP channel.
+        for(var entry:economy.systems().entrySet())
+            registeredSystems.putIfAbsent(entry.getKey(),
+                XpChannel.generic(entry.getKey(),economy.growth(entry.getKey()),
+                    entry.getKey(),"Points"));
+        var systems=Map.copyOf(registeredSystems);
         Map<String,Condition<ServerPlayer>> newEconomyGates=new HashMap<>();
         Map<SourceKey,Condition<ServerPlayer>> newSourceGates=new HashMap<>();
         experience.forEach((id,raw)->{
@@ -166,15 +184,6 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
-        var economyResource=manager.getResource(ResourceLocation.parse("tyr_progression:tyr_progression/economy.json"))
-                .orElseThrow(()->new IllegalArgumentException("Missing bundled progression economy.json"));
-        ExperienceEconomyConfig.Catalog economy;
-        try(var reader=economyResource.openAsReader()){
-            economy=ExperienceEconomyConfig.read(
-                com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
-        }catch(java.io.IOException error){
-            throw new IllegalArgumentException("Cannot load Progression economy configuration",error);
-        }
         // A declared multi-currency purchase must reference a real loaded skill.
         for(var row:economy.skills().entrySet()){
             var tree=next.get(row.getKey().path());
