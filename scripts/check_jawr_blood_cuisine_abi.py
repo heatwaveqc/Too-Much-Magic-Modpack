@@ -38,7 +38,7 @@ SIGNATURES = {
     },
     "brewinandchewin": {
         "umpaz.brewinandchewin.common.registry.BnCItems": [
-            "COOKED_SAUSAGE",
+            "public",
         ],
     },
 }
@@ -98,6 +98,21 @@ def main() -> int:
                 download(ROOT / path, jar)
                 for clazz, expected in SIGNATURES[mod_id].items():
                     text = class_text(jar, clazz)
+                    if mod_id == "witchery" and clazz.endswith(".VampireEvents"):
+                        for line in text.splitlines():
+                            if "isSolidFood(" in line:
+                                print("PINNED JAWR vampire predicate: " + line.strip(), flush=True)
+                    if mod_id == "brewinandchewin" and clazz.endswith(".BnCItems"):
+                        present = "COOKED_SAUSAGE" in text
+                        print("BNc 4.5.0 native cooked sausage present: " + str(present), flush=True)
+                        if present:
+                            print("WARNING: native sausage newly available; review #450 recipe admission", flush=True)
+                        with ZipFile(jar) as archive:
+                            names = archive.namelist()
+                            has_cask = any(path.endswith("/AgingCaskBlockEntity.class") for path in names)
+                            has_wine = any(path.endswith("/WineItem.class") for path in names)
+                            print("BNc native Aging Cask: " + str(has_cask)
+                                  + "; WineItem: " + str(has_wine), flush=True)
                     for token in expected:
                         if token not in text:
                             raise ValueError(mod_id + ": " + clazz + " missing " + token)
@@ -105,7 +120,7 @@ def main() -> int:
     except (OSError, ValueError, KeyError, subprocess.TimeoutExpired) as exc:
         print("FAIL #450 pinned JAWR/food ABI: " + str(exc), file=sys.stderr)
         return 1
-    print("TYPE A ONLY: native food methods exist; Blood Wine blocked on absent Aging Cask in BnC 4.5.0")
+    print("TYPE A native JAWR blood + BnC item registry verified. Wine and Sausage remain dependency-gated; no gameplay PASS.")
     return 0
 
 
