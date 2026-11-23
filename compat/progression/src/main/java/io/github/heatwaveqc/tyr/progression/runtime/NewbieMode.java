@@ -53,6 +53,9 @@ public final class NewbieMode {
     public static boolean graduate(ServerPlayer player) {
         if (!isNewbie(player)) return true;
         set(player, REGULAR);
+        // Core is the universal, automatic graduate tree. Do not wait for
+        // an arbitrary tick before the player can see and buy its pilot skills.
+        ProgressionApi.join(player, "tyr_progression:core");
         player.sendSystemMessage(Component.literal(
             "You're now in Regular Mode. Newbie inventory and travel protection has ended."));
         return true;
