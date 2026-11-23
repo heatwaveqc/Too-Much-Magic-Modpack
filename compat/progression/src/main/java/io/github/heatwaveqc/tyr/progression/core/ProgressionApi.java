@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiPredicate;
 import java.util.UUID;
+import java.math.BigDecimal;
 
 /**
  * Stable entry points for standalone Monk/Hunter initiation, KubeJS bridges and future mods.
@@ -344,9 +345,37 @@ public final class ProgressionApi {
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(player,
-            io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get())),sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
+        double configured=PathRegistry.economyCatalog().growth(channelId);
+        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
+            .effective(player,configured,channelId);
+        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(growth),
+            sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
         if(next==prior) return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
+        return true;
+    }
+
+    /**
+     * Authenticated server-side award for ANY configured XP system. The caller
+     * supplies a transaction identity from a verified committed action; never
+     * expose this amount or identity in a client payload.
+     */
+    public static boolean awardConfiguredXp(ServerPlayer player,String systemId,
+            String sourceCategory,String transaction,String completionId,
+            BigDecimal nominalXp,boolean fixed) {
+        if(player==null||player.getServer()==null||!player.getServer().isSameThread()
+            ||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player))
+            return false;
+        var catalog=PathRegistry.economyCatalog();
+        if(!catalog.systems().containsKey(systemId))return false;
+        var nativeChannel=PathRegistry.economy(systemId);
+        if(nativeChannel!=null&&!PathRegistry.economyEligible(player,systemId))return false;
+        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
+                .effective(player,catalog.growth(systemId),systemId);
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=ChannelEngine.awardConfigured(prior,catalog,systemId,
+                sourceCategory,transaction,completionId,nominalXp,fixed,growth);
+        if(next==prior)return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
