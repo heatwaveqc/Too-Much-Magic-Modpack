@@ -147,6 +147,13 @@ version="1.2.0"
             self.assertIsNone(result["publisher_checksum_independently_matched"])
             self.assertEqual(result["source_evidence"]["cutting_recipe_count"], 1)
             self.assertEqual(result["sha1"], hashlib.sha1(path.read_bytes()).hexdigest())
+            self.assertTrue(result["native_version_matches_approved"])
+            with ZipFile(path, "w") as archive:
+                archive.writestr("META-INF/neoforge.mods.toml",
+                                meta.replace('version="1.2.0"', 'version="1.2.1"'))
+            mismatched = audit_one("huaxia-delight", path)
+            self.assertEqual(mismatched["status"], "held")
+            self.assertFalse(mismatched["native_version_matches_approved"])
 
     def test_invalid_zip_rejected(self):
         with self.assertRaises(Exception):
