@@ -121,7 +121,8 @@ class ExperienceEconomyTest {
         assertEquals(15, ExperienceEconomy.effectiveRank(after, "test:core", "test:core_stat"));
         assertEquals(3, ExperienceEconomy.effectiveRank(after, "test:hunter", "test:hunting"));
         assertTrue(after.achievements().contains("test:break_stone"));
-        assertTrue(after.recentTransactions().contains("test:initial_earn"));
+        assertTrue(after.recentTransactions().contains(MXP.id()
+                + "|tyr_progression:default|test:initial_earn"));
         assertSame(after, ExperienceEconomy.transition(after, Map.of(MXP.id(), MXP),
                 Set.of(), Map.of(), ExperienceEconomy.DeparturePolicy.FORFEIT, true, false));
     }
@@ -175,6 +176,27 @@ class ExperienceEconomyTest {
         assertEquals(150, after.currentXp().get(CULTIVATION.id()).intValueExact());
         assertEquals(0, ExperienceEconomy.available(after, MXP));
         assertEquals(1, ExperienceEconomy.available(after, CULTIVATION));
+    }
+
+    @Test void independentSourceCategoriesAndCurrenciesAreAdditiveButDuplicatesAreNot() {
+        var source = ExperienceEconomy.Ledger.empty();
+        var mana = ExperienceEconomy.earn(source, MXP, "test:mana_debit",
+                "test:one_spell", null, new BigDecimal("1000"), true, 1.02);
+        var block = ExperienceEconomy.earn(mana.ledger(), MXP, "test:verified_block",
+                "test:one_spell", null, new BigDecimal("200"), true, 1.02);
+        var cultivation = ExperienceEconomy.earn(block.ledger(), CULTIVATION,
+                "test:verified_block", "test:one_spell", null,
+                new BigDecimal("30"), true, 1.02);
+        assertTrue(mana.accepted());
+        assertTrue(block.accepted());
+        assertTrue(cultivation.accepted());
+        assertEquals(1200, cultivation.ledger().currentXp().get(MXP.id()).intValueExact());
+        assertEquals(30, cultivation.ledger().currentXp().get(CULTIVATION.id()).intValueExact());
+        var duplicate = ExperienceEconomy.earn(cultivation.ledger(), MXP,
+                "test:verified_block", "test:one_spell", null,
+                new BigDecimal("200"), true, 1.02);
+        assertFalse(duplicate.accepted());
+        assertSame(cultivation.ledger(), duplicate.ledger());
     }
 
     @Test void firstCompletionReceiptsSurviveResetAndCannotBeReplayed() {
