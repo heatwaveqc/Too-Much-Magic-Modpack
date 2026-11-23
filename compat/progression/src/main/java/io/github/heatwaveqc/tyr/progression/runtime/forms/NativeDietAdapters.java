@@ -50,10 +50,14 @@ public final class NativeDietAdapters {
      * tag or a globally allowed cooked-fish item.
      */
     public static FoodDecisionResolver.Decision decide(ServerPlayer player, ItemStack stack) {
-        if (!server(player) || stack == null || stack.isEmpty()
-                || stack.get(DataComponents.FOOD) == null)
+        if (!server(player) || stack == null || stack.isEmpty())
             return FoodDecisionResolver.Decision.nativeResult();
-        var decision = FoodPolicyRegistry.decide(activeProfiles(player), stack);
+        // Gilded's existing gate also covers provider-supplied food properties
+        // on items with no default FOOD component. Strict/affinity rules
+        // intentionally apply only to component-backed food.
+        var decision = stack.get(DataComponents.FOOD) == null
+            ? FoodDecisionResolver.Decision.nativeResult()
+            : FoodPolicyRegistry.decide(activeProfiles(player), stack);
         if (decision.outcome() == FoodDecisionResolver.Outcome.DENY)
             return decision;
         if (!GildedMechanics.foodAllowed(player, stack))
