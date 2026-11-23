@@ -1,8 +1,8 @@
 # Neo Vitae — registered ritual, array-effect and sigil surface (source inventory)
 
-**Evidence:** frozen source commit [`2744123bb6e4f72c602178b23384be41956eef23`](https://github.com/breakinblocks/NeoVitae/tree/2744123bb6e4f72c602178b23384be41956eef23), aligned with TMM's 1.21.1-1.1.53 mod selection but **not proven binary-identical**. Extracted from [`NVRituals.java`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/main/java/com/breakinblocks/neovitae/ritual/NVRituals.java) and [`NVItems.java`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/main/java/com/breakinblocks/neovitae/common/item/NVItems.java). Cross-read with the committed same-revision [Rituals](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Rituals.md), [Alchemy Arrays](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Alchemy-Arrays.md) and [Sigils](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Sigils.md) overviews.
+**Historical registration snapshot:** frozen source commit [`2744123bb6e4f72c602178b23384be41956eef23`](https://github.com/breakinblocks/NeoVitae/tree/2744123bb6e4f72c602178b23384be41956eef23), aligned with TMM's 1.21.1-1.1.53 mod selection but **not proven binary-identical**. Extracted from [`NVRituals.java`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/main/java/com/breakinblocks/neovitae/ritual/NVRituals.java) and [`NVItems.java`](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/src/main/java/com/breakinblocks/neovitae/common/item/NVItems.java). Cross-read with the committed same-revision [Rituals](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Rituals.md), [Alchemy Arrays](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Alchemy-Arrays.md) and [Sigils](https://github.com/breakinblocks/NeoVitae/blob/2744123bb6e4f72c602178b23384be41956eef23/wiki/Sigils.md) overviews.
 
-**Purpose:** make **every statically identified operating family discoverable for quest research**. This is not a full input/output recipe inventory; each item/ritual needs separate exact source/JAR recipe, cost, shape, tier, limits, proof and guidebook reference before a complete chapter can be claimed. The class-name mapping is not evidence of an effect when marked unresolved. Do **not** equate the 51 registered ritual declarations with the 45 ritual **guide entries** or 26 registered Array Effect items with the 71 Alchemy Array **guide entries**; guides include non-operation pages and variants. No runtime tests.
+**Purpose:** preserve exact source-registry identity. The once-missing operating semantics are now linked in [48 + 3 ritual effects](neovitae-1.1.54-ritual-effects.md), [26 Array effects](neovitae-1.1.54-array-effects.md), [18 Sigils](neovitae-1.1.54-sigils.md), and [1.1.54 version/creative audit](neovitae-1.1.54-version-delta-and-creative-policy.md). **Legacy unresolved wording in old rows is superseded by those pinned 1.1.54 inventories**; do not infer that an item/ritual is unresearched or inactive merely because this 1.1.53 historical inventory originally said to audit. Do **not** equate the 51 registered ritual declarations with the 45 ritual **guide entries** or 26 registered Array Effect items with the 71 Alchemy Array **guide entries**; guides include non-operation pages and variants. No runtime tests.
 
 ## Ritual registrations — 51 (48 regular and 3 imperfect)
 
@@ -16,7 +16,7 @@
 | `HARVEST` | `neovitae:harvest` | `agriculture,automation_control`: Harvests/replants mature crops; guide says 3 EV per harvested crop |
 | `REGENERATION` | `neovitae:regeneration` | `healing_recovery`: Area regeneration; cost/range not yet inventoried |
 | `SPEED` | `neovitae:speed` | `movement,buffs`: Directed launch for nonsneaking entities, Speed II for sneaking player per guide |
-| `MAGNETISM` | `neovitae:magnetism` | `logistics`: Item-gathering ritual; exact radius/cost not yet inventoried |
+| `MAGNETISM` | `neovitae:magnetism` | `block_breaking,ore_processing`: **The Endless Quarry** physically scans/moves ore-tag blocks below Master Stone. NOT an item magnet; see 1.1.54 [ritual effects](neovitae-1.1.54-ritual-effects.md). |
 | `SHEPHERD` | `neovitae:shepherd` | `agriculture`: Breeds animals/grows juveniles; source-guide behavior |
 | `BUTCHERING` | `neovitae:butchering` | `agriculture,automation_control`: Automated adult livestock cull while preserving configured breeding stock |
 | `FELLING` | `neovitae:felling` | `block_breaking,agriculture`: Fells trees in configured area |
@@ -26,7 +26,7 @@
 | `ZEPHYR` | `neovitae:zephyr` | `mob_farming,logistics`: **The Gathering**—41×21×41 dropped-item + vanilla XP-orb collector; chest atop master inserts items, XP Tome in first slot can absorb XP. 1,000 EV startup; 2 EV base per active 5-tick collection pulse, plus source bonus per ten entities; no live mob motion |
 | `PUMP` | `neovitae:pump` | `logistics`: Draws and deposits fluids; actual volume/cost requires audit |
 | `CRYSTALLUM_FRACTURA` | **dynamic `RitualCrystallumFractura.NAME` — resolve in class** | `agriculture,energy`: Harvests Spiritus crystals and accelerates/reinforces Aura generation |
-| `DOWNGRADE` | `neovitae:downgrade` | `equipment_augmentation`: Registered downgrade-related rite; distinct from Penance and Extraction, exact details need audit |
+| `DOWNGRADE` | `neovitae:downgrade` | `equipment_augmentation`: **Extracts non-trainer upgrades from dropped Sentient gear into Upgrade Tomes**, unlike `upgrade_remove`. |
 | `PENANCE` | `neovitae:penance` | `equipment_augmentation`: Applies downgrade catalysts to Sentient Armor to free upgrade points |
 | `METEOR` | `neovitae:meteor` | `world_manipulation`: Calls catalyst-selected meteors, terrain safety needs audit |
 | `FORSAKEN_SOUL` | `neovitae:forsaken_soul` | `mob_farming,energy`: Registered soul-related rite; exact target/trigger requires audit |
@@ -34,7 +34,7 @@
 | `CONDOR` | `neovitae:condor` | `movement`: True flight in ritual area per source guide |
 | `SPHERE` | `neovitae:sphere` | `world_manipulation`: Registered spatial/terrain ritual; exact behavior unresolved |
 | `ARMOUR_EVOLVE` | `neovitae:armour_evolve` | `equipment_augmentation,progression_tiers`: Evolves worn Sentient Armor +100 upgrade points per activation to 500 |
-| `UPGRADE_REMOVE` | `neovitae:upgrade_remove` | `equipment_augmentation`: Extraction of armor modifiers; preserve tomes behavior needs validation |
+| `UPGRADE_REMOVE` | `neovitae:upgrade_remove` | `equipment_augmentation`: **Destructive erase** of equipped Sentient Armor upgrades, no Upgrade Tomes; **`downgrade`** is the real dropped-item Tome extraction. |
 | `YAWNING_VOID` | `neovitae:yawning_void` | `block_breaking,world_manipulation`: Destroys blocks without drops inside configurable volume |
 | `PLACER` | `neovitae:placer` | `world_manipulation,automation_control`: Places blocks from input container following selected shape |
 | `GROUNDING` | `neovitae:grounding` | `debuff_control`: Registered grounding rite; exact effect unresolved |
@@ -46,7 +46,7 @@
 | `CELERITY` | **dynamic `RitualCelerity.NAME` — resolve in class** | `automation_control,crafting`: Speeds nearby native crafting stations |
 | `DEUS_WELL_OF_SUFFERING` | **dynamic `RitualDeusWellOfSuffering.NAME` — resolve in class** | `energy,mob_farming`: Deus Well upgrade; exact differences unverified |
 | `DEUS_TORMENT_NEXUS` | **dynamic `RitualDeusTormentNexus.NAME` — resolve in class** | `energy,mob_farming`: Deus Torment Nexus upgrade; exact differences unverified |
-| `DEUS_MAGNETISM` | **dynamic `RitualDeusMagnetism.NAME` — resolve in class** | `logistics`: Deus item-magnetism variant; exact differences unverified |
+| `DEUS_MAGNETISM` | `neovitae:deus_magnetism` | `block_breaking,ore_processing`: **Deus Endless Quarry**, 4× ores/scan capacity, configurable Fortune/Silk and Backfill/Clear Rock terrain; **not item magnetism**. |
 | `DEUS_CRYSTALLUM_FRACTURA` | **dynamic `RitualDeusCrystallumFractura.NAME` — resolve in class** | `energy,agriculture`: Deus crystal ritual upgrade; exact differences unverified |
 | `DEUS_GREEN_GROVE` | **dynamic `RitualDeusGreenGrove.NAME` — resolve in class** | `agriculture`: Deus plant-growth upgrade; exact differences unverified |
 | `DEUS_ENCHANTED_VITAE` | **dynamic `RitualDeusEnchantedVitae.NAME` — resolve in class** | `equipment_augmentation`: Deus enchantment ritual upgrade; exact differences unverified |
@@ -56,9 +56,9 @@
 | `DEUS_METEOR` | **dynamic `RitualDeusMeteor.NAME` — resolve in class** | `world_manipulation`: Deus Meteor upgrade; exact differences unverified |
 | `DEUS_ARMOUR_EVOLVE` | **dynamic `RitualDeusArmourEvolve.NAME` — resolve in class** | `equipment_augmentation,progression_tiers`: Deus Armor Evolution upgrades to 600 points and Blood Mending per source wiki |
 | `HELLFORGING` | **dynamic `RitualHellforging.NAME` — resolve in class** | `equipment_augmentation,progression_tiers`: Hellforges eligible Sentient tools, Lex Vitae and armor with late materials |
-| `IMPERFECT_RAIN` | `neovitae:rain` | `world_manipulation`: Imperfect weather rite; exact inputs unverified |
-| `IMPERFECT_ZOMBIE` | `neovitae:zombie` | `temporary_pets`: Imperfect zombie-related rite; summon properties unverified |
-| `IMPERFECT_RESISTANCE` | `neovitae:resistance` | `defense,buffs`: Imperfect resistance rite; exact duration/strength unverified |
+| `IMPERFECT_RAIN` | `neovitae:rain` | `world_manipulation`: water-over-stone, 5,000 EV constructor, 6,000-tick rain/thunder. |
+| `IMPERFECT_ZOMBIE` | `neovitae:zombie` | `temporary_pets`: coal block, 5,000 EV constructor; persistent **hostile** zombie with leather chestplate (not guaranteed allied pet). |
+| `IMPERFECT_RESISTANCE` | `neovitae:resistance` | `defense,buffs`: bedrock, 5,000 EV constructor; applies Fire Resistance for 1,200 ticks (amplifier 1). |
 
 ## Registered Alchemy Array *effect items* — 26
 
@@ -87,11 +87,11 @@ These are item-registration IDs. An effect item registration is **not** proof of
 | `ARRAY_ENDLESS_FOUNTAIN` | `neovitae:array_endless_fountain` | `general_generation,logistics` |
 | `ARRAY_UNDERTOW` | `neovitae:array_undertow` | `movement,debuff_control` |
 | `ARRAY_LOYAL_FRIENDS` | `neovitae:array_loyal_friends` | `healing_recovery` |
-| `ARRAY_VORTEX` | `neovitae:array_vortex` | `debuff_control,mob_farming`: Vortex Sigil 8-block inward pull on living entities; Tabula Robur base + Blood Pearl catalyst; redstone pause and Tabula Rasa player exclusion |
-| `ARRAY_IMPRISONMENT` | `neovitae:array_imprisonment` | `debuff_control` |
+| `ARRAY_VORTEX` | `neovitae:array_vortex` | `debuff_control,mob_farming`: Vortex **Alchemy Array** 8-block inward pull on living entities; Tabula Robur base + Blood Pearl catalyst; redstone pause and Tabula Rasa player exclusion |
+| `ARRAY_IMPRISONMENT` | `neovitae:array_imprisonment` | `mob_farming`: **reprograms vanilla spawner** to type of eligible nearby mob killed, then consumes array; [event source](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/main/java/com/breakinblocks/neovitae/common/event/ImprisonmentArrayHandler.java). |
 | `ARRAY_LIQUIFIED_EXPERIENCE` | `neovitae:array_liquified_experience` | `crafting` |
 | `ARRAY_MINER` | `neovitae:array_miner` | `block_breaking` |
-| `ARRAY_ENDER_SEVER` | `neovitae:array_ender_sever` | `debuff_control` |
+| `ARRAY_ENDER_SEVER` | `neovitae:array_ender_sever` | `debuff_control`: cancels EnderEntity teleport within 16 blocks of origin OR destination via event handler, not general player teleport cancellation. |
 
 ## Registered Sigil items — 18
 
@@ -117,6 +117,8 @@ Each Sigil needs its own detailed native/pack crafting, activation, owner Anima 
 | `SIGIL_NECROMANCY` | `neovitae:sigil_necromancy` | `temporary_pets` |
 | `SIGIL_BOUND_TREASURES` | `neovitae:sigil_bound_treasures` | `storage` |
 | `SIGIL_DAMNED` | `neovitae:sigil_damned` | `debuff_control` |
+
+**Source-backed effect crosswalk complete on 1.1.54:** [all 48 regular + 3 imperfect rituals](neovitae-1.1.54-ritual-effects.md), [all 26 arrays](neovitae-1.1.54-array-effects.md), and [all 18 Sigils](neovitae-1.1.54-sigils.md). The current 1.1.54 source has no changed registration or generated structure/recipe IDs in the 1.1.53→1.1.54 comparison, but source–published JAR/pack runtime parity remains separate.
 
 **Mob-farm crosswalk correction:** the [detailed Neo mob-farm mechanisms](neovitae-mob-farm-systems.md) connect the item/XP **Gathering** (`ZEPHYR`) and `ARRAY_VORTEX`/ `ARRAY_REPULSION` living-mob transport to Well/Spike EV harvesting. These are source-derived physical effects, not a complete working farm or integrated QA pass.
 
