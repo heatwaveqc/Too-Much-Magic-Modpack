@@ -142,6 +142,86 @@ class CompilerTest(unittest.TestCase):
                          "malformed_native_tag:c:bad")
         self.assertIn(str(m.ROUTES / "test/good_soup.json"), files)
 
+    def test_live_registry_finds_untagged_food_and_ignores_nonfood(self):
+        # Real FOOD component is stronger than c:foods / c:juices; Pam's
+        # untagged meals now enter the scope without heuristic name matching.
+        entries = [
+            {"id": "test:fruit", "food": True, "tags": ["c:foods/fruit"]},
+            {"id": "test:meal", "food": True, "tags": []},
+            {"id": "test:crafting_decoration", "food": False, "tags": ["c:foods"]},
+        ]
+        registry = {"ids": {v["id"] for v in entries},
+                    "foods": {v["id"] for v in entries if v["food"]},
+                    "tags": {"c:foods/fruit": {"test:fruit"},
+                             "c:foods": {"test:crafting_decoration"}}}
+        meals = [
+            recipe("test:meal", "test:meal_from_fruit",
+                   [{"item": "test:fruit"}]),
+            recipe("test:crafting_decoration", "test:decoration",
+                   [{"item": "test:fruit"}]),
+        ]
+        generated, report = m.process(audit(meals), {
+            "test:fruit": source("test:fruit")}, {}, registry=registry)
+        self.assertEqual(report["generated_ids"], ["test:meal"])
+        self.assertEqual(report["generated_candidate_recipe_outputs"], 1)
+        self.assertEqual(report["native_food_tagged_candidates"], 0)
+        self.assertEqual(report["actual_default_food_recipe_output_ids"], 1)
+        self.assertNotIn(str(m.ROUTES / "test/crafting_decoration.json"), generated)
+
+    def test_runtime_tag_membership_excludes_optional_uninstalled_mod(self):
+        roots = {"test:fish": source("test:fish", "#c:foods/raw_fish")}
+        r = recipe("test:meal", "test:tagged",
+                   [{"tag": "c:rawfish"}])
+        tagged = [{"tag": "c:rawfish", "values": [
+            "test:fish", "optionalmod:fish"
+        ]}]
+        registry = {"ids": {"test:meal", "test:fish"},
+                    "foods": {"test:meal", "test:fish"},
+                    "tags": {"c:rawfish": {"test:fish"}}}
+        generated, report = m.process(audit([r], tagged), roots, {}, registry=registry)
+        route = generated[str(m.ROUTES / "test/meal.json")]
+        self.assertEqual(route["routes"][0]["ingredients"],
+                         [{"item": "test:fish", "count": 1}])
+        self.assertEqual(report["held_output_ids"], 0)
+
+    def test_registry_loader_rejects_malformed_and_preserves_explicit_food_boolean(self):
+        with tempfile.TemporaryDirectory() as dirname:
+            path = Path(dirname) / "registry.json"
+            original = {
+                "schema": 1, "kind": "tmm:default_item_stack_food_registry",
+                "scope": "loaded_server_registry",
+                "authoritative_for": "default_stack_food_component",
+                "recipe_output_stacks_examined": False,
+                "item_count": 2, "food_count": 1,
+                "items": [
+                    {"id": "test:pies", "food": True, "tags": []},
+                    {"id": "test:book", "food": False, "tags": ["c:foods"]},
+                ]}
+            path.write_text(json.dumps(original))
+            loaded = m.load_runtime_food_registry(path)
+            self.assertEqual(loaded["foods"], {"test:pies"})
+            self.assertEqual(loaded["tags"]["c:foods"], {"test:book"})
+            for corruption in [
+                {**original, "food_count": 2},
+                {**original, "items": original["items"] + [original["items"][0]]},
+                {**original, "kind": "madeup:census"},
+            ]:
+                path.write_text(json.dumps(corruption))
+                with self.assertRaises(ValueError):
+                    m.load_runtime_food_registry(path)
+
+    def test_registry_missing_tool_tag_does_not_assume_reusable_juicer_exists(self):
+        r = recipe("test:juice", "test:juice",
+                   [{"tag": "c:tool_juicer"}, {"item": "test:orange"}])
+        registry = {"ids": {"test:juice", "test:orange"},
+                    "foods": {"test:juice", "test:orange"},
+                    "tags": {}}
+        generated, report = m.process(audit([r]), {
+            "test:orange": source("test:orange")}, {}, registry=registry)
+        self.assertNotIn(str(m.ROUTES / "test/juice.json"), generated)
+        self.assertEqual(report["held_outputs"]["test:juice"],
+                         "missing_runtime_tag:c:tool_juicer")
+
     def test_only_food_tagged_final_outputs_emit_recipes_and_helper_provenance(self):
         puree = recipe("test:fruit_puree", "test:puree",
                        [{"item": "test:fruit"}])
