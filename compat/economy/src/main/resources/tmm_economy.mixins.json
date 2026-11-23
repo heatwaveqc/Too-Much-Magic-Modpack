@@ -26,7 +26,11 @@
     "RepairTalismanCharmMixin",
     "ApotheosisPotionCharmRecipeMixin",
     "IronsAlchemistFlaskSafetyMixin",
-    "OccultismPartnerFlaskSafetyMixin"
+    "OccultismPartnerFlaskSafetyMixin",
+    "PortableStorageShulkerSlotMixin",
+    "PortableStorageShulkerHopperMixin",
+    "PortableStorageBundleInsertionMixin",
+    "PortableStorageOccultismSatchelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
