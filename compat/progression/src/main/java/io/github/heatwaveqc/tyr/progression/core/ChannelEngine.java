@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map;
 import io.github.heatwaveqc.tyr.progression.data.ChannelConfig;
+import io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig;
+import io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyRuntime;
 import java.util.List;
 
 /** Shared channel transactions; tree-specific purchased ranks and milestones remain separate. */
@@ -156,11 +158,29 @@ public final class ChannelEngine {
      * all departed Path purchases while preserving Core/other active Paths and
      * permanent achievement/first-completion receipts. */
     public static Ledger pathChange(Ledger ledger,Set<String> departed){
+        return pathChange(ledger,departed,ExperienceEconomyRuntime.current());
+    }
+
+    /** One transaction over all configured currencies, not an MXP-only reset. */
+    public static Ledger pathChange(Ledger ledger,Set<String> departed,
+                                    ExperienceEconomyConfig.Catalog catalog){
         var old=ledger.economy();
         if(old.currentXp().isEmpty())return ledger;
-        var after=ExperienceEconomy.transition(old,
-            Map.of(XpChannel.MXP,ExperienceEconomy.SystemSpec.mxp()),departed,
-            Map.of(),ExperienceEconomy.DeparturePolicy.FORFEIT,true,true);
+        var overrides=new HashMap<ExperienceEconomy.PathSystem,ExperienceEconomy.DeparturePolicy>();
+        var wipe=new HashSet<String>();
+        for(var system:catalog.systems().keySet()){
+            if(departed.isEmpty()){
+                if(catalog.defaultTransition().wipeUnallocated())wipe.add(system);
+                continue;
+            }
+            for(var path:departed){
+                var policy=catalog.policy(path,system);
+                overrides.put(new ExperienceEconomy.PathSystem(path,system),policy.onLeave());
+                if(policy.wipeUnallocated())wipe.add(system);
+            }
+        }
+        var after=ExperienceEconomy.transition(old,catalog.systems(),departed,
+            overrides,catalog.defaultTransition().onLeave(),wipe,true);
         return ledger.withEconomy(after);
     }
     private static void checkId(String key) {
