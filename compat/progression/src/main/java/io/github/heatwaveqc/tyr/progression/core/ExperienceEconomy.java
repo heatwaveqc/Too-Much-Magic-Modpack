@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +32,9 @@ public final class ExperienceEconomy {
     public static final long HARD_MAX_LEVEL = 10_000_000L;
     public static final int MAX_LEVEL_CROSSINGS_PER_AWARD = 10_000;
     public static final int MAX_PAID_RANK_RECEIPTS = 1_000_000;
+    public static final int MAX_RECENT_TRANSACTIONS = 1024;
+    public static final int MAX_FIRST_COMPLETIONS = 65536;
+    private static final String DEFAULT_SOURCE = "tyr_progression:default";
 
     public record SystemSpec(String id, BigDecimal xpPerPoint, long maxLevel, BigDecimal maxBaseAward) {
         public SystemSpec {
@@ -75,7 +80,11 @@ public final class ExperienceEconomy {
             paidRanks = List.copyOf(paidRanks);
             achievements = Set.copyOf(achievements);
             rewardReceipts = Set.copyOf(rewardReceipts);
-            recentTransactions = Set.copyOf(recentTransactions);
+            // Preserve insertion order for deterministic oldest-transaction eviction.
+            recentTransactions = Collections.unmodifiableSet(new LinkedHashSet<>(recentTransactions));
+            if (recentTransactions.size() > MAX_RECENT_TRANSACTIONS
+                    || rewardReceipts.size() > MAX_FIRST_COMPLETIONS)
+                throw new IllegalArgumentException("Too many XP reward receipts");
             currentXp.forEach((id, xp) -> {
                 requireId(id);
                 if (xp == null || xp.signum() < 0) throw new IllegalArgumentException("Negative or missing XP");
@@ -177,14 +186,30 @@ public final class ExperienceEconomy {
     public static Award earn(Ledger source, SystemSpec system, String transaction,
                              String firstCompletion, BigDecimal base,
                              boolean fixed, double effectiveGrowth) {
+        return earn(source, system, DEFAULT_SOURCE, transaction,
+                firstCompletion, base, fixed, effectiveGrowth);
+    }
+
+    /**
+     * Source-category identity is explicit: one event can pay multiple systems
+     * and multiple independent source categories without accidental dedup.
+     * Repeated callbacks in the SAME source/system/action are still rejected.
+     */
+    public static Award earn(Ledger source, SystemSpec system, String sourceCategory,
+                             String transaction, String firstCompletion, BigDecimal base,
+                             boolean fixed, double effectiveGrowth) {
+        requireId(sourceCategory);
         requireId(transaction);
         if (firstCompletion != null) requireId(firstCompletion);
+        String txReceipt = system.id() + "|" + sourceCategory + "|" + transaction;
+        String firstReceipt = firstCompletion == null ? null
+                : system.id() + "|" + sourceCategory + "|" + firstCompletion;
         Objects.requireNonNull(base, "base");
         validateGrowth(effectiveGrowth);
         if (base.signum() <= 0 || base.compareTo(system.maxBaseAward()) > 0)
             throw new IllegalArgumentException("Award exceeds system source limits");
-        if (source.recentTransactions().contains(transaction)
-                || firstCompletion != null && source.rewardReceipts().contains(firstCompletion))
+        if (source.recentTransactions().contains(txReceipt)
+                || firstReceipt != null && source.rewardReceipts().contains(firstReceipt))
             return new Award(source, BigDecimal.ZERO, false);
 
         Ledger current = initialize(source, system);
@@ -196,10 +221,15 @@ public final class ExperienceEconomy {
 
         var xp = new HashMap<>(current.currentXp());
         xp.put(system.id(), nextXp);
-        var tx = new HashSet<>(current.recentTransactions());
-        tx.add(transaction);
+        var tx = new LinkedHashSet<>(current.recentTransactions());
+        tx.add(txReceipt);
+        while (tx.size() > MAX_RECENT_TRANSACTIONS) {
+            var oldest = tx.iterator();
+            oldest.next();
+            oldest.remove();
+        }
         var completed = new HashSet<>(current.rewardReceipts());
-        if (firstCompletion != null) completed.add(firstCompletion);
+        if (firstReceipt != null) completed.add(firstReceipt);
         var result = new Ledger(xp, current.paidRanks(), current.achievements(), completed, tx);
         return new Award(result, nextXp.subtract(oldXp), true);
     }
