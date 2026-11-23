@@ -58,7 +58,7 @@ public final class NativeDietAdapters {
         // intentionally apply only to component-backed food.
         var decision = stack.get(DataComponents.FOOD) == null
             ? FoodDecisionResolver.Decision.nativeResult()
-            : FoodPolicyRegistry.decide(activeProfiles(player), stack);
+            : FoodPolicyRegistry.decide(player, activeProfiles(player), stack);
         return NativeDietPolicy.intersect(decision,
             GildedMechanics.foodAllowed(player, stack));
     }
@@ -91,7 +91,7 @@ public final class NativeDietAdapters {
             Set<String> profiles) {
         if (!server(player)) return Map.of();
         Map<String, FoodPreviewWire.Entry> projected =
-            new HashMap<>(FoodPolicyRegistry.clientPreview(profiles));
+            new HashMap<>(FoodPolicyRegistry.clientPreview(player, profiles));
         if (GildedMechanics.hasFoodRestrictions(player)) {
             boolean conditional = GildedMechanics.hasPotentialStackException(player);
             for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
