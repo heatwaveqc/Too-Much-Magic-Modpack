@@ -219,3 +219,5 @@ Conflux mana recipient contract now audited in [companion](mods/ars-conflux-pinn
 Conflux [active-cast/cooldown framework](mods/ars-conflux-pinned-active-casts.md) audited,4companions; actualexternalproviders/geometry/schools/installedbridgecombinedscope still open.9/43complete unchanged.
 
 Conflux [geometry/schools contract](mods/ars-conflux-pinned-geometry-schools.md) audited;5companions, actualinstalledconsumers/bridge/consolidation still open.9/43complete unchanged.
+
+Conflux [installedbridge recipient report](mods/ars-conflux-pinned-installed-bridges.md) closes namedControle/Additions/nSpells source boundaries;6companions, finalwholelibrary/defaultscope/pilotconsolidation remains. No runtimePASS or profilepromotion.

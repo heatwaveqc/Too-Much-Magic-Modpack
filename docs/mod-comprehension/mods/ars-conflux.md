@@ -44,3 +44,5 @@ Current optional-content branch is source-backed in [content companion](ars-conf
 [Active-cast/cooldown interfaces](ars-conflux-pinned-active-casts.md) traces held-tool preparation, acknowledged release, persistent deadline API and localnSpells guards; no providers/store registrations found insideConflux or directConfluxclassreferences in eightotherfamilyJARs. This bounded scan is not whole-pack consumerproof.
 
 [Incoming geometry and school power](ars-conflux-pinned-geometry-schools.md) traces normalized context capture, explicit/data weights, attribute/rule distinction, defaultempty data and operator diagnostics. Actualinstalledbridge/consumer reconciliation remains.
+
+[Installed Controle/Additions/nSpells bridges](ars-conflux-pinned-installed-bridges.md) completes named two-ended recipients: Randomprobabilitysnapshots, managedWarptransfer and currentdamageRetaliate; **nSpells3.3.5OptionalAns API gatefalse** is known optionalskip, not loadfailure. Abilitytag/defaultconsumer boundary documented. Nextwholeprofile/defaultscope/pilotconsolidation;6companions.

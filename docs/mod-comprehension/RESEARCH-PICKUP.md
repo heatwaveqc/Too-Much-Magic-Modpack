@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-23 16:48UTC Conflux installed bridges
+
+- Added ars-conflux-pinned-installed-bridges.md,6Confluxcompanions. ControleFilterBinary nativebothRandomsingletons/seconduseswrongfirstaugs; ConfluxpairreturnsindependentchanceSnapshotsusingcorrectoperandindex, stillfreshrollperpredicate/no cachedboolean/standaloneunchanged. ManagedWarpimmediatecarrierlevel+pendingvisual/sessiontransfer, failurediscards/noSourcewaiver. AdditionsRetaliatecurrenthurtsourceattacker(livingnotself), nullwithinframeNOstalekillcreditfallback/outsideframenative.
+- **nSpells3.3.5OptionalAnsgatefalse**: javapCrossCastingHandleronlyCrossModSpell(+UUID), noCastTargetHint/InteractionOrigin. Pluginintentionallyskips3OptionalAns hooks; genericnativeMana/nSpellsfinishstillapplies. No hardblocker/upgrade/failureclaim. PriorAnsActiveCasts localguarddescriptionnotcurrentappliedbehavior. AbilitytagAPI/readerssourceempty/defaultno consumers; boundedintegrationJavaapi grep0. Linksaddedparentprofiles.
+- **Next consolidateConflux wholelibrary/defaultinstalledscope+progression/taskmatrix/pilotgap andfinalcoverage**, no needre-auditnamed6companions. ThenElemental184recipe/registry/profile/pilot, Elemancy/Additionsfullnative/Arscombined/othermajors. Needhonestdefaultconfig/otherbinaryconsumer/runtimeboundaries, notphantomcontent orfullworldtest. Integrationc11a95fcunchanged;9complete33researching1staleof43/nohardblocker/hourlyactive. ExplicitworkdirC:\ChatGPT\Magic Minecraft Modpack\research-magic;GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-23 15:47UTC Conflux geometry/schools
 
 - Added ars-conflux-pinned-geometry-schools.md: incomingnormalizedvector scoped/tag/legacyfallback; projectiletravelnotcasterlook, capturealoneNOTall-effectrotation. Explicitglyphschoolweights/noautomaticnativeinfer,2:1normalize/EMPTYfactor1. Schoolresourcepaths data/<namespace>/ars_conflux/(schools,glyph_schools,school_damage), invalidwarn+omit/prioritydescID/firstmatch/entity+tagAND. Generalpowerdefault0, startupschoolextralistempty, optionaldamage_rulesfalse onlytargetrulesNOTallpowerlayer. Nativeevent/nonlivingboundpayload/handledscope contracts andop2diagnostics; no runtimeclaim.

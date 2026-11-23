@@ -488,3 +488,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-23 — [Conflux active casting](mods/ars-conflux-pinned-active-casts.md): preparation/snapshot cancellation/release acknowledgement/persistentdeadlines; family-onlyconsumer scan avoids inventingdefaultchants.4Confluxcompanions;9/43complete unchanged.
 
 - 2026-11-23 — [Conflux geometry/schools](mods/ars-conflux-pinned-geometry-schools.md): incomingvectors, explicitnormalizedweights, defaultemptydefinitions/attributevsopt-inrules, damage-scope/order limits.5Confluxcompanions;9/43complete unchanged.
+
+- 2026-11-23 — [Conflux installed bridges](mods/ars-conflux-pinned-installed-bridges.md): two-endedControleRandom/Warp/AdditionsRetaliate; javapnSpells3.3.5OptionalAns gatefalse/knownskip. AbilitytagAPIdefaultempty.6Confluxcompanions; finalprofileconsolidation open,9/43complete unchanged.

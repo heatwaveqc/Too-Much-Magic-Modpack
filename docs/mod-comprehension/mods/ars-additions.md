@@ -35,3 +35,5 @@ The [49-quest pilot](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/7
 - Client tests: positive and unloaded/missing-link boundary for Warp Index; two jars with one shared Source event; bulk wand single vs multi endpoint; both portal structures; one Mark/Recall and one Retaliate timing boundary; confirm the Arcane Permanent default remains disabled.
 
 Current installed Conflux adds [dynamic forgotten_knowledge exclusion/nearby-allies source audit](ars-conflux-pinned-content.md), traced against exact Additions21.3.0CodexEntry/Lost/Ancient recipient. Tag is a random-learning **exclusion**; default excludesConflux but notElemental, so current registeredPhalanx may remain eligible independently of disabledScribesrecipe. Full nativeAdditionsloot/acquisition/progression remains open; external fullCFR nowavailable.
+
+Current [Conflux installed bridges](ars-conflux-pinned-installed-bridges.md) replaces Retaliate kill-credit query with current damage-source attacker inside hurt frame; no eligible current attacker means failure, not stale fallback.
