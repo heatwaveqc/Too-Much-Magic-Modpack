@@ -63,11 +63,16 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets,
         return new Ledger(copy,wallets,payments,economy);
     }
     public Ledger withWallet(String id,Wallet wallet) {
+        // MXP's former mutable rank/points record must not be persisted again
+        // once the generic current-XP ledger is authoritative.
+        if (XpChannel.MXP.equals(id) && economy.currentXp().containsKey(id)) return this;
         var copy = new HashMap<>(wallets);copy.put(id,wallet);
         return new Ledger(paths,copy,payments,economy);
     }
     public Ledger withEconomy(ExperienceEconomy.Ledger state) {
-        return new Ledger(paths,wallets,payments,state);
+        var copy = new HashMap<>(wallets);
+        if (state.currentXp().containsKey(XpChannel.MXP)) copy.remove(XpChannel.MXP);
+        return new Ledger(paths,copy,payments,state);
     }
     public Ledger receipt(String path,String skill,String currency,int paid){
         return receipt(path,skill,currency,paid,false);
