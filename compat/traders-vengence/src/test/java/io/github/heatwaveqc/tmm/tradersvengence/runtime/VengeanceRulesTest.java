@@ -28,6 +28,13 @@ class VengeanceRulesTest {
         assertFalse(VengeanceRules.isActualHealthDamage(0.0F));
         assertFalse(VengeanceRules.isActualHealthDamage(-1.0F));
     }
+    @Test void lavaGolemProximityUsesInclusiveEuclideanTenBlockRadius() {
+        assertTrue(VengeanceRules.withinGolemVendettaRadius(0.0, 0.0, 0.0));
+        assertTrue(VengeanceRules.withinGolemVendettaRadius(10.0, 0.0, 0.0));
+        assertTrue(VengeanceRules.withinGolemVendettaRadius(6.0, 8.0, 0.0));
+        assertFalse(VengeanceRules.withinGolemVendettaRadius(10.0001, 0.0, 0.0));
+        assertFalse(VengeanceRules.withinGolemVendettaRadius(8.0, 8.0, 0.0));
+    }
     @Test void heightLimitsAreInclusive() {
         assertTrue(VengeanceRules.nearSeaLevel(53, 63));
         assertTrue(VengeanceRules.nearSeaLevel(73, 63));
