@@ -232,12 +232,15 @@ def scan_resource(content: bytes, name: str, origin: str,
         return
     row: dict[str, Any] = {"id": resource_id, "origin": origin, "path": name}
     if kind == "recipe":
-        output, count = result_item(data)
-        row.update({"recipe_type": data.get("type"), "result_item": output,
-                    "result_count": count,
+        outputs = recipe_outputs(data)
+        single = outputs[0] if len(outputs) == 1 else None
+        row.update({"recipe_type": data.get("type"),
+                    "result_item": single["item"] if single else None,
+                    "result_count": single["count"] if single else None,
+                    "outputs": outputs,
                     "ingredient_tag_refs": sorted(ingredient_tags(
                         data.get("ingredients", data.get("ingredient", []))))})
-        if output is None:
+        if not outputs:
             issues.append(f"unresolved recipe output/schema: {origin}/{name}")
     elif kind == "item_tag":
         row.update({"replace": data.get("replace", False),
@@ -352,15 +355,14 @@ def census(root: Path, jar_dir: Path | None = None,
 
     # Not all recipe outputs are edible; the old DS map includes historical
     # mods and non-food treats. These are leads ONLY, never denominator inputs.
-    outputs = sorted({r["result_item"] for r in rows["recipe"]
-                      if r["result_item"] is not None})
+    outputs = sorted({out["item"] for r in rows["recipe"] for out in r["outputs"]})
     literal_ids = old["unique_literal_items"]
     candidates = sorted(set(outputs) | set(literal_ids) | set(seed["items"]))
 
     routes: dict[str, set[str]] = defaultdict(set)
     for row in rows["recipe"]:
-        if row["result_item"] is not None:
-            routes[row["result_item"]].add(row["origin"] + "/" + row["id"])
+        for out in row["outputs"]:
+            routes[out["item"]].add(row["origin"] + "/" + row["id"])
     multi_route_outputs = sorted(k for k, v in routes.items() if len(v) > 1)
 
     scripts = []
