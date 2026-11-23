@@ -1,5 +1,11 @@
 # TMM — frozen holiday development-cycle mod roster (audit snapshot, November 23, 2026)
 
+## SECOND-PASS ROSTER RECHECK — 2026-11-23
+
+The current Gravekeeper resurvey [PR #576](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/576) found **no new selected external mods**: exactly **249 enabled** + **12 disabled**, and 249 matching `mods/*.pw.toml` entries. Rechecked the same live manifest blob `23b153fc6676cf6d4b3143e645a3838ed63a56df` and Packwiz index blob `e19b9f5d455f4cd387b67a44bb2523cb63d142e3`. The new magic-mod pouch policy [#619](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/619) is **not** a new mod inclusion; Malum and Gaze were already pinned, and portable-bag nesting remains banned under #16. Newly authored Progression, food, Monk and Atlas PRs are first-party/research work, not external JAR additions. Original 249-item live roster and archived 242 snapshot remain below. No source pin edits or game QA took place.
+
+---
+
 ## LIVE HOLIDAY ROSTER — refreshed November 23, 2026 (supersedes the frozen 242-row snapshot below)
 
 **Live source cross-check:** `test/full-integration` manifest `23b153fc6676cf6d4b3143e645a3838ed63a56df`, index `e19b9f5d455f4cd387b67a44bb2523cb63d142e3`. Exactly **249 enabled** external mod candidates have **249 matching Packwiz `mods/*.pw.toml` entries** (no missing or orphaned pins), and **12 catalog records are disabled**. This is a **source pin/selection audit**, not confirmation of downloads at runtime, Minecraft launch, client rendering, multiplayer, or survival gameplay.
