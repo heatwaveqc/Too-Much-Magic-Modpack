@@ -101,6 +101,23 @@ class FoodDecisionResolverTest {
             r.decide(Set.of(),"example:carrot").outcome());
     }
 
+    @Test void strictProfileRequiresExplicitDeclarativeActivation() {
+        var policy = dryad();
+        assertNotNull(policy.when());
+        assertEquals("path_active",policy.when().get("type").getAsString());
+        assertEquals("tyr_progression:dryad",policy.when().get("id").getAsString());
+        var dormant = StrictDietPolicy.parse(JsonParser.parseString("""
+            {"schema":1,"profile":"unused","type":"strict","default":"deny",
+             "allow_any":[],"deny_any":[]}
+            """).getAsJsonObject());
+        assertNull(dormant.when(), "A definition without a server condition stays dormant");
+        assertThrows(IllegalArgumentException.class, () -> StrictDietPolicy.parse(
+            JsonParser.parseString("""
+                {"schema":1,"profile":"bad","type":"strict","default":"deny",
+                 "allow_any":[],"deny_any":[],"when":{}}
+                """).getAsJsonObject()));
+    }
+
     @Test void contradictoryStrictDeclarationsFailClosedAtLoad() {
         assertThrows(IllegalArgumentException.class,()->StrictDietPolicy.parse(
             JsonParser.parseString("""
