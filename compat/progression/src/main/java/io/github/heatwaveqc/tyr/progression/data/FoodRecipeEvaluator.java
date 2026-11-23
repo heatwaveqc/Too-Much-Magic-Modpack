@@ -17,6 +17,7 @@ public final class FoodRecipeEvaluator {
     private final Map<String, FoodSourceEvidence> sources;
     private final Map<String, FoodRecipeEvidence> recipes;
     private final Function<String, Set<String>> liveTags;
+    private final Set<String> blocked;
 
     private record Budget(double hunger, double saturationPoints,
                           boolean preferred, boolean offDiet) {
@@ -29,10 +30,19 @@ public final class FoodRecipeEvaluator {
             Map<String, FoodSourceEvidence> sources,
             Map<String, FoodRecipeEvidence> recipes,
             Function<String, Set<String>> liveTags) {
+        this(rules, sources, recipes, liveTags, Set.of());
+    }
+
+    public FoodRecipeEvaluator(FoodPolicyRules rules,
+            Map<String, FoodSourceEvidence> sources,
+            Map<String, FoodRecipeEvidence> recipes,
+            Function<String, Set<String>> liveTags,
+            Set<String> blocked) {
         this.rules = rules;
         this.sources = Map.copyOf(sources);
         this.recipes = Map.copyOf(recipes);
         this.liveTags = liveTags;
+        this.blocked = Set.copyOf(blocked);
     }
 
     public Optional<FoodPolicyRules.Nutrition> evaluate(String profile, String item) {
@@ -41,7 +51,7 @@ public final class FoodRecipeEvaluator {
     }
 
     private Optional<Budget> resolve(String profile, String item, Set<String> visiting, int depth) {
-        if (depth > MAX_DEPTH || !visiting.add(item)) return Optional.empty();
+        if (depth > MAX_DEPTH || blocked.contains(item) || !visiting.add(item)) return Optional.empty();
         try {
             FoodSourceEvidence root = sources.get(item);
             Set<String> tags = new HashSet<>(liveTags.apply(item));
