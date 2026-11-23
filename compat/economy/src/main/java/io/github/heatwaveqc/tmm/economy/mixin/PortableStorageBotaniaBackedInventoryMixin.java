@@ -1,11 +1,7 @@
 package io.github.heatwaveqc.tmm.economy.mixin;
 
 import io.github.heatwaveqc.tmm.economy.storage.PortableStorageSafety;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,9 +23,6 @@ import org.spongepowered.asm.mixin.Shadow;
 @Pseudo
 @Mixin(targets = "velrondevs.botania.common.item.ItemBackedInventory", remap = false)
 public abstract class PortableStorageBotaniaBackedInventoryMixin extends SimpleContainer {
-    private static final TagKey<Item> TMM_PROTECTED_EMBEDDED_DESTINATION = TagKey.create(
-        Registries.ITEM, ResourceLocation.fromNamespaceAndPath("tmm", "non_nestable_embedded_containers"));
-
     @Shadow @Final private ItemStack stack;
 
     protected PortableStorageBotaniaBackedInventoryMixin(int slots) {
@@ -38,7 +31,7 @@ public abstract class PortableStorageBotaniaBackedInventoryMixin extends SimpleC
 
     @Override
     public boolean canPlaceItem(int slot, ItemStack candidate) {
-        if (stack.is(TMM_PROTECTED_EMBEDDED_DESTINATION)
+        if (PortableStorageSafety.isProtectedEmbeddedDestination(stack)
                 && PortableStorageSafety.rejectsEmbeddedDestination(candidate)) {
             return false;
         }
