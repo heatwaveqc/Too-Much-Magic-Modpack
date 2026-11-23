@@ -98,7 +98,17 @@ Every `present` line points at a *named* family explored above or in the linked 
 | `botania::corporea_query` | Registered Corporea devices/sparks and request target | Routed inventory request within network conditions, not arbitrary cross-mod remote storage | Successful request/item delivery after validating exact setup |
 | `botania::ars_bridge` | Have Ars Nouveau plus enabled Botania bridge and appropriate consumer/container | Narrow bidirectional Source↔Mana contracts; no universal equivalence | Source/Mana before-after measurements and single debit; QA owner |
 
-## 6. Quest-source authoring handoff and explicit gaps
+## 6. Source-level flower and addon expansion (2026-11-23)
+
+The preceding 29-axis matrix remains a navigation aid. It is now backed by detailed, immutable-version operating inventories:
+
+- [**14/14 registered base generating-flower algorithms**](../inventories/botania-revived-generating-flora-2.0.2.md): actual fuel/XP/food/entity/cellular triggers; Mana output; timing/cooldown; buffer/capacity; native failure and destruction conditions. Includes the existing **TMM Thermalily owner lock**: source-native 45 Mana/t with randomized cooldown versus selected 75 Mana/t + zero cooldown in [#147](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/147). The code's exact deployment/QA is not established by this document.
+- [**10 high-value functional-flower families**](../inventories/botania-revived-functional-flora-2.0.2.md): Orechid, Orechid Ignem, Loonium, Hopperhock, Rannuncarpus, Agricarnation, Exoflame, Fallen Kanade, Marimorphosis, Jaded Amaranthus. The weighted-output ore/loot producers require *effective TMM datapack* review before declaring protected gates safe; this source survey is not a claim of live exploit or bypass.
+- [**Extra Botany Revived 1.0.4 first concrete addon-source audit**](../inventories/extra-botany-1.0.4-storage-power-first-source.md): independent `extrabotany` registration, Fluided Mana and bidirectional adapter families, default-enabled FE→Mana Flux Manafield, several named flowers/equipment lines, Gaia III combat disarm option, and **Mini Handbag**. Its 24-slot portable container is **not blocked by a native slot filter** and must be reconciled with existing TMM no-bag-nesting issue [#16](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/16) if obtainable. That is an implementation/release integration risk, not an Atlas authoring stop.
+
+**Remaining genuine Atlas gaps:** all *remaining* functional flowers, exact Petal Apothecary/Runic/other recipes and tiers for named flowers, Mana storage/container and equipment-level stats, port-module availability, addon flower/boss/gear/mount operation details, and the current FTB chapter crosswalk. We should not claim full family closure from the 14 generating + 10 functional source traces.
+
+## 7. Quest-source authoring handoff and explicit gaps
 
 See the companion [research-only lesson DAG](botania-revived-quest-map.md). It is intentionally *not* FTB SNBT/GUIDs, an approved reward shop, or a claim that the old Botania chapter has these detectors. Keep all instructional pages rooted in Lexica/JEI. The main sequence demonstrates separate **possession**, **real operation**, and **boss first-kill** expectations instead of rewarding the same item as proof of every function.
 
