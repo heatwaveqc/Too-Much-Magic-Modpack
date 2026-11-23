@@ -18,6 +18,11 @@ public final class FoodRecipeEvaluator {
     private final Map<String, FoodRecipeEvidence> recipes;
     private final Function<String, Set<String>> liveTags;
     private final Set<String> blocked;
+    // This evaluator belongs to one immutable effective recipe/tag generation.
+    // The hot player event path only looks up already verified budgets.
+    private record Key(String profile, String item) {}
+    private final java.util.concurrent.ConcurrentMap<Key, Optional<FoodPolicyRules.Nutrition>>
+        cache = new java.util.concurrent.ConcurrentHashMap<>();
 
     private record Budget(double hunger, double saturationPoints,
                           boolean preferred, boolean offDiet) {
@@ -47,7 +52,8 @@ public final class FoodRecipeEvaluator {
 
     public Optional<FoodPolicyRules.Nutrition> evaluate(String profile, String item) {
         if (!rules.profiles().containsKey(profile)) return Optional.empty();
-        return resolve(profile, item, new HashSet<>(), 0).map(Budget::food);
+        return cache.computeIfAbsent(new Key(profile, item),
+            key -> resolve(profile, item, new HashSet<>(), 0).map(Budget::food));
     }
 
     private Optional<Budget> resolve(String profile, String item, Set<String> visiting, int depth) {
