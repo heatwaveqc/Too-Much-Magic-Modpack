@@ -1209,6 +1209,10 @@ file = "kubejs/data/tmm/recipe/mana_infusion/parchment_fragment.json"
 hash = "bad53a8978f03e47c1bbd30b282e9c5085cd1f6553bea0eaf9d197a9af09b46e"
 
 [[files]]
+file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
+hash = "1cd1cf8474e41d74d6d72160bb2fd7488305ef10107b9939db9bf15bebd13ee1"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
