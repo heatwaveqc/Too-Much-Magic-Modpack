@@ -12,11 +12,18 @@ public final class ExperienceGrowth {
     private ExperienceGrowth() {}
 
     public static double effective(ServerPlayer player, double configuredGrowth) {
-        double reduction = 0;
-        for (EffectRuntime.Active active : EffectRuntime.active(player)) {
-            if (!"xp_growth_reduction".equals(active.effect().type())) continue;
-            reduction += active.effect().amountPerRank() * active.rank();
+        return effective(player,configuredGrowth,"tyr_progression:mxp");
+    }
+
+    /** Only eligible live effects targeting this configured XP system apply. */
+    public static double effective(ServerPlayer player,double configuredGrowth,String systemId) {
+        double reduction=0;
+        for(EffectRuntime.Active active:EffectRuntime.active(player)){
+            if(!"xp_growth_reduction".equals(active.effect().type()))continue;
+            String target=active.effect().params().getOrDefault("xp_system","");
+            if(!target.isEmpty()&&!target.equals(systemId)&&!target.equals("*"))continue;
+            reduction+=active.effect().amountPerRank()*active.rank();
         }
-        return GrowthFactorMath.effective(configuredGrowth, reduction);
+        return GrowthFactorMath.effective(configuredGrowth,reduction);
     }
 }

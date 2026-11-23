@@ -66,6 +66,14 @@ public final class ExperienceEconomyConfig {
         }
     }
 
+    /** Bootstrap only; active pack values are loaded from the datapack on reload. */
+    public static Catalog tmmDefault() {
+        var mxp=SystemSpec.mxp();
+        return new Catalog(Map.of(mxp.id(),mxp),Map.of(mxp.id(),1.02),
+                new Transition(DeparturePolicy.FORFEIT,DeparturePolicy.REFUND,true),
+                Map.of(),Map.of());
+    }
+
     public static Catalog read(JsonObject root) {
         only(root, "schema", "systems", "default_path_change", "path_changes", "skills");
         if (root.has("schema") && root.get("schema").getAsInt() != 1)

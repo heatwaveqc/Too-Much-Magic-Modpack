@@ -18,6 +18,11 @@ import net.minecraft.server.level.ServerPlayer;
 /** data/<namespace>/tyr_progression/paths/<name>.json -> <namespace>:<name>. */
 public final class PathRegistry extends SimpleJsonResourceReloadListener {
     private static volatile Map<String,Definition.Path> active = Map.of();
+    private static volatile PathCompatibility.Rules compatibility =
+            new PathCompatibility.Rules(Map.of(),Map.of());
+    public static boolean canCoexist(String first,String second) {
+        return compatibility.canCoexist(active,first,second);
+    }
     private static volatile Map<String,String> enrollmentModes = Map.of();
     private static volatile Map<String,PotionEnrollmentTrigger> potionTriggers = Map.of();
     private static volatile Map<String,HunterXpPolicy> hunterXpPolicies = Map.of();
@@ -33,12 +38,17 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public static XpChannel channel(String path) { return channelConfig.paths().get(path); }
     public static XpChannel economy(String id) { return channelConfig.channels().get(id); }
     public static ChannelConfig config(){return channelConfig;}
+    public static ExperienceEconomyConfig.Catalog economyCatalog(){
+        return ExperienceEconomyRuntime.current();
+    }
     public static Map<String,XpChannel> economies(){return channelConfig.channels();}
 
     private record SourceKey(String system,int index) {}
     private static volatile Map<String,Condition<ServerPlayer>> economyGates=Map.of();
     private static volatile Map<SourceKey,Condition<ServerPlayer>> sourceGates=Map.of();
     public static boolean economyEligible(ServerPlayer player,String id){
+        if(ExperienceEconomyRuntime.current().systems().containsKey(id))
+            return economy(id)!=null;
         if(XpChannel.MXP.equals(id))return economy(id)!=null;
         var condition=economyGates.get(id);return condition!=null&&condition.test(player);
     }
@@ -104,7 +114,23 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 experience.put(id,com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
             }catch(java.io.IOException bad){throw new IllegalArgumentException("Cannot read XP system "+id,bad);}
         }
-        var systems=ChannelConfig.definitions(experience,1.02);
+        var economyResource=manager.getResource(ResourceLocation.parse("tyr_progression:tyr_progression/economy.json"))
+                .orElseThrow(()->new IllegalArgumentException("Missing bundled progression economy.json"));
+        ExperienceEconomyConfig.Catalog economy;
+        try(var reader=economyResource.openAsReader()){
+            economy=ExperienceEconomyConfig.read(
+                com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
+        }catch(java.io.IOException error){
+            throw new IllegalArgumentException("Cannot load Progression economy configuration",error);
+        }
+        var registeredSystems=new HashMap<>(ChannelConfig.definitions(experience,1.02));
+        // Any XP ledger may be bound by a tree, even without a legacy
+        // experience_systems native curve or a hard-coded MXP channel.
+        for(var entry:economy.systems().entrySet())
+            registeredSystems.putIfAbsent(entry.getKey(),
+                XpChannel.generic(entry.getKey(),economy.growth(entry.getKey()),
+                    entry.getKey(),"Points"));
+        var systems=Map.copyOf(registeredSystems);
         Map<String,Condition<ServerPlayer>> newEconomyGates=new HashMap<>();
         Map<SourceKey,Condition<ServerPlayer>> newSourceGates=new HashMap<>();
         experience.forEach((id,raw)->{
@@ -163,9 +189,22 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
+        // A declared multi-currency purchase must reference a real loaded skill.
+        for(var row:economy.skills().entrySet()){
+            var tree=next.get(row.getKey().path());
+            var skill=tree==null?null:tree.skill(row.getKey().skill());
+            if(skill==null || !skill.autoRanks().isEmpty()
+                || row.getValue().totalRankCap()>skill.maxRank())
+                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
+        }
+        if(!economy.systems().containsKey(XpChannel.MXP))
+            throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
+        var nextCompatibility=PathCompatibility.parse(rawPaths,next);
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        compatibility=nextCompatibility;
+        ExperienceEconomyRuntime.install(economy);
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);

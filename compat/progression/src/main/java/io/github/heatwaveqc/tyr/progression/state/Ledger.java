@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.state;
 
 import io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy;
+import io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyRuntime;
 import io.github.heatwaveqc.tyr.progression.model.XpChannel;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -39,16 +40,18 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets,
      */
     public Wallet wallet(String id) {
         Wallet stored = wallets.get(id);
-        if (!XpChannel.MXP.equals(id) || !economy.currentXp().containsKey(id)) return stored;
+        var spec=ExperienceEconomyRuntime.current().systems().get(id);
+        if (spec==null || !economy.currentXp().containsKey(id)) return stored;
         BigDecimal total = economy.currentXp().get(id);
-        BigDecimal goal = ExperienceEconomy.SystemSpec.mxp().xpPerPoint();
-        long level = total.divide(goal, 0, RoundingMode.DOWN).longValueExact();
+        BigDecimal goal = spec.xpPerPoint();
+        long level = ExperienceEconomy.level(economy,spec);
         long committed = ExperienceEconomy.committed(economy,id);
         long free = level - committed;
         if (free < 0 || free > Integer.MAX_VALUE)
             throw new IllegalStateException("MXP purchases exceed earned points or integer range");
         int rank = (int) Math.min(Integer.MAX_VALUE,(long)level+1);
-        long display = total.longValue();
+        long display = total.compareTo(BigDecimal.valueOf(Long.MAX_VALUE))>0
+                ? Long.MAX_VALUE:total.longValue();
         double progress = total.subtract(goal.multiply(BigDecimal.valueOf(level))).doubleValue();
         String prefix = id + "|";
         var tx = economy.recentTransactions().stream()
@@ -65,13 +68,16 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets,
     public Ledger withWallet(String id,Wallet wallet) {
         // MXP's former mutable rank/points record must not be persisted again
         // once the generic current-XP ledger is authoritative.
-        if (XpChannel.MXP.equals(id) && economy.currentXp().containsKey(id)) return this;
+        if (ExperienceEconomyRuntime.current().systems().containsKey(id)
+                && economy.currentXp().containsKey(id)) return this;
         var copy = new HashMap<>(wallets);copy.put(id,wallet);
         return new Ledger(paths,copy,payments,economy);
     }
     public Ledger withEconomy(ExperienceEconomy.Ledger state) {
         var copy = new HashMap<>(wallets);
-        if (state.currentXp().containsKey(XpChannel.MXP)) copy.remove(XpChannel.MXP);
+        for(String id:state.currentXp().keySet())
+            if(ExperienceEconomyRuntime.current().systems().containsKey(id))
+                copy.remove(id);
         return new Ledger(paths,copy,payments,state);
     }
     public Ledger receipt(String path,String skill,String currency,int paid){

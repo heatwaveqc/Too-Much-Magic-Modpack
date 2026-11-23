@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiPredicate;
 import java.util.UUID;
+import java.math.BigDecimal;
 
 /**
  * Stable entry points for standalone Monk/Hunter initiation, KubeJS bridges and future mods.
@@ -64,12 +65,10 @@ public final class ProgressionApi {
         if (!BaselinePaths.isCore(pathId))
             for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
                 if (!veto.test(player,pathId)) return false;
-        if (!BaselinePaths.isCore(pathId) && !path.exclusiveGroup().isBlank()) {
-            for (Definition.Path other : PathRegistry.all().values()) {
-                if (!pathId.equals(other.id()) && path.exclusiveGroup().equals(other.exclusiveGroup())
-                    && ledger.get(other.id()).joined()) return false;
-            }
-        }
+        if(!BaselinePaths.isCore(pathId))
+            for(Definition.Path other:PathRegistry.all().values())
+                if(!pathId.equals(other.id())&&ledger.get(other.id()).joined()
+                    &&!PathRegistry.canCoexist(pathId,other.id()))return false;
         // Join is a real Path change: TMM's configured default sacrifices
         // unallocated MXP, but never already purchased Core/retained Path ranks.
         Ledger next=ChannelEngine.join(ledger,path,channel);
@@ -97,9 +96,7 @@ public final class ProgressionApi {
         Ledger old=player.getData(ProgressionAttachments.LEDGER.get());
         Track track=old.get(pathId);
         if(!track.joined())return false;
-        Track dormant=new Track(false,0,0,0,Map.of(),track.milestones(),track.counters());
-        Ledger changed=old.with(pathId,dormant).clearAllReceipts(pathId);
-        changed=ChannelEngine.pathChange(changed,java.util.Set.of(pathId));
+        Ledger changed=ChannelEngine.depart(old,path,PathRegistry.economyCatalog());
         changed=BaselinePaths.reconcile(changed,false);
         player.setData(ProgressionAttachments.LEDGER.get(),changed);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
@@ -131,21 +128,41 @@ public final class ProgressionApi {
             io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,id);
     }
 
-    public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
-        var path=PathRegistry.get(pathId);
-        if(path==null || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player) || !PathRegistry.purchaseEligible(player,pathId,skillId)) return false;
-        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
-        return ChannelEngine.buy(before,path,PathRegistry.config(),skillId)!=before;
+    private static String defaultCurrency(String pathId,String skillId){
+        var rules=PathRegistry.economyCatalog().skills().get(
+            new io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig.SkillKey(pathId,skillId));
+        if(rules!=null)return rules.sources().getFirst().system();
+        var binding=PathRegistry.config().skills().get(
+            new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skillId));
+        return binding==null?"":binding.currency().id();
     }
 
-    /** Fail-closed if the path is missing, gated, full, or short on skill points. */
-    public static boolean buy(ServerPlayer player, String pathId, String skillId) {
-        Definition.Path path = PathRegistry.get(pathId);
-        var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !canBuy(player,pathId,skillId)) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.buy(ledger,path,PathRegistry.config(),skillId);
-        if(next==ledger)return false;
+    public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
+        return canBuy(player,pathId,skillId,defaultCurrency(pathId,skillId));
+    }
+
+    /** The client may CHOOSE a declared currency, never its price or rank. */
+    public static boolean canBuy(ServerPlayer player,String pathId,String skillId,String systemId) {
+        var path=PathRegistry.get(pathId);
+        if(path==null || player.isCreative() || player.isSpectator()
+            || NewbieMode.isNewbie(player)
+            || !PathRegistry.purchaseEligible(player,pathId,skillId))return false;
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        return ChannelEngine.buy(before,path,PathRegistry.config(),skillId,systemId)!=before;
+    }
+
+    /** Fail closed on unknown currencies, prerequisites, caps, or insufficient points. */
+    public static boolean buy(ServerPlayer player,String pathId,String skillId) {
+        return buy(player,pathId,skillId,defaultCurrency(pathId,skillId));
+    }
+
+    public static boolean buy(ServerPlayer player,String pathId,String skillId,String systemId) {
+        Definition.Path path=PathRegistry.get(pathId);
+        if(path==null || PathRegistry.channel(pathId)==null
+            || !canBuy(player,pathId,skillId,systemId))return false;
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=ChannelEngine.buy(before,path,PathRegistry.config(),skillId,systemId);
+        if(next==before)return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
@@ -275,13 +292,16 @@ public final class ProgressionApi {
                     }
                     if (ready) {
                         state=state.complete(milestone.id());
+                        // This is a permanent achievement, independent of
+                        // current Path membership or purchased skill ranks.
+                        next=next.withEconomy(next.economy().withAchievement(milestone.id()));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         changed = true;
                     }
                 }
             } while(changed);
-            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state);
+            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state,PathRegistry.config());
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
     }
@@ -344,22 +364,65 @@ public final class ProgressionApi {
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(player,
-            io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get())),sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
+        double configured=PathRegistry.economyCatalog().growth(channelId);
+        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
+            .effective(player,configured,channelId);
+        Ledger next=ChannelEngine.magic(prior,
+            XpChannel.generic(channelId,growth,channel.name(),channel.pointName()),
+            sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
         if(next==prior) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
 
-    /** Direct grant to a configured native system; independent of any tree. */
+    /**
+     * Authenticated server-side award for ANY configured XP system. The caller
+     * supplies a transaction identity from a verified committed action; never
+     * expose this amount or identity in a client payload.
+     */
+    public static boolean awardConfiguredXp(ServerPlayer player,String systemId,
+            String sourceCategory,String transaction,String completionId,
+            BigDecimal nominalXp,boolean fixed) {
+        if(player==null||player.getServer()==null||!player.getServer().isSameThread()
+            ||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player))
+            return false;
+        var catalog=PathRegistry.economyCatalog();
+        if(!catalog.systems().containsKey(systemId))return false;
+        var nativeChannel=PathRegistry.economy(systemId);
+        if(nativeChannel!=null&&!PathRegistry.economyEligible(player,systemId))return false;
+        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
+                .effective(player,catalog.growth(systemId),systemId);
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=ChannelEngine.awardConfigured(prior,catalog,systemId,
+                sourceCategory,transaction,completionId,nominalXp,fixed,growth);
+        if(next==prior)return false;
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
+        return true;
+    }
+
+    /** Existing trusted server consumers may grant a native-style source award. */
     public static boolean awardExperience(ServerPlayer player,String id,long xp) {
+        return awardExperience(player,id,"tyr_progression:server_award",
+                "award:"+UUID.randomUUID(),xp);
+    }
+    /** Source-aware overload ensures repeat callbacks can share one receipt. */
+    public static boolean awardExperience(ServerPlayer player,String id,
+            String sourceCategory,String transaction,long xp) {
         if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
             ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
-        var system=PathRegistry.economy(id);if(system==null||system.magic()||!PathRegistry.economyEligible(player,id))return false;
+        var system=PathRegistry.economy(id);
+        if(system==null||!PathRegistry.economyEligible(player,id))return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(prior,system,io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp),0));return true;
+        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
+        if(PathRegistry.economyCatalog().systems().containsKey(id))
+            return awardConfiguredXp(player,id,sourceCategory,transaction,null,
+                    BigDecimal.valueOf(nominal),false);
+        if(system.magic())return false; // No unconfigured money printer.
+        player.setData(ProgressionAttachments.LEDGER.get(),
+                ChannelEngine.grant(prior,system,nominal,0));
+        return true;
     }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
