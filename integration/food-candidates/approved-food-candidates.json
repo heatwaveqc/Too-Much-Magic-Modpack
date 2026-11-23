@@ -11,10 +11,29 @@
       "project_id": 1685797,
       "file_id": 8829017,
       "filename": "huaxia-delight-1.21.1-1.2.0.jar",
-      "status": "publisher_download_blocked",
-      "sha1": null,
-      "reason": "Both official ForgeCDN hosts returned HTTP 403; exact binary not inspected",
-      "dependencies": "Farmer's Delight per release description; native metadata not inspected"
+      "status": "user_uploaded_archive_verified_candidate_pin",
+      "sha1": "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919",
+      "reason": "Owner uploaded exact-name release; ZIP CRC and native metadata checked. Publisher SHA comparison still unavailable owing to official CDN 403.",
+      "dependencies": [
+        "minecraft [1.21.1]",
+        "neoforge [21.1.192,21.2)",
+        "farmersdelight [1.2.9,1.4)"
+      ],
+      "sha512": "38f20f8860809bf37b58ade41423480dcd09b17d30da5795b69b91a3be4f2befe6259218ae22ecd91bb7daa2b8e1c3080bb97cbe74de4162358ad541fde4ee33",
+      "size_bytes": 221894,
+      "provenance": "user_uploaded_jar_sha_computed_not_independent_publisher_digest",
+      "native_mod_id": "huaxiadelight",
+      "native_version": "1.2.0",
+      "native_mod_loader": "javafml",
+      "native_license": "All Rights Reserved",
+      "source_recipe_count": 71,
+      "source_item_tag_files": 54,
+      "source_loot_table_files": 7,
+      "cutting_recipes": 10,
+      "optional_dependencies": [
+        "butchercraft [2.6.5,2.7)"
+      ],
+      "linkage": "Approved official CurseForge project/file IDs came from PR #439 and are not an independent SHA attestation."
     },
     {
       "slug": "crispy",
@@ -61,11 +80,16 @@
   ],
   "evidence_run": "https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45099517767",
   "known_food_sources": {
-    "verified_jar_count": 19,
+    "verified_jar_count": 20,
     "total_targeted_jars": 20,
     "verified_indexed_food_jars": 15,
     "verified_new_food_jars": 4,
-    "checked_native_recipe_json_files": 2748,
-    "complete_edible_registry_count": null
-  }
+    "checked_native_recipe_json_files": 2819,
+    "complete_edible_registry_count": null,
+    "targeted_sources_verified": 20,
+    "publisher_verified_jars": 19,
+    "owner_uploaded_source_jars": 1,
+    "huaxia_source_item_tags": 54
+  },
+  "source_provenance_note": "Four additions and 15 pinned verified through official source downloads, Huaxia independently inspected as user upload only. No full game registry count."
 }

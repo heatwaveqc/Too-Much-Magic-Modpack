@@ -1,5 +1,7 @@
 """No-network regressions for the exact food publisher JAR census (#444)."""
 from io import BytesIO
+import hashlib
+import tempfile
 import json
 from pathlib import Path
 import sys
@@ -8,7 +10,7 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from audit_approved_food_jars import CANDIDATES, PRIORITY, audit_resources, selected_pin
+from audit_approved_food_jars import CANDIDATES, PRIORITY, audit_resources, audit_one, selected_pin
 
 class FoodPublisherTests(unittest.TestCase):
     @staticmethod
@@ -75,12 +77,12 @@ class FoodPublisherTests(unittest.TestCase):
                              .read_text(encoding="utf-8"))
         self.assertFalse(receipt["installed"])
         self.assertEqual(len(receipt["candidates"]), 5)
-        self.assertEqual(receipt["known_food_sources"]["verified_jar_count"], 19)
+        self.assertEqual(receipt["known_food_sources"]["verified_jar_count"], 20)
+        self.assertEqual(receipt["known_food_sources"]["publisher_verified_jars"], 19)
+        self.assertEqual(receipt["known_food_sources"]["owner_uploaded_source_jars"], 1)
+        self.assertEqual(receipt["known_food_sources"]["checked_native_recipe_json_files"], 2819)
         for row in receipt["candidates"]:
             staged = ROOT / "integration/food-candidates/pins" / (row["slug"] + ".pw.toml")
-            if row["sha1"] is None:
-                self.assertFalse(staged.exists(), "Do not stage a guessed Huaxia digest")
-                continue
             self.assertTrue(staged.is_file(), row["slug"])
             parsed = tomllib.loads(staged.read_text(encoding="utf-8"))
             self.assertEqual(parsed["filename"], row["filename"])
@@ -90,8 +92,61 @@ class FoodPublisherTests(unittest.TestCase):
             self.assertEqual(parsed["update"]["curseforge"]["project-id"], row["project_id"])
             self.assertEqual(parsed["side"], "both")
         index = (ROOT / "index.toml").read_text(encoding="utf-8")
+        huaxia = next(r for r in receipt["candidates"] if r["slug"] == "huaxia-delight")
+        self.assertEqual(huaxia["native_mod_id"], "huaxiadelight")
+        self.assertEqual(huaxia["provenance"],
+                         "user_uploaded_jar_sha_computed_not_independent_publisher_digest")
+        self.assertEqual(huaxia["sha1"], "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919")
         for row in receipt["candidates"]:
             self.assertNotIn('file = "mods/' + row["slug"] + '.pw.toml"', index)
+
+    def test_huaxia_style_nested_cutting_and_conditional_receipts(self):
+        file = self.jar({
+            "data/huaxiadelight/recipe/cutting/chopped_scallion.json": {
+                "type": "farmersdelight:cutting",
+                "ingredients": [{"tag": "huaxiadelight:scallion"}],
+                "tool": {"item": "huaxiadelight:slicing_knife"},
+                "result": [{"item": {"id": "huaxiadelight:chopped_scallion", "count": 4}}],
+                "neoforge:conditions": [{"type": "neoforge:not",
+                                        "value": {"type": "neoforge:tag_empty",
+                                                  "tag": "huaxiadelight:scallion"}}]
+            }
+        })
+        r = audit_resources(file)
+        self.assertEqual(r["recipe_count"], 1)
+        self.assertEqual(r["cutting_recipe_count"], 1)
+        self.assertEqual(r["candidate_output_ids_not_confirmed_edible"],
+                         ["huaxiadelight:chopped_scallion"])
+        recipe = r["recipes"][0]
+        self.assertEqual(recipe["multi_results"], [
+            {"item": "huaxiadelight:chopped_scallion", "count": 4}])
+        self.assertEqual(recipe["ingredient_tags"], ["huaxiadelight:scallion"])
+        self.assertEqual(recipe["tool"], {"item": "huaxiadelight:slicing_knife"})
+        self.assertEqual(len(recipe["native_conditions"]), 1)
+
+    def test_local_user_upload_keeps_distinct_evidence_from_publisher(self):
+        with tempfile.TemporaryDirectory() as base:
+            path = Path(base) / "huaxia-delight-1.21.1-1.2.0.jar"
+            meta = """modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="huaxiadelight"
+version="1.2.0"
+"""
+            with ZipFile(path, "w") as archive:
+                archive.writestr("META-INF/neoforge.mods.toml", meta)
+                archive.writestr("data/huaxiadelight/recipe/cutting/sample.json",
+                                json.dumps({"type": "farmersdelight:cutting",
+                                            "result": [{"item": {
+                                                "id": "huaxiadelight:chopped_scallion",
+                                                "count": 4}}]}))
+            result = audit_one("huaxia-delight", path)
+            self.assertEqual(result["status"], "verified_user_upload")
+            self.assertEqual(result["metadata"]["mod_ids"], ["huaxiadelight"])
+            self.assertIsNone(result["publisher_checksum_independently_matched"])
+            self.assertEqual(result["source_evidence"]["cutting_recipe_count"], 1)
+            self.assertEqual(result["sha1"], hashlib.sha1(path.read_bytes()).hexdigest())
 
     def test_invalid_zip_rejected(self):
         with self.assertRaises(Exception):
