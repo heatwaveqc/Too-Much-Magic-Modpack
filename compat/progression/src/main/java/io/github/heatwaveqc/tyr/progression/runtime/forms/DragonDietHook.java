@@ -34,6 +34,11 @@ public final class DragonDietHook {
         return found;
     }
 
+    private static FoodProperties noNourishment(FoodProperties food) {
+        return new FoodProperties(0, 0f, food.canAlwaysEat(), food.eatSeconds(),
+            food.usingConvertsTo(), food.effects());
+    }
+
     public static FoodProperties restore(ItemStack stack, LivingEntity entity,
                                          FoodProperties nativeResult) {
         if (entity == null || stack.isEmpty() || REENTRANT.get()
@@ -66,16 +71,16 @@ public final class DragonDietHook {
                     }
                     case NATIVE -> { } // Preserve native provider result.
                 }
-                // Existing permitted-drink bridge remains independent of
-                // nutrition classification, and only restores real food.
-                return DietPermissions.dragonDrink(player, stack)
-                    ? original : nativeResult;
+                // Acquired Taste permits use and native effects, never
+                // off-diet FoodData nourishment by itself.
+                return NativeDietAdapters.permissionOnlyDrink(player,stack)
+                    ? noNourishment(original) : nativeResult;
             }
             if (entity.level().isClientSide) {
                 var preview = io.github.heatwaveqc.tyr.progression.client.ClientDiet.preview(entity, stack);
                 if (preview.present()) return preview.food(); // includes explicit DENY=null
                 if (io.github.heatwaveqc.tyr.progression.client.ClientDiet.allows(entity, stack))
-                    return original; // independent short-lived beverage permission
+                    return noNourishment(original); // permission only
             }
             return nativeResult;
         } finally {
