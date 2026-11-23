@@ -2,12 +2,12 @@
 
 **DESIGN ONLY · November 22, 2026 · source baseline `dev/progression`**
 
-Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v13`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
+Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remaining_path_tree_blueprint_v14`. None of these drafted purchases, balances or source provider hooks are installed in-game by this PR.
 
 ## Owner-locked budget accounting
 
 - **One advancement point purchases exactly one skill rank. There are NO 2-point, 3-point, 4-point or 5-point ranks.** A five-point capstone must have five incremental 1-point ranks, or be split into genuinely distinct skills; it is not one costly rank.
-- For non-Monk specialist trees, **the mastery target is 100 purchasable one-point ranks**. Monk is the established 1,000-point exception. **Sea Dragon's completed draft now has 100 individually priced ranks** across 22 abilities, only ten of which belong to Luck; numerical effects remain to be source-verified.
+- For non-Monk specialist trees, **ordinary mastery targets 100 one-point ranks**. **Lich is the owner-approved exception with an additional 100 Archlich-only one-point ranks in the SAME tree**, for 200 purchased ranks when both native Lichdoms are genuinely acquired. Monk is the established 1,000-point exception. **Sea Dragon's completed draft now has 100 individually priced ranks** across 22 abilities, only ten of which belong to Luck; numerical effects remain to be source-verified.
 - When a tree displays mutually exclusive alternatives, only the compatible combination available to **one character** needs to cost 100 points. Alternative specializations may make the entire displayed catalog exceed 100.
 - Relative to the original 300–500-point trees, the intended effect per advancement point rises. **Do not** accomplish 'fewer levels' by charging more than one point per rank: if a named skill should have fewer ranks, redistribute its remaining points among distinct useful abilities.
 - Some per-skill totals still span 10–50 ranks. Those are *one-point increments*, and the intended cumulative power remains a balancing target to verify against the actual provider and gear, **not** a promise the previous absolute `per_rank` can be copied unchanged.
@@ -23,12 +23,12 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Forest Dragon | 26 | **100** |
 | Vampire | 19 | **100** |
 | Werewolf | 20 | **100** |
-| Lich | 21 | **100** |
+| Lich (regular; Archlich gated extension in same tree) | 41 (21 + 20) | **100** single-Lich / **200** Archlich |
 | Hunter | 57 | **100** |
 | Gilded | 22 | **100** |
 | Bare Zerker | 22 | **100** |
 
-The ten draft catalogs display **261 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **281 paid skill options**, including 20 Archlich-gated extras in the SAME Lich tree; 57 are Hunter alternatives (not simultaneously eligible). A lawful single-provider Lich can purchase 100 ordinary ranks; dual-provider Archlich can purchase all 200 in that tree. Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — complete specialization design: 62 shared + 8 training + 30 favored prey = 100
 
@@ -475,11 +475,11 @@ Detailed source status, numeric candidate magnitudes, prerequisites and gameplay
 | **Total** | **20 paid skills** | **100** | **Health regeneration, claws, moon and nature; native JAWR forms stay free** |
 
 **Explicit holds before live activation:** exact JAWR bite identity, true lunar/source form conditions, silver-weapon hazard source, and player-owned nature spells / wolves. Generic Progression health attributes, regen, source-scoped claw melee, legal claw mining, heal on kill and hit streak are reusable; source tests are not equivalent to gameplay proof.
-### Lich — complete first-pass 100 ranks / 100 points
+### Lich — 100 regular ranks + 100 Archlich-only ranks = 200 total eligible points
 
-*Native guardrails:* **ONE shared Lich tree** for Goety, JAWR/Forbidden Magic, Archlich, Gilded Piglich, and one compatible Dracolich. Goety personal Soul Energy, Goety Arca, JAWR phylactery and Soul in a Bottle remain separate; the death controller and source-native progression remain authoritative. No bought second death save or active skill buttons.
+*Native guardrails:* **ONE shared Lich tree** with **100 regular points** available to Goety, JAWR/Forbidden Magic, genuine Archlich, eligible Gilded Piglich, one compatible Dracolich and other legal single-Lich hybrids; **100 ADDITIONAL Archlich points** are purchase-locked behind **BOTH native Goety AND JAWR/Forbidden Magic Lichdoms on the same player**. Goety personal Soul Energy, Goety Arca, JAWR phylactery and Soul in a Bottle remain separate; the death controller and source-native progression remain authoritative. No bought second death save or active skill buttons.
 
-Full skill-by-skill numerical candidate effects, stage gates and provider blockers: [`LICH-COMPLETE-100PT-2026-11-22.md`](LICH-COMPLETE-100PT-2026-11-22.md). Unsupported provider benefits are not safe to sell until a verified effect exists.
+[Original unchanged 21-skill regular Lich specification](LICH-COMPLETE-100PT-2026-11-22.md) and [new 20-skill Archlich-only additional 100-point specification](ARCHLICH-ASCENDANCY-ADDITIONAL-100PT-2026-11-22.md) contain candidate effects, gates, source blockers and QA. The **extra 100 points and dual-Lich gate are owner-approved**, but **the 20 proposed Archlich powers are not yet owner-approved or implemented**. Unsupported provider benefits must not be sold as inert ranks.
 
 #### Soul Economy — 25 points
 
@@ -527,7 +527,57 @@ Full skill-by-skill numerical candidate effects, stage gates and provider blocke
 | Final Passage (`tyr_progression:lich_final_passage`) | 3 | 3 | Only after the native unified death controller actually records one successful Lich rescue, restore +2 HP per rank (maximum +6 HP), capped at max health, once for that event. |
 | Second Witness (`tyr_progression:lich_second_witness`) | 3 | 3 | Only after the same single native rescue receipt, grant +3 seconds per rank (maximum nine seconds) of Resistance I to cover the dangerous return; respect actual native spawn/world rules. |
 
-**Total Lich: 21 skills / 100 one-point ranks.** Source/behavior verification needed before engine activation. Complete design only.
+**Total ordinary Lich: unchanged 21 skills / 100 one-point ranks** (including all legal single-provider hybrids). All ordinary skills remain available to Archlich; none are bought twice. Dracolich stays one-lich-only.
+
+
+#### Archlich Ascendancy — locked additional 100 one-point ranks
+
+**ELIGIBILITY IS MANDATORY FOR EVERY PURCHASE AND EFFECT:** same player has both genuine source-verified native Goety Lichdom **AND** JAWR/Forbidden Magic Lichdom simultaneously. Neither an old advancement, a soul item nor a cosmetic Archlich flag qualifies. A single-provider Lich or Dracolich cannot unlock these; a genuinely dual-Lich Arch-Piglich can. If either native form disappears, all Archlich effects become dormant without double-refunding Core or normal Lich ranks.
+
+**Not a separate Path/tree**. The four Archlich groups below are an ascendant section in the existing Lich graph, each tied to one existing ordinary root skill. Buying the entire normal 100 first is NOT an additional hidden requirement in the current owner's specification; dual Lichdom is the hard gate. The particular ambitious powers/numbers below are **design candidates pending review**.
+
+##### Dual Soul Convergence — 25 points
+
+| Proposed Archlich skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Twin Soul Synthesis** (`tyr_progression:archlich_twin_soul_synthesis`) | 6 | +4% personally paid, source-confirmed Goety necromantic spell potency per rank (up to +24%) while both real Goety and JAWR Lichdoms are active; not a free Soul Energy cast and never a second Soul Energy pool. |
+| **Dual Anchor Bulwark** (`tyr_progression:archlich_dual_anchor_bulwark`) | 5 | -2% ordinary eligible direct physical damage per rank (up to -10%) ONLY when both genuine native death anchors are independently valid and charged; neither anchor is spent, cloned, recharged or invoked by this bonus. |
+| **Soul Tithe** (`tyr_progression:archlich_soul_tithe`) | 5 | Once per 25 seconds, an actual hostile killed directly by an authorized personally owned native undead may restore +0.75% of the player's real personal Goety Soul Energy capacity per purchased rank (up to +3.75%); no reanimated minions, fake kills or phantom soul income. |
+| **Phylactery Confluence** (`tyr_progression:archlich_phylactery_confluence`) | 5 | When a genuine paid Goety necromancy cast and a legitimate JAWR Soul-in-a-Bottle heal have both completed within 20 seconds, gain +3% personally cast necromancy output per rank (up to +15%) for the next 10 seconds; consume this qualifying pair once, 30-second cooldown. |
+| **Crown of Two Souls** (`tyr_progression:archlich_crown_of_two_souls`) | 4 | While both Lichdoms and both legitimate charged native anchors are present, +3% personal necromantic spell damage and +2% authorized owned-undead damage per rank (up to +12%/+8%); revert immediately when any native condition becomes false. |
+
+##### Undead Dominion — 25 points
+
+| Proposed Archlich skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Grave Legion** (`tyr_progression:archlich_grave_legion`) | 6 | +5% direct attack damage per rank (up to +30%) from genuinely owned Goety/JAWR native undead minions while the Archlich is valid; never wild mobs, other players' pets or all undead everywhere. |
+| **Ossuary Host** (`tyr_progression:archlich_ossuary_host`) | 5 | +5% max health per rank (up to +25%) for real personally owned summoned undead while legally active; one modifier per actual minion, clean removal on logout/owner loss, no free healing when reapplied. |
+| **Throne of Bones** (`tyr_progression:archlich_throne_of_bones`) | 5 | PROPOSED major Archlich-only gate: +1 additional *legally active* personally summoned undead slot per rank (up to +5) ONLY for native providers that expose a safe dynamic cap; every added summon still requires its real source spell/material/Soul Energy cost, and no autonomous spawn is granted. |
+| **Bonewall Intercession** (`tyr_progression:archlich_bonewall_intercession`) | 5 | Once per two seconds, when legitimate physical damage would land on Archlich, redirect 3% of that damage per rank (up to 15%) onto one nearby, physically present, genuinely owned undead within six blocks; real minion takes actual damage. No minion means no reduction; no death/true damage bypass. |
+| **King of the Host** (`tyr_progression:archlich_king_of_the_host`) | 4 | After a real *paid, successful* personally owned native undead summon, all other already-owned qualifying undead within 16 blocks gain +4% melee movement and +4% damage per rank (max +16% each) for eight seconds; refresh at most once per 20 seconds, never spawn extra servants. |
+
+##### Black Apotheosis — 25 points
+
+| Proposed Archlich skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Soulstorm** (`tyr_progression:archlich_soulstorm`) | 6 | On one genuine personally paid Goety necromancy hit against a hostile, once every ten seconds, a second eligible hostile within four blocks takes one additional nonrecursive source-tagged death-magic hit of +2 real damage per rank (up to 12 HP); payment is an additional verified Soul Energy debit, no damage without paid source action. |
+| **Plague Crown** (`tyr_progression:archlich_plague_crown`) | 5 | +0.5 seconds per rank (up to +2.5s) to genuine personal necromancy-spell harmful status duration on legal hostile victims, clamped to provider-supported max; never spread unrelated poison, permanent curses or buffs. |
+| **Crypt Surge** (`tyr_progression:archlich_crypt_surge`) | 5 | With at least three actually alive, personally owned summoned undead within 12 blocks, +3% personal necromantic spell potency per rank (up to +15%); no synthetic minions or free command/follow range. |
+| **Grave Cascade** (`tyr_progression:archlich_grave_cascade`) | 5 | Once every 30 seconds following a genuine *personally cast and paid necromancy spell kill*, send one nonrecursive death-wave to at most one additional eligible nearby hostile per rank (max five within six blocks), dealing up to two actual death-magic damage per rank (max ten HP) to each; no repeated waves from wave kills. |
+| **Eclipse of Undeath** (`tyr_progression:archlich_eclipse_of_undeath`) | 4 | After an actual successful paid personal necromancy cast, the NEXT accepted personally paid necromancy cast within eight seconds has +6% actual necromantic effect potency per rank (up to +24%) but its verified normal resource cost is 25% higher; consume the charge once, 25-second cooldown. |
+
+##### Deathless Majesty — 25 points
+
+| Proposed Archlich skill | One-point ranks | Candidate effect |
+|---|---:|---|
+| **Deathless Tyrant** (`tyr_progression:archlich_deathless_tyrant`) | 6 | +3 maximum HP per rank (up to +18 HP) while genuinely both Lichdoms; remove/adjust correctly on cure, loss, respec, death or relog, with no bonus health restoration exploit. |
+| **Shroud of Ages** (`tyr_progression:archlich_shroud_of_ages`) | 5 | -3% direct ordinary physical damage taken per rank (up to -15%) while dual lich; does not mitigate Smite-specific weakness, fire/sun vulnerability, void, kill-plane or unrelated true damage, and cannot confer generic immortality. |
+| **Twinned Requiem** (`tyr_progression:archlich_twinned_requiem`) | 5 | Only AFTER one confirmed native rescue event completes (phylactery first or Arca fallback), restore +2 actual HP per rank (up to +10 HP), capped at current max. This modifies post-rescue recovery ONLY: it never recharges an anchor, decides the rescue, or grants a second save. |
+| **Grave Return** (`tyr_progression:archlich_grave_return`) | 5 | For ten seconds after a real native death rescue, +5% personal grounded movement speed and +3% actual necromantic spell damage per rank (max +25%/+15%); effects occur after the one real rescue and never stop the next legitimate lethal hit. |
+| **Sovereign Eclipse** (`tyr_progression:archlich_sovereign_eclipse`) | 4 | For fifteen seconds after that one valid native resurrection, up to ten currently existing personally owned summoned undead within 12 blocks gain +8% actual melee damage per rank (up to +32%); no new summons, no extra Totem, Arca use, paid resurrection or automatic chunk-load. |
+
+**Total Archlich additional tier: 20 paid skills / 100 one-point ranks. Total full legal Archlich: 41 paid skills / 200 purchased ranks.** The real native death controller still executes exactly one rescue, prioritizing JAWR phylactery then Goety Arca; Dragon Survival takes precedence for a legal single-provider Dracolich. No second soul resource, extra life, new hotkey or automatically issued 100 bonus points. Full source, balance and safety holds are in [the Archlich Ascendancy specification](ARCHLICH-ASCENDANCY-ADDITIONAL-100PT-2026-11-22.md).
+
 
 ### Gilded — complete 100-rank gold-and-Nether skill tree
 
