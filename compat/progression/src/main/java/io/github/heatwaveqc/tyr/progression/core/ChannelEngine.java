@@ -172,45 +172,90 @@ public final class ChannelEngine {
                 .receipt(tree.id(),skillId,systemId,source.pointsPerRank(),permanent);
     }
 
+    /**
+     * Configurable respec: refund, retain, or sacrifice investment in each
+     * currency. No separate level counter changes; XP itself only decreases
+     * when a selected policy expressly forfeits its committed value.
+     * The legacy !receipt exception remains nonrefundable by default.
+     */
     public static Ledger refund(Ledger ledger,Definition.Path tree){
         if(!ledger.get(tree.id()).joined())return ledger;
-        var prefix=tree.id()+"|";var next=ledger;
-        var permanentRanks=new java.util.HashMap<String,Integer>();
-        // Respec refunds purchased ranks to their original XP system while
-        // retaining explicitly irreversible grants. XP itself never increases.
-        var retained=new ArrayList<ExperienceEconomy.PaidRank>();
+        var catalog=ExperienceEconomyRuntime.current();
+        String prefix=tree.id()+"|";
+        var paymentRows=new HashMap<>(ledger.payments());
+        var retainedSkills=new HashMap<String,Integer>();
         var permanentBudget=new HashMap<String,Integer>();
-        for(var row:ledger.payments().entrySet()) if(row.getKey().startsWith(prefix)) {
-            String skill=row.getKey().substring(prefix.length());
-            for(String receipt:row.getValue()) if(receipt.startsWith("!")) {
-                int end=receipt.lastIndexOf('|');
-                if(end<=1)throw new IllegalStateException("Invalid permanent purchase receipt");
-                permanentBudget.merge(skill+"|"+receipt.substring(1,end),1,Integer::sum);
+        var burned=new HashMap<String,Long>();
+        var nativeRefunds=new HashMap<String,Long>();
+
+        for(var entry:ledger.payments().entrySet()){
+            if(!entry.getKey().startsWith(prefix))continue;
+            String skill=entry.getKey().substring(prefix.length());
+            var kept=new ArrayList<String>();
+            for(String receipt:entry.getValue()){
+                boolean permanent=receipt.startsWith("!");
+                String text=permanent?receipt.substring(1):receipt;
+                int separator=text.lastIndexOf('|');
+                if(separator<1)throw new IllegalStateException("Invalid respec receipt");
+                String currency=text.substring(0,separator);
+                int paid=Integer.parseInt(text.substring(separator+1));
+                if(paid<0)throw new IllegalStateException("Negative point payment");
+                var policy=catalog.policy(tree.id(),currency).onRespec();
+                boolean keep=policy==ExperienceEconomy.DeparturePolicy.RETAIN
+                        ||permanent&&policy==ExperienceEconomy.DeparturePolicy.REFUND;
+                if(keep){
+                    kept.add(receipt);
+                    retainedSkills.merge(skill,1,Integer::sum);
+                    if(catalog.systems().containsKey(currency))
+                        permanentBudget.merge(skill+"|"+currency,1,Integer::sum);
+                }else if(policy==ExperienceEconomy.DeparturePolicy.FORFEIT
+                         &&catalog.systems().containsKey(currency)){
+                    burned.merge(currency,(long)paid,Math::addExact);
+                }else if(policy==ExperienceEconomy.DeparturePolicy.REFUND
+                         &&!catalog.systems().containsKey(currency)){
+                    nativeRefunds.merge(currency,(long)paid,Math::addExact);
+                }
             }
+            if(kept.isEmpty())paymentRows.remove(entry.getKey());
+            else paymentRows.put(entry.getKey(),kept);
         }
-        for(var rank:ledger.economy().paidRanks()) {
+
+        var original=ledger.economy();
+        var retained=new ArrayList<ExperienceEconomy.PaidRank>();
+        for(var rank:original.paidRanks()){
             if(!rank.path().equals(tree.id())){
                 retained.add(rank);continue;
             }
             String key=rank.skill()+"|"+rank.system();
-            int budget=permanentBudget.getOrDefault(key,0);
-            if(budget>0) {
+            int count=permanentBudget.getOrDefault(key,0);
+            if(count>0){
                 retained.add(rank);
-                permanentBudget.put(key,budget-1);
+                permanentBudget.put(key,count-1);
             }
         }
-        var previous=ledger.economy();
-        next=next.withEconomy(new ExperienceEconomy.Ledger(previous.currentXp(),retained,
-            previous.achievements(),previous.rewardReceipts(),previous.recentTransactions()));
-        for(var row:ledger.payments().entrySet())if(row.getKey().startsWith(prefix))for(String receipt:row.getValue()){
-            if(receipt.startsWith("!")){permanentRanks.merge(row.getKey().substring(prefix.length()),1,Integer::sum);continue;}
-            int sep=receipt.lastIndexOf('|');String id=receipt.substring(0,sep);int amount=Integer.parseInt(receipt.substring(sep+1));
-            Wallet w=next.wallet(id);if(w==null||amount<0)throw new IllegalStateException("Invalid purchase receipt");
-            if(!XpChannel.MXP.equals(id))
-                next=next.withWallet(id,w.points((int)Math.min(Integer.MAX_VALUE,(long)w.points()+amount)));
+        var xp=new HashMap<>(original.currentXp());
+        for(var entry:burned.entrySet()){
+            var spec=catalog.systems().get(entry.getKey());
+            var current=xp.get(entry.getKey());
+            if(spec==null||current==null)throw new IllegalStateException("Missing respec XP system");
+            var after=current.subtract(spec.xpPerPoint().multiply(BigDecimal.valueOf(entry.getValue())));
+            if(after.signum()<0)throw new IllegalStateException("Respec forfeiture exceeds earned XP");
+            xp.put(entry.getKey(),after);
         }
+        var economy=new ExperienceEconomy.Ledger(xp,retained,
+                original.achievements(),original.rewardReceipts(),original.recentTransactions());
+        for(var spec:catalog.systems().values())ExperienceEconomy.available(economy,spec);
+        var next=ledger.withEconomy(economy);
+        for(var entry:nativeRefunds.entrySet()){
+            Wallet wallet=next.wallet(entry.getKey());
+            if(wallet==null)throw new IllegalStateException("Missing native respec wallet "+entry.getKey());
+            next=next.withWallet(entry.getKey(),wallet.points(
+                (int)Math.min(Integer.MAX_VALUE,(long)wallet.points()+entry.getValue())));
+        }
+        next=new Ledger(next.paths(),next.wallets(),paymentRows,next.economy());
         var raw=ledger.get(tree.id());
-        return next.with(tree.id(),new Track(true,0,0,0,permanentRanks,raw.milestones(),raw.counters())).clearReceipts(tree.id());
+        return next.with(tree.id(),new Track(true,0,0,0,retainedSkills,
+                raw.milestones(),raw.counters()));
     }
     public static Ledger magic(Ledger ledger,XpChannel channel,String tx,String firstKey,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
