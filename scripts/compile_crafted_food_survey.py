@@ -377,10 +377,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--audit", required=True, type=Path)
     parser.add_argument("--repo", required=True, type=Path)
+    parser.add_argument("--pin-snapshot", type=Path, default=None,
+                        help="Exact pinned roster surveyed by Codex, defaulting to --repo")
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
     audit = json.loads(args.audit.read_text(encoding="utf-8"))
-    verify_pins(audit, args.repo)
+    verify_pins(audit, args.pin_snapshot or args.repo)
     native = args.repo / "compat/progression/src/main/resources"
     roots = read_records(native / SOURCES)
     existing = read_records(native / ROUTES)
