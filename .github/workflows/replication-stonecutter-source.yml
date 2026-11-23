@@ -1,0 +1,39 @@
+name: Replication stonecutter source tests
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_replication_stonecutter_*.py'
+      - 'tests/test_replication_stonecutter_*.py'
+      - 'docs/research/replication-stonecutter-catalog-2026-11-23/**'
+      - 'kubejs/data/replication/**'
+      - 'kubejs/data/tmm/tags/item/replication/**'
+      - '.github/workflows/replication-stonecutter-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run source-only catalog and runtime tests
+        run: python -m unittest tests.test_replication_stonecutter_catalog tests.test_replication_stonecutter_runtime -v
+      - name: Regenerate candidate and compare exact checked-in data
+        shell: bash
+        run: |
+          tmp=$(mktemp -d)
+          python scripts/build_replication_stonecutter_runtime.py --catalog-dir docs/research/replication-stonecutter-catalog-2026-11-23 --output-root "$tmp"
+          diff -u kubejs/data/tmm/tags/item/replication/stonecutter_outputs.json "$tmp/tmm/tags/item/replication/stonecutter_outputs.json"
+          for name in cant_be_scanned cant_be_disintegrated skip_calculation; do
+            diff -u "kubejs/data/replication/tags/item/$name.json" "$tmp/replication/tags/item/$name.json"
+          done
+          diff -u kubejs/data/replication/recipe/matter_values/c/tags/stones.json "$tmp/replication/recipe/matter_values/c/tags/stones.json"
+      - name: Confirm Python source syntax
+        run: python -m py_compile scripts/build_replication_stonecutter_catalog.py scripts/build_replication_stonecutter_runtime.py tests/test_replication_stonecutter_catalog.py tests/test_replication_stonecutter_runtime.py
