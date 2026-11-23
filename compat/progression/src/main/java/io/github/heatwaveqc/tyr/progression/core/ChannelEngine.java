@@ -91,14 +91,25 @@ public final class ChannelEngine {
         // Respec refunds purchased ranks to their original XP system while
         // retaining explicitly irreversible grants. XP itself never increases.
         var retained=new ArrayList<ExperienceEconomy.PaidRank>();
-        for(var rank:ledger.economy().paidRanks()){
+        var permanentBudget=new HashMap<String,Integer>();
+        for(var row:ledger.payments().entrySet()) if(row.getKey().startsWith(prefix)) {
+            String skill=row.getKey().substring(prefix.length());
+            for(String receipt:row.getValue()) if(receipt.startsWith("!")) {
+                int end=receipt.lastIndexOf('|');
+                if(end<=1)throw new IllegalStateException("Invalid permanent purchase receipt");
+                permanentBudget.merge(skill+"|"+receipt.substring(1,end),1,Integer::sum);
+            }
+        }
+        for(var rank:ledger.economy().paidRanks()) {
             if(!rank.path().equals(tree.id())){
                 retained.add(rank);continue;
             }
-            var receipts=ledger.payments().getOrDefault(tree.id()+"|"+rank.skill(),List.of());
-            boolean permanent=receipts.stream().anyMatch(value ->
-                value.startsWith("!")&&value.startsWith("!"+rank.system()+"|"));
-            if(permanent)retained.add(rank);
+            String key=rank.skill()+"|"+rank.system();
+            int budget=permanentBudget.getOrDefault(key,0);
+            if(budget>0) {
+                retained.add(rank);
+                permanentBudget.put(key,budget-1);
+            }
         }
         var previous=ledger.economy();
         next=next.withEconomy(new ExperienceEconomy.Ledger(previous.currentXp(),retained,
