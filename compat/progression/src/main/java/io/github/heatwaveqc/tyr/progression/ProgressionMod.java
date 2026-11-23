@@ -39,6 +39,7 @@ public final class ProgressionMod {
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.TooltipMilestoneNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
@@ -46,6 +47,7 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();
     }
