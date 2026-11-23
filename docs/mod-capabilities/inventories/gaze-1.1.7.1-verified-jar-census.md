@@ -114,9 +114,9 @@ Pinned class `SpiritChannelPouchItem extends SoulwovenPouchItem`, **not** a new 
 
 - **Shift + use** sets the held item's `gaze:dump_location` (BlockPos) and `gaze:dump_dimension` component to the player's current position and dimension.
 - **Ordinary use** with contents attempts to drop **copies of all contained item stacks** into the target block location in the **same dimension only**, at a **loaded chunk**. On successful drop loop it clears the pouch contents and assigns a **200-tick cooldown**. Target never loads chunks merely to dump. Missing binding, dimension mismatch, or unloaded target reports failure (and should preserve contents).
-- Storage and normal item insertion remain inherited and **general-purpose**. The remote dump is additional **cross-location item routing**, which is a stronger conflict with TMM's no-generic-backpack/logistics exclusions; no Spirit-only exception can be assumed.
+- Storage and manual insertion remain inherited and **general-purpose**. Owner decision (2026-11-23) permits such **native magic-mod personal storage and incidental bound-position item transport**, regardless of generic item eligibility. The exclusion targets **separate generic-backpack/logistics-only mods**, not individual items in selected magic mods. This does **not** permit bag nesting.
 - **UI inconsistency:** pouch tooltip computes fullness via weight×128 but displays a fixed denominator of **256**, while inherited contents capacity is **512**. Treat as a potential visual bug requiring in-game confirmation; do not advertise the tooltip number as actual capacity.
-- The Gaze recipe **upgrades a real `malum:soulwoven_pouch`**, so disabling only the base pouch recipe can also incidentally block this Gaze item. Source-level recipe guards, loot and other acquisition must be reviewed together before selecting the eventual policy. If any pouch remains available, the #16 server-side *cross-mod bag nesting* protection must cover its exact ID.
+- The Gaze recipe **upgrades `malum:soulwoven_pouch`**, so do not disable the base pouch recipe on account of the broad storage predicate: all three Malum/Gaze pouches are **approved survival content**. Their acquisition remains ordinary native progression. **Mandatory #16:** server-side *cross-mod bag nesting* protection must reject bags placed inside these pouches and reject these pouches inside any other portable bag, without loss/duplication.
 
 ## 5. Pinned Malum constructor parity
 
@@ -125,7 +125,7 @@ Exact Malum 1.8.2 `BerserkerGeas.class` constructor disassembly confirms `MalumG
 ## 6. Research/QA boundary and action
 
 - **Source-ready for Atlas quest research:** all 24 Gaze recipe objects; 26 additional registered Rite type IDs + patterns; eight Rune crafting paths + equip slots; six base weapons + explicit special variants; five Curios; exact book progression UI open route; exact generic remote pouch behavior; Malum Berserker published-bytecode identity mismatch.
-- **Separate implementation:** Progression's first-only Gaze Rite receipt catalog needs a targeted new code PR if intended to cover all native registered Rites (see linked handoff issue). Portable storage inclusion/removal and bag-nesting bridge are pack-owned, not Atlas runtime edits.
+- **Separate implementation:** Progression's first-only Gaze Rite receipt catalog needs a targeted code PR (#617) for the additional 26 registered Rites. All native pouches are **approved for inclusion** and need no suppression implementation. The still-required **#16 cross-mod bag-nesting bridge** is pack-owned, not an Atlas runtime edit.
 - **Still requires in-game or deeper exact-bytecode checks:** quantitative Geas/weapon/Rite effects, exact Fafnir set interaction, conditional Iron's integration, client UI and Bestiary display, Enchantment Workbench item retention, TMM-specific EMC and tag overrides, game registration/load results, effective cross-mod compatibility. No client/server/process test was performed.
 
 **Do not copy these JARs or their image/code assets into the repository.** Source facts only, pinned checksums for reproducibility.
