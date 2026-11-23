@@ -211,8 +211,10 @@ class FoodRecipeEvaluatorTest {
                 "ingredients":[{"item":"minecraft:carrot","count":1}]}]}
             """);
         assertEquals(2, variants.routes().size());
+        // A processed fully-off-diet carrot has its already reduced
+        // raw budget halved again: 6 -> 3 off-diet -> 1.5 exact, rounded 2.
         budget(evaluator(roots(),variants).evaluate("sea_dragon",variants.item())
-            .orElseThrow(),3,12);
+            .orElseThrow(),2,6);
         assertThrows(IllegalArgumentException.class,()->recipe("""
             {"schema":1,"item":"example:duplicate","complete":true,"identity":"ordinary",
              "routes":[
