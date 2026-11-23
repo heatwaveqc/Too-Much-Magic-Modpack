@@ -47,7 +47,8 @@ public final class VirtualElytra {
 
     /** Resolves real entitlement on each authoritative server query. */
     public static Set<String> sources(ServerPlayer player) {
-        if (player == null) return Set.of();
+        if (player == null || player instanceof net.neoforged.neoforge.common.util.FakePlayer
+                || !player.isAlive() || player.isCreative() || player.isSpectator()) return Set.of();
         boolean newbie = NewbieMode.isNewbie(player);
         // Do not enumerate Monk effects for Newbies or players with no glide.
         boolean monk = !newbie && ClassAbilities.unlocked(player,"momentum_glide");
