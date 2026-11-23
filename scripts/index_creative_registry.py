@@ -51,7 +51,10 @@ def inventory(input_path: Path) -> dict:
             total += 1
             item_id, name = row["id"], row["name"]
             item_path = item_id.split(":", 1)[-1]
-            if not item_id or ":" not in item_id or not name:
+            # Some valid registered default items (e.g. Draconic's structure
+            # block) intentionally have no translated display name in the
+            # survey. Their registry IDs remain authoritative; do not abort.
+            if not item_id or ":" not in item_id:
                 raise ValueError(f"Bad captured registry row {total}: {item_id!r}")
             candidate = {"id": item_id, "name": name, "default_stack_emc": row["emc"]}
             if EXPLICIT.search(item_path) or EXPLICIT.search(name):
