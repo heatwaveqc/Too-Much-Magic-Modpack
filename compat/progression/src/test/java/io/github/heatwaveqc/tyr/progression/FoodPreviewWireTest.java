@@ -23,6 +23,29 @@ class FoodPreviewWireTest {
             FoodPreviewWire.chunks(Map.of()))), "A non-dragon clears stale preview");
     }
 
+    @Test void lavaCaughtGateDistinguishesOrdinaryAndMarkedNutrition() {
+        var input = Map.of(
+            "example:fish", FoodPreviewWire.Entry.lavaConditional(null),
+            "example:enchanted_fish", FoodPreviewWire.Entry.lavaConditional(
+                FoodPreviewWire.Entry.nourishment(3,1.5f)),
+            "example:neutral_drink", FoodPreviewWire.Entry.nourishment(0,0));
+        var output = FoodPreviewWire.parse(String.join("",FoodPreviewWire.chunks(input)));
+        assertEquals(input,output);
+        assertTrue(output.get("example:fish").lavaConditional());
+        assertFalse(output.get("example:fish").lavaHasNutrition());
+        assertTrue(output.get("example:enchanted_fish").lavaHasNutrition());
+        assertEquals(3,output.get("example:enchanted_fish").hunger());
+        assertThrows(IllegalArgumentException.class,
+            () -> FoodPreviewWire.Entry.lavaConditional(FoodPreviewWire.Entry.deny()));
+        for(String bad:new String[]{
+            "example:fish\\tLN\\t3\\n",
+            "example:fish\\tLN\\t3\\tNaN\\n",
+            "example:fish\\tL\\t3\\n",
+            "example:fish\\tLN\\t3\\t1.0\\textra\\n"}) {
+            assertThrows(IllegalArgumentException.class,()->FoodPreviewWire.parse(bad),bad);
+        }
+    }
+
     @Test void chunksLargeFoodTablesWithoutSplittingRows() {
         var foods = new HashMap<String, FoodPreviewWire.Entry>();
         for (int n = 0; n < 650; n++)
