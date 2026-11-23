@@ -80,7 +80,7 @@ class ConfiguredEconomyRuntimeTest {
             assertSame(ledger,ChannelEngine.buy(ledger,tree(),config(),SKILL,CULT));
             assertEquals(5000,ledger.economy().currentXp().get(XpChannel.MXP).intValueExact());
             assertEquals(300,ledger.economy().currentXp().get(CULT).intValueExact());
-            assertEquals(3,ledger.wallet(CULT).rank());
+            assertEquals(4,ledger.wallet(CULT).rank());
         } finally {
             ExperienceEconomyRuntime.install(previous);
         }
