@@ -120,16 +120,62 @@ class CompilerTest(unittest.TestCase):
         with self.assertRaisesRegex(m.Hold, "tag_cycle"):
             cycle.expand("c:a")
 
-    def test_signature_compression_only_for_equal_verified_sources(self):
+    def test_all_tag_alternatives_remain_exact_for_active_recipe_audit(self):
         tags = [{"tag": "c:berries", "values": ["test:orange", "test:apple"]}]
         r = recipe("test:juice", "test:juice", [{"tag": "c:berries"}])
         roots = {"test:orange": source("test:orange"),
                  "test:apple": source("test:apple")}
         data, _ = m.process(audit([r], tags), roots, {})
-        self.assertEqual(len(data[str(m.ROUTES / "test/juice.json")]["routes"]), 1)
+        self.assertEqual(len(data[str(m.ROUTES / "test/juice.json")]["routes"]), 2)
         roots["test:apple"]["source_units"] = 0.5
         data, _ = m.process(audit([r], tags), roots, {})
         self.assertEqual(len(data[str(m.ROUTES / "test/juice.json")]["routes"]), 2)
+
+    def test_distinct_equivalent_recipe_receipts_are_never_compressed(self):
+        recipes = [
+            recipe("test:steak", "test:furnace", [{"item": "test:raw"}],
+                   station="minecraft:smelting"),
+            recipe("test:steak", "test:smoker", [{"item": "test:raw"}],
+                   station="minecraft:smoking"),
+        ]
+        data, report = m.process(audit(recipes), {
+            "test:raw": source("test:raw")}, {})
+        self.assertEqual(report["held_output_ids"], 0)
+        self.assertEqual({x["receipt"] for x in data[
+            str(m.ROUTES / "test/steak.json")]["routes"]},
+            {"test:furnace", "test:smoker"})
+
+    def test_configurable_method_and_thermal_tool_without_code_change(self):
+        processing = m.load_processing_config()
+        self.assertEqual(processing["method_by_recipe_type"][
+            "farmersdelight:cooking"], "heat")
+        processing["method_by_recipe_type"]["newkitchen:clay_oven"] = "heat"
+        custom = recipe("test:new_meal", "newkitchen:cook",
+                        [{"item": "test:root"}], station="newkitchen:clay_oven")
+        data, report = m.process(audit([custom]), {
+            "test:root": source("test:root")}, {}, processing=processing)
+        self.assertEqual(report["held_output_ids"], 0)
+        self.assertEqual(data[str(m.ROUTES / "test/new_meal.json")]["routes"][0]["method"], "heat")
+        processing["hot_tool_tag_tokens"].append("tandoor")
+        tool = recipe("test:warm_stew", "test:warm",
+                      [{"tag": "c:tool_tandoor"}, {"item": "test:root"}])
+        data, _ = m.process(audit([tool]), {
+            "test:root": source("test:root")}, {}, processing=processing)
+        self.assertEqual(data[str(m.ROUTES / "test/warm_stew.json")]["routes"][0]["method"], "heat")
+
+    def test_invalid_processing_config_is_rejected_before_generating(self):
+        original = m.load_processing_config()
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "processing.json"
+            for invalid in [
+                {**original, "schema": 2},
+                {**original, "method_by_recipe_type": {"test:forge": "mystery"}},
+                {**original, "neutral_item_ids": ["NOT AN ITEM"]},
+                {**original, "hot_tool_tag_tokens": ["pot", "pot"]},
+            ]:
+                path.write_text(json.dumps(invalid), encoding="utf-8")
+                with self.assertRaises(ValueError):
+                    m.load_processing_config(path)
 
     def test_malformed_native_tag_is_held_without_poisoning_unrelated_food(self):
         raw = audit([
