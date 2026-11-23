@@ -161,9 +161,14 @@ public record FoodPolicyRules(
     }
 
     public static Nutrition rounded(double exactHunger, double theoreticalSaturationPoints) {
-        if (!Double.isFinite(exactHunger) || exactHunger <= 0
+        if (!Double.isFinite(exactHunger) || exactHunger < 0
                 || !Double.isFinite(theoreticalSaturationPoints) || theoreticalSaturationPoints < 0)
             throw new IllegalArgumentException("Invalid food budget");
+        if (exactHunger == 0) {
+            if (theoreticalSaturationPoints != 0)
+                throw new IllegalArgumentException("Zero nourishment cannot grant saturation");
+            return new Nutrition(0, 0f, 0);
+        }
         int hunger = (int) Math.round(exactHunger);
         if (hunger == 0) hunger = 1;
         float modifier = (float) (theoreticalSaturationPoints / (2 * hunger));
