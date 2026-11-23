@@ -105,7 +105,11 @@ public final class ChannelEngine {
         var view=view(ledger,tree,config);
         if(!view.joined()||w==null||gate==null)return ledger;
         var before=new Track(true,view.xp(),gate.rank(),w.points(),view.skills(),view.milestones(),view.counters());
-        var after=ProgressionMath.buy(tree,before,skillId);if(after==before)return ledger;
+        // Shipped generic XP economy charges one point per paid rank.
+        // Legacy native currencies retain their source-defined cost until migrated.
+        int pointCost=binding.currency().magic()?1:skill.price(view.skillRank(skillId));
+        var after=ProgressionMath.buy(tree,before,skillId,pointCost);
+        if(after==before)return ledger;
         Wallet reward=binding.awardCurrency()==null?null:ledger.wallet(binding.awardCurrency().id());
         if(binding.awardPoints()>0&&(reward==null||reward.points()>Integer.MAX_VALUE-binding.awardPoints()))return ledger;
         ExperienceEconomy.Ledger xpState=ledger.economy();
@@ -115,7 +119,7 @@ public final class ChannelEngine {
             var spec=ExperienceEconomyRuntime.current().systems().get(binding.currency().id());
             if(spec==null)throw new IllegalArgumentException("Missing XP buying ledger");
             xpState=ExperienceEconomy.buy(xpState,spec,tree.id(),skillId,
-                skill.price(view.skillRank(skillId)),skill.maxRank(),skill.maxRank());
+                pointCost,skill.maxRank(),skill.maxRank());
             if(xpState==ledger.economy())return ledger;
         }
         var next=ownership(ledger,tree,after,config)
@@ -161,7 +165,7 @@ public final class ChannelEngine {
         int rank=(int)Math.min(Integer.MAX_VALUE,displayLevel);
         Track candidate=new Track(true,view.xp(),rank,Integer.MAX_VALUE,
                 view.skills(),view.milestones(),view.counters());
-        Track nextRank=ProgressionMath.buy(tree,candidate,skillId);
+        Track nextRank=ProgressionMath.buy(tree,candidate,skillId,source.pointsPerRank());
         if(nextRank==candidate)return ledger;
         var paid=ExperienceEconomy.buy(ledger.economy(),system,tree.id(),skillId,
                 source.pointsPerRank(),source.maxRanks(),cap);
