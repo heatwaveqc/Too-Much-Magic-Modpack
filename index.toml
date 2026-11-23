@@ -317,6 +317,10 @@ file = "defaultconfigs/ProjectE/mapping.toml"
 hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
 
 [[files]]
+file = "defaultconfigs/multiplayerspawners-server.toml"
+hash = "fd8270f5c54f0adcf36d1fec196f9a66c859b1637fc43acc61502da2e0938776"
+
+[[files]]
 file = "kubejs/assets/bountiful/lang/en_us.json"
 hash = "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec"
 
@@ -499,6 +503,14 @@ hash = "d1d6454595bb1d59411bac05a572c06e84cf0932408812d2604690cfc3edd082"
 [[files]]
 file = "kubejs/data/irons_spellbooks/tags/item/blood_focus.json"
 hash = "553f16c2f12fb6758053ed0684e72f0313ee9f607fea3555922105288b7f03f5"
+
+[[files]]
+file = "kubejs/data/lootr/tags/block/convert/barrels.json"
+hash = "3d01668466e3b8bf4208780a2b6e0a99cb4b69e48a0d665eea7617eafbab7919"
+
+[[files]]
+file = "kubejs/data/lootr/tags/block/convert/chests.json"
+hash = "a767a6cb4e7693098510edb86b1d68352d6f6733a5d12eca08e80ff9c240617c"
 
 [[files]]
 file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
@@ -2187,6 +2199,11 @@ metafile = true
 [[files]]
 file = "mods/mowzies-mobs.pw.toml"
 hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
+metafile = true
+
+[[files]]
+file = "mods/multiplayer-spawners.pw.toml"
+hash = "d75faea90db8478c01700cd99cfec0cd6b3fa6661a06cdf55ced1bc4ba4a8f5b"
 metafile = true
 
 [[files]]
