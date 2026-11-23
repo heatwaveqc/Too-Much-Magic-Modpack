@@ -135,3 +135,5 @@ Read-only research validation: Markdown UTF8/local links/docs-only scope/whitesp
 ## Disposable-world test plan
 
 Later authorized acceptance should follow each companion's positive/boundary cases: first cast/glyph/XP, processing/pedestal/Source consumption, book upgrade/Chimera actual Tribute, worker/familiar deployment and output, storage full/remainders, potion/equipment modifiers, transport/return identity, detector attribution/cancel and claims, reload/ownership. Record actual inventories/resources/world states and real operation credit/team personal claims. Native source formulas aren't measured rates or compatibility guarantees.
+
+Current [Conflux mana audit](ars-conflux-pinned-mana.md) qualifies native ring costs/defaultpercentage, optionalnativeeffectbilling and NPCcapability. Native-body references alone do not prove final current combined price or shield eligibility.

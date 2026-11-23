@@ -36,3 +36,5 @@ Mixin plugin AnsMixinPlugin allows most targets, specially gates Zero through Ze
 No native guide acquisition or complete player walkthrough has been established for Conflux yet. Full research cannot be called complete from this receipt. Historical42-profile denominator now expands to43tracked profiles with this new installed-scope addon; current9source-complete,33researching and1stale(34unfinished).
 
 Current optional-content branch is source-backed in [content companion](ars-conflux-pinned-content.md); library billing/carrier/discount/geometry/installed compat branches remain researching. The generic no-guide/no-walkthrough statement above describes initial receipt; use content companion for named native Notebook/JEI instructions for enabled branches.
+
+[Mana discounts, dispatch billing and NPC pools](ars-conflux-pinned-mana.md) covers defaultpercentage rings, optionalnativebilling/reservation→action→debit, nSpellsquote cleanup and nonplayercapability; fullcarrier/active/compat review remains.

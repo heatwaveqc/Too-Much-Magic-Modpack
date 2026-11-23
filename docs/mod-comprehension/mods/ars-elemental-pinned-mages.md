@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — four wandering Mage encounters
 
+**Current installed-addon update:** [Conflux mana recipient audit](ars-conflux-pinned-mana.md) finds nonplayer ManagedCap registration, changing native-only BubbleShield eligibility caveat below; actual pool/350cost/shield effectiveness remains untested.
+
 Exact addon SHA1 `562f640916aa6f5c83b3b3ee2384ca828b870e01`, native Ars5.13.5 SHA1 `cdc946c63e1eb676f0e29e4640335c0ce68d7de3`; [receipt](ars-elemental-pinned-guide-urn.md). Exact EntityMageBase including inners/MageResolver, four school subclasses, MageProjCastingGoal/ProjCastingGoal/CastGoal/SelfCastGoal/HealSelfCastGoal, ModEntities/EntityAttributes/config and five-biome resources; native EntitySpellResolver/SpellResolver/CapabilityRegistry, Sauce ISchoolFocus inspected. javap confirms armor switch's actual item selection; CFR's apparent uninitialized local is reconstruction artifact. No spawn/combat/loot/client acceptance.
 
 ## Find and understand the encounter

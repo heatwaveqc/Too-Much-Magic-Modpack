@@ -1,5 +1,7 @@
 # Ars Elemental 0.7.10.4 — Bubble Shield and glyph coverage closure
 
+**Current installed-addon update:** [Conflux mana recipient audit](ars-conflux-pinned-mana.md) finds nonplayer ManagedCap registration, changing native-only BubbleShield eligibility caveat below; actual pool/350cost/shield effectiveness remains untested.
+
 **Version update:** Current0.7.11.3Phalanx is unconditionally registered, with acquisition separately gated by Conflux recipe; historical development-only boundary below is superseded by [current javap-backed audit](ars-elemental-pinned-phalanx-worldgen.md).
 
 Exact artifact/hash [receipt](ars-elemental-pinned-guide-urn.md). Direct EffectBubbleShield, BubbleShieldEffect, DamageEvents.postReductionDamageTweaking/statusProtect, ModPotions, packaged recipe/blacklist and ArsNouveauRegistry production registration. Native mana capability/discount endpoints previously audited. No combat, status or multiplayer tests. This completes source walkthrough coverage of **39 packaged glyph recipe routes**, not the entire addon.

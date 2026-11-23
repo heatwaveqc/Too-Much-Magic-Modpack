@@ -211,3 +211,5 @@ Elemental custom book/3Crush and Sauce Plinth recipients now audited in linked c
 Current Elemental remaining identified native version deltas now traced in [Phalanx/worldgen receipt](mods/ars-elemental-pinned-phalanx-worldgen.md);40companions. Full184recipe/registry/profile/pilot and Conflux combined review still open; current9/43complete unchanged.
 
 Conflux optionalcontent/all4recipes and AdditionsCodex recipient now traced in [content companion](mods/ars-conflux-pinned-content.md); fullConfluxbilling/carriers/installedcompat/nativeAdditionsroute remain open. No profile promotion.
+
+Conflux mana recipient contract now audited in [companion](mods/ars-conflux-pinned-mana.md);2Confluxcompanions, fullcarrier/active/compat still open.9complete33researching1staleof43 unchanged.

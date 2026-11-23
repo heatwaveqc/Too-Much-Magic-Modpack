@@ -480,3 +480,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-22 — [Current Phalanx/worldgen delta](mods/ars-elemental-pinned-phalanx-worldgen.md): javap proves unconditional currentPhalanx registration; Confluxdefaultfalse gatesrecipe, notcurrentnativeitem. Orbital/target/duration/styles, preservedWalkerrecipe/newvisuals, Vexingcarver and Evaporatepropagation traced.40Elementalcompanions, no completion/runtime promotion.
 
 - 2026-11-22 — [Conflux optional content](mods/ars-conflux-pinned-content.md): all4recipeconditions, NearbyAlliesgeometry/owner-team-provider semantics (notSaucebook), NEGabsentboundary and two-sided Additionscodex exclusion bridge. Currentrecipe-disabledPhalanxcanstillbeeligibleforAncientCodex subjecttoeffectivepool; no liveacquisitionclaim.9/43complete unchanged.
+
+- 2026-11-23UTC — [Conflux mana](mods/ars-conflux-pinned-mana.md): defaultpercentage rings, optionaldispatch reservation→action→debit, quote/cleanup and NPCpools. Current Mage/BubbleShield capability caveat corrected;9/43complete unchanged. Workspace relocation recovered; no gameplay PASS.

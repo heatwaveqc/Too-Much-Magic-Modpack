@@ -1,3 +1,12 @@
+# Latest checkpoint — 2026-11-23 02:19UTC relocation recovery / Conflux mana
+
+- **Workspace now C:\ChatGPT\Magic Minecraft Modpack\research-magic**, oldOneDrivepathgone. Movedcopywascleanat3aacd37e; repaired ONLY researchworktree git pointers via gitworktree repair, fetchedpushed7ee4c48d/f46c08c9 andfast-forwardedthissamebranch. No QAcheckoutcontentchanged. Recovered priorinterrupted/uncommittedmana draft from exactsourceevidence; it hadnotbeenincludedinmovedsnapshot. ExternalTemp artifacts/CFRstillaccessible. Hourlyautomationpromptupdatedtonewpath; cadencepreserved.
+- Added ars-conflux-pinned-mana.md: defaultpercentage rings(.1/.2) vs optionalnativeeffectbillingfalse; Source/economiesseparate. SauceTAIL/ConfluxRETURN orderunverified. Nativebillgroupraw/discount allocation/PrevsPostfrozenquotes, upfrontdebitno genericrefund, reservation→action→debit/normalinapplicablepaid/MISSinsufficientstop/exceptionnotworldrollback. nSpells3.3.5finishendpointverified; VolleyBudgetconditionalSplit/costquote notspawn guarantee.
+- **NPCcapabilitybridge:** ConfluxLOWESTnonplayerlivingManagedCap/nativeattachment/firstmissingfill/default100max5regen/nativeglyph-tierbonuses/20tick; currentElementalBubbleShield eligibilitybroaderthanPlayer-onlynativecaveat.350mitigationcost/actualNPCpoolnotguaranteeusefulshield. Mage/BubbleShieldreportslinked. ArsManaAccountconstructorCFRcheckedjavap.2Confluxcompanions/40Elemental; no profilepromotion.
+- **Next** fullConfluxcarriers/reflection/activecasting/cooldowns/geometry/schools/installedoptionalbridges; Elemental184recipe/registry/profile/pilotconsolidation; Elemancy/Additionsfullroutes/combinedArs/othermajors. Currentintegrationc11a95fcunchanged.9complete33researching1staleof43/nohardblocker/hourlyactive/docs only. GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — Conflux optional glyphs / Additions learning bridge
 
 - Added ars-conflux-pinned-content.md;4recipesall160XP+exactconditions, defaultNearby/Phalanxfalse, actualNEGabsent/currentnooverridesboundedsearch. NearbyTier3/base30/clamp8+3AOE1..32/spherecenterexecutor/casterexcluded/sortedtargets/cloneperbranch. Alliesnativeownerchain/team/provider; noAllies.registercallerandnoSauceSavedDataread, NOTBookfriendsalias.
