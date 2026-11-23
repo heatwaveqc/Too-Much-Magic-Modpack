@@ -14,7 +14,8 @@ class FoodPreviewWireTest {
             "minecraft:cooked_beef", FoodPreviewWire.Entry.nourishment(3, 2.0f),
             "example:charred", FoodPreviewWire.Entry.nourishment(2, 1.5f),
             "example:unfavored", FoodPreviewWire.Entry.nourishment(0, 0),
-            "example:magical", FoodPreviewWire.Entry.permitNative());
+            "example:magical", FoodPreviewWire.Entry.permitNative(),
+            "example:dryad_denied", FoodPreviewWire.Entry.deny());
         var chunks = FoodPreviewWire.chunks(expected);
         assertEquals(1, chunks.size());
         assertEquals(expected, FoodPreviewWire.parse(String.join("", chunks)));
@@ -41,7 +42,9 @@ class FoodPreviewWireTest {
             "minecraft:beef\t6\tNaN\n",
             "minecraft:beef\t6\tInfinity\n",
             "minecraft:beef\tP\nminecraft:beef\t6\t2.0\n",
+            "minecraft:beef\tD\nminecraft:beef\tP\n",
             "minecraft:beef\tQ\n",
+            "minecraft:beef\tD\t2.0\n",
             "minecraft:beef\t6\t2.0\textra\n"
         }) assertThrows(IllegalArgumentException.class, () -> FoodPreviewWire.parse(row), row);
     }
