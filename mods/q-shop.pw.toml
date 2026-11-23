@@ -1,0 +1,8 @@
+name = "Q Shop"
+filename = "qshop-neoforge-1.21.1-1.8.5.jar"
+side = "both"
+
+[download]
+url = "https://github.com/QLNPLUS/Q-shop/releases/download/v1.8.5-neoforge-1.21.1/qshop-neoforge-1.21.1-1.8.5.jar"
+hash-format = "sha256"
+hash = "272971b0e12ba139c5e4d1d1b17bd2c89ad8219543de142754312f013113792f"
