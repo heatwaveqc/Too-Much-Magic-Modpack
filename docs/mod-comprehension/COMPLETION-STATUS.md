@@ -215,3 +215,5 @@ Conflux optionalcontent/all4recipes and AdditionsCodex recipient now traced in [
 Conflux mana recipient contract now audited in [companion](mods/ars-conflux-pinned-mana.md);2Confluxcompanions, fullcarrier/active/compat still open.9complete33researching1staleof43 unchanged.
 
 [Conflux carrier/reflection interface](mods/ars-conflux-pinned-carriers.md) audited with consumer/absenttarget limits;3Confluxcompanions, activecasting/geometry/schools/installedbridges still researching.9/43sourcecomplete unchanged.
+
+Conflux [active-cast/cooldown framework](mods/ars-conflux-pinned-active-casts.md) audited,4companions; actualexternalproviders/geometry/schools/installedbridgecombinedscope still open.9/43complete unchanged.

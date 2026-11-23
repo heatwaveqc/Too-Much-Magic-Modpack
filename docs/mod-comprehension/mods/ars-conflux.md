@@ -40,3 +40,5 @@ Current optional-content branch is source-backed in [content companion](ars-conf
 [Mana discounts, dispatch billing and NPC pools](ars-conflux-pinned-mana.md) covers defaultpercentage rings, optionalnativebilling/reservation→action→debit, nSpellsquote cleanup and nonplayercapability; fullcarrier/active/compat review remains.
 
 [Carrier conversion and reflection interface](ars-conflux-pinned-carriers.md) maps11profiles/onepayload validator/short-circuit conversion, managed reflection eligibility/owner-versus-account semantics and absentZero/caller boundaries; no defaultnewreflector/weapon inferred.
+
+[Active-cast/cooldown interfaces](ars-conflux-pinned-active-casts.md) traces held-tool preparation, acknowledged release, persistent deadline API and localnSpells guards; no providers/store registrations found insideConflux or directConfluxclassreferences in eightotherfamilyJARs. This bounded scan is not whole-pack consumerproof.

@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-23 14:51UTC Conflux active casting/cooldowns
+
+- Added ars-conflux-pinned-active-casts.md: provideroptional/no extra defaultchantinferred, MAXIMUMvsSUM/attributedurations, pendinghandobject+componentsnapshot/sameworld/alive guard, no move-positioncheck; repeatedvalidpendingQUEUEDnotreplacement; preparationnoownmanareservation. Normaldispatch/arrowspawn/scrydebitacknowledge; releasecooldowncallbacks/notjustclick, originalexceptionnotrollback. PersistentdeadlineOverworldclock/clonepreservedefaulttrue/APIstoresnotnativeIronGoety.
+- **Consumerboundary:** noActiveCasts.register/PersistentCooldowns.registercallersinsideexactConflux; eightotherfamilyJARclassbytes scanned dev/arsconflux references0each. Notwholepack/providerreflectionproof. nSpellsadapterlocalguardsread, fullcurrentAPI/signature/ledgerinteractionsstilltoverify.4Confluxcompanions/40Elemental.
+- **Next** Confluxgeometry/schools/actualinstalledexternalconsumers+Controle/Additions/nSpellsbridgefulltwo-endedreview, thenElemental184recipe/registry/profile/pilotconsolidation, Elemancy/Additionsnative/Arscombined/othermajors. Integrationc11a95fcunchanged/nohardblocker/hourlyactive.9complete33researching1staleof43; explicitworkdirC:\ChatGPT\Magic Minecraft Modpack\research-magic; GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-23 03:28UTC Conflux carriers/reflection
 
 - Added ars-conflux-pinned-carriers.md:11builtinprofiles, attachedsource/castType/propagatoridentity, ProjectileFormconsumerAPI(noimplementerinsideConflux), onepayloadphrasevalidator, nativeProjectileadd/join short-circuitconversion. ProfileaugmentsetNOTproofallnativecompatibleAugmentsrewritten. VolleyBudgetquoteearlierreceipt.

@@ -484,3 +484,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-23UTC — [Conflux mana](mods/ars-conflux-pinned-mana.md): defaultpercentage rings, optionaldispatch reservation→action→debit, quote/cleanup and NPCpools. Current Mage/BubbleShield capability caveat corrected;9/43complete unchanged. Workspace relocation recovered; no gameplay PASS.
 
 - 2026-11-23 — [Conflux carriers/reflection](mods/ars-conflux-pinned-carriers.md):11profiles, consumer-onlyProjectileForm/onepayload validator, managedflight/owner-account split and optionalabsentZero boundary. NativeElementalMirrornotautomaticallyfixed.3Confluxcompanions;9/43complete unchanged.
+
+- 2026-11-23 — [Conflux active casting](mods/ars-conflux-pinned-active-casts.md): preparation/snapshot cancellation/release acknowledgement/persistentdeadlines; family-onlyconsumer scan avoids inventingdefaultchants.4Confluxcompanions;9/43complete unchanged.
