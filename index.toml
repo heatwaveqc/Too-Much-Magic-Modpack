@@ -730,7 +730,7 @@ hash = "9c0a92a3be4fbd0210eb5a679453cea66776a8c202915aec1390ce0516d46c98"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/chaos_bunny.json"
-hash = "25b0d67667d70b45a0d3c914a983faba37c78982b0e39758f9af6d2d66a3f2bd"
+hash = "140efd81ecdd5ebb2cd05a17361661e2e88f0d896b73e131b4514e71a241d6b4"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/mob_ars_drygmy.json"
@@ -1358,7 +1358,7 @@ hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
 [[files]]
 file = "kubejs/server_scripts/caerbannog_boss.js"
-hash = "d17ac3cbf04690f81429fc6c153768a6851ba23d5b75d09439d338c0681cf6b3"
+hash = "e83014646f2a341d0502cc202e226dae0144f13e5eeaa315fa949df5982b2b5a"
 
 [[files]]
 file = "kubejs/server_scripts/dragon_diets.js"
