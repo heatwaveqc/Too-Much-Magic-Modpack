@@ -279,6 +279,54 @@ public final class ChannelEngine {
             overrides,catalog.defaultTransition().onLeave(),wipe,true);
         return ledger.withEconomy(after);
     }
+    /**
+     * Complete a real Path departure, including receipts and native wallet
+     * refunds, after the canonical per-system XP transaction succeeds.
+     * RETAIN keeps ownership but the Path's effects remain disabled until join.
+     */
+    public static Ledger depart(Ledger source,Definition.Path tree,
+                                ExperienceEconomyConfig.Catalog catalog) {
+        Track original=source.get(tree.id());
+        if(!original.joined())return source;
+        Ledger next=pathChange(source,Set.of(tree.id()),catalog);
+        var payments=new HashMap<>(next.payments());
+        var retainedSkills=new HashMap<String,Integer>();
+        String prefix=tree.id()+"|";
+        for(var entry:source.payments().entrySet()){
+            if(!entry.getKey().startsWith(prefix))continue;
+            String skill=entry.getKey().substring(prefix.length());
+            var kept=new ArrayList<String>();
+            for(String receipt:entry.getValue()){
+                boolean permanent=receipt.startsWith("!");
+                String text=permanent?receipt.substring(1):receipt;
+                int divider=text.lastIndexOf('|');
+                if(divider<1)throw new IllegalStateException("Malformed skill payment receipt");
+                String id=text.substring(0,divider);
+                int points=Integer.parseInt(text.substring(divider+1));
+                if(points<0)throw new IllegalStateException("Negative skill payment");
+                var policy=catalog.policy(tree.id(),id).onLeave();
+                if(policy==ExperienceEconomy.DeparturePolicy.RETAIN){
+                    kept.add(receipt);
+                    retainedSkills.merge(skill,1,Integer::sum);
+                } else if(policy==ExperienceEconomy.DeparturePolicy.REFUND
+                          && !catalog.systems().containsKey(id)){
+                    // Generic XP point commitments are released in pathChange;
+                    // native legacy wallets still need their own refund.
+                    Wallet wallet=next.wallet(id);
+                    if(wallet==null)throw new IllegalStateException("Missing native refund wallet "+id);
+                    next=next.withWallet(id,wallet.points(
+                        (int)Math.min(Integer.MAX_VALUE,(long)wallet.points()+points)));
+                }
+            }
+            if(kept.isEmpty())payments.remove(entry.getKey());
+            else payments.put(entry.getKey(),kept);
+        }
+        next=new Ledger(next.paths(),next.wallets(),payments,next.economy());
+        Track dormant=new Track(false,0,0,0,retainedSkills,
+                original.milestones(),original.counters());
+        return next.with(tree.id(),dormant);
+    }
+
     private static void checkId(String key) {
         if(key==null || key.length()>240 || !key.matches("[a-zA-Z0-9_.:/#@-]+"))
             throw new IllegalArgumentException("Invalid transaction ID");
