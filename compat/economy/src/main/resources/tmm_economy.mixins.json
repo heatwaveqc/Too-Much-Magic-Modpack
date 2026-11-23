@@ -23,7 +23,9 @@
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
     "StoredResourceGuardMixin",
-    "RepairTalismanCharmMixin"
+    "RepairTalismanCharmMixin",
+    "IronsAlchemistFlaskSafetyMixin",
+    "OccultismPartnerFlaskSafetyMixin"
   ],
   "injectors": {
     "defaultRequire": 1
