@@ -24,6 +24,16 @@ public final class ChannelEngine {
         var def=config.paths().get(path.id());if(def==null)return Track.empty();
         Wallet w=ledger.wallet(def.id());
         var ranks=new java.util.HashMap<>(raw.skills());
+        var catalog=ExperienceEconomyRuntime.current();
+        // Effective paid rank is the sum of separately purchased contributions.
+        // The contribution ledger, not a second Track.rank counter, owns it.
+        for(var skill:path.skills()){
+            if(catalog.skills().containsKey(new ExperienceEconomyConfig.SkillKey(path.id(),skill.id()))){
+                int bought=ExperienceEconomy.effectiveRank(ledger.economy(),path.id(),skill.id());
+                if(bought==0)ranks.remove(skill.id());
+                else ranks.put(skill.id(),bought);
+            }
+        }
         for(var skill:path.skills())if(!skill.autoRanks().isEmpty()){
             var bind=config.skills().get(new ChannelConfig.SkillKey(path.id(),skill.id()));
             var level=bind==null?null:ledger.wallet(bind.levelSystem().id());
@@ -90,6 +100,51 @@ public final class ChannelEngine {
         if(binding.awardPoints()>0)next=next.withWallet(binding.awardCurrency().id(),reward.points(reward.points()+binding.awardPoints()));
         return next;
     }
+    /**
+     * Currency-selected purchase for a declarative multi-system skill.
+     * The same prerequisites and mutual exclusion rules are checked once
+     * against the aggregated effective rank; only the chosen ledger is charged.
+     */
+    public static Ledger buy(Ledger ledger,Definition.Path tree,ChannelConfig config,
+                             String skillId,String systemId) {
+        var catalog=ExperienceEconomyRuntime.current();
+        var key=new ExperienceEconomyConfig.SkillKey(tree.id(),skillId);
+        var rules=catalog.skills().get(key);
+        if(rules==null) {
+            var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
+            if(binding==null || !binding.currency().id().equals(systemId))return ledger;
+            return buy(ledger,tree,config,skillId);
+        }
+        var skill=tree.skill(skillId);
+        if(skill==null || !skill.autoRanks().isEmpty() || !ledger.get(tree.id()).joined())return ledger;
+        ExperienceEconomyConfig.PurchaseSource source=null;
+        for(var candidate:rules.sources())if(candidate.system().equals(systemId)){
+            source=candidate;break;
+        }
+        var system=catalog.systems().get(systemId);
+        if(source==null||system==null)return ledger;
+        Track view=view(ledger,tree,config);
+        int owned=view.skillRank(skillId);
+        int cap=Math.min(skill.maxRank(),rules.totalRankCap());
+        if(owned>=cap || ExperienceEconomy.available(ledger.economy(),system)<source.pointsPerRank())
+            return ledger;
+        // ProgressionMath remains the single authoritative skill prerequisite
+        // and choice-group evaluator. Purchasing cost comes from source config.
+        long displayLevel=ExperienceEconomy.level(ledger.economy(),system)+1L;
+        int rank=(int)Math.min(Integer.MAX_VALUE,displayLevel);
+        Track candidate=new Track(true,view.xp(),rank,Integer.MAX_VALUE,
+                view.skills(),view.milestones(),view.counters());
+        Track nextRank=ProgressionMath.buy(tree,candidate,skillId);
+        if(nextRank==candidate)return ledger;
+        var paid=ExperienceEconomy.buy(ledger.economy(),system,tree.id(),skillId,
+                source.pointsPerRank(),source.maxRanks(),cap);
+        if(paid==ledger.economy())return ledger;
+        var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
+        boolean permanent=binding!=null && binding.permanent();
+        return ownership(ledger,tree,nextRank).withEconomy(paid)
+                .receipt(tree.id(),skillId,systemId,source.pointsPerRank(),permanent);
+    }
+
     public static Ledger refund(Ledger ledger,Definition.Path tree){
         if(!ledger.get(tree.id()).joined())return ledger;
         var prefix=tree.id()+"|";var next=ledger;
