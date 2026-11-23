@@ -170,7 +170,8 @@ public final class ProgressionMenuNetwork {
         }
         json.add("wallets",wallets);
         json.add("completed_milestones", strings(state.milestones()));
-        var upcoming=io.github.heatwaveqc.tyr.progression.core.MilestoneFeedback.next(path,state);
+        var upcoming=state.joined()
+            ? io.github.heatwaveqc.tyr.progression.core.MilestoneFeedback.next(path,state) : null;
         if(upcoming!=null){
             JsonObject challenge=new JsonObject();
             challenge.addProperty("id",upcoming.milestoneId());
