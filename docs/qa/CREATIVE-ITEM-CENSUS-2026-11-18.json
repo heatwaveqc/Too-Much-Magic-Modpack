@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source": "docs/qa/surveys-2026-11-18/items.csv",
   "capture_date": "2026-11-18",
   "installed_build_sha": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
@@ -8,7 +8,8 @@
   "registered_items_seen": 23681,
   "counts": {
     "explicit_creative_or_cheat": 23,
-    "name_only_review": 41
+    "name_only_review": 41,
+    "source_confirmed_creative_candidates": 1
   },
   "explicit_creative_or_cheat": [
     {
@@ -334,6 +335,16 @@
       "default_stack_emc": "0"
     }
   ],
+  "source_confirmed_creative_candidates": [
+    {
+      "id": "neovitae:blood_battery",
+      "classification": "creative_class",
+      "function": "Refills FE on redstone signal without EV/Anima/Spiritus debit",
+      "evidence": "Neo Vitae 1.1.54 BloodBatteryBlock Creative Only tooltip and BloodBatteryBlockEntity; issue #596",
+      "verified_runtime_in_capture": false,
+      "registered_in_capture": true
+    }
+  ],
   "known_component_only_variants": [
     {
       "base_item_id": "botania:mana_tablet",
@@ -348,6 +359,7 @@
     "A name is evidence of a candidate, never proof of creative functionality",
     "Creative-mode tab membership is not a disallowed creative-tier tag",
     "Default-stack item exports do not enumerate creative NBT/component variants",
-    "Resource acquisition, EMC learning, recipes and loot are not checked"
+    "Resource acquisition, EMC learning, recipes and loot are not checked",
+    "Source-confirmed creative function does not itself prove survival acquisition"
   ]
 }
