@@ -90,7 +90,7 @@ class ExperienceEconomyTest {
                 new BigDecimal("1000"), 10, new BigDecimal("1e12"));
         var initial = earnFixed(ExperienceEconomy.Ledger.empty(), limited, "test:starter", 1000);
         assertThrows(IllegalArgumentException.class, () -> ExperienceEconomy.earn(
-                initial, limited, "test:runaway", null, BigDecimal.ONE, false, 0.001));
+                initial, limited, "test:runaway", null, new BigDecimal("2"), false, 0.001));
         assertEquals(1000, initial.currentXp().get(limited.id()).intValueExact());
         assertEquals(1, ExperienceEconomy.level(initial, limited));
         assertThrows(IllegalArgumentException.class,
