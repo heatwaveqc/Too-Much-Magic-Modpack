@@ -15,7 +15,5 @@
   "key.tyr_progression.lava_vision": "Toggle Lava Vision",
   "item.tyr_progression.blood_sausage": "Blood Sausage",
   "item.tyr_progression.blood_pie_slice": "Blood Pie Slice",
-  "item.tyr_progression.blood_wine": "Blood Wine",
-  "tooltip.tyr_progression.blood_wine": "Restores 2,500 JAWR blood to vampires (native wine effects preserved).",
   "tooltip.tyr_progression.blood_food": "Restores 1,000 JAWR blood to vampires; normal food for other players."
 }

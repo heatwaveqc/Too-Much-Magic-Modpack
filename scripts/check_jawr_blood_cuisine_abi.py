@@ -3,7 +3,7 @@
 
 Downloads only the two exact signed Packwiz provider URLs into a temporary
 directory, verifies complete SHA-512, then uses Java 21 javap to assert the
-specific optional mixin and reflection target methods are present.
+native JAWR blood and BnC cooked sausage types are present.
 """
 from __future__ import annotations
 
@@ -37,12 +37,8 @@ SIGNATURES = {
         ],
     },
     "brewinandchewin": {
-        "umpaz.brewinandchewin.common.block.entity.AgingCaskBlockEntity": [
-            "lastInputs", "canAge(", "age(", "getContainerItem(",
-            "canPlaceItem(", "net.minecraft.world.item.ItemStack",
-        ],
-        "umpaz.brewinandchewin.common.item.WineItem": [
-            "finishUsingItem(", "appendHoverText(", "net.minecraft.world.item.ItemStack",
+        "umpaz.brewinandchewin.common.registry.BnCItems": [
+            "COOKED_SAUSAGE",
         ],
     },
 }
@@ -107,9 +103,9 @@ def main() -> int:
                             raise ValueError(mod_id + ": " + clazz + " missing " + token)
                 print("PASS " + mod_id + ": SHA-512 + native bytecode signatures", flush=True)
     except (OSError, ValueError, KeyError, subprocess.TimeoutExpired) as exc:
-        print("FAIL #450 pinned JAWR/Cask ABI: " + str(exc), file=sys.stderr)
+        print("FAIL #450 pinned JAWR/food ABI: " + str(exc), file=sys.stderr)
         return 1
-    print("TYPE A ONLY: exact methods exist; does not prove optional mixins inject or gameplay works")
+    print("TYPE A ONLY: native food methods exist; Blood Wine blocked on absent Aging Cask in BnC 4.5.0")
     return 0
 
 

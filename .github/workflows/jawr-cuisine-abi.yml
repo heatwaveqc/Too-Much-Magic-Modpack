@@ -1,4 +1,4 @@
-name: JAWR Cuisine pinned ABI (#450, Type A)
+name: JAWR Cuisine food pinned ABI (#450, Type A)
 
 on:
   pull_request:
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify exact pinned bytes and native JAWR and BnC signatures
+      - name: Verify pinned JAWR blood API and BnC cooked sausage
         run: python3 scripts/check_jawr_blood_cuisine_abi.py
       - name: Explicit QA boundary
         run: echo 'No NeoForge assembly, Minecraft boot, Prism package or gameplay acceptance.'

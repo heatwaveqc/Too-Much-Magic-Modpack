@@ -24,7 +24,6 @@ public final class BloodCuisineNative {
     public static final String JAWR = "witchery:bottle_of_blood";
     public static final String IRONS = "irons_spellbooks:blood_vial";
     public static final String HEXEREI = "hexerei:blood_bottle";
-    public static final String RED_WINE = "brewinandchewin:red_wine";
 
     private static DataComponentType<?> chickenMarker;
     private static DataComponentType<?> vampireMarker;

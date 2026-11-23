@@ -4,8 +4,6 @@
   "package": "io.github.heatwaveqc.tyr.progression.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "BloodCuisineCaskMixin",
-    "BloodCuisineWineMixin",
     "BloodCuisineVampireFoodMixin"
   ],
   "injectors": {
