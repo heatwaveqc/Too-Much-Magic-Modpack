@@ -1,0 +1,63 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "crafting_rituals",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "pentacles/craft_marid"
+  },
+  "description": "book.tmm.equivalent_exchange.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "projecte:philosophers_stone"
+  },
+  "name": "book.tmm.equivalent_exchange.name",
+  "pages": [
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "projecte:philosophers_stone"
+      },
+      "text": "book.tmm.equivalent_exchange.spotlight",
+      "title": ""
+    },
+    {
+      "type": "occultism:ritual_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "tmm:ritual/equivalent_exchange",
+      "text": "book.tmm.equivalent_exchange.recipe",
+      "title1": "",
+      "title2": ""
+    },
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.tmm.equivalent_exchange.guidance",
+      "title": "book.tmm.equivalent_exchange.guidance_title",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "crafting_rituals/craft_marid_miner",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 70,
+  "x": 18,
+  "y": 12
+}
