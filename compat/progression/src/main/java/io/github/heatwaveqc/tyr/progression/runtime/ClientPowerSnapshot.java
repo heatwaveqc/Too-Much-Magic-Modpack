@@ -38,7 +38,8 @@ public final class ClientPowerSnapshot {
         return player != null && player.level().isClientSide()
                 && owner.get() == player
                 && player.level().dimension().location().toString().equals(dimension)
-                && player.isAlive() && !player.isSpectator() && !player.isCreative()
+                && player.isAlive() && !player.isSpectator()
+                && (!(player instanceof net.minecraft.world.entity.player.Player actor) || !actor.isCreative())
                 && PassivePowerLease.valid(receivedAt, player.tickCount) && active.contains(id);
     }
 
