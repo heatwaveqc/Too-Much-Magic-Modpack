@@ -62,7 +62,7 @@ hash = "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
-hash = "54af6d977ab0db44e483f5044c6492364245e59bfdbbfcd35b36ba234a6958c8"
+hash = "dfa53a3e9f5fcdf112f83b2943fab03b7bc3f943045799264a328e3381c4f936"
 
 [[files]]
 file = "config/ftbchunks-client.snbt"
@@ -246,7 +246,7 @@ hash = "a8e62cecde60a12153e8a5f6e03b61af7f0366c71da280a6198078accfb8c7ee"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/theurgy.snbt"
-hash = "028d93472b4f19dded775f70e459e0284640e6e4c5758f4c8021e40bf36d5bbe"
+hash = "ba023b8e2aa0f1f708bf39af7d1c972fafb3ada490ae24f7cb3faa4a0fc1c588"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/tips_tricks.snbt"

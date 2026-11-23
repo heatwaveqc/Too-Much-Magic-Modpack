@@ -4037,7 +4037,6 @@
       "first_log": false,
       "source_key": "TH-09",
       "prerequisites": [
-        "Collect Sal Ammoniac",
         "Liquefy a Material into Sulfur"
       ],
       "layout": [
@@ -4121,7 +4120,6 @@
       "first_log": false,
       "source_key": "TH-12",
       "prerequisites": [
-        "Distill Mercury from Stone",
         "Incubate an Oak Log"
       ],
       "layout": [
@@ -4235,7 +4233,6 @@
       "first_log": false,
       "source_key": "TH-16",
       "prerequisites": [
-        "Light a Pyromantic Brazier",
         "Build a Mercury Flux Supply"
       ],
       "layout": [
@@ -4264,7 +4261,6 @@
       "first_log": false,
       "source_key": "TH-17",
       "prerequisites": [
-        "Distill Mercury from Stone",
         "Incubate an Oak Log"
       ],
       "layout": [
@@ -4293,8 +4289,7 @@
       "first_log": false,
       "source_key": "TH-18",
       "prerequisites": [
-        "Move Items with Mercurial Wiring",
-        "Collect Sal Ammoniac"
+        "Move Items with Mercurial Wiring"
       ],
       "layout": [
         24,
@@ -4319,7 +4314,6 @@
       "first_log": false,
       "source_key": "TH-19",
       "prerequisites": [
-        "Exalt Niter, Not Your Tool Tier",
         "Reform with a Real Target Sample"
       ],
       "layout": [
