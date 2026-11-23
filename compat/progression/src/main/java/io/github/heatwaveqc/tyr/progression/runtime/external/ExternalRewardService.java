@@ -94,7 +94,8 @@ public final class ExternalRewardService {
 
     /** Restoration is neither a purchase nor a second debit. */
     public static int reconcile(ServerPlayer player) {
-        if (player==null || player.getServer()==null || !player.getServer().isSameThread()) return 0;
+        if (player==null || player.getServer()==null || !player.getServer().isSameThread()
+                || NewbieMode.isNewbie(player) || ExternalRewardConfig.current().isEmpty()) return 0;
         AstralPerkTokens.Snapshot snapshot=AstralPerkTokens.snapshot(player);
         if (!snapshot.ready()) return 0; // Wiped research: defer until attuned again.
         int restored=0;
@@ -103,6 +104,19 @@ public final class ExternalRewardService {
             var offer=approved(row.getKey());
             if(offer==null)continue;
             int count=ExternalRewardPolicy.owned(ledger,offer);
+            // Crash-consistent two-authority repair: Progression paid receipts
+            // are canonical. Astral tokens under OUR reserved prefix without
+            // a matching paid rank are orphaned native grants; revoke them
+            // rather than letting a crash or duplicate packet mint free points.
+            for (var token:snapshot.tokens()) {
+                if (!"tyr_progression".equals(token.getNamespace())) continue;
+                String path=token.getPath();
+                if (!path.matches("astral_purchase_[0-9]{6,7}")) continue;
+                int index=Integer.parseInt(path.substring("astral_purchase_".length()));
+                if (index>count && !AstralPerkTokens.revoke(player,token.toString()))
+                    ProgressionMod.LOGGER.warn("Unpaid Astral perk token {} could not be revoked for {}",
+                            token,player.getUUID());
+            }
             for(int i=1;i<=count;i++) {
                 String token=ExternalRewardPolicy.tokenId(offer.kind(),i);
                 if(snapshot.has(token)) continue;
