@@ -41,6 +41,11 @@ public final class BloodCuisineFoodItem extends Item {
         boolean paid = charged(stack);
         ServerPlayer player = entity instanceof ServerPlayer p ? p : null;
         boolean vampire = player != null && BloodCuisineNative.isVampire(player);
+        java.util.UUID receipt = paid ? BloodCuisinePayload.receipt(stack) : null;
+        // If the server cannot persist a valid spend receipt, fail closed.
+        BloodCuisineRedemptions ledger = player != null && receipt != null && player.getServer() != null
+                ? BloodCuisineRedemptions.get(player.getServer()) : null;
+        if (paid && player != null && ledger == null) return stack;
         int beforeFood = vampire ? player.getFoodData().getFoodLevel() : 0;
         float beforeSaturation = vampire ? player.getFoodData().getSaturationLevel() : 0.0f;
         int credit = paid ? BloodCuisinePayload.credit(stack) : 0;
@@ -49,11 +54,14 @@ public final class BloodCuisineFoodItem extends Item {
         // of silently converting an expensive filled bottle into 0 blood.
         if (vampire && paid && !BloodCuisineNative.canCreditNative()) return stack;
         ItemStack after = super.finishUsingItem(stack, level, entity);
+        // A copied or transmuted food can still be consumed, but cannot
+        // refill any player's native JAWR blood after first redemption.
+        boolean first = ledger != null && ledger.redeem(receipt);
         if (vampire && paid) {
             FoodData food = player.getFoodData();
             food.setFoodLevel(beforeFood);
             food.setSaturation(beforeSaturation);
-            if (!player.getAbilities().instabuild) BloodCuisineNative.credit(player, credit);
+            if (first && !player.getAbilities().instabuild) BloodCuisineNative.credit(player, credit);
         }
         return after;
     }
