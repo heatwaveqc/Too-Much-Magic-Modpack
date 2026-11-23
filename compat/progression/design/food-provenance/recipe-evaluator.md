@@ -1,0 +1,24 @@
+# Diet-relative food recipes: implementation slice #444
+
+**Source-only, stacked after #573 / #539 / #519.** This layer does not mutate global FoodProperties. Native nutrition is unchanged for normal players; DragonDietHook invokes the replacement only for component-backed edible food, on the server, for a verified native Dragon Survival dragon. Native effects, use handlers, containers and durations remain unchanged.
+
+## Data and algorithm
+
+- The 161 source roots added in #573 remain authoritative for verified raw source units and edible source families. FoodPolicyRules retains configurable 6 nutrition / 2.0 saturation modifier preferred source baseline, 0.5 mixed cap, and raw→cooked→charred thermal factors (1.0 / 0.5 / 0.25). Exact fractional nutrition and nominal saturation survive intermediate processing; round hunger once, at the food interface.
+- The new food_recipe_routes datapack folder contains per-output records. Required fields: schema=1, item ID, identity=ordinary|unfavored_all, complete=true, nonempty routes. Each route specifies its audited receipt ID, method=nonthermal|heat|char, result_count, and ingredient IDs/counts. A reusable neutral ingredient (e.g. a Juicer) has role=neutral. A verified nonthermal efficiency from 1..4 can preserve the native cutting ratio. Complete means ALL distinct possible nutritional outcomes are represented, not all equivalent smelting/smoking/campfire resource IDs.
+- **Compatible nonthermal processing:** sum verified input budgets, apply checked processing efficiency, divide by recipe food output count; no blanket cooked-stage penalty. Two oranges become one juice worth 12 hunger / 48 theoretical saturation for Forest. Two FD cod slices each retain 3 hunger / 12 saturation, minced beef two portions each retain 4 / 16.
+- **Disfavored thermal processing:** multiply exact source nutrition and saturation by the stage factor. For Cave: raw beef 6/24 → steak 3/12 → charred 1.5/6 theoretical, ultimately rounded to 2 hunger with 1.5 saturation modifier.
+- **Mixed recipe:** if any nutritive input is preferred and another is off-diet, the ENTIRE finished serving is worth no more than 0.5 times the best individual input's diet-adjusted hunger and theoretical saturation. Wholly incompatible nonthermal processing also cannot turn inputs into a bonus.
+- **Recipe alternatives:** choose the lowest hunger AND the lowest nominal saturation across all complete routes, independently for each diet. One item ID has one nutrition result per species; there are no NBT, stack components, crafting-history tags or new variant items.
+- **Inherently disfavored finished identity:** owner-reviewed dishes such as meatballs may be classified unfavored_all, which applies the half-best-input ceiling even if a constituent (e.g. fish) matches one dragon diet. A food's identity is not inferred from the last recipe input.
+- An unknown input, missing complete route, unknown/mixed legacy source fraction, recursion cycle, magical exemption or unsupported physiology fails closed to native food properties. One invalid reload record does not partially publish a diet map.
+
+## Six reviewed runtime route entries
+
+Four pinned Farmer's Delight cutting outputs: cod_slice, salmon_slice, cabbage_leaf and minced_beef. Two vanilla heat operations: cooked_beef and cooked_cod. These have confirmed source receipts in #573 or vanilla, and retain previously approved numeric outcomes. Other source foods use their existing verified root record and stage fallback until a route is fully surveyed.
+
+## Test coverage and explicit unresolved work
+
+Pure unit tests cover Fish+Seagrass sushi (Sea Dragon 12/48), Fish+Rice sushi (Sea Dragon <=3/12), two alternative recipes for one sushi item selecting the lower result, meatballs low-value for all three dragons regardless of fish ingredient, two-orange juice with neutral Juicer 12/48 for Forest, heat/charring fractional chain, FD cut yields, incomplete routes, cycles, bad schema and unsupported normal profiles. These sushi/juice/meatball items are SYNTHETIC TEST FIXTURES, not verified live item IDs; the actual installed items remain on hold until the pinned effective recipe graph and finished identity are validated. This code does not make non-edible seagrass edible.
+
+The designated Progression writer should review/merge this stacked branch after #573, and only the integration writer may stage a coherent runtime JAR / pinned food roster / datapacks into test/full-integration. Required Type B/C: exact live alternative recipes, no reversible-food inflation, real edible items, client/server prediction, native effects and containers, server /reload, magical exceptions and player-specific Dragon Survival diet. No full-pack boot is claimed.
