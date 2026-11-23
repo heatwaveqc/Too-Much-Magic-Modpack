@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:minced_beef",
+  "provenance": "farmersdelight:cutting/beef",
+  "source_units": 0.6666666666666666,
+  "inferred_tags": [
+    "#c:foods/raw_meat",
+    "#tmm:foods/raw"
+  ]
+}
