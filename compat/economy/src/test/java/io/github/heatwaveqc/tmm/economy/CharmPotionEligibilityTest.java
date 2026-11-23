@@ -36,6 +36,13 @@ class CharmPotionEligibilityTest {
         assertFalse(permits(1, false, true, true, true, true, true, true));
     }
 
+    @Test void resistancePrivilegeThreshold() {
+        assertFalse(CharmPotionEligibility.privilegedAmplifier("minecraft:resistance", 3));
+        assertTrue(CharmPotionEligibility.privilegedAmplifier("minecraft:resistance", 4));
+        assertTrue(CharmPotionEligibility.privilegedAmplifier("minecraft:resistance", 255));
+        assertFalse(CharmPotionEligibility.privilegedAmplifier("minecraft:regeneration", 255));
+    }
+
     @Test void foreignPayloadAndMultiDoseCarrierDenied() {
         assertFalse(permits(1, false, true, true, true, false, false, true));
         assertFalse(permits(1, false, true, true, true, false, true, false));
