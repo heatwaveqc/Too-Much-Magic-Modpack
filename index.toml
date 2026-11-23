@@ -521,6 +521,10 @@ file = "kubejs/data/projecte/pe_custom_conversions/metals.json"
 hash = "a7a5636a53953f02970501e90bc1131a6dcafaac0aeb18d68976092e66cb0c82"
 
 [[files]]
+file = "kubejs/data/projecte/recipe/collector_mk1.json"
+hash = "da17af1e668c06918dffd93facabcb02965f8b160b1c33dec8ac25b22b5f110e"
+
+[[files]]
 file = "kubejs/data/projecte/recipe/conversions/gold_ingot_to_diamond.json"
 hash = "9213c718e7a179e82fe4afdc8bd041a511ca94e76bf1a21d97e96f430d8e3417"
 
@@ -535,6 +539,10 @@ hash = "4f60c1f8abad42b6fd0807c40d4ea660218be4c950b5b3378668f4ee40b9b1c5"
 [[files]]
 file = "kubejs/data/projecte/recipe/philosophers_stone_alt.json"
 hash = "184c220a41441e3735e986c99bfb25d69c2f42ecca1efdb9f2b434f4f505e2af"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/relay_mk1.json"
+hash = "da17af1e668c06918dffd93facabcb02965f8b160b1c33dec8ac25b22b5f110e"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/blue.json"
