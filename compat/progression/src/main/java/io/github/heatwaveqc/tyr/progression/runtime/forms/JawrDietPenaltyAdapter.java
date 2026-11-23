@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tyr.progression.runtime.forms;
 
 import io.github.heatwaveqc.tyr.progression.data.FoodDecisionResolver;
 import io.github.heatwaveqc.tyr.progression.data.FoodPolicyRegistry;
+import io.github.heatwaveqc.tyr.progression.data.NativeDietPolicy;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,21 +25,20 @@ public final class JawrDietPenaltyAdapter {
         if (!(event.getEntity() instanceof ServerPlayer player)
                 || player.getServer() == null || !player.getServer().isSameThread())
             return false;
-        if (!JawrFormState.present(player,"vampire")) return false;
         ItemStack stack = event.getItem();
-        if (stack.isEmpty() || stack.get(DataComponents.FOOD) == null
-                || NativeDietAdapters.decide(player, stack).outcome()
-                    == FoodDecisionResolver.Outcome.DENY) return false;
-
-        if (FoodPolicyRegistry.universallyPermitted(stack)) return true;
-        if (Selectors.item("#tyr_progression:jawr_vampire_safe_foods", stack))
-            return true; // Exact auditable positive native safe-food override.
-
-        // Acquired Taste exempts only verified recreational FOOD drinks from
-        // JAWR's ordinary-food sickness; does not grant nutrition or blood.
-        return stack.getUseAnimation() == UseAnim.DRINK
-            && Selectors.item("#c:food/recreational",stack)
+        if (stack.isEmpty()) return false;
+        boolean edible = stack.get(DataComponents.FOOD) != null;
+        boolean denied = NativeDietAdapters.decide(player, stack).outcome()
+            == FoodDecisionResolver.Outcome.DENY;
+        boolean recreational = stack.getUseAnimation() == UseAnim.DRINK
+            && Selectors.item("#c:food/recreational", stack);
+        boolean unlocked = recreational
             && (DietPermissions.permits(player,stack,"recreational_drink")
                 || DietPermissions.permits(player,stack,"alcohol"));
+        return NativeDietPolicy.suppressVampireFoodPenalty(
+            JawrFormState.present(player,"vampire"), edible, denied,
+            FoodPolicyRegistry.universallyPermitted(stack),
+            Selectors.item("#tyr_progression:jawr_vampire_safe_foods",stack),
+            recreational, unlocked);
     }
 }
