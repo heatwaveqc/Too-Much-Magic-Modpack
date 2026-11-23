@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tyr.progression.runtime.forms;
 
 import io.github.heatwaveqc.tyr.progression.data.FoodDecisionResolver;
 import io.github.heatwaveqc.tyr.progression.data.FoodPolicyRegistry;
+import io.github.heatwaveqc.tyr.progression.data.NativeDietPolicy;
 import io.github.heatwaveqc.tyr.progression.network.FoodPreviewWire;
 import io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics;
 import java.util.HashMap;
@@ -58,11 +59,8 @@ public final class NativeDietAdapters {
         var decision = stack.get(DataComponents.FOOD) == null
             ? FoodDecisionResolver.Decision.nativeResult()
             : FoodPolicyRegistry.decide(activeProfiles(player), stack);
-        if (decision.outcome() == FoodDecisionResolver.Outcome.DENY)
-            return decision;
-        if (!GildedMechanics.foodAllowed(player, stack))
-            return FoodDecisionResolver.Decision.deny();
-        return decision;
+        return NativeDietPolicy.intersect(decision,
+            GildedMechanics.foodAllowed(player, stack));
     }
 
     /** One event gate, previously owned separately by the Gilded handler. */
