@@ -79,19 +79,25 @@ def validate(repo: Path, output: Path):
                 or any(x in source for x in ("nutrition", "saturation", "food_component"))):
             raise ValueError(f"Generated material would change native nutrition: {item}")
     report = json.loads((output / "crafted-food-survey-report.json").read_text())
-    if (report["generated_candidate_recipe_outputs"] != len(routes)
+    candidates = set(report["generated_ids"])
+    supports = set(report["support_ids"])
+    if (report["generated_candidate_recipe_outputs"] != len(candidates)
+            or report["generated_support_recipe_outputs"] != len(supports)
+            or report["emitted_recipe_route_records"] != len(routes)
             or report["generated_material_sources"] != len(added_roots)
-            or report["generated_ids"] != sorted(routes)):
-        raise ValueError("Summary report disagrees with generated routes")
+            or candidates & supports
+            or candidates | supports != set(routes)):
+        raise ValueError("Summary report disagrees with generated route/dependency scope")
     for path in (output / TAGS).glob("*.json"):
         value = json.loads(path.read_text())
         entries = value["values"]
         if (value.get("replace") is not False or entries != sorted(set(entries))
-                or set(entries) - set(routes)):
+                or set(entries) - candidates):
             raise ValueError(f"Invalid or ungrounded crafted candidate tag {path}")
     if set(report["excluded_output_ids"]) & set(routes):
         raise ValueError("Generated a known seed/container/vanilla-owned output")
-    print(f"Validated {len(routes)} generated candidate routes, "
+    print(f"Validated {len(candidates)} food-tagged candidate routes, "
+          f"{len(supports)} dependency routes, "
           f"{len(added_roots)} derived material sources and "
           f"{len(list((output / TAGS).glob('*.json')))} generated category tags")
 

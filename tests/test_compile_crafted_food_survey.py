@@ -23,9 +23,15 @@ def recipe(output, receipt, ingredients, station="minecraft:crafting_shapeless")
             "outputs": [{"item": output, "count": 1}]}
 
 
-def audit(recipes, tags=()):
+def audit(recipes, tags=(), tag_outputs=True):
+    # Most unit cases exercise deliberately food-tagged synthetic results.
+    # To test strict gating, pass tag_outputs=False explicitly.
+    targets = sorted({
+        value["item"] for recipe in recipes for value in recipe["outputs"]
+    }) if tag_outputs else []
+    tags = list(tags) + ([{"tag": "c:foods", "values": targets}] if targets else [])
     return {"releases": [{"slug": "test", "native_versions": {"test": "1"},
-                          "source_evidence": {"recipes": recipes, "item_tags": list(tags)}}]}
+                          "source_evidence": {"recipes": recipes, "item_tags": tags}}]}
 
 
 class CompilerTest(unittest.TestCase):
@@ -108,6 +114,39 @@ class CompilerTest(unittest.TestCase):
         self.assertEqual(report["held_outputs"]["test:bad_soup"],
                          "malformed_native_tag:c:bad")
         self.assertIn(str(m.ROUTES / "test/good_soup.json"), files)
+
+    def test_only_food_tagged_final_outputs_emit_recipes_and_helper_provenance(self):
+        puree = recipe("test:fruit_puree", "test:puree",
+                       [{"item": "test:fruit"}])
+        juice = recipe("test:juice", "test:juice",
+                       [{"item": "test:fruit_puree"}])
+        decoration = recipe("test:decoration", "test:decoration",
+                            [{"item": "test:fruit"}])
+        tags = [{"tag": "c:foods", "values": ["test:juice"]}]
+        generated, report = m.process(audit([puree, juice, decoration],
+                                            tags, tag_outputs=False),
+                                      {"test:fruit": source("test:fruit")}, {})
+        self.assertEqual(report["generated_candidate_recipe_outputs"], 1)
+        self.assertEqual(report["generated_support_recipe_outputs"], 1)
+        self.assertEqual(report["emitted_recipe_route_records"], 2)
+        self.assertEqual(report["skipped_untagged_recipe_outputs"], 2)
+        self.assertEqual(report["generated_ids"], ["test:juice"])
+        self.assertEqual(report["support_ids"], ["test:fruit_puree"])
+        self.assertNotIn(str(m.ROUTES / "test/decoration.json"), generated)
+        self.assertIn(str(m.ROUTES / "test/fruit_puree.json"), generated)
+        self.assertIn(str(m.ROUTES / "test/juice.json"), generated)
+        self.assertEqual(
+            generated[str(m.TAGS / "crafted_candidate.json")]["values"],
+            ["test:juice"])
+
+    def test_untagged_foodlike_name_does_not_create_food_evidence(self):
+        meal = recipe("test:fancy_soup", "test:recipe_soup",
+                      [{"item": "test:fruit"}])
+        generated, report = m.process(audit([meal], tag_outputs=False),
+                                      {"test:fruit": source("test:fruit")}, {})
+        self.assertNotIn(str(m.ROUTES / "test/fancy_soup.json"), generated)
+        self.assertEqual(report["generated_candidate_recipe_outputs"], 0)
+        self.assertEqual(report["held_output_ids"], 0)
 
     def test_seed_and_container_outputs_are_not_automatically_food(self):
         seed = recipe("test:seed", "test:grow_seed", [{"item": "test:fruit"}])
