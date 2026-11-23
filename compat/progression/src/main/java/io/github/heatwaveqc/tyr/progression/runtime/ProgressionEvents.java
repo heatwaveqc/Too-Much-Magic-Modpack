@@ -223,6 +223,7 @@ public final class ProgressionEvents {
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
                 io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,false);
+                io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,false);
             }
         }
     }
@@ -236,6 +237,7 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
@@ -244,6 +246,8 @@ public final class ProgressionEvents {
             EffectRuntime.reconcile(player);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
@@ -267,6 +271,7 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
