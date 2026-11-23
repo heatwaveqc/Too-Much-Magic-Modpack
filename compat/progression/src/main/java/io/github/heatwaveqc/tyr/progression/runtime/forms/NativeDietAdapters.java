@@ -171,7 +171,7 @@ public final class NativeDietAdapters {
                 }
                 projected.put(item,FoodPreviewWire.Entry.deny());
             } else if(!strictDenied && permissionOnlyDrink(player,stack)) {
-                projected.put(item,FoodPreviewWire.Entry.nourishment(0,0));
+                projected.put(item,FoodPreviewWire.Entry.permitBeverage());
             }
         }
         return Map.copyOf(projected);
