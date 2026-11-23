@@ -16,7 +16,7 @@ public final class FoodPreviewWire {
     public static final int MAX_CHUNKS = 512;
     private FoodPreviewWire() {}
 
-    public enum Mode { NUTRITION, PERMIT_NATIVE, DENY }
+    public enum Mode { NUTRITION, PERMIT_NATIVE, DENY, LAVA_NATIVE, LAVA_NUTRITION }
 
     /**
      * Explicit denial is different from a missing row. Clients must return
@@ -27,11 +27,24 @@ public final class FoodPreviewWire {
             Objects.requireNonNull(mode);
             if (hunger < 0 || hunger > 4096 || !Float.isFinite(saturationModifier)
                     || saturationModifier < 0 || saturationModifier > 1024
-                    || (mode != Mode.NUTRITION && (hunger != 0 || saturationModifier != 0)))
+                    || (mode != Mode.NUTRITION && mode != Mode.LAVA_NUTRITION
+                         && (hunger != 0 || saturationModifier != 0)))
                 throw new IllegalArgumentException("Invalid projected food decision");
         }
         public boolean nativePermission() { return mode == Mode.PERMIT_NATIVE; }
         public boolean denied() { return mode == Mode.DENY; }
+        public boolean lavaConditional() {
+            return mode == Mode.LAVA_NATIVE || mode == Mode.LAVA_NUTRITION;
+        }
+        public boolean lavaHasNutrition() { return mode == Mode.LAVA_NUTRITION; }
+        public static Entry lavaConditional(Entry whenAllowed) {
+            if (whenAllowed == null || whenAllowed.mode() == Mode.PERMIT_NATIVE)
+                return new Entry(0,0,Mode.LAVA_NATIVE);
+            if (whenAllowed.mode() == Mode.NUTRITION)
+                return new Entry(whenAllowed.hunger(),whenAllowed.saturationModifier(),
+                    Mode.LAVA_NUTRITION);
+            throw new IllegalArgumentException("Strict denial cannot be lava-overridden");
+        }
         public static Entry permitNative() { return new Entry(0, 0, Mode.PERMIT_NATIVE); }
         public static Entry deny() { return new Entry(0, 0, Mode.DENY); }
         public static Entry nourishment(int hunger, float modifier) {
@@ -51,8 +64,16 @@ public final class FoodPreviewWire {
             if (!itemId(row.getKey()))
                 throw new IllegalArgumentException("Unsafe dietary preview item ID");
             Entry e = row.getValue();
-            String line = row.getKey() + "\t" + (e.nativePermission() ? "P" : e.denied()
-                ? "D" : e.hunger() + "\t" + Float.toString(e.saturationModifier())) + "\n";
+            String encoded = switch (e.mode()) {
+                case PERMIT_NATIVE -> "P";
+                case DENY -> "D";
+                case LAVA_NATIVE -> "L";
+                case LAVA_NUTRITION -> "LN\\t" + e.hunger() + "\\t"
+                    + Float.toString(e.saturationModifier());
+                case NUTRITION -> e.hunger() + "\\t"
+                    + Float.toString(e.saturationModifier());
+            };
+            String line = row.getKey() + "\\t" + encoded + "\\n";
             if (line.length() > CHUNK_CHARS)
                 throw new IllegalArgumentException("Oversized dietary preview record");
             if (current.length() + line.length() > CHUNK_CHARS) {
@@ -77,7 +98,7 @@ public final class FoodPreviewWire {
             throw new IllegalArgumentException("Unterminated dietary preview");
         for (String line : rows.split("\n")) {
             String[] fields = line.split("\t", -1);
-            if (fields.length < 2 || fields.length > 3 || !itemId(fields[0]))
+            if (fields.length < 2 || fields.length > 4 || !itemId(fields[0]))
                 throw new IllegalArgumentException("Malformed dietary preview row");
             Entry parsed;
             try {
@@ -85,6 +106,11 @@ public final class FoodPreviewWire {
                     parsed = Entry.permitNative();
                 } else if (fields.length == 2 && fields[1].equals("D")) {
                     parsed = Entry.deny();
+                } else if (fields.length == 2 && fields[1].equals("L")) {
+                    parsed = Entry.lavaConditional(null);
+                } else if (fields.length == 4 && fields[1].equals("LN")) {
+                    parsed = Entry.lavaConditional(Entry.nourishment(
+                        Integer.parseInt(fields[2]),Float.parseFloat(fields[3])));
                 } else if (fields.length == 3) {
                     parsed = Entry.nourishment(Integer.parseInt(fields[1]),
                         Float.parseFloat(fields[2]));
