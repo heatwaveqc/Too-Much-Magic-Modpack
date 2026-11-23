@@ -75,18 +75,30 @@ def verify_pins(audit, repo_root):
     releases = audit.get("releases", [])
     if len(releases) != 15:
         raise ValueError("Expected all fifteen installed priority food JARs")
+    # Publisher audit slugs and Packwiz filenames are not guaranteed to
+    # match (e.g. aquaculture-delight vs aquaculturedelight.pw.toml).
+    # Compare exact pinned filename + digest, not guessed slug paths.
+    pins = {}
+    for pin in sorted((repo_root / "mods").glob("*.pw.toml")):
+        data = tomllib.loads(pin.read_text(encoding="utf-8"))
+        name = data["filename"]
+        if name in pins:
+            raise ValueError(f"Ambiguous Packwiz filename {name}")
+        pins[name] = data
+    seen = set()
     for release in releases:
         slug = release["slug"]
-        pin = repo_root / "mods" / (slug + ".pw.toml")
-        data = tomllib.loads(pin.read_text(encoding="utf-8"))
-        digest = data["download"]
+        name = release["filename"]
+        data = pins.get(name)
+        digest = data.get("download", {}) if data else {}
         if (release["status"] != "verified"
                 or release["provenance"] != "publisher_download"
                 or not release["existing_indexed_hash_matches"]
-                or digest["hash-format"] != "sha1"
-                or digest["hash"] != release["sha1"]
-                or data["filename"] != release["filename"]):
+                or name in seen
+                or digest.get("hash-format") != "sha1"
+                or digest.get("hash") != release["sha1"]):
             raise ValueError(f"Outdated or unverified food JAR: {slug}")
+        seen.add(name)
 
 
 class TagIndex:
