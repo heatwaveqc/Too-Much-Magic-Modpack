@@ -17,11 +17,11 @@ import tomllib
 from zipfile import ZipFile
 
 from verify_approved_recovery_artifacts import download, jar_metadata
-from food_provenance_census import ingredient_tags, resource_type, result_item
+from food_provenance_census import ingredient_tags, resource_type, result_item, recipe_outputs
 
 ROOT = Path(__file__).resolve().parents[1]
 CANDIDATES = {
-    "huaxia-delight": (1685797, 8829017, "huaxia-delight-1.21.1-1.2.0.jar", None),
+    "huaxia-delight": (1685797, 8829017, "huaxia-delight-1.21.1-1.2.0.jar", "huaxiadelight"),
     "crispy": (1206986, 6447126, "crispy-1.1.jar", "crispy"),
     # Publisher advertises release 1.5.3 but the exact hosted filename ends 1.5.2.
     "dungeons-delight": (1258923, 9614702, "neoforge-dungeonsdelight-1.21.1-1.5.2.jar", "dungeonsdelight"),
@@ -70,20 +70,25 @@ def audit_resources(data):
                 issues.append(info.filename + ": " + str(exc)[:80])
                 continue
             if kind == "recipe":
-                item, amount = result_item(raw)
-                multi = []
-                if isinstance(raw.get("results"), list):
-                    for candidate in raw["results"]:
-                        if isinstance(candidate, dict):
-                            out, number = result_item({"result": candidate})
-                            if out:
-                                multi.append({"item": out, "count": number})
+                outputs = recipe_outputs(raw)
+                multi = outputs if (isinstance(raw.get("result"), list)
+                                    or isinstance(raw.get("results"), list)) else []
+                single = outputs[0] if len(outputs) == 1 and not multi else None
+                if not outputs:
+                    issues.append(info.filename + ": unsupported or ambiguous recipe result")
+                ingredients = raw.get("ingredients", raw.get("ingredient", []))
                 recipes.append({
                     "recipe": rid, "type": raw.get("type"),
-                    "result": item, "result_count": amount,
+                    "result": single["item"] if single else None,
+                    "result_count": single["count"] if single else None,
                     "multi_results": multi,
-                    "ingredient_tags": sorted(ingredient_tags(raw.get(
-                        "ingredients", raw.get("ingredient", [])))),
+                    "outputs": outputs,
+                    "ingredient_inputs": ingredients,
+                    "ingredient_tags": sorted(ingredient_tags(ingredients)),
+                    "tool": raw.get("tool"),
+                    "station": raw.get("station"),
+                    "container": raw.get("container"),
+                    "native_conditions": raw.get("neoforge:conditions", []),
                     "path": info.filename,
                 })
             elif kind == "item_tag":
@@ -95,9 +100,7 @@ def audit_resources(data):
                     issues.append(info.filename + ": unresolved tag values")
     recipes.sort(key=lambda x: x["recipe"])
     tags.sort(key=lambda x: x["tag"])
-    outcomes = sorted({s for r in recipes for s in
-                       ([r["result"]] if r["result"] else []) +
-                       [m["item"] for m in r["multi_results"]]})
+    outcomes = sorted({output["item"] for r in recipes for output in r["outputs"]})
     return {
         "resource_counts": dict(sorted(counts.items())),
         "recipe_count": len(recipes),
@@ -140,9 +143,19 @@ def download_checked(slug, pin):
     raise RuntimeError("Occult Cooking 1.0.1 exact-name official Modrinth fallback not found")
 
 
-def audit_one(slug):
+def audit_one(slug, local_file=None):
     pin, expected_hash, modid = selected_pin(slug)
-    data, url = download_checked(slug, pin)
+    if local_file is not None:
+        local_file = Path(local_file)
+        if local_file.name != pin["filename"]:
+            raise ValueError("Local JAR filename differs from approved exact release")
+        if local_file.stat().st_size > 105 * 1024 * 1024:
+            raise ValueError("Local JAR exceeds audit size bound")
+        data, url = local_file.read_bytes(), "user-supplied:" + local_file.name
+        provenance = "user_uploaded_source_exact_sha_no_publisher_hash"
+    else:
+        data, url = download_checked(slug, pin)
+        provenance = "publisher_download"
     fmt = pin["download"].get("hash-format")
     matches = (hashlib.new(fmt, data).hexdigest().lower() == expected_hash.lower()
                if expected_hash else None)
@@ -150,10 +163,14 @@ def audit_one(slug):
     found = set(meta.get("mod_ids") or [])
     id_matches = modid is None or modid in found
     evidence = audit_resources(data)
-    status = ("verified" if (matches is not False and id_matches and
-                           isinstance(meta.get("mod_ids"), list) and found) else "held")
+    valid = matches is not False and id_matches and bool(found)
+    status = ("verified_user_upload" if provenance.startswith("user_uploaded") and valid
+              else "verified" if valid else "held")
     return {
         "status": status, "slug": slug, "source": url,
+        "provenance": provenance,
+        "publisher_checksum_independently_matched": (
+            matches if expected_hash else None),
         "publisher_file_id": pin.get("update", {}).get("curseforge", {}).get("file-id"),
         "filename": pin["filename"], "size_bytes": len(data),
         "sha1": hashlib.sha1(data).hexdigest(),
@@ -167,7 +184,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scope", choices=("candidates", "pinned", "all"), default="all")
     parser.add_argument("--json-out", required=True)
+    parser.add_argument("--local-jar", action="append", default=[], metavar="SLUG=PATH",
+                        help="Audit a supplied exact-name JAR offline instead of downloading it")
     args = parser.parse_args()
+    local = {}
+    for pair in args.local_jar:
+        slug, sep, name = pair.partition("=")
+        if not sep or slug in local or slug not in CANDIDATES and slug not in PRIORITY:
+            parser.error("Expected unique approved SLUG=PATH for --local-jar")
+        local[slug] = Path(name)
     slugs = ((list(CANDIDATES) if args.scope != "pinned" else []) +
              (list(PRIORITY) if args.scope != "candidates" else []))
     report = {"schema": 1, "scope": "source_only_publisher_jar_census",
@@ -176,14 +201,14 @@ def main():
               "releases": [], "failures": []}
     for slug in slugs:
         try:
-            row = audit_one(slug)
+            row = audit_one(slug, local.get(slug))
             report["releases"].append(row)
             print("SOURCE", slug, row["status"], row["filename"], row["sha1"],
                   "recipes", row["source_evidence"]["recipe_count"],
                   "tags", len(row["source_evidence"]["item_tags"]),
                   "native_mods", row["metadata"].get("mod_ids"),
                   "required_deps", row["metadata"].get("required_dependencies"), flush=True)
-            if row["status"] != "verified":
+            if row["status"] not in ("verified", "verified_user_upload"):
                 report["failures"].append({"slug": slug, "error": "pinned hash or native mod ID mismatch"})
         except Exception as exc:
             report["failures"].append({"slug": slug, "error": str(exc)[:1000]})
@@ -194,7 +219,8 @@ def main():
                   row["source_evidence"]["candidate_output_ids_not_confirmed_edible"]}
     print("SUMMARY", json.dumps({
         "audited": len(report["releases"]),
-        "verified": sum(row["status"] == "verified" for row in report["releases"]),
+        "verified": sum(row["status"] in ("verified", "verified_user_upload")
+                        for row in report["releases"]),
         "native_recipe_sources": sum(row["source_evidence"]["recipe_count"]
                                      for row in report["releases"]),
         "recipe_output_candidate_ids": len(output_ids),
