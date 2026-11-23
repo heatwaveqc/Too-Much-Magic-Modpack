@@ -132,21 +132,41 @@ public final class ProgressionApi {
             io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,id);
     }
 
-    public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
-        var path=PathRegistry.get(pathId);
-        if(path==null || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player) || !PathRegistry.purchaseEligible(player,pathId,skillId)) return false;
-        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
-        return ChannelEngine.buy(before,path,PathRegistry.config(),skillId)!=before;
+    private static String defaultCurrency(String pathId,String skillId){
+        var rules=PathRegistry.economyCatalog().skills().get(
+            new io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig.SkillKey(pathId,skillId));
+        if(rules!=null)return rules.sources().getFirst().system();
+        var binding=PathRegistry.config().skills().get(
+            new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skillId));
+        return binding==null?"":binding.currency().id();
     }
 
-    /** Fail-closed if the path is missing, gated, full, or short on skill points. */
-    public static boolean buy(ServerPlayer player, String pathId, String skillId) {
-        Definition.Path path = PathRegistry.get(pathId);
-        var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !canBuy(player,pathId,skillId)) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.buy(ledger,path,PathRegistry.config(),skillId);
-        if(next==ledger)return false;
+    public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
+        return canBuy(player,pathId,skillId,defaultCurrency(pathId,skillId));
+    }
+
+    /** The client may CHOOSE a declared currency, never its price or rank. */
+    public static boolean canBuy(ServerPlayer player,String pathId,String skillId,String systemId) {
+        var path=PathRegistry.get(pathId);
+        if(path==null || player.isCreative() || player.isSpectator()
+            || NewbieMode.isNewbie(player)
+            || !PathRegistry.purchaseEligible(player,pathId,skillId))return false;
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        return ChannelEngine.buy(before,path,PathRegistry.config(),skillId,systemId)!=before;
+    }
+
+    /** Fail closed on unknown currencies, prerequisites, caps, or insufficient points. */
+    public static boolean buy(ServerPlayer player,String pathId,String skillId) {
+        return buy(player,pathId,skillId,defaultCurrency(pathId,skillId));
+    }
+
+    public static boolean buy(ServerPlayer player,String pathId,String skillId,String systemId) {
+        Definition.Path path=PathRegistry.get(pathId);
+        if(path==null || PathRegistry.channel(pathId)==null
+            || !canBuy(player,pathId,skillId,systemId))return false;
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=ChannelEngine.buy(before,path,PathRegistry.config(),skillId,systemId);
+        if(next==before)return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
