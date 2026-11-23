@@ -255,6 +255,6 @@
 2. **Integrate proven source gaps** #336 and #321; reconcile #394 without undoing JEI default repair; lock Swing Through Grass #385; verify two outstanding Lootr artifacts #542/#543.
 3. **Resolve source-conflict hot spots before any wholesale donor merge:** #568, #418, #396, #393, #382, #379, #345, #343, #339; #509/#306 starter timing, #280 old forms/Tyz semantics, #60 old dragon diets, #58 outdated dual vampire architecture.
 4. **Finish incomplete engines** #455/#475 Newbie/Normie/Core/XP; #468 Transformations migration; #444 food provenance; #448 replication; #16 storage, #57 Mahou, #318 parchment, #365 Bountiful, #324 taxonomy, #454 Zerker, #549 Chaos and #387 Angels (Christmas).
-5. **Keep 22 QA/governance issues open** rather than falsely reporting integrated source as in-game PASS; feed B/C results to #431/#391 and then close their individual acceptance tickets where appropriate.
+5. **Keep 21 QA/governance issues open** rather than falsely reporting integrated source as in-game PASS; feed B/C results to #431/#391 and then close their individual acceptance tickets where appropriate.
 
 **Safety of the census:** GitHub PRs are mutable and branch heads/merges may change while this report is reviewed. Recheck PR state and exact commits before any subsequent close/merge; do not treat this timestamped audit as a transactional lock. Note that #575 merged while this audit was being prepared, so it is not in the final open list.
