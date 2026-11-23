@@ -23,7 +23,8 @@ public final class DracolichMixinPlugin implements IMixinConfigPlugin {
                 pinned(list, "witchery_forbidden_magic", "0.5.37");
             case "DragonSurvivalDeathRepeatMixin", "NewbieDragonAcquisitionMixin" ->
                 pinned(list, "dragonsurvival", "2.0.74");
-            case "NewbieVampireAcquisitionMixin", "NewbieWerewolfAcquisitionMixin" ->
+            case "NewbieVampireAcquisitionMixin", "NewbieWerewolfAcquisitionMixin",
+                 "JawrVampireFoodPenaltyMixin" ->
                 pinned(list, "witchery", "0.5.39");
             case "BotaniaThermalilyNoCooldownMixin", "BotaniaThermalilyFiftyEndoflamesMixin" ->
                 pinned(list, "botania", "2.0.2");
