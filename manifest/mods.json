@@ -3371,6 +3371,20 @@
       "dependencies_verified": false,
       "packwiz_slug": "twilight-lootr",
       "note": "Owner-selected next-build #542; draft source #543 has secondary SHA1 only. Verify exact publisher binary digest and Twilight Forest/Lootr dependency ranges before enabling; unverified source is technical pending, not owner-deferred."
+    },
+    {
+      "id": "swing-through-grass",
+      "name": "Swing Through Grass",
+      "category": "qol",
+      "desired": true,
+      "version": "1.1.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/swing-through-grass/files/9063127",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "swing-through-grass",
+      "candidate_file_id": 9063127,
+      "note": "2026-11-23 #384/#385 graveyard recovery: owner-approved NeoForge 1.21.1 v1.1.0 selected for next QA. Exact CurseForge project 1477279/file 9063127 filename confirmed on publisher page; SHA1 15f48ed3ab02b9e8763284279487a9d95b206337 is corroborated by an independent indexed modpack lock containing the same CurseForge file ID and filename, NOT an independently downloaded publisher JAR. Existing Architectury 13.0.11 is indexed; verify native dependency bounds and real download/loader behavior on authorized QA. Existing blaze rod and mushroom stew QoL source was already integrated and is preserved. No combat gameplay PASS claimed."
     }
   ],
   "excluded": [
