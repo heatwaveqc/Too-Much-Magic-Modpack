@@ -402,15 +402,29 @@ public final class ProgressionApi {
         return true;
     }
 
-    /** Direct grant to a configured native system; independent of any tree. */
+    /** Existing trusted server consumers may grant a native-style source award. */
     public static boolean awardExperience(ServerPlayer player,String id,long xp) {
+        return awardExperience(player,id,"tyr_progression:server_award",
+                "award:"+UUID.randomUUID(),xp);
+    }
+    /** Source-aware overload ensures repeat callbacks can share one receipt. */
+    public static boolean awardExperience(ServerPlayer player,String id,
+            String sourceCategory,String transaction,long xp) {
         if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
             ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
-        var system=PathRegistry.economy(id);if(system==null||system.magic()||!PathRegistry.economyEligible(player,id))return false;
+        var system=PathRegistry.economy(id);
+        if(system==null||!PathRegistry.economyEligible(player,id))return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(prior,system,io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp),0));return true;
+        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
+        if(PathRegistry.economyCatalog().systems().containsKey(id))
+            return awardConfiguredXp(player,id,sourceCategory,transaction,null,
+                    BigDecimal.valueOf(nominal),false);
+        if(system.magic())return false; // No unconfigured money printer.
+        player.setData(ProgressionAttachments.LEDGER.get(),
+                ChannelEngine.grant(prior,system,nominal,0));
+        return true;
     }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
