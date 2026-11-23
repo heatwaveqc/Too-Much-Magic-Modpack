@@ -338,7 +338,7 @@ hash = "2ee49d93fe81c76bc0743548b464618332d3b82b67d4fd7556bad1ea54250c0a"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "c2d1df8df0e2580e38caff45f22aa8e5785ab6d0bd3a6b33d1dbd4bb740fd08d"
+hash = "68b6ed6d6e249d9e953a8684189687372de74e8228d7194dbeb2f9be99aa9e20"
 
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
@@ -523,6 +523,10 @@ hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
 [[files]]
 file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json"
 hash = "612a3423492b90fe67ace897145a0093ea1c5edc4bc74aaa9e52d58a6a81c160"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_ink_rituals.json"
+hash = "2c99d359f9106203a3843e6a097573e79c90b44de751bdd40188ee03332da891"
 
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
@@ -1231,6 +1235,26 @@ hash = "d2ad9b24da392a59173de9580abb03b86c31d68dfac9a8b71d8ab20a145870be"
 [[files]]
 file = "kubejs/data/tmm/recipe/ritual/equivalent_exchange.json"
 hash = "5f2a4df24181cb66ed4600fa6a472780012f6488bf2e430a497522d059b3983f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/occultism_ink_common.json"
+hash = "0ed9e5fc7565ef39133690dc0c8eba50139ad66481a99c70512d055ea2d0f7a7"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/occultism_ink_epic.json"
+hash = "be24478b055dc36a30bf157bbc5fe4f244f3fd0196b7d2fdccc9ac8b50c83865"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/occultism_ink_legendary.json"
+hash = "473500302fce49cb6f9b7625438615b346cb01feac6553838221da8c93f1399b"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/occultism_ink_rare.json"
+hash = "1b7b10c54aadaa815244cef2941db6152518e9c69a43fbe53cc956d4150884db"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/occultism_ink_uncommon.json"
+hash = "6ec9390b41dc8ff29e9be5f458950b5b0cba80333ed7dac549ed8f2f97771d67"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"
