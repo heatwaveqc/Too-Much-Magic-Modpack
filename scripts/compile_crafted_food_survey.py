@@ -377,18 +377,35 @@ def process(audit, checked_sources, checked_routes):
         if not changed:
             break
 
+    # Scope *finished dietary overrides* to food-tagged outputs. Internal
+    # recipe graph work still includes untagged intermediates so a food can
+    # depend on flour, dough or another ingredient with traceable ancestry.
+    # Only transitively necessary intermediates are emitted as support records.
+    food_targets = set(recipes) & native_food_tagged
+    candidates = set(accepted) & food_targets
+    support = set()
+    pending = list(sorted(candidates))
+    while pending:
+        item = pending.pop()
+        for route in accepted[item]["routes"]:
+            for ingredient in route["ingredients"]:
+                dependency = ingredient["item"]
+                if dependency in accepted and dependency not in candidates and dependency not in support:
+                    support.add(dependency)
+                    pending.append(dependency)
+    emitted = candidates | support
     category = defaultdict(set)
-    for item, document in accepted.items():
+    for item in sorted(candidates):
+        document = accepted[item]
         category["crafted_candidate"].add(item)
-        if item in native_food_tagged:
-            category["native_food_tag_candidate"].add(item)
-        kinds = {r["method"] for r in document["routes"]}
-        for kind in kinds:
+        category["native_food_tag_candidate"].add(item)
+        for kind in {r["method"] for r in document["routes"]}:
             category[kind].add(item)
         if document["identity"] == "unfavored_all":
             category["unfavored_all"].add(item)
     result_files = {}
-    for item, document in sorted(accepted.items()):
+    for item in sorted(emitted):
+        document = accepted[item]
         ns, name = item.split(":", 1)
         result_files[str(ROUTES / ns / (name + ".json"))] = document
     for item, document in sorted(added_sources.items()):
@@ -398,7 +415,6 @@ def process(audit, checked_sources, checked_routes):
         result_files[str(TAGS / (tag + ".json"))] = {
             "replace": False, "values": sorted(ids),
         }
-    reason_counts = dict(sorted(Counter(reasons.values()).items()))
     summary = {
         "schema": 1, "status": "source_candidates_not_verified_edible",
         "source_audit_recipe_count": sum(
@@ -407,14 +423,19 @@ def process(audit, checked_sources, checked_routes):
         "existing_roots": len(checked_sources),
         "generated_material_sources": len(added_sources),
         "existing_reviewed_recipe_outputs": len(checked_routes),
-        "generated_candidate_recipe_outputs": len(accepted),
-        "native_food_tagged_candidates": len(set(accepted) & native_food_tagged),
+        "tagged_recipe_output_ids": len(food_targets),
+        "generated_candidate_recipe_outputs": len(candidates),
+        "native_food_tagged_candidates": len(candidates),
+        "generated_support_recipe_outputs": len(support),
+        "emitted_recipe_route_records": len(emitted),
+        "support_ids": sorted(support),
         "excluded_known_nonfood_or_vanilla_outputs": len(excluded),
         "excluded_output_ids": sorted(excluded),
-        "held_output_ids": len(reasons),
-        "hold_reasons": reason_counts,
-        "held_outputs": {k: reasons[k] for k in sorted(reasons)},
-        "generated_ids": sorted(accepted),
+        "skipped_untagged_recipe_outputs": len(set(recipes) - food_targets),
+        "held_output_ids": len(food_targets & set(reasons)),
+        "hold_reasons": dict(sorted(Counter(reasons[k] for k in food_targets & set(reasons)).items())),
+        "held_outputs": {k: reasons[k] for k in sorted(food_targets & set(reasons))},
+        "generated_ids": sorted(candidates),
     }
     return result_files, summary
 
@@ -441,7 +462,7 @@ def main():
     (args.out / "crafted-food-survey-report.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("Food survey:", {k: v for k, v in summary.items()
-                           if k not in ("held_outputs", "generated_ids", "excluded_output_ids")})
+                           if k not in ("held_outputs", "generated_ids", "excluded_output_ids", "support_ids")})
 
 
 if __name__ == "__main__":
