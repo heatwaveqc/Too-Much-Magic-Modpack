@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "occultism:ender_satchel",
+    {
+      "id": "occultism:ender_satchel",
+      "required": false
+    },
     "projecte:white_alchemical_bag",
     "projecte:orange_alchemical_bag",
     "projecte:magenta_alchemical_bag",
