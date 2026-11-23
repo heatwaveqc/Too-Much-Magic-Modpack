@@ -123,27 +123,35 @@ public final class ProgressionMenuNetwork {
         json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
         json.addProperty("eligible",PathRegistry.eligible(player,pathId));
-        json.addProperty("rank", state.rank());
-        json.addProperty("max_rank", channel.maxRank());
-        json.addProperty("xp", state.xp());
-        json.addProperty("points", state.points());
-        var curve=channel.magic()?java.util.List.of(0L):channel.source().rankXp();
-        long threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
-        if(channel!=null && channel.magic()) {
-            var wallet=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get()).wallet(channel.id());
-            long start=wallet==null?0:wallet.xp()-(long)wallet.magicProgress();
-            threshold=start>Long.MAX_VALUE-1000?Long.MAX_VALUE:start+1000;
+        var ledger=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get());
+        var catalog=PathRegistry.economyCatalog();
+        var spec=channel==null?null:catalog.systems().get(channel.id());
+        long level=spec==null?state.rank():
+            io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.level(ledger.economy(),spec);
+        json.addProperty("rank",level);
+        json.addProperty("max_rank",spec==null?channel.maxRank():spec.maxLevel());
+        json.addProperty("xp",spec==null?java.math.BigDecimal.valueOf(state.xp()):
+                ledger.economy().currentXp().getOrDefault(spec.id(),java.math.BigDecimal.ZERO));
+        json.addProperty("points",spec==null?state.points():
+                io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.available(ledger.economy(),spec));
+        long threshold;
+        long currentStart;
+        if(spec==null){
+            var curve=channel.source().rankXp();
+            threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
+            currentStart=state.rank()>0?curve.get(Math.min(state.rank()-1,curve.size()-1)):0;
+        } else {
+            // Level is a display projection of current XP, not persisted rank.
+            var start=spec.xpPerPoint().multiply(java.math.BigDecimal.valueOf(level));
+            var next=spec.xpPerPoint().multiply(java.math.BigDecimal.valueOf(level+1L));
+            var max=java.math.BigDecimal.valueOf(Long.MAX_VALUE);
+            currentStart=start.compareTo(max)>=0?Long.MAX_VALUE:start.longValue();
+            threshold=next.compareTo(max)>=0?Long.MAX_VALUE:next.longValue();
             json.addProperty("magic_channel",true);
         }
-        json.addProperty("next_xp", threshold);
-        long currentStart = state.rank() > 0
-                ? curve.get(Math.min(state.rank()-1,curve.size()-1))
-                : 0;
-        if(channel!=null && channel.magic()) currentStart=Math.max(0,threshold-1000);
-        json.addProperty("rank_start_xp", currentStart);
-        var ledger=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get());
+        json.addProperty("next_xp",threshold);
+        json.addProperty("rank_start_xp",currentStart);
         JsonArray wallets=new JsonArray();
-        var catalog=PathRegistry.economyCatalog();
         for(var entry:catalog.systems().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()){
             String id=entry.getKey();
             var spec=entry.getValue();
