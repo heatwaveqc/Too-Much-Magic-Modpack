@@ -6,6 +6,8 @@ import com.google.gson.JsonParser;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import io.github.heatwaveqc.tyr.progression.foundation.Condition;
 import net.minecraft.core.registries.BuiltInRegistries;
 import io.github.heatwaveqc.tyr.progression.network.FoodPreviewWire;
@@ -34,6 +36,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                          Map<String, FoodRecipeEvidence> recipeEvidence,
                          Map<String, StrictDietPolicy> strictPolicies,
                          Map<String, Condition<ServerPlayer>> strictActivations,
+                         FoodProcessingCatalog processing,
                          long generation) {
         private State {
             sourceEvidence = Map.copyOf(sourceEvidence);
@@ -44,6 +47,55 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     }
     private static volatile State active;
     private static final AtomicLong NEXT_GENERATION = new AtomicLong();
+
+    /**
+     * One immutable validated view per server/policy generation. Server tick
+     * is the only builder; eating, hover/preview and owned-effect checks reuse
+     * its resolver rather than copying route tables for each bite/tick.
+     */
+    private record RuntimeSnapshot(State state, MinecraftServer server, Object recipeManager,
+                                   FoodDecisionResolver resolver,
+                                   FoodLiveRecipeValidator.Validation validation) {}
+    private static volatile RuntimeSnapshot runtimeSnapshot;
+
+    public static void serverStopped(ServerStoppedEvent event) {
+        if (runtimeSnapshot != null && runtimeSnapshot.server() == event.getServer())
+            runtimeSnapshot = null;
+    }
+
+    private static RuntimeSnapshot snapshot(ServerPlayer player) {
+        State state = active;
+        if (state == null || player == null || player.getServer() == null
+                || !player.getServer().isSameThread()) return null;
+        MinecraftServer server = player.getServer();
+        Object recipes = server.getRecipeManager();
+        RuntimeSnapshot prior = runtimeSnapshot;
+        if (prior != null && prior.state() == state && prior.server() == server
+                && prior.recipeManager() == recipes) return prior;
+
+        // Run after the server has finished applying its resource reload, not
+        // inside the diet reload listener (whose order vs RecipeManager is not
+        // guaranteed). The first per-player preview tick normally builds this.
+        var observed = FoodServerRecipeSnapshot.read(server, state.processing());
+        var validated = FoodLiveRecipeValidator.validate(state.recipeEvidence(), observed);
+        Map<String, FoodRecipeEvidence> approved = new HashMap<>();
+        for (String item : validated.approved())
+            approved.put(item, state.recipeEvidence().get(item));
+        var resolver = new FoodDecisionResolver(state.rules(), state.strictPolicies(),
+            state.sourceEvidence(), approved, input -> {
+                ResourceLocation id = ResourceLocation.tryParse(input);
+                if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
+                return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
+            }, validated.blocked());
+        RuntimeSnapshot ready = new RuntimeSnapshot(state, server, recipes, resolver, validated);
+        runtimeSnapshot = ready;
+        if (!validated.blocked().isEmpty())
+            ProgressionMod.LOGGER.warn(
+                "Food recipe audit rejected {} of {} reviewed outputs (native fallback): {}",
+                validated.blocked().size(), state.recipeEvidence().size(),
+                validated.reasons());
+        return ready;
+    }
 
     /** Reload generation; does not depend on an operator-invoked food census. */
     public static long generation() {
@@ -110,57 +162,47 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     }
 
     /**
-     * Shared policy decision for an authorized set of native/form/Path profiles.
-     * Only component-backed food is interpreted; custom-use items are still
-     * owned by their native mod and remain outside this nutrition projection.
+     * Server-authorized shared decision. Never evaluate unverified recipe
+     * sidecars, even when their JSON claims complete:true.
      */
-    public static FoodDecisionResolver.Decision decide(Set<String> profiles, ItemStack stack) {
-        State state = active;
-        if (state == null || stack.isEmpty() || stack.get(DataComponents.FOOD) == null)
+    public static FoodDecisionResolver.Decision decide(
+            ServerPlayer player, Set<String> profiles, ItemStack stack) {
+        if (stack == null || stack.isEmpty() || stack.get(DataComponents.FOOD) == null)
             return FoodDecisionResolver.Decision.nativeResult();
-        String item = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-        return resolver(state, input -> {
-            if (input.equals(item)) return tags(stack);
-            ResourceLocation id = ResourceLocation.tryParse(input);
-            if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
-            return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
-        }).decide(profiles, item);
+        RuntimeSnapshot live = snapshot(player);
+        if (live == null) return FoodDecisionResolver.Decision.nativeResult();
+        return live.resolver().decide(profiles,
+            BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
     }
 
-    private static FoodDecisionResolver resolver(State state,
-            java.util.function.Function<String, Set<String>> observedTags) {
-        return new FoodDecisionResolver(state.rules(), state.strictPolicies(),
-            state.sourceEvidence(), state.recipeEvidence(), observedTags);
-    }
-
-    /** Preserve the previously published single-profile nutrition adapter. */
     public static Optional<FoodPolicyRules.Nutrition> evaluateSource(
-            String profile, ItemStack stack) {
+            ServerPlayer player, String profile, ItemStack stack) {
         if (profile == null) return Optional.empty();
-        FoodDecisionResolver.Decision decision = decide(Set.of(profile), stack);
-        return decision.outcome() == FoodDecisionResolver.Outcome.NUTRITION
-            ? Optional.of(decision.nutrition()) : Optional.empty();
+        var result = decide(player, Set.of(profile), stack);
+        return result.outcome() == FoodDecisionResolver.Outcome.NUTRITION
+            ? Optional.of(result.nutrition()) : Optional.empty();
     }
 
     /**
-     * Build the exact same server-derived decision for every native FOOD item
-     * from a single atomically loaded policy snapshot. When strict profiles
-     * apply, explicit denies are transmitted too, even without source recipes.
-     * The client never runs its own food policy or imports provenance.
+     * This API deliberately requires server context. A profile/stack alone
+     * cannot prove current recipe alternatives following KubeJS /reload.
      */
-    public static Map<String, FoodPreviewWire.Entry> clientPreview(Set<String> profiles) {
-        State state = active;
-        if (state == null || profiles == null || profiles.isEmpty()) return Map.of();
-        var evaluator = resolver(state, input -> {
-            ResourceLocation id = ResourceLocation.tryParse(input);
-            if (id == null || !BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
-            return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
-        });
+    @Deprecated
+    public static Optional<FoodPolicyRules.Nutrition> evaluateSource(
+            String profile, ItemStack stack) {
+        return Optional.empty();
+    }
+
+    /** Client receives the exact same effective-recipe-validated decisions. */
+    public static Map<String, FoodPreviewWire.Entry> clientPreview(
+            ServerPlayer player, Set<String> profiles) {
+        RuntimeSnapshot live = snapshot(player);
+        if (live == null || profiles == null || profiles.isEmpty()) return Map.of();
         Map<String, FoodPreviewWire.Entry> projected = new HashMap<>();
         for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
             ItemStack stack = BuiltInRegistries.ITEM.get(id).getDefaultInstance();
             if (stack.get(DataComponents.FOOD) == null) continue;
-            var decision = evaluator.decide(profiles, id.toString());
+            var decision = live.resolver().decide(profiles, id.toString());
             switch (decision.outcome()) {
                 case NATIVE -> { }
                 case DENY -> projected.put(id.toString(), FoodPreviewWire.Entry.deny());
@@ -170,11 +212,6 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
             }
         }
         return Map.copyOf(projected);
-    }
-
-    /** Existing dragon-only client call; hybrid profiles use the set overload. */
-    public static Map<String, FoodPreviewWire.Entry> clientPreview(String profile) {
-        return profile == null ? Map.of() : clientPreview(Set.of(profile));
     }
 
     @Override
@@ -240,10 +277,25 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                     "Cannot read strict food policy " + resource.getKey(), bad);
             }
         }
-        // One volatile publish; an invalid route or root record never exposes
-        // a partially updated diet policy on /reload.
-        active = new State(rules, sources, recipes, strict, activations,
+        // The offline compiler and server validator share this method catalog.
+        // Invalid prep config never partially publishes a dietary generation.
+        ResourceLocation processingId = ResourceLocation.parse(
+            "tyr_progression:tyr_progression/food_processing/default.json");
+        var processingResource = manager.getResource(processingId).orElseThrow(
+            () -> new IllegalArgumentException("Missing food processing catalog"));
+        FoodProcessingCatalog processing;
+        try (var reader = processingResource.openAsReader()) {
+            processing = FoodProcessingCatalog.parse(
+                JsonParser.parseReader(reader).getAsJsonObject());
+        } catch (IOException bad) {
+            throw new IllegalArgumentException("Cannot read food processing catalog", bad);
+        }
+
+        // Publish an immutable generation. The first SERVER tick afterwards
+        // revalidates against the completely reloaded effective recipe manager.
+        active = new State(rules, sources, recipes, strict, activations, processing,
             NEXT_GENERATION.incrementAndGet());
+        runtimeSnapshot = null;
         ProgressionMod.LOGGER.info(
             "Loaded shared food policy schema {}: {} affinity profiles, {} strict profiles, {} roots, {} recipes",
             rules.schema(), rules.profiles().size(), strict.size(), sources.size(), recipes.size());
