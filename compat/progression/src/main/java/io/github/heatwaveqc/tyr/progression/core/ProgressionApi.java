@@ -66,8 +66,31 @@ public final class ProgressionApi {
                     && ledger.get(other.id()).joined()) return false;
             }
         }
-        player.setData(ProgressionAttachments.LEDGER.get(),
-            ChannelEngine.join(ledger,path,channel));
+        // Join is a real Path change: TMM's configured default sacrifices
+        // unallocated MXP, but never already purchased Core/retained Path ranks.
+        Ledger next=ChannelEngine.join(ledger,path,channel);
+        next=ChannelEngine.pathChange(next,java.util.Set.of());
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
+        return true;
+    }
+
+    /**
+     * Validated, punitive Path departure for both gameplay and operator commands.
+     * Achievements/counters persist; all purchased ranks of the lost Path are
+     * destroyed and current MXP rebases from surviving purchased ranks.
+     */
+    public static boolean leave(ServerPlayer player,String pathId) {
+        if(player==null || player.getServer()==null || !player.getServer().isSameThread())return false;
+        Definition.Path path=PathRegistry.get(pathId);
+        if(path==null || "automatic".equals(PathRegistry.enrollment(pathId)))return false;
+        Ledger old=player.getData(ProgressionAttachments.LEDGER.get());
+        Track track=old.get(pathId);
+        if(!track.joined())return false;
+        Track dormant=new Track(false,0,0,0,Map.of(),track.milestones(),track.counters());
+        Ledger changed=old.with(pathId,dormant).clearAllReceipts(pathId);
+        changed=ChannelEngine.pathChange(changed,java.util.Set.of(pathId));
+        player.setData(ProgressionAttachments.LEDGER.get(),changed);
+        io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
 
