@@ -199,8 +199,8 @@ public final class ExperienceEconomy {
                              String transaction, String firstCompletion, BigDecimal base,
                              boolean fixed, double effectiveGrowth) {
         requireId(sourceCategory);
-        requireId(transaction);
-        if (firstCompletion != null) requireId(firstCompletion);
+        requireReceiptKey(transaction);
+        if (firstCompletion != null) requireReceiptKey(firstCompletion);
         String txReceipt = system.id() + "|" + sourceCategory + "|" + transaction;
         String firstReceipt = firstCompletion == null ? null
                 : system.id() + "|" + sourceCategory + "|" + firstCompletion;
@@ -340,6 +340,17 @@ public final class ExperienceEconomy {
                 source.rewardReceipts(), source.recentTransactions());
         for (SystemSpec system : systems.values()) available(result, system);
         return result;
+    }
+
+    /**
+     * Verified transaction keys may be composite IDs such as
+     * boss:draconicevolution:draconic_guardian or advancement:namespace:path.
+     * They are not registry IDs; keep them bounded and delimiter-safe.
+     */
+    private static void requireReceiptKey(String key) {
+        if (key == null || key.isBlank() || key.length() > 240
+                || !key.matches("[a-zA-Z0-9_.:/#@-]+") || key.contains("|"))
+            throw new IllegalArgumentException("Invalid verified transaction key");
     }
 
     private static void requireId(String id) {

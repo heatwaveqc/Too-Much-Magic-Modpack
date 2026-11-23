@@ -34,43 +34,47 @@ public final class MxpService {
     private static AwardStatus ignored(ServerPlayer player,String note){
         Wallet w=inspect(player);return new AwardStatus(false,false,false,0,0,w.magicLevels(),w.magicProgress(),0,note);
     }
-    private static AwardStatus award(ServerPlayer player,String tx,String completion,double first,double repeat,
+    private static AwardStatus award(ServerPlayer player,String source,String tx,String completion,double first,double repeat,
                                      boolean firstFixed,boolean repeatFixed){
         Wallet before=inspect(player);
-        if(before.recentTransactions().contains(tx))return new AwardStatus(false,true,false,0,0,before.magicLevels(),before.magicProgress(),0,"Duplicate committed action");
+        var state=player.getData(ProgressionAttachments.LEDGER.get()).economy();
+        boolean duplicate=state.recentTransactions().contains(XpChannel.MXP+"|"+source+"|"+tx);
+        if(duplicate)return new AwardStatus(false,true,false,0,0,before.magicLevels(),before.magicProgress(),0,"Duplicate committed action");
+        boolean firstEligible=completion!=null&&!state.rewardReceipts().contains(
+            XpChannel.MXP+"|"+source+"|"+completion);
         boolean accepted=completion==null?
-            ProgressionApi.awardMagicOrdinary(player,XpChannel.MXP,tx,repeat):
-            ProgressionApi.awardMagicCompletion(player,XpChannel.MXP,tx,completion,first,repeat,firstFixed,repeatFixed);
+            ProgressionApi.awardMagicOrdinary(player,XpChannel.MXP,source,tx,repeat):
+            ProgressionApi.awardMagicCompletion(player,XpChannel.MXP,source,tx,completion,first,repeat,firstFixed,repeatFixed);
         Wallet after=inspect(player);
         double effective=(after.magicLevels()-before.magicLevels())*1000.0+after.magicProgress()-before.magicProgress();
-        return new AwardStatus(accepted,false,accepted&&completion!=null&&!before.firstCompletions().contains(completion),
+        return new AwardStatus(accepted,false,accepted&&firstEligible,
             effective,0,after.magicLevels(),after.magicProgress(),0,accepted?"Recorded":"Rejected");
     }
     public static AwardStatus resource(ServerPlayer player,String source,String tx,double nominal,double pool,double actual){
         if(!Double.isFinite(actual)||actual<=0||!Double.isFinite(nominal)||nominal<=0||!Double.isFinite(pool)||pool<=0)
             return ignored(player,"No verified positive debit");
         double base=MxpMath.normalizedBase(nominal,pool);
-        return award(player,tx,null,base,base,false,false);
+        return award(player,source,tx,null,base,base,false,false);
     }
     public static AwardStatus ritual(ServerPlayer player,String id,String tx,double first,double repeat){
-        return award(player,tx,"ritual:"+id,first,repeat,true,false);
+        return award(player,"tyr_progression:ritual",tx,"ritual:"+id,first,repeat,true,false);
     }
     public static AwardStatus craft(ServerPlayer player,String id,String tx,double first,double repeat){
-        return award(player,tx,"craft:"+id,first,repeat,false,false);
+        return award(player,"tyr_progression:craft",tx,"craft:"+id,first,repeat,false,false);
     }
     public static AwardStatus boss(ServerPlayer player,String id,String tx){
         BossRule rule=bossRule(id);
-        return rule==null?ignored(player,"Unregistered boss"):award(player,tx,"boss:"+id,FIRST_BOSS_MXP,rule.repeat(),true,rule.repeatFixed());
+        return rule==null?ignored(player,"Unregistered boss"):award(player,"tyr_progression:boss",tx,"boss:"+id,FIRST_BOSS_MXP,rule.repeat(),true,rule.repeatFixed());
     }
     /** Registry-authorized standard encounter, retaining canonical persisted boss completion key. */
     public static AwardStatus standardBossVictory(ServerPlayer player,String id,String tx){
         BossRule configured=bossRule(id);
         double repeat=configured==null?MxpProgressionConfig.BOSS_REPEAT.get():configured.repeat();
-        return award(player,tx,"boss:"+id,FIRST_BOSS_MXP,repeat,true,configured!=null&&configured.repeatFixed());
+        return award(player,"tyr_progression:boss",tx,"boss:"+id,FIRST_BOSS_MXP,repeat,true,configured!=null&&configured.repeatFixed());
     }
     /** Native fight-manager completion only; first fixed 1000, subsequent fixed 100. */
     public static AwardStatus chaosVictory(ServerPlayer player,String tx){
-        return award(player,tx,"boss:draconicevolution:draconic_guardian",FIRST_BOSS_MXP,100,true,true);
+        return award(player,"tyr_progression:boss",tx,"boss:draconicevolution:draconic_guardian",FIRST_BOSS_MXP,100,true,true);
     }
     /** Native dragon advancement only; persistent first key, explicitly zero repeat. */
     public static AwardStatus dragonAdvancement(ServerPlayer player,String advancementId){
@@ -79,15 +83,15 @@ public final class MxpService {
             ||player.getServer()==null||!player.getServer().isSameThread()
             ||player.getServer().getPlayerList().getPlayer(player.getUUID())!=player)
             return ignored(player,"No eligible native dragon advancement");
-        return award(player,"advancement:"+advancementId,key,FIRST_BOSS_MXP,0,true,false);
+        return award(player,"tyr_progression:advancement","advancement:"+advancementId,key,FIRST_BOSS_MXP,0,true,false);
     }
     public static AwardStatus minibossVictory(ServerPlayer player,String id,String tx){
-        return award(player,tx,"miniboss:"+id,250,MxpProgressionConfig.MINIBOSS_REPEAT.get(),true,false);
+        return award(player,"tyr_progression:miniboss",tx,"miniboss:"+id,250,MxpProgressionConfig.MINIBOSS_REPEAT.get(),true,false);
     }
     /** No completion key: an empowered ordinary mob never consumes a first-boss discovery. */
     public static AwardStatus eliteVictory(ServerPlayer player,String tx,double base){
         if(!Double.isFinite(base)||base<=0)return ignored(player,"No verified elite reward");
-        return award(player,tx,null,base,base,false,false);
+        return award(player,"tyr_progression:elite",tx,null,base,base,false,false);
     }
     public static AwardStatus jawrCommittedBloodDebit(ServerPlayer player,String tx,double original,double actual){
         if(!player.server.isSameThread()||player.isCreative()||player.isSpectator()||
