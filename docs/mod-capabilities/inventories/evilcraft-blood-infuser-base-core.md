@@ -1,0 +1,36 @@
+# EvilCraft 1.2.100 — 17 base/core Blood Infuser recipes
+
+From [exact source tag `1.21.1-1.2.100`](https://github.com/CyclopsMC/EvilCraft/tree/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser), aligned to the TMM pinned binary and [pinned-JAR Mod Comprehension profile](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/research/mod-comprehension-local-jars-20261116/docs/mod-comprehension/mods/evilcraft.md). **Native recipe JSON defaults, not loaded TMM server.** Blood is `evilcraft:blood`, measured in mB (1 bucket=1000 mB). Tier omitted = source `Optional.empty()` on matcher, which means no minimum tier; display as **0/none**. A recipe with tier N requires **existing machine tier at least N**. Duration measured in game ticks, XP vanilla recipe XP (not TMM MXP). Recipes link straight to source. [`RecipeBloodInfuser.matches`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/java/org/cyclops/evilcraft/core/recipe/type/RecipeBloodInfuser.java) matches ingredient, sufficient exact fluid and machine tier.
+
+## base (10)
+
+| Exact source recipe | Input item/tag | Blood mB | Min tier | Ticks | Output | Vanilla XP |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| [`base/blood_orb_filled`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/blood_orb_filled.json) | `evilcraft:blood_orb_empty` | 10000 | 1 | 3000 | `evilcraft:blood_orb_filled` | 2.2 |
+| [`base/bloody_cobblestone`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/bloody_cobblestone.json) | `minecraft:mossy_cobblestone` | 500 | 0/none | 250 | `evilcraft:bloody_cobblestone` | — |
+| [`base/blook`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/blook.json) | `minecraft:book` | 500 | 1 | 500 | `evilcraft:blook` | 1 |
+| [`base/corrupted_tear`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/corrupted_tear.json) | `minecraft:ghast_tear` | 10000 | 3 | 500 | `evilcraft:corrupted_tear` | 2.5 |
+| [`base/dark_blood_brick`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/dark_blood_brick.json) | `evilcraft:dark_brick` | 1000 | 2 | 250 | `evilcraft:dark_blood_brick` | 1.2 |
+| [`base/dark_power_gem`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/dark_power_gem.json) | `evilcraft:dark_gem` | 250 | 0/none | 200 | `evilcraft:dark_power_gem` | 0.5 |
+| [`base/dark_power_gem_block`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/dark_power_gem_block.json) | `evilcraft:dark_block` | 2250 | 0/none | 1800 | `evilcraft:dark_power_gem_block` | 5 |
+| [`base/garmonbozia`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/garmonbozia.json) | `evilcraft:vengeance_essence_materialized` | 50000 | 3 | 1200 | `evilcraft:garmonbozia` | 20 |
+| [`base/reinforced_undead_planks`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/reinforced_undead_planks.json) | `evilcraft:undead_planks` | 1000 | 2 | 250 | `evilcraft:reinforced_undead_planks` | 1.2 |
+| [`base/undead_sapling`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/base/undead_sapling.json) | `minecraft:dead_bush` | 800 | 0/none | 200 | `evilcraft:undead_sapling` | 1.5 |
+
+## core (7)
+
+| Exact source recipe | Input item/tag | Blood mB | Min tier | Ticks | Output | Vanilla XP |
+| --- | --- | ---: | ---: | ---: | --- | ---: |
+| [`core/bowl_of_promises_tier0`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/bowl_of_promises_tier0.json) | `evilcraft:bowl_of_promises_dusted` | 5000 | 0 | 1000 | `evilcraft:bowl_of_promises_tier0` | 2 |
+| [`core/bowl_of_promises_tier1`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/bowl_of_promises_tier1.json) | `evilcraft:bowl_of_promises_dusted` | 5000 | 1 | 1000 | `evilcraft:bowl_of_promises_tier1` | 2 |
+| [`core/bowl_of_promises_tier2`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/bowl_of_promises_tier2.json) | `evilcraft:bowl_of_promises_dusted` | 5000 | 2 | 1000 | `evilcraft:bowl_of_promises_tier2` | 2 |
+| [`core/bowl_of_promises_tier3`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/bowl_of_promises_tier3.json) | `evilcraft:bowl_of_promises_dusted` | 5000 | 3 | 1000 | `evilcraft:bowl_of_promises_tier3` | 2 |
+| [`core/promise_acceptor_diamond`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/promise_acceptor_diamond.json) | `minecraft:diamond_block` | 160000 | 2 | 5000 | `evilcraft:promise_acceptor_diamond` | 10 |
+| [`core/promise_acceptor_gold`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/promise_acceptor_gold.json) | `minecraft:gold_block` | 40000 | 1 | 2000 | `evilcraft:promise_acceptor_gold` | 8 |
+| [`core/promise_acceptor_iron`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/resources/data/evilcraft/recipe/blood_infuser/core/promise_acceptor_iron.json) | `minecraft:iron_block` | 10000 | 0 | 500 | `evilcraft:promise_acceptor_iron` | 5 |
+
+**Operation:** [`BlockEntityBloodInfuser`](https://github.com/CyclopsMC/EvilCraft/blob/1.21.1-1.2.100/src/main/java/org/cyclops/evilcraft/blockentity/BlockEntityBloodInfuser.java) has separate source-fluid container, infusion-input and output item slots, a 10-bucket native fluid tank at base size, accepts only qualifying ingredient/charge work, and chooses the **highest-tier** valid matching recipe. Item and Blood inputs are not free; redstone can halt processing. Promise upgrades have separate supported **tier/speed/efficiency** logic, not player skill-tree tiers.
+
+**Access-path caveat:** the Origins of Darkness guide says the first Dark Power Gem can be made by throwing Dark Gem into at least **five world Blood source blocks**, before the Infuser is available. The Infuser's 250 mB Dark Gem→Power Gem recipe is the economical **repeat method**, not a first-item shortcut. Higher-tier bowls and acceptors may themselves have high machine-tier requirements: don't assume the highest-tier bowl recipe alone describes the upgrade installation dependency; confirm the associated native Upgrade item/slot rules during actual quest coding.
+
+**Garmonbozia:** source `garmonbozia` consumes **`evilcraft:vengeance_essence_materialized` + 50,000 mB Blood at tier3, 1,200 ticks**. This is **not** a free direct conversion from ordinary rotten flesh. The later Rejuvenated Flesh item is separately crafted from Garmonbozia plus humanoid/werewolf flesh and has its own blood-charge food mechanic.
