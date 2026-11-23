@@ -108,6 +108,12 @@ public final class ClientDiet {
         FoodProperties original = stack.get(DataComponents.FOOD);
         if (entry == null || original == null) return Projection.NONE;
         if (entry.denied()) return new Projection(true, null);
+        if (entry.lavaConditional()) {
+            var data = stack.get(DataComponents.CUSTOM_DATA);
+            boolean caught = data != null && data.copyTag().getBoolean("tyr_progression:lava_caught");
+            if (!caught) return new Projection(true, null);
+            if (!entry.lavaHasNutrition()) return new Projection(true, original);
+        }
         if (entry.nativePermission()) return new Projection(true, original);
         return new Projection(true, new FoodProperties(
             entry.hunger(), entry.saturationModifier(),
