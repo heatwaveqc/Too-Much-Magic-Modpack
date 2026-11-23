@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class BloodCuisineVampireFoodMixin {
     @Inject(method = "isSolidFood(Lnet/minecraft/world/item/ItemStack;)Z",
             at = @At("HEAD"), cancellable = true, require = 0, remap = false)
-    private static void tmm$bloodMealsAreVampireFood(ItemStack stack,
+    private void tmm$bloodMealsAreVampireFood(ItemStack stack,
                                                        CallbackInfoReturnable<Boolean> result) {
         if (stack.getItem() instanceof BloodCuisineFoodItem bloodFood && bloodFood.charged(stack))
             result.setReturnValue(false);
