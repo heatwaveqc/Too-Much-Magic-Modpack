@@ -94,6 +94,31 @@ public final class ProgressionApi {
         return true;
     }
 
+    /**
+     * Operator-only Newbie restoration is a destructive stage transition:
+     * no specialist or automatic Core investment may remain active during
+     * the Newbie stage, but personal milestone and one-time receipt history stays.
+     * Call only from the trusted stage setter, never from client packets.
+     */
+    public static void forfeitAllPathsForNewbie(ServerPlayer player) {
+        if(player==null || player.getServer()==null || !player.getServer().isSameThread())
+            throw new IllegalStateException("Newbie rebase requires the logical server thread");
+        Ledger old=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger next=old;
+        var departed=new java.util.HashSet<String>();
+        for(var row:old.paths().entrySet()) {
+            Track track=row.getValue();
+            if(!track.joined())continue;
+            departed.add(row.getKey());
+            Track removed=new Track(false,0,0,0,Map.of(),track.milestones(),track.counters());
+            next=next.with(row.getKey(),removed).clearAllReceipts(row.getKey());
+        }
+        next=ChannelEngine.pathChange(next,departed);
+        player.setData(ProgressionAttachments.LEDGER.get(),next);
+        for(String id:departed)
+            io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,id);
+    }
+
     public static boolean canBuy(ServerPlayer player,String pathId,String skillId) {
         var path=PathRegistry.get(pathId);
         if(path==null || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player) || !PathRegistry.purchaseEligible(player,pathId,skillId)) return false;
