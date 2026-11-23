@@ -64,6 +64,10 @@ public final class NewbieMode {
     public static void set(ServerPlayer player, String mode) {
         if (!NEWBIE.equals(mode) && !REGULAR.equals(mode))
             throw new IllegalArgumentException("Unrecognized player mode: " + mode);
+        // One-way graduation for players; an operator restoring Newbie is a
+        // real Path change with full invested/unallocated XP forfeiture.
+        if (NEWBIE.equals(mode) && !isNewbie(player))
+            ProgressionApi.forfeitAllPathsForNewbie(player);
         ProgressionApi.setMode(player, KEY, mode);
         syncTag(player);
         VirtualElytra.reconcile(player);
