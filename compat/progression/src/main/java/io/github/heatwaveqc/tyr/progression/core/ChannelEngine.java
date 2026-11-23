@@ -68,7 +68,7 @@ public final class ChannelEngine {
         // Milestones and deed counters are historical achievements, not
         // purchased rank state. Rejoining must never rearm one-time awards.
         Track previous=ledger.get(path.id());
-        ledger=ledger.with(path.id(),new Track(true,0,0,0,Map.of(),
+        ledger=ledger.with(path.id(),new Track(true,0,0,0,previous.skills(),
                 previous.milestones(),previous.counters()));
         if(channel.magic()||channel.earningPath().isEmpty()||ledger.get(channel.earningPath()).joined())
             ledger=initialize(ledger,channel);
