@@ -62,6 +62,28 @@ public final class ProgressionCommands {
                                 success ? "Skill rank purchased" : "Skill purchase blocked"),false);
                             return success ? 1 : 0;
                         }))))
+            .then(Commands.literal("astral")
+                .then(Commands.literal("status").executes(ctx -> {
+                    ServerPlayer player=ctx.getSource().getPlayerOrException();
+                    String id="tyr_progression:astral_perk_point";
+                    int count=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,id);
+                    int price=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,id);
+                    boolean ready=io.github.heatwaveqc.tyr.progression.runtime.external.AstralPerkTokens.snapshot(player).ready();
+                    ctx.getSource().sendSuccess(() -> Component.literal(
+                        "Astral MXP perk tokens: "+count+" purchased | "+
+                        (price>0?"next price "+price+" MXP points":"price unset or purchase capped")+
+                        " | native perk tree "+(ready?"attuned":"locked/unavailable")),false);
+                    return 1;
+                }))
+                .then(Commands.literal("buy").executes(ctx -> {
+                    ServerPlayer player=ctx.getSource().getPlayerOrException();
+                    boolean ok=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(
+                        player,"tyr_progression:astral_perk_point");
+                    ctx.getSource().sendSuccess(() -> Component.literal(ok
+                        ? "Purchased one permanent native Astral perk allocation token"
+                        : "Astral purchase blocked: check attunement, MXP, server price, or cap"),false);
+                    return ok?1:0;
+                })))
             .then(Commands.literal("mutations")
                 .executes(ctx -> {
                     ServerPlayer player = ctx.getSource().getPlayerOrException();

@@ -24,7 +24,7 @@ public final class ProgressionScreen extends Screen {
     private SkillGraph.Graph graph;
     private final Map<String,int[]> panByPath=new HashMap<>();
     private int panX,panY,ticks;
-    private Button purchase,respec,activate,currencyButton;
+    private Button purchase,respec,activate,currencyButton,externalPurchase;
     private String currencyChoice="";
     private boolean confirmRespec;
     public ProgressionScreen(String pathId){super(Component.literal("Progression"));this.pathId=pathId;}
@@ -53,6 +53,14 @@ public final class ProgressionScreen extends Screen {
     private boolean selectedBuyable(JsonObject node){
         var selected=selectedSource(node);
         return selected!=null && selected.get("buyable").getAsBoolean();
+    }
+    private JsonObject astralOffer(){
+        if(data==null || !data.has("external_rewards"))return null;
+        for(var entry:data.getAsJsonArray("external_rewards")){
+            JsonObject offer=entry.getAsJsonObject();
+            if("astral_perk_token".equals(offer.get("kind").getAsString()))return offer;
+        }
+        return null;
     }
     private void cycleCurrency(){
         var sources=purchaseSources(nodes.get(selection));
@@ -112,6 +120,12 @@ public final class ProgressionScreen extends Screen {
         }).bounds(204,height-25,80,20).build());
         currencyButton=addRenderableWidget(Button.builder(Component.literal("Currency"),b->
             cycleCurrency()).bounds(289,height-25,126,20).build());
+        externalPurchase=addRenderableWidget(Button.builder(Component.literal("Astral +1"),b->{
+            JsonObject offer=astralOffer();
+            if(offer!=null&&offer.get("buyable").getAsBoolean())
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(
+                    pathId,"external_buy",offer.get("id").getAsString(),""));
+        }).bounds(Math.max(180,width-186),28,174,20).build());
         clampPan();request();
     }
     @Override public void tick(){if(++ticks%40==0)request();}
@@ -165,6 +179,17 @@ public final class ProgressionScreen extends Screen {
         line(g,title(data,pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
         JsonObject chosen=nodes.get(selection);
         if(purchase!=null)purchase.active=selectedBuyable(chosen);
+        if(externalPurchase!=null){
+            JsonObject reward=astralOffer();
+            externalPurchase.visible=reward!=null && width>=460;
+            if(reward!=null){
+                int price=reward.get("price").getAsInt();
+                externalPurchase.active=reward.get("buyable").getAsBoolean();
+                externalPurchase.setMessage(Component.literal(price<=0
+                    ? "Astral +1 (price unset/capped)"
+                    : "Astral +1: "+price+" MXP pts"));
+            }
+        }
         if(currencyButton!=null){
             currencyButton.visible=chosen!=null&&purchaseSources(chosen).size()>1&&width>=450;
             if(currencyButton.visible)currencyButton.setMessage(

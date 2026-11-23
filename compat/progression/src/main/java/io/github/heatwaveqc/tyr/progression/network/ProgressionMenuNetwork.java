@@ -81,6 +81,8 @@ public final class ProgressionMenuNetwork {
                         boolean changed = switch (payload.action()) {
                             case "buy" -> validId(payload.skill()) && validId(payload.currency())
                                     && ProgressionApi.buy(player, payload.path(), payload.skill(),payload.currency());
+                            case "external_buy" -> validId(payload.skill())
+                                    && io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(player,payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
                             case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
@@ -169,6 +171,18 @@ public final class ProgressionMenuNetwork {
                 .getOrDefault(id,java.math.BigDecimal.ZERO));wallets.add(row);
         }
         json.add("wallets",wallets);
+        JsonArray external=new JsonArray();
+        for(var reward:io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.current().values()){
+            JsonObject offer=new JsonObject();
+            offer.addProperty("id",reward.id());
+            offer.addProperty("kind",reward.kind());
+            offer.addProperty("currency",reward.currency());
+            offer.addProperty("owned",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,reward.id()));
+            offer.addProperty("price",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,reward.id()));
+            offer.addProperty("buyable",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.canBuy(player,reward.id()));
+            external.add(offer);
+        }
+        json.add("external_rewards",external);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
