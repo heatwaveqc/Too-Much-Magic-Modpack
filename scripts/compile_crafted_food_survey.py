@@ -95,8 +95,8 @@ def verify_pins(audit, repo_root):
                 or release["provenance"] != "publisher_download"
                 or not release["existing_indexed_hash_matches"]
                 or name in seen
-                or digest.get("hash-format") != "sha1"
-                or digest.get("hash") != release["sha1"]):
+                or digest.get("hash-format") not in ("sha1", "sha512")
+                or digest.get("hash") != release.get(digest.get("hash-format"))):
             raise ValueError(f"Outdated or unverified food JAR: {slug}")
         seen.add(name)
 
