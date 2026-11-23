@@ -371,7 +371,8 @@ public final class ProgressionApi {
         double configured=PathRegistry.economyCatalog().growth(channelId);
         double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
             .effective(player,configured,channelId);
-        Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(growth),
+        Ledger next=ChannelEngine.magic(prior,
+            XpChannel.generic(channelId,growth,channel.name(),channel.pointName()),
             sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
         if(next==prior) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
