@@ -23,7 +23,8 @@
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
     "StoredResourceGuardMixin",
-    "RepairTalismanCharmMixin"
+    "RepairTalismanCharmMixin",
+    "ApotheosisPotionCharmRecipeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
