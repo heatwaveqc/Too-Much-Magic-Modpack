@@ -76,6 +76,9 @@ public final class ChannelEngine {
         return ledger.with(path.id(),new Track(after.joined(),0,0,0,skills,after.milestones(),after.counters()));
     }
     public static Ledger buy(Ledger ledger,Definition.Path tree,ChannelConfig config,String skillId){
+        var rule=ExperienceEconomyRuntime.current().skills()
+                .get(new ExperienceEconomyConfig.SkillKey(tree.id(),skillId));
+        if(rule!=null)return buy(ledger,tree,config,skillId,rule.sources().getFirst().system());
         var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
         var skill=tree.skill(skillId);if(binding==null||skill==null)return ledger;
         var w=ledger.wallet(binding.currency().id());var gate=ledger.wallet(binding.levelSystem().id());
