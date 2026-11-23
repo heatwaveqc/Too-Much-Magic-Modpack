@@ -69,6 +69,30 @@ class FoodPublisherTests(unittest.TestCase):
         self.assertEqual(r["recipe_ids_with_single_result"], 0)
         self.assertEqual(r["candidate_output_ids_not_confirmed_edible"], [])
 
+    def test_staged_pins_match_publisher_receipts_not_live_pack(self):
+        import tomllib
+        receipt = json.loads((ROOT / "integration/food-candidates/approved-food-candidates.json")
+                             .read_text(encoding="utf-8"))
+        self.assertFalse(receipt["installed"])
+        self.assertEqual(len(receipt["candidates"]), 5)
+        self.assertEqual(receipt["known_food_sources"]["verified_jar_count"], 19)
+        for row in receipt["candidates"]:
+            staged = ROOT / "integration/food-candidates/pins" / (row["slug"] + ".pw.toml")
+            if row["sha1"] is None:
+                self.assertFalse(staged.exists(), "Do not stage a guessed Huaxia digest")
+                continue
+            self.assertTrue(staged.is_file(), row["slug"])
+            parsed = tomllib.loads(staged.read_text(encoding="utf-8"))
+            self.assertEqual(parsed["filename"], row["filename"])
+            self.assertEqual(parsed["download"]["hash"], row["sha1"])
+            self.assertEqual(parsed["download"]["hash-format"], "sha1")
+            self.assertEqual(parsed["update"]["curseforge"]["file-id"], row["file_id"])
+            self.assertEqual(parsed["update"]["curseforge"]["project-id"], row["project_id"])
+            self.assertEqual(parsed["side"], "both")
+        index = (ROOT / "index.toml").read_text(encoding="utf-8")
+        for row in receipt["candidates"]:
+            self.assertNotIn('file = "mods/' + row["slug"] + '.pw.toml"', index)
+
     def test_invalid_zip_rejected(self):
         with self.assertRaises(Exception):
             audit_resources(b"not a jar")
