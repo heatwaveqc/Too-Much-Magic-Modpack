@@ -21,7 +21,11 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 PIN = ROOT / "mods" / "astral-sorcery.pw.toml"
-PUBLISHER_CDN = "https://mediafilez.forgecdn.net/files/9281/073/AstralSorcery-2.0.3.59.jar"
+PUBLISHER_URLS = (
+    "https://mediafilez.forgecdn.net/files/9281/073/AstralSorcery-2.0.3.59.jar",
+    "https://edge.forgecdn.net/files/9281/073/AstralSorcery-2.0.3.59.jar",
+    "https://www.cursemaven.com/curse/maven/astral-sorcery-241721/9281073/astral-sorcery-241721-9281073.jar",
+)
 MAX_DOWNLOAD = 80 * 1024 * 1024
 METHODS = {
     "hellfirepvp.astralsorcery.common.research.ResearchHelper": [
@@ -51,15 +55,25 @@ def verify_sha1(jar: Path, expected: str) -> None:
         raise ValueError("Astral JAR does not match frozen pack SHA1 " + expected)
 
 
-def download(path: Path) -> None:
-    request = Request(PUBLISHER_CDN, headers={"User-Agent": "Too-Much-Magic-Type-A-ABI/1.0"})
-    total = 0
-    with urlopen(request, timeout=60) as response, path.open("wb") as output:
-        for data in iter(lambda: response.read(1024 * 1024), b""):
-            total += len(data)
-            if total > MAX_DOWNLOAD:
-                raise ValueError("Astral download exceeded 80 MiB")
-            output.write(data)
+def download(path: Path, expected: str) -> None:
+    failures = []
+    for url in PUBLISHER_URLS:
+        try:
+            request = Request(url, headers={"User-Agent": "Mozilla/5.0 (TMM pinned source ABI verifier)"})
+            total = 0
+            with urlopen(request, timeout=45) as response, path.open("wb") as output:
+                for data in iter(lambda: response.read(1024 * 1024), b""):
+                    total += len(data)
+                    if total > MAX_DOWNLOAD:
+                        raise ValueError("Astral download exceeded 80 MiB")
+                    output.write(data)
+            verify_sha1(path, expected)
+            print("PASS exact publisher bytes from " + url.split("/")[2], flush=True)
+            return
+        except Exception as bad:
+            failures.append(url.split("/")[2] + ": " + str(bad))
+            path.unlink(missing_ok=True)
+    raise ValueError("All pinned publisher mirrors failed: " + " | ".join(failures))
 
 
 def inspect(jar: Path) -> None:
@@ -104,8 +118,7 @@ def main() -> int:
         else:
             with tempfile.TemporaryDirectory(prefix="astral-mxp-pin-") as temp:
                 jar = Path(temp) / pin["filename"]
-                download(jar)
-                verify_sha1(jar, expected)
+                download(jar, expected)
                 inspect(jar)
     except Exception as exc:
         print("FAIL pinned Astral perk API: " + str(exc), file=sys.stderr)
