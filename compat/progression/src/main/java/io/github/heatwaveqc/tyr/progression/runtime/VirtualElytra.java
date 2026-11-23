@@ -48,10 +48,13 @@ public final class VirtualElytra {
     /** Resolves real entitlement on each authoritative server query. */
     public static Set<String> sources(ServerPlayer player) {
         if (player == null) return Set.of();
+        boolean newbie = NewbieMode.isNewbie(player);
+        // Do not enumerate Monk effects for Newbies or players with no glide.
+        boolean monk = !newbie && ClassAbilities.unlocked(player,"momentum_glide");
+        boolean toggled = monk && "on".equals(ProgressionApi.mode(
+                player,"tyr_progression:momentum_glide","off"));
         return VirtualElytraPolicy.sources(player.isAlive(),player.isCreative(),
-                player.isSpectator(),NewbieMode.isNewbie(player),
-                ClassAbilities.unlocked(player,"momentum_glide"),
-                "on".equals(ProgressionApi.mode(player,"tyr_progression:momentum_glide","off")));
+                player.isSpectator(),newbie,monk,toggled);
     }
 
     /** Compatibility API for the existing Monk gentle propulsion logic. */
