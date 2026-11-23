@@ -36,7 +36,7 @@ The full research phase is **not complete** while required profiles remain resea
 | `ars-additions` | [profile](mods/ars-additions.md) | `ars_additions-1.21.1-21.3.0.jar` | sha512 `3f06e6e838c6a5bb14cb1f475f393c0ceeb7b78a7faf9f73df008adae69f68410382cde4511d2b73c0e99dd38732ba1e5d192aac941bb26f2ab771f8bbdbcc43` | 115 | 0 | researching |
 | `ars-controle` | [profile](mods/ars-controle.md) | `ars_controle-1.21.1-1.6.16.jar` | sha512 `458c5a878a1418ffce46d1dd109f4ae23bcbe10bd7153edcaff8d1ab49ab3032f37977488eee7cecdb550cd99672f560e9d851818d6775d5d7e222632285d1a6` | 15 | 0 | source-complete |
 | `ars-elemancy` | [profile](mods/ars-elemancy.md) | `ars_elemancy-1.21.1-1.18.3.jar` | sha1 `f7e01437c86fc74e2abb2ad93554dc20c30b214b` | 250 | 1 | researching |
-| `ars-conflux` | [profile](mods/ars-conflux.md) | `ars-conflux-0.1.56-mc1.21.1-neoforge.jar` | sha1 `97f3c31c624df19209db648e4fe6dd2e67e08d80` | 4 | 0 | researching |
+| `ars-conflux` | [profile](mods/ars-conflux.md) | `ars-conflux-0.1.56-mc1.21.1-neoforge.jar` | sha1 `97f3c31c624df19209db648e4fe6dd2e67e08d80` | 4 | 0 | source-complete |
 | `ars-elemental` | [profile](mods/ars-elemental.md) | `ars_elemental-1.21.1-0.7.11.3.jar` | sha512 `dec67d8eba302f45ba2baf0611c9a9e42cf5325e0687dc195458fc9bb48189cec1a2f0583ad8a3272a3816d55ffc3597256b3d1a36c8dce858c28dcce44540bd` | 184 | 2 | stale; targeted revalidation in progress |
 | `ars-n-spells` | [profile](mods/ars-n-spells.md) | `ars_n_spells-3.3.5.jar` | sha512 `21f27911378853800129de4123b406a1b7dff2993a986f3c944761f059becac55509925f77b8f8ce49502dfc6747b397407454c85b9a339f6c003891d13400e2` | 7 | 6 | source-complete |
 | `ars-ocultas` | [profile](mods/ars-ocultas.md) | `ars_ocultas-1.21.1-2.6.2.jar` | sha512 `4a673096a2d0b9a5a83aca2747a8a08211205ed40875b4c22061f774146d9d4fff9c872e2c1b6b59e5fef2d1bf3b3a08732f22743ade4e0a82ba08636dc701a5` | 4 | 0 | source-complete |
@@ -221,3 +221,5 @@ Conflux [active-cast/cooldown framework](mods/ars-conflux-pinned-active-casts.md
 Conflux [geometry/schools contract](mods/ars-conflux-pinned-geometry-schools.md) audited;5companions, actualinstalledconsumers/bridge/consolidation still open.9/43complete unchanged.
 
 Conflux [installedbridge recipient report](mods/ars-conflux-pinned-installed-bridges.md) closes namedControle/Additions/nSpells source boundaries;6companions, finalwholelibrary/defaultscope/pilotconsolidation remains. No runtimePASS or profilepromotion.
+
+2026-11-23 — Conflux consolidated **source-complete for library/native/default and installed-family bridge scope**, six exactbinary reports +guide/choice/subsystem/quest matrices; currentpilot49/noConflux nodes rechecked. GuardednSpellsOptionalAnsskip and unruneffectiveconfig/mixinorder/externalconsumer boundaries explicit. **Current10/43complete,32researching,1stale(33unfinished).** No runtimeacceptance/profilepromotion for othermods.

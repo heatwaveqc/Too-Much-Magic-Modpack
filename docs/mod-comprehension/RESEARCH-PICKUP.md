@@ -1,3 +1,11 @@
+# Latest checkpoint — Conflux library research complete / next Elemental consolidation
+
+- Rewrote ars-conflux.md as **source-complete library/native/default/current-family scope** using6exactreports, fullguide/start/choice/subsystem/questmatrix; nofictitiousSDKcraft/tier/mandatorydisabledglyph. GenericExecutionSessionstates/start/repeatpayment/permission/owner/expiry/cleanup andSpellBudgetsestimatecontracts addedinstalledbridgereport. Current49pilotrows/noConfluxstrings canonical+generated rechecked; noquestedits. nSpellsOptionalAnsgatefalseknownoptionalboundary, otherconfig/order/providers/runtimeacceptanceexplicit.10complete32researching1staleof43.
+- **Next Elemental184recipe/registry/fullcurrentprofile/pilot35–37consolidation**;40companionsalreadycoverallmajorcurrentnativebranches, no needre-audit. Ensureeveryrecipefamilymapped/remainingdecor+conditionalJEED/BotanyPots boundary, reconcileguide/playerendpoint/howtoXP/rewards. CurrentConfluxnative overlays nowindependentlysource-backed; use6reports, keepassembledmixins/paymenttestsseparate. ThenElemancy1.18.3/Additions21.3.0fullnativeprofiles, Arsparentcombinedreview/othermajors.
+- Integrationc11a95fcunchanged; workdirC:\ChatGPT\Magic Minecraft Modpack\research-magic; tempartifacts/CFRunchanged. No hardblocker/hourlyactive/docs only. GitlogactualpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-23 16:48UTC Conflux installed bridges
 
 - Added ars-conflux-pinned-installed-bridges.md,6Confluxcompanions. ControleFilterBinary nativebothRandomsingletons/seconduseswrongfirstaugs; ConfluxpairreturnsindependentchanceSnapshotsusingcorrectoperandindex, stillfreshrollperpredicate/no cachedboolean/standaloneunchanged. ManagedWarpimmediatecarrierlevel+pendingvisual/sessiontransfer, failurediscards/noSourcewaiver. AdditionsRetaliatecurrenthurtsourceattacker(livingnotself), nullwithinframeNOstalekillcreditfallback/outsideframenative.

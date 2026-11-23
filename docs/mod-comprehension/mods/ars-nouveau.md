@@ -106,10 +106,11 @@ Useful native combinations: Agronomic plus a real growing garden ->Jar->processi
 
 ## Addon scope and compatibility leads
 
-The original seven are separately pinned profiles; current integration17a564d8 adds eighth [Conflux](ars-conflux.md), whose execution overlays and optional glyphs require combined review. Unification, Ars n Spells, Controle and Ocultas are source-complete for pinned installed scopes; three addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
+The original seven are separately pinned profiles; current integration17a564d8 adds eighth [Conflux](ars-conflux.md), whose execution overlays and optional glyphs require combined review. Unification, Ars n Spells, Controle, Ocultas and Conflux are source-complete for their recorded pinned/native-library scopes; three addon full-route audits remain. Existing pilot20addon nodes mostly select acquisition milestones and do not establish operation acceptance.
 
 | Addon | Remaining full-route focus |
 | --- | --- |
+| [Ars Conflux](ars-conflux.md) | **Source-complete library/default/current-family scope**; optional content/config/API/bridge contracts and honest runtime boundaries. |
 | [Ars Additions](ars-additions.md) | Advanced Wand, Warp Index/Ender Source, Wixie Apparatus, glyphs/rituals/structures/Codex and actual controls, not just3pilot items. |
 | [Ars Controle](ars-controle.md) | **Source-complete** six devices/nine control glyphs, nativeguide/fullwalkthrough and actual pilot criteria; known native limitations and runtime acceptance remain. |
 | [Ars Elemental](ars-elemental.md) | Exact binary guide/Urn companion now covers wand linking, fluid capability, payment and false Botania fallback. Four schools/foci/armor and other helper/device/biome routes remain researching beyond three fire-oriented pilot items. |
@@ -124,7 +125,7 @@ Existing [Botania mana bridge candidate](../interactions/botania-revived--ars-no
 
 [Full49node crosswalk](ars-nouveau-pilot-crosswalk.md) verifies canonical/resolved/generated source IDs, criteria, rewards and current integration comparison. Pilot is source-present, PR74closed/unmerged; neither fact proves player acceptance. One orientation,31itemtasks,17advancementtasks;11native advancement conditions are inventory_changed. Dedicated Notebook acquisition/opening missing, many operation lessons use equipment proxies, and major optional routes outgrow original pilot. Exact advancement presence isn't proof of correct attribution/action credit.
 
-Current research remains incomplete until current eight-addon routes and final combined stage/pilot reconciliation close. Native ordinary choices already have detailed route/build contracts; any discovered mandatory path gap gets targeted source check. Do not promote this parent because it has thirty companion documents or because a registry probe loaded49quests. Current project receipt:9/43source-complete,33researching and1stale after new Conflux scope.
+Current research remains incomplete until current eight-addon routes and final combined stage/pilot reconciliation close. Native ordinary choices already have detailed route/build contracts; any discovered mandatory path gap gets targeted source check. Do not promote this parent because it has thirty companion documents or because a registry probe loaded49quests. Current project receipt:10/43source-complete,32researching and1stale after Conflux consolidation.
 
 ## Evidence ledger and verification
 

@@ -145,7 +145,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `ars-additions` | Ars Additions | magic_addon | enabled flag | full | researching | [profile](mods/ars-additions.md) |
 | `ars-controle` | Ars Controle | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-controle.md) |
 | `ars-elemancy` | Ars Elemancy | magic_addon | enabled flag | full | researching | [profile](mods/ars-elemancy.md) |
-| `ars-conflux` | Ars Conflux | library with execution overlays | current integration pin | partial receipt | researching | [profile](mods/ars-conflux.md) |
+| `ars-conflux` | Ars Conflux | library with execution overlays | current integration pin | full library/default-scope | source-complete | [profile](mods/ars-conflux.md) |
 | `ars-elemental` | Ars Elemental | magic_addon | enabled flag | full | stale | [profile](mods/ars-elemental.md) |
 | `ars-n-spells` | Ars 'n Spells | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-n-spells.md) |
 | `ars-ocultas` | Ars Ocultas | magic_addon | enabled flag | full | source-complete | [profile](mods/ars-ocultas.md) |
@@ -490,3 +490,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-23 — [Conflux geometry/schools](mods/ars-conflux-pinned-geometry-schools.md): incomingvectors, explicitnormalizedweights, defaultemptydefinitions/attributevsopt-inrules, damage-scope/order limits.5Confluxcompanions;9/43complete unchanged.
 
 - 2026-11-23 — [Conflux installed bridges](mods/ars-conflux-pinned-installed-bridges.md): two-endedControleRandom/Warp/AdditionsRetaliate; javapnSpells3.3.5OptionalAns gatefalse/knownskip. AbilitytagAPIdefaultempty.6Confluxcompanions; finalprofileconsolidation open,9/43complete unchanged.
+
+- 2026-11-23 — [Conflux](mods/ars-conflux.md) consolidated source-complete library/current-family scope:6reports/all4conditionalrecipes/nativeoverlays/SDKboundaries/guide+questmatrix. Exactcurrent49pilotrows/noConfluxnodes checked; nSpellsoptionalAPI skipknown.10/43complete,32researching1stale; no gameplayacceptance.
