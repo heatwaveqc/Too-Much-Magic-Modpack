@@ -1,6 +1,6 @@
 # TMM creative-item census — first pass for #596
 
-**Status:** historical installed-registry inventory, no recipes disabled, no recipe/loot/EMC-learning audit and no Minecraft QA. Captured **2026-11-18** from actual installed build `f7aeb56a0f7b9c5957f922f5a397037f25207c76`: **23,681 registered items in 106 item namespaces**, 209 installed JARs. Current repository selection on 2026-11-23 has **249 `enabled_in_pack` manifest entries**; it is **not** identical to this historical installed build. The next test build must refresh this census, particularly for recently selected mods.
+**Status:** historical installed-registry inventory plus a source-backed non-name creative function, no recipes disabled, no recipe/loot/EMC-learning audit and no Minecraft QA. Captured **2026-11-18** from actual installed build `f7aeb56a0f7b9c5957f922f5a397037f25207c76`: **23,681 registered items in 106 item namespaces**, 209 installed JARs. Current repository selection on 2026-11-23 has **249 `enabled_in_pack` manifest entries**; it is **not** identical to this historical installed build. The next test build must refresh this census, particularly for recently selected mods.
 
 This is **not a list of things to ban**. The first classification is by registry ID/display name; that is how we can find explicitly labeled creative/debug inventory without preemptively deciding which are actually creative-class. There is no general `#creative` item tag that conclusively answers the question across mods, and membership in a creative inventory tab alone is not a forbidden mechanic. A later phase will examine capabilities and alternate stack components, then *only after this census* enumerate recipes, loot/rewards, machines and EMC paths.
 
@@ -94,7 +94,32 @@ Examples to **preserve unless a specific confirmed exploit changes the design**:
 
 **Important:** This is the **one component-only creative variant confirmed by the source investigation so far**, not a claim that all other mods have none. The installed survey's default-stack entries cannot reveal arbitrary NBT/component variants. This is why an item-ID-only recipe filter would be insufficient for #596. The 2026-11-18 registry had `botania:mana_tablet` in the general 23,681 items, but not its special creative-form stack.
 
-## D. Scope, gaps and next decision sequence
+## D. Source-backed creative functions with noncreative item names — 1
+
+| Registry ID | Source evidence | Classification / census boundary |
+|---|---|---|
+| \`neovitae:blood_battery\` | Neo Vitae 1.1.54 \`BloodBatteryBlock\` labels this **Creative Only**; its \`BloodBatteryBlockEntity\` refills FE on a redstone signal, without regular EV/Anima/Spiritus debit. Recorded on issue #596. | **Creative-class by source behavior**, registered in the historical item survey, but **not found by creative-name/infinity-name patterns**. No survival acquisition proven by this inventory. |
+
+This source-backed item is a **third independent candidate lane**, not a 24th literal creative-named item and not one of the 41 semantic-name watches. Source inspection establishes intended creative power, not a loaded recipe or ProjectE mapping. Confirm native config/recipe/loot/reward/EMC handling only in a later acquisition-path phase.
+
+## E. Reusable capture and comparison contract
+
+\`scripts/index_creative_registry.py --check\` still rederives the frozen November 18 JSON from its exact historical CSV. **The hardcoded November 18 date, integration commit and 209 installed JARs now apply only when the input is that exact frozen CSV path.** A new installed-world export must use \`--input\` and explicit \`--metadata\` pointing to a JSON object with keys \`source\`, \`capture_date\`, \`installed_build_sha\` (exact 40-character lowercase commit), and \`source_installed_jar_count\` (positive integer). This fails closed instead of accidentally publishing old provenance for a fresh export. The owner/QA operator must supply verified capture metadata, not guess it from the current repo HEAD.
+
+Example after an *already authorized* build's item survey is collected (paths are illustrative, not claimed to exist):
+
+\`\`\`bash
+python3 scripts/index_creative_registry.py \
+  --input docs/qa/new-installed-survey/items.csv \
+  --metadata docs/qa/new-installed-survey/capture-metadata.json \
+  --output docs/qa/new-creative-census.json \
+  --compare docs/qa/CREATIVE-ITEM-CENSUS-2026-11-18.json \
+  --diff-output docs/qa/new-creative-diff.json
+\`\`\`
+
+The optional comparison reports registered item-count delta and added/removed **candidate IDs**, including the source-backed and component-variant lanes. It does not equate registry drift with craftability, acquisition or EMC learnability. Native creative-only component creation, creative-tab stack variants and behavioral source sweeps still need explicit investigation; the input CSV alone cannot prove completeness.
+
+## F. Scope, gaps and next decision sequence
 
 1. **Inventory refresh, not a recipe change:** rerun a read-only item registry/default-stack inventory on the next **owner-authorized installed build**. Contrast with the 249 selected manifest mods and pin exact installed JAR/SHA; the older 209-JAR snapshot misses incoming content. Reuse the existing `scripts/runtime_survey_probe.js` only via its established authorized survey procedure, not automatic game startup. Re-run `scripts/index_creative_registry.py` against the resulting `items.csv`.
 2. **Discover hidden variants and behavior:** for each candidate, inspect mod registry/source/asset paths, native creative-tab stacks, custom component/NBT construction, config flags, true resource production vs merely renewable tools, and acquisition type. Add reviewed component-only or non-obvious infinite-provider candidates individually; do not infer their absence from negative name scans.
