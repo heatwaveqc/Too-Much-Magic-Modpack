@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "slay_chaos_bunny": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:rabbit",
+          "nbt": "{Tags:['tmm_caerbannog_boss']}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "slay_chaos_bunny"
+    ]
+  ],
+  "rewards": {
+    "function": "tmm:rewards/chaos_bunny_trophy"
+  },
+  "sends_telemetry_event": false
+}
