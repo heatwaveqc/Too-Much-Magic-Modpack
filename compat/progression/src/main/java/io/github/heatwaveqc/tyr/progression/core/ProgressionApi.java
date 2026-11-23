@@ -296,13 +296,16 @@ public final class ProgressionApi {
                     }
                     if (ready) {
                         state=state.complete(milestone.id());
+                        // This is a permanent achievement, independent of
+                        // current Path membership or purchased skill ranks.
+                        next=next.withEconomy(next.economy().withAchievement(milestone.id()));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         changed = true;
                     }
                 }
             } while(changed);
-            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state);
+            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state,PathRegistry.config());
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
     }
