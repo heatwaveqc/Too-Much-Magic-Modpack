@@ -18,7 +18,7 @@
 | `upgrade_remove` | 20 | tenebrae:8, water:4, fire:4, earth:4 | 0 | 3 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/upgrade_remove.json) |
 | `water` | 4 | water:4 | 0 | 1 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/water.json) |
 | `well_of_suffering` | 20 | fire:8, tenebrae:12 | 0 | 3 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/well_of_suffering.json) |
-| `yawning_void` | 64 | blank:4, earth:12, water:16, tenebrae:4, air:8, fire:20 | 0,1,2,3 | 4 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/yawning_void.json) |
+| `yawning_void` | 64 source entries / **48 unique rune cells** | blank:4, earth:12, water:16, tenebrae:4, air:8, fire:20 | 0,1,2,3 | 4 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/yawning_void.json) |
 | `zephyr` | 16 | air:12, water:4 | 0 | 3 | [JSON](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/zephyr.json) |
 
 ## Exact required rune coordinates by ritual
@@ -121,5 +121,7 @@
 
 - **air** (12): (1,0,1) (1,0,-1) (-1,0,-1) (-1,0,1) (2,0,0) (-2,0,0) (0,0,-2) (0,0,2) (3,0,0) (-3,0,0) (0,0,-3) (0,0,3)
 - **water** (4): (2,0,2) (2,0,-2) (-2,0,-2) (-2,0,2)
+
+**Duplicate-coordinate source caveat:** `yawning_void.json` contains **64 component records but only 48 unique block positions**. Its 16 duplicate positions repeat the **same** named rune (8 water on y=0, 8 fire on y=3), with **zero conflicting rune requirements**; the structure validation loops the redundant checks and no additional blocks are needed. All other 47 inspected ritual layouts had no repeated positions. The `Rune counts` column reflects raw serialized record counts; for `yawning_void` those counts are NOT distinct block materials. [Exact file](https://github.com/breakinblocks/NeoVitae/blob/501a8d6a0431ed8aeb19e18be2e83f1856f29a21/src/generated/resources/data/neovitae/neovitae/ritual_layout/yawning_void.json).
 
 **Scope:** final 16/48 layouts. **`simple_dungeon` and `standard_dungeon` are not safe to assume flat; the per-position y values are preserved above**. Rune counts are not EV costs or crafting materials; see [stats](neovitae-resource-and-ritual-stats.md) for numeric economics. Enablement, crystal, owner Anima EV and effect-specific checks remain distinct.
