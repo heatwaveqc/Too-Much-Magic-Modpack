@@ -6,6 +6,8 @@ import io.github.heatwaveqc.tyr.progression.data.NativeDietPolicy;
 import io.github.heatwaveqc.tyr.progression.network.FoodPreviewWire;
 import io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics;
 import java.util.HashMap;
+import java.util.UUID;
+import net.minecraft.world.item.component.CustomData;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -57,7 +59,7 @@ public final class NativeDietAdapters {
         // on items with no default FOOD component. Strict/affinity rules
         // intentionally apply only to component-backed food.
         var decision = stack.get(DataComponents.FOOD) == null
-            ? FoodDecisionResolver.Decision.nativeResult()
+            ? FoodPolicyRegistry.decideCustomUse(activeProfiles(player), stack)
             : FoodPolicyRegistry.decide(player, activeProfiles(player), stack);
         return NativeDietPolicy.intersect(decision,
             GildedMechanics.foodAllowed(player, stack));
@@ -67,6 +69,8 @@ public final class NativeDietAdapters {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, NativeDietAdapters::foodStart);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, NativeDietAdapters::foodTick);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, NativeDietAdapters::foodFinished);
+        NeoForge.EVENT_BUS.addListener(NativeDietAdapters::foodStopped);
     }
 
     public static void foodStart(LivingEntityUseItemEvent.Start event) {
@@ -75,30 +79,99 @@ public final class NativeDietAdapters {
             event.setCanceled(true);
     }
 
+    private record Before(Object server, ItemStack stack, int hunger, float saturation, int tick) {}
+    private static final Map<UUID, Before> BEFORE = new HashMap<>();
+
+    /** Only an earned, otherwise off-diet beverage requires a zero-food lease. */
+    public static boolean permissionOnlyDrink(ServerPlayer player, ItemStack stack) {
+        if (!server(player) || stack == null || stack.isEmpty()
+                || stack.get(DataComponents.FOOD) == null
+                || stack.getUseAnimation() != net.minecraft.world.item.UseAnim.DRINK)
+            return false;
+        var decision = decide(player, stack);
+        boolean eligible = DietPermissions.dragonDrink(player,stack)
+            || JawrFormState.present(player,"vampire")
+               && (DietPermissions.permits(player,stack,"alcohol")
+                   ||DietPermissions.permits(player,stack,"recreational_drink"))
+            || GildedMechanics.permissionOnlyDrink(player,stack);
+        return NativeDietPolicy.permissionOnly(true,true,eligible,
+            decision.outcome()==FoodDecisionResolver.Outcome.NUTRITION,
+            FoodPolicyRegistry.universallyPermitted(stack),
+            decision.outcome()==FoodDecisionResolver.Outcome.DENY);
+    }
+
     public static void foodTick(LivingEntityUseItemEvent.Tick event) {
-        if (!event.isCanceled() && event.getEntity() instanceof ServerPlayer player
-                && decide(player, event.getItem()).outcome() == FoodDecisionResolver.Outcome.DENY)
-            event.setCanceled(true);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            if (event.isCanceled() || decide(player,event.getItem()).outcome()
+                    == FoodDecisionResolver.Outcome.DENY) {
+                BEFORE.remove(player.getUUID());
+                if (!event.isCanceled()) event.setCanceled(true);
+                return;
+            }
+            if (event.getDuration() <= 2 && permissionOnlyDrink(player,event.getItem())) {
+                var food=player.getFoodData();
+                BEFORE.put(player.getUUID(),new Before(player.getServer(),
+                    event.getItem().copy(),food.getFoodLevel(),food.getSaturationLevel(),
+                    player.tickCount));
+            }
+        }
     }
 
     /**
-     * Snapshot the full server-relevant food decisions. A stack-specific
-     * lava-caught exemption cannot be serialized as an item-wide DENY:
-     * omit that Gilded-only denial rather than blocking a valid caught stack
-     * on the client; the server event always enforces the actual stack.
+     * A provider may apply FoodData before posting Finish. Remove only the
+     * *positive* hunger/saturation delta attributable to a completed permitted
+     * drink. Native potion effects, bottles, cooldowns and blood remain intact.
+     */
+    public static void foodFinished(LivingEntityUseItemEvent.Finish event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        Before before=BEFORE.remove(player.getUUID());
+        if (before==null || before.server()!=player.getServer()
+                || player.tickCount-before.tick()<0 || player.tickCount-before.tick()>2
+                || !ItemStack.isSameItemSameComponents(before.stack(),event.getItem())
+                || !permissionOnlyDrink(player,event.getItem())) return;
+        var food=player.getFoodData();
+        int gain=Math.max(0,food.getFoodLevel()-before.hunger());
+        float satGain=Math.max(0f,food.getSaturationLevel()-before.saturation());
+        if(gain>0)food.setFoodLevel(Math.max(0,food.getFoodLevel()-gain));
+        if(satGain>0)food.setSaturation(Math.max(0f,food.getSaturationLevel()-satGain));
+    }
+
+    public static void foodStopped(LivingEntityUseItemEvent.Stop event) {
+        if (event.getEntity() instanceof ServerPlayer player) BEFORE.remove(player.getUUID());
+    }
+    public static void forget(ServerPlayer player) { BEFORE.remove(player.getUUID()); }
+
+    /**
+     * The client gets per-stack lava-caught gates, never a broad item-wide
+     * denial waiver. A strict veto from another Path always wins.
      */
     public static Map<String, FoodPreviewWire.Entry> clientPreview(ServerPlayer player,
             Set<String> profiles) {
         if (!server(player)) return Map.of();
-        Map<String, FoodPreviewWire.Entry> projected =
-            new HashMap<>(FoodPolicyRegistry.clientPreview(player, profiles));
-        if (GildedMechanics.hasFoodRestrictions(player)) {
-            boolean conditional = GildedMechanics.hasPotentialStackException(player);
-            for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
-                ItemStack stack = BuiltInRegistries.ITEM.get(id).getDefaultInstance();
-                if (stack.get(DataComponents.FOOD) == null) continue;
-                if (!GildedMechanics.foodAllowed(player, stack)
-                        && !conditional) projected.put(id.toString(), FoodPreviewWire.Entry.deny());
+        Map<String, FoodPreviewWire.Entry> base =
+            FoodPolicyRegistry.clientPreview(player, profiles);
+        Map<String, FoodPreviewWire.Entry> projected = new HashMap<>(base);
+        boolean gilded=GildedMechanics.hasFoodRestrictions(player);
+        boolean conditional=GildedMechanics.hasPotentialStackException(player);
+        for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
+            ItemStack stack=BuiltInRegistries.ITEM.get(id).getDefaultInstance();
+            if (stack.get(DataComponents.FOOD)==null) continue;
+            String item=id.toString();
+            FoodPreviewWire.Entry original=base.get(item);
+            boolean strictDenied=original!=null && original.denied();
+            if(gilded && !strictDenied && !GildedMechanics.foodAllowed(player,stack)) {
+                if (conditional) {
+                    ItemStack marked=stack.copy();
+                    CustomData.update(DataComponents.CUSTOM_DATA, marked,
+                        data->data.putBoolean("tyr_progression:lava_caught",true));
+                    if(GildedMechanics.foodAllowed(player,marked)) {
+                        projected.put(item,FoodPreviewWire.Entry.lavaConditional(original));
+                        continue;
+                    }
+                }
+                projected.put(item,FoodPreviewWire.Entry.deny());
+            } else if(!strictDenied && permissionOnlyDrink(player,stack)) {
+                projected.put(item,FoodPreviewWire.Entry.nourishment(0,0));
             }
         }
         return Map.copyOf(projected);
