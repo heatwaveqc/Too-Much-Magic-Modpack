@@ -42,6 +42,11 @@ public final class PortableStorageSafety {
         return StorageNestingPolicy.Source.ORDINARY;
     }
 
+    /** Narrow scope: only tag-classified item-backed inventories use this method. */
+    public static boolean isProtectedEmbeddedDestination(ItemStack backing) {
+        return !backing.isEmpty() && backing.is(EMBEDDED_RISK);
+    }
+
     /**
      * Call from an actual embedded-storage destination's pre-insertion path.
      * It never consumes, mutates, destroys or relocates a rejected stack.
