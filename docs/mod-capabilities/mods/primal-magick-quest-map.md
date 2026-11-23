@@ -2,6 +2,8 @@
 
 **Scope:** **40 unique proposed instructional labels** (12 Core, 27 optional source/gear branches, 1 optional finale), with all prerequisite edges pointing backward. These are **Atlas research IDs, NOT 40 live FTB Quest GUIDs**, no actual tasks/rewards/chapters/scripts are committed, and no in-world tests were performed. Keep the existing TMM first-party chapter state and any owner-authored GUIDs intact when implemented later. Sources are official [tag 6.0.7 immutable snapshot](https://github.com/daedalus4096/PrimalMagick/tree/5977468bda968b994e54066236ec5719295ac9c3) and [previous detailed profile](../../mod-comprehension/mods/primal-magick.md), not an independently unpacked published JAR.
 
+**Existing TMM chapter IDs from current `manifest/quest_chapters.json` (do not replace):** Magic group `544D103000000000`; Primal Magick chapter `544D203001100000`, file `primal_magick.snbt`; overview quest `544D303001100001`, overview task `544D403001100001`. This is a **scaffold manifest contract**, not proof that the 40 teaching nodes exist as in-game quests. Any later FTB implementation should preserve IDs, current owner-authored tasks and chapter order.
+
 **Design rule:** do **not** convert all Primal Magick native research entries into mandatory FTB quests. The source has [298 research keys /38 randomized Theorycrafting templates](../inventories/primal-magick-6.0.7-research-and-spells.md), so the goal is instruction, not forced completionism. Display native Grimoire and JEI instructions where applicable, give real player operations and explicit objective types, and distinguish recipe/stage completion from mere item possession.
 
 ## First common spine and specialist branch graph
