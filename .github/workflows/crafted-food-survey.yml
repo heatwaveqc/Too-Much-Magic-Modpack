@@ -30,6 +30,12 @@ jobs:
           python-version: '3.12'
       - name: Validate recipe-tag closure and provenance safety
         run: python -m unittest tests.test_compile_crafted_food_survey -v
+      - name: Checkout immutable Packwiz roster audited by Codex (read-only)
+        uses: actions/checkout@v4
+        with:
+          ref: 48a55bde7c148c9b215eb0e66e7e8e8e465f4c5e
+          path: _food_audit_roster
+          persist-credentials: false
       - name: Download previously audited pinned recipe evidence (no JARs)
         env:
           GH_TOKEN: ${{ github.token }}
@@ -41,7 +47,8 @@ jobs:
       - name: Compile automatic source tags and recipe routes
         run: |
           python scripts/compile_crafted_food_survey.py \
-            --repo . --audit /tmp/tmm-food-audit/food-jar-audit-pinned.json \
+            --repo . --pin-snapshot _food_audit_roster \
+            --audit /tmp/tmm-food-audit/food-jar-audit-pinned.json \
             --out /tmp/tmm-compiled-food
           python -m compileall -q scripts/compile_crafted_food_survey.py
           python -m json.tool /tmp/tmm-compiled-food/crafted-food-survey-report.json >/dev/null
