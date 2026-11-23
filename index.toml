@@ -1695,6 +1695,11 @@ hash = "cd4c4ec6ef26d2b61e0cb0bdd398e8d528b88ebf739fc0898bc8cb2f7a88debb"
 metafile = true
 
 [[files]]
+file = "mods/crispy.pw.toml"
+hash = "18490e7597586abb00d774f6b6e1b94f24bb24fb8f18b4c6d023582b5c6ce0ee"
+metafile = true
+
+[[files]]
 file = "mods/critters-and-companions.pw.toml"
 hash = "3f4a84b4344b129792d44a66fd0809d3f58a903707848b6905b493759814034d"
 metafile = true
@@ -1755,6 +1760,11 @@ hash = "9f6b261565c185ab137b1f4ceceec488e4d6d262b14ef3349c4a88afdac958ae"
 metafile = true
 
 [[files]]
+file = "mods/dungeons-delight.pw.toml"
+hash = "a6ffa82d0ddbfd6f592ca7501c013c6bbe3254f471c9ee381de7d07b7298be29"
+metafile = true
+
+[[files]]
 file = "mods/eidolon-repraised.pw.toml"
 hash = "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5"
 metafile = true
@@ -1782,6 +1792,11 @@ metafile = true
 [[files]]
 file = "mods/enderman-overhaul.pw.toml"
 hash = "1045ba1bb46eb77e2fea9be04268c2c73c161b94f3bceddbd4c3dbff1c0bf555"
+metafile = true
+
+[[files]]
+file = "mods/enders-delight.pw.toml"
+hash = "1598c4eaca8666404c4d1dbf117c7afff4aaa384cd3d4dc131a8a11b7dfc1616"
 metafile = true
 
 [[files]]
@@ -1952,6 +1967,11 @@ metafile = true
 [[files]]
 file = "mods/hexerei.pw.toml"
 hash = "bd496127dfae8939188c1eb6d6e77930a2f89514308169abed5d27a7b3199ac2"
+metafile = true
+
+[[files]]
+file = "mods/huaxia-delight.pw.toml"
+hash = "795fd2137617b41bc89569150598847f87260467d78ba5a3bc40476ba8467011"
 metafile = true
 
 [[files]]
@@ -2382,6 +2402,11 @@ metafile = true
 [[files]]
 file = "mods/roots-classic.pw.toml"
 hash = "74823eb3d7c7d27a842fb935e6627a466c209ebb0e640833a4e1382d1f593601"
+metafile = true
+
+[[files]]
+file = "mods/runiclib.pw.toml"
+hash = "50247b958259e240e9892ce22158f651f7b569c8ea51f345532451f07db810eb"
 metafile = true
 
 [[files]]
