@@ -1,5 +1,12 @@
 # Next live-test inclusion register
 
+## 2026-11-23 Progression XP, baseline Paths and first four Core skills — next QA inclusion
+
+**Next owner-authorized comprehensive unstable-test inclusion attempt:** reviewed Progression donor `dev/progression@c1b0784bd756b7dde68d65febd574720cb1b036d` after ordered dev merges #580 → #588 → #595 → #598, followed by independent Core pilot #584. See `docs/qa/PROGRESSION-GENERIC-XP-CORE-2026-11-23.md` for complete source test contract and B/C matrix. Selection is a **38-delta-file source integration candidate**, not an assembled or gameplay-validated JAR; first-party `tyr_progression` remains sole selected XP runtime and should retain #525 UI, #508 blood and #237 appraisal. **Inclusion status:** SOURCE READY / NEXT AUTHORIZED BUILD ATTEMPT; postmerge source CI and actual artifact inclusion must be verified before any B/C PASS.
+
+**B/C required:** Newbie no-XP and personal quest graduation to Normie+Core, 4 visible Core nodes at 5 ranks each, per-system current XP thresholds/default 1000 XP and 1.02 growth, additive-but-deduped MXP grants, two-currency skill purchase/single effective rank, Path leave/respec/rejoin configured forfeits/refunds, free achievement ranks, attachment Codec save/relog/respawn and multiplayer independence, displayed wallets/currency selection, existing forms and saved content regressions. Source #475 native automatic block/ritual/craft receipts and #59 no-drop stone are **not** claimed complete; #455 23 other Core nodes/FTB quest integration still open. **Owner authorization is required** for assembly, game/server smoke, Prism or live testing; never assume source CI is B/C acceptance.
+
+
 ## Revised full Monk tree: 38 paid skills, exact-type wards and Meditative Elixir — latest owner decision 2026-11-22
 
 **2026-11-22 source-intake update:** #479, #480, #481 and #486 are merged into `dev/progression`, alongside the complete #485 engine behavior reconciled through green [#490](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/490), current dev head `eac88556c36490e752dac8cab3040d28726e919d`. The earlier PR head SHAs below are preserved as historical source provenance, not the current donor selection. Runtime import into `test/full-integration`, new server smoke, Prism and owner gameplay acceptance are **not established** by this register.
