@@ -1,0 +1,26 @@
+name: Food source evidence (source-only)
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_food_source_evidence.py'
+      - 'tests/test_food_source_evidence.py'
+      - 'compat/progression/design/food-provenance/**'
+      - 'compat/progression/src/main/resources/data/tyr_progression/tyr_progression/food_sources/**'
+      - 'compat/progression/src/main/resources/data/tmm/tags/item/foods/**'
+      - '.github/workflows/food-source-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate all generated food source records
+        run: python -m unittest tests.test_food_source_evidence -v
+      - name: Check Python syntax
+        run: python -m py_compile scripts/build_food_source_evidence.py tests/test_food_source_evidence.py
