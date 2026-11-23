@@ -44,3 +44,8 @@ config="tyr_progression_vision.mixins.json"
 # Optional Dragon Survival beverage permission hook.
 [[mixins]]
 config="tyr_progression_diet.mixins.json"
+
+# Optional Hexerei 0.5.0.3 ordinary blood normalization at both native
+# MixingCauldronTile.fill and interactWithFluid entry points.
+[[mixins]]
+config="tyr_progression_hexerei_blood.mixins.json"
