@@ -187,7 +187,7 @@ public final class ProgressionMenuNetwork {
             item.addProperty("permanent",binding.permanent());
             item.addProperty("point_name",binding.currency().pointName());
             item.addProperty("level_system",binding.levelSystem().name());
-            item.addProperty("price", skill.price(owned));
+            item.addProperty("price", binding.currency().magic()?1:skill.price(owned));
             var activation=PathRegistry.activation(pathId,skill.id());
             if(activation!=null){
                 item.addProperty("activation_mode",activation.mode());
@@ -218,7 +218,7 @@ public final class ProgressionMenuNetwork {
                 choice.addProperty("system",binding.currency().id());
                 choice.addProperty("max_ranks",skill.maxRank());
                 choice.addProperty("owned",owned);
-                choice.addProperty("price",skill.price(owned));
+                choice.addProperty("price",binding.currency().magic()?1:skill.price(owned));
                 choice.addProperty("buyable",ProgressionApi.canBuy(player,pathId,skill.id()));
                 purchaseSources.add(choice);
             }
