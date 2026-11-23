@@ -22,7 +22,8 @@
     "OpConverterTierMixin",
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
-    "StoredResourceGuardMixin"
+    "StoredResourceGuardMixin",
+    "RepairTalismanCharmMixin"
   ],
   "injectors": {
     "defaultRequire": 1
