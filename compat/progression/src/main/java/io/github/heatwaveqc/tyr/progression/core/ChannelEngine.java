@@ -56,7 +56,9 @@ public final class ChannelEngine {
     }
     public static Ledger initialize(Ledger ledger,XpChannel system){
         if (system.magic()) {
-            var state=ExperienceEconomy.initialize(ledger.economy(),ExperienceEconomy.SystemSpec.mxp());
+            var spec=ExperienceEconomyRuntime.current().systems().get(system.id());
+            if(spec==null)throw new IllegalArgumentException("Unconfigured XP system "+system.id());
+            var state=ExperienceEconomy.initialize(ledger.economy(),spec);
             if(state!=ledger.economy()) ledger=ledger.withEconomy(state);
         }
         return ledger.wallet(system.id())==null ? ledger.withWallet(system.id(),Wallet.initial(system)):ledger;
@@ -110,8 +112,10 @@ public final class ChannelEngine {
         if(binding.currency().magic()) {
             // The canonical current-XP ledger charges by commitment, not by
             // decrementing XP; the legacy view remains a read-only projection.
-            xpState=ExperienceEconomy.buy(xpState,ExperienceEconomy.SystemSpec.mxp(),
-                tree.id(),skillId,skill.price(view.skillRank(skillId)),skill.maxRank(),skill.maxRank());
+            var spec=ExperienceEconomyRuntime.current().systems().get(binding.currency().id());
+            if(spec==null)throw new IllegalArgumentException("Missing XP buying ledger");
+            xpState=ExperienceEconomy.buy(xpState,spec,tree.id(),skillId,
+                skill.price(view.skillRank(skillId)),skill.maxRank(),skill.maxRank());
             if(xpState==ledger.economy())return ledger;
         }
         var next=ownership(ledger,tree,after,config)
@@ -218,7 +222,7 @@ public final class ChannelEngine {
     public static Ledger magic(Ledger ledger,XpChannel channel,String sourceCategory,
             String tx,String firstKey,double firstBase,double repeatBase,
             boolean firstFixed,boolean repeatFixed) {
-        if(!channel.magic())throw new IllegalArgumentException("Not a configurable MXP source");
+        if(!channel.magic())throw new IllegalArgumentException("Not a configured XP-ledger source");
         checkId(tx);if(firstKey!=null)checkId(firstKey);
         ledger=initialize(ledger,channel);
         String firstReceipt=firstKey==null?null:channel.id()+"|"+sourceCategory+"|"+firstKey;
