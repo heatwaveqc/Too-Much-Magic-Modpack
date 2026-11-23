@@ -32,9 +32,10 @@ function data(){
   putLong:(k,x)=>v.set(k,x),putBoolean:(k,x)=>v.set(k,Boolean(x))}
 }
 function rabbit(boss=true){
+  const persistent=data()
   const tags = new Set(['tmm_caerbannog_chaos', ...(boss?['tmm_caerbannog_boss']:[])])
   return {type:'minecraft:rabbit',getTags:()=>({contains:k=>tags.has(k)}),
-    getPersistentData:data(),addEffect(e){this.effect=e},setRemainingFireTicks(n){this.fire=n}}
+    getPersistentData:()=>persistent,addEffect(e){this.effect=e},setRemainingFireTicks(n){this.fire=n}}
 }
 function event(entity,tick,type='player',dmg=20){
   const e={entity,damage:dmg,level:{isClientSide:()=>false,getGameTime:()=>tick},
@@ -71,7 +72,8 @@ assert.equal(boss.fire,100)
 const horde=event(rabbit(false),703,'arrow');before(horde);assert.equal(horde.canceled,false)
 // 2% proc is made ONLY after successful damaging normal mob attack.
 const bossBite=rabbit()
-const victim={type:'minecraft:player',getPersistentData:data(),isAlive:()=>true,
+const victimData=data()
+const victim={type:'minecraft:player',getPersistentData:()=>victimData,isAlive:()=>true,
   getMaxHealth:()=>20,getAbsorptionAmount:()=>0,
   damageSources:()=>({mobAttack:x=>({attacker:x})}),
   attack(s,d){this.count=(this.count||0)+1;this.source=s;this.raw=d;
