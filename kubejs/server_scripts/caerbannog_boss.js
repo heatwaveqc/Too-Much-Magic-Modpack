@@ -5,6 +5,8 @@
 // Owner 2026-11-22: *2%* frog-tongue execution on successful damaging bite,
 // processed by ordinary damage/death protection instead of Entity#kill/remove.
 const TMM_DamageTypes = Java.loadClass('net.minecraft.world.damagesource.DamageTypes')
+const TMM_CHAOS_MobEffects = Java.loadClass('net.minecraft.world.effect.MobEffects')
+const TMM_CHAOS_MobEffectInstance = Java.loadClass('net.minecraft.world.effect.MobEffectInstance')
 const TMM_CHAOS_MELEE_WINDOW_TICKS = 100 // QA variant: 5 seconds; compare 200 for 10.
 const TMM_CHAOS_TONGUE_CHANCE = 0.02
 const TMM_CHAOS_HIT_TICK_KEY = 'tmm_caerbannog_last_valid_melee_tick'
@@ -39,6 +41,14 @@ EntityEvents.beforeHurt('minecraft:rabbit', event => {
   if (!tmmIsChaosBoss(event.entity) || event.level.isClientSide()) return
   const source = event.source
   if (source['is'](TMM_DamageTypes.GENERIC_KILL)) return // explicit admin /kill escape
+  // Lava/fire damage is nullified; hostile terrain gives the rabbit 5s of Speed V.
+  if (source['is'](TMM_DamageTypes.LAVA) ||
+      source['is'](TMM_DamageTypes.IN_FIRE) ||
+      source['is'](TMM_DamageTypes.ON_FIRE)) {
+    event.entity.addEffect(new TMM_CHAOS_MobEffectInstance(
+      TMM_CHAOS_MobEffects.MOVEMENT_SPEED, 100, 4, false, true))
+    event.entity.setRemainingFireTicks(100)
+  }
   if (!tmmChaosEligibleMelee(source)) {
     event.cancel()
     return

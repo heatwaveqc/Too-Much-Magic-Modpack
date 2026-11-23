@@ -377,6 +377,24 @@
           "value": 0.95
         },
         {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:dolphins_grace",
+            "amplifier": 0,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
+          "type": "gateways:mob_effect",
+          "effect": {
+            "effect": "minecraft:conduit_power",
+            "amplifier": 0,
+            "ambient": true,
+            "visible": false
+          }
+        },
+        {
           "type": "gateways:loot_table",
           "loot_table": "tmm:entities/empty"
         }

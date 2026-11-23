@@ -115,10 +115,15 @@ def gateway_contract()->dict:
     assert "minecraft:rabbit_foot" not in json.dumps(recipe), (
         "Caerbannog entry recipe must NOT require its own rabbit foot drop")
     js=text("kubejs/server_scripts/caerbannog_boss.js")
-    for token in ("TMM_BOSS_HIT_CHANCE = 0.10","EntityEvents.beforeHurt",
+    for token in ("TMM_CHAOS_MELEE_WINDOW_TICKS = 100","TMM_CHAOS_TONGUE_CHANCE = 0.02","EntityEvents.beforeHurt",
                   "EntityEvents.afterHurt","EntityEvents.drops",
                   "TMM_DamageTypes.GENERIC_KILL","tmm_caerbannog_boss"):
         assert token in js, "Boss code missing experimental guard: "+token
+    boss_effects = {m["effect"]["effect"] for m in waves[-1]["modifiers"] if m["type"]=="gateways:mob_effect"}
+    assert {"minecraft:dolphins_grace", "minecraft:conduit_power"} <= boss_effects
+    assert "Math.random() >= TMM_BOSS_HIT_CHANCE" not in js
+    assert "event.entity.kill()" not in js
+    assert "victim.attack(source, damage)" in js
     startup=text("kubejs/startup_scripts/caerbannog_trophy.js")
     assert "chaos_bunny_trophy" in startup
     return {"ordinary_killer_bunny_waves":1,"guaranteed_foot":1,
