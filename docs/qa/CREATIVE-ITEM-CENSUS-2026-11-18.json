@@ -1,0 +1,365 @@
+{
+  "schema_version": 2,
+  "source": "docs/qa/surveys-2026-11-18/items.csv",
+  "capture_date": "2026-11-18",
+  "installed_build_sha": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+  "source_installed_jar_count": 209,
+  "method": "registered default-stack item ID and display name pattern match; NOT a recipe or creative-tab census",
+  "registered_items_seen": 23681,
+  "counts": {
+    "explicit_creative_or_cheat": 23,
+    "name_only_review": 41,
+    "source_confirmed_creative_candidates": 1
+  },
+  "explicit_creative_or_cheat": [
+    {
+      "id": "ars_nouveau:creative_source_jar",
+      "name": "Creative Source Jar",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "ars_nouveau:creative_spell_book",
+      "name": "Creative Spell Book",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "botania:corporea_spark_creative",
+      "name": "Creative Corporea Spark",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "botania:creative_pool",
+      "name": "The Everlasting Guilty Pool",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "draconicevolution:creative_capacitor",
+      "name": "Creative Capacitor",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "draconicevolution:creative_op_capacitor",
+      "name": "Creative Power Source",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "embers:creative_ember_source",
+      "name": "Creative Ember Source",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "evilcraft:creative_blood_drop",
+      "name": "Creative Blood Drop",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "hexcasting:creative_unlocker",
+      "name": "The Media Cube",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "hexerei:creative_waxing_kit",
+      "name": "Creative Waxing Kit",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "improvableskills:scroll_creative",
+      "name": "Creative Page with Skills",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "neovitae:activation_crystal_creative",
+      "name": "Creative Activation Crystal",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "pastel:creative_ink_assortment",
+      "name": "Creative Ink Assortment",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "pastel:creative_particle_spawner",
+      "name": "Creative Particle Spawner",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "primalmagick:creative_wand_gem_item",
+      "name": "Creative Wand Gem",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "primalmagick:grimoire_creative",
+      "name": "Creative Grimoire",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "primalmagick:mana_singularity_creative",
+      "name": "Creative Mana Singularity",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "psi:cad_assembly_creative",
+      "name": "Creative CAD Assembly",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "replication:creative_matter_tank",
+      "name": "Creative Matter Tank",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "replication:creative_memory_chip",
+      "name": "Creative Memory Chip",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "scriptor:engraving_tool",
+      "name": "Engraving Tool (Creative)",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "totemic:ceremony_cheat",
+      "name": "Creative Ceremony Cheat",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "totemic:creative_medicine_bag",
+      "name": "Creative Medicine Bag (None)",
+      "default_stack_emc": "0"
+    }
+  ],
+  "name_only_review": [
+    {
+      "id": "ars_elemental:everfull_urn",
+      "name": "Urn of Endless Waters",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "artifacts:eternal_steak",
+      "name": "Eternal Steak",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "artifacts:everlasting_beef",
+      "name": "Everlasting Beef",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "betterend:eternal_crystal",
+      "name": "Eternal Crystal",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "betterend:eternal_pedestal",
+      "name": "Eternal Pedestal",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "betterend:flavolite_runed_eternal",
+      "name": "Eternal Runed Flavolite",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "botania:infinite_fruit",
+      "name": "The Fruit of Grisaia",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "botania:infrangible_platform",
+      "name": "Infrangible Platform",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "cataclysm:unbreakable_skull",
+      "name": "Unbreakable Skull",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "enchanted:infinity_egg",
+      "name": "Infinity Egg",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "enigmaticlegacyplus:avarice_scroll",
+      "name": "Pact of Infinite Avarice",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "enigmaticlegacyplus:cosmic_cake",
+      "name": "The Eternal Cake",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice",
+      "name": "Eternal Ice",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_brick_slab",
+      "name": "Eternal Ice Brick Slab",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_brick_stairs",
+      "name": "Eternal Ice Brick Stairs",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_brick_wall",
+      "name": "Eternal Ice Brick Wall",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_bricks",
+      "name": "Eternal Ice Bricks",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_deepsilver_ore",
+      "name": "Eternal Ice Deepsilver Ore",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_lantern",
+      "name": "Eternal Ice Lantern",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_redstone_ore",
+      "name": "Eternal Ice Redstone Ore",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_saltpeter_ore",
+      "name": "Eternal Ice Saltpeter Ore",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_starcore_ore",
+      "name": "Eternal Ice Starcore Ore",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:eternal_ice_starlit_diamond_ore",
+      "name": "Eternal Ice Starlit Diamond Ore",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "eternal_starlight:thin_eternal_ice",
+      "name": "Thin Eternal Ice",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "evilcraft:box_of_eternal_closure",
+      "name": "Box of Eternal Closure",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "evilcraft:bucket_eternal_water",
+      "name": "Eternal Water Bucket",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "evilcraft:eternal_water",
+      "name": "Eternal Water Block",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "extrabotany:infinite_wine",
+      "name": "Infinite Fallback Wine (12)",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "forbidden_arcanus:eternal_obsidian_skull",
+      "name": "Eternal Obsidian Skull",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "forbidden_arcanus:eternal_stella",
+      "name": "Eternal Stella",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "goety:eternal_cauldron",
+      "name": "Eternal Cauldron",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "malum:ring_of_the_endless_well",
+      "name": "Ring of the Endless Well",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "neovitae:array_endless_fountain",
+      "name": "Endless Fountain Array",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "pastel:bottomless_bundle",
+      "name": "Bottomless Bundle",
+      "default_stack_emc": "0"
+    },
+    {
+      "id": "projecte:aeternalis_fuel",
+      "name": "Aeternalis Fuel",
+      "default_stack_emc": "8192"
+    },
+    {
+      "id": "projecte:aeternalis_fuel_block",
+      "name": "Aeternalis Fuel Block",
+      "default_stack_emc": "73728"
+    },
+    {
+      "id": "projecte:gem_of_eternal_density",
+      "name": "Gem of Eternal Density",
+      "default_stack_emc": "319616"
+    },
+    {
+      "id": "projectexpansion:infinite_fuel",
+      "name": "Infinite Fuel",
+      "default_stack_emc": "2229512"
+    },
+    {
+      "id": "projectexpansion:infinite_steak",
+      "name": "Infinite Steak",
+      "default_stack_emc": "2229000"
+    },
+    {
+      "id": "witchery:eternal_catalyst",
+      "name": "Eternal Catalyst",
+      "default_stack_emc": "141632"
+    },
+    {
+      "id": "witchery:infinity_egg",
+      "name": "Infinity Egg",
+      "default_stack_emc": "0"
+    }
+  ],
+  "source_confirmed_creative_candidates": [
+    {
+      "id": "neovitae:blood_battery",
+      "classification": "creative_class",
+      "function": "Refills FE on redstone signal without EV/Anima/Spiritus debit",
+      "evidence": "Neo Vitae 1.1.54 BloodBatteryBlock Creative Only tooltip and BloodBatteryBlockEntity; issue #596",
+      "verified_runtime_in_capture": false,
+      "registered_in_capture": true
+    }
+  ],
+  "known_component_only_variants": [
+    {
+      "base_item_id": "botania:mana_tablet",
+      "variant": "Botania Revived Creative Mana Tablet",
+      "identifier": "native custom data creative=1",
+      "evidence": "Botania-Revived 2.0.2 CreativeCraftingModule.creativeTablet()",
+      "verified_runtime_in_capture": false
+    }
+  ],
+  "limitations": [
+    "Historical installed build, not the live next-build/manifest pin roster",
+    "A name is evidence of a candidate, never proof of creative functionality",
+    "Creative-mode tab membership is not a disallowed creative-tier tag",
+    "Default-stack item exports do not enumerate creative NBT/component variants",
+    "Resource acquisition, EMC learning, recipes and loot are not checked",
+    "Source-confirmed creative function does not itself prove survival acquisition"
+  ]
+}

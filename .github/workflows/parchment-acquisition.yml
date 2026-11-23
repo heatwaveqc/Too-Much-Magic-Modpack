@@ -1,0 +1,35 @@
+name: Parchment acquisition regression (#318, source only)
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/verify_parchment_acquisition.py'
+      - 'tests/test_parchment_fishing.cjs'
+      - 'kubejs/server_scripts/parchment_fishing.js'
+      - 'kubejs/data/tmm/gateways/mob_irons_*.json'
+      - 'index.toml'
+      - 'pack.toml'
+      - '.github/workflows/parchment-acquisition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parchment-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate B19 success-only parchment amounts and exact Packwiz inclusion
+        run: python3 scripts/verify_parchment_acquisition.py
+      - name: Validate ordinary fishing treasure weighting and no bonus pool
+        run: node --test tests/test_parchment_fishing.cjs
+      - name: Confirm no Minecraft build or gameplay performed
+        run: echo 'Type A source checks only; effective loot and B/C gameplay remain pending.'

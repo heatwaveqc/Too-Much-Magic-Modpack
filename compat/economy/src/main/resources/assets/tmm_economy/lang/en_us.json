@@ -45,5 +45,6 @@
   "tmm_economy.mapper.relic_templates": "TMM Relic and Artifact Templates",
   "tmm_economy.mapper.relic_templates.tooltip": "Use a fixed price for fresh relic and artifact equipment, independent of stats.",
   "tmm_economy.mapper.canonical_buckets": "TMM Canonical Bucket Mapper",
-  "tmm_economy.mapper.canonical_buckets.tooltip": "Map verified full buckets and returned empty buckets."
+  "tmm_economy.mapper.canonical_buckets.tooltip": "Map verified full buckets and returned empty buckets.",
+  "message.tmm_economy.alchemy.multiuse_flask_refused": "Use a single potion bottle here. This eight-use flask is protected."
 }
