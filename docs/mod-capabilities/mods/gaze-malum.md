@@ -1,14 +1,14 @@
 # Gaze (A Malum Addon) 1.1.7.1 — separately scoped Atlas dossier
 
-**Status:** SOURCE-/JAR-PARTIAL, **publisher roster verified only**, not actual source/recipe/runtime evidence. This is the native Malum 1.8.2 Atlas's installed addon, not an interchangeable part of base Malum's 26 Rites or 37 Geases. The TMM-selected `mods/gaze-a-malum-addon.pw.toml` pins `gaze-1.1.7.1.jar`, Modrinth `NlvaJ5WE` version `od4ltbRo`, SHA-512 `7e9ecdcc996f376e280bf46f5c0cfd328fb6f1228b1dac469390031458e7a81ad56acff03d9bb6b57b8209586798ab443be1e91fa8fe56297a9e7c9451db03e2`. [Publisher's CurseForge features](https://www.curseforge.com/minecraft/mc-mods/gaze-a-malum-addon) and [exact Modrinth release](https://modrinth.com/mod/gaze-a-malum-addon/version/1.1.7.1) confirm Minecraft 1.21.1 / NeoForge and required Malum 1.8.2 plus Lodestone; Iron's Spells is optional. There is no official downloadable public source code and the pinned JAR could not be read in this source-only session. No claimed successful JAR extraction, verification of registered IDs, FTB task implementation or gameplay PASS.
+**Status:** PINNED-PARTIAL. Publisher content roster plus an exact-version **two-Geas/rite-effect ABI and recipe subset** recovered from a prior TMM audit; other Gaze systems still unverified. This is the native Malum 1.8.2 Atlas's installed addon, not an interchangeable part of base Malum's 26 Rites or 37 Geases. The TMM-selected `mods/gaze-a-malum-addon.pw.toml` pins `gaze-1.1.7.1.jar`, Modrinth `NlvaJ5WE` version `od4ltbRo`, SHA-512 `7e9ecdcc996f376e280bf46f5c0cfd328fb6f1228b1dac469390031458e7a81ad56acff03d9bb6b57b8209586798ab443be1e91fa8fe56297a9e7c9451db03e2`. [Publisher's CurseForge features](https://www.curseforge.com/minecraft/mc-mods/gaze-a-malum-addon) and [exact Modrinth release](https://modrinth.com/mod/gaze-a-malum-addon/version/1.1.7.1) confirm Minecraft 1.21.1 / NeoForge and required Malum 1.8.2 plus Lodestone; Iron's Spells is optional. There is no published official source code. This Atlas pass did not independently download or extract the JAR; however, **merged TMM Progression PR #375 already hash-verified and inspected the exact pinned binary**. See the [cross-workstream pinned evidence reconciliation](../inventories/gaze-1.1.7.1-pinned-abi-evidence.md) for the verified two Geas recipe/effect mappings and the 26 rite *effect-type* distinction. Neither the prior static audit nor this documentation is FTB quest implementation or gameplay PASS.
 
 ## Distinct reported content — treat counts as *published claims*, not parsed registries
 
 | Addon family | Publisher-visible count | Native vs addon, evidence and missing mechanics |
 |---|---:|---|
 | Separate progression screen | 1 | Reported by author. Need access key/UI title, actual prerequisites, persistence, player-level gated unlocks. |
-| Added Geases | 2 | **Not included** in the 37 base-native Malum Geas types; must inspect exact IDs/classes, Soul Brazier/Curios inheritance and balance. |
-| Added Rites | A new set (count unspecified) | Not included in the 26 base rites; spirit pattern/base, cooldown, effects, trigger, source item costs unknown. |
+| Added Geases | **2 exact recipe-backed effects (JAR verified in PR #375)** | `gaze:domain_of_swords` and `gaze:pact_of_encroaching`, from `malum:soul_binding/domain_of_swords` and `malum:soul_binding/pact_of_encroaching_malice`. Distinct from the 37 native Geases. Effect behaviors, names of ingredients and balance still need a full addon audit. |
+| Added Rites | **26 Gaze Rite effect types** found in pinned JAR audit | These are *not* 26 additional registered canonical Rites; native Rite lookup uses Malum's 26 registered IDs. Gaze-specific effect mapping, configuration, player-visible behavior and activation inputs still need inspection. |
 | Weapons | 6 | Actual item IDs, crafting gates, damage, ammunition and Soul Ward/Scythe interaction unverified. |
 | Runes | 8 | Separate from base 24 runeworking recipe paths. Release note mentions **Fafnir** interacting with full Malignant armor, but the magnitude/rule is not verified. |
 | Curios | 5 | Slot types, ownership and in-pack equip/conflict semantics need item/Curios source or client inspection. |
@@ -25,13 +25,13 @@ These status rows deliberately do not infer absent features or transfer Malum ba
 | `movement` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `ore_processing` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `storage` | present (publisher roster): one new pouch; item restrictions/volume unknown and TMM generic bag policy HOLD. |
-| `crafting` | unverified: new weapons/runes likely have crafting but no pinned 1.1.7.1 recipe JSON inspected. |
+| `crafting` | partial: exact two `malum:soul_binding/*` Gaze Geas recipes and main/extra/Spirit **counts** independently documented by existing hash-pinned TMM audit; concrete ingredient IDs and all other addon crafting still unverified. |
 | `logistics` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
-| `buffs` | present (publisher roster): two added Geases and eight runes, effects/costs not established. |
+| `buffs` | exact two Gaze Geas effect IDs verified by hash-pinned prior audit; eight additional runes remain a publisher roster count without inspected mechanics. |
 | `external_compatibility` | declared: Malum 1.8 and Lodestone 1.8.2 required, Iron's optional; all loaded interactions untested. |
 | `mob_farming` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `ore_generation` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
-| `permanent_power` | possible: two Geases, but must verify persistent attachment/slots and effect values rather than assuming native semantics. |
+| `permanent_power` | two exact recipe-backed Gaze Geases verified in prior PR #375; persistency/limit/effect consequences in assembled client remain unverified. |
 | `general_generation` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `direct_damage` | possible: six advertised weapons, no verified attack behavior. |
 | `block_breaking` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
@@ -41,7 +41,7 @@ These status rows deliberately do not infer absent features or transfer Malum ba
 | `healing_recovery` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `debuff_control` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `energy` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
-| `automation_control` | possible: new Rites, unknown cadence/inputs. |
+| `automation_control` | pinned audit identified 26 Gaze Rite effect types, **not** 26 independent Rite type registrations; effect behavior and cadence remain unverified. |
 | `agriculture` | unknown: no pinned Gaze source class/recipe or observed runtime action supporting a distinct addon operation. |
 | `detection_information` | partial: new progression screen and Anima Bestiary in release notes; actual UI and data not inspected. |
 | `equipment_augmentation` | present (publisher roster): eight runes and five Curios; no slot/modifier proof. |
@@ -57,4 +57,4 @@ Parent native Malum guide branch should conclude with source-verified native ope
 
 **Integration decision:** Gaze's pouch joins native `malum:soulwoven_pouch`/`malum:ravenous_pouch` in the TMM generic-backpack policy audit. It must be excluded from survival progression or explicitly justified/limited before any quest, shop or loot grant. Actual source properties are unknown; do not silently apply the base Ravenous capacity to Gaze's new pouch.
 
-**Required to close:** read the actual installed 1.1.7.1 JAR's `/data` recipes/registry/lang assets and source classes (if legally accessible), inspect exact two Geases, all added Rites/8 Runes/6 Weapons/5 Curios/pouch/Bestiary, and verify first-to-end player tutorial in isolated TMM. If a future source becomes public, pin its immutable commit rather than copying 1.9.0 features from base Malum. Until then, the **base Malum 1.8.2 dossier is source-substantial, but the complete Malum+Gaze family cannot be marked fully source-ready**.
+**Required to close:** reuse or independently inspect the exact pinned 1.1.7.1 JAR's remaining `/data`, registry, language, UI and executable behavior evidence; reconcile both known Geases' actual ingredient identities and effects, the 26 Gaze Rite effect variants, eight Runes, six Weapons, five Curios, pouch/Bestiary, and first-to-end player tutorial in isolated TMM. If a future source becomes public, pin its immutable commit rather than copying 1.9.0 features from base Malum. Until then, the **base Malum 1.8.2 dossier is source-substantial, but the complete Malum+Gaze family cannot be marked fully source-ready**.
