@@ -54,9 +54,10 @@ class FoodPublisherTests(unittest.TestCase):
         self.assertEqual(result["recipe_ids_with_single_result"], 1)
         self.assertEqual(result["candidate_output_ids_not_confirmed_edible"],
                          ["example:fish_slice", "example:juice"])
-        self.assertEqual(result["recipes"][0]["multi_results"][0],
+        self.assertEqual(next(r for r in result["recipes"] if r["recipe"] == "example:cut_fish")["multi_results"][0],
                          {"item": "example:fish_slice", "count": 3})
-        self.assertEqual(result["recipes"][1]["ingredient_tags"], ["c:foods/fruit"])
+        self.assertEqual(next(r for r in result["recipes"] if r["recipe"] == "example:berry_juice")["ingredient_tags"],
+                         ["c:foods/fruit"])
 
     def test_unrecognized_custom_recipe_stays_unresolved(self):
         file = self.jar({
