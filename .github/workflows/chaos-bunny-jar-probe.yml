@@ -36,6 +36,8 @@ jobs:
             "$RUNNER_TEMP/tmm-jar-audit/apotheosis.jar"
       - name: Test 2% protected tongue, 5-second window and lava speed in isolated KubeJS event harness
         run: node scripts/test_chaos_bunny_combat.cjs
+      - name: Check one-time per-player Chaos Bunny trophy advancement and Packwiz index
+        run: python3 scripts/verify_chaos_bunny_advancement.py
       - name: Syntax check currently indexed boss script and QA assertion
         run: |
           node --check kubejs/server_scripts/caerbannog_boss.js
