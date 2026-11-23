@@ -167,6 +167,37 @@ def result_item(data: dict[str, Any]) -> tuple[str | None, int | None]:
     return None, None
 
 
+
+def recipe_outputs(data: dict[str, Any]) -> list[dict[str, Any]]:
+    """Source-backed direct and cutting outputs; all entries must parse.
+
+    Farmer's Delight cutting stores a list under *result*, with each entry
+    wrapping the actual item stack as {item: {id: ..., count: ...}}. Other
+    recipes use a single result or an alternate *results* list. Reject
+    ambiguous mixed fields or one malformed entry rather than crediting a
+    partially resolved output.
+    """
+    if "result" in data and "results" in data:
+        return []
+    if "result" in data:
+        raw = data["result"]
+    else:
+        raw = data.get("results", [])
+    source = raw if isinstance(raw, list) else [raw]
+    if not source:
+        return []
+    outputs = []
+    for entry in source:
+        value = entry
+        if isinstance(value, dict) and isinstance(value.get("item"), dict):
+            value = value["item"]
+        item, count = result_item({"result": value})
+        if item is None:
+            return []
+        outputs.append({"item": item, "count": count})
+    return outputs
+
+
 def ingredient_tags(value: Any) -> set[str]:
     found: set[str] = set()
     if isinstance(value, list):
