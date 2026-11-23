@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-23 15:47UTC Conflux geometry/schools
+
+- Added ars-conflux-pinned-geometry-schools.md: incomingnormalizedvector scoped/tag/legacyfallback; projectiletravelnotcasterlook, capturealoneNOTall-effectrotation. Explicitglyphschoolweights/noautomaticnativeinfer,2:1normalize/EMPTYfactor1. Schoolresourcepaths data/<namespace>/ars_conflux/(schools,glyph_schools,school_damage), invalidwarn+omit/prioritydescID/firstmatch/entity+tagAND. Generalpowerdefault0, startupschoolextralistempty, optionaldamage_rulesfalse onlytargetrulesNOTallpowerlayer. Nativeevent/nonlivingboundpayload/handledscope contracts andop2diagnostics; no runtimeclaim.
+- No school API declarationcallersinsideConflux, JARonly4recipeJSON/nobundledschooldata; boundedcurrenttrackedconfig/defaultconfigs/kubejssearchnoConflux/schooldata. Notwholepackeffectiveprovider/datapackproof.5Confluxcompanions/40Elemental; no profilepromotion.
+- **Next actualinstalledConflux Controle/Additions/nSpells bridge andconsumer/abilitycontracts**, thenConfluxwholeprofile/defaultscopeconsolidation; Elemental184recipe/registry/profile/pilot, Elemancy/Additionsnative/Arscombined/othermajors. Integrationc11a95fcunchanged/nohardblocker/hourlyactive;9complete33researching1staleof43. ExplicitworkdirC:\ChatGPT\Magic Minecraft Modpack\research-magic;GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-23 14:51UTC Conflux active casting/cooldowns
 
 - Added ars-conflux-pinned-active-casts.md: provideroptional/no extra defaultchantinferred, MAXIMUMvsSUM/attributedurations, pendinghandobject+componentsnapshot/sameworld/alive guard, no move-positioncheck; repeatedvalidpendingQUEUEDnotreplacement; preparationnoownmanareservation. Normaldispatch/arrowspawn/scrydebitacknowledge; releasecooldowncallbacks/notjustclick, originalexceptionnotrollback. PersistentdeadlineOverworldclock/clonepreservedefaulttrue/APIstoresnotnativeIronGoety.

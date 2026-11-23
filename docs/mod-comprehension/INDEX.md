@@ -486,3 +486,5 @@ Original proposals and **2026-11-15 adoption decisions** are recorded in [METHOD
 - 2026-11-23 — [Conflux carriers/reflection](mods/ars-conflux-pinned-carriers.md):11profiles, consumer-onlyProjectileForm/onepayload validator, managedflight/owner-account split and optionalabsentZero boundary. NativeElementalMirrornotautomaticallyfixed.3Confluxcompanions;9/43complete unchanged.
 
 - 2026-11-23 — [Conflux active casting](mods/ars-conflux-pinned-active-casts.md): preparation/snapshot cancellation/release acknowledgement/persistentdeadlines; family-onlyconsumer scan avoids inventingdefaultchants.4Confluxcompanions;9/43complete unchanged.
+
+- 2026-11-23 — [Conflux geometry/schools](mods/ars-conflux-pinned-geometry-schools.md): incomingvectors, explicitnormalizedweights, defaultemptydefinitions/attributevsopt-inrules, damage-scope/order limits.5Confluxcompanions;9/43complete unchanged.

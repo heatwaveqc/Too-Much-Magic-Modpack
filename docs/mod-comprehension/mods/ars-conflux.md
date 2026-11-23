@@ -42,3 +42,5 @@ Current optional-content branch is source-backed in [content companion](ars-conf
 [Carrier conversion and reflection interface](ars-conflux-pinned-carriers.md) maps11profiles/onepayload validator/short-circuit conversion, managed reflection eligibility/owner-versus-account semantics and absentZero/caller boundaries; no defaultnewreflector/weapon inferred.
 
 [Active-cast/cooldown interfaces](ars-conflux-pinned-active-casts.md) traces held-tool preparation, acknowledged release, persistent deadline API and localnSpells guards; no providers/store registrations found insideConflux or directConfluxclassreferences in eightotherfamilyJARs. This bounded scan is not whole-pack consumerproof.
+
+[Incoming geometry and school power](ars-conflux-pinned-geometry-schools.md) traces normalized context capture, explicit/data weights, attribute/rule distinction, defaultempty data and operator diagnostics. Actualinstalledbridge/consumer reconciliation remains.

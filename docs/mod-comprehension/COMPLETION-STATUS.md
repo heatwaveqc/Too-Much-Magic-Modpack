@@ -217,3 +217,5 @@ Conflux mana recipient contract now audited in [companion](mods/ars-conflux-pinn
 [Conflux carrier/reflection interface](mods/ars-conflux-pinned-carriers.md) audited with consumer/absenttarget limits;3Confluxcompanions, activecasting/geometry/schools/installedbridges still researching.9/43sourcecomplete unchanged.
 
 Conflux [active-cast/cooldown framework](mods/ars-conflux-pinned-active-casts.md) audited,4companions; actualexternalproviders/geometry/schools/installedbridgecombinedscope still open.9/43complete unchanged.
+
+Conflux [geometry/schools contract](mods/ars-conflux-pinned-geometry-schools.md) audited;5companions, actualinstalledconsumers/bridge/consolidation still open.9/43complete unchanged.
