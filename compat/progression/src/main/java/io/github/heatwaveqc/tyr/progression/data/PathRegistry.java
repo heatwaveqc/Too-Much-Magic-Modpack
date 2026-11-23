@@ -33,6 +33,9 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public static XpChannel channel(String path) { return channelConfig.paths().get(path); }
     public static XpChannel economy(String id) { return channelConfig.channels().get(id); }
     public static ChannelConfig config(){return channelConfig;}
+    public static ExperienceEconomyConfig.Catalog economyCatalog(){
+        return ExperienceEconomyRuntime.current();
+    }
     public static Map<String,XpChannel> economies(){return channelConfig.channels();}
 
     private record SourceKey(String system,int index) {}
@@ -163,9 +166,29 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
+        var economyResource=manager.getResource(ResourceLocation.parse("tyr_progression:tyr_progression/economy.json"))
+                .orElseThrow(()->new IllegalArgumentException("Missing bundled progression economy.json"));
+        ExperienceEconomyConfig.Catalog economy;
+        try(var reader=economyResource.openAsReader()){
+            economy=ExperienceEconomyConfig.read(
+                com.google.gson.JsonParser.parseReader(reader).getAsJsonObject());
+        }catch(java.io.IOException error){
+            throw new IllegalArgumentException("Cannot load Progression economy configuration",error);
+        }
+        // A declared multi-currency purchase must reference a real loaded skill.
+        for(var row:economy.skills().entrySet()){
+            var tree=next.get(row.getKey().path());
+            var skill=tree==null?null:tree.skill(row.getKey().skill());
+            if(skill==null || !skill.autoRanks().isEmpty()
+                || row.getValue().totalRankCap()>skill.maxRank())
+                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
+        }
+        if(!economy.systems().containsKey(XpChannel.MXP))
+            throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        ExperienceEconomyRuntime.install(economy);
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
