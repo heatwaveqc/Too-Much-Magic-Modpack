@@ -98,9 +98,7 @@ public final class ProgressionApi {
         Ledger old=player.getData(ProgressionAttachments.LEDGER.get());
         Track track=old.get(pathId);
         if(!track.joined())return false;
-        Track dormant=new Track(false,0,0,0,Map.of(),track.milestones(),track.counters());
-        Ledger changed=old.with(pathId,dormant).clearAllReceipts(pathId);
-        changed=ChannelEngine.pathChange(changed,java.util.Set.of(pathId));
+        Ledger changed=ChannelEngine.depart(old,path,PathRegistry.economyCatalog());
         changed=BaselinePaths.reconcile(changed,false);
         player.setData(ProgressionAttachments.LEDGER.get(),changed);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
