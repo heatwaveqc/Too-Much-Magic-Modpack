@@ -239,6 +239,7 @@ public final class ProgressionEvents {
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
@@ -273,6 +274,7 @@ public final class ProgressionEvents {
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
