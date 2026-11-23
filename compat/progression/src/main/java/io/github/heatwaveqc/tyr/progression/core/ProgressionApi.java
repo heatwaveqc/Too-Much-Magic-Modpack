@@ -273,21 +273,34 @@ public final class ProgressionApi {
     public static boolean awardMagicResource(ServerPlayer player,String channelId,String tx,
             double nominalCost,double referencePool,double actualDebit) {
         if(!Double.isFinite(actualDebit) || actualDebit<=0) return false;
-        return awardMagic(player,channelId,tx,null,1,
+        return awardMagic(player,channelId,"tyr_progression:verified_resource",tx,null,1,
                 MxpMath.normalizedBase(nominalCost,referencePool),false,false);
     }
-    /** Trusted verified ordinary award, already normalized; no discovery key or fictional resource debit. */
+    /** Trusted verified ordinary award, already normalized; no fictional debit. */
     public static boolean awardMagicOrdinary(ServerPlayer player,String channelId,String tx,double base) {
-        if(!Double.isFinite(base)||base<=0)return false;
-        return awardMagic(player,channelId,tx,null,1,base,false,false);
+        return awardMagicOrdinary(player,channelId,"tyr_progression:default",tx,base);
     }
-    /** Trusted success-only completion API; caller supplies verified transaction identity. */
+    public static boolean awardMagicOrdinary(ServerPlayer player,String channelId,
+                                             String sourceCategory,String tx,double base) {
+        if(!Double.isFinite(base)||base<=0)return false;
+        return awardMagic(player,channelId,sourceCategory,tx,null,1,base,false,false);
+    }
+
+    /** Trusted completion: first receipt scoped by XP system and source category. */
     public static boolean awardMagicCompletion(ServerPlayer player,String channelId,String tx,
             String completionId,double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
-        return awardMagic(player,channelId,tx,java.util.Objects.requireNonNull(completionId),
-                firstBase,repeatBase,firstFixed,repeatFixed);
+        return awardMagicCompletion(player,channelId,"tyr_progression:default",
+                tx,completionId,firstBase,repeatBase,firstFixed,repeatFixed);
     }
-    private static boolean awardMagic(ServerPlayer player,String channelId,String tx,String first,
+    public static boolean awardMagicCompletion(ServerPlayer player,String channelId,
+            String sourceCategory,String tx,String completionId,
+            double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
+        return awardMagic(player,channelId,sourceCategory,tx,
+            java.util.Objects.requireNonNull(completionId),
+            firstBase,repeatBase,firstFixed,repeatFixed);
+    }
+    private static boolean awardMagic(ServerPlayer player,String channelId,
+            String sourceCategory,String tx,String first,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
         if(player==null || player.getServer()==null || !player.getServer().isSameThread()
             || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return false;
@@ -295,7 +308,7 @@ public final class ProgressionApi {
         if(channel==null || !channel.magic()) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next=ChannelEngine.magic(prior,XpChannel.mxp(io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(player,
-            io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get())),tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
+            io.github.heatwaveqc.tyr.progression.mxp.MxpProgressionConfig.GROWTH_FACTOR.get())),sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
         if(next==prior) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
