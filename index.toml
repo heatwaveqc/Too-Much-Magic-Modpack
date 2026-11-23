@@ -522,7 +522,7 @@ hash = "a7a5636a53953f02970501e90bc1131a6dcafaac0aeb18d68976092e66cb0c82"
 
 [[files]]
 file = "kubejs/data/projecte/recipe/collector_mk1.json"
-hash = "da17af1e668c06918dffd93facabcb02965f8b160b1c33dec8ac25b22b5f110e"
+hash = "89739763bdaa35ef0a6d3ab3169a0bdf90a2d1c07b6af343cac1e75dee478858"
 
 [[files]]
 file = "kubejs/data/projecte/recipe/conversions/gold_ingot_to_diamond.json"
@@ -542,7 +542,7 @@ hash = "184c220a41441e3735e986c99bfb25d69c2f42ecca1efdb9f2b434f4f505e2af"
 
 [[files]]
 file = "kubejs/data/projecte/recipe/relay_mk1.json"
-hash = "da17af1e668c06918dffd93facabcb02965f8b160b1c33dec8ac25b22b5f110e"
+hash = "bf764d5a10222b0ee803bf33831d3ac598fe5d311d3daf691cef2b2fa514f10d"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/blue.json"
