@@ -1,67 +1,87 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
+import io.github.heatwaveqc.tyr.progression.client.ClientPassivePowers;
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import java.util.Set;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
- * Iron's Angel Wings / Ars Glide pattern: a synced, invisible mob-effect flag
- * makes vanilla's canElytraFly + elytraFlightTick accept a player without Elytra.
- * The vanilla client still initiates glide via the ordinary second jump keypress.
- * Never grant creative flight, replace equipment, or copy inventory items.
+ * Equipment-free vanilla Elytra via the same NeoForge canElytraFly /
+ * elytraFlightTick hooks already used by the modpack. Only the permission
+ * transport changes: it is now a server-owned, client-synced passive power,
+ * NOT a MobEffect. No mayfly, fake Elytra, wing armor or status HUD entry.
+ *
+ * Origins' natural gliding and JDT's upgrade are behavioral precedents,
+ * NOT dependencies or new flight systems.
  */
 public final class VirtualElytra {
-    private static final DeferredRegister<MobEffect> EFFECTS =
+    public static final String POWER = "tyr_progression:elytra_glide";
+    private static final String NEWBIE = "tyr_progression:newbie";
+    private static final String MONK = "tyr_progression:monk_momentum_glide";
+
+    /**
+     * Deprecated read-only registration retained for old saved MobEffect IDs.
+     * New code NEVER grants this effect. Reconcile removes it on first login,
+     * and continuously during the transition so it cannot flash in the HUD.
+     */
+    private static final DeferredRegister<MobEffect> LEGACY =
             DeferredRegister.create(Registries.MOB_EFFECT, ProgressionMod.MOD_ID);
-    public static final DeferredHolder<MobEffect, MobEffect> ACCESS =
-            EFFECTS.register("virtual_elytra", () ->
+    private static final DeferredHolder<MobEffect, MobEffect> OLD_ACCESS =
+            LEGACY.register("virtual_elytra", () ->
                     new MobEffect(MobEffectCategory.BENEFICIAL, 0x7fbad6) {});
 
     private VirtualElytra() {}
 
     public static void register(IEventBus bus) {
-        EFFECTS.register(bus);
+        LEGACY.register(bus);
+        PassivePowers.register(POWER, VirtualElytra::sources);
     }
 
-    /** Client needs only the vanilla-synchronized effect, never the progression ledger. */
-    public static boolean canGlide(LivingEntity player) {
-        return player.hasEffect(ACCESS);
-    }
-
-    public static boolean eligible(ServerPlayer player) {
-        if (player.isCreative() || player.isSpectator()) return false;
-        if (NewbieMode.isNewbie(player)) return true;
-        // Original Monk progression requirements and player toggle remain authoritative.
-        return ClassAbilities.unlocked(player, "momentum_glide")
+    /** Resolves real entitlement on each authoritative server query. */
+    public static Set<String> sources(ServerPlayer player) {
+        if (player == null || !player.isAlive() || player.isCreative() || player.isSpectator())
+            return Set.of();
+        if (NewbieMode.isNewbie(player)) return Set.of(NEWBIE);
+        if (ClassAbilities.unlocked(player, "momentum_glide")
                 && "on".equals(ProgressionApi.mode(player,
-                    "tyr_progression:momentum_glide", "off"));
+                        "tyr_progression:momentum_glide", "off"))) return Set.of(MONK);
+        return Set.of();
     }
 
-    /**
-     * Never persist a stale permission through graduation or skill respec.
-     * Hidden, particle-free effect is synchronized by vanilla effect packets.
-     * A short renewal interval avoids sending a packet on every tick.
-     */
+    /** Compatibility API for the existing Monk gentle propulsion logic. */
+    public static boolean eligible(ServerPlayer player) {
+        return !sources(player).isEmpty();
+    }
+
+    /** Vanilla item/other providers may still grant Elytra; this is additive. */
+    public static boolean canGlide(LivingEntity wearer) {
+        if (wearer instanceof ServerPlayer server)
+            return PassivePowers.active(server, POWER);
+        if (wearer.level().isClientSide())
+            return ClientPassivePowers.active(wearer, POWER);
+        return false;
+    }
+
     public static void reconcile(ServerPlayer player) {
-        boolean wanted = eligible(player);
-        MobEffectInstance current = player.getEffect(ACCESS);
-        if (!wanted) {
-            if (current != null) player.removeEffect(ACCESS);
-            return;
-        }
-        if (current == null || current.getDuration() <= 70)
-            player.addEffect(new MobEffectInstance(ACCESS, 180, 0, true, false, false));
+        reconcile(player, false);
+    }
+
+    public static void reconcile(ServerPlayer player, boolean force) {
+        if (player.hasEffect(OLD_ACCESS)) player.removeEffect(OLD_ACCESS);
+        PassivePowers.reconcile(player, force);
     }
 
     public static void revoke(ServerPlayer player) {
-        if (player.hasEffect(ACCESS)) player.removeEffect(ACCESS);
+        // Existing callers revoke after their own authoritative mode changes;
+        // re-project all remaining authorized sources rather than erase them.
+        reconcile(player, true);
     }
 }

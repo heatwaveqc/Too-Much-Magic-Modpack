@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression;
 import io.github.heatwaveqc.tyr.progression.command.ProgressionCommands;
 import net.neoforged.fml.ModList;
 import io.github.heatwaveqc.tyr.progression.network.AbilityNetwork;
+import io.github.heatwaveqc.tyr.progression.network.PassivePowerNetwork;
 import io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.runtime.ProgressionEvents;
@@ -36,6 +37,7 @@ public final class ProgressionMod {
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
+        modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);

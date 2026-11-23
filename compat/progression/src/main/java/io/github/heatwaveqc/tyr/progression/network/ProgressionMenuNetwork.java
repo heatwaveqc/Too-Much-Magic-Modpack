@@ -85,6 +85,10 @@ public final class ProgressionMenuNetwork {
                             case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
                         };
+                        if (changed && ("buy".equals(payload.action()) || "respec".equals(payload.action()))) {
+                            io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime.reconcile(player);
+                            io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra.reconcile(player,true);
+                        }
                         // A rejected mutation also receives a fresh projection
                         // to explain the real server-side prerequisite.
                         send(player, payload.path());
