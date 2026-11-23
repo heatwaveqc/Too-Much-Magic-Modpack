@@ -47,11 +47,20 @@ public final class FoodDecisionResolver {
             Map<String, FoodSourceEvidence> roots,
             Map<String, FoodRecipeEvidence> routes,
             Function<String, Set<String>> liveTags) {
+        this(rules, strict, roots, routes, liveTags, Set.of());
+    }
+
+    public FoodDecisionResolver(FoodPolicyRules rules,
+            Map<String, StrictDietPolicy> strict,
+            Map<String, FoodSourceEvidence> roots,
+            Map<String, FoodRecipeEvidence> routes,
+            Function<String, Set<String>> liveTags,
+            Set<String> blocked) {
         this.rules = Objects.requireNonNull(rules);
         this.strict = Map.copyOf(strict);
         this.roots = Map.copyOf(roots);
         this.liveTags = Objects.requireNonNull(liveTags);
-        this.recipes = new FoodRecipeEvaluator(rules, roots, routes, liveTags);
+        this.recipes = new FoodRecipeEvaluator(rules, roots, routes, liveTags, blocked);
         for (String key : strict.keySet()) if (rules.profiles().containsKey(key))
             throw new IllegalArgumentException("Conflicting strict and affinity diet " + key);
     }
