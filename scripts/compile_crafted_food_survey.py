@@ -394,6 +394,38 @@ def process(audit, checked_sources, checked_routes):
                     support.add(dependency)
                     pending.append(dependency)
     emitted = candidates | support
+
+    # Diagnostics: explain exactly which approved foods need new source
+    # evidence. The held foods are known from the OUTPUT tag, so missing
+    # ingredient evidence should not be mistaken for "not a food".
+    unresolved_by_food = {}
+    direct_missing = Counter()
+    available_final = set(sources) | set(checked_routes) | set(accepted)
+    for item in sorted(food_targets & set(reasons)):
+        if reasons[item] != "unresolved_source_input":
+            continue
+        missing = set()
+        for entry in recipes[item]:
+            raw = entry.get("ingredient_inputs")
+            if not isinstance(raw, (dict, list)):
+                continue
+            for part in ([raw] if isinstance(raw, dict) else raw):
+                if not isinstance(part, dict):
+                    continue
+                if set(part) == {"tag"} and part["tag"].startswith("c:tool_"):
+                    continue
+                try:
+                    options = index.ingredient(part)
+                except Hold:
+                    continue
+                for ingredient in options:
+                    if ingredient not in available_final and ingredient not in NEUTRAL_ITEMS:
+                        missing.add(ingredient)
+        if missing:
+            unresolved_by_food[item] = sorted(missing)
+            direct_missing.update(missing)
+    untagged_by_namespace = Counter(
+        item.split(":", 1)[0] for item in recipes if item not in food_targets)
     category = defaultdict(set)
     for item in sorted(candidates):
         document = accepted[item]
@@ -432,6 +464,10 @@ def process(audit, checked_sources, checked_routes):
         "excluded_known_nonfood_or_vanilla_outputs": len(excluded),
         "excluded_output_ids": sorted(excluded),
         "skipped_untagged_recipe_outputs": len(set(recipes) - food_targets),
+        "untagged_recipe_outputs_by_namespace": dict(sorted(untagged_by_namespace.items())),
+        "missing_source_input_occurrences": dict(sorted(direct_missing.items(),
+            key=lambda entry: (-entry[1], entry[0]))),
+        "unresolved_source_inputs_by_tagged_food": unresolved_by_food,
         "held_output_ids": len(food_targets & set(reasons)),
         "hold_reasons": dict(sorted(Counter(reasons[k] for k in food_targets & set(reasons)).items())),
         "held_outputs": {k: reasons[k] for k in sorted(food_targets & set(reasons))},
@@ -462,7 +498,10 @@ def main():
     (args.out / "crafted-food-survey-report.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print("Food survey:", {k: v for k, v in summary.items()
-                           if k not in ("held_outputs", "generated_ids", "excluded_output_ids", "support_ids")})
+                           if k not in ("held_outputs", "generated_ids", "excluded_output_ids", "support_ids",
+                                       "unresolved_source_inputs_by_tagged_food",
+                                       "missing_source_input_occurrences",
+                                       "untagged_recipe_outputs_by_namespace")})
 
 
 if __name__ == "__main__":
