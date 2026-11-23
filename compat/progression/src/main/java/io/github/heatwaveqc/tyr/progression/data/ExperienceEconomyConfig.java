@@ -161,7 +161,10 @@ public final class ExperienceEconomyConfig {
 
     private static String required(JsonObject j, String key) {
         if (!j.has(key)) throw new IllegalArgumentException("Missing " + key);
-        return j.get(key).getAsString();
+        String id = j.get(key).getAsString();
+        if (!id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+            throw new IllegalArgumentException("Invalid namespaced " + key + ": " + id);
+        return id;
     }
 
     private static BigDecimal number(JsonObject j, String key, String fallback) {
