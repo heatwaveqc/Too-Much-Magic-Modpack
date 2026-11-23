@@ -50,26 +50,21 @@ public final class DragonDietHook {
         REENTRANT.set(true);
         try {
             if (entity instanceof ServerPlayer player) {
-                String profile = dragonProfile(player);
-                if (profile != null) {
-                    // The shared decision layer distinguishes strict vetoes,
-                    // magical permissions, nutrition and native fallback.
-                    // Additional Path/JAWR/Gilded profiles are supplied by
-                    // the planned native adapters, not guessed from tags.
-                    var decision = FoodPolicyRegistry.decide(
-                        java.util.Set.of(profile), stack);
-                    switch (decision.outcome()) {
-                        case DENY -> { return null; }
-                        case PERMIT_NATIVE -> { return original; }
-                        case NUTRITION -> {
-                            var nourishment = decision.nutrition();
-                            return new FoodProperties(
-                                nourishment.hunger(), nourishment.saturationModifier(),
-                                original.canAlwaysEat(), original.eatSeconds(),
-                                original.usingConvertsTo(), original.effects());
-                        }
-                        case NATIVE -> { } // Preserve native provider result.
+                // This is the same decision as the independent server
+                // Start/Tick consumption gate: Dragon affinity, active strict
+                // Paths and Gilded stack restrictions cannot contradict.
+                var decision = NativeDietAdapters.decide(player, stack);
+                switch (decision.outcome()) {
+                    case DENY -> { return null; }
+                    case PERMIT_NATIVE -> { return original; }
+                    case NUTRITION -> {
+                        var nourishment = decision.nutrition();
+                        return new FoodProperties(
+                            nourishment.hunger(), nourishment.saturationModifier(),
+                            original.canAlwaysEat(), original.eatSeconds(),
+                            original.usingConvertsTo(), original.effects());
                     }
+                    case NATIVE -> { } // Preserve native provider result.
                 }
                 // Existing permitted-drink bridge remains independent of
                 // nutrition classification, and only restores real food.
