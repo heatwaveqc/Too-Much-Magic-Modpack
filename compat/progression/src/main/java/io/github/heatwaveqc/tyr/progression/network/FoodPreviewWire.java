@@ -16,7 +16,7 @@ public final class FoodPreviewWire {
     public static final int MAX_CHUNKS = 512;
     private FoodPreviewWire() {}
 
-    public enum Mode { NUTRITION, PERMIT_NATIVE, DENY, LAVA_NATIVE, LAVA_NUTRITION }
+    public enum Mode { NUTRITION, PERMIT_NATIVE, DENY, BEVERAGE, LAVA_NATIVE, LAVA_NUTRITION }
 
     /**
      * Explicit denial is different from a missing row. Clients must return
@@ -33,6 +33,7 @@ public final class FoodPreviewWire {
         }
         public boolean nativePermission() { return mode == Mode.PERMIT_NATIVE; }
         public boolean denied() { return mode == Mode.DENY; }
+        public boolean beveragePermission() { return mode == Mode.BEVERAGE; }
         public boolean lavaConditional() {
             return mode == Mode.LAVA_NATIVE || mode == Mode.LAVA_NUTRITION;
         }
@@ -45,6 +46,7 @@ public final class FoodPreviewWire {
                     Mode.LAVA_NUTRITION);
             throw new IllegalArgumentException("Strict denial cannot be lava-overridden");
         }
+        public static Entry permitBeverage() { return new Entry(0,0,Mode.BEVERAGE); }
         public static Entry permitNative() { return new Entry(0, 0, Mode.PERMIT_NATIVE); }
         public static Entry deny() { return new Entry(0, 0, Mode.DENY); }
         public static Entry nourishment(int hunger, float modifier) {
@@ -67,6 +69,7 @@ public final class FoodPreviewWire {
             String encoded = switch (e.mode()) {
                 case PERMIT_NATIVE -> "P";
                 case DENY -> "D";
+                case BEVERAGE -> "B";
                 case LAVA_NATIVE -> "L";
                 case LAVA_NUTRITION -> "LN\t" + e.hunger() + "\t"
                     + Float.toString(e.saturationModifier());
@@ -106,6 +109,8 @@ public final class FoodPreviewWire {
                     parsed = Entry.permitNative();
                 } else if (fields.length == 2 && fields[1].equals("D")) {
                     parsed = Entry.deny();
+                } else if (fields.length == 2 && fields[1].equals("B")) {
+                    parsed = Entry.permitBeverage();
                 } else if (fields.length == 2 && fields[1].equals("L")) {
                     parsed = Entry.lavaConditional(null);
                 } else if (fields.length == 4 && fields[1].equals("LN")) {
