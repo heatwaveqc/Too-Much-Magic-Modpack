@@ -193,6 +193,36 @@ class ConfiguredEconomyRuntimeTest {
         }
     }
 
+    @Test void shippedEconomyPricesLegacyExpensiveSkillAtExactlyOnePoint() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=ExperienceEconomyConfig.tmmDefault();
+            ExperienceEconomyRuntime.install(catalog);
+            var skill=new Definition.Skill("test:expensive_legacy",3,1,7,2,
+                    List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var tree=new Definition.Path("test:legacy_path","",List.of(0L,1000L),0,
+                    List.of(),List.of(),List.of(skill));
+            var mxp=XpChannel.mxp(1.02);
+            var channel=new ChannelConfig(Map.of(mxp.id(),mxp),
+                    Map.of(tree.id(),mxp),Map.of(
+                    new ChannelConfig.SkillKey(tree.id(),skill.id()),
+                    new ChannelConfig.Binding(mxp,mxp)));
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,mxp);
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,mxp.id(),
+                    "test:verified_ritual","test:ritual_one",null,
+                    new BigDecimal("1000"),true,1.02);
+            assertEquals(1,ledger.wallet(mxp.id()).points());
+            var paid=ChannelEngine.buy(ledger,tree,channel,skill.id());
+            assertNotSame(ledger,paid,"Old Path price 7 cannot block one-point TMM rank");
+            assertEquals(1000,paid.economy().currentXp().get(mxp.id()).intValueExact());
+            assertEquals(0,paid.wallet(mxp.id()).points());
+            assertEquals(1,paid.economy().paidRanks().getFirst().pointCost());
+            assertEquals(1,ChannelEngine.view(paid,tree,channel).skillRank(skill.id()));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
     @Test void shippedUnifiedPresetIsAnActualPackResource() throws Exception {
         try(var reader=new java.io.InputStreamReader(
                 getClass().getResourceAsStream(
