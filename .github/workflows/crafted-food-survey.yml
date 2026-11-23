@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'scripts/compile_crafted_food_survey.py'
+      - 'scripts/validate_compiled_food_routes.py'
       - 'tests/test_compile_crafted_food_survey.py'
       - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/data/FoodRecipeEvidence.java'
       - '.github/workflows/crafted-food-survey.yml'
   pull_request:
     paths:
       - 'scripts/compile_crafted_food_survey.py'
+      - 'scripts/validate_compiled_food_routes.py'
       - 'tests/test_compile_crafted_food_survey.py'
       - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/data/FoodRecipeEvidence.java'
       - '.github/workflows/crafted-food-survey.yml'
@@ -52,6 +54,7 @@ jobs:
             --out /tmp/tmm-compiled-food
           python -m compileall -q scripts/compile_crafted_food_survey.py
           python -m json.tool /tmp/tmm-compiled-food/crafted-food-survey-report.json >/dev/null
+          python scripts/validate_compiled_food_routes.py --repo . --out /tmp/tmm-compiled-food
       - name: Publish only derived JSON candidates and hold ledger
         uses: actions/upload-artifact@v4
         with:
