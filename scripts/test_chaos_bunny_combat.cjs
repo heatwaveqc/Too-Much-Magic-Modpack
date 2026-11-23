@@ -76,7 +76,7 @@ const victim={type:'minecraft:player',getPersistentData:data(),isAlive:()=>true,
   damageSources:()=>({mobAttack:x=>({attacker:x})}),
   attack(s,d){this.count=(this.count||0)+1;this.source=s;this.raw=d;
     // Re-enter post-damage event: guard must block duplicate proc.
-    handlers.afterHurt[1](event(this,800,'mob',10))
+    const nested=event(this,800,'mob',10);nested.source.actual=s.attacker;handlers.afterHurt[1](nested)
   }}
 const tongue=handlers.afterHurt[1]
 const hit=event(victim,800,'mob',10);hit.source.actual=bossBite
