@@ -140,7 +140,41 @@ def load_runtime_food_registry(path):
     if (raw.get("item_count") != len(ids)
             or raw.get("food_count") != len(foods)):
         raise ValueError("Runtime registry census counts disagree with items")
-    return {"ids": ids, "foods": foods, "tags": dict(membership)}
+    default_foods = set(foods)
+    preview_foods = set()
+    if raw.get("recipe_result_previews_examined") is True:
+        previews = raw.get("recipe_result_previews")
+        unresolved = raw.get("unresolved_recipe_result_previews")
+        if (not isinstance(previews, list) or not isinstance(unresolved, list)
+                or raw.get("loaded_recipe_count") != len(previews) + len(unresolved)
+                or raw.get("recipe_preview_count") != len(previews)
+                or raw.get("recipe_preview_unresolved_count") != len(unresolved)):
+            raise ValueError("Malformed active recipe-result preview census")
+        seen = set()
+        food_previews = 0
+        for row in previews:
+            if (not isinstance(row, dict)
+                    or set(row) != {"recipe", "item", "food", "count"}
+                    or not identifier(row["recipe"])
+                    or not identifier(row["item"])
+                    or row["item"] not in ids
+                    or type(row["food"]) is not bool
+                    or type(row["count"]) is not int or row["count"] <= 0
+                    or row["recipe"] in seen):
+                raise ValueError("Malformed or duplicated live recipe output preview")
+            seen.add(row["recipe"])
+            if row["food"]:
+                preview_foods.add(row["item"])
+                food_previews += 1
+        if (raw.get("recipe_preview_food_count") != food_previews
+                or len(unresolved) != len(set(unresolved))
+                or any(not identifier(x) or x in seen for x in unresolved)):
+            raise ValueError("Unreliable active recipe-output preview receipt")
+        foods |= preview_foods
+    elif "recipe_result_previews" in raw:
+        raise ValueError("Recipe output previews present without scope acknowledgement")
+    return {"ids": ids, "foods": foods, "default_foods": default_foods,
+            "preview_foods": preview_foods, "tags": dict(membership)}
 
 
 class TagIndex:
@@ -506,7 +540,9 @@ def process(audit, checked_sources, checked_routes, registry=None):
         }
     summary = {
         "schema": 1, "status": (
-            "runtime_default_food_component_scoped"
+            "runtime_food_component_and_recipe_preview_scoped"
+            if registry is not None and registry.get("preview_foods")
+            else "runtime_default_food_component_scoped"
             if registry is not None else "source_candidates_not_verified_edible"),
         "source_audit_recipe_count": sum(
             len(r["source_evidence"]["recipes"]) for r in releases),
@@ -518,7 +554,10 @@ def process(audit, checked_sources, checked_routes, registry=None):
         "actual_default_food_recipe_output_ids": (
             len(food_targets) if registry is not None else None),
         "runtime_registered_item_ids": len(registry["ids"]) if registry else None,
-        "runtime_default_food_item_ids": len(registry["foods"]) if registry else None,
+        "runtime_default_food_item_ids": (
+            len(registry.get("default_foods", registry["foods"])) if registry else None),
+        "runtime_preview_food_item_ids": (
+            len(registry.get("preview_foods", set())) if registry else None),
         "generated_candidate_recipe_outputs": len(candidates),
         "native_food_tagged_candidates": len(candidates & native_food_tagged),
         "generated_support_recipe_outputs": len(support),
