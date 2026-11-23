@@ -35,7 +35,8 @@ public final class DragonDietHook {
     }
 
     private static FoodProperties noNourishment(FoodProperties food) {
-        return new FoodProperties(0, 0f, food.canAlwaysEat(), food.eatSeconds(),
+        // Earned drinking permission must work at full hunger without FOOD gain.
+        return new FoodProperties(0, 0f, true, food.eatSeconds(),
             food.usingConvertsTo(), food.effects());
     }
 
