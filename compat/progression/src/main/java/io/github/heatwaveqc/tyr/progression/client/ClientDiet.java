@@ -92,20 +92,26 @@ public final class ClientDiet {
     }
 
     /**
-     * Only the local player may use the projection, and only when the actual
-     * stack has a native FOOD component. Preserve the item's effects, return
-     * container, eating duration and all item-use callbacks.
+     * Presence is independent of FoodProperties: a DENY projects a deliberately
+     * null food result, whereas an unknown ID must preserve the native result.
      */
-    public static FoodProperties preview(LivingEntity entity, ItemStack stack) {
+    public record Projection(boolean present, FoodProperties food) {
+        private static final Projection NONE = new Projection(false, null);
+    }
+
+    /** Read-only client projection for the current local player. */
+    public static Projection preview(LivingEntity entity, ItemStack stack) {
         var player = Minecraft.getInstance().player;
         if (player == null || player != entity || !player.isAlive()
-                || previewOwner.get() != player || stack.isEmpty()) return null;
+                || previewOwner.get() != player || stack.isEmpty()) return Projection.NONE;
         var entry = values.get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         FoodProperties original = stack.get(DataComponents.FOOD);
-        if (entry == null || original == null) return null;
-        if (entry.nativePermission()) return original;
-        return new FoodProperties(entry.hunger(), entry.saturationModifier(),
+        if (entry == null || original == null) return Projection.NONE;
+        if (entry.denied()) return new Projection(true, null);
+        if (entry.nativePermission()) return new Projection(true, original);
+        return new Projection(true, new FoodProperties(
+            entry.hunger(), entry.saturationModifier(),
             original.canAlwaysEat(), original.eatSeconds(),
-            original.usingConvertsTo(), original.effects());
+            original.usingConvertsTo(), original.effects()));
     }
 }
