@@ -148,9 +148,23 @@ public final class ChannelEngine {
         boolean first=firstReceipt!=null&&!state.rewardReceipts().contains(firstReceipt);
         if(firstReceipt!=null&&!first&&repeatBase==0)return ledger;
         double base=first?firstBase:repeatBase;
-        var result=ExperienceEconomy.earn(state,ExperienceEconomy.SystemSpec.mxp(),
+        var spec=ExperienceEconomyRuntime.current().systems().get(channel.id());
+        if(spec==null)throw new IllegalArgumentException("Unconfigured XP system "+channel.id());
+        var result=ExperienceEconomy.earn(state,spec,
                 sourceCategory,tx,first?firstKey:null,BigDecimal.valueOf(base),
                 first?firstFixed:repeatFixed,channel.growth());
+        return result.accepted()?ledger.withEconomy(result.ledger()):ledger;
+    }
+
+    /** Verified server-origin source grant for any declared XP system. */
+    public static Ledger awardConfigured(Ledger ledger,ExperienceEconomyConfig.Catalog catalog,
+                                          String systemId,String sourceCategory,String transaction,
+                                          String firstReceipt,BigDecimal nominalBase,boolean fixed,
+                                          double effectiveGrowth) {
+        var spec=catalog.systems().get(systemId);
+        if(spec==null)return ledger;
+        var result=ExperienceEconomy.earn(ledger.economy(),spec,sourceCategory,transaction,
+                firstReceipt,nominalBase,fixed,effectiveGrowth);
         return result.accepted()?ledger.withEconomy(result.ledger()):ledger;
     }
 
