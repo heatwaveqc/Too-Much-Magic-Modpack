@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "NEXT_LIVE_PILOT_SOURCE_READY_IN_PR_PENDING_MERGE_AND_BOOT",
+  "owner_authorized_next_qa": true,
+  "source_pr": 366,
+  "source_commit": "42c360f597942000222f9640b312a55598649dc5",
+  "source_root": "compat/bountiful/live-pilot/",
+  "count": 14,
+  "files": {
+    "config/bountiful/bountiful.json": "950de71b545d10986fad0b67a40771eb55d137d3be237ac8b833797b6ffd5de8",
+    "config/bountiful/bounty_decrees/tmm_culinary.json": "a49a33b4bfe05aca673d2c2c368538cc9564b4a5b0f5fceea09fa6d280eb7a72",
+    "config/bountiful/bounty_decrees/tmm_fishing.json": "8faee371bbd3b2d6d3898dcf8276c97b53dc1d6e9531b8f41c81c0787ff23ba5",
+    "config/bountiful/bounty_decrees/tmm_hunting.json": "61120375da7a60bae4a7b1d3730d16da28a6e99087a48d7e1a13054ab5b9a6d5",
+    "config/bountiful/bounty_pools/tmm_culinary_objs.json": "c9aab36626793e4093ef8ef147763ade915b4b2577e0a2e6d0225eebf89939e7",
+    "config/bountiful/bounty_pools/tmm_culinary_rews.json": "e7091269f1aa6e1c901ea8cf9a07370f26e24b7794976c2f5d4043f7f305a4b6",
+    "config/bountiful/bounty_pools/tmm_fishing_objs.json": "e295ac0ca51ad92cfb02b180ad898c9207377dfa547925ca0e157ba3fa8e899a",
+    "config/bountiful/bounty_pools/tmm_fishing_rews.json": "61effc84ed16bf2869e0c17ec2b7a0c5b1cfa0cd0e554d4777b3694df54c96cd",
+    "config/bountiful/bounty_pools/tmm_hunting_objs.json": "5b7b75b985cc79baf0b2d7a61db2c5b9d0424ac2e8ccdcaf38a63ec052510085",
+    "config/bountiful/bounty_pools/tmm_hunting_rews.json": "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096",
+    "kubejs/assets/bountiful/lang/en_us.json": "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec",
+    "kubejs/data/tmm/recipe/bountiful/tmm_culinary.json": "2a7e418ff5e80e8beea215a25354d5a662186dc5924570c26d2c52084cf038ec",
+    "kubejs/data/tmm/recipe/bountiful/tmm_fishing.json": "9494db6cf6de033e21976b045a112efc89938cc4cefcc024a98e6bbf13dbabd7",
+    "kubejs/data/tmm/recipe/bountiful/tmm_hunting.json": "194411e62337e7d55a41666d226bac7b9d087448a59bdce16260c55124cec5dd"
+  },
+  "modpin": "BpwWFOVM/swTb6NU9",
+  "qa_only": true,
+  "notes": "Exact 3 general decrees, 2 full Gateway criteria. Historical 2026-11-18 EMC and provisional combat effort units; not production balance. #381 Inn optional for first smoke; #382 forms not part of basic smoke."
+}

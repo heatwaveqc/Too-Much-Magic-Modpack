@@ -5,7 +5,7 @@ side = "both"
 [download]
 hash-format = "sha1"
 hash = "37be09fb807ed5be6d1039ec3b98d729d78a8a10"
-mode = "metadata:curseforge"
+url = "https://mediafilez.forgecdn.net/files/8100/765/ssedeco-1.21.1-1.2.1.jar"
 
 [update]
 [update.curseforge]

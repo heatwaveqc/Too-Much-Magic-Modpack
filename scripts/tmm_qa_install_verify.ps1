@@ -13,8 +13,32 @@ try {
     }
     $exact = "https://raw.githubusercontent.com/heatwaveqc/Too-Much-Magic-Modpack/$($expected.source_commit)/pack.toml"
     if ($PackUrl -cne $exact) { throw 'QA pack source differs from inventory manifest' }
-    & $JavaPath -jar 'packwiz-installer-bootstrap.jar' -s client $PackUrl
-    if ($LASTEXITCODE -ne 0) { throw "Packwiz installer failed ($LASTEXITCODE)" }
+    # Prism passes javaw.exe on Windows. Invoking a GUI executable with PowerShell's
+    # call operator can leave $LASTEXITCODE unset even when the process succeeds.
+    # Start-Process -Wait/-PassThru waits for the actual child to finish and gives
+    # us its exit status for either java.exe or javaw.exe. Keep this fail-closed.
+    $installer = $null
+    try {
+        $installer = Start-Process -FilePath $JavaPath -WorkingDirectory $InstancePath `
+            -ArgumentList @('-jar', 'packwiz-installer-bootstrap.jar', '-s', 'client', $PackUrl) `
+            -Wait -PassThru -ErrorAction Stop
+    } catch {
+        throw "Could not start Packwiz installer: $($_.Exception.Message)"
+    }
+    try {
+        if ($null -eq $installer -or -not $installer.HasExited) {
+            throw 'Packwiz installer completion could not be verified'
+        }
+        $installerExitCode = $installer.ExitCode
+        if ($null -eq $installerExitCode) {
+            throw 'Packwiz installer returned no verified exit code'
+        }
+        if ($installerExitCode -ne 0) {
+            throw "Packwiz installer failed ($installerExitCode)"
+        }
+    } finally {
+        if ($null -ne $installer) { $installer.Dispose() }
+    }
     $wanted = @{}
     foreach ($row in $expected.mods) {
         if ($row.filename -notmatch '^[^/\\:\r\n]+\.jar$' -or $wanted.ContainsKey($row.filename)) {

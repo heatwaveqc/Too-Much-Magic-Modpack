@@ -22,7 +22,11 @@
     "OpConverterTierMixin",
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
-    "StoredResourceGuardMixin"
+    "StoredResourceGuardMixin",
+    "RepairTalismanCharmMixin",
+    "ApotheosisPotionCharmRecipeMixin",
+    "IronsAlchemistFlaskSafetyMixin",
+    "OccultismPartnerFlaskSafetyMixin"
   ],
   "injectors": {
     "defaultRequire": 1

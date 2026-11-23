@@ -1,0 +1,36 @@
+name: Type A Tips Starter and Information
+
+on:
+  pull_request:
+    paths:
+      - "manifest/quest_content.json"
+      - "manifest/quest_content_resolved.json"
+      - "manifest/quest_chapters.json"
+      - "manifest/quest_layouts.json"
+      - "config/ftbquests/quests/chapters/tips_tricks.snbt"
+      - "config/ftbquests/quests/lang/en_us.snbt"
+      - "scripts/rebuild_quest_ui.py"
+      - "scripts/validate_quests.py"
+      - "kubejs/data/tmm/advancement/starter_*.json"
+      - "kubejs/data/tmm/function/rewards/starter_*.mcfunction"
+      - "tests/test_tips_starter_a.py"
+      - "index.toml"
+      - "pack.toml"
+      - ".github/workflows/tips-starter-a.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  type-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Offline quest and reward validator
+        run: python scripts/validate_quests.py
+      - name: Offline Packwiz index validation
+        run: python scripts/validate.py
+      - name: Starter and informational source contract
+        run: python -m unittest discover -s tests -p test_tips_starter_a.py -v

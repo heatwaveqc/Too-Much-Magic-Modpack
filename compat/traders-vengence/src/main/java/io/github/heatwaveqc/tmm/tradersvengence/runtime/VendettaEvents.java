@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -44,8 +45,23 @@ public final class VendettaEvents {
     }
 
     public static void onDeath(LivingDeathEvent event) {
-        if (!(event.getEntity().level() instanceof ServerLevel level)
-            || !(event.getSource().getEntity() instanceof ServerPlayer killer)) {
+        if (!(event.getEntity().level() instanceof ServerLevel level)) {
+            return;
+        }
+
+        if (event.getEntity() instanceof IronGolem golem
+            && event.getSource().is(DamageTypes.LAVA)) {
+            for (ServerPlayer player : level.players()) {
+                if (VengeanceRules.withinGolemVendettaRadius(
+                    player.getX() - golem.getX(),
+                    player.getY() - golem.getY(),
+                    player.getZ() - golem.getZ())) {
+                    accuse(level, player, "near iron golem killed by lava");
+                }
+            }
+        }
+
+        if (!(event.getSource().getEntity() instanceof ServerPlayer killer)) {
             return;
         }
         if (event.getEntity() instanceof WanderingTrader) {

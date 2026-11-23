@@ -6,3 +6,4 @@ soundCategory_weather:0.55
 soundCategory_ambient:0.65
 onboardAccessibility:false
 tutorialStep:none
+resourcePacks:["vanilla","file/cathobbs-Unified-v40-64x-CANDIDATE.zip"]

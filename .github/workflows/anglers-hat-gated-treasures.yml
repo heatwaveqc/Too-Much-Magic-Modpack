@@ -1,0 +1,29 @@
+name: Angler Hat gated material source contract (no game boot)
+
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json'
+      - 'tests/test_anglers_hat_gated_treasures.py'
+      - '.github/workflows/anglers-hat-gated-treasures.yml'
+  push:
+    paths:
+      - 'kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json'
+      - 'tests/test_anglers_hat_gated_treasures.py'
+      - '.github/workflows/anglers-hat-gated-treasures.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate frozen Angler tag and current Logic Core source
+        run: python -m unittest discover -s tests -p 'test_anglers_hat_gated_treasures.py' -v

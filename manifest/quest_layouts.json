@@ -2,15 +2,15 @@
   "schema_version": 1,
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
-  "notes": "Fixed IDs and unified FTB 2101.x locale translations; manual stage-based layouts. Not a Prism client rendering test.",
-  "quest_count": 240,
+  "notes": "Stable signed IDs and layouts: 259 quests / 221 authored; includes the 20-node Atlas-derived Theurgy branch and 5 original procedural quest backgrounds. Updated by scripts/rebuild_quest_ui.py; client rendering not yet tested.",
+  "quest_count": 273,
   "chapters": 44,
   "positions": [
     {
       "quest_id": "544D301000100001",
       "chapter": "Getting Started",
       "position": [
-        0,
+        -16,
         0
       ],
       "authored": true
@@ -19,8 +19,8 @@
       "quest_id": "544D301000110001",
       "chapter": "Getting Started",
       "position": [
-        4,
-        0
+        -16,
+        -8
       ],
       "authored": true
     },
@@ -29,7 +29,7 @@
       "chapter": "Getting Started",
       "position": [
         12,
-        0
+        -8
       ],
       "authored": true
     },
@@ -37,8 +37,8 @@
       "quest_id": "544D4D1100000001",
       "chapter": "Getting Started",
       "position": [
-        0,
-        3
+        -12,
+        0
       ],
       "authored": true
     },
@@ -46,8 +46,8 @@
       "quest_id": "544D501000300000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        6
+        -8,
+        0
       ],
       "authored": true
     },
@@ -55,8 +55,8 @@
       "quest_id": "544D501000400000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        9
+        -8,
+        8
       ],
       "authored": true
     },
@@ -64,8 +64,8 @@
       "quest_id": "544D501000500000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        12
+        -4,
+        8
       ],
       "authored": true
     },
@@ -74,7 +74,7 @@
       "chapter": "Getting Started",
       "position": [
         0,
-        15
+        8
       ],
       "authored": true
     },
@@ -82,8 +82,8 @@
       "quest_id": "544D501000700000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        6
+        -12,
+        12
       ],
       "authored": true
     },
@@ -91,7 +91,7 @@
       "quest_id": "544D501000800000",
       "chapter": "Getting Started",
       "position": [
-        4,
+        -4,
         12
       ],
       "authored": true
@@ -100,8 +100,8 @@
       "quest_id": "544D501000900000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        18
+        4,
+        8
       ],
       "authored": true
     },
@@ -109,8 +109,8 @@
       "quest_id": "544D501000A00000",
       "chapter": "Getting Started",
       "position": [
-        0,
-        21
+        8,
+        8
       ],
       "authored": true
     },
@@ -118,8 +118,8 @@
       "quest_id": "544D501000B00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        6
+        -8,
+        -8
       ],
       "authored": true
     },
@@ -127,8 +127,8 @@
       "quest_id": "544D501000C00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        9
+        -4,
+        -8
       ],
       "authored": true
     },
@@ -136,8 +136,8 @@
       "quest_id": "544D501000D00000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        21
+        -4,
+        0
       ],
       "authored": true
     },
@@ -145,8 +145,8 @@
       "quest_id": "544D501000E00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        21
+        0,
+        0
       ],
       "authored": true
     },
@@ -154,8 +154,8 @@
       "quest_id": "544D501000F00000",
       "chapter": "Getting Started",
       "position": [
-        8,
-        24
+        4,
+        0
       ],
       "authored": true
     },
@@ -163,8 +163,8 @@
       "quest_id": "544D501001000000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        24
+        12,
+        12
       ],
       "authored": true
     },
@@ -172,8 +172,8 @@
       "quest_id": "544D501001100000",
       "chapter": "Getting Started",
       "position": [
-        4,
-        27
+        0,
+        -8
       ],
       "authored": true
     },
@@ -182,7 +182,7 @@
       "chapter": "Getting Started",
       "position": [
         8,
-        27
+        0
       ],
       "authored": true
     },
@@ -199,8 +199,8 @@
       "quest_id": "544D502000200000",
       "chapter": "Tips & Tricks",
       "position": [
-        0,
-        4
+        -20,
+        -10
       ],
       "authored": true
     },
@@ -208,8 +208,8 @@
       "quest_id": "544D502000300000",
       "chapter": "Tips & Tricks",
       "position": [
-        3,
-        4
+        -16,
+        -10
       ],
       "authored": true
     },
@@ -217,8 +217,8 @@
       "quest_id": "544D502000400000",
       "chapter": "Tips & Tricks",
       "position": [
-        6,
-        4
+        -20,
+        6
       ],
       "authored": true
     },
@@ -226,8 +226,8 @@
       "quest_id": "544D502000500000",
       "chapter": "Tips & Tricks",
       "position": [
-        9,
-        4
+        -16,
+        6
       ],
       "authored": true
     },
@@ -236,7 +236,7 @@
       "chapter": "Tips & Tricks",
       "position": [
         12,
-        4
+        -10
       ],
       "authored": true
     },
@@ -244,8 +244,8 @@
       "quest_id": "544D502000700000",
       "chapter": "Tips & Tricks",
       "position": [
-        0,
-        8
+        -12,
+        -10
       ],
       "authored": true
     },
@@ -253,8 +253,8 @@
       "quest_id": "544D502000800000",
       "chapter": "Tips & Tricks",
       "position": [
-        3,
-        8
+        -8,
+        6
       ],
       "authored": true
     },
@@ -262,8 +262,8 @@
       "quest_id": "544D502000900000",
       "chapter": "Tips & Tricks",
       "position": [
-        6,
-        8
+        12,
+        6
       ],
       "authored": true
     },
@@ -271,8 +271,8 @@
       "quest_id": "544D502000A00000",
       "chapter": "Tips & Tricks",
       "position": [
-        9,
-        8
+        16,
+        6
       ],
       "authored": true
     },
@@ -280,8 +280,8 @@
       "quest_id": "544D502000B00000",
       "chapter": "Tips & Tricks",
       "position": [
-        12,
-        8
+        20,
+        6
       ],
       "authored": true
     },
@@ -289,8 +289,8 @@
       "quest_id": "544D502000C00000",
       "chapter": "Tips & Tricks",
       "position": [
-        0,
-        12
+        24,
+        6
       ],
       "authored": true
     },
@@ -298,8 +298,8 @@
       "quest_id": "544D502000D00000",
       "chapter": "Tips & Tricks",
       "position": [
-        3,
-        12
+        -12,
+        6
       ],
       "authored": true
     },
@@ -307,8 +307,8 @@
       "quest_id": "544D502000E00000",
       "chapter": "Tips & Tricks",
       "position": [
-        6,
-        12
+        -12,
+        19
       ],
       "authored": true
     },
@@ -316,8 +316,8 @@
       "quest_id": "544D502000F00000",
       "chapter": "Tips & Tricks",
       "position": [
-        9,
-        12
+        16,
+        -10
       ],
       "authored": true
     },
@@ -325,8 +325,8 @@
       "quest_id": "544D502001000000",
       "chapter": "Tips & Tricks",
       "position": [
-        12,
-        12
+        -8,
+        19
       ],
       "authored": true
     },
@@ -334,8 +334,8 @@
       "quest_id": "544D502001100000",
       "chapter": "Tips & Tricks",
       "position": [
-        0,
-        17
+        -4,
+        19
       ],
       "authored": true
     },
@@ -343,8 +343,8 @@
       "quest_id": "544D502001200000",
       "chapter": "Tips & Tricks",
       "position": [
-        3,
-        17
+        0,
+        19
       ],
       "authored": true
     },
@@ -352,8 +352,8 @@
       "quest_id": "544D502001300000",
       "chapter": "Tips & Tricks",
       "position": [
-        6,
-        17
+        4,
+        19
       ],
       "authored": true
     },
@@ -361,8 +361,134 @@
       "quest_id": "544D502001400000",
       "chapter": "Tips & Tricks",
       "position": [
-        9,
-        17
+        8,
+        19
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001500000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        4,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001600000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        12,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001700000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        -20,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001800000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        -16,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001900000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        -12,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001A00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        20,
+        -10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001B00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        12,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001C00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        -16,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001D00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        16,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001E00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        20,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502001F00000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        24,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502002000000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        28,
+        10
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502002100000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        -8,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D502002200000",
+      "chapter": "Tips & Tricks",
+      "position": [
+        16,
+        -6
       ],
       "authored": true
     },
@@ -1480,7 +1606,178 @@
         0,
         0
       ],
-      "authored": false
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000001",
+      "chapter": "Theurgy",
+      "position": [
+        4,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000002",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        -2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000003",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000004",
+      "chapter": "Theurgy",
+      "position": [
+        4,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000005",
+      "chapter": "Theurgy",
+      "position": [
+        12,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000006",
+      "chapter": "Theurgy",
+      "position": [
+        16,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000007",
+      "chapter": "Theurgy",
+      "position": [
+        20,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000008",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000009",
+      "chapter": "Theurgy",
+      "position": [
+        16,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000A",
+      "chapter": "Theurgy",
+      "position": [
+        20,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000B",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000C",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000D",
+      "chapter": "Theurgy",
+      "position": [
+        28,
+        6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000E",
+      "chapter": "Theurgy",
+      "position": [
+        4,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A150000000F",
+      "chapter": "Theurgy",
+      "position": [
+        8,
+        -6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000010",
+      "chapter": "Theurgy",
+      "position": [
+        28,
+        1
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000011",
+      "chapter": "Theurgy",
+      "position": [
+        24,
+        -5
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000012",
+      "chapter": "Theurgy",
+      "position": [
+        28,
+        -5
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D3A1500000013",
+      "chapter": "Theurgy",
+      "position": [
+        32,
+        7
+      ],
+      "authored": true
     },
     {
       "quest_id": "544D303001600001",
