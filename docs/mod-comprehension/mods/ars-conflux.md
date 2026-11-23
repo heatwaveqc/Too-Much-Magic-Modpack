@@ -38,3 +38,5 @@ No native guide acquisition or complete player walkthrough has been established 
 Current optional-content branch is source-backed in [content companion](ars-conflux-pinned-content.md); library billing/carrier/discount/geometry/installed compat branches remain researching. The generic no-guide/no-walkthrough statement above describes initial receipt; use content companion for named native Notebook/JEI instructions for enabled branches.
 
 [Mana discounts, dispatch billing and NPC pools](ars-conflux-pinned-mana.md) covers defaultpercentage rings, optionalnativebilling/reservation→action→debit, nSpellsquote cleanup and nonplayercapability; fullcarrier/active/compat review remains.
+
+[Carrier conversion and reflection interface](ars-conflux-pinned-carriers.md) maps11profiles/onepayload validator/short-circuit conversion, managed reflection eligibility/owner-versus-account semantics and absentZero/caller boundaries; no defaultnewreflector/weapon inferred.

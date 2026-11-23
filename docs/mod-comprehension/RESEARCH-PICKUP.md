@@ -1,3 +1,11 @@
+# Latest checkpoint — 2026-11-23 03:28UTC Conflux carriers/reflection
+
+- Added ars-conflux-pinned-carriers.md:11builtinprofiles, attachedsource/castType/propagatoridentity, ProjectileFormconsumerAPI(noimplementerinsideConflux), onepayloadphrasevalidator, nativeProjectileadd/join short-circuitconversion. ProfileaugmentsetNOTproofallnativecompatibleAugmentsrewritten. VolleyBudgetquoteearlierreceipt.
+- Managedreflectionrequires session/trajectory/proxy, samecarrieridentitygroup/samelevel/finitevelocity+normal/nonrepeatedlinearorcustomReflectable. Preserves originalcaster/executor/account;changesdamageowner/projectileowner, versionstampavoidsremovalonlyduringreflectedcollision. Homingresettarget/originalownerpredicateexception/newownerAllies; NOTSaucebookalliance. OnlydirectreflectcallerinsideJARoptionalZeroShield(absentpin), noautomaticElementalMirrorShield/prismrepair.3Confluxcompanions/40Elemental; no profilepromotion/gameplayclaim.
+- **Next** Confluxactivecasting/cooldowns/geometry/schools/actualinstalledconsumers+Controle/Additions/nSpells bridges; thenElemental184recipe/registry/profile/pilotconsolidation, Elemancy/Additionsfullroutes/Arscombined/othermajors. Workspace C:\ChatGPT\Magic Minecraft Modpack\research-magic (explicitworkdirneeded;tooldefaultoldpathinvalid). Integrationc11a95fcunchanged/nohardblocker/hourlyactive.9complete33researching1staleof43;GitlogpushedSHA.
+
+---
+
 # Latest checkpoint — 2026-11-23 02:19UTC relocation recovery / Conflux mana
 
 - **Workspace now C:\ChatGPT\Magic Minecraft Modpack\research-magic**, oldOneDrivepathgone. Movedcopywascleanat3aacd37e; repaired ONLY researchworktree git pointers via gitworktree repair, fetchedpushed7ee4c48d/f46c08c9 andfast-forwardedthissamebranch. No QAcheckoutcontentchanged. Recovered priorinterrupted/uncommittedmana draft from exactsourceevidence; it hadnotbeenincludedinmovedsnapshot. ExternalTemp artifacts/CFRstillaccessible. Hourlyautomationpromptupdatedtonewpath; cadencepreserved.

@@ -213,3 +213,5 @@ Current Elemental remaining identified native version deltas now traced in [Phal
 Conflux optionalcontent/all4recipes and AdditionsCodex recipient now traced in [content companion](mods/ars-conflux-pinned-content.md); fullConfluxbilling/carriers/installedcompat/nativeAdditionsroute remain open. No profile promotion.
 
 Conflux mana recipient contract now audited in [companion](mods/ars-conflux-pinned-mana.md);2Confluxcompanions, fullcarrier/active/compat still open.9complete33researching1staleof43 unchanged.
+
+[Conflux carrier/reflection interface](mods/ars-conflux-pinned-carriers.md) audited with consumer/absenttarget limits;3Confluxcompanions, activecasting/geometry/schools/installedbridges still researching.9/43sourcecomplete unchanged.
