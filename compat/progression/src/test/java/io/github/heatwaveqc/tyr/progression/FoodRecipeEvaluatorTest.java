@@ -89,6 +89,17 @@ class FoodRecipeEvaluatorTest {
         assertTrue(calculator.evaluate("sea_dragon",juice.item()).orElseThrow().hunger() <= 2);
     }
 
+    @Test void installedPamsOrangeJuiceConservesTwoFruitSources() {
+        try (var in = FoodRecipeEvaluatorTest.class.getResourceAsStream(
+                "/data/tyr_progression/tyr_progression/food_recipe_routes/pamhc2foodextended/orangejuiceitem.json")) {
+            assertNotNull(in);
+            var juice=FoodRecipeEvidence.parse(JsonParser.parseReader(
+                new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject());
+            assertEquals("pamhc2foodextended:orangejuiceitem",juice.item());
+            budget(evaluator(roots(),juice).evaluate("forest_dragon",juice.item()).orElseThrow(),12,48);
+        } catch (java.io.IOException bad) { throw new AssertionError(bad); }
+    }
+
     @Test void seaSushiSupportsCompatibleIngredientsAndMixedDishCeiling() {
         var plantSushi=recipe("""
             {"schema":1,"item":"example:seagrass_sushi","complete":true,
@@ -221,7 +232,8 @@ class FoodRecipeEvaluatorTest {
     @Test void shippedCutAndCookedRouteEvidenceHasExpectedStructure() {
         for (String item : new String[]{"farmersdelight/cod_slice","farmersdelight/salmon_slice",
             "farmersdelight/cabbage_leaf","farmersdelight/minced_beef",
-            "minecraft/cooked_beef","minecraft/cooked_cod","aquaculture/sushi"}) {
+            "minecraft/cooked_beef","minecraft/cooked_cod","aquaculture/sushi",
+            "pamhc2foodextended/orangejuiceitem"}) {
             try (var in = FoodRecipeEvaluatorTest.class.getResourceAsStream(
                 "/data/tyr_progression/tyr_progression/food_recipe_routes/" + item + ".json")) {
                 assertNotNull(in,item);

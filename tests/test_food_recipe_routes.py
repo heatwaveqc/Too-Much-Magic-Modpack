@@ -82,6 +82,16 @@ class FoodRecipeRouteFilesTest(unittest.TestCase):
         for item in self.routes:
             visit(item, ())
 
+    def test_pams_juice_two_oranges_and_non_nutritive_juicer(self):
+        juice = self.routes["pamhc2foodextended:orangejuiceitem"]
+        self.assertEqual(juice["routes"][0]["receipt"], "pamhc2foodextended:orangejuiceitem")
+        self.assertEqual(juice["routes"][0]["result_count"], 1)
+        self.assertEqual(juice["routes"][0]["method"], "nonthermal")
+        self.assertEqual(juice["routes"][0]["ingredients"], [
+            {"item": "pamhc2trees:orangeitem", "count": 2},
+            {"item": "pamhc2foodcore:juiceritem", "count": 1, "role": "neutral"},
+        ])
+
     def test_aquaculture_sushi_is_real_compatible_route_not_an_unresolved_hold(self):
         sushi = self.routes["aquaculture:sushi"]
         self.assertEqual(sushi["routes"][0]["receipt"], "aquaculture:sushi")
@@ -92,7 +102,8 @@ class FoodRecipeRouteFilesTest(unittest.TestCase):
         )
         holds = {v["item"] for v in json.loads(RECEIPTS.read_text())["explicit_holds"]}
         self.assertNotIn("aquaculture:sushi", holds)
-        self.assertIn("pamhc2foodextended:orangejuiceitem", holds)
+        self.assertNotIn("pamhc2foodextended:orangejuiceitem", holds)
+        self.assertIn("pamhc2foodextended:orangejuiceitem", self.routes)
         self.assertIn("minecraft:suspicious_stew", holds)
 
 
