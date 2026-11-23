@@ -1,0 +1,46 @@
+name: Chaos Bunny exact publisher JAR API audit (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/chaos-bunny-jar-probe.yml'
+      - 'scripts/probe_chaos_bunny_pinned_jars.py'
+      - 'mods/apotheosis.pw.toml'
+      - 'mods/gateways-to-eternity.pw.toml'
+      - 'kubejs/server_scripts/caerbannog_boss.js'
+      - 'kubejs/data/tmm/gateways/chaos_bunny.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-publisher-jars:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download official JARs to disposable runner only, do not rehost
+        run: |
+          mkdir -p "$RUNNER_TEMP/tmm-jar-audit"
+          curl --fail --location --retry 3 --max-time 180 \
+            'https://cdn.modrinth.com/data/8OIeAukW/versions/FNtkt80G/GatewaysToEternity-1.21.1-5.1.0.jar' \
+            -o "$RUNNER_TEMP/tmm-jar-audit/gateways.jar"
+          curl --fail --location --retry 3 --max-time 180 \
+            'https://cdn.modrinth.com/data/rqFWfVlz/versions/veL1ccTb/Apotheosis-1.21.1-8.9.0.jar' \
+            -o "$RUNNER_TEMP/tmm-jar-audit/apotheosis.jar"
+      - name: Verify exact publisher sha512, JAR zip, NBT/attribute and Elite Gateway classes
+        run: |
+          python3 scripts/probe_chaos_bunny_pinned_jars.py \
+            "$RUNNER_TEMP/tmm-jar-audit/gateways.jar" \
+            "$RUNNER_TEMP/tmm-jar-audit/apotheosis.jar"
+      - name: Test 2% protected tongue, 5-second window and lava speed in isolated KubeJS event harness
+        run: node scripts/test_chaos_bunny_combat.cjs
+      - name: Check one-time per-player Chaos Bunny trophy advancement and Packwiz index
+        run: python3 scripts/verify_chaos_bunny_advancement.py
+      - name: Syntax check currently indexed boss script and QA assertion
+        run: |
+          node --check kubejs/server_scripts/caerbannog_boss.js
+          python3 -m py_compile scripts/probe_chaos_bunny_pinned_jars.py
+          test -f mods/gateways-to-eternity.pw.toml
+          test -f mods/apotheosis.pw.toml

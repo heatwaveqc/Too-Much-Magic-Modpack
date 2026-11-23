@@ -709,6 +709,10 @@ file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
 
 [[files]]
+file = "kubejs/data/tmm/advancement/chaos_bunny_slayer.json"
+hash = "c135741e116fa5ae503358620ec0292c4114f8b5a3a44d985da0eedc23a8832c"
+
+[[files]]
 file = "kubejs/data/tmm/advancement/starter_kit.json"
 hash = "9039a3b777527215d93efe9323cfa1c3bbc06053c578be9d59e2244e908040f6"
 
@@ -721,6 +725,10 @@ file = "kubejs/data/tmm/curios/slots/bundle.json"
 hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
 
 [[files]]
+file = "kubejs/data/tmm/function/rewards/chaos_bunny_trophy.mcfunction"
+hash = "caa08096ae23fcaefb6a0cbd3ae2777b4876be2ecacc42229f19b1d5a5960e1e"
+
+[[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
 hash = "bb237bca7d088b1a5570c7e3eabd8684c705decae678bea869f28e20974a1743"
 
@@ -730,7 +738,7 @@ hash = "9c0a92a3be4fbd0210eb5a679453cea66776a8c202915aec1390ce0516d46c98"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/chaos_bunny.json"
-hash = "25b0d67667d70b45a0d3c914a983faba37c78982b0e39758f9af6d2d66a3f2bd"
+hash = "140efd81ecdd5ebb2cd05a17361661e2e88f0d896b73e131b4514e71a241d6b4"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/mob_ars_drygmy.json"
@@ -1358,7 +1366,7 @@ hash = "49014fad5b1660e0b16c591495b77dc5d18103e27f4fafd71b75dd09d672fe1f"
 
 [[files]]
 file = "kubejs/server_scripts/caerbannog_boss.js"
-hash = "d17ac3cbf04690f81429fc6c153768a6851ba23d5b75d09439d338c0681cf6b3"
+hash = "e83014646f2a341d0502cc202e226dae0144f13e5eeaa315fa949df5982b2b5a"
 
 [[files]]
 file = "kubejs/server_scripts/dragon_diets.js"
