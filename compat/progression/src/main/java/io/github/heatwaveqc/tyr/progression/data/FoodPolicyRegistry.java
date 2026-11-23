@@ -25,9 +25,11 @@ import java.util.stream.Collectors;
  */
 public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     private record State(FoodPolicyRules rules,
-                         Map<ResourceLocation, FoodSourceEvidence> sourceEvidence) {
+                         Map<String, FoodSourceEvidence> sourceEvidence,
+                         Map<String, FoodRecipeEvidence> recipeEvidence) {
         private State {
             sourceEvidence = Map.copyOf(sourceEvidence);
+            recipeEvidence = Map.copyOf(recipeEvidence);
         }
     }
     private static volatile State active;
@@ -55,7 +57,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     public static boolean universallyPermitted(ItemStack stack) {
         State state = active;
         if (state == null || stack.isEmpty()) return false;
-        FoodSourceEvidence source = state.sourceEvidence().get(BuiltInRegistries.ITEM.getKey(stack.getItem()));
+        FoodSourceEvidence source = state.sourceEvidence().get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         return state.rules().universallyPermitted(effectiveTags(stack, source));
     }
 
@@ -63,8 +65,11 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
     public static Optional<FoodPolicyRules.Nutrition> evaluate(
             String profile, ItemStack stack, double rawSourceUnits, Double preferredShare) {
         State state = active;
-        return state == null || stack.isEmpty() ? Optional.empty()
-            : state.rules().evaluate(profile, tags(stack), rawSourceUnits, preferredShare);
+        if (state == null || stack.isEmpty()) return Optional.empty();
+        FoodSourceEvidence source =
+            state.sourceEvidence().get(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+        return state.rules().evaluate(profile, effectiveTags(stack, source),
+            rawSourceUnits, preferredShare);
     }
 
     /**
@@ -76,11 +81,17 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
             String profile, ItemStack stack) {
         State state = active;
         if (state == null || stack.isEmpty()) return Optional.empty();
-        FoodSourceEvidence source =
-            state.sourceEvidence().get(BuiltInRegistries.ITEM.getKey(stack.getItem()));
-        if (source == null) return Optional.empty();
-        return state.rules().evaluate(profile, effectiveTags(stack, source),
-            source.sourceUnits(), source.preferredShares().get(profile));
+        String item = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        // Every output item has one result per dietary profile, independently
+        // of how a particular stack was crafted. Resolve the lower envelope
+        // of every verified alternative; incomplete evidence keeps native.
+        return new FoodRecipeEvaluator(state.rules(), state.sourceEvidence(),
+                state.recipeEvidence(), input -> {
+                    if (input.equals(item)) return tags(stack);
+                    ResourceLocation id = ResourceLocation.parse(input);
+                    if (!BuiltInRegistries.ITEM.containsKey(id)) return Set.of();
+                    return tags(BuiltInRegistries.ITEM.get(id).getDefaultInstance());
+                }).evaluate(profile, item);
     }
 
     @Override
@@ -91,7 +102,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
         if (raw == null) throw new IllegalArgumentException("Missing bundled food policy " + id);
         FoodPolicyRules rules = FoodPolicyRules.parse(raw.getAsJsonObject());
 
-        Map<ResourceLocation, FoodSourceEvidence> sources = new HashMap<>();
+        Map<String, FoodSourceEvidence> sources = new HashMap<>();
         final String directory = "tyr_progression/food_sources";
         for (var resource : manager.listResources(directory,
                     key -> key.getPath().endsWith(".json")).entrySet()) {
@@ -99,7 +110,7 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
                 FoodSourceEvidence evidence =
                     FoodSourceEvidence.parse(JsonParser.parseReader(reader).getAsJsonObject(),
                         rules.profiles().keySet());
-                FoodSourceEvidence old = sources.putIfAbsent(ResourceLocation.parse(evidence.item()), evidence);
+                FoodSourceEvidence old = sources.putIfAbsent(evidence.item(), evidence);
                 if (old != null) throw new IllegalArgumentException(
                     "Ambiguous food provenance for " + evidence.item()
                         + ": " + old.provenance() + " vs " + evidence.provenance());
@@ -109,11 +120,26 @@ public final class FoodPolicyRegistry extends SimpleJsonResourceReloadListener {
             }
         }
 
-        // One volatile publish; invalid policy or duplicate/unverified source
-        // entries leave the last accepted snapshot intact.
-        active = new State(rules, sources);
+        Map<String, FoodRecipeEvidence> recipes = new HashMap<>();
+        final String routeDirectory = "tyr_progression/food_recipe_routes";
+        for (var resource : manager.listResources(routeDirectory,
+                    key -> key.getPath().endsWith(".json")).entrySet()) {
+            try (var reader = resource.getValue().openAsReader()) {
+                FoodRecipeEvidence evidence = FoodRecipeEvidence.parse(
+                    JsonParser.parseReader(reader).getAsJsonObject());
+                FoodRecipeEvidence old = recipes.putIfAbsent(evidence.item(), evidence);
+                if (old != null) throw new IllegalArgumentException(
+                    "Multiple dietary route records for one food " + evidence.item());
+            } catch (IOException bad) {
+                throw new IllegalArgumentException(
+                    "Cannot read food recipe routes " + resource.getKey(), bad);
+            }
+        }
+        // One volatile publish; an invalid route or root record never exposes
+        // a partially updated diet policy on /reload.
+        active = new State(rules, sources, recipes);
         ProgressionMod.LOGGER.info(
-            "Loaded shared food policy schema {} with {} profiles and {} sourced foods",
-            rules.schema(), rules.profiles().size(), sources.size());
+            "Loaded shared food policy schema {}: {} profiles, {} source roots, {} recipe outputs",
+            rules.schema(), rules.profiles().size(), sources.size(), recipes.size());
     }
 }
