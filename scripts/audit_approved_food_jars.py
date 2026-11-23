@@ -162,8 +162,20 @@ def audit_one(slug, local_file=None):
     meta = jar_metadata(data)
     found = set(meta.get("mod_ids") or [])
     id_matches = modid is None or modid in found
+    # Version strings are direct native metadata evidence, not filenames.
+    # Huaxia upload must specifically be the approved 1.2.0 release.
+    with ZipFile(BytesIO(data)) as src:
+        path = next((name for name in ("META-INF/neoforge.mods.toml", "META-INF/mods.toml")
+                     if name in src.namelist()), None)
+        native_versions = {
+            mod["modId"]: mod.get("version")
+            for mod in tomllib.loads(src.read(path).decode("utf-8-sig")).get("mods", [])
+        } if path else {}
+    version_matches = (
+        native_versions.get("huaxiadelight") == "1.2.0"
+        if slug == "huaxia-delight" else True)
     evidence = audit_resources(data)
-    valid = matches is not False and id_matches and bool(found)
+    valid = matches is not False and id_matches and version_matches and bool(found)
     status = ("verified_user_upload" if provenance.startswith("user_uploaded") and valid
               else "verified" if valid else "held")
     return {
@@ -177,6 +189,8 @@ def audit_one(slug, local_file=None):
         "sha512": hashlib.sha512(data).hexdigest(),
         "existing_indexed_hash_matches": matches,
         "native_expected_mod_id_matches": id_matches,
+        "native_version_matches_approved": version_matches,
+        "native_versions": native_versions,
         "metadata": meta, "source_evidence": evidence,
     }
 
