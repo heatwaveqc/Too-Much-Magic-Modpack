@@ -78,13 +78,13 @@ def class_text(jar: Path, clazz: str) -> str:
     with ZipFile(jar) as archive:
         all_entries = archive.namelist()
         if entry not in all_entries:
-            needles = ("AgingCask", "WineItem", "BnCWine", "brewinandchewin",
+            needles = ("Aging", "Cask", "Wine", "Distill", "Ferment",
                        "META-INF/jarjar/", "META-INF/jars/")
             matches = [name for name in all_entries if any(needle in name for needle in needles)]
             raise ValueError(
                 jar.name + ": missing class " + clazz
                 + "; related ZIP entries (" + str(len(matches)) + "): "
-                + repr(matches[:75])
+                + repr(matches[:200])
                 + "; archive starts: " + repr(all_entries[:20])
             )
     result = subprocess.run(["javap", "-p", "-s", "-classpath", str(jar), clazz],
