@@ -1,0 +1,54 @@
+name: Crafted food survey compiler (source only)
+
+on:
+  push:
+    paths:
+      - 'scripts/compile_crafted_food_survey.py'
+      - 'tests/test_compile_crafted_food_survey.py'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/data/FoodRecipeEvidence.java'
+      - '.github/workflows/crafted-food-survey.yml'
+  pull_request:
+    paths:
+      - 'scripts/compile_crafted_food_survey.py'
+      - 'tests/test_compile_crafted_food_survey.py'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/data/FoodRecipeEvidence.java'
+      - '.github/workflows/crafted-food-survey.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  compile-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate recipe-tag closure and provenance safety
+        run: python -m unittest tests.test_compile_crafted_food_survey -v
+      - name: Download previously audited pinned recipe evidence (no JARs)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/tmm-food-audit
+          gh run download 45103149371 --repo "$GITHUB_REPOSITORY" \
+            --name approved-food-jar-audit-pinned --dir /tmp/tmm-food-audit
+          test -s /tmp/tmm-food-audit/food-jar-audit-pinned.json
+      - name: Compile automatic source tags and recipe routes
+        run: |
+          python scripts/compile_crafted_food_survey.py \
+            --repo . --audit /tmp/tmm-food-audit/food-jar-audit-pinned.json \
+            --out /tmp/tmm-compiled-food
+          python -m compileall -q scripts/compile_crafted_food_survey.py
+          python -m json.tool /tmp/tmm-compiled-food/crafted-food-survey-report.json >/dev/null
+      - name: Publish only derived JSON candidates and hold ledger
+        uses: actions/upload-artifact@v4
+        with:
+          name: crafted-food-survey-candidates
+          path: /tmp/tmm-compiled-food/
+          retention-days: 30
+          if-no-files-found: error
