@@ -210,6 +210,46 @@ class CompilerTest(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     m.load_runtime_food_registry(path)
 
+    def test_actual_recipe_output_food_components_are_census_eligible(self):
+        with tempfile.TemporaryDirectory() as dirname:
+            path = Path(dirname) / "registry.json"
+            snapshot = {
+                "schema": 1, "kind": "tmm:default_item_stack_food_registry",
+                "scope": "loaded_server_registry",
+                "authoritative_for": "default_stack_food_component",
+                "recipe_output_stacks_examined": False,
+                "item_count": 2, "food_count": 1,
+                "items": [
+                    {"id": "test:fruit", "food": True, "tags": ["c:foods/fruit"]},
+                    {"id": "test:cooked_meal", "food": False, "tags": []},
+                ],
+                "recipe_result_previews_examined": True,
+                "loaded_recipe_count": 2, "recipe_preview_count": 1,
+                "recipe_preview_food_count": 1,
+                "recipe_preview_unresolved_count": 1,
+                "recipe_result_previews": [
+                    {"recipe": "test:cook_meal", "item": "test:cooked_meal",
+                     "food": True, "count": 1},
+                ],
+                "unresolved_recipe_result_previews": ["test:dynamic_special"],
+            }
+            path.write_text(json.dumps(snapshot), encoding="utf-8")
+            registry = m.load_runtime_food_registry(path)
+            self.assertEqual(registry["default_foods"], {"test:fruit"})
+            self.assertEqual(registry["preview_foods"], {"test:cooked_meal"})
+            self.assertEqual(registry["foods"], {"test:fruit", "test:cooked_meal"})
+            food = recipe("test:cooked_meal", "test:cook_meal",
+                          [{"item": "test:fruit"}], station="minecraft:smelting")
+            generated, summary = m.process(audit([food]), {
+                "test:fruit": source("test:fruit")}, {}, registry=registry)
+            self.assertEqual(summary["generated_ids"], ["test:cooked_meal"])
+            self.assertEqual(summary["runtime_preview_food_item_ids"], 1)
+            self.assertIn(str(m.ROUTES / "test/cooked_meal.json"), generated)
+            snapshot["recipe_preview_food_count"] = 0
+            path.write_text(json.dumps(snapshot), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                m.load_runtime_food_registry(path)
+
     def test_registry_missing_tool_tag_does_not_assume_reusable_juicer_exists(self):
         r = recipe("test:juice", "test:juice",
                    [{"tag": "c:tool_juicer"}, {"item": "test:orange"}])
