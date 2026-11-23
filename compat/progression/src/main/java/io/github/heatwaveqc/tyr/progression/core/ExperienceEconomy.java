@@ -253,9 +253,21 @@ public final class ExperienceEconomy {
                                     Set<String> departedPaths, Map<PathSystem, DeparturePolicy> overrides,
                                     DeparturePolicy fallback, boolean wipeUnallocated,
                                     boolean membershipChanged) {
+        return transition(source, systems, departedPaths, overrides, fallback,
+                wipeUnallocated ? Set.copyOf(systems.keySet()) : Set.of(), membershipChanged);
+    }
+
+    /** Same atomic transition, allowing each XP system to choose whether free XP is discarded. */
+    public static Ledger transition(Ledger source, Map<String, SystemSpec> systems,
+                                    Set<String> departedPaths, Map<PathSystem, DeparturePolicy> overrides,
+                                    DeparturePolicy fallback, Set<String> wipeSystems,
+                                    boolean membershipChanged) {
         Objects.requireNonNull(fallback, "fallback");
         if (!membershipChanged) return source;
         Objects.requireNonNull(departedPaths, "departedPaths");
+        Objects.requireNonNull(wipeSystems, "wipeSystems");
+        for (String id : wipeSystems) if (!systems.containsKey(id))
+            throw new IllegalArgumentException("Unknown XP system wipe policy " + id);
 
         var remainingRanks = new ArrayList<PaidRank>();
         var forfeited = new HashMap<String, Long>();
@@ -282,7 +294,7 @@ public final class ExperienceEconomy {
             if (system == null) throw new IllegalArgumentException("Missing XP system " + row.getKey());
             long removed = forfeited.getOrDefault(row.getKey(), 0L);
             BigDecimal revised;
-            if (wipeUnallocated) {
+            if (wipeSystems.contains(row.getKey())) {
                 long retained = Math.addExact(committed(remaining, system.id()),
                         refunded.getOrDefault(system.id(), 0L));
                 revised = system.xpPerPoint().multiply(BigDecimal.valueOf(retained));
