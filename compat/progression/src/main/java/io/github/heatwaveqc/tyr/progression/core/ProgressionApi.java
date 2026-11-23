@@ -65,12 +65,10 @@ public final class ProgressionApi {
         if (!BaselinePaths.isCore(pathId))
             for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
                 if (!veto.test(player,pathId)) return false;
-        if (!BaselinePaths.isCore(pathId) && !path.exclusiveGroup().isBlank()) {
-            for (Definition.Path other : PathRegistry.all().values()) {
-                if (!pathId.equals(other.id()) && path.exclusiveGroup().equals(other.exclusiveGroup())
-                    && ledger.get(other.id()).joined()) return false;
-            }
-        }
+        if(!BaselinePaths.isCore(pathId))
+            for(Definition.Path other:PathRegistry.all().values())
+                if(!pathId.equals(other.id())&&ledger.get(other.id()).joined()
+                    &&!PathRegistry.canCoexist(pathId,other.id()))return false;
         // Join is a real Path change: TMM's configured default sacrifices
         // unallocated MXP, but never already purchased Core/retained Path ranks.
         Ledger next=ChannelEngine.join(ledger,path,channel);
