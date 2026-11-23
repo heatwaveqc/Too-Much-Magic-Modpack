@@ -154,7 +154,7 @@ public final class ProgressionMenuNetwork {
         JsonArray wallets=new JsonArray();
         for(var entry:catalog.systems().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()){
             String id=entry.getKey();
-            var spec=entry.getValue();
+            var systemSpec=entry.getValue();
             var w=ledger.wallet(id);
             JsonObject row=new JsonObject();
             row.addProperty("id",id);
@@ -162,9 +162,9 @@ public final class ProgressionMenuNetwork {
             row.addProperty("name",channelName==null?id:channelName.name());
             row.addProperty("point_name",channelName==null?"Points":channelName.pointName());
             row.addProperty("level",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
-                .level(ledger.economy(),spec));
+                .level(ledger.economy(),systemSpec));
             row.addProperty("points",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
-                .available(ledger.economy(),spec));
+                .available(ledger.economy(),systemSpec));
             row.addProperty("xp",ledger.economy().currentXp()
                 .getOrDefault(id,java.math.BigDecimal.ZERO));wallets.add(row);
         }
