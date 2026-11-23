@@ -1,6 +1,6 @@
 # Diet-relative food recipes: implementation slice #444
 
-**Source-only, stacked after #573 / #539 / #519.** This layer does not mutate global FoodProperties. Native nutrition is unchanged for normal players; DragonDietHook invokes the replacement only for component-backed edible food, on the server, for a verified native Dragon Survival dragon. Native effects, use handlers, containers and durations remain unchanged.
+**Source-only, stacked after #573 / #539 / #519.** This layer does not mutate global FoodProperties. Native nutrition is unchanged for normal players; DragonDietHook invokes the replacement only for component-backed edible food, on the server, for a verified native Dragon Survival dragon. Native effects, use handlers, containers and durations remain unchanged. A verified computed result may also restore a food that the legacy native Dragon Survival diet rejected with null, provided the item itself has a native Food component. That gate fix is necessary because this new diet intentionally supersedes the old species lists.
 
 ## Data and algorithm
 

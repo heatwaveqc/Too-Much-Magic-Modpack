@@ -58,7 +58,12 @@ public final class DragonDietHook {
                         return original;
                     }
                     var policy = FoodPolicyRegistry.evaluateSource(profile, stack);
-                    if (policy.isPresent() && nativeResult != null) {
+                    if (policy.isPresent()) {
+                        // A verified owner diet intentionally supersedes native
+                        // Dragon Survival food denial. In particular the old
+                        // Cave/Forest/Sea lists may return null for newly
+                        // permitted ordinary foods. Never change the global
+                        // food component or allow unknown/unverified items.
                         var nourishment = policy.orElseThrow();
                         return new FoodProperties(
                             nourishment.hunger(), nourishment.saturationModifier(),
