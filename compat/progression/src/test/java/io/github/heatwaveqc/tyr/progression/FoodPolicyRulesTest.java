@@ -44,11 +44,12 @@ class FoodPolicyRulesTest {
     @Test void offDietAndMixedFractionsAreConfigurable() {
         var r=rules();
         check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit"),1,null).orElseThrow(),3,12);
-        check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,0.5).orElseThrow(),9,36);
+        assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,0.5).isEmpty(),
+            "An ingredient share alone cannot establish half of the best input; use complete routes");
         assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,null).isEmpty(),
-            "Ambiguous dish without provenance must keep native outcome");
-        check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish","#tmm:foods/cooked"),2,0.5)
-            .orElseThrow(),5,18);
+            "Ambiguous dish without recipe alternatives must keep native outcome");
+        assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish","#tmm:foods/cooked"),2,0.5)
+            .isEmpty(), "Heating never legitimizes a mixed-fraction shortcut");
     }
     @Test void universalMagicalIsPermissionOnlyAndPreservesNativeFoodSideEffects() {
         var r=rules();var tags=Set.of("#tmm:foods/magical","#c:foods/fruit");
