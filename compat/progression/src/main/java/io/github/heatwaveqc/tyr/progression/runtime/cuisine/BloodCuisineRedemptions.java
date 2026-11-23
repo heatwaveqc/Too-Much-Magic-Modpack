@@ -31,7 +31,7 @@ public final class BloodCuisineRedemptions extends SavedData {
     }
 
     public boolean redeem(UUID id) {
-        if (id == null || !spent.add(id)) return false;
+        if (!BloodCuisinePolicy.redeem(spent, id)) return false;
         setDirty();
         return true;
     }

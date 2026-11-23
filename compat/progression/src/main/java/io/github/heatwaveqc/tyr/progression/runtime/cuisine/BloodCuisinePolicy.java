@@ -26,6 +26,11 @@ public final class BloodCuisinePolicy {
             && storedBlood == bloodFor(product, VERIFIED_FILLED_BOTTLE_BLOOD);
     }
 
+    /** Pure global one-use accounting, independent of Minecraft SavedData. */
+    public static boolean redeem(java.util.Set<java.util.UUID> spent, java.util.UUID receipt) {
+        return spent != null && receipt != null && spent.add(receipt);
+    }
+
     public static boolean validWinePayload(int storedBlood) {
         return storedBlood == bloodFor(Product.WINE, VERIFIED_FILLED_BOTTLE_BLOOD);
     }
