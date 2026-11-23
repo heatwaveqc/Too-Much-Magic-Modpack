@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression.network;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -15,17 +16,26 @@ public final class FoodPreviewWire {
     public static final int MAX_CHUNKS = 512;
     private FoodPreviewWire() {}
 
-    public record Entry(int hunger, float saturationModifier, boolean nativePermission) {
+    public enum Mode { NUTRITION, PERMIT_NATIVE, DENY }
+
+    /**
+     * Explicit denial is different from a missing row. Clients must return
+     * null FoodProperties for DENY, and preserve native for absent IDs.
+     */
+    public record Entry(int hunger, float saturationModifier, Mode mode) {
         public Entry {
+            Objects.requireNonNull(mode);
             if (hunger < 0 || hunger > 4096 || !Float.isFinite(saturationModifier)
                     || saturationModifier < 0 || saturationModifier > 1024
-                    || (nativePermission && (hunger != 0 || saturationModifier != 0)))
-                throw new IllegalArgumentException("Invalid projected food nutrition");
+                    || (mode != Mode.NUTRITION && (hunger != 0 || saturationModifier != 0)))
+                throw new IllegalArgumentException("Invalid projected food decision");
         }
-
-        public static Entry permitNative() { return new Entry(0, 0, true); }
+        public boolean nativePermission() { return mode == Mode.PERMIT_NATIVE; }
+        public boolean denied() { return mode == Mode.DENY; }
+        public static Entry permitNative() { return new Entry(0, 0, Mode.PERMIT_NATIVE); }
+        public static Entry deny() { return new Entry(0, 0, Mode.DENY); }
         public static Entry nourishment(int hunger, float modifier) {
-            return new Entry(hunger, modifier, false);
+            return new Entry(hunger, modifier, Mode.NUTRITION);
         }
     }
 
@@ -41,8 +51,8 @@ public final class FoodPreviewWire {
             if (!itemId(row.getKey()))
                 throw new IllegalArgumentException("Unsafe dietary preview item ID");
             Entry e = row.getValue();
-            String line = row.getKey() + "\t" + (e.nativePermission()
-                ? "P" : e.hunger() + "\t" + Float.toString(e.saturationModifier())) + "\n";
+            String line = row.getKey() + "\t" + (e.nativePermission() ? "P" : e.denied()
+                ? "D" : e.hunger() + "\t" + Float.toString(e.saturationModifier())) + "\n";
             if (line.length() > CHUNK_CHARS)
                 throw new IllegalArgumentException("Oversized dietary preview record");
             if (current.length() + line.length() > CHUNK_CHARS) {
@@ -73,6 +83,8 @@ public final class FoodPreviewWire {
             try {
                 if (fields.length == 2 && fields[1].equals("P")) {
                     parsed = Entry.permitNative();
+                } else if (fields.length == 2 && fields[1].equals("D")) {
+                    parsed = Entry.deny();
                 } else if (fields.length == 3) {
                     parsed = Entry.nourishment(Integer.parseInt(fields[1]),
                         Float.parseFloat(fields[2]));
