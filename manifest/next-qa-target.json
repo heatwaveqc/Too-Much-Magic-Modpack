@@ -216,6 +216,7 @@
     "supermartijn642-core-lib",
     "swem",
     "swem-addendum",
+    "swing-through-grass",
     "tectonic",
     "the-aurorian-unofficial-port",
     "the-bumblezone",
@@ -364,6 +365,7 @@
     "2026-11-22 owner-approved Friendship Garden #428: new standalone first-party NeoForge module tmm_friendship_garden from source policy #453 and runtime PR #537 is INCLUDED for NEXT owner-authorized integration build. Requires module JAR compile/license proof and next-build runtime B/C for binding, 2-high plant, joined/offline/death states, petals and remote potion safety. Explicitly NOT tested in Minecraft yet.",
     "2026-11-22 owner-approved #523: source PR #531 migrates 48 offers to Q Shop 1.8.5 with personal wallets, native tabs and op2 FTB coin command bridge. Test next build only after integration review; old FTB team coin balances are not auto-transferred.",
     "2026-11-23 selected five owner-approved #439/#444 food additions via verified-source #551: Crispy! 1.1, Dungeon's Delight 1.5.3-labeled (filename ends 1.5.2), Ender's Delight 1.3.1, RunicLib 5.0.7 and Huaxia Delight 1.2.0. Four official provider JAR SHA1 checks passed; Huaxia exact SHA1 from owner-uploaded JAR, upstream SHA not independently available (publisher CDN HTTP403). No gameplay pass; Ender's Delight Farmer's Delight version-range parsing and Huaxia installer delivery must be checked at first authorized server/Prism run. New dragon food provenance/classifier remains a separate incomplete runtime workstream; do not copy obsolete #439 diet matrix.",
-    "2026-11-23 #542 Lootr parity: selected/indexed official-digest Multiplayer Spawners 2.0.2 with personal disabling mode, 10-second torch extinguish and no player-placed spawner loss. Source-backed BetterEnd New Dawn chest/barrel Lootr conversion tags included as fallback with required:false; runtime ID conversion still needs B/C. Lootr Liaison and Twilight Lootr are owner-required intake candidates but exact publisher JAR hashes not verified by this source review, so remain declared desired and disabled (TECHNICAL BLOCKED/PENDING artifact verification), not silently owner-deferred. Fair Share excluded. No actual two-player run claimed."
+    "2026-11-23 #542 Lootr parity: selected/indexed official-digest Multiplayer Spawners 2.0.2 with personal disabling mode, 10-second torch extinguish and no player-placed spawner loss. Source-backed BetterEnd New Dawn chest/barrel Lootr conversion tags included as fallback with required:false; runtime ID conversion still needs B/C. Lootr Liaison and Twilight Lootr are owner-required intake candidates but exact publisher JAR hashes not verified by this source review, so remain declared desired and disabled (TECHNICAL BLOCKED/PENDING artifact verification), not silently owner-deferred. Fair Share excluded. No actual two-player run claimed.",
+    "2026-11-23 #384/#385: recovered Swing Through Grass NeoForge 1.21.1 v1.1.0 CF 1477279/9063127 was source-pinned with independent identical CF-file packlock SHA1 15f48ed3ab02b9e8763284279487a9d95b206337; native publisher bytes/download and gameplay still untested. Architectury already indexed, verify loader/foliage-vs-solid-block combat. Existing KubeJS blaze rod fire-resistance and mushroom stew 16-stack retained; confirm bowl returns with full inventory in B/C."
   ]
 }
