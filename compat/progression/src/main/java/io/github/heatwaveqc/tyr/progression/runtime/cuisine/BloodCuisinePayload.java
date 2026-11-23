@@ -16,6 +16,7 @@ import net.minecraft.world.item.component.CustomData;
 public final class BloodCuisinePayload {
     private static final String VERSION = "tmm_cuisine_version";
     private static final String CREDIT = "tmm_blood_credit";
+    private static final String RECEIPT = "tmm_cuisine_receipt";
     private BloodCuisinePayload() {}
 
     public static int credit(ItemStack stack) {
@@ -26,7 +27,15 @@ public final class BloodCuisinePayload {
         if (!tag.contains(VERSION, Tag.TAG_INT) || tag.getInt(VERSION) != 1
                 || !tag.contains(CREDIT, Tag.TAG_INT)) return 0;
         int credit = tag.getInt(CREDIT);
-        return credit > 0 && credit <= 1000000 ? credit : 0;
+        return credit > 0 && credit <= 1000000 && tag.hasUUID(RECEIPT) ? credit : 0;
+    }
+
+    public static java.util.UUID receipt(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) return null;
+        CustomData value = stack.get(DataComponents.CUSTOM_DATA);
+        if (value == null) return null;
+        CompoundTag tag = value.copyTag();
+        return tag.hasUUID(RECEIPT) ? tag.getUUID(RECEIPT) : null;
     }
 
     public static void set(ItemStack stack, int credit) {
@@ -36,6 +45,7 @@ public final class BloodCuisinePayload {
         CompoundTag tag = original.copyTag();
         tag.putInt(VERSION, 1);
         tag.putInt(CREDIT, credit);
+        tag.putUUID(RECEIPT, java.util.UUID.randomUUID());
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
 }
