@@ -38,6 +38,9 @@ MATERIAL_TAGS = {
 }
 MATERIAL_ITEMS = {"minecraft:kelp": "#tmm:foods/sea_plants"}
 IDENTITY_RE = re.compile(r"meatballs?", re.I)
+# Names can *warn* us that nonthermal crafting is insufficient evidence
+# for a cooked dish; do not use the name alone to assign a hot nutrition value.
+THERMAL_UNCERTAINTY = re.compile(r"grilled|roasted|baked|fried|cookie|toast|steamed|boiled|braised", re.I)
 
 
 class Hold(ValueError):
@@ -214,6 +217,10 @@ def method(recipe):
                 if tag.startswith("c:tool_") and any(
                         token in tag.split(":")[-1] for token in HOT_TOOLS):
                     return "heat"
+        outputs = recipe.get("outputs", [])
+        if any(THERMAL_UNCERTAINTY.search(output.get("item", "").split(":")[-1])
+               for output in outputs):
+            raise Hold("ambiguous_thermal_prep")
         return "nonthermal"
     if kind == "farmersdelight:cutting":
         return "nonthermal"

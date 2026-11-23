@@ -127,6 +127,15 @@ class CompilerTest(unittest.TestCase):
         self.assertEqual(summary["native_food_tagged_candidates"], 1)
         self.assertEqual(summary["excluded_known_nonfood_or_vanilla_outputs"], 2)
 
+    def test_cold_recipe_with_cooked_name_is_held_not_assumed_raw(self):
+        r = recipe("test:grilledskewers", "test:grilled",
+                   [{"item": "test:carrot"}])
+        generated, report = m.process(audit([r]), {
+            "test:carrot": source("test:carrot", "#c:foods/vegetable")}, {})
+        self.assertNotIn(str(m.ROUTES / "test/grilledskewers.json"), generated)
+        self.assertEqual(report["held_outputs"]["test:grilledskewers"],
+                         "ambiguous_thermal_prep")
+
     def test_material_tags_generate_source_records_not_native_food_components(self):
         tags = m.TagIndex([{"source_evidence": {"item_tags": [
             {"tag": "c:crops/rice", "values": ["test:rice"]},
