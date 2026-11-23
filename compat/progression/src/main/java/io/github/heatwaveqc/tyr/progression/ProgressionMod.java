@@ -35,6 +35,8 @@ public final class ProgressionMod {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
@@ -50,5 +52,6 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();
+        NeoForge.EVENT_BUS.addListener(io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineNative::stopped);
     }
 }
