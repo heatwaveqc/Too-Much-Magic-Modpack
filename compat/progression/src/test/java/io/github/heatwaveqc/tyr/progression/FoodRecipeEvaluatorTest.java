@@ -45,7 +45,9 @@ class FoodRecipeEvaluatorTest {
         var orange = root("pamhc2trees:orangeitem", "#c:foods/fruit", "#tmm:foods/raw");
         var seaPlant = root("minecraft:seagrass", "#tmm:foods/sea_plants", "#tmm:foods/raw");
         var rice = root("example:rice", "#tmm:foods/grains", "#tmm:foods/raw");
-        for (var v : new FoodSourceEvidence[]{beef,cod,carrot,orange,seaPlant,rice})
+        var fillet = root("aquaculture:fish_fillet_raw",
+            "#c:foods/raw_fish", "#tmm:foods/raw");
+        for (var v : new FoodSourceEvidence[]{beef,cod,carrot,orange,seaPlant,rice,fillet})
             roots.put(v.item(),v);
         return roots;
     }
@@ -177,6 +179,17 @@ class FoodRecipeEvaluatorTest {
         budget(calculator.evaluate("cave_dragon",mince.item()).orElseThrow(),4,16);
     }
 
+    @Test void installedAquacultureSushiUsesRealVerifiedFishAndSeagrassRecipe() {
+        try (var in = FoodRecipeEvaluatorTest.class.getResourceAsStream(
+                "/data/tyr_progression/tyr_progression/food_recipe_routes/aquaculture/sushi.json")) {
+            assertNotNull(in);
+            var sushi = FoodRecipeEvidence.parse(JsonParser.parseReader(
+                new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject());
+            assertEquals("aquaculture:sushi",sushi.item());
+            budget(evaluator(roots(),sushi).evaluate("sea_dragon",sushi.item()).orElseThrow(),12,48);
+        } catch (java.io.IOException bad) { throw new AssertionError(bad); }
+    }
+
     @Test void brokenAlternativesCyclesAndInvalidSchemasFailClosed() {
         var unresolved=recipe("""
             {"schema":1,"item":"example:food","complete":true,"identity":"ordinary",
@@ -208,7 +221,7 @@ class FoodRecipeEvaluatorTest {
     @Test void shippedCutAndCookedRouteEvidenceHasExpectedStructure() {
         for (String item : new String[]{"farmersdelight/cod_slice","farmersdelight/salmon_slice",
             "farmersdelight/cabbage_leaf","farmersdelight/minced_beef",
-            "minecraft/cooked_beef","minecraft/cooked_cod"}) {
+            "minecraft/cooked_beef","minecraft/cooked_cod","aquaculture/sushi"}) {
             try (var in = FoodRecipeEvaluatorTest.class.getResourceAsStream(
                 "/data/tyr_progression/tyr_progression/food_recipe_routes/" + item + ".json")) {
                 assertNotNull(in,item);
