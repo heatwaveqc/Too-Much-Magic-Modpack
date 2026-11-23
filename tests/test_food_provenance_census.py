@@ -119,6 +119,27 @@ class FoodCensusTests(unittest.TestCase):
         self.assertEqual(syrup["origin"], "pinned-jar:test-food")
         self.assertIsNone(report["registry_export"]["authoritative_edible_denominator"])
 
+    def test_pinned_jar_cutting_nested_result_is_in_complete_source_candidate_union(self):
+        self.write_jar({
+            "data/test/recipe/chop_scallion.json": json.dumps({
+                "type": "farmersdelight:cutting",
+                "ingredients": [{"tag": "test:scallion"}],
+                "tool": {"item": "test:slicing_knife"},
+                "result": [{"item": {"id": "test:chopped_scallion", "count": 4}}]
+            }),
+        })
+        self.write_metadata()
+        report = census(self.root, self.jars)
+        self.assertEqual(report["jar_audit"]["counts"], {"verified_and_scanned": 1})
+        self.assertIn("test:chopped_scallion", report["recipe_result_candidates"])
+        receipt = next(r for r in report["resources"]["recipe"]
+                       if r["id"] == "test:chop_scallion")
+        self.assertEqual(receipt["result_item"], "test:chopped_scallion")
+        self.assertEqual(receipt["result_count"], 4)
+        self.assertEqual(receipt["outputs"],
+                         [{"item": "test:chopped_scallion", "count": 4}])
+        self.assertEqual(receipt["ingredient_tag_refs"], ["test:scallion"])
+
     def test_hash_mismatch_fails_closed_and_does_not_scan(self):
         self.write_jar({
             "data/test/recipes/injected.json": json.dumps({
