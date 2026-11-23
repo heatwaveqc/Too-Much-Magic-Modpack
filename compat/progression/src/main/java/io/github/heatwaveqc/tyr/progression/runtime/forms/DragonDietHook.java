@@ -22,7 +22,7 @@ public final class DragonDietHook {
 
     private static final ThreadLocal<Boolean> REENTRANT = ThreadLocal.withInitial(() -> false);
 
-    private static String dragonProfile(ServerPlayer player) {
+    static String dragonProfile(ServerPlayer player) {
         if (player.getServer() == null || !player.getServer().isSameThread()) return null;
         String found = null;
         for (String species : new String[]{"cave", "forest", "sea"}) {
@@ -76,9 +76,11 @@ public final class DragonDietHook {
                 return DietPermissions.dragonDrink(player, stack)
                     ? original : nativeResult;
             }
-            if (entity.level().isClientSide
-                    && io.github.heatwaveqc.tyr.progression.client.ClientDiet.allows(entity, stack)) {
-                return original; // existing server-authorized beverage preview
+            if (entity.level().isClientSide) {
+                var preview = io.github.heatwaveqc.tyr.progression.client.ClientDiet.preview(entity, stack);
+                if (preview != null) return preview; // server-evaluated nutrition/permission
+                if (io.github.heatwaveqc.tyr.progression.client.ClientDiet.allows(entity, stack))
+                    return original; // independent short-lived beverage permission
             }
             return nativeResult;
         } finally {
