@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "snapshot_date": "2026-11-22",
   "scope": "source_only_approved_food_candidate_intake",
   "authority": "PR #439 (selected), diet superseded by issue #444",
   "installed": false,

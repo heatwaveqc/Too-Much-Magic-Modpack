@@ -71,11 +71,12 @@ class FoodPublisherTests(unittest.TestCase):
         self.assertEqual(r["recipe_ids_with_single_result"], 0)
         self.assertEqual(r["candidate_output_ids_not_confirmed_edible"], [])
 
-    def test_staged_pins_match_publisher_receipts_not_live_pack(self):
+    def test_historical_pins_match_receipts_and_active_index_is_independent(self):
         import tomllib
         receipt = json.loads((ROOT / "integration/food-candidates/approved-food-candidates.json")
                              .read_text(encoding="utf-8"))
-        self.assertFalse(receipt["installed"])
+        self.assertEqual(receipt["snapshot_date"], "2026-11-22")
+        self.assertFalse(receipt["installed"])  # Historical intake state, not live Packwiz state.
         self.assertEqual(len(receipt["candidates"]), 5)
         self.assertEqual(receipt["known_food_sources"]["verified_jar_count"], 20)
         self.assertEqual(receipt["known_food_sources"]["publisher_verified_jars"], 19)
@@ -97,8 +98,29 @@ class FoodPublisherTests(unittest.TestCase):
         self.assertEqual(huaxia["provenance"],
                          "user_uploaded_jar_sha_computed_not_independent_publisher_digest")
         self.assertEqual(huaxia["sha1"], "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919")
+        # Archived intake pins must never become a second Packwiz install path.
+        # A later reviewed promotion may legitimately index the same release in mods/.
+        indexed = tomllib.loads(index)
+        files = {entry["file"]: entry for entry in indexed["files"]}
         for row in receipt["candidates"]:
-            self.assertNotIn('file = "mods/' + row["slug"] + '.pw.toml"', index)
+            filename = row["slug"] + ".pw.toml"
+            self.assertNotIn("integration/food-candidates/pins/" + filename, files)
+            active = "mods/" + filename
+            if active not in files:
+                continue
+            self.assertTrue(files[active].get("metafile"), active)
+            raw = (ROOT / active).read_bytes()
+            self.assertEqual(hashlib.new(indexed["hash-format"], raw).hexdigest(),
+                             files[active]["hash"], active)
+            current = tomllib.loads(raw.decode("utf-8"))
+            cf = current["update"]["curseforge"]
+            self.assertEqual(cf["project-id"], row["project_id"], active)
+            if cf["file-id"] == row["file_id"]:
+                self.assertEqual(current["filename"], row["filename"], active)
+                self.assertEqual(current["download"]["hash-format"], "sha1", active)
+                self.assertEqual(current["download"]["hash"], row["sha1"], active)
+            # A different active file-id is not evidence for this historical release.
+            # The normal indexed-pin audit must verify that newer binary separately.
 
     def test_huaxia_style_nested_cutting_and_conditional_receipts(self):
         file = self.jar({
