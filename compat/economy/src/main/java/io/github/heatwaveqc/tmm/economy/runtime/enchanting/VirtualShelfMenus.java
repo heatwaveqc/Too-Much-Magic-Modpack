@@ -30,7 +30,7 @@ public final class VirtualShelfMenus {
      * Migration remains unreachable until all old power routes are replaced together.
      */
     public static boolean openFromNative(ServerPlayer owner, boolean shelves) {
-        if (!EnchantingFeatureGate.enabled() || !VirtualShelfService.retireLegacyBooks(owner)) {
+        if (!PortableEnchantingCutover.ready() || !VirtualShelfService.retireLegacyBooks(owner)) {
             owner.displayClientMessage(Component.translatable("menu.tmm_economy.virtual_shelves.unavailable"), true);
             return false;
         }
@@ -39,7 +39,7 @@ public final class VirtualShelfMenus {
 
     /** Navigation of an already migrated, server-owned menu; never performs migration. */
     public static boolean openRetired(ServerPlayer owner, boolean shelves) {
-        if (!EnchantingFeatureGate.enabled() ||
+        if (!PortableEnchantingCutover.ready() ||
             VirtualShelfService.items(owner).size() != VirtualShelfLayout.CAPACITY) return false;
         if (shelves) {
             return owner.openMenu(new SimpleMenuProvider(
