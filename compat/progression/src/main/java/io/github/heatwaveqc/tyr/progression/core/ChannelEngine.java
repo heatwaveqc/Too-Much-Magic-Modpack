@@ -97,6 +97,25 @@ public final class ChannelEngine {
                 skills.remove(skill.id());
         return ledger.with(path.id(),new Track(after.joined(),0,0,0,skills,after.milestones(),after.counters()));
     }
+    /** Count current paid ranks in this Path, never projected automatic ranks or available XP. */
+    public static long investedRanks(Ledger ledger,String path,ChannelConfig config){
+        long count=ledger.economy().paidRanks().stream().filter(r->r.path().equals(path)).count();
+        // Native currencies have no economy receipt; their payment receipts are disjoint.
+        String prefix=path+"|";
+        for(var row:ledger.payments().entrySet())if(row.getKey().startsWith(prefix)){
+            for(String receipt:row.getValue()){
+                String value=receipt.startsWith("!")?receipt.substring(1):receipt;
+                int split=value.lastIndexOf('|');
+                if(split<1)continue;
+                var currency=config.channels().get(value.substring(0,split));
+                if(currency!=null&&!currency.magic()&&Integer.parseInt(value.substring(split+1))>0)count++;
+            }
+        }
+        return count;
+    }
+    private static long gateInvestment(Ledger ledger,Definition.Path tree,ChannelConfig config,Definition.Skill skill){
+        return skill.investedRankRequirements().isEmpty()?0:investedRanks(ledger,tree.id(),config);
+    }
     public static Ledger buy(Ledger ledger,Definition.Path tree,ChannelConfig config,String skillId){
         if(config.achievements().containsKey(new ChannelConfig.SkillKey(tree.id(),skillId)))
             return ledger;
@@ -114,7 +133,7 @@ public final class ChannelEngine {
         // Shipped generic XP economy charges one point per paid rank.
         // Legacy native currencies retain their source-defined cost until migrated.
         int pointCost=binding.currency().magic()?1:skill.price(view.skillRank(skillId));
-        var after=ProgressionMath.buy(tree,before,skillId,pointCost);
+        var after=ProgressionMath.buy(tree,before,skillId,pointCost,gateInvestment(ledger,tree,config,skill));
         if(after==before)return ledger;
         Wallet reward=binding.awardCurrency()==null?null:ledger.wallet(binding.awardCurrency().id());
         if(binding.awardPoints()>0&&(reward==null||reward.points()>Integer.MAX_VALUE-binding.awardPoints()))return ledger;
@@ -174,7 +193,7 @@ public final class ChannelEngine {
         if(projection!=null&&levelBinding!=null&&levelBinding.levelSystem().id().equals(projection.systemId()))rank=view.rank();
         Track candidate=new Track(true,view.xp(),rank,Integer.MAX_VALUE,
                 view.skills(),view.milestones(),view.counters());
-        Track nextRank=ProgressionMath.buy(tree,candidate,skillId,source.pointsPerRank());
+        Track nextRank=ProgressionMath.buy(tree,candidate,skillId,source.pointsPerRank(),gateInvestment(ledger,tree,config,skill));
         if(nextRank==candidate)return ledger;
         var paid=ExperienceEconomy.buy(ledger.economy(),system,tree.id(),skillId,
                 source.pointsPerRank(),source.maxRanks(),cap);

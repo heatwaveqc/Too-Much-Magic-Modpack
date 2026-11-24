@@ -49,7 +49,15 @@ public final class Definition {
     public record Skill(String id, int maxRank, int requiredRank, int baseCost, int stepCost,
                         List<String> requiresSkills, List<String> requiresAnySkills,
                         List<String> requiresMilestones, String choiceGroup,
-                        List<Integer> autoRanks, List<Effect> effects, List<Integer> rankCosts,List<Integer> rankRequirements) {
+                        List<Integer> autoRanks, List<Effect> effects, List<Integer> rankCosts,List<Integer> rankRequirements,
+                        List<Integer> investedRankRequirements) {
+        public Skill(String id,int maxRank,int requiredRank,int baseCost,int stepCost,
+                     List<String> requiresSkills,List<String> requiresAnySkills,List<String> requiresMilestones,
+                     String choiceGroup,List<Integer> autoRanks,List<Effect> effects,
+                     List<Integer> rankCosts,List<Integer> rankRequirements){
+            this(id,maxRank,requiredRank,baseCost,stepCost,requiresSkills,requiresAnySkills,
+                requiresMilestones,choiceGroup,autoRanks,effects,rankCosts,rankRequirements,List.of());
+        }
         public Skill(String id,int maxRank,int requiredRank,int baseCost,int stepCost,
                      List<String> requiresSkills,List<String> requiresAnySkills,List<String> requiresMilestones,
                      String choiceGroup,List<Integer> autoRanks,List<Effect> effects){
@@ -62,10 +70,20 @@ public final class Definition {
             autoRanks = List.copyOf(autoRanks);
             effects = List.copyOf(effects);
             rankCosts=List.copyOf(rankCosts);rankRequirements=List.copyOf(rankRequirements);
+            investedRankRequirements=List.copyOf(investedRankRequirements);
+            if(!investedRankRequirements.isEmpty()&&(investedRankRequirements.size()!=maxRank
+                || !autoRanks.isEmpty() || investedRankRequirements.stream().anyMatch(n->n<0)))
+                throw new IllegalArgumentException("Invalid rank_invested_requirements");
+            for(int i=1;i<investedRankRequirements.size();i++)
+                if(investedRankRequirements.get(i)<investedRankRequirements.get(i-1))
+                    throw new IllegalArgumentException("Invested rank gates must not decrease");
             if(!rankRequirements.isEmpty()&&(rankRequirements.size()!=maxRank||rankRequirements.stream().anyMatch(n->n<1)))throw new IllegalArgumentException("Invalid rank_level_requirements");
             if(!rankCosts.isEmpty()&&(rankCosts.size()!=maxRank||rankCosts.stream().anyMatch(n->n<0)))throw new IllegalArgumentException("Invalid rank_costs");
         }
         public int nextRequiredRank(int owned){return rankRequirements.isEmpty()?requiredRank:rankRequirements.get(Math.max(0,Math.min(owned,rankRequirements.size()-1)));}
+        public int nextInvestedRequirement(int owned){
+            return investedRankRequirements.isEmpty()?0:investedRankRequirements.get(Math.max(0,Math.min(owned,investedRankRequirements.size()-1)));
+        }
         public int price(int owned) {
             if(!rankCosts.isEmpty())return rankCosts.get(Math.max(0,Math.min(owned,rankCosts.size()-1)));
             return (int) Math.min(Integer.MAX_VALUE, (long) baseCost + (long) stepCost * owned);
