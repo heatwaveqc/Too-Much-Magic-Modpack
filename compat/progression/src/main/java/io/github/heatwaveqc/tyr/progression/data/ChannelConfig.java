@@ -36,6 +36,21 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
         unifiedSources.forEach((key,value)->copiedSources.put(key,List.copyOf(value)));
         unifiedSources=Map.copyOf(copiedSources);
     }
+    /** Native curves are reusable config, not unconditional earning destinations.
+     * A joined/eligible Path must actually bind this currency or mastery level. */
+    public boolean usesNative(String system,java.util.function.Predicate<String> activePath){
+        var nativeChannel=channels.get(system);
+        if(nativeChannel==null||nativeChannel.magic())return false;
+        for(var row:paths.entrySet())
+            if(row.getValue().id().equals(system)&&activePath.test(row.getKey()))return true;
+        for(var row:skills.entrySet()){
+            var binding=row.getValue();
+            if((binding.currency().id().equals(system)||binding.levelSystem().id().equals(system))
+                    &&activePath.test(row.getKey().path()))return true;
+        }
+        return false;
+    }
+
     public static Map<String,XpChannel> definitions(Map<String,JsonObject> raw,double growth){
         var result=new HashMap<String,XpChannel>();result.put(XpChannel.MXP,XpChannel.mxp(growth));
         for(var entry:raw.entrySet()){

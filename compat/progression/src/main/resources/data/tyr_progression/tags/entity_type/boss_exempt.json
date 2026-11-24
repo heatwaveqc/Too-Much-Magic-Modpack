@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wither",
+    {
+      "id": "feywild:titania",
+      "required": false
+    },
+    {
+      "id": "feywild:mab",
+      "required": false
+    },
+    {
+      "id": "feywild:oberon",
+      "required": false
+    },
+    {
+      "id": "feywild:ashen_lord",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:dead_king",
+      "required": false
+    }
+  ]
+}

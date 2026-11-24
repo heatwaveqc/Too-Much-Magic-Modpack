@@ -53,11 +53,14 @@ public final class MxpMod {
             .then(Commands.literal("status").executes(ctx -> {
                 ServerPlayer player = ctx.getSource().getPlayerOrException();
                 Wallet account = MxpService.inspect(player);
+                var catalog=io.github.heatwaveqc.tyr.progression.data.PathRegistry.economyCatalog();
+                String id=io.github.heatwaveqc.tyr.progression.model.XpChannel.MXP;
                 ctx.getSource().sendSuccess(() -> Component.literal(String.format(
-                    "MXP lifetime levels: %d | progress: %.4f/1000 | "
-                    + "unspent points: %d | growth factor: %.4f | first completions: %d",
+                    "MXP current levels: %d | progress: %.4f/%s | "
+                    + "unspent points: %d | configured base growth: %.4f | first completions: %d",
                     account.magicLevels(), account.magicProgress(),
-                    account.points(), MxpProgressionConfig.GROWTH_FACTOR.get(),
+                    catalog.systems().get(id).xpPerPoint().toPlainString(),
+                    account.points(), catalog.growth(id),
                     account.firstCompletions().size())), false);
                 return 1;
             }))
@@ -67,12 +70,8 @@ public final class MxpMod {
                         .executes(ctx -> {
                             ServerPlayer player = ctx.getSource().getPlayerOrException();
                             double amount = DoubleArgumentType.getDouble(ctx, "amount");
-                            // New synthetic event ID guarantees the diagnostic is a
-                            // FIRST ritual, hence undivided. Not a survival source.
-                            String unique = UUID.randomUUID().toString();
-                            MxpService.AwardStatus award = MxpService.ritual(player,
-                                "tyr_progression:diagnostic/" + unique,
-                                "diagnostic:" + unique, amount, amount);
+                            MxpService.AwardStatus award = MxpService.diagnostic(player,
+                                "diagnostic:" + UUID.randomUUID(),amount,true);
                             output(ctx.getSource(), award);
                             return award.accepted() ? 1 : 0;
                         })))
@@ -81,9 +80,8 @@ public final class MxpMod {
                         .executes(ctx -> {
                             ServerPlayer player = ctx.getSource().getPlayerOrException();
                             double amount = DoubleArgumentType.getDouble(ctx, "base");
-                            MxpService.AwardStatus award = MxpService.resource(player,
-                                "tyr_progression:diagnostic", "diagnostic:" + UUID.randomUUID(),
-                                amount, 1000, 1);
+                            MxpService.AwardStatus award = MxpService.diagnostic(player,
+                                "diagnostic:" + UUID.randomUUID(),amount,false);
                             output(ctx.getSource(), award);
                             return award.accepted() ? 1 : 0;
                         })))));
@@ -92,7 +90,7 @@ public final class MxpMod {
     private static void output(net.minecraft.commands.CommandSourceStack source,
                                MxpService.AwardStatus award) {
         source.sendSuccess(() -> Component.literal(String.format(
-            "MXP %s: effective %.4f, lifetime P=%d, progress %.4f (%s)",
+            "MXP %s: effective %.4f, current P=%d, progress %.4f (%s)",
             award.accepted() ? "credited" : "rejected", award.effectiveXP(),
             award.lifetimeLevels(), award.progress(), award.note())), false);
     }

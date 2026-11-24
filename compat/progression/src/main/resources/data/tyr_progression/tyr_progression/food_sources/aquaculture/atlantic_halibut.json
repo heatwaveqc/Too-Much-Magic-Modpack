@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "aquaculture:atlantic_halibut",
+  "provenance": "c:foods/raw_fish",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/raw_fish",
+    "#tmm:foods/raw"
+  ]
+}

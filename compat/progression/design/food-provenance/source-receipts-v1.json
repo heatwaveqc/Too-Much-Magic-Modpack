@@ -1,0 +1,545 @@
+{
+  "schema": 1,
+  "scope": "source_tag_roots_and_verified_single_source_recipes",
+  "policy": "Nutrition comes exclusively from configurable FoodPolicyRules; this is a source/portion classification ledger, not item-specific food values.",
+  "pinned_sources": [
+    {
+      "source": "pams-harvestcraft-2-crops",
+      "sha1": "2a735b24c61a0007fe98de6cc2dc5d5fff4915a2",
+      "receipt": "pinned_native_c_fruits_and_c_vegetables_tags"
+    },
+    {
+      "source": "pams-harvestcraft-2-trees",
+      "sha1": "85d54e1d4d32f669d3f183945dc813360263ca91",
+      "receipt": "pinned_native_c_fruits_and_c_vegetables_tags"
+    },
+    {
+      "source": "aquaculture",
+      "sha1": "972b0ab7f0f07f4dbcb00af80c1addf5325d0683",
+      "receipt": "pinned_native_c_foods_raw_fish_tag"
+    },
+    {
+      "source": "farmers-delight",
+      "sha1": "27675ddfcb8cc37e6ea1ab6c15051c7949d94657",
+      "receipt": "pinned_native_cutting_output_and_upstream_1_21_input_yield"
+    },
+    {
+      "source": "dragon-survival",
+      "sha1": "e11429dda4688711e174625bb7420873a255a715",
+      "receipt": "pinned_native_charred_meat_smelting"
+    },
+    {
+      "source": "huaxia-delight",
+      "sha1": "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919",
+      "receipt": "owner_supplied_verified_jar_source_51_food_components",
+      "not_indexed": true
+    }
+  ],
+  "native_tag_roots": [
+    {
+      "namespace": "pamhc2crops",
+      "suffix": "item",
+      "source": "pams-harvestcraft-2-crops",
+      "family": "fruit",
+      "stage": "raw",
+      "provenance": "c:fruits",
+      "stems": [
+        "blackberry",
+        "blueberry",
+        "cactusfruit",
+        "candleberry",
+        "cantaloupe",
+        "cloudberry",
+        "cranberry",
+        "elderberry",
+        "grape",
+        "greengrape",
+        "guarana",
+        "huckleberry",
+        "juniperberry",
+        "kiwi",
+        "mulberry",
+        "pineapple",
+        "raspberry",
+        "strawberry",
+        "wolfberry"
+      ]
+    },
+    {
+      "namespace": "pamhc2crops",
+      "suffix": "item",
+      "source": "pams-harvestcraft-2-crops",
+      "family": "vegetable",
+      "stage": "raw",
+      "provenance": "c:vegetables",
+      "stems": [
+        "arrowroot",
+        "artichoke",
+        "asparagus",
+        "bellpepper",
+        "bokchoy",
+        "broccoli",
+        "brusselsprout",
+        "cabbage",
+        "calabash",
+        "cassava",
+        "cauliflower",
+        "celery",
+        "chilipepper",
+        "cucumber",
+        "eggplant",
+        "garlic",
+        "jicama",
+        "kale",
+        "kohlrabi",
+        "leek",
+        "lettuce",
+        "lotus",
+        "nettles",
+        "nopales",
+        "okra",
+        "onion",
+        "parsnip",
+        "peanut",
+        "peas",
+        "radish",
+        "rhubarb",
+        "rutabaga",
+        "scallion",
+        "spinach",
+        "sweetpotato",
+        "taro",
+        "tomatillo",
+        "tomato",
+        "turnip",
+        "waterchestnut",
+        "whitemushroom",
+        "wintersquash",
+        "zucchini"
+      ]
+    },
+    {
+      "namespace": "pamhc2trees",
+      "suffix": "item",
+      "source": "pams-harvestcraft-2-trees",
+      "family": "fruit",
+      "stage": "raw",
+      "provenance": "c:fruits",
+      "stems": [
+        "apricot",
+        "banana",
+        "breadfruit",
+        "cherry",
+        "date",
+        "dragonfruit",
+        "durian",
+        "fig",
+        "gooseberry",
+        "grapefruit",
+        "guava",
+        "jackfruit",
+        "lemon",
+        "lime",
+        "lychee",
+        "mango",
+        "orange",
+        "papaya",
+        "passionfruit",
+        "pawpaw",
+        "peach",
+        "pear",
+        "persimmon",
+        "plum",
+        "pomegranate",
+        "rambutan",
+        "soursop",
+        "starfruit",
+        "tamarind"
+      ]
+    },
+    {
+      "namespace": "pamhc2trees",
+      "suffix": "item",
+      "source": "pams-harvestcraft-2-trees",
+      "family": "vegetable",
+      "stage": "raw",
+      "provenance": "c:vegetables",
+      "stems": [
+        "avocado",
+        "olive"
+      ]
+    },
+    {
+      "namespace": "aquaculture",
+      "suffix": "",
+      "source": "aquaculture",
+      "family": "fish",
+      "stage": "raw",
+      "provenance": "c:foods/raw_fish",
+      "stems": [
+        "arapaima",
+        "atlantic_cod",
+        "atlantic_halibut",
+        "atlantic_herring",
+        "bayad",
+        "blackfish",
+        "bluegill",
+        "boulti",
+        "brown_shrooma",
+        "brown_trout",
+        "capitaine",
+        "carp",
+        "catfish",
+        "gar",
+        "muskellunge",
+        "pacific_halibut",
+        "perch",
+        "pink_salmon",
+        "piranha",
+        "pollock",
+        "rainbow_trout",
+        "red_grouper",
+        "red_shrooma",
+        "smallmouth_bass",
+        "synodontis",
+        "tambaqui",
+        "tuna"
+      ]
+    }
+  ],
+  "verified_direct": [
+    {
+      "item": "minecraft:apple",
+      "family": "fruit",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:chorus_fruit",
+      "family": "fruit",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "minecraft:melon_slice",
+      "family": "fruit",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:sweet_berries",
+      "family": "fruit",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:glow_berries",
+      "family": "fruit",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:glow_berries"
+    },
+    {
+      "item": "minecraft:carrot",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:beetroot",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:potato",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:potato"
+    },
+    {
+      "item": "farmersdelight:cabbage",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "c:foods/cabbage"
+    },
+    {
+      "item": "farmersdelight:tomato",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "c:foods/tomato"
+    },
+    {
+      "item": "farmersdelight:onion",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "c:foods/onion"
+    },
+    {
+      "item": "minecraft:beef",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:porkchop",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:chicken",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:mutton",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:rabbit",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:cod",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:tropical_fish",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:tropical_fish"
+    },
+    {
+      "item": "minecraft:pufferfish",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "minecraft:pufferfish"
+    },
+    {
+      "item": "aquaculture:fish_fillet_raw",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "aquaculture:fish_fillet_raw"
+    },
+    {
+      "item": "minecraft:cooked_beef",
+      "family": "meat",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_beef"
+    },
+    {
+      "item": "minecraft:cooked_porkchop",
+      "family": "meat",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "minecraft:cooked_chicken",
+      "family": "meat",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "minecraft:cooked_mutton",
+      "family": "meat",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_mutton"
+    },
+    {
+      "item": "minecraft:cooked_rabbit",
+      "family": "meat",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_rabbit"
+    },
+    {
+      "item": "minecraft:cooked_cod",
+      "family": "fish",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_cod"
+    },
+    {
+      "item": "minecraft:cooked_salmon",
+      "family": "fish",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:cooked_salmon"
+    },
+    {
+      "item": "minecraft:baked_potato",
+      "family": "vegetable",
+      "stage": "cooked",
+      "source_units": 1,
+      "provenance": "minecraft:baked_potato"
+    },
+    {
+      "item": "huaxiadelight:chili",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:chili",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:soybean",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:soybean",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:ginger",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:ginger",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:garlic",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:garlic",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:scallion",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:scallion",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:raw_donkey_meat",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:raw_donkey_meat",
+      "not_indexed": true
+    },
+    {
+      "item": "huaxiadelight:raw_pork_intestine",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 1,
+      "provenance": "huaxiadelight:raw_pork_intestine",
+      "not_indexed": true
+    }
+  ],
+  "verified_processing": [
+    {
+      "item": "farmersdelight:cod_slice",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 0.5,
+      "provenance": "farmersdelight:cutting/cod",
+      "parent": "minecraft:cod",
+      "count": 2,
+      "source_ratio": "1/2"
+    },
+    {
+      "item": "farmersdelight:salmon_slice",
+      "family": "fish",
+      "stage": "raw",
+      "source_units": 0.5,
+      "provenance": "farmersdelight:cutting/salmon",
+      "parent": "minecraft:salmon",
+      "count": 2,
+      "source_ratio": "1/2"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf",
+      "family": "vegetable",
+      "stage": "raw",
+      "source_units": 0.5,
+      "provenance": "farmersdelight:cutting/cabbage",
+      "parent": "farmersdelight:cabbage",
+      "count": 2,
+      "source_ratio": "1/2"
+    },
+    {
+      "item": "farmersdelight:minced_beef",
+      "family": "meat",
+      "stage": "raw",
+      "source_units": 0.6666666666666666,
+      "provenance": "farmersdelight:cutting/beef",
+      "parent": "minecraft:beef",
+      "count": 2,
+      "source_ratio": "2/3"
+    },
+    {
+      "item": "dragonsurvival:charred_meat",
+      "family": "meat",
+      "stage": "charred",
+      "source_units": 1,
+      "provenance": "dragonsurvival:smelting/charred_meat",
+      "parent": "minecraft:cooked_beef",
+      "count": 1,
+      "source_ratio": "1/1"
+    }
+  ],
+  "explicit_holds": [
+    {
+      "item": "minecraft:suspicious_stew",
+      "reason": "variable ingredients and native status effect; no single source budget"
+    },
+    {
+      "item": "huaxiadelight:cooking_oil",
+      "reason": "not registered food; recipe routes produce one or two units"
+    },
+    {
+      "item": "huaxiadelight:dough_wrapper",
+      "reason": "not registered food; recipe routes produce one or two units"
+    },
+    {
+      "item": "huaxiadelight:baozi",
+      "reason": "multiple cooked/mixed ingredients; conserve native effects until recipe graph resolved"
+    },
+    {
+      "item": "farmersdelight:beef_stew",
+      "reason": "mixed recipe ingredient quantities and servings require graph evaluation"
+    }
+  ]
+}

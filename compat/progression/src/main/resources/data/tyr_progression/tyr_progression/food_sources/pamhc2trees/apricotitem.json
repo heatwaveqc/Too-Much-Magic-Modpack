@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "pamhc2trees:apricotitem",
+  "provenance": "c:fruits",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/fruit",
+    "#tmm:foods/raw"
+  ]
+}
