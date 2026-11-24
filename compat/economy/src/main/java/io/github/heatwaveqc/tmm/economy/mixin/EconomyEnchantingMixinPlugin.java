@@ -11,11 +11,15 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 /** Decide before resolving optional target types, not after injection. */
 public final class EconomyEnchantingMixinPlugin implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (!mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
+        boolean eidolon = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.EidolonPersonalFilterMixin");
+        if (!eidolon && !mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
             return true; // No changes to existing unrelated mixins.
         LoadingModList list = LoadingModList.get();
-        return list != null && EnchantingFeatureGate.enabled(id -> list.getMods().stream()
+        if (list == null) return false;
+        boolean enabled = EnchantingFeatureGate.enabled(id -> list.getMods().stream()
             .anyMatch(mod -> mod.getModId().equals(id)));
+        return enabled && (!eidolon || list.getMods().stream().anyMatch(mod ->
+            mod.getModId().equals("eidolon_repraised") && mod.getVersion().toString().equals("0.5.0.8")));
     }
     @Override public void onLoad(String mixinPackage) {}
     @Override public String getRefMapperConfig() { return null; }
