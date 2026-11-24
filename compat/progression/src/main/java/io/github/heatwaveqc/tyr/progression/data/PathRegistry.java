@@ -42,6 +42,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         return ExperienceEconomyRuntime.current();
     }
     public static Map<String,XpChannel> economies(){return channelConfig.channels();}
+    private static volatile Map<String,TrainingXpSpec> training=Map.of();
+    public static Map<String,TrainingXpSpec> trainingXp(){return training;}
 
     private record SourceKey(String system,int index) {}
     private static volatile Map<String,Condition<ServerPlayer>> economyGates=Map.of();
@@ -100,6 +102,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterXpPolicy> xpPolicies = new HashMap<>();
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
+        Map<String,TrainingXpSpec> newTraining=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
@@ -179,6 +182,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                     }
                 }
                 nextGates.putAll(localGates);
+                var physical=TrainingXpSpec.parse(raw,systems);
+                if(physical!=null)newTraining.put(path.id(),physical);
                 rawPaths.put(path.id(),raw);
                 next.put(path.id(),path);
                 modes.put(path.id(),element.getAsJsonObject().has("enrollment") ?
@@ -203,6 +208,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        training=Map.copyOf(newTraining);
         compatibility=nextCompatibility;
         ExperienceEconomyRuntime.install(economy);
         economyGates=Map.copyOf(newEconomyGates);

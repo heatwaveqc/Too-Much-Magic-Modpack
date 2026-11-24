@@ -20,6 +20,7 @@ public final class RecentBlockCredits {
         if (LAST.size() > 8192) {
             LAST.entrySet().removeIf(e -> tick < e.getValue() || tick - e.getValue() > 10);
         }
+        // The caller uses the ORIGINAL break tick even on deferred callbacks.
         return previous == null || previous != tick;
     }
 
