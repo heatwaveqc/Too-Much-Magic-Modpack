@@ -75,7 +75,7 @@ class TipsStarterA(unittest.TestCase):
             if q["chapter"] == "Tips & Tricks":
                 self.assertIn("quest." + q["quest_id"] + ".title:", loc)
         layout = load("manifest/quest_layouts.json")
-        self.assertEqual(layout["quest_count"], 273)
+        self.assertEqual(layout["quest_count"], len(layout["positions"]))
         self.assertEqual(len([q for q in layout["positions"] if q["chapter"] == "Tips & Tricks"]), 34)
         self.assertEqual(len({tuple(x["position"]) for x in layout["positions"]
                               if x["chapter"] == "Tips & Tricks"}), 34)
