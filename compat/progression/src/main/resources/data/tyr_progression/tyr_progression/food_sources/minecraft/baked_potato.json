@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:baked_potato",
+  "provenance": "minecraft:baked_potato",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/vegetable",
+    "#tmm:foods/cooked"
+  ]
+}
