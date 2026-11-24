@@ -25,7 +25,29 @@ class HunterMutationPolicyTest {
         assertTrue(p.eligible("minecraft:speed",false));
         assertFalse(p.eligible("minecraft:absorption",false));
         assertFalse(p.eligible("modded:instant_effect",true));
+        assertFalse(p.eligible("modded:ordinary",false));
+        assertTrue(p.moddedEffectWhitelist().isEmpty());
         assertEquals(2,TestPaths.read("test:mutagenic_hunter",source).maxRank());
+    }
+
+    @Test void vanillaDenyAndModdedOptInAreIndependent(){
+        var root=JsonParser.parseString(CONFIG.replace("effect_blacklist","vanilla_effect_blacklist")).getAsJsonObject();
+        var settings=root.getAsJsonObject("hunter_mutations");
+        settings.add("modded_effect_whitelist",JsonParser.parseString("[\"example:blessing\"]"));
+        var policy=HunterMutationPolicy.parse(root);
+        assertTrue(policy.eligible("minecraft:speed",false));
+        assertTrue(policy.eligible("minecraft:poison",false)); // not denied in this test datapack
+        assertFalse(policy.eligible("minecraft:saturation",false));
+        assertTrue(policy.eligible("example:blessing",false));
+        assertFalse(policy.eligible("example:blessing",true));
+        assertFalse(policy.eligible("example:other",false));
+        settings.add("modded_effect_whitelist",JsonParser.parseString("[\"minecraft:speed\"]"));
+        assertThrows(IllegalArgumentException.class,()->HunterMutationPolicy.parse(root));
+        settings.add("modded_effect_whitelist",JsonParser.parseString("[\"example:blessing\",\"example:blessing\"]"));
+        assertThrows(IllegalArgumentException.class,()->HunterMutationPolicy.parse(root));
+        settings.add("modded_effect_whitelist",JsonParser.parseString("[]"));
+        settings.add("vanilla_effect_blacklist",JsonParser.parseString("[\"example:blessing\"]"));
+        assertThrows(IllegalArgumentException.class,()->HunterMutationPolicy.parse(root));
     }
 
     @Test void invalidConfigurationFailsClosed() {

@@ -20,6 +20,13 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<MutationLedger>> MUTATIONS =
         ATTACHMENTS.register("mutations", () -> AttachmentType.builder(MutationLedger::empty)
             .serialize(MutationLedger.codec()).copyOnDeath().build());
+    public static final Supplier<AttachmentType<TooltipMilestones>> TOOLTIP_MILESTONES =
+        ATTACHMENTS.register("tooltip_milestones", () -> AttachmentType.builder(TooltipMilestones::empty)
+            .serialize(TooltipMilestonesCodec.CODEC).copyOnDeath().build());
+    public static final Supplier<AttachmentType<PersonalEnchantFilterState>> PERSONAL_ENCHANT_FILTER =
+        ATTACHMENTS.register("personal_enchant_filter", () ->
+            AttachmentType.builder(PersonalEnchantFilterState::empty)
+                .serialize(PersonalEnchantFilterState.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(LedgerCodec.CODEC).copyOnDeath().build());

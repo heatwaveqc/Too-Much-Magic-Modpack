@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tyr.progression.core.MutationPowerPolicy;
 import io.github.heatwaveqc.tyr.progression.data.HunterMutationPolicy;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.state.HunterMutationState;
@@ -18,7 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-/** Server-only mutation progress, permanent effect refresh and food exhaustion. */
+/** Saved mutation progress, derived passive potency and original metabolic cost. */
 public final class HunterMutations {
     private HunterMutations() {}
     /** A brew has no owner selector yet: refuse ambiguous eligible configurations. */
@@ -39,7 +40,7 @@ public final class HunterMutations {
     private static boolean validEffect(HunterMutationPolicy policy, MobEffectInstance effect) {
         if (effect.getDuration() <= 0 || effect.getAmplifier() < 0) return false;
         String id = effectId(effect);
-        return !id.isEmpty() && policy.eligible(id,effect.getEffect().value().isInstantenous());
+        return policy.eligible(id,effect.getEffect().value().isInstantenous());
     }
 
     public static boolean hasEligibleEffect(PotionContents contents) {
@@ -84,6 +85,8 @@ public final class HunterMutations {
         }
         if (next == old) return false; // already capped: do not eat potion for nothing.
         player.setData(ProgressionAttachments.MUTATIONS.get(),player.getData(ProgressionAttachments.MUTATIONS.get()).with(owner,next));
+        MutationPowers.reconcile(player);
+        PassivePowers.reconcile(player,true);
         long target = policy.targetDurationTicks();
         for (String id : changed.stream().distinct().limit(3).toList()) {
             String msg = id;
@@ -98,43 +101,47 @@ public final class HunterMutations {
         return true;
     }
 
-    public static void tick(ServerPlayer player) {
-        if(player.isCreative()||player.isSpectator())return;
-        for(String owner:eligiblePaths(player))tickPath(player,owner);
+    /** Highest eligible potency across Paths; no duplicate mutation or second persistence layer. */
+    private static final ThreadLocal<Boolean> RESOLVING=new ThreadLocal<>();
+    public static Map<String,Integer> active(ServerPlayer player){
+        // A data-defined eligibility condition may itself query native effects.
+        // Do not recursively grant a mutation through its own prerequisite.
+        if(Boolean.TRUE.equals(RESOLVING.get()))return Map.of();
+        if(player.getData(ProgressionAttachments.MUTATIONS.get()).paths().isEmpty())return Map.of();
+        RESOLVING.set(true);
+        try{return resolveActive(player);}finally{RESOLVING.remove();}
     }
-    private static void tickPath(ServerPlayer player,String owner){
-        HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
-        HunterMutationState state=state(player,owner);
-        if (state.unlocked().isEmpty()) return;
-
-        // Count DISTINCT ACTIVE eligible effects, not levels or existing Potion buffs.
-        // Re-blacklisting an old mutation stops both its effect and its metabolic tax.
-        // Called once per 20 server ticks by ProgressionEvents.
-        long activeMutations = state.unlocked().keySet().stream().filter(key -> {
-            ResourceLocation id = ResourceLocation.tryParse(key);
-            if (id == null) return false;
-            var holder = BuiltInRegistries.MOB_EFFECT.getHolder(id).orElse(null);
-            return holder != null && policy.eligible(key,holder.value().isInstantenous());
-        }).count();
-        if (activeMutations == 0) return;
-        player.causeFoodExhaustion(
-            policy.exhaustionPerMutationTick() * 20 * activeMutations);
-
-        // Periodic short refresh rather than a mutable infinite effect. When
-        // Hunter eligibility is lost, these expire naturally within ~12 seconds.
-        if (player.tickCount % 100 != 0) return;
-        for (Map.Entry<String,Integer> mutation : state.unlocked().entrySet()) {
-            ResourceLocation id = ResourceLocation.tryParse(mutation.getKey());
-            if (id == null || !policy.eligible(mutation.getKey(),false)) continue;
-            var effect = BuiltInRegistries.MOB_EFFECT.getHolder(id).orElse(null);
-            if (effect == null || effect.value().isInstantenous()) continue;
-            int amplifier = Math.min(mutation.getValue(),policy.maximumAmplifier());
-            if (amplifier < 0) continue;
-            MobEffectInstance existing = player.getEffect(effect);
-            if (existing != null && (existing.getAmplifier() > amplifier ||
-                (existing.getAmplifier() == amplifier && existing.getDuration() > 100))) continue;
-            player.addEffect(new MobEffectInstance(effect,240,amplifier,true,false,true));
+    private static Map<String,Integer> resolveActive(ServerPlayer player){
+        if(!player.isAlive()||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player)
+            ||player instanceof net.neoforged.neoforge.common.util.FakePlayer)return Map.of();
+        Map<String,Integer> result=new java.util.TreeMap<>();
+        for(String owner:eligiblePaths(player)){
+            HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
+            for(var mutation:state(player,owner).unlocked().entrySet()){
+                String key=mutation.getKey();
+                if(!policy.eligible(key,false))continue;
+                var holder=BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(key)).orElse(null);
+                int amplifier=Math.min(mutation.getValue(),policy.maximumAmplifier());
+                if(holder!=null&&!holder.value().isInstantenous()&&amplifier>=0)
+                    result.merge(key,amplifier,Math::max);
+            }
         }
+        return Map.copyOf(result);
+    }
+    public static void tick(ServerPlayer player) {
+        if(player.isCreative()||player.isSpectator()||!player.isAlive()||NewbieMode.isNewbie(player))return;
+        // Charge each active mutation once; overlapping policy sources do not stack.
+        Map<String,Float> costs=new java.util.HashMap<>();
+        var active=active(player);
+        for(String owner:eligiblePaths(player)){
+            var policy=PathRegistry.hunterMutationPolicy(owner);
+            for(String id:state(player,owner).unlocked().keySet())
+                if(active.containsKey(id)&&policy.eligible(id,false))
+                    costs.merge(id,policy.exhaustionPerMutationTick(),Math::max);
+        }
+        float cost=0;
+        for(float value:costs.values())cost+=value;
+        if(cost>0)player.causeFoodExhaustion(cost*20);
     }
 
     public static String summary(ServerPlayer player) {
@@ -150,7 +157,8 @@ public final class HunterMutations {
             .reduce((a,b) -> a + ", " + b).orElse("none");
         return "Permanent mutations: " + state.unlocked().size()
             + " | target " + (policy.targetDurationTicks()/20) + " seconds per potency"
-            + " | exhaustion/tick " + (policy.exhaustionPerMutationTick() * state.unlocked().size())
+            + " | exhaustion/tick " + (policy.exhaustionPerMutationTick() * active(player).size())
+            + " | dormant: " + state.unlocked().keySet().stream().filter(id->!active(player).containsKey(id)).count()
             + " | unlocked: " + unlocked;
     }
 }
