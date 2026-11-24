@@ -27,6 +27,15 @@ public final class VerifiedCombatXp {
     private record Before(float health,double max,boolean fist,String attacker,
                           DamageSource source,long tick) {}
     private static final Map<UUID,Before> PENDING=new HashMap<>();
+    @FunctionalInterface public interface StrictVictory {
+        void completed(ServerPlayer owner,LivingEntity victim);
+    }
+    private static final java.util.List<StrictVictory> VICTORY_LISTENERS=
+        new java.util.concurrent.CopyOnWriteArrayList<>();
+    /** Trusted server-only observers: boss-specific deeds and gliding stay external. */
+    public static void registerStrictVictory(StrictVictory listener){
+        VICTORY_LISTENERS.add(java.util.Objects.requireNonNull(listener));
+    }
 
     private static boolean validVictim(LivingEntity victim){
         if(victim instanceof Player)return false;
@@ -106,7 +115,18 @@ public final class VerifiedCombatXp {
         double baseline=proof.baselineMaxHp()>0?proof.baselineMaxHp():victim.getMaxHealth();
         boolean directFistFinisher=credited.getUUID().toString()
             .equals(barehandOwner(victim,event.getSource()));
-        TrainingRewards.kill(credited,baseline,proof,directFistFinisher,
-            victim.level().getGameTime());
+        long now=victim.level().getGameTime();
+        TrainingRewards.kill(credited,baseline,proof,directFistFinisher,now);
+        if(directFistFinisher)for(var entry:PathRegistry.trainingXp().entrySet()){
+            if(TrainingRewards.eligible(credited,entry.getKey())
+                    &&proof.strict(credited.getUUID().toString(),
+                        now,entry.getValue().strictWindow())){
+                // This only emits a verified generic completion. It does not
+                // automatically grant Wither deeds, gliding, or extra boss MXP.
+                for(StrictVictory observer:VICTORY_LISTENERS)
+                    observer.completed(credited,victim);
+                break;
+            }
+        }
     }
 }
