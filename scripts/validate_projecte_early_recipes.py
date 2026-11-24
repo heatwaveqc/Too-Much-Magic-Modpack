@@ -57,6 +57,29 @@ def require_positive_dust_emc(values: dict) -> None:
 
 
 def validate(root: Path, emc_map: dict | None = None) -> None:
+    # These are ProjectE EMC graph conversions, never physical crafting recipes.
+    # Match the original native 40-output costs so the mapper tracks TMM's
+    # live EMC inputs, rather than freezing historical 1/8/208 values.
+    conversion_data = read(root, "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json")
+    assert conversion_data.get("replace", False) is False
+    assert set(conversion_data["groups"]) == {"legacy_covalence_dust_costs"}
+    conversions = conversion_data["groups"]["legacy_covalence_dust_costs"]["conversions"]
+    assert len(conversions) == 3
+    item = lambda name: {"type": "projecte:item", "id": name}
+    tag = lambda name, count=1: {"type": "projecte:item", "tag": name, **({"amount": count} if count != 1 else {})}
+    expected = {
+        "low_covalence_dust": [item("minecraft:charcoal"), tag("c:cobblestones/normal", 8)],
+        "medium_covalence_dust": [tag("c:ingots/iron"), tag("c:dusts/redstone")],
+        "high_covalence_dust": [tag("c:gems/diamond"), item("minecraft:coal")],
+    }
+    for conversion in conversions:
+        assert conversion["count"] == 40, "Dust conversion must retain native output batch size"
+        assert conversion["output"] == item(conversion["output"]["id"])
+        name = conversion["output"]["id"].removeprefix("projecte:")
+        assert name in expected and conversion["output"]["id"] == f"projecte:{name}"
+        assert conversion["ingredients"] == expected[name], f"{name}: wrong virtual EMC ingredients"
+    assert {entry["output"]["id"] for entry in conversions} == {f"projecte:{name}" for name in DUSTS}
+
     for name in DUSTS:
         data = recipe(root, name)
         assert_disabled(data, name, f"projecte:{name}")
@@ -117,10 +140,10 @@ def main() -> int:
         if not isinstance(emc_map, dict):
             raise ValueError("EMC map must be JSON object")
     validate(ROOT, emc_map)
-    print("PASS: #44 ProjectE recipe-source contract; no Minecraft recipe load performed")
+    print("PASS: #44 recipe-source and virtual 40-output EMC conversion contracts; no Minecraft recipe load performed")
     if emc_map is None:
-        print("PENDING: actual post-mapping positive Covalence Dust EMC, "
-              "first-Stone knowledge grant and integrated Type C verification")
+        print("SOURCE MAPPING STAGED: calculate dust EMC from virtual conversions; "
+              "actual resulting post-mapping EMC, first-Stone knowledge and gameplay require integrated QA")
     else:
         print("PASS: all three Covalence Dust IDs have positive exported EMC (Type A)")
     return 0
