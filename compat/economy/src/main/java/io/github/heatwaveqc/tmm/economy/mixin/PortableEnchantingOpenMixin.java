@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.economy.mixin;
 
 import io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus;
+import io.github.heatwaveqc.tmm.economy.runtime.enchanting.PortableEnchantingCutover;
 import net.minecraft.server.level.ServerPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -14,7 +15,7 @@ import org.zeith.improvableskills.init.AbilitiesIS;
  * do not enable separately or migrate while old numeric power is usable. */
 @Pseudo
 @Mixin(targets = "org.zeith.improvableskills.net.PacketOpenPortableEnch", remap = false)
-public abstract class PortableEnchantingOpenMixin {
+public abstract class PortableEnchantingOpenMixin implements PortableEnchantingCutover.AbilityRoute {
     @Inject(method = "lambda$serverExecute$0(Lnet/minecraft/server/level/ServerPlayer;Lorg/zeith/improvableskills/api/PlayerSkillData;)V",
         at = @At("HEAD"), cancellable = true, require = 1, remap = false)
     private static void tmm$openNativeApothic(ServerPlayer owner, PlayerSkillData data, CallbackInfo ci) {
