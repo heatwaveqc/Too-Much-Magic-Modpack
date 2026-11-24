@@ -24,7 +24,7 @@ public final class DracolichDiagnostics {
         String goetyVersion = version("goety");
         String forbiddenVersion = version("witchery_forbidden_magic");
         if (!dragonVersion.startsWith("2.0.74")
-                || !goetyVersion.startsWith("3.2.2")
+                || !goetyVersion.startsWith("3.2.3")
                 || !forbiddenVersion.startsWith("0.5.37")) {
             return "Dracolich: unverified mod version; Dragon Survival " + dragonVersion
                     + ", Goety " + goetyVersion

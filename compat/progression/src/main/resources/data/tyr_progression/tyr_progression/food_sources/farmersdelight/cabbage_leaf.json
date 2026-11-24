@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:cabbage_leaf",
+  "provenance": "farmersdelight:cutting/cabbage",
+  "source_units": 0.5,
+  "inferred_tags": [
+    "#c:foods/vegetable",
+    "#tmm:foods/raw"
+  ]
+}
