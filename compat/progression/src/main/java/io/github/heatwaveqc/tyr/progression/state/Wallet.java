@@ -4,12 +4,12 @@ import io.github.heatwaveqc.tyr.progression.model.XpChannel;
 import java.util.List;
 import java.util.ArrayList;
 
-/** One persistent XP/point balance per channel, never one balance per tree. */
+/** Legacy native wallet and read-only generic XP display projection. */
 public record Wallet(long xp, int rank, int points, long magicLevels, double magicProgress,
                      List<String> recentTransactions, List<String> firstCompletions) {
     public Wallet {
         if (xp < 0 || rank < 1 || points < 0 || magicLevels < 0 ||
-            !Double.isFinite(magicProgress) || magicProgress < 0 || magicProgress >= 1000 ||
+            !Double.isFinite(magicProgress) || magicProgress < 0 ||
             recentTransactions.size() > 1024 || firstCompletions.size() > 65536)
             throw new IllegalArgumentException("Invalid XP wallet");
         recentTransactions=List.copyOf(recentTransactions);
@@ -25,6 +25,10 @@ public record Wallet(long xp, int rank, int points, long magicLevels, double mag
         return new Wallet(view.xp(),view.rank(),view.points(),0,0,recentTransactions,firstCompletions);
     }
     public Wallet magic(long levels,double progress,String tx,String first) {
+        // Only this legacy 1,000-XP helper requires a 1,000-XP remainder.
+        // Generic currencies project their actual configured threshold instead.
+        if(!Double.isFinite(progress)||progress<0||progress>=1000)
+            throw new IllegalArgumentException("Invalid legacy MXP progress");
         long gained=levels-magicLevels;
         if(gained<0) throw new IllegalArgumentException("MXP cannot rewind");
         int nextRank=levels>=Integer.MAX_VALUE-1L?Integer.MAX_VALUE:(int)levels+1;

@@ -63,6 +63,8 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
+        NeoForge.EVENT_BUS.addListener(MutationPowers::preTick);
+        NeoForge.EVENT_BUS.addListener(MutationPowers::login);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::logout);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::respawn);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::dimension);
@@ -233,6 +235,7 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            PassivePowers.forget(player);
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
@@ -245,9 +248,10 @@ public final class ProgressionEvents {
             ProgressionMenuNetwork.forget(player);
             SkillActivation.stopAll(player);
             EffectRuntime.reconcile(player);
+            MutationPowers.reconcile(player);
+            VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
-            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
@@ -256,13 +260,18 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
+            PassivePowers.forget(player);
+            VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
+            MutationPowers.forget(player);
+            PassivePowers.forget(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
             BedrockRest.forget(player);
