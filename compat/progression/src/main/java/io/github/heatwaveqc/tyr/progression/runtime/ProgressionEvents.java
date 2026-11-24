@@ -114,7 +114,11 @@ public final class ProgressionEvents {
         HunterExperience.potionFinished(player,event.getItem());
         // Drunk items (potions/teas) can have no Food component.
         // This callback follows a completed use, not a use-start prediction.
-        VerifiedConsumptionXp.finished(player,event.getItem());
+        // Finish means effects were applied; require proof that the held
+        // serving actually changed (stack count, item, or components).
+        // Nondepleting/infinite-use drinks need a dedicated trusted adapter.
+        if(!net.minecraft.world.item.ItemStack.matches(event.getItem(),event.getResultStack()))
+            VerifiedConsumptionXp.finished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         Enrollment.foodFinished(player,event.getItem());
