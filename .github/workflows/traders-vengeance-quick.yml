@@ -33,7 +33,7 @@ jobs:
           root=Path('compat/traders-vengeance')
           cfg=json.loads((root/'src/main/resources/traders_vengeance.mixins.json').read_text())
           assert 'WanderingTraderSpawnerMixin' in cfg['mixins']
-          src=root/'src/main/java/io/github/heatwaveqc/tmm/traders/vengeance'
+          src=root/'src/main/java/io/github/heatwaveqc/traders/vengeance'
           spawn=(src/'mixin/WanderingTraderSpawnerMixin.java').read_text()
           assert '@Redirect' in spawn and 'method = "spawn"' in spawn
           assert 'TraderSpawnRules.allowed' in spawn
