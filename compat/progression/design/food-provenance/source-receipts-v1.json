@@ -526,14 +526,6 @@
       "reason": "variable ingredients and native status effect; no single source budget"
     },
     {
-      "item": "aquaculture:sushi",
-      "reason": "ingredient variants and plant/fish fractions across effective recipes unverified"
-    },
-    {
-      "item": "pamhc2foodextended:orangejuiceitem",
-      "reason": "two-fruit route suggested; quantity and all alternate output routes not yet source-verified"
-    },
-    {
       "item": "huaxiadelight:cooking_oil",
       "reason": "not registered food; recipe routes produce one or two units"
     },

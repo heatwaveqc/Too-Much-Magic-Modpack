@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:seagrass",
+  "provenance": "minecraft:seagrass",
+  "source_units": 1,
+  "inferred_tags": [
+    "#tmm:foods/raw",
+    "#tmm:foods/sea_plants"
+  ]
+}

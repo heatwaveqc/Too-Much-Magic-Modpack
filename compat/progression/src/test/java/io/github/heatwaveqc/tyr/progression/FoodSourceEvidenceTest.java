@@ -66,10 +66,9 @@ class FoodSourceEvidenceTest {
         assertTrue(rules().evaluate("sea_dragon", source.inferredTags(),
             source.sourceUnits(), null).isEmpty(),
             "A mixed dish needs source-provided fractions; tags alone cannot establish ratios");
-        var result = rules().evaluate("sea_dragon", source.inferredTags(),
-            source.sourceUnits(), source.preferredShares().get("sea_dragon")).orElseThrow();
-        assertEquals(5, result.hunger());
-        assertEquals(18, result.theoreticalSaturationPoints(), 0.00001);
+        assertTrue(rules().evaluate("sea_dragon", source.inferredTags(),
+            source.sourceUnits(), source.preferredShares().get("sea_dragon")).isEmpty(),
+            "Deprecated mixed fractional evidence cannot compute the best-input ceiling; native fallback");
     }
 
     @Test void rejectsUnverifiedMalformedOrUnsafelyHugeEvidence() {

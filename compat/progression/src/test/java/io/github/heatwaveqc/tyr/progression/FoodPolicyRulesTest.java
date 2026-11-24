@@ -44,11 +44,12 @@ class FoodPolicyRulesTest {
     @Test void offDietAndMixedFractionsAreConfigurable() {
         var r=rules();
         check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit"),1,null).orElseThrow(),3,12);
-        check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,0.5).orElseThrow(),9,36);
+        assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,0.5).isEmpty(),
+            "An ingredient share alone cannot establish half of the best input; use complete routes");
         assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish"),2,null).isEmpty(),
-            "Ambiguous dish without provenance must keep native outcome");
-        check(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish","#tmm:foods/cooked"),2,0.5)
-            .orElseThrow(),5,18);
+            "Ambiguous dish without recipe alternatives must keep native outcome");
+        assertTrue(r.evaluate("sea_dragon",Set.of("#c:foods/fruit","#c:foods/raw_fish","#tmm:foods/cooked"),2,0.5)
+            .isEmpty(), "Heating never legitimizes a mixed-fraction shortcut");
     }
     @Test void universalMagicalIsPermissionOnlyAndPreservesNativeFoodSideEffects() {
         var r=rules();var tags=Set.of("#tmm:foods/magical","#c:foods/fruit");
@@ -64,6 +65,25 @@ class FoodPolicyRulesTest {
         assertTrue(r.evaluate("cave_dragon",cave("raw"),-1,null).isEmpty());
         assertTrue(r.evaluate("cave_dragon",cave("raw"),1,1.2).isEmpty());
     }
+    @Test void configurableZeroOffDietMeansZeroWithoutThrowingOrSaturationExploit() {
+        var r = rules();
+        var policy = JsonParser.parseString("""
+            {"schema":1,"preferred_raw":{"nutrition":6,"saturation_modifier":2},
+             "stage_multipliers":{"raw":1,"cooked":0.5,"charred":0.25},
+             "mixed":{"off_diet_contribution":0},
+             "family_tags":{"marine":["#c:foods/raw_fish"],"plant":["#c:foods/fruit"]},
+             "profiles":{"sea_dragon":["marine"]},
+             "preparation_tags":{"raw":["#tmm:foods/raw"],"cooked":["#tmm:foods/cooked"],"charred":["#tmm:foods/charred"]},
+             "magical_tags":["#tmm:foods/magical"]}
+            """).getAsJsonObject();
+        var noOffDiet=FoodPolicyRules.parse(policy);
+        var nourishment=noOffDiet.evaluate("sea_dragon",
+            Set.of("#c:foods/fruit","#tmm:foods/raw"),1,null).orElseThrow();
+        assertEquals(0,nourishment.hunger());
+        assertEquals(0,nourishment.saturationModifier());
+        assertEquals(0,nourishment.theoreticalSaturationPoints());
+    }
+
     @Test void threeStagesOnlyAndStrictSchema() {
         var root=JsonParser.parseString("""
           {"schema":1,"preferred_raw":{"nutrition":6,"saturation_modifier":2},

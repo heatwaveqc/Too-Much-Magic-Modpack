@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:cabbage_leaf",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "farmersdelight:cutting/cabbage",
+      "method": "nonthermal",
+      "result_count": 2,
+      "ingredients": [
+        {
+          "item": "farmersdelight:cabbage",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
