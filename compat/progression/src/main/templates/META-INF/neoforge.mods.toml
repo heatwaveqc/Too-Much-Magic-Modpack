@@ -54,6 +54,10 @@ config="tyr_progression_hexerei_blood.mixins.json"
 [[mixins]]
 config="tyr_progression_jawr_cuisine.mixins.json"
 
+# Optional transformation, Dracolich rendering and magic compat; each mixin is version-gated.
+[[mixins]]
+config="tmm_transformations.mixins.json"
+
 # Optional client-only More Darkness 2.0.1 personal vision adapter.
 [[mixins]]
 config="tyr_progression_astral_darkness.mixins.json"
