@@ -21,26 +21,50 @@ DATA = Path("data/tyr_progression/tyr_progression")
 ROUTES = DATA / "food_recipe_routes"
 SOURCES = DATA / "food_sources"
 TAGS = Path("data/tmm/tags/item/foods/generated")
-HEAT = {
-    "minecraft:smelting", "minecraft:smoking", "minecraft:campfire_cooking",
-    "minecraft:blasting", "farmersdelight:cooking",
-}
-COLD = {"minecraft:crafting_shapeless", "farmersdelight:cutting"}
-HOT_TOOLS = {"pot", "skillet", "saucepan", "bakeware", "oven", "bakingdish", "grill"}
-NEUTRAL_ITEMS = {"minecraft:bowl", "minecraft:glass_bottle", "minecraft:bucket",
-                 "minecraft:stick", "minecraft:paper"}
-# Reviewed *tag semantics*, not per-item nutrition values. These material
-# records never create a FoodProperties component, edible item, or extra hunger.
-MATERIAL_TAGS = {
-    "c:grain": "#tmm:foods/grains",
-    "c:crops/rice": "#tmm:foods/grains",
-    "c:mushrooms": "#tmm:foods/fungi",
-}
-MATERIAL_ITEMS = {"minecraft:kelp": "#tmm:foods/sea_plants"}
-IDENTITY_RE = re.compile(r"meatballs?", re.I)
-# Names can *warn* us that nonthermal crafting is insufficient evidence
-# for a cooked dish; do not use the name alone to assign a hot nutrition value.
-THERMAL_UNCERTAINTY = re.compile(r"grilled|roasted|baked|fried|cookie|toast|steamed|boiled|braised", re.I)
+# Shared, versioned data catalog used by the NeoForge active recipe validator.
+DEFAULT_PROCESSING_CONFIG = (Path(__file__).resolve().parents[1] /
+    "compat/progression/src/main/resources/data/tyr_progression/"
+    "tyr_progression/food_processing/default.json")
+PROCESSING_FIELDS = {"schema", "method_by_recipe_type", "hot_tool_tag_tokens",
+    "neutral_item_ids", "neutral_tag_prefixes", "material_tags", "material_items",
+    "identity_unfavored_patterns", "thermal_ambiguity_patterns",
+    "native_food_target_tags", "nonfood_output_tags"}
+
+
+def load_processing_config(path=DEFAULT_PROCESSING_CONFIG):
+    config = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(config, dict) or set(config) != PROCESSING_FIELDS \
+            or config["schema"] != 1:
+        raise ValueError("Unsupported food processing catalog")
+    methods = config["method_by_recipe_type"]
+    if not isinstance(methods, dict) or not methods or not all(
+            identifier(k) and v in ("nonthermal", "heat", "char")
+            for k, v in methods.items()):
+        raise ValueError("Invalid recipe processing methods")
+    for key in ("hot_tool_tag_tokens", "neutral_item_ids",
+                "neutral_tag_prefixes", "identity_unfavored_patterns",
+                "thermal_ambiguity_patterns", "native_food_target_tags",
+                "nonfood_output_tags"):
+        rows = config[key]
+        if not isinstance(rows, list) or any(
+                not isinstance(v, str) or not v or v != v.strip()
+                for v in rows) or len(rows) != len(set(rows)):
+            raise ValueError("Invalid processing list " + key)
+    for key in ("neutral_item_ids", "native_food_target_tags",
+                "nonfood_output_tags"):
+        if any(not identifier(v) for v in config[key]):
+            raise ValueError("Invalid processing ID in " + key)
+    for key in ("material_tags", "material_items"):
+        rows = config[key]
+        if not isinstance(rows, dict) or any(
+                not identifier(k) or not isinstance(v, str)
+                or not v.startswith("#") or not identifier(v[1:])
+                for k, v in rows.items()):
+            raise ValueError("Invalid processing material map " + key)
+    for key in ("identity_unfavored_patterns", "thermal_ambiguity_patterns"):
+        for pattern in config[key]:
+            re.compile(pattern)
+    return config
 
 
 class Hold(ValueError):
@@ -249,10 +273,11 @@ class TagIndex:
         raise Hold("unsupported_ingredient_codec")
 
 
-def material_sources(tags, roots, known_namespaces, registered_ids=None):
+def material_sources(tags, roots, known_namespaces, registered_ids=None, processing=None):
     """Tag-derived *ingredient* records, not a guess that an item is edible."""
+    processing = processing or load_processing_config()
     inferred = defaultdict(set)
-    for tag, family in MATERIAL_TAGS.items():
+    for tag, family in processing["material_tags"].items():
         try:
             members = tags.expand(tag)
         except Hold:
@@ -260,7 +285,7 @@ def material_sources(tags, roots, known_namespaces, registered_ids=None):
         for item in members:
             if item.split(":")[0] in known_namespaces:
                 inferred[item].add(family)
-    for item, family in MATERIAL_ITEMS.items():
+    for item, family in processing["material_items"].items():
         inferred[item].add(family)
     additions = {}
     for item in sorted(inferred):
@@ -285,28 +310,28 @@ def source_signature(item, roots):
             tuple(sorted(src.get("preferred_shares", {}).items())))
 
 
-def method(recipe):
+def method(recipe, processing=None):
+    processing = processing or load_processing_config()
     kind = recipe.get("type")
-    if kind in HEAT:
-        return "heat"
-    if kind == "minecraft:crafting_shapeless":
+    method_name = processing["method_by_recipe_type"].get(kind)
+    if method_name is None:
+        raise Hold("unsupported_processing_method")
+    if kind == "minecraft:crafting_shapeless" and method_name == "nonthermal":
         for part in recipe.get("ingredient_inputs", []):
             if isinstance(part, dict) and "tag" in part:
                 tag = part["tag"]
-                if tag.startswith("c:tool_") and any(
-                        token in tag.split(":")[-1] for token in HOT_TOOLS):
+                if any(tag.startswith(prefix) for prefix in processing["neutral_tag_prefixes"]) \
+                        and any(token in tag.split(":")[-1]
+                                for token in processing["hot_tool_tag_tokens"]):
                     return "heat"
-        outputs = recipe.get("outputs", [])
-        if any(THERMAL_UNCERTAINTY.search(output.get("item", "").split(":")[-1])
-               for output in outputs):
+        if any(re.search(pattern, output.get("item", "").split(":")[-1], re.I)
+               for output in recipe.get("outputs", [])
+               for pattern in processing["thermal_ambiguity_patterns"]):
             raise Hold("ambiguous_thermal_prep")
-        return "nonthermal"
-    if kind == "farmersdelight:cutting":
-        return "nonthermal"
-    raise Hold("unsupported_processing_method")
+    return method_name
 
 
-def compile_one(recipe, index, available, roots, registered_ids=None):
+def compile_one(recipe, index, available, roots, registered_ids=None, processing=None):
     outputs = recipe.get("outputs", [])
     if len(outputs) != 1:
         raise Hold("multiple_output_items")
@@ -314,7 +339,8 @@ def compile_one(recipe, index, available, roots, registered_ids=None):
     result_count = output.get("count")
     if not isinstance(result_count, int) or not 1 <= result_count <= 64:
         raise Hold("invalid_result_count")
-    kind = method(recipe)
+    processing = processing or load_processing_config()
+    kind = method(recipe, processing)
     raw = recipe.get("ingredient_inputs")
     if not isinstance(raw, (list, dict)) or not raw:
         raise Hold("missing_full_inputs")
@@ -323,7 +349,7 @@ def compile_one(recipe, index, available, roots, registered_ids=None):
     for part in inputs:
         if not isinstance(part, dict):
             raise Hold("unsupported_ingredient")
-        if set(part) == {"tag"} and part["tag"].startswith("c:tool_"):
+        if set(part) == {"tag"} and any(part["tag"].startswith(prefix) for prefix in processing["neutral_tag_prefixes"]):
             if registered_ids is not None:
                 index.expand(part["tag"]) # Verify tool actually exists in runtime tags.
             # Exact native tool tags are non-nutritive. We preserve their
@@ -339,18 +365,14 @@ def compile_one(recipe, index, available, roots, registered_ids=None):
             options = tuple(item for item in options if item in registered_ids)
         if not options:
             raise Hold("empty_ingredient")
-        neutral = all(item in NEUTRAL_ITEMS for item in options)
-        if not neutral and any(item in NEUTRAL_ITEMS for item in options):
+        neutral = all(item in processing["neutral_item_ids"] for item in options)
+        if not neutral and any(item in processing["neutral_item_ids"] for item in options):
             raise Hold("mixed_tool_food_tag")
         if not neutral and any(item not in available for item in options):
             raise Hold("unresolved_source_input")
-        # Equivalent *verified* source facts have the same dietary budget.
-        # Compress ONLY these, never arbitrary names or unexplained outputs.
-        if not neutral:
-            equivalent = {}
-            for item in options:
-                equivalent.setdefault(source_signature(item, roots), item)
-            options = tuple(sorted(equivalent.values()))
+        # Keep all tag options: current RecipeManager must verify every one,
+        # including nutritionally equivalent alternatives.
+        options = tuple(sorted(set(options)))
         slots.append((options, neutral))
     if not any(not neutral for _, neutral in slots):
         raise Hold("no_nutritive_inputs")
@@ -380,23 +402,22 @@ def compile_one(recipe, index, available, roots, registered_ids=None):
     return compiled
 
 
-def process(audit, checked_sources, checked_routes, registry=None):
+def process(audit, checked_sources, checked_routes, registry=None, processing=None):
+    processing = processing or load_processing_config()
     releases = audit["releases"]
     index = TagIndex(releases, runtime=registry)
     # Positive native *tag evidence* is not equivalent to a registered FOOD
     # component. It is a separate review class, never universal edibility.
     native_food_tagged = set()
-    for tag in ("c:foods", "c:juices", "farmersdelight:meals"):
+    for tag in processing["native_food_target_tags"]:
         try:
             native_food_tagged.update(index.expand(tag))
         except Hold:
             pass
     # Prevent tracing seeds and containers into bogus "crafted food" tags.
     # Some Pam's crop seed IDs are tagged only as villager plantable seeds.
-    nonfood_outputs = set(NEUTRAL_ITEMS)
-    for tag in ("c:seeds", "minecraft:villager_plantable_seeds",
-                "farmersdelight:serving_containers",
-                "herbalbrews:container_items"):
+    nonfood_outputs = set(processing["neutral_item_ids"])
+    for tag in processing["nonfood_output_tags"]:
         try:
             nonfood_outputs.update(index.expand(tag))
         except Hold:
@@ -406,7 +427,7 @@ def process(audit, checked_sources, checked_routes, registry=None):
         known_ns.update(release.get("native_versions", {}))
     sources = dict(checked_sources)
     added_sources = material_sources(index, sources, known_ns,
-                                    registry["ids"] if registry else None)
+                                    registry["ids"] if registry else None, processing=processing)
     sources.update(added_sources)
     recipes = defaultdict(list)
     for release in releases:
@@ -435,21 +456,20 @@ def process(audit, checked_sources, checked_routes, registry=None):
             for recipe in recipes[item]:
                 try:
                     raw_routes.extend(compile_one(recipe, index, available, sources,
-                        registry["ids"] if registry else None))
+                        registry["ids"] if registry else None, processing=processing))
                 except Hold as failure:
                     reason = str(failure)
                     break
             if reason:
                 reasons[item] = reason
                 continue
+            # Every active recipe ID matters even if the nutrition is equal.
+            # No collapsing furnace/smoker/campfire receipt evidence.
             by_key = {}
             for route in raw_routes:
-                # Many furnace/campfire/smoker recipes are nutritionally
-                # identical. Keep one deterministic receipt per equivalence.
-                key = (route["method"], route["result_count"],
+                key = (route["receipt"], route["method"], route["result_count"],
                        tuple((x["item"], x["count"]) for x in route["ingredients"]))
-                if key not in by_key or route["receipt"] < by_key[key]["receipt"]:
-                    by_key[key] = route
+                by_key.setdefault(key, route)
             choices = sorted(by_key.values(), key=lambda r: (
                 r["receipt"], r["method"], str(r["ingredients"])))
             if not choices or len(choices) > MAX_ALTERNATIVES:
@@ -457,8 +477,10 @@ def process(audit, checked_sources, checked_routes, registry=None):
                 continue
             accepted[item] = {
                 "schema": 1, "item": item,
-                "identity": "unfavored_all" if IDENTITY_RE.search(item.split(":")[1])
-                            else "ordinary",
+                "identity": "unfavored_all" if any(
+                    re.search(pattern, item.split(":")[1], re.I)
+                    for pattern in processing["identity_unfavored_patterns"])
+                    else "ordinary",
                 "complete": True, "routes": choices,
             }
             reasons.pop(item, None)
@@ -503,14 +525,16 @@ def process(audit, checked_sources, checked_routes, registry=None):
             for part in ([raw] if isinstance(raw, dict) else raw):
                 if not isinstance(part, dict):
                     continue
-                if set(part) == {"tag"} and part["tag"].startswith("c:tool_"):
+                if set(part) == {"tag"} and any(
+                        part["tag"].startswith(prefix)
+                        for prefix in processing["neutral_tag_prefixes"]):
                     continue
                 try:
                     options = index.ingredient(part)
                 except Hold:
                     continue
                 for ingredient in options:
-                    if ingredient not in available_final and ingredient not in NEUTRAL_ITEMS:
+                    if ingredient not in available_final and ingredient not in processing["neutral_item_ids"]:
                         missing.add(ingredient)
         if missing:
             unresolved_by_food[item] = sorted(missing)
@@ -587,6 +611,8 @@ def main():
     parser.add_argument("--registry-json", type=Path,
                         help="Optional authoritative loaded-server default-stack FOOD census")
     parser.add_argument("--out", required=True, type=Path)
+    parser.add_argument("--processing-config", type=Path, default=DEFAULT_PROCESSING_CONFIG,
+                        help="Reviewed shared processing methods/tool tag taxonomy")
     args = parser.parse_args()
     audit = json.loads(args.audit.read_text(encoding="utf-8"))
     verify_pins(audit, args.pin_snapshot or args.repo)
@@ -595,7 +621,9 @@ def main():
     existing = read_records(native / ROUTES)
     registry = (load_runtime_food_registry(args.registry_json)
                 if args.registry_json else None)
-    files, summary = process(audit, roots, existing, registry=registry)
+    processing = load_processing_config(args.processing_config)
+    files, summary = process(audit, roots, existing, registry=registry,
+                             processing=processing)
     for rel, data in sorted(files.items()):
         target = args.out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
