@@ -17,7 +17,9 @@
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
     "MutationEffectQueryMixin",
-    "MutationRegenerationMixin"
+    "MutationRegenerationMixin",
+    "CompanionMobGoalsAccess",
+    "CompanionPatrolAccess"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -7,7 +7,7 @@ import java.util.Set;
 /** Strict, pure schema for shared mechanical effects. No registry or client classes here. */
 public final class MechanicalSpec {
     private MechanicalSpec(){}
-    public static final Set<String> TYPES=Set.of("charm","magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
+    public static final Set<String> TYPES=Set.of("tame","charm","magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
         "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
     public static boolean known(String type){return TYPES.contains(type);}
@@ -43,6 +43,7 @@ public final class MechanicalSpec {
             throw new IllegalArgumentException("Weapon selector not supported for "+type);
         switch(type){
             case "charm" -> io.github.heatwaveqc.tyr.progression.runtime.charm.CharmPolicy.validate(fx);
+            case "tame" -> io.github.heatwaveqc.tyr.progression.runtime.taming.TamePolicy.validate(fx);
             case "lich_soul_recovery","lich_soul_capacity","lich_servant_damage" -> bounded(a,0,1);
             case "lich_servant_capacity" -> bounded(a,0,16);
             case "lich_soul_treasury" -> bounded(a,0,0.25);

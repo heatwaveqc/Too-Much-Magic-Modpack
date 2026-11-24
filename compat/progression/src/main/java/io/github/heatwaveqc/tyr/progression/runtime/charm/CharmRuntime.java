@@ -69,7 +69,8 @@ public final class CharmRuntime {
             ||!(event.getEntity() instanceof ServerPlayer p)||!MxpPlayerPolicy.eligible(p)
             ||!p.isAlive()||NewbieMode.isNewbie(p)||!p.getMainHandItem().isEmpty()
             ||!(event.getTarget() instanceof Mob mob)||mob.level()!=p.level()||!supported(mob)
-            ||!p.canInteractWithEntity(mob,0)||!p.hasLineOfSight(mob)||charmed(mob))return;
+            ||!p.canInteractWithEntity(mob,0)||!p.hasLineOfSight(mob)||charmed(mob)
+            ||io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.hasCompanionReceipt(mob))return;
         long now=now(mob);
         if(!CharmPolicy.cooldownReady(now,cooldown(p)))return;
         // Stable choice: one eligible effect and one charge, never stack several
