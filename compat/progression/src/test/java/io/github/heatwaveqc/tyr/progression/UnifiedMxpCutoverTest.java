@@ -43,6 +43,12 @@ class UnifiedMxpCutoverTest {
         var awards=UnifiedMxpSource.parse(spec,systems);
         assertEquals(1,awards.size());
         assertEquals(new BigDecimal("100"),awards.getFirst().nominal());
+        assertEquals(42,awards.getFirst().firstCompletionKey("tyr_progression:monk",
+            "a".repeat(3000)).length());
+        assertEquals(awards.getFirst().firstCompletionKey("tyr_progression:monk","minecraft:story/mine_stone"),
+            awards.getFirst().firstCompletionKey("tyr_progression:monk","minecraft:story/mine_stone"));
+        assertNotEquals(awards.getFirst().firstCompletionKey("tyr_progression:core","minecraft:story/mine_stone"),
+            awards.getFirst().firstCompletionKey("tyr_progression:monk","minecraft:story/mine_stone"));
         spec.getAsJsonArray("unified_mxp_sources").get(0).getAsJsonObject()
             .addProperty("event","kill");
         assertThrows(IllegalArgumentException.class,()->UnifiedMxpSource.parse(spec,systems));

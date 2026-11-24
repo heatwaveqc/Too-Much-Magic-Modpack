@@ -271,9 +271,9 @@ public final class ProgressionApi {
             for(var award:PathRegistry.config().unifiedSources().getOrDefault(path.id(),List.of())){
                 if(!signal.matches(award.event(),award.selector()) ||
                     !PathRegistry.economyEligible(player,award.systemId()))continue;
-                String action=award.oncePerTarget() ? "first:"+path.id()+"/"+signal.target()
-                        : "activity:"+UUID.randomUUID();
-                String first=award.oncePerTarget()?path.id()+"/"+signal.target():null;
+                String first=award.oncePerTarget()
+                        ?award.firstCompletionKey(path.id(),signal.target()):null;
+                String action=first!=null ? first : "activity:"+UUID.randomUUID();
                 next=ChannelEngine.awardConfigured(next,catalog,award.systemId(),
                     award.category(),action,first,award.nominal(),false,
                     io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(
