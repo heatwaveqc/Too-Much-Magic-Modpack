@@ -26,7 +26,7 @@ audit new portable-storage items and handlers explicitly.
 | Vanilla bundle | `BundleContents.Mutable.tryInsert` | Existing malformed contents and deep component payloads |
 | Occultism ordinary Satchel | `StorageSatchelSlot.mayPlace` | Other satchel access paths/capabilities |
 | Malum Soulwoven/Ravenous + inherited Gaze pouch | `MalumPouchContentsComponent.Mutable.tryInsert` and **`tryTransfer` before `safeTake`** | Other direct payload mutation paths, actual method/ABI |
-| Extra Botany Mini Handbag | Add `canPlaceItem` override to *Botania ItemBackedInventory only*; identify backing item via safety tag | Must verify merged override/GUI slot, cursor and Hopper helper calls in-game; arbitrary `setItem` bypasses permission checks |
+| Extra Botany Mini Handbag | Guard its **24 plain GUI Slots** on menu construction, and add `canPlaceItem` to *Botania ItemBackedInventory* for native cursor/Hopper helpers | Exact-JAR ABI and live insertion paths not verified. Direct `setItem` can bypass eligibility checks |
 | ProjectE 16 Alchemical Bags | No nested safety veto | External attachment store does not recursively embed bag contents; ordinary progression gates remain |
 
 ### Legacy bridge collision
@@ -43,13 +43,13 @@ replay stale #401 Transformations code or packwiz roots.
 ### Risk classifications
 
 - `#tmm:non_nestable_embedded_containers`: curated high-risk embedded items.
-  The tag includes 17 vanilla shulker colors, Ars, Occultism ordinary Satchel,
-  Malum/Gaze and Extra Botany Mini Handbag. Bundles and constrained Botania
-  Flower Pouches are not blanket-classified as unsafe.
+  The tag includes 17 vanilla shulker colors, vanilla bundle, Ars, Occultism satchels,
+  Malum/Gaze and Extra Botany Mini Handbag. Constrained Botania Flower Pouches
+  are not blanket-classified as unsafe.
 - `#tmm:reference_backed_storage`: ProjectE 16 colored keys and Occultism
   Ender Satchel. This tag cannot override a real vanilla CONTAINER payload on
   an item stack.
-- Native `DataComponents.CONTAINER` and shulker class are checked for actual
+- Native `DataComponents.CONTAINER`, `BUNDLE_CONTENTS` and shulker class are checked for actual
   source stacks. Custom mod components need audited tags/adapters rather
   than an expensive generic recursive content traversal.
 
