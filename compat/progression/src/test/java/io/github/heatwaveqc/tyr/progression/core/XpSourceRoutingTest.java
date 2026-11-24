@@ -66,6 +66,49 @@ class XpSourceRoutingTest {
                 "test:action","test:first",BigDecimal.ONE,false,1,1).accepted());
     }
 
+    private static XpSourceRouting.Candidate candidate(String fallback,String source,String receipt,String amount,boolean fixed){
+        return new XpSourceRouting.Candidate(fallback,source,receipt,new BigDecimal(amount),fixed);
+    }
+
+    @Test void sameEventUsesOneMeasurementPerSourceWithExplicitRouting(){
+        var routing=read("""
+            [{"source":"test:kill","destinations":[{"system":"test:shared"},{"system":"test:combat"}]}]
+            """).routing();
+        var awards=routing.normalize(List.of(
+            candidate("test:shared","test:kill",null,"20.00",false),
+            candidate("test:combat","test:kill",null,"20",false),
+            candidate("test:shared","test:magic",null,"50",false)));
+        assertEquals(List.of(candidate("","test:kill",null,"20",false),
+                candidate("test:shared","test:magic",null,"50",false)).stream()
+                .map(c->new XpSourceRouting.Candidate(c.fallback(),c.source(),c.completion(),
+                        c.nominal().stripTrailingZeros(),c.fixed())).toList(),awards);
+        assertEquals(2,routing.destinations("test:kill",awards.getFirst().fallback()).size());
+    }
+
+    @Test void fallbackDestinationsRemainIndependentAndConflictsFailClosed(){
+        var routing=read("[]").routing();
+        var a=candidate("test:shared","test:kill",null,"20",false);
+        var b=candidate("test:combat","test:kill",null,"20",false);
+        assertEquals(2,routing.normalize(List.of(a,b,a)).size());
+        var independent=candidate("test:shared","test:magic",null,"50",false);
+        var conflicting=candidate("test:shared","test:kill",null,"25",false);
+        assertEquals(List.of("test:magic"),routing.normalize(List.of(a,conflicting,independent))
+                .stream().map(XpSourceRouting.Candidate::source).toList());
+        var first=candidate("test:shared","test:kill","test:first","20",false);
+        assertTrue(routing.normalize(List.of(a,first)).isEmpty());
+    }
+
+    @Test void sameTransactionDifferentSourcesRemainAdditive(){
+        var system=read("[]").systems().get("test:shared");
+        var first=ExperienceEconomy.earnModified(ExperienceEconomy.Ledger.empty(),system,
+                "test:magic","test:cast",null,new BigDecimal("400"),false,1,1);
+        var second=ExperienceEconomy.earnModified(first.ledger(),system,
+                "test:mining","test:cast",null,new BigDecimal("120"),false,1,1);
+        assertEquals(0,new BigDecimal("520").compareTo(second.ledger().currentXp().get(system.id())));
+        assertFalse(ExperienceEconomy.earnModified(second.ledger(),system,
+                "test:mining","test:cast",null,new BigDecimal("120"),false,1,1).accepted());
+    }
+
     @Test void invalidOrDuplicateRouteDestinationsCannotLoad() {
         for(String destinations : List.of(
                 "[{\"system\":\"test:unknown\"}]",
