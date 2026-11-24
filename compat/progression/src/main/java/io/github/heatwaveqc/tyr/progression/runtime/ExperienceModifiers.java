@@ -106,7 +106,26 @@ public final class ExperienceModifiers {
     public static ExperienceEconomy.Award earn(ServerPlayer player, Ledger ledger,
             ExperienceEconomy.SystemSpec system, String source, String transaction,
             String firstCompletion, BigDecimal nominal, boolean fixed, double configuredGrowth) {
-        double multiplier = resolve(player, Kind.REWARD, 1, system.id(), source, fixed).value();
+        return earn(player, ledger, system, source, transaction, firstCompletion,
+                nominal, fixed, configuredGrowth, 1.0);
+    }
+
+    /** Route rate scales the resolved system multiplier; eligibility is checked
+     * before settlement so a denied hard gate creates no receipt. */
+    public static ExperienceEconomy.Award earn(ServerPlayer player, Ledger ledger,
+            ExperienceEconomy.SystemSpec system, String source, String transaction,
+            String firstCompletion, BigDecimal nominal, boolean fixed, double configuredGrowth,
+            double routeRate) {
+        var policy = PathRegistry.economyCatalog().routing().policy(system.id());
+        if (!policy.eligible(path -> PathRegistry.get(path) != null
+                && ledger.get(path).joined() && PathRegistry.eligible(player, path)))
+            return new ExperienceEconomy.Award(ledger.economy(), BigDecimal.ZERO, false);
+        if (!Double.isFinite(routeRate) || routeRate < 0
+                || routeRate > XpModifierMath.MAX_REWARD_MULTIPLIER)
+            throw new IllegalArgumentException("Invalid XP route rate");
+        double multiplier = resolve(player, Kind.REWARD, policy.defaultMultiplier(),
+                system.id(), source, fixed).value();
+        multiplier = Math.min(XpModifierMath.MAX_REWARD_MULTIPLIER, multiplier * routeRate);
         double growth = fixed ? configuredGrowth : growth(player, configuredGrowth, system.id(), source);
         return ExperienceEconomy.earnModified(ledger.economy(), system, source, transaction,
                 firstCompletion, nominal, fixed, growth, multiplier);

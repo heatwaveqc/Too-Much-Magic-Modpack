@@ -50,7 +50,14 @@ public final class ExperienceEconomyConfig {
     public record Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
                           Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
                           Map<SkillKey, SkillPurchases> skills,
-                          List<XpModifierConfig.Rule> modifiers) {
+                          List<XpModifierConfig.Rule> modifiers,
+                          XpSourceRouting routing) {
+        public Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
+                       Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
+                       Map<SkillKey, SkillPurchases> skills, List<XpModifierConfig.Rule> modifiers) {
+            this(systems, defaultGrowth, defaultTransition, pathChanges, skills, modifiers,
+                    XpSourceRouting.empty());
+        }
         public Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
                        Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
                        Map<SkillKey, SkillPurchases> skills) {
@@ -62,6 +69,7 @@ public final class ExperienceEconomyConfig {
             pathChanges = Map.copyOf(pathChanges);
             skills = Map.copyOf(skills);
             modifiers = List.copyOf(modifiers);
+            java.util.Objects.requireNonNull(routing, "routing");
         }
         public Transition policy(String path, String system) {
             return pathChanges.getOrDefault(new PathSystem(path, system), defaultTransition);
@@ -82,7 +90,7 @@ public final class ExperienceEconomyConfig {
     }
 
     public static Catalog read(JsonObject root) {
-        only(root, "schema", "systems", "default_path_change", "path_changes", "skills", "modifiers");
+        only(root, "schema", "systems", "default_path_change", "path_changes", "skills", "modifiers", "source_routes");
         if (root.has("schema") && root.get("schema").getAsBigDecimal().intValueExact() != 1)
             throw new IllegalArgumentException("Unsupported economy schema");
         if (!root.has("systems")) throw new IllegalArgumentException("Missing XP systems");
@@ -91,7 +99,7 @@ public final class ExperienceEconomyConfig {
         for (JsonElement element : root.getAsJsonArray("systems")) {
             JsonObject j = element.getAsJsonObject();
             only(j, "id", "xp_per_point", "growth_factor", "max_level", "max_base_award",
-                    "min_reward", "round_subminimum_up");
+                    "min_reward", "round_subminimum_up", "earning_path", "default_reward_multiplier");
             String id = required(j, "id");
             BigDecimal threshold = number(j, "xp_per_point", "1000");
             BigDecimal awardCap = number(j, "max_base_award", "1e12");
@@ -161,7 +169,8 @@ public final class ExperienceEconomyConfig {
                 throw new IllegalArgumentException("Duplicate configured skill " + key);
         }
         return new Catalog(systems, growth, fallback, changes, skills,
-                XpModifierConfig.read(root, systems.keySet()));
+                XpModifierConfig.read(root, systems.keySet()),
+                XpSourceRouting.read(root, systems.keySet()));
     }
 
     private static Transition transition(JsonObject j, Transition inherited) {
