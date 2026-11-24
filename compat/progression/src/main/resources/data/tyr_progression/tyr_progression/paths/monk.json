@@ -29,7 +29,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Ten Barehanded Logs",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_five_stone",
@@ -45,7 +47,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Five Barehanded Stone Blocks",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:steady_hands",
@@ -61,7 +65,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Steady Hands — 100 Logs",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_ten_unarmed_undead",
@@ -73,7 +79,9 @@
         }
       ],
       "xp": 0,
-      "points": 0
+      "points": 0,
+      "title": "Ten Undead Defeated Unarmed",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_animal_friendship",
@@ -85,7 +93,9 @@
         }
       ],
       "xp": 0,
-      "points": 0
+      "points": 0,
+      "title": "Animal Friendship — 20 Interactions",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_four_iron_blocks",
@@ -101,7 +111,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Iron Palm — Four Iron Blocks",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_obsidian_hand",
@@ -117,7 +129,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Obsidian Hand",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_creeper_kiss",
@@ -133,7 +147,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Creeper Kiss",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_wither_victory",
@@ -167,7 +183,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Blindness Ordeal — Five Defeats",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:dragon_defeated",
@@ -191,7 +209,9 @@
         }
       ],
       "xp": 0,
-      "points": 0
+      "points": 0,
+      "title": "Twenty Hostile Defeats",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:training_ten_advancements",
@@ -203,7 +223,9 @@
         }
       ],
       "xp": 0,
-      "points": 0
+      "points": 0,
+      "title": "Ten Advancements",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:training_thirty_advancements",
@@ -215,7 +237,9 @@
         }
       ],
       "xp": 0,
-      "points": 0
+      "points": 0,
+      "title": "Thirty Advancements",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_bedrock_sleep",
@@ -231,7 +255,9 @@
       "fixed_reward": {
         "system": "tyr_progression:mxp",
         "xp": 1000
-      }
+      },
+      "title": "Bedrock Rest",
+      "notify_progress": true
     }
   ],
   "skills": [
