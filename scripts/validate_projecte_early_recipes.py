@@ -31,7 +31,7 @@ def recipe(root: Path, name: str) -> dict:
 
 
 def assert_disabled(data: dict, name: str, result: str) -> None:
-    assert data["neoforge:conditions"] == FALSE, f"{name}: old recipe must be disabled"
+    assert data.get("neoforge:conditions") == FALSE, f"{name}: old recipe must be disabled"
     assert data["result"] == {"count": 40 if name in DUSTS else 1, "id": result}
     assert data["type"] in ("minecraft:crafting_shaped", "minecraft:crafting_shapeless")
 
