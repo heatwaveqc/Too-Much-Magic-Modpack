@@ -10,13 +10,12 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.ModList;
 
 /** Native Improvable Skills 21.0.2 owns the unlock and persisted player data.
- * No Economy skill wallet or separate attachment. The original ability ID
- * remains reserved until the coordinated owner cutover; no registration here.
+ * No Economy skill wallet or separate attachment. Economy owns the new native ability ID; the earlier Progression ID was never registered.
  */
 public final class PersonalEnchantFilterAbilityGate {
     private PersonalEnchantFilterAbilityGate() {}
     public static final ResourceLocation ABILITY_ID =
-        ResourceLocation.fromNamespaceAndPath("tyr_progression", "arcane_discrimination");
+        ResourceLocation.fromNamespaceAndPath("tmm_economy", "arcane_discrimination");
 
     public static boolean unlocked(ServerPlayer player) {
         return unlockedData(player).isPresent();
