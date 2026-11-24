@@ -1,0 +1,1271 @@
+[
+  {
+    "key": "assets/apollib/textures/gui/sprites/background.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "lithostitched!META-INF/jarjar/apollib-1.2.0-neoforge-21.1.jar",
+        "archive_sha256": "d8ca42902cc4fe7c6c39917bdc2a9ec86c32c5bee3e3c3a551513f601968498b",
+        "asset_sha256": "8d794da63c4140bf7478b333d6aa6463e4e3ba568af5ce81e30960a4cd6167fe",
+        "dimensions": [
+          20,
+          20
+        ],
+        "metadata_sha256": "1ca8428befeeabcbca2af591f2c79fd0dc58a31e3f35d0fc5837412d9aa6d055"
+      },
+      {
+        "source_id": "tectonic!META-INF/jarjar/apollib-1.1.6-neoforge-21.1.jar",
+        "archive_sha256": "04c80501091e16952e9a83c152b4ea5ebe6a26c3a3268f7e8706a8caa32959a0",
+        "asset_sha256": "8d794da63c4140bf7478b333d6aa6463e4e3ba568af5ce81e30960a4cd6167fe",
+        "dimensions": [
+          20,
+          20
+        ],
+        "metadata_sha256": "1ca8428befeeabcbca2af591f2c79fd0dc58a31e3f35d0fc5837412d9aa6d055"
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/apotheosis/textures/items/gems/lightning.png",
+    "identical_bytes": false,
+    "sources": [
+      {
+        "source_id": "apotheosis",
+        "archive_sha256": "23a8b4a21d0d8744f097c77c8a96fcba14c4b95f3b1bb542412f40dab272872e",
+        "asset_sha256": "15a022e7f6eb24f88a7737d16f9e5c097ab4f6bcd1d58e98b8fa3ad8d957dcb7",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "irons-spells-n-spellbooks",
+        "archive_sha256": "55a290db9b966e0c5d2f5c051d50775f3db6375cdb52730c4da528bcf5d5daa0",
+        "asset_sha256": "6d918fbb55258c404ad11d3961451eebda6d71b57a7de5d7459e333b7a5e1521",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/ars_nouveau/textures/block/runes/rune_necromancy.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "91dce2299c27f5957d8075c8006f1c6e07341abe853d2f591f524a8422fe2f24",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "91dce2299c27f5957d8075c8006f1c6e07341abe853d2f591f524a8422fe2f24",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/ars_nouveau/textures/gui/documentation/doc_icon_anima.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "75e96658e8ae806bb1060d04bc0281ca411af35e2a714978ffeeda3ad5e1d1f7",
+        "dimensions": [
+          10,
+          10
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "75e96658e8ae806bb1060d04bc0281ca411af35e2a714978ffeeda3ad5e1d1f7",
+        "dimensions": [
+          10,
+          10
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/ars_nouveau/textures/gui/documentation/doc_spellcrafting_icon_contingency.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "619d78fb05006eaa40f8096f4a8a986347eebad5e33af64983604ed739c97a47",
+        "dimensions": [
+          18,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "619d78fb05006eaa40f8096f4a8a986347eebad5e33af64983604ed739c97a47",
+        "dimensions": [
+          18,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/ars_nouveau/textures/gui/documentation/doc_spellcrafting_icon_subform.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "494a88d13c196347b721e752eb8d3ac7fa93cbdd72b0e0cb9da4d2e7f0765aa9",
+        "dimensions": [
+          18,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "494a88d13c196347b721e752eb8d3ac7fa93cbdd72b0e0cb9da4d2e7f0765aa9",
+        "dimensions": [
+          18,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/ars_nouveau/textures/gui/schools/necromancy_tooltip.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "4149cf22685f62109574a1f16ae8ddbe01129476aea0f23fcf6ba5cd3973e894",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "4149cf22685f62109574a1f16ae8ddbe01129476aea0f23fcf6ba5cd3973e894",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/camera.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "c20bc49f6d4997b5eecd679b55fd61f7fdb51c813e0bdd7b4391d3b29e113248",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "c20bc49f6d4997b5eecd679b55fd61f7fdb51c813e0bdd7b4391d3b29e113248",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/copy.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "75130d63190285e80d0ecfe37a087f34a17020fd94da081ca28b91daeb58c297",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "75130d63190285e80d0ecfe37a087f34a17020fd94da081ca28b91daeb58c297",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/error.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "25ee266003d251ed6a849fe89aaadc145b010a1c240647422d5706b3bb5cb6eb",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "25ee266003d251ed6a849fe89aaadc145b010a1c240647422d5706b3bb5cb6eb",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/fire.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "ce38c7faf30f4592034507534f40c3f2ab228e39141a939a846eb89ad8576123",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "ce38c7faf30f4592034507534f40c3f2ab228e39141a939a846eb89ad8576123",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/id.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "96d760ae421b04d398fc161f60f223fef8895c3fe53ce932b4ad379b22215372",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "96d760ae421b04d398fc161f60f223fef8895c3fe53ce932b4ad379b22215372",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/info.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "25f08165e6fef5ad678eea79ada033d9b3d144b94cc11f2b6b78341eacdcdc65",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "25f08165e6fef5ad678eea79ada033d9b3d144b94cc11f2b6b78341eacdcdc65",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/minus.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "e610761adf95af337b2b2dee37ca236feffaade7f46d4368919357ecdeabfab6",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "e610761adf95af337b2b2dee37ca236feffaade7f46d4368919357ecdeabfab6",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/no.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "2a1a6ef7b61a52a98c4f447b29d6157fae4664cfe71f463667cadc381ed2fb73",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "2a1a6ef7b61a52a98c4f447b29d6157fae4664cfe71f463667cadc381ed2fb73",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/patched_component.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "32ae46286f8d892bcf4d316e45a201bc6c990d133ff12da435353f1948a29191",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "32ae46286f8d892bcf4d316e45a201bc6c990d133ff12da435353f1948a29191",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/plus.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "457a6b21643a772a359e0f2bb1d813a697d742ad0305e550f0ec2eeb280306ed",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "457a6b21643a772a359e0f2bb1d813a697d742ad0305e550f0ec2eeb280306ed",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/prototype_component.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "a34357b3361150a3e6e94a8ef04a18e95d5a262aec81a92bc6edbdbafcb776fe",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "a34357b3361150a3e6e94a8ef04a18e95d5a262aec81a92bc6edbdbafcb776fe",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/small_space.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "c4d7915b1f99c8b2bac8094d5509db837ac5b7609d07fdc93b9f57842f119823",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "c4d7915b1f99c8b2bac8094d5509db837ac5b7609d07fdc93b9f57842f119823",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "7cd413658323bd7a87b094aa7cc88a2cc03bafa453983b2bfca2eb3b5475f565",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "7cd413658323bd7a87b094aa7cc88a2cc03bafa453983b2bfca2eb3b5475f565",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/banner_pattern.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "61d2c319d4902c45177bad4d17d2e2f184fd45333b2006184e4da70b7eef10ac",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "61d2c319d4902c45177bad4d17d2e2f184fd45333b2006184e4da70b7eef10ac",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/block.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "7a50d6878911d58d9860ca21b1be2f8190a47dc26a47dad0f7fd26a31a582bc2",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "7a50d6878911d58d9860ca21b1be2f8190a47dc26a47dad0f7fd26a31a582bc2",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/enchantment.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "834574299e53abf71cb2822f329c931de200dae5310b18f8607ceca5a28efe15",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "834574299e53abf71cb2822f329c931de200dae5310b18f8607ceca5a28efe15",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/entity_type.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "e92c6f29098995a03490fe910d38781794b8b0584dae585681b5abf5ed26545d",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "e92c6f29098995a03490fe910d38781794b8b0584dae585681b5abf5ed26545d",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/fluid.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "fd9e529ab5ac94f0cdbd675a68797ab4c75754044716ecdca1c1e04fcb5bc9f3",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "fd9e529ab5ac94f0cdbd675a68797ab4c75754044716ecdca1c1e04fcb5bc9f3",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/instrument.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "7ff4564bf99e8687bcbe8e04c9a92095e019366103379882878f7a886260c25c",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "7ff4564bf99e8687bcbe8e04c9a92095e019366103379882878f7a886260c25c",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/item.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "e204f1ee3f9044dd8ca7ed1faef63bab505c6fd423cf0e05672f5b0e43017117",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "e204f1ee3f9044dd8ca7ed1faef63bab505c6fd423cf0e05672f5b0e43017117",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tag/painting_variant.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "9f4fdf97aa5644e890943cc4fea73bf050415c6b87893585c83d09c5f20c8644",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "9f4fdf97aa5644e890943cc4fea73bf050415c6b87893585c83d09c5f20c8644",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/tilde.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "868854200b76ac0ff783cb2aa6ba45ee9d8d2d741f6ee7aee392ef884ecb8854",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "868854200b76ac0ff783cb2aa6ba45ee9d8d2d741f6ee7aee392ef884ecb8854",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/warn.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "317796f557a2518396a885f0b71766bffef8614d539d5b4ccdd1e4d0741a24f1",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "317796f557a2518396a885f0b71766bffef8614d539d5b4ccdd1e4d0741a24f1",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/betteradvancedtooltips/textures/font/icons/yes.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "better-advanced-tooltips",
+        "archive_sha256": "0f76d46f2f18eb67e67c7974170d7b27deb66473396461c8dc50d6949de1449b",
+        "asset_sha256": "9aec08df2f0ce8af4252bc318a6dcac17c65991357052e13cada00ba08f180e9",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "kubejs!META-INF/jarjar/better-advanced-tooltips-2101.1.0-build.1.jar",
+        "archive_sha256": "8fe810b03fd212720465956292a5a9b23b59259bbffe86b60fd65fe0558bcf5f",
+        "asset_sha256": "9aec08df2f0ce8af4252bc318a6dcac17c65991357052e13cada00ba08f180e9",
+        "dimensions": [
+          8,
+          8
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/minecraft/textures/entity/shulker/shulker.png",
+    "identical_bytes": false,
+    "sources": [
+      {
+        "source_id": "betterend-new-dawn",
+        "archive_sha256": "92ff67030ef18d63f97d67ad07ce1f2d3d7c98adc66bcc901ba4521edffd06bf",
+        "asset_sha256": "6cb498ba6e661eebae5e1c314ed170a1094ebbe19b8593517e2bda1fb64a4706",
+        "dimensions": [
+          64,
+          64
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "minecraft",
+        "archive_sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+        "asset_sha256": "17801bf0cacc73e7f21027d222818cac87a620bf6517a5d7974e618943b6d831",
+        "dimensions": [
+          64,
+          64
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/projecte/textures/curios/empty_klein_star.png",
+    "identical_bytes": false,
+    "sources": [
+      {
+        "source_id": "project-expansion",
+        "archive_sha256": "96ef339eed405a4b1257420a6ff19279534de911f966b51fb6f1231fb0ff32f5",
+        "asset_sha256": "069c845770fa5be06bbf321410a30644c4a0afac6d89f3d82021f681587410de",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "projecte",
+        "archive_sha256": "fec9389d8b70fcf87331a0bcc41b78ada79c1e6326ef02a7bb6db9a1d5a4c48b",
+        "asset_sha256": "de27fddee4e9341117854af5d73a8dacd6e2f52a3a6e2d25b7b1242abcc8357d",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/psi/textures/block/empty.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "psi",
+        "archive_sha256": "25b2e19bb9433bf5e462dfd9906dcd7b07b6dcb208e243ca936a007dc6e14033",
+        "asset_sha256": "da5166771073f2ec5993d3c3f8f4d9a783528a0375f8a4bff8c4a3d501c621b5",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "psitweaks",
+        "archive_sha256": "77286172e4a415cc73a2b1152a098ecd4d2daf4f1e0341966fc2b974afa739af",
+        "asset_sha256": "da5166771073f2ec5993d3c3f8f4d9a783528a0375f8a4bff8c4a3d501c621b5",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/psi/textures/item/cad_color.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "psi",
+        "archive_sha256": "25b2e19bb9433bf5e462dfd9906dcd7b07b6dcb208e243ca936a007dc6e14033",
+        "asset_sha256": "6ee58592f840efaca6e3735f0c8fa8e0e2a049becf815c54b6c81775fa942836",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "psitweaks",
+        "archive_sha256": "77286172e4a415cc73a2b1152a098ecd4d2daf4f1e0341966fc2b974afa739af",
+        "asset_sha256": "6ee58592f840efaca6e3735f0c8fa8e0e2a049becf815c54b6c81775fa942836",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/block/source_flow.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "1987787b3b12ab810b059a891036811caff7e0da30c17255df288a52718a1fec",
+        "dimensions": [
+          32,
+          512
+        ],
+        "metadata_sha256": "491ea51d46bc1f0c0ff11ed9293461cc67de293c7672abbc45f67563f8fe1f1a"
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "1987787b3b12ab810b059a891036811caff7e0da30c17255df288a52718a1fec",
+        "dimensions": [
+          32,
+          512
+        ],
+        "metadata_sha256": "491ea51d46bc1f0c0ff11ed9293461cc67de293c7672abbc45f67563f8fe1f1a"
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/block/source_still.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "b2356ad333204022d39ba468a52d488210696d0a5140a97abfa54cd810ec6c53",
+        "dimensions": [
+          16,
+          320
+        ],
+        "metadata_sha256": "6a19bef21d66aac8fdcd8032751057733e321446b304d38f5ee8ba35efe99a1d"
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "b2356ad333204022d39ba468a52d488210696d0a5140a97abfa54cd810ec6c53",
+        "dimensions": [
+          16,
+          320
+        ],
+        "metadata_sha256": "6a19bef21d66aac8fdcd8032751057733e321446b304d38f5ee8ba35efe99a1d"
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/entity/banner/anima.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "0430137e80327d69cd5305496212ab835c6c492a08f53f27bd1489996fe70424",
+        "dimensions": [
+          64,
+          64
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "0430137e80327d69cd5305496212ab835c6c492a08f53f27bd1489996fe70424",
+        "dimensions": [
+          64,
+          64
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/item/_glyph_template_augment.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "d341164846189470f0b37e8ea9fa2d96b35a2adcd72e2aee63c41515cba8f626",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "d341164846189470f0b37e8ea9fa2d96b35a2adcd72e2aee63c41515cba8f626",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/item/_glyph_template_component.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "d7ca1c425b23647df018b159cf6f9112f71117f0c41816bf0f607d5a433cb5b1",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "d7ca1c425b23647df018b159cf6f9112f71117f0c41816bf0f607d5a433cb5b1",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/item/_glyph_template_form.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "41f15ceabfb3641574073bd7a2d9d84f97c9c83193149ac85f86d0aab3fc9325",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "41f15ceabfb3641574073bd7a2d9d84f97c9c83193149ac85f86d0aab3fc9325",
+        "dimensions": [
+          16,
+          16
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/item/anima_essence.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "86b2bdbdc4dcc11bdee3e8d610c59b69b7d065e2522672fae92ba62509f0b86a",
+        "dimensions": [
+          16,
+          80
+        ],
+        "metadata_sha256": "f664c3691f7c0fa48af0e5f3374084a142dbeb0882c82c91143fea6cf919ac3e"
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "86b2bdbdc4dcc11bdee3e8d610c59b69b7d065e2522672fae92ba62509f0b86a",
+        "dimensions": [
+          16,
+          80
+        ],
+        "metadata_sha256": "f664c3691f7c0fa48af0e5f3374084a142dbeb0882c82c91143fea6cf919ac3e"
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/mob_effect/contingency.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "1bd37ce3958ccbeefbd75341c1350c052c513d1f189306dc86d0cd4abacaa800",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "1bd37ce3958ccbeefbd75341c1350c052c513d1f189306dc86d0cd4abacaa800",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/mob_effect/mana_cost_down.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "57f437885cbd8dc1f3396fbd6f3641ecb57d6a164d2ecc02f057bd47a47a3751",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "57f437885cbd8dc1f3396fbd6f3641ecb57d6a164d2ecc02f057bd47a47a3751",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/mob_effect/rage.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "bb6e60261cd5bf1c3759d93b07d43bc664c2bd946913e139c5c417e979d4da3a",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "bb6e60261cd5bf1c3759d93b07d43bc664c2bd946913e139c5c417e979d4da3a",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/mob_effect/spell_crit_up.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "a4fd78918341c7d714731802b29a0c98b5ebb5803b9ee85941caf6cfdc4cbcd1",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "a4fd78918341c7d714731802b29a0c98b5ebb5803b9ee85941caf6cfdc4cbcd1",
+        "dimensions": [
+          18,
+          18
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  },
+  {
+    "key": "assets/sauce/textures/sounds/example_sound.png",
+    "identical_bytes": true,
+    "sources": [
+      {
+        "source_id": "ars-elemancy!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+        "archive_sha256": "33c51a5241a9728c7428bf4dc4deca15f5b0e3c239d5bde173e0b67610fd026e",
+        "asset_sha256": "7eadc251e42ff459e4c37deb03b656b10369c4d700333893f97dbbe53e8d0755",
+        "dimensions": [
+          14,
+          14
+        ],
+        "metadata_sha256": null
+      },
+      {
+        "source_id": "ars-elemental!META-INF/jarjar/sauce-1.21.1-0.0.61.100.jar",
+        "archive_sha256": "58ce7a36fc6fb7631b35765d58227b2982ece031559fa4122f1391a17811b251",
+        "asset_sha256": "7eadc251e42ff459e4c37deb03b656b10369c4d700333893f97dbbe53e8d0755",
+        "dimensions": [
+          14,
+          14
+        ],
+        "metadata_sha256": null
+      }
+    ],
+    "resolution": "pending-runtime-precedence"
+  }
+]

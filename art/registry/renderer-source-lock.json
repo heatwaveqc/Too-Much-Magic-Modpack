@@ -1,0 +1,8 @@
+{
+  "purpose": "Official technical class-name mapping for archive inspection; no game launch",
+  "minecraft": "1.21.1",
+  "url": "https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt",
+  "provider_sha1": "2244b6f072256667bcd9a73df124d6c58de77992",
+  "sha256": "140c47931cccc8fc9e4c22d7603e2d714d1a953a146f51ea7397d95c955536ec",
+  "version_metadata_sha1": "9aa86ea608c3ec777dcdc09e6c5a06c85b53599e"
+}

@@ -7,10 +7,15 @@ import struct
 import zlib
 from pathlib import Path
 from inventory import ASSET, dimensions
+from catalog_registry import load_registry, verify_catalog
 
 APPROVED = {"approved", "validated", "game-tested"}
 EXCEPTIONS = {"unchanged-approved", "excluded-approved"}
 STATES = APPROVED | EXCEPTIONS | {"pending", "drafted", "reviewed", "blocked"}
+CATEGORIES={'simple_items','layered_items','simple_blocks','directional_blocks','shaped_blocks',
+ 'pseudoblocks','complex_blocks','connected_blocks','fluids','mobs','armor_and_wearables',
+ 'projectiles_and_rendered_objects','gui_elements','micro_icons_and_fonts','particles_and_vfx','environmental_textures'}
+FLAGS={'animated','tinted','layered','emissive','connected','stateful','UV-sensitive'}
 
 def png_structure(data):
     dims = dimensions(data)
@@ -40,6 +45,12 @@ def validate(inv, pack):
             continue
         rows[key] = row
         state = row.get("status")
+        if 'classification_status' in row:
+            if row.get('primary_category') is not None and row['primary_category'] not in CATEGORIES:
+                errors.append(f"{key}: unknown primary category")
+            if not set(row.get('technical_flags',[]))<=FLAGS:errors.append(f"{key}: unknown technical flag")
+            if not row.get('family_id') or not row.get('required_deliverables'):
+                errors.append(f"{key}: incomplete category schema")
         if state not in STATES: errors.append(f"{key}: invalid status")
         if state in EXCEPTIONS and not row.get("exception"): errors.append(f"{key}: unexplained exception")
         if state in APPROVED:
@@ -78,14 +89,17 @@ def validate(inv, pack):
     for w in inv.get("unresolved", []): warnings.append(w)
     return errors, warnings, {"registered": len(rows), "production_png": len(present),
         "approved_rows": sum(r.get("status") in APPROVED for r in rows.values()),
-        "game_tested_rows": sum(r.get("status") == "game-tested" for r in rows.values())}
+        "game_tested_rows": sum(r.get("status") == "game-tested" for r in rows.values()),
+        "excluded_rows":sum(r.get('status')=='excluded-approved' for r in rows.values()),
+        "categorized_rows":sum(r.get('primary_category') is not None for r in rows.values())}
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--inventory", required=True, type=Path)
     p.add_argument("--pack", required=True, type=Path)
     args = p.parse_args()
-    errors, warnings, counts = validate(json.loads(args.inventory.read_text(encoding="utf-8")), args.pack)
+    verify_catalog(args.inventory)
+    errors, warnings, counts = validate(load_registry(args.inventory), args.pack)
     for e in errors: print("ERROR:", e)
     for w in warnings: print("WARN:", w)
     print(json.dumps(counts, sort_keys=True))

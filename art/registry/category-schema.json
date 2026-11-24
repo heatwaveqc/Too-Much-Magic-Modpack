@@ -1,0 +1,149 @@
+{
+  "schema_version": "0.2",
+  "primary_categories": [
+    "simple_items",
+    "layered_items",
+    "simple_blocks",
+    "directional_blocks",
+    "shaped_blocks",
+    "pseudoblocks",
+    "complex_blocks",
+    "connected_blocks",
+    "fluids",
+    "mobs",
+    "armor_and_wearables",
+    "projectiles_and_rendered_objects",
+    "gui_elements",
+    "micro_icons_and_fonts",
+    "particles_and_vfx",
+    "environmental_textures"
+  ],
+  "technical_flags": [
+    "animated",
+    "tinted",
+    "layered",
+    "emissive",
+    "connected",
+    "stateful",
+    "UV-sensitive"
+  ],
+  "required_fields": [
+    "key",
+    "primary_category",
+    "classification_status",
+    "family_id",
+    "required_deliverables",
+    "technical_flags",
+    "evidence",
+    "production_scope",
+    "category_approval"
+  ],
+  "unresolved_primary_category": null,
+  "category_deliverables": {
+    "simple_items": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review"
+    ],
+    "layered_items": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review"
+    ],
+    "simple_blocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "five_by_five_both_axes",
+      "native_model_preview"
+    ],
+    "directional_blocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "five_by_five_both_axes",
+      "native_model_preview"
+    ],
+    "shaped_blocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "shared_material_master",
+      "uv_model_preview"
+    ],
+    "pseudoblocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "cutout_plane_overlap_preview"
+    ],
+    "complex_blocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "uv_layout",
+      "rendered_model_preview"
+    ],
+    "connected_blocks": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "five_by_five_both_axes",
+      "native_model_preview"
+    ],
+    "fluids": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "still_and_flowing_pair",
+      "animation_loop_preview"
+    ],
+    "mobs": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "uv_layout",
+      "rendered_model_preview"
+    ],
+    "armor_and_wearables": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "inventory_icon",
+      "worn_uv_textures",
+      "equipped_pose_preview"
+    ],
+    "projectiles_and_rendered_objects": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "uv_layout",
+      "rendered_model_preview"
+    ],
+    "gui_elements": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "native_layout_contract",
+      "gui_scale_1_to_4_preview"
+    ],
+    "micro_icons_and_fonts": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review"
+    ],
+    "particles_and_vfx": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "runtime_size_and_timing_preview"
+    ],
+    "environmental_textures": [
+      "native_png",
+      "native_16_32_preview",
+      "category_owner_review",
+      "renderer_mapping_and_lighting_preview"
+    ]
+  },
+  "family_approval": "required separately from classification; provisional singleton/material grouping is allowed and explicit"
+}

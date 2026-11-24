@@ -1,0 +1,20 @@
+{
+  "id": "pilot-02-category-first-pass",
+  "branch": "feature/art-categories-pilot02-20261117",
+  "source_integration_sha": "1413154722a92cdeefa88e2dc40c12c09f8baf80",
+  "source_pilot_sha": "f1b41ea39b857d6ecab355352a877bf923fd4e75",
+  "standards_sha": "4ebb5c962edf13d26c430fac87d855b386821243",
+  "assigned_paths": [
+    "art/registry/**",
+    "art/reviews/pilot-02/**",
+    "art/tools/**",
+    "art/README.md",
+    "art/WORK-CHAT.md",
+    "art/too-much-magic-hd/assets/** (withdraw unapproved initial PNGs only)"
+  ],
+  "artwork_state": "review files outside Git; original pilot branch/history retained",
+  "category_approval": "pending by family/category",
+  "gameplay_changes": false,
+  "runtime_test": "not run",
+  "next_step": "owner category feedback and native renderer resolution queue"
+}
