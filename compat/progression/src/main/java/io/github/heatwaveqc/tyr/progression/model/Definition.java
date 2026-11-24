@@ -25,16 +25,24 @@ public final class Definition {
     public record Activity(String event, String selector, long xp, int cooldownTicks) {}
     public record Criterion(String event, String selector, int count) {}
     public record Milestone(String id, List<Criterion> criteria, List<String> after,
-                             long xp, int points, String title, boolean notifyProgress) {
-        public Milestone(String id, List<Criterion> criteria, List<String> after,
-                         long xp, int points) {
-            this(id, criteria, after, xp, points, "", false);
+                             long xp, int points, String title, boolean notifyProgress,
+                             String fixedRewardSystem, long fixedRewardXp) {
+        public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points) {
+            this(id,criteria,after,xp,points,"",false,"",0);
+        }
+        public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points,
+                         String title,boolean notifyProgress) {
+            this(id,criteria,after,xp,points,title,notifyProgress,"",0);
         }
         public Milestone {
-            criteria = List.copyOf(criteria);
-            after = List.copyOf(after);
-            if(title==null || title.length()>120 || title.chars().anyMatch(Character::isISOControl))
-                throw new IllegalArgumentException("Invalid milestone title");
+            criteria=List.copyOf(criteria);
+            after=List.copyOf(after);
+            if(title==null||title.length()>120||title.chars().anyMatch(Character::isISOControl)
+                    ||fixedRewardSystem==null||fixedRewardXp<0||fixedRewardXp>1000000
+                    ||fixedRewardXp>0&&!fixedRewardSystem.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")
+                    ||fixedRewardXp==0&&!fixedRewardSystem.isBlank()
+                    ||fixedRewardXp>0&&(xp!=0||points!=0))
+                throw new IllegalArgumentException("Invalid milestone reward/label");
         }
     }
     /** Costs increase by stepCost for each purchased rank. */

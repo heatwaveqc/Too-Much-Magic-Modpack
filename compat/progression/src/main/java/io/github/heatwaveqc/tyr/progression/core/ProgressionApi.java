@@ -313,6 +313,20 @@ public final class ProgressionApi {
                         next=next.withEconomy(next.economy().withAchievement(milestone.id()));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
+                        // One permanent receipt per distinct Path trial, independent
+                        // of the ordinary event's independent scaled earning.
+                        if(milestone.fixedRewardXp()>0 && PathRegistry.economyEligible(
+                                player,milestone.fixedRewardSystem())) {
+                            var rewardCatalog=PathRegistry.economyCatalog();
+                            next=ChannelEngine.awardConfigured(next,rewardCatalog,
+                                milestone.fixedRewardSystem(),"tyr_progression:path_trial",
+                                "trial:"+path.id()+"/"+milestone.id(),
+                                path.id()+"/"+milestone.id(),
+                                BigDecimal.valueOf(milestone.fixedRewardXp()),true,
+                                io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(
+                                    player,rewardCatalog.growth(milestone.fixedRewardSystem()),
+                                    milestone.fixedRewardSystem()));
+                        }
                         changed = true;
                     }
                 }

@@ -106,8 +106,17 @@ public final class PathJson {
             int points = number(j,"points",0);
             if (xp < 0 || xp > 1000000 || points < 0 || points > 10000)
                 throw new IllegalArgumentException("Unsafe milestone reward");
+            String fixedSystem="";
+            long fixedAmount=0;
+            if(j.has("fixed_reward")){
+                JsonObject reward=j.getAsJsonObject("fixed_reward");
+                if(!reward.keySet().equals(Set.of("system","xp")))
+                    throw new IllegalArgumentException("Invalid fixed milestone reward");
+                fixedSystem=id(reward.get("system").getAsString());
+                fixedAmount=reward.get("xp").getAsBigDecimal().longValueExact();
+            }
             milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points,
-                str(j,"title",""),flag(j,"notify_progress")));
+                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount));
         }
 
         List<Definition.Skill> skills = new ArrayList<>();

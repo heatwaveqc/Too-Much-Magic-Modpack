@@ -78,6 +78,11 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
             paths.put(tree.id(),def);
             var projected=MasteryStageProjection.parse(j,systems);
             if(projected!=null)stages.put(tree.id(),projected);
+            for(var milestone:tree.milestones())if(milestone.fixedRewardXp()>0) {
+                XpChannel destination=systems.get(milestone.fixedRewardSystem());
+                if(destination==null||!destination.magic())
+                    throw new IllegalArgumentException("Fixed milestone requires configured XP system");
+            }
             var activities=UnifiedMxpSource.parse(j,systems);
             if(!activities.isEmpty())sharedSources.put(tree.id(),activities);
             if(def.magic()&&tree.milestones().stream().anyMatch(m->m.xp()!=0||m.points()!=0))
