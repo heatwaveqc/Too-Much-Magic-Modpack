@@ -1,6 +1,14 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/alexscaves_biome_generation/forlorn_hollows.json"
+hash = "e253980401e7b4f5224ee25d84b751576985cefc84069310436ee197720cae41"
+
+[[files]]
+file = "config/alexscaves_biome_generation/magnetic_caves.json"
+hash = "04528ed61946e949c35d26a84f782e6970854ea32d652397ca51bb84f22943f1"
+
+[[files]]
 file = "config/almostunified/placeholders.json"
 hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
