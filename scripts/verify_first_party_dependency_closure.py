@@ -22,6 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS = {
     "projecte": "projecte",
     "apotheosis": "apotheosis",
+    "improvableskills": "improvable-skills",
+    "apothic_enchanting": "apothic-enchanting",
     "malum": "malum",
     "botania": "botania-revived",
     "evilcraft": "evilcraft",
