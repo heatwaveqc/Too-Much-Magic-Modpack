@@ -27,6 +27,8 @@ public final class VerifiedConsumptionXp {
         if(consumed.isEmpty())return;
         boolean drank=consumed.getUseAnimation()==UseAnim.DRINK;
         boolean food=consumed.getFoodProperties(player)!=null;
+        var awards=new java.util.ArrayList<io.github.heatwaveqc.tyr.progression.data.XpSourceRouting.Candidate>();
+        var discoveredPaths=new java.util.HashSet<String>();
         for(var entry:PathRegistry.trainingXp().entrySet()){
             String path=entry.getKey();var policy=entry.getValue();
             if(!TrainingRewards.eligible(player,path))continue;
@@ -48,17 +50,21 @@ public final class VerifiedConsumptionXp {
                 if(updated!=progress)player.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),updated);
                 String first=policy.discoveryReplay()?null:"first:"+UUID.nameUUIDFromBytes(
                     (path+"|"+item).getBytes(StandardCharsets.UTF_8));
-                TrainingRewards.award(player,path,policy,"first_consumable",
-                    policy.discovery(),false,first);
-                // Discovery is Path-local; an earlier Normie snack never pre-marks it.
-                ProgressionApi.record(player,Selectors.itemAction("food_discovered",consumed));
+                awards.add(TrainingRewards.candidate(policy,"first_consumable",
+                    policy.discovery(),false,first));
+                // Discovery is Path-local; emit the milestone once for each newly discovering Path.
+                discoveredPaths.add(path);
             }
-            if(drink&&ElixirRuntime.finished(player,path,policy,consumed))continue;
+            if(drink&&ElixirRuntime.finished(player,path,policy,consumed,awards))continue;
             if(tagged(consumed,policy.meditativeTag())){
-                TrainingRewards.award(player,path,policy,drink?"meditative_drink":"meditative_food",
-                    drink?policy.meditativeDrink():policy.meditativeFood(),true,null);
+                awards.add(TrainingRewards.candidate(policy,drink?"meditative_drink":"meditative_food",
+                    drink?policy.meditativeDrink():policy.meditativeFood(),true,null));
             }
         }
+        ProgressionApi.awardSourceBatch(player,"training:"+UUID.randomUUID(),awards);
+        if(!discoveredPaths.isEmpty())
+            ProgressionApi.recordFiltered(player,Selectors.itemAction("food_discovered",consumed),
+                    path->discoveredPaths.contains(path.id()));
     }
     public static void forget(ServerPlayer player){LAST.remove(player.getUUID());}
 }
