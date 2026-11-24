@@ -88,7 +88,7 @@ public final class NewbieMode {
         ProgressionApi.setMode(player, KEY, mode);
         reconcileBaselines(player);
         syncTag(player);
-        VirtualElytra.reconcile(player);
+        VirtualElytra.reconcile(player,true);
     }
 
     private static void syncTag(ServerPlayer player) {
@@ -112,6 +112,7 @@ public final class NewbieMode {
         }
         reconcileBaselines(player);
         syncTag(player);
+        VirtualElytra.reconcile(player,true);
     }
 
     private static void onClone(PlayerEvent.Clone event) {
@@ -128,6 +129,7 @@ public final class NewbieMode {
         if (event.getEntity() instanceof ServerPlayer player) {
             reconcileBaselines(player);
             syncTag(player);
+            VirtualElytra.reconcile(player,true);
         }
     }
 
