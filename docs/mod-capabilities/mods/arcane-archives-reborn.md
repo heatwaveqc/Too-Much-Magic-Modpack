@@ -106,7 +106,7 @@ All **29 axes** are addressed; `unknown` means **not yet researched sufficiently
 | Axis | First-pass presence | Concrete observed/named mechanic or research boundary |
 | --- | --- | --- |
 | `gear` | present | Handheld Amphora, Manifest, Tome; exact equip/charge rules unknown |
-| `movement` | no_capability_confirmed (publisher scope only) | Mod's described remotes move **items/fluids**, not players |
+| `movement` | unknown | Publisher only describes remote **item/fluid** movement; no exhaustive negative code survey of player movement exists |
 | `ore_processing` | unknown | Gem Cutter is crafting; don't assume it duplicates ores |
 | `storage` | **present** | 54-slot 4× Chest, single-type Trove, fluid Tank, upgrades |
 | `crafting` | **present** | Gem Cutter storage-fed recipes; exact recipe outputs pending pinned JAR |
@@ -133,9 +133,9 @@ All **29 axes** are addressed; `unknown` means **not yet researched sufficiently
 | `world_content` | unknown | No verified generated structures, biomes or creatures |
 | `death_respawn` | unknown | No after-death recovery or totem function established |
 | `trade_economy` | unknown | No merchant/trading output established |
-| `progression_tiers` | present (teaching only) | **Five Tome flowchart teaching stages** + item/storage capacity upgrades. Native hard research gates **not established** |
+| `progression_tiers` | unknown (native formal tiers) | **Five Tome flowchart teaching stages** are guide content, not proof of five hard research tiers; storage-capacity upgrades exist, exact native lock order unknown |
 
-*Negative coverage honesty:* The publisher's early-game storage description is enough to avoid proposing combat spells as research priorities. It is **not** a complete code-level negative search for the many `unknown` axes; do not silently upgrade those rows to `no_capability_confirmed` in the next pass.
+*Negative coverage honesty:* The publisher's early-game storage description is enough to avoid proposing combat spells as research priorities. It is **not** a complete code-level negative search; do not silently upgrade `unknown` rows to `no_capability_confirmed` in the next pass without a scoped registry/source survey.
 
 ## 5. Typed resources and storage scopes
 
