@@ -54,9 +54,10 @@ public final class PathJson {
     public static Definition.Path read(String pathId, JsonObject source) {
         id(pathId);
         if (number(source,"schema",0) != 1) throw new IllegalArgumentException("schema must be 1");
-        if (!Set.of("admin","manual","sunset","potion","automatic","food").contains(str(source,"enrollment","admin")))
+        if (!Set.of("admin","manual","sunset","potion","automatic","food","entity_offering").contains(str(source,"enrollment","admin")))
             throw new IllegalArgumentException("Unknown enrollment mechanism");
         FoodRiteSpec.parse(source);
+        EntityOfferingSpec.parse(source);
         PotionEnrollmentTrigger.parse(source); // fail closed before path is accepted
         HunterXpPolicy.parse(source); // strictly validate any dynamic XP policy
         HunterMutationPolicy.parse(source); // blacklist, hunger and target must be safe
