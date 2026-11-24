@@ -31,18 +31,27 @@ public final class PersonalEnchantFilterState {
             state -> state.books());
 
     private final List<ItemStack> slots;
+    // Preview epochs are session-local; no open menu survives a save/reload.
+    private final long revision;
 
     private PersonalEnchantFilterState(List<ItemStack> books) {
+        this(books, 0);
+    }
+
+    private PersonalEnchantFilterState(List<ItemStack> books, long revision) {
         if (books.size() != SLOTS) throw new IllegalArgumentException("Six book slots required");
         List<ItemStack> owned = new ArrayList<>(SLOTS);
         for (ItemStack stack : books) owned.add(stack.copy());
         slots = List.copyOf(owned);
+        this.revision = revision;
     }
 
     public static PersonalEnchantFilterState empty() {
         return new PersonalEnchantFilterState(
             java.util.Collections.nCopies(SLOTS, ItemStack.EMPTY));
     }
+
+    public long revision() { return revision; }
 
     public List<ItemStack> books() {
         return slots.stream().map(ItemStack::copy).toList();
@@ -83,8 +92,8 @@ public final class PersonalEnchantFilterState {
         if (slot < 0 || slot >= SLOTS) throw new IndexOutOfBoundsException(slot);
         if (book == null || (!book.isEmpty() && enchantmentId(book).isEmpty()))
             throw new IllegalArgumentException("A filter slot requires one single-enchantment book");
-        List<ItemStack> newSlots = books();
+        List<ItemStack> newSlots = new ArrayList<>(books());
         newSlots.set(slot, book.copy());
-        return new PersonalEnchantFilterState(newSlots);
+        return new PersonalEnchantFilterState(newSlots, Math.incrementExact(revision));
     }
 }

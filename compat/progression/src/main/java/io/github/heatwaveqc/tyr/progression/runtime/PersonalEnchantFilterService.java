@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 import io.github.heatwaveqc.tyr.progression.state.PersonalEnchantFilterState;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import java.util.Set;
+import io.github.heatwaveqc.tyr.progression.runtime.enchanting.PersonalEnchantFilter;
 import java.util.List;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -29,6 +30,15 @@ public final class PersonalEnchantFilterService {
         if (!PersonalEnchantFilterAbilityGate.unlocked(player)) return Set.of();
         return player.getData(ProgressionAttachments.PERSONAL_ENCHANT_FILTER.get())
             .exclusions(true);
+    }
+
+    /** Derived immutable preview view, never a second persisted filter or unlock. */
+    public static PersonalEnchantFilter snapshot(ServerPlayer player) {
+        boolean unlocked = PersonalEnchantFilterAbilityGate.unlocked(player);
+        PersonalEnchantFilterState state =
+            player.getData(ProgressionAttachments.PERSONAL_ENCHANT_FILTER.get());
+        return new PersonalEnchantFilter(unlocked, state.revision(),
+            state.exclusions(unlocked).stream().map(ResourceLocation::toString).sorted().toList());
     }
 
     public static boolean excludes(ServerPlayer player, ResourceLocation enchantment) {

@@ -1,3 +1,7 @@
+# Consolidated foundation (2026-11-24)
+
+Supersedes separate PR #449 at `5e74707ad5de6bfe847fae162c12e53d5fd03d83` and original #471 at `88df57ba3c4019b8e55021978b980e158cf867e9`. Current dev/progression base `b2143903b9e5f74b91313d2bb726c6d10dbf7858`; all fourteen changed paths reconciled against current base rather than restoring old module trees. #471 retains sole ownership. Actual escrow and native ability gate are authoritative; #449 snapshot/preview types are derived from the escrow, not separate persisted authorization. Preview stamps compare revision, unlock and IDs; session-local revision resets only when no open preview survives. Fixed immutable list mutation in escrow replace and bounded candle packing before allocation (including integer overflow). Six book slots remain distinct from virtual shelf capacity. No ability registration/scroll/menu, native enchant adapters, live virtual shelf inventory or candle effects yet; native runtime inert until ability exists. All future work uses this one service. Original donor docs retained below as historical scope. No full build authorized.
+
 # Personal enchanting filter — shared Progression engine foundation (#328)
 
 **Status:** isolated **source implementation in progress** in `feature/progression-personal-enchant-filter-328-20261121`; not a player-usable finished Improvable Skills ability and not gameplay-tested. Parent issue #328 includes a separate portable 32-slot shelf/candle undertaking; this PR does **not** claim that subsystem is implemented.

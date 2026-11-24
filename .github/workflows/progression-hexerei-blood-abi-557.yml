@@ -1,0 +1,29 @@
+name: Progression Hexerei blood input pinned ABI 557
+on:
+  pull_request:
+    paths:
+      - "compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mixin/HexereiOrdinaryBloodInputMixin.java"
+      - "compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/blood/**"
+      - "compat/progression/src/main/resources/tyr_progression_hexerei_blood.mixins.json"
+      - "compat/progression/src/main/templates/META-INF/neoforge.mods.toml"
+      - "mods/hexerei.pw.toml"
+      - "scripts/verify_hexerei_557_abi.py"
+      - ".github/workflows/progression-hexerei-blood-abi-557.yml"
+  workflow_dispatch:
+
+jobs:
+  pinned-native-bytecode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Verify hash-matched Hexerei 0.5.0.3 method signatures, native item bypass
+        run: python3 scripts/verify_hexerei_557_abi.py
+      # Read-only source ABI audit. Explicitly NO Minecraft boot, full
+      # integration smoke, Prism package, worlds or mod JAR publication.
