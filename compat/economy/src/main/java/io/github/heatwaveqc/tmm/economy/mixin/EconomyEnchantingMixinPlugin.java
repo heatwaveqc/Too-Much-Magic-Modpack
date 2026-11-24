@@ -12,7 +12,8 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 public final class EconomyEnchantingMixinPlugin implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean eidolon = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.EidolonPersonalFilterMixin");
-        if (!eidolon && !mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
+        boolean portable = mixinClassName.startsWith("io.github.heatwaveqc.tmm.economy.mixin.PortableEnchanting");
+        if (!eidolon && !portable && !mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
             return true; // No changes to existing unrelated mixins.
         LoadingModList list = LoadingModList.get();
         if (list == null) return false;
