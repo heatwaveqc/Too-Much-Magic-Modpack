@@ -245,6 +245,7 @@ public final class ProgressionEvents {
             ProgressionMenuNetwork.forget(player);
             SkillActivation.stopAll(player);
             EffectRuntime.reconcile(player);
+            MutationPowers.reconcile(player);
             VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);

@@ -22,7 +22,10 @@ public final class MutationPowers {
     private static final Map<ServerPlayer,Set<Key>> APPLIED=new WeakHashMap<>();
     private static final Set<ServerPlayer> INVISIBLE=Collections.newSetFromMap(new WeakHashMap<>());
     public static int amplifier(LivingEntity entity,Holder<MobEffect> effect){
-        String id=BuiltInRegistries.MOB_EFFECT.getKey(effect.value()).toString();
+        if(!(entity instanceof ServerPlayer)&&!entity.level().isClientSide())return -1;
+        var location=BuiltInRegistries.MOB_EFFECT.getKey(effect.value());
+        if(location==null)return -1;
+        String id=location.toString();
         if(!MutationPowerPolicy.supported(id))return -1;
         if(entity instanceof ServerPlayer p)return HunterMutations.active(p).getOrDefault(id,-1);
         return ClientPowerSnapshot.mutation(entity,id);
@@ -48,6 +51,8 @@ public final class MutationPowers {
     }
     public static void reconcile(ServerPlayer p){
         var active=HunterMutations.active(p);
+        Set<Key> previous=APPLIED.getOrDefault(p,Set.of());
+        if(active.isEmpty()&&previous.isEmpty()&&!INVISIBLE.contains(p))return;
         Set<Key> desired=new HashSet<>();
         for(var entry:active.entrySet()){
             String id=entry.getKey();int amp=entry.getValue();
@@ -72,7 +77,7 @@ public final class MutationPowers {
                 instance.addTransientModifier(new AttributeModifier(ownId,amount,modifier.operation()));
             });
         }
-        for(var key:APPLIED.getOrDefault(p,Set.of()))if(!desired.contains(key)){
+        for(var key:previous)if(!desired.contains(key)){
             var instance=p.getAttribute(key.attr());if(instance!=null)instance.removeModifier(key.id());
         }
         if(desired.isEmpty())APPLIED.remove(p);else APPLIED.put(p,desired);
@@ -80,7 +85,7 @@ public final class MutationPowers {
         if(active.containsKey("minecraft:invisibility")){
             if(!p.isInvisible()){p.setInvisible(true);INVISIBLE.add(p);}
         }else if(INVISIBLE.remove(p)&&!p.getActiveEffectsMap().containsKey(MobEffects.INVISIBILITY))p.setInvisible(false);
-        if(p.getHealth()>p.getMaxHealth())p.setHealth(p.getMaxHealth());
+        if(!previous.isEmpty()&&p.getHealth()>p.getMaxHealth())p.setHealth(p.getMaxHealth());
     }
     public static void forget(ServerPlayer p){
         for(var key:APPLIED.getOrDefault(p,Set.of())){
@@ -88,6 +93,5 @@ public final class MutationPowers {
         }
         APPLIED.remove(p);
         if(INVISIBLE.remove(p)&&!p.getActiveEffectsMap().containsKey(MobEffects.INVISIBILITY))p.setInvisible(false);
-        if(p.getHealth()>p.getMaxHealth())p.setHealth(p.getMaxHealth());
     }
 }

@@ -102,7 +102,16 @@ public final class HunterMutations {
     }
 
     /** Highest eligible potency across Paths; no duplicate mutation or second persistence layer. */
+    private static final ThreadLocal<Boolean> RESOLVING=new ThreadLocal<>();
     public static Map<String,Integer> active(ServerPlayer player){
+        // A data-defined eligibility condition may itself query native effects.
+        // Do not recursively grant a mutation through its own prerequisite.
+        if(Boolean.TRUE.equals(RESOLVING.get()))return Map.of();
+        if(player.getData(ProgressionAttachments.MUTATIONS.get()).paths().isEmpty())return Map.of();
+        RESOLVING.set(true);
+        try{return resolveActive(player);}finally{RESOLVING.remove();}
+    }
+    private static Map<String,Integer> resolveActive(ServerPlayer player){
         if(!player.isAlive()||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player)
             ||player instanceof net.neoforged.neoforge.common.util.FakePlayer)return Map.of();
         Map<String,Integer> result=new java.util.TreeMap<>();
@@ -148,7 +157,7 @@ public final class HunterMutations {
             .reduce((a,b) -> a + ", " + b).orElse("none");
         return "Permanent mutations: " + state.unlocked().size()
             + " | target " + (policy.targetDurationTicks()/20) + " seconds per potency"
-            + " | exhaustion/tick " + (policy.exhaustionPerMutationTick() * state.unlocked().size())
+            + " | exhaustion/tick " + (policy.exhaustionPerMutationTick() * active(player).size())
             + " | unsupported/dormant: " + state.unlocked().keySet().stream().filter(id->!MutationPowerPolicy.supported(id)).count()
             + " | unlocked: " + unlocked;
     }
