@@ -188,3 +188,27 @@ This is **an implementation skeleton and functional pilot**, not release-ready M
 ## Client-only default-unbound controls (2026-11-16)
 
 This dual-sided progression JAR also carries the client-only `ClientKeyDefaults` policy and separately registered `tyr_controls_defaults.mixins.json`. It reads the original `options.txt` key names at `Options.load()` HEAD, before Default Options can rewrite them; then inspects the **runtime** client key registry rather than maintaining a per-mod key list. It leaves all 34 vanilla 1.21.1 names unchanged. New standard modded keys start unbound and have an unbound Reset default, while any pre-existing saved key remains assigned. A failed options snapshot disables changes, rather than risking user settings. Custom out-of-registry hotkeys need separate adapters. Unit checks live in `ControlsDefaultsPolicyTest`, graphical client and KeySets persistence still require an authorized live test. The separate mixin config deliberately does not activate unrelated experimental progression mixins.
+
+## Optional native physiology admission (issue #468)
+
+A Path may declare a list of precise native forms it is allowed to coexist with:
+
+```json
+"native_compatible_forms": ["forest_dragon"]
+```
+
+Accepted IDs: `jawr_vampire`, `jawr_werewolf`, `goety_lich`,
+`forbidden_magic_lich`, `cave_dragon`, `forest_dragon`, `sea_dragon`.
+An omitted/empty list permits no native coexistence for specialist Paths.
+The owner-approved future pairings (#452) are **Sexy Demon + Cave**,
+**Dryad + Forest**, and **Spawn + Sea**; these declarations must be attached to
+the actual Path definitions when those Paths are introduced. Do not invent
+unused placeholder Path IDs or grant other combinations implicitly.
+
+Invalid IDs, duplicates, and malformed arrays reject the *entire* data reload.
+Join checks use the existing server-only `ProgressionApi.join` veto and the
+native observation snapshots from #470. **Native-form acquisition interception
+is not yet wired** and the separate Transformations module is not retired by
+this source slice. Integration remains gated on that work and optional-mod,
+death-order, one-JAR, client, and gameplay verification. No additional button
+or standalone skill is introduced.
