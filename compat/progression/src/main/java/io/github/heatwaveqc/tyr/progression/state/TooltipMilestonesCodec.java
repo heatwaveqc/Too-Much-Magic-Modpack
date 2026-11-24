@@ -13,6 +13,7 @@ public final class TooltipMilestonesCodec {
     public static final Codec<TooltipMilestones> CODEC = RecordCodecBuilder.create(instance ->
         instance.group(
             Codec.BOOL.fieldOf("projecte").forGetter(TooltipMilestones::projecte),
-            Codec.BOOL.fieldOf("replication").forGetter(TooltipMilestones::replication)
+            Codec.BOOL.fieldOf("replication").forGetter(TooltipMilestones::replication),
+            Codec.BOOL.optionalFieldOf("covalence_pending", false).forGetter(TooltipMilestones::covalencePending)
         ).apply(instance, TooltipMilestones::new));
 }

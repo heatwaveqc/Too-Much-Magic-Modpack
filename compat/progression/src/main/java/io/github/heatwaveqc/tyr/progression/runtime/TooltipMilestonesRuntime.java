@@ -62,9 +62,21 @@ public final class TooltipMilestonesRuntime {
         TooltipMilestones prior = player.getData(ProgressionAttachments.TOOLTIP_MILESTONES.get());
         TooltipMilestones next = prior.discover(owns(player, STONE), owns(player, REPLICA));
         if (next != prior) player.setData(ProgressionAttachments.TOOLTIP_MILESTONES.get(), next);
+        // Persist the pending receipt before invoking an optional native API.
+        // Retry at most once per second or on login/respawn/dimension changes.
+        if (next.covalencePending() && (next != prior || force || player.tickCount % 20 == 0)) {
+            next = deliverCovalence(player, next);
+        }
         TooltipMilestones published = LAST.put(player.getUUID(), next);
         if (force || !Objects.equals(next, published) || player.tickCount % 20 == 0)
             TooltipMilestoneNetwork.send(player, next.projecte(), next.replication());
+    }
+
+    private static TooltipMilestones deliverCovalence(ServerPlayer player, TooltipMilestones state) {
+        if (!state.covalencePending() || !CovalenceKnowledgeGrant.deliver(player)) return state;
+        TooltipMilestones delivered = state.covalenceDelivered();
+        player.setData(ProgressionAttachments.TOOLTIP_MILESTONES.get(), delivered);
+        return delivered;
     }
 
     private static void login(PlayerEvent.PlayerLoggedInEvent event) {
@@ -91,6 +103,7 @@ public final class TooltipMilestonesRuntime {
         TooltipMilestones next = prior.discover(stone, replica);
         if (next == prior) return;
         player.setData(ProgressionAttachments.TOOLTIP_MILESTONES.get(), next);
+        next = deliverCovalence(player, next);
         LAST.put(player.getUUID(), next);
         TooltipMilestoneNetwork.send(player, next.projecte(), next.replication());
     }

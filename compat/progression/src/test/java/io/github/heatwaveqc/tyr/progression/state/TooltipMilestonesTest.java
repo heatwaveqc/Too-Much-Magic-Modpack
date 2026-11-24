@@ -28,6 +28,21 @@ final class TooltipMilestonesTest {
         assertEquals(both, replicaFirst.discover(true, false));
     }
 
+    @Test void covalenceDeliveryIsOneTimeAndIndependent() {
+        TooltipMilestones noStone = TooltipMilestones.empty().discover(false, true);
+        assertFalse(noStone.covalencePending());
+        TooltipMilestones pending = noStone.discover(true, false);
+        assertTrue(pending.projecte());
+        assertTrue(pending.replication());
+        assertTrue(pending.covalencePending());
+        assertSame(pending, pending.discover(false, false));
+        TooltipMilestones delivered = pending.covalenceDelivered();
+        assertFalse(delivered.covalencePending());
+        assertSame(delivered, delivered.discover(true, true));
+        assertSame(delivered, delivered.covalenceDelivered());
+        assertFalse(new TooltipMilestones(true, false).discover(true, false).covalencePending());
+    }
+
     @Test void numbersRequirePersonalNativeKnowledgeAndPreference() {
         assertFalse(TooltipMilestonePolicy.projecteNumeric(false, true, true));
         assertFalse(TooltipMilestonePolicy.projecteNumeric(true, false, true));
