@@ -10,7 +10,7 @@ public final class ArchlichResurrectionConfig {
             .comment("EXPERIMENTAL / enabled by default for disposable test worlds: dual Goety +",
                      "Forbidden Magic lich, attempt native JAWR charged phylactery",
                      "resurrection before native Goety Arca fallback.",
-                     "Requires pinned Goety 3.2.2 and Forbidden Magic 0.5.37.",
+                     "Requires pinned Goety 3.2.3 and Forbidden Magic 0.5.37.",
                      "Does not combine hunger, respawn rules or transformation cures.")
             .define("experimentalArchlichPhylacteryFirst", true);
 

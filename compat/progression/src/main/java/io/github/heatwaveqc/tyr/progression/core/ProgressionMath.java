@@ -27,12 +27,18 @@ public final class ProgressionMath {
     }
 
     public static Track buy(Definition.Path spec, Track old, String skillId) {
+        var skill=spec.skill(skillId);
+        return skill==null?old:buy(spec,old,skillId,skill.price(old.skillRank(skillId)));
+    }
+
+    /** Same prerequisite/choice evaluation with a currency-configured point price. */
+    public static Track buy(Definition.Path spec, Track old, String skillId, int pointCost) {
         Definition.Skill skill = spec.skill(skillId);
-        if (!old.joined() || skill == null) return old;
+        if (!old.joined() || skill == null || pointCost < 0) return old;
         int owned = old.skillRank(skillId);
         if(old.rank()<skill.nextRequiredRank(owned))return old;
         if (!skill.autoRanks().isEmpty()) return old; // baseline grants are not purchased
-        if (owned >= skill.maxRank() || old.points() < skill.price(owned)) return old;
+        if (owned >= skill.maxRank() || old.points() < pointCost) return old;
         if (owned == 0 && !skill.choiceGroup().isEmpty()) {
             for (Definition.Skill other : spec.skills()) {
                 if (!other.id().equals(skill.id()) &&
@@ -46,7 +52,7 @@ public final class ProgressionMath {
         if (!skill.requiresAnySkills().isEmpty() &&
             skill.requiresAnySkills().stream().noneMatch(needed -> old.skillRank(needed) > 0)) return old;
         if (!old.milestones().containsAll(skill.requiresMilestones())) return old;
-        return old.withSkill(skillId, owned + 1, old.points() - skill.price(owned));
+        return old.withSkill(skillId, owned + 1, old.points() - pointCost);
     }
 
     public static Track refundAll(Definition.Path spec, Track old) {
