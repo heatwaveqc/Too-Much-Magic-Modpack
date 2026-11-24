@@ -1,0 +1,32 @@
+name: Progression invisible powers (#532 Type A)
+
+on:
+  pull_request:
+    paths:
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/VirtualElytra.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/PassivePowers.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/ClientPowerSnapshot.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/client/ClientPassivePowers.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/network/PassivePowerNetwork.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mixin/VirtualElytraItemExtensionMixin.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/core/PassivePowerGrants.java'
+      - 'scripts/verify_invisible_powers.py'
+      - '.github/workflows/progression-invisible-powers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify nonpotion virtual Elytra and server-owned passive power boundaries
+        run: python3 scripts/verify_invisible_powers.py
+      - name: Type A only — no game launch
+        run: echo 'No first-party JAR installation, full assembly, Minecraft client/server or Prism test performed.'

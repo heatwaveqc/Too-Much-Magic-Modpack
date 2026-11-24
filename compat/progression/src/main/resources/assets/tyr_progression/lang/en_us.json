@@ -12,5 +12,8 @@
   "message.tyr_progression.mutagenic_brew_no_progress": "Mutation unavailable or already complete; the brew was not consumed.",
   "key.tyr_progression.skills": "Open Discipline Skills",
   "key.tyr_progression.enhanced_night_vision": "Toggle Enhanced Night Vision",
-  "key.tyr_progression.lava_vision": "Toggle Lava Vision"
+  "key.tyr_progression.lava_vision": "Toggle Lava Vision",
+  "item.tyr_progression.blood_sausage": "Bloody Sausage",
+  "item.tyr_progression.blood_pie_slice": "Blood Pie Slice",
+  "tooltip.tyr_progression.blood_food": "Restores 1,000 JAWR blood to vampires; normal food for other players."
 }

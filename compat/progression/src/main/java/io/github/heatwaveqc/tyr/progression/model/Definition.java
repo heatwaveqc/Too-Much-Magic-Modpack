@@ -25,10 +25,16 @@ public final class Definition {
     public record Activity(String event, String selector, long xp, int cooldownTicks) {}
     public record Criterion(String event, String selector, int count) {}
     public record Milestone(String id, List<Criterion> criteria, List<String> after,
-                            long xp, int points) {
+                             long xp, int points, String title, boolean notifyProgress) {
+        public Milestone(String id, List<Criterion> criteria, List<String> after,
+                         long xp, int points) {
+            this(id, criteria, after, xp, points, "", false);
+        }
         public Milestone {
             criteria = List.copyOf(criteria);
             after = List.copyOf(after);
+            if(title==null || title.length()>120 || title.chars().anyMatch(Character::isISOControl))
+                throw new IllegalArgumentException("Invalid milestone title");
         }
     }
     /** Costs increase by stepCost for each purchased rank. */

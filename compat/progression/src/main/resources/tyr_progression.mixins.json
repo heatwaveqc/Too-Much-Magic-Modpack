@@ -15,7 +15,9 @@
     "OwnedPiglinMixin",
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
-    "OwnedNativeMiningMixin"
+    "OwnedNativeMiningMixin",
+    "MutationEffectQueryMixin",
+    "MutationRegenerationMixin"
   ],
   "injectors": {
     "defaultRequire": 1
