@@ -356,7 +356,9 @@ public final class ProgressionApi {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         var path=PathRegistry.get("tyr_progression:monk");
         var channel=PathRegistry.channel("tyr_progression:monk");
-        if(path==null || channel==null) return false;
+        // Legacy native bonus points must never mint a second spendable
+        // Monk wallet after the data-defined shared-MXP cutover.
+        if(path==null || channel==null || channel.magic()) return false;
         Track monk=ChannelEngine.view(ledger,path,PathRegistry.config());
         if (!monk.joined() || monk.rank() < 17 || monk.completed(marker)) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),
