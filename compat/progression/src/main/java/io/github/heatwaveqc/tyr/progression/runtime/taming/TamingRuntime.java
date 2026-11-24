@@ -31,6 +31,8 @@ import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import io.github.heatwaveqc.tyr.progression.runtime.TargetedAbilities;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import java.util.*;
@@ -45,7 +47,7 @@ public final class TamingRuntime {
     // At most one recent threat per connected owner, not one entry per pet.
     private static final Map<UUID,Threat> THREATS=new HashMap<>();
     public static void register(){
-        NeoForge.EVENT_BUS.addListener(EventPriority.LOW,TamingRuntime::interact);
+        NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST,TamingRuntime::interact);
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST,TamingRuntime::target);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST,TamingRuntime::guardDamage);
         NeoForge.EVENT_BUS.addListener(TamingRuntime::recordDamage);
@@ -116,26 +118,32 @@ public final class TamingRuntime {
     }
     private static void interact(PlayerInteractEvent.EntityInteract event){
         if(event.isCanceled()||event.getHand()!=InteractionHand.MAIN_HAND
-            ||!(event.getEntity() instanceof ServerPlayer p)||!MxpPlayerPolicy.eligible(p)
-            ||!p.isAlive()||!p.isCrouching()||!p.getMainHandItem().isEmpty()
-            ||!(event.getTarget() instanceof Mob mob)||mob.level()!=p.level()
-            ||!p.canInteractWithEntity(mob,0)||!p.hasLineOfSight(mob))return;
+            ||!(event.getEntity() instanceof ServerPlayer p)||!TargetedAbilities.nativeTaming(p)
+            ||TargetedAbilities.checkingPermission()||!(event.getTarget() instanceof Mob mob))return;
+        if(attempt(p,mob,()->!event.isCanceled())){
+            event.setCancellationResult(InteractionResult.SUCCESS);event.setCanceled(true);
+        }
+    }
+    public static boolean attempt(ServerPlayer p,Mob mob,java.util.function.BooleanSupplier permission){
+        if(!MxpPlayerPolicy.eligible(p)||!p.isAlive()||!p.getMainHandItem().isEmpty()
+            ||mob.level()!=p.level()||!p.canInteractWithEntity(mob,0)||!p.hasLineOfSight(mob))return false;
         // Ownership commands remain available after Path departure; acquisition does not.
         if(hasCompanionReceipt(mob)){
             var s=state(mob).orElse(null);
-            if(s==null||!s.belongsTo(p.getUUID()))return;
+            if(s==null||!s.belongsTo(p.getUUID())||!permission.getAsBoolean())return false;
             var next=s.toggle();
             mob.setData(ProgressionAttachments.COMPANION.get(),next.encode());
             stop(mob);
-            handled(event,p,next.waiting()?"Companion waiting.":"Companion following.");
-            return;
+            p.displayClientMessage(Component.literal(next.waiting()?"Companion waiting.":"Companion following."),true);
+            return true;
         }
-        if(NewbieMode.isNewbie(p)||!canAdopt(mob))return;
+        if(NewbieMode.isNewbie(p)||!canAdopt(mob))return false;
         var effects=EffectRuntime.active(p).stream().filter(a->a.effect().type().equals("tame"))
             .sorted(Comparator.comparing(EffectRuntime.Active::id)).toList();
         for(var a:effects){
             var fx=a.effect();var spec=TamePolicy.validate(fx);
             if(!Selectors.entity(fx.selector(),mob))continue;
+            if(!permission.getAsBoolean())return false;
             if(spec.cost()>0&&!PathResources.spend(p,spec.resource(),spec.cost(),"tame/"+mob.getUUID()))continue;
             // Existing mob, existing UUID/equipment, no entity creation.
             var s=new TamePolicy.State(p.getUUID(),mob.getUUID(),false);
@@ -143,13 +151,10 @@ public final class TamingRuntime {
             if(mob.hasData(ProgressionAttachments.CHARM_UNTIL.get()))
                 mob.removeData(ProgressionAttachments.CHARM_UNTIL.get());
             install(mob);stop(mob);
-            handled(event,p,"Tamed "+mob.getDisplayName().getString()+". Sneak-right-click to wait/follow.");
-            return;
+            p.displayClientMessage(Component.literal("Tamed "+mob.getDisplayName().getString()+". Use Taming again to wait/follow."),true);
+            return true;
         }
-    }
-    private static void handled(PlayerInteractEvent.EntityInteract event,ServerPlayer p,String message){
-        event.setCancellationResult(InteractionResult.SUCCESS);event.setCanceled(true);
-        p.displayClientMessage(Component.literal(message),true);
+        return false;
     }
     private static void join(EntityJoinLevelEvent event){
         if(!event.getLevel().isClientSide()&&event.getEntity() instanceof Mob mob

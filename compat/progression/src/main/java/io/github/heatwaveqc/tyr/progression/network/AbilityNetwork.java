@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tyr.progression.network;
 
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities;
+import io.github.heatwaveqc.tyr.progression.runtime.TargetedAbilities;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -30,13 +31,19 @@ public final class AbilityNetwork {
             if (!(context.player() instanceof ServerPlayer player)) return;
             context.enqueueWork(() -> {
                 if (player.isSpectator() || player.isCreative()) return;
+                String action = payload.action();
+                // A client preference only selects delivery, never grants permission.
+                if(action.equals("tame_native_on")||action.equals("tame_native_off")){
+                    TargetedAbilities.setNativeTaming(player,action.equals("tame_native_on"));
+                    return;
+                }
                 long now = player.serverLevel().getGameTime();
                 long old = LAST.getOrDefault(player.getUUID(),Long.MIN_VALUE);
                 if (old != Long.MIN_VALUE && now >= old && now - old < 2) return;
                 LAST.put(player.getUUID(),now);
-                String action = payload.action();
                 boolean ok = switch (action) {
                     case "blink" -> ClassAbilities.blink(player);
+                    case "charm","tame" -> TargetedAbilities.request(player,action);
                     case "armor" -> ClassAbilities.toggle(player,"armor");
                     case "treasure" -> ClassAbilities.toggle(player,"treasure");
                     case "glide" -> ClassAbilities.toggle(player,"glide");
@@ -44,12 +51,12 @@ public final class AbilityNetwork {
                     case "enhanced_night_vision","lava_vision" -> io.github.heatwaveqc.tyr.progression.runtime.VisionRuntime.toggle(player,action);
                     default -> false;
                 };
-                if (ok && !action.equals("blink"))
+                if (ok && !action.equals("blink") && !action.equals("charm") && !action.equals("tame"))
                     player.displayClientMessage(Component.literal(action + ": " +
                         (action.equals("enhanced_night_vision")||action.equals("lava_vision")?
                         io.github.heatwaveqc.tyr.progression.runtime.VisionRuntime.mode(player,action):ClassAbilities.mode(player,action))),true);
             });
         });
     }
-    public static void forget(ServerPlayer p) { LAST.remove(p.getUUID()); }
+    public static void forget(ServerPlayer p) { LAST.remove(p.getUUID()); TargetedAbilities.forget(p); }
 }
