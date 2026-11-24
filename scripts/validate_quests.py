@@ -399,7 +399,25 @@ def main() -> None:
            and "file-id = 7429011" in pin and "project-id = 943925" in pin,
            "Missing FTB Filter System 1.21.1 NeoForge pin")
     ars = json.loads((ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
-    ensure("#tmm:portable_bags" in ars["values"], "Ars bag blacklist missing")
+    # #16 supersedes the blanket portable-bag ban: only embedded recursion risks
+    # belong in this additive native blacklist; reference-backed handles stay usable.
+    module_data = ROOT / "compat/economy/src/main/resources/data"
+    native_ars = json.loads((module_data / "ars_elemental/tags/item/blacklist_bag_item.json").read_text(encoding="utf-8"))
+    risk = "#tmm:non_nestable_embedded_containers"
+    for bridge in (ars, native_ars):
+        ensure(bridge.get("replace") is False and set(bridge["values"]) == {risk},
+               "Ars bag blacklist must extend only the approved embedded-risk tag")
+    def storage_tag_ids(name):
+        tag = json.loads((module_data / f"tmm/tags/item/{name}.json").read_text(encoding="utf-8"))
+        ensure(tag.get("replace") is False, f"Storage tag must be additive: {name}")
+        return {entry if isinstance(entry, str) else entry["id"] for entry in tag["values"]}
+    embedded = storage_tag_ids("non_nestable_embedded_containers")
+    external = storage_tag_ids("reference_backed_storage")
+    ensure({"ars_elemental:curio_bag", "ars_elemental:caster_bag", "minecraft:bundle",
+            "minecraft:shulker_box"} <= embedded, "Missing native embedded-risk guards")
+    ensure({"occultism:ender_satchel", "projecte:white_alchemical_bag",
+            "projecte:black_alchemical_bag"} <= external and embedded.isdisjoint(external),
+           "Reference-backed bags must not be blacklisted as embedded recursion risks")
     # FTB 2101.1.38 BaseQuestFile.readID(StringTag) uses signed Long.parseLong(hex, 16).
     # Out-of-range IDs are silently replaced at runtime, breaking translations and links.
     for path in QUESTS.rglob("*.snbt"):

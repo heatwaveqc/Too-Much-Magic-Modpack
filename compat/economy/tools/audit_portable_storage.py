@@ -79,10 +79,9 @@ def run() -> int:
 
     if OLD_ARS.is_file():
         old = values(OLD_ARS)
-        if "#tmm:portable_bags" in old:
-            print("PENDING INTEGRATION: legacy KubeJS Ars blacklist still blocks "
-                  "reference-backed ProjectE bags; integration writer must "
-                  "replace it and reconcile Packwiz hashes")
+        if old != {"#tmm:non_nestable_embedded_containers"}:
+            errors.append("Indexed KubeJS Ars bridge must extend only the approved embedded-risk tag; "
+                          "reference-backed handles must not be blanket-banned")
 
     print(f"Risk IDs: {len(risky)}; reference handles: {len(external)}")
     print("Source-only inventory: slot/handler and serialization runtime coverage "
