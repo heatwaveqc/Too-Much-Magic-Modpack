@@ -2,6 +2,8 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 
 import net.minecraft.commands.arguments.EntityArgument;
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tyr.progression.core.BaselinePaths;
+import io.github.heatwaveqc.tyr.progression.state.Ledger;
 import io.github.heatwaveqc.tyr.progression.state.Modes;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import net.minecraft.commands.Commands;
@@ -41,7 +43,23 @@ public final class NewbieMode {
     }
 
     public static boolean isNewbie(ServerPlayer player) {
+        // First-class Path ownership is authoritative after initial registration.
+        // The legacy mode is only a fallback before the first login migration.
+        Ledger ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        if (ledger.get(BaselinePaths.NEWBIE).joined()) return true;
+        if (ledger.get(BaselinePaths.NORMIE).joined()
+                || ledger.get(BaselinePaths.CORE).joined()) return false;
         return NEWBIE.equals(ProgressionApi.mode(player, KEY, NEWBIE));
+    }
+
+    /** Repair baseline bookkeeping without economic penalties on login/clone. */
+    public static void reconcileBaselines(ServerPlayer player) {
+        boolean newbie=NEWBIE.equals(ProgressionApi.mode(player,KEY,NEWBIE));
+        Ledger before=player.getData(ProgressionAttachments.LEDGER.get());
+        Ledger after=BaselinePaths.reconcile(before,newbie);
+        if(after!=before)player.setData(ProgressionAttachments.LEDGER.get(),after);
+        if(!newbie && !after.get(BaselinePaths.CORE).joined())
+            ProgressionApi.join(player,BaselinePaths.CORE);
     }
 
     /** Integration point for the separate MXP dispatcher. Never award XP to Newbies. */
@@ -53,6 +71,9 @@ public final class NewbieMode {
     public static boolean graduate(ServerPlayer player) {
         if (!isNewbie(player)) return true;
         set(player, REGULAR);
+        RegularHomePower.onGraduated(player);
+        // Core enrollment is performed by reconcileBaselines in the same
+        // transaction boundary as the first-class Newbie->Normie transition.
         player.sendSystemMessage(Component.literal(
             "You're now in Regular Mode. Newbie inventory and travel protection has ended."));
         return true;
@@ -61,9 +82,15 @@ public final class NewbieMode {
     public static void set(ServerPlayer player, String mode) {
         if (!NEWBIE.equals(mode) && !REGULAR.equals(mode))
             throw new IllegalArgumentException("Unrecognized player mode: " + mode);
+        // One-way graduation for players; an operator restoring Newbie is a
+        // real Path change with full invested/unallocated XP forfeiture.
+        if (NEWBIE.equals(mode) && !isNewbie(player))
+            ProgressionApi.forfeitAllPathsForNewbie(player);
         ProgressionApi.setMode(player, KEY, mode);
+        reconcileBaselines(player);
         syncTag(player);
-        VirtualElytra.reconcile(player);
+        VirtualElytra.reconcile(player,true);
+        VisionRuntime.reconcile(player,true);
     }
 
     private static void syncTag(ServerPlayer player) {
@@ -85,7 +112,10 @@ public final class NewbieMode {
                 player.sendSystemMessage(Component.literal(
                     "Welcome! You are in Newbie Mode. Complete the Introduction graduation quest when ready."));
         }
+        reconcileBaselines(player);
+        RegularHomePower.reconcileLogin(player);
         syncTag(player);
+        VirtualElytra.reconcile(player,true);
     }
 
     private static void onClone(PlayerEvent.Clone event) {
@@ -94,11 +124,16 @@ public final class NewbieMode {
         // PLAYER_MODES is copyOnDeath, but copy it explicitly for non-death clones too.
         current.setData(ProgressionAttachments.PLAYER_MODES.get(),
             previous.getData(ProgressionAttachments.PLAYER_MODES.get()));
+        reconcileBaselines(current);
         syncTag(current);
     }
 
     private static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) syncTag(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            reconcileBaselines(player);
+            syncTag(player);
+            VirtualElytra.reconcile(player,true);
+        }
     }
 
     private static void onRegisterCommands(RegisterCommandsEvent event) {

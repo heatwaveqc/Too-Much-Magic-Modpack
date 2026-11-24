@@ -92,6 +92,20 @@ class NativePhysiologyPolicyTest {
                 snapshot(Form.JAWR_VAMPIRE), Form.JAWR_VAMPIRE, RULES));
     }
 
+    @Test void switchingDragonSpeciesRechecksSpecialistPairing() {
+        // A Dragon Survival setter may change species without removing the
+        // provider. It is not the same as a native rank upgrade.
+        Snapshot alreadyForest = snapshot(Form.FOREST_DRAGON);
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:dryad"), alreadyForest, Form.FOREST_DRAGON, RULES));
+        assertEquals(Decision.DENY_INCOMPATIBLE, mayAcquire(false,
+            Set.of("tyr_progression:dryad"), alreadyForest, Form.CAVE_DRAGON, RULES));
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:normie"), alreadyForest, Form.CAVE_DRAGON, RULES));
+        assertEquals(Decision.DENY_INCOMPATIBLE, mayAcquire(false,
+            Set.of("tyr_progression:sexy_demon"), alreadyForest, Form.SEA_DRAGON, RULES));
+    }
+
     @Test void multipleSpecialistsMustEachPermitTheForm() {
         assertEquals(Decision.DENY_INCOMPATIBLE, mayAcquire(false,
             Set.of("tyr_progression:dryad", "tyr_progression:spawn"),
