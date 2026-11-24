@@ -30,3 +30,5 @@ Deferred skillet connector/adapter, old CFB charred-food recognition, legacy cha
 ## Acceptance (not run)
 
 A: exact donor blobs, additive JSON, index/pack SHA-256 chain, normal repository CI/preflight. B/C in next separately authorized candidate: resolved tags and actual Pam/FD recipes with both variants, four dairy/soy items and native remainder behavior, raw fillet meal and species restrictions unchanged; CFB cabinet/barrel, disconnected storage, local and linked Occult Cooking pantry, permissions, simultaneous consumers, conservation, full/unloaded storage, manual cutting/fermentation/specialty stations. No skillet automation or prefab acceptance asserted. No assembly/boot/Prism authorized.
+
+Reconciled against advancing integration base `3e5bebac8187840612dd688f034cce5e5b3b80aa` without restoring unrelated files; new index SHA-256 `e5ab92446488e7e46ee396ed56f4056e65924628b7ee113659a0b03d0db03f1c`.

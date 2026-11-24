@@ -1,6 +1,18 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/ProjectE/custom_emc.json"
+hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+
+[[files]]
+file = "config/alexscaves_biome_generation/forlorn_hollows.json"
+hash = "e253980401e7b4f5224ee25d84b751576985cefc84069310436ee197720cae41"
+
+[[files]]
+file = "config/alexscaves_biome_generation/magnetic_caves.json"
+hash = "04528ed61946e949c35d26a84f782e6970854ea32d652397ca51bb84f22943f1"
+
+[[files]]
 file = "config/almostunified/placeholders.json"
 hash = "799c06620779c18d7d1425f7c0f2c5c0274417e1e9e9ec9c68cbf883308525c6"
 
@@ -265,10 +277,6 @@ file = "config/neovitae/materials.json"
 hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
 
 [[files]]
-file = "config/ProjectE/custom_emc.json"
-hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
-
-[[files]]
 file = "config/qshop/currencies.json"
 hash = "7fc38f1cf0430f89b8a8b4f1c753f0ebcad25c10a77feddfe5839dbbfeaab63b"
 
@@ -297,6 +305,10 @@ file = "config/wover/main.json"
 hash = "0497f3137c9150105e877a79362303b8fc49f141890d7e098f6a8ae9cf8d8e45"
 
 [[files]]
+file = "defaultconfigs/ProjectE/mapping.toml"
+hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
+
+[[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
 hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
@@ -307,10 +319,6 @@ hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
-
-[[files]]
-file = "defaultconfigs/ProjectE/mapping.toml"
-hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
 
 [[files]]
 file = "defaultconfigs/multiplayerspawners-server.toml"
@@ -367,6 +375,30 @@ hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/creative_corporea_spark_extreme.json"
+hash = "527dbfccba63df364ec2632605a4ebbb7842da40360d60b8a9884aa3dc174263"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/creative_mana_tablet_extreme.json"
+hash = "1716c6cbddcef3f9a805ca4a43e7f12294e2eb99608e17e873a03c7289dc7c8c"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/creative_pool_extreme.json"
+hash = "529d9c9b1811131763d7298a06d0909c7c1bf993bbed782d41c3fe2f5a0e22f7"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/terra_plate/creative_corporea_spark.json"
+hash = "9a99f61425bc090fccb44e47fdc4c431f12ee8f005110d53a4cd97ca03641880"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/terra_plate/creative_mana_tablet.json"
+hash = "0c96915271edc63cb995a490def1aa827cf120b345fd57a63f6d5b4a9856c062"
+
+[[files]]
+file = "kubejs/data/botania/recipe/creative/terra_plate/creative_pool.json"
+hash = "f974058f96a507d14c6bef181fbd949426801ff87b8ee7fe012f832e1b2c9656"
 
 [[files]]
 file = "kubejs/data/botania/recipe/mana_infusion/acacia_leaves_dupe.json"
@@ -593,6 +625,26 @@ file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json
 hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 [[files]]
+file = "kubejs/data/projecte/pe_custom_conversions/defaults.json"
+hash = "ed27feae1012604cdae82866b4a036e0f47ee2f03238d4532b948ec19b3c42ce"
+
+[[files]]
+file = "kubejs/data/projecte/pe_custom_conversions/metals.json"
+hash = "a7a5636a53953f02970501e90bc1131a6dcafaac0aeb18d68976092e66cb0c82"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/collector_mk1.json"
+hash = "89739763bdaa35ef0a6d3ab3169a0bdf90a2d1c07b6af343cac1e75dee478858"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/conversions/gold_ingot_to_diamond.json"
+hash = "9213c718e7a179e82fe4afdc8bd041a511ca94e76bf1a21d97e96f430d8e3417"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/conversions/iron_ingot_to_ender_pearl.json"
+hash = "02745b47f45b9cf76cdbb099a5babe1752d0b79277dc682d8f63f909d71856a1"
+
+[[files]]
 file = "kubejs/data/projecte/recipe/divining_rod_1.json"
 hash = "57f95e7c6128a43893b16be1928acecb667795ab8db0b448b3a812865b608015"
 
@@ -621,6 +673,18 @@ file = "kubejs/data/projecte/recipe/medium_covalence_dust.json"
 hash = "324c3b0c272216ad8206c0cad9495629d8bb882bc1c7d565879b5062dce8a2e2"
 
 [[files]]
+file = "kubejs/data/projecte/recipe/philosophers_stone.json"
+hash = "4f60c1f8abad42b6fd0807c40d4ea660218be4c950b5b3378668f4ee40b9b1c5"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/philosophers_stone_alt.json"
+hash = "184c220a41441e3735e986c99bfb25d69c2f42ecca1efdb9f2b434f4f505e2af"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/relay_mk1.json"
+hash = "bf764d5a10222b0ee803bf33831d3ac598fe5d311d3daf691cef2b2fa514f10d"
+
+[[files]]
 file = "kubejs/data/projecte/recipe/repair_talisman.json"
 hash = "01c578dcf9357d81380b1ff7572fa26bbbcb90092daa3b285658bb94a032f3c8"
 
@@ -631,42 +695,6 @@ hash = "29818fa3480f6a48a689da81299c7a3218d6968ae3d6cb3f0dbdc37df325ed52"
 [[files]]
 file = "kubejs/data/projecte/recipe/volcanite_amulet.json"
 hash = "3d8af005eb97ed8194647b27f0777c938bcd38e6d7a68f12db392753f994ad8b"
-
-[[files]]
-file = "kubejs/data/replication/neoforge/biome_modifier/replica_ore.json"
-hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
-
-[[files]]
-file = "kubejs/data/projecte/pe_custom_conversions/defaults.json"
-hash = "ed27feae1012604cdae82866b4a036e0f47ee2f03238d4532b948ec19b3c42ce"
-
-[[files]]
-file = "kubejs/data/projecte/pe_custom_conversions/metals.json"
-hash = "a7a5636a53953f02970501e90bc1131a6dcafaac0aeb18d68976092e66cb0c82"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/collector_mk1.json"
-hash = "89739763bdaa35ef0a6d3ab3169a0bdf90a2d1c07b6af343cac1e75dee478858"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/conversions/gold_ingot_to_diamond.json"
-hash = "9213c718e7a179e82fe4afdc8bd041a511ca94e76bf1a21d97e96f430d8e3417"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/conversions/iron_ingot_to_ender_pearl.json"
-hash = "02745b47f45b9cf76cdbb099a5babe1752d0b79277dc682d8f63f909d71856a1"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/philosophers_stone_alt.json"
-hash = "184c220a41441e3735e986c99bfb25d69c2f42ecca1efdb9f2b434f4f505e2af"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/philosophers_stone.json"
-hash = "4f60c1f8abad42b6fd0807c40d4ea660218be4c950b5b3378668f4ee40b9b1c5"
-
-[[files]]
-file = "kubejs/data/projecte/recipe/relay_mk1.json"
-hash = "bf764d5a10222b0ee803bf33831d3ac598fe5d311d3daf691cef2b2fa514f10d"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/blue.json"
@@ -709,12 +737,12 @@ file = "kubejs/data/projectexpansion/recipe/power_flower/purple.json"
 hash = "fe600a95060448e9845026efe462e7682c089a86f6f0545d9af3650a6bfa2397"
 
 [[files]]
-file = "kubejs/data/projectexpansion/recipe/power_flower/red_upgrade.json"
-hash = "e13b0269714cb98ddf9b21fe9ac96c84a7cc42efa69a0df8b5348060d394261e"
-
-[[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/red.json"
 hash = "b58c5b90bc8edc5189c0f6e42ce55d3a9d21934d62b15e20f574b4d872b5cb04"
+
+[[files]]
+file = "kubejs/data/projectexpansion/recipe/power_flower/red_upgrade.json"
+hash = "e13b0269714cb98ddf9b21fe9ac96c84a7cc42efa69a0df8b5348060d394261e"
 
 [[files]]
 file = "kubejs/data/projectexpansion/recipe/power_flower/violet.json"
@@ -729,20 +757,20 @@ file = "kubejs/data/projectexpansion/recipe/power_flower/yellow.json"
 hash = "1ae7df3642edd4d2444e173d04256dd9e61d0cf815587a5449df1895a9084feb"
 
 [[files]]
-file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone_dust.json"
-hash = "e3bfcd11101f7c8545d0139ffe67f76b15f04530a0146bbf4cea9fa812ace3e9"
-
-[[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone.json"
 hash = "5c3c6fa2dc726a99a8de49c4fb537bd742747e2bb246b801d2bfb61f1e961c5e"
 
 [[files]]
-file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone_block.json"
-hash = "63d0d77ba4a73c666fd2730c2b9d7244129c912fc85a604bb1e5cf66d48995d0"
+file = "kubejs/data/reliquary/recipe/alkahestry/charging/glowstone_dust.json"
+hash = "e3bfcd11101f7c8545d0139ffe67f76b15f04530a0146bbf4cea9fa812ace3e9"
 
 [[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone.json"
 hash = "c66f1a3e763021b06ff30c7f31918c31c27a5de006aa1b3f1a45a46d41d2cdba"
+
+[[files]]
+file = "kubejs/data/reliquary/recipe/alkahestry/charging/redstone_block.json"
+hash = "63d0d77ba4a73c666fd2730c2b9d7244129c912fc85a604bb1e5cf66d48995d0"
 
 [[files]]
 file = "kubejs/data/reliquary/recipe/alkahestry/crafting/charcoal.json"
@@ -837,6 +865,14 @@ file = "kubejs/data/reliquary/recipe/alkahestry/drain/redstone.json"
 hash = "2dbf7cb56a128a113b488ac05417276d74df84db595280d3ab85674d2f07bc70"
 
 [[files]]
+file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
+hash = "1cd1cf8474e41d74d6d72160bb2fd7488305ef10107b9939db9bf15bebd13ee1"
+
+[[files]]
+file = "kubejs/data/replication/neoforge/biome_modifier/replica_ore.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
 file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
 hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
 
@@ -849,12 +885,12 @@ file = "kubejs/data/tmm/advancement/starter_first_login.json"
 hash = "f4dbe39184a4e170104d078cda7e658c9517aec8cc4e66b896dd49c48835aac6"
 
 [[files]]
-file = "kubejs/data/tmm/advancement/starter_kit_claimed.json"
-hash = "36125bb252999a147ca8469ee96bc7f714d8b36d2e82d636ea130959c86d716a"
-
-[[files]]
 file = "kubejs/data/tmm/advancement/starter_kit.json"
 hash = "6b638589cc764c8fea6f5d3b643cf83d289f24bceecba417367c9a1488cd5eb7"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/starter_kit_claimed.json"
+hash = "36125bb252999a147ca8469ee96bc7f714d8b36d2e82d636ea130959c86d716a"
 
 [[files]]
 file = "kubejs/data/tmm/curios/entities/player.json"
@@ -1317,10 +1353,6 @@ file = "kubejs/data/tmm/recipe/mana_infusion/parchment_fragment.json"
 hash = "bad53a8978f03e47c1bbd30b282e9c5085cd1f6553bea0eaf9d197a9af09b46e"
 
 [[files]]
-file = "kubejs/data/reliquified_artifacts/tags/item/anglers_hat_valuables.json"
-hash = "1cd1cf8474e41d74d6d72160bb2fd7488305ef10107b9939db9bf15bebd13ee1"
-
-[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
@@ -1527,6 +1559,10 @@ hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
 [[files]]
 file = "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js"
 hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
+
+[[files]]
+file = "kubejs/server_scripts/zz_reactive_loot_books.js"
+hash = "1679a3b2393d49429ed3dca27e023b28fa14ed5d088b9c5ea6fdb711f291b77c"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
