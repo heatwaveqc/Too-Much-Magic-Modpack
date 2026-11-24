@@ -30,7 +30,8 @@ public final class PortableStorageSafety {
 
         // Check actual payload first: a declared external handle with an
         // embedded component is no longer known to be reference-only.
-        boolean nativeContainerPayload = source.has(DataComponents.CONTAINER);
+        boolean nativeContainerPayload = source.has(DataComponents.CONTAINER)
+            || source.has(DataComponents.BUNDLE_CONTENTS);
         boolean shulker = source.getItem() instanceof BlockItem block
             && block.getBlock() instanceof ShulkerBoxBlock;
         if (nativeContainerPayload || shulker || source.is(EMBEDDED_RISK)) {
