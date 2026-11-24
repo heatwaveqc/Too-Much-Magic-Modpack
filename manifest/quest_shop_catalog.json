@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
-  "currency": "questshop:coins",
-  "team_shared": true,
-  "policy": "Purchases remove repetitive exploration luck and mundane resource friction; shop is not allowed to sell boss-gated or banned equipment. The Ore Blocks & Mining category offers 18 normal vanilla ore blocks, including deepslate/nether variants, as ordinary purchasable blocks with deliberately low quantities. No ancient debris, netherite ore, quest-gated mod ores or boss-material bypasses. Ore-to-resource yield varies with Fortune and processing: verify exchange economics in-world. The craftable Bountiful bounty board is also offered in Supplies at a provisional 5 shared team coins; specialty decrees and signed bounty slips are not sold.",
+  "schema_version": 2,
+  "currency": "coins",
+  "team_shared": false,
+  "policy": "Q Shop: personal-player wallets, native category tabs, original 48 offers at unchanged prices. No boss/ritual-gated items; Bountiful board costs five personal coins. Expanded stock and coin-paying Bountiful contracts are separate #523/#365 work.",
   "categories": [
     {
       "id": "supplies",

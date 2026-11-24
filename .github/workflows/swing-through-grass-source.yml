@@ -1,0 +1,36 @@
+name: Swing Through Grass recovered QoL intake (source only)
+
+on:
+  pull_request:
+    paths:
+      - 'mods/swing-through-grass.pw.toml'
+      - 'manifest/mods.json'
+      - 'manifest/next-qa-target.json'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'kubejs/startup_scripts/vanilla_item_qol.js'
+      - 'tests/test_swing_through_grass_intake.py'
+      - '.github/workflows/swing-through-grass-source.yml'
+  push:
+    paths:
+      - 'mods/swing-through-grass.pw.toml'
+      - 'manifest/mods.json'
+      - 'manifest/next-qa-target.json'
+      - 'tests/test_swing_through_grass_intake.py'
+      - '.github/workflows/swing-through-grass-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check preserved vanilla QoL source and exact pin
+        run: python -m unittest discover -s tests -p 'test_swing_through_grass_intake.py' -v

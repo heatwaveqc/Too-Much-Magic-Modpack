@@ -115,7 +115,7 @@
         "count": 2
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -135,7 +135,7 @@
         "count": 8
       },
       "depends": "Make a Wooden Pickaxe",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -155,7 +155,7 @@
         "count": 2
       },
       "depends": "Gather Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -175,7 +175,7 @@
         "count": 1
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -195,7 +195,7 @@
         "count": 3
       },
       "depends": "Gather Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -215,7 +215,7 @@
         "count": 3
       },
       "depends": "Upgrade to Stone",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -235,7 +235,7 @@
         "count": 2
       },
       "depends": "Find Your First Iron",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Getting Started",
@@ -255,7 +255,7 @@
         "count": 2
       },
       "depends": "Make a Crafting Table",
-      "optional": false
+      "optional": true
     },
     {
       "chapter": "Tips & Tricks",
@@ -2233,7 +2233,7 @@
     },
     {
       "chapter": "Getting Started",
-      "title": "Iron Is Only the Beginning",
+      "title": "Pick Your First Magic",
       "quest_id": "544D501000D00000",
       "task_id": "544D801000D00000",
       "xp_reward_id": "544D601000D00001",
@@ -2246,7 +2246,7 @@
         "item": "minecraft:experience_bottle",
         "count": 2
       },
-      "depends": "Iron Pickaxe",
+      "depends": "Make a Crafting Table",
       "optional": true
     },
     {
@@ -2264,7 +2264,7 @@
         "item": "minecraft:glowstone_dust",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Pick Your First Magic",
       "optional": true
     },
     {
@@ -2320,7 +2320,7 @@
         "item": "minecraft:firework_rocket",
         "count": 4
       },
-      "depends": "Iron Is Only the Beginning",
+      "depends": "Pick Your First Magic",
       "optional": true
     },
     {
@@ -2409,6 +2409,218 @@
         "xp": 15,
         "item": "minecraft:torch",
         "count": 8
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Claim Your Starter Supplies",
+      "quest_id": "544D502001500000",
+      "task_id": "544D802001500000",
+      "xp_reward_id": "544D602001500001",
+      "command_reward_id": "544D702001500002",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 10,
+        "command": "execute as {p} run function tmm:rewards/starter_kit"
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Comforts: Sleep Away from Home",
+      "quest_id": "544D502001600000",
+      "task_id": "544D802001600000",
+      "xp_reward_id": "544D602001600001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "AppleSkin: Know When to Eat",
+      "quest_id": "544D502001700000",
+      "task_id": "544D802001700000",
+      "xp_reward_id": "544D602001700001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Where Do Ores and Villager Trades Come From?",
+      "quest_id": "544D502001800000",
+      "task_id": "544D802001800000",
+      "xp_reward_id": "544D602001800001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Read Enchantments and Detailed Tooltips",
+      "quest_id": "544D502001900000",
+      "task_id": "544D802001900000",
+      "xp_reward_id": "544D602001900001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Quiet the World with Extreme Sound Muffler",
+      "quest_id": "544D502001A00000",
+      "task_id": "544D802001A00000",
+      "xp_reward_id": "544D602001A00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Use KeySets and KeyBind Bundles",
+      "quest_id": "544D502001B00000",
+      "task_id": "544D802001B00000",
+      "xp_reward_id": "544D602001B00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "TrashSlot: Delete Only What You Mean To",
+      "quest_id": "544D502001C00000",
+      "task_id": "544D802001C00000",
+      "xp_reward_id": "544D602001C00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Harvest with Ease",
+      "quest_id": "544D502001D00000",
+      "task_id": "544D802001D00000",
+      "xp_reward_id": "544D602001D00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "TreeChop and Leaves Be Gone",
+      "quest_id": "544D502001E00000",
+      "task_id": "544D802001E00000",
+      "xp_reward_id": "544D602001E00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "What Does Smart Keep Inventory Protect?",
+      "quest_id": "544D502001F00000",
+      "task_id": "544D802001F00000",
+      "xp_reward_id": "544D602001F00001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Prefab: A Head Start on Housing",
+      "quest_id": "544D502002000000",
+      "task_id": "544D802002000000",
+      "xp_reward_id": "544D602002000001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Browse Better Advancements",
+      "quest_id": "544D502002100000",
+      "task_id": "544D802002100000",
+      "xp_reward_id": "544D602002100001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
+      },
+      "depends": null,
+      "optional": true
+    },
+    {
+      "chapter": "Tips & Tricks",
+      "title": "Keep Controls Across Updates",
+      "quest_id": "544D502002200000",
+      "task_id": "544D802002200000",
+      "xp_reward_id": "544D602002200001",
+      "criterion": {
+        "type": "checkmark"
+      },
+      "reward": {
+        "xp": 5
       },
       "depends": null,
       "optional": true
@@ -4191,7 +4403,6 @@
       "optional": true,
       "source_key": "TH-09",
       "prerequisites": [
-        "Collect Sal Ammoniac",
         "Liquefy a Material into Sulfur"
       ]
     },
@@ -4263,7 +4474,6 @@
       "optional": true,
       "source_key": "TH-12",
       "prerequisites": [
-        "Distill Mercury from Stone",
         "Incubate an Oak Log"
       ]
     },
@@ -4361,7 +4571,6 @@
       "optional": true,
       "source_key": "TH-16",
       "prerequisites": [
-        "Light a Pyromantic Brazier",
         "Build a Mercury Flux Supply"
       ]
     },
@@ -4386,7 +4595,6 @@
       "optional": true,
       "source_key": "TH-17",
       "prerequisites": [
-        "Distill Mercury from Stone",
         "Incubate an Oak Log"
       ]
     },
@@ -4411,8 +4619,7 @@
       "optional": true,
       "source_key": "TH-18",
       "prerequisites": [
-        "Move Items with Mercurial Wiring",
-        "Collect Sal Ammoniac"
+        "Move Items with Mercurial Wiring"
       ]
     },
     {
@@ -4434,7 +4641,6 @@
       "optional": true,
       "source_key": "TH-19",
       "prerequisites": [
-        "Exalt Niter, Not Your Tool Tier",
         "Reform with a Real Target Sample"
       ]
     }
