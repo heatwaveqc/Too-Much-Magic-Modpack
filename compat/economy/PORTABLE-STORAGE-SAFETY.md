@@ -26,7 +26,7 @@ audit new portable-storage items and handlers explicitly.
 | Vanilla bundle | `BundleContents.Mutable.tryInsert` | Existing malformed contents and deep component payloads |
 | Occultism ordinary Satchel | `StorageSatchelSlot.mayPlace` | Other satchel access paths/capabilities |
 | Malum Soulwoven/Ravenous + inherited Gaze pouch | `MalumPouchContentsComponent.Mutable.tryInsert` and **`tryTransfer` before `safeTake`** | Other direct payload mutation paths, actual method/ABI |
-| Extra Botany Mini Handbag | Guard its **24 plain GUI Slots** on menu construction, and add `canPlaceItem` to *Botania ItemBackedInventory* for native cursor/Hopper helpers | Exact-JAR ABI and live insertion paths not verified. Direct `setItem` can bypass eligibility checks |
+| Extra Botany Mini Handbag | Guard its **24 plain GUI Slots** on menu construction, and add `canPlaceItem` to *Botania ItemBackedInventory* for native cursor/Hopper helpers | Pinned-JAR method signatures audited; actual Mixin application and live paths unverified. Direct `setItem` can bypass eligibility checks |
 | ProjectE 16 Alchemical Bags | No nested safety veto | External attachment store does not recursively embed bag contents; ordinary progression gates remain |
 
 ### Legacy bridge collision
@@ -55,10 +55,72 @@ replay stale #401 Transformations code or packwiz roots.
 
 ### Remaining work before release
 
-Run `python compat/economy/tools/audit_portable_storage.py` for source
-coverage. Add exact-JAR static/ABI checks, review optional Mixin behavior,
-run isolated Java unit/Module CI, and cross-mod negative tests. Resolve any
+CI runs `python compat/economy/tools/audit_portable_storage.py` and the
+`audit_portable_storage_abi.py` checker against hash-verified Malum, Occultism,
+Botania and Extra Botany jars. The latter inspects class/method signatures and
+the handbag slot layout with `javap` without booting mod code. Economy Gradle
+compile/JUnit is a separate quick-CI step. These tests do **not** verify
+Mixin application, GUI transactions or safe serialized payload limits.
+
+Review optional Mixin behavior, source-specific setters and cross-mod negative tests. Resolve any
 unprotected insertion routes without dropping an item that a source already
 removed. Separate B/C owner-authorized client/server/multiplayer, automation,
 save-migration and payload-size acceptance is mandatory. Nothing here authorizes
 a full smoke or Prism package.
+
+## Exact GUI and source-path verification
+
+Extra Botany 1.0.4's `MiniHandbagMenu` creates four armor slots followed by
+24 **plain `Slot` instances**, then player inventory and hotbar. Those plain
+slots do not consult the container's `canPlaceItem` restriction on ordinary
+menu clicks; relying solely on Botania `ItemBackedInventory.canPlaceItem`
+would leave cursor placement, number keys, and quick-move unprotected.
+`PortableStorageMiniHandbagMenuMixin` changes only menu slot positions 4–27
+after construction, retaining the original backing container, native
+`mayPlace` / `mayPickup`, and menu/slot indices. The existing narrowly
+scoped `ItemBackedInventory.canPlaceItem` override remains necessary for
+Botania's `InventoryHelper.simulateTransfer` / hopper route. The native
+Flower Pouch still accepts only mystical flowers.
+
+Malum 1.8.2 `Mutable.tryTransfer` calls `slot.safeTake` before
+`tryInsert`; an `tryInsert`-only veto could silently lose the source.
+Economy checks the original slot **before** the native `safeTake`, as well
+as the standalone `tryInsert` path (cursor/auto-collection), and does not
+modify `addItem` or destructive drop behavior.
+
+## Next authorized B/C acceptance matrix (not run)
+
+1. **Embedded sources:** a filled and empty shulker, Minecraft bundle,
+   Ars Curio/Caster Bag, Occultism ordinary/ritual satchel, Malum
+   Soulwoven/Ravenous, Gaze Spirit-Channel (only when installed), and
+   Extra Botany Mini Handbag. Exercise each against Ars, vanilla
+   bundle/shulker, ordinary Occultism satchel, Malum/Gaze and Mini
+   Handbag destinations. Expect source count and full item data unchanged
+   after prohibited insertion, no loss/duplication or desync.
+2. **Every supported transfer path:** left/right click, cursor on bag,
+   bag over source slot, shift-click/quick-move, number-key hotbar swaps,
+   double-click/drag, hopper and applicable modded capability/automation.
+   Extra Botany's GUI slots and cursor helper are distinct cases. Native
+   Flower Pouch only stores flowers.
+3. **Reference-backed controls:** all 16 ProjectE Alchemical Bag keys and
+   the Occultism Ender Satchel remain insertable in nested storage where
+   the destination's *own* rules allow them; their actual external
+   inventories remain intact and independent. No ProjectE progression
+   or Chaos Guardian gate bypass.
+4. **Recovery and stress:** old nested stacks remain inspectable and
+   extractable, no silent deletion or rewriting, save/relog/dimension/death
+   and multiplayer both sides remain consistent. Probe realistic nested
+   payloads, large unique inventories, packet serialization and recursive
+   history, with disposable worlds and backups only.
+
+**Known gap:** arbitrary external calls to `ItemBackedInventory.setItem`
+or other direct setters can bypass a predicate. The selected Mini Handbag
+native user-facing paths use the guarded menu Slots or Botania helper, but
+unsupported third-party mutation paths require an exact-JAR consumer audit,
+not a global setter cancellation that could drop an already removed item.
+
+**Integration writer crosswalk:** migrate the **old** KubeJS Ars bridge from
+`#tmm:portable_bags` to `#tmm:non_nestable_embedded_containers`, reconcile
+current Packwiz index/root hashes, avoid simultaneous #401 Transformations
+mixins, and update the stale universal-ban text in `AGENTS.md` and
+`docs/DESIGN.md` to #16's actual serialization-risk-only policy.
