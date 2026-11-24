@@ -17,6 +17,8 @@
     },
     {
       "id": "tyr_progression:trial_ten_logs",
+      "title": "Ten Barehanded Logs",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "barehand_block_break",
@@ -29,6 +31,8 @@
     },
     {
       "id": "tyr_progression:trial_five_stone",
+      "title": "Five Barehanded Stone Blocks",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "barehand_block_break",
@@ -41,6 +45,8 @@
     },
     {
       "id": "tyr_progression:steady_hands",
+      "title": "Steady Hands — 100 Logs",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "barehand_block_break",
@@ -53,6 +59,8 @@
     },
     {
       "id": "tyr_progression:trial_ten_unarmed_undead",
+      "title": "Ten Undead Defeated Unarmed",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "unarmed_kill",
@@ -65,6 +73,8 @@
     },
     {
       "id": "tyr_progression:trial_animal_friendship",
+      "title": "Animal Friendship — 20 Interactions",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "animal_petted",
@@ -77,6 +87,8 @@
     },
     {
       "id": "tyr_progression:trial_four_iron_blocks",
+      "title": "Iron Palm — Four Iron Blocks",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "barehand_block_break",
@@ -89,6 +101,8 @@
     },
     {
       "id": "tyr_progression:trial_obsidian_hand",
+      "title": "Obsidian Hand",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "barehand_block_break",
@@ -101,6 +115,8 @@
     },
     {
       "id": "tyr_progression:trial_creeper_kiss",
+      "title": "Creeper Kiss",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "external",
@@ -125,6 +141,8 @@
     },
     {
       "id": "tyr_progression:blind_ordeal_victory",
+      "title": "Blindness Ordeal — Five Defeats",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "external",
@@ -149,6 +167,8 @@
     },
     {
       "id": "tyr_progression:training_twenty_hostiles",
+      "title": "Twenty Hostile Defeats",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "kill",
@@ -161,6 +181,8 @@
     },
     {
       "id": "tyr_progression:training_ten_advancements",
+      "title": "Ten Advancements",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "advancement",
@@ -173,6 +195,8 @@
     },
     {
       "id": "tyr_progression:training_thirty_advancements",
+      "title": "Thirty Advancements",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "advancement",
@@ -185,6 +209,8 @@
     },
     {
       "id": "tyr_progression:trial_bedrock_sleep",
+      "title": "Bedrock Rest",
+      "notify_progress": true,
       "criteria": [
         {
           "event": "external",
