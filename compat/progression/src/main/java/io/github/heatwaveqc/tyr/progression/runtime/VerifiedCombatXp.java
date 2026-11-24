@@ -103,9 +103,9 @@ public final class VerifiedCombatXp {
         ServerPlayer credited=attacker(victim,event.getSource());
         if(credited==null)return;
         double baseline=proof.baselineMaxHp()>0?proof.baselineMaxHp():victim.getMaxHealth();
-        boolean strict=proof.strict(credited.getUUID().toString(),
-            victim.level().getGameTime(),window())
-            &&credited.getUUID().toString().equals(barehandOwner(victim,event.getSource()));
-        TrainingRewards.kill(credited,baseline,strict);
+        boolean directFistFinisher=credited.getUUID().toString()
+            .equals(barehandOwner(victim,event.getSource()));
+        TrainingRewards.kill(credited,baseline,proof,directFistFinisher,
+            victim.level().getGameTime());
     }
 }

@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
+import io.github.heatwaveqc.tyr.progression.state.CombatProof;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.data.TrainingXpSpec;
 import net.minecraft.server.level.ServerPlayer;
@@ -45,9 +46,13 @@ public final class TrainingRewards {
             award(player,row.getKey(),row.getValue(),"sprint",
                 row.getValue().sprint().multiply(BigDecimal.valueOf(fullBlocks)),false,null);
     }
-    public static void kill(ServerPlayer player,double baselineHealth,boolean strict) {
-        for(var row:PathRegistry.trainingXp().entrySet())
+    public static void kill(ServerPlayer player,double baselineHealth,
+                            CombatProof proof,boolean directFistFinisher,long tick) {
+        for(var row:PathRegistry.trainingXp().entrySet()){
+            boolean strict=directFistFinisher &&
+                proof.strict(player.getUUID().toString(),tick,row.getValue().strictWindow());
             award(player,row.getKey(),row.getValue(),"combat",
                 row.getValue().kill(baselineHealth,strict),false,null);
+        }
     }
 }
