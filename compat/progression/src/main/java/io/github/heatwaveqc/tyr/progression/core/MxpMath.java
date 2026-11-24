@@ -3,14 +3,14 @@ package io.github.heatwaveqc.tyr.progression.core;
 /**
  * Pure progression arithmetic, independent of Minecraft and Tyz.
  * 1000 effective XP buys one level; routine BASE XP is divided by growth^P.
- * P is the player's lifetime levels earned through MXP, not spent skill ranks.
+ * P is the derived level floor(current total MXP / configured XP-per-point).
  */
 public final class MxpMath {
     public static final double GOAL = 1000.0;
     /** World-server configurable normalizer; 1.0 is truly linear XP. */
     public static final double DEFAULT_GROWTH = 1.02;
-    public static final double MIN_GROWTH = 1.0;
-    public static final double MAX_GROWTH = 1.2;
+    public static final double MIN_GROWTH = 0.001;
+    public static final double MAX_GROWTH = 100.0;
     public static final double MAX_EVENT_BASE = 1.0e12;
     private static final int MAX_LEVELS_PER_AWARD = 100_000;
 
@@ -51,7 +51,7 @@ public final class MxpMath {
 
     public static double validateGrowth(double growth) {
         if (!Double.isFinite(growth) || growth < MIN_GROWTH || growth > MAX_GROWTH)
-            throw new IllegalArgumentException("MXP growth must be finite and in [1.0, 1.2]");
+            throw new IllegalArgumentException("MXP growth must be finite and in [0.001, 100]");
         return growth;
     }
 
@@ -81,6 +81,7 @@ public final class MxpMath {
             // At high P with growth > 1, the divisor can exceed floating-point range;
             // ordinary progress
             // approaches zero. Fixed exceptions still work.
+            if (divisor == 0) throw new IllegalArgumentException("Unsafe negative-growth award divisor");
             if (!Double.isFinite(divisor)) break;
             double effectiveRemaining = GOAL - progress;
             double baseToNext = effectiveRemaining * divisor;

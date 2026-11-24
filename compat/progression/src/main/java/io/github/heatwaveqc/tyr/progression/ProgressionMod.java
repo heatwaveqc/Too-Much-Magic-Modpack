@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression;
 import io.github.heatwaveqc.tyr.progression.command.ProgressionCommands;
 import net.neoforged.fml.ModList;
 import io.github.heatwaveqc.tyr.progression.network.AbilityNetwork;
+import io.github.heatwaveqc.tyr.progression.network.PassivePowerNetwork;
 import io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.runtime.ProgressionEvents;
@@ -35,10 +36,14 @@ public final class ProgressionMod {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
+        modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.TooltipMilestoneNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
         NeoForge.EVENT_BUS.addListener(HunterBrewing::register);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
@@ -51,7 +56,12 @@ public final class ProgressionMod {
             (player, path) -> io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway
                 .mayJoin(player, path, PathRegistry.nativeCompatibilityRules())
                 == io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Decision.ALLOW);
+        io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
+        io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();
+        NeoForge.EVENT_BUS.addListener(io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineNative::stopped);
+        io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.register();
     }
 }
