@@ -1,6 +1,10 @@
-# Too Much Magic — repository-wide agent safety and CI rules
+# Too Much Magic — Art branch agent bootstrap and local contract
 
-This file applies to all AI agents, automated contributors, coding workflows, scheduled tasks, and branches in this repository. For detailed integration procedures read [the active integration branch contract](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/AGENTS.md) and [build channels](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/BUILD-CHANNELS-AND-TESTING.md).
+Shared repository: heatwaveqc/Tyr-Development-Standards
+Revision: c3b00ac93679a297510c84061278f41030bee770
+Profile: Minecraft
+
+Before mutations read [the shared core](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/c3b00ac93679a297510c84061278f41030bee770/AGENTS.md), applicable routes and [Minecraft profile](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/c3b00ac93679a297510c84061278f41030bee770/profiles/minecraft.md) at this immutable revision via connector or exact local snapshot. If inaccessible, report the blocker and stop affected mutations. Apply the [canonical TMM main contract](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/main/AGENTS.md) and [branch lifecycle policy](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/main/docs/BRANCH-LIFECYCLE.md). Read the [integration contract](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/AGENTS.md) and [build channels](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/BUILD-CHANNELS-AND-TESTING.md) for integration work. Preserve art-specific scope, designated writer, and all local stricter rules below. Universal policies are maintained upstream; pin upgrades are reviewed.
 
 ## Progression ownership and branch coordination (owner policy, 2026-11-16)
 
