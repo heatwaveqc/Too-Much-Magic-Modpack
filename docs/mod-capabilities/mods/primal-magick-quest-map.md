@@ -72,6 +72,23 @@
 
 **Second-pass source-backed recipe evidence:** [76 base generated Ritual recipes with exact items, props, research, per-Source Mana and instability](../inventories/primal-magick-6.0.7-ritual-recipes.md), [298 native research entries with all 501 stage predicates](../inventories/primal-magick-6.0.7-research-stage-graph.md), and [38 Research Table templates /443 material option declarations](../inventories/primal-magick-6.0.7-theorycraft-projects.md). Recipes are not equivalent to FTB completion events.
 
+## Third-pass instructional refinements (keep all existing PM IDs and FTB GUIDs)
+
+The full [855-literal-builder source census](../inventories/primal-magick-6.0.7-arcane-workbench-recipes.md) includes [466 Arcane recipes](../inventories/primal-magick-6.0.7-arcane-workbench-recipes.md), [144 specialist machines](../inventories/primal-magick-6.0.7-special-recipes.md), [169 standard/special recipes](../inventories/primal-magick-6.0.7-standard-recipes.md) and [76 Rituals](../inventories/primal-magick-6.0.7-ritual-recipes.md). The [24 Spell Payload economics](../inventories/primal-magick-6.0.7-spell-economics-and-safety.md) and [Attunement/Grimoire page model](../inventories/primal-magick-6.0.7-attunements-and-grimoire.md) provide exact teaching language. Do not convert source callsites to hardcoded generated recipe counts.
+
+| Existing label | Practical improvement to quest narration; no new task created |
+| --- | --- |
+| **PM-03** | Source standard **shapeless** Mundane Wand recipe: one wooden rod (common tagged stick) **+ one terrestrial Essence Dust**. Not an Arcane-Workbench recipe. |
+| **PM-04** | Guide: Wand-transform a qualifying Bookshelf, open the **normal Grimoire**, choose **Basics / First Steps**, then read the current **Requirements** page. Do not substitute the creative Grimoire, which force-grants research and is prohibited as a survival reward. |
+| **PM-07–PM-08** | Source stage-2 tools: **Magnifying Glass** and **Wood Table** use Arcane Shaped patterns; **Analysis Table** uses Wood Table + Magnifying Glass + Paper via Arcane Shapeless. Track the **actual Observation stat** rather than crafting those items alone. |
+| **PM-09–PM-10** | Research Table is **Wood Table + Book + Paper** via Arcane Shapeless, gated `THEORYCRAFTING` stage 2. Explain **Research Table project choices** versus owning a Research Table. The 38 project templates use 443 *weighted alternatives*, not a prescribed full ingredient list. |
+| **PM-18–PM-19** | Runecarving Table processes **two slots**; first source `rune_unattuned` uses **Stone Slab + Lapis (tag)** with `BASIC_RUNEWORKING` research. A Rune Project recipe needs `RUNE_PROJECT` separately. |
+| **PM-22–PM-25** | Spellcrafting is a **special recipe handler** (not a fixed ordinary Arcane Shapeless recipe); use one unlocked vehicle + one payload + up to 2 modifiers. Teach the **single typed Source Mana cost** and each modifier's multiplier before the first cast. Normal cooldown 30 ticks; Quicken reduces by 5×Haste and raises Mana costs. Check block-break/teleport/flight target permission in QA. |
+| **PM-35–PM-37** | After completing native `ATTUNEMENTS` research, use **Grimoire → Other → Attunements**. Distinguish permanent research bonuses from induced (max 50) and temporary (max 50; decays −1 every 1200 player ticks); Minor/Lesser/Greater apply at 30/60/90 total with suppression. |
+| **PM-41** | Actual Manafruit ritual follows `MANAFRUIT` research: Apple + Honey Bottle + Mana Salts, a connected Ritual Candle, and **Earth 5 + Sea 5 + Sky 5 + Sun 5 + Moon 5** Mana. Instability 1; Dowsing Rod diagnostics first; award only after actual completed output. |
+
+**Grimoire check:** `Other → Recipe Index` is shown when `FIRST_STEPS` is in progress or complete, and lists/searches only the **available** recipes; `Other → Scans`, `Other → Linguistics`, `Other → Rune Enchantments` require their corresponding native unlock. The source shows these buttons and specific requirements pages, but there was no client video or gameplay observation. A future event/FTB criteria adapter must bind each objective to the individual player, not use shared item ownership or free creative book unlocks.
+
 ## Engineering next-pass list
 
 1. **First craft/guide closure:** starter `mundane_wand` uses shapeless wooden rod + terrestrial Essence Dust (6.0.7 `Recipes.java` source); Grimoire/bookshelf and table Wand transformations verified; still confirm player-facing Grimoire UI text and Workbench interaction.
