@@ -32,6 +32,9 @@ public final class ProgressionAttachments {
             io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState::empty)
             .serialize(io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceStateCodec.CODEC)
             .copyOnDeath().build());
+    public static final Supplier<AttachmentType<Long>> CHARM_UNTIL =
+        ATTACHMENTS.register("charm_until", () -> AttachmentType.builder(() -> 0L)
+            .serialize(com.mojang.serialization.Codec.LONG).build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(LedgerCodec.CODEC).copyOnDeath().build());
