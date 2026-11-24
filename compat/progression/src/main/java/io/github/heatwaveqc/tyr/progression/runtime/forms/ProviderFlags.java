@@ -1,114 +1,118 @@
 package io.github.heatwaveqc.tyr.progression.runtime.forms;
 
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyObservations;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Form;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Presence;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Snapshot;
 import io.github.heatwaveqc.tyr.progression.data.Eligibility;
 import io.github.heatwaveqc.tyr.progression.foundation.Condition.Result;
-import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.fml.ModList;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import net.minecraft.server.level.ServerPlayer;
 
-/** Optional, read-only adapter to the existing Transformations ProbeRegistry.
- * No dependency or new transformation state. Unknown is distinct from false.
+/**
+ * Source-backed optional native form flags, owned by Progression itself.
+ *
+ * No reflection through the retired tmm_transformations JAR. The actual
+ * JAWR, Goety and Dragon Survival providers remain authoritative. Observations
+ * are cached per server tick so multiple declarative gates use one snapshot.
  */
 public final class ProviderFlags {
     private ProviderFlags() {}
-    private static final String MOD="tmm_transformations";
-    private static final String ROOT="io.github.heatwaveqc.tmm.transformations.";
-    private record Access(Method observe, Method observations) {}
-    private record Cached(Object server,long tick,Map<String,Result> flags) {}
-    private static volatile Access access;
-    private static final Map<UUID,Cached> cache=new HashMap<>();
+
+    private record Cached(Object server, long tick, Snapshot snapshot) {}
+    private static final Map<UUID, Cached> CACHE = new HashMap<>();
 
     public static void register() {
-        register("jawr_vampire","JAWR_VAMPIRE");
-        register("jawr_werewolf","JAWR_LYCANTHROPE");
-        register("jawr_lich","FORBIDDEN_MAGIC_LICH");
-        register("goety_lich","GOETY_LICH");
-        register("dragon","DRAGON_SURVIVAL_DRAGON");
-        Eligibility.registerFlag("tyr_progression:lich",p->{
-            var obs=observations(p);
+        register("jawr_vampire", "JAWR_VAMPIRE");
+        register("jawr_werewolf", "JAWR_WEREWOLF");
+        register("jawr_lich", "FORBIDDEN_MAGIC_LICH");
+        register("goety_lich", "GOETY_LICH");
+        register("dragon", "DRAGON_SURVIVAL_DRAGON");
+        Eligibility.registerFlag("tyr_progression:lich", player -> {
+            var observed = observations(player);
             return io.github.heatwaveqc.tyr.progression.foundation.FormCombination.lich(
-                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+                observed.getOrDefault("GOETY_LICH", Result.UNAVAILABLE),
+                observed.getOrDefault("FORBIDDEN_MAGIC_LICH", Result.UNAVAILABLE));
         });
-        Eligibility.registerFlag("tyr_progression:archlich",p->{
-            var obs=observations(p);
-            return io.github.heatwaveqc.tyr.progression.foundation.FormCombination.archlich(nativeDragon(p),
-                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+        Eligibility.registerFlag("tyr_progression:archlich", player -> {
+            var observed = observations(player);
+            return io.github.heatwaveqc.tyr.progression.foundation.FormCombination.archlich(
+                nativeDragon(player),
+                observed.getOrDefault("GOETY_LICH", Result.UNAVAILABLE),
+                observed.getOrDefault("FORBIDDEN_MAGIC_LICH", Result.UNAVAILABLE));
         });
-        Eligibility.registerFlag("tyr_progression:dracolich",p->{
-            var obs=observations(p);
-            return io.github.heatwaveqc.tyr.progression.foundation.FormCombination.dracolich(nativeDragon(p),
-                obs.getOrDefault("GOETY_LICH",Result.UNAVAILABLE),obs.getOrDefault("FORBIDDEN_MAGIC_LICH",Result.UNAVAILABLE));
+        Eligibility.registerFlag("tyr_progression:dracolich", player -> {
+            var observed = observations(player);
+            return io.github.heatwaveqc.tyr.progression.foundation.FormCombination.dracolich(
+                nativeDragon(player),
+                observed.getOrDefault("GOETY_LICH", Result.UNAVAILABLE),
+                observed.getOrDefault("FORBIDDEN_MAGIC_LICH", Result.UNAVAILABLE));
         });
-        for(String name:java.util.List.of("cave","forest","sea"))
-            Eligibility.registerFlag("tyr_progression:"+name+"_dragon",
-                player->dragonSpecies(player,"dragonsurvival:"+name+"_dragon"));
-    }
-    private static void register(String name,String nativeId) {
-        Eligibility.registerFlag("tyr_progression:"+name,
-                player -> observations(player).getOrDefault(nativeId,Result.UNAVAILABLE));
-    }
-    public static Result nativeDragon(ServerPlayer player){
-        if(!ModList.get().getModContainerById("dragonsurvival")
-            .filter(mod->mod.getModInfo().getVersion().toString().startsWith("2.0.74")).isPresent()||
-            player.getServer()==null||!player.getServer().isSameThread())return Result.UNAVAILABLE;
-        try{
-            Class<?> provider=Class.forName("by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider");
-            Object handler=provider.getMethod("getData",net.minecraft.world.entity.player.Player.class).invoke(null,player);
-            Object value=handler.getClass().getMethod("isDragon").invoke(handler);
-            return value instanceof Boolean b?(b?Result.PASS:Result.FAIL):Result.UNAVAILABLE;
-        }catch(ReflectiveOperationException|LinkageError|RuntimeException unavailable){return Result.UNAVAILABLE;}
-    }
-    /** Exact 2.0.74 native read-only species ID; absent provider is not a human observation. */
-    public static Result dragonSpecies(ServerPlayer player,String expected){
-        if(!ModList.get().getModContainerById("dragonsurvival")
-            .filter(mod->mod.getModInfo().getVersion().toString().startsWith("2.0.74")).isPresent()||
-            player.getServer()==null||!player.getServer().isSameThread())return Result.UNAVAILABLE;
-        try{
-            Class<?> provider=Class.forName("by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider");
-            Object handler=provider.getMethod("getData",net.minecraft.world.entity.player.Player.class).invoke(null,player);
-            Object isDragon=handler.getClass().getMethod("isDragon").invoke(handler);
-            if(!(isDragon instanceof Boolean dragon))return Result.UNAVAILABLE;
-            if(!dragon)return Result.FAIL;
-            Object id=handler.getClass().getMethod("speciesId").invoke(handler);
-            if(!(id instanceof net.minecraft.resources.ResourceLocation location))return Result.UNAVAILABLE;
-            return location.toString().equals(expected)?Result.PASS:Result.FAIL;
-        }catch(ReflectiveOperationException|LinkageError|RuntimeException unavailable){return Result.UNAVAILABLE;}
-    }
-    private static Map<String,Result> observations(ServerPlayer player) {
-        if(!ModList.get().isLoaded(MOD) || player.getServer()==null || !player.getServer().isSameThread())
-            return Map.of();
-        long tick=player.getServer().overworld().getGameTime();
-        Cached old=cache.get(player.getUUID());
-        if(old!=null && old.server()==player.getServer() && old.tick()==tick) return old.flags();
-        try {
-            Access a=access;
-            if(a==null) {
-                Class<?> registry=Class.forName(ROOT+"adapters.ProbeRegistry");
-                Method observe=registry.getMethod("observe",ServerPlayer.class);
-                a=new Access(observe,observe.getReturnType().getMethod("observations"));
-                access=a;
-            }
-            Object snapshot=a.observe().invoke(null,player);
-            Object raw=a.observations().invoke(snapshot);
-            if(!(raw instanceof Map<?,?> values)) return Map.of();
-            var flags=new HashMap<String,Result>();
-            for(var entry:values.entrySet()) {
-                if(!(entry.getKey() instanceof Enum<?> key) || !(entry.getValue() instanceof Enum<?> value)) continue;
-                flags.put(key.name(),switch(value.name()) {
-                    case "PRESENT" -> Result.PASS;
-                    case "ABSENT" -> Result.FAIL;
-                    default -> Result.UNAVAILABLE;
-                });
-            }
-            Map<String,Result> result=Map.copyOf(flags);
-            cache.put(player.getUUID(),new Cached(player.getServer(),tick,result));
-            return result;
-        } catch(ReflectiveOperationException | LinkageError | RuntimeException failure) {
-            return Map.of();
+        for (String species : java.util.List.of("cave", "forest", "sea")) {
+            Eligibility.registerFlag("tyr_progression:" + species + "_dragon",
+                player -> dragonSpecies(player, "dragonsurvival:" + species + "_dragon"));
         }
     }
-    public static void forget(UUID player) { cache.remove(player); }
+
+    private static void register(String name, String nativeId) {
+        Eligibility.registerFlag("tyr_progression:" + name,
+            player -> observations(player).getOrDefault(nativeId, Result.UNAVAILABLE));
+    }
+
+    private static Result toResult(Presence p) {
+        return switch (p) {
+            case PRESENT -> Result.PASS;
+            case ABSENT -> Result.FAIL;
+            case UNKNOWN -> Result.UNAVAILABLE;
+        };
+    }
+
+    private static Snapshot snapshot(ServerPlayer player) {
+        if (player == null || player.getServer() == null
+                || !player.getServer().isSameThread()) {
+            return NativePhysiologyObservations.observe(player);
+        }
+        long tick = player.getServer().overworld().getGameTime();
+        Cached prior = CACHE.get(player.getUUID());
+        if (prior != null && prior.server() == player.getServer()
+                && prior.tick() == tick) return prior.snapshot();
+        Snapshot fresh = NativePhysiologyObservations.observe(player);
+        CACHE.put(player.getUUID(), new Cached(player.getServer(), tick, fresh));
+        return fresh;
+    }
+
+    public static Result nativeDragon(ServerPlayer player) {
+        Snapshot s = snapshot(player);
+        Result cave = toResult(s.get(Form.CAVE_DRAGON));
+        Result forest = toResult(s.get(Form.FOREST_DRAGON));
+        Result sea = toResult(s.get(Form.SEA_DRAGON));
+        if (cave == Result.PASS || forest == Result.PASS || sea == Result.PASS) return Result.PASS;
+        return cave == Result.FAIL && forest == Result.FAIL && sea == Result.FAIL
+            ? Result.FAIL : Result.UNAVAILABLE;
+    }
+
+    public static Result dragonSpecies(ServerPlayer player, String expected) {
+        Form species = switch (expected) {
+            case "dragonsurvival:cave_dragon" -> Form.CAVE_DRAGON;
+            case "dragonsurvival:forest_dragon" -> Form.FOREST_DRAGON;
+            case "dragonsurvival:sea_dragon" -> Form.SEA_DRAGON;
+            default -> null;
+        };
+        return species == null ? Result.UNAVAILABLE : toResult(snapshot(player).get(species));
+    }
+
+    private static Map<String, Result> observations(ServerPlayer player) {
+        Snapshot s = snapshot(player);
+        Map<String, Result> flags = new HashMap<>();
+        flags.put("JAWR_VAMPIRE", toResult(s.get(Form.JAWR_VAMPIRE)));
+        flags.put("JAWR_LYCANTHROPE", toResult(s.get(Form.JAWR_WEREWOLF)));
+        flags.put("GOETY_LICH", toResult(s.get(Form.GOETY_LICH)));
+        flags.put("FORBIDDEN_MAGIC_LICH", toResult(s.get(Form.FORBIDDEN_MAGIC_LICH)));
+        flags.put("DRAGON_SURVIVAL_DRAGON", nativeDragon(player));
+        return Map.copyOf(flags);
+    }
+
+    public static void forget(UUID player) { CACHE.remove(player); }
 }
