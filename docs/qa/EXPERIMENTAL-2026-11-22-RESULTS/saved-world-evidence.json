@@ -1,0 +1,799 @@
+{
+  "status": "SAVED_SNAPSHOT_NOT_LIVE",
+  "allowCommands": 1,
+  "gameType": 0,
+  "dimension": "minecraft:overworld",
+  "advancements": [
+    {
+      "id": "betterend:root",
+      "done": true,
+      "criteria": {
+        "welcome": "2026-11-22 10:30:21 -0700"
+      }
+    },
+    {
+      "id": "minecraft:adventure/adventuring_time",
+      "done": false,
+      "criteria": {
+        "minecraft:snowy_beach": "2026-11-22 10:30:21 -0700"
+      }
+    }
+  ],
+  "nearby_saved_entities": {
+    "status": "SAVED_ENTITIES_NOT_LIVE",
+    "radius": 128,
+    "entities": [
+      {
+        "id": "minecraft:squid",
+        "distance": 120.0,
+        "heightOffset": -5.5
+      },
+      {
+        "id": "minecraft:squid",
+        "distance": 110.5,
+        "heightOffset": -3.8
+      },
+      {
+        "id": "minecraft:squid",
+        "distance": 116.9,
+        "heightOffset": -3.8
+      },
+      {
+        "id": "minecraft:squid",
+        "distance": 114.1,
+        "heightOffset": -4.1
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 111.3,
+        "heightOffset": -50.0
+      },
+      {
+        "id": "goety:reaper",
+        "distance": 114.3,
+        "heightOffset": -51.0
+      },
+      {
+        "id": "minecraft:glow_squid",
+        "distance": 127.3,
+        "heightOffset": -58.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 116.5,
+        "heightOffset": -60.0
+      },
+      {
+        "id": "minecraft:squid",
+        "distance": 119.4,
+        "heightOffset": -3.8
+      },
+      {
+        "id": "ars_nouveau:whirlisprig",
+        "distance": 103.4,
+        "heightOffset": -1.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 110.6,
+        "heightOffset": -58.0
+      },
+      {
+        "id": "minecraft:villager",
+        "distance": 95.1,
+        "heightOffset": -11.0
+      },
+      {
+        "id": "minecraft:witch",
+        "distance": 95.5,
+        "heightOffset": -11.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 87.5,
+        "heightOffset": -11.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 89.4,
+        "heightOffset": -10.0
+      },
+      {
+        "id": "goety:wraith",
+        "distance": 104.6,
+        "heightOffset": -59.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 113.4,
+        "heightOffset": -58.5
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 124.9,
+        "heightOffset": -83.0
+      },
+      {
+        "id": "minecraft:item",
+        "distance": 116.7,
+        "heightOffset": -2.0
+      },
+      {
+        "id": "minecraft:item",
+        "distance": 119.0,
+        "heightOffset": -2.0
+      },
+      {
+        "id": "minecraft:rabbit",
+        "distance": 96.3,
+        "heightOffset": -2.0
+      },
+      {
+        "id": "minecraft:rabbit",
+        "distance": 97.4,
+        "heightOffset": -1.6
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 97.9,
+        "heightOffset": -58.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 112.3,
+        "heightOffset": -86.0
+      },
+      {
+        "id": "embers:ancient_golem",
+        "distance": 94.6,
+        "heightOffset": -62.8
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 90.6,
+        "heightOffset": -59.5
+      },
+      {
+        "id": "irons_spellbooks:necromancer",
+        "distance": 113.0,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "goety:wraith",
+        "distance": 108.0,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "creaturefeature:sinister",
+        "distance": 108.1,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 83.2,
+        "heightOffset": 4.3
+      },
+      {
+        "id": "creaturefeature:sinister",
+        "distance": 107.8,
+        "heightOffset": -80.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 88.7,
+        "heightOffset": -36.6
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 82.2,
+        "heightOffset": -42.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 80.3,
+        "heightOffset": -38.5
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 84.4,
+        "heightOffset": -56.9
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 106.9,
+        "heightOffset": -86.1
+      },
+      {
+        "id": "minecraft:zombie_villager",
+        "distance": 116.3,
+        "heightOffset": -96.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 97.5,
+        "heightOffset": -81.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 96.1,
+        "heightOffset": -81.0
+      },
+      {
+        "id": "minecraft:glow_squid",
+        "distance": 114.6,
+        "heightOffset": -54.6
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 117.9,
+        "heightOffset": -56.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 116.1,
+        "heightOffset": -59.2
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 107.1,
+        "heightOffset": -59.1
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 106.8,
+        "heightOffset": -59.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 106.0,
+        "heightOffset": -59.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 77.8,
+        "heightOffset": -54.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 71.9,
+        "heightOffset": -53.0
+      },
+      {
+        "id": "eidolon_repraised:slimy_slug",
+        "distance": 35.9,
+        "heightOffset": 0.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 100.1,
+        "heightOffset": -88.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 76.0,
+        "heightOffset": -58.9
+      },
+      {
+        "id": "artifacts:mimic",
+        "distance": 95.7,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 66.2,
+        "heightOffset": 9.3
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 95.9,
+        "heightOffset": -70.0
+      },
+      {
+        "id": "eidolon_repraised:slimy_slug",
+        "distance": 35.9,
+        "heightOffset": 0.0
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 44.2,
+        "heightOffset": 0.4
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 67.6,
+        "heightOffset": -64.0
+      },
+      {
+        "id": "eidolon_repraised:slimy_slug",
+        "distance": 33.8,
+        "heightOffset": 0.0
+      },
+      {
+        "id": "aquaculture:jellyfish",
+        "distance": 27.4,
+        "heightOffset": -15.6
+      },
+      {
+        "id": "botania:manaseal_creeper",
+        "distance": 68.8,
+        "heightOffset": -56.0
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 114.4,
+        "heightOffset": -0.4
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 64.9,
+        "heightOffset": -35.0
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 67.1,
+        "heightOffset": -34.0
+      },
+      {
+        "id": "minecraft:spider",
+        "distance": 94.6,
+        "heightOffset": -70.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 88.1,
+        "heightOffset": -69.0
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 51.6,
+        "heightOffset": 4.2
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 82.9,
+        "heightOffset": -67.6
+      },
+      {
+        "id": "irons_spellbooks:necromancer",
+        "distance": 72.7,
+        "heightOffset": -71.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 73.7,
+        "heightOffset": -71.6
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 73.7,
+        "heightOffset": -72.0
+      },
+      {
+        "id": "aquaculture:atlantic_cod",
+        "distance": 24.4,
+        "heightOffset": -13.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 70.8,
+        "heightOffset": -39.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 109.0,
+        "heightOffset": -90.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 56.6,
+        "heightOffset": -27.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 72.8,
+        "heightOffset": -69.1
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 73.4,
+        "heightOffset": -70.3
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 34.3,
+        "heightOffset": -34.0
+      },
+      {
+        "id": "creeperoverhaul:cave_creeper",
+        "distance": 33.6,
+        "heightOffset": -33.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 29.7,
+        "heightOffset": -29.0
+      },
+      {
+        "id": "goety:warlock",
+        "distance": 73.8,
+        "heightOffset": -72.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 75.4,
+        "heightOffset": -73.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 71.9,
+        "heightOffset": -71.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 24.7,
+        "heightOffset": -24.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 28.5,
+        "heightOffset": -27.8
+      },
+      {
+        "id": "minecraft:skeleton",
+        "distance": 33.6,
+        "heightOffset": -32.0
+      },
+      {
+        "id": "aquaculture:blackfish",
+        "distance": 15.3,
+        "heightOffset": -10.8
+      },
+      {
+        "id": "aquaculture:atlantic_herring",
+        "distance": 28.9,
+        "heightOffset": -15.0
+      },
+      {
+        "id": "aquaculture:atlantic_herring",
+        "distance": 28.0,
+        "heightOffset": -15.0
+      },
+      {
+        "id": "aquaculture:atlantic_herring",
+        "distance": 24.1,
+        "heightOffset": -15.0
+      },
+      {
+        "id": "aquaculture:atlantic_herring",
+        "distance": 24.9,
+        "heightOffset": -15.0
+      },
+      {
+        "id": "aquaculture:atlantic_herring",
+        "distance": 23.2,
+        "heightOffset": -13.7
+      },
+      {
+        "id": "aquaculture:blackfish",
+        "distance": 59.4,
+        "heightOffset": -3.7
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 108.1,
+        "heightOffset": -61.3
+      },
+      {
+        "id": "minecraft:spider",
+        "distance": 78.3,
+        "heightOffset": -65.9
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 38.5,
+        "heightOffset": -30.9
+      },
+      {
+        "id": "minecraft:spider",
+        "distance": 84.5,
+        "heightOffset": -81.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 77.2,
+        "heightOffset": -70.0
+      },
+      {
+        "id": "aquaculture:brown_trout",
+        "distance": 44.6,
+        "heightOffset": -4.1
+      },
+      {
+        "id": "aquaculture:brown_trout",
+        "distance": 45.4,
+        "heightOffset": -5.0
+      },
+      {
+        "id": "minecraft:enderman",
+        "distance": 116.1,
+        "heightOffset": -38.0
+      },
+      {
+        "id": "eidolon_repraised:zombie_brute",
+        "distance": 71.1,
+        "heightOffset": -35.0
+      },
+      {
+        "id": "embers:ancient_golem",
+        "distance": 72.9,
+        "heightOffset": -49.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 113.1,
+        "heightOffset": -94.0
+      },
+      {
+        "id": "minecraft:item",
+        "distance": 108.3,
+        "heightOffset": -91.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 100.5,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 116.3,
+        "heightOffset": -109.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 114.4,
+        "heightOffset": -107.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 83.6,
+        "heightOffset": -73.6
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 114.0,
+        "heightOffset": -108.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 77.0,
+        "heightOffset": -65.0
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 94.6,
+        "heightOffset": -82.0
+      },
+      {
+        "id": "minecraft:glow_squid",
+        "distance": 75.5,
+        "heightOffset": -54.0
+      },
+      {
+        "id": "aquaculture:carp",
+        "distance": 47.1,
+        "heightOffset": -9.0
+      },
+      {
+        "id": "aquaculture:perch",
+        "distance": 53.7,
+        "heightOffset": -4.6
+      },
+      {
+        "id": "aquaculture:muskellunge",
+        "distance": 48.7,
+        "heightOffset": -4.7
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 50.0,
+        "heightOffset": -3.6
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 49.3,
+        "heightOffset": -3.4
+      },
+      {
+        "id": "aquaculture:carp",
+        "distance": 46.4,
+        "heightOffset": -8.5
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 51.4,
+        "heightOffset": -6.7
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 50.2,
+        "heightOffset": -6.9
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 50.6,
+        "heightOffset": -7.0
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 49.7,
+        "heightOffset": -7.3
+      },
+      {
+        "id": "aquaculture:bluegill",
+        "distance": 50.5,
+        "heightOffset": -6.9
+      },
+      {
+        "id": "minecraft:glow_squid",
+        "distance": 120.5,
+        "heightOffset": -39.6
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 108.7,
+        "heightOffset": -39.0
+      },
+      {
+        "id": "minecraft:glow_squid",
+        "distance": 123.5,
+        "heightOffset": -39.3
+      },
+      {
+        "id": "forbidden_arcanus:lost_soul",
+        "distance": 120.4,
+        "heightOffset": -1.1
+      },
+      {
+        "id": "minecraft:spider",
+        "distance": 91.8,
+        "heightOffset": -38.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 97.2,
+        "heightOffset": -53.0
+      },
+      {
+        "id": "embers:ancient_golem",
+        "distance": 97.4,
+        "heightOffset": -53.0
+      },
+      {
+        "id": "minecraft:spider",
+        "distance": 90.3,
+        "heightOffset": -39.0
+      },
+      {
+        "id": "creeperoverhaul:cave_creeper",
+        "distance": 74.8,
+        "heightOffset": -34.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 106.6,
+        "heightOffset": -83.0
+      },
+      {
+        "id": "minecraft:bat",
+        "distance": 94.1,
+        "heightOffset": -80.9
+      },
+      {
+        "id": "eidolon_repraised:wraith",
+        "distance": 108.3,
+        "heightOffset": -88.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 89.8,
+        "heightOffset": -71.0
+      },
+      {
+        "id": "goety:heretic",
+        "distance": 90.1,
+        "heightOffset": -71.0
+      },
+      {
+        "id": "minecraft:villager",
+        "distance": 116.9,
+        "heightOffset": -35.0
+      },
+      {
+        "id": "minecraft:zombie_villager",
+        "distance": 117.9,
+        "heightOffset": -35.0
+      },
+      {
+        "id": "creaturefeature:pathogen",
+        "distance": 98.4,
+        "heightOffset": -39.0
+      },
+      {
+        "id": "artifacts:mimic",
+        "distance": 90.3,
+        "heightOffset": -42.0
+      },
+      {
+        "id": "creeperoverhaul:cave_creeper",
+        "distance": 87.5,
+        "heightOffset": -41.0
+      },
+      {
+        "id": "creeperoverhaul:cave_creeper",
+        "distance": 86.7,
+        "heightOffset": -43.0
+      },
+      {
+        "id": "minecraft:zombie",
+        "distance": 126.2,
+        "heightOffset": -97.0
+      },
+      {
+        "id": "minecraft:item",
+        "distance": 91.5,
+        "heightOffset": -2.0
+      },
+      {
+        "id": "minecraft:squid",
+        "distance": 117.6,
+        "heightOffset": -16.2
+      },
+      {
+        "id": "minecraft:item",
+        "distance": 117.5,
+        "heightOffset": -2.0
+      }
+    ],
+    "counts": {
+      "minecraft:squid": 6,
+      "minecraft:skeleton": 10,
+      "goety:reaper": 1,
+      "minecraft:glow_squid": 5,
+      "ars_nouveau:whirlisprig": 1,
+      "minecraft:zombie": 22,
+      "minecraft:villager": 2,
+      "minecraft:witch": 1,
+      "goety:wraith": 2,
+      "minecraft:bat": 18,
+      "minecraft:item": 5,
+      "minecraft:rabbit": 2,
+      "embers:ancient_golem": 3,
+      "irons_spellbooks:necromancer": 2,
+      "creaturefeature:sinister": 2,
+      "forbidden_arcanus:lost_soul": 6,
+      "minecraft:zombie_villager": 2,
+      "eidolon_repraised:wraith": 14,
+      "eidolon_repraised:slimy_slug": 3,
+      "artifacts:mimic": 2,
+      "aquaculture:jellyfish": 1,
+      "botania:manaseal_creeper": 1,
+      "minecraft:spider": 5,
+      "aquaculture:atlantic_cod": 1,
+      "creeperoverhaul:cave_creeper": 4,
+      "goety:warlock": 1,
+      "aquaculture:blackfish": 2,
+      "aquaculture:atlantic_herring": 5,
+      "aquaculture:brown_trout": 2,
+      "minecraft:enderman": 1,
+      "eidolon_repraised:zombie_brute": 1,
+      "aquaculture:carp": 2,
+      "aquaculture:perch": 1,
+      "aquaculture:muskellunge": 1,
+      "aquaculture:bluegill": 7,
+      "goety:heretic": 1,
+      "creaturefeature:pathogen": 1
+    },
+    "read_errors": [],
+    "newest_region_chunk_timestamp": 1795368921
+  }
+}
