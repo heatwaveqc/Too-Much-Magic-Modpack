@@ -29,6 +29,7 @@ public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
         TreeChopXpBridge.register();
+        VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
@@ -70,6 +71,16 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::logout);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::respawn);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::dimension);
+    }
+
+    /** Only the verified full-health, same-owner fist challenge can emit this deed. */
+    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim) {
+        if (victim.getType() == net.minecraft.world.entity.EntityType.WITHER
+                && TrainingRewards.eligible(owner, "tyr_progression:monk")) {
+            ProgressionApi.recordFiltered(owner,
+                io.github.heatwaveqc.tyr.progression.core.Signal.external("tyr_progression:strict_barehand_wither_victory"),
+                path -> path.id().equals("tyr_progression:monk"));
+        }
     }
 
     private static void breakBlock(BlockEvent.BreakEvent event) {
