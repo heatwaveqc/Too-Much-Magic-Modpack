@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'kubejs/data/projecte/recipe/**'
+      - 'kubejs/data/tmm/pe_custom_conversions/**'
       - 'config/neovitae/materials.json'
       - 'scripts/validate_projecte_early_recipes.py'
       - 'scripts/test_validate_projecte_early_recipes.py'
