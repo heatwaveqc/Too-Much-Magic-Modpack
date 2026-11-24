@@ -148,4 +148,18 @@ class PathJsonTest {
             TestPaths.read("test:hunter",JsonParser.parseString(unbounded).getAsJsonObject()));
     }
 
+    @Test void optInMilestoneFeedbackMetadataIsParsedAndValidated() {
+        String withMilestone=VALID.replace("\"skills\":",
+            "\"milestones\":[{\"id\":\"test:iron\",\"title\":\"Iron Palm\",\"notify_progress\":true,"+
+            "\"criteria\":[{\"event\":\"barehand_block_break\",\"target\":\"minecraft:iron_block\",\"count\":4}]}],\"skills\":");
+        var parsed=TestPaths.read("test:monk",JsonParser.parseString(withMilestone).getAsJsonObject());
+        assertEquals("Iron Palm",parsed.milestones().getFirst().title());
+        assertTrue(parsed.milestones().getFirst().notifyProgress());
+        assertEquals(4,parsed.milestones().getFirst().criteria().getFirst().count());
+        String invalid=withMilestone.replace("Iron Palm","x".repeat(121));
+        assertThrows(IllegalArgumentException.class,
+            ()->TestPaths.read("test:monk",JsonParser.parseString(invalid).getAsJsonObject()));
+    }
+
+
 }
