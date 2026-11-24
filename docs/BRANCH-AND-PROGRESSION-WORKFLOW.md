@@ -10,7 +10,7 @@ Implement reusable, validated, server-owned gameplay mechanisms once. Expose bal
 
 Keep transaction validation, server event provenance, source-commit verification, replay prevention, cancellation/protection checks, safe resource bounds, persistence, runtime integrations and client reconciliation implemented and enforced in code. Data files cannot invoke arbitrary Java or grant unverified awards. Treat external provider adapters as code-owned with data-defined bindings where feasible.
 
-The canonical implementation target and hard-code audit are tracked in [generic XP and multi-currency design](../compat/progression/design/CONFIGURABLE-XP-SYSTEMS-AND-MULTI-CURRENCY-SKILLS-2026-11-23.md) (design PR #570). Old `unified`/`hybrid`/`separate` labels are representable data presets, **not three separate hard-coded economy pipelines**. TMM's default retains one shared MXP ledger and irreversible lost-Path purchase/XP forfeiture; the generic engine must support other configured economies.
+The historical design, current implementation crosswalk and hard-code audit are tracked in [generic XP and multi-currency design](../compat/progression/design/CONFIGURABLE-XP-SYSTEMS-AND-MULTI-CURRENCY-SKILLS-2026-11-23.md) (documentation PR #570; current runtime work #475/#654). Old `unified`/`hybrid`/`separate` labels are representable data presets, **not three separate hard-coded economy pipelines**. TMM's default retains one shared MXP ledger and irreversible lost-Path purchase/XP forfeiture; the generic engine must support other configured economies.
 
 ## Architecture boundary: one executable Progression engine
 
