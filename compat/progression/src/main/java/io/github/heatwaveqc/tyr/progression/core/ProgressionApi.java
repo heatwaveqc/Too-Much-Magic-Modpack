@@ -7,6 +7,9 @@ import io.github.heatwaveqc.tyr.progression.state.Discoveries;
 import io.github.heatwaveqc.tyr.progression.state.Modes;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
+import io.github.heatwaveqc.tyr.progression.runtime.ExperienceSourceRouter;
+import io.github.heatwaveqc.tyr.progression.runtime.ExperienceModifiers;
+import net.neoforged.neoforge.common.util.FakePlayer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
@@ -411,18 +414,29 @@ public final class ProgressionApi {
     private static boolean awardMagic(ServerPlayer player,String channelId,
             String sourceCategory,String tx,String first,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
-        if(player==null || player.getServer()==null || !player.getServer().isSameThread()
-            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return false;
+        if(!eligibleEarner(player)) return false;
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
+        if(!Double.isFinite(repeatBase)||repeatBase<0||
+                first!=null&&(!Double.isFinite(firstBase)||firstBase<0)) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        double configured=PathRegistry.economyCatalog().growth(channelId);
-        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
-            .effective(player,configured,channelId);
-        Ledger next=ChannelEngine.magic(prior,
-            XpChannel.generic(channelId,growth,channel.name(),channel.pointName()),
-            sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
-        if(next==prior) return false;
+        Ledger next=first==null
+                ?ExperienceSourceRouter.award(player,prior,channelId,sourceCategory,tx,null,
+                        BigDecimal.valueOf(repeatBase),repeatFixed)
+                :ExperienceSourceRouter.completion(player,prior,channelId,sourceCategory,tx,first,
+                        BigDecimal.valueOf(firstBase),BigDecimal.valueOf(repeatBase),firstFixed,repeatFixed);
+        return publishAward(player,prior,next);
+    }
+
+    private static boolean eligibleEarner(ServerPlayer player){
+        return player!=null&&player.getServer()!=null&&player.getServer().isSameThread()
+                &&!(player instanceof FakePlayer)&&!player.isCreative()&&!player.isSpectator()
+                &&!NewbieMode.isNewbie(player)
+                &&player.getServer().getPlayerList().getPlayer(player.getUUID())==player;
+    }
+
+    private static boolean publishAward(ServerPlayer player,Ledger prior,Ledger next){
+        if(next==prior)return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
@@ -435,21 +449,27 @@ public final class ProgressionApi {
     public static boolean awardConfiguredXp(ServerPlayer player,String systemId,
             String sourceCategory,String transaction,String completionId,
             BigDecimal nominalXp,boolean fixed) {
-        if(player==null||player.getServer()==null||!player.getServer().isSameThread()
-            ||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player))
-            return false;
+        if(!eligibleEarner(player))return false;
         var catalog=PathRegistry.economyCatalog();
         if(!catalog.systems().containsKey(systemId))return false;
-        var nativeChannel=PathRegistry.economy(systemId);
-        if(nativeChannel!=null&&!PathRegistry.economyEligible(player,systemId))return false;
-        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
-                .effective(player,catalog.growth(systemId),systemId);
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.awardConfigured(prior,catalog,systemId,
-                sourceCategory,transaction,completionId,nominalXp,fixed,growth);
-        if(next==prior)return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),next);
-        return true;
+        return publishAward(player,prior,ExperienceSourceRouter.award(player,prior,systemId,
+                sourceCategory,transaction,completionId,nominalXp,fixed));
+    }
+
+    /** Explicit destination grant, not a gameplay-source reroute. */
+    public static boolean awardExplicitConfiguredXp(ServerPlayer player,String systemId,
+            String sourceCategory,String transaction,String completionId,
+            BigDecimal nominalXp,boolean fixed) {
+        if(!eligibleEarner(player))return false;
+        var catalog=PathRegistry.economyCatalog();
+        var spec=catalog.systems().get(systemId);
+        if(spec==null || PathRegistry.economy(systemId)!=null
+                && !PathRegistry.economyEligible(player,systemId))return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        var result=ExperienceModifiers.earn(player,prior,spec,sourceCategory,transaction,
+                completionId,nominalXp,fixed,catalog.growth(systemId));
+        return result.accepted()&&publishAward(player,prior,prior.withEconomy(result.ledger()));
     }
 
     /** Existing trusted server consumers may grant a native-style source award. */
@@ -460,17 +480,16 @@ public final class ProgressionApi {
     /** Source-aware overload ensures repeat callbacks can share one receipt. */
     public static boolean awardExperience(ServerPlayer player,String id,
             String sourceCategory,String transaction,long xp) {
-        if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
-            ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
+        if(!eligibleEarner(player)||xp<=0||xp>1_000_000L)return false;
         var system=PathRegistry.economy(id);
         if(system==null||!PathRegistry.economyEligible(player,id))return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
-        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
         if(PathRegistry.economyCatalog().systems().containsKey(id))
             return awardConfiguredXp(player,id,sourceCategory,transaction,null,
-                    BigDecimal.valueOf(nominal),false);
+                    BigDecimal.valueOf(xp),false);
+        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
         if(system.magic())return false; // No unconfigured money printer.
         player.setData(ProgressionAttachments.LEDGER.get(),
                 ChannelEngine.grant(prior,system,nominal,0));
