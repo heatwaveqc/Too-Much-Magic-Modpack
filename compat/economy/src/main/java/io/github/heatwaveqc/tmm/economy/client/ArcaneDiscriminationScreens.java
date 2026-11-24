@@ -15,7 +15,8 @@ public final class ArcaneDiscriminationScreens {
         if (EnchantingFeatureGate.enabled()) {
             event.register(ArcaneDiscriminationRegistration.MENU.get(), ArcaneDiscriminationScreen::new);
             event.register(io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.SHELVES.get(), VirtualShelfScreen::new);
-            event.register(io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.ENCHANTER.get(), PortableApothicScreen::new);
+            event.<dev.shadowsoffire.apothic_enchanting.table.ApothEnchantmentMenu, PortableApothicScreen>register(
+                io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.ENCHANTER.get(), PortableApothicScreen::new);
         }
     }
 }
