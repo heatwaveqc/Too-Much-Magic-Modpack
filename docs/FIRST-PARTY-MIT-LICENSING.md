@@ -1,6 +1,8 @@
+> **Current identity/licensing (2026-11-24):** The first-party Trader's Vengeance module now lives in `compat/traders-vengeance`, ID `traders_vengeance`, and **remains GPL-3.0-only** because of the approved PneumaticCraft-derived components; preserved MIT/CC0/LGPL donor notices still apply. Earlier references to an all-MIT roster and historical staging PRs below describe old decisions, not current source.
+
 # First-party MIT license policy — 2026-11-18
 
-Owner approved MIT licensing for every custom first-party mod. The four current manifest-selected modules (Progression, MXP, Transformations, Trader's Vengence) each carry a complete MIT LICENSE, THIRD_PARTY_NOTICES.md, mod_license=MIT, and Gradle JAR inclusion. The existing NeoForge template expands mod_license into loader metadata.
+Owner approved MIT licensing for every custom first-party mod. The four current manifest-selected modules (Progression, MXP, Transformations, Trader's Vengeance) each carry a complete MIT LICENSE, THIRD_PARTY_NOTICES.md, mod_license=MIT, and Gradle JAR inclusion. The existing NeoForge template expands mod_license into loader metadata.
 
 Scope is original first-party code/documentation, not the whole modpack or independently licensed dependencies/assets. Copyright line follows the existing mod author credit, "Too Much Magic contributors" (2026); individual contributor rights and historical attribution must be verified for public distribution. Do not change external dependency licenses. No donor source has been imported in this PR. Future first-party modules must carry their own full MIT license and any actual upstream notices; use immutable provenance and preserve copyright and permission text. The unified Progression migration must retain these files, including the MXP notices.
 

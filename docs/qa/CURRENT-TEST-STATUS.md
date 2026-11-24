@@ -1,5 +1,10 @@
 # Current test status — active QA handoff
 
+### Trader's Vengeance #648/#423 (2026-11-24)
+
+Rocket source merged `1f03761a3c32485543b6d63453cf15d096bd690a`; rename #653 pending final quick CI/merge. B/C awaiting authorized build; see [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md) for acceptance cases. No server, Prism or gameplay test performed.
+
+
 > **Current build handoff (2026-11-17):** use [run 44108614695 checklist](UNSTABLE-QA-2026-11-17.md) and [per-build results](UNSTABLE-QA-RESULTS-2026-11-17.md), frozen SHA `322cf3f9`. The older rows below are retained as historical, not current results.
 
 **Created:** 2026-11-16 (America/Phoenix)  
