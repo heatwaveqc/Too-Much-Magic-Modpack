@@ -50,9 +50,9 @@ class EmcSnapshotTests(unittest.TestCase):
     def test_reports_missing_and_zero_separately_and_respects_approved_exceptions(self):
         report = validate(self.folder, SHA)
         self.assertEqual(["modx:missing", "modx:zero"], report["missing_ids"])
-        self.assertEqual(["modx:missing", "minecraft:glass_pane", "bountiful:bounty"],
+        self.assertEqual(["bountiful:bounty", "minecraft:glass_pane", "modx:missing"],
                          sorted(set(self.registry) - set(self.mapped)))
-        self.assertEqual(1, report["unmapped_count"] - 2)  # two approved exceptions are unmapped
+        self.assertEqual(3, report["unmapped_count"])  # includes two approved exceptions\n        self.assertEqual(2, report["missing_count"])
         self.assertEqual(1, report["mapped_zero_count"])
         self.assertEqual(report["approved_exceptions_in_registry"], 2)
         self.assertFalse(report["complete"])
