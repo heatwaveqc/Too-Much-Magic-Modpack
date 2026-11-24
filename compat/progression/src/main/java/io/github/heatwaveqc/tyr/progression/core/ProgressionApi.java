@@ -191,12 +191,17 @@ public final class ProgressionApi {
      * quarry maximum-health XP and potion potency. Never expose over a client packet.
      */
     public static boolean awardServerXp(ServerPlayer player, String pathId, long xp) {
-        if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
+        if (!eligibleEarner(player) || xp <= 0 || xp > 1_000_000L) return false;
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId) || !PathRegistry.economyEligible(player,channel.id()) || NewbieMode.isNewbie(player)) return false;
+        if (path == null || channel==null || !PathRegistry.eligible(player,pathId)
+                || !PathRegistry.economyEligible(player,channel.id())) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if(!ledger.get(pathId).joined())return false;
+        if(channel.magic())
+            return awardExplicitConfiguredXp(player,channel.id(),"tyr_progression:admin_grant",
+                    "admin:"+UUID.randomUUID(),null,BigDecimal.valueOf(xp),false);
+        if(!channel.earnsFrom(pathId))return false;
         player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,channel.id(),xp),0));
         return true;
     }
@@ -254,6 +259,11 @@ public final class ProgressionApi {
         MilestoneFeedback.Notice progressNotice = null;
         for(var system:PathRegistry.economies().values()){
             if(system.magic()||!PathRegistry.economyEligible(player,system.id()))continue;
+            if(!PathRegistry.config().usesNative(system.id(),id->{
+                var bound=PathRegistry.get(id);
+                return bound!=null&&ledger.get(id).joined()&&PathRegistry.eligible(player,id)
+                        &&eligiblePath.test(bound);
+            }))continue;
             String required=system.earningPath();
             if(!required.isEmpty()){
                 var gate=PathRegistry.get(required);
@@ -362,7 +372,7 @@ public final class ProgressionApi {
      * This deliberately does NOT mint Tyz SP or global MXP.
      */
     public static boolean awardMonkTyzPointOnce(ServerPlayer player, String marker) {
-        if (marker == null || !marker.matches("tyr_progression:tyz_focused_advancement_[1-5]"))
+        if (!eligibleEarner(player) || marker == null || !marker.matches("tyr_progression:tyz_focused_advancement_[1-5]"))
             return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         var path=PathRegistry.get("tyr_progression:monk");
@@ -493,8 +503,9 @@ public final class ProgressionApi {
         if(PathRegistry.economyCatalog().systems().containsKey(id))
             return awardConfiguredXp(player,id,sourceCategory,transaction,null,
                     BigDecimal.valueOf(xp),false);
+        if(system.magic()||!PathRegistry.config().usesNative(id,path->
+                prior.get(path).joined()&&PathRegistry.eligible(player,path)))return false;
         long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
-        if(system.magic())return false; // No unconfigured money printer.
         player.setData(ProgressionAttachments.LEDGER.get(),
                 ChannelEngine.grant(prior,system,nominal,0));
         return true;
