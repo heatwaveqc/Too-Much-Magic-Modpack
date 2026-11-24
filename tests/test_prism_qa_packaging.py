@@ -23,7 +23,7 @@ def main() -> None:
     sys.path.insert(0, str(ROOT / 'scripts'))
     from first_party_runtime import selected, verify_packaging_inputs, verify_trader_irons_pin, validate_jar_license, expected_license, caliberarms_asset_paths, MINIGUN_AUDIO_BLOBS
     def add_donor_fixture(z, directory, case="valid"):
-        if directory.name != "traders-vengence":
+        if directory.name != "traders-vengeance":
             return
         for path in [*caliberarms_asset_paths(directory), *MINIGUN_AUDIO_BLOBS]:
             if case == "missing_donor_license" and path.endswith("/caliberarms/LICENSE.txt"):
@@ -65,7 +65,7 @@ def main() -> None:
         for directory, mod, expected_path in selected():
             j = folder / ("license-test-" + expected_path.name)
             cases = ("valid", "wrong_license", "missing_license", "wrong_notice")
-            if directory.name == "traders-vengence":
+            if directory.name == "traders-vengeance":
                 cases += ("missing_donor_license", "wrong_donor_audio", "missing_minigun_audio",
                           "wrong_minigun_audio", "missing_spinup_audio", "uncleared_hud_audio")
             for case in cases:

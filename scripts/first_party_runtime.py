@@ -46,7 +46,7 @@ def validate_jar(jar, mod):
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
 def expected_license(directory):
-    return "GPL-3.0-only" if directory.name == "traders-vengence" else "MIT"
+    return "GPL-3.0-only" if directory.name == "traders-vengeance" else "MIT"
 
 CALIBERARMS_MANIFEST = "META-INF/traders_vengeance/caliberarms/provenance.json"
 CALIBERARMS_JAR_SHA256 = "88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90"
@@ -133,7 +133,7 @@ def validate_jar_license(directory, jar):
         for required in markers:
             if required not in license_text:
                 raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
-        if directory.name == "traders-vengence":
+        if directory.name == "traders-vengeance":
             validate_caliberarms_assets(directory, z)
             validate_minigun_audio(directory, z)
 
