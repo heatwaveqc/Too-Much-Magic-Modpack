@@ -52,23 +52,23 @@ public final class DragonDietHook {
             if (entity instanceof ServerPlayer player) {
                 String profile = dragonProfile(player);
                 if (profile != null) {
-                    if (FoodPolicyRegistry.universallyPermitted(stack)) {
-                        // Permission only; no fabricated baseline or extra
-                        // effects/debits. The original item keeps its semantics.
-                        return original;
-                    }
-                    var policy = FoodPolicyRegistry.evaluateSource(profile, stack);
-                    if (policy.isPresent()) {
-                        // A verified owner diet intentionally supersedes native
-                        // Dragon Survival food denial. In particular the old
-                        // Cave/Forest/Sea lists may return null for newly
-                        // permitted ordinary foods. Never change the global
-                        // food component or allow unknown/unverified items.
-                        var nourishment = policy.orElseThrow();
-                        return new FoodProperties(
-                            nourishment.hunger(), nourishment.saturationModifier(),
-                            original.canAlwaysEat(), original.eatSeconds(),
-                            original.usingConvertsTo(), original.effects());
+                    // The shared decision layer distinguishes strict vetoes,
+                    // magical permissions, nutrition and native fallback.
+                    // Additional Path/JAWR/Gilded profiles are supplied by
+                    // the planned native adapters, not guessed from tags.
+                    var decision = FoodPolicyRegistry.decide(
+                        java.util.Set.of(profile), stack);
+                    switch (decision.outcome()) {
+                        case DENY -> { return null; }
+                        case PERMIT_NATIVE -> { return original; }
+                        case NUTRITION -> {
+                            var nourishment = decision.nutrition();
+                            return new FoodProperties(
+                                nourishment.hunger(), nourishment.saturationModifier(),
+                                original.canAlwaysEat(), original.eatSeconds(),
+                                original.usingConvertsTo(), original.effects());
+                        }
+                        case NATIVE -> { } // Preserve native provider result.
                     }
                 }
                 // Existing permitted-drink bridge remains independent of
@@ -78,7 +78,7 @@ public final class DragonDietHook {
             }
             if (entity.level().isClientSide) {
                 var preview = io.github.heatwaveqc.tyr.progression.client.ClientDiet.preview(entity, stack);
-                if (preview != null) return preview; // server-evaluated nutrition/permission
+                if (preview.present()) return preview.food(); // includes explicit DENY=null
                 if (io.github.heatwaveqc.tyr.progression.client.ClientDiet.allows(entity, stack))
                     return original; // independent short-lived beverage permission
             }

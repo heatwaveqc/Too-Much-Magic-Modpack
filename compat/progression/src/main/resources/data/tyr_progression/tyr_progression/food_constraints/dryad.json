@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "profile": "dryad",
+  "type": "strict",
+  "default": "deny",
+  "allow_any": [
+    "#tmm:foods/drinks",
+    "#c:food/recreational"
+  ],
+  "deny_any": []
+}
