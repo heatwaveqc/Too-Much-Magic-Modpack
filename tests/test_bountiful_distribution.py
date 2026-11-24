@@ -7,7 +7,7 @@ class TestBountifulDistribution(unittest.TestCase):
         self.assertEqual(lock["count"],14)
         self.assertEqual(len(lock["files"]),14)
         self.assertEqual(lock["source_pr"],366)
-        for name,digest in lock["files"].items():
+        for name,digest in lock.get("active_files", lock["files"]).items():
             self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest,name)
         cfg=json.loads((ROOT/"config/bountiful/bountiful.json").read_text())
         self.assertEqual(cfg["board"]["villageGenFrequency"],0)

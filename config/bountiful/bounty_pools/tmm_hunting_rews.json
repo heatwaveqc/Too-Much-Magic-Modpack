@@ -1,26 +1,15 @@
 {
   "content": {
-    "item_minecraft_arrow": {
+    "item_tmm_coin": {
       "amount": {
-        "max": 16,
-        "min": 8
+        "max": 6,
+        "min": 6
       },
-      "content": "minecraft:arrow",
+      "content": "tmm:coin",
       "rarity": "COMMON",
       "repRequired": -30,
       "type": "item",
-      "unitWorth": 0.875
-    },
-    "item_minecraft_leather": {
-      "amount": {
-        "max": 2,
-        "min": 2
-      },
-      "content": "minecraft:leather",
-      "rarity": "UNCOMMON",
-      "repRequired": 0,
-      "type": "item",
-      "unitWorth": 8
+      "unitWorth": 4
     }
   },
   "replace": true

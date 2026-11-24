@@ -5,10 +5,10 @@
   "status": "DRAFT_CANDIDATES_NOT_RUNTIME",
   "policy": {
     "default_data": "exclude every bundled pool/decree; fail closed on stale local config",
-    "currency": "Thematic consumable/material payouts primary; optional currency when appropriate; no independent exchange rate and no command rewards until safe shared-account semantics verified",
+    "currency": "Ordinary hunting pays coins only. Other livelihoods mix coins and thematic items; specialist/magic primarily thematic items, rare coin payouts. Native physical tmm:coin has 64 EMC and exchanges at wallet parity.",
     "transformation": "Gate creation/acquisition of the specialized decree; normal Bountiful acceptance and redemption thereafter. Disable random spawn/reveal/wander buy; recipe with form-exclusive crafting access or minimal authoritative-state check if needed; public board and transferable document are not claim-time restrictions.",
     "kills": "Native Bountiful entity objective attribution only; eligible exact entity IDs, reviewed counts/pay per kill, no Hunter coupling",
-    "prices": "final effective runtime EMC evidence required; no vanilla defaults or independently invented conversion",
+    "prices": "Effective runtime EMC is the production input. Pure material delivery target reward about 150% of consumed EMC; profitable contracts and monetary transmutation are intended. Historical reviewed values are provisional.",
     "objectives": "Native exact-item deliveries, entity kill objectives, and allowlisted criteria for completed finite Gateways; no custom magic-event predicates required"
   },
   "general": [
@@ -40,22 +40,10 @@
       ],
       "balance_reward_draft": [
         {
-          "item": "minecraft:emerald",
-          "min": 1,
-          "max": 2,
+          "item": "tmm:coin",
+          "min": 6,
+          "max": 6,
           "rarity": "COMMON"
-        },
-        {
-          "item": "minecraft:arrow",
-          "min": 16,
-          "max": 32,
-          "rarity": "COMMON"
-        },
-        {
-          "item": "minecraft:leather",
-          "min": 4,
-          "max": 8,
-          "rarity": "UNCOMMON"
         }
       ],
       "balance_objective_draft": [
@@ -5306,6 +5294,216 @@
     }
   ],
   "balance_draft": {
+    "status": "OWNER_APPROVED_DELIVERY_TARGET_PROVISIONAL_REVIEW_VALUES",
+    "profile": "native_v2",
+    "unit_scale": 16,
+    "filler_difficulty_percent": 75,
+    "normal_board_reputation_min": -30,
+    "normal_board_reputation_max": 30,
+    "tiers": {
+      "COMMON": {
+        "floor_emc": 64,
+        "rep": -30
+      },
+      "UNCOMMON": {
+        "floor_emc": 256,
+        "rep": 0
+      },
+      "RARE": {
+        "floor_emc": 1024,
+        "rep": 5
+      },
+      "EPIC": {
+        "floor_emc": 4096,
+        "rep": 15
+      },
+      "LEGENDARY": {
+        "floor_emc": 8192,
+        "rep": 25
+      }
+    },
+    "objective_caps": {
+      "delivery": 256,
+      "kill": 96
+    },
+    "kill_budget_emc_proposal": {
+      "minecraft:zombie": 32,
+      "minecraft:skeleton": 32,
+      "minecraft:spider": 32,
+      "minecraft:creeper": 64,
+      "minecraft:witch": 128,
+      "minecraft:blaze": 128,
+      "minecraft:wither_skeleton": 128,
+      "minecraft:enderman": 96,
+      "minecraft:phantom": 96,
+      "minecraft:drowned": 48,
+      "minecraft:slime": 32,
+      "minecraft:stray": 64,
+      "minecraft:husk": 64,
+      "minecraft:cave_spider": 64,
+      "ars_nouveau:wilden_hunter": 128,
+      "ars_nouveau:wilden_stalker": 128,
+      "ars_nouveau:wilden_guardian": 192,
+      "ars_elemental:air_mage": 128,
+      "ars_elemental:earth_mage": 128,
+      "ars_elemental:fire_mage": 128,
+      "ars_elemental:water_mage": 128,
+      "botania:manaseal_creeper": 128,
+      "eidolon_repraised:giant_skeleton": 192,
+      "eidolon_repraised:wraith": 128,
+      "eidolon_repraised:zombie_brute": 128,
+      "embers:ancient_golem": 128,
+      "evilcraft:netherfish": 128,
+      "evilcraft:poisonous_libelle": 128,
+      "goety:cryologer": 128,
+      "goety:storm_caster": 128,
+      "goety:warlock": 192,
+      "goety:heretic": 128,
+      "goety:bone_spider": 128,
+      "irons_spellbooks:apothecarist": 128,
+      "irons_spellbooks:archevoker": 192,
+      "irons_spellbooks:catacombs_zombie": 128,
+      "irons_spellbooks:cryomancer": 192,
+      "irons_spellbooks:cultist": 128,
+      "irons_spellbooks:cursed_armor_stand": 128,
+      "irons_spellbooks:ice_spider": 128,
+      "irons_spellbooks:magehunter_vindicator": 192,
+      "irons_spellbooks:necromancer": 192,
+      "irons_spellbooks:pyromancer": 192,
+      "neovitae:daemonium_corrodis": 192,
+      "neovitae:daemonium_doloris": 192,
+      "neovitae:daemonium_ignis": 192,
+      "neovitae:slime_vitae": 128,
+      "occultism:wild_husk": 128,
+      "occultism:wild_spider": 128,
+      "occultism:wild_skeleton": 128,
+      "occultism:wild_zombie": 128,
+      "occultism:wild_slime": 128,
+      "occultism:wild_horde_creeper": 128,
+      "occultism:wild_hunt_wither_skeleton": 128,
+      "rootsclassic:phantom_skeleton": 128,
+      "witchery:banshee": 128,
+      "witchery:poltergeist": 128,
+      "witchery:nightmare": 128,
+      "witchery:demon": 128,
+      "minecraft:pillager": 64,
+      "minecraft:vindicator": 64,
+      "minecraft:evoker": 64,
+      "minecraft:hoglin": 64,
+      "minecraft:magma_cube": 64,
+      "minecraft:guardian": 192,
+      "minecraft:piglin_brute": 64,
+      "minecraft:ghast": 64
+    },
+    "notes": "Native reward-first pools; actual reward EMC, item objective worth multiplied by 1.5 times the global filler factor so neutral reputation targets payout/input ≈1.5. Reputation, rarity, rounding and objective min/max affect realized contracts. Tier floors only retained in immutable historical_balance_v1; combat and Gateway effort budgets unchanged.",
+    "gateway_budget_emc_proposal": {
+      "tmm:mob_ars_wilden_hunter": 1024,
+      "tmm:mob_irons_cultist": 1024,
+      "tmm:mob_irons_pyromancer": 2048,
+      "tmm:mob_ars_wilden_stalker": 1024,
+      "tmm:mob_ars_wilden_guardian": 1024,
+      "tmm:mob_irons_necromancer": 2048,
+      "tmm:mob_irons_cryomancer": 2048,
+      "tmm:mob_irons_archevoker": 2048,
+      "tmm:mob_irons_magehunter_vindicator": 2048,
+      "tmm:mob_irons_apothecarist": 1024,
+      "tmm:mob_irons_cursed_armor_stand": 1024,
+      "tmm:mob_irons_ice_spider": 1024,
+      "tmm:mob_irons_catacombs_zombie": 1024
+    },
+    "delivery_reward_ratio": 1.5
+  },
+  "board_distribution": {
+    "status": "owner_approved_distribution_pending_runtime",
+    "village_gen_frequency": 0,
+    "crafting": {
+      "retain_native": true,
+      "item": "bountiful:bountyboard"
+    },
+    "inn": {
+      "structure": "Adventurer's Inn",
+      "count": 1,
+      "starting_decree": "tmm_hunting",
+      "starting_decree_name": "Hunter's Decree",
+      "note": "Treat as general hunting decree available to all, not class-locked Hunter. Exact board block entity initialization and component serialization need live validation; coordinate housing owner."
+    },
+    "quest_shop": {
+      "item": "bountiful:bountyboard",
+      "count": 1,
+      "proposed_coins": 5,
+      "status": "proposed_price_pending_shop_owner_review"
+    }
+  },
+  "gateway_objective_policy": {
+    "status": "source_supported_configuration_pilot_pending_exact_binary_and_gameplay",
+    "trigger": "gateways:finish_gateway",
+    "required_amount": 1,
+    "credit": "native nearby players at success; carried matching bounty slips only; no open/wave/failure credit",
+    "excluded": [
+      "tmm:caerbannog",
+      "tmm:chaos_bunny",
+      "tmm:mob_ars_starbuncle",
+      "tmm:mob_ars_whirlisprig",
+      "tmm:mob_ars_drygmy",
+      "tmm:mob_irons_citadel_keeper"
+    ],
+    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
+    "source_revision": "9f36319a0b8d003e4b9a14c8c2e971ac8f863a2f"
+  },
+  "registry_reconciliation": {
+    "status": "all_school_reward_ids_drafted_historical_audit_pending_updated_set",
+    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
+    "entity_census": "docs/hunter/runtime-entity-census.csv",
+    "item_census": "docs/qa/surveys-2026-11-18/items.csv",
+    "entity_category_note": "Registration and MONSTER category only; explicit nonboss nonservant candidate screening, current shared mob registry and gameplay spawn/participation checks remain. No automatic boss or owned summon selection.",
+    "deferred_item_groups": [
+      "Goety charged soul storage component schema and Arca transfer behavior",
+      "Dracolich actual provider/species reward inheritance",
+      "Archlich/Abomination Goety recharge",
+      "Eternal Beef ingredients",
+      "Forest preserves and enchanted plant foods whitelist",
+      "Malum ordinary spirit gate review",
+      "Gilded/Monk/Hunter reward design and final quantities",
+      "All positive effective EMC and component-aware priced reward review"
+    ],
+    "candidate_ids_absent_from_historical_entity_census": [],
+    "first_historical_audit": {
+      "run_id": 44629716563,
+      "distinct_ids_checked": 198,
+      "historically_registered": 198,
+      "missing": 0,
+      "meaning": "Historical default-stack registration only; not final effective next-build EMC."
+    }
+  },
+  "decree_recipe_policy": {
+    "status": "owner_approved_easy_test_recipe_pattern_pending_exact_codec_and_runtime",
+    "profile": "test_paper_reagent_v1",
+    "paper_count": 1,
+    "reagent_count": 1,
+    "output_item": "bountiful:decree",
+    "output_count": 1,
+    "rank": 1,
+    "notes": "Ordinary general and school decrees only. Shapeless one paper + one iconic reagent. No quest advancement, finished book, rare boss token or gating ingredient required. Scriptor uses ordinary ink as thematic cheap exception. Only emit recipe when matching reviewed decree/pools are compiled. Native blank/general acquisition unchanged; transformation/class acquisition remains held for authoritative player state, not item-only recipes. Replace temporary recipe pattern later.",
+    "specialist": {
+      "status": "development_hook_pr_382_pending_review_and_live_validation",
+      "supported_ids": [
+        "vampire",
+        "werewolf",
+        "lich_goety",
+        "lich_jawr",
+        "archlich",
+        "abomination",
+        "hunter",
+        "monk"
+      ],
+      "engine": "tmm_progression:signed_form_decree_v1",
+      "application_marker": "tmm_bountiful_decree_application",
+      "unsigned_output": "bountiful:decree",
+      "no_emc_required": true,
+      "notes": "Craft a component-marked unsigned Bountiful decree with paper and one iconic reagent. Server-side tmm_progression checks actual native form or joined class on right click and signs. No direct signed recipe or universal playerless crafting. Dragon species, Dracolich and Gilded held."
+    }
+  },
+  "historical_balance_v1": {
     "status": "PROPOSED_FIRST_PASS_NOT_RUNTIME",
     "profile": "native_v1",
     "unit_scale": 16,
@@ -5422,96 +5620,6 @@
       "tmm:mob_irons_cursed_armor_stand": 1024,
       "tmm:mob_irons_ice_spider": 1024,
       "tmm:mob_irons_catacombs_zombie": 1024
-    }
-  },
-  "board_distribution": {
-    "status": "owner_approved_distribution_pending_runtime",
-    "village_gen_frequency": 0,
-    "crafting": {
-      "retain_native": true,
-      "item": "bountiful:bountyboard"
-    },
-    "inn": {
-      "structure": "Adventurer's Inn",
-      "count": 1,
-      "starting_decree": "tmm_hunting",
-      "starting_decree_name": "Hunter's Decree",
-      "note": "Treat as general hunting decree available to all, not class-locked Hunter. Exact board block entity initialization and component serialization need live validation; coordinate housing owner."
-    },
-    "quest_shop": {
-      "item": "bountiful:bountyboard",
-      "count": 1,
-      "proposed_coins": 5,
-      "status": "proposed_price_pending_shop_owner_review"
-    }
-  },
-  "gateway_objective_policy": {
-    "status": "source_supported_configuration_pilot_pending_exact_binary_and_gameplay",
-    "trigger": "gateways:finish_gateway",
-    "required_amount": 1,
-    "credit": "native nearby players at success; carried matching bounty slips only; no open/wave/failure credit",
-    "excluded": [
-      "tmm:caerbannog",
-      "tmm:chaos_bunny",
-      "tmm:mob_ars_starbuncle",
-      "tmm:mob_ars_whirlisprig",
-      "tmm:mob_ars_drygmy",
-      "tmm:mob_irons_citadel_keeper"
-    ],
-    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
-    "source_revision": "9f36319a0b8d003e4b9a14c8c2e971ac8f863a2f"
-  },
-  "registry_reconciliation": {
-    "status": "all_school_reward_ids_drafted_historical_audit_pending_updated_set",
-    "source_baseline": "ce771cae0dc9853076bd468677267f7f88c58ae4",
-    "entity_census": "docs/hunter/runtime-entity-census.csv",
-    "item_census": "docs/qa/surveys-2026-11-18/items.csv",
-    "entity_category_note": "Registration and MONSTER category only; explicit nonboss nonservant candidate screening, current shared mob registry and gameplay spawn/participation checks remain. No automatic boss or owned summon selection.",
-    "deferred_item_groups": [
-      "Goety charged soul storage component schema and Arca transfer behavior",
-      "Dracolich actual provider/species reward inheritance",
-      "Archlich/Abomination Goety recharge",
-      "Eternal Beef ingredients",
-      "Forest preserves and enchanted plant foods whitelist",
-      "Malum ordinary spirit gate review",
-      "Gilded/Monk/Hunter reward design and final quantities",
-      "All positive effective EMC and component-aware priced reward review"
-    ],
-    "candidate_ids_absent_from_historical_entity_census": [],
-    "first_historical_audit": {
-      "run_id": 44629716563,
-      "distinct_ids_checked": 198,
-      "historically_registered": 198,
-      "missing": 0,
-      "meaning": "Historical default-stack registration only; not final effective next-build EMC."
-    }
-  },
-  "decree_recipe_policy": {
-    "status": "owner_approved_easy_test_recipe_pattern_pending_exact_codec_and_runtime",
-    "profile": "test_paper_reagent_v1",
-    "paper_count": 1,
-    "reagent_count": 1,
-    "output_item": "bountiful:decree",
-    "output_count": 1,
-    "rank": 1,
-    "notes": "Ordinary general and school decrees only. Shapeless one paper + one iconic reagent. No quest advancement, finished book, rare boss token or gating ingredient required. Scriptor uses ordinary ink as thematic cheap exception. Only emit recipe when matching reviewed decree/pools are compiled. Native blank/general acquisition unchanged; transformation/class acquisition remains held for authoritative player state, not item-only recipes. Replace temporary recipe pattern later.",
-    "specialist": {
-      "status": "development_hook_pr_382_pending_review_and_live_validation",
-      "supported_ids": [
-        "vampire",
-        "werewolf",
-        "lich_goety",
-        "lich_jawr",
-        "archlich",
-        "abomination",
-        "hunter",
-        "monk"
-      ],
-      "engine": "tmm_progression:signed_form_decree_v1",
-      "application_marker": "tmm_bountiful_decree_application",
-      "unsigned_output": "bountiful:decree",
-      "no_emc_required": true,
-      "notes": "Craft a component-marked unsigned Bountiful decree with paper and one iconic reagent. Server-side tmm_progression checks actual native form or joined class on right click and signs. No direct signed recipe or universal playerless crafting. Dragon species, Dracolich and Gilded held."
     }
   }
 }
