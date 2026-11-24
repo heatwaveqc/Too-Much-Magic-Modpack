@@ -14,17 +14,28 @@ import java.util.Set;
  * strict profiles; this policy does not reclassify foods as magical.
  */
 public record StrictDietPolicy(String profile, DefaultDecision fallback,
-                               Set<String> allowAny, Set<String> denyAny) {
+                               Set<String> allowAny, Set<String> denyAny, JsonObject when) {
     public enum DefaultDecision { ALLOW, DENY }
 
     public StrictDietPolicy {
         allowAny = Set.copyOf(allowAny);
         denyAny = Set.copyOf(denyAny);
+        when = when == null ? null : when.deepCopy();
+    }
+
+    /** Existing source tests and manually activated policies remain valid. */
+    public StrictDietPolicy(String profile, DefaultDecision fallback,
+            Set<String> allowAny, Set<String> denyAny) {
+        this(profile, fallback, allowAny, denyAny, null);
     }
 
     public static StrictDietPolicy parse(JsonObject obj) {
-        if (obj == null || !obj.keySet().equals(Set.of(
-                "schema", "profile", "type", "default", "allow_any", "deny_any")))
+        if (obj == null || !Set.of(
+                "schema", "profile", "type", "default", "allow_any", "deny_any")
+                .stream().allMatch(obj::has)
+                || obj.keySet().stream().anyMatch(k -> !Set.of(
+                    "schema", "profile", "type", "default", "allow_any", "deny_any", "when")
+                    .contains(k)))
             throw new IllegalArgumentException("Invalid strict food policy fields");
         if (obj.get("schema").getAsInt() != 1
                 || !obj.get("type").getAsString().equals("strict"))
@@ -43,7 +54,11 @@ public record StrictDietPolicy(String profile, DefaultDecision fallback,
         Set<String> deny = tags(obj.getAsJsonArray("deny_any"));
         for (String tag : allow) if (deny.contains(tag))
             throw new IllegalArgumentException("Conflicting food allow/deny tag " + tag);
-        return new StrictDietPolicy(profile, fallback, allow, deny);
+        // No 'when' means dormant: registering a diet never enrolls everyone.
+        JsonObject when = obj.has("when") ? obj.getAsJsonObject("when") : null;
+        if (when != null && !when.has("type"))
+            throw new IllegalArgumentException("Strict food policy needs typed activation");
+        return new StrictDietPolicy(profile, fallback, allow, deny, when);
     }
 
     private static Set<String> tags(JsonArray array) {

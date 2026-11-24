@@ -30,6 +30,7 @@ public final class ProgressionEvents {
     public static void register() {
         TreeChopXpBridge.register();
         GildedMechanics.register();
+        io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);

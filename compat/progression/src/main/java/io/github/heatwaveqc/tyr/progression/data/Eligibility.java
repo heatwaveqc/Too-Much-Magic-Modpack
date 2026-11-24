@@ -45,6 +45,16 @@ public final class Eligibility {
                     catch(RuntimeException | LinkageError e) { return Condition.Result.UNAVAILABLE; }
                 };
             }
+            // A diet binding is active only when a real, currently eligible
+            // joined Path owns it. Unlike path_joined, this follows live
+            // species / hybrid compatibility as well as membership.
+            case "path_active" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                yield player -> PathRegistry.get(id)==null ? Condition.Result.UNAVAILABLE :
+                    (io.github.heatwaveqc.tyr.progression.core.ProgressionApi.track(player,id).joined()
+                        && PathRegistry.eligible(player,id)
+                        ? Condition.Result.PASS:Condition.Result.FAIL);
+            }
             case "path_joined" -> {
                 String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
                 yield player -> PathRegistry.get(id)==null ? Condition.Result.UNAVAILABLE :

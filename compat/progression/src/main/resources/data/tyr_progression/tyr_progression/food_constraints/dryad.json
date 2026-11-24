@@ -7,5 +7,9 @@
     "#tmm:foods/drinks",
     "#c:food/recreational"
   ],
-  "deny_any": []
+  "deny_any": [],
+  "when": {
+    "type": "path_active",
+    "id": "tyr_progression:dryad"
+  }
 }

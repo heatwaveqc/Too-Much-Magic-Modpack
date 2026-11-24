@@ -12,7 +12,8 @@
     "NewbieVampireAcquisitionMixin",
     "NewbieWerewolfAcquisitionMixin",
     "NewbieDragonAcquisitionMixin",
-    "MahouCatalystExchangeMixin"
+    "MahouCatalystExchangeMixin",
+    "JawrVampireFoodPenaltyMixin"
   ],
   "injectors": {
     "defaultRequire": 1
