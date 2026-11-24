@@ -13,7 +13,7 @@ import java.util.Set;
 public record TrainingXpSpec(String system,BigDecimal hardness,BigDecimal sprint,
                              BigDecimal ordinaryKill,BigDecimal strictKill,int strictWindow,
                              BigDecimal discovery,BigDecimal meditativeFood,
-                             BigDecimal meditativeDrink,String meditativeTag,String drinkTag) {
+                             BigDecimal meditativeDrink,String meditativeTag,String drinkTag,boolean discoveryReplay) {
     private static BigDecimal rate(JsonObject j,String key) {
         BigDecimal n=j.has(key)?j.get(key).getAsBigDecimal():BigDecimal.ZERO;
         if(n.signum()<0 || n.compareTo(new BigDecimal("1000000"))>0)
@@ -31,7 +31,7 @@ public record TrainingXpSpec(String system,BigDecimal hardness,BigDecimal sprint
         JsonObject j=root.getAsJsonObject("training_mxp");
         Set<String> fields=Set.of("system","hardness","sprint","ordinary_kill_per_hp",
             "strict_fist_kill_per_hp","strict_window_ticks","first_consumable",
-            "meditative_food_fixed","meditative_drink_fixed","meditative_tag","drink_tag");
+            "meditative_food_fixed","meditative_drink_fixed","meditative_tag","drink_tag","discovery_replay");
         if(!fields.containsAll(j.keySet()))throw new IllegalArgumentException("Unknown training_mxp field");
         String id=j.get("system").getAsString();
         if(!systems.containsKey(id)||!systems.get(id).magic())
@@ -43,7 +43,8 @@ public record TrainingXpSpec(String system,BigDecimal hardness,BigDecimal sprint
             rate(j,"first_consumable"),rate(j,"meditative_food_fixed"),
             rate(j,"meditative_drink_fixed"),
             tag(j,"meditative_tag","tyr_progression:meditative"),
-            tag(j,"drink_tag","tyr_progression:drinks"));
+            tag(j,"drink_tag","tyr_progression:drinks"),
+            j.has("discovery_replay")&&j.get("discovery_replay").getAsBoolean());
     }
     public BigDecimal mining(double originalHardness){
         if(!Double.isFinite(originalHardness)||originalHardness<=0)return BigDecimal.ZERO;
