@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "issue": 330,
+  "baseline_commit": "74b22da0f1e9c598a0a54a4ce49038b1ef336ea1",
+  "evidence_boundary": "Static source and frozen installed-artifact evidence only; no Minecraft runtime was started and exact Feywild JAR bytecode parity remains unverified.",
+  "providers": [
+    {
+      "id": "feywild",
+      "version": "1.21.1-5.6.4",
+      "file": "feywild-1.21.1-5.6.4.jar",
+      "packwiz_sha1": "e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0",
+      "observed_sha256": "6e115fe731ecfd18bd6d676e052998d3a6c2e12e5c31cf101b4c77b93359c7b8",
+      "source_repository": "https://github.com/SaphieNyako/Feywild",
+      "source_commit": "2a339f98a5a2ea0d5620801538095a7b013b6de2",
+      "source_version_matches": true,
+      "exact_jar_source_parity": "unverified",
+      "grant": "Pixie Wing Tiara refreshes fey_flying; the effect sets mayfly and flying when mayfly was false and records a persistent-data ownership flag.",
+      "revoke": "When fey_flying is absent and the ownership flag is set, the player tick handler clears mayfly and flying unconditionally.",
+      "coexistence_result": "order_dependent_clobber_risk"
+    },
+    {
+      "id": "extra-botany-revived",
+      "version": "1.0.4",
+      "file": "ExtraBotany-1.21.1-1.0.4-NeoForge.jar",
+      "packwiz_sha1": "246e372964413d09c5f2fa0c93b95a4c224d1949",
+      "observed_sha256": "d0554b57149b46beaefe38f11d20ded9b93dbbc954d4deb2939fd2f58cb19dad",
+      "source_repository": "https://github.com/Velron-Devs/Extra-Botany-Revived",
+      "source_commit": "b58857d3658479f6e8684d3b45f6d3138a294548",
+      "source_tag": "curseforge-neoforge-1.21.1-1.0.4",
+      "source_version_matches": true,
+      "exact_jar_source_parity": "release_tag_and_filename_match; binary class comparison not run",
+      "grant": "Core of the Void player-tick logic tracks username+logical-side in a process-local list and sets mayfly while the bound Curio has at least 100 mana available.",
+      "revoke": "When the tracked Core becomes invalid, unbound, removed, or lacks 100 mana, it clears mayfly, flying, and invulnerable for non-creative/non-spectator players without consulting other providers.",
+      "coexistence_result": "unconditional_revoke_clobber_risk",
+      "intentional_restriction": "The Extra Botany Gaia arena separately forces flying=false for participating non-creative players on client and server while the fight is active. It leaves mayfly intact and is documented upstream as an arena rule."
+    }
+  ]
+}

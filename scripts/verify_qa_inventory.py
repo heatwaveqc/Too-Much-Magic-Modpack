@@ -37,6 +37,12 @@ def inventory(root=ROOT):
     seen, names, result = set(), set(), []
     for item in index["files"]:
         path = item["file"]
+        if path.startswith("resourcepacks/"):
+            # Client-only ZIP metafiles are downloaded by Packwiz but are not
+            # NeoForge JARs or members of the manifest/mods.json roster.
+            if not item.get("metafile") or not path.endswith(".pw.toml"):
+                raise ValueError("Unexpected resource pack metadata: " + path)
+            continue
         if not path.startswith("mods/") and not item.get("metafile"):
             continue
         match = re.fullmatch(r"mods/([a-zA-Z0-9_.-]+)\.pw\.toml", path)

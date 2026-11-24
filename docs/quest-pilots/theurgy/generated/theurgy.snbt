@@ -8,16 +8,16 @@
 	images: [
 		{
 			image: "tmm:textures/questpics/theurgy/title.png"
-			x: 0.0d
-			y: -15.0d
+			x: 6.0d
+			y: -12.5d
 			width: 13.5d
 			height: 3.3d
 			rotation: 0.0d
 		},
 		{
 			image: "tmm:textures/questpics/theurgy/vessels.png"
-			x: 13.0d
-			y: -8.5d
+			x: 14.0d
+			y: -6.8d
 			width: 8.0d
 			height: 2.4d
 			rotation: 0.0d
@@ -25,7 +25,7 @@
 		{
 			image: "tmm:textures/questpics/theurgy/niter.png"
 			x: 18.0d
-			y: 11.0d
+			y: 12.0d
 			width: 11.5d
 			height: 2.5d
 			rotation: 0.0d
@@ -33,15 +33,15 @@
 		{
 			image: "tmm:textures/questpics/theurgy/reformation.png"
 			x: 30.0d
-			y: -13.0d
+			y: 12.0d
 			width: 8.0d
 			height: 2.8d
 			rotation: 0.0d
 		},
 		{
 			image: "tmm:textures/questpics/theurgy/wires.png"
-			x: 19.0d
-			y: -16.5d
+			x: 25.0d
+			y: -10.0d
 			width: 11.2d
 			height: 2.4d
 			rotation: 0.0d
@@ -93,7 +93,7 @@
 				{ id: "544D4A1500000002", type: "item", item: { id: "theurgy:distiller", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 8.0d
-			y: -3.0d
+			y: -2.0d
 		},
 		{
 			id: "544D3A1500000003"
@@ -120,8 +120,8 @@
 			tasks: [
 				{ id: "544D4A1500000004", type: "item", item: { id: "theurgy:sal_ammoniac_accumulator", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 8.0d
-			y: 3.0d
+			x: 4.0d
+			y: 4.0d
 		},
 		{
 			id: "544D3A1500000005"
@@ -135,7 +135,7 @@
 				{ id: "544D4A1500000005", type: "item", item: { id: "theurgy:liquefaction_cauldron", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 12.0d
-			y: 3.0d
+			y: 4.0d
 		},
 		{
 			id: "544D3A1500000006"
@@ -186,7 +186,7 @@
 		{
 			id: "544D3A1500000009"
 			icon: { id: "theurgy:fermentation_vat" }
-			dependencies: ["544D3A1500000004", "544D3A1500000005"]
+			dependencies: ["544D3A1500000005"]
 			optional: true
 			shape: "rsquare"
 			rewards: [
@@ -196,8 +196,8 @@
 			tasks: [
 				{ id: "544D4A1500000009", type: "item", item: { id: "theurgy:fermentation_vat", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 14.0d
-			y: 7.0d
+			x: 16.0d
+			y: 8.0d
 		},
 		{
 			id: "544D3A150000000A"
@@ -212,8 +212,8 @@
 			tasks: [
 				{ id: "544D4A150000000A", type: "item", item: { id: "theurgy:digestion_vat", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 18.0d
-			y: 7.0d
+			x: 20.0d
+			y: 8.0d
 		},
 		{
 			id: "544D3A150000000B"
@@ -228,13 +228,13 @@
 			tasks: [
 				{ id: "544D4A150000000B", type: "checkmark" }
 			]
-			x: 22.0d
-			y: 7.0d
+			x: 24.0d
+			y: 8.0d
 		},
 		{
 			id: "544D3A150000000C"
 			icon: { id: "theurgy:mercury_catalyst" }
-			dependencies: ["544D3A1500000002", "544D3A1500000007"]
+			dependencies: ["544D3A1500000007"]
 			optional: true
 			shape: "rsquare"
 			rewards: [
@@ -245,7 +245,7 @@
 				{ id: "544D4A150000000C", type: "item", item: { id: "theurgy:mercury_catalyst", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 24.0d
-			y: -5.0d
+			y: 4.0d
 		},
 		{
 			id: "544D3A150000000D"
@@ -261,7 +261,7 @@
 				{ id: "544D4A150000000D", type: "item", item: { id: "theurgy:reformation_target_pedestal", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 28.0d
-			y: -5.0d
+			y: 6.0d
 		},
 		{
 			id: "544D3A150000000E"
@@ -277,7 +277,7 @@
 				{ id: "544D4A150000000E", type: "item", item: { id: "theurgy:divination_rod_t1", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 4.0d
-			y: -7.0d
+			y: -6.0d
 		},
 		{
 			id: "544D3A150000000F"
@@ -293,12 +293,12 @@
 				{ id: "544D4A150000000F", type: "item", item: { id: "theurgy:divination_rod_t2", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 8.0d
-			y: -7.0d
+			y: -6.0d
 		},
 		{
 			id: "544D3A1500000010"
 			icon: { id: "theurgy:caloric_flux_emitter" }
-			dependencies: ["544D3A1500000001", "544D3A150000000C"]
+			dependencies: ["544D3A150000000C"]
 			optional: true
 			shape: "rsquare"
 			rewards: [
@@ -308,13 +308,13 @@
 			tasks: [
 				{ id: "544D4A1500000010", type: "item", item: { id: "theurgy:caloric_flux_emitter", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 27.0d
-			y: -9.0d
+			x: 28.0d
+			y: 1.0d
 		},
 		{
 			id: "544D3A1500000011"
 			icon: { id: "theurgy:logistics_item_extractor" }
-			dependencies: ["544D3A1500000002", "544D3A1500000007"]
+			dependencies: ["544D3A1500000007"]
 			optional: true
 			shape: "rsquare"
 			rewards: [
@@ -324,13 +324,13 @@
 			tasks: [
 				{ id: "544D4A1500000011", type: "item", item: { id: "theurgy:logistics_item_extractor", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 20.0d
-			y: -11.0d
+			x: 24.0d
+			y: -5.0d
 		},
 		{
 			id: "544D3A1500000012"
 			icon: { id: "theurgy:logistics_fluid_inserter" }
-			dependencies: ["544D3A1500000011", "544D3A1500000004"]
+			dependencies: ["544D3A1500000011"]
 			optional: true
 			shape: "rsquare"
 			rewards: [
@@ -340,13 +340,13 @@
 			tasks: [
 				{ id: "544D4A1500000012", type: "item", item: { id: "theurgy:logistics_fluid_inserter", count: 1 }, count: 1L, consume_items: false }
 			]
-			x: 24.0d
-			y: -11.0d
+			x: 28.0d
+			y: -5.0d
 		},
 		{
 			id: "544D3A1500000013"
 			icon: { id: "minecraft:nether_star" }
-			dependencies: ["544D3A150000000B", "544D3A150000000D"]
+			dependencies: ["544D3A150000000D"]
 			optional: true
 			shape: "octagon"
 			size: 1.7d
@@ -358,7 +358,7 @@
 				{ id: "544D4A1500000013", type: "checkmark" }
 			]
 			x: 32.0d
-			y: -5.0d
+			y: 7.0d
 		}
 	]
 }

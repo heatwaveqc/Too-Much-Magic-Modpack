@@ -10,12 +10,16 @@
       "mod_id": "tmm_transformations"
     },
     {
-      "directory": "compat/traders-vengence",
-      "mod_id": "traders_vengence"
+      "directory": "compat/traders-vengeance",
+      "mod_id": "traders_vengeance"
     },
     {
       "directory": "compat/economy",
       "mod_id": "tmm_economy"
+    },
+    {
+      "directory": "compat/friendship-garden",
+      "mod_id": "tmm_friendship_garden"
     }
   ]
 }

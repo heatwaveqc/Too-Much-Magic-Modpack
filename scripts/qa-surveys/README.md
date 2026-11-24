@@ -1,6 +1,6 @@
 # Optional in-game QA surveys
 
-Source-only preparation, 2026-11-18. **Not installed and not run in Minecraft.** Nothing in this directory is indexed into the pack. The suite is disabled unless its local configuration explicitly enables it. All eleven server commands require an actual player with permission level 2; console and non-operators cannot run them. No enrollment, graduation, grants, kills, teleports, recipes, trades, key assignments or game rules are changed. Local report files are written on request. Native serialization/getter adapters may initialize internal caches; this is not a claim that every upstream getter is side-effect-free.
+Initially prepared 2026-11-18; revised after partial live QA on 2026-11-22. See [actual results and adapter limitations](../../docs/qa/EXPERIMENTAL-2026-11-22-RESULTS/README.md). Nothing in this directory is indexed into the pack. The suite is disabled unless its local configuration explicitly enables it. All eleven server commands require an actual player with permission level 2; console and non-operators cannot run them. No enrollment, graduation, grants, kills, teleports, recipes, trades, key assignments or game rules are changed. Local report files are written on request. Native serialization/getter adapters may initialize internal caches; this is not a claim that every upstream getter is side-effect-free.
 
 ## Install later, before the next test client launch
 
@@ -12,9 +12,11 @@ Use a disposable test instance. Copy these files manually; preserve any existing
 | `client_scripts/tmm_survey_client.js` | `kubejs/client_scripts/tmm_survey_client.js` |
 | `tmm-surveys.example.json` | `kubejs/config/tmm-surveys.json` |
 
-Change the **local copy** of `enabled` to `true`. Keep the original packaged `BUILD-MANIFEST.json` one directory above `minecraft`; snapshot comparisons refuse a missing manifest. Start the client/world normally only when ready to test. The client script requires a client restart after installation. Config is read once per script load; switching it off needs a script reload/restart. Remove the two helper scripts and local config when done; generated reports are kept separately. Never include enabled helpers in a release pack.
+Change the **local copy** of `enabled` to `true`. Copy the packaged `BUILD-MANIFEST.json` into `minecraft/kubejs/config/tmm-survey-build.json` before snapshot commands. KubeJS forbids reads outside `minecraft`, so helpers must not read `../BUILD-MANIFEST.json` directly. The optional preparer below instead creates a reduced manifest copy with a source-file hash. Snapshot comparisons refuse a missing manifest. Start the client/world normally only when ready to test. The client script requires a client restart after installation. Config is read once per script load; switching it off needs a script reload/restart. Remove the two helper scripts and local config/build copy when done; generated reports are kept separately. Never include enabled helpers in a release pack.
 
-No instance files were copied, no configuration was enabled and no game was launched while preparing this code.
+### Optional one-shot preparation
+
+`python scripts/qa-surveys/prepare_one_shot.py --minecraft <disposable-instance-minecraft>` stages a combined temporary OP-only observer and explicit enable flag for the **next existing-world rejoin**; it never starts a client or world. It gathers command/recipe census and attempts baseline/match/player captures via the QA API (not the command parser). Inspect `tmm-one-shot-status.json` per-capture statuses; a final log marker never means all captures passed. Remove `zz_tmm_world_observe.js`, `tmm-observe-once.json` and `tmm-survey-build.json` after use. Native API changes may still yield PARTIAL/UNSUPPORTED. These tools were removed from the live instance after the November 22 attempt; final adapter corrections have not been rerun live.
 
 ## Commands
 
@@ -85,4 +87,4 @@ Node tests exercise mocked permission/opt-in gates, snapshots and build mismatch
 
 Pinned local bytecode was inspected for KubeJS 2101.7.2-build.381 (CommandRegistryKubeEvent, server/client events), Rhino 2101.2.7-build.85, Botania Revived 2.0.2 (`velrondevs.botania` Thermalily/FluidGenerator/GeneratingFlower/ManaPool getters), Gateways 5.1.0/Placebo 9.9.4 (custom DynamicRegistry and GatewayEntity telemetry). First-party adapters reference Progression attachment codecs and MXP `snapshot`/account APIs from current integration source. MXP uses `DimensionDataStorage.get` for existing data, never its creating `get(server)` convenience method. Tyz getters match the read side of the existing Tyz bridge. Actual client/server bridge calls and future mod versions still need the next explicitly authorized test world.
 
-**All in-game command results: NOT RUN.** Next step is manual installation into the next disposable QA instance, not a pack build or an automatic launch.
+**Command-parser acceptance remains NOT RUN.** The November 22 one-shot API invocation yielded a live command/recipe census but failed other capture adapters; see linked results. Node tests and Rhino parsing do not promote those cases to PASS. Next step is targeted authorized QA, not an automatic build or launch.

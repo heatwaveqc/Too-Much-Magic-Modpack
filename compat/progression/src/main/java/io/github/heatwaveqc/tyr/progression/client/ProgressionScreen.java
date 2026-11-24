@@ -24,7 +24,8 @@ public final class ProgressionScreen extends Screen {
     private SkillGraph.Graph graph;
     private final Map<String,int[]> panByPath=new HashMap<>();
     private int panX,panY,ticks;
-    private Button purchase,respec,activate;
+    private Button purchase,respec,activate,currencyButton;
+    private String currencyChoice="";
     private boolean confirmRespec;
     public ProgressionScreen(String pathId){super(Component.literal("Progression"));this.pathId=pathId;}
     private void request(){PacketDistributor.sendToServer(new ProgressionMenuNetwork.Request(pathId));}
@@ -32,6 +33,34 @@ public final class ProgressionScreen extends Screen {
         List<String> result=new ArrayList<>();
         if(row.has(key))for(var entry:row.getAsJsonArray(key))result.add(entry.getAsString());
         return result;
+    }
+    private static List<JsonObject> purchaseSources(JsonObject node){
+        if(node==null||!node.has("purchase_sources"))return List.of();
+        var result=new ArrayList<JsonObject>();
+        for(var row:node.getAsJsonArray("purchase_sources"))result.add(row.getAsJsonObject());
+        return result;
+    }
+    private JsonObject selectedSource(JsonObject node){
+        var sources=purchaseSources(node);
+        if(sources.isEmpty())return null;
+        return sources.stream().filter(row->row.get("system").getAsString().equals(currencyChoice))
+                .findFirst().orElse(sources.getFirst());
+    }
+    private String selectedCurrency(JsonObject node){
+        var selected=selectedSource(node);
+        return selected==null?"":selected.get("system").getAsString();
+    }
+    private boolean selectedBuyable(JsonObject node){
+        var selected=selectedSource(node);
+        return selected!=null && selected.get("buyable").getAsBoolean();
+    }
+    private void cycleCurrency(){
+        var sources=purchaseSources(nodes.get(selection));
+        if(sources.size()<2)return;
+        int current=0;
+        for(int i=0;i<sources.size();i++)
+            if(sources.get(i).get("system").getAsString().equals(currencyChoice))current=i;
+        currencyChoice=sources.get((current+1)%sources.size()).get("system").getAsString();
     }
     private static String label(String id){
         String name=id.substring(id.lastIndexOf(':')+1).replace('_',' ');
@@ -54,7 +83,9 @@ public final class ProgressionScreen extends Screen {
             }
             var layout=SkillGraph.arrange(specs,4,NODE_W,NODE_H,GAP_X,GAP_Y);
             screen.nodes.clear();screen.nodes.putAll(next);screen.graph=layout;screen.data=parsed;
-            if(!next.containsKey(screen.selection))screen.selection="";
+            if(!next.containsKey(screen.selection)){screen.selection="";screen.currencyChoice="";}
+            var current=screen.nodes.get(screen.selection);
+            if(current!=null)screen.currencyChoice=screen.selectedCurrency(current);
             screen.clampPan();
         }catch(RuntimeException ignored){/* malformed or incomplete network update does not replace the last valid view */}
     }
@@ -65,19 +96,22 @@ public final class ProgressionScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(Math.max(10,width-66),height-25,56,20).build());
         purchase=addRenderableWidget(Button.builder(Component.literal("Learn rank"),b->{
             JsonObject n=nodes.get(selection);
-            if(n!=null&&n.get("buyable").getAsBoolean())PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"buy",selection));
+            if(n!=null&&selectedBuyable(n))PacketDistributor.sendToServer(
+                new ProgressionMenuNetwork.Mutate(pathId,"buy",selection,selectedCurrency(n)));
         }).bounds(10,height-25,90,20).build());
         respec=addRenderableWidget(Button.builder(Component.literal("Respec"),b->{
             if(data==null||!data.get("joined").getAsBoolean())return;
             if(!confirmRespec){confirmRespec=true;respec.setMessage(Component.literal("Confirm reset"));}
             else{confirmRespec=false;respec.setMessage(Component.literal("Respec"));
-                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"respec",""));}
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"respec","",""));}
         }).bounds(105,height-25,94,20).build());
         activate=addRenderableWidget(Button.builder(Component.literal("Activate"),b->{
             var node=nodes.get(selection);
             if(node!=null&&node.has("activation_ready")&&node.get("activation_ready").getAsBoolean())
-                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"activate",selection));
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"activate",selection,""));
         }).bounds(204,height-25,80,20).build());
+        currencyButton=addRenderableWidget(Button.builder(Component.literal("Currency"),b->
+            cycleCurrency()).bounds(289,height-25,126,20).build());
         clampPan();request();
     }
     @Override public void tick(){if(++ticks%40==0)request();}
@@ -87,7 +121,7 @@ public final class ProgressionScreen extends Screen {
         if(next.equals(pathId))return;
         panByPath.put(pathId,new int[]{panX,panY});pathId=next;
         var pos=panByPath.getOrDefault(next,new int[2]);panX=pos[0];panY=pos[1];
-        data=null;graph=null;nodes.clear();selection="";confirmRespec=false;
+        data=null;graph=null;nodes.clear();selection="";currencyChoice="";confirmRespec=false;
         if(respec!=null)respec.setMessage(Component.literal("Respec"));request();
     }
     private int viewportLeft(){return 10;}
@@ -112,13 +146,30 @@ public final class ProgressionScreen extends Screen {
         if(n.get("auto").getAsBoolean())return 0xFF283C5B;
         return 0xFF302E3B;
     }
+    /**
+     * Our progression canvas supplies its own opaque backdrop in render().
+     * Screen.render() calls renderBackground() before rendering widgets;
+     * invoking the vanilla implementation here would draw the menu blur
+     * OVER the already-painted skills when super.render() runs at the end.
+     * Keep this no-op so super.render() still draws buttons and handles
+     * narration without a second blur/darkening pass.
+     */
+    @Override public void renderBackground(GuiGraphics g,int mx,int my,float partial){
+        // Intentionally no blur, panorama or additional background draw.
+    }
     @Override public void render(GuiGraphics g,int mx,int my,float partial){
-        renderBackground(g,mx,my,partial);
-        g.fill(4,4,width-4,height-4,0xF21A1725);
+        // Fully opaque: never show a blurred/dimmed world through the skills.
+        g.fill(0,0,width,height,0xFF13101D);
+        g.fill(4,4,width-4,height-4,0xFF1A1725);
         line(g,"PROGRESSION",12,12,width-24,0xFFE8DFC9);
         line(g,title(data,pathId)+(data==null?"":data.get("eligible").getAsBoolean()?"":"  [locked]"),69,34,width-80,0xFFD4C4F0);
         JsonObject chosen=nodes.get(selection);
-        if(purchase!=null)purchase.active=chosen!=null&&chosen.get("buyable").getAsBoolean();
+        if(purchase!=null)purchase.active=selectedBuyable(chosen);
+        if(currencyButton!=null){
+            currencyButton.visible=chosen!=null&&purchaseSources(chosen).size()>1&&width>=450;
+            if(currencyButton.visible)currencyButton.setMessage(
+                Component.literal("Pay: "+label(selectedCurrency(chosen))));
+        }
         if(respec!=null)respec.active=data!=null&&data.get("joined").getAsBoolean();
         if(activate!=null){
             activate.visible=chosen!=null&&chosen.has("activation_mode")&&width>=355;
@@ -128,7 +179,12 @@ public final class ProgressionScreen extends Screen {
         if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
             line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
                 " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points",12,53,width-24,0xFFDBC895);
-            line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
+            if(data.has("next_challenge")){
+                JsonObject challenge=data.getAsJsonObject("next_challenge");
+                line(g,"Next challenge: "+challenge.get("title").getAsString()+
+                    " ("+challenge.get("progress").getAsInt()+"/"+challenge.get("goal").getAsInt()+")",
+                    12,65,width-24,0xFFB8B3C6);
+            } else line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
             g.fill(viewportLeft(),viewportTop(),viewportRight(),viewportBottom(),0xFF100F19);
             clampPan();int ox=originX(),oy=originY();
             g.enableScissor(viewportLeft(),viewportTop(),viewportRight(),viewportBottom());
@@ -163,9 +219,11 @@ public final class ProgressionScreen extends Screen {
             }
             if(chosen!=null){
                 int y=viewportBottom()+4;
-                line(g,title(chosen,selection)+" | "+chosen.get("price").getAsInt()+" "+chosen.get("point_name").getAsString()+
+                var source=selectedSource(chosen);
+                int price=source==null?chosen.get("price").getAsInt():source.get("price").getAsInt();
+                line(g,title(chosen,selection)+" | "+price+" points via "+label(selectedCurrency(chosen))+
                     " | "+chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt(),12,y,width-24,0xFFF0D997);
-                line(g,String.join(", ",strings(chosen,"effects"))+" | "+(chosen.get("buyable").getAsBoolean()?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
+                line(g,String.join(", ",strings(chosen,"effects"))+" | "+(selectedBuyable(chosen)?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
             }
             if(inside(mx,my)){
                 for(var row:nodes.entrySet()){
@@ -184,7 +242,11 @@ public final class ProgressionScreen extends Screen {
                                 }
                             }
                         }
-                        tooltip.add(Component.literal(n.get("price").getAsInt()+" "+n.get("point_name").getAsString()));
+                        for(var source:purchaseSources(n))
+                            tooltip.add(Component.literal(
+                                label(source.get("system").getAsString())+": "+
+                                source.get("owned").getAsInt()+"/"+source.get("max_ranks").getAsInt()+
+                                " ranks, "+source.get("price").getAsInt()+" pts/rank"));
                         tooltip.add(Component.literal("Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
                         if(!strings(n,"requires").isEmpty())tooltip.add(Component.literal("All: "+String.join(", ",strings(n,"requires").stream().map(ProgressionScreen::label).toList())));
                         if(!strings(n,"requires_any").isEmpty())tooltip.add(Component.literal("Any: "+String.join(", ",strings(n,"requires_any").stream().map(ProgressionScreen::label).toList())));
@@ -203,7 +265,9 @@ public final class ProgressionScreen extends Screen {
         int ox=originX(),oy=originY();
         for(var row:nodes.entrySet()){
             var pos=graph.layout().positions().get(row.getKey());int x=ox+pos.x(),y=oy+pos.y();
-            if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){selection=row.getKey();break;}
+            if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){
+                selection=row.getKey();currencyChoice=selectedCurrency(nodes.get(selection));break;
+            }
         }
         return true;
     }

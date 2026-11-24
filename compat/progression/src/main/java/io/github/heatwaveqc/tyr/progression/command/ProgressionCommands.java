@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression.command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.LongArgumentType;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
+import net.minecraft.commands.arguments.EntityArgument;
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tyr.progression.runtime.Enrollment;
 import io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities;
@@ -88,6 +89,17 @@ public final class ProgressionCommands {
                             "Selection blocked: join Hunter first, or your specialty is already set"),false);
                         return ok ? 1 : 0;
                     })))
+            .then(Commands.literal("leave")
+                .then(Commands.argument("path",ResourceLocationArgument.id())
+                    .executes(ctx -> {
+                        ServerPlayer player=ctx.getSource().getPlayerOrException();
+                        String path=ResourceLocationArgument.getId(ctx,"path").toString();
+                        boolean ok=ProgressionApi.leave(player,path);
+                        ctx.getSource().sendSuccess(() -> Component.literal(ok ?
+                            "Left "+path+": paid Path ranks and unallocated MXP permanently forfeited" :
+                            "Cannot leave: missing, inactive, or automatic baseline Path"),false);
+                        return ok?1:0;
+                    })))
             .then(Commands.literal("respec")
                 .then(Commands.argument("path",ResourceLocationArgument.id())
                     .executes(ctx -> {
@@ -153,6 +165,18 @@ public final class ProgressionCommands {
                                 ok ? "Joined progression path" : "Path missing or exclusive"),false);
                             return ok ? 1 : 0;
                         })))
+                .then(Commands.literal("remove")
+                    .then(Commands.argument("player",EntityArgument.player())
+                        .then(Commands.argument("path",ResourceLocationArgument.id())
+                            .executes(ctx -> {
+                                ServerPlayer target=EntityArgument.getPlayer(ctx,"player");
+                                String path=ResourceLocationArgument.getId(ctx,"path").toString();
+                                boolean ok=ProgressionApi.leave(target,path);
+                                ctx.getSource().sendSuccess(() -> Component.literal(ok ?
+                                    "Removed "+path+"; purchased ranks and unallocated MXP forfeited" :
+                                    "Path removal blocked or already inactive"),false);
+                                return ok?1:0;
+                            }))))
                 .then(Commands.literal("xp")
                     .then(Commands.argument("path",ResourceLocationArgument.id())
                         .then(Commands.argument("amount",LongArgumentType.longArg(1L,1_000_000L))

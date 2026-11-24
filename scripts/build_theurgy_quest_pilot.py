@@ -20,12 +20,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / "manifest/theurgy_quest_pilot.json"
 OUT = ROOT / "docs/quest-pilots/theurgy/generated"
 ASSETS = [
-    ("title.png", 0.0, -15.0, 13.5, 3.3),
-    ("vessels.png", 13.0, -8.5, 8.0, 2.4),
-    ("niter.png", 18.0, 11.0, 11.5, 2.5),
-    ("reformation.png", 30.0, -13.0, 8.0, 2.8),
-    ("wires.png", 19.0, -16.5, 11.2, 2.4),
+    ("title.png", 6.0, -12.5, 13.5, 3.3),
+    ("vessels.png", 14.0, -6.8, 8.0, 2.4),
+    ("niter.png", 18.0, 12.0, 11.5, 2.5),
+    ("reformation.png", 30.0, 12.0, 8.0, 2.8),
+    ("wires.png", 25.0, -10.0, 11.2, 2.4),
 ]
+
 PREFIX = {"quest": "544D3A150000", "task": "544D4A150000",
           "xp": "544D6A150000", "item": "544D7A150000"}
 EXISTING = {"quest": "544D303001500001", "task": "544D403001500001",
@@ -44,6 +45,76 @@ def id_for(kind: str, key: str) -> str:
 
 def num(value: float) -> str:
     return f"{float(value):.1f}d"
+
+
+
+def _proper_cross(a, b, c, d) -> bool:
+    """Count genuine line intersections, not endpoints shared by a prerequisite."""
+    def orient(p, q, r):
+        return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    p, q = orient(a, b, c), orient(a, b, d)
+    r, t = orient(c, d, a), orient(c, d, b)
+    return p * q < -1e-7 and r * t < -1e-7
+
+
+def _line_to_point_distance(a, b, p) -> float:
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    d2 = dx * dx + dy * dy
+    t = max(0, min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / d2))
+    return ((a[0] + t * dx - p[0]) ** 2 +
+            (a[1] + t * dy - p[1]) ** 2) ** 0.5
+
+
+def _line_hits_panel(a, b, panel) -> bool:
+    """Liang–Barsky segment clipping: positioned art must avoid connector strokes."""
+    _, x, y, width, height = panel
+    xmin, xmax = x - width / 2, x + width / 2
+    ymin, ymax = y - height / 2, y + height / 2
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    lo, hi = 0.0, 1.0
+    for p, qv in ((-dx, a[0] - xmin), (dx, xmax - a[0]),
+                  (-dy, a[1] - ymin), (dy, ymax - a[1])):
+        if abs(p) < 1e-10:
+            if qv < 0:
+                return False
+            continue
+        ratio = qv / p
+        if p < 0:
+            lo = max(lo, ratio)
+        else:
+            hi = min(hi, ratio)
+        if lo > hi:
+            return False
+    return True
+
+
+def check_layout(quests: list[dict]) -> None:
+    """Type A: readable rendered graph geometry, never a claim of client QA."""
+    coords = {n["key"]: tuple(n["position"]) for n in quests}
+    edges = [(parent, node["key"]) for node in quests for parent in node["dependencies"]]
+    assert all(coords[b][0] >= coords[a][0] for a, b in edges), "backward Theurgy dependency"
+    for idx, (a, b) in enumerate(edges):
+        start, end = coords[a], coords[b]
+        length = _line_to_point_distance(start, end, start) + (
+            (end[0] - start[0]) ** 2 + (end[1] - start[1]) ** 2) ** 0.5
+        assert length <= 15.0, f"Long Theurgy dependency {a}->{b}: {length:.2f}"
+        for c, point in coords.items():
+            if c not in (a, b):
+                assert _line_to_point_distance(start, end, point) >= 1.1, (
+                    f"Dependency {a}->{b} runs through/too near node {c}")
+        for asset in ASSETS:
+            assert not _line_hits_panel(start, end, asset), (
+                f"Decorative panel {asset[0]} covers dependency {a}->{b}")
+    crossings = [(a, b, c, d) for i, (a, b) in enumerate(edges)
+                 for c, d in edges[i + 1:] if len({a, b, c, d}) == 4
+                 and _proper_cross(coords[a], coords[b], coords[c], coords[d])]
+    assert len(crossings) <= 1, f"Excess Theurgy line crossings: {crossings}"
+    for i, n in enumerate(quests):
+        for other in quests[i + 1:]:
+            px, py = n["position"]
+            ox, oy = other["position"]
+            assert (px - ox) ** 2 + (py - oy) ** 2 >= 1.7 ** 2, (
+                f"Overlapping/too-close Theurgy nodes {n['key']} {other['key']}")
 
 
 def check_spec(spec: dict) -> None:
@@ -92,6 +163,7 @@ def check_spec(spec: dict) -> None:
             collides = (abs(x - px) < (width + size) / 2 + 0.1 and
                         abs(y - py) < (height + size) / 2 + 0.1)
             assert not collides, f"{name} overlaps quest {node['key']}"
+    check_layout(quests)
 
 
 def render(spec: dict) -> dict[str, str]:
