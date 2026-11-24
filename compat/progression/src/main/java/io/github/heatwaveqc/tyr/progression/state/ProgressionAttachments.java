@@ -25,10 +25,10 @@ public final class ProgressionAttachments {
             .serialize(TooltipMilestonesCodec.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<CombatProof>> COMBAT_PROOF =
         ATTACHMENTS.register("combat_proof", () -> AttachmentType.builder(CombatProof::empty)
-            .serialize(CombatProof.CODEC).build());
+            .serialize(CombatProofCodec.CODEC).build());
     public static final Supplier<AttachmentType<PathDiscoveries>> PATH_DISCOVERIES =
         ATTACHMENTS.register("path_discoveries", () -> AttachmentType.builder(PathDiscoveries::empty)
-            .serialize(PathDiscoveries.CODEC).copyOnDeath().build());
+            .serialize(PathDiscoveriesCodec.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(LedgerCodec.CODEC).copyOnDeath().build());

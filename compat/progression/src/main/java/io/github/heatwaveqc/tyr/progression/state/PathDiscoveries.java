@@ -1,6 +1,5 @@
 package io.github.heatwaveqc.tyr.progression.state;
 
-import com.mojang.serialization.Codec;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +7,6 @@ import java.util.Map;
 
 /** Local "first since joining" progress, separate from permanent paid MXP receipts. */
 public record PathDiscoveries(Map<String,List<String>> consumed) {
-    public static final Codec<PathDiscoveries> CODEC=
-        Codec.unboundedMap(Codec.STRING,Codec.STRING.listOf())
-            .xmap(PathDiscoveries::new,PathDiscoveries::consumed);
     public PathDiscoveries {
         var entries=new HashMap<String,List<String>>();
         consumed.forEach((key,value)->entries.put(key,List.copyOf(value)));
