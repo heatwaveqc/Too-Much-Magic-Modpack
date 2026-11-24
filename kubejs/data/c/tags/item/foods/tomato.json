@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     {
+      "id": "farmersdelight:tomato",
+      "required": false
+    },
+    {
       "id": "pamhc2crops:tomatoitem",
       "required": false
     }
