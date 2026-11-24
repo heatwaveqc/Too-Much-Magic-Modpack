@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "scope": "approved_numeric_pilot",
+  "note": "Source-only. Owner-locked dragon-specific raw 6 nutrition / 2.0 saturation modifier. Cutting and multi-ingredient processing are held until exact pinned native recipe evidence; no runtime map or global food component changes.",
+  "raw": [
+    {
+      "species": "cave_dragon",
+      "item": "minecraft:beef",
+      "evidence": "#444 owner-locked raw beef baseline and vanilla registry ID"
+    },
+    {
+      "species": "sea_dragon",
+      "item": "aquaculture:fish_fillet_raw",
+      "evidence": "#444 owner-locked raw seafood baseline and #447 sourced Aquaculture ingredient"
+    },
+    {
+      "species": "forest_dragon",
+      "item": "minecraft:carrot",
+      "evidence": "#444 owner-locked ordinary raw carrot baseline and vanilla registry ID"
+    }
+  ],
+  "cutting": [],
+  "combinations": []
+}

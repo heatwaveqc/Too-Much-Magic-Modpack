@@ -28,8 +28,8 @@ def main():
     ores = [entry["item"]["item"] for entry in ore_tab["entries"]]
     assert len(ores) == 18 and all(item.startswith("minecraft:") for item in ores)
     assert "minecraft:ancient_debris" not in ores
-    assert len(shop["tabs"]) == 6
-    assert sum(len(tab["entries"]) for tab in shop["tabs"]) == 48
+    assert len(shop["tabs"]) == 7
+    assert sum(len(tab["entries"]) for tab in shop["tabs"] if tab["uuid"] != "tmm-currency") == 48
     kit = read("kubejs/data/tmm/function/rewards/starter_kit.mcfunction")
     assert "give @s akashictome:tome 1" in kit and "give @s minecraft:cooked_beef 2" in kit
     assert "improvableskills book unlock @s true" in kit

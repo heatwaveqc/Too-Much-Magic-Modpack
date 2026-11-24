@@ -18,7 +18,7 @@
             "count": 64
           },
           "currency": "coins",
-          "price": 2
+          "price": 1
         },
         {
           "uuid": "tmm-supplies-minecraft-oak_planks",
@@ -28,27 +28,27 @@
             "count": 64
           },
           "currency": "coins",
-          "price": 3
+          "price": 7
         },
         {
           "uuid": "tmm-supplies-minecraft-torch",
           "type": "BUY",
           "item": {
             "item": "minecraft:torch",
-            "count": 32
+            "count": 24
           },
           "currency": "coins",
-          "price": 2
+          "price": 1
         },
         {
           "uuid": "tmm-supplies-minecraft-glass",
           "type": "BUY",
           "item": {
             "item": "minecraft:glass",
-            "count": 32
+            "count": 64
           },
           "currency": "coins",
-          "price": 4
+          "price": 1
         },
         {
           "uuid": "tmm-supplies-minecraft-leather",
@@ -58,7 +58,7 @@
             "count": 8
           },
           "currency": "coins",
-          "price": 5
+          "price": 7
         },
         {
           "uuid": "tmm-supplies-minecraft-string",
@@ -78,7 +78,7 @@
             "count": 32
           },
           "currency": "coins",
-          "price": 5
+          "price": 60
         },
         {
           "uuid": "tmm-supplies-minecraft-arrow",
@@ -88,7 +88,7 @@
             "count": 64
           },
           "currency": "coins",
-          "price": 5
+          "price": 12
         },
         {
           "uuid": "tmm-supplies-bountiful-bountyboard",
@@ -115,7 +115,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 4
+          "price": 7
         },
         {
           "uuid": "tmm-reagents-minecraft-lapis_lazuli",
@@ -125,7 +125,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 4
+          "price": 200
         },
         {
           "uuid": "tmm-reagents-minecraft-quartz",
@@ -135,7 +135,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 5
+          "price": 60
         },
         {
           "uuid": "tmm-reagents-minecraft-glowstone_dust",
@@ -145,7 +145,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 5
+          "price": 90
         },
         {
           "uuid": "tmm-reagents-minecraft-slime_ball",
@@ -155,7 +155,7 @@
             "count": 4
           },
           "currency": "coins",
-          "price": 5
+          "price": 2
         },
         {
           "uuid": "tmm-reagents-minecraft-prismarine_shard",
@@ -165,7 +165,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 8
+          "price": 60
         }
       ]
     },
@@ -369,7 +369,7 @@
             "count": 1
           },
           "currency": "coins",
-          "price": 80
+          "price": 450
         },
         {
           "uuid": "tmm-exploration-minecraft-nautilus_shell",
@@ -379,7 +379,7 @@
             "count": 4
           },
           "currency": "coins",
-          "price": 15
+          "price": 60
         },
         {
           "uuid": "tmm-exploration-minecraft-name_tag",
@@ -389,7 +389,7 @@
             "count": 1
           },
           "currency": "coins",
-          "price": 12
+          "price": 3
         },
         {
           "uuid": "tmm-exploration-minecraft-saddle",
@@ -399,7 +399,7 @@
             "count": 1
           },
           "currency": "coins",
-          "price": 15
+          "price": 3
         },
         {
           "uuid": "tmm-exploration-minecraft-prismarine_crystals",
@@ -409,7 +409,7 @@
             "count": 16
           },
           "currency": "coins",
-          "price": 8
+          "price": 120
         }
       ]
     },
@@ -490,10 +490,10 @@
           "type": "BUY",
           "item": {
             "item": "minecraft:bread",
-            "count": 8
+            "count": 6
           },
           "currency": "coins",
-          "price": 4
+          "price": 1
         },
         {
           "uuid": "tmm-food-minecraft-cooked_beef",
@@ -503,7 +503,7 @@
             "count": 8
           },
           "currency": "coins",
-          "price": 5
+          "price": 7
         },
         {
           "uuid": "tmm-food-minecraft-bone_meal",
@@ -513,7 +513,7 @@
             "count": 32
           },
           "currency": "coins",
-          "price": 5
+          "price": 22
         },
         {
           "uuid": "tmm-food-minecraft-honey_bottle",
@@ -523,7 +523,34 @@
             "count": 4
           },
           "currency": "coins",
-          "price": 6
+          "price": 3
+        }
+      ]
+    },
+    {
+      "uuid": "tmm-currency",
+      "name": "Coin Exchange",
+      "icon": "tmm:coin",
+      "entries": [
+        {
+          "uuid": "tmm-currency-buy",
+          "type": "BUY",
+          "item": {
+            "item": "tmm:coin",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 1
+        },
+        {
+          "uuid": "tmm-currency-sell",
+          "type": "SELL",
+          "item": {
+            "item": "tmm:coin",
+            "count": 1
+          },
+          "currency": "coins",
+          "price": 1
         }
       ]
     }
