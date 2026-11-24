@@ -29,6 +29,13 @@ class MechanicalSpecTest {
             "{\"type\":\"critical_hit\",\"per_rank\":0.2,\"params\":{\"chance\":\"NaN\"}}",
             "{\"type\":\"heal_on_kill\",\"per_rank\":0.1,\"params\":{\"basis\":\"damage\"}}"})assertThrows(IllegalArgumentException.class,()->parse(fx));
     }
+    @Test void otherworldEffectsRequireExplicitTiersAndHarvestScope(){
+        assertDoesNotThrow(()->parse("{\"type\":\"otherworld_sight\",\"tier\":2}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_sight\",\"tier\":3}"));
+        assertDoesNotThrow(()->parse("{\"type\":\"otherworld_harvest\",\"target\":\"occultism:iesnium_ore_natural\",\"tier\":2,\"empty_hand\":true}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_harvest\",\"tier\":2,\"empty_hand\":true}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_harvest\",\"target\":\"occultism:iesnium_ore_natural\",\"tier\":2}"));
+    }
     @Test void radialMiningRequiresBoundedScopedEffect(){
         String fx="{\"type\":\"radial_mining\",\"target\":\"#minecraft:mineable/pickaxe\",\"empty_hand\":true,\"per_rank\":1,\"params\":{\"max_radius\":3,\"hardness_multiplier\":3,\"sneak_only\":false}}";
         assertDoesNotThrow(()->parse(fx));

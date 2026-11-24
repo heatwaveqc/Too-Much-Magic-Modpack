@@ -4,9 +4,13 @@
   "package": "io.github.heatwaveqc.tyr.progression.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "EnhancedNightVisionMixin"
+    "EnhancedNightVisionMixin",
+    "OccultismOtherworldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 0
-  }
+  },
+  "mixins": [
+    "OccultismOtherworldHarvestMixin"
+  ]
 }
