@@ -104,9 +104,82 @@ def verify_pins(audit, repo_root):
         seen.add(name)
 
 
+def load_runtime_food_registry(path):
+    """Validated default-stack FOOD census from the active NeoForge server.
+
+    The item tag table is the actual loaded membership after datapacks and
+    loader conditions, not a union of all possible source-JAR tag members.
+    """
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    if (raw.get("schema") != 1
+            or raw.get("kind") != "tmm:default_item_stack_food_registry"
+            or raw.get("scope") != "loaded_server_registry"
+            or raw.get("authoritative_for") != "default_stack_food_component"
+            or raw.get("recipe_output_stacks_examined") is not False):
+        raise ValueError("Expected a default-stack runtime food registry census")
+    entries = raw.get("items")
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("Empty runtime item registry census")
+    ids, foods = set(), set()
+    membership = defaultdict(set)
+    for entry in entries:
+        if (not isinstance(entry, dict) or set(entry) != {"id", "food", "tags"}
+                or not identifier(entry["id"])
+                or type(entry["food"]) is not bool
+                or not isinstance(entry["tags"], list)
+                or entry["id"] in ids):
+            raise ValueError("Malformed or duplicate runtime registry entry")
+        item = entry["id"]
+        ids.add(item)
+        if entry["food"]:
+            foods.add(item)
+        for tag in entry["tags"]:
+            if not identifier(tag):
+                raise ValueError(f"Malformed runtime item tag on {item}: {tag}")
+            membership[tag].add(item)
+    if (raw.get("item_count") != len(ids)
+            or raw.get("food_count") != len(foods)):
+        raise ValueError("Runtime registry census counts disagree with items")
+    default_foods = set(foods)
+    preview_foods = set()
+    if raw.get("recipe_result_previews_examined") is True:
+        previews = raw.get("recipe_result_previews")
+        unresolved = raw.get("unresolved_recipe_result_previews")
+        if (not isinstance(previews, list) or not isinstance(unresolved, list)
+                or raw.get("loaded_recipe_count") != len(previews) + len(unresolved)
+                or raw.get("recipe_preview_count") != len(previews)
+                or raw.get("recipe_preview_unresolved_count") != len(unresolved)):
+            raise ValueError("Malformed active recipe-result preview census")
+        seen = set()
+        food_previews = 0
+        for row in previews:
+            if (not isinstance(row, dict)
+                    or set(row) != {"recipe", "item", "food", "count"}
+                    or not identifier(row["recipe"])
+                    or not identifier(row["item"])
+                    or row["item"] not in ids
+                    or type(row["food"]) is not bool
+                    or type(row["count"]) is not int or row["count"] <= 0
+                    or row["recipe"] in seen):
+                raise ValueError("Malformed or duplicated live recipe output preview")
+            seen.add(row["recipe"])
+            if row["food"]:
+                preview_foods.add(row["item"])
+                food_previews += 1
+        if (raw.get("recipe_preview_food_count") != food_previews
+                or len(unresolved) != len(set(unresolved))
+                or any(not identifier(x) or x in seen for x in unresolved)):
+            raise ValueError("Unreliable active recipe-output preview receipt")
+        foods |= preview_foods
+    elif "recipe_result_previews" in raw:
+        raise ValueError("Recipe output previews present without scope acknowledgement")
+    return {"ids": ids, "foods": foods, "default_foods": default_foods,
+            "preview_foods": preview_foods, "tags": dict(membership)}
+
+
 class TagIndex:
     """Exact recursive item-tag closure. Unknown tags and cycles are holds."""
-    def __init__(self, releases):
+    def __init__(self, releases, runtime=None):
         merged = defaultdict(set)
         invalid = set()
         for release in releases:
@@ -126,9 +199,15 @@ class TagIndex:
                     merged[tag["tag"]].add(value)
         self.items = dict(merged)
         self.invalid = frozenset(invalid)
+        self.live_members = runtime["tags"] if runtime is not None else None
         self.cache = {}
 
     def expand(self, tag, visiting=()):
+        if self.live_members is not None:
+            members = self.live_members.get(tag)
+            if not members:
+                raise Hold(f"missing_runtime_tag:{tag}")
+            return tuple(sorted(members))
         if tag in self.invalid:
             raise Hold(f"malformed_native_tag:{tag}")
         if tag in self.cache:
@@ -170,7 +249,7 @@ class TagIndex:
         raise Hold("unsupported_ingredient_codec")
 
 
-def material_sources(tags, roots, known_namespaces):
+def material_sources(tags, roots, known_namespaces, registered_ids=None):
     """Tag-derived *ingredient* records, not a guess that an item is edible."""
     inferred = defaultdict(set)
     for tag, family in MATERIAL_TAGS.items():
@@ -185,7 +264,7 @@ def material_sources(tags, roots, known_namespaces):
         inferred[item].add(family)
     additions = {}
     for item in sorted(inferred):
-        if item in roots:
+        if item in roots or registered_ids is not None and item not in registered_ids:
             continue
         if len(inferred[item]) != 1:
             continue  # conflicting tag families must be reviewed
@@ -227,7 +306,7 @@ def method(recipe):
     raise Hold("unsupported_processing_method")
 
 
-def compile_one(recipe, index, available, roots):
+def compile_one(recipe, index, available, roots, registered_ids=None):
     outputs = recipe.get("outputs", [])
     if len(outputs) != 1:
         raise Hold("multiple_output_items")
@@ -245,11 +324,19 @@ def compile_one(recipe, index, available, roots):
         if not isinstance(part, dict):
             raise Hold("unsupported_ingredient")
         if set(part) == {"tag"} and part["tag"].startswith("c:tool_"):
+            if registered_ids is not None:
+                index.expand(part["tag"]) # Verify tool actually exists in runtime tags.
             # Exact native tool tags are non-nutritive. We preserve their
             # existence in the audit, not as an edible source.
             slots.append(((part["tag"],), True))
             continue
         options = index.ingredient(part)
+        if registered_ids is not None:
+            if set(part) == {"item"} and part["item"] not in registered_ids:
+                raise Hold("ingredient_not_registered")
+            # A source tag's optional references to mods that are absent
+            # from the live registry cannot create fictitious recipe routes.
+            options = tuple(item for item in options if item in registered_ids)
         if not options:
             raise Hold("empty_ingredient")
         neutral = all(item in NEUTRAL_ITEMS for item in options)
@@ -293,9 +380,9 @@ def compile_one(recipe, index, available, roots):
     return compiled
 
 
-def process(audit, checked_sources, checked_routes):
+def process(audit, checked_sources, checked_routes, registry=None):
     releases = audit["releases"]
-    index = TagIndex(releases)
+    index = TagIndex(releases, runtime=registry)
     # Positive native *tag evidence* is not equivalent to a registered FOOD
     # component. It is a separate review class, never universal edibility.
     native_food_tagged = set()
@@ -318,7 +405,8 @@ def process(audit, checked_sources, checked_routes):
     for release in releases:
         known_ns.update(release.get("native_versions", {}))
     sources = dict(checked_sources)
-    added_sources = material_sources(index, sources, known_ns)
+    added_sources = material_sources(index, sources, known_ns,
+                                    registry["ids"] if registry else None)
     sources.update(added_sources)
     recipes = defaultdict(list)
     for release in releases:
@@ -346,7 +434,8 @@ def process(audit, checked_sources, checked_routes):
             reason = None
             for recipe in recipes[item]:
                 try:
-                    raw_routes.extend(compile_one(recipe, index, available, sources))
+                    raw_routes.extend(compile_one(recipe, index, available, sources,
+                        registry["ids"] if registry else None))
                 except Hold as failure:
                     reason = str(failure)
                     break
@@ -377,11 +466,13 @@ def process(audit, checked_sources, checked_routes):
         if not changed:
             break
 
-    # Scope *finished dietary overrides* to food-tagged outputs. Internal
+    # Scope finished overrides to runtime FOOD items, or known food tags when
+    # a live census is unavailable. Internal
     # recipe graph work still includes untagged intermediates so a food can
     # depend on flour, dough or another ingredient with traceable ancestry.
     # Only transitively necessary intermediates are emitted as support records.
-    food_targets = set(recipes) & native_food_tagged
+    food_targets = set(recipes) & (
+        registry["foods"] if registry is not None else native_food_tagged)
     candidates = set(accepted) & food_targets
     support = set()
     pending = list(sorted(candidates))
@@ -448,16 +539,27 @@ def process(audit, checked_sources, checked_routes):
             "replace": False, "values": sorted(ids),
         }
     summary = {
-        "schema": 1, "status": "source_candidates_not_verified_edible",
+        "schema": 1, "status": (
+            "runtime_food_component_and_recipe_preview_scoped"
+            if registry is not None and registry.get("preview_foods")
+            else "runtime_default_food_component_scoped"
+            if registry is not None else "source_candidates_not_verified_edible"),
         "source_audit_recipe_count": sum(
             len(r["source_evidence"]["recipes"]) for r in releases),
         "indexed_output_ids": len(recipes),
         "existing_roots": len(checked_sources),
         "generated_material_sources": len(added_sources),
         "existing_reviewed_recipe_outputs": len(checked_routes),
-        "tagged_recipe_output_ids": len(food_targets),
+        "tagged_recipe_output_ids": len(set(recipes) & native_food_tagged),
+        "actual_default_food_recipe_output_ids": (
+            len(food_targets) if registry is not None else None),
+        "runtime_registered_item_ids": len(registry["ids"]) if registry else None,
+        "runtime_default_food_item_ids": (
+            len(registry.get("default_foods", registry["foods"])) if registry else None),
+        "runtime_preview_food_item_ids": (
+            len(registry.get("preview_foods", set())) if registry else None),
         "generated_candidate_recipe_outputs": len(candidates),
-        "native_food_tagged_candidates": len(candidates),
+        "native_food_tagged_candidates": len(candidates & native_food_tagged),
         "generated_support_recipe_outputs": len(support),
         "emitted_recipe_route_records": len(emitted),
         "support_ids": sorted(support),
@@ -482,6 +584,8 @@ def main():
     parser.add_argument("--repo", required=True, type=Path)
     parser.add_argument("--pin-snapshot", type=Path, default=None,
                         help="Exact pinned roster surveyed by Codex, defaulting to --repo")
+    parser.add_argument("--registry-json", type=Path,
+                        help="Optional authoritative loaded-server default-stack FOOD census")
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
     audit = json.loads(args.audit.read_text(encoding="utf-8"))
@@ -489,7 +593,9 @@ def main():
     native = args.repo / "compat/progression/src/main/resources"
     roots = read_records(native / SOURCES)
     existing = read_records(native / ROUTES)
-    files, summary = process(audit, roots, existing)
+    registry = (load_runtime_food_registry(args.registry_json)
+                if args.registry_json else None)
+    files, summary = process(audit, roots, existing, registry=registry)
     for rel, data in sorted(files.items()):
         target = args.out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
