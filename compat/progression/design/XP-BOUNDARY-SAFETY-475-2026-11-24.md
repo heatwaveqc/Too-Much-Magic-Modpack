@@ -1,0 +1,9 @@
+# Generic XP boundary hardening — #475
+
+Base b2143903b9e5f74b91313d2bb726c6d10dbf7858; existing architecture #580/#588/#595/#598, integrated #604. This is an independently reviewable correctness slice, not a replacement XP engine. Monk #629 owns ChannelEngine, ProgressionApi, event hooks and its tests; no shared-file edits with that PR. Design-only #570 is not replayed.
+
+- Generic Wallet projection accepts nonnegative finite configured XP remainder (including >1000), while the legacy 1000-XP helper retains its own guard.
+- Exact integer parsing rejects fractional/overflow schema and skill purchase fields instead of silently truncating/wrapping.
+- Bound decimal metadata before arithmetic/save: absolute scale <=128 and integer digits <=128; ordinary gain rounded down at 128 fractional decimal places; a crossing cost or effective gain below 10^-128 rejects the entire award with no receipts/XP mutated. Existing growth factors 0.001–100, level/award ceilings and TMM values unchanged. These are technical computational/storage bounds, not balance decisions.
+- Type A: GenericXpBoundaryTest exercises live ledger projection, mixed currencies, malformed config, hostile exponents and atomic extreme-growth rejection. Existing module quick CI required. Existing award APIs throw on guard violations; converting those into contextual logged server-side refusal requires coordination with #629's active award boundary, not part of this PR.
+- B/C after authorized inclusion: nondefault 2500 XP threshold renders/readable, purchase derived points correctly, repeat after relog. Exercise normal MXP and shared wallet alongside alternate system; confirm no new game-level regression. No runtime/build authorized.

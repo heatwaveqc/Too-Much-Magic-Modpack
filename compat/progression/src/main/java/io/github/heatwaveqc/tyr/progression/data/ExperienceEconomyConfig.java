@@ -18,8 +18,8 @@ import java.util.Set;
 /**
  * Strict JSON parser for the generic economy's configuration vocabulary.
  *
- * This is a reusable validated schema, not a runtime data-pack registration.
- * PathRegistry integration and verified source routing are separate cutover work.
+ * PathRegistry installs the validated catalog for the runtime. Verified
+ * source routing remains server-owned.
  * No slot count, magic-only mode or hard-coded Path ID is assumed here.
  */
 public final class ExperienceEconomyConfig {
@@ -76,7 +76,7 @@ public final class ExperienceEconomyConfig {
 
     public static Catalog read(JsonObject root) {
         only(root, "schema", "systems", "default_path_change", "path_changes", "skills");
-        if (root.has("schema") && root.get("schema").getAsInt() != 1)
+        if (root.has("schema") && root.get("schema").getAsBigDecimal().intValueExact() != 1)
             throw new IllegalArgumentException("Unsupported economy schema");
         if (!root.has("systems")) throw new IllegalArgumentException("Missing XP systems");
         Map<String, SystemSpec> systems = new HashMap<>();
@@ -135,11 +135,11 @@ public final class ExperienceEconomyConfig {
                     throw new IllegalArgumentException("Unknown purchase XP system " + system);
                 if (!seen.add(system)) throw new IllegalArgumentException(
                         "Duplicate system for skill purchase " + system);
-                int max = p.get("max_ranks").getAsInt();
-                int cost = p.has("points_per_rank") ? p.get("points_per_rank").getAsInt() : 1;
+                int max = p.get("max_ranks").getAsBigDecimal().intValueExact();
+                int cost = p.has("points_per_rank") ? p.get("points_per_rank").getAsBigDecimal().intValueExact() : 1;
                 purchases.add(new PurchaseSource(system, max, cost));
             }
-            int cap = j.get("total_rank_cap").getAsInt();
+            int cap = j.get("total_rank_cap").getAsBigDecimal().intValueExact();
             var key = new SkillKey(path, skill);
             if (skills.putIfAbsent(key, new SkillPurchases(cap, purchases)) != null)
                 throw new IllegalArgumentException("Duplicate configured skill " + key);

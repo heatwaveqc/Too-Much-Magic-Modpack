@@ -34,6 +34,10 @@ public final class ExperienceEconomy {
     public static final int MAX_PAID_RANK_RECEIPTS = 1_000_000;
     public static final int MAX_RECENT_TRANSACTIONS = 1024;
     public static final int MAX_FIRST_COMPLETIONS = 65536;
+    /** Storage/work limits, not a gameplay growth-factor clamp. */
+    public static final int MAX_XP_SCALE = 128;
+    public static final int MAX_XP_INTEGER_DIGITS = 128;
+    private static final BigDecimal MIN_XP_UNIT = BigDecimal.ONE.scaleByPowerOfTen(-MAX_XP_SCALE);
     private static final String DEFAULT_SOURCE = "tyr_progression:default";
 
     public record SystemSpec(String id, BigDecimal xpPerPoint, long maxLevel, BigDecimal maxBaseAward) {
@@ -41,6 +45,8 @@ public final class ExperienceEconomy {
             requireId(id);
             Objects.requireNonNull(xpPerPoint, "xpPerPoint");
             Objects.requireNonNull(maxBaseAward, "maxBaseAward");
+            requireBoundedDecimal(xpPerPoint);
+            requireBoundedDecimal(maxBaseAward);
             if (xpPerPoint.signum() <= 0 || maxBaseAward.signum() <= 0
                     || maxLevel < 1 || maxLevel > HARD_MAX_LEVEL)
                 throw new IllegalArgumentException("Invalid XP system limits");
@@ -88,6 +94,7 @@ public final class ExperienceEconomy {
             currentXp.forEach((id, xp) -> {
                 requireId(id);
                 if (xp == null || xp.signum() < 0) throw new IllegalArgumentException("Negative or missing XP");
+                requireBoundedDecimal(xp);
             });
             if (paidRanks.size() > MAX_PAID_RANK_RECEIPTS)
                 throw new IllegalArgumentException("Too many skill purchase receipts");
@@ -205,6 +212,7 @@ public final class ExperienceEconomy {
         String firstReceipt = firstCompletion == null ? null
                 : system.id() + "|" + sourceCategory + "|" + firstCompletion;
         Objects.requireNonNull(base, "base");
+        requireBoundedDecimal(base);
         validateGrowth(effectiveGrowth);
         if (base.signum() <= 0 || base.compareTo(system.maxBaseAward()) > 0)
             throw new IllegalArgumentException("Award exceeds system source limits");
@@ -215,6 +223,7 @@ public final class ExperienceEconomy {
         Ledger current = initialize(source, system);
         BigDecimal oldXp = current.currentXp().get(system.id());
         BigDecimal nextXp = fixed ? oldXp.add(base) : ordinary(oldXp, system, base, effectiveGrowth);
+        requireBoundedDecimal(nextXp);
         long derived = nextXp.divide(system.xpPerPoint(), 0, RoundingMode.DOWN).longValueExact();
         if (derived > system.maxLevel())
             throw new IllegalArgumentException("XP award exceeds configured level guard");
@@ -255,12 +264,20 @@ public final class ExperienceEconomy {
             if (remaining.compareTo(baseToNext) >= 0) {
                 if (++crossings > MAX_LEVEL_CROSSINGS_PER_AWARD)
                     throw new IllegalArgumentException("Unsafe number of levels in one XP award");
+                // A microscopic crossing cost can have a scale of millions at
+                // valid g < 1. Never expand that decimal in an exact subtraction.
+                if (baseToNext.compareTo(MIN_XP_UNIT) < 0)
+                    throw new IllegalArgumentException("XP crossing cost below safe decimal resolution");
                 remaining = remaining.subtract(baseToNext);
                 nextXp = system.xpPerPoint().multiply(BigDecimal.valueOf(level + 1L));
             } else {
                 BigDecimal effective = remaining.divide(divisor, PRECISION);
-                if (effective.signum() <= 0)
-                    throw new IllegalArgumentException("XP award underflow");
+                // Reject the whole award before creating any receipt when its
+                // gain cannot be represented within the storage safety budget.
+                if (effective.compareTo(MIN_XP_UNIT) < 0)
+                    throw new IllegalArgumentException("XP award below safe decimal resolution");
+                if (effective.scale() > MAX_XP_SCALE)
+                    effective = effective.setScale(MAX_XP_SCALE, RoundingMode.DOWN);
                 nextXp = nextXp.add(effective);
                 remaining = BigDecimal.ZERO;
             }
@@ -351,6 +368,15 @@ public final class ExperienceEconomy {
         if (key == null || key.isBlank() || key.length() > 240
                 || !key.matches("[a-zA-Z0-9_.:/#@-]+") || key.contains("|"))
             throw new IllegalArgumentException("Invalid verified transaction key");
+    }
+
+    private static void requireBoundedDecimal(BigDecimal value) {
+        // Check metadata before any addition, division or plain-string save.
+        // A short literal such as 1e-10000000 must not allocate megabytes.
+        long integerDigits = (long) value.precision() - value.scale();
+        if (Math.abs((long) value.scale()) > MAX_XP_SCALE
+                || integerDigits > MAX_XP_INTEGER_DIGITS)
+            throw new IllegalArgumentException("XP decimal exceeds storage safety limits");
     }
 
     private static void requireId(String id) {
