@@ -16,7 +16,7 @@
     "count": 1,
     "components": {
       "improvableskills:stored_ability": {
-        "ability": "tyr_progression:arcane_discrimination"
+        "ability": "tmm_economy:arcane_discrimination"
       }
     }
   }
