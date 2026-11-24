@@ -10,6 +10,11 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CandleBlock;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.state.BlockState;
+import dev.shadowsoffire.apothic_enchanting.objects.TreasureShelfBlock;
+import dev.shadowsoffire.apothic_enchanting.objects.GeodeShelfBlock;
 import dev.shadowsoffire.apothic_enchanting.api.EnchantmentStatBlock;
 
 /**
@@ -45,15 +50,40 @@ public final class VirtualShelfProvider {
                     candle.getBonusClues(state, null, null));
                 return eligible(stats);
             }
-            // Special flags/blacklists and arbitrary state-dependent stat callbacks
-            // need explicit parity review. Do not silently discard their effects.
-            if (block instanceof EnchantmentStatBlock) return Optional.empty();
-            if (!(value instanceof EnchantingStatRegistry.Stats stats) || stack.getCount() != 1)
-                return Optional.empty();
+            if (stack.getCount() != 1) return Optional.empty();
+            // Exact native constant-only providers; their bytecode does not read world/pos.
+            // Honor data overrides for numeric stats while retaining native flag semantics.
+            if (block.getClass() == TreasureShelfBlock.class || block.getClass() == GeodeShelfBlock.class) {
+                var nativeBlock = (EnchantmentStatBlock) block;
+                var state = block.defaultBlockState();
+                var stats = value instanceof EnchantingStatRegistry.Stats override ? override
+                    : new EnchantingStatRegistry.Stats(
+                        nativeBlock.getMaxEnchantingPower(state, null, null),
+                        state.getEnchantPowerBonus(null, null) * 2,
+                        nativeBlock.getQuantaBonus(state, null, null),
+                        nativeBlock.getArcanaBonus(state, null, null),
+                        nativeBlock.getBonusClues(state, null, null));
+                return eligible(stats).map(pos -> new VirtualShelfStats.Position(pos.stats(),
+                    Set.of(), nativeBlock.allowsTreasure(state, null, null),
+                    nativeBlock.providesStability(state, null, null)));
+            }
+            // Apothic BlockMixin adds EnchantmentStatBlock to ALL blocks.
+            // For any data-backed block, only the three special callbacks can
+            // add state/world-dependent effects beyond the live numeric record.
+            // Permit inherited native defaults; refuse custom overrides until reviewed.
+            if (!(value instanceof EnchantingStatRegistry.Stats stats)) return Optional.empty();
+            if (!defaultCallback(block, "getBlacklistedEnchantments")
+                || !defaultCallback(block, "allowsTreasure")
+                || !defaultCallback(block, "providesStability")) return Optional.empty();
             return eligible(stats);
         } catch (ReflectiveOperationException | LinkageError | RuntimeException ignored) {
             return Optional.empty();
         }
+    }
+
+    private static boolean defaultCallback(Block block, String method) throws NoSuchMethodException {
+        return block.getClass().getMethod(method, BlockState.class, LevelReader.class, BlockPos.class)
+            .getDeclaringClass() == EnchantmentStatBlock.class;
     }
 
     private static Optional<VirtualShelfStats.Position> eligible(EnchantingStatRegistry.Stats stats) {
