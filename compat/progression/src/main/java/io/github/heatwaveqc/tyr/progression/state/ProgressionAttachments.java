@@ -32,6 +32,10 @@ public final class ProgressionAttachments {
             io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState::empty)
             .serialize(io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceStateCodec.CODEC)
             .copyOnDeath().build());
+    // Entity-only serialized owner/identity/wait receipt; never copied to a new player.
+    public static final Supplier<AttachmentType<String>> COMPANION =
+        ATTACHMENTS.register("companion", () -> AttachmentType.builder(() -> "")
+            .serialize(com.mojang.serialization.Codec.STRING).build());
     public static final Supplier<AttachmentType<Long>> CHARM_UNTIL =
         ATTACHMENTS.register("charm_until", () -> AttachmentType.builder(() -> 0L)
             .serialize(com.mojang.serialization.Codec.LONG).build());

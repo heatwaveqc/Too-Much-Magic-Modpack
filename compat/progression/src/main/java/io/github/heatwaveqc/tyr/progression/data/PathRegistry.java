@@ -219,12 +219,12 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         if(!economy.systems().containsKey(XpChannel.MXP))
             throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
         var resourceCatalog=io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.parse(rawPaths,next);
-        // Validate optional Charm costs against the same pending resource catalog.
+        // Validate optional Charm/Taming costs against the same pending resource catalog.
         for(var path:next.values())for(var skill:path.skills())for(var effect:skill.effects()){
-            if(!effect.type().equals("charm"))continue;
+            if(!effect.type().equals("charm")&&!effect.type().equals("tame"))continue;
             String resource=effect.params().getOrDefault("resource","");
             if(!resource.isEmpty()&&!resourceCatalog.containsKey(resource))
-                throw new IllegalArgumentException("Unknown Charm resource "+resource);
+                throw new IllegalArgumentException("Unknown creature interaction resource "+resource);
         }
         var nextCompatibility=PathCompatibility.parse(rawPaths,next);
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
