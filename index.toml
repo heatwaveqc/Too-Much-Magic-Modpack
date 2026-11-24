@@ -69,10 +69,6 @@ file = "config/ftbessentials.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
 
 [[files]]
-file = "config/ftblibrary-client.snbt"
-hash = "8d6143e76391f71f984e0e2e8b229eb553b8443a91c4c1354d2dd2017bfb0435"
-
-[[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "36f0896102363a2b812c6bbdf59011866394867c0456e2951f6550aa552a9351"
 
@@ -533,6 +529,46 @@ file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json
 hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 [[files]]
+file = "kubejs/data/projecte/recipe/divining_rod_1.json"
+hash = "57f95e7c6128a43893b16be1928acecb667795ab8db0b448b3a812865b608015"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/divining_rod_2.json"
+hash = "5883c94098f101563e483481b27d6a004e19f403d78df760a7557ca7a92d8358"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/divining_rod_3.json"
+hash = "9b48c14157798bfd928468424e6e89e0c7775a78a0f8cc02e3995ca741b6228a"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/evertide_amulet.json"
+hash = "299842e1b3ede47d4a5baed24a64eec22e0b00265edd0ef3ac55dba57875153b"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/high_covalence_dust.json"
+hash = "a38ade28c310a6c5e97971d732693135958beda065a1ddfe0b35c142b4e3c7fd"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/low_covalence_dust.json"
+hash = "43d199f00af3e3f03a4a02be63f6ca4380189fa89e741118975ecbb5d46ff503"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/medium_covalence_dust.json"
+hash = "324c3b0c272216ad8206c0cad9495629d8bb882bc1c7d565879b5062dce8a2e2"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/repair_talisman.json"
+hash = "01c578dcf9357d81380b1ff7572fa26bbbcb90092daa3b285658bb94a032f3c8"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/repair_talisman_alt.json"
+hash = "29818fa3480f6a48a689da81299c7a3218d6968ae3d6cb3f0dbdc37df325ed52"
+
+[[files]]
+file = "kubejs/data/projecte/recipe/volcanite_amulet.json"
+hash = "3d8af005eb97ed8194647b27f0777c938bcd38e6d7a68f12db392753f994ad8b"
+
+[[files]]
 file = "kubejs/data/replication/neoforge/biome_modifier/replica_ore.json"
 hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
 
@@ -859,6 +895,10 @@ hash = "218f47233b0de5bbb2d38eb134c202e407494e2ffcc80da008d95b39dfd11223"
 [[files]]
 file = "kubejs/data/tmm/pe_custom_conversions/chaos_shards.json"
 hash = "e1c85330897787edeb6d7cc9ecc61bbd1a56cce886898bcb153b4203c34251fa"
+
+[[files]]
+file = "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
+hash = "bb9b496f32f688fd2e41601ef83c02b3da6bce32244eab30ff5535ae1101eec1"
 
 [[files]]
 file = "kubejs/data/tmm/pe_custom_conversions/draconium.json"
