@@ -52,7 +52,7 @@ def require_positive_dust_emc(values: dict) -> None:
             value = value.get("emc", 0)
         assert type(value) is int and value > 0, (
             f"{key}: no positive same-build post-mapping EMC; "
-            "DO NOT promote EMC-only dust until values and knowledge grant are verified"
+            "Investigate actual integrated EMC mapping if any dust has zero EMC"
         )
 
 
