@@ -193,6 +193,7 @@ final class DebugCommands {
         io.github.heatwaveqc.tyr.progression.runtime.PassivePowers.reconcile(player,true);
         io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra.reconcile(player,true);
         io.github.heatwaveqc.tyr.progression.runtime.VisionRuntime.reconcile(player,true);
+        io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork.refresh(player);
     }
 
     static LiteralArgumentBuilder<CommandSourceStack> inspect() {
@@ -211,7 +212,8 @@ final class DebugCommands {
                     var xp = AdminExperience.balance(ledger.economy(),system);
                     long committed = ExperienceEconomy.committed(ledger.economy(),system.id());
                     source.sendSuccess(() -> Component.literal(system.id() + ": " + xp.toPlainString()
-                        + " XP, committed points " + committed),false);
+                        + " XP, committed points " + committed + ", debt "
+                        + ExperienceEconomy.debt(ledger.economy(),system)),false);
                 }
                 source.sendSuccess(() -> Component.literal("Reward receipts: " + ledger.economy().rewardReceipts().size()
                     + "; achievements: " + ledger.economy().achievements().size()),false);
