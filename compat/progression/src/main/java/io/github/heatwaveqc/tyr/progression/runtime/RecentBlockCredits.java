@@ -20,9 +20,8 @@ public final class RecentBlockCredits {
         if (LAST.size() > 8192) {
             LAST.entrySet().removeIf(e -> tick < e.getValue() || tick - e.getValue() > 10);
         }
-        // Drop and post-tick callbacks for the same physical removal may
-        // arrive on adjacent ticks. Allow later legitimate rebreaks.
-        return previous == null || tick < previous || tick-previous > 1;
+        // The caller uses the ORIGINAL break tick even on deferred callbacks.
+        return previous == null || previous != tick;
     }
 
     public static synchronized void forget(UUID player) {

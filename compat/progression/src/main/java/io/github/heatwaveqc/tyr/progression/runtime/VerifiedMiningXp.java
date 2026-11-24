@@ -48,16 +48,16 @@ public final class VerifiedMiningXp {
                 ||!removed(level.getBlockState(pos)))return;
         double hardness=event.getState().getDestroySpeed(level,pos);
         boolean bare=event.getTool().isEmpty()&&player.getMainHandItem().isEmpty();
-        credit(player,level,pos,event.getState(),hardness,bare);
+        credit(player,level,pos,event.getState(),hardness,bare,level.getGameTime());
     }
     private static boolean removed(BlockState state){
         return state.isAir()||!state.getFluidState().isEmpty();
     }
     private static void credit(ServerPlayer player,ServerLevel level,BlockPos pos,
-                               BlockState state,double hardness,boolean barehand){
+                               BlockState state,double hardness,boolean barehand,long originalTick){
         if(!barehand||!Double.isFinite(hardness)||hardness<0
             ||!RecentBlockCredits.first(player.getUUID(),
-                level.dimension().location().toString(),pos.asLong(),level.getGameTime()))return;
+                level.dimension().location().toString(),pos.asLong(),originalTick))return;
         ProgressionApi.record(player,Selectors.blockBreak(state));
         ProgressionApi.record(player,Selectors.barehandBlockBreak(state));
         TrainingRewards.mining(player,hardness);
@@ -70,7 +70,7 @@ public final class VerifiedMiningXp {
             if(!participates(player)||player.serverLevel()!=level
                     ||now<item.tick()||now-item.tick()>3||!level.hasChunkAt(item.pos())
                     ||!removed(level.getBlockState(item.pos())))continue;
-            credit(player,level,item.pos(),item.state(),item.hardness(),item.barehand());
+            credit(player,level,item.pos(),item.state(),item.hardness(),item.barehand(),item.tick());
         }
     }
     public static void forget(ServerPlayer player){PENDING.remove(player.getUUID());}

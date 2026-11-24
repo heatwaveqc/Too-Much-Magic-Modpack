@@ -128,7 +128,7 @@ public final class TreeChopXpBridge {
                 // "chopped_log", protected logs, or leaves.
                 if (!(result.isAir() || !result.getFluidState().isEmpty())) continue;
                 if (!RecentBlockCredits.first(player.getUUID(), pending.dimension(),
-                        pos.asLong(), level.getGameTime())) continue;
+                        pos.asLong(), pending.tick())) continue;
                 ProgressionApi.record(player, Selectors.blockBreak(original.state()));
                 ProgressionApi.record(player, Selectors.barehandBlockBreak(original.state()));
                 TrainingRewards.mining(player,original.hardness());
