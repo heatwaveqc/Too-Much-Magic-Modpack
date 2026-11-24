@@ -43,6 +43,7 @@ public final class ProgressionMod {
         HunterItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.PathResourceNetwork::register);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
@@ -70,6 +71,9 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
         io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.register();
+        io.github.heatwaveqc.tyr.progression.runtime.charm.CharmRuntime.register();
+        io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.register();
         io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();

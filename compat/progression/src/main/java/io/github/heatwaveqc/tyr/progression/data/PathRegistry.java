@@ -216,6 +216,14 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         ExperienceEconomyConfig.validateReferences(economy,next,experience.keySet());
         if(!economy.systems().containsKey(XpChannel.MXP))
             throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
+        var resourceCatalog=io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.parse(rawPaths,next);
+        // Validate optional Charm/Taming costs against the same pending resource catalog.
+        for(var path:next.values())for(var skill:path.skills())for(var effect:skill.effects()){
+            if(!effect.type().equals("charm")&&!effect.type().equals("tame"))continue;
+            String resource=effect.params().getOrDefault("resource","");
+            if(!resource.isEmpty()&&!resourceCatalog.containsKey(resource))
+                throw new IllegalArgumentException("Unknown creature interaction resource "+resource);
+        }
         var nextCompatibility=PathCompatibility.parse(rawPaths,next);
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
@@ -238,6 +246,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         enrollmentModes = Map.copyOf(modes);
         nativeCompatibilityRules = NativePhysiologyGateway.withApprovedPairData(nativePairs);
         active = Map.copyOf(next);
+        io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.install(resourceCatalog);
         io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics.clearFoodCache();
         ProgressionMod.LOGGER.info("Loaded {} progression path definitions",active.size());
     }
