@@ -9,7 +9,7 @@ ProjectE tooltip milestone implementation.
 
 | Native ProjectE recipe ID | Source-only outcome |
 | --- | --- |
-| `low_covalence_dust`, `medium_covalence_dust`, `high_covalence_dust` | Native 40-output crafting recipes disabled via same-ID `neoforge:false`; dust items stay registered and usable through transmutation |
+| `low_covalence_dust`, `medium_covalence_dust`, `high_covalence_dust` | Native 40-output crafting recipes disabled via same-ID `neoforge:false`; **separate virtual EMC mapping conversions added** to retain their native input costs, without physical crafting |
 | `repair_talisman` | Exactly one Eternal Stella + one Occultism Iesnium Anvil, shapeless, one Talisman |
 | `repair_talisman_alt` | Original covalence/paper/string variation disabled via same-ID `neoforge:false` |
 | `divining_rod_1` | 8 Neo Vitae Iron Dust + center vanilla Stick |
@@ -18,13 +18,26 @@ ProjectE tooltip milestone implementation.
 | `evertide_amulet` | Retain three Dark Matter, five Water Buckets, replace top-center Water Bucket with Neo Vitae Water Sigil |
 | `volcanite_amulet` | Retain three Dark Matter, five Lava Buckets, replace top-center Lava Bucket with Neo Vitae Lava Sigil |
 
-All JSON paths are `kubejs/data/projecte/recipe/<id>.json`, matching
+Recipe overrides are in `kubejs/data/projecte/recipe/<id>.json`, matching
 the pinned ProjectE `mc1.21.1` generated native recipe IDs. The shapes,
 outputs and original ingredients were checked against the matching official
 generated files. The Talisman and sigil inputs were checked against
 Forbidden & Arcanus `ModItems`, Occultism Iesnium Anvil generated assets
 and Neo Vitae `NVItems`. Iron and Diamond dust stages were checked against
 the **actual TMM `config/neovitae/materials.json`**.
+
+**EMC values are part of this source slice, not deferred to #47.**
+The new `kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json`
+uses ProjectE's native `CustomConversionMapper` and three `count: 40`
+conversions, matching the old vanilla recipes exactly: charcoal + 8
+cobblestone, iron ingot + redstone, diamond + coal. These are
+**EMC calculation edges only**; they never expose a crafting recipe.
+Under original ProjectE input prices they reproduce the familiar
+1/8/208 values, but TMM's effective values follow the mapped inputs
+rather than freezing those historical numbers. The exact three
+conversions and ingredients are enforced by the source validator and
+negative fixtures. The mapper must be enabled in the integrated build;
+positive post-mapping output is checked **after integration**.
 
 **Already integrated, DO NOT duplicate:** the two top-center
 Philosopher's Stone recipes for `collector_mk1` and `relay_mk1` exist
@@ -52,47 +65,51 @@ native crafting remainders, JEI visibility, Transmutation Table
 knowledge/capability sync, or whether a KubeJS script adds a second
 production route.**
 
-## Integration dependencies: DO NOT promote the dust disable alone
+## Correct integration and testing sequence
 
-1. **Positive EMC for all three dusts.** Removing native crafts removes
-   their ordinary recipe-derived mapping path. Before promoting, obtain
-   a frozen-build item registry **and post-mapping EMC export** and run:
-   `python3 scripts/validate_projecte_early_recipes.py --emc-map <real_emc_export.json>`.
-   If any dust is zero/absent, source-review approved positive manual
-   anchors or native equivalent mappings through #47/#322. Do **not**
-   insert speculative historical 1/8/208 constants as if owner-approved.
-2. **First-Stone native knowledge grant.** On each player's *first
-   legitimate* acquisition of Philosopher's Stone (crafted, trade,
-   received), add all three dust IDs to their native ProjectE
-   transmutation knowledge and synchronize. This needs to integrate
-   with the existing personal acquisition/milestone event service
-   owned by the designated engine writer, **not** a duplicate
-   PlayerTick inventory-scan service in this recipe-only PR. No
-   free EMC/items; persist learning on relog; no pre-stable backfill
-   is required. Keep the implementation/QA checkbox open on #44.
-3. **Packwiz and shared source ownership.** Only designated
-   `test/full-integration` integration writer reconciles
-   `kubejs/data` source paths, indexed file hashes, `index.toml`,
-   `pack.toml` and frozen source references against current HEAD.
-   Do not cherry-pick old PR #499's whole tree: its valid MK1
-   source is already in the baseline.
-4. **Legacy overlap.** No change to Philosopher's Stone twelve-category
-   Occultism ritual, Project Expansion Chaos Shard flower gates,
-   Evertide/Volcanite native abilities, Condenser or Alchemical Chest.
-   They must retain their intended ingredient dependencies.
-5. **QA authorization.** No full Integration Assembly, game boot or
-   Prism package in this source PR. Type C after separately authorized
-   build: validate absent dust crafts; positive learned dust
-   transmutation/relog; rods/repair/amulet crafting including
-   containers/remainders and native ability preservation; MK1 gates,
-   JEI displays, multiplayer sharing and alt recipe bypasses.
+1. **Source complete and CI GREEN:** validate the recipe overrides and
+   virtual mapping edges, verify that ProjectE recognizes the native
+   conversion schema, and run repository quick/preflight checks. This
+   is the review-for-integration stage, **not a Minecraft test**.
+2. **Integration writer merges/reconciles source:** add the frozen PR
+   source to `test/full-integration` and update the current Packwiz
+   index/root hashes and source provenance without overwriting
+   simultaneous changes. The original MK1 Stone recipes already in
+   baseline must remain intact. The virtual EMC conversions belong in
+   the **same integration** as the disabled dust crafts.
+3. **Gameplay tests happen *after integration*:** from the assembled
+   test build, export actual registry and post-mapping ProjectE EMC
+   values and run `python3 scripts/validate_projecte_early_recipes.py
+   --emc-map <real_emc_export.json>`. Confirm dust values are all
+   positive, no physical dust recipe exists, and native transmutation
+   consumes EMC. Also exercise rods, Talisman, amulets, Stone crafting
+   remainders, JEI and multiplayer.
+4. **Fix-and-retest loop:** if a conversion parses poorly, a dust maps
+   to zero, or a secondary crafting recipe survives, correct that in
+   the corresponding source branch, reintegrate and retest. Runtime
+   failures are **not a reason to prohibit initial integration**.
+
+### Parallel outstanding code: first-Stone knowledge grant
+
+The owner's separate #44 requirement still calls for native ProjectE
+personal knowledge learning of all three dusts upon first legitimate
+Stone acquisition (crafted, traded or received), with native sync,
+persistence and no free EMC/items. It is **not** implemented in this
+recipe/EMC PR and must be tracked as an independent code-ready slice
+with the designated personal milestone/event writer. It should ideally
+be included in the same test build before declaring the full #44
+experience feature-complete. This is a **source implementation
+dependency**, **not a demand to playtest before integrating**.
+
+No full Integration Assembly, Minecraft boot or Prism package was
+performed by this PR. Gameplay QA remains Type B/C, requiring an
+integrated build and normal authorization. The authoritative QA
+acceptance occurs only after that build exists.
 
 ## Final technical disposition
 
-- **Code-ready / staged**: the 10 exact recipe overrides and false-condition
-  removals, source validator and negative fixture tests.
-- **Technical dependencies / not source-complete**: post-mapping dust
-  anchors and first-Stone native knowledge grant. No new owner
-  balancing vote is being requested by this slice.
+- **Source-coded / integration-review ready**: the 10 exact recipe overrides and false-condition
+  removals, three native virtual EMC mapping conversions, source validator and negative fixture tests.
+- **Source-dependent, tracked separately**: first-Stone native knowledge grant in the personal milestone service. **Post-integration QA**: actual computed dust EMC values and native knowledge behavior. No invented fixed dust prices or new owner balance vote.
 - **Not tested in game**: all user-visible behavior and alternate
   recipe acquisition across the loaded modpack.
