@@ -151,10 +151,28 @@ public final class ChannelEngine {
         var key=new ExperienceEconomyConfig.SkillKey(tree.id(),skillId);
         var rules=catalog.skills().get(key);
         if(rules==null) {
-            if(admin)return ledger;
             var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
             if(binding==null || !binding.currency().id().equals(systemId))return ledger;
-            return buy(ledger,tree,config,skillId);
+            if(!admin)return buy(ledger,tree,config,skillId);
+            // Shipped trees use the default single-system binding, not explicit
+            // multi-currency overrides. Preserve that binding's level gate.
+            var skill=tree.skill(skillId);
+            var spec=catalog.systems().get(systemId);
+            if(skill==null || spec==null || !binding.currency().magic()
+                    || binding.awardPoints()>0 || config.achievements().containsKey(new ChannelConfig.SkillKey(tree.id(),skillId))
+                    || !ledger.get(tree.id()).joined())return ledger;
+            var view=view(ledger,tree,config);
+            var gate=ledger.wallet(binding.levelSystem().id());
+            if(gate==null)return ledger;
+            var candidate=new Track(true,view.xp(),gate.rank(),Integer.MAX_VALUE,
+                    view.skills(),view.milestones(),view.counters());
+            var nextRank=ProgressionMath.buy(tree,candidate,skillId,1);
+            if(nextRank==candidate)return ledger;
+            var paid=ExperienceEconomy.grantRank(ledger.economy(),spec,tree.id(),skillId,1,
+                    skill.maxRank(),skill.maxRank());
+            if(paid==ledger.economy())return ledger;
+            return ownership(ledger,tree,nextRank,config).withEconomy(paid)
+                    .receipt(tree.id(),skillId,systemId,1,binding.permanent());
         }
         var skill=tree.skill(skillId);
         if(skill==null || !skill.autoRanks().isEmpty()

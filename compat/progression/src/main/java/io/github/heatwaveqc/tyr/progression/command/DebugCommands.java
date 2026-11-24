@@ -99,8 +99,14 @@ final class DebugCommands {
                     new io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig.SkillKey(
                         ResourceLocationArgument.getId(ctx,"path").toString(),
                         ResourceLocationArgument.getId(ctx,"skill").toString()));
-                return SharedSuggestionProvider.suggest(rule == null ? java.util.List.<String>of()
-                    : rule.sources().stream().map(s -> s.system()).toList(),builder);
+                var binding = PathRegistry.config().skills().get(
+                    new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(
+                        ResourceLocationArgument.getId(ctx,"path").toString(),
+                        ResourceLocationArgument.getId(ctx,"skill").toString()));
+                return SharedSuggestionProvider.suggest(rule != null
+                    ? rule.sources().stream().map(s -> s.system()).toList()
+                    : binding != null && binding.currency().magic()
+                        ? java.util.List.of(binding.currency().id()) : java.util.List.<String>of(),builder);
             }).then(Commands.argument("ranks",IntegerArgumentType.integer(1,10000))
                 .executes(ctx -> skillEdit(ctx,"grant",false,false,false)));
         node.then(Commands.literal("grant").then(grant));
@@ -143,8 +149,10 @@ final class DebugCommands {
             if (operation.equals("inspect")) {
                 var rule = ExperienceEconomyRuntime.current().skills().get(
                     new io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig.SkillKey(pathId,skillId));
+                var binding = config.skills().get(new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skillId));
                 source.sendSuccess(() -> Component.literal(skillId + ": rank " + prior.skillRank(skillId)
-                    + "/" + skill.maxRank() + "; currencies " + (rule == null ? "not configured" : rule.sources())
+                    + "/" + skill.maxRank() + "; currencies " + (rule != null ? rule.sources().toString()
+                        : binding != null ? binding.currency().id() : "not configured")
                     + "; requires all " + skill.requiresSkills() + "; any " + skill.requiresAnySkills()
                     + "; milestones " + skill.requiresMilestones()),false);
                 return 1;

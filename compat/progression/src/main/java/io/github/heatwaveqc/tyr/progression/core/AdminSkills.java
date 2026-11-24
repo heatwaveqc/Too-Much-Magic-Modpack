@@ -55,7 +55,9 @@ public final class AdminSkills {
         var key = new ChannelConfig.SkillKey(path.id(),skillId);
         var binding = config.skills().get(key);
         if (skill == null || !skill.autoRanks().isEmpty() || config.achievements().containsKey(key)
-                || !catalog.skills().containsKey(new ExperienceEconomyConfig.SkillKey(path.id(),skillId)))
+                || (!catalog.skills().containsKey(new ExperienceEconomyConfig.SkillKey(path.id(),skillId))
+                    && (binding==null || !binding.currency().magic()
+                        || !catalog.systems().containsKey(binding.currency().id()))))
             throw new IllegalArgumentException("Not a configured currency-purchased skill: " + skillId);
         if (binding != null && binding.awardPoints() > 0)
             throw new IllegalArgumentException("Skill grants native currency; explicit recovery handler required");
