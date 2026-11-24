@@ -265,6 +265,21 @@ public final class ProgressionApi {
             Track state=initial;
             if (!state.joined()) continue;
 
+            // Independent Path activity sources share the canonical MXP ledger.
+            // Not an XP mirror: only separately configured verified signals pay.
+            var catalog=PathRegistry.economyCatalog();
+            for(var award:PathRegistry.config().unifiedSources().getOrDefault(path.id(),List.of())){
+                if(!signal.matches(award.event(),award.selector()) ||
+                    !PathRegistry.economyEligible(player,award.systemId()))continue;
+                String action=award.oncePerTarget() ? "first:"+path.id()+"/"+signal.target()
+                        : "activity:"+UUID.randomUUID();
+                String first=award.oncePerTarget()?path.id()+"/"+signal.target():null;
+                next=ChannelEngine.awardConfigured(next,catalog,award.systemId(),
+                    award.category(),action,first,award.nominal(),false,
+                    io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(
+                        player,catalog.growth(award.systemId()),award.systemId()));
+            }
+
             for (Definition.Milestone milestone : path.milestones()) {
                 if (state.completed(milestone.id())) continue;
                 int index = 0;
