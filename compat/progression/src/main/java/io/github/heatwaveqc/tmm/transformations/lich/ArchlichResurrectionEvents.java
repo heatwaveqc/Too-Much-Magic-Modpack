@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 /**
  * Archlich-only native resurrection dispatch.
  *
- * Goety 3.2.2 and Forbidden Magic 0.5.37 both subscribe to LivingDeathEvent
+ * Goety 3.2.3 and Forbidden Magic 0.5.37 both subscribe to LivingDeathEvent
  * at normal priority. We run FIRST at HIGHEST and call the verified
  * Forbidden Magic native onDeath handler only when a valid charged
  * phylactery exists. That handler spends one soul, handles the teleport/
@@ -56,7 +56,7 @@ public final class ArchlichResurrectionEvents {
                 || player.level().isClientSide()
                 || !ModList.get().isLoaded("goety")
                 || !ModList.get().isLoaded("witchery_forbidden_magic")
-                || !pinnedVersion("goety", "3.2.2")
+                || !pinnedVersion("goety", "3.2.3")
                 || !pinnedVersion("witchery_forbidden_magic", "0.5.37")) {
             return;
         }
