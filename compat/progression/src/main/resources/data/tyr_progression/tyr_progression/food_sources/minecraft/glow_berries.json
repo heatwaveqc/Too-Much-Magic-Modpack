@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:glow_berries",
+  "provenance": "minecraft:glow_berries",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/fruit",
+    "#tmm:foods/raw"
+  ]
+}

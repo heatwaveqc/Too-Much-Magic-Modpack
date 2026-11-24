@@ -9,7 +9,7 @@ import java.util.*;
 public final class VisionRuntime {
     private VisionRuntime(){}
     public static final String NIGHT="enhanced_night_vision",LAVA="lava_vision";
-    private record Grant(boolean night,int lava,int otherworld){}
+    private record Grant(boolean night,int lava,int astralStage,int otherworld){}
     private static final Map<UUID,Grant> LAST=new HashMap<>();
     private static String key(String type){return "tyr_progression:"+type;}
     private static boolean enabled(ServerPlayer p,EffectRuntime.Active active){
@@ -17,7 +17,9 @@ public final class VisionRuntime {
         return ProgressionApi.mode(p,key(active.effect().type()),fallback).equals("on");
     }
     private static Grant grant(ServerPlayer player){
-        if(!player.isAlive()||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player))return new Grant(false,0,0);
+        if(!player.isAlive()||player.isSpectator()||player.isCreative())return new Grant(false,0,0,0);
+        int astralStage=AstralResearchStage.stage(player);
+        if(NewbieMode.isNewbie(player))return new Grant(false,0,astralStage,0);
         boolean night=false;int lava=0,otherworld=0;
         for(var a:EffectRuntime.active(player)){
             var type=a.effect().type();
@@ -29,7 +31,7 @@ public final class VisionRuntime {
             if(type.equals(NIGHT))night=true;
             else lava=Math.max(lava,Math.max(1,(int)Math.ceil(MechanicalSpec.scaled(a.effect().amountPerRank(),a.rank(),128))));
         }
-        return new Grant(night,lava,otherworld);
+        return new Grant(night,lava,astralStage,otherworld);
     }
     public static int otherworldTier(ServerPlayer p){return grant(p).otherworld();}
     public static boolean toggle(ServerPlayer p,String type){
@@ -45,8 +47,8 @@ public final class VisionRuntime {
     }
     public static void reconcile(ServerPlayer p,boolean force){
         Grant next=grant(p),prior=LAST.put(p.getUUID(),next);
-        if(force||!next.equals(prior)||p.tickCount%20==0&&(next.night||next.lava>0||next.otherworld>0))
-            VisionNetwork.send(p,next.night,next.lava,next.otherworld);
+        if(force||!next.equals(prior)||p.tickCount%20==0&&(next.night||next.lava>0||next.astralStage!=0||next.otherworld>0))
+            VisionNetwork.send(p,next.night,next.lava,next.astralStage,next.otherworld);
     }
     public static void forget(ServerPlayer p){LAST.remove(p.getUUID());}
 }

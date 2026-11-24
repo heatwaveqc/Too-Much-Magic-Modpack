@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "method_by_recipe_type": {
+    "minecraft:smelting": "heat",
+    "minecraft:smoking": "heat",
+    "minecraft:campfire_cooking": "heat",
+    "minecraft:blasting": "heat",
+    "farmersdelight:cooking": "heat",
+    "minecraft:crafting_shapeless": "nonthermal",
+    "farmersdelight:cutting": "nonthermal"
+  },
+  "hot_tool_tag_tokens": [
+    "pot",
+    "skillet",
+    "saucepan",
+    "bakeware",
+    "oven",
+    "bakingdish",
+    "grill"
+  ],
+  "neutral_item_ids": [
+    "minecraft:bowl",
+    "minecraft:glass_bottle",
+    "minecraft:bucket",
+    "minecraft:stick",
+    "minecraft:paper"
+  ],
+  "neutral_tag_prefixes": [
+    "c:tool_"
+  ],
+  "material_tags": {
+    "c:grain": "#tmm:foods/grains",
+    "c:crops/rice": "#tmm:foods/grains",
+    "c:mushrooms": "#tmm:foods/fungi"
+  },
+  "material_items": {
+    "minecraft:kelp": "#tmm:foods/sea_plants"
+  },
+  "identity_unfavored_patterns": [
+    "meatballs?"
+  ],
+  "thermal_ambiguity_patterns": [
+    "grilled",
+    "roasted",
+    "baked",
+    "fried",
+    "cookie",
+    "toast",
+    "steamed",
+    "boiled",
+    "braised"
+  ],
+  "native_food_target_tags": [
+    "c:foods",
+    "c:juices",
+    "farmersdelight:meals"
+  ],
+  "nonfood_output_tags": [
+    "c:seeds",
+    "minecraft:villager_plantable_seeds",
+    "farmersdelight:serving_containers",
+    "herbalbrews:container_items"
+  ]
+}
