@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.core;
 
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
+import io.github.heatwaveqc.tyr.progression.data.XpSourceRouting;
 import io.github.heatwaveqc.tyr.progression.model.Definition;
 import io.github.heatwaveqc.tyr.progression.state.Ledger;
 import io.github.heatwaveqc.tyr.progression.state.Discoveries;
@@ -247,7 +248,7 @@ public final class ProgressionApi {
     /** Trusted server-side event provenance filter: reject rewards for a specific path. */
     public static void recordFiltered(ServerPlayer player, Signal signal,
                                       java.util.function.Predicate<Definition.Path> eligiblePath) {
-        if (player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return;
+        if (!eligibleEarner(player)) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         MilestoneFeedback.Notice progressNotice = null;
@@ -272,6 +273,21 @@ public final class ProgressionApi {
                 next=ChannelEngine.grant(next,system,xp,0);
             }
         }
+        // A shared source category is one authenticated accomplishment,
+        // not one award per joined Path. Collect measurements before routing.
+        var activityAwards=new java.util.ArrayList<XpSourceRouting.Candidate>();
+        for (Definition.Path path : PathRegistry.all().values()) {
+            if(!eligiblePath.test(path)||!PathRegistry.eligible(player,path.id())
+                    ||!next.get(path.id()).joined())continue;
+            for(var award:PathRegistry.config().unifiedSources().getOrDefault(path.id(),List.of())){
+                if(!signal.matches(award.event(),award.selector()))continue;
+                String first=award.oncePerTarget()
+                        ?award.firstCompletionKey(path.id(),signal.target()):null;
+                activityAwards.add(new XpSourceRouting.Candidate(award.systemId(),
+                        award.category(),first,award.nominal(),false));
+            }
+        }
+        next=ExperienceSourceRouter.batch(player,next,"activity:"+UUID.randomUUID(),activityAwards);
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
             var channel=PathRegistry.channel(path.id());
@@ -279,21 +295,6 @@ public final class ProgressionApi {
             Track initial=ChannelEngine.view(next,path,PathRegistry.config());
             Track state=initial;
             if (!state.joined()) continue;
-
-            // Independent Path activity sources share the canonical MXP ledger.
-            // Not an XP mirror: only separately configured verified signals pay.
-            var catalog=PathRegistry.economyCatalog();
-            for(var award:PathRegistry.config().unifiedSources().getOrDefault(path.id(),List.of())){
-                if(!signal.matches(award.event(),award.selector()) ||
-                    !PathRegistry.economyEligible(player,award.systemId()))continue;
-                String first=award.oncePerTarget()
-                        ?award.firstCompletionKey(path.id(),signal.target()):null;
-                String action=first!=null ? first : "activity:"+UUID.randomUUID();
-                next=ChannelEngine.awardConfigured(next,catalog,award.systemId(),
-                    award.category(),action,first,award.nominal(),false,
-                    io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(
-                        player,catalog.growth(award.systemId()),award.systemId()));
-            }
 
             for (Definition.Milestone milestone : path.milestones()) {
                 if (state.completed(milestone.id())) continue;
@@ -330,17 +331,12 @@ public final class ProgressionApi {
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         // One permanent receipt per distinct Path trial, independent
                         // of the ordinary event's independent scaled earning.
-                        if(milestone.fixedRewardXp()>0 && PathRegistry.economyEligible(
-                                player,milestone.fixedRewardSystem())) {
-                            var rewardCatalog=PathRegistry.economyCatalog();
-                            next=ChannelEngine.awardConfigured(next,rewardCatalog,
+                        if(milestone.fixedRewardXp()>0) {
+                            next=ExperienceSourceRouter.award(player,next,
                                 milestone.fixedRewardSystem(),"tyr_progression:path_trial",
                                 "trial:"+path.id()+"/"+milestone.id(),
                                 path.id()+"/"+milestone.id(),
-                                BigDecimal.valueOf(milestone.fixedRewardXp()),true,
-                                io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth.effective(
-                                    player,rewardCatalog.growth(milestone.fixedRewardSystem()),
-                                    milestone.fixedRewardSystem()));
+                                BigDecimal.valueOf(milestone.fixedRewardXp()),true);
                         }
                         changed = true;
                     }
@@ -470,6 +466,14 @@ public final class ProgressionApi {
         var result=ExperienceModifiers.earn(player,prior,spec,sourceCategory,transaction,
                 completionId,nominalXp,fixed,catalog.growth(systemId));
         return result.accepted()&&publishAward(player,prior,prior.withEconomy(result.ledger()));
+    }
+
+    /** One authenticated event, potentially several independently configured categories. */
+    public static boolean awardSourceBatch(ServerPlayer player,String transaction,
+            List<XpSourceRouting.Candidate> candidates) {
+        if(!eligibleEarner(player))return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        return publishAward(player,prior,ExperienceSourceRouter.batch(player,prior,transaction,candidates));
     }
 
     /** Existing trusted server consumers may grant a native-style source award. */
