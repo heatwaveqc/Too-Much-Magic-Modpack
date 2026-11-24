@@ -3,11 +3,12 @@
 
 Downloads only the two exact signed Packwiz provider URLs into a temporary
 directory, verifies complete SHA-512, then uses Java 21 javap to assert the
-native JAWR blood and BnC cooked sausage types are present.
+native JAWR blood API and candidate sausage provider binary evidence.
 """
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -90,9 +91,58 @@ def class_text(jar: Path, clazz: str) -> str:
     return result.stdout
 
 
+
+# Exact integration roster pins observed 2026-11-24. The feature branch
+# does not own mod pins; integrator must reconcile these at promotion.
+SAUSAGE_PROVIDERS = {
+    "pamhc2foodextended:sausageitem": (6221521, "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar", "0cf7f668fdedef93446f33215484913991185102"),
+    "brewery:sausage": (9150302, "letsdo-brewery-neoforge-2.1.13.jar", "20e30e1a182fdfbfff3df91f43e068a16e04798e"),
+    "mynethersdelight:roasted_sausage": (8854319, "MyNethersDelight-1.21.1-1.10.4.1.jar", "9c54439d65e77c7b4b711831138f81f3a849ff35"),
+}
+
+
+def check_sausage_candidates(directory: Path) -> None:
+    from urllib.parse import quote
+    tag = ROOT / "compat/progression/src/main/resources/data/c/tags/item/foods/sausages.json"
+    data = json.loads(tag.read_text(encoding="utf-8"))
+    expected = [{"id": item, "required": False} for item in SAUSAGE_PROVIDERS]
+    if data != {"replace": False, "values": expected}:
+        raise ValueError("Cooked sausage tag changed: reconcile exact provider evidence")
+    for item, (file_id, filename, sha1) in SAUSAGE_PROVIDERS.items():
+        namespace, name = item.split(":")
+        url = f"https://mediafilez.forgecdn.net/files/{file_id // 1000}/{file_id % 1000:03d}/{quote(filename)}"
+        jar = directory / filename
+        digest = hashlib.sha1()
+        count = 0
+        with urlopen(url, timeout=60) as response, jar.open("wb") as output:
+            for part in iter(lambda: response.read(1024 * 1024), b""):
+                count += len(part)
+                if count > MAX_BYTES:
+                    raise ValueError(f"{item}: download exceeded maximum bytes")
+                digest.update(part)
+                output.write(part)
+        if digest.hexdigest() != sha1:
+            raise ValueError(f"{item}: publisher bytes do not match frozen Packwiz SHA-1")
+        with ZipFile(jar) as archive:
+            names = archive.namelist()
+            models = [p for p in names if p == f"assets/{namespace}/models/item/{name}.json"]
+            recipes = []
+            for p in names:
+                if not p.startswith(f"data/{namespace}/") or "/recipe" not in p or not p.endswith(".json"):
+                    continue
+                raw = archive.read(p)
+                if item.encode() in raw:
+                    recipes.append(p)
+                    print(f"REVIEW {item} recipe {p}: {raw.decode('utf-8')[:3000]}", flush=True)
+            if not models and not recipes:
+                raise ValueError(f"{item}: no exact model or recipe reference found in pinned JAR")
+            print(f"PASS {item}: exact SHA-1 + model/recipe evidence; review cooking and FOOD properties separately", flush=True)
+
+
 def main() -> int:
     try:
         with tempfile.TemporaryDirectory(prefix="tmm-cuisine-abi-") as tmp:
+            check_sausage_candidates(Path(tmp))
             for mod_id, path in PINS.items():
                 jar = Path(tmp) / (mod_id + ".jar")
                 download(ROOT / path, jar)
@@ -120,7 +170,7 @@ def main() -> int:
     except (OSError, ValueError, KeyError, subprocess.TimeoutExpired) as exc:
         print("FAIL #450 pinned JAWR/food ABI: " + str(exc), file=sys.stderr)
         return 1
-    print("TYPE A native JAWR blood + BnC item registry verified. Wine and Sausage remain dependency-gated; no gameplay PASS.")
+    print("TYPE A native JAWR blood + BnC item registry verified. Bloody Sausage candidate binary evidence collected; food properties and runtime tag review remain. Wine deferred; no gameplay PASS.")
     return 0
 
 
