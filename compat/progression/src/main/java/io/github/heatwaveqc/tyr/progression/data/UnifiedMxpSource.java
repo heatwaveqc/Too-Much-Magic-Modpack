@@ -22,6 +22,12 @@ public record UnifiedMxpSource(String systemId,String category,String event,
            (oncePerTarget && !"advancement".equals(event)))
             throw new IllegalArgumentException("Unsafe shared XP source");
     }
+    /** Bounded, deterministic receipt even for unusually long modded registry IDs. */
+    public String firstCompletionKey(String path,String trustedTarget) {
+        String scope=path+"|"+category+"|"+trustedTarget;
+        return "first:"+java.util.UUID.nameUUIDFromBytes(
+            scope.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+    }
     public static List<UnifiedMxpSource> parse(JsonObject path,Map<String,XpChannel> systems) {
         if(!path.has("unified_mxp_sources"))return List.of();
         var result=new ArrayList<UnifiedMxpSource>();
