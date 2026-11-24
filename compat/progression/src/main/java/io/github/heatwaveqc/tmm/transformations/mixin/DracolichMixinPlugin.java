@@ -18,12 +18,13 @@ public final class DracolichMixinPlugin implements IMixinConfigPlugin {
                 && pinned(list, "geckolib", "4.9.3");
         return switch (hook) {
             case "GoetyDracolichAcquisitionMixin" ->
-                pinned(list, "goety", "3.2.2");
+                pinned(list, "goety", "3.2.3");
             case "ForbiddenMagicDracolichAcquisitionMixin" ->
                 pinned(list, "witchery_forbidden_magic", "0.5.37");
             case "DragonSurvivalDeathRepeatMixin", "NewbieDragonAcquisitionMixin" ->
                 pinned(list, "dragonsurvival", "2.0.74");
-            case "NewbieVampireAcquisitionMixin", "NewbieWerewolfAcquisitionMixin" ->
+            case "NewbieVampireAcquisitionMixin", "NewbieWerewolfAcquisitionMixin",
+                 "JawrVampireFoodPenaltyMixin" ->
                 pinned(list, "witchery", "0.5.39");
             case "BotaniaThermalilyNoCooldownMixin", "BotaniaThermalilyFiftyEndoflamesMixin" ->
                 pinned(list, "botania", "2.0.2");

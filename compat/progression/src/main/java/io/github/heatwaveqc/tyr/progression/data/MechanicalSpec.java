@@ -74,7 +74,7 @@ public final class MechanicalSpec {
                 if(fx.weapon().isEmpty()||fx.weapon().equals("*")||fx.tier()<1||fx.tier()>3)
                     throw new IllegalArgumentException("Held harvest permission needs scoped weapon and vanilla tier");
             }
-            case "food_restriction" -> {bounded(a,0,1);scoped(fx);bool(p,"gold_recipes",false);bool(p,"lava_caught",false);bool(p,"drink_permission",false);}
+            case "food_restriction" -> {bounded(a,0,1);scoped(fx);bool(p,"gold_recipes",false);bool(p,"lava_caught",false);bool(p,"drink_permission",false);bool(p,"baseline_alcohol",false);}
             case "ore_practice","lava_fishing_practice" -> {
                 bounded(a,0,1);if(type.equals("ore_practice"))scoped(fx);
                 if(!p.getOrDefault("event","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Explicit practice event ID required");
