@@ -42,6 +42,25 @@ class ExternalRewardPolicyTest {
         assertEquals(4,ExperienceEconomy.available(plan.charged(),MXP));
     }
 
+    @Test void tmmAstralMasteryHas263FlatPricePurchases() {
+        var sale=offer(1,0,263);
+        var initial=withEarnedMxp(300000);
+        var state=initial;
+        for (int i=1;i<=263;i++) {
+            assertEquals(1,ExternalRewardPolicy.price(sale,i-1));
+            var plan=ExternalRewardPolicy.prepare(state,MXP,sale);
+            assertNotNull(plan);
+            assertEquals(i,plan.purchaseIndex());
+            assertEquals(1,plan.pricePoints());
+            state=plan.charged();
+        }
+        assertEquals(263,ExternalRewardPolicy.owned(state,sale));
+        assertEquals(37,ExperienceEconomy.available(state,MXP));
+        assertEquals(initial.currentXp(),state.currentXp());
+        assertEquals(-1,ExternalRewardPolicy.price(sale,263));
+        assertNull(ExternalRewardPolicy.prepare(state,MXP,sale));
+    }
+
     @Test void disabledUntilOwnerSetsAnActualMxpPrice() {
         var disabled=offer(0,0,0);
         assertEquals(-1,ExternalRewardPolicy.price(disabled,0));

@@ -1,7 +1,7 @@
 {
   "kind": "astral_perk_token",
   "currency": "tyr_progression:mxp",
-  "base_points": 0,
+  "base_points": 1,
   "step_points": 0,
-  "max_purchases": 0
+  "max_purchases": 263
 }
