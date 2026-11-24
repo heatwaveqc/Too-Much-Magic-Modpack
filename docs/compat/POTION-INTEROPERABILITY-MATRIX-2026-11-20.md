@@ -2,6 +2,16 @@
 
 **Status:** Design/research v0.6, 2026-11-20. Owner-approved preservation and anti-progression-bypass goals; no executable gameplay changes authorized by this document. Owner decision issue: [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337). Target: Minecraft 1.21.1 NeoForge; inspect installed build before claiming PASS.
 
+## Controlling owner decisions and source disposition — 2026-11-24
+
+This section supersedes earlier open choices and implementation alternatives below; the 23-provider / 24-transaction matrix is a dated source research artifact, not a current runtime claim. Historical source references and observed limitations remain useful. See [#337](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/337) for current slice ownership and [#622](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/622) for integrated exact-pinned ABI checks and refusal/initial charm bridge. The current charm follow-up is separate Economy work, not a blocker to accepting this research.
+
+- **ALCH-01:** native potion interactions and already integrated lossless refusal guards await authorized gameplay tests. C03/C10 expect safe refusal before any debit for Neo Vitae multi-dose carriers; ordinary single bottles remain native. Preserve actual flask components, charges and recipe costs.
+- **ALCH-02:** optional individual-dose adapters for Iron's Alchemist Cauldron and Occultism Demonic Partner are indefinitely deferred. A safe refusal is accepted behavior. No more design vote or release blocker.
+- **ALCH-03:** all registered vanilla/modded effects are charm-eligible if actual ordinary potion contents contain exactly one noninstant effect. Preserve exact holder/effects/amplifier/duration/color, three matching ordinary bottles, native materials, durability/refresh, reject instant/zero/multiple or incompatible carrier; no effect-specific allowlist, blacklist or flight/omen exclusions. Reconcile existing #622 restrictions in Economy follow-up. This overrides earlier P12/C19/C20 and D5 eligibility holds; no global potion blacklist change.
+- Preserve EvilCraft native extraction and spouse amplification; no anti-loop restriction or special provenance change absent new concrete QA evidence. Wixie may craft Bio-Mutagen and ordinary compatible potions, not finished Mutagenic Brew by a generic adapter. Hunter permanent flight restriction remains separate; current shared Progression mutation policy uses configurable vanilla blacklist and modded whitelist, not the old namespace/field in this historical document. No new Hunter eligibility or reward decisions inferred.
+- Exact upstream references below are source-family evidence where labeled, not pinned-bytecode or gameplay results. #622 checks cover its own safety bridges; all remaining exact native carrier/provider questions, effective effect/recipe census, and B/C go to the responsible Economy/Progression/QA owners under #337, not to a duplicate coding pass on this doc. No full build or gameplay authorization.
+
 ## Why this is not just a potion-container chart
 
 Potion interoperability crosses five independent boundaries:

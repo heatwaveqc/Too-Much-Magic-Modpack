@@ -27,7 +27,7 @@ jobs:
         run: |
           python compat/progression/design/jawr-forms/build_preview.py --check
           python -m unittest discover -s compat/progression/design/jawr-forms -p 'test_*.py' -v
-          cmp compat/progression/design/jawr-forms/catalog.json compat/progression/src/main/resources/tmm-form-skills.json
+          cmp compat/progression/design/jawr-forms/catalog.json compat/progression/src/main/resources/tyr-form-skills.json
           if grep -E '"active"[[:space:]]*:[[:space:]]*true' compat/progression/design/jawr-forms/catalog.json; then exit 1; fi
           test ! -e mods/tmm-form-skills.pw.toml
           test ! -e mods/tmm-mxp.pw.toml

@@ -1,0 +1,35 @@
+name: Dual-channel QA A runner unit tests (offline only)
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa_compare_channels.py'
+      - 'tests/test_qa_compare_channels.py'
+      - '.github/workflows/qa-dual-channel-a-quick.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-contract-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile CLI and tests (no Minecraft)
+        run: python -m py_compile scripts/qa_compare_channels.py tests/test_qa_compare_channels.py
+      - name: Run differential selection and metadata integrity unit tests
+        run: python tests/test_qa_compare_channels.py
+      - name: Checkout frozen 222-mod control and experimental packwiz snapshots
+        run: |
+          git worktree add --detach ../tmm-u f34a369d037bee0bab32069f50f9a558f4cd5e85
+          git worktree add --detach ../tmm-e 69e1fd20f0c012f9ad4b1cc0095199a6fe4719ee
+      - name: Verify actual four-pin diff and Packwiz hash chain (plan only)
+        run: |
+          python scripts/qa_compare_channels.py --unstable ../tmm-u --unstable-sha f34a369d037bee0bab32069f50f9a558f4cd5e85 --experimental ../tmm-e --experimental-sha 69e1fd20f0c012f9ad4b1cc0095199a6fe4719ee --require-four-updates --report "$RUNNER_TEMP/tmm-two-build-plan.json"

@@ -1,0 +1,341 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    45,
+    58,
+    43
+  ],
+  "surfaceY": 1,
+  "nonair": 8725,
+  "explicitAir": 51261,
+  "paletteStates": 31,
+  "zones": {
+    "scribe": [
+      21,
+      2,
+      10,
+      27,
+      6,
+      16
+    ],
+    "imbuement": [
+      21,
+      10,
+      13,
+      27,
+      15,
+      19
+    ],
+    "apparatus": [
+      19,
+      18,
+      11,
+      29,
+      23,
+      21
+    ],
+    "addon": [
+      19,
+      34,
+      11,
+      27,
+      38,
+      21
+    ],
+    "upper_study": [
+      19,
+      42,
+      11,
+      27,
+      45,
+      21
+    ],
+    "outdoor_ritual": [
+      11,
+      2,
+      30,
+      29,
+      56,
+      41
+    ],
+    "source_garden": [
+      33,
+      2,
+      6,
+      43,
+      56,
+      25
+    ],
+    "creature_yard": [
+      32,
+      2,
+      29,
+      43,
+      56,
+      41
+    ]
+  },
+  "stairTreadChecks": 80,
+  "landingChecks": 5,
+  "floorRouteChecks": 15,
+  "apparatus": [
+    24,
+    19,
+    16
+  ],
+  "apparatusPedestals": [
+    [
+      21,
+      18,
+      13
+    ],
+    [
+      21,
+      18,
+      15
+    ],
+    [
+      21,
+      18,
+      17
+    ],
+    [
+      21,
+      18,
+      19
+    ],
+    [
+      23,
+      18,
+      13
+    ],
+    [
+      23,
+      18,
+      15
+    ],
+    [
+      23,
+      18,
+      17
+    ],
+    [
+      23,
+      18,
+      19
+    ],
+    [
+      25,
+      18,
+      13
+    ],
+    [
+      25,
+      18,
+      15
+    ],
+    [
+      25,
+      18,
+      17
+    ],
+    [
+      25,
+      18,
+      19
+    ],
+    [
+      27,
+      18,
+      13
+    ],
+    [
+      27,
+      18,
+      15
+    ],
+    [
+      27,
+      18,
+      17
+    ],
+    [
+      27,
+      18,
+      19
+    ]
+  ],
+  "imbuement": [
+    24,
+    10,
+    16
+  ],
+  "imbuementPedestals": [
+    [
+      23,
+      10,
+      15
+    ],
+    [
+      23,
+      10,
+      17
+    ],
+    [
+      25,
+      10,
+      15
+    ],
+    [
+      25,
+      10,
+      17
+    ]
+  ],
+  "imbuementJar": [
+    24,
+    10,
+    14
+  ],
+  "apparatusJars": [
+    [
+      24,
+      18,
+      22
+    ],
+    [
+      24,
+      18,
+      10
+    ]
+  ],
+  "sourceBays": [
+    [
+      [
+        40,
+        2,
+        9
+      ],
+      [
+        42,
+        2,
+        9
+      ]
+    ],
+    [
+      [
+        40,
+        2,
+        14
+      ],
+      [
+        42,
+        2,
+        14
+      ]
+    ],
+    [
+      [
+        40,
+        2,
+        20
+      ],
+      [
+        42,
+        2,
+        20
+      ]
+    ],
+    [
+      [
+        34,
+        2,
+        21
+      ],
+      [
+        36,
+        2,
+        21
+      ]
+    ],
+    [
+      [
+        38,
+        2,
+        23
+      ],
+      [
+        40,
+        2,
+        23
+      ]
+    ]
+  ],
+  "ritualBrazier": [
+    20,
+    2,
+    36
+  ],
+  "ritualJars": [
+    [
+      15,
+      2,
+      36
+    ],
+    [
+      25,
+      2,
+      36
+    ]
+  ],
+  "starterChest": {
+    "pos": [
+      27,
+      2,
+      8
+    ],
+    "items": [
+      "ars_nouveau:scribes_table",
+      "ars_nouveau:imbuement_chamber",
+      "ars_nouveau:source_jar",
+      "ars_nouveau:source_jar"
+    ]
+  },
+  "decodedNbtBlocks": 59986,
+  "rawSha256": "d09aa4d84a38210a25f7e89311e221587a0eb629456932e45c9a7c630d066e2d",
+  "gzipSha256": "28755f3ab927076fdea636a8fa3f3749f94bebbd1d0c6d1a0c2d666289e6db9a",
+  "gzipBytes": 155256,
+  "counts": {
+    "ars_nouveau:archwood_planks": 2106,
+    "ars_nouveau:archwood_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 32,
+    "ars_nouveau:archwood_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 48,
+    "ars_nouveau:sourcestone": 56,
+    "minecraft:air": 51261,
+    "minecraft:amethyst_block": 100,
+    "minecraft:barrel[facing=up,open=false]": 7,
+    "minecraft:blue_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:blue_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:bookshelf": 18,
+    "minecraft:budding_amethyst": 16,
+    "minecraft:calcite": 1632,
+    "minecraft:carrots[age=0]": 22,
+    "minecraft:chest[facing=south,type=single,waterlogged=false]": 1,
+    "minecraft:crafting_table": 1,
+    "minecraft:deepslate_tiles": 729,
+    "minecraft:dirt_path": 126,
+    "minecraft:farmland[moisture=7]": 44,
+    "minecraft:furnace[facing=north,lit=false]": 1,
+    "minecraft:grass_block[snowy=false]": 393,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 24,
+    "minecraft:lightning_rod[facing=up,powered=false,waterlogged=false]": 1,
+    "minecraft:purple_stained_glass": 544,
+    "minecraft:purple_terracotta": 680,
+    "minecraft:spruce_door[facing=north,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:spruce_door[facing=north,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:stone_bricks": 2108,
+    "minecraft:water[level=0]": 6,
+    "minecraft:wheat[age=0]": 22
+  }
+}

@@ -1,0 +1,26 @@
+name: Creative survival 596 source-only guards
+
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/botania/recipe/creative/**'
+      - 'scripts/verify_botania_creative_bans.py'
+      - 'tests/test_botania_creative_bans.py'
+      - 'docs/qa/CREATIVE-SURVIVAL-BOTANIA-596.md'
+      - '.github/workflows/creative-survival-596-quick.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  creative-recipes-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source only
+        uses: actions/checkout@v4
+      - name: Python static validator
+        run: python3 scripts/verify_botania_creative_bans.py
+      - name: Source-only regression tests
+        run: python3 -m unittest discover -s tests -p 'test_botania_creative_bans.py'

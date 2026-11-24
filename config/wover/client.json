@@ -3,6 +3,6 @@
     "did_present_welcome_screen": true
   },
   "general": {
-    "force_betterx_world_type": false
+    "force_betterx_world_type": true
   }
 }

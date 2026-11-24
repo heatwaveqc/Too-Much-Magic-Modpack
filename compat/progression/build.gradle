@@ -6,10 +6,6 @@ version = project.mod_version
 group = project.mod_group_id
 base { archivesName = project.mod_id }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-repositories {
-    // Optional Tyz public compile API for source-registered IMMUTABLE form prefabs.
-    maven { url 'https://jitpack.io' }
-}
 neoForge {
     version = project.neo_version
     runs {
@@ -18,9 +14,14 @@ neoForge {
     }
     mods { "${mod_id}" { sourceSet(sourceSets.main) } }
 }
+// Source-only optional integration with the exact 1.21.1 Jade pin from
+// test/full-integration/mods/jade.pw.toml. Compile against the native API;
+// never bundle Jade or require it for Progression-only installs.
+repositories {
+    maven { url = 'https://api.modrinth.com/maven' }
+}
 dependencies {
-    // Runtime optional: handlers are gated on installed Tyz 6.4.2 + JAWR.
-    compileOnly 'com.github.Tyzbrand:TyzsSkills:6.4.2'
+    compileOnly('maven.modrinth:jade:15.10.6+neoforge') { transitive = false }
     testImplementation 'com.google.code.gson:gson:2.11.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -45,4 +46,5 @@ neoForge.ideSyncTask generateModMetadata
 tasks.withType(Jar).configureEach {
     from('LICENSE')
     from('THIRD_PARTY_NOTICES.md')
+    from('third_party_licenses') { into 'third_party_licenses' }
 }

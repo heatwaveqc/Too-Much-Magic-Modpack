@@ -1,0 +1,13 @@
+name = "Crispy!"
+filename = "crispy-1.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "a5921b81094120294c9031f5749b91701ed44e94"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6447126
+project-id = 1206986

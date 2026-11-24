@@ -1,0 +1,13 @@
+{
+  "canReveal": true,
+  "canSpawn": true,
+  "canWanderBuy": false,
+  "linkedProfessions": [],
+  "objectives": [
+    "tmm_hunting_objs"
+  ],
+  "replace": true,
+  "rewards": [
+    "tmm_hunting_rews"
+  ]
+}

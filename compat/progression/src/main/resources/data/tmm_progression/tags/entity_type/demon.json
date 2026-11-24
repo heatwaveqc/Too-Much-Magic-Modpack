@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "#witchery:demonic_entity",
-      "required": false
-    }
-  ]
-}

@@ -1,0 +1,16 @@
+{
+  "key.categories.tyr_progression": "Tyr Progression",
+  "key.tyr_progression.blink": "Blink",
+  "key.tyr_progression.armor": "Toggle Monk Armor Lock",
+  "key.tyr_progression.treasure": "Toggle Treasure Hand Fortune / Silk",
+  "key.tyr_progression.glide": "Toggle Momentum Glide",
+  "key.tyr_progression.ordeal": "Start / Abort Blindness Ordeal",
+  "item.tyr_progression.bio_mutagen": "Bio-Mutagen",
+  "item.tyr_progression.mutagenic_brew": "Mutagenic Brew",
+  "tooltip.tyr_progression.mutagenic_brew": "Hunter-only mutation progress. Non-Hunters suffer Wither II for five minutes. No potion effect is granted.",
+  "message.tyr_progression.mutagenic_brew_non_hunter": "The mutagen rejects your body! Wither II (5:00).",
+  "message.tyr_progression.mutagenic_brew_no_progress": "Mutation unavailable or already complete; the brew was not consumed.",
+  "key.tyr_progression.skills": "Open Discipline Skills",
+  "key.tyr_progression.enhanced_night_vision": "Toggle Enhanced Night Vision",
+  "key.tyr_progression.lava_vision": "Toggle Lava Vision"
+}

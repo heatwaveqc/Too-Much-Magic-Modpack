@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "status": "QA_PREVIEW_ONLY",
+  "source_contract": "https://github.com/veyne0/prefab-custom-addon-github/blob/1.21.1-main/src/main/java/com/prefab/addon/extension/ExtensionPackManager.java",
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "dependencies": {
+    "prefab": "1.0.9 candidate, approved but not pinned",
+    "customAddon": "compatible 1.21.1 release required; exact hash pending",
+    "ldlib": "LDLib2 compatible with selected addon release; exact hash pending"
+  },
+  "paths": {
+    "client": "prefab-extension",
+    "dedicatedServer": "prefab-extension/server-cache"
+  },
+  "templates": [
+    {
+      "id": "wizard_tower",
+      "theme": "Ars Nouveau",
+      "source": "Vanillin wizardtower.nbt",
+      "filename": "wizard_tower.nbt",
+      "sha256": "2824e93a84dbaa3c18c43e22de16a04ca5f4162b2bed29495538965329f0825c",
+      "packName": "wizard_tower",
+      "constructionId": "wizard_tower",
+      "grant": false
+    },
+    {
+      "id": "celestial_observatory",
+      "theme": "Astral Sorcery",
+      "source": "Thun observatory.nbt",
+      "filename": "celestial_observatory.nbt",
+      "sha256": "a01b036d22fecf95ab54a08065dc637ecb07f37f7d7da4e5af6e4dd4a38ec875",
+      "packName": "celestial_observatory",
+      "constructionId": "celestial_observatory",
+      "grant": false
+    },
+    {
+      "id": "witch_cottage",
+      "theme": "Enchanted",
+      "source": "Thun witchhut.nbt",
+      "filename": "witch_cottage.nbt",
+      "sha256": "d8a696fbaf9b609e031f1bb15ca7d16f5d8d9466087f512c0b03c9a9a6fe44fb",
+      "packName": "witch_cottage",
+      "constructionId": "witch_cottage",
+      "grant": false
+    },
+    {
+      "id": "sanguine_temple",
+      "theme": "Neo Vitae",
+      "source": "CedricD0812 japanese-house.schem",
+      "filename": "sanguine_temple.nbt",
+      "sha256": "84548c9df42636592bbe3b17084566f292595123702b98e589380745a4467b0a",
+      "packName": "sanguine_temple",
+      "constructionId": "sanguine_temple",
+      "grant": false
+    },
+    {
+      "id": "hearthkeeper",
+      "theme": "Roots Classic / cozy mods",
+      "source": "Thun hobbithole.nbt",
+      "filename": "hearthkeeper.nbt",
+      "sha256": "4eddfbc3f6a046c935a66962913f149e52f2c98e1164bf0fd66c97dbd410924d",
+      "packName": "hearthkeeper",
+      "constructionId": "hearthkeeper",
+      "grant": false
+    },
+    {
+      "id": "dark_citadel_trial",
+      "theme": "Goety",
+      "source": "Thun graveyard.nbt",
+      "filename": "dark_citadel_trial.nbt",
+      "sha256": "62cd467e6a4579fc081967cdcbf2835a683ae90ea75f43b061616fdf2d744b0e",
+      "packName": "dark_citadel_trial",
+      "constructionId": "dark_citadel_trial",
+      "grant": false
+    },
+    {
+      "id": "arcane_sanctum_trial",
+      "theme": "Primal Magick",
+      "source": "Thun stonehenge.nbt",
+      "filename": "arcane_sanctum_trial.nbt",
+      "sha256": "1f4f4d80e892f8a73eafe29a3315bf234ac9807feccfabbf1f45549b06bea8e1",
+      "packName": "arcane_sanctum_trial",
+      "constructionId": "arcane_sanctum_trial",
+      "grant": false
+    },
+    {
+      "id": "elven_treehouse_trial",
+      "theme": "Botania",
+      "source": "Thun treehouse.nbt",
+      "filename": "elven_treehouse_trial.nbt",
+      "sha256": "c0176547e239482cef3ea795a88c681e3b45405b68969f2058ec643cd3d38899",
+      "packName": "elven_treehouse_trial",
+      "constructionId": "elven_treehouse_trial",
+      "grant": false
+    }
+  ],
+  "pending": [
+    [
+      "arcane_forge",
+      "Mimicry raw binary already in branch; palette audit/normalization pending"
+    ],
+    [
+      "mages_academy",
+      "Faerithia conditional, no donor file"
+    ],
+    [
+      "dwarven_foundry",
+      "Faerithia conditional, no donor file"
+    ],
+    [
+      "generic",
+      "retain built-in Prefab house"
+    ],
+    [
+      "castaways_retreat",
+      "new fishing bungalow, targeted inclusion; original design and rod reward pending"
+    ]
+  ],
+  "originalDesigns": [
+    "summoners_lodge",
+    "chromatic_manor",
+    "witchs_manor",
+    "elven_garden",
+    "spirit_shrine"
+  ],
+  "note": "Elven treehouse is an alternate for the existing Botania slot, not an additional starter grant. Architecture previews only: no station/loot rewards, no production release or claimed compatibility."
+}
