@@ -81,6 +81,42 @@ public final class ExperienceEconomyConfig {
         }
     }
 
+    /** Validate cross-resource references before publishing any new reload snapshot.
+     * Sources and achievements can be registered by trusted external adapters;
+     * unlike Paths and skills they are not a closed catalog. */
+    public static void validateReferences(Catalog catalog,
+            Map<String,io.github.heatwaveqc.tyr.progression.model.Definition.Path> paths,
+            Set<String> nativeSystemIds) {
+        for(String id:nativeSystemIds)
+            if(catalog.systems().containsKey(id))
+                throw new IllegalArgumentException("Duplicate native/configured XP system "+id);
+        for(var row:catalog.routing().policies().entrySet()){
+            String required=row.getValue().requiredPath();
+            if(!required.isEmpty()&&!paths.containsKey(required))
+                throw new IllegalArgumentException("Unknown earning Path "+required+" for "+row.getKey());
+        }
+        for(var key:catalog.pathChanges().keySet())
+            if(!paths.containsKey(key.path()))
+                throw new IllegalArgumentException("Unknown XP transition Path "+key.path());
+        for(var row:catalog.skills().entrySet()){
+            var tree=paths.get(row.getKey().path());
+            var skill=tree==null?null:tree.skill(row.getKey().skill());
+            if(skill==null||!skill.autoRanks().isEmpty()||row.getValue().totalRankCap()>skill.maxRank())
+                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
+        }
+        for(var rule:catalog.modifiers()){
+            if(rule.path().isEmpty())continue;
+            var tree=paths.get(rule.path());
+            if(tree==null)
+                throw new IllegalArgumentException("Unknown modifier Path "+rule.path()+" in "+rule.modifier().id());
+            if(rule.skill().isEmpty())continue;
+            var skill=tree.skill(rule.skill());
+            if(skill==null||rule.minRank()>skill.maxRank()
+                    ||rule.effectIndex()!=null&&rule.effectIndex()>=skill.effects().size())
+                throw new IllegalArgumentException("Invalid modifier skill/rank/effect "+rule.modifier().id());
+        }
+    }
+
     /** Bootstrap only; active pack values are loaded from the datapack on reload. */
     public static Catalog tmmDefault() {
         var mxp=SystemSpec.mxp();

@@ -81,6 +81,14 @@ public final class ElixirRuntime {
     }
     /** Returns true when the special repeatable payment replaces ordinary meditative payment. */
     public static boolean finished(ServerPlayer p,String path,TrainingXpSpec rates,ItemStack consumed){
+        var awards=new java.util.ArrayList<io.github.heatwaveqc.tyr.progression.data.XpSourceRouting.Candidate>();
+        boolean replaces=finished(p,path,rates,consumed,awards);
+        io.github.heatwaveqc.tyr.progression.core.ProgressionApi.awardSourceBatch(
+                p,"training:"+UUID.randomUUID(),awards);
+        return replaces;
+    }
+    static boolean finished(ServerPlayer p,String path,TrainingXpSpec rates,ItemStack consumed,
+            java.util.List<io.github.heatwaveqc.tyr.progression.data.XpSourceRouting.Candidate> awards){
         var spec=spec(p,path);if(spec==null||consumed.isEmpty()||ElixirSpec.excluded(id(consumed)))return false;
         String item=id(consumed),before=binding(p,path);
         String bound=ElixirSpec.nextBinding(before,item,candidate(spec,consumed));
@@ -105,7 +113,7 @@ public final class ElixirRuntime {
                 });
             }
         }finally{GRANTING.remove();}
-        TrainingRewards.award(p,path,rates,"elixir",BigDecimal.valueOf(spec.fixedMxp()),true,null);
+        awards.add(TrainingRewards.candidate(rates,"elixir",BigDecimal.valueOf(spec.fixedMxp()),true,null));
         return !spec.stackMeditative();
     }
     public static void resetPath(ServerPlayer p,String path){

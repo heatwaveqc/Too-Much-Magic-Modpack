@@ -213,14 +213,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
-        // A declared multi-currency purchase must reference a real loaded skill.
-        for(var row:economy.skills().entrySet()){
-            var tree=next.get(row.getKey().path());
-            var skill=tree==null?null:tree.skill(row.getKey().skill());
-            if(skill==null || !skill.autoRanks().isEmpty()
-                || row.getValue().totalRankCap()>skill.maxRank())
-                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
-        }
+        ExperienceEconomyConfig.validateReferences(economy,next,experience.keySet());
         if(!economy.systems().containsKey(XpChannel.MXP))
             throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
         var nextCompatibility=PathCompatibility.parse(rawPaths,next);

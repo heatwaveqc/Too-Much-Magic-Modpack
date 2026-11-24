@@ -130,7 +130,7 @@ public final class NativePhysiologyObservations {
             pinned("witchery", "0.5.39", player, p ->
                 attachmentFlag(JAWR + "werewolf.WerewolfPlayerAttachment", "isWerewolf", p)));
         found.put(Form.GOETY_LICH,
-            pinned("goety", "3.2.2", player, NativePhysiologyObservations::goetyLich));
+            pinned("goety", "3.2.3", player, NativePhysiologyObservations::goetyLich));
         found.put(Form.FORBIDDEN_MAGIC_LICH,
             pinned("witchery_forbidden_magic", "0.5.37", player, p ->
                 attachmentFlag(FORBIDDEN, "isLich", p)));
