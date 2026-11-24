@@ -83,14 +83,23 @@ public final class ExperienceEconomyConfig {
         Map<String, Double> growth = new HashMap<>();
         for (JsonElement element : root.getAsJsonArray("systems")) {
             JsonObject j = element.getAsJsonObject();
-            only(j, "id", "xp_per_point", "growth_factor", "max_level", "max_base_award");
+            only(j, "id", "xp_per_point", "growth_factor", "max_level", "max_base_award",
+                    "min_reward", "round_subminimum_up");
             String id = required(j, "id");
             BigDecimal threshold = number(j, "xp_per_point", "1000");
             BigDecimal awardCap = number(j, "max_base_award", "1e12");
             long maxLevel = j.has("max_level")
                     ? j.get("max_level").getAsBigDecimal().longValueExact()
                     : ExperienceEconomy.HARD_MAX_LEVEL;
-            var spec = new SystemSpec(id, threshold, maxLevel, awardCap);
+            BigDecimal minReward = number(j, "min_reward", ExperienceEconomy.HARD_MIN_REWARD.toString());
+            boolean roundUp = false;
+            if (j.has("round_subminimum_up")) {
+                var value = j.get("round_subminimum_up");
+                if (!value.isJsonPrimitive() || !value.getAsJsonPrimitive().isBoolean())
+                    throw new IllegalArgumentException("round_subminimum_up must be boolean");
+                roundUp = value.getAsBoolean();
+            }
+            var spec = new SystemSpec(id, threshold, maxLevel, awardCap, minReward, roundUp);
             double base = ExperienceEconomy.validateGrowth(
                     j.has("growth_factor") ? j.get("growth_factor").getAsDouble() : 1.02);
             if (systems.putIfAbsent(id, spec) != null)
