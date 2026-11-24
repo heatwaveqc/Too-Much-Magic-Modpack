@@ -23,9 +23,9 @@ The Lich is a **personally funded necromancer** with a durable undead host, opti
 | Undead Host | 5 | 25 |
 | Deathless Form | 5 | 20 |
 | Soul Preservation | 3 | 10 |
-| **Total** | **21** | **100** |
+| **Total** | **22** | **100** |
 
-Every rank costs exactly **1 advancement point** (21 purchased nodes, 100 separate one-point ranks). These 100 points describe the maximum legal one-character shared Lich tree. The old 12-skill 25/25/25/25 proportional placeholder is superseded, as are historical Tyz point prices. Numerical effects must be audited before integration.
+Every rank costs exactly **1 advancement point** (22 purchased nodes, 100 separate one-point ranks). These 100 points describe the maximum legal one-character shared Lich tree. The old 12-skill 25/25/25/25 proportional placeholder is superseded, as are historical Tyz point prices. Numerical effects must be audited before integration.
 
 ## All proposed skills and effects
 
