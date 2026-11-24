@@ -53,6 +53,12 @@ public final class PersonalEnchantFilterState {
 
     public long revision() { return revision; }
 
+    /** Restore the revision from the same native persisted compound as the books. */
+    public PersonalEnchantFilterState restoreRevision(long persistedRevision) {
+        if (persistedRevision < 0) throw new IllegalArgumentException("Negative filter revision");
+        return new PersonalEnchantFilterState(slots, persistedRevision);
+    }
+
     public List<ItemStack> books() {
         return slots.stream().map(ItemStack::copy).toList();
     }
