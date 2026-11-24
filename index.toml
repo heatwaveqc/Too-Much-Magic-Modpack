@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/ProjectE/custom_emc.json"
-hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+hash = "38b5bad25fbf30b225f25453cae0a101ef2fe1973da35c837cab63469b61f59d"
 
 [[files]]
 file = "config/alexscaves_biome_generation/forlorn_hollows.json"
@@ -46,27 +46,27 @@ hash = "61120375da7a60bae4a7b1d3730d16da28a6e99087a48d7e1a13054ab5b9a6d5"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_culinary_objs.json"
-hash = "c9aab36626793e4093ef8ef147763ade915b4b2577e0a2e6d0225eebf89939e7"
+hash = "8413101a4b511ab0af58764c910949dca676df92638be5f011cc39e1dc41a53e"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_culinary_rews.json"
-hash = "e7091269f1aa6e1c901ea8cf9a07370f26e24b7794976c2f5d4043f7f305a4b6"
+hash = "17852af198534521f32387b0b4cb23067581d2beb707a0b9d41b3db71fb7bcc6"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_fishing_objs.json"
-hash = "e295ac0ca51ad92cfb02b180ad898c9207377dfa547925ca0e157ba3fa8e899a"
+hash = "175ba2d16f255fd61d2790dd9ad5acce2b3dc5b1060f1de7b574fdb0eb760032"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_fishing_rews.json"
-hash = "61effc84ed16bf2869e0c17ec2b7a0c5b1cfa0cd0e554d4777b3694df54c96cd"
+hash = "d0ee0dca6894eea6d7bfd79f1e5b5745c91597303da118dada9f61f9cd88ab39"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_hunting_objs.json"
-hash = "5b7b75b985cc79baf0b2d7a61db2c5b9d0424ac2e8ccdcaf38a63ec052510085"
+hash = "72a02f7f8a3736d613fc5e42e494c4cdaa7833ab60c64138c381678c7cf58e88"
 
 [[files]]
 file = "config/bountiful/bounty_pools/tmm_hunting_rews.json"
-hash = "b75385cb21937869fbfd84c130fb2fdcc4115b6bed3dfd134ff4f3f82e237096"
+hash = "e27af478bc2788d2dd9fdf679e746a49b32d7a7ce3c9519198db1c3b03776188"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
@@ -114,7 +114,7 @@ hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "90e362f54c1a527c1da5cce84bbddcfff76fc1e743030f762b06fcfc38e67154"
+hash = "dd6c1b7073e10e9e27397a0546a800d4fa6240d7d4342d10b8ea360f26b0dbf6"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -266,7 +266,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7cd53fa5b7719c54d128329fd2a6924b40481bec3742ef3687b24d8c837d9989"
+hash = "806e7597818b8e45de6241fb7a071fa4ccbceb344e49254b8ae6f883a897c723"
 
 [[files]]
 file = "config/improvableskills.cfg"
@@ -282,7 +282,7 @@ hash = "7fc38f1cf0430f89b8a8b4f1c753f0ebcad25c10a77feddfe5839dbbfeaab63b"
 
 [[files]]
 file = "config/qshop/shops/tmm.json"
-hash = "af8eac5346e233f3f5c0bb2ab19540b2554509f6eec45a14618c21a1d91810e1"
+hash = "144dac606132d1c0c13488acdadf2e3306a9a393a5cf764bab7acb5cb0c8a8e4"
 
 [[files]]
 file = "config/relics.yaml"
@@ -374,7 +374,7 @@ hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
 
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
-hash = "b54c2dab07bb74b5e1c9d9d6747dd18c29a020077c89c33c9862bb92a6d7c124"
+hash = "1ded0512fdbcbf6e73339a4957879ab63a0e4ea138baeb6c4af256fea275198f"
 
 [[files]]
 file = "kubejs/data/botania/recipe/creative/creative_corporea_spark_extreme.json"
@@ -1353,6 +1353,10 @@ file = "kubejs/data/tmm/recipe/mana_infusion/parchment_fragment.json"
 hash = "bad53a8978f03e47c1bbd30b282e9c5085cd1f6553bea0eaf9d197a9af09b46e"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/matter_values/adventurer_coin.json"
+hash = "bc09fc07b8a1f88186f02b532d218b83e62b5af211d67cbabb1b111c1c3be5d5"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
@@ -1563,6 +1567,10 @@ hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
 [[files]]
 file = "kubejs/server_scripts/zz_reactive_loot_books.js"
 hash = "1679a3b2393d49429ed3dca27e023b28fa14ed5d088b9c5ea6fdb711f291b77c"
+
+[[files]]
+file = "kubejs/startup_scripts/adventurer_coin.js"
+hash = "33467fceaccc80fffa6e5758854d65330852b42ab79ba7694b2537ad31792e54"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"

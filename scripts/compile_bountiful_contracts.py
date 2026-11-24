@@ -18,8 +18,8 @@ def positive(value, label):
     return value
 
 def native_balance_family(family, spec, review, profile):
-    """Build reward-first pools with explicit pair exclusions and bounded native clamping.
-    The proof only covers the inspected board reputation range and exact item IDs.
+    """Build reward-first native pools; ordinary deliveries target a profitable payout.
+    Historical native_v1 is retained only to reproduce the immutable original pilot.
     """
     tiers = profile["tiers"]
     rank = {name: i for i, name in enumerate(("COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY"))}
@@ -29,9 +29,8 @@ def native_balance_family(family, spec, review, profile):
         raise ValueError("invalid filler difficulty")
     if (profile["normal_board_reputation_min"], profile["normal_board_reputation_max"]) != (-30, 30):
         raise ValueError("unverified board reputation range")
-    low_factor = (1 + percent / 100) * 0.6
-    if low_factor < 1:
-        raise ValueError("reputation permits positive material exchange")
+    delivery_ratio = profile.get("delivery_reward_ratio")
+    delivery_weight = (1 + percent / 100) * delivery_ratio if delivery_ratio is not None else 1
     prices = review["effective_emc"]
     registered = set(review["registered_items"])
     def range_of(row, cap):
@@ -62,7 +61,8 @@ def native_balance_family(family, spec, review, profile):
         if ident in family.get("premium_reward_candidates",[]) and rank[tier] < rank["EPIC"]:
             raise ValueError("premium payout requires epic or legendary rarity")
         emc=positive(prices[ident],ident)
-        worth=max(emc,positive(tiers[tier]["floor_emc"],tier)/lo)/scale
+        # Keep historical v1 output reproducible; v2 prices actual reward EMC.
+        worth=(emc if delivery_ratio is not None else max(emc,positive(tiers[tier]["floor_emc"],tier)/lo))/scale
         e=make_entry("item",ident,lo,hi,worth)
         e["rarity"]=tier
         e["repRequired"]=tiers[tier]["rep"]
@@ -108,7 +108,7 @@ def native_balance_family(family, spec, review, profile):
         key=key_for(kind,ident)
         if key in objs:
             raise ValueError("duplicate objective ID")
-        e=make_entry(kind,ident,lo,hi,emc/scale)
+        e=make_entry(kind,ident,lo,hi,emc/scale * (delivery_weight if kind=="item" else 1))
         if kind=="entity":
             e["timeMult"]=3.0
         elif kind=="gateway":
@@ -128,8 +128,8 @@ def native_balance_family(family, spec, review, profile):
         forbidden=[]
         for key,obj in objs.items():
             # Native picks any valid filler within variance or nearest fallback,
-            # then ceil and clamp. Eliminate all pairs that cannot cover the
-            # maximum obligation at worst eligible rep; thus no emergency partial filler.
+            # then ceil and clamp. Avoid impossible objective quantities, not
+            # profitable contracts. Material unit worth already includes the premium.
             if (obj["content"]==reward["content"] or
                 obj["amount"]["max"]*obj["unitWorth"]+1e-9<need):
                 forbidden.append({"type":obj["type"],"content":obj["content"]})
@@ -220,10 +220,12 @@ def compile_candidate(catalog, audit, review):
         raise ValueError("unknown or held decree")
     output = {}
     translations = {}
-    use_native = review.get("balance_profile") == "native_v1"
-    if review.get("balance_profile") not in (None, "native_v1"):
+    balance_profile = review.get("balance_profile")
+    use_native = balance_profile in ("native_v1", "native_v2")
+    if balance_profile not in (None, "native_v1", "native_v2"):
         raise ValueError("unknown balance profile")
-    profile = catalog["balance_draft"] if use_native else None
+    profile = (catalog["historical_balance_v1"] if balance_profile == "native_v1"
+               else catalog["balance_draft"] if use_native else None)
     recipe_profile = review.get("decree_recipe_profile")
     if recipe_profile not in (None, "test_paper_reagent_v1"):
         raise ValueError("unknown decree crafting profile")
@@ -254,8 +256,8 @@ def compile_candidate(catalog, audit, review):
         if use_native:
             objs, rews = native_balance_family(family, spec, review, profile)
         else:
-            # Native generation chooses one objective and one reward. Validate
-            # every possible cross-pair; no custom kill tracker or Hunter hook.
+            # Fixed authored rewards; profitable delivery pairs are intentional.
+            # Native kill attribution remains unchanged.
             rewards = spec.get("rewards", [spec["reward"]] if "reward" in spec else [])
             if not rewards:
                 raise ValueError("empty reward pool")
@@ -303,8 +305,6 @@ def compile_candidate(catalog, audit, review):
                     if n > 256:
                         raise ValueError("delivery exceeds pilot cap")
                     emc = positive(prices[item], item)
-                    if n * emc < reward_total:
-                        raise ValueError("positive EMC exchange: " + item)
                     name = item.replace(":", "_").replace("/", "_").replace(".", "_").replace("-", "_")
                     obj = entry(item,n,emc)
                 else:
