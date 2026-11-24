@@ -179,7 +179,12 @@ public final class ProgressionScreen extends Screen {
         if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
             line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
                 " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points",12,53,width-24,0xFFDBC895);
-            line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
+            if(data.has("next_challenge")){
+                JsonObject challenge=data.getAsJsonObject("next_challenge");
+                line(g,"Next challenge: "+challenge.get("title").getAsString()+
+                    " ("+challenge.get("progress").getAsInt()+"/"+challenge.get("goal").getAsInt()+")",
+                    12,65,width-24,0xFFB8B3C6);
+            } else line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
             g.fill(viewportLeft(),viewportTop(),viewportRight(),viewportBottom(),0xFF100F19);
             clampPan();int ox=originX(),oy=originY();
             g.enableScissor(viewportLeft(),viewportTop(),viewportRight(),viewportBottom());

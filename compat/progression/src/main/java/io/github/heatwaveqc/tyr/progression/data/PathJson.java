@@ -106,7 +106,8 @@ public final class PathJson {
             int points = number(j,"points",0);
             if (xp < 0 || xp > 1000000 || points < 0 || points > 10000)
                 throw new IllegalArgumentException("Unsafe milestone reward");
-            milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points));
+            milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points,
+                str(j,"title",""),flag(j,"notify_progress")));
         }
 
         List<Definition.Skill> skills = new ArrayList<>();
