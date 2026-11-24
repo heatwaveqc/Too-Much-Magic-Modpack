@@ -224,6 +224,7 @@ public final class ProgressionEvents {
             MechanicalEffects.tick(player);
             MiningUtilities.tick(player);
             VerifiedMiningXp.tick(player);
+            VerifiedSprintingXp.tick(player);
             VillagerAttraction.tick(player);
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
@@ -240,6 +241,7 @@ public final class ProgressionEvents {
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());
@@ -256,6 +258,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
             VisionRuntime.reconcile(player,true);
@@ -273,6 +276,7 @@ public final class ProgressionEvents {
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());
