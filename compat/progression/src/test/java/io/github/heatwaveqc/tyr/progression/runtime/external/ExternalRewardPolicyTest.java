@@ -22,6 +22,24 @@ class ExternalRewardPolicyTest {
         return new ExternalRewardPolicy.Offer(ID,"astral_perk_token",MXP.id(),base,step,cap);
     }
 
+    @Test void astralCoreGraphProjectionUsesCanonicalOfferAndReceipts() {
+        var sale=offer(1,0,263);
+        var state=withEarnedMxp(3000);
+        var plan=ExternalRewardPolicy.prepare(state,MXP,sale);
+        assertNotNull(plan);
+        int owned=ExternalRewardPolicy.owned(plan.charged(),sale);
+        var node=ExternalRewardNode.project(sale,owned,ExternalRewardPolicy.price(sale,owned),true);
+        assertEquals(ID,node.get("id").getAsString());
+        assertTrue(node.get("external_reward").getAsBoolean());
+        assertEquals("Astral Mastery",node.get("title").getAsString());
+        assertEquals(1,node.get("owned").getAsInt());
+        assertEquals(263,node.get("maximum").getAsInt());
+        assertTrue(node.get("permanent").getAsBoolean());
+        assertTrue(node.get("buyable").getAsBoolean());
+        assertEquals(MXP.id(),node.getAsJsonArray("purchase_sources").get(0).getAsJsonObject().get("system").getAsString());
+        assertFalse(ExternalRewardNode.project(sale,263,-1,true).get("buyable").getAsBoolean());
+    }
+
     @Test void nativeMasteryTracksProviderCapNotASeparateThreshold() {
         assertFalse(ExternalRewardPolicy.nativeMastery(false,100,100));
         assertFalse(ExternalRewardPolicy.nativeMastery(true,99,100));

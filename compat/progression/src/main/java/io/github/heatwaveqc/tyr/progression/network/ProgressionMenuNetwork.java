@@ -81,7 +81,8 @@ public final class ProgressionMenuNetwork {
                         boolean changed = switch (payload.action()) {
                             case "buy" -> validId(payload.skill()) && validId(payload.currency())
                                     && ProgressionApi.buy(player, payload.path(), payload.skill(),payload.currency());
-                            case "external_buy" -> validId(payload.skill())
+                            case "external_buy" -> "tyr_progression:core".equals(payload.path())
+                                    && validId(payload.skill())
                                     && io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(player,payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
                             case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
@@ -171,23 +172,6 @@ public final class ProgressionMenuNetwork {
                 .getOrDefault(id,java.math.BigDecimal.ZERO));wallets.add(row);
         }
         json.add("wallets",wallets);
-        JsonArray external=new JsonArray();
-        for(var reward:io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.current().values()){
-            // This offer is shown only on Core, after native mastery. The
-            // same authoritative check is repeated at purchase time.
-            if(!"tyr_progression:core".equals(pathId)
-                    || !io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.visible(player,reward.id()))
-                continue;
-            JsonObject offer=new JsonObject();
-            offer.addProperty("id",reward.id());
-            offer.addProperty("kind",reward.kind());
-            offer.addProperty("currency",reward.currency());
-            offer.addProperty("owned",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,reward.id()));
-            offer.addProperty("price",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,reward.id()));
-            offer.addProperty("buyable",io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.canBuy(player,reward.id()));
-            external.add(offer);
-        }
-        json.add("external_rewards",external);
         json.add("completed_milestones", strings(state.milestones()));
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
@@ -249,6 +233,19 @@ public final class ProgressionMenuNetwork {
             for (Definition.Effect fx : skill.effects()) effects.add(fx.type());
             item.add("effects", effects);
             skills.add(item);
+        }
+        // External native rewards are ordinary graph nodes in Core's server
+        // projection, not extra Path ranks or an alternate payment ledger.
+        if ("tyr_progression:core".equals(pathId)) {
+            for (var reward : io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.current().values()) {
+                if (path.skills().stream().anyMatch(skill -> skill.id().equals(reward.id()))
+                        || !io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.visible(player,reward.id()))
+                    continue;
+                int owned=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,reward.id());
+                int price=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,reward.id());
+                boolean buyable=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.canBuy(player,reward.id());
+                skills.add(io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardNode.project(reward,owned,price,buyable));
+            }
         }
         json.add("skills", skills);
         String payload=json.toString();

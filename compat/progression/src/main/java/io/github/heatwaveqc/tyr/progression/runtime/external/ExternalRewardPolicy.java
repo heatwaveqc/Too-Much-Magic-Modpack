@@ -8,8 +8,8 @@ import java.util.Objects;
  * ranks. Their permanent receipts use a synthetic, unjoinable path; changing
  * Paths and ordinary respec never refund a granted native-mod reward.
  *
- * Price units are XP *points* (currently 1 MXP point = 1000 MXP); 0 base price
- * explicitly means disabled until the owner selects a balance value.
+ * Price units are committed skill points, not deducted XP; 0 base price
+ * explicitly means disabled. The TMM offer is 1 point, capped at 263.
  */
 public final class ExternalRewardPolicy {
     private ExternalRewardPolicy() {}
