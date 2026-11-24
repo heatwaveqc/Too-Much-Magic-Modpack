@@ -84,12 +84,19 @@ class GenericXpBoundaryTest {
         var spec = ExperienceEconomy.SystemSpec.mxp();
         var state = ExperienceEconomy.earn(ExperienceEconomy.Ledger.empty(), spec,
                 "test:initial", null, new BigDecimal("1000000"), true, 1).ledger();
-        assertThrows(IllegalArgumentException.class, () ->
-                ExperienceEconomy.earn(state, spec, "test:too_small", "test:first",
-                        BigDecimal.ONE, false, 100));
-        assertThrows(IllegalArgumentException.class, () ->
-                ExperienceEconomy.earn(state, spec, "test:too_fast", "test:first",
-                        BigDecimal.ONE, false, 0.001));
+        for (double growth : new double[]{100, 0.001}) {
+            var rejected = ExperienceEconomy.earn(state, spec, "test:too_small", "test:first",
+                    BigDecimal.ONE, false, growth);
+            assertFalse(rejected.accepted());
+            assertSame(state, rejected.ledger());
+            assertEquals(0, rejected.effectiveXp().signum());
+        }
+        var limited = new ExperienceEconomy.SystemSpec(CUSTOM, BigDecimal.ONE, 10,
+                new BigDecimal("1e12"));
+        var tooLarge = ExperienceEconomy.earn(state, limited, "test:fixed_limit", "test:first",
+                new BigDecimal("1000000"), true, 1);
+        assertFalse(tooLarge.accepted());
+        assertSame(state, tooLarge.ledger());
         assertEquals(new BigDecimal("1000000"), state.currentXp().get(spec.id()));
         assertTrue(state.rewardReceipts().isEmpty());
         var normal = ExperienceEconomy.earn(state, spec, "test:too_small", "test:first",

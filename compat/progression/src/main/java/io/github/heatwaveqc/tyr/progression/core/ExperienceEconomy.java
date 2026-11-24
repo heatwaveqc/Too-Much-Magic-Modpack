@@ -222,11 +222,23 @@ public final class ExperienceEconomy {
 
         Ledger current = initialize(source, system);
         BigDecimal oldXp = current.currentXp().get(system.id());
-        BigDecimal nextXp = fixed ? oldXp.add(base) : ordinary(oldXp, system, base, effectiveGrowth);
-        requireBoundedDecimal(nextXp);
-        long derived = nextXp.divide(system.xpPerPoint(), 0, RoundingMode.DOWN).longValueExact();
-        if (derived > system.maxLevel())
-            throw new IllegalArgumentException("XP award exceeds configured level guard");
+        BigDecimal nextXp;
+        try {
+            nextXp = fixed ? oldXp.add(base) : ordinary(oldXp, system, base, effectiveGrowth);
+            requireBoundedDecimal(nextXp);
+            BigDecimal exclusiveLimit = system.xpPerPoint().multiply(
+                    BigDecimal.valueOf(system.maxLevel() + 1L));
+            if (nextXp.compareTo(exclusiveLimit) >= 0)
+                return new Award(source, BigDecimal.ZERO, false);
+        } catch (AwardLimitException limit) {
+            // A legitimate event at an extreme, but valid, configured growth
+            // factor must not throw through a server event callback.
+            return new Award(source, BigDecimal.ZERO, false);
+        } catch (IllegalArgumentException storageLimit) {
+            // Input/spec validation happened above. This guard applies only
+            // to the computed result and leaves all receipts untouched.
+            return new Award(source, BigDecimal.ZERO, false);
+        }
 
         var xp = new HashMap<>(current.currentXp());
         xp.put(system.id(), nextXp);
@@ -254,7 +266,7 @@ public final class ExperienceEconomy {
         while (remaining.signum() > 0) {
             long level = nextXp.divide(system.xpPerPoint(), 0, RoundingMode.DOWN).longValueExact();
             if (level >= system.maxLevel())
-                throw new IllegalArgumentException("XP level safety ceiling reached");
+                throw new AwardLimitException("XP level safety ceiling reached");
             BigDecimal divisor = factor.pow(Math.toIntExact(level), PRECISION);
             BigDecimal progress = nextXp.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(level)));
             BigDecimal toNext = system.xpPerPoint().subtract(progress);
@@ -263,11 +275,11 @@ public final class ExperienceEconomy {
             BigDecimal baseToNext = toNext.multiply(divisor, PRECISION);
             if (remaining.compareTo(baseToNext) >= 0) {
                 if (++crossings > MAX_LEVEL_CROSSINGS_PER_AWARD)
-                    throw new IllegalArgumentException("Unsafe number of levels in one XP award");
+                    throw new AwardLimitException("Unsafe number of levels in one XP award");
                 // A microscopic crossing cost can have a scale of millions at
                 // valid g < 1. Never expand that decimal in an exact subtraction.
                 if (baseToNext.compareTo(MIN_XP_UNIT) < 0)
-                    throw new IllegalArgumentException("XP crossing cost below safe decimal resolution");
+                    throw new AwardLimitException("XP crossing cost below safe decimal resolution");
                 remaining = remaining.subtract(baseToNext);
                 nextXp = system.xpPerPoint().multiply(BigDecimal.valueOf(level + 1L));
             } else {
@@ -275,7 +287,7 @@ public final class ExperienceEconomy {
                 // Reject the whole award before creating any receipt when its
                 // gain cannot be represented within the storage safety budget.
                 if (effective.compareTo(MIN_XP_UNIT) < 0)
-                    throw new IllegalArgumentException("XP award below safe decimal resolution");
+                    throw new AwardLimitException("XP award below safe decimal resolution");
                 if (effective.scale() > MAX_XP_SCALE)
                     effective = effective.setScale(MAX_XP_SCALE, RoundingMode.DOWN);
                 nextXp = nextXp.add(effective);
@@ -368,6 +380,10 @@ public final class ExperienceEconomy {
         if (key == null || key.isBlank() || key.length() > 240
                 || !key.matches("[a-zA-Z0-9_.:/#@-]+") || key.contains("|"))
             throw new IllegalArgumentException("Invalid verified transaction key");
+    }
+
+    private static final class AwardLimitException extends RuntimeException {
+        private AwardLimitException(String message) { super(message); }
     }
 
     private static void requireBoundedDecimal(BigDecimal value) {
