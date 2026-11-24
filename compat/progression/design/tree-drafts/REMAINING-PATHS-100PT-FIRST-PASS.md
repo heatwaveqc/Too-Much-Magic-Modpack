@@ -23,12 +23,12 @@ Authoritative ledger: `REMAINING-PATHS-100PT-FIRST-PASS.json` schema `tmm_remain
 | Forest Dragon | 20 | **100** |
 | Vampire | 19 | **100** |
 | Werewolf | 20 | **100** |
-| Lich | 21 | **100** |
+| Lich | 22 | **100** |
 | Hunter | 57 | **100** |
 | Gilded | 12 | **100** |
 | Bare Zerker | 13 | **100** |
 
-The ten draft catalogs display **228 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
+The ten draft catalogs display **229 paid skill options**; 57 are Hunter alternatives (not simultaneously eligible). Newbie and Normie remain baseline Paths with no independent purchasable ranks; Core is universal, not a specialist Path.
 
 ## Hunter — 62 shared + 8 training style + 30 favored prey = 100
 
@@ -473,7 +473,8 @@ Full skill-by-skill numerical candidate effects, stage gates and provider blocke
 | Cold Persistence (`tyr_progression:lich_cold_persistence`) | 6 | 6 | -3% per rank (maximum -18%) duration of verified harmful necrotic/wither-like status effects not already negated by native Lich immunity. Preserve Smite, daylight, fire and other actual source weaknesses. |
 | Ossuary Skin (`tyr_progression:lich_ossuary_skin`) | 5 | 5 | 1.5% per rank (maximum 7.5%) reduction to ordinary incoming physical hits in an authenticated Lich state, after eligible mitigation; exclude true damage, void, native Smite weakness and fatal-event decisions. |
 | Grave Resilience (`tyr_progression:lich_grave_resilience`) | 5 | 5 | After a direct, credited hostile kill by the player or an eligible owned undead, heal this Lich 0.5 HP per rank (maximum 2.5 HP) at most once every 12 seconds. |
-| Unquiet Stride (`tyr_progression:lich_unquiet_stride`) | 4 | 4 | +2% per rank (maximum +8%) grounded movement speed in natural darkness or below open sky; no speed in flight, no new flight permission, no night-vision duplication. |
+| Unquiet Stride (`tyr_progression:lich_unquiet_stride`) | 3 | 3 | +2% per rank (maximum +6%) grounded movement speed in natural darkness or below open sky; no speed in flight, no new flight permission, no night-vision duplication. |
+| Otherworld Sight (`tyr_progression:lich_otherworld_sight`) | 1 | 1 | Tier-two native textures, tier-one harvest access; no shader or barehand Iesnium. Engine #629, #611; not live. |
 
 #### Soul Preservation — 10 points
 
@@ -483,7 +484,7 @@ Full skill-by-skill numerical candidate effects, stage gates and provider blocke
 | Final Passage (`tyr_progression:lich_final_passage`) | 3 | 3 | Only after the native unified death controller actually records one successful Lich rescue, restore +2 HP per rank (maximum +6 HP), capped at max health, once for that event. |
 | Second Witness (`tyr_progression:lich_second_witness`) | 3 | 3 | Only after the same single native rescue receipt, grant +3 seconds per rank (maximum nine seconds) of Resistance I to cover the dangerous return; respect actual native spawn/world rules. |
 
-**Total Lich: 21 skills / 100 one-point ranks.** Source/behavior verification needed before engine activation. Complete design only.
+**Total Lich: 22 skills / 100 one-point ranks.** Source/behavior verification needed before engine activation. Complete design only.
 
 ### Gilded — 100 ranks / 100 points
 

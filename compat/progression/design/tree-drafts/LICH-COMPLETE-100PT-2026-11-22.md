@@ -21,7 +21,7 @@ The Lich is a **personally funded necromancer** with a durable undead host, opti
 | Soul Economy | 5 | 25 |
 | Sanguine Necromancy | 4 | 20 |
 | Undead Host | 5 | 25 |
-| Deathless Form | 4 | 20 |
+| Deathless Form | 5 | 20 |
 | Soul Preservation | 3 | 10 |
 | **Total** | **21** | **100** |
 
@@ -67,7 +67,8 @@ A **source/provider hold is real**: if a feature is not supported for an eligibl
 | **Cold Persistence** (`tyr_progression:lich_cold_persistence`) | 6 | -3% per rank (maximum -18%) duration of verified harmful necrotic/wither-like status effects not already negated by native Lich immunity. Preserve Smite, daylight, fire and other actual source weaknesses. | entry | Condition allowlist audit required; do not duplicate source-native full immunity |
 | **Ossuary Skin** (`tyr_progression:lich_ossuary_skin`) | 5 | 1.5% per rank (maximum 7.5%) reduction to ordinary incoming physical hits in an authenticated Lich state, after eligible mitigation; exclude true damage, void, native Smite weakness and fatal-event decisions. | entry | Small bounded direct defense, not armor or a generic magic-immunity layer |
 | **Grave Resilience** (`tyr_progression:lich_grave_resilience`) | 5 | After a direct, credited hostile kill by the player or an eligible owned undead, heal this Lich 0.5 HP per rank (maximum 2.5 HP) at most once every 12 seconds. | advanced | No friendly/player/self-kill farming; resource-free health recovery capped and attributed |
-| **Unquiet Stride** (`tyr_progression:lich_unquiet_stride`) | 4 | +2% per rank (maximum +8%) grounded movement speed in natural darkness or below open sky; no speed in flight, no new flight permission, no night-vision duplication. | entry | Need server-side darkness/grounded predicates; environmental audit |
+| **Unquiet Stride** (`tyr_progression:lich_unquiet_stride`) | 3 | +2% per rank (maximum +6%) grounded movement speed in natural darkness or below open sky; no speed in flight, no new flight permission, no night-vision duplication. | entry | Need server-side darkness/grounded predicates; environmental audit |
+| **Otherworld Sight** (`tyr_progression:lich_otherworld_sight`) | 1 | Tier-two native texture reveal, tier-one harvest access; no shader, potion or barehand Iesnium. | entry | #611; engine #629 source; integration and runtime QA pending. |
 
 ### Soul Preservation — 10 points
 
@@ -94,7 +95,7 @@ All missing generic handlers belong to `feature/progression-*` and the shared `c
 ## Tests required before any executable purchase
 
 1. **Source probe/gates:** JAWR-only, Goety-only, Archlich, Gilded Piglich and Dracolich resolve correct native identity without double eligibility; mundane/unknown fail closed.
-2. **Rank/accounting:** exactly 21 unique skill IDs and 100 total one-point ranks; prerequisite IDs resolve and cannot be purchased without actual native gates; no skill crosses eligible alternative budgets.
+2. **Rank/accounting:** exactly 22 unique skill IDs and 100 total one-point ranks; prerequisite IDs resolve and cannot be purchased without actual native gates; no skill crosses eligible alternative budgets.
 3. **Resource identity:** source-verified Soul Energy spends/recovery and JAWR bottle healing only; Arca and phylactery expenses unchanged and never affected by spell-cost discounts; canceled casts no effect.
 4. **Purchased utility is real:** test each benefit under both JAWR-only and Goety-only conditions; mark unsupported distinct backend choices as blocked rather than exposing zero-effect UI.
 5. **Blood/nature tradeoff:** source-identified personal casts only; verify penalties and bonuses stack arithmetically with caps, do not affect others, passive machines, ritual infrastructure or unrelated magic.
