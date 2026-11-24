@@ -25,6 +25,12 @@ class HunterXpPolicyTest {
             assertNotNull(policy);
             assertEquals(4,policy.healthDivisor());
             assertEquals(2,policy.specialtyMultiplier());
+            if("tyr_progression:mxp".equals(raw.get("xp_channel").getAsString())){
+                assertEquals(200,policy.mxpKillPerHp());
+                assertEquals(100,policy.mxpPotionBaseXp());
+                assertEquals(2,policy.potionDiscoveryMultiplier());
+                assertEquals(12000,policy.potionRepeatCooldownTicks());
+            }
             assertEquals(0,policy.difficulty("minecraft:water"));
             assertEquals(3,policy.difficulty("minecraft:poison"));
             assertEquals(7,policy.difficulty("minecraft:strong_regeneration"));
