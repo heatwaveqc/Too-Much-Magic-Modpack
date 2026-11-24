@@ -61,7 +61,7 @@ public final class MiningUtilities {
     }
     /** Own only the outer native player break, never a nested modded bulk break or a simulated drop. */
     public static boolean nativeBreak(ServerPlayer p,BlockPos pos,java.util.function.BooleanSupplier original){
-        if(RUNNING.contains(p.getUUID())||!usable(p))return original.getAsBoolean();
+        if(RUNNING.contains(p.getUUID())||!usable(p)||SpellMiningScope.captures(p.serverLevel(),pos))return original.getAsBoolean();
         NativeBreak prior=NATIVE.get();
         if(prior!=null){
             if(prior.player==p)prior.bulk=true;
@@ -87,7 +87,8 @@ public final class MiningUtilities {
         }finally{NATIVE.remove();}
     }
     public static void observe(BlockDropsEvent event){
-        if(event.isCanceled()||!(event.getBreaker() instanceof ServerPlayer p)||!usable(p)||RUNNING.contains(p.getUUID()))return;
+        if(event.isCanceled()||!(event.getBreaker() instanceof ServerPlayer p)||!usable(p)||RUNNING.contains(p.getUUID())
+            ||SpellMiningScope.captures(event.getLevel(),event.getPos()))return;
         var root=NATIVE.get();
         if(root==null||root.player!=p){
             // An unrelated drop before execution can signal an overlapping bulk producer.

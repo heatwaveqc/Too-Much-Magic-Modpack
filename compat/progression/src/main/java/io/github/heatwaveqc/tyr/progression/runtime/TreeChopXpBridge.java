@@ -68,6 +68,7 @@ public final class TreeChopXpBridge {
         try {
             if (!(invoke(event, "getPlayer") instanceof ServerPlayer player)
                     || !(invoke(event, "getLevel") instanceof ServerLevel level)
+                    || SpellMiningScope.active(level)
                     || !player.getMainHandItem().isEmpty()
                     || player.isCreative() || player.isSpectator()
                     || !ProgressionApi.track(player, "tyr_progression:monk").joined()) return;
@@ -112,7 +113,7 @@ public final class TreeChopXpBridge {
             if (!(invoke(event, "getPlayer") instanceof ServerPlayer player)
                     || !(invoke(event, "getLevel") instanceof ServerLevel level)) return;
             Pending pending = PENDING.remove(player.getUUID());
-            if (pending == null || !Boolean.TRUE.equals(invoke(event, "getFelled"))
+            if (SpellMiningScope.active(level)||pending == null || !Boolean.TRUE.equals(invoke(event, "getFelled"))
                     || player.isCreative() || player.isSpectator()
                     || !player.getMainHandItem().isEmpty()
                     || !pending.clicked().equals(invoke(event, "getChoppedBlockPos"))

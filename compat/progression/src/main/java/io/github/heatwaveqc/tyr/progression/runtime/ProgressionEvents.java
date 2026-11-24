@@ -159,7 +159,9 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             // TreeChop and normal drops can report the same physical log.
-            if(VerifiedMiningXp.participates(player)) {
+            if(SpellMiningScope.captures(event.getLevel(),event.getPos())) {
+                // The scoped spell's verified removal owns progression signals.
+            } else if(VerifiedMiningXp.participates(player)) {
                 VerifiedMiningXp.drops(event);
                 // Tool breaks remain visible to other Paths' ordinary
                 // block_break criteria, but never pay Monk barehand MXP.
