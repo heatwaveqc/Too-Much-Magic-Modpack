@@ -11,14 +11,14 @@ import java.util.UUID;
  */
 public final class RecentBlockCredits {
     private RecentBlockCredits() {}
-    private record Key(UUID player, String dimension, long pos) {}
+    private record Key(UUID player, String dimension, long pos,long tick) {}
     private static final Map<Key, Long> LAST = new HashMap<>();
 
     public static synchronized boolean first(UUID player, String dimension, long position, long tick) {
-        Key key = new Key(player, dimension, position);
+        Key key = new Key(player, dimension, position,tick);
         Long previous = LAST.put(key, tick);
         if (LAST.size() > 8192) {
-            LAST.entrySet().removeIf(e -> tick < e.getValue() || tick - e.getValue() > 10);
+            LAST.entrySet().removeIf(e -> tick - e.getValue() > 10);
         }
         // The caller uses the ORIGINAL break tick even on deferred callbacks.
         return previous == null || previous != tick;

@@ -28,6 +28,10 @@ public final class VerifiedMiningXp {
         return false;
     }
     public static void beforeBreak(BlockEvent.BreakEvent event){
+        // Native spell boundaries own their receipts, never empty-hand training.
+        if(event.getLevel() instanceof ServerLevel spellLevel&&SpellMiningScope.captures(spellLevel,event.getPos())){
+            SpellMiningScope.observe(event);return;
+        }
         if(event.isCanceled()||!(event.getPlayer() instanceof ServerPlayer player)
                 ||!(event.getLevel() instanceof ServerLevel level)
                 ||!participates(player)||event.getState().isAir())return;
@@ -44,14 +48,17 @@ public final class VerifiedMiningXp {
         if(event.isCanceled()||!(event.getBreaker() instanceof ServerPlayer player)
                 ||!participates(player))return;
         var level=event.getLevel();BlockPos pos=event.getPos();
-        if(!level.hasChunkAt(pos)||event.getState().isAir()
-                ||!removed(level.getBlockState(pos)))return;
+        if(SpellMiningScope.captures(level,pos)||!level.hasChunkAt(pos)||event.getState().isAir()
+                ||!removed(event.getState(),level.getBlockState(pos)))return;
         double hardness=event.getState().getDestroySpeed(level,pos);
         boolean bare=event.getTool().isEmpty()&&player.getMainHandItem().isEmpty();
         credit(player,level,pos,event.getState(),hardness,bare,level.getGameTime());
     }
-    private static boolean removed(BlockState state){
-        return state.isAir()||!state.getFluidState().isEmpty();
+    static boolean removed(BlockState original,BlockState result){
+        // A waterlogged solid is not a removed block; only the fluid's own
+        // legacy block state (or air), with an actual change, qualifies.
+        return !original.equals(result)&&(result.isAir()
+            ||!result.getFluidState().isEmpty()&&result.equals(result.getFluidState().createLegacyBlock()));
     }
     private static void credit(ServerPlayer player,ServerLevel level,BlockPos pos,
                                BlockState state,double hardness,boolean barehand,long originalTick){
@@ -69,7 +76,7 @@ public final class VerifiedMiningXp {
             ServerLevel level=item.level();long now=level.getGameTime();
             if(!participates(player)||player.serverLevel()!=level
                     ||now<item.tick()||now-item.tick()>3||!level.hasChunkAt(item.pos())
-                    ||!removed(level.getBlockState(item.pos())))continue;
+                    ||!removed(item.state(),level.getBlockState(item.pos())))continue;
             credit(player,level,item.pos(),item.state(),item.hardness(),item.barehand(),item.tick());
         }
     }
@@ -81,11 +88,16 @@ public final class VerifiedMiningXp {
      */
     public static boolean spellBreakCommitted(ServerPlayer owner,ServerLevel level,
             BlockPos pos,BlockState original,long originalTick){
+        if(level==null||original==null)return false;
+        return spellBreakCommitted(owner,level,pos,original,original.getDestroySpeed(level,pos),originalTick);
+    }
+    /** Prefer a hardness snapshot captured before native mutation. */
+    public static boolean spellBreakCommitted(ServerPlayer owner,ServerLevel level,
+            BlockPos pos,BlockState original,double hardness,long originalTick){
         if(owner==null||level==null||original==null||original.isAir()
                 ||owner.serverLevel()!=level||!participates(owner)
-                ||!level.hasChunkAt(pos)||!removed(level.getBlockState(pos))
+                ||!level.hasChunkAt(pos)||!removed(original,level.getBlockState(pos))
                 ||level.getGameTime()<originalTick||level.getGameTime()-originalTick>3)return false;
-        double hardness=original.getDestroySpeed(level,pos);
         if(!Double.isFinite(hardness)||hardness<0
                 ||!RecentBlockCredits.first(owner.getUUID(),
                     level.dimension().location().toString(),pos.asLong(),originalTick))return false;
