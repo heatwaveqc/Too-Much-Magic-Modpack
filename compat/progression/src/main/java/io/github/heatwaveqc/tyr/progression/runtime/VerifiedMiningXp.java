@@ -88,7 +88,7 @@ public final class VerifiedMiningXp {
      */
     public static boolean spellBreakCommitted(ServerPlayer owner,ServerLevel level,
             BlockPos pos,BlockState original,long originalTick){
-        if(level==null||original==null)return false;
+        if(level==null||original==null||pos==null||!level.hasChunkAt(pos))return false;
         return spellBreakCommitted(owner,level,pos,original,original.getDestroySpeed(level,pos),originalTick);
     }
     /** Prefer a hardness snapshot captured before native mutation. */
