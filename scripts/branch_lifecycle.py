@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only lifecycle reporting, and separately authorized exact-ref retirement."""
+"""TMM frozen-donor helpers and historical exact-ref retirement."""
 import argparse
 import base64
 import collections
@@ -75,108 +75,12 @@ def hours(stamp):
     return (NOW - dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))).total_seconds() / 3600
 
 
-def branch_budget(n):
-    return "HEALTHY" if n <= 20 else "REVIEW" if n <= 30 else "MAINTENANCE"
-
-
 def report(lines):
     body = "\n".join(str(line) for line in lines) + "\n"
     print(body, end="")
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
             out.write(body)
-
-
-def inventory():
-    branches = pages("/branches")
-    prs = pages("/pulls?state=open")
-    closed = pages("/pulls?state=closed&sort=updated&direction=desc")
-    sources = source_manifest()
-    refs = local_pr_refs(prs)
-    donors = {r["branch"] for r in sources if r["branch"] != "test/full-integration"}
-    names = {b["name"] for b in branches}
-    merged = {}
-    for p in closed:
-        h = p["head"]
-        if p.get("merged_at") and h.get("repo") and h["repo"]["full_name"] == REPO:
-            if h["ref"] not in merged or merged[h["ref"]]["merged_at"] < p["merged_at"]:
-                merged[h["ref"]] = p
-    commit_dates = {}
-    lines = [f"## Branch inventory: {len(names)} refs — {branch_budget(len(names))}",
-             f"{len(prs)} open PRs; {sum(p['draft'] for p in prs)} drafts; {len(donors)} external donor refs.",
-             "", "Age signals use tip commit time and PR last activity (not branch creation or exact ready time).",
-             "", "| Branch | Head | Review signals |", "|---|---|---|"]
-    for b in sorted(branches, key=lambda x: x["name"]):
-        name, sha = b["name"], b["commit"]["sha"]
-        if sha not in commit_dates:
-            commit_dates[sha] = api("/commits/" + sha)["commit"]["committer"]["date"]
-        age = hours(commit_dates[sha])
-        flags = []
-        if name in PERMANENT or b.get("protected"):
-            flags.append("permanent/protected")
-        else:
-            if name not in refs and age >= 24:
-                flags.append("no open PR; tip >=24h")
-            if age >= 72:
-                flags.append("tip inactive >=72h")
-            if name in merged and hours(merged[name]["merged_at"]) >= 24:
-                flags.append(f"surviving merged PR #{merged[name]['number']}; verify current contents")
-        if name in refs:
-            flags.append("open PR dependency")
-        if name in donors:
-            flags.append("external donor; retain")
-        lines.append(f"| {name} | {sha[:12]} | {', '.join(flags) or 'review'} |")
-    lines += ["", "### Open PRs and dependency stacks", "", "| PR | Head → base | Status |", "|---|---|---|"]
-    for p in sorted(prs, key=lambda x:x["number"]):
-        status = "draft" if p["draft"] else "ready (review)"
-        if not p["draft"] and hours(p["updated_at"]) >= 24:
-            status += "; no PR update >=24h"
-        lines.append(f"| #{p['number']} | {p['head']['ref']} → {p['base']['ref']} | {status} |")
-    lines += ["", "### External integration donors"]
-    for r in sources:
-        if r["branch"] == "test/full-integration":
-            continue
-        warnings = []
-        if r["branch"] not in names:
-            warnings.append("missing live ref")
-        sha = r.get("source_commit") or ""
-        if not SHA.fullmatch(sha):
-            warnings.append("no full source SHA")
-        elif hours(api("/commits/" + sha)["commit"]["committer"]["date"]) >= 168:
-            warnings.append("source checkpoint >=7d; review")
-        lines.append(f"- {r['name']}: {r['branch']} @ {sha or 'UNPINNED'} — {', '.join(warnings) or 'retain'}")
-    lines += ["", "Advisory only. No deletion, merge, source assembly or game boot."]
-    report(lines)
-
-
-def collision(number):
-    prs = pages("/pulls?state=open")
-    current = next((p for p in prs if p["number"] == number), None)
-    if current is None:
-        report(["PR closed or absent; no collision scan."])
-        return
-    def paths(n):
-        rows = pages(f"/pulls/{n}/files")
-        if len(rows) >= 3000:
-            raise ValueError("GitHub changed-files cap reached; manual review required")
-        return {r[k] for r in rows for k in ("filename", "previous_filename") if r.get(k)}
-    own = paths(number)
-    lines = [f"## Changed-path overlap: PR #{number}",
-             "Exact same-base path intersections only; not a semantic conflict or merge approval."]
-    for p in prs:
-        if p["number"] == number or p["base"]["ref"] != current["base"]["ref"]:
-            continue
-        overlap = own & paths(p["number"])
-        if overlap:
-            lines.append(f"- PR #{p['number']}: {len(overlap)} path(s): " + ", ".join(sorted(overlap)[:25]))
-    if len(lines) == 2:
-        lines.append("No same-base exact path overlaps found.")
-    sources = source_manifest()
-    refs = {b["name"] for b in pages("/branches")}
-    for r in sources:
-        if r["branch"] != "test/full-integration" and (r["branch"] not in refs or not SHA.fullmatch(r.get("source_commit") or "")):
-            lines.append(f"- SOURCE REVIEW: {r['name']} ({r['branch']}) missing ref or full source SHA")
-    report(lines)
 
 
 def validate_manifest(path, raw):
@@ -274,20 +178,12 @@ def retire(path, digest, execute):
 def main():
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="command", required=True)
-    sub.add_parser("inventory")
-    c = sub.add_parser("collision")
-    c.add_argument("--pr", type=int, required=True)
     r = sub.add_parser("retire")
     r.add_argument("--manifest", required=True)
     r.add_argument("--digest", required=True)
     r.add_argument("--execute", action="store_true")
     args = p.parse_args()
-    if args.command == "inventory":
-        inventory()
-    elif args.command == "collision":
-        collision(args.pr)
-    else:
-        retire(args.manifest, args.digest, args.execute)
+    retire(args.manifest, args.digest, args.execute)
 
 
 if __name__ == "__main__":
