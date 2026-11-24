@@ -34,6 +34,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedMiningXp::beforeBreak);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::beforeDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::afterDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::death);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, MechanicalEffects::landing);
