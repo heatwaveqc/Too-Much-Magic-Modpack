@@ -2,6 +2,8 @@
 
 **Purpose:** These are **research instructions**, not scores, short labels or capability claims. For a given mod, document **every relevant concrete item, block, spell, ritual, entity, player state and action**, using version-scoped evidence. A blank axis is `unknown`, not absent. An axis summary is only a map to its detailed records.
 
+**Research/testing boundary (owner, 2026-11-23):** Released third-party mod functionality is presumed to work. Prove *what the mod implements and how to use it* from source/JAR/data/docs; do not request routine gameplay tests to complete a capability entry. Escalate a targeted observation only for a **specific unresolved code/data ambiguity** or a **real cross-mod interaction** that static evidence cannot answer. Testing, balancing and UX assessment are downstream work, not an Atlas research gate.
+
 **Universal minimum for every present capability:** exact name and registry identifier (if supported); physical block/item/GUI, spell or state; how player first obtains and performs it; inputs and resulting outputs (quantity/type), cost and failure behavior; **bottom end (first usable access)**, intermediate stages and **top end (last reachable capability)**; version-specific limitations; guide/JEI reference; native/pack-specific unlock; quest teaching step and truthful detectable completion; links to source and validation. Avoid imaginary tiers for feature-only mods.
 
 **Bottom/top means functional bounds within the mod, not a rank relative to other mods.** Record ranges and branching capabilities even when there is no strictly better end state. Each capability must be linked to the [progression timeline](templates/MOD-CAPABILITIES.md#4-progression-ladder-and-branch-map), and where power is spent, to the [resource ledger](ENERGY-AND-PROGRESSION.md).
@@ -80,7 +82,7 @@
 
 **What qualifies:** Actual links to other mods, vanilla systems, installed addons, APIs, events or data layers.
 
-**Inventory:** For each bridge document the exact originating mod/item/block/capability and target, native/addon/pack adaptation, typed conversion or API call, direction, version, gating, serialization, failure behavior, tests and whether both endpoints are present in TMM.
+**Inventory:** For each bridge document the exact originating mod/item/block/capability and target, native/addon/pack adaptation, typed conversion or API call, direction, version, gating, serialization, failure behavior, **source evidence and any genuinely unresolved interaction question**, and whether both endpoints are present in TMM. Do not default to requiring a gameplay test merely because two mods interact.
 
 **Entry → full breadth:** From earliest accessible supported bridge through advanced cross-mod automation and upper-tier integrations; 'possible' is not 'working'.
 

@@ -1,6 +1,8 @@
 # Mod capability dossier — `<manifest-id>`
 
-> **Purpose:** The primary evidence-backed source for writing **full instructional quests** for this mod. This is a **detailed catalog of objects, actual behaviors and tiered unlocks**, not a one-word capability scorecard, tier ranking or a 29-row substitute for gameplay research. See [axis field guide](../AXIS-FIELD-GUIDE.md), [energy and progression rules](../ENERGY-AND-PROGRESSION.md) and [quest walkthrough standard](../../QUEST-WALKTHROUGH-STANDARD.md). Delete placeholder examples after real inspection; retain `unknown` honestly.
+> **Purpose:** The primary evidence-backed source for writing **full instructional quests** for this mod. This is a **detailed catalog of objects, actual behaviors and tiered unlocks**, not a one-word capability scorecard, tier ranking or a 29-row substitute for gameplay research.
+>
+> **Owner scope:** Atlas is **research**, not third-party mod testing, QA or pack design. A source/JAR-verified released mod's normal functionality is presumed working. Do not demand positive/negative in-world tests for source-complete research. Escalate only a precisely identified code/data ambiguity unresolved after further inspection, or a pack-relevant cross-mod behavior requiring interaction evidence; prioritize static/automated checks and respect separate build authorization. See [axis field guide](../AXIS-FIELD-GUIDE.md), [energy and progression rules](../ENERGY-AND-PROGRESSION.md) and [quest walkthrough standard](../../QUEST-WALKTHROUGH-STANDARD.md). Delete placeholder examples after real inspection; retain `unknown` honestly.
 
 **Status:** `unresearched` / `partial` / `source-backed-partial` / `quest-source-ready` / `verified-in-pack` / `stale`  
 **Selection vs installation:** `pinned-active` / `approved-unpinned` / `deferred` / `excluded` / `unknown`; exact manifest commit and packwiz/source SHA  
@@ -69,7 +71,7 @@ This section is **mandatory even when no formal tiers exist**. Do not turn optio
 | --- | --- | --- | --- | --- | --- | --- |
 | `<manifest-id>::tier/<id>` | <formal_native, player etc.> | <actual prerequisites> | <operation proves tier active> | <specific unlocked capabilities> | <links> | <guide page; intended quest> |
 
-**Tier transition detail:** For every mandatory named tier, explain the physical before/after build, complete material/research acquisition, any unusual layouts, power/fill thresholds, whether old resources remain useful, failure states, and exact positive and boundary tests. The index row alone does not fulfill this requirement.
+**Tier transition detail:** For every mandatory named tier, explain the physical before/after build, complete material/research acquisition, any unusual layouts, power/fill thresholds, whether old resources remain useful, failure states, and **source-backed success/failure conditions**. This is not an instruction to run positive/boundary in-world tests. The index row alone does not fulfill the research requirement.
 
 ## 5. All energy/resource systems — not FE shorthand
 
@@ -151,7 +153,7 @@ A status row is only an index to detailed entries below. `unknown` = unresearche
 **Quest goal and teaching steps:** <why useful; exact recipe/find/build/use instructions; success signal; optional vs mandatory>  
 **FTB detection honesty:** <actual advancement/event if verified, real operation handler, item proxy, manual or unknown; what the task DOES/DOES NOT prove>  
 **Proposed safe quest reward:** <positive XP plus useful fixed thematic item, avoiding gates/exploit; proposal only>  
-**Acceptance:** <positive in-world test; negative/boundary case for impactful mechanic; actual tested version or NOT RUN>  
+**Research verification:** <precise source/JAR/data/docs paths and version; supported behavior; name an actual *code ambiguity* or *specific cross-mod uncertainty* only if one exists. No gameplay test required.>  
 **Open questions:** <concrete missing registry IDs/rates/behavior and next evidence source>
 
 ## 8. Quest authoring matrix — main spine plus choices
@@ -165,7 +167,7 @@ Create one row per teachable mandatory step and major optional branch. Every req
 ## 9. Evidence, completeness and next research
 
 - **Source ledger:** list exact pin/hash, immutable source SHA/path, generated guide and JEI data, relevant config patches, any installed-addon verification and genuine pack-test world/build.
-- **Capability coverage gaps:** named missing objects, tier transitions, spell families, resource scopes or interactions; explain how to verify each.
+- **Capability coverage gaps:** named missing objects, tier transitions, spell families, resource scopes or interactions; explain which **code/data/docs evidence** would resolve each. Only escalate to narrowly scoped gameplay observation when a material ambiguity genuinely remains after source inspection, or interacting mods make a result unavailable from static evidence.
 - **Quest completeness check:** if initial guide, first functional loop, required tier transition, significant optional branch, energy storage path, final capability or honest quest task is missing, status remains `partial`.
-- **Live checks:** distinguish static evidence, compilation, pack assembly, client launch and gameplay acceptance. Do not mark anything verified from server boot alone.
+- **Non-requirement of live checks:** distinguish source/JAR research evidence from optional downstream pack assembly, cross-mod integration and gameplay acceptance. **Do not add routine gameplay/client/worldgen test plans to Atlas completion; the released mod is presumed functional.** If a targeted interaction test is exceptionally justified, specify exactly what source evidence cannot answer, and hand it to the authorized integration/testing owner without changing the research completion status for unrelated systems.
 - **Ownership:** research docs only; no unauthorized quest, packwiz, manifest, compatibility code or balance changes.
