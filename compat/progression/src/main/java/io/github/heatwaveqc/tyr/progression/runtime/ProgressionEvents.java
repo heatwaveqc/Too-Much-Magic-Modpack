@@ -47,6 +47,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(UtilityEffects::foodStopped);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::vanillaXp);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::immunity);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ElixirRuntime::applicable);
+        NeoForge.EVENT_BUS.addListener(ElixirRuntime::playerTick);
+        NeoForge.EVENT_BUS.addListener(ElixirRuntime::login);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);

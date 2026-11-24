@@ -29,6 +29,14 @@ class MechanicalSpecTest {
             "{\"type\":\"critical_hit\",\"per_rank\":0.2,\"params\":{\"chance\":\"NaN\"}}",
             "{\"type\":\"heal_on_kill\",\"per_rank\":0.1,\"params\":{\"basis\":\"damage\"}}"})assertThrows(IllegalArgumentException.class,()->parse(fx));
     }
+    @Test void personalElixirRejectsUnscopedAndUnsafeConfig(){
+        String effect="{\"type\":\"personal_elixir\",\"target\":\"#tyr_progression:elixir_candidates\",\"params\":{\"fixed_mxp\":10,\"saturation\":6,\"effects\":\"minecraft:regeneration,1,100;minecraft:absorption,0,2400\"}}";
+        assertDoesNotThrow(()->parse(effect));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("#tyr_progression:elixir_candidates","*")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("\"saturation\":6","\"saturation\":21")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("regeneration,1,100","regeneration,10,100")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("absorption,0,2400","absorption,0,-1")));
+    }
     @Test void otherworldEffectsRequireExplicitTiersAndHarvestScope(){
         assertDoesNotThrow(()->parse("{\"type\":\"otherworld_sight\",\"tier\":2}"));
         assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_sight\",\"tier\":3}"));
