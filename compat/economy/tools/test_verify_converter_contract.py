@@ -1,6 +1,7 @@
 """Offline negative/regression tests for exact Economy converter recipe contract."""
 import copy
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -77,6 +78,18 @@ class ConverterRecipeTests(unittest.TestCase):
         })
         with self.assertRaises(ValueError):
             validator.validate_recipe(obj, name="emc_source_jar")
+
+    def test_arcane_recipe_rejects_gate_and_result_drift(self):
+        obj = json.loads((validator.RECIPES / "arcane_discrimination.json").read_text())
+        validator.validate_arcane_recipe(obj)
+        bad = copy.deepcopy(obj)
+        bad["neoforge:conditions"].pop()
+        with self.assertRaises(ValueError):
+            validator.validate_arcane_recipe(bad)
+        bad = copy.deepcopy(obj)
+        bad["result"]["components"]["improvableskills:stored_ability"]["ability"] = "other:ability"
+        with self.assertRaises(ValueError):
+            validator.validate_arcane_recipe(bad)
 
     def test_actual_source_and_account_guards(self):
         validator.verify()
