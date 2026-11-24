@@ -73,5 +73,9 @@ class PhysicalTrainingXpTest {
         j.getAsJsonObject("training_mxp").addProperty("hardness",35);
         j.getAsJsonObject("training_mxp").addProperty("strange",1);
         assertThrows(IllegalArgumentException.class,()->TrainingXpSpec.parse(j,sys));
+        j.getAsJsonObject("training_mxp").remove("strange");
+        j.getAsJsonObject("training_mxp").addProperty("drink_tag","tyr_progression:drinks");
+        assertThrows(IllegalArgumentException.class,()->TrainingXpSpec.parse(j,sys),
+            "Custom drink tag is retired in favor of #c:drinks and DRINK animation");
     }
 }
