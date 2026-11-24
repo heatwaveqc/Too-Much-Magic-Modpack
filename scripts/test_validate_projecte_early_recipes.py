@@ -86,7 +86,7 @@ class ProjectEEarlyRecipeTests(unittest.TestCase):
         path = self.root / "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         data["groups"]["legacy_covalence_dust_costs"]["conversions"].pop()
-        path.write_text(json.dumps(data, indent=2) + "\\n", encoding="utf-8")
+        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
         with self.assertRaises(AssertionError):
             validate(self.root)
 
@@ -94,7 +94,7 @@ class ProjectEEarlyRecipeTests(unittest.TestCase):
         path = self.root / "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         data["groups"]["legacy_covalence_dust_costs"]["conversions"][1]["ingredients"][0]["tag"] = "c:ingots/gold"
-        path.write_text(json.dumps(data, indent=2) + "\\n", encoding="utf-8")
+        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
         with self.assertRaises(AssertionError):
             validate(self.root)
 
