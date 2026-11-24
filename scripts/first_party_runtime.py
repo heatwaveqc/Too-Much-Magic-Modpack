@@ -229,7 +229,7 @@ def main():
         if args.mods_dir is None:
             p.error("--mods-dir required")
         expected = {jar.name for _, _, jar in rows}
-        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengeance-") or j.name in expected}
+        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith(("traders_vengeance-", "traders_vengence-")) or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
         for directory, mod, jar in rows:
