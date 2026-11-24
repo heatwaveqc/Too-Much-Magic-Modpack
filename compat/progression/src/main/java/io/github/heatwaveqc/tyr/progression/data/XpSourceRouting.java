@@ -56,10 +56,11 @@ public record XpSourceRouting(Map<String, EarningPolicy> policies,
      * Explicit routing replaces fallback identity. Identical candidates collapse;
      * incompatible measurements or receipt semantics fail closed rather than
      * selecting by arbitrary Path iteration order. Independent categories remain additive.
+     * Preserve source order so a fixed reward cannot jump ahead of the preceding
+     * ordinary reward and unexpectedly change its growth calculation.
      */
     public List<Candidate> normalize(List<Candidate> candidates) {
-        var groups=new java.util.TreeMap<Group,Candidate>(java.util.Comparator
-                .comparing(Group::source).thenComparing(Group::fallback));
+        var groups=new java.util.LinkedHashMap<Group,Candidate>();
         var conflicts=new HashSet<Group>();
         for(var c:candidates){
             if(c.nominal()==null || c.nominal().signum()<=0)continue;
