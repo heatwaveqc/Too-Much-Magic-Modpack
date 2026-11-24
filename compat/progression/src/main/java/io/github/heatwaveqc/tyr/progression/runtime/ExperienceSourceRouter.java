@@ -15,6 +15,15 @@ import net.neoforged.neoforge.common.util.FakePlayer;
 public final class ExperienceSourceRouter {
     private ExperienceSourceRouter() {}
 
+    /** Settle independently named sources once per authenticated event. */
+    public static Ledger batch(ServerPlayer player, Ledger prior, String transaction,
+            java.util.List<io.github.heatwaveqc.tyr.progression.data.XpSourceRouting.Candidate> candidates) {
+        var next=prior;
+        for(var c:PathRegistry.economyCatalog().routing().normalize(candidates))
+            next=award(player,next,c.fallback(),c.source(),transaction,c.completion(),c.nominal(),c.fixed());
+        return next;
+    }
+
     public static Ledger award(ServerPlayer player, Ledger prior, String fallbackSystem,
             String source, String transaction, String completion, BigDecimal nominal, boolean fixed) {
         return settle(player,prior,fallbackSystem,source,transaction,completion,
@@ -35,7 +44,8 @@ public final class ExperienceSourceRouter {
             BigDecimal repeatNominal, boolean firstFixed, boolean repeatFixed, boolean repeat) {
         if (player == null || player.getServer() == null || !player.getServer().isSameThread()
                 || player instanceof FakePlayer || player.isCreative() || player.isSpectator()
-                || NewbieMode.isNewbie(player)) return prior;
+                || NewbieMode.isNewbie(player)
+                || player.getServer().getPlayerList().getPlayer(player.getUUID())!=player) return prior;
         var catalog = PathRegistry.economyCatalog();
         var next = prior;
         for (var destination : catalog.routing().destinations(source,fallbackSystem)) {
