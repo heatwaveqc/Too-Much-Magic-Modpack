@@ -1,0 +1,32 @@
+name: ProjectE early recipe source safety (#44)
+
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/projecte/recipe/**'
+      - 'config/neovitae/materials.json'
+      - 'scripts/validate_projecte_early_recipes.py'
+      - 'scripts/test_validate_projecte_early_recipes.py'
+      - '.github/workflows/projecte-early-recipes-source-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate current ProjectE progression gates (read-only)
+        run: python3 scripts/validate_progression_gates.py
+      - name: Validate exact early recipe replacements (read-only)
+        run: python3 scripts/validate_projecte_early_recipes.py
+      - name: Test rejected recipe and EMC-regression fixtures
+        run: python3 -m unittest discover -s scripts -p 'test_validate_projecte_early_recipes.py' -v
+      - name: Keep the general repository source contract
+        run: python3 scripts/validate.py
