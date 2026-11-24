@@ -3,7 +3,7 @@ package io.github.heatwaveqc.tmm.economy.client;
 import io.github.heatwaveqc.tmm.economy.runtime.enchanting.ArcaneDiscriminationRegistration;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
+import io.github.heatwaveqc.tmm.economy.runtime.enchanting.EnchantingFeatureGate;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
@@ -12,7 +12,7 @@ public final class ArcaneDiscriminationScreens {
     private ArcaneDiscriminationScreens() {}
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
-        if (ModList.get().isLoaded("improvableskills") && ModList.get().isLoaded("apothic_enchanting"))
+        if (EnchantingFeatureGate.enabled())
             event.register(ArcaneDiscriminationRegistration.MENU.get(), ArcaneDiscriminationScreen::new);
     }
 }
