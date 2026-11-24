@@ -32,7 +32,8 @@
     "PortableStorageBundleInsertionMixin",
     "PortableStorageOccultismSatchelMixin",
     "PortableStorageMalumPouchMixin",
-    "PortableStorageBotaniaBackedInventoryMixin"
+    "PortableStorageBotaniaBackedInventoryMixin",
+    "PortableStorageMiniHandbagMenuMixin"
   ],
   "injectors": {
     "defaultRequire": 1
