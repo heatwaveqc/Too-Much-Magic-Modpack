@@ -121,6 +121,7 @@ public final class ProgressionEvents {
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
+        if (Enrollment.entityOffering(player,event)) return;
         if (!ClassAbilities.entityInteract(player,event)
                 && !EffectRuntime.animalFriendship(player,event))
             EffectHandlers.entityInteract(player,event);

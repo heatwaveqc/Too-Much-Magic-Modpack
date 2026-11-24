@@ -85,6 +85,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public record FoodRite(FoodRiteSpec spec,Condition<ServerPlayer> conditions){}
     private static volatile Map<String,FoodRite> foodRites=Map.of();
     public static Map<String,FoodRite> foodRites(){return foodRites;}
+    private static volatile Map<String,EntityOfferingSpec> entityOfferings=Map.of();
+    public static Map<String,EntityOfferingSpec> entityOfferings(){return entityOfferings;}
     private static volatile Map<String,TimedEnrollment> timedEnrollments=Map.of();
     public static Map<String,TimedEnrollment> timedEnrollments(){return timedEnrollments;}
 
@@ -101,6 +103,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
+        Map<String,EntityOfferingSpec> offerings=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
@@ -159,6 +162,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 nextPresentation.put(new GateKey(path.id(),"",-1),PresentationSpec.parse(raw));
                 var rite=FoodRiteSpec.parse(raw);
                 if(rite!=null)rites.put(path.id(),new FoodRite(rite,Eligibility.parse(rite.when())));
+                var offering=EntityOfferingSpec.parse(raw);
+                if(offering!=null)offerings.put(path.id(),offering);
                 var timer=TimedEnrollment.parse(raw);
                 if(timer!=null)timed.put(path.id(),timer);
                 Map<GateKey,Condition<ServerPlayer>> localGates=new HashMap<>();
@@ -207,6 +212,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         ExperienceEconomyRuntime.install(economy);
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
+        entityOfferings=Map.copyOf(offerings);
         timedEnrollments=Map.copyOf(timed);
         foodRites=Map.copyOf(rites);
         gates=Map.copyOf(nextGates);
