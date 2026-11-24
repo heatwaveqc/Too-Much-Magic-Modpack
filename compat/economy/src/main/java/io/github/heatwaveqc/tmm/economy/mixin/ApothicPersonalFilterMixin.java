@@ -24,8 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * getEnchantmentList during preview and commit. Pass a local stats record to
  * the native selection helper, never mutate physical shelf stats.
  *
- * Deliberately NOT listed in the active mixin manifest until the native
- * ability/menu, optional-mod load and preview/commit integration are verified.
+ * EconomyEnchantingMixinPlugin gates application before optional target resolution.
+ * The feature remains a draft until exact ABI and runtime validation.
  */
 @Pseudo
 @Mixin(targets = "dev.shadowsoffire.apothic_enchanting.table.ApothEnchantmentMenu", remap = false)
