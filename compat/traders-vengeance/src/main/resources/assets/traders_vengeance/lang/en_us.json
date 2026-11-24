@@ -1,0 +1,14 @@
+{
+  "message.traders_vengeance.hero_pardon": "Your heroism has earned the villages' forgiveness. The vendetta is over.",
+  "death.attack.traders_vengeance.minigun": "%1$s was gunned down by %2$s",
+  "death.attack.traders_vengeance.minigun.player": "%1$s was gunned down whilst fighting %2$s",
+  "death.attack.traders_vengeance.pistol_bullet": "%1$s was shot by %2$s",
+  "death.attack.traders_vengeance.pistol_bullet.player": "%1$s was shot whilst fighting %2$s",
+  "subtitles.traders_vengeance.gun.m1911.fire": "M1911A1 fires",
+  "subtitles.traders_vengeance.reload.pistol.mag_out": "Magazine removed",
+  "subtitles.traders_vengeance.reload.pistol.mag_in": "Magazine inserted",
+  "subtitles.traders_vengeance.reload.pistol.slide": "Slide racked",
+  "subtitles.traders_vengeance.minigun.loop": "Minigun firing",
+  "subtitles.traders_vengeance.minigun.stop": "Minigun winds down",
+  "subtitles.traders_vengeance.minigun.spinup": "Minigun spins up"
+}

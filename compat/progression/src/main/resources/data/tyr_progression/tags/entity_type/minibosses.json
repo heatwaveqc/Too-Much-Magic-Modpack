@@ -1,0 +1,82 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "cataclysm:amethyst_crab",
+      "required": false
+    },
+    {
+      "id": "cataclysm:aptrgangr",
+      "required": false
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "required": false
+    },
+    {
+      "id": "cataclysm:kobolediator",
+      "required": false
+    },
+    {
+      "id": "cataclysm:the_prowler",
+      "required": false
+    },
+    {
+      "id": "cataclysm:wadjet",
+      "required": false
+    },
+    {
+      "id": "goety:brood_mother",
+      "required": false
+    },
+    {
+      "id": "goety:crone",
+      "required": false
+    },
+    {
+      "id": "goety:endersent",
+      "required": false
+    },
+    {
+      "id": "goety:heresiarch",
+      "required": false
+    },
+    {
+      "id": "goety:hostile_redstone_golem",
+      "required": false
+    },
+    {
+      "id": "goety:hurricane",
+      "required": false
+    },
+    {
+      "id": "goety:minister",
+      "required": false
+    },
+    {
+      "id": "goety:skull_lord",
+      "required": false
+    },
+    {
+      "id": "goety:wight",
+      "required": false
+    },
+    {
+      "id": "goety:wither_necromancer",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:archevoker",
+      "required": false
+    },
+    "minecraft:elder_guardian"
+  ]
+}

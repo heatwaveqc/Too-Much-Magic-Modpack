@@ -1,0 +1,22 @@
+{
+  "content": {
+    "item_minecraft_golden_carrot": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "content": "minecraft:golden_carrot",
+      "forbids": [
+        {
+          "content": "minecraft:bread",
+          "type": "item"
+        }
+      ],
+      "rarity": "COMMON",
+      "repRequired": -30,
+      "type": "item",
+      "unitWorth": 117.5
+    }
+  },
+  "replace": true
+}

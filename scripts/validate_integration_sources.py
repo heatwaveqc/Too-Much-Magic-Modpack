@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TRACKED_PREFIXES = ("feature/", "fix/", "design/", "audit/")
 SHA = re.compile(r"^[0-9a-f]{40}$")
 ALLOWED_ROOTS = ("compat/", "integration/", "kubejs/", "config/",
-                 "defaultconfigs/", "mods/", "manifest/", "scripts/")
+                 "defaultconfigs/", "mods/", "resourcepacks/", "manifest/", "scripts/")
 
 
 class PreflightFailure(RuntimeError):

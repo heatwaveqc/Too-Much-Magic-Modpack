@@ -1,0 +1,13 @@
+name = "VillagersTradingPlus"
+filename = "villagertradingplus-neoforge-mc1.21.1-1.1.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "8ffd86625d67bd911d7f2e90ef5b2f67ab3630ef"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9346744
+project-id = 1635301

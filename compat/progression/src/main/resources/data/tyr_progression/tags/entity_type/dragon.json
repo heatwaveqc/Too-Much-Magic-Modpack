@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "ars_nouveau:bookwyrm",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:familiar_bookwyrm",
+      "required": false
+    },
+    {
+      "id": "draconicevolution:draconic_guardian",
+      "required": false
+    },
+    "minecraft:ender_dragon",
+    {
+      "id": "pastel:kindling",
+      "required": false
+    },
+    {
+      "id": "twilightforest:hydra",
+      "required": false
+    }
+  ]
+}

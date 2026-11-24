@@ -1,0 +1,30 @@
+name: Creature Feature 1.3.0 official pin audit (NO GAME BOOT)
+
+on:
+  push:
+    branches:
+      - feature/creature-feature-130-intake-419
+  pull_request:
+    paths:
+      - scripts/resolve_creature_feature_130.py
+      - tests/test_creature_feature_intake.py
+      - mods/creature-feature.pw.toml
+      - mods/blueprint.pw.toml
+      - .github/workflows/verify-creature-feature-intake.yml
+
+permissions:
+  contents: read
+
+jobs:
+  pin-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline strict-provider and NeoForge metadata regression tests
+        run: python -m unittest discover -s tests -p test_creature_feature_intake.py -v
+      - name: Inspect official selected releases and exact SHA-512 JARs (read-only)
+        run: python scripts/resolve_creature_feature_130.py

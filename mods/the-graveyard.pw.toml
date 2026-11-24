@@ -1,0 +1,13 @@
+name = "The Graveyard"
+filename = "graveyard-NEOFORGE-4.0.1+mc1.21.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "eda871e48b28eefa2be8067dad72c2d36e8f31ff"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9346778
+project-id = 514468

@@ -1,0 +1,32 @@
+{
+  "content": {
+    "item_minecraft_bread": {
+      "amount": {
+        "max": 256,
+        "min": 4
+      },
+      "content": "minecraft:bread",
+      "type": "item",
+      "unitWorth": 1.96875
+    },
+    "item_minecraft_cooked_beef": {
+      "amount": {
+        "max": 128,
+        "min": 4
+      },
+      "content": "minecraft:cooked_beef",
+      "type": "item",
+      "unitWorth": 10.5
+    },
+    "item_minecraft_cooked_chicken": {
+      "amount": {
+        "max": 128,
+        "min": 4
+      },
+      "content": "minecraft:cooked_chicken",
+      "type": "item",
+      "unitWorth": 10.5
+    }
+  },
+  "replace": true
+}

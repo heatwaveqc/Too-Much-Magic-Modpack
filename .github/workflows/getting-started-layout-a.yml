@@ -1,0 +1,34 @@
+name: Type A Getting Started Quest Layout
+
+on:
+  pull_request:
+    paths:
+      - "manifest/quest_content.json"
+      - "manifest/quest_content_resolved.json"
+      - "manifest/quest_layouts.json"
+      - "config/ftbquests/quests/chapters/intro.snbt"
+      - "config/ftbquests/quests/lang/en_us.snbt"
+      - "scripts/rebuild_quest_ui.py"
+      - "tests/test_getting_started_layout_a.py"
+      - "index.toml"
+      - "pack.toml"
+      - ".github/workflows/getting-started-layout-a.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate canonical FTB Quests and rewards (Type A)
+        run: python scripts/validate_quests.py
+      - name: Check source/FTB/layout/Packwiz graph geometry (Type A)
+        run: python -m unittest discover -s tests -p test_getting_started_layout_a.py -v
+      - name: Validate packwiz metadata only (no game boot)
+        run: python scripts/validate.py

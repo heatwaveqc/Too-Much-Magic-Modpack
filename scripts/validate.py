@@ -60,11 +60,15 @@ def main() -> None:
         check(target.is_file(), f"Missing indexed file {name}")
         check(entry["hash"] == sha256(target), f"Stale hash for {name}")
         if entry.get("metafile"):
-            check(name.startswith("mods/") and name.endswith(".pw.toml"), f"Unexpected metafile: {name}")
+            check(name.endswith(".pw.toml") and (name.startswith("mods/") or name.startswith("resourcepacks/")), f"Unexpected metafile: {name}")
             mod = tomllib.loads(target.read_text(encoding="utf-8"))
             check(mod.get("side", "both") in {"both", "client", "server"}, f"Invalid side: {name}")
-            check(bool(mod.get("download", {}).get("hash")), f"Missing jar hash {name}")
-            active.add(Path(name).name.removesuffix(".pw.toml"))
+            check(bool(mod.get("download", {}).get("hash")), f"Missing download hash {name}")
+            if name.startswith("mods/"):
+                active.add(Path(name).name.removesuffix(".pw.toml"))
+            else:
+                check(mod.get("side") == "client", f"Resource pack must be client-only: {name}")
+                check(mod.get("filename", "").endswith(".zip"), f"Resource pack must be a ZIP: {name}")
     check(not active & excludes, "Excluded mod present in packwiz")
     catalog_active = {m.get("packwiz_slug", m["id"]) for m in mods if m["enabled_in_pack"]}
     check(len(catalog_active) == sum(m["enabled_in_pack"] for m in mods), "Duplicate packwiz slugs")
@@ -72,6 +76,9 @@ def main() -> None:
     if "default-options" in active:
         from validate_defaultoptions_keybindings import validate as validate_default_keybindings
         validate_default_keybindings()
+    if "curios" in active:
+        from validate_curios_bundle_slot import main as validate_curios_bundle_slot
+        validate_curios_bundle_slot()
     print(f"PASS: packwiz metadata + hashes; {len(indexed)} files, {len(active)} active mods; {len(mods)} desired entries")
     print("NOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed")
 

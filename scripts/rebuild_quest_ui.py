@@ -20,7 +20,7 @@ AUTHOR = json.loads((ROOT / "manifest/quest_content.json").read_text(encoding="u
 RESOLVED = json.loads((ROOT / "manifest/quest_content_resolved.json").read_text(encoding="utf-8"))
 BY_AUTHOR = {(q["chapter"], q["title"]): q for q in AUTHOR["quests"]}
 BY_ID = {q["quest_id"]: q for q in RESOLVED["quests"]}
-BLOCK = re.compile(r"\n\t\t\{\n.*?\n\t\t\}", flags=re.S)
+BLOCK = re.compile(r'\n\t\t\{\n\t\t\tid: "[0-9A-F]{16}".*?\n\t\t\}', flags=re.S)
 INLINE_TITLE = re.compile(r'\n\t\t\ttitle: "(?:\\.|[^"\\])*"')
 ROOT_TITLE = re.compile(r'\n\ttitle: "(?:\\.|[^"\\])*"')
 ROOT_SUBTITLE = re.compile(r'\n\tsubtitle: "(?:\\.|[^"\\])*"')
@@ -38,52 +38,70 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
             raise ValueError(f"Duplicate layout title {ch} / {title}")
         result[ch][title] = (x, y)
 
+    # Six-node first-magic spine, optional vanilla survival/research branches,
+    # and an independent personal Newbie-to-Normie graduation choice.
     intro = {
-        "Welcome to Too Much Magic": (0, 0),
-        "Choose Your Magic Controls": (4, 0),
-        "I'm Ready for Regular Mode": (12, 0),
-        "Punch a Tree": (0, 3),
-        "Make a Crafting Table": (0, 6),
-        "Make a Wooden Pickaxe": (0, 9),
-        "Gather Stone": (0, 12),
-        "Upgrade to Stone": (0, 15),
-        "Find Your First Iron": (0, 18),
-        "Iron Pickaxe": (0, 21),
-        "A Place for Your Things": (4, 6),
-        "Light the Furnace": (4, 12),
-        "Begin a Library": (8, 6),
-        "Build a Bookshelf": (8, 9),
-        "Iron Is Only the Beginning": (4, 21),
-        "Find an Everyday Magical Shortcut": (8, 21),
-        "Try a First Spell or Ritual": (8, 24),
-        "A Little Protection": (4, 24),
-        "Take Your Magic Into the World": (4, 27),
-        "The Rest of the Pack Is Yours": (8, 27),
+        "Welcome to Too Much Magic": (-16, 0),
+        "Choose Your Magic Controls": (-16, -8),
+        "I'm Ready for Regular Mode": (12, -8),
+        "Punch a Tree": (-12, 0),
+        "Make a Crafting Table": (-8, 0),
+        "Make a Wooden Pickaxe": (-8, 8),
+        "Gather Stone": (-4, 8),
+        "Upgrade to Stone": (0, 8),
+        "A Place for Your Things": (-12, 12),
+        "Light the Furnace": (-4, 12),
+        "Find Your First Iron": (4, 8),
+        "Iron Pickaxe": (8, 8),
+        "Begin a Library": (-8, -8),
+        "Build a Bookshelf": (-4, -8),
+        "Pick Your First Magic": (-4, 0),
+        "Find an Everyday Magical Shortcut": (0, 0),
+        "Try a First Spell or Ritual": (4, 0),
+        "A Little Protection": (12, 12),
+        "Take Your Magic Into the World": (0, -8),
+        "The Rest of the Pack Is Yours": (8, 0),
     }
     for title, xy in intro.items():
         put("Getting Started", title, *xy)
 
+    # Five freely browsable Informational clusters: books, controls, inventory,
+    # comfort/survival and useful magic. The central starter claim is personal.
     tips = [
         ("Tips & Tricks Index", 0, 0),
-        ("Find Recipes with JEI", 0, 4),
-        ("Identify Blocks with Jade", 3, 4),
-        ("Sort Your Inventory", 6, 4),
-        ("Use Crafting Tweaks", 9, 4),
-        ("Search the Controls Screen", 12, 4),
-        ("Gather Your Guidebooks", 0, 8),
-        ("Curios and Portable Bags", 3, 8),
-        ("Claim Your Base", 6, 8),
-        ("Understand Lootr Chests", 9, 8),
-        ("Plan for Death", 12, 8),
-        ("Search Biomes", 0, 12),
-        ("Resolve Recipe Conflicts", 3, 12),
-        ("Understand Character Growth", 6, 12),
-        ("Zoom and Overlay Controls", 9, 12),
-        ("Use the Quest Shop", 12, 12),
-        ("Smelt Without Fuel: Scriptor Lectern", 0, 17),
-        ("Double Raw Ore: Occultism or Mahou?", 3, 17),
-        ("Need Early Flight? Compare Brooms", 6, 17),
-        ("Vengeance Pickaxe: Fortune with a Price", 9, 17),
+        ("Find Recipes with JEI", -20, -10),
+        ("Identify Blocks with Jade", -16, -10),
+        ("Sort Your Inventory", -20, 6),
+        ("Use Crafting Tweaks", -16, 6),
+        ("Search the Controls Screen", 12, -10),
+        ("Gather Your Guidebooks", -12, -10),
+        ("Curios and Portable Bags", -8, 6),
+        ("Claim Your Base", 12, 6),
+        ("Understand Lootr Chests", 16, 6),
+        ("Plan for Death", 20, 6),
+        ("Search Biomes", 24, 6),
+        ("Resolve Recipe Conflicts", -12, 6),
+        ("Understand Character Growth", -12, 19),
+        ("Zoom and Overlay Controls", 16, -10),
+        ("Use the Quest Shop", -8, 19),
+        ("Smelt Without Fuel: Scriptor Lectern", -4, 19),
+        ("Double Raw Ore: Occultism or Mahou?", 0, 19),
+        ("Need Early Flight? Compare Brooms", 4, 19),
+        ("Vengeance Pickaxe: Fortune with a Price", 8, 19),
+        ("Claim Your Starter Supplies", 4, 0),
+        ("Comforts: Sleep Away from Home", 12, 10),
+        ("AppleSkin: Know When to Eat", -20, -6),
+        ("Where Do Ores and Villager Trades Come From?", -16, -6),
+        ("Read Enchantments and Detailed Tooltips", -12, -6),
+        ("Quiet the World with Extreme Sound Muffler", 20, -10),
+        ("Use KeySets and KeyBind Bundles", 12, -6),
+        ("TrashSlot: Delete Only What You Mean To", -16, 10),
+        ("Harvest with Ease", 16, 10),
+        ("TreeChop and Leaves Be Gone", 20, 10),
+        ("What Does Smart Keep Inventory Protect?", 24, 10),
+        ("Prefab: A Head Start on Housing", 28, 10),
+        ("Browse Better Advancements", -8, -6),
+        ("Keep Controls Across Updates", 16, -6),
     ]
     for title, x, y in tips:
         put("Tips & Tricks", title, x, y)
@@ -155,7 +173,7 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     for title, x, y in basic:
         put("Basic Progression", title, x, y)
     suffix = ["I — First Trade", "II — Regular Buyer", "III — Packed Shipment", "IV — Industrial Exchange"]
-    for row, commodity in enumerate(("Copper", "Emeralds", "Diamonds")):
+    for row, commodity in enumerate(("Copper", "Emeralds", "Diamonds", "Iron")):
         for col, tier in enumerate(suffix):
             put("Basic Progression", f"Sell {commodity} {tier}", 3 * col, 14 + row * 4)
 
@@ -227,16 +245,20 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     # The Ars pilot owns its full layout and keeps the current Alcohol chapter intact.
     for row in json.loads((ROOT / "manifest/ars_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
         put("Ars Nouveau", row["title"], *row["position"])
+    # Theurgy pilot positions are first-class source; never flatten its branching graph.
+    for node in json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
+        put("Theurgy", node["title"], *node["position"])
     return result
 
 
 SUBTITLE = {
+    "Theurgy": "Hermetica, alchemical vessels, Niter, Reformation, and mercurial logistics.",
     "Goety": "Dark arts, soul rituals and summoning; see Skills & Factions for lichdom.",
     "Just Another Witchery Remake": "Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations.",
     "ProjectE": "EMC, Project Expansion and ProjectE Energy Converters.",
     "Artifacts": "Artifacts, Relics and Reliquified Artifacts: equipment, abilities and progression.",
-    "Getting Started": "First tools and shelter, then a practical magic path of your choosing.",
-    "Tips & Tricks": "Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage.",
+    "Getting Started": "Start magic after basic crafting; optional survival, research, exploration and personal graduation.",
+    "Tips & Tricks": "Personal starter kit, guides, controls, crafting, survival comfort and useful magical shortcuts.",
     "Food & Fishing": "Farming, fishing, food preparation and modular kitchens.",
     "Alcohol is Magic": "Fermentation, cocktails, tropical bars and beverage effects.",
     "Basic Progression": "Shared resources and tools, plus separate player commodity-selling contracts.",
@@ -294,8 +316,8 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
     if any(not x or x.strip() == "undefined" for x in description):
         raise ValueError(f"Broken localized description: {chapter} / {title}")
     if ledger is not None and "coin" in ledger.get("reward", {}):
-        expected = f'command: "hqs coins add {{p}} {ledger["reward"]["coin"]}", permission_level: 2, team_reward: true'
-        if expected not in block or 'type: "questshop:coins"' in block:
+        expected = f'command: "qshop currency give {{p}} coins {ledger["reward"]["coin"]}", permission_level: 2, team_reward: false'
+        if expected not in block or 'type: "qshop:money"' in block or 'type: "questshop:coins"' in block:
             raise ValueError(f"Unsupported coin reward ABI on {chapter} / {title}: use native command reward")
     start = block.find("\n\t\t\tdescription:")
     if start >= 0:
@@ -397,8 +419,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 240 or intro_count != 201:
-        raise ValueError(f"Expected 240 objects / 201 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 277 or intro_count != 239:
+        raise ValueError(f"Expected 277 objects / 239 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:
