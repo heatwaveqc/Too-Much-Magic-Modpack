@@ -2,6 +2,15 @@
   "replace": false,
   "values": [
     {
+      "id": "occultism:ritual_satchel_t2",
+      "required": false
+    },
+    {
+      "id": "occultism:ritual_satchel_t1",
+      "required": false
+    },
+    "minecraft:bundle",
+    {
       "id": "ars_elemental:curio_bag",
       "required": false
     },
