@@ -79,6 +79,42 @@ public final class Enrollment {
             break;
         }
     }
+    /** Before native mobInteract: a recognized offering is reserved for enrollment,
+     * not passed through to an NPC's unrelated enchantment/trade handler on rejection. */
+    public static boolean entityOffering(ServerPlayer player,
+            net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract event) {
+        if (event.isCanceled() || event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND
+                || PathRegistry.entityOfferings().isEmpty()
+                || !event.getTarget().isAlive()) return false;
+        ItemStack stack = player.getMainHandItem();
+        if (stack.isEmpty()) return false;
+        String entityId = BuiltInRegistries.ENTITY_TYPE.getKey(event.getTarget().getType()).toString();
+        String itemId = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        var candidates = PathRegistry.entityOfferings().entrySet().stream()
+            .filter(e -> e.getValue().entity().equals(entityId) && e.getValue().item().equals(itemId))
+            .toList();
+        if (candidates.isEmpty()) return false;
+        var materials = candidates.stream().anyMatch(e -> !e.getValue().jewelryMaterial().isEmpty())
+            ? JewelryOfferingMaterials.read(stack) : java.util.Set.<String>of();
+        var matches = candidates.stream().filter(e -> e.getValue().matches(entityId,itemId,materials)).toList();
+        if (matches.isEmpty()) return false;
+        event.setCanceled(true);
+        event.setCancellationResult(net.minecraft.world.InteractionResult.FAIL);
+        if (matches.size() != 1 || player.isCreative() || player.isSpectator()) return true;
+        var match = matches.getFirst();
+        String path = match.getKey();
+        if (ProgressionApi.track(player,path).joined() || !ProgressionApi.join(player,path)) {
+            player.displayClientMessage(Component.literal("You cannot undertake this initiation."),true);
+            return true;
+        }
+        stack.consume(1,player); // only after authoritative admission, exactly once
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        if (!match.getValue().completionEvent().isEmpty())
+            ProgressionApi.recordExternal(player,match.getValue().completionEvent());
+        player.displayClientMessage(Component.literal("Offering accepted: " + path + " unlocked"),false);
+        return true;
+    }
+
     public static void tick(ServerPlayer player) {
         if (player.tickCount % 20 == 0 && !player.isCreative() && !player.isSpectator())
             for (String candidate:PathRegistry.all().keySet())
