@@ -45,6 +45,15 @@ config="tyr_progression_vision.mixins.json"
 [[mixins]]
 config="tyr_progression_diet.mixins.json"
 
+# Optional Hexerei 0.5.0.3 ordinary blood normalization at both native
+# MixingCauldronTile.fill and interactWithFluid entry points.
+[[mixins]]
+config="tyr_progression_hexerei_blood.mixins.json"
+
+# Optional pinned JAWR 0.5.39 + BnC 4.5.0 cuisine; absent mods fail closed.
+[[mixins]]
+config="tyr_progression_jawr_cuisine.mixins.json"
+
 # Optional transformation, Dracolich rendering and magic compat; each mixin is version-gated.
 [[mixins]]
 config="tmm_transformations.mixins.json"
