@@ -1,0 +1,7 @@
+{
+  "target_version": "2.0.74",
+  "source_commit": "658c63608adc0194c9c9516804ecd66c1fd10112",
+  "rig_sha256_normalized": "ffe37a0d6bed178e4d767dd1214b9ac0a97d4109b2ec339224e6655f918dc140",
+  "native_bones": 272,
+  "scope": "Cave/Center only; rig assembled in memory from installed Dragon Survival"
+}

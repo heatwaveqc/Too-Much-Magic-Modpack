@@ -1,15 +1,9 @@
 package io.github.heatwaveqc.tyr.progression.runtime.resources;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.*;
 
 /** Per-player saved resource balances and bounded recent committed-event receipts. */
 public record ResourceState(Map<String,Integer> balances,List<String> receipts) {
-    public static final Codec<ResourceState> CODEC=RecordCodecBuilder.create(instance->instance.group(
-        Codec.unboundedMap(Codec.STRING,Codec.INT).fieldOf("balances").forGetter(ResourceState::balances),
-        Codec.STRING.listOf().fieldOf("receipts").forGetter(ResourceState::receipts)
-    ).apply(instance,ResourceState::new));
     public ResourceState {
         balances=Map.copyOf(balances); receipts=List.copyOf(receipts);
         if(balances.size()>ResourcePolicy.MAX_STORED || receipts.size()>ResourcePolicy.MAX_RECEIPTS

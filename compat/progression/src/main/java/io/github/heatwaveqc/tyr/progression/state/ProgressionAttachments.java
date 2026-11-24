@@ -30,7 +30,7 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState>> PATH_RESOURCES =
         ATTACHMENTS.register("path_resources", () -> AttachmentType.builder(
             io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState::empty)
-            .serialize(io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState.CODEC)
+            .serialize(io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceStateCodec.CODEC)
             .copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)

@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 /** Pure tests: neither optional mods nor a Minecraft runtime are required. */
 class NativePhysiologyPolicyTest {
-    private static final Rules RULES = new Rules(
-        Set.of("tyr_progression:newbie", "tyr_progression:normie"),
+    private static final Rules RULES = NativePhysiologyGateway.withApprovedPairData(
         Map.of(
             "tyr_progression:dryad", Set.of(Form.FOREST_DRAGON),
             "tyr_progression:sexy_demon", Set.of(Form.CAVE_DRAGON),
@@ -23,6 +22,14 @@ class NativePhysiologyPolicyTest {
         for (Form form : Form.values()) states.put(form, Presence.ABSENT);
         states.put(present, Presence.PRESENT);
         return new Snapshot(states);
+    }
+
+    @Test void universalCoreIsNotASecondSpecialist() {
+        assertEquals(Decision.ALLOW, mayJoin(false, "tyr_progression:core",
+            snapshot(Form.SEA_DRAGON), RULES));
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:core"), Snapshot.allAbsent(),
+            Form.JAWR_VAMPIRE, RULES));
     }
 
     @Test void ordinaryGraduatedPlayersMayAcquireAForm() {
@@ -83,6 +90,20 @@ class NativePhysiologyPolicyTest {
         assertEquals(Decision.ALLOW,
             mayAcquire(true, Set.of("tyr_progression:monk"),
                 snapshot(Form.JAWR_VAMPIRE), Form.JAWR_VAMPIRE, RULES));
+    }
+
+    @Test void switchingDragonSpeciesRechecksSpecialistPairing() {
+        // A Dragon Survival setter may change species without removing the
+        // provider. It is not the same as a native rank upgrade.
+        Snapshot alreadyForest = snapshot(Form.FOREST_DRAGON);
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:dryad"), alreadyForest, Form.FOREST_DRAGON, RULES));
+        assertEquals(Decision.DENY_INCOMPATIBLE, mayAcquire(false,
+            Set.of("tyr_progression:dryad"), alreadyForest, Form.CAVE_DRAGON, RULES));
+        assertEquals(Decision.ALLOW, mayAcquire(false,
+            Set.of("tyr_progression:normie"), alreadyForest, Form.CAVE_DRAGON, RULES));
+        assertEquals(Decision.DENY_INCOMPATIBLE, mayAcquire(false,
+            Set.of("tyr_progression:sexy_demon"), alreadyForest, Form.SEA_DRAGON, RULES));
     }
 
     @Test void multipleSpecialistsMustEachPermitTheForm() {
