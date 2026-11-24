@@ -1974,6 +1974,51 @@
       ]
     },
     {
+      "id": "tyr_progression:otherworld_sight",
+      "title": "Otherworld Sight",
+      "description": "Innate tier-two Otherworld texture reveal and tier-one native harvest access, without Demon's Dream, goggles, shader or potion. Iesnium still requires separate barehand training.",
+      "lane": "Magical Cultivation",
+      "max_rank": 1,
+      "required_rank": 8,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "effects": [
+        {
+          "type": "otherworld_sight",
+          "tier": 2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:iesnium_palm",
+      "title": "Iesnium Palm",
+      "description": "With Otherworld Sight and normal barehand harvest eligibility, harvest naturally concealed Iesnium using the native uncovered loot state. No extra drops.",
+      "lane": "Hands As Tools",
+      "max_rank": 1,
+      "required_rank": 13,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:otherworld_sight",
+        "tyr_progression:hand_harvest"
+      ],
+      "effects": [
+        {
+          "type": "otherworld_harvest",
+          "target": "occultism:iesnium_ore_natural",
+          "tier": 2,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:resonant_palm",
       "title": "Resonant Palm",
       "description": "Toggle: barehanded matching ore veins, 3 additional ores per rank (16 total at rank 5). Requires normal harvest eligibility.",
