@@ -40,7 +40,7 @@ public final class HunterMutations {
     private static boolean validEffect(HunterMutationPolicy policy, MobEffectInstance effect) {
         if (effect.getDuration() <= 0 || effect.getAmplifier() < 0) return false;
         String id = effectId(effect);
-        return MutationPowerPolicy.supported(id) && policy.eligible(id,effect.getEffect().value().isInstantenous());
+        return policy.eligible(id,effect.getEffect().value().isInstantenous());
     }
 
     public static boolean hasEligibleEffect(PotionContents contents) {
@@ -119,7 +119,7 @@ public final class HunterMutations {
             HunterMutationPolicy policy=PathRegistry.hunterMutationPolicy(owner);
             for(var mutation:state(player,owner).unlocked().entrySet()){
                 String key=mutation.getKey();
-                if(!MutationPowerPolicy.supported(key)||!policy.eligible(key,false))continue;
+                if(!policy.eligible(key,false))continue;
                 var holder=BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(key)).orElse(null);
                 int amplifier=Math.min(mutation.getValue(),policy.maximumAmplifier());
                 if(holder!=null&&!holder.value().isInstantenous()&&amplifier>=0)
@@ -158,7 +158,7 @@ public final class HunterMutations {
         return "Permanent mutations: " + state.unlocked().size()
             + " | target " + (policy.targetDurationTicks()/20) + " seconds per potency"
             + " | exhaustion/tick " + (policy.exhaustionPerMutationTick() * active(player).size())
-            + " | unsupported/dormant: " + state.unlocked().keySet().stream().filter(id->!MutationPowerPolicy.supported(id)).count()
+            + " | dormant: " + state.unlocked().keySet().stream().filter(id->!active(player).containsKey(id)).count()
             + " | unlocked: " + unlocked;
     }
 }

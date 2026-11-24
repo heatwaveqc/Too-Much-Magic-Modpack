@@ -52,3 +52,21 @@
 ## Nov 24 — Hunter mutation migration
 
 Permanent vanilla mutation effects now derive from saved MutationLedger, use separate transient named attribute modifiers, native conditional queries and regeneration cadence; no effect refresh or active-effect entry. The shared passive snapshot also carries bounded effect-ID/amplifier pairs. Ordinary status instances remain native and visible, and stronger temporary potency wins; weaker native attribute contributions are compensated rather than stacking. Legacy 240-tick refreshes expire naturally to avoid deleting indistinguishable legitimate potions. The supported vanilla set is explicitly audited in MutationPowerPolicy. Unreviewed modded mutation IDs retain their saved progress but are dormant and cannot newly consume brews until a safe adapter exists; do not silently emulate capability effects. Non-Hunter Wither penalty and original recipes, duration threshold, and hunger cost are unchanged. Runtime check required for invisibility flag ownership, health boost, resistance, night vision, client/server lease, ordinary potion overlap and absent/unsupported providers. Network version changes require matching client/server module. #629/#654 remain separate integration boundaries.
+
+### Nov 24 owner clarification — configurable mutation policy (supersedes fixed vanilla adapter admission)
+
+Pack builders may configure the Path's `hunter_mutations` object with `vanilla_effect_blacklist` (exact minecraft registry IDs) and `modded_effect_whitelist` (exact non-minecraft registry IDs, defaults empty). The existing `effect_blacklist` is accepted as a backwards-compatible alias, including historical non-vanilla exclusions; deny wins. Supply only one blacklist field. Existing TMM blacklist remains unchanged; all modded effects excluded by default. Instantaneous effects remain ineligible and the native brewing-stand source gate still applies. Removing an allowed effect from policy suspends the saved mutation and its hunger tax without losing progress; re-enabling restores it. No runtime code required for ordinary modded attributes/conditional queries/native periodic effects. Opt-in does not automatically reproduce provider-specific on-add/on-remove state transitions, hidden resource pools, unique lifecycle or client effects; pack builders must audit those before whitelisting. Generic native periodic callback pauses while an actual potion of that type is active to avoid duplicate ticking; regeneration retains explicit strongest-wins behavior. Snapshot version 3 accepts validated namespaced IDs, not a hardcoded fifteen-effect set. Matching client/server required.
+
+Example (illustrative subset; preserve the shipped blacklist when adding entries):
+
+```json
+{
+  "hunter_mutations": {
+    "target_duration_ticks": 720000,
+    "exhaustion_per_mutation_tick": 0.0005,
+    "maximum_amplifier": 3,
+    "vanilla_effect_blacklist": ["minecraft:absorption", "minecraft:saturation"],
+    "modded_effect_whitelist": []
+  }
+}
+```

@@ -25,13 +25,13 @@ public final class PassivePowerNetwork {
                 StreamCodec.composite(
                         ByteBufCodecs.stringUtf8(128), Snapshot::dimension,
                         ByteBufCodecs.stringUtf8(8192), Snapshot::active,
-                        ByteBufCodecs.stringUtf8(2048), Snapshot::mutations,
+                        ByteBufCodecs.stringUtf8(io.github.heatwaveqc.tyr.progression.core.MutationPowerPolicy.MAX_ENCODED), Snapshot::mutations,
                         Snapshot::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        event.registrar("2").playToClient(Snapshot.TYPE, Snapshot.CODEC, (payload, context) ->
+        event.registrar("3").playToClient(Snapshot.TYPE, Snapshot.CODEC, (payload, context) ->
                 context.enqueueWork(() ->
                         ClientPassivePowers.accept(payload.dimension(), payload.active(),payload.mutations())));
     }

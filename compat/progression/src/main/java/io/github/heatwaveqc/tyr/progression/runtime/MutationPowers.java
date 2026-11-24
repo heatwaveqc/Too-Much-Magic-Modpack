@@ -26,7 +26,7 @@ public final class MutationPowers {
         var location=BuiltInRegistries.MOB_EFFECT.getKey(effect.value());
         if(location==null)return -1;
         String id=location.toString();
-        if(!MutationPowerPolicy.supported(id))return -1;
+        if(!MutationPowerPolicy.validId(id)||effect.value().isInstantenous())return -1;
         if(entity instanceof ServerPlayer p)return HunterMutations.active(p).getOrDefault(id,-1);
         return ClientPowerSnapshot.mutation(entity,id);
     }
@@ -44,6 +44,16 @@ public final class MutationPowers {
             if(regen>=0&&(nativeRegen==null||nativeRegen.getAmplifier()<regen)
                 &&p.tickCount%MutationPowerPolicy.regenerationInterval(regen)==0&&p.getHealth()<p.getMaxHealth())
                 p.heal(1.0F);
+            // Opted-in effects use the native periodic callback without adding a
+            // status instance. Ordinary temporary versions own their own ticks;
+            // no double application from the generic callback.
+            for(var entry:HunterMutations.active(p).entrySet()){
+                if(entry.getKey().equals("minecraft:regeneration"))continue;
+                var holder=BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.parse(entry.getKey())).orElse(null);
+                if(holder==null||p.getActiveEffectsMap().containsKey(holder))continue;
+                var effect=holder.value();int amp=entry.getValue();
+                if(effect.shouldApplyEffectTickThisTick(p.tickCount,amp))effect.applyEffectTick(p,amp);
+            }
         }
     }
     public static void login(PlayerEvent.PlayerLoggedInEvent event){

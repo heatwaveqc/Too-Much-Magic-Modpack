@@ -6,10 +6,11 @@ class MutationPowerPolicyTest {
     @Test void snapshotsAreBoundedAndValidated(){
         var values=Map.of("minecraft:speed",2,"minecraft:regeneration",1);
         assertEquals(values,MutationPowerPolicy.decode(MutationPowerPolicy.encode(values)));
-        assertThrows(IllegalArgumentException.class,()->MutationPowerPolicy.decode("mod:capability=1"));
+        assertEquals(Map.of("mod:capability",1),MutationPowerPolicy.decode("mod:capability=1"));
+        assertThrows(IllegalArgumentException.class,()->MutationPowerPolicy.decode("invalid=1"));
         assertThrows(IllegalArgumentException.class,()->MutationPowerPolicy.decode("minecraft:speed=10"));
         assertThrows(IllegalArgumentException.class,()->MutationPowerPolicy.decode("minecraft:speed=1\nminecraft:speed=2"));
-        assertFalse(MutationPowerPolicy.supported("minecraft:absorption"));
+        assertTrue(MutationPowerPolicy.validId("minecraft:absorption")); // wire validation does not grant admission
     }
     @Test void temporaryEffectsNeverStackWithSameMutation(){
         assertEquals(3,MutationPowerPolicy.strongest(1,3));
