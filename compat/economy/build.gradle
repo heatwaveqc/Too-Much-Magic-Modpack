@@ -25,6 +25,8 @@ tasks.named('compileJava') {
     doFirst { if (!modsDir.isPresent()) throw new GradleException('Supply -PtmmCompileModsDir=<hash-verified installed mods directory>') }
 }
 dependencies {
+    // Minecraft provides Gson at runtime; declare it explicitly for isolated JUnit.
+    testImplementation 'com.google.code.gson:gson:2.11.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

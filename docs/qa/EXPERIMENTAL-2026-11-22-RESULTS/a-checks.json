@@ -1,0 +1,191 @@
+{
+  "source": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+  "checks": [
+    {
+      "id": "A01",
+      "source": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+      "input": "clean canonical-LF git archive",
+      "command": "scripts/validate.py",
+      "exit": 0,
+      "stdout": "PASS: Default Options packages 315 unbound mod-key defaults, no vanilla bindings, including all 315 observed IDs\nLIMITATION: observed options.txt inventory is not a final all-mods registered-key export\nPASS: Curios 9.5.1 built-in singular icon, bundle slot identity, player assignment and bag tag\nSOURCE ONLY: client atlas, empty/occupied UI and equipping still require Prism QA\nPASS: packwiz metadata + hashes; 584 files, 222 active mods; 234 desired entries\nNOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed\n",
+      "stderr": "",
+      "initial_checkout_result": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "FAIL: Stale hash for config/defaultoptions/keybindings.txt\n"
+      }
+    },
+    {
+      "id": "A02",
+      "title": "Indexed QA roster and exact pin metadata",
+      "command": [
+        "scripts/verify_qa_inventory.py"
+      ],
+      "exit": 0,
+      "seconds": 0.72,
+      "stdout": "{\n  \"target\": 222,\n  \"pinned\": 222,\n  \"missing\": [],\n  \"unreviewed_additions\": [],\n  \"missing_first_party\": [],\n  \"unreviewed_first_party\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "A03",
+      "title": "Read-only integration source preflight",
+      "command": [
+        "scripts/validate_integration_sources.py"
+      ],
+      "exit": 0,
+      "seconds": 5.81,
+      "stdout": "{\n  \"status\": \"PREFLIGHT PASS (read-only)\",\n  \"head\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n  \"streams\": [\n    {\n      \"stream\": \"ars-complete-quest-pilot\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 6,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"evilcraft-quest-draft\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 1,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"questshop-vanilla-ore-blocks\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"silver-ore-materials\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 8,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"mahou-catalyst-exchange-neo-dust\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 1,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"roots-mxp-prototypes\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"mxp-hexcast-contract\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 18,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"mxp-ledger-math-pilot\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 35,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"tyzs-primary-runtime-migration\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 32,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"ftb-essentials-home-rtp\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 4,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"starter-inventory-akashic-improvable\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 2,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"projecte-boss-recipes-and-emc-audit\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"dragon-diets-food-compat\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 2,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"next-qa-dragon-comforts-hearts-pins\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 1,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"standalone-monk-hunter-progression\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 490,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"jawr-native-transformation-bridge\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 105,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"b19-required-mob-gateways\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 37,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"b20-wandering-trader-magic-stock\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"caerbannog-gateways-prototype\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 7,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"quest-live-registry-validator\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 1,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"thermalily-projecte-energy-converters\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 1,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"bundle-curios-slot\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 2,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"alex-caves-jer-pins\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"betterend-newdawn-iesnium-pinned\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 5,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"b17-b18-yung-ars-pinned\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 28,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"canonical-ordinary-blood-kubejs\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 18,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"traders-vengence-module\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 73,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"newbie-mode-smartkeep-pinned\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 10,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"parchment-fragment-acquisition\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 4,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"resource-economy-standard\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 66,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"alkahestry-botania-economy\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 63,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"replica-nugget-embers-compat\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 6,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"economy-native-module\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 126,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"astral-dimension-sky-config\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 2,\n      \"integrated\": true\n    },\n    {\n      \"stream\": \"theurgy-atlas-quest-chapter\",\n      \"source_commit\": \"c56fb18ffc3b9f12f27317e7fb37f15c32576a8c\",\n      \"files\": 3,\n      \"integrated\": true\n    }\n  ],\n  \"baseline_replacements_needing_review\": [],\n  \"unclassified_draft_branches\": [\n    \"audit/emc-root-materials-326-20261120\",\n    \"feature/adventurers-inn-bountiful-board-20261119\",\n    \"feature/akashic-populated-starter-20261120\",\n    \"feature/angler-gated-materials\",\n    \"feature/approved-encounter-mod-pins-20261120\",\n    \"feature/aquamirae-nouveau-depths-approval-20261120\",\n    \"feature/aquamirae-nouveau-pins-404\",\n    \"feature/arcane-archives-pin-387\",\n    \"feature/art-categories-pilot02-20261117\",\n    \"feature/art-pilot-inventory-20261116\",\n    \"feature/aura-cascade-graveyard-intake-20261120\",\n    \"feature/aura-cascade-neoforge-pin-20261120\",\n    \"feature/bountiful-ars-decree-365\",\n    \"feature/capture-integration-2026-11-19\",\n    \"feature/ci-firstparty-native-dependency-closure-20261122\",\n    \"feature/creature-feature-130-intake-419\",\n    \"feature/creature-taxonomy-reconciliation-2026-11-18\",\n    \"feature/dragon-food-locked-budget-444-20261121\",\n    \"feature/dragon-food-provenance-engine-444\",\n    \"feature/evilcraft-replication-guard-380\",\n    \"feature/fix-worldweaver-welcome-20261120\",\n    \"feature/food-huaxia-crispy-20261121\",\n    \"feature/friendship-garden-policy-428\",\n    \"feature/general-config-quest-labels-batch6\",\n    \"feature/herbalbrews-pin-331\",\n    \"feature/loot-food-compat-config-batch5\",\n    \"feature/magical-industry-config-batch3\",\n    \"feature/monk-1000pt-five-lane-blueprint-2026-11-21\",\n    \"feature/occultism-apotheosis-config-batch1\",\n    \"feature/occultism-iron-ink-rituals\",\n    \"feature/owner-frozen-mod-reconciliation-20261120\",\n    \"feature/parchment-fishing-weighted-treasure-318\",\n    \"feature/paths-remaining-skill-tree-blueprints-20261122\",\n    \"feature/prefab-all-houses-qa-staging-20261120\",\n    \"feature/progression-astral-darkness-vision-20261120\",\n    \"feature/progression-beneficial-effect-duration-20261122\",\n    \"feature/progression-bountiful-sealed-decrees-20261119\",\n    \"feature/progression-inventory-sort-default-20261120\",\n    \"feature/progression-native-physiology-468\",\n    \"feature/progression-personal-enchant-filter-328\",\n    \"feature/progression-personal-enchant-filter-328-20261121\",\n    \"feature/progression-regular-home-power-20261120\",\n    \"feature/progression-tooltip-milestones-237-20261121\",\n    \"feature/projecte-mk1-stone-gates-44-20261121\",\n    \"feature/qa-dual-channel-test-runner-20261121\",\n    \"feature/qa-monk-29-traits-inclusion-20261122\",\n    \"feature/qa-monk-ward-elixir-coherent-ci-20261122\",\n    \"feature/qol-foliage-blaze-stew-20261119\",\n    \"feature/quest-ars-compact-layout-310\",\n    \"feature/quest-theurgy-atlas-pilot-20261122\",\n    \"feature/refoxed-middle-click-default-20261120\",\n    \"feature/skill-tree-pilot-core-monk-hunter-2026-11-19\",\n    \"feature/starter-populated-akashic-tome-306\",\n    \"feature/storage-no-bag-nesting-20261120\",\n    \"feature/theurgy-kubejs-roster\",\n    \"feature/traders-vengence-lava-golem-377\",\n    \"feature/twilight-final-boss-roster\",\n    \"feature/unified-kitchen\",\n    \"feature/weeping-angels-native-dimension-blacklist-20261120\",\n    \"fix/prism-windows-prelaunch-exitcode-20261122\"\n  ],\n  \"note\": \"Drafts do not block routine CI. Before a comprehensive build reconcile every READY item.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "A04",
+      "source": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+      "input": "clean canonical-LF git archive",
+      "command": "scripts/verify_unified_progression.py",
+      "exit": 0,
+      "stdout": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\n",
+      "stderr": "",
+      "initial_checkout_result": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<source>\\scripts\\verify_unified_progression.py\", line 45, in <module>\n    verify_selection()\n  File \"<source>\\scripts\\verify_unified_progression.py\", line 21, in verify_selection\n    assert not (root / path).exists(), \"Retired XP runtime residue: \" + path\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Retired XP runtime residue: config/tyzs_skills\n"
+      }
+    },
+    {
+      "id": "A05",
+      "title": "Quest content and localization",
+      "command": [
+        "scripts/validate_quests.py"
+      ],
+      "exit": 0,
+      "seconds": 0.27,
+      "stdout": "PASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated\nPASS: five groups, 44 chapters, 259 quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin\nPASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task\nNOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified\n",
+      "stderr": ""
+    },
+    {
+      "id": "A06",
+      "title": "Canonical blood / transformation sources",
+      "command": [
+        "scripts/verify_canonical_blood.py"
+      ],
+      "exit": 0,
+      "seconds": 0.07,
+      "stdout": "PASS: seventeen authored JSONs and one startup script meet canonical blood contracts\nNOT RUNTIME VALIDATED: test recipe loading, right-click buckets, pipes, and bottles in a disposable world\n",
+      "stderr": ""
+    },
+    {
+      "id": "A07",
+      "title": "Materials, dust and recipe contracts",
+      "command": [
+        "scripts/verify_materials.py"
+      ],
+      "exit": 0,
+      "seconds": 0.05,
+      "stdout": "PASS: Neo Vitae conventional dust priorities, Mahou circle mappings and original-stack restoration\nPASS: source-audited silver/lead providers, conventional whitelist and special-ore guards\nNOT A BOOT, LIVE REGISTRY, CLIENT, RECIPE, OR WORLDGEN TEST\n",
+      "stderr": ""
+    },
+    {
+      "id": "A08",
+      "title": "Canonical silver equipment",
+      "command": [
+        "scripts/verify_silver_equipment.py"
+      ],
+      "exit": 0,
+      "seconds": 0.04,
+      "stdout": "PASS: five Eidolon tools + four Eidolon armor recipes; no global anti-lycan damage tag\n",
+      "stderr": ""
+    },
+    {
+      "id": "A09",
+      "source": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+      "input": "clean canonical-LF git archive",
+      "command": "scripts/validate_newbie_integration.py",
+      "exit": 0,
+      "stdout": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\nPASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, retired Tyz Safekept absent;\n259 total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;\nNewbie MXP and any-path species gates in source; every Packwiz index/root SHA256 matches\nSOURCE ONLY \ufffd no NeoForge boot, client/Corail tests or installed first-party JAR evidence\n",
+      "stderr": "",
+      "initial_checkout_result": {
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<source>\\scripts\\validate_newbie_integration.py\", line 113, in <module>\n    main()\n  File \"<source>\\scripts\\validate_newbie_integration.py\", line 47, in main\n    verify_selection(ROOT)\n  File \"<source>\\scripts\\verify_unified_progression.py\", line 21, in verify_selection\n    assert not (root / path).exists(), \"Retired XP runtime residue: \" + path\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Retired XP runtime residue: config/tyzs_skills\n"
+      }
+    },
+    {
+      "id": "A10",
+      "title": "Progression and ProjectE gates",
+      "command": [
+        "scripts/validate_progression_gates.py"
+      ],
+      "exit": 0,
+      "seconds": 0.05,
+      "stdout": "PASS: source-only native ritual, both grid suppressions, 12 closed tags/40 alternatives, 14 direct flowers + Red upgrade, no obsolete script.\nPENDING: actual loaded recipes, acquisition, transmutation and Matter Upgrader bypasses.\n",
+      "stderr": ""
+    },
+    {
+      "id": "A11",
+      "title": "Dragon food data (not the redesign)",
+      "command": [
+        "scripts/verify_dragon_diets.py"
+      ],
+      "exit": 0,
+      "seconds": 0.05,
+      "stdout": "PASS: dragon diets, magical nourishment, JAWR-only species policy, exclusions, native charring\nNOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay\n",
+      "stderr": ""
+    },
+    {
+      "id": "A12",
+      "title": "Offline Prism packaging fixture",
+      "command": [
+        "tests/test_prism_qa_packaging.py"
+      ],
+      "exit": 0,
+      "seconds": 0.74,
+      "stdout": "{\n  \"status\": \"PACKAGED-NOT-STABLE\",\n  \"path\": \"C:\\\\Users\\\\heatw\\\\AppData\\\\Local\\\\Temp\\\\tmm-personal-qa-g16aw_ze\\\\Too-Much-Magic-Full-Integration-Prism.zip\",\n  \"upload_is_directory\": true,\n  \"github_artifact_is_direct_prism_zip\": true,\n  \"validated_source_zip_sha256\": \"cdeea880eff8dbdbb4d1d813b3684e30b5d9e8b362f6da734d5090b1386b8645\",\n  \"integration_commit\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n  \"first_party_jars\": {\n    \"tyr_progression-0.1.0-dev.jar\": \"026d50b617561f42ef30067b9582d3bf0bec02305589f891baa8539b4b909ba6\",\n    \"tmm_transformations-0.1.0-dev.jar\": \"936af80e659feab2d0c0b3c27fc1a41ef4a12942b626975643253cab56c1f675\",\n    \"traders_vengence-0.1.0-dev.jar\": \"4db3991b7bb69c733cd0ff79f509238ae3f76d6612e29ce651b8997abbdb82f8\",\n    \"tmm_economy-0.1.0-dev.jar\": \"365d2f46aecbfb5fadec793c2f5ce595c2bf17242a0015c3bade848069977cfe\"\n  },\n  \"third_party_jars_bundled\": 0,\n  \"dev_only_preferences\": true\n}\nPASS: compiled Trader's Vengence requires exact native Iron's version [1.21.1-3.16.3]\nPASS: direct-import single GitHub ZIP root, QA-only seeded options, local sync hooks, immutable packwiz, all selected first-party JARs and no personal data or configs\n",
+      "stderr": ""
+    }
+  ],
+  "modules": [
+    {
+      "module": "progression",
+      "exit": 0,
+      "seconds": 27.6,
+      "tests": 178,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "transformations",
+      "exit": 0,
+      "seconds": 8.9,
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "traders-vengence",
+      "exit": 0,
+      "seconds": 10.7,
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "economy",
+      "exit": 0,
+      "seconds": 26.7,
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "scope": "A source/module checks; no game boot by these processes",
+  "installed_inventory": {
+    "expected": 226,
+    "actual": 226,
+    "status": "PASS exact filenames/hashes plus four bundled modules"
+  },
+  "jade_closure": "PASS compiled installed Economy against hash-verified pinned Jade effective version"
+}

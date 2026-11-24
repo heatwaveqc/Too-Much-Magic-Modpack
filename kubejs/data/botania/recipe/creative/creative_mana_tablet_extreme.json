@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "type": "avaritia:shaped_table",
+  "key": {
+    "X": {
+      "item": "minecraft:barrier"
+    }
+  },
+  "pattern": [
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX",
+    "XXXXXXXXX"
+  ],
+  "tier": 4,
+  "result": {
+    "count": 1,
+    "id": "botania:mana_tablet",
+    "components": {
+      "minecraft:custom_data": {
+        "creative": true,
+        "mana": 500000
+      }
+    }
+  }
+}
