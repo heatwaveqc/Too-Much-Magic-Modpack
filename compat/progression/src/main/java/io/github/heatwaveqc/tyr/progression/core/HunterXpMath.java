@@ -14,6 +14,25 @@ public final class HunterXpMath {
         return Math.min(MAX_SINGLE_AWARD, Math.max(minimumXp, Math.round(raw)));
     }
 
+    /** Unified rate, exact fractional health contribution; central XP system owns the award cap. */
+    public static java.math.BigDecimal combatMxp(double hp,double perHp,double multiplier,boolean favored){
+        if(!Double.isFinite(hp)||hp<=0||!Double.isFinite(perHp)||perHp<=0||
+            !Double.isFinite(multiplier)||multiplier<1)return java.math.BigDecimal.ZERO;
+        return java.math.BigDecimal.valueOf(hp).multiply(java.math.BigDecimal.valueOf(perHp))
+            .multiply(java.math.BigDecimal.valueOf(favored?multiplier:1));
+    }
+    public static java.math.BigDecimal alchemyMxp(double baseXp,int difficulty,int amplifier,int ticks,
+            double discoveryMultiplier,boolean first){
+        if(!Double.isFinite(baseXp)||baseXp<=0||difficulty<1||amplifier<0||ticks<0||
+            !Double.isFinite(discoveryMultiplier)||discoveryMultiplier<1)return java.math.BigDecimal.ZERO;
+        double potency=1+.5*Math.min(amplifier,10);
+        double duration=1+Math.min(1.5,Math.sqrt(ticks/3600.0)/2);
+        return java.math.BigDecimal.valueOf(baseXp).multiply(java.math.BigDecimal.valueOf(difficulty))
+            .multiply(java.math.BigDecimal.valueOf(potency)).multiply(java.math.BigDecimal.valueOf(duration))
+            .multiply(java.math.BigDecimal.valueOf(first?discoveryMultiplier:1))
+            .setScale(0,java.math.RoundingMode.HALF_UP);
+    }
+
     /**
      * Potency is measured in amplifier levels; duration is the longest potion effect.
      * Diminishing returns on long potions prevent 8-minute variants dominating the tree.

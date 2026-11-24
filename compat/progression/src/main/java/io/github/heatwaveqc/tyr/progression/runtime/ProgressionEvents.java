@@ -125,7 +125,8 @@ public final class ProgressionEvents {
         // Detect completed vanilla potion drinking independently of whether it counts as food.
         UtilityEffects.foodFinished(player,event.getItem());
         Enrollment.potionFinished(player,event.getItem());
-        HunterExperience.potionFinished(player,event.getItem());
+        if(!net.minecraft.world.item.ItemStack.matches(event.getItem(),event.getResultStack()))
+            HunterExperience.potionFinished(player,event.getItem());
         // Drunk items (potions/teas) can have no Food component.
         // This callback follows a completed use, not a use-start prediction.
         // Finish means effects were applied; require proof that the held

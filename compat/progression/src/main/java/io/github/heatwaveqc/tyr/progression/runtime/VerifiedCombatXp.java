@@ -97,6 +97,16 @@ public final class VerifiedCombatXp {
             victim.setData(ProgressionAttachments.COMBAT_PROOF.get(),after);
         }
     }
+    /** Reuse first committed-damage evidence for Hunter. Lethal first hits can
+     * be delivered before the post-damage callback; use the matching observed pre-state.
+     */
+    public static double baselineHealth(LivingEntity victim){
+        var proof=victim.getData(ProgressionAttachments.COMBAT_PROOF.get());
+        if(proof.baselineMaxHp()>0)return proof.baselineMaxHp();
+        var pending=PENDING.get(victim.getUUID());
+        if(pending!=null&&victim.getHealth()<pending.health())return pending.max();
+        return victim.getMaxHealth();
+    }
     public static void forget(LivingEntity victim){PENDING.remove(victim.getUUID());}
     public static void death(LivingDeathEvent event){
         if(event.isCanceled()||!validVictim(event.getEntity()))return;
