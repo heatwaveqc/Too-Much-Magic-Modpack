@@ -2647,7 +2647,6 @@
     "meditative_food_fixed": 5,
     "meditative_drink_fixed": 2,
     "meditative_tag": "tyr_progression:meditative",
-    "drink_tag": "tyr_progression:drinks",
     "discovery_replay": false
   }
 }

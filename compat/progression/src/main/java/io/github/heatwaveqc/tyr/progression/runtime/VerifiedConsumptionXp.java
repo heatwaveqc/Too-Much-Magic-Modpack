@@ -27,11 +27,12 @@ public final class VerifiedConsumptionXp {
         if(consumed.isEmpty())return;
         boolean drank=consumed.getUseAnimation()==UseAnim.DRINK;
         boolean food=consumed.getFoodProperties(player)!=null;
-        boolean anything=false;
         for(var entry:PathRegistry.trainingXp().entrySet()){
             String path=entry.getKey();var policy=entry.getValue();
             if(!TrainingRewards.eligible(player,path))continue;
-            boolean drink=drank||tagged(consumed,policy.drinkTag());
+            // NeoForge's conventional classification, not a custom second tag.
+            // Also accept the vanilla/third-party drink use animation.
+            boolean drink=drank||consumed.is(net.neoforged.neoforge.common.Tags.Items.DRINKS);
             if(!drink&&!food)continue;
             String item=BuiltInRegistries.ITEM.getKey(consumed.getItem()).toString();
             String key=path+"/"+item;
@@ -55,7 +56,6 @@ public final class VerifiedConsumptionXp {
                 TrainingRewards.award(player,path,policy,drink?"meditative_drink":"meditative_food",
                     drink?policy.meditativeDrink():policy.meditativeFood(),true,null);
             }
-            anything=true;
         }
     }
     public static void forget(ServerPlayer player){LAST.remove(player.getUUID());}
