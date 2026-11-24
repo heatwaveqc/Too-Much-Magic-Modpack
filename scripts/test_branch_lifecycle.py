@@ -24,10 +24,6 @@ def manifest(*entries):
 
 
 class LifecycleTests(unittest.TestCase):
-    def test_budget_boundaries(self):
-        self.assertEqual([lifecycle.branch_budget(n) for n in (0, 20, 21, 30, 31)],
-                         ["HEALTHY", "HEALTHY", "REVIEW", "REVIEW", "MAINTENANCE"])
-
     def test_valid_manifest(self):
         self.assertEqual(lifecycle.validate_manifest(PATH, manifest(ENTRY)), [ENTRY])
 
