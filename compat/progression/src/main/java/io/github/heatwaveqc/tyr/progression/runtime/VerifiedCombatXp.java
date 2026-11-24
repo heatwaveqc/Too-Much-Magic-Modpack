@@ -88,6 +88,7 @@ public final class VerifiedCombatXp {
             victim.setData(ProgressionAttachments.COMBAT_PROOF.get(),after);
         }
     }
+    public static void forget(LivingEntity victim){PENDING.remove(victim.getUUID());}
     public static void death(LivingDeathEvent event){
         if(event.isCanceled()||!validVictim(event.getEntity()))return;
         LivingEntity victim=event.getEntity();

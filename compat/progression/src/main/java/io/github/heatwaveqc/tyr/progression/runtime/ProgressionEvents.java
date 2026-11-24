@@ -34,6 +34,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedMiningXp::beforeBreak);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityLeave);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::beforeDamage);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::afterDamage);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::death);
@@ -79,6 +80,10 @@ public final class ProgressionEvents {
             // XP is NOT earned here: this is pre-commit and can still be vetoed.
             EffectHandlers.blockBreak(player,event);
         }
+    }
+    private static void entityLeave(net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent event) {
+        if(event.getEntity() instanceof net.minecraft.world.entity.LivingEntity entity)
+            VerifiedCombatXp.forget(entity);
     }
     private static void kill(LivingDeathEvent event) {
         if(event.isCanceled())return;
