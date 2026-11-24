@@ -65,8 +65,31 @@ public final class HunterExperience {
     }
     private static boolean permitted(ServerPlayer player,String system){
         var spec=PathRegistry.economy(system);
-        return spec!=null&&PathRegistry.economyEligible(player,system)&&(spec.earningPath().isEmpty()||(ProgressionApi.track(player,spec.earningPath()).joined()
+        return player!=null&&player.getServer()!=null&&player.getServer().isSameThread()
+            &&!(player instanceof net.neoforged.neoforge.common.util.FakePlayer)
+            &&!player.isCreative()&&!player.isSpectator()&&!NewbieMode.isNewbie(player)
+            &&player.getServer().getPlayerList().getPlayer(player.getUUID())==player
+            &&spec!=null&&PathRegistry.economyEligible(player,system)&&(spec.earningPath().isEmpty()||(ProgressionApi.track(player,spec.earningPath()).joined()
             &&PathRegistry.eligible(player,spec.earningPath())));
+    }
+    /** The same configured policy follows its owning Path's selected currency.
+     * A native binding retains its legacy scale; a shared binding uses the explicit MXP rates.
+     * No simultaneous native/shared payout.
+     */
+    private static String destination(String system,HunterXpPolicy policy){
+        var path=PathRegistry.channel(policy.specialtyPath());
+        return path!=null&&path.magic()?path.id():system;
+    }
+    private static boolean shared(String system,HunterXpPolicy policy){
+        return !destination(system,policy).equals(system);
+    }
+    private static boolean pay(ServerPlayer player,String system,HunterXpPolicy policy,String category,
+                               String transaction,java.math.BigDecimal amount,long legacy){
+        if(shared(system,policy)){
+            String to=destination(system,policy);
+            return amount.signum()>0&&ProgressionApi.awardConfiguredXp(player,to,category,transaction,null,amount,false);
+        }
+        return legacy>0&&ProgressionApi.awardExperience(player,system,category,transaction,legacy);
     }
     private static boolean chosenSpecialtyMatches(ServerPlayer player,LivingEntity target,HunterXpPolicy policy) {
         return chosenSpecialtyMatches(player,selector->Selectors.entity(selector,target),policy);
@@ -134,9 +157,11 @@ public final class HunterExperience {
             if(!permitted(player,system)||!eligibleKill(player,target,policy))continue;
             String victim=system+"|"+target.getUUID();
             if(awardedKills.containsKey(victim))continue;
-            long xp=HunterXpMath.killXp(target.getMaxHealth(),policy.healthDivisor(),policy.specialtyMultiplier(),
-               policy.minKillXp(),chosenSpecialtyMatches(player,target,policy));
-            if(xp<=0||!ProgressionApi.awardExperience(player,system,xp))continue;
+            boolean favored=chosenSpecialtyMatches(player,target,policy);
+            double hp=VerifiedCombatXp.baselineHealth(target);
+            long legacy=HunterXpMath.killXp(target.getMaxHealth(),policy.healthDivisor(),policy.specialtyMultiplier(),policy.minKillXp(),favored);
+            var mxp=HunterXpMath.combatMxp(hp,policy.mxpKillPerHp(),policy.specialtyMultiplier(),favored);
+            if(!pay(player,system,policy,"tyr_progression:hunter_kill","hunter_kill:"+system+":"+target.getUUID(),mxp,legacy))continue;
             awardedKills.put(victim,now);
             String path=PathRegistry.economy(system).earningPath();if(!path.isEmpty())credited.add(path);
         }
@@ -160,7 +185,8 @@ public final class HunterExperience {
             boolean specialty=chosenSpecialtyMatches(player,selector->selector.isEmpty()||selector.equals("*")||
                 (selector.startsWith("#")?type.is(TagKey.create(Registries.ENTITY_TYPE,ResourceLocation.parse(selector.substring(1)))):id.toString().equals(selector)),policy);
             long xp=HunterXpMath.killXp(aggregateMaxHealth,policy.healthDivisor(),policy.specialtyMultiplier(),policy.minKillXp(),specialty);
-            if(xp>0&&ProgressionApi.awardExperience(player,system,xp))awardedKills.put(claim,now);
+            var mxp=HunterXpMath.combatMxp(aggregateMaxHealth,policy.mxpKillPerHp(),policy.specialtyMultiplier(),specialty);
+            if(pay(player,system,policy,"tyr_progression:hunter_kill","hunter_arena:"+system+":"+tx+":"+player.getUUID(),mxp,xp))awardedKills.put(claim,now);
         }
     }
     public static boolean allowsMilestone(String path,java.util.Set<String> credited){
@@ -175,12 +201,20 @@ public final class HunterExperience {
      */
     public static void potionFinished(ServerPlayer player, ItemStack consumed) {
         if(player.isCreative()||player.isSpectator()||consumed.isEmpty())return;
-        for(var entry:PathRegistry.computedXp().entrySet())
-            if(permitted(player,entry.getKey()))potionFinished(player,consumed,entry.getKey(),entry.getValue());
-    }
-    private static void potionFinished(ServerPlayer player,ItemStack consumed,String system,HunterXpPolicy policy){
         if (!"minecraft:potion".equals(BuiltInRegistries.ITEM.getKey(consumed.getItem()).toString())) return;
-        PotionContents contents = consumed.get(DataComponents.POTION_CONTENTS);
+        settlePotion(player,consumed.get(DataComponents.POTION_CONTENTS));
+    }
+    /** Only called after HunterMutations.drink committed actual progress. */
+    public static void mutagenFinished(ServerPlayer player,ItemStack consumed){
+        if(!consumed.is(HunterItems.MUTAGENIC_BREW.get()))return;
+        PotionContents contents=consumed.get(DataComponents.POTION_CONTENTS);
+        if(StandPotionEligibility.eligible(contents))settlePotion(player,contents);
+    }
+    private static void settlePotion(ServerPlayer player,PotionContents contents){
+        for(var entry:PathRegistry.computedXp().entrySet())
+            if(permitted(player,entry.getKey()))potionFinished(player,contents,entry.getKey(),entry.getValue());
+    }
+    private static void potionFinished(ServerPlayer player,PotionContents contents,String system,HunterXpPolicy policy){
         if (contents == null || !contents.customEffects().isEmpty()) return;
         String potionId = contents.potion()
             .flatMap(holder -> holder.unwrapKey())
@@ -210,7 +244,10 @@ public final class HunterExperience {
         }
         long xp = HunterXpMath.potionXp(policy.potionBaseXp(),difficulty,highestAmplifier,
             longestDuration,policy.potionDiscoveryMultiplier(),discovery);
-        if (ProgressionApi.awardExperience(player,system,xp))
+        var mxp=HunterXpMath.alchemyMxp(policy.mxpPotionBaseXp(),difficulty,highestAmplifier,
+            longestDuration,policy.potionDiscoveryMultiplier(),discovery);
+        String tx="hunter_potion:"+UUID.nameUUIDFromBytes((claim+"|"+now).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        if(pay(player,system,policy,"tyr_progression:hunter_potion",tx,mxp,xp))
             ProgressionApi.setMode(player,claim,Long.toString(now));
     }
 
