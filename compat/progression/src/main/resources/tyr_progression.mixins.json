@@ -16,6 +16,8 @@
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
+    "MutationEffectQueryMixin",
+    "MutationRegenerationMixin",
     "ElixirFoodDataMixin"
   ],
   "injectors": {

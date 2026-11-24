@@ -23,6 +23,10 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<TooltipMilestones>> TOOLTIP_MILESTONES =
         ATTACHMENTS.register("tooltip_milestones", () -> AttachmentType.builder(TooltipMilestones::empty)
             .serialize(TooltipMilestonesCodec.CODEC).copyOnDeath().build());
+    public static final Supplier<AttachmentType<PersonalEnchantFilterState>> PERSONAL_ENCHANT_FILTER =
+        ATTACHMENTS.register("personal_enchant_filter", () ->
+            AttachmentType.builder(PersonalEnchantFilterState::empty)
+                .serialize(PersonalEnchantFilterState.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<CombatProof>> COMBAT_PROOF =
         ATTACHMENTS.register("combat_proof", () -> AttachmentType.builder(CombatProof::empty)
             .serialize(CombatProofCodec.CODEC).build());
