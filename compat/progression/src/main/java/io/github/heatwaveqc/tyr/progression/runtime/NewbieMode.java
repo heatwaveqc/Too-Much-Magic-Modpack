@@ -89,6 +89,7 @@ public final class NewbieMode {
         reconcileBaselines(player);
         syncTag(player);
         VirtualElytra.reconcile(player,true);
+        VisionRuntime.reconcile(player,true);
     }
 
     private static void syncTag(ServerPlayer player) {
