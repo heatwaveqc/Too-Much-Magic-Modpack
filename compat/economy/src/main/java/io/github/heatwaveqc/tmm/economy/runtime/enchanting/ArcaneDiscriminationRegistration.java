@@ -30,6 +30,7 @@ public final class ArcaneDiscriminationRegistration {
             new MenuType<>(ArcaneDiscriminationMenu::new, FeatureFlags.DEFAULT_FLAGS));
 
     public static void register(IEventBus bus) {
+        if (!EnchantingFeatureGate.enabled()) return;
         MENUS.register(bus);
         bus.addListener(ArcaneDiscriminationRegistration::registerAbility);
         bus.addListener(ArcaneDiscriminationRegistration::registerPayload);
