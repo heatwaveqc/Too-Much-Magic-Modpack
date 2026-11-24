@@ -99,6 +99,7 @@ public final class ProgressionApi {
         Ledger changed=ChannelEngine.depart(old,path,PathRegistry.economyCatalog());
         changed=BaselinePaths.reconcile(changed,false);
         player.setData(ProgressionAttachments.LEDGER.get(),changed);
+        clearPathDiscoveries(player,pathId);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
@@ -124,8 +125,10 @@ public final class ProgressionApi {
         }
         next=ChannelEngine.pathChange(next,departed);
         player.setData(ProgressionAttachments.LEDGER.get(),next);
-        for(String id:departed)
+        for(String id:departed){
+            clearPathDiscoveries(player,id);
             io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,id);
+        }
     }
 
     private static String defaultCurrency(String pathId,String skillId){
@@ -174,6 +177,7 @@ public final class ProgressionApi {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
             ChannelEngine.refund(ledger,path));
+        clearPathDiscoveries(player,pathId);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
@@ -209,6 +213,13 @@ public final class ProgressionApi {
         Modes after = before.with(key,value);
         if (before != after) player.setData(ProgressionAttachments.PLAYER_MODES.get(),after);
         return true;
+    }
+
+    /** Reset local first-taste progress, not permanent paid XP receipts. */
+    private static void clearPathDiscoveries(ServerPlayer player,String pathId){
+        var previous=player.getData(ProgressionAttachments.PATH_DISCOVERIES.get());
+        var cleared=previous.clear(pathId);
+        if(cleared!=previous)player.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),cleared);
     }
 
     /** First-consumption reward is global per player, not per NBT variant, saved across death/relog. */

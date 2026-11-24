@@ -104,6 +104,9 @@ public final class ProgressionEvents {
         UtilityEffects.foodFinished(player,event.getItem());
         Enrollment.potionFinished(player,event.getItem());
         HunterExperience.potionFinished(player,event.getItem());
+        // Drunk items (potions/teas) can have no Food component.
+        // This callback follows a completed use, not a use-start prediction.
+        VerifiedConsumptionXp.finished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         Enrollment.foodFinished(player,event.getItem());
@@ -242,6 +245,7 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
             VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());
@@ -259,6 +263,7 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
             VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
             VisionRuntime.reconcile(player,true);
@@ -277,6 +282,7 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
             VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());
