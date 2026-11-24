@@ -18,24 +18,25 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 public final class PassivePowerNetwork {
     private PassivePowerNetwork() {}
 
-    public record Snapshot(String dimension, String active) implements CustomPacketPayload {
+    public record Snapshot(String dimension, String active,String mutations) implements CustomPacketPayload {
         public static final Type<Snapshot> TYPE = new Type<>(
                 ResourceLocation.fromNamespaceAndPath(ProgressionMod.MOD_ID, "passive_powers"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Snapshot> CODEC =
                 StreamCodec.composite(
                         ByteBufCodecs.stringUtf8(128), Snapshot::dimension,
                         ByteBufCodecs.stringUtf8(8192), Snapshot::active,
+                        ByteBufCodecs.stringUtf8(2048), Snapshot::mutations,
                         Snapshot::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        event.registrar("1").playToClient(Snapshot.TYPE, Snapshot.CODEC, (payload, context) ->
+        event.registrar("2").playToClient(Snapshot.TYPE, Snapshot.CODEC, (payload, context) ->
                 context.enqueueWork(() ->
-                        ClientPassivePowers.accept(payload.dimension(), payload.active())));
+                        ClientPassivePowers.accept(payload.dimension(), payload.active(),payload.mutations())));
     }
 
-    public static void send(ServerPlayer player, String dimension, String active) {
-        PacketDistributor.sendToPlayer(player, new Snapshot(dimension, active));
+    public static void send(ServerPlayer player, String dimension, String active,String mutations) {
+        PacketDistributor.sendToPlayer(player, new Snapshot(dimension, active,mutations));
     }
 }

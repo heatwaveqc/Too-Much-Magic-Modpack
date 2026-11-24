@@ -14,9 +14,9 @@ import net.minecraft.client.player.LocalPlayer;
 public final class ClientPassivePowers {
     private ClientPassivePowers() {}
 
-    public static void accept(String dimension, String encoded) {
+    public static void accept(String dimension, String encoded,String mutations) {
         LocalPlayer player = Minecraft.getInstance().player;
-        ClientPowerSnapshot.accept(player, dimension, encoded);
+        ClientPowerSnapshot.accept(player, dimension, encoded,mutations);
     }
 
     @SubscribeEvent public static void login(ClientPlayerNetworkEvent.LoggingIn event) {

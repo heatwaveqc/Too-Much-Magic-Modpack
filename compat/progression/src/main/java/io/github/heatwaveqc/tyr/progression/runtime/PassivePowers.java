@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.PassivePowerGrants;
+import io.github.heatwaveqc.tyr.progression.core.MutationPowerPolicy;
 import io.github.heatwaveqc.tyr.progression.network.PassivePowerNetwork;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public final class PassivePowers {
     private static final Map<String, Function<ServerPlayer, Set<String>>> PROVIDERS =
             new TreeMap<>();
     private static final Map<UUID, Sent> LAST_SENT = new HashMap<>();
-    private record Sent(String dimension, String encoded) {}
+    private record Sent(String dimension, String encoded,String mutations) {}
 
     public static void register(String power, Function<ServerPlayer, Set<String>> sourceResolver) {
         PassivePowerGrants.validate(power);
@@ -37,7 +38,7 @@ public final class PassivePowers {
 
     /** Server-side gameplay hooks NEVER trust the cached/client projection. */
     public static boolean active(ServerPlayer player, String power) {
-        if (player == null || !player.isAlive() || player.isSpectator() || player.isCreative())
+        if (player == null || player instanceof net.neoforged.neoforge.common.util.FakePlayer || !player.isAlive() || player.isSpectator() || player.isCreative())
             return false;
         var resolver = PROVIDERS.get(power);
         return resolver != null && !resolver.apply(player).isEmpty();
@@ -56,10 +57,11 @@ public final class PassivePowers {
         if (player == null || player.getServer() == null) return;
         String dimension = player.level().dimension().location().toString();
         String encoded = calculate(player).encodeActive();
-        var value = new Sent(dimension, encoded);
+        String mutations=MutationPowerPolicy.encode(HunterMutations.active(player));
+        var value = new Sent(dimension, encoded,mutations);
         var old = LAST_SENT.put(player.getUUID(), value);
         if (force || !value.equals(old) || player.tickCount % 20 == 0)
-            PassivePowerNetwork.send(player, dimension, encoded);
+            PassivePowerNetwork.send(player, dimension, encoded,mutations);
     }
 
     /** Death/logout/respawn clears only the transient network cache. */

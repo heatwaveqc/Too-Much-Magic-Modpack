@@ -59,6 +59,14 @@ def main() -> None:
     mixins = (RESOURCES / "tyr_progression.mixins.json").read_text(encoding="utf-8")
     if '"VirtualElytraItemExtensionMixin"' not in mixins:
         raise AssertionError("Preserve additive, existing NeoForge flight mixin")
+    hunter = read("runtime/HunterMutations.java")
+    if "player.addEffect(" in hunter:
+        raise AssertionError("Permanent Hunter mutations must not refresh status effects")
+    require("runtime/MutationPowers.java", "createModifiers(", "addTransientModifier(",
+            "getActiveEffectsMap()", "ClientPowerSnapshot.mutation")
+    require("mixin/MutationEffectQueryMixin.java", "getEffect", "hasEffect")
+    require("network/PassivePowerNetwork.java", "Snapshot::mutations")
+    require("runtime/MutagenicBrewItem.java", "MobEffects.WITHER")
     print("PASS #532: nonpotion server-owned permission, client lease, legacy cleanup and native flight extension")
     print("TYPE A ONLY. Elytra physics, HUD invisibility in installed client, respawn and mod conflicts require B/C.")
 
