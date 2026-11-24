@@ -441,12 +441,68 @@ file = "kubejs/data/c/tags/fluid/blood.json"
 hash = "fd9928696fe7b6cfd1f5a8139a7747f81f9fb5d7bdf468b464f8c716efcc31e9"
 
 [[files]]
+file = "kubejs/data/c/tags/item/crops/cabbage.json"
+hash = "61b3988915aff41213a3907f33d1235149668ea9beed4198d41cd40610730b67"
+
+[[files]]
+file = "kubejs/data/c/tags/item/crops/onion.json"
+hash = "90fcc585d0f75fe8e2bfb8507d3d6e9a2cb7aa2ae01a732bacee6fea44eb6340"
+
+[[files]]
+file = "kubejs/data/c/tags/item/crops/tomato.json"
+hash = "4e1fb9bb49e3d9e1e3cf0630cddfc4753057a7fec0cea39e86b5869ac27349be"
+
+[[files]]
+file = "kubejs/data/c/tags/item/dough.json"
+hash = "0be8974e5d2ec22d1accf1367832640c0cf32c2111fd23703b436d8f8649f971"
+
+[[files]]
+file = "kubejs/data/c/tags/item/drinks/milk.json"
+hash = "d0c115bb22343d53c3f182247cf731438af43c478b015846ee9ee67d4909f404"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/cabbage.json"
+hash = "122c977b485d50e778fc3a34d0b0d6dc4f3c7a9c8b47e5816c85bc358b2314cc"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/dough/wheat.json"
+hash = "0be8974e5d2ec22d1accf1367832640c0cf32c2111fd23703b436d8f8649f971"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/milk.json"
+hash = "d0c115bb22343d53c3f182247cf731438af43c478b015846ee9ee67d4909f404"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/onion.json"
+hash = "90fcc585d0f75fe8e2bfb8507d3d6e9a2cb7aa2ae01a732bacee6fea44eb6340"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/pasta.json"
+hash = "24bc87e3296c74599fc7c56eefed06c170e1e1e4890960ae46ac0c260244a08e"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/raw_fish.json"
+hash = "4c7b71ba4e269986090a042cd58a19e8b3a68f99cd3441cfd570ee935915b16b"
+
+[[files]]
+file = "kubejs/data/c/tags/item/foods/tomato.json"
+hash = "4e1fb9bb49e3d9e1e3cf0630cddfc4753057a7fec0cea39e86b5869ac27349be"
+
+[[files]]
+file = "kubejs/data/c/tags/item/milk.json"
+hash = "d0c115bb22343d53c3f182247cf731438af43c478b015846ee9ee67d4909f404"
+
+[[files]]
 file = "kubejs/data/c/tags/item/nuggets.json"
 hash = "0ac8387216130c5a2f66856d13ae266196811b5a536ccc7f354304bc77aa77f9"
 
 [[files]]
 file = "kubejs/data/c/tags/item/nuggets/replica.json"
 hash = "7b7776190cc371ab7c2d341361a482c2fa5c96ce1c81763c070a0c0a769f6b15"
+
+[[files]]
+file = "kubejs/data/c/tags/item/pasta.json"
+hash = "24bc87e3296c74599fc7c56eefed06c170e1e1e4890960ae46ac0c260244a08e"
 
 [[files]]
 file = "kubejs/data/computercraft/recipe/computer_advanced.json"
@@ -463,6 +519,14 @@ hash = "c7136676231037f9cf7b8de785a552d424b5c4354387eae8a57e190d5ac6bf53"
 [[files]]
 file = "kubejs/data/computercraft/recipe/pocket_computer_normal.json"
 hash = "7441a6214b3647d21ea972f55b6207846db2683259cb36278a760310e430afbd"
+
+[[files]]
+file = "kubejs/data/cookingforblockheads/tags/block/kitchen_item_providers.json"
+hash = "588ef0990223fd236314b7a2ad378d492a302adbc74874172fa7cdd8c7d0d5b2"
+
+[[files]]
+file = "kubejs/data/cookingforblockheads/tags/item/ingredients.json"
+hash = "2c3cda7e81fb695ea8b8e9b884c847050cd1532dc5593d57a39d6cd9af2b14ad"
 
 [[files]]
 file = "kubejs/data/curios/tags/item/bundle.json"
