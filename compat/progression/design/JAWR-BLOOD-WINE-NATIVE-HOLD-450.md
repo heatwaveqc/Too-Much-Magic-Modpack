@@ -1,3 +1,5 @@
+> **2026-11-24 owner decision supersedes the sausage hold below:** the player-facing food is now **Bloody Sausage**. It accepts `#c:foods/sausages` (cooked sausage only; raw, meals and existing blood cuisine excluded). Seed candidate IDs: Pam's `sausageitem`, Brewery `sausage`, My Nether's Delight `roasted_sausage`; exact pinned binary cooking/FOOD review pending. Existing item/serializer ID remains `tyr_progression:blood_sausage`. Wine is explicitly deferred until compatible public BnC 5.0 with native Aging Cask, with no alternate brewing implementation. Historical binary absence evidence below remains valid.
+
 # #450 Blood Wine — exact BnC 4.5.0 native dependency hold
 
 **The installed BnC release also lacks `COOKED_SAUSAGE`.** This was verified by exact SHA-512-pinned `javap -p -s` inspection in [JAWR cuisine ABI run #45264610801](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45264610801). The Blood Sausage recipe/item code is source-staged but cannot be obtained from the approved BnC cooked-sausage ingredient in today's installed pack. No alternate sausage was invented.
