@@ -235,6 +235,7 @@ public final class ProgressionApi {
         if (player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
+        MilestoneFeedback.Notice progressNotice = null;
         for(var system:PathRegistry.economies().values()){
             if(system.magic()||!PathRegistry.economyEligible(player,system.id()))continue;
             String required=system.earningPath();
@@ -301,9 +302,17 @@ public final class ProgressionApi {
                     }
                 }
             } while(changed);
-            if (!state.equals(initial)) next=ChannelEngine.ownership(next,path,state,PathRegistry.config());
+            if (!state.equals(initial)) {
+                var candidate=MilestoneFeedback.changed(path,initial,state);
+                if(candidate!=null && (progressNotice==null || candidate.complete() && !progressNotice.complete()))
+                    progressNotice=candidate;
+                next=ChannelEngine.ownership(next,path,state,PathRegistry.config());
+            }
         }
         if (next != ledger) player.setData(ProgressionAttachments.LEDGER.get(),next);
+        // Notifications follow committed server-side state; they never issue XP.
+        if(progressNotice!=null)
+            player.displayClientMessage(net.minecraft.network.chat.Component.literal(progressNotice.message()),true);
     }
 
     /**
