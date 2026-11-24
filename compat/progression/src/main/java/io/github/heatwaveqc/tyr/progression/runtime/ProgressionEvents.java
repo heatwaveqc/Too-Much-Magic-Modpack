@@ -32,6 +32,7 @@ public final class ProgressionEvents {
         GildedMechanics.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedMiningXp::beforeBreak);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
@@ -129,12 +130,15 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             // TreeChop and normal drops can report the same physical log.
-            if (!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
+            if(VerifiedMiningXp.participates(player)) {
+                VerifiedMiningXp.drops(event);
+            } else if(!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
                     || RecentBlockCredits.first(player.getUUID(),
                     event.getLevel().dimension().location().toString(),
                     event.getPos().asLong(),event.getLevel().getGameTime())) {
+                // Legacy non-Monk Paths still receive their existing signals.
                 ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
-                if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                if(event.getTool().isEmpty()&&player.getMainHandItem().isEmpty())
                     ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             }
             HarvestAbilities.blockDrops(player,event);
@@ -219,6 +223,7 @@ public final class ProgressionEvents {
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);
             MiningUtilities.tick(player);
+            VerifiedMiningXp.tick(player);
             VillagerAttraction.tick(player);
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
@@ -234,6 +239,7 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());
@@ -249,6 +255,7 @@ public final class ProgressionEvents {
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
             VisionRuntime.reconcile(player,true);
@@ -265,6 +272,7 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             RecentBlockCredits.forget(player.getUUID());

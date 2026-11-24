@@ -35,7 +35,7 @@ import java.util.stream.Stream;
 public final class TreeChopXpBridge {
     private TreeChopXpBridge() {}
 
-    private record OriginalLog(BlockPos pos, BlockState state) {}
+    private record OriginalLog(BlockPos pos, BlockState state,double hardness) {}
     private record Pending(BlockPos clicked, String dimension, long tick, List<OriginalLog> logs) {}
     private static final Map<UUID, Pending> PENDING = new HashMap<>();
 
@@ -93,7 +93,7 @@ public final class TreeChopXpBridge {
                             }
                         }
                     }
-                    if (state.is(BlockTags.LOGS)) logs.add(new OriginalLog(pos.immutable(), state));
+                    if (state.is(BlockTags.LOGS)) logs.add(new OriginalLog(pos.immutable(),state,state.getDestroySpeed(level,pos)));
                 });
             }
             if (!logs.isEmpty()) {
@@ -131,6 +131,7 @@ public final class TreeChopXpBridge {
                         pos.asLong(), level.getGameTime())) continue;
                 ProgressionApi.record(player, Selectors.blockBreak(original.state()));
                 ProgressionApi.record(player, Selectors.barehandBlockBreak(original.state()));
+                TrainingRewards.mining(player,original.hardness());
                 credited++;
             }
             if (credited > 0) ProgressionMod.LOGGER.debug(
