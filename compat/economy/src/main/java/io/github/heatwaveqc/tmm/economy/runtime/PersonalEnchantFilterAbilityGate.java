@@ -7,7 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.fml.ModList;
+import io.github.heatwaveqc.tmm.economy.runtime.enchanting.EnchantingFeatureGate;
 
 /** Native Improvable Skills 21.0.2 owns the unlock and persisted player data.
  * No Economy skill wallet or separate attachment. Economy owns the new native ability ID; the earlier Progression ID was never registered.
@@ -23,7 +23,7 @@ public final class PersonalEnchantFilterAbilityGate {
 
     // Package private: only the server transaction service can mutate the native compound.
     static Optional<CompoundTag> unlockedData(ServerPlayer player) {
-        if (player == null || !ModList.get().isLoaded("improvableskills")) return Optional.empty();
+        if (player == null || !EnchantingFeatureGate.enabled()) return Optional.empty();
         try {
             Class<?> mod = Class.forName("org.zeith.improvableskills.ImprovableSkills");
             Object registry = mod.getField("ABILITIES").get(null);
