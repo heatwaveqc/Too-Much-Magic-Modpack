@@ -23,7 +23,7 @@ with tempfile.TemporaryDirectory() as d:
                 print("RECIPE",n,json.dumps({k:obj.get(k) for k in ("result","requirement","mana","instability","props","ingredients","expertiseGroup")},separators=(",",":")),flush=True)
         print("COUNT",count,flush=True)
         assert count==76
-        catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tmm/progression/mxp/core/PrimalRitualCatalog.java").read_text()
+        catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tyr/progression/mxp/core/PrimalRitualCatalog.java").read_text()
         mapped={}
         for key,result,count,risk,props,ingredients in re.findall(r'add\(out,"([^"]+)","[^"]+",Band\.PRIMAL_\w+,"([^"]+)",(\d+),(\d+),(\d+),(\d+)\);',catalog):
             assert key not in mapped

@@ -30,5 +30,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.2.1'
+      - name: Reject legacy runtime identifiers and dependencies
+        run: python3 tools/validate_runtime_namespace.py
       - name: Compile and run core tests
         run: gradle --no-daemon build

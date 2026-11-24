@@ -7,7 +7,7 @@ The existing PathJson skill effect record is used. Effects inherit path/skill/ef
 {"type":"magnet","per_rank":2,"target":"*","params":{"interval_ticks":5,"max_targets":16,"move_xp":false}}
 ```
 ```json
-{"type":"status_on_hit","per_rank":0.08,"target":"#tmm_progression:undead","params":{"effect":"minecraft:slowness","duration_ticks":100,"amplifier":0,"cooldown_ticks":20,"delivery":"melee"}}
+{"type":"status_on_hit","per_rank":0.08,"target":"#tyr_progression:undead","params":{"effect":"minecraft:slowness","duration_ticks":100,"amplifier":0,"cooldown_ticks":20,"delivery":"melee"}}
 ```
 ```json
 {"type":"heal_on_kill","per_rank":0.03,"params":{"basis":"target_health","max_heal":20}}

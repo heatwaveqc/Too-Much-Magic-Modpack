@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'compat/progression/tools/e6c_astral_malum_ritual_abi.py'
-      - 'compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/mxp/**'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mxp/**'
       - '.github/workflows/progression-e6c-astral-malum-ritual-abi.yml'
 permissions:
   contents: read

@@ -1,3 +1,5 @@
+> Historical pilot. Superseded by [current Normie contract](NORMIE-PERSONAL-HOME-2026-11-24.md).
+
 # Regular-stage personal home placement — Progression-owned ability
 
 **Owner design choice:** 2026-11-20. **Status:** approved design target; no new runtime implementation, quest reward change, server build, or gameplay validation is asserted by this document.

@@ -1,6 +1,6 @@
 # Hunter implementation — required delta from the standalone progression core
 
-**Reviewed:** 2026-11-15. **Source:** live `test/full-integration` `compat/progression` implementation, namespace `tmm_progression`; [successful core CI run](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43758086560). **Intent:** retain the core as independent shared infrastructure, create Hunter as a standalone gameplay module requiring that core but **not** Tyz, and add optional pack adapters. This document is not a claim that Hunter has been implemented.
+**Reviewed:** 2026-11-15. **Source:** live `test/full-integration` `compat/progression` implementation, namespace `tyr_progression`; [successful core CI run](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/43758086560). **Intent:** retain the core as independent shared infrastructure, create Hunter as a standalone gameplay module requiring that core but **not** Tyz, and add optional pack adapters. This document is not a claim that Hunter has been implemented.
 
 ## Hunter initiation design — Trial of Venom (owner-proposed, 2026-11-15)
 
@@ -73,7 +73,7 @@ On successful enrollment: set persistent Hunter identity; grant baseline Hardene
 ## Suggested build order
 
 1. Ask core owner for **two P0 APIs**: join veto/leave and trusted contextual XP guard, plus basic branch metadata/sync contract (P1) before authoring dozens of trees.
-2. Start a **separate `compat/hunter` module** depending on `tmm_progression` only; include vanilla categories, identity/poison baseline and one Undead specialization (MVP). Do not reuse the current demo path as production without replacing its kill awards.
+2. Start a **separate `compat/hunter` module** depending on `tyr_progression` only; include vanilla categories, identity/poison baseline and one Undead specialization (MVP). Do not reuse the current demo path as production without replacing its kill awards.
 3. Validate Hunter standalone with no Tyr/other magic mods, in a real NeoForge client + dedicated server. Then add modpack data tags and optional faction compatibility.
 4. Expand all specialized trees after baseline anti-farm, serialization, UI and damage stacking tests pass.
 

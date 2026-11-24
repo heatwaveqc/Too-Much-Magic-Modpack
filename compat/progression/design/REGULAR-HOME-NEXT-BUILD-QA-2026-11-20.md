@@ -1,3 +1,5 @@
+> Historical pilot. Superseded by [current Normie contract](NORMIE-PERSONAL-HOME-2026-11-24.md).
+
 # Regular-stage Starter Home — next-build test handoff
 
 **Branch:** `feature/progression-regular-home-power-20261120`; **PR #418** targeting `dev/progression`.

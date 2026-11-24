@@ -287,11 +287,11 @@ key_key.selectiveDisplacement:key.keyboard.unknown:
 key_key.settingsGUI:key.keyboard.unknown:
 key_key.spellstoneAbility:key.keyboard.unknown:
 key_key.theurgy.change_item_mode:key.keyboard.unknown:
-key_key.tmm_progression.armor:key.keyboard.unknown:
-key_key.tmm_progression.blink:key.keyboard.unknown:
-key_key.tmm_progression.glide:key.keyboard.unknown:
-key_key.tmm_progression.ordeal:key.keyboard.unknown:
-key_key.tmm_progression.treasure:key.keyboard.unknown:
+key_key.tyr_progression.armor:key.keyboard.unknown:
+key_key.tyr_progression.blink:key.keyboard.unknown:
+key_key.tyr_progression.glide:key.keyboard.unknown:
+key_key.tyr_progression.ordeal:key.keyboard.unknown:
+key_key.tyr_progression.treasure:key.keyboard.unknown:
 key_key.trashslot.delete:key.keyboard.unknown:
 key_key.trashslot.delete_all:key.keyboard.unknown:
 key_key.trashslot.toggle:key.keyboard.unknown:
