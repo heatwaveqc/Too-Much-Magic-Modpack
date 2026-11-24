@@ -28,6 +28,10 @@ class ProjectEEarlyRecipeTests(unittest.TestCase):
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / relative, target)
+        mapping = "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
+        target = self.root / mapping
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / mapping, target)
         materials = self.root / "config/neovitae/materials.json"
         materials.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / "config/neovitae/materials.json", materials)
@@ -70,6 +74,27 @@ class ProjectEEarlyRecipeTests(unittest.TestCase):
 
     def test_stone_gate_must_stay(self):
         self.rewrite("collector_mk1", lambda d: d["key"]["P"].update(item="minecraft:glass"))
+        with self.assertRaises(AssertionError):
+            validate(self.root)
+
+    def test_virtual_emc_mapper_presence_is_required(self):
+        (self.root / "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json").unlink()
+        with self.assertRaises(FileNotFoundError):
+            validate(self.root)
+
+    def test_virtual_emc_mapper_requires_all_three_values(self):
+        path = self.root / "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["groups"]["legacy_covalence_dust_costs"]["conversions"].pop()
+        path.write_text(json.dumps(data, indent=2) + "\\n", encoding="utf-8")
+        with self.assertRaises(AssertionError):
+            validate(self.root)
+
+    def test_virtual_emc_mapper_rejects_changed_value_inputs(self):
+        path = self.root / "kubejs/data/tmm/pe_custom_conversions/covalence_dust_virtual.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        data["groups"]["legacy_covalence_dust_costs"]["conversions"][1]["ingredients"][0]["tag"] = "c:ingots/gold"
+        path.write_text(json.dumps(data, indent=2) + "\\n", encoding="utf-8")
         with self.assertRaises(AssertionError):
             validate(self.root)
 
