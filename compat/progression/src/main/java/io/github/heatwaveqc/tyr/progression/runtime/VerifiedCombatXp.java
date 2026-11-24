@@ -123,8 +123,13 @@ public final class VerifiedCombatXp {
                         now,entry.getValue().strictWindow())){
                 // This only emits a verified generic completion. It does not
                 // automatically grant Wither deeds, gliding, or extra boss MXP.
-                for(StrictVictory observer:VICTORY_LISTENERS)
-                    observer.completed(credited,victim);
+                for(StrictVictory observer:VICTORY_LISTENERS) {
+                    try{observer.completed(credited,victim);}
+                    catch(RuntimeException failure){
+                        io.github.heatwaveqc.tyr.progression.ProgressionMod.LOGGER.error(
+                            "Strict-victory observer failed for {}",victim.getUUID(),failure);
+                    }
+                }
                 break;
             }
         }
