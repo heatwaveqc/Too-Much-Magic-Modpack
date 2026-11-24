@@ -29,7 +29,7 @@ public final class AdminExperience {
         if (next.signum() < 0 || next.compareTo(system.maxXp()) > 0)
             throw new IllegalArgumentException("XP outside configured bounds");
         var floor = system.xpPerPoint().multiply(BigDecimal.valueOf(
-                ExperienceEconomy.committed(before, system.id())));
+                ExperienceEconomy.ordinaryCommitted(before, system.id())));
         if (next.compareTo(floor) < 0)
             throw new IllegalArgumentException("XP would no longer back purchased ranks; reset those ranks first");
         var xp = new HashMap<>(before.currentXp());

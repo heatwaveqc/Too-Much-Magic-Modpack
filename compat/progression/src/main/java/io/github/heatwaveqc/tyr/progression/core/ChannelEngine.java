@@ -136,10 +136,22 @@ public final class ChannelEngine {
      */
     public static Ledger buy(Ledger ledger,Definition.Path tree,ChannelConfig config,
                              String skillId,String systemId) {
+        return purchase(ledger,tree,config,skillId,systemId,false);
+    }
+
+    /** Data-defined purchases only; native legacy wallets cannot represent debt. */
+    public static Ledger grantRank(Ledger ledger,Definition.Path tree,ChannelConfig config,
+                                  String skillId,String systemId) {
+        return purchase(ledger,tree,config,skillId,systemId,true);
+    }
+
+    private static Ledger purchase(Ledger ledger,Definition.Path tree,ChannelConfig config,
+                                   String skillId,String systemId,boolean admin) {
         var catalog=ExperienceEconomyRuntime.current();
         var key=new ExperienceEconomyConfig.SkillKey(tree.id(),skillId);
         var rules=catalog.skills().get(key);
         if(rules==null) {
+            if(admin)return ledger;
             var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
             if(binding==null || !binding.currency().id().equals(systemId))return ledger;
             return buy(ledger,tree,config,skillId);
@@ -157,7 +169,7 @@ public final class ChannelEngine {
         Track view=view(ledger,tree,config);
         int owned=view.skillRank(skillId);
         int cap=Math.min(skill.maxRank(),rules.totalRankCap());
-        if(owned>=cap || ExperienceEconomy.available(ledger.economy(),system)<source.pointsPerRank())
+        if(owned>=cap || (!admin && ExperienceEconomy.available(ledger.economy(),system)<source.pointsPerRank()))
             return ledger;
         // ProgressionMath remains the single authoritative skill prerequisite
         // and choice-group evaluator. Purchasing cost comes from source config.
@@ -167,7 +179,9 @@ public final class ChannelEngine {
                 view.skills(),view.milestones(),view.counters());
         Track nextRank=ProgressionMath.buy(tree,candidate,skillId,source.pointsPerRank());
         if(nextRank==candidate)return ledger;
-        var paid=ExperienceEconomy.buy(ledger.economy(),system,tree.id(),skillId,
+        var paid=admin ? ExperienceEconomy.grantRank(ledger.economy(),system,tree.id(),skillId,
+                source.pointsPerRank(),source.maxRanks(),cap)
+                : ExperienceEconomy.buy(ledger.economy(),system,tree.id(),skillId,
                 source.pointsPerRank(),source.maxRanks(),cap);
         if(paid==ledger.economy())return ledger;
         var binding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
@@ -242,8 +256,9 @@ public final class ChannelEngine {
             var spec=catalog.systems().get(entry.getKey());
             var current=xp.get(entry.getKey());
             if(spec==null||current==null)throw new IllegalStateException("Missing respec XP system");
-            var after=current.subtract(spec.xpPerPoint().multiply(BigDecimal.valueOf(entry.getValue())));
-            if(after.signum()<0)throw new IllegalStateException("Respec forfeiture exceeds earned XP");
+            var remaining=new ExperienceEconomy.Ledger(original.currentXp(),retained,
+                original.achievements(),original.rewardReceipts(),original.recentTransactions());
+            var after=ExperienceEconomy.forfeitFunded(current,spec,remaining,entry.getValue());
             xp.put(entry.getKey(),after);
         }
         var economy=new ExperienceEconomy.Ledger(xp,retained,

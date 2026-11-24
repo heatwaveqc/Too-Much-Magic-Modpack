@@ -42,7 +42,8 @@ final class LedgerCodec {
                 Codec.STRING.fieldOf("path").forGetter(ExperienceEconomy.PaidRank::path),
                 Codec.STRING.fieldOf("skill").forGetter(ExperienceEconomy.PaidRank::skill),
                 Codec.STRING.fieldOf("system").forGetter(ExperienceEconomy.PaidRank::system),
-                Codec.INT.fieldOf("cost").forGetter(ExperienceEconomy.PaidRank::pointCost)
+                Codec.INT.fieldOf("cost").forGetter(ExperienceEconomy.PaidRank::pointCost),
+                Codec.BOOL.optionalFieldOf("administrative",false).forGetter(ExperienceEconomy.PaidRank::administrative)
             ).apply(i,ExperienceEconomy.PaidRank::new));
 
     private static final Codec<ExperienceEconomy.Ledger> ECONOMY_CODEC =

@@ -75,7 +75,10 @@ public final class ExperienceEconomy {
     }
 
     /** Each receipt is ONE purchased rank, charged to exactly one XP system. */
-    public record PaidRank(String path, String skill, String system, int pointCost) {
+    public record PaidRank(String path, String skill, String system, int pointCost, boolean administrative) {
+        public PaidRank(String path, String skill, String system, int pointCost) {
+            this(path, skill, system, pointCost, false);
+        }
         public PaidRank {
             requireId(path);
             requireId(skill);
@@ -153,9 +156,20 @@ public final class ExperienceEconomy {
     }
 
     public static long available(Ledger state, SystemSpec system) {
-        long free = level(state, system) - committed(state, system.id());
-        if (free < 0) throw new IllegalStateException("Spent more points than current XP permits");
-        return free;
+        long earned = level(state, system);
+        if (ordinaryCommitted(state, system.id()) > earned)
+            throw new IllegalStateException("Ordinary purchases exceed earned XP");
+        return Math.max(0L, earned - committed(state, system.id()));
+    }
+
+    public static long ordinaryCommitted(Ledger state, String id) {
+        return state.paidRanks().stream().filter(r -> r.system().equals(id) && !r.administrative())
+                .mapToLong(PaidRank::pointCost).sum();
+    }
+
+    public static long debt(Ledger state, SystemSpec system) {
+        available(state, system);
+        return Math.max(0L, committed(state, system.id()) - level(state, system));
     }
 
     public static int contributedRanks(Ledger state, String path, String skill, String system) {
@@ -175,17 +189,31 @@ public final class ExperienceEconomy {
      */
     public static Ledger buy(Ledger state, SystemSpec system, String path, String skill,
                              int pointCost, int systemRankCap, int totalRankCap) {
+        return purchase(state, system, path, skill, pointCost, systemRankCap, totalRankCap, false);
+    }
+
+    /** Trusted operator grant; only the spendable-point gate is bypassed. */
+    public static Ledger grantRank(Ledger state, SystemSpec system, String path, String skill,
+                                  int pointCost, int systemRankCap, int totalRankCap) {
+        return purchase(state, system, path, skill, pointCost, systemRankCap, totalRankCap, true);
+    }
+
+    private static Ledger purchase(Ledger state, SystemSpec system, String path, String skill,
+                                    int pointCost, int systemRankCap, int totalRankCap, boolean admin) {
         requireId(path);
         requireId(skill);
         if (pointCost < 1 || systemRankCap < 1 || totalRankCap < 1)
             throw new IllegalArgumentException("Invalid skill purchase config");
         if (contributedRanks(state, path, skill, system.id()) >= systemRankCap
                 || effectiveRank(state, path, skill) >= totalRankCap
-                || available(state, system) < pointCost
+                || (!admin && available(state, system) < pointCost)
                 || state.paidRanks().size() >= MAX_PAID_RANK_RECEIPTS)
             return state;
+        available(state, system); // validate ordinary commitments even for operator grants
+        if (committed(state, system.id()) + pointCost > system.maxLevel()) return state;
+        state = initialize(state, system);
         var purchases = new ArrayList<>(state.paidRanks());
-        purchases.add(new PaidRank(path, skill, system.id(), pointCost));
+        purchases.add(new PaidRank(path, skill, system.id(), pointCost, admin));
         return new Ledger(state.currentXp(), purchases, state.achievements(),
                 state.rewardReceipts(), state.recentTransactions());
     }
@@ -400,13 +428,11 @@ public final class ExperienceEconomy {
             if (system == null) throw new IllegalArgumentException("Missing XP system " + row.getKey());
             long removed = forfeited.getOrDefault(row.getKey(), 0L);
             BigDecimal revised;
+            revised = forfeitFunded(row.getValue(), system, remaining, removed);
             if (wipeSystems.contains(row.getKey())) {
                 long retained = Math.addExact(committed(remaining, system.id()),
                         refunded.getOrDefault(system.id(), 0L));
-                revised = system.xpPerPoint().multiply(BigDecimal.valueOf(retained));
-            } else {
-                revised = row.getValue().subtract(
-                        system.xpPerPoint().multiply(BigDecimal.valueOf(removed)));
+                revised = revised.min(system.xpPerPoint().multiply(BigDecimal.valueOf(retained)));
             }
             if (revised.signum() < 0)
                 throw new IllegalStateException("Invalid forfeiture beyond earned XP");
@@ -416,6 +442,13 @@ public final class ExperienceEconomy {
                 source.rewardReceipts(), source.recentTransactions());
         for (SystemSpec system : systems.values()) available(result, system);
         return result;
+    }
+
+    /** Never mint XP or burn backing for surviving ordinary purchases when removing debt. */
+    public static BigDecimal forfeitFunded(BigDecimal current, SystemSpec system, Ledger remaining, long removed) {
+        var floor = system.xpPerPoint().multiply(BigDecimal.valueOf(ordinaryCommitted(remaining, system.id())));
+        if (current.compareTo(floor) < 0) throw new IllegalStateException("Ordinary purchases exceed earned XP");
+        return current.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(removed))).max(floor);
     }
 
     /**
