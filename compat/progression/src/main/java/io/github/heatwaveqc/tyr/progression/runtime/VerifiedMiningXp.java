@@ -73,5 +73,26 @@ public final class VerifiedMiningXp {
             credit(player,level,item.pos(),item.state(),item.hardness(),item.barehand(),item.tick());
         }
     }
+    /**
+     * Trusted server-only adapter for a spell or modded AoE producer which has
+     * independently verified player ownership and original state. Distinct from
+     * barehand trial counting and from MXP for consumed magical resources.
+     * An unremoved/protected block is never credited.
+     */
+    public static boolean spellBreakCommitted(ServerPlayer owner,ServerLevel level,
+            BlockPos pos,BlockState original,long originalTick){
+        if(owner==null||level==null||original==null||original.isAir()
+                ||owner.serverLevel()!=level||!participates(owner)
+                ||!level.hasChunkAt(pos)||!removed(level.getBlockState(pos))
+                ||level.getGameTime()<originalTick||level.getGameTime()-originalTick>3)return false;
+        double hardness=original.getDestroySpeed(level,pos);
+        if(!Double.isFinite(hardness)||hardness<0
+                ||!RecentBlockCredits.first(owner.getUUID(),
+                    level.dimension().location().toString(),pos.asLong(),originalTick))return false;
+        ProgressionApi.record(owner,Selectors.blockBreak(original));
+        TrainingRewards.mining(owner,hardness);
+        return true;
+    }
+
     public static void forget(ServerPlayer player){PENDING.remove(player.getUUID());}
 }
