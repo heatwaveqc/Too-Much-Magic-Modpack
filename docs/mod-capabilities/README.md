@@ -14,7 +14,7 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 
 ## Live research intake — new magic mods and remaining families
 
-**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery, JAWR, Goety and Mahou Tsukai are now complete; Forbidden & Arcanus is complete; Hexerei is the next major standalone system before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
+**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery, JAWR, Goety and Mahou Tsukai are now complete; Forbidden & Arcanus and Hexerei are complete; Hexcasting is the next proposed major standalone system before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
 
 This queue lists **what to research**, not **what to install, change or manually test**. Reconcile it against current `manifest/mods.json` and Packwiz before every new dossier and avoid duplicating Ars Nouveau/Occultism/Botania and other already surveyed parent modules. All regular released-mod behavior is presumed functional under the research-only scope above.
 
@@ -26,9 +26,13 @@ This queue lists **what to research**, not **what to install, change or manually
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
 
+## Hexerei 0.5.0.3 — research COMPLETE
+
+[Exact pinned-JAR 29-axis dossier and 54 instructional nodes](mods/hexerei.md): fluid mixing, three broom branches, crow farming, owl couriers, Entangled Coffers, candles, sage protection, witch armor, ecology and material gates. Native research complete; owl ownership/chunk loading, shared storage, blood/potion and damage-type compatibility remain separate pack review/QA. No runtime changes. Proposed next: Hexcasting.
+
 ## Forbidden & Arcanus 2.6.1 — research COMPLETE
 
-[Exact pinned-JAR 29-axis dossier and 44 instructional nodes](mods/forbidden-arcanus.md): all 22 Forge rituals and 15 Clibano combustion recipes, five Forge tiers, four essence economies, seven enhancer definitions, 11 residue types, modifier progression, capture and Black Hole XP. Registered but unacquirable/preview content explicitly separated; native Divine Pact acquisition not found. TMM policy overrides and gameplay acceptance separate. Next: Hexerei.
+[Exact pinned-JAR 29-axis dossier and 44 instructional nodes](mods/forbidden-arcanus.md): all 22 Forge rituals and 15 Clibano combustion recipes, five Forge tiers, four essence economies, seven enhancer definitions, 11 residue types, modifier progression, capture and Black Hole XP. Registered but unacquirable/preview content explicitly separated; native Divine Pact acquisition not found. TMM policy overrides and gameplay acceptance separate. Next: Hexerei (now complete).
 
 ## Mahou Tsukai 1.36.31 — research COMPLETE
 
