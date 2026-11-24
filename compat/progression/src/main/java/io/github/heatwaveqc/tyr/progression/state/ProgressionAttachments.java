@@ -27,6 +27,11 @@ public final class ProgressionAttachments {
         ATTACHMENTS.register("personal_enchant_filter", () ->
             AttachmentType.builder(PersonalEnchantFilterState::empty)
                 .serialize(PersonalEnchantFilterState.CODEC).copyOnDeath().build());
+    public static final Supplier<AttachmentType<io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState>> PATH_RESOURCES =
+        ATTACHMENTS.register("path_resources", () -> AttachmentType.builder(
+            io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState::empty)
+            .serialize(io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState.CODEC)
+            .copyOnDeath().build());
     public static final Supplier<AttachmentType<Ledger>> LEDGER =
         ATTACHMENTS.register("ledger", () -> AttachmentType.builder(Ledger::empty)
             .serialize(LedgerCodec.CODEC).copyOnDeath().build());
