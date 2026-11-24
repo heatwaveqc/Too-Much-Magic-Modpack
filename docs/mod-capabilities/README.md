@@ -14,7 +14,7 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 
 ## Live research intake — new magic mods and remaining families
 
-**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery and JAWR are now complete; continue with Goety and the remaining major standalone systems before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Astral Sorcery, JAWR Witchery, Goety, Mahou Tsukai, Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
+**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery, JAWR, Goety and Mahou Tsukai are now complete; Forbidden & Arcanus is the active research target, followed by remaining major standalone systems before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
 
 This queue lists **what to research**, not **what to install, change or manually test**. Reconcile it against current `manifest/mods.json` and Packwiz before every new dossier and avoid duplicating Ars Nouveau/Occultism/Botania and other already surveyed parent modules. All regular released-mod behavior is presumed functional under the research-only scope above.
 
@@ -26,9 +26,17 @@ This queue lists **what to research**, not **what to install, change or manually
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
 
+## Mahou Tsukai 1.36.31 — research COMPLETE
+
+[Exact pinned JAR 29-axis dossier and 55 instructional nodes](mods/mahou-tsukai.md), integrated in [#671](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/671). All 53 native spell recipes, resource storage and equipment, artifact/Funbook progression and permanent leyline/Fae how-to. Pack-specific leyline acceptance remains separately tracked in [#669](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/669); no gameplay acceptance or build claimed. Next: Forbidden & Arcanus (research in progress).
+
+## Goety — The Dark Arts 3.2.3 — research COMPLETE
+
+[Exact pinned JAR 29-axis dossier and 76 instructional nodes](mods/goety.md), integrated in [#668](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/668). 1,667 recipe records, 414 Black Book and 8 brewing entries, native ritual/resource economy, independent Lich walkthrough, foci, servants and equipment. Goety Cataclysm is deferred; TMM Lich integration and gameplay acceptance are separate. Next: Mahou Tsukai (now complete).
+
 ## Just Another Witchery Remake 0.5.39 — research COMPLETE
 
-[Exact pinned JAR 29-axis dossier and 68 instructional nodes](mods/witchery-remake.md): all 223 guide entries inventoried, nine category gates, independent vampire and werewolf ten-level how-tos with compiled objective predicates, corrected guide discrepancies, witchcraft resources, rituals, brewing, Spirit World, Symbology, Tarot and companion branches. No native gameplay test required; TMM custom transformation overrides remain downstream. Next: Goety.
+[Exact pinned JAR 29-axis dossier and 68 instructional nodes](mods/witchery-remake.md): all 223 guide entries inventoried, nine category gates, independent vampire and werewolf ten-level how-tos with compiled objective predicates, corrected guide discrepancies, witchcraft resources, rituals, brewing, Spirit World, Symbology, Tarot and companion branches. No native gameplay test required; TMM custom transformation overrides remain downstream. Next: Goety (now complete).
 
 ## Astral Sorcery 2.0.3.59 — research COMPLETE
 
