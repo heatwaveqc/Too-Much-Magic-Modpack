@@ -14,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * NPC-only combat adapter. Reuses the existing/native target, never scans for targets.
@@ -28,6 +29,8 @@ public final class GolemMinigunGoal extends Goal {
     private boolean running;
     private boolean firing;
     private int cooldown;
+    private int rocketCooldown;
+    private static final int ROCKET_INTERVAL = 120; // six seconds; minigun keeps operating
 
     public GolemMinigunGoal(IronGolem golem) {
         this.golem = golem;
@@ -59,6 +62,23 @@ public final class GolemMinigunGoal extends Goal {
         running = true;
         golem.getNavigation().stop();
         golem.getLookControl().setLookAt(target, 30F, 30F);
+        if (rocketCooldown == 0 && golem.level() instanceof ServerLevel world
+                && GolemRocketTargeting.mayLaunch(world, golem, target)) {
+            // Same native current target as the minigun; no competing goals or homing.
+            Vec3 forward = golem.getLookAngle();
+            Vec3 across = new Vec3(forward.x, 0D, forward.z).normalize();
+            if (across.lengthSqr() > 0.0001D) {
+                Vec3 left = new Vec3(across.z, 0D, -across.x);
+                Vec3 muzzle = golem.position().add(left.scale(0.62D))
+                    .add(0D, 2.15D, 0D).add(across.scale(0.55D));
+                Vec3 towards = target.getEyePosition().subtract(muzzle);
+                if (towards.lengthSqr() > 0.0001D) {
+                    if (world.addFreshEntity(new GolemRocket(world, golem, muzzle, towards))) {
+                        rocketCooldown = ROCKET_INTERVAL;
+                    }
+                }
+            }
+        }
         if (spin.ready() && cooldown == 0) {
             // No player-obtainable equipment, projectiles or ammunition.
             // Recheck targeting/line of sight every shot, including after a pardon.
@@ -80,6 +100,7 @@ public final class GolemMinigunGoal extends Goal {
         spin.tick(trigger);
         firing = trigger && spin.ready();
         if (cooldown > 0) cooldown--;
+        if (rocketCooldown > 0) rocketCooldown--;
     }
     boolean firing() { return firing; }
     float speed() { return spin.speed(); }
