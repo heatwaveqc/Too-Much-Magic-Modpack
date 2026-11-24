@@ -21,12 +21,12 @@ public final class GolemRocketTargeting {
     private GolemRocketTargeting() {}
 
     static boolean farEnough(double distanceSquared) {
-        return distanceSquared >= MIN_DISTANCE_SQUARED;
+        return GolemRocketGeometry.farEnough(distanceSquared);
     }
 
     static boolean withinFootprint(BoundingBox bounds, int x, int z) {
-        return x >= bounds.minX() && x <= bounds.maxX()
-            && z >= bounds.minZ() && z <= bounds.maxZ();
+        return GolemRocketGeometry.insideRectangle(
+            bounds.minX(), bounds.maxX(), bounds.minZ(), bounds.maxZ(), x, z);
     }
 
     /** Called at firing time, not per tick during idle goal selection. */
