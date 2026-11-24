@@ -34,7 +34,7 @@ remain possible.
 **Source-only candidate; NOT yet indexed or installed.** Designated integration
 writer adds these six data files to Packwiz, recalculates `index.toml` and
 `pack.toml` hashes and reconciles live integration source. Run
-`python -m unittest tests/test_botania_creative_bans.py`
+`python -m unittest discover -s tests -p 'test_botania_creative_bans.py'`
 and `python scripts/verify_botania_creative_bans.py` before that selection.
 
 **Still open under #596:** audit creative outputs from all installed mods,
