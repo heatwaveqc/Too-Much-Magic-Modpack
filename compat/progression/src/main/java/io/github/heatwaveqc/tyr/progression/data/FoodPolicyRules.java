@@ -151,16 +151,38 @@ public record FoodPolicyRules(
     }
 
     /**
-     * Raw source units come from the recipe graph, not a hand-authored item
-     * matrix: a half cod slice has 0.5; 2 oranges in one juice have 2.0.
-     * The graph may explicitly supply the preferred material fraction for
-     * mixed dishes; absent evidence uses tags only for unambiguous foods.
-     *
-     * Empty means keep the native provider result (including magical special
-     * use, unknown foods, unresolved provenance, and missing stage tags).
+     * Preserve fractional nutrition through multi-step recipe processing.
+     * Minecraft FoodProperties requires integer hunger only at the final edge.
      */
-    public Optional<Nutrition> evaluate(String profile, Set<String> itemTags,
-                                         double rawSourceUnits, Double preferredShare) {
+    public record Budget(double exactHunger, double theoreticalSaturationPoints) {
+        public Nutrition rounded() {
+            return FoodPolicyRules.rounded(exactHunger, theoreticalSaturationPoints);
+        }
+    }
+
+    public static Nutrition rounded(double exactHunger, double theoreticalSaturationPoints) {
+        if (!Double.isFinite(exactHunger) || exactHunger < 0
+                || !Double.isFinite(theoreticalSaturationPoints) || theoreticalSaturationPoints < 0)
+            throw new IllegalArgumentException("Invalid food budget");
+        if (exactHunger == 0) {
+            if (theoreticalSaturationPoints != 0)
+                throw new IllegalArgumentException("Zero nourishment cannot grant saturation");
+            return new Nutrition(0, 0f, 0);
+        }
+        int hunger = (int) Math.round(exactHunger);
+        if (hunger == 0) hunger = 1;
+        float modifier = (float) (theoreticalSaturationPoints / (2 * hunger));
+        // Rounding hunger never rounds theoretical saturation points a second time.
+        return new Nutrition(hunger, modifier, theoreticalSaturationPoints);
+    }
+
+    /**
+     * Verified single-source roots and portions. An unknown mixed fraction
+     * intentionally returns native: a share alone cannot establish the
+     * "half of the best input" ceiling. FoodRecipeEvaluator owns mixed dishes.
+     */
+    public Optional<Budget> evaluateBudget(String profile, Set<String> itemTags,
+                                          double rawSourceUnits, Double preferredShare) {
         if (!profiles.containsKey(profile) || universallyPermitted(itemTags)
                 || !Double.isFinite(rawSourceUnits) || rawSourceUnits <= 0 || rawSourceUnits > 64)
             return Optional.empty();
@@ -169,21 +191,21 @@ public record FoodPolicyRules(
         Optional<Double> inferred = inferredPreferredShare(profile, itemTags);
         if (preferredShare == null && inferred.isEmpty()) return Optional.empty();
         double fraction = preferredShare == null ? inferred.orElseThrow() : preferredShare;
-        if (!Double.isFinite(fraction) || fraction < 0 || fraction > 1) return Optional.empty();
-        // Even explicit fractions must come from source-classified family tags.
+        if (!Double.isFinite(fraction) || fraction < 0 || fraction > 1
+                || (fraction > 0 && fraction < 1)) return Optional.empty();
         if (familyTags.values().stream().noneMatch(tags -> matches(tags, itemTags)))
             return Optional.empty();
-        double weight = fraction + (1 - fraction) * offDietContribution;
+        double weight = fraction == 1 ? 1 : offDietContribution;
         double factor = cookingMultipliers.get(stage.orElseThrow());
         double exactHunger = preferredRawNutrition * rawSourceUnits * weight * factor;
         double theoretical = 2 * preferredRawNutrition * preferredRawSaturationModifier
             * rawSourceUnits * weight * factor;
-        int roundedHunger = (int) Math.round(exactHunger);
-        if (theoretical > 0 && roundedHunger == 0) roundedHunger = 1;
-        float modifier = roundedHunger > 0 ? (float) (theoretical / (2 * roundedHunger)) : 0f;
-        // Integer hunger rounds to the closest unit; recompute the saturation
-        // modifier to preserve the intended *points* rather than quartering
-        // saturation a second time due to both values being multiplied.
-        return Optional.of(new Nutrition(roundedHunger, modifier, theoretical));
+        return Optional.of(new Budget(exactHunger, theoretical));
+    }
+
+    public Optional<Nutrition> evaluate(String profile, Set<String> itemTags,
+                                         double rawSourceUnits, Double preferredShare) {
+        return evaluateBudget(profile, itemTags, rawSourceUnits, preferredShare)
+            .map(Budget::rounded);
     }
 }

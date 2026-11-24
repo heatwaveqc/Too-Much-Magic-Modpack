@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "item": "aquaculture:sushi",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "aquaculture:sushi",
+      "method": "nonthermal",
+      "result_count": 1,
+      "ingredients": [
+        {
+          "item": "aquaculture:fish_fillet_raw",
+          "count": 1
+        },
+        {
+          "item": "minecraft:seagrass",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

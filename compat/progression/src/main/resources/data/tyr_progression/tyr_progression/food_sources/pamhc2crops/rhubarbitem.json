@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "pamhc2crops:rhubarbitem",
+  "provenance": "c:vegetables",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/vegetable",
+    "#tmm:foods/raw"
+  ]
+}

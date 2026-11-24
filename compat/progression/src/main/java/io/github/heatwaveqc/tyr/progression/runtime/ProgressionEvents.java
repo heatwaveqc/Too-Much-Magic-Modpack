@@ -30,6 +30,7 @@ public final class ProgressionEvents {
     public static void register() {
         TreeChopXpBridge.register();
         GildedMechanics.register();
+        io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
@@ -225,6 +226,7 @@ public final class ProgressionEvents {
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
                 io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,false);
+                io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,false);
             }
         }
     }
@@ -239,6 +241,8 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
@@ -249,6 +253,7 @@ public final class ProgressionEvents {
             VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
@@ -260,6 +265,7 @@ public final class ProgressionEvents {
             VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -276,6 +282,8 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
