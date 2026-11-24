@@ -181,6 +181,7 @@ public final class ProgressionCommands {
                     })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
                 .then(DebugCommands.currency())
+                .then(DebugCommands.skill())
                 .then(DebugCommands.inspect())
                 .then(Commands.literal("foodcensus")
                     .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.FoodRegistryCensus
