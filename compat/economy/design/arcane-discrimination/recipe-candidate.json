@@ -1,4 +1,18 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "improvableskills"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "apotheosis"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "apothic_enchanting"
+    }
+  ],
   "type": "improvableskills:parchment_fragment",
   "ingredients": [
     {
