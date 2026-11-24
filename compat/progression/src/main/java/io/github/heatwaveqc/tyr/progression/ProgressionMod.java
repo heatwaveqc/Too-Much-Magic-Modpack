@@ -53,5 +53,6 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();
+        io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.register();
     }
 }

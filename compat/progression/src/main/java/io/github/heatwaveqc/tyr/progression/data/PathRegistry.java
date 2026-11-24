@@ -123,6 +123,11 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         }catch(java.io.IOException error){
             throw new IllegalArgumentException("Cannot load Progression economy configuration",error);
         }
+        // Parse once with this same datapack reload; installation is atomic
+        // with the validated Path and XP catalogs below.
+        var externalOffers=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.parse(manager);
+        for(var offer:externalOffers.values())if(!economy.systems().containsKey(offer.currency()))
+            throw new IllegalArgumentException("Unknown external reward currency "+offer.currency());
         var registeredSystems=new HashMap<>(ChannelConfig.definitions(experience,1.02));
         // Any XP ledger may be bound by a tree, even without a legacy
         // experience_systems native curve or a hard-coded MXP channel.
@@ -205,6 +210,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         channelConfig=config;
         compatibility=nextCompatibility;
         ExperienceEconomyRuntime.install(economy);
+        io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.install(externalOffers);
         economyGates=Map.copyOf(newEconomyGates);
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);

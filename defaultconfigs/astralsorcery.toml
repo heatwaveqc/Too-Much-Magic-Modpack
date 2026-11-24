@@ -1,0 +1,4 @@
+# TMM: native Astral mastery is level 100.
+# Other native settings are populated by NeoForge's config spec.
+[perks]
+perkLevelCap = 100

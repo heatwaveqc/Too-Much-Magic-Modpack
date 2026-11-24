@@ -96,8 +96,11 @@ public final class ProgressionScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(Math.max(10,width-66),height-25,56,20).build());
         purchase=addRenderableWidget(Button.builder(Component.literal("Learn rank"),b->{
             JsonObject n=nodes.get(selection);
-            if(n!=null&&selectedBuyable(n))PacketDistributor.sendToServer(
-                new ProgressionMenuNetwork.Mutate(pathId,"buy",selection,selectedCurrency(n)));
+            if(n!=null&&selectedBuyable(n)){
+                if(n.has("external_reward") && n.get("external_reward").getAsBoolean())
+                    PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"external_buy",selection,selectedCurrency(n)));
+                else PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"buy",selection,selectedCurrency(n)));
+            }
         }).bounds(10,height-25,90,20).build());
         respec=addRenderableWidget(Button.builder(Component.literal("Respec"),b->{
             if(data==null||!data.get("joined").getAsBoolean())return;
@@ -202,7 +205,7 @@ public final class ProgressionScreen extends Screen {
                 line(g,title(n,row.getKey()),x+5,y+6,NODE_W-10,0xFFF2EDEA);
                 String owned=n.get("owned").getAsInt()+"/"+n.get("maximum").getAsInt();
                 line(g,owned+(n.get("auto").getAsBoolean()?" · auto":" · "+n.get("price").getAsInt()+" pts"),x+5,y+20,NODE_W-10,0xFFD0CCDD);
-                line(g,n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt(),x+5,y+31,NODE_W-10,0xFFA9C1CC);
+                line(g,n.has("external_reward")?"Native mastery":n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt(),x+5,y+31,NODE_W-10,0xFFA9C1CC);
             }
             if(nodes.isEmpty())line(g,"No configured skills in this tree.",viewportLeft()+10,viewportTop()+10,viewportRight()-viewportLeft()-20,0xFFB8B3C6);
             g.disableScissor();
@@ -222,7 +225,7 @@ public final class ProgressionScreen extends Screen {
                 var source=selectedSource(chosen);
                 int price=source==null?chosen.get("price").getAsInt():source.get("price").getAsInt();
                 line(g,title(chosen,selection)+" | "+price+" points via "+label(selectedCurrency(chosen))+
-                    " | "+chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt(),12,y,width-24,0xFFF0D997);
+                    " | "+(chosen.has("external_reward")?"Native Astral mastery":chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt()),12,y,width-24,0xFFF0D997);
                 line(g,String.join(", ",strings(chosen,"effects"))+" | "+(selectedBuyable(chosen)?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
             }
             if(inside(mx,my)){
@@ -247,7 +250,7 @@ public final class ProgressionScreen extends Screen {
                                 label(source.get("system").getAsString())+": "+
                                 source.get("owned").getAsInt()+"/"+source.get("max_ranks").getAsInt()+
                                 " ranks, "+source.get("price").getAsInt()+" pts/rank"));
-                        tooltip.add(Component.literal("Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
+                        tooltip.add(Component.literal(n.has("external_reward")?"Requires native Astral mastery":"Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
                         if(!strings(n,"requires").isEmpty())tooltip.add(Component.literal("All: "+String.join(", ",strings(n,"requires").stream().map(ProgressionScreen::label).toList())));
                         if(!strings(n,"requires_any").isEmpty())tooltip.add(Component.literal("Any: "+String.join(", ",strings(n,"requires_any").stream().map(ProgressionScreen::label).toList())));
                         if(!strings(n,"milestones").isEmpty())tooltip.add(Component.literal("Milestones: "+String.join(", ",strings(n,"milestones").stream().map(ProgressionScreen::label).toList())));
