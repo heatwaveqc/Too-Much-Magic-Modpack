@@ -221,17 +221,31 @@ public final class ExperienceEconomy {
     public static Award earn(Ledger source, SystemSpec system, String sourceCategory,
                              String transaction, String firstCompletion, BigDecimal base,
                              boolean fixed, double effectiveGrowth) {
+        return earnModified(source, system, sourceCategory, transaction, firstCompletion,
+                base, fixed, effectiveGrowth, 1.0);
+    }
+
+    /** The modifier multiplier is server-resolved; original nominal XP is still validated.
+     * A zero multiplier intentionally suppresses a legitimate event, including its minimum. */
+    public static Award earnModified(Ledger source, SystemSpec system, String sourceCategory,
+                                     String transaction, String firstCompletion, BigDecimal nominal,
+                                     boolean fixed, double effectiveGrowth, double multiplier) {
         requireId(sourceCategory);
         requireReceiptKey(transaction);
         if (firstCompletion != null) requireReceiptKey(firstCompletion);
         String txReceipt = system.id() + "|" + sourceCategory + "|" + transaction;
         String firstReceipt = firstCompletion == null ? null
                 : system.id() + "|" + sourceCategory + "|" + firstCompletion;
-        Objects.requireNonNull(base, "base");
-        requireBoundedDecimal(base);
+        Objects.requireNonNull(nominal, "nominal");
+        requireBoundedDecimal(nominal);
         validateGrowth(effectiveGrowth);
-        if (base.signum() <= 0 || base.compareTo(system.maxBaseAward()) > 0)
+        if (nominal.signum() <= 0 || nominal.compareTo(system.maxBaseAward()) > 0)
             throw new IllegalArgumentException("Award exceeds system source limits");
+        if (!Double.isFinite(multiplier) || multiplier < 0
+                || multiplier > XpModifierMath.MAX_REWARD_MULTIPLIER)
+            throw new IllegalArgumentException("Invalid XP reward multiplier");
+        // Modified XP can exceed the nominal-input limit, but remains bounded.
+        BigDecimal base = nominal.multiply(BigDecimal.valueOf(multiplier).stripTrailingZeros());
         if (source.recentTransactions().contains(txReceipt)
                 || firstReceipt != null && source.rewardReceipts().contains(firstReceipt))
             return new Award(source, BigDecimal.ZERO, false);
@@ -242,9 +256,11 @@ public final class ExperienceEconomy {
         BigDecimal nextXp = oldXp;
         // Do not silently destroy existing XP if an administrator lowers the cap.
         // Such a reload requires separate reconciliation of paid commitments.
-        if (oldXp.compareTo(cap) < 0) {
+        if (oldXp.compareTo(cap) < 0 && multiplier > 0) {
             nextXp = fixed ? oldXp.add(base).min(cap)
                     : ordinary(oldXp, system, base, effectiveGrowth);
+            if (nextXp.scale() > MAX_XP_SCALE)
+                nextXp = nextXp.setScale(MAX_XP_SCALE, RoundingMode.DOWN);
             BigDecimal gain = nextXp.subtract(oldXp);
             // Reaching the cap takes precedence over minimum reward rounding.
             if (nextXp.compareTo(cap) < 0 && gain.compareTo(system.minReward()) < 0)

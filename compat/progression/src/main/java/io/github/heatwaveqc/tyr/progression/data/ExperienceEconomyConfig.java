@@ -49,12 +49,19 @@ public final class ExperienceEconomyConfig {
 
     public record Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
                           Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
-                          Map<SkillKey, SkillPurchases> skills) {
+                          Map<SkillKey, SkillPurchases> skills,
+                          List<XpModifierConfig.Rule> modifiers) {
+        public Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
+                       Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
+                       Map<SkillKey, SkillPurchases> skills) {
+            this(systems, defaultGrowth, defaultTransition, pathChanges, skills, List.of());
+        }
         public Catalog {
             systems = Map.copyOf(systems);
             defaultGrowth = Map.copyOf(defaultGrowth);
             pathChanges = Map.copyOf(pathChanges);
             skills = Map.copyOf(skills);
+            modifiers = List.copyOf(modifiers);
         }
         public Transition policy(String path, String system) {
             return pathChanges.getOrDefault(new PathSystem(path, system), defaultTransition);
@@ -75,7 +82,7 @@ public final class ExperienceEconomyConfig {
     }
 
     public static Catalog read(JsonObject root) {
-        only(root, "schema", "systems", "default_path_change", "path_changes", "skills");
+        only(root, "schema", "systems", "default_path_change", "path_changes", "skills", "modifiers");
         if (root.has("schema") && root.get("schema").getAsBigDecimal().intValueExact() != 1)
             throw new IllegalArgumentException("Unsupported economy schema");
         if (!root.has("systems")) throw new IllegalArgumentException("Missing XP systems");
@@ -153,7 +160,8 @@ public final class ExperienceEconomyConfig {
             if (skills.putIfAbsent(key, new SkillPurchases(cap, purchases)) != null)
                 throw new IllegalArgumentException("Duplicate configured skill " + key);
         }
-        return new Catalog(systems, growth, fallback, changes, skills);
+        return new Catalog(systems, growth, fallback, changes, skills,
+                XpModifierConfig.read(root, systems.keySet()));
     }
 
     private static Transition transition(JsonObject j, Transition inherited) {
