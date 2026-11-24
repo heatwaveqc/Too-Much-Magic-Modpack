@@ -8,6 +8,12 @@
 
 This is the **independent, capability-first parallel workstream** tracked by [issue #410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410) and [draft PR #411](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/411). Original [Mod Comprehension](../mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) work continues to research progression, inputs/outputs and in-game walkthroughs. The Atlas may cite and reconcile that work without modifying the files of the original project. The two can eventually be integrated by IDs and reviewed links, not by discarding either set of evidence.
 
+## Live research intake — new magic mods and remaining families
+
+**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they are now listed as the next two substantial *research targets*, followed by **Aquamirae & Nouveau 0.1.3**, **Unicorn Academy: Bonded Magic**, and **Occult Cooking**. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Astral Sorcery, JAWR Witchery, Goety, Mahou Tsukai, Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
+
+This queue lists **what to research**, not **what to install, change or manually test**. Reconcile it against current `manifest/mods.json` and Packwiz before every new dossier and avoid duplicating Ars Nouveau/Occultism/Botania and other already surveyed parent modules. All regular released-mod behavior is presumed functional under the research-only scope above.
+
 ## Read first
 
 1. [The complete 29-axis field guide](AXIS-FIELD-GUIDE.md): for **each axis**, specifies what concrete objects/effects, lower and upper capabilities and quests must be documented.
