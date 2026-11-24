@@ -12,7 +12,10 @@ public final class ArcaneDiscriminationScreens {
     private ArcaneDiscriminationScreens() {}
     @SubscribeEvent
     public static void register(RegisterMenuScreensEvent event) {
-        if (EnchantingFeatureGate.enabled())
+        if (EnchantingFeatureGate.enabled()) {
             event.register(ArcaneDiscriminationRegistration.MENU.get(), ArcaneDiscriminationScreen::new);
+            event.register(io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.SHELVES.get(), VirtualShelfScreen::new);
+            event.register(io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.ENCHANTER.get(), PortableApothicScreen::new);
+        }
     }
 }
