@@ -30,6 +30,8 @@ TARGETS = {
         "velrondevs.extrabotany.client.gui.handbag.MiniHandbagMenu": (
             "MiniHandbagMenu(int, net.minecraft.world.entity.player.Inventory, net.minecraft.world.item.ItemStack)",
             "quickMoveStack(net.minecraft.world.entity.player.Player, int)",
+            "private static final int BAG_START = 4;",
+            "private static final int BAG_END = 28;",
         ),
         "velrondevs.extrabotany.common.item.MiniHandbagItem": (
             "static final int SIZE = 24;",
@@ -65,8 +67,6 @@ def audit(dir_path: Path) -> None:
                     raise AssertionError(f"{jarname}!{cls}: missing expected ABI: {snippet}")
             if cls.endswith("MiniHandbagMenu"):
                 code = javap(jar, cls, code=True)
-                if "new           #".replace("#", "") not in code and "new " not in code:
-                    raise AssertionError("MiniHandbagMenu bytecode not inspectable")
                 if "net/minecraft/world/inventory/Slot" not in code:
                     raise AssertionError("MiniHandbagMenu no longer constructs vanilla Slots")
                 if "MiniHandbagItem.getInventory" not in code:
