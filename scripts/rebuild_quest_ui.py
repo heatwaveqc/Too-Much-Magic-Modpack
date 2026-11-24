@@ -173,7 +173,7 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     for title, x, y in basic:
         put("Basic Progression", title, x, y)
     suffix = ["I — First Trade", "II — Regular Buyer", "III — Packed Shipment", "IV — Industrial Exchange"]
-    for row, commodity in enumerate(("Copper", "Emeralds", "Diamonds")):
+    for row, commodity in enumerate(("Copper", "Emeralds", "Diamonds", "Iron")):
         for col, tier in enumerate(suffix):
             put("Basic Progression", f"Sell {commodity} {tier}", 3 * col, 14 + row * 4)
 
@@ -419,8 +419,8 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 273 or intro_count != 235:
-        raise ValueError(f"Expected 259 objects / 221 authored, got {len(seen)} / {intro_count}")
+    if len(seen) != 277 or intro_count != 239:
+        raise ValueError(f"Expected 277 objects / 239 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
     for chapter in SPEC["chapters"]:

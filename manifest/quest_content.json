@@ -4,7 +4,7 @@
   "rules": {
     "each_quest_requires": "Positive XP and meaningful items/approved coins except narrowly scoped Ars orientation, which gives five XP only.",
     "reward_shortcuts": "no fixed item reward equals another authored item criterion; shop purchases intentionally bypass bad-luck but cannot bypass progression locks",
-    "criteria_reuse": "never duplicate an objective by accident; the six explicitly designated copper/emerald/diamond sell-tier item IDs are intentionally reused with different counts and item consumption",
+    "criteria_reuse": "Never duplicate an objective by accident; eight explicitly designated copper/iron/emerald/diamond sale-tier item IDs are intentionally reused with different counts and item consumption.",
     "overview_placeholders": "until authored, minimal paper + XP checkmark rewards",
     "progression_chapters": "56 authored progression quests; Skills & Factions replaces stale Pufferfish skill guidance and owns class and transformation orientation.",
     "onboarding": "Seven added Getting Started quests beyond iron, guiding first spell/ritual and exploration; no specific magical school required.",
@@ -946,7 +946,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper I — First Trade",
-      "description": "Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 copper ingots for 10 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_ingot",
@@ -954,7 +954,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 10
       },
       "depends": null,
       "optional": true,
@@ -967,7 +967,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper II — Regular Buyer",
-      "description": "Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 32 copper ingots for 35 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_ingot",
@@ -975,7 +975,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 35
       },
       "depends": "Sell Copper I — First Trade",
       "optional": true,
@@ -988,7 +988,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper III — Packed Shipment",
-      "description": "Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 16 copper blocks for 105 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_block",
@@ -996,7 +996,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 105
       },
       "depends": "Sell Copper II — Regular Buyer",
       "optional": true,
@@ -1009,7 +1009,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Copper IV — Industrial Exchange",
-      "description": "Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "description": "Submit 256 copper blocks for 405 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:copper_block",
@@ -1017,7 +1017,7 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 405
       },
       "depends": "Sell Copper III — Packed Shipment",
       "optional": true,
@@ -1032,7 +1032,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds I — First Trade",
-      "description": "Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 2 emeralds for 5,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald",
@@ -1040,7 +1040,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 5000
       },
       "depends": null,
       "optional": true,
@@ -1053,7 +1053,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds II — Regular Buyer",
-      "description": "Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 emeralds for 15,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald",
@@ -1061,7 +1061,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 15000
       },
       "depends": "Sell Emeralds I — First Trade",
       "optional": true,
@@ -1074,7 +1074,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds III — Packed Shipment",
-      "description": "Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 16 emerald blocks for 185,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald_block",
@@ -1082,7 +1082,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 185000
       },
       "depends": "Sell Emeralds II — Regular Buyer",
       "optional": true,
@@ -1095,7 +1095,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Emeralds IV — Industrial Exchange",
-      "description": "Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "description": "Submit 128 emerald blocks for 370,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:emerald_block",
@@ -1103,7 +1103,7 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 370000
       },
       "depends": "Sell Emeralds III — Packed Shipment",
       "optional": true,
@@ -1118,7 +1118,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds I — First Trade",
-      "description": "Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 1 diamond for 1,250 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond",
@@ -1126,7 +1126,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 1250
       },
       "depends": null,
       "optional": true,
@@ -1139,7 +1139,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds II — Regular Buyer",
-      "description": "Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 4 diamonds for 3,850 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond",
@@ -1147,7 +1147,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 3850
       },
       "depends": "Sell Diamonds I — First Trade",
       "optional": true,
@@ -1160,7 +1160,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds III — Packed Shipment",
-      "description": "Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries.",
+      "description": "Submit 8 diamond blocks for 46,500 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond_block",
@@ -1168,7 +1168,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 46500
       },
       "depends": "Sell Diamonds II — Regular Buyer",
       "optional": true,
@@ -1181,7 +1181,7 @@
     {
       "chapter": "Basic Progression",
       "title": "Sell Diamonds IV — Industrial Exchange",
-      "description": "Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option.",
+      "description": "Submit 64 diamond blocks for 92,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed.",
       "criterion": {
         "type": "item",
         "id": "minecraft:diamond_block",
@@ -1189,9 +1189,95 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 92000
       },
       "depends": "Sell Diamonds III — Packed Shipment",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron I — First Trade",
+      "description": "Submit 8 iron ingots for 20 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 20
+      },
+      "depends": null,
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron II — Regular Buyer",
+      "description": "Submit 32 iron ingots for 70 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_ingot",
+        "count": 32
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 70
+      },
+      "depends": "Sell Iron I — First Trade",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron III — Packed Shipment",
+      "description": "Submit 16 iron blocks for 210 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 210
+      },
+      "depends": "Sell Iron II — Regular Buyer",
+      "optional": true,
+      "overview": false,
+      "first_log": false,
+      "consume_items": true,
+      "team_reward": true,
+      "purpose": "intentional-tiered-resource-sale"
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron IV — Industrial Exchange",
+      "description": "Submit 256 iron blocks for 810 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed.",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_block",
+        "count": 256
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 810
+      },
+      "depends": "Sell Iron III — Packed Shipment",
       "optional": true,
       "overview": false,
       "first_log": false,

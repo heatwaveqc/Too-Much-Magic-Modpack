@@ -24,5 +24,23 @@
   },
   "modpin": "BpwWFOVM/swTb6NU9",
   "qa_only": true,
-  "notes": "Exact 3 general decrees, 2 full Gateway criteria. Historical 2026-11-18 EMC and provisional combat effort units; not production balance. #381 Inn optional for first smoke; #382 forms not part of basic smoke."
+  "notes": "Exact 3 general decrees, 2 full Gateway criteria. Historical 2026-11-18 EMC and provisional combat effort units; not production balance. #381 Inn optional for first smoke; #382 forms not part of basic smoke. Original files/source_commit are immutable donor provenance; active_files reflect owner-approved 2026-11-23 economy revision (#647). Do not restore original runtime pools.",
+  "active_files": {
+    "config/bountiful/bountiful.json": "950de71b545d10986fad0b67a40771eb55d137d3be237ac8b833797b6ffd5de8",
+    "config/bountiful/bounty_decrees/tmm_culinary.json": "a49a33b4bfe05aca673d2c2c368538cc9564b4a5b0f5fceea09fa6d280eb7a72",
+    "config/bountiful/bounty_decrees/tmm_fishing.json": "8faee371bbd3b2d6d3898dcf8276c97b53dc1d6e9531b8f41c81c0787ff23ba5",
+    "config/bountiful/bounty_decrees/tmm_hunting.json": "61120375da7a60bae4a7b1d3730d16da28a6e99087a48d7e1a13054ab5b9a6d5",
+    "config/bountiful/bounty_pools/tmm_culinary_objs.json": "8413101a4b511ab0af58764c910949dca676df92638be5f011cc39e1dc41a53e",
+    "config/bountiful/bounty_pools/tmm_culinary_rews.json": "17852af198534521f32387b0b4cb23067581d2beb707a0b9d41b3db71fb7bcc6",
+    "config/bountiful/bounty_pools/tmm_fishing_objs.json": "175ba2d16f255fd61d2790dd9ad5acce2b3dc5b1060f1de7b574fdb0eb760032",
+    "config/bountiful/bounty_pools/tmm_fishing_rews.json": "d0ee0dca6894eea6d7bfd79f1e5b5745c91597303da118dada9f61f9cd88ab39",
+    "config/bountiful/bounty_pools/tmm_hunting_objs.json": "72a02f7f8a3736d613fc5e42e494c4cdaa7833ab60c64138c381678c7cf58e88",
+    "config/bountiful/bounty_pools/tmm_hunting_rews.json": "e27af478bc2788d2dd9fdf679e746a49b32d7a7ce3c9519198db1c3b03776188",
+    "kubejs/assets/bountiful/lang/en_us.json": "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec",
+    "kubejs/data/tmm/recipe/bountiful/tmm_culinary.json": "2a7e418ff5e80e8beea215a25354d5a662186dc5924570c26d2c52084cf038ec",
+    "kubejs/data/tmm/recipe/bountiful/tmm_fishing.json": "9494db6cf6de033e21976b045a112efc89938cc4cefcc024a98e6bbf13dbabd7",
+    "kubejs/data/tmm/recipe/bountiful/tmm_hunting.json": "194411e62337e7d55a41666d226bac7b9d087448a59bdce16260c55124cec5dd"
+  },
+  "active_review": "manifest/bountiful-current-economy-review.json",
+  "active_profile": "native_v2"
 }

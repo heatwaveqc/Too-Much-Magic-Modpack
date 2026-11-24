@@ -281,29 +281,37 @@
 	quest.544D302000100001.title: "Chapter Overview"
 	quest.544D302000100001.quest_desc: ["An introduction to Basic Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D504000100000.title: "Sell Copper I — First Trade"
-	quest.544D504000100000.quest_desc: ["Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000100000.quest_desc: ["Submit 8 copper ingots for 10 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000200000.title: "Sell Copper II — Regular Buyer"
-	quest.544D504000200000.quest_desc: ["Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000200000.quest_desc: ["Submit 32 copper ingots for 35 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000300000.title: "Sell Copper III — Packed Shipment"
-	quest.544D504000300000.quest_desc: ["Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000300000.quest_desc: ["Submit 16 copper blocks for 105 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000400000.title: "Sell Copper IV — Industrial Exchange"
-	quest.544D504000400000.quest_desc: ["Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000400000.quest_desc: ["Submit 256 copper blocks for 405 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000500000.title: "Sell Emeralds I — First Trade"
-	quest.544D504000500000.quest_desc: ["Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000500000.quest_desc: ["Submit 2 emeralds for 5,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000600000.title: "Sell Emeralds II — Regular Buyer"
-	quest.544D504000600000.quest_desc: ["Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000600000.quest_desc: ["Submit 8 emeralds for 15,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000700000.title: "Sell Emeralds III — Packed Shipment"
-	quest.544D504000700000.quest_desc: ["Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000700000.quest_desc: ["Submit 16 emerald blocks for 185,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000800000.title: "Sell Emeralds IV — Industrial Exchange"
-	quest.544D504000800000.quest_desc: ["Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000800000.quest_desc: ["Submit 128 emerald blocks for 370,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000900000.title: "Sell Diamonds I — First Trade"
-	quest.544D504000900000.quest_desc: ["Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000900000.quest_desc: ["Submit 1 diamond for 1,250 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000A00000.title: "Sell Diamonds II — Regular Buyer"
-	quest.544D504000A00000.quest_desc: ["Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000A00000.quest_desc: ["Submit 4 diamonds for 3,850 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000B00000.title: "Sell Diamonds III — Packed Shipment"
-	quest.544D504000B00000.quest_desc: ["Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your personal Q Shop wallet with one coin. Later tiers require larger deliveries."]
+	quest.544D504000B00000.quest_desc: ["Submit 8 diamond blocks for 46,500 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000C00000.title: "Sell Diamonds IV — Industrial Exchange"
-	quest.544D504000C00000.quest_desc: ["Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000C00000.quest_desc: ["Submit 64 diamond blocks for 92,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
+	quest.544D504001700000.title: "Sell Iron I — First Trade"
+	quest.544D504001700000.quest_desc: ["Submit 8 iron ingots for 20 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001800000.title: "Sell Iron II — Regular Buyer"
+	quest.544D504001800000.quest_desc: ["Submit 32 iron ingots for 70 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001900000.title: "Sell Iron III — Packed Shipment"
+	quest.544D504001900000.quest_desc: ["Submit 16 iron blocks for 210 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001A00000.title: "Sell Iron IV — Industrial Exchange"
+	quest.544D504001A00000.quest_desc: ["Submit 256 iron blocks for 810 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000D00000.title: "Choose a Magical Tradition"
 	quest.544D504000D00000.quest_desc: ["Pick one school of magic that interests you, then open its own chapter. Ars Nouveau, Occultism, Botania, Hex Casting, and the other traditions can be explored in parallel. This is a guide checkmark, not a mandatory choice or a gate on the other chapters."]
 	quest.544D504000E00000.title: "Secure Some Copper"

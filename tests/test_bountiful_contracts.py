@@ -22,10 +22,10 @@ class TestBountifulCompiler(unittest.TestCase):
         p=json.loads(files["config/bountiful/bounty_pools/tmm_farming_objs.json"])
         self.assertEqual(next(iter(p["content"].values()))["amount"],{"min":4,"max":4})
         self.assertFalse(json.loads(files["config/bountiful/bountiful.json"])["bounty"]["allowDecreeMixing"])
-    def test_no_positive_cycle(self):
+    def test_profitable_delivery_is_allowed(self):
         r=copy.deepcopy(R)
         r["approved_entries"]["farming"]["objectives"][0]["count"]=2
-        with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+        self.assertTrue(m.compile_candidate(C,A,r))
     def test_no_unknown_registry(self):
         r=copy.deepcopy(R)
         r["registered_items"].remove("minecraft:wheat")
@@ -76,7 +76,7 @@ class TestBountifulCompiler(unittest.TestCase):
         p=json.loads(files["config/bountiful/bounty_pools/tmm_farming_rews.json"])
         self.assertEqual(len(p["content"]),2)
         r["approved_entries"]["farming"]["rewards"][1]["count"]=3
-        with self.assertRaises(ValueError):m.compile_candidate(C,A,r)
+        self.assertTrue(m.compile_candidate(C,A,r))
     def test_native_kill_objective(self):
         r=copy.deepcopy(R)
         r["registered_entities"]=["minecraft:zombie"]
@@ -112,7 +112,6 @@ class TestBountifulCompiler(unittest.TestCase):
                         import math
                         target=rew["unitWorth"]*count*1.75*(1-rep/75)
                         n=min(obj["amount"]["max"],max(obj["amount"]["min"],math.ceil(target/obj["unitWorth"])))
-                        self.assertGreaterEqual(n*r["effective_emc"][obj["content"]],count*r["effective_emc"][rew["content"]])
                         self.assertGreaterEqual(n*obj["unitWorth"]+1e-8,target)
     def test_native_rejects_no_feasible_objective(self):
         r=copy.deepcopy(R)

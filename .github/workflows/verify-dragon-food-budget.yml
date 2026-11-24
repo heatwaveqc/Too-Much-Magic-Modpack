@@ -1,0 +1,53 @@
+name: Dragon food locked budget pilot (NO GAME BOOT)
+
+on:
+  push:
+    branches:
+      - feature/dragon-food-locked-budget-444-20261121
+  pull_request:
+    paths:
+      - 'scripts/dragon_food_budget.py'
+      - 'scripts/dragon_food_provenance.py'
+      - 'tests/test_dragon_food_budget.py'
+      - 'docs/qa/candidates/dragon-food-approved-budget-pilot-v1.json'
+      - 'docs/qa/candidates/dragon-food-source-pilot-v1.json'
+      - '.github/workflows/verify-dragon-food-budget.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  budget:
+    name: Source-only nutrition regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assert raw, cut, combination, and fail-closed invariants
+        run: python3 -m unittest discover -s tests -p 'test_dragon_food_budget.py' -v
+      - name: Generate only immutable candidate report
+        run: |
+          python3 scripts/dragon_food_budget.py \
+            --inventory docs/qa/candidates/dragon-food-source-pilot-v1.json \
+            --policy docs/qa/candidates/dragon-food-approved-budget-pilot-v1.json \
+            --output /tmp/dragon-food-budget-candidate-v1.json
+          python3 - /tmp/dragon-food-budget-candidate-v1.json <<'PY'
+          import json,sys
+          data=json.load(open(sys.argv[1], encoding='utf-8'))
+          assert data['scope']=='numeric_candidate_not_runtime'
+          assert data['runtime_map_generated'] is False
+          assert data['global_food_components_changed'] is False
+          assert len(data['values'])==3 and not data['held']
+          assert data['unresolved_provenance']==['minecraft:suspicious_stew']
+          assert all(row['nutrition']==6 and row['saturation_modifier']==2.0 and row['theoretical_saturation']==24.0 for row in data['values'])
+          print('PASS: exactly three reviewed source-only raw values; runtime unchanged')
+          PY
+      - name: Publish audit candidate (not installed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-food-budget-candidate-v1
+          path: /tmp/dragon-food-budget-candidate-v1.json
+          if-no-files-found: error

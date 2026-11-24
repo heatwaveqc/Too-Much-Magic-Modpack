@@ -1,5 +1,9 @@
 # Bountiful contract implementation — #365
 
+## Current owner policy — 2026-11-23 (#365/#523)
+
+Pure material contracts deliberately target payout ≈150% of consumed EMC. Native v2 uses actual reward EMC and multiplies item objective unit worth by 1.5 × (1 + native global filler modifier), canceling that global modifier for the neutral-reputation delivery target without altering native entity/Gateway effort units. Reputation and integer rounding/min/max can vary realized returns; no no-positive-cycle gate. Hunting pays six physical coins in the current pilot; culinary and fishing offer both native coins and thematic items. Physical coins exchange 1:1 with Q Shop, so no custom transaction or command reward is required. Historical native_v1 remains only to reproduce the frozen donor; current review is `manifest/bountiful-current-economy-review.json`. Verify current generated files with `python scripts/build_bountiful_live_pilot.py --current-economy --verify`. Reprice once current same-build EMC census is available. No economic exploit suite; normal source and manual gameplay acceptance. The historical design notes below are superseded wherever they contradict this policy.
+
 Writer: dedicated Bountiful integration workstream. Base dfe2e1625f42976007a7b443e4d2a159c0e2e367. Status: DRAFT, not source-ready for installation. No mod pins, shared runtime config, assembly, boot, or packaging changed.
 
 ## First implementation slice
