@@ -23,6 +23,8 @@ public final class ChannelEngine {
         Track raw=ledger.get(path.id());if(!raw.joined())return raw;
         var def=config.paths().get(path.id());if(def==null)return Track.empty();
         Wallet w=ledger.wallet(def.id());
+        var projection=config.masteryStages().get(path.id());
+        int masteryStage=projection==null?(w==null?0:w.rank()):projection.stage(ledger.economy(),path.id());
         var ranks=new java.util.HashMap<>(raw.skills());
         var catalog=ExperienceEconomyRuntime.current();
         // Effective paid rank is the sum of separately purchased contributions.
@@ -38,7 +40,9 @@ public final class ChannelEngine {
             var bind=config.skills().get(new ChannelConfig.SkillKey(path.id(),skill.id()));
             var level=bind==null?null:ledger.wallet(bind.levelSystem().id());
             int earned=0;
-            if(level!=null)for(int at:skill.autoRanks())if(level.rank()>=at)earned++;
+            int stage=projection!=null&&bind!=null&&bind.levelSystem().id().equals(projection.systemId())
+                    ?masteryStage:level==null?0:level.rank();
+            for(int at:skill.autoRanks())if(stage>=at)earned++;
             if(earned>0)ranks.put(skill.id(),earned);else ranks.remove(skill.id());
         }
         for(var skill:path.skills()){
@@ -51,7 +55,7 @@ public final class ChannelEngine {
             if(earned>0)ranks.put(skill.id(),Math.min(earned,skill.maxRank()));
             else ranks.remove(skill.id());
         }
-        return new Track(true,w==null?0:w.xp(),w==null?0:w.rank(),w==null?0:w.points(),
+        return new Track(true,w==null?0:w.xp(),masteryStage,w==null?0:w.points(),
                 ranks,raw.milestones(),raw.counters());
     }
     public static Ledger initialize(Ledger ledger,XpChannel system){
@@ -104,7 +108,9 @@ public final class ChannelEngine {
         var w=ledger.wallet(binding.currency().id());var gate=ledger.wallet(binding.levelSystem().id());
         var view=view(ledger,tree,config);
         if(!view.joined()||w==null||gate==null)return ledger;
-        var before=new Track(true,view.xp(),gate.rank(),w.points(),view.skills(),view.milestones(),view.counters());
+        var projection=config.masteryStages().get(tree.id());
+        int gateRank=projection!=null&&binding.levelSystem().id().equals(projection.systemId())?view.rank():gate.rank();
+        var before=new Track(true,view.xp(),gateRank,w.points(),view.skills(),view.milestones(),view.counters());
         // Shipped generic XP economy charges one point per paid rank.
         // Legacy native currencies retain their source-defined cost until migrated.
         int pointCost=binding.currency().magic()?1:skill.price(view.skillRank(skillId));
@@ -163,6 +169,9 @@ public final class ChannelEngine {
         // and choice-group evaluator. Purchasing cost comes from source config.
         long displayLevel=ExperienceEconomy.level(ledger.economy(),system)+1L;
         int rank=(int)Math.min(Integer.MAX_VALUE,displayLevel);
+        var projection=config.masteryStages().get(tree.id());
+        var levelBinding=config.skills().get(new ChannelConfig.SkillKey(tree.id(),skillId));
+        if(projection!=null&&levelBinding!=null&&levelBinding.levelSystem().id().equals(projection.systemId()))rank=view.rank();
         Track candidate=new Track(true,view.xp(),rank,Integer.MAX_VALUE,
                 view.skills(),view.milestones(),view.counters());
         Track nextRank=ProgressionMath.buy(tree,candidate,skillId,source.pointsPerRank());
