@@ -109,7 +109,7 @@ def main() -> None:
         ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
         ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 235, "Expected 235 authored quests including 20 Theurgy and 34 Tips & Tricks lessons")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 239, "Expected 239 authored quests including 20 Theurgy and 34 Tips & Tricks lessons")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -127,10 +127,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 273,
-           f"Expected 273 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 277,
+           f"Expected 277 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 273 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 277 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {json.dumps(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -144,7 +144,7 @@ def main() -> None:
     advancement_tasks: dict[str, str] = {}
     reward_items: list[tuple[str, str, int]] = []
     coin_quests: set[str] = set()
-    intentional_sale_ids = {"minecraft:copper_ingot", "minecraft:copper_block", "minecraft:emerald", "minecraft:emerald_block", "minecraft:diamond", "minecraft:diamond_block"}
+    intentional_sale_ids = {"minecraft:copper_ingot", "minecraft:copper_block", "minecraft:iron_ingot", "minecraft:iron_block", "minecraft:emerald", "minecraft:emerald_block", "minecraft:diamond", "minecraft:diamond_block"}
     for c in chapters:
         path = QUESTS / "chapters" / c["filename"]
         text = path.read_text(encoding="utf-8")
@@ -170,7 +170,7 @@ def main() -> None:
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 20, "Tips & Tricks": 34, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
-                    "Basic Progression": 23, "Advanced Progression": 11, "Endgame Roadmap": 7,
+                    "Basic Progression": 27, "Advanced Progression": 11, "Endgame Roadmap": 7,
                     "Skills & Factions": 18, "Theurgy": 20, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
@@ -270,7 +270,7 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 273, f"Expected 273 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 277, f"Expected 277 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -336,7 +336,7 @@ def main() -> None:
     ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     expected_advancement_tasks = {q["criterion"]["id"]: q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "advancement"}
     ensure(advancement_tasks == expected_advancement_tasks, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 115, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 117, f"Unexpected unique item-task count: {len(item_tasks)}")
     ensure([q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "item_tag"] == ["544D4D1100000001"],
            "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
@@ -354,7 +354,7 @@ def main() -> None:
         ensure(core in tech_items, f"Tech chapter lost verified milestone {core}")
     ensure(not any(x["reward"].get("item") == "draconicevolution:reactor_core" for x in progression["quests"]),
            "Never grant the Draconic Reactor Core as a quest reward")
-    ensure(len(coin_quests) == 12, f"Expected exactly 12 intentional resource sales, found {len(coin_quests)}")
+    ensure(len(coin_quests) == 16, f"Expected exactly 16 intentional resource sales, found {len(coin_quests)}")
     for commodity in intentional_sale_ids:
         ensure(len(item_tasks.get(commodity, [])) == 2, f"Commodity {commodity} must appear in exactly two documented tiers")
     shop = json.loads((ROOT / "manifest/quest_shop_catalog.json").read_text(encoding="utf-8"))
@@ -363,7 +363,10 @@ def main() -> None:
     ensure(shop["currency"] == "coins" and shop["team_shared"] is False, "Q Shop wallet must be personal")
     ensure([x["id"] for x in currencies["currencies"]] == ["coins"], "No second shop currency")
     ensure(qshop["id"] == "tmm" and qshop["currency"] == "coins", "Wrong Q Shop id/currency")
-    ensure(len(qshop["tabs"]) == len(shop["categories"]) == 6, "Expected six matching Q Shop tabs")
+    ensure(len(qshop["tabs"]) == len(shop["categories"]) + 1, "Expected matching merchandise tabs and currency exchange")
+    exchange = qshop["tabs"][-1]
+    ensure(exchange["uuid"] == "tmm-currency", "Missing coin exchange")
+    ensure({(e["type"], e["item"]["item"], e["item"]["count"], e["price"], e["currency"]) for e in exchange["entries"]} == {("BUY", "tmm:coin", 1, 1, "coins"), ("SELL", "tmm:coin", 1, 1, "coins")}, "Coin exchange must match physical currency parity")
     offers = []
     for category, tab in zip(shop["categories"], qshop["tabs"]):
         ensure(tab["uuid"] == "tmm-" + category["id"] and tab["name"] == category["display"], "Wrong Q Shop tab")
@@ -411,7 +414,7 @@ def main() -> None:
            "Chapter translation IDs must match all runtime chapters exactly")
     print("PASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated")
     print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
-    print("PASS: shared item criteria restricted to intentional copper/emerald/diamond sales; no item reward completes a task")
+    print("PASS: shared item criteria restricted to intentional copper/iron/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")
 
 

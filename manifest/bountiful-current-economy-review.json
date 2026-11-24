@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "baseline": "dfe2e1625f42976007a7b443e4d2a159c0e2e367",
+  "audit_hash": "a30c55813348a1f1f2869996e627f7357b9a47de478c477ef02b767d36a33f4ffad8836c60974146d4c6be3e75e42eba9285a84ad95e544c6f0549a12ceb08fb",
+  "settlement": "approved_thematic_materials",
+  "balance_profile": "native_v2",
+  "decree_recipe_profile": "test_paper_reagent_v1",
+  "qa_scope": "disposable_live_pilot_only_not_final_economy_or_prod_release",
+  "valuation_source": "docs/qa/surveys-2026-11-18/projecte-mapped-entries.json historical actual mapped keys; provisional historical prices plus owner-approved new 64-EMC coin; replace with current same-build values before final tuning",
+  "registered_items": [
+    "bountiful:decree",
+    "minecraft:arrow",
+    "minecraft:bone",
+    "minecraft:bread",
+    "minecraft:cod",
+    "minecraft:cooked_beef",
+    "minecraft:cooked_chicken",
+    "minecraft:golden_carrot",
+    "minecraft:leather",
+    "minecraft:nautilus_shell",
+    "minecraft:paper",
+    "minecraft:rotten_flesh",
+    "minecraft:salmon",
+    "tmm:coin"
+  ],
+  "effective_emc": {
+    "minecraft:paper": 1,
+    "minecraft:bone": 144,
+    "minecraft:rotten_flesh": 32,
+    "minecraft:arrow": 14,
+    "minecraft:leather": 63,
+    "minecraft:bread": 12,
+    "minecraft:cooked_beef": 64,
+    "minecraft:cooked_chicken": 64,
+    "minecraft:golden_carrot": 1880,
+    "minecraft:cod": 64,
+    "minecraft:salmon": 64,
+    "minecraft:nautilus_shell": 1024,
+    "tmm:coin": 64
+  },
+  "approved_reward_items": [
+    "minecraft:arrow",
+    "minecraft:leather",
+    "minecraft:golden_carrot",
+    "minecraft:nautilus_shell",
+    "tmm:coin"
+  ],
+  "registered_entities": [
+    "minecraft:zombie"
+  ],
+  "approved_kill_entities": [
+    "minecraft:zombie"
+  ],
+  "approved_kill_emc_budget": {
+    "minecraft:zombie": 32
+  },
+  "registered_finite_gateways": [
+    "tmm:mob_ars_wilden_hunter",
+    "tmm:mob_irons_cultist"
+  ],
+  "approved_gateway_ids": [
+    "tmm:mob_ars_wilden_hunter",
+    "tmm:mob_irons_cultist"
+  ],
+  "approved_gateway_effort_emc": {
+    "tmm:mob_ars_wilden_hunter": 1024,
+    "tmm:mob_irons_cultist": 1024
+  },
+  "approved_entries": {
+    "hunting": {
+      "rewards": [
+        {
+          "item": "tmm:coin",
+          "min": 6,
+          "max": 6,
+          "rarity": "COMMON"
+        }
+      ],
+      "objectives": [
+        {
+          "type": "item",
+          "item": "minecraft:bone",
+          "min": 1,
+          "max": 64
+        },
+        {
+          "type": "item",
+          "item": "minecraft:rotten_flesh",
+          "min": 1,
+          "max": 96
+        },
+        {
+          "type": "entity",
+          "entity": "minecraft:zombie",
+          "min": 8,
+          "max": 32
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_ars_wilden_hunter",
+          "min": 1,
+          "max": 1,
+          "name": "Defeat the Wilden Hunter Gateway"
+        },
+        {
+          "type": "gateway",
+          "gateway": "tmm:mob_irons_cultist",
+          "min": 1,
+          "max": 1,
+          "name": "Defeat the Cultist Gateway"
+        }
+      ]
+    },
+    "culinary": {
+      "rewards": [
+        {
+          "item": "minecraft:golden_carrot",
+          "min": 1,
+          "max": 1,
+          "rarity": "COMMON"
+        },
+        {
+          "item": "tmm:coin",
+          "min": 6,
+          "max": 10,
+          "rarity": "UNCOMMON"
+        }
+      ],
+      "objectives": [
+        {
+          "type": "item",
+          "item": "minecraft:cooked_beef",
+          "min": 4,
+          "max": 128
+        },
+        {
+          "type": "item",
+          "item": "minecraft:cooked_chicken",
+          "min": 4,
+          "max": 128
+        },
+        {
+          "type": "item",
+          "item": "minecraft:bread",
+          "min": 4,
+          "max": 256
+        }
+      ]
+    },
+    "fishing": {
+      "rewards": [
+        {
+          "item": "minecraft:nautilus_shell",
+          "min": 1,
+          "max": 1,
+          "rarity": "RARE"
+        },
+        {
+          "item": "tmm:coin",
+          "min": 6,
+          "max": 10,
+          "rarity": "COMMON"
+        }
+      ],
+      "objectives": [
+        {
+          "type": "item",
+          "item": "minecraft:cod",
+          "min": 4,
+          "max": 128
+        },
+        {
+          "type": "item",
+          "item": "minecraft:salmon",
+          "min": 4,
+          "max": 128
+        }
+      ]
+    }
+  }
+}
