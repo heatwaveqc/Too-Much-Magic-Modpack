@@ -1,10 +1,10 @@
 # Too Much Magic — agent bootstrap and local contract
 
 Shared repository: heatwaveqc/Tyr-Development-Standards
-Revision: 5e402149ead064558848d9c64c575917dc43cd22
+Revision: f14624b76b72dcf39b91410c9de51dbf74c50bb9
 Profile: Minecraft
 
-Before mutations retrieve the [shared core](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/5e402149ead064558848d9c64c575917dc43cd22/AGENTS.md), applicable routes, and [Minecraft profile](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/5e402149ead064558848d9c64c575917dc43cd22/profiles/minecraft.md) at the same immutable revision via connector or exact local snapshot. If inaccessible, report the blocker and stop affected mutations. Follow shared engineering, work-management, branch lifecycle and QA standards; read only relevant routes. Upgrade the pin through reviewed PRs (issue #633). Universal policy changes belong upstream. TMM-specific or stricter local requirements below remain mandatory; resolve conflicts before writing.
+Before mutations retrieve the [shared core](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/f14624b76b72dcf39b91410c9de51dbf74c50bb9/AGENTS.md), applicable routes, and [Minecraft profile](https://github.com/heatwaveqc/Tyr-Development-Standards/blob/f14624b76b72dcf39b91410c9de51dbf74c50bb9/profiles/minecraft.md) at the same immutable revision via connector or exact local snapshot. If inaccessible, report the blocker and stop affected mutations. Follow shared engineering, work-management, branch lifecycle and QA standards; read only relevant routes. Upgrade the pin through reviewed PRs (issue #633). Universal policy changes belong upstream. TMM-specific or stricter local requirements below remain mandatory; resolve conflicts before writing.
 
 This applies to all TMM agents, automated contributors, scheduled tasks and branches. Read [active integration contract](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/AGENTS.md) and [build channels](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/blob/test/full-integration/docs/BUILD-CHANNELS-AND-TESTING.md) for integration work. The canonical TMM branch lifecycle implementation and authority are in [docs/BRANCH-LIFECYCLE.md](docs/BRANCH-LIFECYCLE.md).
 
