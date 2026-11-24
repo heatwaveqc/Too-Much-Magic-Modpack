@@ -22,7 +22,7 @@ public final class ArchlichDiagnostics {
                 .map(mod -> mod.getModInfo().getVersion().toString()).orElse("unknown");
         String forbiddenVersion = ModList.get().getModContainerById("witchery_forbidden_magic")
                 .map(mod -> mod.getModInfo().getVersion().toString()).orElse("unknown");
-        boolean versionsMatch = goetyVersion.startsWith("3.2.2")
+        boolean versionsMatch = goetyVersion.startsWith("3.2.3")
                 && forbiddenVersion.startsWith("0.5.37");
         try {
             Class<?> goetyType = Class.forName("com.Polarice3.Goety.utils.LichdomHelper");

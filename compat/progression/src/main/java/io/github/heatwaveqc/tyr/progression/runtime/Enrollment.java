@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tyr.progression.core.BaselinePaths;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
@@ -81,7 +82,8 @@ public final class Enrollment {
     public static void tick(ServerPlayer player) {
         if (player.tickCount % 20 == 0 && !player.isCreative() && !player.isSpectator())
             for (String candidate:PathRegistry.all().keySet())
-                if ("automatic".equals(PathRegistry.enrollment(candidate))
+                if (!BaselinePaths.isBaseline(candidate)
+                    && "automatic".equals(PathRegistry.enrollment(candidate))
                     && !ProgressionApi.track(player,candidate).joined())
                     ProgressionApi.join(player,candidate);
         var timers=sunsetTicks.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());

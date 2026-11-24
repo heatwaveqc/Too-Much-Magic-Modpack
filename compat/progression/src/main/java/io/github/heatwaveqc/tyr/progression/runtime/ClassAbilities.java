@@ -71,7 +71,9 @@ public final class ClassAbilities {
         }
         if ("glide".equals(what) && unlocked(p,"momentum_glide")) {
             String next = ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on") ? "off" : "on";
-            return ProgressionApi.setMode(p,GLIDE_MODE,next);
+            boolean changed = ProgressionApi.setMode(p,GLIDE_MODE,next);
+            if (changed) VirtualElytra.reconcile(p,true);
+            return changed;
         }
         if ("ordeal".equals(what) && unlocked(p,"blindness_ordeal")
                 && !ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("done")) {
