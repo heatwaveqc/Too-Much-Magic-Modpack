@@ -10,9 +10,11 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 
 **Owner clarification, 2026-11-24 — completion depth:** Cover all significant capabilities and meaningful native unlocks with actionable quest-source steps. Transcribe recipes only where they gate progress, have unusual inputs or require special procedures; ordinary JEI recipes need not be duplicated. Numerical details are required when they materially affect progression, operation, meaningful choices or cross-mod interactions, not every coefficient/timer. Nonblocking reference precision is not a reason to keep a survey open. Preserve substantive findings in the repository on each pass.
 
+**Owner priority correction, 2026-11-24:** Major standalone magic quest chapters take precedence over focused addons, bridges, libraries and encounter-adjacent surveys. Preserve deferred checkpoints; inspect compatibility only when essential to a major native progression gate.
+
 ## Live research intake — new magic mods and remaining families
 
-**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they are now listed as the next two substantial *research targets*, followed by **Aquamirae & Nouveau 0.1.3**, **Unicorn Academy: Bonded Magic**, and **Occult Cooking**. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Astral Sorcery, JAWR Witchery, Goety, Mahou Tsukai, Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
+**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery is now complete; continue with JAWR and the remaining major standalone systems before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Astral Sorcery, JAWR Witchery, Goety, Mahou Tsukai, Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
 
 This queue lists **what to research**, not **what to install, change or manually test**. Reconcile it against current `manifest/mods.json` and Packwiz before every new dossier and avoid duplicating Ars Nouveau/Occultism/Botania and other already surveyed parent modules. All regular released-mod behavior is presumed functional under the research-only scope above.
 
@@ -24,9 +26,13 @@ This queue lists **what to research**, not **what to install, change or manually
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
 
+## Astral Sorcery 2.0.3.59 — research COMPLETE
+
+[Native 29-axis dossier and 47 instructional nodes](mods/astral-sorcery.md): version-matched source and generated resource evidence using the earlier pinned-JAR audit. Four altar states, personal constellation perks, 14 lumen types, crystal cultivation and engraving, Iridescent tools, construction/travel, artifacts and terminal enhancements. Native research complete; no new game testing or compiled parity claim. Next: JAWR.
+
 ## Aura Cascade Reimagined 0.2.1+1.21.1 — research COMPLETE
 
-[Native 29-axis dossier and 36 instructional nodes](mods/aura-cascade-reimagined.md), exact NeoForge JAR hash matched, 253 recipe records and 41 guide entries. Native capabilities complete under the owner-approved quest-source depth standard; no runtime acceptance claimed. Miner dynamic common-ore tags versus TMM resource gates is separate integration research. Next: Aquamirae & Nouveau.
+[Native 29-axis dossier and 36 instructional nodes](mods/aura-cascade-reimagined.md), exact NeoForge JAR hash matched, 253 recipe records and 41 guide entries. Native capabilities complete under the owner-approved quest-source depth standard; no runtime acceptance claimed. Miner dynamic common-ore tags versus TMM resource gates is separate integration research. Next major system: Astral Sorcery (now complete).
 
 ## Arcane Archives: Reborn 1.0.2 — exact pinned JAR capability research COMPLETE (2026-11-23)
 
