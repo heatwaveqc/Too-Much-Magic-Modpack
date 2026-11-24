@@ -8,6 +8,8 @@
 
 This is the **independent, capability-first parallel workstream** tracked by [issue #410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410) and [draft PR #411](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/411). Original [Mod Comprehension](../mod-comprehension/WORK-CHAT-INSTRUCTIONS.md) work continues to research progression, inputs/outputs and in-game walkthroughs. The Atlas may cite and reconcile that work without modifying the files of the original project. The two can eventually be integrated by IDs and reviewed links, not by discarding either set of evidence.
 
+**Owner clarification, 2026-11-24 — completion depth:** Cover all significant capabilities and meaningful native unlocks with actionable quest-source steps. Transcribe recipes only where they gate progress, have unusual inputs or require special procedures; ordinary JEI recipes need not be duplicated. Numerical details are required when they materially affect progression, operation, meaningful choices or cross-mod interactions, not every coefficient/timer. Nonblocking reference precision is not a reason to keep a survey open. Preserve substantive findings in the repository on each pass.
+
 ## Live research intake — new magic mods and remaining families
 
 **[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they are now listed as the next two substantial *research targets*, followed by **Aquamirae & Nouveau 0.1.3**, **Unicorn Academy: Bonded Magic**, and **Occult Cooking**. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Astral Sorcery, JAWR Witchery, Goety, Mahou Tsukai, Forbidden & Arcanus, Hexerei, Hexcasting, Psi, Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
@@ -21,6 +23,10 @@ This queue lists **what to research**, not **what to install, change or manually
 3. [Copyable detailed mod dossier](templates/MOD-CAPABILITIES.md): inventory of exact items/blocks/actions, per-capability long-form records, resource flows, tier progression and quest-ready matrix. The 29-row axis matrix within it is a **navigation index**, never the content itself.
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
+
+## Aura Cascade Reimagined 0.2.1+1.21.1 — research COMPLETE
+
+[Native 29-axis dossier and 36 instructional nodes](mods/aura-cascade-reimagined.md), exact NeoForge JAR hash matched, 253 recipe records and 41 guide entries. Native capabilities complete under the owner-approved quest-source depth standard; no runtime acceptance claimed. Miner dynamic common-ore tags versus TMM resource gates is separate integration research. Next: Aquamirae & Nouveau.
 
 ## Arcane Archives: Reborn 1.0.2 — exact pinned JAR capability research COMPLETE (2026-11-23)
 
