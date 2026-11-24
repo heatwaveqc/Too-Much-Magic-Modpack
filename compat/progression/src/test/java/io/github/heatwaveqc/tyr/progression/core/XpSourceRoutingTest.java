@@ -109,6 +109,37 @@ class XpSourceRoutingTest {
                 "test:mining","test:cast",null,new BigDecimal("120"),false,1,1).accepted());
     }
 
+    @Test void receiptProjectionAllowsLaterDestinationAndReportsExactXp(){
+        var catalog=ExperienceEconomyConfig.read(JsonParser.parseString("""
+            {"systems":[{"id":"test:shared","xp_per_point":100},
+                        {"id":"test:combat","xp_per_point":250}],
+             "source_routes":[{"source":"test:kill","destinations":[
+                {"system":"test:shared"},{"system":"test:combat"}]}]}
+            """).getAsJsonObject());
+        var destinations=catalog.routing().destinations("test:kill","test:shared");
+        var a=catalog.systems().get("test:shared");
+        var b=catalog.systems().get("test:combat");
+        var empty=ExperienceEconomy.Ledger.empty();
+        var first=ExperienceEconomy.earnModified(empty,a,"test:kill","test:action",
+                "test:first",new BigDecimal("175.25"),true,1,1).ledger();
+        assertFalse(XpSourceRouting.alreadySettled(destinations,"test:kill","test:action",first));
+        assertEquals(0,new BigDecimal("175.25").compareTo(XpSourceRouting.settled(
+                destinations,"test:kill","test:action","test:first",empty,first)
+                .get(a.id()).effectiveXp()));
+        var later=ExperienceEconomy.earnModified(first,b,"test:kill","test:action",
+                "test:first",new BigDecimal("300"),true,1,1).ledger();
+        var settled=XpSourceRouting.settled(destinations,"test:kill","test:action","test:first",first,later);
+        assertEquals(Set.of(b.id()),settled.keySet());
+        assertTrue(settled.get(b.id()).first());
+        assertEquals(0,new BigDecimal("300").compareTo(settled.get(b.id()).effectiveXp()));
+        assertTrue(XpSourceRouting.alreadySettled(destinations,"test:kill","test:action",later));
+        var repeat=ExperienceEconomy.earnModified(later,b,"test:kill","test:repeat",null,
+                BigDecimal.ONE,false,1,0).ledger();
+        var zero=XpSourceRouting.settled(destinations,"test:kill","test:repeat","test:first",later,repeat);
+        assertFalse(zero.get(b.id()).first());
+        assertEquals(0,zero.get(b.id()).effectiveXp().signum());
+    }
+
     @Test void invalidOrDuplicateRouteDestinationsCannotLoad() {
         for(String destinations : List.of(
                 "[{\"system\":\"test:unknown\"}]",
