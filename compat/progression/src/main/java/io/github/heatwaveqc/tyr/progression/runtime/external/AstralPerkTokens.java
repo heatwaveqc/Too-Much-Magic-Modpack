@@ -19,8 +19,12 @@ public final class AstralPerkTokens {
     private static final String RESEARCH = "hellfirepvp.astralsorcery.common.research.";
     private AstralPerkTokens() {}
 
-    public record Snapshot(boolean ready, Set<ResourceLocation> tokens) {
-        static Snapshot unavailable() { return new Snapshot(false, Set.of()); }
+    public record Snapshot(boolean ready, Set<ResourceLocation> tokens,
+                           int nativeLevel, int configuredCap) {
+        static Snapshot unavailable() { return new Snapshot(false, Set.of(), -1, -1); }
+        public boolean mastered() {
+            return ExternalRewardPolicy.nativeMastery(ready, nativeLevel, configuredCap);
+        }
         public boolean has(String id) {
             ResourceLocation key=ResourceLocation.tryParse(id);
             return key!=null && tokens.contains(key);
@@ -57,7 +61,28 @@ public final class AstralPerkTokens {
                 if (!(token instanceof ResourceLocation key)) return Snapshot.unavailable();
                 tokens.add(key);
             }
-            return new Snapshot(true, Set.copyOf(tokens));
+            // A changed/missing level ABI must lock NEW purchases, not
+            // invalidate the independent attunement/token restoration contract.
+            int level = -1, cap = -1;
+            try {
+                Object nativeLevel = perkData.getClass().getMethod("getPerkLevel",
+                        net.minecraft.world.entity.player.Player.class, LogicalSide.class)
+                        .invoke(perkData, player, LogicalSide.SERVER);
+                Class<?> configType = Class.forName(
+                        "hellfirepvp.astralsorcery.common.config.server.PerkConfig");
+                Object config = configType.getField("CONFIG").get(null);
+                Object capValue = configType.getField("perkLevelCap").get(config);
+                if (nativeLevel instanceof Integer nativeInt
+                        && capValue instanceof net.neoforged.neoforge.common.ModConfigSpec.IntValue nativeCap) {
+                    level = nativeInt;
+                    cap = nativeCap.getAsInt();
+                }
+            } catch (ReflectiveOperationException | LinkageError | RuntimeException bad) {
+                // Fail closed on unknown or unloaded native config/level.
+                level = -1;
+                cap = -1;
+            }
+            return new Snapshot(true, Set.copyOf(tokens), level, cap);
         } catch (ReflectiveOperationException | LinkageError | RuntimeException bad) {
             // Never accept an unknown ABI or empty/uninitialized research.
             return Snapshot.unavailable();

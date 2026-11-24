@@ -173,6 +173,11 @@ public final class ProgressionMenuNetwork {
         json.add("wallets",wallets);
         JsonArray external=new JsonArray();
         for(var reward:io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.current().values()){
+            // This offer is shown only on Core, after native mastery. The
+            // same authoritative check is repeated at purchase time.
+            if(!"tyr_progression:core".equals(pathId)
+                    || !io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.visible(player,reward.id()))
+                continue;
             JsonObject offer=new JsonObject();
             offer.addProperty("id",reward.id());
             offer.addProperty("kind",reward.kind());

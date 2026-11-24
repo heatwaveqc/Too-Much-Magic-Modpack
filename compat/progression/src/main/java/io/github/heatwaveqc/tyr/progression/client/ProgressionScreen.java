@@ -181,13 +181,13 @@ public final class ProgressionScreen extends Screen {
         if(purchase!=null)purchase.active=selectedBuyable(chosen);
         if(externalPurchase!=null){
             JsonObject reward=astralOffer();
-            externalPurchase.visible=reward!=null && width>=460;
+            externalPurchase.visible=reward!=null && "tyr_progression:core".equals(pathId) && width>=460;
             if(reward!=null){
                 int price=reward.get("price").getAsInt();
                 externalPurchase.active=reward.get("buyable").getAsBoolean();
                 externalPurchase.setMessage(Component.literal(price<=0
-                    ? "Astral +1 (price unset/capped)"
-                    : "Astral +1: "+price+" MXP pts"));
+                    ? "Astral Mastery (unavailable)"
+                    : "Astral Mastery: "+price+" SP"));
             }
         }
         if(currencyButton!=null){

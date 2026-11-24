@@ -52,10 +52,15 @@ public final class ExternalRewardService {
         return ExternalRewardPolicy.price(offer, owned(player,id));
     }
 
+    /** Visibility is native mastery, not affordability; no client-provided threshold. */
+    public static boolean visible(ServerPlayer player,String id) {
+        return actor(player) && approved(id)!=null && AstralPerkTokens.snapshot(player).mastered();
+    }
+
     public static boolean canBuy(ServerPlayer player,String id) {
         if (!actor(player)) return false;
         var offer=approved(id);
-        if (offer==null || !AstralPerkTokens.snapshot(player).ready()) return false;
+        if (offer==null || !AstralPerkTokens.snapshot(player).mastered()) return false;
         var spec=ExperienceEconomyRuntime.current().systems().get(offer.currency());
         return ExternalRewardPolicy.prepare(
                 player.getData(ProgressionAttachments.LEDGER.get()).economy(),spec,offer)!=null;
@@ -66,7 +71,7 @@ public final class ExternalRewardService {
         var offer=approved(id);
         if (offer==null) return false;
         var nativeBefore=AstralPerkTokens.snapshot(player);
-        if (!nativeBefore.ready()) return false;
+        if (!nativeBefore.mastered()) return false;
         var original=player.getData(ProgressionAttachments.LEDGER.get());
         var system=ExperienceEconomyRuntime.current().systems().get(offer.currency());
         var plan=ExternalRewardPolicy.prepare(original.economy(), system, offer);

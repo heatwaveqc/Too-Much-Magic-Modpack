@@ -30,6 +30,12 @@ public final class ExternalRewardPolicy {
         public int cap() { return maxPurchases == 0 ? HARD_MAX_PURCHASES : maxPurchases; }
     }
 
+    /** Native cap comes from the provider, never a duplicate Progression config.
+     * Invalid/unavailable provider readings fail closed; restoration is separate. */
+    public static boolean nativeMastery(boolean attuned, int level, int configuredCap) {
+        return attuned && configuredCap >= 1 && level >= configuredCap;
+    }
+
     public static int owned(ExperienceEconomy.Ledger state, Offer offer) {
         return ExperienceEconomy.contributedRanks(state, EXTERNAL_PATH, offer.id(), offer.currency());
     }

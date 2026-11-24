@@ -22,6 +22,26 @@ class ExternalRewardPolicyTest {
         return new ExternalRewardPolicy.Offer(ID,"astral_perk_token",MXP.id(),base,step,cap);
     }
 
+    @Test void nativeMasteryTracksProviderCapNotASeparateThreshold() {
+        assertFalse(ExternalRewardPolicy.nativeMastery(false,100,100));
+        assertFalse(ExternalRewardPolicy.nativeMastery(true,99,100));
+        assertTrue(ExternalRewardPolicy.nativeMastery(true,100,100));
+        assertTrue(ExternalRewardPolicy.nativeMastery(true,30,30));
+        assertFalse(ExternalRewardPolicy.nativeMastery(true,30,60));
+        assertTrue(ExternalRewardPolicy.nativeMastery(true,60,60));
+        assertFalse(ExternalRewardPolicy.nativeMastery(true,100,-1));
+        assertFalse(ExternalRewardPolicy.nativeMastery(true,-1,100));
+        assertFalse(ExternalRewardPolicy.nativeMastery(true,1,0));
+    }
+
+    @Test void onePointPurchaseDoesNotSpendStoredXp() {
+        var before = withEarnedMxp(5000);
+        var plan = ExternalRewardPolicy.prepare(before,MXP,offer(1,0,263));
+        assertNotNull(plan);
+        assertEquals(before.currentXp(),plan.charged().currentXp());
+        assertEquals(4,ExperienceEconomy.available(plan.charged(),MXP));
+    }
+
     @Test void disabledUntilOwnerSetsAnActualMxpPrice() {
         var disabled=offer(0,0,0);
         assertEquals(-1,ExternalRewardPolicy.price(disabled,0));

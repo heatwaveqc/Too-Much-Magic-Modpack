@@ -42,6 +42,11 @@ METHODS = {
     ],
     "hellfirepvp.astralsorcery.common.research.PlayerPerkData": [
         "public java.util.Set<net.minecraft.resources.ResourceLocation> getPointTokens();",
+        "public int getPerkLevel(net.minecraft.world.entity.player.Player, net.neoforged.fml.LogicalSide);",
+    ],
+    "hellfirepvp.astralsorcery.common.config.server.PerkConfig": [
+        "public static final hellfirepvp.astralsorcery.common.config.server.PerkConfig CONFIG;",
+        "public net.neoforged.neoforge.common.ModConfigSpec$IntValue perkLevelCap;",
     ],
 }
 
@@ -97,7 +102,7 @@ def inspect(jar: Path) -> None:
         for signature in expected:
             if re.sub(r"\s+", " ", signature) not in normal:
                 raise ValueError("Mismatch in pinned " + clazz + ": " + signature)
-    print("PASS exact SHA1 / native Astral token grant, remove, attunement and token set ABI")
+    print("PASS exact SHA1 / native Astral token grant, remove, attunement, token set, level and config cap ABI")
     print("Type A only. Runtime client sync, respec and wipe still require authorized B/C QA.")
 
 
