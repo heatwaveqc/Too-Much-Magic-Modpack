@@ -1,5 +1,13 @@
 # Next live-test inclusion register
 
+## Trader's Vengeance #648 / #423 — source integration handoff (2026-11-24)
+
+Rocket #651 merged at `1f03761a3c32485543b6d63453cf15d096bd690a`; rename #653 proposes corrected `compat/traders-vengeance` / `traders_vengeance` with original source `da1b9cf0649f6f43f3cb7811c3c4c14933e5789e`. Once #653 merges the baseline owns both. Next authorized comprehensive QA must attempt inclusion of the renamed JAR alongside exact Iron's 3.16.3; **awaiting build, NOT RUN**. No old namespace alias (owner decision); fresh disposable world first, old-save migration not promised. Historical #219 checklist remains evidence, not a requirement to restore old code.
+
+- A: verify final manifest selection, one corrected mod ID, donor hashes/notice, exact native dependency, compile/unit and read-only preflight; record exact CI and merged SHA in #423/#653.
+- C: in fresh world verify natural spawn exemptions, persistent blacklist and Hero pardon, NPC pistols and stock, right minigun/left rocket pod, black projectile and Ghast flight, 120-tick cooldown, native melee, player-built golem exclusion, 10-block villager/golem and stored village XZ checks, Tiny TNT weak-block/6 HP blast and mobGriefing, accidental damage, reload and two-player synchronization. No runtime evidence; exact candidate and setup pending. B command fixtures only after syntax/setup verification and separate authorized runtime.
+
+
 ## 2026-11-23 Source-intake and next authorized smoke scope — Progression #625/#626, ProjectE #631 and FTB #589
 
 **Source candidate:** frozen `dev/progression@b2143903b9e5f74b91313d2bb726c6d10dbf7858` includes reviewed #625 discovery/counter engine and dependent #626 Monk data (13 opt-ins), without claiming new unarmed strictness, no-drop stone progress, Wither requirements or fixed 1000 MXP award parity. Frozen #631 `f8b1de58659622a9c8d1591a93baf63b3f1db6b0` adds ProjectE recipe and virtual EMC conversions with all new resource files indexed in Packwiz. The owner-approved #589 FTB Library `config/ftblibrary-client.snbt` override is removed from both source and the pack index, retaining other client configs. Exact final integration head will be locked by the integrating PR.
