@@ -36,6 +36,8 @@ public final class ProgressionMod {
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
         HunterItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
@@ -48,12 +50,19 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new PathRegistry()));
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.register();
+        // Single server-authoritative Path admission gate. The native provider
+        // setter hooks will use this same registry at the one-JAR cutover.
+        io.github.heatwaveqc.tyr.progression.core.ProgressionApi.registerJoinVeto(
+            (player, path) -> io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway
+                .mayJoin(player, path, PathRegistry.nativeCompatibilityRules())
+                == io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Decision.ALLOW);
         io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
         io.github.heatwaveqc.tyr.progression.runtime.TooltipMilestonesRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.blood.HexereiEvilCraftBloodBridge.register();
         NewbieMode.register();
         io.github.heatwaveqc.tyr.progression.runtime.RegularHomePower.register();
+        NeoForge.EVENT_BUS.addListener(io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineNative::stopped);
         io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.register();
     }
 }

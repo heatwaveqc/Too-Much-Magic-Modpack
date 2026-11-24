@@ -48,7 +48,6 @@ import java.util.List;
  */
 public final class RegularHomePower {
     private static final String KEY = "tyr_progression:regular_starter_home";
-    private static final String LEGACY_KEY = "tmm_progression:regular_starter_home";
     private static final long MAX_COMPRESSED_BYTES = 8L * 1024L * 1024L;
     private static final long MAX_TEMPLATE_VOLUME = 250_000;
     private static final ResourceLocation NATIVE_ITEM =
@@ -62,7 +61,7 @@ public final class RegularHomePower {
     }
 
     private static String state(ServerPlayer player) {
-        return ProgressionApi.mode(player, KEY, ProgressionApi.mode(player, LEGACY_KEY, null));
+        return ProgressionApi.mode(player, KEY, null);
     }
 
     private static void state(ServerPlayer player, String value) {
