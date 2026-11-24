@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
+import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
 import io.github.heatwaveqc.tyr.progression.data.TrainingXpSpec;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,7 +21,9 @@ public final class TrainingRewards {
             && !(player instanceof FakePlayer) && !player.isCreative() && !player.isSpectator()
             && !NewbieMode.isNewbie(player)
             && player.getServer().getPlayerList().getPlayer(player.getUUID())==player
-            && ProgressionApi.track(player,path).joined() && PathRegistry.eligible(player,path);
+            && player.isAlive()
+            && player.getData(ProgressionAttachments.LEDGER.get()).get(path).joined()
+            && PathRegistry.eligible(player,path);
     }
     public static boolean award(ServerPlayer player,String path,TrainingXpSpec rates,
                                 String category,BigDecimal nominal,boolean fixed,
