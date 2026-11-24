@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tmm.economy.mixin;
 
 import io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus;
+import io.github.heatwaveqc.tmm.economy.runtime.enchanting.PortableEnchantingCutover;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * reopen callback must not reopen the obsolete numeric enchanting screen. */
 @Pseudo
 @Mixin(targets = "org.zeith.improvableskills.client.gui.abil.ench.ContainerEnchPowBook", remap = false)
-public abstract class PortableEnchantingLegacyBooksMixin {
+public abstract class PortableEnchantingLegacyBooksMixin implements PortableEnchantingCutover.OldBookRoute {
     @Inject(method = "clickMenuButton(Lnet/minecraft/world/entity/player/Player;I)Z",
         at = @At("HEAD"), cancellable = true, require = 1, remap = false)
     private void tmm$disableOldBookPower(Player clicker, int button, CallbackInfoReturnable<Boolean> cir) {
