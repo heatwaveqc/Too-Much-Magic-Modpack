@@ -363,7 +363,10 @@ def main() -> None:
     ensure(shop["currency"] == "coins" and shop["team_shared"] is False, "Q Shop wallet must be personal")
     ensure([x["id"] for x in currencies["currencies"]] == ["coins"], "No second shop currency")
     ensure(qshop["id"] == "tmm" and qshop["currency"] == "coins", "Wrong Q Shop id/currency")
-    ensure(len(qshop["tabs"]) == len(shop["categories"]) == 6, "Expected six matching Q Shop tabs")
+    ensure(len(qshop["tabs"]) == len(shop["categories"]) + 1, "Expected matching merchandise tabs and currency exchange")
+    exchange = qshop["tabs"][-1]
+    ensure(exchange["uuid"] == "tmm-currency", "Missing coin exchange")
+    ensure({(e["type"], e["item"]["item"], e["item"]["count"], e["price"], e["currency"]) for e in exchange["entries"]} == {("BUY", "tmm:coin", 1, 1, "coins"), ("SELL", "tmm:coin", 1, 1, "coins")}, "Coin exchange must match physical currency parity")
     offers = []
     for category, tab in zip(shop["categories"], qshop["tabs"]):
         ensure(tab["uuid"] == "tmm-" + category["id"] and tab["name"] == category["display"], "Wrong Q Shop tab")

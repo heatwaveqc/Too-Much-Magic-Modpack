@@ -29,3 +29,7 @@ Bountiful remains a separate owned workstream (#365): general decrees mix coin/i
 - **C:** Existing-world migration requires backup and explicit team-to-player wallet balance allocation; no silent data-loss claim.
 
 No full Minecraft server boot or Prism package is authorized by this PR alone.
+
+## Owner correction 2026-11-23 — currency and prices
+
+The six merchandise tabs are joined by Coin Exchange. Wallet coins are exchangeable for physical `tmm:coin` in both directions at exactly 1:1 through native Q Shop BUY/SELL, no general resale facility. Coin EMC is 64; no currency exclusion. Historical plain-item quotes from the November 18 export: 23 of 48 offers, 25 awaiting current mapped EMC; existing prices retained for unresolved offers. See `manifest/adventurer-pricing-preview.json` and `scripts/price_adventurer_shop.py --emc <post-map-export.json>`. No claim that historical quotes are final. Existing worlds need the normal Q Shop config refresh procedure. Manual QA: register/learn/conjure coin, withdraw/deposit, Replication matter and printing, buy representative items; no new exploit-detection module or automated economic suite. Existing FTB resource-sale rewards are not repriced by this slice.

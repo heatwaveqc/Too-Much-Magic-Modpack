@@ -41,7 +41,7 @@ class TestBountifulDistribution(unittest.TestCase):
         self.assertEqual(entries[0]["currency"],"coins")
     def test_emc_document_exclusions(self):
         contents=json.loads((ROOT/"config/ProjectE/custom_emc.json").read_text())
-        self.assertEqual({x["id"]:x["emc"] for x in contents["entries"]},{"bountiful:decree":0,"bountiful:bounty":0})
+        self.assertEqual({x["id"]:x["emc"] for x in contents["entries"]},{"bountiful:decree":0,"bountiful:bounty":0,"tmm:coin":64})
         self.assertNotIn("bountiful:bountyboard",{x["id"] for x in contents["entries"]})
         self.assertEqual(json.loads((ROOT/"config/bountiful/bountiful.json").read_text())["board"]["villageGenFrequency"],0)
         pol=json.loads((ROOT/"manifest/emc-coverage-policy.json").read_text())

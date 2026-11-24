@@ -266,7 +266,7 @@ hash = "b3b7fb874426febf36e261c0f22f5f9b4380805bec42b8dcbe843b8be7b538b4"
 
 [[files]]
 file = "config/ProjectE/custom_emc.json"
-hash = "9612d803ec8abed79ccaca6221c68bda427187beeef21ad2a8a7ee4ab8ece8e2"
+hash = "38b5bad25fbf30b225f25453cae0a101ef2fe1973da35c837cab63469b61f59d"
 
 [[files]]
 file = "config/qshop/currencies.json"
@@ -274,7 +274,7 @@ hash = "7fc38f1cf0430f89b8a8b4f1c753f0ebcad25c10a77feddfe5839dbbfeaab63b"
 
 [[files]]
 file = "config/qshop/shops/tmm.json"
-hash = "af8eac5346e233f3f5c0bb2ab19540b2554509f6eec45a14618c21a1d91810e1"
+hash = "144dac606132d1c0c13488acdadf2e3306a9a393a5cf764bab7acb5cb0c8a8e4"
 
 [[files]]
 file = "config/relics.yaml"
@@ -1463,6 +1463,10 @@ hash = "c7e9558cad133a6aca85da4d3bb6520a3ffba17bec4590ae2f5ad8eb05c6de32"
 [[files]]
 file = "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js"
 hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
+
+[[files]]
+file = "kubejs/startup_scripts/adventurer_coin.js"
+hash = "33467fceaccc80fffa6e5758854d65330852b42ab79ba7694b2537ad31792e54"
 
 [[files]]
 file = "kubejs/startup_scripts/bootstrap.js"
