@@ -29,8 +29,10 @@ import net.minecraft.world.level.Level;
 public final class BloodCuisineRecipe extends CustomRecipe {
     private static final TagKey<Item> PIES = TagKey.create(
             Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "foods/pie"));
-    private static final ResourceLocation SAUSAGE =
-            ResourceLocation.fromNamespaceAndPath("brewinandchewin", "cooked_sausage");
+    private static final TagKey<Item> SAUSAGES = TagKey.create(
+            Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "foods/sausages"));
+    private static final ResourceLocation RAW_HOGLIN_SAUSAGE =
+            ResourceLocation.fromNamespaceAndPath("mynethersdelight", "hoglin_sausage");
 
     private final BloodCuisinePolicy.Product product;
 
@@ -58,8 +60,11 @@ public final class BloodCuisineRecipe extends CustomRecipe {
 
     private boolean isSourceFood(ItemStack stack) {
         if (stack.get(DataComponents.FOOD) == null) return false;
+        // Do not reprocess already blood-charged cuisine, even if a datapack tags it.
+        if (stack.getItem() instanceof BloodCuisineFoodItem) return false;
         return product == BloodCuisinePolicy.Product.SAUSAGE
-                ? SAUSAGE.equals(BuiltInRegistries.ITEM.getKey(stack.getItem()))
+                ? stack.is(SAUSAGES)
+                    && !RAW_HOGLIN_SAUSAGE.equals(BuiltInRegistries.ITEM.getKey(stack.getItem()))
                 : stack.is(PIES);
     }
 
