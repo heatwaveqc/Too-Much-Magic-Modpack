@@ -25,7 +25,7 @@ public final class VirtualShelfService {
         if (owner == null || !owner.isAlive() || owner.isSpectator() || !EnchantingFeatureGate.enabled())
             return Optional.empty();
         PlayerSkillData data = PlayerDataManager.getDataFor(owner);
-        if (data == null || !data.hasAbility(AbilitiesIS.ENCHANTING) || data.persistedData == null)
+        if (data == null || !AbilitiesIS.ENCHANTING.registered() || !data.hasAbility(AbilitiesIS.ENCHANTING) || data.persistedData == null)
             return Optional.empty();
         var ops = RegistryOps.create(NbtOps.INSTANCE, owner.registryAccess());
         if (!data.persistedData.contains(KEY)) return Optional.of(new Access(data, ops, VirtualShelfState.empty(), false));
@@ -52,6 +52,7 @@ public final class VirtualShelfService {
      * Normal repeated calls cannot refund the old books twice.
      */
     public static boolean retireLegacyBooks(ServerPlayer owner) {
+        if (!PortableEnchantingCutover.ready()) return false;
         var resolved = access(owner);
         if (resolved.isEmpty()) return false;
         var a = resolved.get();
@@ -72,7 +73,7 @@ public final class VirtualShelfService {
     }
 
     private static Optional<Access> active(ServerPlayer owner) {
-        return access(owner).filter(a -> a.retired() && a.data().enchantPower == 0);
+        return PortableEnchantingCutover.ready() ? access(owner).filter(a -> a.retired() && a.data().enchantPower == 0) : Optional.empty();
     }
 
     public static List<ItemStack> items(ServerPlayer owner) {
