@@ -201,6 +201,30 @@ class FoodRecipeEvaluatorTest {
         } catch (java.io.IOException bad) { throw new AssertionError(bad); }
     }
 
+    @Test void ingredientTagCanExpandToMultipleConcreteRoutesFromOneRecipeReceipt() {
+        var variants=recipe("""
+            {"schema":1,"item":"example:tagged_meal","complete":true,"identity":"ordinary",
+             "routes":[
+               {"receipt":"example:one_tagged_recipe","method":"nonthermal","result_count":1,
+                "ingredients":[{"item":"minecraft:cod","count":1}]},
+               {"receipt":"example:one_tagged_recipe","method":"nonthermal","result_count":1,
+                "ingredients":[{"item":"minecraft:carrot","count":1}]}]}
+            """);
+        assertEquals(2, variants.routes().size());
+        // A processed fully-off-diet carrot has its already reduced
+        // raw budget halved again: 6 -> 3 off-diet -> 1.5 exact, rounded 2.
+        budget(evaluator(roots(),variants).evaluate("sea_dragon",variants.item())
+            .orElseThrow(),2,6);
+        assertThrows(IllegalArgumentException.class,()->recipe("""
+            {"schema":1,"item":"example:duplicate","complete":true,"identity":"ordinary",
+             "routes":[
+               {"receipt":"example:tagged","method":"nonthermal","result_count":1,
+                "ingredients":[{"item":"minecraft:cod","count":1}]},
+               {"receipt":"example:tagged","method":"nonthermal","result_count":1,
+                "ingredients":[{"item":"minecraft:cod","count":1}]}]}
+            """));
+    }
+
     @Test void brokenAlternativesCyclesAndInvalidSchemasFailClosed() {
         var unresolved=recipe("""
             {"schema":1,"item":"example:food","complete":true,"identity":"ordinary",

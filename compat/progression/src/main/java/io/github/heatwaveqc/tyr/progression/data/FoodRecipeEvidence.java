@@ -64,8 +64,8 @@ public record FoodRecipeEvidence(String item, Identity identity, List<Route> rou
             keys(route, Set.of("receipt", "method", "result_count", "ingredients"),
                 Set.of("efficiency"));
             String receipt = route.get("receipt").getAsString();
-            if (!id(receipt) || !receipts.add(receipt))
-                throw new IllegalArgumentException("Duplicate/invalid food route receipt " + receipt);
+            if (!id(receipt))
+                throw new IllegalArgumentException("Invalid food route receipt " + receipt);
             Method method;
             try { method = Method.valueOf(route.get("method").getAsString().toUpperCase(java.util.Locale.ROOT)); }
             catch (RuntimeException bad) { throw new IllegalArgumentException("Invalid food processing method", bad); }
@@ -92,6 +92,14 @@ public record FoodRecipeEvidence(String item, Identity identity, List<Route> rou
                     throw new IllegalArgumentException("Too many food recipe ingredients");
             }
             if (!edibleInput) throw new IllegalArgumentException("No nutritive input for " + receipt);
+            // One vanilla/FD/Pam recipe may accept an item tag with multiple
+            // eligible ingredients. Every concrete expansion must share its
+            // verified recipe receipt. Reject duplicate expanded *routes*,
+            // not repeat receipts with distinct ingredients.
+            String signature = receipt + "|" + method + "|" + outputCount + "|"
+                + efficiency + "|" + ingredients;
+            if (!receipts.add(signature))
+                throw new IllegalArgumentException("Duplicate concrete food route " + receipt);
             routes.add(new Route(receipt, method, outputCount, efficiency, ingredients));
             if (routes.size() > 64)
                 throw new IllegalArgumentException("Too many alternate food routes for " + item);
