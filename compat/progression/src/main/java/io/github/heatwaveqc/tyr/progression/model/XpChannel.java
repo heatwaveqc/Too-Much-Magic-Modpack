@@ -6,12 +6,18 @@ public record XpChannel(String id, Definition.Path source, double growth,String 
     public static final String MXP="tyr_progression:mxp";
     public XpChannel {
         if(id==null || !id.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Invalid XP ID");
-        if((source==null)!=MXP.equals(id))throw new IllegalArgumentException("Reserved MXP identity");
+        // A null curve marks a configured current-XP-ledger system. MXP is
+        // only the shipped default ID, not a special immutable engine type.
+        if(source!=null&&MXP.equals(id))
+            throw new IllegalArgumentException("MXP cannot have a native rank curve");
         MxpMath.validateGrowth(growth);
     }
     public boolean magic(){return source==null;}
     public int maxRank(){return magic()?Integer.MAX_VALUE:source.maxRank();}
     public boolean earnsFrom(String path){return !magic()&&earningPath.equals(path);}
     public List<Definition.Activity> sources(){return magic()?List.of():source.activities();}
-    public static XpChannel mxp(double growth){return new XpChannel(MXP,null,growth,"","MXP","Magic skill points");}
+    public static XpChannel mxp(double growth){return generic(MXP,growth,"MXP","Mastery skill points");}
+    public static XpChannel generic(String id,double growth,String name,String pointName){
+        return new XpChannel(id,null,growth,"",name,pointName);
+    }
 }

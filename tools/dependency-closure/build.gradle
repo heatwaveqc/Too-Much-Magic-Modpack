@@ -1,0 +1,15 @@
+plugins {
+    id 'application'
+}
+
+repositories { mavenCentral() }
+
+// NeoForge dependency ranges are Maven version ranges. Use their actual
+// comparator implementation, not Python/PEP 440 or lexical sorting.
+dependencies { implementation 'org.apache.maven:maven-artifact:3.9.9' }
+
+application { mainClass = 'io.github.heatwaveqc.tmm.qa.NativeVersionCheck' }
+
+tasks.named('run', JavaExec) {
+    args(System.getenv('TMM_DEPENDENCY_PAIRS') ?: '--self-test')
+}
