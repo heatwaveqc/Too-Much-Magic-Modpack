@@ -217,6 +217,7 @@ public final class ProgressionApi {
 
     /** Reset local first-taste progress, not permanent paid XP receipts. */
     private static void clearPathDiscoveries(ServerPlayer player,String pathId){
+        io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.resetPath(player,pathId);
         var previous=player.getData(ProgressionAttachments.PATH_DISCOVERIES.get());
         var cleared=previous.clear(pathId);
         if(cleared!=previous)player.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),cleared);

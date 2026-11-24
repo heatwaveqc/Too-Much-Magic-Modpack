@@ -2701,6 +2701,37 @@
       ]
     },
     {
+      "id": "tyr_progression:elixir_of_life",
+      "title": "Elixir of Life",
+      "description": "The first approved beverage you genuinely consume becomes your personal Elixir. Each serving gives 10 fixed MXP, bonus saturation and golden-apple-level buffs. After binding, other sources cannot add saturation or ordinary restricted buffs. Harmful and protected effects remain. Binding persists until Path reset.",
+      "lane": "Magical Cultivation",
+      "max_rank": 1,
+      "required_rank": 15,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:meditative_elixir"
+      ],
+      "effects": [
+        {
+          "type": "personal_elixir",
+          "target": "#tyr_progression:elixir_candidates",
+          "params": {
+            "fixed_mxp": "10",
+            "saturation": "6",
+            "effects": "minecraft:regeneration,1,100;minecraft:absorption,0,2400",
+            "restricted_effects": "#tyr_progression:elixir_restricted_effects",
+            "protected_effects": "#tyr_progression:elixir_protected_effects",
+            "reset_on_path_reset": "true",
+            "stack_meditative": "false"
+          }
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:meditative_elixir",
       "title": "Meditative Elixir",
       "description": "Extend every newly applied finite beneficial MobEffect duration on the Monk by 2% per rank, to +20%, whether from potions, splash, spells or other effects. Only applies while the Monk's effect is active.",

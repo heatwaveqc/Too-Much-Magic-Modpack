@@ -32,7 +32,8 @@ public final class VerifiedConsumptionXp {
             if(!TrainingRewards.eligible(player,path))continue;
             // NeoForge's conventional classification, not a custom second tag.
             // Also accept the vanilla/third-party drink use animation.
-            boolean drink=drank||consumed.is(net.neoforged.neoforge.common.Tags.Items.DRINKS);
+            boolean drink=drank||consumed.is(net.neoforged.neoforge.common.Tags.Items.DRINKS)
+                ||ElixirRuntime.candidateOrBound(player,path,consumed);
             if(!drink&&!food)continue;
             String item=BuiltInRegistries.ITEM.getKey(consumed.getItem()).toString();
             String key=path+"/"+item;
@@ -52,6 +53,7 @@ public final class VerifiedConsumptionXp {
                 // Discovery is Path-local; an earlier Normie snack never pre-marks it.
                 ProgressionApi.record(player,Selectors.itemAction("food_discovered",consumed));
             }
+            if(drink&&ElixirRuntime.finished(player,path,policy,consumed))continue;
             if(tagged(consumed,policy.meditativeTag())){
                 TrainingRewards.award(player,path,policy,drink?"meditative_drink":"meditative_food",
                     drink?policy.meditativeDrink():policy.meditativeFood(),true,null);

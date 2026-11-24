@@ -15,7 +15,8 @@
     "OwnedPiglinMixin",
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
-    "OwnedNativeMiningMixin"
+    "OwnedNativeMiningMixin",
+    "ElixirFoodDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1
