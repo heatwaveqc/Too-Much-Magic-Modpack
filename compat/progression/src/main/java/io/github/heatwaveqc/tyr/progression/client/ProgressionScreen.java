@@ -96,10 +96,11 @@ public final class ProgressionScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(Math.max(10,width-66),height-25,56,20).build());
         purchase=addRenderableWidget(Button.builder(Component.literal("Learn rank"),b->{
             JsonObject n=nodes.get(selection);
-            if(n!=null&&selectedBuyable(n))PacketDistributor.sendToServer(
-                new ProgressionMenuNetwork.Mutate(pathId,
-                    n.has("external_reward") && n.get("external_reward").getAsBoolean() ? "external_buy" : "buy",
-                    selection,selectedCurrency(n)));
+            if(n!=null&&selectedBuyable(n)){
+                if(n.has("external_reward") && n.get("external_reward").getAsBoolean())
+                    PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"external_buy",selection,selectedCurrency(n)));
+                else PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(pathId,"buy",selection,selectedCurrency(n)));
+            }
         }).bounds(10,height-25,90,20).build());
         respec=addRenderableWidget(Button.builder(Component.literal("Respec"),b->{
             if(data==null||!data.get("joined").getAsBoolean())return;

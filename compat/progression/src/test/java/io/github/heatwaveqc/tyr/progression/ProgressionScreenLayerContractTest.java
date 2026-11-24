@@ -55,6 +55,9 @@ class ProgressionScreenLayerContractTest {
         assertTrue(source.contains("ProgressionMenuNetwork.Request(pathId)"));
         assertTrue(source.contains("ProgressionMenuNetwork.Mutate(pathId,\"buy\",selection,selectedCurrency(n))"),
                 "A buy request must name the selected currency; server determines cost and entitlement");
+        assertTrue(source.contains("ProgressionMenuNetwork.Mutate(pathId,\"external_buy\",selection,selectedCurrency(n))"),
+                "External node must use its existing authoritative external transaction");
+        assertFalse(source.contains("externalPurchase"), "Do not restore the duplicate Astral button");
         assertTrue(source.contains("super.mouseClicked(mx,my,button)"));
         assertTrue(source.contains("g.enableScissor(viewportLeft(),viewportTop(),viewportRight(),viewportBottom())"));
         assertTrue(source.contains("g.disableScissor()"));
