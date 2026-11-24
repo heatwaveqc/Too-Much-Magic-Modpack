@@ -1,0 +1,32 @@
+name: EMC coverage census source safety (#47)
+
+on:
+  pull_request:
+    paths:
+      - 'compat/economy/src/main/java/io/github/heatwaveqc/tmm/economy/audit/**'
+      - 'compat/economy/src/test/java/io/github/heatwaveqc/tmm/economy/audit/**'
+      - 'scripts/audit_emc_coverage.py'
+      - 'scripts/audit_emc_snapshot.py'
+      - 'scripts/test_audit_emc_snapshot.py'
+      - 'manifest/emc-coverage-policy.json'
+      - '.github/workflows/emc-coverage-census-source-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  census-source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify existing registry-to-EMC audit contract
+        run: python3 scripts/verify_emc_coverage_audit.py
+      - name: Verify four-file snapshot and anti-mixing checks
+        run: python3 -m unittest discover -s scripts -p 'test_audit_emc_snapshot.py' -v
+      - name: Verify general repository source
+        run: python3 scripts/validate.py
