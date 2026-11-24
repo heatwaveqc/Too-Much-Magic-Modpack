@@ -446,9 +446,13 @@ public final class ExperienceEconomy {
 
     /** Never mint XP or burn backing for surviving ordinary purchases when removing debt. */
     public static BigDecimal forfeitFunded(BigDecimal current, SystemSpec system, Ledger remaining, long removed) {
-        var floor = system.xpPerPoint().multiply(BigDecimal.valueOf(ordinaryCommitted(remaining, system.id())));
-        if (current.compareTo(floor) < 0) throw new IllegalStateException("Ordinary purchases exceed earned XP");
-        return current.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(removed))).max(floor);
+        long ordinary = ordinaryCommitted(remaining, system.id());
+        long earned = current.divide(system.xpPerPoint(),0,RoundingMode.DOWN).longValueExact();
+        if (earned < ordinary) throw new IllegalStateException("Ordinary purchases exceed earned XP");
+        // Only whole funded commitments can be forfeited; a fractional XP
+        // remainder is not an assigned point. Departure wipe is separate.
+        long funded = Math.min(removed,earned-ordinary);
+        return current.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(funded)));
     }
 
     /**

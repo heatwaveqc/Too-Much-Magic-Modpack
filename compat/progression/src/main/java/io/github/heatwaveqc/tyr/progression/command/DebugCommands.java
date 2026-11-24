@@ -162,8 +162,10 @@ final class DebugCommands {
             if (operation.equals("grant")) {
                 var system = ResourceLocationArgument.getId(ctx,"system").toString();
                 int count = IntegerArgumentType.getInteger(ctx,"ranks");
-                if (!PathRegistry.purchaseEligible(player,pathId,skillId))
-                    throw new IllegalArgumentException("Skill purchase eligibility not met");
+                if (player.isCreative() || player.isSpectator()
+                        || io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.isNewbie(player)
+                        || !PathRegistry.purchaseEligible(player,pathId,skillId))
+                    throw new IllegalArgumentException("Skill purchase eligibility not met (requires normal eligible player; only point availability is bypassed)");
                 var binding = config.skills().get(new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skillId));
                 if (binding != null && binding.awardPoints() > 0)
                     throw new IllegalArgumentException("Native currency reward requires explicit recovery handler");
