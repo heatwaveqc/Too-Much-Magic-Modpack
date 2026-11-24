@@ -34,7 +34,8 @@
     "PortableStorageMalumPouchMixin",
     "PortableStorageBotaniaBackedInventoryMixin",
     "PortableStorageMiniHandbagMenuMixin",
-    "ApothicPersonalFilterMixin"
+    "ApothicPersonalFilterMixin",
+    "EidolonPersonalFilterMixin"
   ],
   "injectors": {
     "defaultRequire": 1
