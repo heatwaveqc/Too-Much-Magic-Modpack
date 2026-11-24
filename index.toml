@@ -102,7 +102,7 @@ hash = "e3dff7a80366d7df2a370626bd3278763ef1ed7c3be7967d536c739d3382b187"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/basic_progression.snbt"
-hash = "90e362f54c1a527c1da5cce84bbddcfff76fc1e743030f762b06fcfc38e67154"
+hash = "dd6c1b7073e10e9e27397a0546a800d4fa6240d7d4342d10b8ea360f26b0dbf6"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/botania_revived.snbt"
@@ -254,7 +254,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "7cd53fa5b7719c54d128329fd2a6924b40481bec3742ef3687b24d8c837d9989"
+hash = "806e7597818b8e45de6241fb7a071fa4ccbceb344e49254b8ae6f883a897c723"
 
 [[files]]
 file = "config/improvableskills.cfg"

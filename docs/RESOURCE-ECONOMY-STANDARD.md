@@ -319,3 +319,5 @@ Set fixed-before fuel prices: embers:ember_shard 200 EMC (400 Ember), embers:emb
 ## Adventurer currency — owner correction 2026-11-23 (#365/#523)
 
 One physical `tmm:coin` = 64 EMC (initial denomination), intentionally transmutable and replicable. Native Q Shop wallet deposit/withdrawal is 1:1, no separate money type. Merchandise target 80–100% of goods EMC (up to 25% extra goods per coin spent), rounded to readable integer prices; bounty item-delivery target payout ~150% of consumed EMC, with native reputation and rounding variation. Productive contracts and money conjuration are intentional, not defects. No dedicated economic exploit prevention suite. Price against actual post-map values; historical quotes are explicitly provisional. Explicit item/progression gates are unchanged.
+
+**Resource-sale quests (owner 2026-11-23):** First three one-time sales of copper, iron, emerald and diamond target 5–10× submitted EMC; repeatable bulk sale target 1.25×. Prefer readable integers; current staged policy tapers from ~10× to ~7.5× to ~5×. These are intentional premiums, not unintended arbitrage.
