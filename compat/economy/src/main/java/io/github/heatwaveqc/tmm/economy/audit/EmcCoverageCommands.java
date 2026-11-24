@@ -62,20 +62,27 @@ public final class EmcCoverageCommands {
             return 0;
         }
 
-        // BuiltInRegistries is read-only here. No ItemStack instantiation, no
-        // loot-table walk, no per-item disk I/O and no recursive container data.
-        SortedSet<String> registered = new TreeSet<>();
-        Map<String, Long> mapped = new HashMap<>();
-        for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
-            String key = id.toString();
-            registered.add(key);
-            Item item = BuiltInRegistries.ITEM.get(id);
-            ItemInfo info = ItemInfo.fromItem(item);
-            if (EMCMappingHandler.hasEmcValue(info)) {
-                mapped.put(key, EMCMappingHandler.getStoredEmcValue(info));
+        // Read-only, bounded on-demand census. A malformed provider value
+        // should report failure to the operator, never interrupt server ticks.
+        EmcCoverageSnapshot.Payload payload;
+        try {
+            SortedSet<String> registered = new TreeSet<>();
+            Map<String, Long> mapped = new HashMap<>();
+            for (ResourceLocation id : BuiltInRegistries.ITEM.keySet()) {
+                String key = id.toString();
+                registered.add(key);
+                Item item = BuiltInRegistries.ITEM.get(id);
+                ItemInfo info = ItemInfo.fromItem(item);
+                if (EMCMappingHandler.hasEmcValue(info)) {
+                    mapped.put(key, EMCMappingHandler.getStoredEmcValue(info));
+                }
             }
+            payload = EmcCoverageSnapshot.encode(registered, mapped);
+        } catch (RuntimeException ex) {
+            source.sendFailure(Component.literal(
+                "EMC census failed without modifying world data: " + ex.getMessage()));
+            return 0;
         }
-        EmcCoverageSnapshot.Payload payload = EmcCoverageSnapshot.encode(registered, mapped);
         MinecraftServer server = source.getServer();
         Path base = server.getWorldPath(LevelResource.ROOT)
             .resolve("tmm-economy").resolve("emc-audits");
@@ -112,7 +119,7 @@ public final class EmcCoverageCommands {
                 Files.move(pending, finalPath);
             }
             source.sendSuccess(() -> Component.literal(
-                "EMC audit exported to world/" + base.getFileName() + "/" + directory
+                "EMC audit exported to world/tmm-economy/emc-audits/" + directory
                     + ": " + payload.total() + " registry items; " + payload.positive()
                     + " mapped positive, " + payload.mappedZero() + " mapped zero, "
                     + payload.unmapped() + " unmapped. Run the offline #47 audit on items.json + emc.json."),
