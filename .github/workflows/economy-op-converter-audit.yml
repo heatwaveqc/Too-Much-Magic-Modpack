@@ -1,0 +1,42 @@
+name: Economy exact-pin binary audit (read-only)
+on:
+  pull_request:
+    paths:
+      - 'compat/economy/tools/audit-op-converter.py'
+      - 'compat/economy/tools/audit-specialized-mappers.py'
+      - 'compat/economy/tools/audit-op-displays.py'
+      - '.github/workflows/economy-op-converter-audit.yml'
+  push:
+    branches: ['feature/economy-apotheosis-gem-emc']
+    paths:
+      - 'compat/economy/tools/audit-op-converter.py'
+      - 'compat/economy/tools/audit-specialized-mappers.py'
+      - 'compat/economy/tools/audit-op-displays.py'
+      - '.github/workflows/economy-op-converter-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Inspect pinned converter only; never launch Minecraft
+        shell: bash
+        run: |
+          set -euo pipefail
+          jar="$RUNNER_TEMP/projecte-energy-0.1.4.jar"
+          curl --fail --location --retry 1 --max-time 60 --output "$jar" https://edge.forgecdn.net/files/9072/881/projecte-energy-0.1.4.jar
+          python3 compat/economy/tools/audit-op-converter.py "$jar" > "$RUNNER_TEMP/op-converter-audit.txt"
+          cat "$RUNNER_TEMP/op-converter-audit.txt"
+      - name: Inspect targeted specialized mapper signatures (no compilation or launch)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 compat/economy/tools/audit-specialized-mappers.py "$RUNNER_TEMP/economy-audit"
+      - name: Inspect exact display unit literals and APIs
+        run: python3 compat/economy/tools/audit-op-displays.py "$RUNNER_TEMP/op-display-audit"

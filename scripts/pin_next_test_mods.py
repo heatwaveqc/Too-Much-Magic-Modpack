@@ -127,8 +127,10 @@ def activate(root: Path, manifest: dict) -> None:
     for mod_id, data, filename in installs:
         path = root / f"mods/{mod_id}.pw.toml"
         if path.exists():
-            raise ValueError(f"Already pinned: {path}; inspect before replacing")
-        path.write_text(data, encoding="utf-8")
+            if tomllib.loads(path.read_text(encoding="utf-8")) != tomllib.loads(data):
+                raise ValueError(f"Existing pin differs from exact approved metadata: {path}")
+        else:
+            path.write_text(data, encoding="utf-8")
         if mod_id not in rows:
             if mod_id == "dragon-survival":
                 row = {
@@ -162,5 +164,5 @@ def activate(root: Path, manifest: dict) -> None:
         row["enabled_in_pack"] = True
         row["packwiz_slug"] = mod_id
         row["dependencies_verified"] = (mod_id == "dragon-survival")
-        row["note"] = "Exact pinned release for standalone Monk/Hunter test; client QA pending."
+        row.setdefault("note", "Exact pinned release; client QA pending.")
     print("QA pins: Dragon Survival, Comforts, Colorful Hearts; no Vampire's Delight")

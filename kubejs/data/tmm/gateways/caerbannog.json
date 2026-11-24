@@ -1,0 +1,43 @@
+{
+  "size": "small",
+  "color": "#F3E6D7",
+  "waves": [
+    {
+      "entities": [
+        {
+          "entity": "minecraft:rabbit",
+          "count": 1,
+          "nbt": {
+            "RabbitType": 99,
+            "CustomName": "{\"text\":\"The Killer Bunny of Caerbannog\",\"color\":\"red\"}",
+            "CustomNameVisible": 1
+          },
+          "finalize_spawn": false
+        }
+      ],
+      "rewards": [],
+      "max_wave_time": 1200,
+      "setup_time": 100
+    }
+  ],
+  "rewards": [
+    {
+      "type": "gateways:stack",
+      "stack": {
+        "id": "minecraft:rabbit_foot",
+        "count": 1
+      }
+    },
+    {
+      "type": "gateways:entity_loot",
+      "entity": "minecraft:rabbit",
+      "rolls": 12
+    }
+  ],
+  "failures": [],
+  "rules": {
+    "leash_range": 40,
+    "spawn_range": 10,
+    "requires_nearby_player": true
+  }
+}

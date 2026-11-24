@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Validate B19 gateway content and packwiz hashes. Static only, not server boot."""
+from __future__ import annotations
+import hashlib
+import json
+import subprocess
+import sys
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+def read(p): return (ROOT / p).read_text(encoding="utf-8")
+def main():
+    source = json.loads(read("manifest/gateway_required_mobs.json"))
+    assert source["minecraft"] == "1.21.1"
+    assert len(source["targets"]) >= 17
+    assert source["policy"]["no_extra_mob_loot"]
+    forbidden = set(source["policy"]["native_boss_and_friendly_npc_exclusions"])
+    assert all(t["entity"] not in forbidden for t in source["targets"])
+    assert {t["entity"] for t in source["targets"] if t["family"] == "ars"} == {
+        "ars_nouveau:wilden_hunter", "ars_nouveau:wilden_stalker", "ars_nouveau:wilden_guardian",
+        "ars_nouveau:starbuncle", "ars_nouveau:whirlisprig", "ars_nouveau:drygmy"}
+    assert {"irons_spellbooks:necromancer", "irons_spellbooks:citadel_keeper"}.issubset({
+        t["entity"] for t in source["targets"]})
+    r = subprocess.run([sys.executable, str(ROOT / "scripts/build_progression_gateways.py")],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr + "\n" + r.stdout
+    index = read("index.toml")
+    pack = tomllib.loads(read("pack.toml"))
+    assert hashlib.sha256(index.encode("utf-8")).hexdigest() == pack["index"]["hash"]
+    for t in source["targets"]:
+        rid = f"mob_{t['family']}_{t['entity'].split(':', 1)[1]}"
+        gp = f"kubejs/data/tmm/gateways/{rid}.json"
+        rp = f"kubejs/data/tmm/recipe/gateways/{rid}.json"
+        gate = json.loads(read(gp))
+        recipe = json.loads(read(rp))
+        assert recipe["type"] == "gateways:gate_recipe"
+        assert recipe["gateway"] == f"tmm:{rid}"
+        assert recipe["result"] == {"id": "gateways:gate_pearl"}
+        assert len(gate["waves"]) == 3
+        assert sum(w["entities"][0]["count"] for w in gate["waves"]) == (3 if t["tier"] == "elite" else 6)
+        friendly = t.get("kind") == "friendly_reward"
+        opponent = t["encounter_entity"] if friendly else t["entity"]
+        assert all(w["entities"][0]["entity"] == opponent for w in gate["waves"])
+        if friendly:
+            assert any(r["type"] == "gateways:summon" and r["entity"]["entity"] == t["entity"] for r in gate["rewards"])
+            assert all(w["entities"][0]["entity"] != t["entity"] for w in gate["waves"]), "No killing friendly mobs"
+        else:
+            assert all(r["type"] != "gateways:summon" for r in gate["rewards"])
+        expected = {"irons_spellbooks:necromancer": 1, "irons_spellbooks:pyromancer": 1, "irons_spellbooks:cryomancer": 1, "irons_spellbooks:archevoker": 2, "irons_spellbooks:cultist": 1}.get(t["entity"], 0)
+        assert t.get("parchment_completion_count", 0) == expected
+        parchment = [r for r in gate["rewards"] if r["type"] == "gateways:stack"]
+        assert parchment == ([{"type": "gateways:stack", "stack": {"id": "improvableskills:parchment_fragment", "count": expected}}] if expected else [])
+        assert not gate["failures"] and gate["rules"]["remove_mobs_on_failure"]
+        assert all(not w.get("rewards") for w in gate["waves"]), "No bonus mob loot from waves"
+        for path in (gp, rp):
+            digest = hashlib.sha256(read(path).encode("utf-8")).hexdigest()
+            assert f'file = "{path}"\nhash = "{digest}"' in index, path
+    langpath = "kubejs/assets/tmm/lang/en_us.json"
+    digest = hashlib.sha256(read(langpath).encode("utf-8")).hexdigest()
+    assert f'file = "{langpath}"\nhash = "{digest}"' in index
+    print(f"PASS: {len(source['targets'])} dedicated spawn Gateways, exact JSON schema shape, source match, correct packwiz hashes")
+    print("PENDING: actual mob registry, Gate Pearl JEI, loot, mob AI, dedicated-server and client QA")
+
+if __name__ == "__main__":
+    main()

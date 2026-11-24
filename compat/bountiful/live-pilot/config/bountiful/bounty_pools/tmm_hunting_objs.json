@@ -1,0 +1,61 @@
+{
+  "content": {
+    "entity_minecraft_zombie": {
+      "amount": {
+        "max": 24,
+        "min": 8
+      },
+      "content": "minecraft:zombie",
+      "timeMult": 3,
+      "type": "entity",
+      "unitWorth": 2
+    },
+    "gateway_tmm_mob_ars_wilden_hunter": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "conditions": {
+        "gateway": "tmm:mob_ars_wilden_hunter"
+      },
+      "content": "gateways:finish_gateway",
+      "name": "Defeat the Wilden Hunter Gateway",
+      "timeMult": 4,
+      "type": "criteria",
+      "unitWorth": 64
+    },
+    "gateway_tmm_mob_irons_cultist": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "conditions": {
+        "gateway": "tmm:mob_irons_cultist"
+      },
+      "content": "gateways:finish_gateway",
+      "name": "Defeat the Cultist Gateway",
+      "timeMult": 4,
+      "type": "criteria",
+      "unitWorth": 64
+    },
+    "item_minecraft_bone": {
+      "amount": {
+        "max": 64,
+        "min": 8
+      },
+      "content": "minecraft:bone",
+      "type": "item",
+      "unitWorth": 9
+    },
+    "item_minecraft_rotten_flesh": {
+      "amount": {
+        "max": 96,
+        "min": 16
+      },
+      "content": "minecraft:rotten_flesh",
+      "type": "item",
+      "unitWorth": 2
+    }
+  },
+  "replace": true
+}

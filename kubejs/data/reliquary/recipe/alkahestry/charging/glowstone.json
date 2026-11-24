@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    }
+  ],
+  "type": "reliquary:alkahestry_charging",
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "charge": 192
+}

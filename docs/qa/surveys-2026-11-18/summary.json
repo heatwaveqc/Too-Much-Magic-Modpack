@@ -1,0 +1,608 @@
+{
+  "items": 23681,
+  "entities": 1763,
+  "structures": 304,
+  "recipes": 24857,
+  "mapped_entries": 6254,
+  "triage": {
+    "priced": 5780,
+    "recipe_output_unpriced": 9430,
+    "root_or_special_candidate": 8454,
+    "approved_glass_pane_exception": 17
+  },
+  "by_namespace": {
+    "akashictome": {
+      "positive": 1
+    },
+    "alexscaves": {
+      "zero_api_value": 495,
+      "positive": 62
+    },
+    "apotheosis": {
+      "zero_api_value": 49
+    },
+    "apothic_enchanting": {
+      "positive": 24,
+      "zero_api_value": 28
+    },
+    "aquaculture": {
+      "positive": 27,
+      "zero_api_value": 96
+    },
+    "ars_additions": {
+      "zero_api_value": 61,
+      "positive": 6
+    },
+    "ars_controle": {
+      "zero_api_value": 15
+    },
+    "ars_elemancy": {
+      "zero_api_value": 105
+    },
+    "ars_elemental": {
+      "zero_api_value": 160,
+      "positive": 7
+    },
+    "ars_n_spells": {
+      "zero_api_value": 6,
+      "positive": 1
+    },
+    "ars_nouveau": {
+      "zero_api_value": 368,
+      "positive": 58
+    },
+    "ars_ocultas": {
+      "zero_api_value": 1
+    },
+    "artifacts": {
+      "zero_api_value": 49
+    },
+    "astralsorcery": {
+      "zero_api_value": 108,
+      "positive": 6
+    },
+    "beachparty": {
+      "zero_api_value": 42,
+      "positive": 36
+    },
+    "betterend": {
+      "zero_api_value": 502,
+      "positive": 324
+    },
+    "botania": {
+      "zero_api_value": 667,
+      "positive": 449
+    },
+    "brewinandchewin": {
+      "zero_api_value": 43,
+      "positive": 4
+    },
+    "cataclysm": {
+      "positive": 50,
+      "zero_api_value": 234
+    },
+    "cobblegengalore": {
+      "positive": 7
+    },
+    "cocktailsdelight": {
+      "zero_api_value": 72
+    },
+    "comforts": {
+      "positive": 33
+    },
+    "computercraft": {
+      "positive": 13,
+      "zero_api_value": 10
+    },
+    "cookingforblockheads": {
+      "positive": 145,
+      "zero_api_value": 1
+    },
+    "creeperoverhaul": {
+      "zero_api_value": 17
+    },
+    "crittersandcompanions": {
+      "zero_api_value": 35,
+      "positive": 3
+    },
+    "crystalix": {
+      "positive": 4
+    },
+    "databank": {
+      "zero_api_value": 1
+    },
+    "deeperdarker": {
+      "zero_api_value": 184,
+      "positive": 32
+    },
+    "draconicevolution": {
+      "zero_api_value": 177,
+      "positive": 2
+    },
+    "dragonsurvival": {
+      "zero_api_value": 229,
+      "positive": 49
+    },
+    "eidolon_repraised": {
+      "zero_api_value": 128,
+      "positive": 68
+    },
+    "embers": {
+      "zero_api_value": 176,
+      "positive": 97
+    },
+    "enchanted": {
+      "positive": 48,
+      "zero_api_value": 106
+    },
+    "endermanoverhaul": {
+      "zero_api_value": 35
+    },
+    "enigmaticlegacyplus": {
+      "zero_api_value": 151,
+      "positive": 22
+    },
+    "eternal_starlight": {
+      "zero_api_value": 864,
+      "positive": 163
+    },
+    "evilcraft": {
+      "zero_api_value": 119,
+      "positive": 17
+    },
+    "extrabotany": {
+      "zero_api_value": 204,
+      "positive": 47
+    },
+    "farmersdelight": {
+      "positive": 45,
+      "zero_api_value": 140
+    },
+    "farmingforblockheads": {
+      "positive": 6,
+      "zero_api_value": 5
+    },
+    "feywild": {
+      "zero_api_value": 159,
+      "positive": 84
+    },
+    "forbidden_arcanus": {
+      "zero_api_value": 181,
+      "positive": 64
+    },
+    "ftbfiltersystem": {
+      "positive": 1
+    },
+    "ftblibrary": {
+      "zero_api_value": 1
+    },
+    "ftbquests": {
+      "zero_api_value": 6,
+      "positive": 7
+    },
+    "furniture": {
+      "positive": 181,
+      "zero_api_value": 1
+    },
+    "gateways": {
+      "zero_api_value": 1
+    },
+    "gaze": {
+      "zero_api_value": 27
+    },
+    "ghosts": {
+      "positive": 15,
+      "zero_api_value": 7
+    },
+    "goety": {
+      "zero_api_value": 924,
+      "positive": 451
+    },
+    "goety_cataclysm": {
+      "zero_api_value": 72,
+      "positive": 2
+    },
+    "golemoverhaul": {
+      "zero_api_value": 10,
+      "positive": 3
+    },
+    "hammerlib": {
+      "positive": 8,
+      "zero_api_value": 1
+    },
+    "hexcasting": {
+      "positive": 73,
+      "zero_api_value": 52
+    },
+    "hexerei": {
+      "zero_api_value": 131,
+      "positive": 130
+    },
+    "improvableskills": {
+      "zero_api_value": 4,
+      "positive": 1
+    },
+    "irons_lib": {
+      "zero_api_value": 1,
+      "positive": 1
+    },
+    "irons_spellbooks": {
+      "zero_api_value": 218,
+      "positive": 13
+    },
+    "kubejs": {
+      "zero_api_value": 1
+    },
+    "lootr": {
+      "zero_api_value": 9
+    },
+    "mahoutsukai": {
+      "positive": 18,
+      "zero_api_value": 69
+    },
+    "malum": {
+      "zero_api_value": 433,
+      "positive": 112
+    },
+    "minecraft": {
+      "positive": 1155,
+      "zero_api_value": 178
+    },
+    "modonomicon": {
+      "zero_api_value": 6
+    },
+    "modopedia": {
+      "zero_api_value": 1
+    },
+    "naturescompass": {
+      "positive": 1
+    },
+    "neovitae": {
+      "zero_api_value": 536,
+      "positive": 3
+    },
+    "occultism": {
+      "zero_api_value": 463,
+      "positive": 47
+    },
+    "pamhc2crops": {
+      "zero_api_value": 217,
+      "positive": 5
+    },
+    "pamhc2foodcore": {
+      "positive": 199,
+      "zero_api_value": 3
+    },
+    "pamhc2foodextended": {
+      "positive": 86,
+      "zero_api_value": 785
+    },
+    "pamhc2trees": {
+      "zero_api_value": 153,
+      "positive": 3
+    },
+    "pastel": {
+      "zero_api_value": 1054,
+      "positive": 352
+    },
+    "patchouli": {
+      "zero_api_value": 1
+    },
+    "primalmagick": {
+      "zero_api_value": 675,
+      "positive": 31
+    },
+    "projecte": {
+      "positive": 104,
+      "zero_api_value": 3
+    },
+    "projecte_energy": {
+      "positive": 28,
+      "zero_api_value": 2
+    },
+    "projectexpansion": {
+      "positive": 157,
+      "zero_api_value": 17
+    },
+    "psi": {
+      "zero_api_value": 79,
+      "positive": 3
+    },
+    "psitweaks": {
+      "zero_api_value": 160
+    },
+    "quest_giver": {
+      "zero_api_value": 1
+    },
+    "questshop": {
+      "zero_api_value": 1
+    },
+    "rechiseled": {
+      "zero_api_value": 3627,
+      "positive": 1
+    },
+    "relics": {
+      "zero_api_value": 23
+    },
+    "reliquary": {
+      "zero_api_value": 83,
+      "positive": 42
+    },
+    "reliquified_artifacts": {
+      "positive": 1
+    },
+    "replication": {
+      "zero_api_value": 18
+    },
+    "ribbits": {
+      "zero_api_value": 13,
+      "positive": 7
+    },
+    "rootsclassic": {
+      "zero_api_value": 51,
+      "positive": 9
+    },
+    "sauce": {
+      "zero_api_value": 6
+    },
+    "scriptor": {
+      "positive": 19,
+      "zero_api_value": 55
+    },
+    "summoningrituals": {
+      "zero_api_value": 3
+    },
+    "the_bumblezone": {
+      "zero_api_value": 115,
+      "positive": 41
+    },
+    "theaurorian": {
+      "zero_api_value": 209,
+      "positive": 28
+    },
+    "theurgy": {
+      "zero_api_value": 373,
+      "positive": 10
+    },
+    "tmm": {
+      "zero_api_value": 1
+    },
+    "tmm_progression": {
+      "positive": 1,
+      "zero_api_value": 1
+    },
+    "tombstone": {
+      "zero_api_value": 103
+    },
+    "totemic": {
+      "zero_api_value": 18,
+      "positive": 26
+    },
+    "twilightforest": {
+      "positive": 247,
+      "zero_api_value": 413
+    },
+    "voidscape": {
+      "zero_api_value": 111,
+      "positive": 7
+    },
+    "wardentools": {
+      "zero_api_value": 115,
+      "positive": 33
+    },
+    "winteroverhaul": {
+      "positive": 10,
+      "zero_api_value": 1
+    },
+    "witchery": {
+      "positive": 104,
+      "zero_api_value": 226
+    },
+    "witchery_forbidden_magic": {
+      "zero_api_value": 10
+    }
+  },
+  "capture_errors": [],
+  "item_errors": 0,
+  "recipe_errors": 0,
+  "capture_sha256": "1a27ad3594afbedf155b14e2575cbe63b5c5dc763656541ef860306420c3b7bf",
+  "static_parse_errors": [
+    {
+      "provider": "ars_elemental-1.21.1-0.7.10.4.jar",
+      "path": "data/ars_elemental/worldgen/structure/starbuncle_shrine.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "ars_elemental-1.21.1-0.7.10.4.jar",
+      "path": "data/ars_elemental/worldgen/structure_set/starbuncle_shrine.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "ars_elemental-1.21.1-0.7.10.4.jar",
+      "path": "data/ars_elemental/worldgen/template_pool/starbuncle_shrine/shrine.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/structure_set/lab.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/structure_set/stray_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/structure/lab.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/structure/stray_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/template_pool/lab.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/template_pool/stray_tower/stray_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "path": "data/eidolon_repraised/worldgen/template_pool/stray_tower/basement.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/processor_list/randomize_deepslate.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/processor_list/randomize_mud_bricks.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure/catacombs.json",
+      "error": "Expecting property name enclosed in double quotes: line 9 column 3 (char 286)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure/evoker_fort.json",
+      "error": "Expecting property name enclosed in double quotes: line 9 column 3 (char 285)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure/mangrove_hut.json",
+      "error": "Expecting property name enclosed in double quotes: line 5 column 3 (char 105)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure/mountain_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 6 column 3 (char 152)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/ancient_battleground.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/citadel.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/evoker_fort.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/mangrove_hut.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/mountain_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/structure_set/pyromancer_tower.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/template_pool/mangrove_hut_pool.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "path": "data/irons_spellbooks/worldgen/template_pool/mountain_tower_pool.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "path": "data/pamhc2foodextended/recipe/cookedtofabbititem_campfire.json",
+      "error": "Extra data: line 9 column 4 (char 185)"
+    },
+    {
+      "provider": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "path": "data/pamhc2foodextended/recipe/cookedtofabbititem_forge.json",
+      "error": "Extra data: line 9 column 4 (char 177)"
+    },
+    {
+      "provider": "pamhc2foodextended-NEOFORGE-1.21.1-1.0.0.jar",
+      "path": "data/pamhc2foodextended/recipe/cookedtofabbititem_smoker.json",
+      "error": "Extra data: line 9 column 4 (char 176)"
+    },
+    {
+      "provider": "the_bumblezone-7.17.3+1.21.1-neoforge.jar",
+      "path": "data/the_bumblezone/worldgen/placed_feature/structure_spawned/item_frame_with_random_music_disc.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 5)"
+    },
+    {
+      "provider": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "path": "data/wardentools/worldgen/template_pool/cristal_ruin/start_pool.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "path": "data/wardentools/worldgen/structure_set/cristal_ruin.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "path": "data/wardentools/worldgen/structure_set/tree_sanctuary.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "path": "data/wardentools/worldgen/structure/cristal_ruin.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "wardentools-1.1.4_neoforge_1.21.1.jar",
+      "path": "data/wardentools/worldgen/structure/tree_sanctuary.json",
+      "error": "Expecting property name enclosed in double quotes: line 2 column 3 (char 4)"
+    },
+    {
+      "provider": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "path": "data/betterjungletemples/worldgen/template_pool/floor_1_room.json",
+      "error": "Expecting value: line 5 column 5 (char 105)"
+    },
+    {
+      "provider": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "path": "data/betterjungletemples/worldgen/template_pool/floor_2_pit.json",
+      "error": "Expecting value: line 27 column 5 (char 792)"
+    },
+    {
+      "provider": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.0.jar",
+      "path": "data/betterjungletemples/worldgen/template_pool/floor_2_room.json",
+      "error": "Expecting value: line 5 column 5 (char 105)"
+    },
+    {
+      "provider": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "path": "data/betterfortresses/worldgen/template_pool/bridge.json",
+      "error": "Expecting value: line 57 column 5 (char 1617)"
+    },
+    {
+      "provider": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "path": "data/betterfortresses/worldgen/template_pool/halls.json",
+      "error": "Expecting value: line 241 column 5 (char 6981)"
+    },
+    {
+      "provider": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "path": "data/betterfortresses/worldgen/template_pool/halls_terminators.json",
+      "error": "Expecting value: line 56 column 5 (char 1607)"
+    }
+  ],
+  "default_values_above_js_exact_integer_range": 8,
+  "truncated_ingredient_slots": 754
+}

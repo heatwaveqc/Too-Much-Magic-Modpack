@@ -1,0 +1,257 @@
+{
+  "comment": "2026-11-18 owner confirmed prior mineral batch. 36 exact root anchors from previous proposal; Aethersent/Deepsilver confirmed native family forms follow existing 6x raw/18x ore/9x compression policy. All IDs verified in installed #348 census; effective loot, compression, competing conversions, Aurorian fuel parity and final map pending. No invented derivative or Tome recipe; no new gem ore assumptions.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:arcane_crystal",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "forbidden_arcanus:rune",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "astralsorcery:aquamarine",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "evilcraft:dark_gem",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:rock_salt",
+        "emc_value": 9
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:refined_soulstone",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:refined_brilliance",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:cthonic_gold_fragment",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "betterend:raw_amber",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:raw_amaramber",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:deepsilver_ingot",
+        "emc_value": 36
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:aethersent_ingot",
+        "emc_value": 8190
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:saltpeter_powder",
+        "emc_value": 9
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:malarite",
+        "emc_value": 512
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:starcore",
+        "emc_value": 8192
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:starlit_diamond",
+        "emc_value": 8192
+      },
+      {
+        "type": "projecte:item",
+        "id": "alexscaves:azure_neodymium_ingot",
+        "emc_value": 72
+      },
+      {
+        "type": "projecte:item",
+        "id": "alexscaves:scarlet_neodymium_ingot",
+        "emc_value": 72
+      },
+      {
+        "type": "projecte:item",
+        "id": "wardentools:deep_fragment",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "voidscape:voidic_crystal",
+        "emc_value": 8192
+      },
+      {
+        "type": "projecte:item",
+        "id": "voidscape:titanite_chunk",
+        "emc_value": 16384
+      },
+      {
+        "type": "projecte:item",
+        "id": "voidscape:flesh_chunk",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "voidscape:strange_pearl",
+        "emc_value": 2048
+      },
+      {
+        "type": "projecte:item",
+        "id": "theaurorian:aurorian_coal",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "theaurorian:cerulean_ingot",
+        "emc_value": 576
+      },
+      {
+        "type": "projecte:item",
+        "id": "theaurorian:moonstone_ingot",
+        "emc_value": 5760
+      },
+      {
+        "type": "projecte:item",
+        "id": "theaurorian:crystal",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:topaz_shard",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:citrine_shard",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:onyx_shard",
+        "emc_value": 256
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:moonstone_shard",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:raw_azurite",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:raw_malachite",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:shimmerstone_gem",
+        "emc_value": 384
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:stratine_fragments",
+        "emc_value": 1024
+      },
+      {
+        "type": "projecte:item",
+        "id": "pastel:paltaeria_fragments",
+        "emc_value": 4096
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:aethersent_nugget",
+        "emc_value": 910
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:aethersent_block",
+        "emc_value": 73710
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:raw_aethersent",
+        "emc_value": 49140
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:raw_aethersent_block",
+        "emc_value": 442260
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:deepsilver_nugget",
+        "emc_value": 4
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:deepsilver_block",
+        "emc_value": 324
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:raw_deepsilver",
+        "emc_value": 216
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:raw_deepsilver_block",
+        "emc_value": 1944
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:eternal_ice_deepsilver_ore",
+        "emc_value": 648
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:grimstone_deepsilver_ore",
+        "emc_value": 648
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:haze_ice_deepsilver_ore",
+        "emc_value": 648
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:nightfall_mud_deepsilver_ore",
+        "emc_value": 648
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:packed_nightfall_mud_deepsilver_ore",
+        "emc_value": 648
+      },
+      {
+        "type": "projecte:item",
+        "id": "eternal_starlight:voidstone_deepsilver_ore",
+        "emc_value": 648
+      }
+    ]
+  }
+}

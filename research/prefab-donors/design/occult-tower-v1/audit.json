@@ -1,0 +1,35 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    45,
+    63,
+    45
+  ],
+  "tower_diameter": 33,
+  "floor_surfaces": [
+    1,
+    9,
+    17,
+    25,
+    33,
+    41,
+    49
+  ],
+  "nonair": 14905,
+  "explicit_air": 34202,
+  "palette_states": 48,
+  "glass": 2079,
+  "nether_bricks": 2736,
+  "otherstone": 680,
+  "otherrock": 92,
+  "bowl_markers": 6,
+  "datura": 34,
+  "wheat": 34,
+  "estimated_unobstructed_min_block_light": 3,
+  "raw_nbt_sha256": "f20d161ae4803d0773cb1303d797d2f2c500056586e6f55f824da7d9ea08b546",
+  "raw_nbt_git_blob": "bf9bb3e72713f8f52639b29da9bd603712547d84",
+  "raw_nbt_bytes": 129468,
+  "grid_blob": "e50a72e7e2fcc2635f3a41bc47bebc1c7e81a0cd",
+  "runtime_tested": false,
+  "notes": "Static guide and roundtrip assertions passed locally. Reconstruction exact locally; remote grid blob hash matches. Real lighting, palette/block entity initialization, importer height, collision, balance and placement pending."
+}

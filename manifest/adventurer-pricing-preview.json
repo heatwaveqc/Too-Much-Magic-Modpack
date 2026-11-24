@@ -1,0 +1,389 @@
+{
+  "valuation_source": "docs/qa/surveys-2026-11-18/projecte-mapped-entries.json",
+  "status": "PROVISIONAL_HISTORICAL_NOT_CURRENT_POST_MAP",
+  "coin_emc": 64,
+  "priced": [
+    {
+      "item": "minecraft:cobblestone",
+      "old_count": 64,
+      "old_price": 2,
+      "count": 64,
+      "price": 1,
+      "unit_emc": 1,
+      "goods_emc": 64,
+      "paid_emc": 64
+    },
+    {
+      "item": "minecraft:oak_planks",
+      "old_count": 64,
+      "old_price": 3,
+      "count": 64,
+      "price": 7,
+      "unit_emc": 8,
+      "goods_emc": 512,
+      "paid_emc": 448
+    },
+    {
+      "item": "minecraft:torch",
+      "old_count": 32,
+      "old_price": 2,
+      "count": 24,
+      "price": 1,
+      "unit_emc": 3,
+      "goods_emc": 72,
+      "paid_emc": 64
+    },
+    {
+      "item": "minecraft:glass",
+      "old_count": 32,
+      "old_price": 4,
+      "count": 64,
+      "price": 1,
+      "unit_emc": 1,
+      "goods_emc": 64,
+      "paid_emc": 64
+    },
+    {
+      "item": "minecraft:leather",
+      "old_count": 8,
+      "old_price": 5,
+      "count": 8,
+      "price": 7,
+      "unit_emc": 63,
+      "goods_emc": 504,
+      "paid_emc": 448
+    },
+    {
+      "item": "minecraft:string",
+      "old_count": 16,
+      "old_price": 3,
+      "count": 16,
+      "price": 3,
+      "unit_emc": 12,
+      "goods_emc": 192,
+      "paid_emc": 192
+    },
+    {
+      "item": "minecraft:coal",
+      "old_count": 32,
+      "old_price": 5,
+      "count": 32,
+      "price": 60,
+      "unit_emc": 128,
+      "goods_emc": 4096,
+      "paid_emc": 3840
+    },
+    {
+      "item": "minecraft:arrow",
+      "old_count": 64,
+      "old_price": 5,
+      "count": 64,
+      "price": 12,
+      "unit_emc": 14,
+      "goods_emc": 896,
+      "paid_emc": 768
+    },
+    {
+      "item": "minecraft:amethyst_shard",
+      "old_count": 16,
+      "old_price": 4,
+      "count": 16,
+      "price": 7,
+      "unit_emc": 32,
+      "goods_emc": 512,
+      "paid_emc": 448
+    },
+    {
+      "item": "minecraft:lapis_lazuli",
+      "old_count": 16,
+      "old_price": 4,
+      "count": 16,
+      "price": 200,
+      "unit_emc": 864,
+      "goods_emc": 13824,
+      "paid_emc": 12800
+    },
+    {
+      "item": "minecraft:quartz",
+      "old_count": 16,
+      "old_price": 5,
+      "count": 16,
+      "price": 60,
+      "unit_emc": 256,
+      "goods_emc": 4096,
+      "paid_emc": 3840
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "old_count": 16,
+      "old_price": 5,
+      "count": 16,
+      "price": 90,
+      "unit_emc": 384,
+      "goods_emc": 6144,
+      "paid_emc": 5760
+    },
+    {
+      "item": "minecraft:slime_ball",
+      "old_count": 4,
+      "old_price": 5,
+      "count": 4,
+      "price": 2,
+      "unit_emc": 32,
+      "goods_emc": 128,
+      "paid_emc": 128
+    },
+    {
+      "item": "minecraft:prismarine_shard",
+      "old_count": 16,
+      "old_price": 8,
+      "count": 16,
+      "price": 60,
+      "unit_emc": 256,
+      "goods_emc": 4096,
+      "paid_emc": 3840
+    },
+    {
+      "item": "minecraft:heart_of_the_sea",
+      "old_count": 1,
+      "old_price": 80,
+      "count": 1,
+      "price": 450,
+      "unit_emc": 32768,
+      "goods_emc": 32768,
+      "paid_emc": 28800
+    },
+    {
+      "item": "minecraft:nautilus_shell",
+      "old_count": 4,
+      "old_price": 15,
+      "count": 4,
+      "price": 60,
+      "unit_emc": 1024,
+      "goods_emc": 4096,
+      "paid_emc": 3840
+    },
+    {
+      "item": "minecraft:name_tag",
+      "old_count": 1,
+      "old_price": 12,
+      "count": 1,
+      "price": 3,
+      "unit_emc": 192,
+      "goods_emc": 192,
+      "paid_emc": 192
+    },
+    {
+      "item": "minecraft:saddle",
+      "old_count": 1,
+      "old_price": 15,
+      "count": 1,
+      "price": 3,
+      "unit_emc": 192,
+      "goods_emc": 192,
+      "paid_emc": 192
+    },
+    {
+      "item": "minecraft:prismarine_crystals",
+      "old_count": 16,
+      "old_price": 8,
+      "count": 16,
+      "price": 120,
+      "unit_emc": 512,
+      "goods_emc": 8192,
+      "paid_emc": 7680
+    },
+    {
+      "item": "minecraft:bread",
+      "old_count": 8,
+      "old_price": 4,
+      "count": 6,
+      "price": 1,
+      "unit_emc": 12,
+      "goods_emc": 72,
+      "paid_emc": 64
+    },
+    {
+      "item": "minecraft:cooked_beef",
+      "old_count": 8,
+      "old_price": 5,
+      "count": 8,
+      "price": 7,
+      "unit_emc": 64,
+      "goods_emc": 512,
+      "paid_emc": 448
+    },
+    {
+      "item": "minecraft:bone_meal",
+      "old_count": 32,
+      "old_price": 5,
+      "count": 32,
+      "price": 22,
+      "unit_emc": 48,
+      "goods_emc": 1536,
+      "paid_emc": 1408
+    },
+    {
+      "item": "minecraft:honey_bottle",
+      "old_count": 4,
+      "old_price": 6,
+      "count": 4,
+      "price": 3,
+      "unit_emc": 48,
+      "goods_emc": 192,
+      "paid_emc": 192
+    }
+  ],
+  "unresolved": [
+    {
+      "item": "bountiful:bountyboard",
+      "count": 1,
+      "retained_price": 5,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:coal_ore",
+      "count": 4,
+      "retained_price": 1,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_coal_ore",
+      "count": 4,
+      "retained_price": 1,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:copper_ore",
+      "count": 2,
+      "retained_price": 1,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_copper_ore",
+      "count": 2,
+      "retained_price": 1,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:iron_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_iron_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:gold_ore",
+      "count": 4,
+      "retained_price": 4,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_gold_ore",
+      "count": 4,
+      "retained_price": 4,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:redstone_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_redstone_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:lapis_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_lapis_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:diamond_ore",
+      "count": 1,
+      "retained_price": 10,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_diamond_ore",
+      "count": 1,
+      "retained_price": 10,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:emerald_ore",
+      "count": 1,
+      "retained_price": 10,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:deepslate_emerald_ore",
+      "count": 1,
+      "retained_price": 10,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:nether_quartz_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "minecraft:nether_gold_ore",
+      "count": 4,
+      "retained_price": 3,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:cloud_in_a_bottle",
+      "count": 1,
+      "retained_price": 90,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:charm_of_sinking",
+      "count": 1,
+      "retained_price": 80,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:digging_claws",
+      "count": 1,
+      "retained_price": 90,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:night_vision_goggles",
+      "count": 1,
+      "retained_price": 90,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:everlasting_beef",
+      "count": 1,
+      "retained_price": 120,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    },
+    {
+      "item": "artifacts:crystal_heart",
+      "count": 1,
+      "retained_price": 120,
+      "reason": "no positive historical plain-item EMC or no viable integer quote"
+    }
+  ]
+}

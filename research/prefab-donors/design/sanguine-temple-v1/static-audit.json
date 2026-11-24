@@ -1,0 +1,175 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    91,
+    38,
+    85
+  ],
+  "volume": 293930,
+  "anchorSurfaceY": 12,
+  "nonair": 13971,
+  "explicitAir": 68177,
+  "paletteStates": 25,
+  "altar": {
+    "origin": [
+      45,
+      18,
+      28
+    ],
+    "tiers": [
+      "weak",
+      "apprentice",
+      "mage",
+      "master",
+      "archmage",
+      "transcendent"
+    ],
+    "sourceComponentChecks": 462,
+    "distinctRuneSockets": 172,
+    "capstoneReservations": 16,
+    "pillarReservations": 36
+  },
+  "vault": {
+    "interior": [
+      19,
+      4,
+      19
+    ],
+    "floorY": 7,
+    "ceilingY": 12,
+    "ritualOrigin": [
+      45,
+      9,
+      28
+    ],
+    "altarVerticalDistance": 9,
+    "stairTreads": 18,
+    "rituals": [
+      "torment_nexus",
+      "deus_torment_nexus",
+      "well_of_suffering",
+      "deus_well_of_suffering"
+    ]
+  },
+  "courts": [
+    {
+      "name": "Edge of Hell",
+      "id": "simple_dungeon",
+      "cx": 13,
+      "cz": 20,
+      "r": 12,
+      "kind": "portal",
+      "origin": [
+        13,
+        13,
+        20
+      ],
+      "footprint": 25,
+      "explicitAir": 15625,
+      "staticPass": true,
+      "spawnBoundsVerified": false
+    },
+    {
+      "name": "Highway to Hell",
+      "id": "standard_dungeon",
+      "cx": 77,
+      "cz": 20,
+      "r": 12,
+      "kind": "portal",
+      "origin": [
+        77,
+        13,
+        20
+      ],
+      "footprint": 25,
+      "explicitAir": 15625,
+      "staticPass": true,
+      "spawnBoundsVerified": false
+    },
+    {
+      "name": "Spiritus / Crystallum Fractura",
+      "id": "deus_crystallum_fractura",
+      "cx": 14,
+      "cz": 58,
+      "r": 8,
+      "kind": "spiritus",
+      "origin": [
+        14,
+        13,
+        58
+      ],
+      "footprint": 17,
+      "explicitAir": 7225,
+      "staticPass": true
+    },
+    {
+      "name": "General ritual court",
+      "cx": 77,
+      "cz": 58,
+      "r": 8,
+      "kind": "general",
+      "origin": [
+        77,
+        13,
+        58
+      ],
+      "footprint": 17,
+      "explicitAir": 7225,
+      "staticPass": true
+    },
+    {
+      "name": "Mahou dojo",
+      "cx": 35,
+      "cz": 77,
+      "r": 5,
+      "kind": "mahou",
+      "origin": [
+        35,
+        13,
+        77
+      ],
+      "footprint": 11,
+      "explicitAir": 3025,
+      "staticPass": true
+    }
+  ],
+  "evilcraftClear": [
+    13,
+    9,
+    13
+  ],
+  "counts": {
+    "minecraft:deepslate_tiles": 4704,
+    "minecraft:polished_deepslate": 3540,
+    "minecraft:polished_blackstone_bricks": 988,
+    "minecraft:deepslate": 615,
+    "minecraft:air": 68177,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 22,
+    "minecraft:deepslate_bricks": 1081,
+    "neovitae:ara_vitae": 1,
+    "neovitae:bloodstone": 269,
+    "minecraft:stripped_crimson_stem[axis=y]": 480,
+    "minecraft:red_terracotta": 408,
+    "neovitae:blood_stained_glass": 94,
+    "minecraft:red_stained_glass": 612,
+    "minecraft:crimson_planks": 1041,
+    "minecraft:lever[face=floor,facing=east,powered=false]": 2,
+    "minecraft:iron_door[facing=east,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:iron_door[facing=east,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:polished_deepslate_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]": 18,
+    "minecraft:white_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:crafting_table": 1,
+    "minecraft:furnace[facing=south,lit=false]": 1,
+    "minecraft:white_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:barrel[facing=north,open=false]": 5,
+    "minecraft:cherry_planks": 6,
+    "minecraft:water[level=0]": 77
+  },
+  "limitations": [
+    "Portal template NBT bounds unverified; 25×25 open courts provisional, test both spawned structures in all four orientations.",
+    "Exact pinned jar/config, block states, material economy, importer and game validation pending.",
+    "Vault door power, movement, mob isolation, spawner/spikes EV and altar discovery require testing.",
+    "Spiritus chunk alignment, aspects and crystal growth require testing; assumed Crystallum Fractura.",
+    "EvilCraft/Mahou requirements and native decorative palette provisional; no advanced machines."
+  ]
+}

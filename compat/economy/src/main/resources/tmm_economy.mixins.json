@@ -1,0 +1,45 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.heatwaveqc.tmm.economy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ScrollKnowledgeMixin",
+    "ScrollConsumeMixin",
+    "ScrollQuickMoveMixin",
+    "ScrollOutputMixin",
+    "ExpansionScrollImportMixin",
+    "ExpansionScrollTabletMixin",
+    "ExpansionScrollReturnMixin",
+    "ExpansionScrollCollectionMixin",
+    "RelicTemplateMixin",
+    "TomeTemplateMixin",
+    "TomeMaterializationMixin",
+    "TomeCondenserLockMixin",
+    "ExpansionTomeCondenserLockMixin",
+    "OpConverterConfigMixin",
+    "OpConverterLedgerMixin",
+    "OpConverterTierMixin",
+    "OpConverterStatusMixin",
+    "OpConverterTooltipMixin",
+    "StoredResourceGuardMixin",
+    "RepairTalismanCharmMixin",
+    "ApotheosisPotionCharmRecipeMixin",
+    "IronsAlchemistFlaskSafetyMixin",
+    "OccultismPartnerFlaskSafetyMixin",
+    "PortableStorageShulkerSlotMixin",
+    "PortableStorageShulkerHopperMixin",
+    "PortableStorageBundleInsertionMixin",
+    "PortableStorageOccultismSatchelMixin",
+    "PortableStorageMalumPouchMixin",
+    "PortableStorageBotaniaBackedInventoryMixin",
+    "PortableStorageMiniHandbagMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "JadeOpDisplayMixin",
+    "TitaniumOpDisplayMixin"
+  ]
+}

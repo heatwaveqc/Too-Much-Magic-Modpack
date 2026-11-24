@@ -1,0 +1,12 @@
+{
+  "comment": "Owner-approved 532 EMC; eligibility follows Apothic Spawners Capturing (living entity with native SpawnEggItem.byId not in apothic_spawners:blacklisted_from_spawners). Partial registry-verified vanilla and prior survival seeds; regenerate from effective entity tags and native egg mapping before final integration. No blanket egg pricing or new acquisition.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/capturing_eligible_eggs",
+        "emc_value": 532
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+name = "Prefab Custom Addon"
+filename = "prefab-custom-addon-2.7.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/i4msNeGb/versions/oqFiI80X/prefab-custom-addon-2.7.1.jar"
+hash-format = "sha512"
+hash = "6c52f5ea6445e49a5c21a2b156d4195e027234dc67b6f0042749c5d0ec9cd95240a841e38a0550bb6f158e3fcaaa399da788ba685b43e5f799be19e09b0eaa44"
+
+[update]
+[update.modrinth]
+mod-id = "i4msNeGb"
+version = "oqFiI80X"

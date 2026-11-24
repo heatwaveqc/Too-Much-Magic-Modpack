@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="tmm_hexcast_media_pilot"
+version="0.0.1-pilot"
+displayName="Too Much Magic HexCast Media Pilot"
+description="Opt-in experimental personal media discount. Not part of a released modpack."
+
+[[dependencies.tmm_hexcast_media_pilot]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.tmm_hexcast_media_pilot]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.tmm_hexcast_media_pilot]]
+modId="hexcasting"
+type="required"
+versionRange="[0.11.1,)"
+ordering="AFTER"
+side="BOTH"

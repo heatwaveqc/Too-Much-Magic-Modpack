@@ -1,0 +1,1078 @@
+{
+  "schema": 1,
+  "distinct_references": 232,
+  "occurrences": 592,
+  "reference_digest": "33dbdf378f5bda13f90f7abf30f7b26b0e65c53c087482f7ea7b11f86b1ff159",
+  "missing": [],
+  "references": {
+    "draconicevolution:generator": [
+      "a_sufficiently_advanced_magic.snbt:6:icon",
+      "a_sufficiently_advanced_magic.snbt:74:icon",
+      "a_sufficiently_advanced_magic.snbt:97:item"
+    ],
+    "minecraft:redstone_block": [
+      "a_sufficiently_advanced_magic.snbt:16:icon"
+    ],
+    "minecraft:paper": [
+      "a_sufficiently_advanced_magic.snbt:29:item",
+      "advanced_progression.snbt:29:item",
+      "alcohol_is_magic.snbt:59:item",
+      "apotheosis.snbt:28:item",
+      "artifacts.snbt:28:item",
+      "astral_sorcery.snbt:28:item",
+      "basic_progression.snbt:29:item",
+      "botania_revived.snbt:28:item",
+      "deeper_and_darker.snbt:28:item",
+      "draconic_evolution.snbt:28:item",
+      "eidolon_repraised.snbt:28:item",
+      "embers_re_ignited.snbt:28:item",
+      "enchanted_witchcraft.snbt:28:item",
+      "endgame_roadmap.snbt:29:item",
+      "endgame_roadmap.snbt:145:item",
+      "enigmatic_legacy.snbt:28:item",
+      "evilcraft.snbt:28:item",
+      "feywild.snbt:28:item",
+      "food_fishing.snbt:29:item",
+      "forbidden_arcanus.snbt:28:item",
+      "gateways_to_eternity.snbt:28:item",
+      "goety.snbt:28:item",
+      "hex_casting.snbt:28:item",
+      "hexerei.snbt:28:item",
+      "intro.snbt:66:item",
+      "irons_spells_n_spellbooks.snbt:28:item",
+      "just_another_witchery_remake.snbt:28:item",
+      "l_enders_cataclysm.snbt:28:item",
+      "mahou_tsukai.snbt:28:item",
+      "malum.snbt:28:item",
+      "neo_vitae.snbt:28:item",
+      "occultism.snbt:28:item",
+      "pastel.snbt:28:item",
+      "primal_magick.snbt:28:item",
+      "projecte.snbt:28:item",
+      "psi.snbt:28:item",
+      "reliquary_reincarnations.snbt:28:item",
+      "replication.snbt:28:item",
+      "roots_classic.snbt:28:item",
+      "scriptor_magicae.snbt:28:item",
+      "skills_advancement.snbt:29:item",
+      "skills_advancement.snbt:88:item",
+      "theurgy.snbt:28:item",
+      "tips_tricks.snbt:29:item",
+      "tips_tricks.snbt:57:item",
+      "tips_tricks.snbt:169:item",
+      "tips_tricks.snbt:197:item",
+      "totemic.snbt:28:item"
+    ],
+    "minecraft:redstone": [
+      "a_sufficiently_advanced_magic.snbt:45:icon",
+      "a_sufficiently_advanced_magic.snbt:59:item",
+      "a_sufficiently_advanced_magic.snbt:117:item",
+      "a_sufficiently_advanced_magic.snbt:196:icon",
+      "a_sufficiently_advanced_magic.snbt:240:item",
+      "a_sufficiently_advanced_magic.snbt:361:item",
+      "a_sufficiently_advanced_magic.snbt:378:icon",
+      "a_sufficiently_advanced_magic.snbt:408:icon",
+      "neo_vitae.snbt:6:icon",
+      "neo_vitae.snbt:15:icon",
+      "skills_advancement.snbt:117:item"
+    ],
+    "minecraft:coal": [
+      "a_sufficiently_advanced_magic.snbt:88:item",
+      "basic_progression.snbt:503:item",
+      "intro.snbt:330:item",
+      "tips_tricks.snbt:507:item"
+    ],
+    "draconicevolution:energy_core": [
+      "a_sufficiently_advanced_magic.snbt:104:icon",
+      "a_sufficiently_advanced_magic.snbt:126:item"
+    ],
+    "draconicevolution:energy_core_stabilizer": [
+      "a_sufficiently_advanced_magic.snbt:134:icon",
+      "a_sufficiently_advanced_magic.snbt:157:item"
+    ],
+    "minecraft:quartz": [
+      "a_sufficiently_advanced_magic.snbt:147:item"
+    ],
+    "draconicevolution:energy_pylon": [
+      "a_sufficiently_advanced_magic.snbt:165:icon",
+      "a_sufficiently_advanced_magic.snbt:188:item"
+    ],
+    "minecraft:glass": [
+      "a_sufficiently_advanced_magic.snbt:178:item",
+      "a_sufficiently_advanced_magic.snbt:330:item",
+      "basic_progression.snbt:563:item"
+    ],
+    "minecraft:experience_bottle": [
+      "a_sufficiently_advanced_magic.snbt:210:item",
+      "advanced_progression.snbt:115:item",
+      "basic_progression.snbt:533:item",
+      "basic_progression.snbt:709:item",
+      "endgame_roadmap.snbt:202:item",
+      "intro.snbt:453:item",
+      "skills_advancement.snbt:6:icon",
+      "skills_advancement.snbt:16:icon",
+      "skills_advancement.snbt:45:icon",
+      "skills_advancement.snbt:59:item",
+      "skills_advancement.snbt:74:icon",
+      "skills_advancement.snbt:103:icon",
+      "skills_advancement.snbt:132:icon",
+      "skills_advancement.snbt:161:icon",
+      "skills_advancement.snbt:190:icon",
+      "skills_advancement.snbt:204:item",
+      "skills_advancement.snbt:219:icon"
+    ],
+    "draconicevolution:basic_io_crystal": [
+      "a_sufficiently_advanced_magic.snbt:226:icon",
+      "a_sufficiently_advanced_magic.snbt:249:item"
+    ],
+    "draconicevolution:flux_gate": [
+      "a_sufficiently_advanced_magic.snbt:257:icon",
+      "a_sufficiently_advanced_magic.snbt:279:item"
+    ],
+    "minecraft:comparator": [
+      "a_sufficiently_advanced_magic.snbt:270:item",
+      "a_sufficiently_advanced_magic.snbt:392:item"
+    ],
+    "draconicevolution:reactor_core": [
+      "a_sufficiently_advanced_magic.snbt:287:icon",
+      "a_sufficiently_advanced_magic.snbt:309:item"
+    ],
+    "minecraft:crying_obsidian": [
+      "a_sufficiently_advanced_magic.snbt:300:item",
+      "ars_nouveau.snbt:1412:item",
+      "forbidden_arcanus.snbt:6:icon",
+      "forbidden_arcanus.snbt:15:icon"
+    ],
+    "draconicevolution:reactor_stabilizer": [
+      "a_sufficiently_advanced_magic.snbt:317:icon",
+      "a_sufficiently_advanced_magic.snbt:340:item"
+    ],
+    "draconicevolution:reactor_injector": [
+      "a_sufficiently_advanced_magic.snbt:348:icon",
+      "a_sufficiently_advanced_magic.snbt:370:item"
+    ],
+    "minecraft:golden_carrot": [
+      "a_sufficiently_advanced_magic.snbt:422:item",
+      "basic_progression.snbt:651:item",
+      "endgame_roadmap.snbt:116:item",
+      "food_fishing.snbt:561:item",
+      "food_fishing.snbt:591:item",
+      "intro.snbt:513:item",
+      "skills_advancement.snbt:232:item"
+    ],
+    "minecraft:enchanting_table": [
+      "advanced_progression.snbt:6:icon",
+      "advanced_progression.snbt:16:icon",
+      "advanced_progression.snbt:45:icon",
+      "advanced_progression.snbt:73:icon",
+      "advanced_progression.snbt:95:item",
+      "advanced_progression.snbt:276:icon",
+      "advanced_progression.snbt:305:icon"
+    ],
+    "minecraft:compass": [
+      "advanced_progression.snbt:58:item",
+      "advanced_progression.snbt:260:item",
+      "endgame_roadmap.snbt:173:item",
+      "intro.snbt:603:item"
+    ],
+    "minecraft:lapis_lazuli": [
+      "advanced_progression.snbt:86:item",
+      "ars_nouveau.snbt:116:item",
+      "basic_progression.snbt:445:item",
+      "basic_progression.snbt:520:icon",
+      "basic_progression.snbt:543:item",
+      "intro.snbt:391:item",
+      "primal_magick.snbt:6:icon",
+      "primal_magick.snbt:15:icon",
+      "skills_advancement.snbt:146:item",
+      "tips_tricks.snbt:393:item"
+    ],
+    "minecraft:anvil": [
+      "advanced_progression.snbt:102:icon",
+      "advanced_progression.snbt:124:item"
+    ],
+    "minecraft:brewing_stand": [
+      "advanced_progression.snbt:131:icon",
+      "advanced_progression.snbt:153:item",
+      "just_another_witchery_remake.snbt:6:icon",
+      "just_another_witchery_remake.snbt:15:icon"
+    ],
+    "minecraft:glass_bottle": [
+      "advanced_progression.snbt:144:item",
+      "alcohol_is_magic.snbt:30:item",
+      "alcohol_is_magic.snbt:118:item",
+      "alcohol_is_magic.snbt:179:item",
+      "alcohol_is_magic.snbt:284:icon",
+      "alcohol_is_magic.snbt:298:item",
+      "alcohol_is_magic.snbt:375:icon",
+      "alcohol_is_magic.snbt:448:item",
+      "alcohol_is_magic.snbt:478:item",
+      "basic_progression.snbt:593:item",
+      "tips_tricks.snbt:85:item",
+      "tips_tricks.snbt:365:item"
+    ],
+    "minecraft:obsidian": [
+      "advanced_progression.snbt:160:icon",
+      "advanced_progression.snbt:182:item"
+    ],
+    "minecraft:flint_and_steel": [
+      "advanced_progression.snbt:172:item"
+    ],
+    "minecraft:ender_chest": [
+      "advanced_progression.snbt:189:icon",
+      "advanced_progression.snbt:211:item"
+    ],
+    "minecraft:ender_pearl": [
+      "advanced_progression.snbt:202:item",
+      "basic_progression.snbt:696:icon",
+      "basic_progression.snbt:719:item",
+      "psi.snbt:6:icon",
+      "psi.snbt:15:icon"
+    ],
+    "minecraft:netherite_scrap": [
+      "advanced_progression.snbt:218:icon",
+      "advanced_progression.snbt:240:item"
+    ],
+    "minecraft:magma_cream": [
+      "advanced_progression.snbt:231:item",
+      "ars_nouveau.snbt:1177:item",
+      "embers_re_ignited.snbt:6:icon",
+      "embers_re_ignited.snbt:15:icon"
+    ],
+    "minecraft:lodestone": [
+      "advanced_progression.snbt:247:icon",
+      "advanced_progression.snbt:269:item"
+    ],
+    "minecraft:candle": [
+      "advanced_progression.snbt:290:item"
+    ],
+    "minecraft:lantern": [
+      "advanced_progression.snbt:319:item",
+      "alcohol_is_magic.snbt:569:item",
+      "intro.snbt:422:item"
+    ],
+    "brewinandchewin:keg": [
+      "alcohol_is_magic.snbt:6:icon",
+      "alcohol_is_magic.snbt:16:icon",
+      "alcohol_is_magic.snbt:75:icon",
+      "alcohol_is_magic.snbt:97:item"
+    ],
+    "minecraft:book": [
+      "alcohol_is_magic.snbt:46:icon",
+      "intro.snbt:53:icon",
+      "intro.snbt:378:icon",
+      "intro.snbt:400:item",
+      "tips_tricks.snbt:6:icon",
+      "tips_tricks.snbt:16:icon",
+      "tips_tricks.snbt:44:icon",
+      "tips_tricks.snbt:72:icon",
+      "tips_tricks.snbt:100:icon",
+      "tips_tricks.snbt:128:icon",
+      "tips_tricks.snbt:156:icon",
+      "tips_tricks.snbt:184:icon",
+      "tips_tricks.snbt:212:icon",
+      "tips_tricks.snbt:240:icon",
+      "tips_tricks.snbt:268:icon",
+      "tips_tricks.snbt:296:icon",
+      "tips_tricks.snbt:324:icon",
+      "tips_tricks.snbt:352:icon",
+      "tips_tricks.snbt:380:icon",
+      "tips_tricks.snbt:408:icon"
+    ],
+    "minecraft:honeycomb": [
+      "alcohol_is_magic.snbt:88:item",
+      "alcohol_is_magic.snbt:508:item"
+    ],
+    "brewinandchewin:tankard": [
+      "alcohol_is_magic.snbt:105:icon",
+      "alcohol_is_magic.snbt:127:item"
+    ],
+    "minecraft:water_bucket": [
+      "alcohol_is_magic.snbt:135:icon",
+      "basic_progression.snbt:580:icon",
+      "basic_progression.snbt:602:item"
+    ],
+    "minecraft:bucket": [
+      "alcohol_is_magic.snbt:147:item"
+    ],
+    "ftbquests:missing_item": [
+      "alcohol_is_magic.snbt:163:icon",
+      "food_fishing.snbt:639:icon",
+      "food_fishing.snbt:665:item"
+    ],
+    "minecraft:honey_bottle": [
+      "alcohol_is_magic.snbt:195:icon",
+      "alcohol_is_magic.snbt:209:item",
+      "food_fishing.snbt:146:item",
+      "food_fishing.snbt:234:item"
+    ],
+    "minecraft:milk_bucket": [
+      "alcohol_is_magic.snbt:225:icon",
+      "food_fishing.snbt:222:icon",
+      "food_fishing.snbt:243:item"
+    ],
+    "minecraft:cocoa_beans": [
+      "alcohol_is_magic.snbt:239:item"
+    ],
+    "minecraft:barrel": [
+      "alcohol_is_magic.snbt:255:icon",
+      "alcohol_is_magic.snbt:268:item"
+    ],
+    "cocktailsdelight:rum": [
+      "alcohol_is_magic.snbt:314:icon",
+      "alcohol_is_magic.snbt:337:item"
+    ],
+    "minecraft:sugar": [
+      "alcohol_is_magic.snbt:328:item",
+      "tips_tricks.snbt:337:item"
+    ],
+    "minecraft:potion": [
+      "alcohol_is_magic.snbt:345:icon"
+    ],
+    "minecraft:cookie": [
+      "alcohol_is_magic.snbt:359:item",
+      "food_fishing.snbt:117:item",
+      "food_fishing.snbt:205:item",
+      "tips_tricks.snbt:141:item",
+      "tips_tricks.snbt:421:item"
+    ],
+    "minecraft:flower_pot": [
+      "alcohol_is_magic.snbt:389:item"
+    ],
+    "beachparty:coconut_open": [
+      "alcohol_is_magic.snbt:405:icon"
+    ],
+    "minecraft:sand": [
+      "alcohol_is_magic.snbt:419:item"
+    ],
+    "beachparty:palm_bar": [
+      "alcohol_is_magic.snbt:435:icon",
+      "alcohol_is_magic.snbt:457:item",
+      "alcohol_is_magic.snbt:555:icon"
+    ],
+    "beachparty:mini_fridge": [
+      "alcohol_is_magic.snbt:465:icon",
+      "alcohol_is_magic.snbt:487:item"
+    ],
+    "beachparty:coconut_cocktail": [
+      "alcohol_is_magic.snbt:495:icon",
+      "alcohol_is_magic.snbt:517:item",
+      "alcohol_is_magic.snbt:525:icon"
+    ],
+    "minecraft:sea_pickle": [
+      "alcohol_is_magic.snbt:539:item",
+      "food_fishing.snbt:382:item"
+    ],
+    "minecraft:enchanted_golden_apple": [
+      "apotheosis.snbt:6:icon",
+      "apotheosis.snbt:15:icon",
+      "ars_nouveau.snbt:1546:item"
+    ],
+    "ars_nouveau:novice_spell_book": [
+      "ars_nouveau.snbt:6:icon",
+      "ars_nouveau.snbt:16:icon",
+      "ars_nouveau.snbt:36:icon"
+    ],
+    "ars_nouveau:source_berry_roll": [
+      "ars_nouveau.snbt:50:item",
+      "ars_nouveau.snbt:1513:item"
+    ],
+    "ars_nouveau:imbuement_chamber": [
+      "ars_nouveau.snbt:69:icon",
+      "ars_nouveau.snbt:94:item"
+    ],
+    "ars_nouveau:source_gem": [
+      "ars_nouveau.snbt:83:item"
+    ],
+    "ars_nouveau:scribes_table": [
+      "ars_nouveau.snbt:102:icon",
+      "ars_nouveau.snbt:127:item"
+    ],
+    "ars_nouveau:source_jar": [
+      "ars_nouveau.snbt:135:icon",
+      "ars_nouveau.snbt:160:item"
+    ],
+    "minecraft:blue_stained_glass": [
+      "ars_nouveau.snbt:149:item"
+    ],
+    "ars_nouveau:agronomic_sourcelink": [
+      "ars_nouveau.snbt:168:icon",
+      "ars_nouveau.snbt:193:item"
+    ],
+    "minecraft:bone_meal": [
+      "ars_nouveau.snbt:182:item",
+      "food_fishing.snbt:57:item",
+      "food_fishing.snbt:87:item"
+    ],
+    "ars_nouveau:relay": [
+      "ars_nouveau.snbt:201:icon",
+      "ars_nouveau.snbt:227:item"
+    ],
+    "minecraft:lever": [
+      "ars_nouveau.snbt:216:item"
+    ],
+    "ars_nouveau:enchanting_apparatus": [
+      "ars_nouveau.snbt:235:icon",
+      "ars_nouveau.snbt:260:item"
+    ],
+    "ars_nouveau:arcane_pedestal": [
+      "ars_nouveau.snbt:249:item"
+    ],
+    "ars_nouveau:magebloom_crop": [
+      "ars_nouveau.snbt:268:icon",
+      "ars_nouveau.snbt:294:item"
+    ],
+    "minecraft:string": [
+      "ars_nouveau.snbt:283:item",
+      "food_fishing.snbt:263:item"
+    ],
+    "ars_nouveau:apprentice_spell_book": [
+      "ars_nouveau.snbt:302:icon"
+    ],
+    "ars_nouveau:air_essence": [
+      "ars_nouveau.snbt:316:item"
+    ],
+    "ars_nouveau:ritual_brazier": [
+      "ars_nouveau.snbt:335:icon",
+      "ars_nouveau.snbt:360:item"
+    ],
+    "minecraft:soul_lantern": [
+      "ars_nouveau.snbt:349:item",
+      "malum.snbt:6:icon",
+      "malum.snbt:15:icon"
+    ],
+    "ars_nouveau:ritual_wilden_summon": [
+      "ars_nouveau.snbt:368:icon",
+      "ars_nouveau.snbt:393:item"
+    ],
+    "minecraft:cooked_beef": [
+      "ars_nouveau.snbt:382:item",
+      "food_fishing.snbt:442:item",
+      "food_fishing.snbt:622:item"
+    ],
+    "ars_nouveau:wilden_tribute": [
+      "ars_nouveau.snbt:401:icon"
+    ],
+    "ars_nouveau:music_disc_firel_the_wild_hunt": [
+      "ars_nouveau.snbt:414:item"
+    ],
+    "ars_nouveau:archmage_spell_book": [
+      "ars_nouveau.snbt:433:icon",
+      "ars_nouveau.snbt:1532:icon"
+    ],
+    "ars_nouveau:thread_spellpower": [
+      "ars_nouveau.snbt:446:item"
+    ],
+    "ars_nouveau:arcanist_robes": [
+      "ars_nouveau.snbt:465:icon",
+      "ars_nouveau.snbt:491:item"
+    ],
+    "minecraft:purple_dye": [
+      "ars_nouveau.snbt:480:item",
+      "pastel.snbt:6:icon",
+      "pastel.snbt:15:icon"
+    ],
+    "ars_nouveau:alteration_table": [
+      "ars_nouveau.snbt:499:icon",
+      "ars_nouveau.snbt:525:item"
+    ],
+    "ars_nouveau:blank_thread": [
+      "ars_nouveau.snbt:514:item"
+    ],
+    "ars_nouveau:starbuncle_charm": [
+      "ars_nouveau.snbt:532:icon"
+    ],
+    "ars_nouveau:starbuncle_shades": [
+      "ars_nouveau.snbt:546:item"
+    ],
+    "ars_nouveau:whirlisprig_charm": [
+      "ars_nouveau.snbt:564:icon"
+    ],
+    "minecraft:flowering_azalea": [
+      "ars_nouveau.snbt:579:item"
+    ],
+    "ars_nouveau:drygmy_charm": [
+      "ars_nouveau.snbt:597:icon"
+    ],
+    "minecraft:mossy_cobblestone": [
+      "ars_nouveau.snbt:612:item"
+    ],
+    "ars_nouveau:wixie_charm": [
+      "ars_nouveau.snbt:630:icon"
+    ],
+    "minecraft:nether_wart": [
+      "ars_nouveau.snbt:645:item",
+      "basic_progression.snbt:680:item",
+      "evilcraft.snbt:6:icon",
+      "evilcraft.snbt:15:icon"
+    ],
+    "ars_nouveau:ritual_binding": [
+      "ars_nouveau.snbt:663:icon"
+    ],
+    "ars_nouveau:source_berry_pie": [
+      "ars_nouveau.snbt:678:item"
+    ],
+    "ars_nouveau:basic_spell_turret": [
+      "ars_nouveau.snbt:696:icon"
+    ],
+    "minecraft:daylight_detector": [
+      "ars_nouveau.snbt:710:item"
+    ],
+    "ars_nouveau:storage_lectern": [
+      "ars_nouveau.snbt:728:icon",
+      "ars_nouveau.snbt:754:item"
+    ],
+    "ars_nouveau:archwood_sign": [
+      "ars_nouveau.snbt:743:item"
+    ],
+    "ars_nouveau:repository": [
+      "ars_nouveau.snbt:762:icon",
+      "ars_nouveau.snbt:788:item"
+    ],
+    "minecraft:name_tag": [
+      "ars_nouveau.snbt:777:item"
+    ],
+    "ars_nouveau:warp_scroll": [
+      "ars_nouveau.snbt:795:icon"
+    ],
+    "minecraft:glow_item_frame": [
+      "ars_nouveau.snbt:810:item"
+    ],
+    "ars_nouveau:ritual_flight": [
+      "ars_nouveau.snbt:828:icon",
+      "ars_nouveau.snbt:854:item"
+    ],
+    "minecraft:hay_block": [
+      "ars_nouveau.snbt:843:item"
+    ],
+    "ars_nouveau:enchanters_mirror": [
+      "ars_nouveau.snbt:861:icon",
+      "ars_nouveau.snbt:887:item"
+    ],
+    "minecraft:feather": [
+      "ars_nouveau.snbt:876:item",
+      "tips_tricks.snbt:281:item",
+      "tips_tricks.snbt:536:item"
+    ],
+    "ars_nouveau:potion_flask": [
+      "ars_nouveau.snbt:894:icon"
+    ],
+    "minecraft:glistering_melon_slice": [
+      "ars_nouveau.snbt:909:item"
+    ],
+    "ars_nouveau:amethyst_golem_charm": [
+      "ars_nouveau.snbt:927:icon"
+    ],
+    "minecraft:calcite": [
+      "ars_nouveau.snbt:942:item"
+    ],
+    "ars_additions:advanced_dominion_wand": [
+      "ars_nouveau.snbt:960:icon",
+      "ars_nouveau.snbt:986:item"
+    ],
+    "minecraft:glow_ink_sac": [
+      "ars_nouveau.snbt:975:item"
+    ],
+    "ars_additions:warp_index": [
+      "ars_nouveau.snbt:994:icon",
+      "ars_nouveau.snbt:1020:item"
+    ],
+    "ars_nouveau:archwood_hanging_sign": [
+      "ars_nouveau.snbt:1009:item"
+    ],
+    "ars_additions:ender_source_jar": [
+      "ars_nouveau.snbt:1028:icon",
+      "ars_nouveau.snbt:1054:item"
+    ],
+    "minecraft:ender_eye": [
+      "ars_nouveau.snbt:1043:item",
+      "endgame_roadmap.snbt:6:icon",
+      "endgame_roadmap.snbt:16:icon",
+      "gateways_to_eternity.snbt:6:icon",
+      "gateways_to_eternity.snbt:15:icon"
+    ],
+    "ars_controle:remote": [
+      "ars_nouveau.snbt:1061:icon",
+      "ars_nouveau.snbt:1087:item"
+    ],
+    "minecraft:redstone_torch": [
+      "ars_nouveau.snbt:1076:item"
+    ],
+    "ars_controle:temporal_stability_sensor": [
+      "ars_nouveau.snbt:1095:icon",
+      "ars_nouveau.snbt:1121:item"
+    ],
+    "minecraft:repeater": [
+      "ars_nouveau.snbt:1110:item"
+    ],
+    "ars_controle:portable_brazier_relay": [
+      "ars_nouveau.snbt:1129:icon",
+      "ars_nouveau.snbt:1155:item"
+    ],
+    "minecraft:firework_rocket": [
+      "ars_nouveau.snbt:1144:item",
+      "endgame_roadmap.snbt:87:item",
+      "intro.snbt:574:item"
+    ],
+    "ars_elemental:lesser_fire_focus": [
+      "ars_nouveau.snbt:1162:icon",
+      "ars_nouveau.snbt:1188:item"
+    ],
+    "ars_elemental:everfull_urn": [
+      "ars_nouveau.snbt:1196:icon",
+      "ars_nouveau.snbt:1221:item"
+    ],
+    "minecraft:cauldron": [
+      "ars_nouveau.snbt:1210:item",
+      "enchanted_witchcraft.snbt:6:icon",
+      "enchanted_witchcraft.snbt:15:icon"
+    ],
+    "ars_elemental:fire_hat": [
+      "ars_nouveau.snbt:1229:icon",
+      "ars_nouveau.snbt:1255:item"
+    ],
+    "minecraft:orange_dye": [
+      "ars_nouveau.snbt:1244:item"
+    ],
+    "ars_elemancy:cinder_essence": [
+      "ars_nouveau.snbt:1262:icon",
+      "ars_nouveau.snbt:1288:item"
+    ],
+    "ars_nouveau:manipulation_essence": [
+      "ars_nouveau.snbt:1277:item"
+    ],
+    "ars_elemancy:cinder_hat": [
+      "ars_nouveau.snbt:1296:icon",
+      "ars_nouveau.snbt:1322:item"
+    ],
+    "minecraft:fire_charge": [
+      "ars_nouveau.snbt:1311:item"
+    ],
+    "occultism:spirit_attuned_gem": [
+      "ars_nouveau.snbt:1329:icon",
+      "ars_nouveau.snbt:1355:item"
+    ],
+    "minecraft:purple_candle": [
+      "ars_nouveau.snbt:1344:item"
+    ],
+    "ars_nouveau:mob_jar": [
+      "ars_nouveau.snbt:1363:icon",
+      "ars_nouveau.snbt:1389:item"
+    ],
+    "minecraft:hopper": [
+      "ars_nouveau.snbt:1378:item"
+    ],
+    "ars_ocultas:altar": [
+      "ars_nouveau.snbt:1397:icon",
+      "ars_nouveau.snbt:1423:item"
+    ],
+    "ars_n_spells:spell_loom": [
+      "ars_nouveau.snbt:1430:icon"
+    ],
+    "ars_n_spells:blank_scroll": [
+      "ars_nouveau.snbt:1445:item",
+      "ars_nouveau.snbt:1464:icon"
+    ],
+    "irons_spellbooks:arcane_essence": [
+      "ars_nouveau.snbt:1479:item"
+    ],
+    "ars_nouveau:spell_parchment": [
+      "ars_nouveau.snbt:1498:icon"
+    ],
+    "farmersdelight:pumpkin_slice": [
+      "ars_nouveau.snbt:1564:icon",
+      "ars_nouveau.snbt:1591:item"
+    ],
+    "farmersdelight:pumpkin_soup": [
+      "ars_nouveau.snbt:1579:item"
+    ],
+    "farmersdelight:cabbage_leaf": [
+      "ars_nouveau.snbt:1599:icon",
+      "ars_nouveau.snbt:1626:item"
+    ],
+    "farmersdelight:cabbage_rolls": [
+      "ars_nouveau.snbt:1614:item"
+    ],
+    "minecraft:heart_of_the_sea": [
+      "artifacts.snbt:6:icon",
+      "artifacts.snbt:15:icon"
+    ],
+    "minecraft:amethyst_shard": [
+      "astral_sorcery.snbt:6:icon",
+      "astral_sorcery.snbt:15:icon",
+      "basic_progression.snbt:431:icon",
+      "basic_progression.snbt:550:icon",
+      "basic_progression.snbt:573:item"
+    ],
+    "minecraft:crafting_table": [
+      "basic_progression.snbt:6:icon",
+      "basic_progression.snbt:16:icon",
+      "intro.snbt:137:icon",
+      "intro.snbt:159:item"
+    ],
+    "minecraft:copper_ingot": [
+      "basic_progression.snbt:45:icon",
+      "basic_progression.snbt:69:item",
+      "basic_progression.snbt:77:icon",
+      "basic_progression.snbt:101:item"
+    ],
+    "minecraft:copper_block": [
+      "basic_progression.snbt:109:icon",
+      "basic_progression.snbt:133:item",
+      "basic_progression.snbt:142:icon",
+      "basic_progression.snbt:167:item"
+    ],
+    "minecraft:emerald": [
+      "basic_progression.snbt:174:icon",
+      "basic_progression.snbt:198:item",
+      "basic_progression.snbt:206:icon",
+      "basic_progression.snbt:230:item",
+      "food_fishing.snbt:531:item",
+      "tips_tricks.snbt:436:icon"
+    ],
+    "minecraft:emerald_block": [
+      "basic_progression.snbt:238:icon",
+      "basic_progression.snbt:262:item",
+      "basic_progression.snbt:271:icon",
+      "basic_progression.snbt:296:item"
+    ],
+    "minecraft:diamond": [
+      "basic_progression.snbt:303:icon",
+      "basic_progression.snbt:326:item",
+      "basic_progression.snbt:334:icon",
+      "basic_progression.snbt:358:item"
+    ],
+    "minecraft:diamond_block": [
+      "basic_progression.snbt:366:icon",
+      "basic_progression.snbt:390:item",
+      "basic_progression.snbt:399:icon",
+      "basic_progression.snbt:424:item",
+      "replication.snbt:6:icon",
+      "replication.snbt:15:icon"
+    ],
+    "minecraft:raw_copper": [
+      "basic_progression.snbt:460:icon",
+      "basic_progression.snbt:483:item"
+    ],
+    "minecraft:torch": [
+      "basic_progression.snbt:473:item",
+      "intro.snbt:210:item",
+      "tips_tricks.snbt:225:item",
+      "tips_tricks.snbt:565:item"
+    ],
+    "minecraft:raw_gold": [
+      "basic_progression.snbt:490:icon",
+      "basic_progression.snbt:513:item"
+    ],
+    "minecraft:shield": [
+      "basic_progression.snbt:609:icon",
+      "basic_progression.snbt:631:item"
+    ],
+    "minecraft:arrow": [
+      "basic_progression.snbt:622:item",
+      "intro.snbt:543:item"
+    ],
+    "minecraft:diamond_pickaxe": [
+      "basic_progression.snbt:638:icon",
+      "basic_progression.snbt:660:item"
+    ],
+    "minecraft:blaze_rod": [
+      "basic_progression.snbt:667:icon",
+      "basic_progression.snbt:689:item",
+      "irons_spells_n_spellbooks.snbt:6:icon",
+      "irons_spells_n_spellbooks.snbt:15:icon"
+    ],
+    "minecraft:pink_tulip": [
+      "botania_revived.snbt:6:icon",
+      "botania_revived.snbt:15:icon"
+    ],
+    "minecraft:echo_shard": [
+      "deeper_and_darker.snbt:6:icon",
+      "deeper_and_darker.snbt:15:icon"
+    ],
+    "minecraft:dragon_head": [
+      "draconic_evolution.snbt:6:icon",
+      "draconic_evolution.snbt:15:icon"
+    ],
+    "minecraft:soul_sand": [
+      "eidolon_repraised.snbt:6:icon",
+      "eidolon_repraised.snbt:15:icon"
+    ],
+    "minecraft:filled_map": [
+      "endgame_roadmap.snbt:45:icon",
+      "endgame_roadmap.snbt:73:icon",
+      "endgame_roadmap.snbt:102:icon",
+      "endgame_roadmap.snbt:131:icon",
+      "endgame_roadmap.snbt:160:icon",
+      "endgame_roadmap.snbt:188:icon"
+    ],
+    "minecraft:map": [
+      "endgame_roadmap.snbt:58:item"
+    ],
+    "minecraft:totem_of_undying": [
+      "enigmatic_legacy.snbt:6:icon",
+      "enigmatic_legacy.snbt:15:icon"
+    ],
+    "minecraft:allium": [
+      "feywild.snbt:6:icon",
+      "feywild.snbt:15:icon"
+    ],
+    "minecraft:fishing_rod": [
+      "food_fishing.snbt:6:icon",
+      "food_fishing.snbt:16:icon",
+      "food_fishing.snbt:250:icon",
+      "food_fishing.snbt:272:item"
+    ],
+    "minecraft:wheat_seeds": [
+      "food_fishing.snbt:44:icon",
+      "food_fishing.snbt:66:item"
+    ],
+    "minecraft:stone_hoe": [
+      "food_fishing.snbt:74:icon",
+      "food_fishing.snbt:96:item"
+    ],
+    "minecraft:wheat": [
+      "food_fishing.snbt:104:icon",
+      "food_fishing.snbt:127:item"
+    ],
+    "minecraft:sugar_cane": [
+      "food_fishing.snbt:134:icon",
+      "food_fishing.snbt:156:item"
+    ],
+    "minecraft:chicken": [
+      "food_fishing.snbt:163:icon",
+      "food_fishing.snbt:185:item"
+    ],
+    "minecraft:cooked_chicken": [
+      "food_fishing.snbt:176:item"
+    ],
+    "minecraft:egg": [
+      "food_fishing.snbt:192:icon",
+      "food_fishing.snbt:215:item"
+    ],
+    "minecraft:cod": [
+      "food_fishing.snbt:280:icon",
+      "food_fishing.snbt:302:item"
+    ],
+    "minecraft:cooked_cod": [
+      "food_fishing.snbt:293:item"
+    ],
+    "minecraft:salmon": [
+      "food_fishing.snbt:310:icon",
+      "food_fishing.snbt:332:item"
+    ],
+    "minecraft:cooked_salmon": [
+      "food_fishing.snbt:323:item"
+    ],
+    "aquaculture:iron_fishing_rod": [
+      "food_fishing.snbt:340:icon",
+      "food_fishing.snbt:361:item"
+    ],
+    "minecraft:nautilus_shell": [
+      "food_fishing.snbt:352:item",
+      "food_fishing.snbt:413:item"
+    ],
+    "aquaculture:gold_fishing_rod": [
+      "food_fishing.snbt:369:icon",
+      "food_fishing.snbt:391:item"
+    ],
+    "aquaculture:neptunium_fishing_rod": [
+      "food_fishing.snbt:399:icon",
+      "food_fishing.snbt:422:item"
+    ],
+    "minecraft:campfire": [
+      "food_fishing.snbt:429:icon",
+      "food_fishing.snbt:451:item"
+    ],
+    "farmersdelight:cutting_board": [
+      "food_fishing.snbt:459:icon",
+      "food_fishing.snbt:481:item"
+    ],
+    "minecraft:bread": [
+      "food_fishing.snbt:472:item",
+      "food_fishing.snbt:656:item"
+    ],
+    "farmersdelight:cooking_pot": [
+      "food_fishing.snbt:489:icon",
+      "food_fishing.snbt:511:item"
+    ],
+    "minecraft:baked_potato": [
+      "food_fishing.snbt:502:item",
+      "intro.snbt:361:item"
+    ],
+    "farmingforblockheads:market": [
+      "food_fishing.snbt:519:icon",
+      "food_fishing.snbt:540:item"
+    ],
+    "pamhc2foodcore:friedchickenitem": [
+      "food_fishing.snbt:548:icon",
+      "food_fishing.snbt:570:item"
+    ],
+    "pamhc2trees:starfruititem": [
+      "food_fishing.snbt:578:icon",
+      "food_fishing.snbt:600:item"
+    ],
+    "cookingforblockheads:cooking_table": [
+      "food_fishing.snbt:608:icon",
+      "food_fishing.snbt:631:item"
+    ],
+    "minecraft:wither_skeleton_skull": [
+      "goety.snbt:6:icon",
+      "goety.snbt:15:icon"
+    ],
+    "minecraft:amethyst_cluster": [
+      "hex_casting.snbt:6:icon",
+      "hex_casting.snbt:15:icon"
+    ],
+    "minecraft:witch_spawn_egg": [
+      "hexerei.snbt:6:icon",
+      "hexerei.snbt:15:icon"
+    ],
+    "minecraft:oak_log": [
+      "intro.snbt:6:icon",
+      "intro.snbt:16:icon"
+    ],
+    "enigmaticlegacyplus:unwitnessed_amulet": [
+      "intro.snbt:29:item"
+    ],
+    "enigmaticlegacyplus:cursed_ring": [
+      "intro.snbt:37:item"
+    ],
+    "minecraft:iron_sword": [
+      "intro.snbt:81:icon"
+    ],
+    "ars_elemental:curio_bag": [
+      "intro.snbt:108:icon",
+      "intro.snbt:120:item"
+    ],
+    "ftbfiltersystem:smart_filter": [
+      "intro.snbt:129:item"
+    ],
+    "minecraft:bowl": [
+      "intro.snbt:150:item"
+    ],
+    "minecraft:wooden_pickaxe": [
+      "intro.snbt:167:icon",
+      "intro.snbt:189:item"
+    ],
+    "minecraft:stick": [
+      "intro.snbt:180:item",
+      "tips_tricks.snbt:113:item"
+    ],
+    "minecraft:cobblestone": [
+      "intro.snbt:197:icon",
+      "intro.snbt:220:item"
+    ],
+    "minecraft:stone_pickaxe": [
+      "intro.snbt:228:icon",
+      "intro.snbt:250:item"
+    ],
+    "minecraft:cooked_porkchop": [
+      "intro.snbt:241:item"
+    ],
+    "minecraft:chest": [
+      "intro.snbt:258:icon",
+      "intro.snbt:279:item"
+    ],
+    "minecraft:item_frame": [
+      "intro.snbt:270:item"
+    ],
+    "minecraft:furnace": [
+      "intro.snbt:287:icon",
+      "intro.snbt:309:item"
+    ],
+    "minecraft:charcoal": [
+      "intro.snbt:300:item",
+      "tips_tricks.snbt:478:item"
+    ],
+    "minecraft:raw_iron": [
+      "intro.snbt:317:icon",
+      "intro.snbt:340:item"
+    ],
+    "minecraft:iron_pickaxe": [
+      "intro.snbt:348:icon",
+      "intro.snbt:370:item"
+    ],
+    "minecraft:bookshelf": [
+      "intro.snbt:408:icon",
+      "intro.snbt:431:item"
+    ],
+    "minecraft:enchanted_book": [
+      "intro.snbt:439:icon",
+      "intro.snbt:469:icon",
+      "intro.snbt:499:icon",
+      "intro.snbt:560:icon",
+      "intro.snbt:590:icon",
+      "tips_tricks.snbt:464:icon",
+      "tips_tricks.snbt:493:icon",
+      "tips_tricks.snbt:522:icon",
+      "tips_tricks.snbt:551:icon"
+    ],
+    "minecraft:glowstone_dust": [
+      "intro.snbt:483:item",
+      "skills_advancement.snbt:175:item"
+    ],
+    "minecraft:iron_chestplate": [
+      "intro.snbt:529:icon",
+      "intro.snbt:552:item"
+    ],
+    "minecraft:netherite_sword": [
+      "l_enders_cataclysm.snbt:6:icon",
+      "l_enders_cataclysm.snbt:15:icon"
+    ],
+    "minecraft:end_crystal": [
+      "mahou_tsukai.snbt:6:icon",
+      "mahou_tsukai.snbt:15:icon"
+    ],
+    "minecraft:soul_campfire": [
+      "occultism.snbt:6:icon",
+      "occultism.snbt:15:icon"
+    ],
+    "minecraft:nether_star": [
+      "projecte.snbt:6:icon",
+      "projecte.snbt:15:icon"
+    ],
+    "minecraft:ghast_tear": [
+      "reliquary_reincarnations.snbt:6:icon",
+      "reliquary_reincarnations.snbt:15:icon"
+    ],
+    "minecraft:oak_sapling": [
+      "roots_classic.snbt:6:icon",
+      "roots_classic.snbt:15:icon"
+    ],
+    "minecraft:writable_book": [
+      "scriptor_magicae.snbt:6:icon",
+      "scriptor_magicae.snbt:15:icon"
+    ],
+    "minecraft:blaze_powder": [
+      "theurgy.snbt:6:icon",
+      "theurgy.snbt:15:icon"
+    ],
+    "minecraft:apple": [
+      "tips_tricks.snbt:253:item"
+    ],
+    "minecraft:bone": [
+      "tips_tricks.snbt:309:item"
+    ],
+    "minecraft:clock": [
+      "tips_tricks.snbt:449:item"
+    ],
+    "minecraft:note_block": [
+      "totemic.snbt:6:icon",
+      "totemic.snbt:15:icon"
+    ]
+  },
+  "ftb_missing_item_payloads": {
+    "brewinandchewin:beer_tankard": [
+      "alcohol_is_magic.snbt:163"
+    ],
+    "cookingforblockheads:oven": [
+      "food_fishing.snbt:639",
+      "food_fishing.snbt:665"
+    ]
+  },
+  "missing_payload_ids_not_registered": [
+    "brewinandchewin:beer_tankard",
+    "cookingforblockheads:oven"
+  ]
+}

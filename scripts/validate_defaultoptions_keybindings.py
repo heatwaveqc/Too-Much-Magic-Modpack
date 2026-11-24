@@ -7,11 +7,20 @@ import json
 import re
 from pathlib import Path
 
+from generate_defaultoptions_keybindings import JEI_NATIVE_DEFAULTS, build
+
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / "docs/qa/keybindings/modded-unbound-2aacf348.txt"
 CONFIG = ROOT / "config/defaultoptions/keybindings.txt"
 VANILLA = ROOT / "docs/qa/keybindings/vanilla-1.21.1-ids.json"
 SNAPSHOT_SHA256 = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
+RENAMED_MOD_KEYS = {
+    "key.tmm_progression.armor": "key.tyr_progression.armor",
+    "key.tmm_progression.blink": "key.tyr_progression.blink",
+    "key.tmm_progression.glide": "key.tyr_progression.glide",
+    "key.tmm_progression.ordeal": "key.tyr_progression.ordeal",
+    "key.tmm_progression.treasure": "key.tyr_progression.treasure",
+}
 LINE = re.compile(r"key_([^:\n]+):key\.keyboard\.unknown:$")
 
 
@@ -39,14 +48,33 @@ def validate() -> None:
     if len(original) != 315:
         raise ValueError(f"Expected 315 unique observed modded controls, found {len(original)}")
     current = parse_unbound(CONFIG)
-    if missing := original - current:
+    if not set(RENAMED_MOD_KEYS) <= original:
+        raise ValueError("Observed key snapshot does not contain the expected old Progression key IDs")
+    expected = ((original - set(RENAMED_MOD_KEYS)) | set(RENAMED_MOD_KEYS.values())) - JEI_NATIVE_DEFAULTS
+    if missing := expected - current:
         raise ValueError(f"Packaged Default Options dropped observed mod keys: {sorted(missing)}")
+    if retained := current.intersection(JEI_NATIVE_DEFAULTS):
+        raise ValueError(f"JEI native-default exceptions were re-unbound: {sorted(retained)}")
+    if unexpected := current - expected:
+        raise ValueError(f"Unapproved extra Default Options unbindings: {sorted(unexpected)}")
     ref = json.loads(VANILLA.read_text(encoding="utf-8"))
     if ref.get("minecraft") != "1.21.1" or len(ref.get("ids", [])) != 34:
         raise ValueError("Vanilla 1.21.1 reference is missing or wrong")
     if vanilla_overlap := current.intersection(ref["ids"]):
         raise ValueError(f"Default Options must NOT alter vanilla keys: {sorted(vanilla_overlap)}")
-    print(f"PASS: Default Options packages {len(current)} unbound mod-key defaults, no vanilla bindings, including all 315 observed IDs")
+    # CI runs this validator via scripts/validate.py. Regenerate from the exact
+    # observed baseline with synthetic key values to detect a generator change
+    # that silently re-unbinds JEI or changes the shipped Default Options file.
+    observed_mod_keys = (original - set(RENAMED_MOD_KEYS)) | set(RENAMED_MOD_KEYS.values())
+    if missing_jei := JEI_NATIVE_DEFAULTS - observed_mod_keys:
+        raise ValueError(f"Expected JEI exception absent from observed snapshot: {sorted(missing_jei)}")
+    vanilla_ids = set(ref["ids"])
+    vanilla_export = {key: "native" for key in vanilla_ids}
+    observed_export = {key: "observed" for key in observed_mod_keys}
+    regenerated = build({**vanilla_export, **observed_export}, vanilla_export)
+    if regenerated != CONFIG.read_text(encoding="utf-8"):
+        raise ValueError("Default Options file differs from generated observed-key baseline")
+    print(f"PASS: Default Options packages {len(current)} unbound mod-key defaults, excluding {len(JEI_NATIVE_DEFAULTS)} JEI native defaults; no vanilla bindings")
     print("LIMITATION: observed options.txt inventory is not a final all-mods registered-key export")
 
 

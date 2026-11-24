@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "INACTIVE_REVIEW_ONLY",
+  "sources": {
+    "archive_ref": "main",
+    "archive_path": "docs/archive/pr-83-tyz-nine-trees/docs/tyzs/nine-tree-strength-first-pass-v1.json",
+    "archive_blob": "5a47d27dde7c585e363da41734258fbcc7edd26a",
+    "concept_blob": "bee61cfd3b13b0eb536c505fca9e2f7b29c0c3de",
+    "jawr_blob": "cf6eb898b9e105e99814a5e934ddb5c3d9fb6e8c",
+    "jawr_revision": "4b5b88c347b4abc6c8d1e74c996a197cd56cc2e7",
+    "gilded_branch": "design/piglin-gold-progression-exploratory-2026-11-15",
+    "gilded_revision": "2fd6df6de1e21cdd8f07750a63e76261124a0fc4"
+  },
+  "notes": [
+    "First-pass engineering triage only. Available = engine mechanism exists, not tested or balanced. Partial = provider/scope/semantics gap. Gap = missing mechanism. Held = owner/audit decision. All original provisional values retained, not active.",
+    "Old XP formula, wallet and hybrid assumptions superseded by current design. One Lich tree. Gilded draft added separately.",
+    "All candidate JSON is outside runtime path registry. Candidates are not a complete loadable datapack; incomplete scope tags, graph prerequisites, native/provider gates, semantics, and old-runtime duplicate guard require review."
+  ],
+  "trees": [
+    {
+      "tree": "core",
+      "nodes": 27,
+      "coverage": {
+        "available": 16,
+        "partial": 3,
+        "gap": 5,
+        "held": 3
+      },
+      "candidate_nodes": 4
+    },
+    {
+      "tree": "cave_dragon",
+      "nodes": 18,
+      "coverage": {
+        "available": 3,
+        "partial": 12,
+        "gap": 3,
+        "held": 0
+      }
+    },
+    {
+      "tree": "sea_dragon",
+      "nodes": 19,
+      "coverage": {
+        "available": 4,
+        "partial": 14,
+        "gap": 1,
+        "held": 0
+      }
+    },
+    {
+      "tree": "forest_dragon",
+      "nodes": 21,
+      "coverage": {
+        "available": 4,
+        "partial": 14,
+        "gap": 3,
+        "held": 0
+      }
+    },
+    {
+      "tree": "vampire",
+      "nodes": 18,
+      "coverage": {
+        "available": 4,
+        "partial": 7,
+        "gap": 7,
+        "held": 0
+      }
+    },
+    {
+      "tree": "werewolf",
+      "nodes": 19,
+      "coverage": {
+        "available": 4,
+        "partial": 14,
+        "gap": 1,
+        "held": 0
+      }
+    },
+    {
+      "tree": "lich",
+      "nodes": 13,
+      "coverage": {
+        "available": 1,
+        "partial": 8,
+        "gap": 4,
+        "held": 0
+      }
+    },
+    {
+      "tree": "hunter",
+      "nodes": 23,
+      "coverage": {
+        "available": 7,
+        "partial": 4,
+        "gap": 9,
+        "held": 3
+      }
+    },
+    {
+      "tree": "monk",
+      "nodes": 18,
+      "coverage": {
+        "available": 14,
+        "partial": 4,
+        "gap": 0,
+        "held": 0
+      },
+      "candidate_nodes": 17
+    },
+    {
+      "tree": "gilded",
+      "nodes": 10,
+      "coverage": "food rite acquisition candidate; isolated native behaviors and paid loot drafts still require selective integration"
+    }
+  ]
+}

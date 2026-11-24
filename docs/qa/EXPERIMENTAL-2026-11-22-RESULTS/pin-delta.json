@@ -1,0 +1,22 @@
+[
+  {
+    "mod": "ars-elemental",
+    "control": "ars_elemental-1.21.1-0.7.10.4.jar",
+    "experimental": "ars_elemental-1.21.1-0.7.11.3.jar"
+  },
+  {
+    "mod": "evilcraft",
+    "control": "evilcraft-1.21.1-neoforge-1.2.100.jar",
+    "experimental": "evilcraft-1.21.1-neoforge-1.2.102.jar"
+  },
+  {
+    "mod": "goety",
+    "control": "goety-3.2.2.jar",
+    "experimental": "goety-3.2.3.jar"
+  },
+  {
+    "mod": "neovitae",
+    "control": "neovitae-1.21.1-1.1.53.jar",
+    "experimental": "neovitae-1.21.1-1.1.54.jar"
+  }
+]

@@ -1,0 +1,189 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    45,
+    15,
+    33
+  ],
+  "surfaceY": 0,
+  "nonair": 1982,
+  "explicitAir": 10439,
+  "paletteStates": 24,
+  "counts": {
+    "minecraft:grass_block[snowy=false]": 721,
+    "minecraft:air": 10439,
+    "minecraft:dirt_path": 163,
+    "botania:livingrock_bricks": 88,
+    "botania:livingwood_planks": 167,
+    "botania:livingwood_planks_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]": 91,
+    "minecraft:white_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:white_bed[facing=south,occupied=false,part=head]": 2,
+    "botania:livingrock": 43,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 2,
+    "botania:livingwood_planks_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]": 91,
+    "minecraft:crafting_table": 2,
+    "minecraft:furnace[facing=west,lit=false]": 1,
+    "minecraft:barrel[facing=west,open=false]": 3,
+    "botania:livingwood_log[axis=y]": 78,
+    "botania:framed_livingwood": 134,
+    "minecraft:lime_stained_glass": 341,
+    "minecraft:moss_block": 8,
+    "minecraft:azure_bluet": 2,
+    "minecraft:pink_petals[facing=north,flower_amount=2]": 2,
+    "botania:apothecary_default": 1,
+    "minecraft:dirt": 20,
+    "minecraft:water[level=0]": 16,
+    "minecraft:flowering_azalea": 4
+  },
+  "landscapedGrass": 721,
+  "nativeBlocks": 693,
+  "apothecary": [
+    5,
+    1,
+    15
+  ],
+  "zones": [
+    {
+      "name": "Alfheim Gateway",
+      "cx": 23,
+      "cz": 8,
+      "r": 6,
+      "bounds": [
+        17,
+        1,
+        2,
+        29,
+        14,
+        14
+      ],
+      "air": 2366,
+      "pass": true
+    },
+    {
+      "name": "Mana Enchanter",
+      "cx": 37,
+      "cz": 8,
+      "r": 6,
+      "bounds": [
+        31,
+        1,
+        2,
+        43,
+        14,
+        14
+      ],
+      "air": 2366,
+      "pass": true
+    },
+    {
+      "name": "Mana production and Pure Daisy",
+      "cx": 23,
+      "cz": 23,
+      "r": 6,
+      "bounds": [
+        17,
+        1,
+        17,
+        29,
+        14,
+        29
+      ],
+      "air": 2366,
+      "pass": true
+    },
+    {
+      "name": "Terrasteel",
+      "cx": 37,
+      "cz": 22,
+      "r": 4,
+      "bounds": [
+        33,
+        1,
+        18,
+        41,
+        14,
+        26
+      ],
+      "air": 1134,
+      "pass": true
+    },
+    {
+      "name": "Runic Altar / Brewery",
+      "bounds": [
+        33,
+        1,
+        28,
+        43,
+        14,
+        32
+      ],
+      "air": 770,
+      "pass": true
+    },
+    {
+      "name": "Fey altar central reservation",
+      "bounds": [
+        6,
+        1,
+        20,
+        8,
+        4,
+        24
+      ],
+      "air": 60,
+      "pass": true
+    }
+  ],
+  "masks": {
+    "portal": {
+      "center": [
+        23,
+        1,
+        8
+      ],
+      "span": [
+        5,
+        5,
+        1
+      ],
+      "pylonRange": 5
+    },
+    "terra": {
+      "center": [
+        37,
+        1,
+        22
+      ],
+      "span": [
+        3,
+        2,
+        3
+      ]
+    },
+    "enchanter": {
+      "center": [
+        37,
+        1,
+        8
+      ],
+      "span": [
+        11,
+        3,
+        7
+      ]
+    }
+  },
+  "gaia": {
+    "mode": "external player-built clearing",
+    "radius": 12,
+    "clearance": "source checks two below through five above beacon; reserve 27x27 level clearing beyond house, no beacon or pylons supplied"
+  },
+  "limitations": [
+    "Player-led expansion: no prebuilt Gaia arena, no prescribed mana layout, no completed portal or enchanter.",
+    "Native Livingwood/Livingrock decorative early-resource grant, material/EMC parity pending.",
+    "Alfheim and Enchanter source patterns and envelopes checked; actual floor/subfloor, orientation, claim boundaries, mana lines, spark and pylons need live testing.",
+    "Feywild altar recipe and late sovereign altars not supplied; central greenhouse reserved, larger summoning or boss site player-built.",
+    "Extra Botany module-specific geometry and exact runtime config need live review.",
+    "Open-sky verified only through template height; no in-game placement or NBT gzip export yet."
+  ]
+}

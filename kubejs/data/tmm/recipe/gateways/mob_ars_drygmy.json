@@ -1,0 +1,27 @@
+{
+  "type": "gateways:gate_recipe",
+  "group": "tmm_progression_mobs",
+  "pattern": [
+    " C ",
+    "SMS",
+    " E "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:hay_block"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "ars_nouveau:source_gem"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "gateways:gate_pearl"
+  },
+  "gateway": "tmm:mob_ars_drygmy"
+}

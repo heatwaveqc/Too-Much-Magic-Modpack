@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "neovitae:sulfur"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 9,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "neovitae:sulfur"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 11
+}
