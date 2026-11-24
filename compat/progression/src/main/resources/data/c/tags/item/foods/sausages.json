@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "pamhc2foodextended:sausageitem",
+      "required": false
+    },
+    {
+      "id": "brewery:sausage",
+      "required": false
+    },
+    {
+      "id": "mynethersdelight:roasted_sausage",
+      "required": false
+    }
+  ]
+}

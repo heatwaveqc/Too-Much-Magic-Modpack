@@ -30,6 +30,7 @@ public final class ProgressionEvents {
     public static void register() {
         TreeChopXpBridge.register();
         GildedMechanics.register();
+        io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
@@ -62,6 +63,8 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
+        NeoForge.EVENT_BUS.addListener(MutationPowers::preTick);
+        NeoForge.EVENT_BUS.addListener(MutationPowers::login);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::logout);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::respawn);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::dimension);
@@ -223,6 +226,7 @@ public final class ProgressionEvents {
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
                 io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,false);
+                io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,false);
             }
         }
     }
@@ -231,19 +235,25 @@ public final class ProgressionEvents {
             Enrollment.clear(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
+            PassivePowers.forget(player);
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
             ProgressionMenuNetwork.forget(player);
             SkillActivation.stopAll(player);
             EffectRuntime.reconcile(player);
+            MutationPowers.reconcile(player);
+            VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
@@ -251,13 +261,18 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
+            PassivePowers.forget(player);
+            VirtualElytra.reconcile(player,true);
             VisionRuntime.reconcile(player,true);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.sync(player,true);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.sync(player,true);
         }
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             EffectRuntime.logout(player);
+            MutationPowers.forget(player);
+            PassivePowers.forget(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
             BedrockRest.forget(player);
@@ -267,6 +282,8 @@ public final class ProgressionEvents {
             MiningUtilities.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
+            io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.forget(player);
             RecentBlockCredits.forget(player.getUUID());
             TreeChopXpBridge.forget(player);
             AbilityNetwork.forget(player);
