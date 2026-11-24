@@ -12,6 +12,13 @@ SNAPSHOT = ROOT / "docs/qa/keybindings/modded-unbound-2aacf348.txt"
 CONFIG = ROOT / "config/defaultoptions/keybindings.txt"
 VANILLA = ROOT / "docs/qa/keybindings/vanilla-1.21.1-ids.json"
 SNAPSHOT_SHA256 = "2af3b812811c7461c7e5fd772068d1f8f4f53261986da9420a584926e94ede11"
+RENAMED_MOD_KEYS = {
+    "key.tmm_progression.armor": "key.tyr_progression.armor",
+    "key.tmm_progression.blink": "key.tyr_progression.blink",
+    "key.tmm_progression.glide": "key.tyr_progression.glide",
+    "key.tmm_progression.ordeal": "key.tyr_progression.ordeal",
+    "key.tmm_progression.treasure": "key.tyr_progression.treasure",
+}
 LINE = re.compile(r"key_([^:\n]+):key\.keyboard\.unknown:$")
 
 
@@ -39,7 +46,10 @@ def validate() -> None:
     if len(original) != 315:
         raise ValueError(f"Expected 315 unique observed modded controls, found {len(original)}")
     current = parse_unbound(CONFIG)
-    if missing := original - current:
+    if not set(RENAMED_MOD_KEYS) <= original:
+        raise ValueError("Observed key snapshot does not contain the expected old Progression key IDs")
+    expected = (original - set(RENAMED_MOD_KEYS)) | set(RENAMED_MOD_KEYS.values())
+    if missing := expected - current:
         raise ValueError(f"Packaged Default Options dropped observed mod keys: {sorted(missing)}")
     ref = json.loads(VANILLA.read_text(encoding="utf-8"))
     if ref.get("minecraft") != "1.21.1" or len(ref.get("ids", [])) != 34:

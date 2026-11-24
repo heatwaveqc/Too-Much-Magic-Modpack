@@ -1,3 +1,15 @@
+# Current port — November 24, 2026
+
+Reconciled old #427 source to dev/progression 2f9ab9d2529e87b2633661425bf5a3fcc91ad15b, retaining first-class baseline Paths, current Elytra lifecycle, enhanced night/lava vision, and all unrelated engine registrations. The existing vision packet changes to version 2 (matching client/server build required); same one-way lease, 20-tick renewal for Newbie or nonzero Astral stage, 40-tick expiry, existing 10-tick server reconciliation and dimension/login/respawn handlers. Immediate transition at the existing NewbieMode.set hook. #418 also modifies NewbieMode: preserve both housing and vision hunks at integration. #629/#515 may edit shared registration/event paths; do not replay stale files.
+
+User-supplied exact binaries locally inspected using sha512sum/sha1sum and javap -p -s/-c: More Darkness 2.0.1+1.21.1 SHA512 e08c8e75c249e2c74cc2f223bbd8c89b66270533d1835fc525e5223813009c6ccd406f5b81c0893fa315fdbf60ab2e379ff8fb0f22ffed84f5963776158773d1; Astral 2.0.3.59 SHA1 66f36655eae7cb404c9c16da6f33db31dff6ed9a. Actual darken(III)I, processFrame(Minecraft,F)V, processDarkSight(Minecraft,F)V, getProgress(Player,LogicalSide), getTierReached(), isValid() and five ResearchTier enum names verified (the existing #474 verifier also verifies isValid). Native lightmap caller checks isActive before invoking darken; native config disable and native potion bypass preserved. More Darkness metadata requires YACL >=3.6.2 client, current pinned 3.8.2 satisfies. No third-party bytes copied into git.
+
+Keep inherited approved brightness coefficients; no new balance choice. Astral tier benefits only sky-light rows in dimensions with skylight. Distance veil bypass for Resonance+ requires nighttime and locally exposed skylight; genuinely unlit caves retain native veil. Existing enhanced night vision wins over More Darkness, native potions/Conduit and optical debuffs retain precedence. Newbie vanilla baseline does not edit gamma; brighter-than-vanilla accessibility calibration remains gameplay QA. Optional mixins remain client-only and safe without target; version-pinned static verification does not prove runtime injection application.
+
+Type B/C pending authorized candidate: verify actual tier acquisition and reset, same-team independence, Newbie graduation, relog/respawn/dimension, no-sky caves, natural night across moon/weather, actual night vision, Conduit, blindness/darkness, existing enhanced/lava vision, shader compatibility, disabled native renderer and performance. No actual full boot, game client or gameplay tested.
+
+---
+
 # Personal Astral Night Sight × More Darkness — implementation pilot
 
 **Owner-locked design:** [#264](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/264), Nov 20, 2026.

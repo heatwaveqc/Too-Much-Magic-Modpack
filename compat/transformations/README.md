@@ -24,7 +24,7 @@ Mixins/third-party binary signatures and client loading, real death priority, JA
 probes, FTB death/restore, other-mod hostile targeting goals, mob tag coverage, PvP, rollback,
 multiplayer and saves. Invalid cross-provider form combinations are read-only diagnostics
 except the narrowly scoped Dracolich dual-lich acquisition guard; no automatic cures or Abomination
-ritual. Monk and Hunter are independent `tmm_progression` disciplines, not species flags.
+ritual. Monk and Hunter are independent `tyr_progression` disciplines, not species flags.
 
 ## Development
 

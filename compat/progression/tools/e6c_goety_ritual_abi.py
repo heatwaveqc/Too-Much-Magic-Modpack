@@ -68,7 +68,7 @@ with tempfile.TemporaryDirectory() as d:
                     print(line,flush=True)
 
 assert len(actual)==409 and old_count==336
-catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tmm/progression/mxp/core/GoetyRitualCatalog.java").read_text()
+catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tyr/progression/mxp/core/GoetyRitualCatalog.java").read_text()
 mapped={}
 for row in re.findall(r'add\(out,"([^"]+)","[^"]+",Band\.GOETY_\w+,Kind\.(\w+),"([^"]+)","([^"]+)",(\d+),"([^"]+)",(\d+),(\d+),(\d+),"([^"]*)","([^"]*)","([^"]*)",(\d+)\);',catalog):
     key,kind,typ,output,count,craft,souls,duration,ingredients,research,sacrifice,convert,xp=row

@@ -145,7 +145,7 @@ jobs:
           SMOKE_WITH_MODS: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
-          SMOKE_EXTRA_MOD_JARS: '${{ github.workspace }}/compat/progression/build/libs/tmm_progression-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
+          SMOKE_EXTRA_MOD_JARS: '${{ github.workspace }}/compat/progression/build/libs/tyr_progression-0.1.0-dev.jar:${{ github.workspace }}/compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar'
         run: bash scripts/smoke_server.sh
       - name: Validate retired runtime mods, recipes and tag absence
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
@@ -160,11 +160,11 @@ jobs:
       - name: Fail if standalone module is absent or retired modules leak
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
-          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_progression-0.1.0-dev.jar"
+          test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tyr_progression-0.1.0-dev.jar"
           test "$(find "${{ runner.temp }}/tmm-full-integration-smoke/mods" -maxdepth 1 -name 'tmm_*.jar' | wc -l)" -eq 2
           test ! -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_monk-0.1.0-dev.jar"
           test -f "${{ runner.temp }}/tmm-full-integration-smoke/mods/tmm_transformations-0.1.0-dev.jar"
-          echo "Standalone tmm_progression and JAWR-only tmm_transformations both server-tested; old tmm_monk absent"
+          echo "Standalone tyr_progression and JAWR-only tmm_transformations both server-tested; old tmm_monk absent"
       - name: Freeze immutable, server-tested integration snapshot without moving rolling branch
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         run: |
@@ -198,7 +198,7 @@ jobs:
           python3 scripts/build_full_integration_prism.py \
             "${{ runner.temp }}/packwiz-installer-bootstrap.jar" \
             "${{ runner.temp }}" "$(git rev-parse HEAD)" \
-            "compat/progression/build/libs/tmm_progression-0.1.0-dev.jar" \
+            "compat/progression/build/libs/tyr_progression-0.1.0-dev.jar" \
             "compat/transformations/build/libs/tmm_transformations-0.1.0-dev.jar"
       - name: Upload the one comprehensive unstable test build
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}

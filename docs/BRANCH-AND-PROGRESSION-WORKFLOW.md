@@ -4,7 +4,7 @@
 
 ## Architecture boundary: one executable Progression engine
 
-**`compat/progression` / `tmm_progression` owns ALL executable Progression behavior.** The engine owns Java, public and internal APIs, event subscribers, mixins, networking, effect handlers, commands, registration, persistence, integrations and reusable validation/tests. Prefer generic, data-driven primitives and registries rather than hard-coded Monk/Hunter/Gilded switches. A path may refer to a registered effect or event in config; the engine evaluates it authoritatively.
+**`compat/progression` / `tyr_progression` owns ALL executable Progression behavior.** The engine owns Java, public and internal APIs, event subscribers, mixins, networking, effect handlers, commands, registration, persistence, integrations and reusable validation/tests. Prefer generic, data-driven primitives and registries rather than hard-coded Monk/Hunter/Gilded switches. A path may refer to a registered effect or event in config; the engine evaluates it authoritatively.
 
 **Monk, Hunter, Gilded, and future paths are declarative content packages, not independently coded mods or Java implementations.** A path workstream owns only its own JSON/datapack definitions, Tyz skill-tree JSON/config, relevant tags/data assets, localization, documentation and test fixtures/data. These can live under the current `compat/progression/src/main/resources/data/.../paths/` and `compat/magic/tyzs-test-overlay/config/tyzs_skills/...` structures, or a future schema-defined path content directory. It does **not** own Java, mixins, KubeJS/JavaScript/Python runtime logic, commands, or separate class-specific engine code. Do not create `compat/monk`, `compat/hunter`, or `compat/gilded` executable implementations.
 

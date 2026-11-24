@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:lich",
+  "id": "tyr_progression:lich",
   "title": "Lich",
   "legacy_eligibility": "JAWR Forbidden Magic / Goety verified lich state (Archlich and Dracolich share one Lich tree)",
   "notes": [
@@ -11,7 +11,7 @@
     "Negative nature modifier is a tradeoff on the lich's own active personally cast nature magic; should apply meaningfully even with Core Skills Potency. It is not an enemy debuff or whole-mod nerf.",
     "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
   ],
-  "proposed_paid_currency": "tmm_progression:mxp",
+  "proposed_paid_currency": "tyr_progression:mxp",
   "native_level_gates_pending": true,
   "nodes": [
     {

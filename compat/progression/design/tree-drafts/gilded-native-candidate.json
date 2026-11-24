@@ -12,7 +12,7 @@
     "schema": 1,
     "name": "Gilded XP",
     "point_name": "Gilded Points",
-    "requires_path": "tmm_progression:gilded",
+    "requires_path": "tyr_progression:gilded",
     "rank_xp": [
       0,
       20,
@@ -39,13 +39,13 @@
     "sources": [
       {
         "event": "external",
-        "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+        "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
         "xp": 10,
         "cooldown_ticks": 0
       },
       {
         "event": "external",
-        "target": "tmm_progression:gilded_lava_fish_caught",
+        "target": "tyr_progression:gilded_lava_fish_caught",
         "xp": 5,
         "cooldown_ticks": 0,
         "explanation": "One confirmed server catch per lava bobber; real modded ItemFishedEvent with nonempty loot; never per stack/hat/double-hook."
@@ -54,11 +54,11 @@
   },
   "path": {
     "schema": 1,
-    "xp_channel": "tmm_progression:gilded",
+    "xp_channel": "tyr_progression:gilded",
     "exclusive_group": "",
     "enrollment": "food",
     "food_rite": {
-      "target": "#tmm_progression:gilded_rite_foods",
+      "target": "#tyr_progression:gilded_rite_foods",
       "when": {
         "type": "and",
         "conditions": [
@@ -91,11 +91,11 @@
     },
     "milestones": [
       {
-        "id": "tmm_progression:gilded_gold_prospecting",
+        "id": "tyr_progression:gilded_gold_prospecting",
         "criteria": [
           {
             "event": "external",
-            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
             "count": 32
           }
         ],
@@ -103,16 +103,16 @@
         "points": 0
       },
       {
-        "id": "tmm_progression:gilded_gold_mastery",
+        "id": "tyr_progression:gilded_gold_mastery",
         "criteria": [
           {
             "event": "external",
-            "target": "tmm_progression:gilded_gold_ore_broken_without_silk",
+            "target": "tyr_progression:gilded_gold_ore_broken_without_silk",
             "count": 256
           }
         ],
         "after": [
-          "tmm_progression:gilded_gold_prospecting"
+          "tyr_progression:gilded_gold_prospecting"
         ],
         "xp": 250,
         "points": 0
@@ -120,7 +120,7 @@
     ],
     "skills": [
       {
-        "id": "tmm_progression:gilded_nether_diet",
+        "id": "tyr_progression:gilded_nether_diet",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -131,14 +131,14 @@
         "effects": [
           {
             "type": "diet_permission",
-            "target": "#tmm_progression:gilded_alcohol",
+            "target": "#tyr_progression:gilded_alcohol",
             "params": {
               "category": "alcohol"
             }
           },
           {
             "type": "food_restriction",
-            "target": "#tmm_progression:gilded_nether_foods",
+            "target": "#tyr_progression:gilded_nether_foods",
             "params": {
               "gold_recipes": true,
               "lava_caught": true,
@@ -151,21 +151,21 @@
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:dragon"
+                    "id": "tyr_progression:dragon"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:jawr_lich"
+                    "id": "tyr_progression:jawr_lich"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:goety_lich"
+                    "id": "tyr_progression:goety_lich"
                   }
                 }
               ]
@@ -173,7 +173,7 @@
           },
           {
             "type": "food_efficiency",
-            "target": "#tmm_progression:gilded_gold_foods",
+            "target": "#tyr_progression:gilded_gold_foods",
             "per_rank": 1,
             "params": {
               "gold_recipes": true
@@ -185,21 +185,21 @@
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:dragon"
+                    "id": "tyr_progression:dragon"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:jawr_lich"
+                    "id": "tyr_progression:jawr_lich"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:goety_lich"
+                    "id": "tyr_progression:goety_lich"
                   }
                 }
               ]
@@ -207,7 +207,7 @@
           },
           {
             "type": "food_restriction",
-            "target": "#tmm_progression:gilded_golden_dragon_foods",
+            "target": "#tyr_progression:gilded_golden_dragon_foods",
             "params": {
               "drink_permission": true
             },
@@ -222,14 +222,14 @@
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:jawr_lich"
+                    "id": "tyr_progression:jawr_lich"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:goety_lich"
+                    "id": "tyr_progression:goety_lich"
                   }
                 }
               ]
@@ -237,7 +237,7 @@
           },
           {
             "type": "food_efficiency",
-            "target": "#tmm_progression:gilded_golden_dragon_foods",
+            "target": "#tyr_progression:gilded_golden_dragon_foods",
             "per_rank": 1,
             "when": {
               "type": "and",
@@ -250,14 +250,14 @@
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:jawr_lich"
+                    "id": "tyr_progression:jawr_lich"
                   }
                 },
                 {
                   "type": "not",
                   "condition": {
                     "type": "flag",
-                    "id": "tmm_progression:goety_lich"
+                    "id": "tyr_progression:goety_lich"
                   }
                 }
               ]
@@ -266,7 +266,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_piglin_kin",
+        "id": "tyr_progression:gilded_piglin_kin",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -283,21 +283,21 @@
           },
           {
             "type": "ore_practice",
-            "target": "#tmm_progression:gilded_gold_ores",
+            "target": "#tyr_progression:gilded_gold_ores",
             "params": {
-              "event": "tmm_progression:gilded_gold_ore_broken_without_silk"
+              "event": "tyr_progression:gilded_gold_ore_broken_without_silk"
             }
           },
           {
             "type": "lava_fishing_practice",
             "params": {
-              "event": "tmm_progression:gilded_lava_fish_caught"
+              "event": "tyr_progression:gilded_lava_fish_caught"
             }
           }
         ]
       },
       {
-        "id": "tmm_progression:gilded_gold_diamond_equivalence",
+        "id": "tyr_progression:gilded_gold_diamond_equivalence",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -415,7 +415,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_renewal",
+        "id": "tyr_progression:gilded_renewal",
         "max_rank": 3,
         "required_rank": 1,
         "base_cost": 0,
@@ -428,7 +428,7 @@
         "effects": [
           {
             "type": "gear_durability",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "armor",
@@ -438,7 +438,7 @@
           },
           {
             "type": "gear_durability",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "mainhand",
@@ -449,7 +449,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_fortunes_favor",
+        "id": "tyr_progression:gilded_fortunes_favor",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -460,8 +460,8 @@
         "effects": [
           {
             "type": "virtual_fortune",
-            "target": "#tmm_progression:gilded_fortune_blocks_pending",
-            "weapon": "#tmm_progression:gilded_fortune_tools",
+            "target": "#tyr_progression:gilded_fortune_blocks_pending",
+            "weapon": "#tyr_progression:gilded_fortune_tools",
             "per_rank": 3,
             "params": {
               "max_total": 10
@@ -470,14 +470,14 @@
               "type": "not",
               "condition": {
                 "type": "flag",
-                "id": "tmm_progression:dragon"
+                "id": "tyr_progression:dragon"
               }
             }
           }
         ]
       },
       {
-        "id": "tmm_progression:gilded_last_gilt",
+        "id": "tyr_progression:gilded_last_gilt",
         "max_rank": 3,
         "required_rank": 1,
         "base_cost": 0,
@@ -490,7 +490,7 @@
         "effects": [
           {
             "type": "virtual_unbreaking",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "mainhand"
@@ -498,7 +498,7 @@
           },
           {
             "type": "virtual_unbreaking",
-            "target": "#tmm_progression:gilded_repairable_equipment",
+            "target": "#tyr_progression:gilded_repairable_equipment",
             "per_rank": 1,
             "params": {
               "slot": "armor"
@@ -507,7 +507,7 @@
         ]
       },
       {
-        "id": "tmm_progression:gilded_looting",
+        "id": "tyr_progression:gilded_looting",
         "max_rank": 1,
         "required_rank": 1,
         "base_cost": 0,
@@ -518,8 +518,8 @@
         "effects": [
           {
             "type": "virtual_looting",
-            "target": "#tmm_progression:gilded_looting_targets_pending",
-            "weapon": "#tmm_progression:gilded_gold_weapons",
+            "target": "#tyr_progression:gilded_looting_targets_pending",
+            "weapon": "#tyr_progression:gilded_gold_weapons",
             "per_rank": 3,
             "params": {
               "max_total": 10
@@ -528,14 +528,14 @@
               "type": "not",
               "condition": {
                 "type": "flag",
-                "id": "tmm_progression:dragon"
+                "id": "tyr_progression:dragon"
               }
             }
           }
         ]
       },
       {
-        "id": "tmm_progression:gilded_undying_ember",
+        "id": "tyr_progression:gilded_undying_ember",
         "max_rank": 1,
         "required_rank": 18,
         "base_cost": 0,
@@ -550,7 +550,7 @@
         ]
       },
       {
-        "id": "tmm_progression:tmm_gilded_fortune_mastery",
+        "id": "tyr_progression:tmm_gilded_fortune_mastery",
         "title": "Fortune's Favor",
         "max_rank": 7,
         "required_rank": 1,
@@ -563,13 +563,13 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
-        "level_system": "tmm_progression:gilded",
+        "xp_channel": "tyr_progression:mxp",
+        "level_system": "tyr_progression:gilded",
         "effects": [
           {
             "type": "virtual_fortune",
-            "target": "#tmm_progression:gilded_fortune_blocks_pending",
-            "weapon": "#tmm_progression:gilded_fortune_tools",
+            "target": "#tyr_progression:gilded_fortune_blocks_pending",
+            "weapon": "#tyr_progression:gilded_fortune_tools",
             "per_rank": 1,
             "params": {
               "max_total": 10
@@ -578,14 +578,14 @@
               "type": "not",
               "condition": {
                 "type": "flag",
-                "id": "tmm_progression:dragon"
+                "id": "tyr_progression:dragon"
               }
             }
           }
         ]
       },
       {
-        "id": "tmm_progression:tmm_gilded_looting_mastery",
+        "id": "tyr_progression:tmm_gilded_looting_mastery",
         "title": "Golden Spoils",
         "max_rank": 7,
         "required_rank": 1,
@@ -598,13 +598,13 @@
           1,
           1
         ],
-        "xp_channel": "tmm_progression:mxp",
-        "level_system": "tmm_progression:gilded",
+        "xp_channel": "tyr_progression:mxp",
+        "level_system": "tyr_progression:gilded",
         "effects": [
           {
             "type": "virtual_looting",
-            "target": "#tmm_progression:gilded_looting_targets_pending",
-            "weapon": "#tmm_progression:gilded_gold_weapons",
+            "target": "#tyr_progression:gilded_looting_targets_pending",
+            "weapon": "#tyr_progression:gilded_gold_weapons",
             "per_rank": 1,
             "params": {
               "max_total": 10
@@ -613,7 +613,7 @@
               "type": "not",
               "condition": {
                 "type": "flag",
-                "id": "tmm_progression:dragon"
+                "id": "tyr_progression:dragon"
               }
             }
           }
@@ -702,8 +702,8 @@
           "id": "mynethersdelight:strider_with_grilled_fungus",
           "required": false
         },
-        "#tmm_progression:gilded_gold_foods",
-        "#tmm_progression:gilded_lava_catch_foods"
+        "#tyr_progression:gilded_gold_foods",
+        "#tyr_progression:gilded_lava_catch_foods"
       ]
     },
     "item/gilded_repairable_equipment": {
