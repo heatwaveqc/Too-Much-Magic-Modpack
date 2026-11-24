@@ -38,6 +38,15 @@ Isolated NeoForge 1.21.1 / Java 21 source module, selectively reconciled from dr
   model/texture with 50-block range, 6 HP per tick attempted after spin-up.
   Normal vanilla hurt resistance applies. Player-built/unknown golems remain
   melee defenders. Llamas retain their vanilla spit. Original PneumaticCraft positional firing loop and wind-down audio are bundled; spin-up uses a credited 1.19-second CC0 excerpt by SamsterBirdies (the donor HUD clip's redistribution license remains unverified).
+- Villager-summoned iron golems also have a cosmetic **left-shoulder rocket pod**
+  (current source candidate #648). The projectile subclasses vanilla Ghast
+  `LargeFireball` with standard motion/collision, but renders as a black sprite
+  with smoke and detonates at AE2 Tiny TNT scale: 6 HP nearby and the native
+  weak-block damage pattern (multiple fragile blocks possible). Only a target
+  10+ blocks from the golem and every nearby villager, and outside the actual
+  world-generated village structure bounding footprint, permits launch. The
+  native target, blacklist and pardon rules still apply. Rocket fires at most
+  once per six seconds; minigun and melee remain. **No client/server QA yet.**
 - **Automatic pardon:** a fresh application or renewal of Minecraft's
   `Hero of the Village` status effect clears that player's saved blacklist
   entry permanently; an existing Hero buff is not a blanket immunity to

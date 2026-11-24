@@ -20,7 +20,10 @@ public final class GolemClientHooks {
     }
     @SubscribeEvent public static void layers(EntityRenderersEvent.AddLayers event) {
         IronGolemRenderer renderer = event.getRenderer(EntityType.IRON_GOLEM);
-        if (renderer != null) renderer.addLayer(new GolemMinigunLayer(renderer, event.getEntityModels()));
+        if (renderer != null) {
+            renderer.addLayer(new GolemMinigunLayer(renderer, event.getEntityModels()));
+            renderer.addLayer(new GolemRocketPodLayer(renderer));
+        }
     }
 
     @EventBusSubscriber(modid = TradersVengence.MOD_ID, value = Dist.CLIENT)

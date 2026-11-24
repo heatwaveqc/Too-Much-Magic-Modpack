@@ -48,3 +48,17 @@ Two unchanged original Ogg Vorbis files from Team Pneumatic / MineMaarten / desh
 
 ## CC0 minigun spin-up replacement (2026-11-18)
 SamsterBirdies, "minigun.ogg" (2021-02-25), https://freesound.org/people/SamsterBirdies/sounds/560508/ , CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/). The creator credits CC0 recordings by scorepion (https://freesound.org/people/scorepion/sounds/424917/) and pgi (https://freesound.org/people/pgi/sounds/98331/). Owner supplied the MP3 of the credited Pixabay redistribution https://pixabay.com/sound-effects/film-special-effects-minigun-36769/ (public original CC0 source governs the underlying recording). Input SHA-256 fe1d17dd7ba7279b2274143095eccaaf9a3d5e51dff8882fd489caffdee015ac. Local derivative: extract 0.055–1.245 seconds before sustained gunfire; stereo averaged to mono, 25 ms fades at boundaries, encoded 24 kHz Ogg Vorbis, no stretching/pitch adjustment. Result 1.19 seconds, SHA-256 30f6ae6ca5fc8fb608f0382fcb17a525b9dc66950fb568ae54c3ace1118b5b19; Git blob aebb1dd5ffc561193f57e4ccfa0b07933659b3ed. The CC0 clip replaces the temporary vanilla piston cue; original PneumaticCraft HUD recording is still excluded. The 2-second gameplay spin-up, firing and wind-down audio are unchanged.
+
+## Tiny TNT-scale golem rocket impact (2026-11-24)
+Adapted the small weak-block damage calculation and roughly 3-block-wide, 6-HP
+entity impact envelope of Applied Energistics 2 `TinyTNTPrimedEntity` for
+Minecraft 1.21.1: https://github.com/AppliedEnergistics/Applied-Energistics-2/blob/1.21.1/src/main/java/appeng/entity/TinyTNTPrimedEntity.java
+Copyright 2013–2014 AlgorithmX2 and Applied Energistics 2 contributors; source
+under GNU Lesser General Public License version 3 or later (LGPL-3.0-or-later).
+The local `GolemRocket.java` is a modified adaptation: vanilla `LargeFireball`
+physics, no AE2 item/registries dependency, mob-griefing gating, separate source
+ownership, vanilla sound/particle effects and one-time impact. Multiple nearby
+weak blocks may be broken. The surrounding Trader's Vengence source remains
+GPL-3.0; retain the AE2 source credit and this notice with redistributed code.
+The locally drawn 16×16 grayscale fireball sprite is original TMM pixel art,
+not an extracted Minecraft, AE2, PneumaticCraft or WFLib texture.

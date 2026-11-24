@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "traders_vengence:item/golem_rocket"
+  }
+}
