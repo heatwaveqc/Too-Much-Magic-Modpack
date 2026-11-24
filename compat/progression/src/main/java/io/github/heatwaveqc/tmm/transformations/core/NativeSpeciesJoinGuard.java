@@ -1,10 +1,10 @@
 package io.github.heatwaveqc.tmm.transformations.core;
 
 import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyGateway;
+import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyObservations;
 import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Decision;
 import io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Form;
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
-import io.github.heatwaveqc.tmm.transformations.adapters.ProbeRegistry;
 import java.util.EnumMap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -46,12 +46,16 @@ public final class NativeSpeciesJoinGuard {
                                   Form form, String label) {
         if (player == null || player.getServer() == null
                 || !player.getServer().isSameThread()) return false;
+        // Both gates must operate on the same observed native state. Re-probing
+        // via the legacy registry could disagree about optional or unverified
+        // providers midway through a single acquisition.
+        var observations = NativePhysiologyObservations.observe(player);
         Decision admission = NativePhysiologyGateway.mayAcquire(
-                player, form, PathRegistry.nativeCompatibilityRules());
+                player, form, PathRegistry.nativeCompatibilityRules(), observations);
         if (admission != Decision.ALLOW)
             return deny(player, label, "Progression admission: " + admission);
 
-        StateSnapshot before = ProbeRegistry.observe(player);
+        StateSnapshot before = ProgressionNativeSnapshot.from(observations);
         // Native rank upgrades do not add a new provider.
         if (before.present(provider)) return true;
         if (!before.isComplete())
