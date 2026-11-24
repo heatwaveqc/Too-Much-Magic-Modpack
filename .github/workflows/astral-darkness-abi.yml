@@ -1,0 +1,32 @@
+name: Astral Darkness pinned ABI (#264 Type A)
+on:
+  pull_request:
+    paths:
+      - 'scripts/check_astral_darkness_abi.py'
+      - 'scripts/check_as_mxp_perk_abi.py'
+      - 'mods/astral-sorcery.pw.toml'
+      - 'mods/more-darkness.pw.toml'
+      - 'mods/yacl.pw.toml'
+      - 'compat/progression/src/main/java/**/AstralResearchStage.java'
+      - 'compat/progression/src/main/java/**/MoreDarkness*Mixin.java'
+      - 'compat/progression/src/main/resources/tyr_progression_astral_darkness.mixins.json'
+      - '.github/workflows/astral-darkness-abi.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pinned-binaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/check_astral_darkness_abi.py
