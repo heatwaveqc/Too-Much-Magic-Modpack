@@ -71,6 +71,7 @@ public final class NewbieMode {
     public static boolean graduate(ServerPlayer player) {
         if (!isNewbie(player)) return true;
         set(player, REGULAR);
+        RegularHomePower.onGraduated(player);
         // Core enrollment is performed by reconcileBaselines in the same
         // transaction boundary as the first-class Newbie->Normie transition.
         player.sendSystemMessage(Component.literal(
@@ -112,6 +113,7 @@ public final class NewbieMode {
                     "Welcome! You are in Newbie Mode. Complete the Introduction graduation quest when ready."));
         }
         reconcileBaselines(player);
+        RegularHomePower.reconcileLogin(player);
         syncTag(player);
         VirtualElytra.reconcile(player,true);
     }
