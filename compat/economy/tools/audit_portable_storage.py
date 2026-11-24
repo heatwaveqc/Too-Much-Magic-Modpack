@@ -20,7 +20,8 @@ OLD_ARS = ROOT / "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 
 EXPECTED_RISK = {
     "ars_elemental:curio_bag", "ars_elemental:caster_bag",
-    "occultism:satchel", "extrabotany:mini_handbag",
+    "occultism:satchel", "occultism:ritual_satchel_t1", "occultism:ritual_satchel_t2",
+    "extrabotany:mini_handbag",
     "malum:soulwoven_pouch", "malum:ravenous_pouch",
     "gaze:spirit_channel_pouch",
 }
@@ -37,8 +38,9 @@ EXPECTED_MIXINS = {
     "PortableStorageOccultismSatchelMixin",
     "PortableStorageMalumPouchMixin",
     "PortableStorageBotaniaBackedInventoryMixin",
+    "PortableStorageMiniHandbagMenuMixin",
 }
-SHULKERS = {"minecraft:shulker_box"} | {
+SHULKERS = {"minecraft:shulker_box", "minecraft:bundle"} | {
     f"minecraft:{color}_shulker_box" for color in
     ("white", "orange", "magenta", "light_blue", "yellow", "lime",
      "pink", "gray", "light_gray", "cyan", "purple", "blue",
