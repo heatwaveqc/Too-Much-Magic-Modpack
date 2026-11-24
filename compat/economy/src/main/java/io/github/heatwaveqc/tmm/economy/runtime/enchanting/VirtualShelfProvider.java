@@ -19,8 +19,9 @@ import dev.shadowsoffire.apothic_enchanting.api.EnchantmentStatBlock;
 
 /**
  * Conservative exact-pin resolver for ordinary data-backed blocks and vanilla
- * candles. Unknown state/world/block-entity providers require a faithful
- * adapter, not a fake world or sampled unrelated block position.
+ * candles. Owner-approved stat-only scope: stateful/world/block-entity providers
+ * without a verified context-free representation are intentionally excluded.
+ * Personal filtering belongs to Arcane Discrimination, not virtual shelves.
  */
 public final class VirtualShelfProvider {
     private VirtualShelfProvider() {}
@@ -70,7 +71,7 @@ public final class VirtualShelfProvider {
             // Apothic BlockMixin adds EnchantmentStatBlock to ALL blocks.
             // For any data-backed block, only the three special callbacks can
             // add state/world-dependent effects beyond the live numeric record.
-            // Permit inherited native defaults; refuse custom overrides until reviewed.
+            // Permit inherited native defaults; deliberately exclude custom stateful overrides.
             if (!(value instanceof EnchantingStatRegistry.Stats stats)) return Optional.empty();
             if (!defaultCallback(block, "getBlacklistedEnchantments")
                 || !defaultCallback(block, "allowsTreasure")
