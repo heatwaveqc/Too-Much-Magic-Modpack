@@ -138,6 +138,10 @@ public final class ProgressionEvents {
             // TreeChop and normal drops can report the same physical log.
             if(VerifiedMiningXp.participates(player)) {
                 VerifiedMiningXp.drops(event);
+                // Tool breaks remain visible to other Paths' ordinary
+                // block_break criteria, but never pay Monk barehand MXP.
+                if(!event.getTool().isEmpty()||!player.getMainHandItem().isEmpty())
+                    ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
             } else if(!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
                     || RecentBlockCredits.first(player.getUUID(),
                     event.getLevel().dimension().location().toString(),
