@@ -39,7 +39,7 @@ def main() -> None:
                 data += b"modified"
             z.writestr(path, data)
         if case == "uncleared_hud_audio":
-            z.writestr("assets/traders_vengence/sounds/hud_init.ogg", b"not allowed")
+            z.writestr("assets/traders_vengeance/sounds/hud_init.ogg", b"not allowed")
 
     with tempfile.TemporaryDirectory(prefix="tmm-personal-qa-") as d:
         folder = pathlib.Path(d)
@@ -92,8 +92,8 @@ def main() -> None:
         trader = folder / "trader-dependency-test.jar"
         for version, valid in (("[3.16.3,)", False), ("[1.21.1-3.16.3]", True), ("[1.21.1-3.16.4]", False)):
             with zipfile.ZipFile(trader, "w") as z:
-                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "traders_vengence"\n'
-                           '[[dependencies.traders_vengence]]\nmodId = "irons_spellbooks"\n'
+                z.writestr("META-INF/neoforge.mods.toml", '[[mods]]\nmodId = "traders_vengeance"\n'
+                           '[[dependencies.traders_vengeance]]\nmodId = "irons_spellbooks"\n'
                            'type = "required"\nordering = "AFTER"\nside = "BOTH"\n'
                            f'versionRange = "{version}"\n')
             try:
