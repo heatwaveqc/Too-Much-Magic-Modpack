@@ -1974,6 +1974,77 @@
       ]
     },
     {
+      "id": "tyr_progression:resonant_palm",
+      "title": "Resonant Palm",
+      "description": "Toggle: barehanded matching ore veins, 3 additional ores per rank (16 total at rank 5). Requires normal harvest eligibility.",
+      "lane": "Hands As Tools",
+      "max_rank": 5,
+      "required_rank": 4,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:hand_harvest"
+      ],
+      "activation": {
+        "mode": "toggle"
+      },
+      "effects": [
+        {
+          "type": "vein_mining",
+          "target": "#c:ores",
+          "per_rank": 3,
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "max_blocks": "15",
+            "sneak_only": "false"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:shattering_palm",
+      "title": "Shattering Palm",
+      "description": "Toggle: barehanded one-layer excavation, 3x3 / 5x5 / 7x7 centered on the hit face. Skips unharvestable, protected, block-entity and excessively hard blocks. Resonant Palm takes priority on ores.",
+      "lane": "Hands As Tools",
+      "max_rank": 3,
+      "required_rank": 4,
+      "rank_costs": [
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:hand_harvest"
+      ],
+      "activation": {
+        "mode": "toggle"
+      },
+      "effects": [
+        {
+          "type": "radial_mining",
+          "target": "#tyr_progression:radial_mineable",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "max_radius": "3",
+            "hardness_multiplier": "3",
+            "sneak_only": "false"
+          }
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:worldly_cultivation",
       "title": "Worldly Cultivation",
       "description": "+1%/rank chance of additional ordinary mature-crop drop (20%). QA candidate: source handler present; numbers pending player testing.",
