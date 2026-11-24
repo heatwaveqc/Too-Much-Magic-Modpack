@@ -3,20 +3,20 @@
     "item_minecraft_cod": {
       "amount": {
         "max": 128,
-        "min": 8
+        "min": 4
       },
       "content": "minecraft:cod",
       "type": "item",
-      "unitWorth": 4
+      "unitWorth": 10.5
     },
     "item_minecraft_salmon": {
       "amount": {
         "max": 128,
-        "min": 8
+        "min": 4
       },
       "content": "minecraft:salmon",
       "type": "item",
-      "unitWorth": 4
+      "unitWorth": 10.5
     }
   },
   "replace": true

@@ -2,7 +2,7 @@
   "content": {
     "entity_minecraft_zombie": {
       "amount": {
-        "max": 24,
+        "max": 32,
         "min": 8
       },
       "content": "minecraft:zombie",
@@ -41,20 +41,20 @@
     "item_minecraft_bone": {
       "amount": {
         "max": 64,
-        "min": 8
+        "min": 1
       },
       "content": "minecraft:bone",
       "type": "item",
-      "unitWorth": 9
+      "unitWorth": 23.625
     },
     "item_minecraft_rotten_flesh": {
       "amount": {
         "max": 96,
-        "min": 16
+        "min": 1
       },
       "content": "minecraft:rotten_flesh",
       "type": "item",
-      "unitWorth": 2
+      "unitWorth": 5.25
     }
   },
   "replace": true

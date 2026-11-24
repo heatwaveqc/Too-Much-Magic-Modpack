@@ -29,3 +29,13 @@ Bountiful remains a separate owned workstream (#365): general decrees mix coin/i
 - **C:** Existing-world migration requires backup and explicit team-to-player wallet balance allocation; no silent data-loss claim.
 
 No full Minecraft server boot or Prism package is authorized by this PR alone.
+
+## Owner correction 2026-11-23 — currency and prices
+
+The six merchandise tabs are joined by Coin Exchange. Wallet coins are exchangeable for physical `tmm:coin` in both directions at exactly 1:1 through native Q Shop BUY/SELL, no general resale facility. Coin EMC is 64; no currency exclusion. Historical plain-item quotes from the November 18 export: 23 of 48 offers, 25 awaiting current mapped EMC; existing prices retained for unresolved offers. See `manifest/adventurer-pricing-preview.json` and `scripts/price_adventurer_shop.py --emc <post-map-export.json>`. No claim that historical quotes are final. Existing worlds need the normal Q Shop config refresh procedure. Manual QA: register/learn/conjure coin, withdraw/deposit, Replication matter and printing, buy representative items; no new exploit-detection module or automated economic suite. The original FTB resource-sale rewards are superseded by the tiered sale policy below.
+
+Replication coin anchor: 4 metallic + 4 precious, proportionate to native gold ingot's 9 + 9 and TMM's approved 144-EMC gold ingot / 64-EMC coin. This is a native matter-value recipe (no Java adapter), provisional until loaded pin verifies printing and disintegration. Upstream source: https://github.com/Buuz135/Replication/blob/1.21/src/generated/resources/data/replication/recipe/matter_values/minecraft/items/gold_ingot.json .
+
+## Owner-approved resource sale premiums — 2026-11-23
+
+The first three consuming sales in each Copper, Iron, Emerald and Diamond chain pay approximately 10×, 7.5× and 5× their EMC value, rounded to readable coin amounts. Industrial Exchange (IV) is repeatable at approximately 1.25×; preserve the original 2-minute cooldown setting and personal wallet command. Iron mirrors the copper material counts. Existing twelve IDs, requirements and XP unchanged; four new iron IDs. Use 64 EMC/coin, approved copper 9 and iron 18 EMC/ingot, historical November 18 mapped diamond 8,192 and emerald 16,384 EMC, 9× ingot/gem for blocks; recalculate against the actual post-map export if different. See manifest/resource-sale-pricing.json. Source acceptance uses the existing quest validation, not a new economic test system.
