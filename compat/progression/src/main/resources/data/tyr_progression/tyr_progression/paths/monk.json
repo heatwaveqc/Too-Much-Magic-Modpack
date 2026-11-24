@@ -2600,14 +2600,20 @@
       "target": "*",
       "base_mxp": 100,
       "once_per_target": true
-    },
-    {
-      "system": "tyr_progression:mxp",
-      "source": "tyr_progression:monk_animal_friendship",
-      "event": "animal_petted",
-      "target": "*",
-      "base_mxp": 10,
-      "once_per_target": false
     }
-  ]
+  ],
+  "training_mxp": {
+    "system": "tyr_progression:mxp",
+    "hardness": 35,
+    "sprint": 1,
+    "ordinary_kill_per_hp": 100,
+    "strict_fist_kill_per_hp": 500,
+    "strict_window_ticks": 6000,
+    "first_consumable": 100,
+    "meditative_food_fixed": 5,
+    "meditative_drink_fixed": 2,
+    "meditative_tag": "tyr_progression:meditative",
+    "drink_tag": "tyr_progression:drinks",
+    "discovery_replay": false
+  }
 }
