@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:chorus_fruit",
+  "provenance": "minecraft:chorus_fruit",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/fruit",
+    "#tmm:foods/raw"
+  ]
+}

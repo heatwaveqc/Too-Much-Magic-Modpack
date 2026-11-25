@@ -28,4 +28,14 @@ class HunterXpMathTest {
         assertEquals(0,HunterXpMath.potionXp(2,2,-1,1200,2,true));
         assertEquals(1_000_000L,HunterXpMath.potionXp(1000,16,10,720000,20,true));
     }
+
+    @Test void unifiedHunterCalibration(){
+        assertEquals(4000.0,HunterXpMath.combatMxp(20,200,2,false).doubleValue());
+        assertEquals(8000.0,HunterXpMath.combatMxp(20,200,2,true).doubleValue());
+        assertEquals(850.0,HunterXpMath.combatMxp(4.25,200,2,false).doubleValue());
+        assertEquals(4000000.0,HunterXpMath.combatMxp(10000,200,2,true).doubleValue());
+        assertEquals(300,HunterXpMath.alchemyMxp(100,2,0,3600,2,false).intValueExact());
+        assertEquals(600,HunterXpMath.alchemyMxp(100,2,0,3600,2,true).intValueExact());
+        assertEquals(1218,HunterXpMath.alchemyMxp(100,6,1,1800,2,false).intValueExact());
+    }
 }

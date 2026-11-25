@@ -1,0 +1,19 @@
+{
+  "type": "eidolon_repraised:crucible",
+  "steps": [
+    {
+      "items": [
+        {
+          "item": "minecraft:coal"
+        },
+        {
+          "item": "eidolon_repraised:enchanted_ash"
+        }
+      ]
+    }
+  ],
+  "result": {
+    "id": "neovitae:sulfur",
+    "count": 2
+  }
+}

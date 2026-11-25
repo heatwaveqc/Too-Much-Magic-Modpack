@@ -64,3 +64,25 @@ Full original notice: third_party_licenses/Create.txt.
 
 ## Batch 5 activation (2026-11-18)
 `EnhancedNightVisionMixin.java` adapts the JustDireThings LightTextureMixin pinned above; `MechanicalEffects` uses the previously attributed EverlastingAbilities `MagnetMotion` and existing Create `LavaFogHook` is connected by `ClientVision`. Original full notices remain packaged. No additional upstream assets or Tyz source copied.
+
+## JAWR Blood Cuisine #450 — upstream icon assets (MIT)
+
+Two 16×16 item icons were copied unchanged from Vampire's Delight by GridExpert, exact upstream Git commit `153ef1d31bb7b44843664581f73172407e8d7f58`, branch `1.21`:
+
+- `src/main/resources/assets/vampiresdelight/textures/item/blood_sausage.png` (Git blob `53cffcee8d45b869ce7c9fb712cec951bcfcf6b6`) → `assets/tyr_progression/textures/item/blood_sausage.png`.
+- `src/main/resources/assets/vampiresdelight/textures/item/blood_pie_slice.png` (Git blob `8014a9ff745632669888b4624a9c3b0a4ddccfa3`) → `assets/tyr_progression/textures/item/blood_pie_slice.png`.
+
+Upstream MIT license: Copyright (c) 2023 GridExpert; complete license text shipped as `third_party_licenses/VampiresDelight.txt` inside first-party JAR. This is **asset reuse only**: the feature implements its own Java/recipe mechanics; it does not import TeamLapen Vampirism, Vampire's Delight source code, trees, crops or worldgen.
+
+## TMM transformation compatibility consolidation (2026-11-22)
+
+First-party code and the original TMM Dracolich art were transferred from
+`compat/transformations` in this repository to `compat/progression` (issue #468),
+using the immutable `test/full-integration` source commit
+`2e922405a01ded8893aef08cb06ae0278b9d96ef`.
+The original 2026-11-21 module's notices and historical design/art documents
+remain in its source tree and are preserved within Progression's internalization
+docs. No third-party mod JARs, native textures or upstream source are imported.
+JAWR, Dragon Survival, GeckoLib, Goety, Forbidden Magic, Botania and Mahou
+retain independent licenses and native state authority. Review historical
+first-party art ownership before external distribution.

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:foods/recreational",
+      "required": false
+    },
+    {
+      "id": "#c:foods/alcohol",
+      "required": false
+    }
+  ]
+}

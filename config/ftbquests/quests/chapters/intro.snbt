@@ -55,6 +55,7 @@
 			rewards: [
 				{ id: "544D609000100001", type: "xp", xp: 5 }
 				{ id: "544D709000100001", type: "command", command: "tmmnewbie admin graduate {p}", permission_level: 2, team_reward: false }
+				{ id: "544D7A0000000001", type: "choice", table_id: 6074645612811255810L, team_reward: false }
 			]
 			tasks: [
 				{ id: "544D409000100001", type: "checkmark" }

@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "occultism:taboo_book"
+    },
+    "c": {
+      "item": "occultism:purified_ink"
+    },
+    "f": {
+      "item": "occultism:awakened_feather"
+    },
+    "w": {
+      "tag": "c:dyes/blue"
+    },
+    "a": {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "apotheosis:mysterious_scrap_metal"
+        },
+        {
+          "type": "apotheosis:gem",
+          "purity": "cracked"
+        }
+      ]
+    }
+  },
+  "pattern": [
+    "cwf",
+    "wbw",
+    "aw "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultism:book_of_binding_foliot"
+  }
+}
