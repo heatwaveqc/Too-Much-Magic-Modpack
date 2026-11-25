@@ -38,7 +38,14 @@
     "EvilCraftVengeanceSpiritMixin",
     "EvilCraftRandomSpiritMixin",
     "EvilCraftSpiritFurnaceMixin",
-    "EvilCraftSpiritReanimatorMixin"
+    "EvilCraftSpiritReanimatorMixin",
+    "ReliquaryCaptureMixin",
+    "ReliquaryFragmentEggMixin",
+    "ApothicPersonalFilterMixin",
+    "EidolonPersonalFilterMixin",
+    "PortableEnchantingOpenMixin",
+    "PortableEnchantingLegacyMenuMixin",
+    "PortableEnchantingLegacyBooksMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -46,5 +53,6 @@
   "client": [
     "JadeOpDisplayMixin",
     "TitaniumOpDisplayMixin"
-  ]
+  ],
+  "plugin": "io.github.heatwaveqc.tmm.economy.mixin.EconomyEnchantingMixinPlugin"
 }
