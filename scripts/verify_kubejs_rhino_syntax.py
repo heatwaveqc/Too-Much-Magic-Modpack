@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check KubeJS source syntax using the *exact hash-pinned* Rhino parser, never JS execution.
+"""Check KubeJS syntax with exact hash-pinned Rhino; optional isolated Reactive registration regression.
 
 Run locally using the installed Rhino JAR:
   python3 scripts/verify_kubejs_rhino_syntax.py --jar /path/to/rhino-2101.2.7-build.85.jar
@@ -87,6 +87,16 @@ def run_parser(root: Path, jar: Path, java: str) -> int:
     return result.returncode
 
 
+def run_checks(root: Path, jar: Path, java: str, reactive_regression: bool) -> int:
+    result = run_parser(root, jar, java)
+    if result != 0 or not reactive_regression:
+        return result
+    helper = root / "tests/ReactiveRhinoRegistration.java"
+    script = root / "kubejs/server_scripts/zz_reactive_loot_books.js"
+    command = [java, "-Xmx256m", "-cp", str(jar), str(helper), str(script)]
+    return subprocess.run(command, cwd=root, check=False, timeout=120).returncode
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     origin = parser.add_mutually_exclusive_group(required=True)
@@ -95,6 +105,8 @@ def main() -> int:
                         help="Download exact hash-pinned Rhino JAR to temporary directory")
     parser.add_argument("--root", type=Path, default=ROOT, help="Repository root")
     parser.add_argument("--java", default="java", help="Java 21 command")
+    parser.add_argument("--reactive-regression", action="store_true",
+                        help="Also execute only Reactive registration with stubbed KubeJS globals (no game)")
     args = parser.parse_args()
     try:
         root = args.root.resolve()
@@ -103,11 +115,11 @@ def main() -> int:
         if args.jar is not None:
             jar = args.jar.resolve()
             assert_hash(jar, expected)
-            return run_parser(root, jar, args.java)
+            return run_checks(root, jar, args.java, args.reactive_regression)
         with tempfile.TemporaryDirectory(prefix="tmm-rhino-parser-") as tmp:
             jar = Path(tmp) / pin["filename"]
             download_pinned_jar(pin["download"]["url"], jar, expected)
-            return run_parser(root, jar, args.java)
+            return run_checks(root, jar, args.java, args.reactive_regression)
     except (OSError, ValueError, subprocess.TimeoutExpired) as exc:
         print(f"PINNED RHINO SYNTAX CHECK FAIL: {exc}", file=sys.stderr)
         return 1
