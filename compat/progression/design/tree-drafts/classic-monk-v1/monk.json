@@ -1139,6 +1139,28 @@
       ]
     },
     {
+      "id": "tyr_progression:classic/flying_kick",
+      "title": "Flying Kick",
+      "lane": "Martial Arts",
+      "description": "A charged aerial critical attack at least one block above ground becomes a full-damage area kick; radius increases from 3 to 5 blocks. No additional cooldown.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "flying_kick",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 1,
+          "params": {
+            "base_radius": 2,
+            "min_clearance": 1
+          }
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:classic/reaping_palm",
       "title": "Reaping Palm",
       "lane": "Martial Arts",
