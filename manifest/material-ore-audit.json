@@ -305,5 +305,5 @@
       "pastel:blackslag_copper_ore"
     ]
   },
-  "post_retirement_policy": "Current source audit expects 3 silver providers. Legacy B14 4-provider runtime snapshot only historical."
+  "post_retirement_policy": "Three active silver providers. Historical 4-provider runtime evidence is pre-retirement only."
 }
