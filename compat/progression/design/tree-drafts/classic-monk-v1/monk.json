@@ -1120,6 +1120,25 @@
       ]
     },
     {
+      "id": "tyr_progression:classic/forceful_palm",
+      "title": "Forceful Palm",
+      "lane": "Martial Arts",
+      "description": "Increase native barehand attack knockback by one per rank.",
+      "max_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.attack_knockback",
+          "operation": "add_value",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:classic/reaping_palm",
       "title": "Reaping Palm",
       "lane": "Martial Arts",
