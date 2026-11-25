@@ -1241,6 +1241,22 @@
       ]
     },
     {
+      "id": "tyr_progression:classic/protection",
+      "title": "Protection",
+      "lane": "Body",
+      "description": "Gain two enchantment protection points per rank while unarmored; native protection cap applies.",
+      "max_rank": 8,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "virtual_protection",
+          "unarmored": true,
+          "per_rank": 2
+        }
+      ]
+    },
+    {
       "id": "tyr_progression:classic/vitality",
       "title": "Vitality",
       "lane": "Body",
@@ -1373,6 +1389,22 @@
           "operation": "add_value",
           "per_rank": 0.3333333333333333,
           "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/soul_step",
+      "title": "Soul Step",
+      "lane": "Movement",
+      "description": "Move across soul sand and soul soil with native Soul Speed I–III equivalent speed and no soul sand slowdown.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "soul_step",
+          "unarmored": true,
+          "per_rank": 1
         }
       ]
     },
