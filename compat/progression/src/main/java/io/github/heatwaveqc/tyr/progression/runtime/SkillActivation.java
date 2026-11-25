@@ -53,6 +53,16 @@ public final class SkillActivation {
             return true;
         }finally{REQUESTING.remove();}
     }
+    /** Scoped operator recovery through the same state owner; does not activate or pay a skill. */
+    public static String adminState(ServerPlayer p,String path,String skill){
+        if(PathRegistry.activation(path,skill)==null)throw new IllegalArgumentException("Unknown activation");
+        return ProgressionApi.mode(p,key(path,skill),"0/0");
+    }
+    public static void adminReset(ServerPlayer p,String path,String skill,String expected){
+        if(!adminState(p,path,skill).equals(expected))throw new IllegalStateException("Activation changed");
+        if(!ProgressionApi.setMode(p,key(path,skill),ActivationSpec.State.empty().encode()))
+            throw new IllegalStateException("Activation reset rejected");
+    }
     public static void stopPath(ServerPlayer p,String path){
         var tree=PathRegistry.get(path);if(tree==null)return;
         for(var skill:tree.skills())if(PathRegistry.activation(path,skill.id())!=null)stop(p,path,skill.id());

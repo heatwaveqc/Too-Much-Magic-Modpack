@@ -19,9 +19,9 @@ brandons-core neovitae malum lodestonelib theurgy forbidden-arcanus valhelsia-co
 embers-re-ignited goety primal-magick astral-sorcery pastel irons-spells-n-spellbooks
 irons-lib project-expansion projecte-energy-converters apothic-spawners
 apothic-attributes apothic-enchanting relics artifacts reliquary-reincarnations
-jade titanium replication occultism observerlib cyclops-core curios geckolib patchouli jei
+jade titanium replication occultism observerlib cyclops-core curios geckolib patchouli
 architectury-api resourceful-lib resourceful-config caelus playeranimator
-codechicken-lib-1-8 cloth-config puzzles-lib smartbrainlib bookshelf
+codechicken-lib-1-8 cloth-config puzzles-lib smartbrainlib bookshelf improvable-skills hammer-lib
 """.split()
 HOSTS = {"cdn.modrinth.com", "edge.forgecdn.net", "mediafilez.forgecdn.net"}
 

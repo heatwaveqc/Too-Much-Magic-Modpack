@@ -10,6 +10,8 @@ import re
 import tomllib
 import unittest
 
+from scripts.quest_text import quote_quest_text
+
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "config/ftbquests/quests/chapters/intro.snbt"
 LANG = ROOT / "config/ftbquests/quests/lang/en_us.snbt"
@@ -141,9 +143,9 @@ class GettingStartedA(unittest.TestCase):
             self.assertIn(f"x: {xy[0]:.1f}d",b)
             self.assertIn(f"y: {xy[1]:.1f}d",b)
             a=self.authored_by_title[q["title"]]
-            self.assertIn('quest.'+q["quest_id"]+'.title: '+json.dumps(q["title"],ensure_ascii=False),loc)
+            self.assertIn('quest.'+q["quest_id"]+'.title: '+quote_quest_text(q["title"]),loc)
             self.assertIn('quest.'+q["quest_id"]+'.quest_desc: ['+
-                          json.dumps(a["description"],ensure_ascii=False)+']',loc)
+                          quote_quest_text(a["description"])+']',loc)
         self.assertIn('shape: "hexagon"',self.blocks[self.by_title[FIRST_MAGIC]["quest_id"]])
         self.assertIn('shape: "octagon"',self.blocks[self.by_title["I'm Ready for Regular Mode"]["quest_id"]])
         src=importlib.util.spec_from_file_location("build_quest_ui",ROOT/"scripts/rebuild_quest_ui.py")

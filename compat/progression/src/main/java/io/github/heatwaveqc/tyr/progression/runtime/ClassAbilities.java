@@ -71,7 +71,9 @@ public final class ClassAbilities {
         }
         if ("glide".equals(what) && unlocked(p,"momentum_glide")) {
             String next = ProgressionApi.mode(p,GLIDE_MODE,"off").equals("on") ? "off" : "on";
-            return ProgressionApi.setMode(p,GLIDE_MODE,next);
+            boolean changed = ProgressionApi.setMode(p,GLIDE_MODE,next);
+            if (changed) VirtualElytra.reconcile(p,true);
+            return changed;
         }
         if ("ordeal".equals(what) && unlocked(p,"blindness_ordeal")
                 && !ProgressionApi.mode(p,ORDEAL_MODE,"off").equals("done")) {
@@ -80,6 +82,31 @@ public final class ClassAbilities {
             return ProgressionApi.setMode(p,ORDEAL_MODE,next);
         }
         return false;
+    }
+    public static java.util.Set<String> adminModeKeys(){return java.util.Set.of("armor","treasure","glide","ordeal");}
+    public static String adminDefault(String type){
+        return switch(type){case "armor"->"on";case "treasure"->"fortune";case "glide","ordeal"->"off";
+            default->throw new IllegalArgumentException("Unknown class mode");};
+    }
+    public static java.util.Set<String> adminValues(String type){
+        return switch(type){case "armor","glide"->java.util.Set.of("off","on");case "treasure"->java.util.Set.of("fortune","silk");
+            case "ordeal"->java.util.Set.of("off","active","done");default->throw new IllegalArgumentException("Unknown class mode");};
+    }
+    public static boolean adminUnlocked(ServerPlayer p,String type){
+        return unlocked(p,switch(type){case "armor"->"armor_lock";case "treasure"->"treasure_hand";
+            case "glide"->"momentum_glide";case "ordeal"->"blindness_ordeal";default->throw new IllegalArgumentException("Unknown class mode");});
+    }
+    /** Operator can repair an invalid stored switch, not create a completed ordeal or grant the skill. */
+    public static void adminSetMode(ServerPlayer p,String type,String expected,String desired){
+        if(p.getServer()==null||!p.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        if(!mode(p,type).equals(expected))throw new IllegalStateException("Class mode changed");
+        if(!adminValues(type).contains(desired)||"done".equals(desired))throw new IllegalArgumentException("Unsupported mode");
+        if("ordeal".equals(type)&&"done".equals(expected))throw new IllegalArgumentException("Completed ordeal is durable");
+        if(!desired.equals(adminDefault(type))&&!adminUnlocked(p,type))throw new IllegalArgumentException("Ability not unlocked");
+        String key=switch(type){case "armor"->ARMOR_MODE;case "treasure"->TREASURE_MODE;case "glide"->GLIDE_MODE;case "ordeal"->ORDEAL_MODE;
+            default->throw new IllegalArgumentException("Unknown class mode");};
+        if(!ProgressionApi.setMode(p,key,desired))throw new IllegalStateException("Mode write rejected");
+        if("ordeal".equals(type)&&"active".equals(expected)&&"off".equals(desired))p.removeEffect(MobEffects.BLINDNESS);
     }
     public static String mode(ServerPlayer p,String type) {
         return switch(type) {

@@ -779,16 +779,17 @@
       "packwiz_slug": "eidolon-repraised"
     },
     {
-      "id": "embeddium",
-      "name": "Embeddium",
+      "id": "sodium",
+      "name": "Sodium",
       "category": "performance",
       "desired": true,
-      "version": "embeddium-1.0.15+mc1.21.1",
+      "version": "sodium-neoforge-0.8.13+mc1.21.1",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/sk9rgfiA",
+      "source": "https://modrinth.com/mod/AANobbMI",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "embeddium"
+      "packwiz_slug": "sodium",
+      "note": "Owner-approved #507 replacement. Exact publisher JAR verified in targeted audit run 45543055707; required MC 1.21.1 and NeoForge [21.1.82,) plus nested modules requiring up to 21.1.219 match selected 21.1.265. Embeddium explicitly incompatible. Full current client roster reverse-dependency audit remains blocking before merge; no game or renderer acceptance."
     },
     {
       "id": "embers-re-ignited",
@@ -1271,27 +1272,27 @@
       "id": "jei",
       "name": "Just Enough Items",
       "category": "qol",
-      "desired": true,
+      "desired": false,
       "version": "jei-1.21.1-neoforge-19.64.0.455",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/u6dRKJwZ",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": false,
       "packwiz_slug": "jei",
-      "note": "Pinned stable upstream release instead of the B2 preexisting beta, to honor no-beta gameplay policy."
+      "note": "Pinned stable upstream release instead of the B2 preexisting beta, to honor no-beta gameplay policy. Owner-approved #593 EMI-only trial: retired from active roster (not deleted from historical catalog); retain prior tested rollback. JER ore/loot information replacement deferred until C17."
     },
     {
       "id": "just-enough-resources-jer",
       "name": "Just Enough Resources (JER)",
       "category": "qol",
-      "desired": true,
+      "desired": false,
       "version": "1.6.0.57",
       "release_status": "verified_release",
       "source": "https://modrinth.com/mod/just-enough-resources-jer/version/A2G7NFcD",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": true,
       "packwiz_slug": "just-enough-resources-jer",
-      "note": "Verified Modrinth SHA-512 and indexed client-only; existing JEI dependency present. Ore graph correctness and client runtime NOT TESTED."
+      "note": "Verified Modrinth SHA-512 and indexed client-only; existing JEI dependency present. Ore graph correctness and client runtime NOT TESTED. Owner-approved #593 EMI-only trial: retired from active roster (not deleted from historical catalog); retain prior tested rollback. JER ore/loot information replacement deferred until C17."
     },
     {
       "id": "just-zoom",
@@ -3021,16 +3022,16 @@
       "id": "just-enough-professions",
       "name": "Just Enough Professions (JEP)",
       "category": "qol",
-      "desired": true,
+      "desired": false,
       "version": "4.0.5",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/just-enough-professions-jep/files/7966681",
-      "enabled_in_pack": true,
+      "enabled_in_pack": false,
       "dependencies_verified": true,
       "curseforge_project_id": 417645,
       "candidate_file_id": 7966681,
       "packwiz_slug": "just-enough-professions",
-      "note": "OWNER APPROVED 2026-11-20 as CLIENT UI companion to existing JEI: display professions and their job-site blocks using JEI Uses. NeoForge 1.21.1 JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar CF 417645/7966681. Verify installed JEI 19.64 compatibility, host-side classification client-only and proper village profession registry; native JEP isn't a trade-table viewer. Exact hash, bundle metadata and client QA pending. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
+      "note": "OWNER APPROVED 2026-11-20 as CLIENT UI companion to existing JEI: display professions and their job-site blocks using JEI Uses. NeoForge 1.21.1 JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar CF 417645/7966681. Verify installed JEI 19.64 compatibility, host-side classification client-only and proper village profession registry; native JEP isn't a trade-table viewer. Exact hash, bundle metadata and client QA pending. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS. Owner-approved #593 EMI-only trial: retired from active roster (not deleted from historical catalog); retain prior tested rollback. JER ore/loot information replacement deferred until C17."
     },
     {
       "id": "ldlib2",
@@ -3344,7 +3345,7 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "multiplayer-spawners",
-      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Loader/server/Apothic/player test remains pending."
+      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Smoke 45546469223 failed before mod discovery on the publisher filename. Install the same verified 2.0.2 bytes under multiplayerspawners-2.0.2.jar; no version change. Loader/server/Apothic/player test remains pending."
     },
     {
       "id": "lootr-liaison",
@@ -3354,10 +3355,10 @@
       "version": "1.3.0",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/lootr-liaison/files/9028796",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "packwiz_slug": "lootr-liaison",
-      "note": "Owner-selected next-build #542; source candidate #543 staged but provider exact binary hash not verified; not installed until direct publisher JAR digest, native deps and packwiz source are confirmed. Must attempt next integration, not owner-deferred."
+      "note": "Owner-required #542; exact publisher bytes, nested/native metadata and required provider ranges verified in targeted audit run 45543055707 (head 00d1bedd585c5262f47ae616b1dcb2178c013498). Minecraft [1.21.1], NeoForge [21,), Lootr [0.10,) (selected 1.21.1-1.11.38.127); optional Artifacts [1.21,) (pinned 13.2.5). Direct verified publisher CDN pin; combined server/client and individual loot B/C pending."
     },
     {
       "id": "twilight-lootr",
@@ -3367,10 +3368,10 @@
       "version": "0.0.0.1",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/twilight-lootr/files/8327180",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "packwiz_slug": "twilight-lootr",
-      "note": "Owner-selected next-build #542; draft source #543 has secondary SHA1 only. Verify exact publisher binary digest and Twilight Forest/Lootr dependency ranges before enabling; unverified source is technical pending, not owner-deferred."
+      "note": "Owner-required #542; exact publisher bytes, nested/native metadata and required provider ranges verified in targeted audit run 45543055707 (head 00d1bedd585c5262f47ae616b1dcb2178c013498). Minecraft 1.21.1, NeoForge [21,), Lootr [1.21.1-1.11.37.121,) (selected 1.21.1-1.11.38.127), Twilight Forest [4.5.2439,) (selected 4.8.3345). Direct verified publisher CDN pin; combined server/client and individual loot B/C pending."
     },
     {
       "id": "swing-through-grass",
@@ -3385,6 +3386,45 @@
       "packwiz_slug": "swing-through-grass",
       "candidate_file_id": 9063127,
       "note": "2026-11-23 #384/#385 graveyard recovery: owner-approved NeoForge 1.21.1 v1.1.0 selected for next QA. Exact CurseForge project 1477279/file 9063127 filename confirmed on publisher page; SHA1 15f48ed3ab02b9e8763284279487a9d95b206337 is corroborated by an independent indexed modpack lock containing the same CurseForge file ID and filename, NOT an independently downloaded publisher JAR. Existing Architectury 13.0.11 is indexed; verify native dependency bounds and real download/loader behavior on authorized QA. Existing blaze rod and mushroom stew QoL source was already integrated and is preserved. No combat gameplay PASS claimed."
+    },
+    {
+      "id": "emi",
+      "name": "EMI",
+      "category": "qol",
+      "desired": true,
+      "version": "1.1.24+1.21.1+neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/emi/version/5sIPA1To",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "emi",
+      "note": "Owner-approved #593 EMI-only trial. Exact official binary downloaded, provider hash verified and top-level native metadata inspected in run 45550178507. Native NeoForge requirement met; both sides to enable optional server features. Client C17, category duplication and reverse-dependency acceptance pending."
+    },
+    {
+      "id": "extra-mod-integrations",
+      "name": "EMI Addon: Extra Mod Integrations",
+      "category": "qol",
+      "desired": true,
+      "version": "1.0.3+1.21.1.neoforge",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/extra-mod-integrations/version/bxgGyUjY",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "extra-mod-integrations",
+      "note": "Owner-approved #593 EMI-only trial. Exact official binary downloaded, provider hash verified and top-level native metadata inspected in run 45550178507. Client-only all-in-one addon; nested compatibility modules checked in candidate CI. Client C17, category duplication and reverse-dependency acceptance pending."
+    },
+    {
+      "id": "emisemble",
+      "name": "EMIsemble",
+      "category": "qol",
+      "desired": true,
+      "version": "1.2.1",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/emisemble/files/9734643",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "emisemble",
+      "note": "Owner-approved #593 EMI-only trial. Exact official binary downloaded, provider hash verified and top-level native metadata inspected in run 45550178507. CurseForge bytes match publisher GitHub v1.2.1 SHA256; native requires NeoForge >=21.1.265. Client-only. Client C17, category duplication and reverse-dependency acceptance pending."
     }
   ],
   "excluded": [

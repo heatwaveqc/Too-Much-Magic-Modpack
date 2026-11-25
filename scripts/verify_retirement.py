@@ -26,7 +26,10 @@ reg = json.loads((ROOT/"manifest/integration-sources.json").read_text())
 streams = {x["name"] for x in reg["streams"]}
 assert "standalone-monk-hunter-progression" in streams
 assert "jawr-native-transformation-bridge" in streams
+assert next(s for s in reg["streams"] if s["name"] == "jawr-native-transformation-bridge")["mode"] == "archived-source-test-only-not-runtime"
+selected = json.loads((ROOT/"manifest/first-party-runtime.json").read_text())
+assert "tmm_transformations" not in {m["mod_id"] for m in selected["modules"]}
 assert not ({"vampire-bridge", "monk-faction", "werewolf-food-relics-compat"} & streams)
 assert "kubejs/server_scripts/dragon_diets.js" in paths
 assert "config/ftbquests/quests/chapters/just_another_witchery_remake.snbt" in paths
-print("PASS: TeamLapen retired; standalone Monk/Hunter and JAWR-only bridge selected for two-JAR QA")
+print("PASS: TeamLapen retired; unified Tyr Progression with internal native transformation bridge selected; retired standalone JAR absent")

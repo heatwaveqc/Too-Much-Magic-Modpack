@@ -16,10 +16,21 @@ class HunterXpPolicyTest {
             var raw = JsonParser.parseReader(new java.io.InputStreamReader(
                 stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
             var path = TestPaths.read("tyr_progression:hunter",raw);
-            var policy = HunterXpPolicy.parse(TestPaths.project(raw));
+            HunterXpPolicy policy;
+            try(var xp=HunterXpPolicyTest.class.getClassLoader().getResourceAsStream(
+                "data/tyr_progression/tyr_progression/experience_systems/hunter.json")){
+                assertNotNull(xp);
+                policy=HunterXpPolicy.parse(JsonParser.parseReader(new java.io.InputStreamReader(xp,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject());
+            }
             assertNotNull(policy);
             assertEquals(4,policy.healthDivisor());
             assertEquals(2,policy.specialtyMultiplier());
+            if("tyr_progression:mxp".equals(raw.get("xp_channel").getAsString())){
+                assertEquals(200,policy.mxpKillPerHp());
+                assertEquals(100,policy.mxpPotionBaseXp());
+                assertEquals(2,policy.potionDiscoveryMultiplier());
+                assertEquals(12000,policy.potionRepeatCooldownTicks());
+            }
             assertEquals(0,policy.difficulty("minecraft:water"));
             assertEquals(3,policy.difficulty("minecraft:poison"));
             assertEquals(7,policy.difficulty("minecraft:strong_regeneration"));
@@ -33,12 +44,14 @@ class HunterXpPolicyTest {
                 assertEquals("hunter_specialty",skill.effects().getFirst().type());
                 assertTrue(skill.effects().getFirst().selector().startsWith("#"));
             }
-            Track joined = ProgressionMath.join(path,Track.empty());
-            Track first = ProgressionMath.buy(path,joined,"tyr_progression:specialty_undead");
+            var nativeRaw=raw.deepCopy();nativeRaw.addProperty("xp_channel","tyr_progression:hunter");
+            var nativePath=TestPaths.read("tyr_progression:hunter",nativeRaw);
+            Track joined = ProgressionMath.join(nativePath,Track.empty());
+            Track first = ProgressionMath.buy(nativePath,joined,"tyr_progression:specialty_undead");
             assertEquals(joined.points(),first.points()); // free selection
             assertEquals(1,first.skillRank("tyr_progression:specialty_undead"));
-            assertSame(first,ProgressionMath.buy(path,first,"tyr_progression:specialty_dragon"));
-            var reset = ProgressionMath.refundAll(path,first);
+            assertSame(first,ProgressionMath.buy(nativePath,first,"tyr_progression:specialty_dragon"));
+            var reset = ProgressionMath.refundAll(nativePath,first);
             assertEquals(0,reset.skillRank("tyr_progression:specialty_undead"));
         }
     }

@@ -1,0 +1,22 @@
+name: EMI trial exact candidate audit (NO GAME BOOT)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/emi-trial-candidate-audit.yml'
+      - 'scripts/audit_emi_trial.py'
+      - 'mods/emi*.pw.toml'
+      - 'mods/extra-mod-integrations.pw.toml'
+permissions:
+  contents: read
+jobs:
+  exact-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit only three approved external candidates and source roster
+        run: python3 scripts/audit_emi_trial.py

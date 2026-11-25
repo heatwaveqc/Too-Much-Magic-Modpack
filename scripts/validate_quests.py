@@ -6,7 +6,13 @@ import json
 import re
 from pathlib import Path
 
-from quest_text import quote_quest_text, validate_quest_locale, self_test as check_quest_text_escaping
+# Direct CLI and importlib-based test loading both use the same serializer.
+try:
+    from scripts.quest_text import quote_quest_text, validate_quest_locale, self_test as check_quest_text_escaping
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from quest_text import quote_quest_text, validate_quest_locale, self_test as check_quest_text_escaping
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "config" / "ftbquests" / "quests"
@@ -239,6 +245,8 @@ def main() -> None:
                                      ("enigmaticlegacyplus:cursed_ring", "1")},
             }
             expected_reward_count = (0 if qid == "544D303000100001" or info_rewardless else (2 if qid in starter_rewards else 1))
+            ensure(rewards.count('type: "choice"') == (1 if newbie_graduation else 0),
+                   f"Only personal graduation may have a housing choice reward: {qid}")
             ensure(rewards.count('type: "xp"') == 1 and
                    rewards.count('type: "item"') + rewards.count('type: "command"') == expected_reward_count,
                    f"Unexpected rewards on {qid}")
@@ -434,6 +442,31 @@ def main() -> None:
     ensure(len(chapter_titles) == len(set(chapter_titles)) == len(chapters)
            and set(chapter_titles) == {c["chapter_id"] for c in chapters},
            "Chapter translation IDs must match all runtime chapters exactly")
+    housing = json.loads((ROOT / "manifest/starter_home_choices.json").read_text(encoding="utf-8"))
+    ensure(housing["quest_id"] == "544D309000100001", "Wrong housing quest")
+    entries = housing["choices"]
+    expected_houses = ["generic","adventurers_inn","arcane_forge","arcane_sanctum","castaways_retreat","celestial_observatory","chromatic_manor","dark_citadel","dwarven_foundry","elven_garden","farmers_homestead","hearthkeeper","mages_academy","summoners_lodge","sanguine_temple","spirit_shrine","witch_cottage","witchs_manor","wizards_tower"]
+    ensure([x["house"] for x in entries] == expected_houses, "Wrong housing choices or order")
+    table_id = housing["table_id"]
+    reward_id = housing["reward_id"]
+    table_numeric = str(int(table_id, 16)) + "L"
+    housing_quest = (ROOT / "config/ftbquests/quests/chapters/intro.snbt").read_text(encoding="utf-8")
+    choice = f'{{ id: "{reward_id}", type: "choice", table_id: {table_numeric}, team_reward: false }}'
+    ensure(housing_quest.count(choice) == 1, "Missing personal housing choice")
+    table = (ROOT / "config/ftbquests/quests/reward_tables/starter_homes.snbt").read_text(encoding="utf-8")
+    table_ids = [table_id] + [x["id"] for x in entries]
+    ensure(len(set(table_ids)) == 20 and not set(table_ids) & global_ids, "Housing table ID collision")
+    ensure(all(re.fullmatch(r"[0-7][0-9A-F]{15}", ident) for ident in table_ids), "Invalid housing IDs")
+    ensure(f'id: "{table_id}"' in table and "loot_size: 1" in table, "Housing table format")
+    ensure(table.count('type: "command"') == 19, "Housing must have exactly 19 choices")
+    for entry in entries:
+        line = (f'{{ id: "{entry["id"]}", type: "command", command: "tmmhome reward {entry["house"]}", '
+                f'permission_level: 2, team_reward: false, icon: {{ id: "{entry["icon"]}" }} }}')
+        ensure(table.count(line) == 1, f"Invalid housing entry: {entry['house']}")
+        ensure(f'reward.{entry["id"]}.title:' in lang_text, "Missing housing choice translation")
+    ensure(f'reward.{reward_id}.title:' in lang_text and f'reward_table.{table_id}.title:' in lang_text,
+           "Missing housing reward/table title")
+    print("PASS: 19 personal graduation choices with stable IDs and trusted reward commands")
     print("PASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated")
     print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
     print("PASS: shared item criteria restricted to intentional copper/iron/emerald/diamond sales; no item reward completes a task")

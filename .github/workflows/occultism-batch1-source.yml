@@ -1,0 +1,35 @@
+name: Occultism Batch 1 recipe and Dictionary source contract (no game boot)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/occultism/recipe/**'
+      - 'kubejs/data/tmm/recipe/ritual/perpetual_life.json'
+      - 'kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_*.json'
+      - 'kubejs/data/occultism/modonomicon/**'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'tests/test_occultism_batch1_contract.py'
+      - '.github/workflows/occultism-batch1-source.yml'
+  push:
+    paths:
+      - 'kubejs/data/occultism/recipe/**'
+      - 'kubejs/data/tmm/recipe/ritual/perpetual_life.json'
+      - 'kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_*.json'
+      - 'kubejs/data/occultism/modonomicon/**'
+      - 'tests/test_occultism_batch1_contract.py'
+      - '.github/workflows/occultism-batch1-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify recipe semantics, book pages and Packwiz hashes
+        run: python -m unittest discover -s tests -p 'test_occultism_batch1_contract.py' -v

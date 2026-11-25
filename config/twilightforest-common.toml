@@ -1,0 +1,4 @@
+# First-pass anti-substitution setting. Preserve default table access, XP costs and recipe blacklist.
+["Uncrafting Table"]
+disableIngredientSwitching = true
+enableShapelessCrafting = false

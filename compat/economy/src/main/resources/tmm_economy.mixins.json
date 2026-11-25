@@ -25,6 +25,7 @@
     "StoredResourceGuardMixin",
     "RepairTalismanCharmMixin",
     "ApotheosisPotionCharmRecipeMixin",
+    "ApotheosisPotionCharmEligibilityMixin",
     "IronsAlchemistFlaskSafetyMixin",
     "OccultismPartnerFlaskSafetyMixin",
     "PortableStorageShulkerSlotMixin",
@@ -33,7 +34,19 @@
     "PortableStorageOccultismSatchelMixin",
     "PortableStorageMalumPouchMixin",
     "PortableStorageBotaniaBackedInventoryMixin",
-    "PortableStorageMiniHandbagMenuMixin"
+    "PortableStorageMiniHandbagMenuMixin",
+    "EvilCraftVengeanceSpiritMixin",
+    "EvilCraftRandomSpiritMixin",
+    "EvilCraftSpiritFurnaceMixin",
+    "EvilCraftSpiritReanimatorMixin",
+    "ReliquaryCaptureMixin",
+    "ReliquaryFragmentEggMixin",
+    "ApothicPersonalFilterMixin",
+    "EidolonPersonalFilterMixin",
+    "PortableEnchantingOpenMixin",
+    "PortableEnchantingLegacyMenuMixin",
+    "PortableEnchantingLegacyBooksMixin",
+    "PortableAnvilOpenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -41,5 +54,6 @@
   "client": [
     "JadeOpDisplayMixin",
     "TitaniumOpDisplayMixin"
-  ]
+  ],
+  "plugin": "io.github.heatwaveqc.tmm.economy.mixin.EconomyEnchantingMixinPlugin"
 }

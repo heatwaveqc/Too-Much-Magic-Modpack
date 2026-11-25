@@ -35,7 +35,7 @@ import java.util.stream.Stream;
 public final class TreeChopXpBridge {
     private TreeChopXpBridge() {}
 
-    private record OriginalLog(BlockPos pos, BlockState state) {}
+    private record OriginalLog(BlockPos pos, BlockState state,double hardness) {}
     private record Pending(BlockPos clicked, String dimension, long tick, List<OriginalLog> logs) {}
     private static final Map<UUID, Pending> PENDING = new HashMap<>();
 
@@ -68,6 +68,7 @@ public final class TreeChopXpBridge {
         try {
             if (!(invoke(event, "getPlayer") instanceof ServerPlayer player)
                     || !(invoke(event, "getLevel") instanceof ServerLevel level)
+                    || SpellMiningScope.active(level)
                     || !player.getMainHandItem().isEmpty()
                     || player.isCreative() || player.isSpectator()
                     || !ProgressionApi.track(player, "tyr_progression:monk").joined()) return;
@@ -93,7 +94,7 @@ public final class TreeChopXpBridge {
                             }
                         }
                     }
-                    if (state.is(BlockTags.LOGS)) logs.add(new OriginalLog(pos.immutable(), state));
+                    if (state.is(BlockTags.LOGS)) logs.add(new OriginalLog(pos.immutable(),state,state.getDestroySpeed(level,pos)));
                 });
             }
             if (!logs.isEmpty()) {
@@ -112,7 +113,7 @@ public final class TreeChopXpBridge {
             if (!(invoke(event, "getPlayer") instanceof ServerPlayer player)
                     || !(invoke(event, "getLevel") instanceof ServerLevel level)) return;
             Pending pending = PENDING.remove(player.getUUID());
-            if (pending == null || !Boolean.TRUE.equals(invoke(event, "getFelled"))
+            if (SpellMiningScope.active(level)||pending == null || !Boolean.TRUE.equals(invoke(event, "getFelled"))
                     || player.isCreative() || player.isSpectator()
                     || !player.getMainHandItem().isEmpty()
                     || !pending.clicked().equals(invoke(event, "getChoppedBlockPos"))
@@ -128,9 +129,10 @@ public final class TreeChopXpBridge {
                 // "chopped_log", protected logs, or leaves.
                 if (!(result.isAir() || !result.getFluidState().isEmpty())) continue;
                 if (!RecentBlockCredits.first(player.getUUID(), pending.dimension(),
-                        pos.asLong(), level.getGameTime())) continue;
+                        pos.asLong(), pending.tick())) continue;
                 ProgressionApi.record(player, Selectors.blockBreak(original.state()));
                 ProgressionApi.record(player, Selectors.barehandBlockBreak(original.state()));
+                TrainingRewards.mining(player,original.hardness());
                 credited++;
             }
             if (credited > 0) ProgressionMod.LOGGER.debug(

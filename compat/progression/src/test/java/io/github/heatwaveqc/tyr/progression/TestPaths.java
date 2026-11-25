@@ -12,6 +12,18 @@ final class TestPaths {
     static JsonObject project(JsonObject raw) {
         if(raw.has("rank_xp")||!raw.has("xp_channel"))return raw;
         String id=raw.get("xp_channel").getAsString();
+        if("tyr_progression:mxp".equals(id)){
+            // Mirror ChannelConfig.treeInput's configured shared-ledger
+            // synthetic level range; no second native XP source file exists.
+            var result=raw.deepCopy();
+            var curve=new com.google.gson.JsonArray();
+            for(int i=0;i<200;i++)curve.add(i);
+            result.add("rank_xp",curve);
+            result.addProperty("points_per_rank",0);
+            result.addProperty("max_level",200);
+            result.add("activities",new com.google.gson.JsonArray());
+            return result;
+        }
         String[] parts=id.split(":",2);
         String resource="data/"+parts[0]+"/tyr_progression/experience_systems/"+parts[1]+".json";
         try(var in=TestPaths.class.getClassLoader().getResourceAsStream(resource)){

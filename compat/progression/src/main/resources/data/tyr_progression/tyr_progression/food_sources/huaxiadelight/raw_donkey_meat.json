@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "huaxiadelight:raw_donkey_meat",
+  "provenance": "huaxiadelight:raw_donkey_meat",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/raw_meat",
+    "#tmm:foods/raw"
+  ]
+}

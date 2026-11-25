@@ -25,7 +25,7 @@ CANDIDATES = [
     "aquamirae", "fragmentum-neoforge", "mowzies-mobs", "sons-of-sins",
     "the-graveyard", "villagerstradingplus", "aura-cascade-reimagined",
     "lets-do-herbalbrews", "aquaculture-delight", "born-in-chaos",
-    "dungeon-crawl", "just-enough-professions", "ldlib2",
+    "dungeon-crawl", "ldlib2",
     "lets-do-brewery", "lets-do-farm-and-charm",
     "prefab-custom-addon", "yungs-better-end-island",
     "lets-do-foundation", "ars-conflux",
@@ -34,7 +34,7 @@ CANDIDATES = [
 KNOWN_BASELINE_DEPS = {
     "minecraft", "neoforge", "forge", "javafml", "neoforge_fml",
     "geckolib", "patchouli", "architectury", "ars_nouveau",
-    "jei", "prefab", "yungsapi", "yungs_api", "curios",
+    "emi", "prefab", "yungsapi", "yungs_api", "curios",
     "framework", "moonlight", "blueprint", "balm", "cloth_config",
     "ftbchunks", "farmersdelight", "aquaculture", "modonomicon",
 }

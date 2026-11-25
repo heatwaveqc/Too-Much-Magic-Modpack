@@ -64,11 +64,37 @@ def validate_recipe(recipe: object, *, name: str) -> None:
         raise ValueError(f"{name}: additional recipe gates/side effects not approved")
 
 
+def validate_arcane_recipe(recipe: object) -> None:
+    """Separate strict native parchment contract, not an EMC converter."""
+    expected = {
+        "neoforge:conditions": [
+            {"type": "neoforge:mod_loaded", "modid": mod}
+            for mod in ("improvableskills", "apotheosis", "apothic_enchanting")
+        ],
+        "type": "improvableskills:parchment_fragment",
+        "ingredients": [
+            {"item": item} for item in
+            ("minecraft:ender_pearl", "minecraft:ender_eye", "apothic_enchanting:filtering_shelf")
+        ],
+        "result": {
+            "id": "improvableskills:scroll_ability",
+            "count": 1,
+            "components": {"improvableskills:stored_ability": {
+                "ability": "tmm_economy:arcane_discrimination"
+            }},
+        },
+    }
+    if recipe != expected:
+        raise ValueError("Arcane Discrimination: native scroll, ingredients or optional gates changed")
+
+
 def verify() -> None:
     actual_files = {p.name for p in RECIPES.glob("*.json")}
-    expected_files = {f"{name}.json" for name in CONTRACTS}
+    expected_files = {f"{name}.json" for name in CONTRACTS} | {"arcane_discrimination.json"}
     if actual_files != expected_files:
-        raise ValueError(f"Unexpected converter recipe set: {actual_files ^ expected_files}")
+        raise ValueError(f"Unexpected Economy recipe set: {actual_files ^ expected_files}")
+    validate_arcane_recipe(json.loads((RECIPES / "arcane_discrimination.json").read_text(encoding="utf-8")))
+    print("PASS arcane_discrimination: exact optional native parchment contract")
     for name, contract in CONTRACTS.items():
         recipe = json.loads((RECIPES / f"{name}.json").read_text(encoding="utf-8"))
         validate_recipe(recipe, name=name)

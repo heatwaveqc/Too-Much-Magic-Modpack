@@ -16,7 +16,13 @@ import re
 import sys
 from pathlib import Path
 
-from quest_text import quote_quest_text
+# Direct CLI and importlib-based test loading both use the same serializer.
+try:
+    from scripts.quest_text import quote_quest_text
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from quest_text import quote_quest_text
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / "manifest/theurgy_quest_pilot.json"

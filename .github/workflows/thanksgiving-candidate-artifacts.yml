@@ -1,0 +1,28 @@
+name: Thanksgiving targeted Sodium and Lootr artifact evidence (no boot)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/thanksgiving-candidate-artifacts.yml'
+      - 'scripts/audit_thanksgiving_candidate_artifacts.py'
+      - 'integration/lootr-addons/pins/**'
+permissions:
+  contents: read
+jobs:
+  candidate-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Five explicitly approved publisher artifacts and native metadata
+        run: python3 scripts/audit_thanksgiving_candidate_artifacts.py
+      - name: Preserve text-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thanksgiving-candidate-artifacts
+          path: thanksgiving-candidate-artifacts.json
+          if-no-files-found: ignore

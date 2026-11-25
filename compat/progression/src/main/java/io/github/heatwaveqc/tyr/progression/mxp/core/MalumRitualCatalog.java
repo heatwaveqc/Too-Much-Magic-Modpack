@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 
 import static io.github.heatwaveqc.tyr.progression.mxp.core.RitualRewards.Band;
 
-/** Exact Malum 1.8.2 rite IDs and Malum/Gaze recipe-backed Geas effects. */
+/** Exact Malum 1.8.2 plus Gaze 1.1.7.1 registered rite IDs and recipe-backed Geas effects. */
 public final class MalumRitualCatalog {
     private MalumRitualCatalog(){}
     public record Geas(String recipe,String effect,int input,List<Integer> extras,List<Integer> spirits){
@@ -43,7 +43,35 @@ public final class MalumRitualCatalog {
         "malum:rite_of_the_burning_fervor",
         "malum:rite_of_the_fiery_embrace",
         "malum:rite_of_smelting",
-        "malum:rite_of_quickening"
+        "malum:rite_of_quickening",
+        // Gaze registers these 26 native rite types in MalumSpiritRiteTypes.RITE_TYPES,
+        // not in a gaze: registry. Keep them at the native first-only totem band.
+        "malum:gaze_lesser_arcane_rite",
+        "malum:gaze_greater_arcane_rite",
+        "malum:gaze_lesser_sacred_rite",
+        "malum:corrupt_gaze_lesser_sacred_rite",
+        "malum:gaze_greater_sacred_rite",
+        "malum:corrupt_gaze_greater_sacred_rite",
+        "malum:gaze_lesser_aerial_rite",
+        "malum:corrupt_gaze_lesser_aerial_rite",
+        "malum:gaze_greater_aerial_rite",
+        "malum:corrupt_gaze_greater_aerial_rite",
+        "malum:gaze_lesser_aqueous_rite",
+        "malum:corrupt_gaze_lesser_aqueous_rite",
+        "malum:gaze_greater_aqueous_rite",
+        "malum:corrupt_gaze_greater_aqueous_rite",
+        "malum:gaze_lesser_earthen_rite",
+        "malum:corrupt_gaze_lesser_earthen_rite",
+        "malum:gaze_greater_earthen_rite",
+        "malum:corrupt_gaze_greater_earthen_rite",
+        "malum:gaze_lesser_infernal_rite",
+        "malum:corrupt_gaze_lesser_infernal_rite",
+        "malum:gaze_greater_infernal_rite",
+        "malum:corrupt_gaze_greater_infernal_rite",
+        "malum:gaze_lesser_wicked_rite",
+        "malum:corrupt_gaze_lesser_wicked_rite",
+        "malum:gaze_greater_wicked_rite",
+        "malum:corrupt_gaze_greater_wicked_rite"
     );
     private static final Map<String,Geas> GEAS=init();
     private static Map<String,Geas> init(){

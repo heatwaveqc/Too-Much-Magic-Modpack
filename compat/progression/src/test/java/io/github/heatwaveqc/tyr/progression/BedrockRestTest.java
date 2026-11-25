@@ -62,7 +62,10 @@ final class BedrockRestTest {
         var trial = monk.milestones().stream()
                 .filter(m -> m.id().equals("tyr_progression:trial_bedrock_sleep"))
                 .findFirst().orElseThrow();
-        assertEquals(230, trial.xp());
+        if(monk.activities().isEmpty()){
+            assertEquals(0,trial.xp(),"Unified progression never awards native Cultivation XP");
+            assertEquals(1000,trial.fixedRewardXp(),"Bedrock deed pays fixed shared MXP");
+        }else assertEquals(230,trial.xp());
         assertEquals(0, trial.points());
         assertEquals(1, trial.criteria().size());
         assertEquals("external", trial.criteria().getFirst().event());
