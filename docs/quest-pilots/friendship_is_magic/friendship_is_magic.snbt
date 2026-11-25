@@ -1,0 +1,351 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "rsquare"
+	filename: "friendship_is_magic"
+	group: "544D104000000000"
+	icon: { id: "unicornacademy:fairy_gemstone" }
+	id: "544D7A0100000000"
+	images: [
+		{
+			id: "544D7A0200000000"
+			image: "tmm:textures/questpics/friendship_is_magic/background.png"
+			x: 0.0d
+			y: 15.0d
+			width: 32.0d
+			height: 39.98574d
+			rotation: 0.0d
+			position_locked: true
+		}
+	]
+	order_index: 7
+	progression_mode: "flexible"
+	quest_links: [ ]
+	quests: [
+		{
+			id: "544D7A0300000001"
+			icon: { id: "unicornacademy:magical_ferry" }
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000001", type: "xp", xp: 10, team_reward: false }
+				{ id: "544D7A0600000001", type: "item", item: { id: "minecraft:lead", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000001", type: "custom" }
+			]
+			x: 0.0d
+			y: 0.0d
+		},
+		{
+			id: "544D7A0300000002"
+			icon: { id: "unicornacademy:prism_sand" }
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000002", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A0600000002", type: "item", item: { id: "minecraft:lantern", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000002", type: "custom" }
+			]
+			x: 0.0d
+			y: 2.4d
+		},
+		{
+			id: "544D7A0300000003"
+			icon: { id: "unicornacademy:wild_unicorn_spawn_egg" }
+			dependencies: ["544D7A0300000002"]
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000003", type: "xp", xp: 10, team_reward: false }
+				{ id: "544D7A0600000003", type: "item", item: { id: "minecraft:apple", count: 1 }, count: 3, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000003", type: "custom" }
+			]
+			x: 0.0d
+			y: 4.8d
+		},
+		{
+			id: "544D7A0300000004"
+			icon: { id: "unicornacademy:unicorn_spawn_egg" }
+			dependencies: ["544D7A0300000003"]
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000004", type: "xp", xp: 20, team_reward: false }
+				{ id: "544D7A0600000004", type: "item", item: { id: "minecraft:name_tag", count: 1 }, count: 1, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000004", type: "custom" }
+			]
+			x: 0.0d
+			y: 7.2d
+		},
+		{
+			id: "544D7A0300000005"
+			icon: { id: "swem:western_saddle_purple" }
+			dependencies: ["544D7A0300000004"]
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000005", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A0600000005", type: "item", item: { id: "minecraft:leather", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000005", type: "custom" }
+			]
+			x: -3.5d
+			y: 9.7d
+		},
+		{
+			id: "544D7A0300000006"
+			icon: { id: "swem:brush" }
+			dependencies: ["544D7A0300000004"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000006", type: "xp", xp: 10, team_reward: false }
+				{ id: "544D7A0600000006", type: "item", item: { id: "minecraft:white_wool", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000006", type: "custom" }
+			]
+			x: -7.0d
+			y: 7.8d
+		},
+		{
+			id: "544D7A0300000007"
+			icon: { id: "unicornacademy:sky_berries" }
+			dependencies: ["544D7A0300000004"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000007", type: "xp", xp: 10, team_reward: false }
+				{ id: "544D7A0600000007", type: "item", item: { id: "minecraft:flower_pot", count: 1 }, count: 2, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000007", type: "custom" }
+			]
+			x: 7.0d
+			y: 7.8d
+		},
+		{
+			id: "544D7A0300000008"
+			icon: { id: "minecraft:compass" }
+			dependencies: ["544D7A0300000005"]
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000008", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A0600000008", type: "item", item: { id: "minecraft:oak_fence", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000008", type: "custom" }
+			]
+			x: -3.5d
+			y: 12.0d
+		},
+		{
+			id: "544D7A0300000009"
+			icon: { id: "unicornacademy:sky_berries" }
+			dependencies: ["544D7A0300000004"]
+			size: 1.5d
+			rewards: [
+				{ id: "544D7A0500000009", type: "xp", xp: 25, team_reward: false }
+				{ id: "544D7A0600000009", type: "item", item: { id: "minecraft:pink_petals", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000009", type: "custom" }
+			]
+			x: 0.0d
+			y: 13.6d
+		},
+		{
+			id: "544D7A030000000A"
+			icon: { id: "minecraft:glowstone" }
+			dependencies: ["544D7A0300000009"]
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000A", type: "xp", xp: 20, team_reward: false }
+				{ id: "544D7A060000000A", type: "item", item: { id: "minecraft:soul_torch", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000A", type: "custom" }
+			]
+			x: -3.5d
+			y: 16.6d
+		},
+		{
+			id: "544D7A030000000B"
+			icon: { id: "minecraft:glow_berries" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000B", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A060000000B", type: "item", item: { id: "minecraft:yellow_dye", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000B", type: "custom" }
+			]
+			x: -8.5d
+			y: 15.7d
+		},
+		{
+			id: "544D7A030000000C"
+			icon: { id: "minecraft:flowering_azalea" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000C", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A060000000C", type: "item", item: { id: "minecraft:moss_block", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000C", type: "custom" }
+			]
+			x: -8.5d
+			y: 18.2d
+		},
+		{
+			id: "544D7A030000000D"
+			icon: { id: "minecraft:snowball" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000D", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A060000000D", type: "item", item: { id: "minecraft:packed_ice", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000D", type: "custom" }
+			]
+			x: -8.5d
+			y: 20.7d
+		},
+		{
+			id: "544D7A030000000E"
+			icon: { id: "minecraft:sea_pickle" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000E", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A060000000E", type: "item", item: { id: "minecraft:prismarine_shard", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000E", type: "custom" }
+			]
+			x: 8.5d
+			y: 15.7d
+		},
+		{
+			id: "544D7A030000000F"
+			icon: { id: "minecraft:blaze_powder" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A050000000F", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A060000000F", type: "item", item: { id: "minecraft:red_dye", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A040000000F", type: "custom" }
+			]
+			x: 8.5d
+			y: 18.2d
+		},
+		{
+			id: "544D7A0300000010"
+			icon: { id: "minecraft:lightning_rod" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000010", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A0600000010", type: "item", item: { id: "minecraft:cyan_dye", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000010", type: "custom" }
+			]
+			x: 8.5d
+			y: 20.7d
+		},
+		{
+			id: "544D7A0300000011"
+			icon: { id: "minecraft:amethyst_block" }
+			dependencies: ["544D7A0300000009"]
+			optional: true
+			size: 1.5d
+			rewards: [
+				{ id: "544D7A0500000011", type: "xp", xp: 25, team_reward: false }
+				{ id: "544D7A0600000011", type: "item", item: { id: "minecraft:purple_carpet", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000011", type: "custom" }
+			]
+			x: 3.8d
+			y: 21.2d
+		},
+		{
+			id: "544D7A0300000012"
+			icon: { id: "unicornacademy:fairy_gemstone" }
+			dependencies: ["544D7A0300000011"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000012", type: "xp", xp: 20, team_reward: false }
+				{ id: "544D7A0600000012", type: "item", item: { id: "minecraft:magenta_stained_glass", count: 1 }, count: 4, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000012", type: "item", item: { id: "unicornacademy:fairy_gemstone", count: 1 }, count: 1L, consume_items: false }
+			]
+			x: 3.8d
+			y: 24.0d
+		},
+		{
+			id: "544D7A0300000013"
+			icon: { id: "minecraft:feather" }
+			dependencies: ["544D7A0300000012"]
+			optional: true
+			size: 1.5d
+			rewards: [
+				{ id: "544D7A0500000013", type: "xp", xp: 30, team_reward: false }
+				{ id: "544D7A0600000013", type: "item", item: { id: "minecraft:light_blue_wool", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000013", type: "custom" }
+			]
+			x: 3.8d
+			y: 27.0d
+		},
+		{
+			id: "544D7A0300000014"
+			icon: { id: "minecraft:heart_of_the_sea" }
+			dependencies: ["544D7A0300000009"]
+			size: 1.8d
+			rewards: [
+				{ id: "544D7A0500000014", type: "xp", xp: 35, team_reward: false }
+				{ id: "544D7A0600000014", type: "item", item: { id: "minecraft:pink_wool", count: 1 }, count: 8, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000014", type: "custom" }
+			]
+			x: 0.0d
+			y: 32.2d
+		},
+		{
+			id: "544D7A0300000015"
+			icon: { id: "unicornacademy:magical_ferry" }
+			dependencies: ["544D7A0300000002"]
+			optional: true
+			size: 1.0d
+			rewards: [
+				{ id: "544D7A0500000015", type: "xp", xp: 15, team_reward: false }
+				{ id: "544D7A0600000015", type: "item", item: { id: "minecraft:light_blue_carpet", count: 1 }, count: 6, team_reward: false }
+			]
+			tasks: [
+				{ id: "544D7A0400000015", type: "custom" }
+			]
+			x: 7.0d
+			y: 2.4d
+		}
+	]
+}
