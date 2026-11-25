@@ -1,0 +1,25 @@
+name: Server artifact origin audit (no game boot)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - 'scripts/download_mods.py'
+      - 'tests/test_download_mods.py'
+      - '.github/workflows/server-artifact-origin-audit.yml'
+      - 'mods/**'
+      - 'index.toml'
+permissions:
+  contents: read
+jobs:
+  server-artifact-origin-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline downloader regressions and all indexed origins
+        run: python3 -m unittest discover -s tests -p test_download_mods.py
+      - name: Exact approved GitHub release assets (only the three reviewed pins)
+        run: python3 scripts/download_mods.py --verify-github
