@@ -151,3 +151,8 @@ Wall Climbing must be obtainable within Classic Monk, before the Unlimited gate.
 ### Feign Death / Arrow Return clarification — owner 2026-11-25
 
 Feign Death: dedicated rebindable hotkey toggles motionless feigned death, pauses regeneration, dumps existing aggro and prevents ordinary mob combat acquisition. Movement/attack ends it; no actual death, invulnerability or boss immunity bypass. Engine DND6 on #731. Direct heals retained; no visual prone pose yet. Arrow Return: automatic passive return of compatible AbstractArrow and LargeFireball subclasses using native aim redirection to player crosshair, including modded descendants of those families. No manual activation, duplicate arrow, inventory generation or arbitrary explosion. Implemented exceptions: trident is durable thrown item; self/allied and repeated returns rejected; player-owned projectile return opt-in, ownerless allowed. Engine DND7 on #731. Classic qualitative unlocks; exact attachment and cost TBD. Existing ten-trial sequence unchanged. No live config or full build.
+
+
+## Staged configuration pass 1
+
+Actual draft datapack JSON at [classic-monk-v1/monk.json](classic-monk-v1/monk.json), with tags and [implementation inventory](classic-monk-v1/README.md). 19 explicit milestones, 26 automatic unlocks, 81 purchased ranks (provisional); ten Journey deeds plus native generated vanilla tiers. No runtime replacement; engine #731 and balance #744 dependencies, pending 39 paid ranks, specific criteria/phase/migration and parser/gameplay checks. New D&D numerical targets and qualitative placements are proposals for review. No full build.

@@ -1,0 +1,28 @@
+# Classic Monk configuration candidate v1 — #721/#722
+
+This directory contains real staged datapack-format JSON, NOT a shipped runtime resource. Do not install or merge as the live Monk path until the engine #731 (exact tested head 3ca77d4b536614047dbb442fc0c927f5cea87b4d), #744 balance reconciliation, missing handler/criteria work, final ranks, phase gate, save migration and review are complete. Existing shipped monk.json untouched. Candidate path intended for tyr_progression:monk; tag subdirectories map to data/tyr_progression/tags/{item,block}/. Fresh classic/ IDs prevent legacy counters from pre-completing redesigned deeds. Only original first_sunset initiation receipt retained. Existing save modes, owned ranks, points and durable achievements need explicit migration, not a reset or silent refund.
+
+## Inventory
+- 19 explicit milestones including initiation; ten strictly sequential Journey deeds; independent wood, four tool forms, Glass Touch and two Occultism discoveries. Dynamic vanilla pickaxe generation adds registry-derived harvest tiers (expect four vanilla capability groups; not an installed survey). Glass trial depends on exact Java nameUUID receipt of preferred wood representative tyr_progression:harvest/b4fbdbe1-8118-3cb0-95a6-0ba04568502f; if registry graph collapses/changes, validate and adjust before release. Overrides intentionally narrow trial blocks; vanilla representatives only, include equivalent gold/netherite; installed modded representative curation pending.
+- 26 explicit free automatic unlock nodes and 81 provisional purchased ranks, one point each; generated automatic ranks extra. Remaining 39 previously proposed purchased ranks are NOT silently omitted or replaced. D&D ranks proposed 3 each for stun (10 ticks/rank), stealth (10%/rank while sneaking), danger (8 blocks/rank); provisional total if 39 pending included = 120. Wall Climbing attached to Leap of Faith; Feign Death to Bedrock Rest; Patient Defense to Deep Breath; Arrow Return to Arrow Catching. These are proposed placements, not final owner-approved allocations. No extra required Journey deed.
+- New rates 20 ordinary/100 strict fist MXP per HP; retain other training and existing advancement/animal-petting sources pending economy review. No new fixed milestone XP, old fixed rewards unresolved. Existing mastery-stage metadata preserved provisionally, not used as a new phase gate.
+- Vanilla attribute IDs checked against pinned 1.21.1 fixture in #736. Existing narrow hostile tag used provisionally for stun, stealth, threat detection and Looting; modded coverage and passive animal Looting expansion need actual tag audit. Fortune limited to pickaxe blocks. Wood speed multiplier +1 then paid +47/9 each; native vanilla hardness/air/water penalties still apply; actual speed parity not proven. Regen 0.2 HP/s per rank and no damage delay proposed; exact damage behavior needs review.
+- Tool form modes mutually exclusive; wildcard right-click form scope uses native interactions, actual shears loot is constrained. Grass accepts short/tall grass; double-height behavior requires QA. No new fixed XP. Journey environmental trials currently Overworld; hidden trial text intentionally hints rather than reveals. Purification exclusion list empty provisionally; owner-approved specific exceptions need review. Feign Death and Wall Climbing use native toggles; Arrow Return automatic. No new rank/cost for these qualitative unlocks.
+- Actual engine parser and generated installed tag survey not executed against candidate yet. Only JSON construction, duplicate/reference and point-count checks. Candidate not loaded by server CI. Need stage parser regression in engine-owned branch, then actual integrated catalog QA after authorized candidate.
+
+## Remaining configuration / engine review
+
+| Skill / feature | Reserved paid ranks | Blocker |
+|---|---:|---|
+| Sweeping Palm | 3 | Native unarmed sweep trigger and native damage ratio; attribute alone cannot enable sword-only sweep. |
+| Forceful Palm | 2 | Verify native player knockback attribute/empty-hand delivery parity. |
+| Protection | 8 | Owner numerical decision; use actual vanilla Protection reduction layers and cap. |
+| Retribution | 3 | Native Thorns-equivalent activation and damage, not generic reflect damage. |
+| Soul Step | 3 | Native soul speed semantics and scope, not global speed. |
+| Inner Reservoir/Wellspring/Thrift/Potency | 20 | Provider-specific numerical endpoints and Core overlap. |
+| Silk Touch | 0 | Prove five successful glass harvest receipts (rather than five attempted removals). |
+| Aqua Affinity | 0 | Verified eligible underwater break criterion and native penalty removal. |
+| Sunrise enrollment | 0 | Existing engine supports sunset only; add dual sun-window direction/timer. |
+| Classic finale/Unlimited and migration | 0 | Exact purchase/achievement requirements, existing wallet and ownership conversion, stop policy and capstone. |
+ 
+Grand Master of Flowers name locked at final 1,001st point. Unlimited content remains separate; preserve all existing player progress and active build until replacement/migration reviewed.
