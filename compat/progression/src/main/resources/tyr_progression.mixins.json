@@ -17,6 +17,7 @@
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
     "VirtualToolLootMixin",
+    "HeightFallTrialMixin",
     "MutationEffectQueryMixin",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
