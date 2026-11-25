@@ -1,5 +1,5 @@
 # Equestrian addons — Atlas pass 1 (2026-11-25)
-Workstream #732, owner-approved chapters/Newbie exception #742; both addons assigned to But I Want to Be a Horse Girl. Research-only. Neither exact binary available locally: direct CDN download failed DNS and browser/download fallback failed. Do not claim binary verification. Active test/full-integration pins read directly; source version matched for Addendum, public release notes for SSED. No runtime/config/build changes.
+Workstream #732, owner-approved chapters/Newbie exception #742; both addons assigned to But I Want to Be a Horse Girl. Research-only. Initial CDN retrieval failed; owner supplied both exact binaries subsequently. See exact-pin closure below; earlier source-only findings retained as provenance. Active test/full-integration pins read directly; source version matched for Addendum, public release notes for SSED. No runtime/config/build changes.
 
 ## SWEM Addendum
 Pin: swemaddendum-1.0.1--1.21.1.jar, SHA1 8e069d38628c3f2504c431e7962adc9b47e42d21, CF project1164205/file8932512 (2026-09-20). https://www.curseforge.com/minecraft/mc-mods/swem-addendum/files/8932512
@@ -19,4 +19,29 @@ Pin ssedeco-1.21.1-1.2.1.jar SHA1 37be09fb807ed5be6d1039ec3b98d729d78a8a10 CF118
 crafting (Scarlet Saddlery, item families documented); external_compatibility (SWEM visual thematic tie, no functional horse interaction per author); world_content (placeable decor family, worldgen unverified). Other 26 axes no functional addition demonstrated in docs: gear, movement, ore_processing, storage, logistics, buffs, mob_farming, ore_generation, permanent_power, general_generation, direct_damage, block_breaking, permanent_pets, temporary_pets, defense, healing_recovery, debuff_control, energy, automation_control, agriculture, detection_information, equipment_augmentation, world_manipulation, death_respawn, trade_economy, progression_tiers. Exact version data census pending, no unsupported absence assertions. 
 Proposed optional lessons SS01 craft Scarlet Saddlery, SS02 decorate stable/feed room with any item, SS03 decorate riding course/tack room, SS04 craft plushie (actual recipe TBD). Never present decorative items as functional horse care.
 ## Newbie exception & next actions
-#742 full native functionality for both mods, including legitimate acquisition, breed-specific functionality, resource pack access and Saddlery crafting. No new graduation gate or global MXP. Exact addon JARs requested for closure (registry/recipes/spawns, resource packs, packet verification); no new mod selection approved. Next Disney Princess research: Critters and Companions first; Creature Feature and Ribbits assess actual friendship mechanics vs encounters, Feywild coordinate existing Atlas writer rather than duplicating. 
+#742 full native functionality for both mods, including legitimate acquisition, breed-specific functionality, resource pack access and Saddlery crafting. No new graduation gate or global MXP. Exact addon JARs now received; native census below supersedes this request; no new mod selection approved. Next Disney Princess research: Critters and Companions first; Creature Feature and Ribbits assess actual friendship mechanics vs encounters, Feywild coordinate existing Atlas writer rather than duplicating. 
+
+## Exact release JAR verification (2026-11-25)
+Both owner-supplied exact paths inspected directly. Addendum SHA1 8e069d38628c3f2504c431e7962adc9b47e42d21 (130 ZIP entries) and SSED SHA1 37be09fb807ed5be6d1039ec3b98d729d78a8a10 (1594 ZIP entries) match active Packwiz pins; Python zipfile.testzip returned None for both. javap -p -c and JSON census. No binaries committed.
+### Addendum
+SwemAddendumMain disassembly confirms 17 exact registered steed paths listed above and only one item registration stick_of_acknowledgement. Pegasus class only constructor and two folder getters, no flight override. Mule.canMate returns false. No class constant-pool reference to SpawnPlacementRegisterEvent, BiomeModifier, SpawnEggItem, EntityJoinLevelEvent or canFly in whole JAR. ZIP census: zero recipes, loot tables, advancements, biome modifiers, worldgen or item tags; only PNG is assets/swemaddendum/textures/item/stick_of_acknowledgement.png. Thus no native survival breed or stick acquisition route established, no included coat textures. TextureGen disassembly confirms external client/server pack selection filters. Exact ApplyTexture bytecode confirms sender-level entity lookup, AbstractSteed type check and setCoat/setFoalCoat calls without visible ownership check in handler. Targeted multiplayer integrity followup, not gameplay-confirmed failure. Native survey closed at instructional scope; #742 needs legitimate starter acquisition and suitable licensed coat pack, and actual pack/access verification. No added mods or asset redistribution approved.
+### SSED exact recipes and interactions
+Namespace ssedeco, version1.2.1, Minecraft exactly1.21.1, NeoForge >=21.1.216, authors Jenny/Quarris, GPLv3 metadata. 140 recipe JSON (139 custom ssedeco:saddlery, one vanilla shaped); 141 block loot JSON, 140 recipe advancements, zero worldgen/biome modifiers. Saddlery recipe ID ssedeco:scarlet_saddlery uses four #minecraft:planks around one #c:dyes/red, makes1. ScarletSaddleryMenu uses SingleRecipeInput and native recipe manager with one input and selected output recipe (stonecutter-like menu); JEI compat classes present. QuickMoveStack references vanilla STONECUTTING type, so shift-click routing not assumed equivalent. No horse-care effects established.
+Complete recipe family partition (all ingredient quantities one per recipe JSON):
+| Family | Variants | Input | Output count |
+|---|---:|---|---:|
+| feed_bag_* |16|#c:seeds/wheat|8|
+| feed_bucket_* |16|#c:seeds/wheat|8|
+| supplements_* |16|#c:seeds/wheat|8|
+| painted_horseshoe_* |16|#c:nuggets/iron|2|
+| pile_o_poles_* |16|#c:rods/wooden|5|
+| pile_o_saddlepads_* |16|#minecraft:wool_carpets|3|
+| ribbon_bunch_* |18|#minecraft:wool_carpets|18|
+| riding_boots_* |2|minecraft:leather|1|
+| xc_flag_* |2|#c:rods/wooden|2|
+| bridle_hook |1|#c:rods/wooden|1|
+| american_bunting_usa |1|#minecraft:wool|16|
+| figure_* |19|minecraft:dried_kelp|1|
+| scarlet_saddlery |1|shaped four planks + red dye|1|
+Total140. Figures (19) are poseable decorative blocks, not living pets: FigureBlock.useWithoutItem cycles POSE when secondary use active (sneak right click); PoseType standing, sitting, laying_down, rearing, jumping. FeedBagStackBlockEntity stores individual copied count1 feed bags in fixed list with stackCount cap3; optional plank shelf uses #minecraft:planks and stores block ID. FeedBagStackBlock handles additions, removal, block state pile1–3 and has_shelf, dynamic loot bags; limited display storage only, no ordinary inventory or horse food automation. Feed bag wall variants and stack have block loot; no independent recipe necessary. Teach selecting output from Saddlery, stacking/removing bags, placing figure and cycling pose in SS01–04; no new mandatory quest count. Corrections: earlier author material list superseded by actual recipe partition; storage axis present narrowly for decorative bags. No horse-treat function, no claim of broad automatic storage or fuel system. 
+Research closure: exact native addon evidence sufficient for optional chapter planning; #742 Addendum access and texture-pack questions are pack-level design/engineering, effective Newbie gates pending. No runtime, recipes, pins, FTB tasks or builds changed. Next Critters and Companions.
