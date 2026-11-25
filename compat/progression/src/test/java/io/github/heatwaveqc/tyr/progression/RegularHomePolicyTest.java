@@ -62,6 +62,23 @@ public class RegularHomePolicyTest {
     }
 
     @Test
+    void selectedBlueprintOnlyBuildsItsOwnHomeOnce() {
+        assertNull(RegularHomePolicy.select(false, "available", "witch_cottage"));
+        assertNull(RegularHomePolicy.select(true, "available", "generic"));
+        String selected = RegularHomePolicy.select(true, "available", "witch_cottage");
+        assertEquals("selected_witch_cottage", selected);
+        assertNull(RegularHomePolicy.select(true, selected, "wizards_tower"));
+        assertNull(RegularHomePolicy.reserve(true, selected, "generic"));
+        assertNull(RegularHomePolicy.reserveSelected(true, selected, "wizards_tower"));
+        assertNull(RegularHomePolicy.reserveSelected(false, selected, "witch_cottage"));
+        assertEquals(selected, RegularHomePolicy.reconcile(selected, true, RegularHomePolicy.NativeGrant.NOT_GIVEN));
+        String reserved = RegularHomePolicy.reserveSelected(true, selected, "witch_cottage");
+        assertEquals("reserved_witch_cottage", reserved);
+        String spent = RegularHomePolicy.finish(reserved, "witch_cottage", true);
+        assertNull(RegularHomePolicy.reserveSelected(true, spent, "witch_cottage"));
+    }
+
+    @Test
     void wrongBuildReceiptCannotConsumeOrReleaseAnotherHouse() {
         assertEquals("reserved_hearthkeeper",
             RegularHomePolicy.finish("reserved_hearthkeeper", "wizards_tower", true));
