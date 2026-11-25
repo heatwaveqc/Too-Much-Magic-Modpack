@@ -36,7 +36,7 @@ public final class HarvestAbilities {
                     && Math.min(fx.tier(),a.rank()) >= required) return true;
         }
         // Blocks requiring no special tool can still be hand-harvested.
-        return required == 0;
+        return !state.requiresCorrectToolForDrops();
     }
 
     public static void blockDrops(ServerPlayer player,BlockDropsEvent event) {
@@ -49,8 +49,8 @@ public final class HarvestAbilities {
                 || !canHarvestBarehand(player,state)) return;
         // Fortune is now an effective enchantment level in the original loot
         // computation (MonkFortuneMixin), not a second drop roll here.
-        // Silk Touch changes the selected loot table branch and is still
-        // rerolled using a synthetic tool until a separate context hook exists.
+        // New virtual Silk Touch is applied in the original loot context.
+        // The legacy treasure_hand reroll remains for old configurations.
         if(NativeHarvest.silkDrops(player,event)){
             // Vanilla Silk Touch suppresses ore XP; event retains the actual fist.
             event.setDroppedExperience(0);
