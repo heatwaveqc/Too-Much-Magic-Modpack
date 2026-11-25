@@ -1,0 +1,40 @@
+name: Creature registry projection (source only)
+on:
+  push:
+    branches:
+      - 'feature/creature-taxonomy-*'
+    paths:
+      - 'docs/creatures/**'
+      - '.github/workflows/creature-registry-projection.yml'
+  pull_request:
+    paths:
+      - 'docs/creatures/**'
+      - '.github/workflows/creature-registry-projection.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate registry and projection regression tests
+        run: |
+          python docs/creatures/registry_tool.py validate
+          python -m unittest discover -s docs/creatures -p 'test_registry_tool.py'
+      - name: Fetch immutable Progression projection checkpoint (source only)
+        uses: actions/checkout@v4
+        with:
+          ref: 'fe51bfd86e119144e4ae8e3aa208f536cb446e5c'
+          path: projection-donor
+          persist-credentials: false
+      - name: Compare all generated tags against exact donor
+        run: python docs/creatures/registry_tool.py compare-tags --tag-dir projection-donor/compat/progression/src/main/resources/data/tmm_progression/tags/entity_type

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "item": "pamhc2foodextended:orangejuiceitem",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "pamhc2foodextended:orangejuiceitem",
+      "method": "nonthermal",
+      "result_count": 1,
+      "ingredients": [
+        {
+          "item": "pamhc2trees:orangeitem",
+          "count": 2
+        },
+        {
+          "item": "pamhc2foodcore:juiceritem",
+          "count": 1,
+          "role": "neutral"
+        }
+      ]
+    }
+  ]
+}

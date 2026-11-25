@@ -99,9 +99,11 @@ def main() -> int:
     policy=json.loads(POLICY.read_text(encoding="utf-8"))
     if policy.get("schema_version") != 1 or "explicitly_tiny_exceptions" not in policy:
         raise ValueError("Unknown EMC coverage policy")
-    exceptions=set(policy["explicitly_tiny_exceptions"])
-    if len(exceptions)!=len(policy["explicitly_tiny_exceptions"]):
-        raise ValueError("Duplicate cheap-value exceptions")
+    tiny=policy["explicitly_tiny_exceptions"]
+    documents=policy.get("non_transmutable_document_exceptions", [])
+    if len(set(tiny)) != len(tiny) or len(set(documents)) != len(documents):
+        raise ValueError("Duplicate EMC coverage exception ID")
+    exceptions=set(tiny) | set(documents)
     report=analyze(items(a.items),emc_values(a.emc),exceptions)
     if a.output:
         a.output.parent.mkdir(parents=True,exist_ok=True)

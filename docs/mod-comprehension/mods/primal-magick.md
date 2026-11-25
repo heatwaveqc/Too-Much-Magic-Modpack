@@ -6,12 +6,18 @@
 | Category / parent or addons | Magic; research, spellcraft, wand mana, elemental disciplines, attunement, rituals and magitech devices |
 | MC / loader / pack target | Minecraft 1.21.1 / NeoForge / TMM test/full-integration |
 | Pinned version / artifact / hash | mods/primal-magick.pw.toml; primalmagick-neoforge-1.21.1-6.0.7.jar; CurseForge project 545271, file 6677090; SHA1 165a849fe2b95355067ede9cda014dec08129731 [pin] |
-| Source snapshot | Official daedalus4096/PrimalMagick release commit [`5977468bda968b994e54066236ec5719295ac9c3`](https://github.com/daedalus4096/PrimalMagick/tree/5977468bda968b994e54066236ec5719295ac9c3), corresponding to tag 6.0.7. Gradle metadata declares Minecraft 1.21.1, mod ID primalmagick and version-aligned NeoForge 21.1.132 baseline; exact JAR equivalence not verified. |
-| Guide/documentation version gap | Exact 6.0.7 project overview and tag README/changelog available. The Grimoire is the in-game guide/research UI; individual discipline and tutorial page names were not extracted from the pinned artifact. |
+| Source snapshot | Official daedalus4096/PrimalMagick release commit [`5977468bda968b994e54066236ec5719295ac9c3`](https://github.com/daedalus4096/PrimalMagick/tree/5977468bda968b994e54066236ec5719295ac9c3), corresponding to tag 6.0.7. Gradle metadata declares Minecraft 1.21.1, mod ID primalmagick and version-aligned NeoForge 21.1.132 baseline; exact pinned 6.0.7 JAR SHA-1 and bundled data verified by the 2026-11-23 release audit; upstream source-to-bytecode equivalence only spot-checked. |
+| Guide/documentation version gap | Exact 6.0.7 Grimoire text is available in the pinned JAR (3,287 `en_us` keys); the separate Grimoire research/Requirements/search UI was source-traced. Actual rendered client screens and player progression remain untested. |
 | Profile status | researching |
-| Evidence reached | Exact pack pin and CurseForge release metadata; official 6.0.7 source commit metadata/README/changelog and ritual source files; official project overview; no JAR inspection or in-pack tests |
-| Reviewed | 2026-11-16 |
-| Quest ownership | No Primal Magick quest chapter reconciled. No quest files changed. |
+| Evidence reached | Exact Packwiz pin matched by uploaded release JAR (SHA-1), 9,228 intact ZIP entries, 970 parseable recipe JSONs, 28 conditional tag recipes, 298 research entries, 38 project templates, 8 research disciplines, 70 lore book definitions and selected compiled method disassembly; **no in-pack gameplay test**. |
+| Reviewed | 2026-11-23 (release binary cross-check; earlier source walkthrough retained) |
+| Quest ownership | [41 research-only Primal teaching nodes](../../mod-capabilities/mods/primal-magick-quest-map.md), integrated into Atlas; existing FTB quest GUIDs/real tasks unchanged. |
+
+## 2026-11-23 exact-release binary evidence supersedes earlier source-only status
+
+The owner supplied the actual `primalmagick-neoforge-1.21.1-6.0.7.jar`. Read-only `hashlib`, `zipfile` and JDK `javap` inspection confirmed **SHA-1 `165a849fe2b95355067ede9cda014dec08129731` exactly matches the TMM Packwiz lock**, SHA-256 `f78cab2206b5c05c1d9615cf42bd2d728971156343658c2354bd496b7544f98f`, and all **970 bundled recipe JSONs** (28 NeoForge conditional), **298 Research Entries**, **38 Theorycraft templates**, plus English Grimoire first-play stage text. The Java generator's 855 literal builder callsites and the JAR's 970 recipe JSON files are reconciled in the [versioned release JAR census](../../mod-capabilities/inventories/primal-magick-6.0.7-release-jar-census.md). Selected compiled Grimoire/SpellPackage methods support the source analysis, including the **creative Grimoire's `forceGrantAll`** and additive/multiplicative typed Mana spell costs. The [29-axis source/binary Atlas dossier](../../mod-capabilities/mods/primal-magick.md) and [Grimoire UI/attunement notes](../../mod-capabilities/inventories/primal-magick-6.0.7-attunements-and-grimoire.md) are newer than portions of this foundational 2026-11-16 profile; use them for current verified details.
+
+**Not a runtime PASS:** NeoForge has not been booted with the full pack, so dynamic tag eligibility, creative/EMC routes, Tectonic/worldgen, client screen behavior, cross-mod spell/skill interactions, and actual FTB actor credit remain untested. Any older claims below that the published JAR was uninspected are superseded by this section only in the precise static ZIP/data/selected-bytecode sense. Neither the JAR nor extracted class/art assets were committed.
 
 ## Executive gameplay map
 

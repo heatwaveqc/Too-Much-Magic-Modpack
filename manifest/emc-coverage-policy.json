@@ -36,7 +36,7 @@
     "NBT/data-bearing and charged containers must be assessed: plain item-ID EMC values do not prove safe handling of contents, attributes, enchantments or stored resources.",
     "Item variants, durability, spawn eggs, creative/debug artifacts and dynamic loot still appear in coverage census for review; no undocumented exclusions.",
     "Ensure large values fit ProjectE's signed-long/mapper limits; complex Project Expansion EMC BigInteger values may require special policy and native compatibility.",
-    "EMC-to-Quest Shop currency economy should be tested for unintended self-amplifying loops.",
+    "Physical money is intentionally transmutable and replicable; use coin EMC for readable shop/bounty prices, not an anti-minting restriction.",
     "Never give a generic EMC price to Bountiful signed decree or generated bounty slips; their component-bearing contents and contracts must not be replicated by ProjectE. Verify zero EMC for default and personalized stacks in runtime."
   ],
   "success_gate": "Export real loaded item registry and post-mapping positive EMC table, compare, assign missing root values, rerun until zero non-exception misses, then test acquisition/transmutation and no-positive-cycle exploits in Prism.",

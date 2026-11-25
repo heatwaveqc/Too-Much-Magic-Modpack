@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "huaxiadelight:raw_pork_intestine",
+  "provenance": "huaxiadelight:raw_pork_intestine",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/raw_meat",
+    "#tmm:foods/raw"
+  ]
+}

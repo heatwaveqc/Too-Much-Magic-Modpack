@@ -6,12 +6,8 @@
       "mod_id": "tyr_progression"
     },
     {
-      "directory": "compat/transformations",
-      "mod_id": "tmm_transformations"
-    },
-    {
-      "directory": "compat/traders-vengence",
-      "mod_id": "traders_vengence"
+      "directory": "compat/traders-vengeance",
+      "mod_id": "traders_vengeance"
     },
     {
       "directory": "compat/economy",

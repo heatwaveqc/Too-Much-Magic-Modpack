@@ -41,12 +41,19 @@ final class MonkPathParityCoverageTest {
 
     @Test void installedPathParsesAndRemainsTwentyRanksWithoutTyz() throws Exception {
         Definition.Path path = monkPath();
-        assertEquals(20, path.maxRank());
         assertTrue(path.skills().size() >= 28);
-        assertEquals(0L, path.rankXp().getFirst().longValue());
-        assertEquals(20L, path.rankXp().get(1).longValue());
-        assertEquals(55L, path.rankXp().get(2).longValue());
-        assertEquals(105L, path.rankXp().get(3).longValue());
+        assertEquals(0L,path.rankXp().getFirst().longValue());
+        if(path.activities().isEmpty()){
+            assertEquals(200,path.maxRank(),"Unified MXP uses synthetic level gates");
+            assertEquals(1L,path.rankXp().get(1).longValue());
+            assertEquals(2L,path.rankXp().get(2).longValue());
+            assertEquals(3L,path.rankXp().get(3).longValue());
+        }else{
+            assertEquals(20,path.maxRank());
+            assertEquals(20L,path.rankXp().get(1).longValue());
+            assertEquals(55L,path.rankXp().get(2).longValue());
+            assertEquals(105L,path.rankXp().get(3).longValue());
+        }
         for (Definition.Skill skill : path.skills()) {
             if (skill.autoRanks().isEmpty()) continue;
             assertEquals(0, skill.baseCost(), "Classic automatically unlocked talents are free: " + skill.id());
@@ -143,7 +150,8 @@ final class MonkPathParityCoverageTest {
         assertEquals(java.util.List.of(12), lava.autoRanks());
         var glide = path.skill("tyr_progression:momentum_glide");
         assertNotNull(glide);
-        assertEquals("tyr_progression:dragon_defeated",
+        assertEquals(path.activities().isEmpty()
+                ?"tyr_progression:trial_wither_victory":"tyr_progression:dragon_defeated",
                 glide.effects().getFirst().params().get("requires_milestone"));
 
         var treasure = path.skill("tyr_progression:treasure_hand");

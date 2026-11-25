@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:minced_beef",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "farmersdelight:cutting/beef",
+      "method": "nonthermal",
+      "result_count": 2,
+      "efficiency": 1.3333333333333333,
+      "ingredients": [
+        {
+          "item": "minecraft:beef",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

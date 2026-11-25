@@ -5,8 +5,8 @@ public final class GrowthFactorMath {
     private GrowthFactorMath() {}
 
     /**
-     * Reduce future ordinary award growth without touching saved lifetime levels
-     * or accumulated effective XP. A reduced growth factor can never be below 1.
+     * Reduce future ordinary award growth without mutating current XP.
+     * The factor may be below 1 under the generic configurable XP contract.
      */
     public static double effective(double configured, double reduction) {
         MxpMath.validateGrowth(configured);

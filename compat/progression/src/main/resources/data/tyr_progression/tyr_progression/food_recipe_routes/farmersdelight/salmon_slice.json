@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:salmon_slice",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "farmersdelight:cutting/salmon",
+      "method": "nonthermal",
+      "result_count": 2,
+      "ingredients": [
+        {
+          "item": "minecraft:salmon",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -51,6 +51,8 @@ public final class MutagenicBrewItem extends PotionItem {
                 player.displayClientMessage(Component.translatable(
                     "message.tyr_progression.mutagenic_brew_no_progress"),true);
                 return stack; // No wasted Hunter brew and no normal potion effects.
+            } else {
+                HunterExperience.mutagenFinished(player,stack);
             }
             CriteriaTriggers.CONSUME_ITEM.trigger(player,stack);
             player.awardStat(Stats.ITEM_USED.get(this));

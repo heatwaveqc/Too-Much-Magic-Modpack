@@ -1,0 +1,373 @@
+package io.github.heatwaveqc.tyr.progression.core;
+
+import com.google.gson.JsonParser;
+import io.github.heatwaveqc.tyr.progression.data.ChannelConfig;
+import io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig;
+import io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyRuntime;
+import io.github.heatwaveqc.tyr.progression.model.Definition;
+import io.github.heatwaveqc.tyr.progression.model.XpChannel;
+import io.github.heatwaveqc.tyr.progression.state.Ledger;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/** Exercises actual ChannelEngine multi-wallet purchases, not only pure ledger math. */
+class ConfiguredEconomyRuntimeTest {
+    private static final String PATH="test:discipline";
+    private static final String SKILL="test:wellspring";
+    private static final String CULT="test:cultivation";
+
+    private static ExperienceEconomyConfig.Catalog catalog() {
+        return ExperienceEconomyConfig.read(JsonParser.parseString("""
+            {"schema":1,
+             "systems":[
+               {"id":"tyr_progression:mxp","xp_per_point":1000,"growth_factor":1.02},
+               {"id":"test:cultivation","xp_per_point":100,"growth_factor":0.001}
+             ],
+             "default_path_change":{"on_leave":"forfeit","on_respec":"refund","wipe_unallocated":true},
+             "skills":[{"path":"test:discipline","skill":"test:wellspring",
+               "total_rank_cap":8,
+               "purchases":[
+                 {"system":"tyr_progression:mxp","max_ranks":5,"points_per_rank":1},
+                 {"system":"test:cultivation","max_ranks":3,"points_per_rank":1}
+               ]
+             }]}
+            """).getAsJsonObject());
+    }
+
+    private static Definition.Path tree() {
+        var skill=new Definition.Skill(SKILL,8,1,1,0,
+                List.of(),List.of(),List.of(),"",List.of(),List.of());
+        return new Definition.Path(PATH,"",List.of(0L,1000L),0,
+                List.of(),List.of(),List.of(skill));
+    }
+
+    private static ChannelConfig config() {
+        XpChannel mxp=XpChannel.mxp(1.02);
+        return new ChannelConfig(Map.of(mxp.id(),mxp),
+                Map.of(PATH,mxp),
+                Map.of(new ChannelConfig.SkillKey(PATH,SKILL),
+                        new ChannelConfig.Binding(mxp,mxp)));
+    }
+
+    @Test void nativeWalletRequiresActualBindingAndActivePath(){
+        var mxp=XpChannel.mxp(1.02);
+        var nativeChannel=new XpChannel(CULT,tree(),1.0,PATH,"Cultivation","Points");
+        var channels=Map.of(mxp.id(),mxp,CULT,nativeChannel);
+        var key=new ChannelConfig.SkillKey(PATH,SKILL);
+        var unified=new ChannelConfig(channels,Map.of(PATH,mxp),
+                Map.of(key,new ChannelConfig.Binding(mxp,mxp)));
+        assertFalse(unified.usesNative(CULT,p->true));
+        var separate=new ChannelConfig(channels,Map.of(PATH,nativeChannel),
+                Map.of(key,new ChannelConfig.Binding(nativeChannel,nativeChannel)));
+        assertTrue(separate.usesNative(CULT,PATH::equals));
+        assertFalse(separate.usesNative(CULT,p->false));
+        var hybrid=new ChannelConfig(channels,Map.of(PATH,mxp),
+                Map.of(key,new ChannelConfig.Binding(mxp,nativeChannel)));
+        assertTrue(hybrid.usesNative(CULT,PATH::equals));
+        assertFalse(hybrid.usesNative(mxp.id(),p->true));
+    }
+
+    @Test void invalidCatalogCrossReferencesRejectBeforePublication(){
+        var paths=Map.of(PATH,tree());
+        assertDoesNotThrow(()->ExperienceEconomyConfig.validateReferences(catalog(),paths,Set.of()));
+        assertThrows(IllegalArgumentException.class,()->
+                ExperienceEconomyConfig.validateReferences(catalog(),paths,Set.of(CULT)));
+        for(String extra:List.of(
+                "\"path_changes\":[{\"path\":\"test:missing\",\"system\":\"test:shared\"}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:missing\",\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:missing\",\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:wellspring\",\"min_rank\":9,\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:wellspring\",\"effect_index\":0,\"operation\":\"multiply\",\"value\":2}]")){
+            var invalid=ExperienceEconomyConfig.read(JsonParser.parseString(
+                    "{\"systems\":[{\"id\":\"test:shared\"}],"+extra+"}").getAsJsonObject());
+            assertThrows(IllegalArgumentException.class,()->
+                    ExperienceEconomyConfig.validateReferences(invalid,paths,Set.of()));
+        }
+        var invalidGate=ExperienceEconomyConfig.read(JsonParser.parseString("""
+            {"systems":[{"id":"test:shared","earning_path":"test:missing"}]}
+            """).getAsJsonObject());
+        assertThrows(IllegalArgumentException.class,()->
+                ExperienceEconomyConfig.validateReferences(invalidGate,paths,Set.of()));
+    }
+
+    @Test void investedGateUsesOnlyCurrentPathPurchasesAcrossCurrencies() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();
+            ExperienceEconomyRuntime.install(catalog);
+            var gated=new Definition.Skill(SKILL,8,1,1,0,List.of(),List.of(),List.of(),"",
+                    List.of(),List.of(),List.of(),List.of(),List.of(1,2,3,4,5,6,7,8));
+            var tree=new Definition.Path(PATH,"",List.of(0L,1000L),0,
+                    List.of(),List.of(),List.of(gated));
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,XpChannel.mxp(1.02));
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,XpChannel.MXP,
+                "test:mana","test:mana_gate",null,new BigDecimal("5000"),true,1.02);
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,CULT,
+                "test:practice","test:practice_gate",null,new BigDecimal("300"),true,1.02);
+            var paid=ExperienceEconomy.buy(ledger.economy(),catalog.systems().get(XpChannel.MXP),
+                "test:other","test:other_skill",1,5,5);
+            ledger=ledger.withEconomy(paid);
+            assertEquals(0,ChannelEngine.investedRanks(ledger,PATH,config()));
+            assertSame(ledger,ChannelEngine.buy(ledger,tree,config(),SKILL,XpChannel.MXP));
+            assertSame(ledger,ChannelEngine.buy(ledger,tree,config(),SKILL,CULT));
+            paid=ExperienceEconomy.buy(ledger.economy(),catalog.systems().get(XpChannel.MXP),
+                PATH,"test:foundation",1,5,5);
+            ledger=ledger.withEconomy(paid).receipt(PATH,"test:foundation",XpChannel.MXP,1);
+            assertEquals(1,ChannelEngine.investedRanks(ledger,PATH,config()));
+            ledger=ChannelEngine.buy(ledger,tree,config(),SKILL,CULT);
+            assertEquals(2,ChannelEngine.investedRanks(ledger,PATH,config()));
+            assertEquals(1,ChannelEngine.view(ledger,tree,config()).skillRank(SKILL));
+            ledger=ChannelEngine.buy(ledger,tree,config(),SKILL,XpChannel.MXP);
+            assertEquals(3,ChannelEngine.investedRanks(ledger,PATH,config()));
+            var reset=ChannelEngine.refund(ledger,tree);
+            assertEquals(0,ChannelEngine.investedRanks(reset,PATH,config()));
+            assertSame(reset,ChannelEngine.buy(reset,tree,config(),SKILL,XpChannel.MXP));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void twoCurrenciesPurchaseAndStackRanksWithIndependentCaps() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();
+            ExperienceEconomyRuntime.install(catalog);
+            var initial=ExperienceEconomy.Ledger.empty();
+            initial=ChannelEngine.awardConfigured(Ledger.empty(),catalog,
+                XpChannel.MXP,"test:mana","test:mana_debit",null,
+                new BigDecimal("5000"),true,1.02).economy();
+            Ledger ledger=Ledger.empty().withEconomy(initial);
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,CULT,
+                "test:practice","test:practice_one",null,
+                new BigDecimal("300"),true,0.001);
+            ledger=ChannelEngine.join(ledger,tree(),XpChannel.mxp(1.02));
+
+            var before=ledger;
+            for(int i=0;i<5;i++)ledger=ChannelEngine.buy(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            assertEquals(5,ChannelEngine.view(ledger,tree(),config()).skillRank(SKILL));
+            assertEquals(0,ledger.wallet(XpChannel.MXP).points());
+            assertSame(ledger,ChannelEngine.buy(ledger,tree(),config(),SKILL,XpChannel.MXP));
+            for(int i=0;i<3;i++)ledger=ChannelEngine.buy(ledger,tree(),config(),SKILL,CULT);
+            assertEquals(8,ChannelEngine.view(ledger,tree(),config()).skillRank(SKILL));
+            assertEquals(3,ExperienceEconomy.contributedRanks(ledger.economy(),PATH,SKILL,CULT));
+            assertEquals(5,ExperienceEconomy.contributedRanks(ledger.economy(),PATH,SKILL,XpChannel.MXP));
+            assertSame(ledger,ChannelEngine.buy(ledger,tree(),config(),SKILL,CULT));
+            assertEquals(5000,ledger.economy().currentXp().get(XpChannel.MXP).intValueExact());
+            assertEquals(300,ledger.economy().currentXp().get(CULT).intValueExact());
+            assertEquals(4,ledger.wallet(CULT).rank());
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void configuredDepartureCanForfeitBothCurrenciesWithoutRepeatingRewards() {
+        var catalog=catalog();
+        var source=ExperienceEconomy.Ledger.empty()
+            .withAchievement("test:milestone");
+        source=ExperienceEconomy.earn(source,catalog.systems().get(XpChannel.MXP),
+            "test:boss","test:boss_tx","test:boss_first",
+            new BigDecimal("2500"),true,1.02).ledger();
+        source=ExperienceEconomy.earn(source,catalog.systems().get(CULT),
+            "test:manual","test:manual_tx",null,
+            new BigDecimal("200"),true,1.02).ledger();
+        source=ExperienceEconomy.buy(source,catalog.systems().get(XpChannel.MXP),
+            PATH,SKILL,1,5,8);
+        source=ExperienceEconomy.buy(source,catalog.systems().get(CULT),
+            PATH,SKILL,1,3,8);
+        var departed=ChannelEngine.pathChange(Ledger.empty().withEconomy(source),
+            Set.of(PATH),catalog);
+        assertEquals(0,departed.economy().currentXp().get(XpChannel.MXP).signum());
+        assertEquals(0,departed.economy().currentXp().get(CULT).signum());
+        assertEquals(0,departed.economy().paidRanks().size());
+        assertTrue(departed.economy().achievements().contains("test:milestone"));
+        assertTrue(departed.economy().rewardReceipts().stream().anyMatch(x->x.endsWith("test:boss_first")));
+    }
+
+    @Test void departureMayForfeitOneCurrencyAndRetainAnotherWithoutRestoringLostPoints() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var policy=ExperienceEconomyConfig.read(JsonParser.parseString("""
+                {"systems":[
+                  {"id":"tyr_progression:mxp","xp_per_point":1000},
+                  {"id":"test:cultivation","xp_per_point":100}
+                ],
+                "default_path_change":{"on_leave":"forfeit","on_respec":"refund","wipe_unallocated":true},
+                "path_changes":[{"path":"test:discipline","system":"test:cultivation",
+                  "on_leave":"retain","wipe_unallocated":false}],
+                "skills":[{"path":"test:discipline","skill":"test:wellspring",
+                  "total_rank_cap":8,
+                  "purchases":[
+                    {"system":"tyr_progression:mxp","max_ranks":5},
+                    {"system":"test:cultivation","max_ranks":3}
+                  ]}]}
+                """).getAsJsonObject());
+            ExperienceEconomyRuntime.install(policy);
+            Ledger l=Ledger.empty();
+            l=ChannelEngine.awardConfigured(l,policy,XpChannel.MXP,"test:mana",
+                "test:mana_one",null,new BigDecimal("1500"),true,1.02);
+            l=ChannelEngine.awardConfigured(l,policy,CULT,"test:practice",
+                "test:practice_one",null,new BigDecimal("200"),true,1.02);
+            l=ChannelEngine.join(l,tree(),XpChannel.mxp(1.02));
+            l=ChannelEngine.buy(l,tree(),config(),SKILL,XpChannel.MXP);
+            l=ChannelEngine.buy(l,tree(),config(),SKILL,CULT);
+            assertEquals(2,ChannelEngine.view(l,tree(),config()).skillRank(SKILL));
+            var left=ChannelEngine.depart(l,tree(),policy);
+            assertFalse(left.get(PATH).joined());
+            assertEquals(0,left.economy().currentXp().get(XpChannel.MXP).intValueExact());
+            assertEquals(200,left.economy().currentXp().get(CULT).intValueExact());
+            assertEquals(1,ExperienceEconomy.effectiveRank(left.economy(),PATH,SKILL));
+            assertEquals(1,left.payments().get(PATH+"|"+SKILL).size());
+            var returned=ChannelEngine.join(left,tree(),XpChannel.mxp(1.02));
+            assertEquals(1,ChannelEngine.view(returned,tree(),config()).skillRank(SKILL));
+            assertEquals(0,ExperienceEconomy.contributedRanks(returned.economy(),PATH,SKILL,XpChannel.MXP));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void configurableRespecCanRetainOneCurrencyAndForfeitAnother() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var policy=ExperienceEconomyConfig.read(JsonParser.parseString("""
+                {"systems":[
+                   {"id":"tyr_progression:mxp","xp_per_point":1000},
+                   {"id":"test:cultivation","xp_per_point":100}
+                 ],
+                 "default_path_change":{"on_leave":"forfeit","on_respec":"refund","wipe_unallocated":true},
+                 "path_changes":[
+                   {"path":"test:discipline","system":"tyr_progression:mxp","on_respec":"forfeit"},
+                   {"path":"test:discipline","system":"test:cultivation","on_respec":"retain"}
+                 ],
+                 "skills":[{"path":"test:discipline","skill":"test:wellspring",
+                   "total_rank_cap":8,"purchases":[
+                     {"system":"tyr_progression:mxp","max_ranks":5},
+                     {"system":"test:cultivation","max_ranks":3}
+                   ]}]}
+                """).getAsJsonObject());
+            ExperienceEconomyRuntime.install(policy);
+            var current=ChannelEngine.join(Ledger.empty(),tree(),XpChannel.mxp(1.02));
+            current=ChannelEngine.awardConfigured(current,policy,XpChannel.MXP,"test:mana",
+                    "test:mana_spent",null,new BigDecimal("2000"),true,1.0);
+            current=ChannelEngine.awardConfigured(current,policy,CULT,"test:practice",
+                    "test:practice_paid",null,new BigDecimal("200"),true,1.0);
+            current=ChannelEngine.buy(current,tree(),config(),SKILL,XpChannel.MXP);
+            current=ChannelEngine.buy(current,tree(),config(),SKILL,CULT);
+            assertEquals(2,ChannelEngine.view(current,tree(),config()).skillRank(SKILL));
+            var respec=ChannelEngine.refund(current,tree());
+            assertTrue(respec.get(PATH).joined());
+            assertEquals(1000,respec.economy().currentXp().get(XpChannel.MXP).intValueExact());
+            assertEquals(200,respec.economy().currentXp().get(CULT).intValueExact());
+            assertEquals(1,ExperienceEconomy.effectiveRank(respec.economy(),PATH,SKILL));
+            assertEquals(1,ExperienceEconomy.available(respec.economy(),policy.systems().get(XpChannel.MXP)));
+            assertEquals(1,ExperienceEconomy.available(respec.economy(),policy.systems().get(CULT)));
+            assertEquals(1,respec.payments().get(PATH+"|"+SKILL).size());
+            assertEquals(1,ChannelEngine.view(respec,tree(),config()).skillRank(SKILL));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void shippedEconomyPricesLegacyExpensiveSkillAtExactlyOnePoint() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=ExperienceEconomyConfig.tmmDefault();
+            ExperienceEconomyRuntime.install(catalog);
+            var skill=new Definition.Skill("test:expensive_legacy",3,1,7,2,
+                    List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var tree=new Definition.Path("test:legacy_path","",List.of(0L,1000L),0,
+                    List.of(),List.of(),List.of(skill));
+            var mxp=XpChannel.mxp(1.02);
+            var channel=new ChannelConfig(Map.of(mxp.id(),mxp),
+                    Map.of(tree.id(),mxp),Map.of(
+                    new ChannelConfig.SkillKey(tree.id(),skill.id()),
+                    new ChannelConfig.Binding(mxp,mxp)));
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,mxp);
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,mxp.id(),
+                    "test:verified_ritual","test:ritual_one",null,
+                    new BigDecimal("1000"),true,1.02);
+            assertEquals(1,ledger.wallet(mxp.id()).points());
+            var paid=ChannelEngine.buy(ledger,tree,channel,skill.id());
+            assertNotSame(ledger,paid,"Old Path price 7 cannot block one-point TMM rank");
+            assertEquals(1000,paid.economy().currentXp().get(mxp.id()).intValueExact());
+            assertEquals(0,paid.wallet(mxp.id()).points());
+            assertEquals(1,paid.economy().paidRanks().getFirst().pointCost());
+            assertEquals(1,ChannelEngine.view(paid,tree,channel).skillRank(skill.id()));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void shippedUnifiedPresetIsAnActualPackResource() throws Exception {
+        try(var reader=new java.io.InputStreamReader(
+                getClass().getResourceAsStream(
+                    "/data/tyr_progression/tyr_progression/economy.json"),
+                java.nio.charset.StandardCharsets.UTF_8)){
+            var catalog=ExperienceEconomyConfig.read(
+                    JsonParser.parseReader(reader).getAsJsonObject());
+            assertEquals(1,catalog.systems().size());
+            assertEquals(1000,catalog.systems().get(XpChannel.MXP).xpPerPoint().intValueExact());
+            assertEquals(ExperienceEconomy.DeparturePolicy.FORFEIT,
+                    catalog.defaultTransition().onLeave());
+            assertTrue(catalog.defaultTransition().wipeUnallocated());
+        }
+    }
+
+    @Test void adminResetUsesActualPrerequisitesAndReleasesOriginalCurrencyCommitments() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            ExperienceEconomyRuntime.install(ExperienceEconomyConfig.tmmDefault());
+            var mxp=XpChannel.mxp(1.02);
+            var a=new Definition.Skill("test:a",2,1,1,0,List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var b=new Definition.Skill("test:b",2,1,1,0,List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var c=new Definition.Skill("test:c",2,1,1,0,List.of(),List.of(a.id(),b.id()),List.of(),"",List.of(),List.of());
+            var d=new Definition.Skill("test:d",2,1,1,0,List.of(a.id()),List.of(),List.of(),"",List.of(),List.of());
+            var tree=new Definition.Path(PATH,"",List.of(0L,1000L),0,List.of(),List.of(),List.of(a,b,c,d));
+            var bindings=new java.util.HashMap<ChannelConfig.SkillKey,ChannelConfig.Binding>();
+            for(var skill:tree.skills())bindings.put(new ChannelConfig.SkillKey(PATH,skill.id()),new ChannelConfig.Binding(mxp,mxp));
+            var config=new ChannelConfig(Map.of(mxp.id(),mxp),Map.of(PATH,mxp),bindings);
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,mxp);
+            assertSame(ledger,ChannelEngine.grantRank(ledger,tree,config,d.id(),mxp.id()));
+            for(var skill:tree.skills())ledger=ChannelEngine.grantRank(ledger,tree,config,skill.id(),mxp.id());
+            var owned=ledger;
+            assertEquals(4,ExperienceEconomy.debt(owned.economy(),ExperienceEconomyRuntime.current().systems().get(mxp.id())));
+            assertThrows(IllegalArgumentException.class,()->AdminSkills.reset(owned,tree,config,a.id(),false,false));
+            var result=AdminSkills.reset(owned,tree,config,a.id(),true,false);
+            assertEquals(List.of(a.id(),d.id()),result.removed());
+            var view=ChannelEngine.view(result.ledger(),tree,config);
+            assertEquals(1,view.skillRank(b.id()));
+            assertEquals(1,view.skillRank(c.id()));
+            assertEquals(0,view.skillRank(d.id()));
+            assertEquals(0,result.ledger().economy().currentXp().get(mxp.id()).signum());
+            assertEquals(2,result.ledger().economy().paidRanks().size());
+            assertFalse(result.ledger().payments().containsKey(PATH+"|"+a.id()));
+            var last=AdminSkills.reset(result.ledger(),tree,config,b.id(),true,true);
+            assertEquals(List.of(b.id(),c.id()),last.removed());
+            assertEquals(0,last.ledger().economy().paidRanks().size());
+            assertEquals(0,last.ledger().economy().currentXp().get(mxp.id()).signum());
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void partialAdminRankReductionPreservesOldestCurrencyCommitments(){
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();ExperienceEconomyRuntime.install(catalog);
+            var ledger=ChannelEngine.join(Ledger.empty(),tree(),XpChannel.mxp(1.02));
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,CULT);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            var reduced=AdminSkills.reduce(ledger,tree(),config(),SKILL,2,false,false).ledger();
+            assertEquals(2,ChannelEngine.view(reduced,tree(),config()).skillRank(SKILL));
+            assertEquals(List.of(XpChannel.MXP,CULT),reduced.economy().paidRanks().stream()
+                .map(ExperienceEconomy.PaidRank::system).toList());
+            assertEquals(List.of(XpChannel.MXP+"|1",CULT+"|1"),reduced.payments().get(PATH+"|"+SKILL));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(XpChannel.MXP)));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(CULT)));
+        } finally {ExperienceEconomyRuntime.install(previous);}
+    }
+}

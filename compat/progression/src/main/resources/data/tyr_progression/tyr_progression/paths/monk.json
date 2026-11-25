@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "xp_channel": "tyr_progression:monk",
+  "xp_channel": "tyr_progression:mxp",
   "exclusive_group": "",
   "milestones": [
     {
@@ -13,7 +13,7 @@
         }
       ],
       "xp": 0,
-      "points": 1
+      "points": 0
     },
     {
       "id": "tyr_progression:trial_ten_logs",
@@ -24,8 +24,14 @@
           "count": 10
         }
       ],
-      "xp": 35,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Ten Barehanded Logs",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_five_stone",
@@ -36,8 +42,14 @@
           "count": 5
         }
       ],
-      "xp": 50,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Five Barehanded Stone Blocks",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:steady_hands",
@@ -48,8 +60,14 @@
           "count": 100
         }
       ],
-      "xp": 110,
-      "points": 2
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Steady Hands — 100 Logs",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_ten_unarmed_undead",
@@ -60,8 +78,10 @@
           "count": 10
         }
       ],
-      "xp": 120,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "title": "Ten Undead Defeated Unarmed",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_animal_friendship",
@@ -72,8 +92,10 @@
           "count": 20
         }
       ],
-      "xp": 80,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "title": "Animal Friendship — 20 Interactions",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_four_iron_blocks",
@@ -84,8 +106,14 @@
           "count": 4
         }
       ],
-      "xp": 100,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Iron Palm — Four Iron Blocks",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_obsidian_hand",
@@ -96,8 +124,14 @@
           "count": 1
         }
       ],
-      "xp": 175,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Obsidian Hand",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_creeper_kiss",
@@ -108,20 +142,32 @@
           "count": 1
         }
       ],
-      "xp": 175,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Creeper Kiss",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_wither_victory",
       "criteria": [
         {
-          "event": "kill",
-          "target": "minecraft:wither",
+          "event": "external",
+          "target": "tyr_progression:strict_barehand_wither_victory",
           "count": 1
         }
       ],
-      "xp": 550,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Wither Mastery — Barehanded Victory",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:blind_ordeal_victory",
@@ -132,8 +178,14 @@
           "count": 5
         }
       ],
-      "xp": 270,
-      "points": 2
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Blindness Ordeal — Five Defeats",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:dragon_defeated",
@@ -144,8 +196,8 @@
           "count": 1
         }
       ],
-      "xp": 500,
-      "points": 2
+      "xp": 0,
+      "points": 0
     },
     {
       "id": "tyr_progression:training_twenty_hostiles",
@@ -156,8 +208,10 @@
           "count": 20
         }
       ],
-      "xp": 100,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "title": "Twenty Hostile Defeats",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:training_ten_advancements",
@@ -168,8 +222,10 @@
           "count": 10
         }
       ],
-      "xp": 140,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "title": "Ten Advancements",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:training_thirty_advancements",
@@ -180,8 +236,10 @@
           "count": 30
         }
       ],
-      "xp": 260,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "title": "Thirty Advancements",
+      "notify_progress": true
     },
     {
       "id": "tyr_progression:trial_bedrock_sleep",
@@ -192,8 +250,14 @@
           "count": 1
         }
       ],
-      "xp": 230,
-      "points": 0
+      "xp": 0,
+      "points": 0,
+      "fixed_reward": {
+        "system": "tyr_progression:mxp",
+        "xp": 1000
+      },
+      "title": "Bedrock Rest",
+      "notify_progress": true
     }
   ],
   "skills": [
@@ -220,7 +284,8 @@
           "empty_hand": true,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:natural_armor",
@@ -243,7 +308,8 @@
           "per_rank": 4,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:natural_toughness",
@@ -262,7 +328,8 @@
           "per_rank": 2,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:vitality",
@@ -280,7 +347,8 @@
           "per_rank": 6,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:hand_mining",
@@ -303,7 +371,8 @@
           "empty_hand": true,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:hand_harvest",
@@ -338,7 +407,8 @@
           "empty_hand": true,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:fire_discipline",
@@ -355,7 +425,8 @@
           "damage_tag": "#minecraft:is_fire",
           "per_rank": 0.5
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:blast_discipline",
@@ -372,7 +443,8 @@
           "damage_tag": "#minecraft:is_explosion",
           "per_rank": 0.5
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:feather_fall",
@@ -389,14 +461,13 @@
           "damage_tag": "minecraft:fall",
           "per_rank": 0.8
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:focus",
       "max_rank": 5,
       "required_rank": 4,
-      "base_cost": 2,
-      "step_cost": 1,
       "requires_milestones": [
         "tyr_progression:steady_hands"
       ],
@@ -408,6 +479,15 @@
           "per_rank": 0.05,
           "unarmored": true
         }
+      ],
+      "level_system": "tyr_progression:mxp",
+      "xp_channel": "tyr_progression:mxp",
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
       ]
     },
     {
@@ -425,7 +505,8 @@
           "target": "*",
           "empty_hand": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:reserved_fist",
@@ -440,7 +521,8 @@
         {
           "type": "reserved_fist"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:armor_lock",
@@ -455,7 +537,8 @@
         {
           "type": "armor_lock"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:catch_arrows",
@@ -471,7 +554,8 @@
           "type": "catch_arrows",
           "empty_hand": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:blink",
@@ -490,7 +574,8 @@
             "cooldown_ticks": "40"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:breath_meditation",
@@ -506,7 +591,8 @@
         {
           "type": "water_breathing"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:purification",
@@ -521,7 +607,8 @@
         {
           "type": "purification"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:creeper_kiss",
@@ -537,7 +624,8 @@
           "type": "creeper_peace",
           "empty_hand": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:treasure_hand",
@@ -553,7 +641,8 @@
           "type": "treasure_hand",
           "empty_hand": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:glass_touch",
@@ -569,7 +658,8 @@
           "type": "glass_touch",
           "empty_hand": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:hunger_discipline",
@@ -584,7 +674,8 @@
         {
           "type": "hunger_discipline"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:monk_leap",
@@ -602,7 +693,8 @@
             "factor": "1.2"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:withering_stare",
@@ -621,7 +713,8 @@
             "range": "20"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:step_assist",
@@ -643,7 +736,8 @@
             "requires_not_sneaking": "true"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:swift_step",
@@ -673,7 +767,8 @@
             "requires_sprinting": "true"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:water_walking",
@@ -688,7 +783,8 @@
         {
           "type": "water_walk"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:momentum_glide",
@@ -697,16 +793,17 @@
       "base_cost": 0,
       "step_cost": 0,
       "auto_ranks": [
-        20
+        1
       ],
       "effects": [
         {
           "type": "momentum_glide",
           "params": {
-            "requires_milestone": "tyr_progression:dragon_defeated"
+            "requires_milestone": "tyr_progression:trial_wither_victory"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:optional_blindness_ordeal",
@@ -726,7 +823,8 @@
             "kill_event": "tyr_progression:blind_hostile_kill"
           }
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:lava_protection",
@@ -741,7 +839,8 @@
         {
           "type": "lava_protection"
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:bedrock_rest",
@@ -758,15 +857,36 @@
           "empty_hand": true,
           "unarmored": true
         }
-      ]
+      ],
+      "level_system": "tyr_progression:mxp"
     },
     {
       "id": "tyr_progression:enlightenment",
       "title": "Enlightenment",
-      "description": "Early Monk cultivation: each rank reduces the growth factor that divides future ordinary global MXP awards by 0.001, without changing previously earned lifetime MXP levels. At base 1.020, 18 ranks yield 1.002; minimum 1.000.",
+      "description": "Monk cultivation (each rank requires another 50 invested Monk ranks, starting at 100): each rank reduces the growth factor that divides future ordinary global MXP awards by 0.001, without changing previously earned lifetime MXP levels. At base 1.020, 18 ranks yield 1.002; minimum 1.000.",
       "lane": "Magical Cultivation",
       "max_rank": 18,
       "required_rank": 1,
+      "rank_invested_requirements": [
+        100,
+        150,
+        200,
+        250,
+        300,
+        350,
+        400,
+        450,
+        500,
+        550,
+        600,
+        650,
+        700,
+        750,
+        800,
+        850,
+        900,
+        950
+      ],
       "rank_costs": [
         1,
         1,
@@ -788,7 +908,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "xp_growth_reduction",
@@ -856,7 +976,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -898,7 +1018,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:empty_hand_force"
       ],
@@ -947,7 +1067,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:empty_hand_force"
       ],
@@ -995,7 +1115,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:empty_hand_force"
       ],
@@ -1030,7 +1150,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:empty_hand_precision"
       ],
@@ -1060,7 +1180,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:empty_hand_precision"
       ],
@@ -1084,7 +1204,7 @@
     {
       "id": "tyr_progression:empty_hand_paragon",
       "title": "Empty Hand Paragon",
-      "description": "+5 fist damage and +3 armor unarmored; Curios allowed; Dragon + late milestones required. QA candidate: source handler present; numbers pending player testing.",
+      "description": "+5 fist damage and +3 armor unarmored; Curios allowed; Wither + late milestones required. QA candidate: source handler present; numbers pending player testing.",
       "lane": "Martial Body",
       "max_rank": 1,
       "required_rank": 20,
@@ -1092,13 +1212,13 @@
         5
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:paragon_force",
         "tyr_progression:iron_body"
       ],
       "requires_milestones": [
-        "tyr_progression:dragon_defeated"
+        "tyr_progression:trial_wither_victory"
       ],
       "effects": [
         {
@@ -1168,7 +1288,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -1229,7 +1349,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:natural_poise"
       ],
@@ -1293,7 +1413,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:natural_poise"
       ],
@@ -1337,7 +1457,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_vitality"
       ],
@@ -1383,7 +1503,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:iron_body"
       ],
@@ -1432,7 +1552,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_vitality"
       ],
@@ -1484,7 +1604,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -1525,7 +1645,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:body_speed"
       ],
@@ -1567,7 +1687,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:body_speed"
       ],
@@ -1583,7 +1703,7 @@
     {
       "id": "tyr_progression:glide_control",
       "title": "Glide Control",
-      "description": "+1%/rank post-Dragon Momentum Glide control (20% max). QA candidate: source handler present; numbers pending player testing.",
+      "description": "Improves Momentum Gliding after the strict barehanded Wither trial. Each rank adds 0.005 control bonus (0.1 maximum); actual flight tuning pending gameplay QA.",
       "lane": "Footwork",
       "max_rank": 20,
       "required_rank": 17,
@@ -1610,12 +1730,12 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:balanced_landing"
       ],
       "requires_milestones": [
-        "tyr_progression:dragon_defeated"
+        "tyr_progression:trial_wither_victory"
       ],
       "effects": [
         {
@@ -1623,7 +1743,7 @@
           "per_rank": 0.005,
           "unarmored": true,
           "params": {
-            "requires_milestone": "tyr_progression:dragon_defeated"
+            "requires_milestone": "tyr_progression:trial_wither_victory"
           }
         }
       ]
@@ -1658,7 +1778,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:body_speed"
       ],
@@ -1705,7 +1825,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -1756,7 +1876,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "break_speed",
@@ -1797,7 +1917,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:fortunate_hands"
       ],
@@ -1841,7 +1961,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -1850,6 +1970,122 @@
           "operation": "add_value",
           "empty_hand": true,
           "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:otherworld_sight",
+      "title": "Otherworld Sight",
+      "description": "Innate tier-two Otherworld texture reveal and tier-one native harvest access, without Demon's Dream, goggles, shader or potion. Iesnium still requires separate barehand training.",
+      "lane": "Magical Cultivation",
+      "max_rank": 1,
+      "required_rank": 8,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "effects": [
+        {
+          "type": "otherworld_sight",
+          "tier": 2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:iesnium_palm",
+      "title": "Iesnium Palm",
+      "description": "With Otherworld Sight and normal barehand harvest eligibility, harvest naturally concealed Iesnium using the native uncovered loot state. No extra drops.",
+      "lane": "Hands As Tools",
+      "max_rank": 1,
+      "required_rank": 13,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:otherworld_sight",
+        "tyr_progression:hand_harvest"
+      ],
+      "effects": [
+        {
+          "type": "otherworld_harvest",
+          "target": "occultism:iesnium_ore_natural",
+          "tier": 2,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:resonant_palm",
+      "title": "Resonant Palm",
+      "description": "Toggle: barehanded matching ore veins, 3 additional ores per rank (16 total at rank 5). Requires normal harvest eligibility.",
+      "lane": "Hands As Tools",
+      "max_rank": 5,
+      "required_rank": 4,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:hand_harvest"
+      ],
+      "activation": {
+        "mode": "toggle"
+      },
+      "effects": [
+        {
+          "type": "vein_mining",
+          "target": "#c:ores",
+          "per_rank": 3,
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "max_blocks": "15",
+            "sneak_only": "false"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:shattering_palm",
+      "title": "Shattering Palm",
+      "description": "Toggle: barehanded one-layer excavation, 3x3 / 5x5 / 7x7 centered on the hit face. Skips unharvestable, protected, block-entity and excessively hard blocks. Resonant Palm takes priority on ores.",
+      "lane": "Hands As Tools",
+      "max_rank": 3,
+      "required_rank": 4,
+      "rank_costs": [
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:hand_harvest"
+      ],
+      "activation": {
+        "mode": "toggle"
+      },
+      "effects": [
+        {
+          "type": "radial_mining",
+          "target": "#tyr_progression:radial_mineable",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "max_radius": "3",
+            "hardness_multiplier": "3",
+            "sneak_only": "false"
+          }
         }
       ]
     },
@@ -1883,7 +2119,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:toolless_reach"
       ],
@@ -1958,7 +2194,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:enlightenment"
       ],
@@ -2026,7 +2262,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:enlightenment"
       ],
@@ -2091,7 +2327,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_reservoir"
       ],
@@ -2142,7 +2378,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_wellspring"
       ],
@@ -2197,7 +2433,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_potency"
       ],
@@ -2238,7 +2474,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:spellward"
       ],
@@ -2282,7 +2518,7 @@
         1
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:flowing_counter"
       ],
@@ -2317,7 +2553,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:barehand_efficiency"
       ],
@@ -2362,7 +2598,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_thrift"
       ],
@@ -2395,7 +2631,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:spellward"
       ],
@@ -2423,7 +2659,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:spellward"
       ],
@@ -2451,7 +2687,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:spellward"
       ],
@@ -2461,6 +2697,37 @@
           "per_rank": 0.01,
           "damage_tag": "minecraft:dragon_breath",
           "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:elixir_of_life",
+      "title": "Elixir of Life",
+      "description": "The first approved beverage you genuinely consume becomes your personal Elixir. Each serving gives 10 fixed MXP, bonus saturation and golden-apple-level buffs. After binding, other sources cannot add saturation or ordinary restricted buffs. Harmful and protected effects remain. Binding persists until Path reset.",
+      "lane": "Magical Cultivation",
+      "max_rank": 1,
+      "required_rank": 15,
+      "rank_costs": [
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "level_system": "tyr_progression:mxp",
+      "requires_skills": [
+        "tyr_progression:meditative_elixir"
+      ],
+      "effects": [
+        {
+          "type": "personal_elixir",
+          "target": "#tyr_progression:elixir_candidates",
+          "params": {
+            "fixed_mxp": "10",
+            "saturation": "6",
+            "effects": "minecraft:regeneration,1,100;minecraft:absorption,0,2400",
+            "restricted_effects": "#tyr_progression:elixir_restricted_effects",
+            "protected_effects": "#tyr_progression:elixir_protected_effects",
+            "reset_on_path_reset": "true",
+            "stack_meditative": "false"
+          }
         }
       ]
     },
@@ -2484,7 +2751,7 @@
         2
       ],
       "xp_channel": "tyr_progression:mxp",
-      "level_system": "tyr_progression:monk",
+      "level_system": "tyr_progression:mxp",
       "requires_skills": [
         "tyr_progression:inner_wellspring"
       ],
@@ -2512,5 +2779,41 @@
     "max_abs_look_y": 0.45,
     "completion_event": "tyr_progression:monk_first_sunset",
     "label": "First Sunset"
+  },
+  "mastery_stages": {
+    "system": "tyr_progression:mxp",
+    "points_per_stage": 50,
+    "max_stage": 20
+  },
+  "unified_mxp_sources": [
+    {
+      "system": "tyr_progression:mxp",
+      "source": "tyr_progression:monk_advancement",
+      "event": "advancement",
+      "target": "*",
+      "base_mxp": 100,
+      "once_per_target": true
+    },
+    {
+      "system": "tyr_progression:mxp",
+      "source": "tyr_progression:monk_animal_friendship",
+      "event": "animal_petted",
+      "target": "*",
+      "base_mxp": 10,
+      "once_per_target": false
+    }
+  ],
+  "training_mxp": {
+    "system": "tyr_progression:mxp",
+    "hardness": 35,
+    "sprint": 1,
+    "ordinary_kill_per_hp": 100,
+    "strict_fist_kill_per_hp": 500,
+    "strict_window_ticks": 6000,
+    "first_consumable": 100,
+    "meditative_food_fixed": 5,
+    "meditative_drink_fixed": 2,
+    "meditative_tag": "tyr_progression:meditative",
+    "discovery_replay": false
   }
 }

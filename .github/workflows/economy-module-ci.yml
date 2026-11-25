@@ -45,8 +45,29 @@ jobs:
           python3 -m unittest discover -s compat/economy/tools -p 'test_verify_converter_contract.py' -v
       - name: Fetch exact hash-locked compile classpath
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Audit exact pinned native portable Iesnium Anvil ABI (Type A only)
+        run: python3 compat/economy/tools/audit_portable_anvil_abi.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Audit native-first portable storage coverage and exact target ABI (Type A only)
+        run: |
+          python3 compat/economy/tools/audit_portable_storage.py
+          python3 compat/economy/tools/audit_portable_storage_abi.py "$RUNNER_TEMP/economy-compile-mods"
       - name: Audit pinned Project Expansion EMC Link account resolution (Type A bytecode only)
         run: python3 compat/economy/tools/audit_native_emc_link_offline.py "$RUNNER_TEMP/economy-compile-mods/projectexpansion-1.21.1-1.0.6.jar"
+      - name: Audit pinned ProjectE Repair Talisman and Apotheosis Potion Charm ABI (Type A only)
+        run: |
+          python3 compat/economy/tools/audit_repair_talisman_charm.py \
+            "$RUNNER_TEMP/economy-compile-mods/ProjectE-1.21.1-PE1.1.0.jar" \
+            "$RUNNER_TEMP/economy-compile-mods/Apotheosis-1.21.1-8.9.0.jar"
+      - name: Audit pinned Apotheosis potion charm crafting ABI (Type A only)
+        run: |
+          python3 compat/economy/tools/audit_potion_charm_recipe.py \
+            "$RUNNER_TEMP/economy-compile-mods/Apotheosis-1.21.1-8.9.0.jar"
+      - name: Audit pinned Alchemist Cauldron and Occultism Partner against Neo multi-use flasks (Type A only)
+        run: |
+          python3 compat/economy/tools/audit_multidose_flask_consumers.py \
+            "$RUNNER_TEMP/economy-compile-mods/irons_spellbooks-1.21.1-3.16.3.jar" \
+            "$RUNNER_TEMP/economy-compile-mods/occultism-1.21.1-neoforge-1.227.0.jar" \
+            "$RUNNER_TEMP/economy-compile-mods/neovitae-1.21.1-1.1.54.jar"
       - name: Client optional-present and qualified native-version regression fixtures (offline)
         run: python3 -m unittest discover -s compat/economy/tools -p 'test_verify_client_dependency_closure.py' -v
       - name: Compile Economy and execute unit tests

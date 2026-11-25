@@ -134,8 +134,9 @@ public final class BossRewards {
                         case ELITE -> MxpService.eliteVictory(player,tx,MxpProgressionConfig.ELITE_BASE.get()*pending.elite());
                         case NONE -> null;
                     };
-                    if(receipt!=null&&receipt.accepted())player.sendSystemMessage(Component.literal("MXP: "+String.format("%.2f",receipt.effectiveXP())+
-                        (pending.tier()==Tier.ELITE?" (empowered foe)":receipt.first()?" (first victory)":" (repeat victory)")));
+                    if(receipt!=null&&receipt.accepted())player.sendSystemMessage(Component.literal(
+                        pending.tier()==Tier.ELITE?receipt.rewardSummary(" (empowered foe)"," (empowered foe)"):
+                            receipt.rewardSummary(" (first victory)"," (repeat victory)")));
                 } catch(RuntimeException e) { MxpMod.LOGGER.error("MXP boss award failed ({} / {} / {})",pending.id(),tx,id,e); }
             }
         }
@@ -169,8 +170,8 @@ public final class BossRewards {
             if(!eligible(player,level,victim))continue;
             try{
                 var receipt=chaos?MxpService.chaosVictory(player,tx):MxpService.standardBossVictory(player,id,tx);
-                if(receipt.accepted())player.sendSystemMessage(Component.literal("MXP: "+String.format("%.2f",receipt.effectiveXP())+
-                    (receipt.first()?" (first victory)":" (repeat victory)")));
+                if(receipt.accepted())player.sendSystemMessage(Component.literal(
+                    receipt.rewardSummary(" (first victory)"," (repeat victory)")));
             }catch(RuntimeException e){MxpMod.LOGGER.error("Native boss award failed ({}, {})",id,uuid,e);}
         }
     }

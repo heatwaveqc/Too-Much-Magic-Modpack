@@ -109,12 +109,26 @@ class PathJsonTest {
         String resource = "data/tyr_progression/tyr_progression/paths/hunter.json";
         try (var stream = PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
             assertNotNull(stream);
-            var path = TestPaths.read("tyr_progression:hunter",JsonParser.parseReader(
-                new java.io.InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8))
-                .getAsJsonObject());
-            assertEquals(20,path.maxRank());
-            assertEquals(28000L,path.rankXp().getLast().longValue());
-            assertEquals(1,path.pointsPerRank());
+            var raw = JsonParser.parseReader(new java.io.InputStreamReader(
+                stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            String channel=raw.get("xp_channel").getAsString();
+            assertTrue(java.util.Set.of("tyr_progression:hunter","tyr_progression:mxp").contains(channel));
+            var path=TestPaths.read("tyr_progression:hunter",raw);
+            var separate=raw.deepCopy();
+            separate.addProperty("xp_channel","tyr_progression:hunter");
+            var nativePath=TestPaths.read("tyr_progression:hunter",separate);
+            assertEquals(20,nativePath.maxRank());
+            assertEquals(28000L,nativePath.rankXp().getLast().longValue());
+            assertEquals(1,nativePath.pointsPerRank());
+            var unified=raw.deepCopy();
+            unified.addProperty("xp_channel","tyr_progression:mxp");
+            var sharedPath=TestPaths.read("tyr_progression:hunter",unified);
+            assertEquals(200,sharedPath.maxRank()); // parser projection, not MXP cap
+            assertEquals(0,sharedPath.pointsPerRank());
+            assertEquals(nativePath.skills(),sharedPath.skills());
+            assertEquals(channel.equals("tyr_progression:mxp")?sharedPath.maxRank():nativePath.maxRank(),path.maxRank());
+            if(channel.equals("tyr_progression:mxp"))
+                assertTrue(path.milestones().stream().allMatch(m->m.xp()==0&&m.points()==0));
             for (String skillId : new String[] {
                 "rooted", "evasion_undead", "evasion_raiders", "sword_specialist",
                 "axe_specialist", "scythe_specialist", "bow_specialist",
@@ -147,5 +161,19 @@ class PathJsonTest {
         assertThrows(IllegalArgumentException.class, () ->
             TestPaths.read("test:hunter",JsonParser.parseString(unbounded).getAsJsonObject()));
     }
+
+    @Test void optInMilestoneFeedbackMetadataIsParsedAndValidated() {
+        String withMilestone=VALID.replace("\"skills\":",
+            "\"milestones\":[{\"id\":\"test:iron\",\"title\":\"Iron Palm\",\"notify_progress\":true,"+
+            "\"criteria\":[{\"event\":\"barehand_block_break\",\"target\":\"minecraft:iron_block\",\"count\":4}]}],\"skills\":");
+        var parsed=TestPaths.read("test:monk",JsonParser.parseString(withMilestone).getAsJsonObject());
+        assertEquals("Iron Palm",parsed.milestones().getFirst().title());
+        assertTrue(parsed.milestones().getFirst().notifyProgress());
+        assertEquals(4,parsed.milestones().getFirst().criteria().getFirst().count());
+        String invalid=withMilestone.replace("Iron Palm","x".repeat(121));
+        assertThrows(IllegalArgumentException.class,
+            ()->TestPaths.read("test:monk",JsonParser.parseString(invalid).getAsJsonObject()));
+    }
+
 
 }

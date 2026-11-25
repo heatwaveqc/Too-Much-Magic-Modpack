@@ -14,14 +14,14 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[3]
 SLUGS = """
-projecte apotheosis placebo botania-revived evilcraft ars-nouveau draconic-evolution
+projecte apotheosis placebo botania-revived extra-botany-revived evilcraft ars-nouveau draconic-evolution
 brandons-core neovitae malum lodestonelib theurgy forbidden-arcanus valhelsia-core
 embers-re-ignited goety primal-magick astral-sorcery pastel irons-spells-n-spellbooks
 irons-lib project-expansion projecte-energy-converters apothic-spawners
 apothic-attributes apothic-enchanting relics artifacts reliquary-reincarnations
-jade titanium replication observerlib cyclops-core curios geckolib patchouli jei
+jade titanium replication occultism observerlib cyclops-core curios geckolib patchouli jei
 architectury-api resourceful-lib resourceful-config caelus playeranimator
-codechicken-lib-1-8 cloth-config puzzles-lib smartbrainlib bookshelf
+codechicken-lib-1-8 cloth-config puzzles-lib smartbrainlib bookshelf improvable-skills hammer-lib
 """.split()
 HOSTS = {"cdn.modrinth.com", "edge.forgecdn.net", "mediafilez.forgecdn.net"}
 
