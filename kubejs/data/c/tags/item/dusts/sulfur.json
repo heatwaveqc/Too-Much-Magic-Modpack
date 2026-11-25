@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neovitae:sulfur",
+    "eidolon_repraised:sulfur",
+    {
+      "id": "betterend:crystalline_sulphur",
+      "required": false
+    }
+  ]
+}

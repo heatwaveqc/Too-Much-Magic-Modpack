@@ -399,3 +399,15 @@ Exact reviewed dev/progression donor `1063355f7ba920e113baae38ce4a6f03ba2c8e44` 
 ## Thanksgiving Progression source promotion (2026-11-24)
 
 Candidate donor: `dev/progression@4a027c5f0e78af0cc08bb004e1bbb4ca3688a42a` (#630 merged; previous integrated module exact tree matched prior donor). 493 new + 88 changed module blobs; no deletion relative to prior integrated source. Selected source includes internal native Transformations (#515), unified food, debug registry, Monk strict Wither finale (#630/#629), Hunter (#674), key policy (#393), personal home engine (#698), and other reviewed subsystem changes. Legacy independent `tmm_transformations` must not be built or packaged; archived original source remains. This promotion is SOURCE CANDIDATE, not assembly, Server Boot Smoke, client launch or gameplay acceptance. Preserve B/C requirements for native transformation/death/cures, diet/recipe classification, admin commands, path XP, early personal Wither gliding, and two-player housing; quest-side #699 and starter #586 still require coordinated integration. No full build authorized.
+
+## Thanksgiving configuration and quest integration (2026-11-24)
+
+Exact source donors, immutable path crosswalk:
+- #699 `090dfa282296e7c44e3bc3fe02755e9e4be40d43` — 9 selected files.
+- #394 `8e95950272151ee839be659059f6347267169d60` — 4 selected files.
+- #338 `1f885eb81f12019cccee6f086b31ca5a340512b5` — 24 selected files.
+- #339 `7c91aa7f066ae57daa468fce97272edcefdd5ff7` — 19 selected files.
+- #343 `38ee634578c15a3acf3c17289005fc0a632bfea5` — 9 selected files.
+- #345 `fded440534367e724a574d3d817fb3099d39b00b` — 2 selected files (Enigmatic defaults and historical handoff only; remaining lexical/layout work stays deferred; preserve A Sufficiently Advanced Magic).
+
+Combined candidate: #699 19 personal starter home choices, #394 contextual ReFoxed middle-click, #338 native Occultism ritual/book and gem salvage recipes, #339 magical rare-metal routes (keep Chaos Islands, Dragon drops and native Mines), #343 Lost Soul and sulfur/Twilight compatibility, #345 approved Enigmatic defaults. All imported donor file blobs exact; Packwiz rows reconciled against post-#586 baseline; no stale directory replacement. Native external artifact/registry/codec review outstanding where prior handoffs identify gaps; quick CI and B/C acceptance required. #565 and #656 OWNER-DEFERRED per owner 2026-11-24; Replication requires fresh running-pack recipe export, Lilith waits for Christmas/active Sexy Demon path. No full build authorized.

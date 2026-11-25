@@ -1,0 +1,11 @@
+{
+  "type": "occultism:spirit_fire",
+  "ingredient": {
+    "type": "apotheosis:gem",
+    "purity": "normal"
+  },
+  "result": {
+    "count": 1,
+    "id": "apotheosis:gem_dust"
+  }
+}
