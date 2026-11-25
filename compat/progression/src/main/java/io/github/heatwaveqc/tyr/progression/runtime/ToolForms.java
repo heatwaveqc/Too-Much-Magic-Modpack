@@ -1,7 +1,6 @@
 package io.github.heatwaveqc.tyr.progression.runtime;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -50,7 +49,10 @@ public final class ToolForms {
         if(active==null||!active.effect().params().get("form").equals("shears")
             ||!Selectors.block(active.effect().selector(),state))return ItemStack.EMPTY;
         var tool=stack("shears");
-        return tool.isCorrectToolForDrops(state)?tool:ItemStack.EMPTY;
+        // Native loot tables also check shears on blocks that do not require a
+        // correct tool (e.g. leaves, grasses and vines). Never bypass a required
+        // material tier merely because a form is selected.
+        return !state.requiresCorrectToolForDrops()||tool.isCorrectToolForDrops(state)?tool:ItemStack.EMPTY;
     }
     private static final class VirtualContext extends UseOnContext {
         VirtualContext(ServerPlayer p,ItemStack tool,BlockHitResult hit){
