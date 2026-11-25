@@ -34,7 +34,7 @@ class BountifulDecreeSealsTest {
         assertTrue(BountifulDecreeSealPolicy.allowed("tmm_monk", "tyr_progression:monk"::equals,
             () -> { throw new AssertionError("unrelated native probe"); }));
         assertFalse(BountifulDecreeSealPolicy.allowed("tmm_hunter", "tyr_progression:monk"::equals, () -> null));
-        assertFalse(BountifulDecreeSealPolicy.allowed("tmm_monk", "tmm_progression:monk"::equals, () -> null));
+        assertFalse(BountifulDecreeSealPolicy.allowed("tmm_monk", "tyr_progression:unregistered_path"::equals, () -> null));
     }
 
     @Test void nativeEligibilityRequiresCompleteCurrentObservation() {
