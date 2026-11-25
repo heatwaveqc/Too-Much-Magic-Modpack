@@ -71,6 +71,7 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
         io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.BountifulDecreeSeals.register();
         io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.charm.CharmRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.register();
