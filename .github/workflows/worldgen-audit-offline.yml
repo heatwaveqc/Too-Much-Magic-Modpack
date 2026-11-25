@@ -4,6 +4,9 @@ on:
     paths:
       - 'scripts/audit_worldgen_resources.py'
       - 'tests/test_audit_worldgen_resources.py'
+      - 'scripts/audit_worldgen_targeted.py'
+      - 'scripts/audit_worldgen_regions.py'
+      - 'tests/test_audit_worldgen_regions.py'
       - '.github/workflows/worldgen-audit-offline.yml'
 permissions:
   contents: read
@@ -17,3 +20,24 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_audit_worldgen_resources.py -v
+  targeted-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 721ea058294f838b9d7f145af427f5db228d248d
+          path: frozen-pack
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan only twelve preselected exact archive pins (no game)
+        run: python scripts/audit_worldgen_targeted.py --pack-root frozen-pack --work "${{ runner.temp }}/worldgen-targeted" --snapshot 721ea058294f838b9d7f145af427f5db228d248d
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: worldgen-targeted-inventory
+          path: ${{ runner.temp }}/worldgen-targeted/inventory.json
+          if-no-files-found: warn
