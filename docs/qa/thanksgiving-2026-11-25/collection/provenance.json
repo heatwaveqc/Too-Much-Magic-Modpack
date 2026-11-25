@@ -1,0 +1,112 @@
+[
+  {
+    "bytes": 542575,
+    "file": "food-registry.json.gz",
+    "sha256": "8c8b1f58f8edc64f93e5cacfe7b4cd91b1330dce135178517e77e31e72ad561e",
+    "source": "saves/<test-world>/reports/tmm-food-registry-v1.json",
+    "source_bytes": 10734323,
+    "source_sha256": "fe7449f7cf8dcbfc13a617bfeeeaa2fb2ec662377ce4b99e2047de5d2d4f8f30"
+  },
+  {
+    "bytes": 75699,
+    "file": "emc/emc.json.gz",
+    "sha256": "92185b45840673f13021ba8bd389195ffc07fb33a7f0ec2fbeff851f5f362f37",
+    "source": "saves/<test-world>/tmm-economy/emc-audits/source-721ea058294f-1795619899005/emc.json",
+    "source_bytes": 701867,
+    "source_sha256": "b84efaf86e197d14f333ad37e9bc6ffc4bde278c2a97468a4f8590949ed2c523"
+  },
+  {
+    "bytes": 136857,
+    "file": "emc/items.json.gz",
+    "sha256": "706e4587da963d82016aaa2188128182fb35d0b6c98e4928b2f16b63ba45491c",
+    "source": "saves/<test-world>/tmm-economy/emc-audits/source-721ea058294f-1795619899005/items.json",
+    "source_bytes": 1033231,
+    "source_sha256": "0683f57999b0df3d17ed368e147b124001a828fe30481d789328fb7f9ff83202"
+  },
+  {
+    "bytes": 298,
+    "file": "emc/metadata.json.gz",
+    "sha256": "32390083facc563ccc524c61d6012b8e2ccae92f926458b5b91aa8df3e264201",
+    "source": "saves/<test-world>/tmm-economy/emc-audits/source-721ea058294f-1795619899005/metadata.json",
+    "source_bytes": 456,
+    "source_sha256": "d278e7e959f1cd6c208bb4663662cccab728bfea5c535c10771a4e9a079e7b04"
+  },
+  {
+    "bytes": 83393,
+    "file": "emc/status.json.gz",
+    "sha256": "f319ed26b377996f9ed8a78181201b943367fd261224f4ee67a778106614eb23",
+    "source": "saves/<test-world>/tmm-economy/emc-audits/source-721ea058294f-1795619899005/status.json",
+    "source_bytes": 623468,
+    "source_sha256": "fdba46a08d189d5eed120c50548166c02b520950aade65809aa718ef23498d10"
+  },
+  {
+    "file": "configs/config/improvableskills.cfg",
+    "sha256": "c38a1bd009cff37686fe76ef699fc2a3f0007ec7fbcfa4a159149688cb354052",
+    "source": "config/improvableskills.cfg",
+    "source_sha256": "c38a1bd009cff37686fe76ef699fc2a3f0007ec7fbcfa4a159149688cb354052"
+  },
+  {
+    "file": "configs/config/ars_nouveau-client.toml",
+    "sha256": "442e7d4aa8f85dc37e8bfa29a71126b1757056a82cb825e606fae4470a814a56",
+    "source": "config/ars_nouveau-client.toml",
+    "source_sha256": "442e7d4aa8f85dc37e8bfa29a71126b1757056a82cb825e606fae4470a814a56"
+  },
+  {
+    "file": "configs/config/ars_nouveau-common.toml",
+    "sha256": "027bdab2329e2e71cc2546871f3eca724cd97a0667a623c9de7fc7c4e9dfd9b4",
+    "source": "config/ars_nouveau-common.toml",
+    "source_sha256": "027bdab2329e2e71cc2546871f3eca724cd97a0667a623c9de7fc7c4e9dfd9b4"
+  },
+  {
+    "file": "configs/config/ars_nouveau-server.toml",
+    "sha256": "50d87126cc3863dba54f9cbf1fa7161c4293ce4dc056275a23510a4a846df9e1",
+    "source": "config/ars_nouveau-server.toml",
+    "source_sha256": "50d87126cc3863dba54f9cbf1fa7161c4293ce4dc056275a23510a4a846df9e1"
+  },
+  {
+    "file": "configs/config/ars_nouveau-startup.toml",
+    "sha256": "0d44fbcf1c1b361b833e1e0da847d5c5d1ca38f927a55b057e14e13e30ae85fb",
+    "source": "config/ars_nouveau-startup.toml",
+    "source_sha256": "0d44fbcf1c1b361b833e1e0da847d5c5d1ca38f927a55b057e14e13e30ae85fb"
+  },
+  {
+    "file": "configs/config/astralsorcery-client.toml",
+    "sha256": "0eb6cb46a75cb3cc42f1f8b2d55574613feb3126530d043a1f93f1ec2d77e3ea",
+    "source": "config/astralsorcery-client.toml",
+    "source_sha256": "0eb6cb46a75cb3cc42f1f8b2d55574613feb3126530d043a1f93f1ec2d77e3ea"
+  },
+  {
+    "file": "configs/config/astralsorcery-startup.toml",
+    "sha256": "02595745a06b9761e39383e8e4d3e224ba7803aaf3b40c6d134585b080197e9c",
+    "source": "config/astralsorcery-startup.toml",
+    "source_sha256": "02595745a06b9761e39383e8e4d3e224ba7803aaf3b40c6d134585b080197e9c"
+  },
+  {
+    "file": "configs/config/astralsorcery.toml",
+    "sha256": "a8a76e774ce216fcc6332526ed647bda4cc44e52e5f90553df3fbcf25c334700",
+    "source": "config/astralsorcery.toml",
+    "source_sha256": "a8a76e774ce216fcc6332526ed647bda4cc44e52e5f90553df3fbcf25c334700"
+  },
+  {
+    "file": "configs/defaultconfigs/ars_nouveau-server.toml",
+    "sha256": "806981b67d7d74c455e7335f2b4019a2e641f80aa4af74b599cf65a447b20ea8",
+    "source": "defaultconfigs/ars_nouveau-server.toml",
+    "source_sha256": "cd6e01ae4e5d60d14516b3611e5d385305fbaa095aabe1dbe486f3f76f0a4848"
+  },
+  {
+    "file": "configs/defaultconfigs/astralsorcery-server.toml",
+    "sha256": "132dccfbf8af121e357dac807b1fc9f1f5b58bb0587b5080a6d29458ea7ee806",
+    "source": "defaultconfigs/astralsorcery-server.toml",
+    "source_sha256": "0ff6a3cd1e3ceeadf6725ba6a4282eb4273794ecff12394a01064fe74e8daeb3"
+  },
+  {
+    "bytes": 3428,
+    "file": "progression-saved-diagnostics.json",
+    "sha256": "eb43f7c8bd7916a0665086d2fd58711efeee6aadafedbd454d91a3234c007034"
+  },
+  {
+    "bytes": 907,
+    "file": "capture-summary.json",
+    "sha256": "b64ff9e7c95a0fadb55e619ec0db19da67c7347ae16069e60250b9fa99553667"
+  }
+]

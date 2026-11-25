@@ -573,6 +573,14 @@ file = "kubejs/data/c/tags/item/pasta.json"
 hash = "24bc87e3296c74599fc7c56eefed06c170e1e1e4890960ae46ac0c260244a08e"
 
 [[files]]
+file = "kubejs/data/cocktailsdelight/recipe/pouring/soymilk_bottle.json"
+hash = "818760174753c306115d03434ae5ec5c6eef54394a99d14d4dba35814674e1ef"
+
+[[files]]
+file = "kubejs/data/cocktailsdelight/recipe/pouring/soymilk_bucket.json"
+hash = "92b4e4d828a76d8ec7c74a3326d7524d17b5011c97d2ce0d2b06a9a6e02f3a65"
+
+[[files]]
 file = "kubejs/data/computercraft/recipe/computer_advanced.json"
 hash = "1b42ba9f0e2caea304b9b077f0ab624d4908ebad4f7a254a50843b031fc5ee0e"
 
@@ -621,8 +629,16 @@ file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
 
 [[files]]
+file = "kubejs/data/dungeonsdelight/recipe/integration/aether/smoker/ae_cooked_marbled_meat_from_smoking.json"
+hash = "2eaff7bba5db25f8504d5795fd4be7adec08beecc784891a6eb76f0995c44d28"
+
+[[files]]
 file = "kubejs/data/eidolon_repraised/recipe/sulfur.json"
 hash = "1a23b75bfc3f9ab98377feee2dd1d4c9846e2041e1cbd744d274d329064066bb"
+
+[[files]]
+file = "kubejs/data/endersdelight/recipe/chorus_pie_slice.json"
+hash = "12a0d9fa3ce6a3d6e8d908734f55573ec6a85b857e280d5def6e0d0f84b700e8"
 
 [[files]]
 file = "kubejs/data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json"

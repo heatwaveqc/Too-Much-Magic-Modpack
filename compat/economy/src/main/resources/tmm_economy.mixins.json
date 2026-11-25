@@ -4,6 +4,7 @@
   "package": "io.github.heatwaveqc.tmm.economy.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "GoetyProjectERemainderMixin",
     "ScrollKnowledgeMixin",
     "ScrollConsumeMixin",
     "ScrollQuickMoveMixin",
