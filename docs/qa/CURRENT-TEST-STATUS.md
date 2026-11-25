@@ -1,5 +1,9 @@
 # Current test status — active QA handoff
 
+## November 25 installed Thanksgiving build
+
+Frozen `721ea058294f838b9d7f145af427f5db228d248d`, run 45550879036: [current per-build ledger](THANKSGIVING-QA-RESULTS-2026-11-24.md), [automated execution evidence](thanksgiving-2026-11-25/README.md). Installed 255/255 hashes pass, 543 Java tests pass; client log reveals Reactive scope failure, missing Perpetual Life recipe, two EMI plugin API failures and other decoder/key errors. B commands not run; no world/client launch or package by this QA chat. Older handoffs below remain historical.
+
 ### Trader's Vengeance #648/#423 (2026-11-24)
 
 Rocket source merged `1f03761a3c32485543b6d63453cf15d096bd690a`; rename #653 pending final quick CI/merge. B/C awaiting authorized build; see [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md) for acceptance cases. No server, Prism or gameplay test performed.
