@@ -246,14 +246,6 @@
         {
           "items": "spectrum:enchanted_golden_carrot",
           "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_golden_carrot",
-          "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_star_candy",
-          "retain_effects": true
         }
       ]
     },
@@ -1101,14 +1093,6 @@
         },
         {
           "items": "spectrum:enchanted_golden_carrot",
-          "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_golden_carrot",
-          "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_star_candy",
           "retain_effects": true
         }
       ]
@@ -2264,14 +2248,6 @@
         },
         {
           "items": "spectrum:enchanted_golden_carrot",
-          "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_golden_carrot",
-          "retain_effects": true
-        },
-        {
-          "items": "pastel:enchanted_star_candy",
           "retain_effects": true
         }
       ]

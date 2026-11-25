@@ -723,7 +723,7 @@
       "area": "Transformations and Monk",
       "title": "Standalone Monk native tree",
       "state": "planned",
-      "acceptance": "tmm_progression skills and XP persist; no Vampirism faction UI",
+      "acceptance": "tyr_progression skills and XP persist; no Vampirism faction UI",
       "source": "docs/USER-TEST-LEDGER-2026-11-14.md",
       "evidence": ""
     },

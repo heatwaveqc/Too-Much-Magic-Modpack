@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "status": "review_only_no_runtime_permissions",
+  "tag_traits": {
+    "c:foods/fruit": [
+      "fruit"
+    ],
+    "c:foods/fruits": [
+      "fruit"
+    ],
+    "c:foods/berry": [
+      "berry"
+    ],
+    "c:foods/berries": [
+      "berry"
+    ],
+    "c:foods/vegetable": [
+      "vegetable"
+    ],
+    "c:foods/vegetables": [
+      "vegetable"
+    ],
+    "c:foods/leafy_green": [
+      "vegetable"
+    ],
+    "c:foods/mushroom": [
+      "fungus"
+    ],
+    "c:foods/mushrooms": [
+      "fungus"
+    ],
+    "c:mushrooms": [
+      "fungus"
+    ],
+    "c:foods/nut": [
+      "nut"
+    ],
+    "c:foods/nuts": [
+      "nut"
+    ],
+    "c:foods/legume": [
+      "legume"
+    ],
+    "c:foods/legumes": [
+      "legume"
+    ],
+    "c:foods/grain": [
+      "grain"
+    ],
+    "c:foods/grains": [
+      "grain"
+    ],
+    "c:crops/wheat": [
+      "grain"
+    ],
+    "c:crops/rice": [
+      "grain"
+    ],
+    "c:crops/barley": [
+      "grain"
+    ],
+    "c:crops/oat": [
+      "grain"
+    ],
+    "c:crops/rye": [
+      "grain"
+    ],
+    "c:crops/corn": [
+      "grain"
+    ],
+    "c:foods/raw_meat": [
+      "raw_meat"
+    ],
+    "c:foods/cooked_meat": [
+      "cooked_meat"
+    ],
+    "c:foods/raw_fish": [
+      "raw_fish"
+    ],
+    "c:foods/cooked_fish": [
+      "cooked_fish"
+    ],
+    "c:foods/raw_beef": [
+      "raw_meat"
+    ],
+    "c:foods/raw_pork": [
+      "raw_meat"
+    ],
+    "c:foods/raw_chicken": [
+      "raw_meat"
+    ],
+    "c:foods/raw_mutton": [
+      "raw_meat"
+    ],
+    "c:foods/raw_rabbit": [
+      "raw_meat"
+    ],
+    "c:foods/raw_bacon": [
+      "raw_meat"
+    ],
+    "c:foods/cooked_beef": [
+      "cooked_meat"
+    ],
+    "c:foods/cooked_pork": [
+      "cooked_meat"
+    ],
+    "c:foods/cooked_chicken": [
+      "cooked_meat"
+    ],
+    "c:foods/cooked_mutton": [
+      "cooked_meat"
+    ],
+    "c:foods/cooked_rabbit": [
+      "cooked_meat"
+    ],
+    "c:foods/cooked_bacon": [
+      "cooked_meat"
+    ],
+    "c:foods/raw_cod": [
+      "raw_fish"
+    ],
+    "c:foods/raw_salmon": [
+      "raw_fish"
+    ],
+    "c:foods/cooked_cod": [
+      "cooked_fish"
+    ],
+    "c:foods/cooked_salmon": [
+      "cooked_fish"
+    ],
+    "c:foods/raw_seafood": [
+      "raw_seafood"
+    ],
+    "c:foods/cooked_seafood": [
+      "cooked_seafood"
+    ],
+    "c:eggs": [
+      "egg"
+    ],
+    "c:foods/egg": [
+      "egg"
+    ],
+    "c:foods/cooked_egg": [
+      "cooked_egg"
+    ],
+    "c:foods/milk": [
+      "milk"
+    ],
+    "c:foods/cheese": [
+      "cheese"
+    ],
+    "c:foods/butter": [
+      "butter"
+    ],
+    "c:foods/flour": [
+      "flour"
+    ],
+    "c:foods/dough": [
+      "dough"
+    ],
+    "c:foods/dough/wheat": [
+      "dough"
+    ],
+    "c:foods/pasta": [
+      "pasta"
+    ],
+    "c:foods/salt": [
+      "salt"
+    ],
+    "c:foods/sugar": [
+      "sugar"
+    ],
+    "c:foods/oil": [
+      "oil"
+    ],
+    "c:foods/cooking_oil": [
+      "oil"
+    ],
+    "c:foods/stock": [
+      "stock"
+    ],
+    "c:foods/broth": [
+      "stock"
+    ],
+    "c:foods/vinegar": [
+      "condiment"
+    ],
+    "c:foods/condiment": [
+      "condiment"
+    ],
+    "c:foods/condiments": [
+      "condiment"
+    ],
+    "c:foods/soup": [
+      "soup"
+    ],
+    "c:foods/pie": [
+      "prepared_meal"
+    ],
+    "c:foods/cookie": [
+      "prepared_meal"
+    ],
+    "c:foods/edible_when_placed": [
+      "placed_food"
+    ],
+    "cookingforblockheads:utensils": [
+      "utensil"
+    ],
+    "cookingforblockheads:ingredients": [
+      "culinary_intermediate"
+    ]
+  },
+  "exact_hints": {
+    "minecraft:egg": [
+      "egg"
+    ],
+    "minecraft:milk_bucket": [
+      "milk",
+      "dairy"
+    ],
+    "farmersdelight:milk_bottle": [
+      "milk",
+      "dairy"
+    ],
+    "pamhc2foodcore:freshmilkitem": [
+      "milk",
+      "dairy"
+    ],
+    "pamhc2foodcore:butteritem": [
+      "butter",
+      "dairy"
+    ],
+    "pamhc2foodcore:creamitem": [
+      "dairy",
+      "culinary_intermediate"
+    ],
+    "pamhc2foodcore:saltitem": [
+      "salt"
+    ],
+    "pamhc2foodcore:cookingoilitem": [
+      "oil"
+    ],
+    "pamhc2foodcore:vinegaritem": [
+      "condiment"
+    ],
+    "pamhc2foodcore:mayonaiseitem": [
+      "condiment"
+    ],
+    "pamhc2foodcore:batteritem": [
+      "culinary_intermediate"
+    ],
+    "pamhc2foodcore:stockitem": [
+      "stock"
+    ],
+    "pamhc2foodextended:stockitem": [
+      "stock"
+    ],
+    "farmersdelight:bone_broth": [
+      "stock"
+    ],
+    "pamhc2crops:riceitem": [
+      "grain"
+    ],
+    "pamhc2crops:cornitem": [
+      "grain"
+    ],
+    "pamhc2crops:barleyitem": [
+      "grain"
+    ],
+    "pamhc2crops:oatsitem": [
+      "grain"
+    ],
+    "pamhc2crops:ryeitem": [
+      "grain"
+    ],
+    "pamhc2crops:peanutitem": [
+      "legume"
+    ],
+    "pamhc2crops:soybeanitem": [
+      "legume"
+    ],
+    "pamhc2crops:peasitem": [
+      "legume"
+    ],
+    "pamhc2crops:beanitem": [
+      "legume"
+    ],
+    "pamhc2crops:lentilitem": [
+      "legume"
+    ],
+    "pamhc2crops:chickpeaitem": [
+      "legume"
+    ],
+    "pamhc2trees:almonditem": [
+      "nut"
+    ],
+    "pamhc2trees:cashewitem": [
+      "nut"
+    ],
+    "pamhc2trees:chestnutitem": [
+      "nut"
+    ],
+    "pamhc2trees:hazelnutitem": [
+      "nut"
+    ],
+    "pamhc2trees:pecanitem": [
+      "nut"
+    ],
+    "pamhc2trees:pistachioitem": [
+      "nut"
+    ],
+    "pamhc2trees:walnutitem": [
+      "nut"
+    ]
+  },
+  "equivalence_groups": [
+    {
+      "id": "tomato",
+      "tag": "c:foods/tomato",
+      "ids": [
+        "farmersdelight:tomato",
+        "pamhc2crops:tomatoitem"
+      ],
+      "status": "existing_additive_bridge"
+    },
+    {
+      "id": "onion",
+      "tag": "c:foods/onion",
+      "ids": [
+        "farmersdelight:onion",
+        "pamhc2crops:onionitem"
+      ],
+      "status": "existing_additive_bridge"
+    },
+    {
+      "id": "cabbage",
+      "tag": "c:foods/cabbage",
+      "ids": [
+        "farmersdelight:cabbage",
+        "farmersdelight:cabbage_leaf",
+        "pamhc2crops:cabbageitem"
+      ],
+      "status": "existing_additive_bridge_native_leaf_retained_review_quantity"
+    },
+    {
+      "id": "rice",
+      "tag": "c:crops/rice",
+      "ids": [
+        "farmersdelight:rice",
+        "pamhc2crops:riceitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity"
+    },
+    {
+      "id": "wheat_dough",
+      "tag": "c:foods/dough/wheat",
+      "ids": [
+        "farmersdelight:wheat_dough",
+        "pamhc2foodcore:doughitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity"
+    },
+    {
+      "id": "raw_pasta",
+      "tag": "c:foods/pasta",
+      "ids": [
+        "farmersdelight:raw_pasta",
+        "pamhc2foodcore:pastaitem"
+      ],
+      "status": "candidate_verify_processing_and_quantity"
+    },
+    {
+      "id": "salt",
+      "tag": "c:foods/salt",
+      "ids": [
+        "pamhc2foodcore:saltitem"
+      ],
+      "status": "candidate_no_new_equivalence_without_review"
+    },
+    {
+      "id": "flour",
+      "tag": "c:foods/flour",
+      "ids": [
+        "pamhc2foodcore:flouritem"
+      ],
+      "status": "candidate_no_new_equivalence_without_review"
+    },
+    {
+      "id": "milk",
+      "tag": "c:foods/milk",
+      "ids": [
+        "minecraft:milk_bucket",
+        "farmersdelight:milk_bottle",
+        "pamhc2foodcore:freshmilkitem"
+      ],
+      "status": "hold_container_and_volume_non_equivalent"
+    },
+    {
+      "id": "raw_fillet",
+      "tag": "c:foods/raw_fish",
+      "ids": [
+        "aquaculture:fish_fillet_raw",
+        "farmersdelight:cod_slice",
+        "farmersdelight:salmon_slice"
+      ],
+      "status": "hold_whole_fish_vs_cut_yield_and_species"
+    },
+    {
+      "id": "cooked_fillet",
+      "tag": "c:foods/cooked_fish",
+      "ids": [
+        "aquaculture:fish_fillet_cooked",
+        "farmersdelight:cooked_cod_slice",
+        "farmersdelight:cooked_salmon_slice"
+      ],
+      "status": "hold_whole_fish_vs_cut_yield_and_species"
+    }
+  ]
+}

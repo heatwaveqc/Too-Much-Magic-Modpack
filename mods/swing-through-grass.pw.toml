@@ -1,0 +1,13 @@
+name = "Swing Through Grass"
+filename = "swingthroughgrass-neoforge-1.21.1-1.1.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "15f48ed3ab02b9e8763284279487a9d95b206337"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9063127
+project-id = 1477279

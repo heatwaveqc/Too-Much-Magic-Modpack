@@ -29,3 +29,8 @@ Source-side checks in connector: original index hash and every changed existing 
 - Promote the exact ProjectE Energy Converters 0.1.4 pin (CF 1727449/9072881, unchanged SHA-1) and manifest row from the frozen donor into baseline. Use the official CDN binary URL, remove metadata-only download mode; retain provider IDs. Targeted quick CI downloads just this JAR and verifies the unchanged digest and ZIP integrity before merge. No third-party JAR is bundled. Full Prism install on a new tester machine remains required.
 - Ship indexed `config/wover/client.json` with `internal.did_present_welcome_screen=true` and `general.force_betterx_world_type=false`, based on New Dawn ClientConfig and WunderLib AbstractConfig nested path serialization. Leave all other defaults intact. Exact 21.0.25 pin unchanged; source inspected on master, exact client render/worldgen acceptance still pending. Verify fresh client starts without welcome UI and overworld/End generation stays as intended.
 - New build approval covers these two repairs on the existing previous QA roster; do not claim outstanding deferred/blocked features were implemented or stable/client accepted.
+
+## Next QA build — fresh-instance option defaults
+
+- `onboardAccessibility:false` (merged PR #316): skip repeated vanilla accessibility/narrator onboarding, preserve chosen narrator mode and accessibility menu.
+- `tutorialStep:none`: skip the vanilla tutorial sequence on new QA imports; leave other notifications and all mod tutorials untouched. Neither key is copied from the old personal profile or put in packwiz's public config. Verify fresh and imported-preferences client launches; no game boot or full build triggered by this intake.

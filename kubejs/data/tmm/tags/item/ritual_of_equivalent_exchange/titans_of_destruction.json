@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "cataclysm:infernal_forge",
+    "cataclysm:gauntlet_of_guard",
+    "cataclysm:witherite_block",
+    "cataclysm:ignitium_ingot"
+  ]
+}

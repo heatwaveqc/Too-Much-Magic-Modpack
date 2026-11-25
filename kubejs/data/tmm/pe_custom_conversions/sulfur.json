@@ -1,0 +1,12 @@
+{
+  "comment": "Canonical ordinary sulfur: owner-approved copper ingot/dust parity, 9 EMC; Batch 5 adds BetterEnd loose sulfur to the same tag.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "emc_value": 9,
+        "tag": "c:dusts/sulfur"
+      }
+    ]
+  }
+}

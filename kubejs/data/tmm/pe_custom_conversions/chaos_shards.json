@@ -1,0 +1,27 @@
+{
+  "comment": "Owner-approved 2026-11-18. Reversible 9:1 stages; Tiny = Netherite Ingot; Small = Draconium Ingot; Large = Draconium Block. Exact IDs in #348. Full shard requires signed 64-bit EMC. Validate native and custom transaction arithmetic, compression, and progression; no new acquisition.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "draconicevolution:small_chaos_frag",
+        "emc_value": 4194880
+      },
+      {
+        "type": "projecte:item",
+        "id": "draconicevolution:medium_chaos_frag",
+        "emc_value": 37753920
+      },
+      {
+        "type": "projecte:item",
+        "id": "draconicevolution:large_chaos_frag",
+        "emc_value": 339785280
+      },
+      {
+        "type": "projecte:item",
+        "id": "draconicevolution:chaos_shard",
+        "emc_value": 3058067520
+      }
+    ]
+  }
+}

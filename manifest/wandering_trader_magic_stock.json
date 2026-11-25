@@ -1,0 +1,232 @@
+{
+  "schema": 3,
+  "status": "owner_approved_rare_collectible_and_witchery_hexerei_offers_staged_runtime_qa_pending",
+  "pack": "Too Much Magic",
+  "minecraft": "1.21.1",
+  "loader": "NeoForge",
+  "guaranteed_stock": [
+    {
+      "slot": "apotheosis_equipment",
+      "min": 1,
+      "item": "random_actual_apotheosis_affixed_item",
+      "generator": "dev.shadowsoffire.apotheosis.loot.LootController.createRandomLootItem",
+      "validation": "AffixHelper.hasAffixes",
+      "tier": "nearby player's Apotheosis world tier, else HAVEN",
+      "maxUses": 1,
+      "price": "24–64 emeralds plus 1–12 diamonds according to world tier"
+    },
+    {
+      "slot": "ars_glyph_tier_1",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier I, including installed addons",
+      "maxUses": 1,
+      "price": "12 emeralds"
+    },
+    {
+      "slot": "ars_glyph_tier_2",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier II, including installed addons",
+      "maxUses": 1,
+      "price": "28 emeralds plus 4 lapis"
+    },
+    {
+      "slot": "ars_glyph_tier_3",
+      "min": 1,
+      "item": "any enabled non-starter Ars glyph of live configured tier III, including installed addons",
+      "maxUses": 1,
+      "price": "48 emeralds plus 4 diamonds"
+    },
+    {
+      "slot": "irons_ink_uncommon_plus",
+      "min": 1,
+      "item": "uncommon/rare/epic/legendary actual InkItem",
+      "weights": {
+        "uncommon": 55,
+        "rare": 30,
+        "epic": 12,
+        "legendary": 3
+      },
+      "maxUses": "3/2/1/1",
+      "price": "16/28/48+2 diamonds/64+8 diamonds"
+    },
+    {
+      "slot": "random_relic_or_artifact",
+      "min": 1,
+      "item": "one_actual_Relics_RelicItem_or_noncosmetic_Artifacts_ArtifactItem",
+      "picker": "runtime registered item types (RelicItem, ArtifactItem), one family chosen 50/50, then uniform within selected family; falls back if a family has no valid items",
+      "maxUses": 1,
+      "price": "128 emeralds for Relic; 96 emeralds for Artifact",
+      "marker": "tmmRelicArtifactStockVersion=1",
+      "notes": "Always exactly one on each new trader, separate from and in addition to five older guarantees; normal default ItemStack preserves Relics native loot semantics and Reliquified Artifacts's item-based progression; validate exact in-game behavior. Explicitly excludes relics:ring_of_the_seven_deadly_sins; registered item must remain untradeable even though disabled as ordinary loot."
+    }
+  ],
+  "preserve_existing_trades": true,
+  "implementation": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js; direct actual MerchantOffers modification on server EntityEvents.spawned with persistent marker v1",
+  "no_stock_from_other_magic_mods_yet": false,
+  "blocked_sales": [
+    "boss-only trophies",
+    "Chaos Shards",
+    "ProjectE philosopher stone and power flower gates",
+    "Iesnium ore",
+    "Thallasium ore",
+    "rare finished gear from final altar tiers",
+    "complete endgame artifacts",
+    "pre-attuned constellation/ascension unlocks"
+  ],
+  "next_candidates": [],
+  "premium_stock_mode": "four_distinct_randomly_chosen_offers_from_twelve_owner_approved_types",
+  "premium_stock_choices": [
+    {
+      "id": "occultism_iesnium_ingot",
+      "mod": "Occultism",
+      "item": "occultism:iesnium_ingot",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Single finished Iesnium ingot; not ore/raw; allow midgame assist without handing the Dimensional Miner route"
+    },
+    {
+      "id": "astral_undiscovered_constellation",
+      "mod": "Astral Sorcery",
+      "item": "astralsorcery:constellation_paper",
+      "price_emeralds": 48,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Blank paper; Astral inventory tick only reveals a currently discoverable constellation; no preselected hidden constellation"
+    },
+    {
+      "id": "evilcraft_random_broom",
+      "mod": "EvilCraft",
+      "item": "evilcraft:broom",
+      "price_emeralds": 112,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Real randomized rod/brush/cap + two random modifiers from EvilCraft's registries, uncharged; preserves blood fuel"
+    },
+    {
+      "id": "botania_full_mana_tablet",
+      "mod": "Botania Revived",
+      "item": "botania:mana_tablet",
+      "price_emeralds": 128,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Normal ManaTabletItem with MAX_MANA 500000 set by port API; never creative mana"
+    },
+    {
+      "id": "botania_random_curio",
+      "mod": "Botania Revived",
+      "item": "one_of_curated_non_boss_botania_rings",
+      "price_emeralds": 80,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Magnet, mana, aura, far-reach, water, mining rings only; no Gaia items"
+    },
+    {
+      "id": "botania_black_lotus",
+      "mod": "Botania Revived",
+      "item": "botania:black_lotus",
+      "price_emeralds": 32,
+      "uses": 2,
+      "decision": "approved",
+      "notes": "Genuine Botania Revived item; moderate burst mana"
+    },
+    {
+      "id": "rootsclassic_runic_focus",
+      "mod": "Roots Classic",
+      "item": "rootsclassic:runic_focus",
+      "price_emeralds": 72,
+      "uses": 1,
+      "decision": "approved_matching_user_intent",
+      "notes": "Runic Focus is a ritual-crafted ingredient in the Engraved Blade top-end sword; buyer still has to perform the sword ritual. Terra Moss is not in Roots Classic 1.5.10."
+    },
+    {
+      "id": "malum_brilliance_chunk",
+      "mod": "Malum",
+      "item": "malum:chunk_of_brilliance",
+      "price_emeralds": 48,
+      "uses": 1,
+      "decision": "provisional_selection_for_owner_unnamed_hard_resource",
+      "notes": "Midgame brilliant material; avoid Void Salts, Umbral Spirit or Weeping Well research bypass until assessed."
+    },
+    {
+      "id": "theurgy_rare_niter",
+      "mod": "Theurgy",
+      "item": "random_rare_niter_metals_gems_mobs_other_minerals",
+      "price_emeralds": 56,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Picks one item from four rare alchemical niter groups; no precious progression tier"
+    },
+    {
+      "id": "forbidden_arcanus_growing_edelwood",
+      "mod": "Forbidden & Arcanus",
+      "item": "forbidden_arcanus:growing_edelwood",
+      "price_emeralds": 64,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Actual 'Growing Edelwood' plantable sapling-equivalent item, not an arbitrary wood block"
+    },
+    {
+      "id": "witchery_drop_of_luck",
+      "mod": "Witchery (JAWR)",
+      "item": "witchery:drop_of_luck",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Complex cauldron ingredient that saves crafting time without awarding finished rituals or Witchery faction unlocks."
+    },
+    {
+      "id": "hexerei_replacer_satchel",
+      "mod": "Hexerei",
+      "item": "hexerei:replacer_satchel",
+      "price_emeralds": 96,
+      "uses": 1,
+      "decision": "approved",
+      "notes": "Real broom accessory; automatically replaces worn brushes from supplies; broom and brush fueling mechanics remain."
+    }
+  ],
+  "pricing_policy": "Emeralds only: 1–64 in first merchant cost slot; 65–128 as up to 64 additional emeralds in the second slot. Higher value costs more, never free gear.",
+  "progression_policy": "Offer items that accelerate or enable a midgame activity without performing player-gated advancements/research or replacing unique boss progression. One item per rotation; repeated traders do permit multiple purchases over time, controlled by rare spawn and high cost.",
+  "under_review": [
+    {
+      "mod": "Witchery/JAWR",
+      "option": "witchery:mutandis_extremis",
+      "why": "Speeds obtaining tricky plant variants; likely less valuable than Drop of Luck",
+      "status": "suggest_not_active"
+    },
+    {
+      "mod": "Hexerei",
+      "option": "hexerei:entangled_coffer",
+      "why": "Useful late-midgame logistics magic if wanted; may overlap Occultism and warrant high price",
+      "status": "suggest_not_active"
+    },
+    {
+      "mod": "Malum",
+      "option": "malum:chunk_of_brilliance",
+      "why": "Current provisional midgame material; ask if user was thinking of a more specific rare Malum resource",
+      "status": "already_provisional_in_rotation"
+    }
+  ],
+  "premium_selection_count": 4,
+  "versioned_marker": "tmmRotatingMagicStockVersion=1",
+  "exclusions": {
+    "disallowed": [
+      "creative mana tablet",
+      "boss drops",
+      "gaia rings",
+      "Void Salts",
+      "Umbral Spirit",
+      "Chaos Shard",
+      "raw/ore Iesnium",
+      "Thallasium",
+      "ProjectE philosopher's stone",
+      "relics:ring_of_the_seven_deadly_sins"
+    ],
+    "forbidden_trader_item_ids": [
+      "relics:ring_of_the_seven_deadly_sins"
+    ],
+    "enforcement": "Filter before dynamic Relic/Artifact selection, reject selected result, and purge disallowed outputs from existing trader offers on server-side entity spawn/chunk reload; do this even for traders with completed stock markers."
+  },
+  "relic_artifact_guarantee": "One independently injected, non-duplicating, one-use Relics or Artifacts offer per trader (50/50 between families when both available)",
+  "collectible_versioned_marker": "tmmRelicArtifactStockVersion=1"
+}

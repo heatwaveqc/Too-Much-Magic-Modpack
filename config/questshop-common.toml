@@ -1,4 +1,0 @@
-# Quest coins are earned from intentional quest rewards, including sales.
-# Disable incidental enemy-coin drops to keep the price scale predictable.
-lootCoinFromEnemy = false
-lootCoinDropChance = 0.0

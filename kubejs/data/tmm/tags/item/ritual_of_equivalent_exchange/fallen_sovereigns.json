@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    "irons_spellbooks:bone_key",
+    "irons_spellbooks:divine_soulshard",
+    "cataclysm:cursium_ingot",
+    "cataclysm:essence_of_the_storm"
+  ]
+}

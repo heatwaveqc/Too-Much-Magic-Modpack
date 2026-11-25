@@ -1,0 +1,50 @@
+name: Friendship Garden NeoForge compile and policy tests (NO GAME BOOT)
+
+on:
+  pull_request:
+    paths:
+      - 'compat/friendship-garden/**'
+      - '.github/workflows/friendship-garden-policy.yml'
+  push:
+    branches:
+      - 'feature/friendship-garden-*'
+    paths:
+      - 'compat/friendship-garden/**'
+      - '.github/workflows/friendship-garden-policy.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: compat/friendship-garden
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - run: gradle --no-daemon clean build
+      - name: Verify output JAR native mod metadata and bundled notices
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import tomllib
+          jars = list(Path('build/libs').glob('tmm_friendship_garden-*.jar'))
+          assert len(jars) == 1, jars
+          with ZipFile(jars[0]) as z:
+              data = tomllib.loads(z.read('META-INF/neoforge.mods.toml').decode())
+              assert [m['modId'] for m in data['mods']] == ['tmm_friendship_garden']
+              assert data['license'] == 'MIT'
+              for p in ['LICENSE','THIRD_PARTY_NOTICES.md']:
+                  assert p in z.namelist()
+          print('PASS: loadable, license-complete NeoForge custom module')
+          PY

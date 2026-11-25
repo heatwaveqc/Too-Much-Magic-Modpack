@@ -1,0 +1,38 @@
+name: Trader premium stock and Chaos Bunny static integrity (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/verify-trader-chaos-next-qa.yml'
+      - 'scripts/verify_trader_chaos_source.py'
+      - 'scripts/validate_b20_trader_stock.py'
+      - 'manifest/wandering_trader_magic_stock.json'
+      - 'kubejs/server_scripts/tmm_wandering_trader_magic_stock.js'
+      - 'kubejs/server_scripts/caerbannog_boss.js'
+      - 'kubejs/data/tmm/gateways/**'
+      - 'kubejs/data/tmm/recipe/caerbannog.json'
+      - 'kubejs/data/tmm/loot_table/entities/empty.json'
+      - 'kubejs/startup_scripts/caerbannog_trophy.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Existing B20 guaranteed and rotating premium offers contract
+        run: python3 scripts/validate_b20_trader_stock.py
+      - name: Both Caerbannog gateways, 156-bunny wave budget, trophy, loot and Packwiz index
+        run: python3 scripts/verify_trader_chaos_source.py
+      - name: KubeJS script JavaScript syntax (API/runtime still untested)
+        run: |
+          node --check kubejs/server_scripts/tmm_wandering_trader_magic_stock.js
+          node --check kubejs/server_scripts/caerbannog_boss.js
+          node --check kubejs/startup_scripts/caerbannog_trophy.js

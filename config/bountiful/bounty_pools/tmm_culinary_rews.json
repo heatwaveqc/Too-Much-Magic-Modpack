@@ -1,0 +1,27 @@
+{
+  "content": {
+    "item_minecraft_golden_carrot": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "content": "minecraft:golden_carrot",
+      "rarity": "COMMON",
+      "repRequired": -30,
+      "type": "item",
+      "unitWorth": 117.5
+    },
+    "item_tmm_coin": {
+      "amount": {
+        "max": 10,
+        "min": 6
+      },
+      "content": "tmm:coin",
+      "rarity": "UNCOMMON",
+      "repRequired": 0,
+      "type": "item",
+      "unitWorth": 4
+    }
+  },
+  "replace": true
+}

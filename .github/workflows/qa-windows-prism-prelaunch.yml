@@ -1,0 +1,24 @@
+name: QA Windows Prism prelaunch child-process regression (NO GAME)
+on:
+  pull_request:
+    paths:
+      - 'scripts/tmm_qa_install_verify.ps1'
+      - 'tests/test_prism_windows_install_verify.ps1'
+      - '.github/workflows/qa-windows-prism-prelaunch.yml'
+  push:
+    branches: ['fix/prism-windows-prelaunch-exitcode-20261122']
+permissions:
+  contents: read
+jobs:
+  powershell-java-process:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Real Windows GUI and console Java process regression; no Minecraft or Packwiz
+        shell: powershell
+        run: .\\tests\\test_prism_windows_install_verify.ps1

@@ -1,6 +1,0 @@
-# Tyz's Skills 6.4.2: absolute GUI coordinates, 20x19 native widget.
-# Leave the FTB sidebar at top-left and move Skills beneath it.
-[inventory_button]
-skill_btn = true
-inventory_btn_x = 3
-inventory_btn_y = 72

@@ -1,0 +1,86 @@
+name: Branch lifecycle report
+
+on:
+  schedule:
+    - cron: '25 15 * * *'
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  donors:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      protected: ${{ steps.sources.outputs.protected }}
+      validate_inventory: ${{ steps.sources.outputs.validate_inventory }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read TMM frozen source references
+        id: sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number || 0 }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import sys
+          sys.path.insert(0, "scripts")
+          import branch_lifecycle as bl
+          sources = [row for row in bl.source_manifest()
+                     if row["branch"] != "test/full-integration"]
+          names = {row["name"] for row in bl.pages("/branches")}
+          donors = sorted({row["branch"] for row in sources})
+          if any(not bl.NAME.fullmatch(ref) or "," in ref or "\n" in ref or "\r" in ref for ref in donors):
+              raise ValueError("invalid donor ref for caller input")
+          validate_inventory = False
+          if os.environ["GITHUB_EVENT_NAME"] == "pull_request":
+              pr = int(os.environ["PR_NUMBER"])
+              if pr <= 0:
+                  raise ValueError("missing PR number")
+              changed = bl.pages(f"/pulls/{pr}/files")
+              relevant = {".github/workflows/branch-lifecycle-report.yml",
+                          "scripts/branch_lifecycle.py", "docs/BRANCH-LIFECYCLE.md"}
+              validate_inventory = len(changed) >= 3000 or any(
+                  row.get(key) in relevant for row in changed
+                  for key in ("filename", "previous_filename"))
+          lines = ["## TMM external integration donors"]
+          for row in sources:
+              ref, sha = row["branch"], row.get("source_commit") or ""
+              warnings = []
+              if ref not in names:
+                  warnings.append("missing live ref")
+              if not bl.SHA.fullmatch(sha):
+                  warnings.append("no full source SHA")
+              elif os.environ["GITHUB_EVENT_NAME"] != "pull_request" or validate_inventory:
+                  if bl.hours(bl.api("/commits/" + sha)["commit"]["committer"]["date"]) >= 168:
+                      warnings.append("source checkpoint >=7d; review")
+              lines.append(f"- {row['name']}: {ref} @ {sha or 'UNPINNED'} — {', '.join(warnings) or 'retain'}")
+          bl.report(lines)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write("protected=" + ",".join(donors) + "\n")
+              out.write("validate_inventory=" + str(validate_inventory).lower() + "\n")
+          PY
+  inventory:
+    if: ${{ (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && needs.donors.outputs.validate_inventory == 'true') }}
+    needs: donors
+    uses: heatwaveqc/Tyr-Development-Standards/.github/workflows/lifecycle-audit.yml@c3b00ac93679a297510c84061278f41030bee770
+    with:
+      mode: inventory
+      branch-budget: 20
+      permanent-branches: 'main,test/full-integration,dev/progression,dev/art'
+      protected-donors: ${{ needs.donors.outputs.protected }}
+  collisions:
+    if: github.event_name == 'pull_request'
+    needs: donors
+    uses: heatwaveqc/Tyr-Development-Standards/.github/workflows/lifecycle-audit.yml@c3b00ac93679a297510c84061278f41030bee770
+    with:
+      mode: collision
+      pr-number: ${{ github.event.pull_request.number }}

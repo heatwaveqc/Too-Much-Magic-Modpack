@@ -1,0 +1,27 @@
+{
+  "comment": "Restore previously discussed Starmetal 576 ingot anchor, owner states resolved 2026-11-18; standard 6x raw/18x ore/54x raw block. Four IDs verified in installed #348 item census. Check effective processing and productive starlight conversions; no fabricated nugget or refined block.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "astralsorcery:starmetal_ingot",
+        "emc_value": 576
+      },
+      {
+        "type": "projecte:item",
+        "id": "astralsorcery:raw_starmetal",
+        "emc_value": 3456
+      },
+      {
+        "type": "projecte:item",
+        "id": "astralsorcery:starmetal_ore",
+        "emc_value": 10368
+      },
+      {
+        "type": "projecte:item",
+        "id": "astralsorcery:raw_starmetal_block",
+        "emc_value": 31104
+      }
+    ]
+  }
+}

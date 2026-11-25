@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "tmm_economy:block/emc_catalyst_side",
+    "top": "botania:block/alchemy_catalyst",
+    "bottom": "botania:block/alchemy_catalyst",
+    "particle": "botania:block/alchemy_catalyst"
+  }
+}

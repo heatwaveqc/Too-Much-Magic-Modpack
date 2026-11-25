@@ -5,12 +5,54 @@ import hashlib
 import json
 import pathlib
 import re
+import subprocess
 import sys
+import tempfile
 import zipfile
 from first_party_runtime import verify_packaging_inputs
+from verify_qa_inventory import inventory, for_side
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
 OUTPUT = "Too-Much-Magic-Full-Integration-Prism.zip"
+
+def build_approved_housing_previews(root: pathlib.Path) -> dict[str, bytes]:
+    """Generate 18 original/licensed NBT previews ONLY for an explicitly authorized QA ZIP.
+
+    Never write into a user's existing Prism installation; native Prefab's
+    first-login starter house/items/mining shaft remain untouched. The source
+    generator checks catalog IDs, source digests, gzip NBT and no free grants.
+    """
+    source = root / "research/prefab-donors/stage_all_houses_qa.py"
+    if not source.is_file():
+        raise RuntimeError("Selected custom housing sources missing from immutable build")
+    with tempfile.TemporaryDirectory(prefix="tmm-approved-houses-qa-") as tmp:
+        instance = pathlib.Path(tmp) / "fresh-disposable-instance"
+        instance.mkdir()
+        (instance / ".tmm-disposable-qa").write_text("QA-only temporary source generation\n")
+        completed = subprocess.run(
+            [sys.executable, str(source), "--stage-qa-game-dir", str(instance),
+             "--target", "singleplayer"],
+            cwd=root, text=True, capture_output=True, timeout=600, check=True,
+        )
+        report = json.loads(completed.stdout)
+        if (report.get("status") != "STATIC_QA_PREVIEW_ONLY"
+                or report.get("generated_houses") != 18
+                or report.get("no_free_grants") is not True):
+            raise RuntimeError("Housing preview generator failed source/entitlement audit")
+        result: dict[str, bytes] = {}
+        names = {h["filename"] for h in report["houses"]}
+        if len(names) != 18:
+            raise RuntimeError("Nonunique approved custom house filenames")
+        for name in sorted(names):
+            if not re.fullmatch(r"[a-z0-9_]+\.nbt", name):
+                raise RuntimeError("Unsafe generated blueprint filename " + name)
+            client = (instance / "prefab-extension" / name).read_bytes()
+            server = (instance / "prefab-extension" / "server-cache" / name).read_bytes()
+            if client != server:
+                raise RuntimeError("Client/server house blueprint drift: " + name)
+            result["minecraft/prefab-extension/" + name] = client
+            result["minecraft/prefab-extension/server-cache/" + name] = server
+        return result
 
 def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
@@ -36,14 +78,22 @@ def main(bootstrap: str, output_dir: str, commit: str, *runtime_jars: str) -> No
         raise RuntimeError("Wrong Minecraft 1.21.1 QA defaults")
     if seed.splitlines().count("onboardAccessibility:false") != 1 or any(line.startswith("narrator:") for line in seed.splitlines()):
         raise RuntimeError("Skip QA accessibility onboarding without forcing narrator preferences")
+    if seed.splitlines().count("tutorialStep:none") != 1 or sum(line.startswith("tutorialStep:") for line in seed.splitlines()) != 1:
+        raise RuntimeError("Skip vanilla tutorial toasts in fresh QA instances")
     if any(line.startswith("key_") for line in seed.splitlines()):
         raise RuntimeError("Never invent the owner's keybindings")
     addons = [pathlib.Path(p) for p in runtime_jars]
     verify_packaging_inputs(addons, root)
+    housing = build_approved_housing_previews(root)
     pack = f"https://raw.githubusercontent.com/{REPO}/{commit}/pack.toml"
     addons_sha = {jar.name: hashlib.sha256(jar.read_bytes()).hexdigest() for jar in addons}
+    expected = {"schema": 1, "source_commit": commit, "mods": for_side(inventory(root), "client", addons)}
+    meta["expected_client_mod_count"] = len(expected["mods"])
     meta["integration_commit"] = commit
     meta["custom_jar_sha256"] = addons_sha
+    meta["qa_only_prefab_houses"] = {path: hashlib.sha256(content).hexdigest()
+                                     for path, content in sorted(housing.items())}
+    meta["housing_grants_changed"] = False
     meta["client_tested"] = False
     meta["stable_promoted"] = False
     meta["personal_settings"] = {
@@ -64,7 +114,7 @@ Exact source SHAs and first-party JAR hashes: BUILD-MANIFEST.json
 NEXT TEST BUILD — STANDALONE MONK/HUNTER AND JAWR BRIDGE
 - Retired: TeamLapen Vampirism, Werewolves and Vampire's Delight; no
   TeamLapen vampire blood, hunter faction or companion GUI.
-- Included: tmm_progression with native Monk and Hunter class XP/skills.
+- Included: tyr_progression with native Monk and Hunter class XP/skills.
   Monk classic trials, Bedrock Rest, armor lock, First Sunset.
   Hunter Trial of Venom, creature specialties, silver training,
   craftable Bio-Mutagen, Mutagenic Brew, permanent mutation pilot.
@@ -77,14 +127,14 @@ NEXT TEST BUILD — STANDALONE MONK/HUNTER AND JAWR BRIDGE
 - No TeamLapen quests, village worldgen, stone outputs or food tags.
 
 OPERATOR/PLAYER QA:
-/tmmprogress list
-/tmmprogress admin join tmm_progression:monk
-/tmmprogress admin xp tmm_progression:monk 28000
-/tmmprogress status tmm_progression:monk
-/tmmprogress admin join tmm_progression:hunter
-/tmmprogress admin xp tmm_progression:hunter 1000
-/tmmprogress status tmm_progression:hunter
-/tmmprogress mutations
+/tyrprogress list
+/tyrprogress admin join tyr_progression:monk
+/tyrprogress admin xp tyr_progression:monk 28000
+/tyrprogress status tyr_progression:monk
+/tyrprogress admin join tyr_progression:hunter
+/tyrprogress admin xp tyr_progression:hunter 1000
+/tyrprogress status tyr_progression:hunter
+/tyrprogress mutations
 /tmmtransform status
 /tmmtransform vampire
 /tmmtransform werewolf
@@ -100,7 +150,19 @@ Archlich death priority is experimental and modifies event ordering.
 Client, multiplayer, third-party binary behavior, native death/cure
 and mutation persistence are NOT proven by server smoke alone.
 
+Original 18 custom Prefab house blueprints are included as QA previews only:
+client in prefab-extension/ and local server in prefab-extension/server-cache/.
+Native first-login house, starter supplies and optional mining shaft remain unchanged.
+No custom-house free graduation entitlement is granted; #418 remains on hold
+pending nonduplication reconciliation. Custom Addon material costs still apply.
+
 Other mods download by packwiz; selected first-party JARs bundled.
+Packwiz installs/updates mods directly from the immutable hash-pinned pack.
+Full client inventory verification is optional, not an executable launch gate.
+From a TMM repository checkout after installing the Prism instance, run:
+  py -3 scripts/audit_client_inventory.py "C:\\path\\to\\Prism instance\\.minecraft"
+This read-only audit uses the packaged tmm-qa-expected-mods.json to verify the
+installed client JAR set and hashes; it never starts Minecraft or Packwiz.
 WINDOWS QA-ONLY PREFERENCES: first-instance display/sound defaults,
 plus optional local options/keybind carryover.
 Run IMPORT-OLD-TMM-PREFERENCES.cmd to select a previous options.txt.
@@ -127,10 +189,13 @@ MaxMemAlloc=8192
         z.writestr("minecraft/packwiz-installer-bootstrap.jar", raw)
         z.writestr("INSTALL-AND-TEST.txt", guide)
         z.writestr("BUILD-MANIFEST.json", json.dumps(meta, indent=2) + "\n")
+        z.writestr("minecraft/tmm-qa-expected-mods.json", json.dumps(expected, indent=2) + "\n")
         for arcname, source in qa_assets.items():
             z.write(source, arcname)
         for jar in addons:
             z.write(jar, "minecraft/mods/" + jar.name)
+        for arcname, content in sorted(housing.items()):
+            z.writestr(arcname, content)
     with zipfile.ZipFile(target) as z:
         names = z.namelist()
         actual = [n for n in names if n.startswith("minecraft/mods/") and n.endswith(".jar")]
@@ -139,8 +204,21 @@ MaxMemAlloc=8192
         for jar in addons:
             if z.read("minecraft/mods/" + jar.name) != jar.read_bytes():
                 raise RuntimeError("First-party jar changed during packaging")
-        if pack.encode() not in z.read("instance.cfg"):
-            raise RuntimeError("Installer is not commit locked")
+        if {name for name in names if name.startswith("minecraft/prefab-extension/") and name.endswith(".nbt")} != set(housing):
+            raise RuntimeError("Incomplete or extraneous housing preview inclusion")
+        for name, content in housing.items():
+            if z.read(name) != content:
+                raise RuntimeError("Housing NBT changed during packaging: " + name)
+        if json.loads(z.read("minecraft/tmm-qa-expected-mods.json")) != expected:
+            raise RuntimeError("Client inventory changed during packaging")
+        conf = z.read("instance.cfg")
+        expected_launch = f'PreLaunchCommand="$INST_JAVA" -jar packwiz-installer-bootstrap.jar -s client {pack}'
+        if conf.decode("utf-8").splitlines().count(expected_launch) != 1:
+            raise RuntimeError("Expected exactly one direct, commit-locked Packwiz prelaunch command")
+        if b'tmm-qa-install-verify.ps1' in conf or b'PreLaunchCommand=powershell.exe' in conf:
+            raise RuntimeError("Mandatory client PowerShell verifier unexpectedly enabled")
+        if "minecraft/tmm-qa-install-verify.ps1" in names:
+            raise RuntimeError("Legacy client installer/verifier must not be bundled")
         for arcname, source in qa_assets.items():
             if z.read(arcname) != source.read_bytes():
                 raise RuntimeError("QA asset changed during packaging: " + arcname)

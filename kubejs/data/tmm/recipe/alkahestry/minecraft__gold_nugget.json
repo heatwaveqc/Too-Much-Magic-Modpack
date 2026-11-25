@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 8,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "minecraft:gold_nugget"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 6
+}

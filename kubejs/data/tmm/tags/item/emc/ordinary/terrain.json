@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "eternal_starlight:abysslate",
+    "eternal_starlight:cobbled_grimstone",
+    "eternal_starlight:cobbled_radianite",
+    "eternal_starlight:cobbled_voidstone",
+    "eternal_starlight:cryobysslate",
+    "eternal_starlight:grimstone",
+    "eternal_starlight:nebulaite",
+    "eternal_starlight:radianite",
+    "eternal_starlight:twilight_sand",
+    "eternal_starlight:voidstone",
+    "theaurorian:aurorian_cobblestone",
+    "theaurorian:aurorian_deepslate",
+    "theaurorian:aurorian_dirt",
+    "theaurorian:aurorian_grass",
+    "theaurorian:aurorian_grass_light",
+    "theaurorian:aurorian_stone",
+    "theaurorian:moon_sand",
+    "wardentools:darkdirt"
+  ]
+}
