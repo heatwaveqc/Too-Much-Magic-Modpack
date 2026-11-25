@@ -2575,7 +2575,7 @@ metafile = true
 
 [[files]]
 file = "mods/multiplayer-spawners.pw.toml"
-hash = "d75faea90db8478c01700cd99cfec0cd6b3fa6661a06cdf55ced1bc4ba4a8f5b"
+hash = "d0048aaa88bbef220a0c578b4be2fada28fafbb1b1825da33d2fc4ffdb60b90f"
 metafile = true
 
 [[files]]
