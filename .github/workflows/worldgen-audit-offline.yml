@@ -43,7 +43,7 @@ jobs:
           curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/pregen.jar" 'https://mediafilez.forgecdn.net/files/8748/909/Chunk-Pregenerator-Neoforge-1.21-4.5.4.jar'
           sha256sum "$RUNNER_TEMP/pregen.jar"
           unzip -p "$RUNNER_TEMP/pregen.jar" META-INF/neoforge.mods.toml | head -80
-          curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/carbon.jar" 'https://mediafilez.forgecdn.net/files/9531/034/CarbonConfig-Neoforge-1.21.1-2.0.3.jar'
+          curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/carbon.jar" 'https://mediafilez.forgecdn.net/files/9531/034/CarbonConfig-Neoforge-1.21.1-2.0.3.jar' || curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/carbon.jar" 'https://edge.forgecdn.net/files/9531/034/CarbonConfig-Neoforge-1.21.1-2.0.3.jar'
           sha256sum "$RUNNER_TEMP/carbon.jar"
           unzip -p "$RUNNER_TEMP/carbon.jar" META-INF/neoforge.mods.toml | head -80
       - uses: actions/upload-artifact@v4
