@@ -107,6 +107,20 @@ public final class ProgressionMath {
         return next;
     }
 
+    /** Temporary use of the designated effect only; no ownership, points or achievement receipt. */
+    public static int effectRank(Definition.Path path,Track track,Definition.Skill skill,Definition.Effect effect) {
+        if(!track.joined())return 0;
+        int owned=track.skillRank(skill.id());
+        if(owned>0)return owned;
+        String trial=effect.params().get("trial_milestone");
+        if(trial==null)return 0;
+        for(var milestone:path.milestones())
+            if(milestone.id().equals(trial)&&milestone.strictOrder()
+                    &&!track.completed(trial)&&canCollectMilestone(milestone,track))
+                return 1;
+        return 0;
+    }
+
     /** Persistent, namespaced criterion counters. */
     public static String counterKey(String milestone, int criterion) {
         return milestone + "/" + criterion;

@@ -52,10 +52,11 @@ public final class EffectRuntime {
             Track track = ProgressionApi.track(player,path.id());
             if (!track.joined() || !PathRegistry.eligible(player,path.id())) continue;
             for (Definition.Skill skill : path.skills()) {
-                int rank = track.skillRank(skill.id());
-                if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
-                    Definition.Effect effect = skill.effects().get(n).atRank(rank);
+                    Definition.Effect configured=skill.effects().get(n);
+                    int rank=io.github.heatwaveqc.tyr.progression.core.ProgressionMath.effectRank(path,track,skill,configured);
+                    if(rank<1)continue;
+                    Definition.Effect effect = configured.atRank(rank);
                     if(PathRegistry.activation(path.id(),skill.id())!=null&&
                         !"true".equals(effect.params().get("passive"))&&!SkillActivation.active(player,path.id(),skill.id()))continue;
                     if (PathRegistry.effectEligible(player,path.id(),skill.id(),n) && eligible(player,effect,track)) {

@@ -227,6 +227,17 @@ public final class PathJson {
                 }
                 if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
                     throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
+                // A trial may expose only the specified effect of a single-rank
+                // achievement-backed skill, never ownership or its other effects.
+                if(params.containsKey("trial_milestone")){
+                    String trial=params.get("trial_milestone");
+                    var achievement=entries(j,"auto_achievements");
+                    if(max!=1||achievement.size()!=1||!achievement.get(0).getAsString().equals(trial)
+                            ||j.has("auto_ranks")||j.has("activation")
+                            ||params.containsKey("requires_milestone")
+                            ||milestones.stream().noneMatch(m->m.id().equals(trial)&&m.strictOrder()))
+                        throw new IllegalArgumentException("Trial effect must belong to a single-rank achievement skill with matching strict milestone: "+sid);
+                }
                 var parsedEffect=new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
                     amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params,rankValues);
                 if(rankValues.isEmpty())MechanicalSpec.validate(parsedEffect);
