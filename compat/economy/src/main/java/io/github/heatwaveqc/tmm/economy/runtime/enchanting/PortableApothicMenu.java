@@ -74,8 +74,13 @@ public final class PortableApothicMenu extends ApothEnchantmentMenu {
     }
 
     @Override public boolean clickMenuButton(Player clicker, int button) {
-        if (!(clicker instanceof ServerPlayer owner) || owner != player ||
-            owner.containerMenu != this || !stillValid(owner)) return false;
+        // The exact native Apothic screen calls clickMenuButton on the client
+        // BEFORE sending its inventory-button packet. Native NULL access
+        // performs no server transaction, but must return the native eligibility.
+        if (!(clicker instanceof ServerPlayer owner))
+            return clicker == player && button >= 0 && button < 3
+                && super.clickMenuButton(clicker, button);
+        if (owner != player || owner.containerMenu != this || !stillValid(owner)) return false;
         if (button == SHELF_SETTINGS)
             return getCarried().isEmpty() && VirtualShelfMenus.openRetired(owner, true);
         if (button < 0 || button >= 3) return false;
