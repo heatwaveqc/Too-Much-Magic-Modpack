@@ -11,6 +11,7 @@ import io.github.heatwaveqc.tyr.progression.data.XpModifierConfig.Rule;
 import io.github.heatwaveqc.tyr.progression.state.Ledger;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
 import java.math.BigDecimal;
+import io.github.heatwaveqc.tyr.progression.admin.XpTrace;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -118,8 +119,10 @@ public final class ExperienceModifiers {
             double routeRate) {
         var policy = PathRegistry.economyCatalog().routing().policy(system.id());
         if (!policy.eligible(path -> PathRegistry.get(path) != null
-                && ledger.get(path).joined() && PathRegistry.eligible(player, path)))
+                && ledger.get(path).joined() && PathRegistry.eligible(player, path))){
+            XpTrace.note(player,()->source+" -> "+system.id()+" rejected: earning path "+policy.requiredPath());
             return new ExperienceEconomy.Award(ledger.economy(), BigDecimal.ZERO, false);
+        }
         if (!Double.isFinite(routeRate) || routeRate < 0
                 || routeRate > XpModifierMath.MAX_REWARD_MULTIPLIER)
             throw new IllegalArgumentException("Invalid XP route rate");
@@ -127,6 +130,8 @@ public final class ExperienceModifiers {
                 system.id(), source, fixed).value();
         multiplier = Math.min(XpModifierMath.MAX_REWARD_MULTIPLIER, multiplier * routeRate);
         double growth = fixed ? configuredGrowth : growth(player, configuredGrowth, system.id(), source);
+        final double resolvedMultiplier=multiplier;
+        XpTrace.note(player,()->source+" -> "+system.id()+" multiplier="+resolvedMultiplier+" route="+routeRate+" growth="+growth);
         return ExperienceEconomy.earnModified(ledger.economy(), system, source, transaction,
                 firstCompletion, nominal, fixed, growth, multiplier);
     }
