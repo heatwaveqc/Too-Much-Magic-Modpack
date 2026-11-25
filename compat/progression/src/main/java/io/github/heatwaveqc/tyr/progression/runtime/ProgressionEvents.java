@@ -31,6 +31,7 @@ public final class ProgressionEvents {
         TreeChopXpBridge.register();
         AttackIdleDefense.register();
         DangerSenseRuntime.register();
+        StunningStrike.register();
         VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
         io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();

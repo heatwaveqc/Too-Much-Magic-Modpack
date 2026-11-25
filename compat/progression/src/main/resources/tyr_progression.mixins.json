@@ -20,6 +20,8 @@
     "HeightFallTrialMixin",
     "MutationEffectQueryMixin",
     "AttackIdleResistanceMixin",
+    "StunnedMobAiMixin",
+    "WallClimbingMixin",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
     "CompanionPatrolAccess",

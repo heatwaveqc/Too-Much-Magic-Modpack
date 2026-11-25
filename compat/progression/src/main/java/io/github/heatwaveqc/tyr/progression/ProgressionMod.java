@@ -40,6 +40,7 @@ public final class ProgressionMod {
         new io.github.heatwaveqc.tyr.progression.mxp.MxpMod(modBus,container);
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.WallClimbing.register();
         HunterItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);

@@ -63,7 +63,7 @@ public final class MechanicalEffects {
         try{return Long.parseLong(ProgressionApi.mode(p,key,Long.toString(fallback)));}
         catch(NumberFormatException bad){return fallback;}
     }
-    private static boolean areaAllowed(ServerPlayer owner,LivingEntity target){
+    static boolean areaAllowed(ServerPlayer owner,LivingEntity target){
         for(var guard:AREA_GUARDS)try{if(!guard.test(owner,target))return false;}
         catch(RuntimeException|LinkageError denied){return false;}
         return true;
