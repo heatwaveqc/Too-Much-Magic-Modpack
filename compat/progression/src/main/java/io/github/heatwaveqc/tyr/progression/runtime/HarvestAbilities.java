@@ -51,6 +51,11 @@ public final class HarvestAbilities {
         // computation (MonkFortuneMixin), not a second drop roll here.
         // Silk Touch changes the selected loot table branch and is still
         // rerolled using a synthetic tool until a separate context hook exists.
+        if(NativeHarvest.silkDrops(player,event)){
+            // Vanilla Silk Touch suppresses ore XP; event retains the actual fist.
+            event.setDroppedExperience(0);
+            return;
+        }
         if (has(player,"treasure_hand",state)
                 && "silk".equals(ProgressionApi.mode(player,
                     "tyr_progression:treasure_mode","fortune"))) {

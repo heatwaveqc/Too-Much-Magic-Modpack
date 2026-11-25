@@ -20,7 +20,14 @@ import java.util.function.BooleanSupplier;
 /** Reusable native material predicates. No numerical tier or hardcoded path identity. */
 public final class NativeHarvest {
     private NativeHarvest(){}
-    private record Scope(ServerPlayer player,ServerLevel level,BlockPos pos){}
+    private static final class Scope {
+        final ServerPlayer player;
+        final ServerLevel level;
+        final BlockPos pos;
+        ItemStack virtual=ItemStack.EMPTY;
+        boolean silk;
+        Scope(ServerPlayer player,ServerLevel level,BlockPos pos){this.player=player;this.level=level;this.pos=pos;}
+    }
     private record Trial(String path,String tool){}
     private static final ThreadLocal<Scope> SCOPE=new ThreadLocal<>();
 
@@ -112,17 +119,20 @@ public final class NativeHarvest {
 
     /** Only a real, verified native player removal can count toward a trial. */
     public static boolean nativeBreak(ServerPlayer p,BlockPos pos,BooleanSupplier original){
-        if(SCOPE.get()!=null||!ToolForms.usable(p))return original.getAsBoolean();
+        if(!ToolForms.usable(p))return original.getAsBoolean();
+        Scope parent=SCOPE.get();
+        if(parent!=null&&(parent.player!=p||parent.pos.equals(pos)))return original.getAsBoolean();
         var level=p.serverLevel();
         if(!level.hasChunkAt(pos)||SpellMiningScope.captures(level,pos))return original.getAsBoolean();
         var state=level.getBlockState(pos);
         if(state.isAir()||state.getDestroySpeed(level,pos)<0||level.getBlockEntity(pos)!=null
             ||!level.mayInteract(p,pos))return original.getAsBoolean();
-        var trials=eligibleTrials(p,state);
+        // Secondary native breaks may use loot context but do not add trial credit.
+        var trials=parent==null?eligibleTrials(p,state):List.<Trial>of();
         SCOPE.set(new Scope(p,level,pos.immutable()));
         boolean result;
         try{result=original.getAsBoolean();}
-        finally{SCOPE.remove();}
+        finally{if(parent==null)SCOPE.remove();else SCOPE.set(parent);}
         if(result&&p.serverLevel()==level&&level.hasChunkAt(pos)
             &&VerifiedMiningXp.removed(state,level.getBlockState(pos))){
             for(var trial:trials)ProgressionApi.recordFiltered(p,
@@ -132,18 +142,58 @@ public final class NativeHarvest {
         return result;
     }
 
-    /** Substitute shears only inside the original native loot roll for this exact
-     * empty-hand break. The actual BlockDropsEvent tool remains the real fist. */
+    static boolean silkSelected(ServerPlayer p,BlockState state){
+        return ToolForms.usable(p)&&EffectRuntime.active(p).stream().anyMatch(a->
+            a.effect().type().equals("virtual_silk_touch")&&Selectors.block(a.effect().selector(),state));
+    }
+    private static boolean exactScope(Scope scope,ServerPlayer player,ServerLevel level,BlockPos pos){
+        return scope!=null&&scope.player==player&&scope.level==level&&scope.pos.equals(pos);
+    }
+    /** True only for the exact temporary loot context, not a held or simulated tool. */
+    static boolean virtualContext(ServerPlayer player,ItemStack tool){
+        var scope=SCOPE.get();
+        return scope!=null&&scope.player==player&&!scope.virtual.isEmpty()&&scope.virtual==tool;
+    }
+    static boolean silkContext(ServerPlayer player,ItemStack tool){
+        return virtualContext(player,tool)&&SCOPE.get().silk;
+    }
+    /** Preserve the normal empty-hand event tool, including training and claim listeners. */
+    static boolean silkDrops(ServerPlayer p,net.neoforged.neoforge.event.level.BlockDropsEvent event){
+        var scope=SCOPE.get();
+        return exactScope(scope,p,event.getLevel(),event.getPos())&&scope.silk&&event.getTool().isEmpty();
+    }
+    private static ItemStack materialTool(ServerPlayer p,BlockState state){
+        // Use only an earned representative whose native rule actually permits this block.
+        // Deterministic choice independent of registry iteration; never invoke its item actions.
+        return EffectRuntime.active(p).stream().filter(a->a.effect().type().equals("native_harvest")
+            &&Selectors.block(a.effect().selector(),state))
+            .map(a->a.effect().params().get("tool")).distinct().sorted()
+            .filter(id->correct(id,state)).findFirst().map(NativeHarvest::representative).orElse(ItemStack.EMPTY);
+    }
+    /** Substitute only within the original native loot computation for the exact break. */
     public static ItemStack lootTool(BlockState state,ServerLevel level,BlockPos pos,
             net.minecraft.world.entity.Entity entity,ItemStack real){
         var scope=SCOPE.get();
-        if(scope==null||scope.player()!=entity||scope.level()!=level||!scope.pos().equals(pos)
-            ||!real.isEmpty()||level.getBlockEntity(pos)!=null)return real;
-        var player=scope.player();
-        // The existing legacy Silk mode owns its own loot replacement.
-        if(ClassAbilities.unlocked(player,"treasure_hand")
+        if(!(entity instanceof ServerPlayer player)||!exactScope(scope,player,level,pos)
+                ||!real.isEmpty()||level.getBlockEntity(pos)!=null)return real;
+        boolean silk=silkSelected(player,state)&&HarvestAbilities.canHarvestBarehand(player,state);
+        // Keep old paths' legacy Silk reroll behavior unchanged unless they explicitly adopt the new mode.
+        if(!silk&&ClassAbilities.unlocked(player,"treasure_hand")
             &&"silk".equals(ProgressionApi.mode(player,"tyr_progression:treasure_mode","fortune")))return real;
         var shears=ToolForms.shearTool(player,state);
-        return shears.isEmpty()?real:shears;
+        var material=materialTool(player,state);
+        if(silk){
+            // Silk has precedence over the shear form; prefer an earned correct tool.
+            // No fallback can grant a missing harvest permission.
+            var tool=material.isEmpty()?new ItemStack(net.minecraft.world.item.Items.WOODEN_PICKAXE):material;
+            var enchants=level.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
+            tool.enchant(enchants.getOrThrow(net.minecraft.world.item.enchantment.Enchantments.SILK_TOUCH),1);
+            scope.virtual=tool;scope.silk=true;
+            return tool;
+        }
+        var tool=shears.isEmpty()?material:shears;
+        if(tool.isEmpty())return real;
+        scope.virtual=tool;scope.silk=false;
+        return tool;
     }
 }

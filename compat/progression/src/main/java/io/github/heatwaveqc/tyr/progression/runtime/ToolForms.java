@@ -52,7 +52,21 @@ public final class ToolForms {
         // Native loot tables also check shears on blocks that do not require a
         // correct tool (e.g. leaves, grasses and vines). Never bypass a required
         // material tier merely because a form is selected.
-        return !state.requiresCorrectToolForDrops()||tool.isCorrectToolForDrops(state)?tool:ItemStack.EMPTY;
+        if(tool.isCorrectToolForDrops(state))return tool;
+        // Wildcard right-click scope is not permission to substitute shears for
+        // every ordinary loot roll (especially crops). Explicit configured block
+        // scope may identify mod-added non-tool-required shear loot.
+        boolean explicit=!active.effect().selector().equals("*");
+        boolean vanilla=state.is(net.minecraft.tags.BlockTags.LEAVES)
+            ||state.is(net.minecraft.world.level.block.Blocks.SHORT_GRASS)
+            ||state.is(net.minecraft.world.level.block.Blocks.TALL_GRASS)
+            ||state.is(net.minecraft.world.level.block.Blocks.VINE)
+            ||state.is(net.minecraft.world.level.block.Blocks.GLOW_LICHEN)
+            ||state.is(net.minecraft.world.level.block.Blocks.FERN)
+            ||state.is(net.minecraft.world.level.block.Blocks.LARGE_FERN)
+            ||state.is(net.minecraft.world.level.block.Blocks.DEAD_BUSH)
+            ||state.is(net.minecraft.world.level.block.Blocks.HANGING_ROOTS);
+        return !state.requiresCorrectToolForDrops()&&(explicit||vanilla)?tool:ItemStack.EMPTY;
     }
     private static final class VirtualContext extends UseOnContext {
         VirtualContext(ServerPlayer p,ItemStack tool,BlockHitResult hit){
@@ -71,6 +85,19 @@ public final class ToolForms {
         try{
             // ItemStack.useOn posts native UseItemOnBlockEvent, invokes native
             // tool-modification rules and NeoForge's placement cancellation/rollback.
+            // Pumpkin carving lives on the block, not ShearsItem.useOn.
+            // Dispatch that known vanilla action only, after the normal interaction
+            // event/claim gates; do not call arbitrary mod block-use handlers.
+            if(active.effect().params().get("form").equals("shears")
+                    &&p.serverLevel().getBlockState(event.getPos()).is(net.minecraft.world.level.block.Blocks.PUMPKIN)){
+                var result=p.serverLevel().getBlockState(event.getPos()).useItemOn(
+                    tool,p.serverLevel(),p,InteractionHand.MAIN_HAND,event.getHitVec());
+                if(result.consumesAction()){
+                    event.setCanceled(true);
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                    return;
+                }
+            }
             var result=tool.useOn(new VirtualContext(p,tool,event.getHitVec()));
             if(result!=InteractionResult.PASS){
                 event.setCanceled(true);

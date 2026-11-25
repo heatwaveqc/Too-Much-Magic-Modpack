@@ -27,6 +27,16 @@ class NativeToolSchemaTest {
         assertThrows(IllegalArgumentException.class,()->read(FORM.replace("\"empty_hand\":true","\"empty_hand\":false")));
         assertThrows(IllegalArgumentException.class,()->read(FORM.replace("\"form\":\"shears\"","\"form\":\"hoe\"")));
     }
+    @Test void silkRequiresOwnedToggleAndEmptyHand(){
+        String silk="""
+          {"schema":1,"rank_xp":[0],"skills":[{"id":"test:silk",
+            "activation":{"mode":"toggle","exclusive_group":"test:loot"},
+            "effects":[{"type":"virtual_silk_touch","empty_hand":true,"target":"*"}]}]}
+          """;
+        assertDoesNotThrow(()->read(silk));
+        assertThrows(IllegalArgumentException.class,()->read(silk.replace("\"exclusive_group\":\"test:loot\"","\"cooldown_ticks\":0")));
+        assertThrows(IllegalArgumentException.class,()->read(silk.replace("\"empty_hand\":true","\"empty_hand\":false")));
+    }
     @Test void materialTrialRequiresStrictOrderAndExactTool(){
         assertDoesNotThrow(()->read(HARVEST));
         assertThrows(IllegalArgumentException.class,()->read(HARVEST.replace("\"strict_order\":true","\"strict_order\":false")));

@@ -242,12 +242,12 @@ public final class PathJson {
                 }
                 if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
                     throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
-                if(type.equals("tool_form")){
+                if(type.equals("tool_form")||type.equals("virtual_silk_touch")){
                     var activation=ActivationSpec.read(j);
                     if(activation==null||!activation.mode().equals("toggle")
                         ||activation.exclusiveGroup().isEmpty()||"true".equals(params.get("passive"))
                         ||params.containsKey("trial_milestone"))
-                        throw new IllegalArgumentException("Tool forms require an exclusive toggle activation: "+sid);
+                        throw new IllegalArgumentException("Virtual tools and Silk Touch require an exclusive toggle activation: "+sid);
                 }
                 // A trial may expose only the specified effect of a single-rank
                 // achievement-backed skill, never ownership or its other effects.
