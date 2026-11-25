@@ -24,3 +24,29 @@ No full smoke, assembly, packaging or live gameplay run authorized.
 ### Discovery graph planner
 
 `NativeHarvest.discover(itemSelector,blockSelector)` is a bounded read-only server registry survey API (explicit item ID/tag and block ID/tag). It evaluates TOOL-backed representative stacks against default states of tool-required blocks, collapses equivalent native capability sets, computes strict-subset Hasse edges, and preserves incomparable material branches. Comparison budget capped; never run per tick. Pure HarvestCapabilityGraph tests cover equality, branching, transitive edge removal, empty sets and deterministic canonical selection. No automatic mutation of path definitions yet: the path compiler must call discovery after registry tags are bound (ordinary resource listener apply may precede tag binding), establish stable entitlement identity across mod/tag changes, generate strict milestone/skill definitions and validate overrides for special materials. Current exact-ID configured trials are usable before that integration. Default-state survey does not prove state-dependent/mod-specific native behavior. No automatic registry discovery invocation or installed tool survey claimed yet.
+
+## Automatic harvest generation — third implementation slice
+
+Opt-in raw Path declaration (example only; no bundled path changed):
+```json
+"harvest_generation": [
+  {
+    "id": "example:pickaxe_materials",
+    "item_selector": "#example:representative_pickaxes",
+    "block_selector": "#minecraft:mineable/pickaxe",
+    "count": 5,
+    "after": ["example:wood_speed"],
+    "prefer_tools": ["minecraft:wooden_pickaxe", "minecraft:stone_pickaxe", "minecraft:iron_pickaxe", "minecraft:diamond_pickaxe"],
+    "exclude_tools": [],
+    "training_blocks": {"minecraft:wooden_pickaxe": ["minecraft:stone"]},
+    "lane": "Harvesting",
+    "unarmored": true
+  }
+]
+```
+
+- HarvestGeneration is a pure compiler consuming native fingerprints; PathRegistry defers installation of opt-in path catalog until logical-server TagsUpdatedEvent (SERVER_DATA_LOAD). NeoForge 1.21.1 ReloadableServerResources patch posts this event after updateRegistryTags and Blocks.rebuildCache. Ordinary catalogs without generation preserve immediate install path. Generated JSON is validated through normal PathJson, ChannelConfig and eligibility/presentation/resource validation before installation. Retain last valid catalog on validation failure; tag-event ordering, manager lifetime, failed reload behavior and integrated/dedicated lifecycle require runtime acceptance. No automatically invoked full server build.
+- A generator scans explicit tool/block families, chooses preferred representatives or deterministic lexical IDs, excludes configured representatives, collapses equal default-state tool-required block sets, and generates one strict milestone + one single-rank achievement skill per novel group. The count defaults to five, after gates all nodes, all direct predecessor branches must be complete, no fixed XP or paid cost is issued. Tool family scope is retained on effect and exact qualifying block set stored separately in registry. Optional exact-ID training_blocks override must be a nonempty subset of the graph delta; use it for five stone rather than any wooden-tool block. Invalid/unmatched override fails closed; update it explicitly when removing a tool. Tool IDs cannot be shared across generators of one path or collide with manual material criteria. Extra special-material gates can be authored separately with manual milestones/effects/exclusions; per-material arbitrary overrides not implemented.
+- Redundant union nodes with no new block beyond all predecessors are omitted and their actual dependencies forwarded. Training uses delta relative to the node's prerequisites rather than all currently active unrelated permissions; this intentionally permits credit on blocks covered by another independent/incomparable branch so the trial cannot softlock. Existing explicit material criteria retain their global native-harvest eligibility rule. Trial count snapshots before committed native break; no speed bonus or tool item; runtime state predicate checked again for each candidate. Current graph checks default states only, not specialized item/block-state loot behavior.
+- Stable receipt UUID uses Path ID, generator ID and exact representative tool ID. Actual completion records receipts for each then-equivalent tool, in per-path milestones and economy. A later changed representative projects a completed canonical node from existing aliases without persisting new receipts; a later split does not falsely award a newly distinct tool merely because it was briefly equivalent. Removed/excluded tools and redundant omitted nodes retain historical receipts but have no current node/effect; when a tool is available as a distinct node again, receipt can reactivate. If previously-earned tool becomes redundant through new predecessor union, its old receipt is preserved but current permissions may need those predecessor challenges; this edge remains migration review. In-progress counters use canonical ID and may need retraining if representative changes. No automatic migration of old numeric harvest tier or preexisting saves; no reset of paid ranks. Keep generator IDs stable. No claims of actual installed survey or permanent save acceptance.
+- Added HarvestReceiptTest and HarvestGenerationTest, plus graph preferred ordering and delta planner. Actual live generated tree, tag reload/startup, installed representative tag contents, unarmored eligibility, native special loot and save/relog require B/C tests after an approved configuration and candidate. No bundled Monk config changed. Prior checkpoint 7d16c09 and alias foundation a2aca1e passed exact-head quick CI; generator checkpoint f12cdc2 still running at documentation time.
