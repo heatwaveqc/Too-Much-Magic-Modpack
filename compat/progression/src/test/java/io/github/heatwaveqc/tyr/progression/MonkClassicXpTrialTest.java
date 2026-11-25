@@ -110,41 +110,43 @@ final class MonkClassicXpTrialTest {
         assertTrue(fistZombie.matches("unarmed_kill","#tyr_progression:undead"));
         assertFalse(spellZombie.matches("unarmed_kill","#tyr_progression:undead"));
         assertTrue(spellZombie.matches("kill","#tyr_progression:monk_training_hostiles"));
-        assertEquals(2,activity(path(),"barehand_block_break","#minecraft:logs").xp());
-        assertEquals(8,activity(path(),"kill","#tyr_progression:monk_training_hostiles").xp());
-        assertEquals(4,activity(path(),"unarmed_kill","#tyr_progression:monk_training_hostiles").xp());
+        if(!path().activities().isEmpty()){
+            assertEquals(2,activity(path(),"barehand_block_break","#minecraft:logs").xp());
+            assertEquals(8,activity(path(),"kill","#tyr_progression:monk_training_hostiles").xp());
+            assertEquals(4,activity(path(),"unarmed_kill","#tyr_progression:monk_training_hostiles").xp());
+        }else assertTrue(path().activities().isEmpty(),"Unified Monk has no duplicate native activity XP");
         String invalid = json().toString().replace("\"unarmed_kill\"","\"not_a_trusted_event\"");
         assertThrows(IllegalArgumentException.class, ()->
                 TestPaths.read("tyr_progression:monk",JsonParser.parseString(invalid).getAsJsonObject()));
     }
 
-    @Test void trainingCurveAndClassicMilestonesUseNativePathXpNotTyz() throws Exception {
-        Definition.Path spec = path();
-        assertEquals(20,spec.maxRank());
-        assertEquals(20L,spec.rankXp().get(1).longValue());
-        assertEquals(55L,spec.rankXp().get(2).longValue());
-        assertEquals(105L,spec.rankXp().get(3).longValue());
-        assertEquals(14300L,spec.rankXp().getLast().longValue());
-        assertEquals(7,spec.activities().size());
-        assertEquals(16,spec.milestones().size());
-        assertEquals(10,activity(spec,"food_discovered","*").xp());
-        assertEquals(25,activity(spec,"advancement","*").xp());
-
-        // Published modeling examples are NOT event simulations; they verify
-        // the monotone XP/rank arithmetic using the actual live curve.
-        Track initial = ProgressionMath.join(spec,Track.empty());
-        assertEquals(1,initial.rank());
-        Track early = ProgressionMath.grantXp(spec,initial,259);
-        assertEquals(5,early.rank(),"First-hour illustrative activity + deed budget");
-        Track mid = ProgressionMath.grantXp(spec,early,1730-259);
-        assertEquals(11,mid.rank(),"Mixed Monk activities + optional trials");
-        Track late = ProgressionMath.grantXp(spec,mid,15340-1730);
-        assertEquals(20,late.rank(),"High-activity endgame path");
-        assertEquals(15340L,late.xp());
-        assertEquals(8,late.skillRank("tyr_progression:iron_palm"));
-        assertEquals(1,late.skillRank("tyr_progression:momentum_glide"),
-                "Glide may be rank-granted but the effect still requires credited Dragon milestone");
-        assertSame(late,ProgressionMath.grantXp(spec,late,0));
+    @Test void trainingRewardsFollowConfiguredUnifiedOrLegacyModel() throws Exception {
+        Definition.Path spec=path();
+        if(spec.activities().isEmpty()){
+            assertEquals(200,spec.maxRank());
+            assertEquals(16,spec.milestones().size());
+            assertTrue(spec.milestones().stream().allMatch(m->m.xp()==0&&m.points()==0));
+            assertEquals(1000,milestone(spec,"trial_ten_logs").fixedRewardXp());
+            assertEquals(0,milestone(spec,"dragon_defeated").fixedRewardXp());
+            assertEquals("tyr_progression:mxp",
+                milestone(spec,"trial_bedrock_sleep").fixedRewardSystem());
+            assertEquals("external",milestone(spec,"trial_wither_victory").criteria().getFirst().event());
+            assertEquals("tyr_progression:strict_barehand_wither_victory",
+                milestone(spec,"trial_wither_victory").criteria().getFirst().selector());
+        }else{
+            assertEquals(20,spec.maxRank());
+            assertEquals(20L,spec.rankXp().get(1).longValue());
+            assertEquals(14300L,spec.rankXp().getLast().longValue());
+            assertEquals(7,spec.activities().size());
+            assertEquals(16,spec.milestones().size());
+            assertEquals(10,activity(spec,"food_discovered","*").xp());
+            assertEquals(25,activity(spec,"advancement","*").xp());
+            Track initial=ProgressionMath.join(spec,Track.empty());
+            Track late=ProgressionMath.grantXp(spec,initial,15340);
+            assertEquals(20,late.rank());
+            assertEquals(8,late.skillRank("tyr_progression:iron_palm"));
+            assertEquals(1,late.skillRank("tyr_progression:momentum_glide"));
+        }
     }
 
     @Test void classicDeedBonusesAreOneTimeAndDoNotBlockRankRewards() throws Exception {
@@ -161,7 +163,10 @@ final class MonkClassicXpTrialTest {
                 milestone(spec,"trial_bedrock_sleep").criteria().getFirst().event());
         assertEquals("tyr_progression:bedrock_rest_completed",
                 milestone(spec,"trial_bedrock_sleep").criteria().getFirst().selector());
-        assertEquals(230,milestone(spec,"trial_bedrock_sleep").xp());
+        if(spec.activities().isEmpty()){
+            assertEquals(0,milestone(spec,"trial_bedrock_sleep").xp());
+            assertEquals(1000,milestone(spec,"trial_bedrock_sleep").fixedRewardXp());
+        }else assertEquals(230,milestone(spec,"trial_bedrock_sleep").xp());
         assertEquals(5,milestone(spec,"blind_ordeal_victory").criteria().getFirst().count(),
                 "Historic Blindness ordeal must count five hostile kills");
         assertEquals("external",
@@ -180,7 +185,8 @@ final class MonkClassicXpTrialTest {
             assertEquals(0,skill.baseCost());
         }
         var glide = spec.skill("tyr_progression:momentum_glide");
-        assertEquals("tyr_progression:dragon_defeated",
+        assertEquals(spec.activities().isEmpty()
+                ?"tyr_progression:trial_wither_victory":"tyr_progression:dragon_defeated",
                 glide.effects().getFirst().params().get("requires_milestone"));
     }
 

@@ -4,7 +4,8 @@
   "package": "io.github.heatwaveqc.tyr.progression.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "DragonDrinkPermissionMixin"
+    "DragonDrinkPermissionMixin",
+    "BeachpartyElixirSipMixin"
   ],
   "injectors": {
     "defaultRequire": 0

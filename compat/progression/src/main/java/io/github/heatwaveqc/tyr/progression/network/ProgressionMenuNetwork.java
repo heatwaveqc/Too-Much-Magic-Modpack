@@ -138,7 +138,12 @@ public final class ProgressionMenuNetwork {
         long level=spec==null?state.rank():
             io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.level(ledger.economy(),spec);
         json.addProperty("rank",level);
+        if(PathRegistry.config().masteryStages().containsKey(pathId))
+            json.addProperty("mastery_stage",state.rank());
         json.addProperty("max_rank",spec==null?channel.maxRank():spec.maxLevel());
+        if(PathRegistry.config().masteryStages().containsKey(pathId))
+            json.addProperty("max_mastery_stage",
+                PathRegistry.config().masteryStages().get(pathId).maxStage());
         json.addProperty("xp",spec==null?java.math.BigDecimal.valueOf(state.xp()):
                 ledger.economy().currentXp().getOrDefault(spec.id(),java.math.BigDecimal.ZERO));
         json.addProperty("points",spec==null?state.points():
@@ -191,6 +196,7 @@ public final class ProgressionMenuNetwork {
             challenge.addProperty("goal",upcoming.total());
             json.add("next_challenge",challenge);
         }
+        long invested=io.github.heatwaveqc.tyr.progression.core.ChannelEngine.investedRanks(ledger,pathId,PathRegistry.config());
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
             JsonObject item = new JsonObject();
@@ -201,6 +207,10 @@ public final class ProgressionMenuNetwork {
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
             item.addProperty("required_rank", skill.nextRequiredRank(owned));
+            if(owned<skill.maxRank()&&skill.nextInvestedRequirement(owned)>0){
+                item.addProperty("required_invested_ranks",skill.nextInvestedRequirement(owned));
+                item.addProperty("invested_ranks",invested);
+            }
             item.addProperty("eligible",PathRegistry.skillEligible(player,pathId,skill.id()));
             item.addProperty("auto", !skill.autoRanks().isEmpty());
             var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));

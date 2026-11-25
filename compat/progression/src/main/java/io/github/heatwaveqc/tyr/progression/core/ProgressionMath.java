@@ -33,10 +33,16 @@ public final class ProgressionMath {
 
     /** Same prerequisite/choice evaluation with a currency-configured point price. */
     public static Track buy(Definition.Path spec, Track old, String skillId, int pointCost) {
+        return buy(spec,old,skillId,pointCost,0);
+    }
+
+    /** Invested rank count is derived from authoritative purchase receipts by the caller. */
+    public static Track buy(Definition.Path spec, Track old, String skillId, int pointCost,long investedRanks) {
         Definition.Skill skill = spec.skill(skillId);
         if (!old.joined() || skill == null || pointCost < 0) return old;
         int owned = old.skillRank(skillId);
-        if(old.rank()<skill.nextRequiredRank(owned))return old;
+        if(old.rank()<skill.nextRequiredRank(owned)
+            || investedRanks<skill.nextInvestedRequirement(owned))return old;
         if (!skill.autoRanks().isEmpty()) return old; // baseline grants are not purchased
         if (owned >= skill.maxRank() || old.points() < pointCost) return old;
         if (owned == 0 && !skill.choiceGroup().isEmpty()) {

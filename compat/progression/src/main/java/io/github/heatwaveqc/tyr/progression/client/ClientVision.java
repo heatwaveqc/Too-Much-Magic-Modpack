@@ -18,19 +18,23 @@ public final class ClientVision {
     private ClientVision(){}
     private static WeakReference<LocalPlayer> owner=new WeakReference<>(null);
     private static boolean night;
-    private static int lava,receivedTick,astralStage;
-    public static void accept(boolean enhanced,int range,int stage){
+    private static int lava,otherworld,receivedTick,astralStage;
+    public static void accept(boolean enhanced,int range,int astral,int otherworldTier){
         LocalPlayer player=Minecraft.getInstance().player;
         owner=new WeakReference<>(player);night=enhanced;lava=Math.max(0,Math.min(128,range));
-        astralStage=Math.max(-1,Math.min(4,stage));
+        astralStage=Math.max(-1,Math.min(4,astral));
+        otherworld=Math.max(0,Math.min(2,otherworldTier));
         receivedTick=player==null?0:player.tickCount;
     }
-    private static boolean valid(LivingEntity entity){
+    private static boolean lease(LivingEntity entity){
         var player=Minecraft.getInstance().player;
         return player!=null&&entity==player&&owner.get()==player&&player.isAlive()&&!player.isSpectator()
-            &&player.tickCount>=receivedTick&&player.tickCount-receivedTick<=40
-            &&!player.hasEffect(MobEffects.BLINDNESS)&&!player.hasEffect(MobEffects.DARKNESS);
+            &&player.tickCount>=receivedTick&&player.tickCount-receivedTick<=40;
     }
+    private static boolean valid(LivingEntity entity){
+        return lease(entity)&&!entity.hasEffect(MobEffects.BLINDNESS)&&!entity.hasEffect(MobEffects.DARKNESS);
+    }
+    public static int otherworldTier(LivingEntity entity){return lease(entity)?otherworld:0;}
     public static boolean night(LivingEntity entity){return night&&valid(entity);}
     /** A lease-bound server-projected stage, never inferred from local Astral UI. */
     public static int astralStage(){

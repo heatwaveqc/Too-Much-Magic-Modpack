@@ -53,6 +53,84 @@ class ConfiguredEconomyRuntimeTest {
                         new ChannelConfig.Binding(mxp,mxp)));
     }
 
+    @Test void nativeWalletRequiresActualBindingAndActivePath(){
+        var mxp=XpChannel.mxp(1.02);
+        var nativeChannel=new XpChannel(CULT,tree(),1.0,PATH,"Cultivation","Points");
+        var channels=Map.of(mxp.id(),mxp,CULT,nativeChannel);
+        var key=new ChannelConfig.SkillKey(PATH,SKILL);
+        var unified=new ChannelConfig(channels,Map.of(PATH,mxp),
+                Map.of(key,new ChannelConfig.Binding(mxp,mxp)));
+        assertFalse(unified.usesNative(CULT,p->true));
+        var separate=new ChannelConfig(channels,Map.of(PATH,nativeChannel),
+                Map.of(key,new ChannelConfig.Binding(nativeChannel,nativeChannel)));
+        assertTrue(separate.usesNative(CULT,PATH::equals));
+        assertFalse(separate.usesNative(CULT,p->false));
+        var hybrid=new ChannelConfig(channels,Map.of(PATH,mxp),
+                Map.of(key,new ChannelConfig.Binding(mxp,nativeChannel)));
+        assertTrue(hybrid.usesNative(CULT,PATH::equals));
+        assertFalse(hybrid.usesNative(mxp.id(),p->true));
+    }
+
+    @Test void invalidCatalogCrossReferencesRejectBeforePublication(){
+        var paths=Map.of(PATH,tree());
+        assertDoesNotThrow(()->ExperienceEconomyConfig.validateReferences(catalog(),paths,Set.of()));
+        assertThrows(IllegalArgumentException.class,()->
+                ExperienceEconomyConfig.validateReferences(catalog(),paths,Set.of(CULT)));
+        for(String extra:List.of(
+                "\"path_changes\":[{\"path\":\"test:missing\",\"system\":\"test:shared\"}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:missing\",\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:missing\",\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:wellspring\",\"min_rank\":9,\"operation\":\"multiply\",\"value\":2}]",
+                "\"modifiers\":[{\"id\":\"test:bad\",\"kind\":\"reward\",\"path\":\"test:discipline\",\"skill\":\"test:wellspring\",\"effect_index\":0,\"operation\":\"multiply\",\"value\":2}]")){
+            var invalid=ExperienceEconomyConfig.read(JsonParser.parseString(
+                    "{\"systems\":[{\"id\":\"test:shared\"}],"+extra+"}").getAsJsonObject());
+            assertThrows(IllegalArgumentException.class,()->
+                    ExperienceEconomyConfig.validateReferences(invalid,paths,Set.of()));
+        }
+        var invalidGate=ExperienceEconomyConfig.read(JsonParser.parseString("""
+            {"systems":[{"id":"test:shared","earning_path":"test:missing"}]}
+            """).getAsJsonObject());
+        assertThrows(IllegalArgumentException.class,()->
+                ExperienceEconomyConfig.validateReferences(invalidGate,paths,Set.of()));
+    }
+
+    @Test void investedGateUsesOnlyCurrentPathPurchasesAcrossCurrencies() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();
+            ExperienceEconomyRuntime.install(catalog);
+            var gated=new Definition.Skill(SKILL,8,1,1,0,List.of(),List.of(),List.of(),"",
+                    List.of(),List.of(),List.of(),List.of(),List.of(1,2,3,4,5,6,7,8));
+            var tree=new Definition.Path(PATH,"",List.of(0L,1000L),0,
+                    List.of(),List.of(),List.of(gated));
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,XpChannel.mxp(1.02));
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,XpChannel.MXP,
+                "test:mana","test:mana_gate",null,new BigDecimal("5000"),true,1.02);
+            ledger=ChannelEngine.awardConfigured(ledger,catalog,CULT,
+                "test:practice","test:practice_gate",null,new BigDecimal("300"),true,1.02);
+            var paid=ExperienceEconomy.buy(ledger.economy(),catalog.systems().get(XpChannel.MXP),
+                "test:other","test:other_skill",1,5,5);
+            ledger=ledger.withEconomy(paid);
+            assertEquals(0,ChannelEngine.investedRanks(ledger,PATH,config()));
+            assertSame(ledger,ChannelEngine.buy(ledger,tree,config(),SKILL,XpChannel.MXP));
+            assertSame(ledger,ChannelEngine.buy(ledger,tree,config(),SKILL,CULT));
+            paid=ExperienceEconomy.buy(ledger.economy(),catalog.systems().get(XpChannel.MXP),
+                PATH,"test:foundation",1,5,5);
+            ledger=ledger.withEconomy(paid).receipt(PATH,"test:foundation",XpChannel.MXP,1);
+            assertEquals(1,ChannelEngine.investedRanks(ledger,PATH,config()));
+            ledger=ChannelEngine.buy(ledger,tree,config(),SKILL,CULT);
+            assertEquals(2,ChannelEngine.investedRanks(ledger,PATH,config()));
+            assertEquals(1,ChannelEngine.view(ledger,tree,config()).skillRank(SKILL));
+            ledger=ChannelEngine.buy(ledger,tree,config(),SKILL,XpChannel.MXP);
+            assertEquals(3,ChannelEngine.investedRanks(ledger,PATH,config()));
+            var reset=ChannelEngine.refund(ledger,tree);
+            assertEquals(0,ChannelEngine.investedRanks(reset,PATH,config()));
+            assertSame(reset,ChannelEngine.buy(reset,tree,config(),SKILL,XpChannel.MXP));
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
     @Test void twoCurrenciesPurchaseAndStackRanksWithIndependentCaps() {
         var previous=ExperienceEconomyRuntime.current();
         try {

@@ -225,7 +225,7 @@ public final class ProgressionScreen extends Screen {
                 var source=selectedSource(chosen);
                 int price=source==null?chosen.get("price").getAsInt():source.get("price").getAsInt();
                 line(g,title(chosen,selection)+" | "+price+" points via "+label(selectedCurrency(chosen))+
-                    " | "+(chosen.has("external_reward")?"Native Astral mastery":chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt()),12,y,width-24,0xFFF0D997);
+                    (chosen.has("required_invested_ranks")?" | Path ranks "+chosen.get("invested_ranks").getAsLong()+"/"+chosen.get("required_invested_ranks").getAsInt():" | "+(chosen.has("external_reward")?"Native Astral mastery":chosen.get("level_system").getAsString()+" level "+chosen.get("required_rank").getAsInt())),12,y,width-24,0xFFF0D997);
                 line(g,String.join(", ",strings(chosen,"effects"))+" | "+(selectedBuyable(chosen)?"Ready to learn":"Locked, automatic, or max rank"),12,y+11,width-24,0xFFD0CCDD);
             }
             if(inside(mx,my)){
@@ -251,6 +251,7 @@ public final class ProgressionScreen extends Screen {
                                 source.get("owned").getAsInt()+"/"+source.get("max_ranks").getAsInt()+
                                 " ranks, "+source.get("price").getAsInt()+" pts/rank"));
                         tooltip.add(Component.literal(n.has("external_reward")?"Requires native Astral mastery":"Level: "+n.get("level_system").getAsString()+" "+n.get("required_rank").getAsInt()));
+                        if(n.has("required_invested_ranks"))tooltip.add(Component.literal("Path ranks invested: "+n.get("invested_ranks").getAsLong()+" / "+n.get("required_invested_ranks").getAsInt()));
                         if(!strings(n,"requires").isEmpty())tooltip.add(Component.literal("All: "+String.join(", ",strings(n,"requires").stream().map(ProgressionScreen::label).toList())));
                         if(!strings(n,"requires_any").isEmpty())tooltip.add(Component.literal("Any: "+String.join(", ",strings(n,"requires_any").stream().map(ProgressionScreen::label).toList())));
                         if(!strings(n,"milestones").isEmpty())tooltip.add(Component.literal("Milestones: "+String.join(", ",strings(n,"milestones").stream().map(ProgressionScreen::label).toList())));

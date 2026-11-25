@@ -17,7 +17,10 @@
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
     "MutationEffectQueryMixin",
-    "MutationRegenerationMixin"
+    "MutationRegenerationMixin",
+    "CompanionMobGoalsAccess",
+    "CompanionPatrolAccess",
+    "ElixirFoodDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,5 +1,5 @@
 {
-  "xp_channel": "tyr_progression:hunter",
+  "xp_channel": "tyr_progression:mxp",
   "schema": 1,
   "exclusive_group": "tyr_progression:human_disciplines",
   "milestones": [
@@ -24,8 +24,8 @@
           "count": 20
         }
       ],
-      "xp": 100,
-      "points": 2
+      "xp": 0,
+      "points": 0
     },
     {
       "id": "tyr_progression:raider_studies",
@@ -36,8 +36,8 @@
           "count": 20
         }
       ],
-      "xp": 100,
-      "points": 2
+      "xp": 0,
+      "points": 0
     }
   ],
   "skills": [

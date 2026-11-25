@@ -29,6 +29,29 @@ class MechanicalSpecTest {
             "{\"type\":\"critical_hit\",\"per_rank\":0.2,\"params\":{\"chance\":\"NaN\"}}",
             "{\"type\":\"heal_on_kill\",\"per_rank\":0.1,\"params\":{\"basis\":\"damage\"}}"})assertThrows(IllegalArgumentException.class,()->parse(fx));
     }
+    @Test void personalElixirRejectsUnscopedAndUnsafeConfig(){
+        String effect="{\"type\":\"personal_elixir\",\"target\":\"#tyr_progression:elixir_candidates\",\"params\":{\"fixed_mxp\":10,\"saturation\":6,\"effects\":\"minecraft:regeneration,1,100;minecraft:absorption,0,2400\"}}";
+        assertDoesNotThrow(()->parse(effect));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("#tyr_progression:elixir_candidates","*")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("\"saturation\":6","\"saturation\":21")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("regeneration,1,100","regeneration,10,100")));
+        assertThrows(IllegalArgumentException.class,()->parse(effect.replace("absorption,0,2400","absorption,0,-1")));
+    }
+    @Test void otherworldEffectsRequireExplicitTiersAndHarvestScope(){
+        assertDoesNotThrow(()->parse("{\"type\":\"otherworld_sight\",\"tier\":2}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_sight\",\"tier\":3}"));
+        assertDoesNotThrow(()->parse("{\"type\":\"otherworld_harvest\",\"target\":\"occultism:iesnium_ore_natural\",\"tier\":2,\"empty_hand\":true}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_harvest\",\"tier\":2,\"empty_hand\":true}"));
+        assertThrows(IllegalArgumentException.class,()->parse("{\"type\":\"otherworld_harvest\",\"target\":\"occultism:iesnium_ore_natural\",\"tier\":2}"));
+    }
+    @Test void radialMiningRequiresBoundedScopedEffect(){
+        String fx="{\"type\":\"radial_mining\",\"target\":\"#minecraft:mineable/pickaxe\",\"empty_hand\":true,\"per_rank\":1,\"params\":{\"max_radius\":3,\"hardness_multiplier\":3,\"sneak_only\":false}}";
+        assertDoesNotThrow(()->parse(fx));
+        assertThrows(IllegalArgumentException.class,()->parse(fx.replace("\"max_radius\":3","\"max_radius\":4")));
+        assertThrows(IllegalArgumentException.class,()->parse(fx.replace("\"hardness_multiplier\":3","\"hardness_multiplier\":4")));
+        assertThrows(IllegalArgumentException.class,()->parse(fx.replace("\"empty_hand\":true","\"empty_hand\":false")));
+        assertThrows(IllegalArgumentException.class,()->parse(fx.replace("#minecraft:mineable/pickaxe","*")));
+    }
     @Test void growthAndDefenseSchema(){
         for(String type:new String[]{"breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection"})
             assertDoesNotThrow(()->parse("{\"type\":\""+type+"\",\"target\":\"test:target\",\"per_rank\":0.2}"));
