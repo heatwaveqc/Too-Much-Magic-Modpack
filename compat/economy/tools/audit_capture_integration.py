@@ -72,7 +72,7 @@ def main():
         return
     names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar"}
     # Audit exact native tag resources for all seven consumers before gameplay acceptance.
-    locked.SLUGS.extend(["occultism", "ars-ocultas"])
+    locked.SLUGS.extend(slug for slug in ("occultism", "ars-ocultas") if slug not in locked.SLUGS)
     names |= {"ars_nouveau-1.21.1-5.13.5.jar", "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus-2.6.1.jar", "ars_ocultas-1.21.1-2.6.2.jar"}
     lock_pins = read_lock()
     neo_pins = [p for p in lock_pins if p["filename"].startswith("neovitae-")]
