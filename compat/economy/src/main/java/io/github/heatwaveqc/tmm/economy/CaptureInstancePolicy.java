@@ -8,13 +8,18 @@ import net.neoforged.fml.ModList;
 public final class CaptureInstancePolicy {
     private static final String DOLORIS = "neovitae:daemonium_doloris";
     private static final String NATIVE_CLASS = "com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity";
+    // Both versions have an exact native ABI audit; unknown releases remain fail-closed.
+    private static boolean reviewedNeoVersion(String version) {
+        return "1.1.53".equals(version) || "1.1.54".equals(version);
+    }
+
     private CaptureInstancePolicy() {}
 
     /** Unknown Foreman discriminator is fail-closed for this exact shared entity type. */
     public static boolean denyForeman(Entity entity) {
         if (!DOLORIS.equals(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())) return false;
         if (!entity.getClass().getName().equals(NATIVE_CLASS)
-                || !ModList.get().getModContainerById("neovitae").map(c -> c.getModInfo().getVersion().toString().equals("1.1.53")).orElse(false)) return true;
+                || !ModList.get().getModContainerById("neovitae").map(c -> reviewedNeoVersion(c.getModInfo().getVersion().toString())).orElse(false)) return true;
         try {
             return !Boolean.FALSE.equals(entity.getClass().getMethod("isForeman").invoke(entity));
         } catch (ReflectiveOperationException | RuntimeException | LinkageError ex) {

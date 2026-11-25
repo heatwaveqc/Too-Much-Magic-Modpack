@@ -11,6 +11,18 @@ from fetch_compile_classpath import ROOT, read_lock, fetch
 
 TAG = ROOT / "compat/economy/src/main/resources/data/tmm/tags/entity_type/capture_blacklist.json"
 POLICY = {"blacklist_target", "approved_misc_default_deny"}
+# The feature branch still has the historic 1.1.53 lock. Also audit the exact
+# 1.1.54 integration pin (491cdd18c08a03b84abc6d693d3a4265fb411876).
+# This supplemental audit input is not a modpack pin change.
+NEO_CURRENT = {
+    "filename": "neovitae-1.21.1-1.1.54.jar",
+    "download": {
+        "url": "https://cdn.modrinth.com/data/rvaW4C93/versions/AMCHcyqH/neovitae-1.21.1-1.1.54.jar",
+        "hash-format": "sha512",
+        "hash": "733329d33fe278e6f95841ed93a068500f5775153c0db32ff8e39da775fe67d26434dbbe29f6aa1001869da89c98c2148c9bce8ce3a2a2fc493590dfdb5276db",
+    },
+}
+NEO_REVIEWED = {"neovitae-1.21.1-1.1.53.jar", NEO_CURRENT["filename"]}
 
 def project(registry):
     assert registry["schema_version"] == 1 and registry["registry_revision"] == 6
@@ -58,29 +70,39 @@ def main():
     print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
     if args.projection_only:
         return
-    names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar", "neovitae-1.21.1-1.1.53.jar"}
+    names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar"}
     # Audit exact native tag resources for all seven consumers before gameplay acceptance.
     locked.SLUGS.extend(["occultism", "ars-ocultas"])
     names |= {"ars_nouveau-1.21.1-5.13.5.jar", "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus-2.6.1.jar", "ars_ocultas-1.21.1-2.6.2.jar"}
-    pins = {p["filename"]: p for p in read_lock() if p["filename"] in names}
+    lock_pins = read_lock()
+    neo_pins = [p for p in lock_pins if p["filename"].startswith("neovitae-")]
+    assert len(neo_pins) == 1 and neo_pins[0]["filename"] in NEO_REVIEWED, "Unreviewed Neo Vitae pin"
+    neo_name = neo_pins[0]["filename"]
+    names.add(neo_name)
+    pins = {p["filename"]: p for p in lock_pins if p["filename"] in names}
     assert set(pins) == names
+    if neo_name == NEO_CURRENT["filename"]:
+        assert pins[neo_name]["download"] == NEO_CURRENT["download"], "Neo Vitae artifact changed"
+    else:
+        pins[NEO_CURRENT["filename"]] = NEO_CURRENT
     with tempfile.TemporaryDirectory() as tmp:
         dest = Path(tmp)
         for pin in pins.values():
             fetch(pin, dest)
         apoth = dest / "ApothicSpawners-1.21.1-1.4.0.jar"
         reliq = dest / "reliquary-1.21.1-2.0.85.1599.jar"
-        neo = dest / "neovitae-1.21.1-1.1.53.jar"
         with zipfile.ZipFile(apoth) as z:
             native = json.loads(z.read("data/apothic_spawners/tags/entity_type/blacklisted_from_spawners.json"))
             print("Native blacklist:", native)
         abi(apoth, "dev.shadowsoffire.apothic_spawners.ASEvents", ["handleCapturing(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V", "SpawnEggItem.byId"])
         abi(reliq, "reliquary.item.MobCharmRegistry", ["handleAddingFragmentDrops(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "getCharmDefinitionFor(net.minecraft.world.entity.Entity)", "(Lnet/minecraft/world/entity/Entity;)Ljava/util/Optional;"])
-        abi(neo, "com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity", ["isForeman()", "()Z", "IsForeman"])
-        with zipfile.ZipFile(neo) as z:
-            native_neo = json.loads(z.read("data/neovitae/tags/entity_type/deny_imprisonment.json"))
-            assert {"minecraft:ender_dragon", "minecraft:wither", "minecraft:warden"} <= set(native_neo["values"])
-        abi(neo, "com.breakinblocks.neovitae.common.event.ImprisonmentArrayHandler", ["static void onLivingDeath(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDeathEvent;)V", "DENY_IMPRISONMENT", "SpawnerBlockEntity.setEntityId"])
+        for neo_file in sorted(set(pins) & NEO_REVIEWED):
+            neo = dest / neo_file
+            abi(neo, "com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity", ["public boolean isForeman()", "()Z", "Field isForeman:Z", "IsForeman", "addAdditionalSaveData", "readAdditionalSaveData"])
+            with zipfile.ZipFile(neo) as z:
+                native_neo = json.loads(z.read("data/neovitae/tags/entity_type/deny_imprisonment.json"))
+                assert {"minecraft:ender_dragon", "minecraft:wither", "minecraft:warden"} <= set(native_neo["values"])
+            abi(neo, "com.breakinblocks.neovitae.common.event.ImprisonmentArrayHandler", ["static void onLivingDeath(net.neoforged.neoforge.event.entity.living.LivingDeathEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDeathEvent;)V", "DENY_IMPRISONMENT", "SpawnerBlockEntity.setEntityId"])
         consumer_jars = {"apothic_spawners": apoth, "ars_nouveau": dest / "ars_nouveau-1.21.1-5.13.5.jar", "occultism": dest / "occultism-1.21.1-neoforge-1.227.0.jar", "forbidden_arcanus": dest / "forbidden_arcanus-2.6.1.jar"}
         for key in consumers:
             ns, name = key.split(":")
