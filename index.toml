@@ -2154,11 +2154,6 @@ hash = "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5"
 metafile = true
 
 [[files]]
-file = "mods/embeddium.pw.toml"
-hash = "778c42263b2ba7c9e73553bdcd70f48a3e485ba52b6a83474160d48be696b71f"
-metafile = true
-
-[[files]]
 file = "mods/embers-re-ignited.pw.toml"
 hash = "ca8d4b29f55c79a5b5534e7542e908fb77e0d66c9c68a10a6bfd91a8c08b149d"
 metafile = true
@@ -2831,6 +2826,11 @@ metafile = true
 [[files]]
 file = "mods/smartbrainlib.pw.toml"
 hash = "6e7ce9c2aee5bb72d2698eb89035c9b2458d20daa0782e1a03cfba7a6647621e"
+metafile = true
+
+[[files]]
+file = "mods/sodium.pw.toml"
+hash = "f5f890cb378cb7f47b156f95b467ffa07091c2468ae6b3d9d15fb417b0b845c7"
 metafile = true
 
 [[files]]

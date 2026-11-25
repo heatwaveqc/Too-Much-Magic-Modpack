@@ -76,7 +76,6 @@
     "dungeon-crawl",
     "dungeons-delight",
     "eidolon-repraised",
-    "embeddium",
     "embers-re-ignited",
     "enchanted-witchcraft",
     "enchantment-descriptions",
@@ -209,6 +208,7 @@
     "simple-backups",
     "smart-keep-inventory",
     "smartbrainlib",
+    "sodium",
     "sons-of-sins",
     "spark",
     "stateobserver",
@@ -369,6 +369,7 @@
     "2026-11-23 #542 Lootr parity: selected/indexed official-digest Multiplayer Spawners 2.0.2 with personal disabling mode, 10-second torch extinguish and no player-placed spawner loss. Source-backed BetterEnd New Dawn chest/barrel Lootr conversion tags included as fallback with required:false; runtime ID conversion still needs B/C. Lootr Liaison and Twilight Lootr are owner-required intake candidates but exact publisher JAR hashes not verified by this source review, so remain declared desired and disabled (TECHNICAL BLOCKED/PENDING artifact verification), not silently owner-deferred. Fair Share excluded. No actual two-player run claimed.",
     "2026-11-23 #384/#385: recovered Swing Through Grass NeoForge 1.21.1 v1.1.0 CF 1477279/9063127 was source-pinned with independent identical CF-file packlock SHA1 15f48ed3ab02b9e8763284279487a9d95b206337; native publisher bytes/download and gameplay still untested. Architectury already indexed, verify loader/foliage-vs-solid-block combat. Existing KubeJS blaze rod fire-resistance and mushroom stew 16-stack retained; confirm bowl returns with full inventory in B/C.",
     "2026-11-24 Thanksgiving promotion candidate: exact dev/progression 4a027c5f0e78af0cc08bb004e1bbb4ca3688a42a includes #515 internalized Transformations, unified food, admin controls, graduation housing engine #698, #630 strict Wither finale, and other reviewed merged Progression work. Remove standalone tmm_transformations from runtime; retain archived source. Module CI and A/B/C still required; no full build authorization.",
-    "2026-11-24 #542: supersedes prior blocked note. Exact official artifact audit run 45543055707 passed for both Lootr add-ons and required pinned providers; both add-on pins indexed on this candidate. Keep personal full-loot, 10-second spawner torches, BetterEnd conversion fallback and Fair Share exclusion. No game test yet."
+    "2026-11-24 #542: supersedes prior blocked note. Exact official artifact audit run 45543055707 passed for both Lootr add-ons and required pinned providers; both add-on pins indexed on this candidate. Keep personal full-loot, 10-second spawner torches, BetterEnd conversion fallback and Fair Share exclusion. No game test yet.",
+    "2026-11-24 #507 source candidate: replace Embeddium with exact verified Sodium 0.8.13; leave ImmediatelyFast native defaults. Artifact hash and loader ranges passed audit run 45543055707; full client roster reverse-dependency audit still required before merging."
   ]
 }

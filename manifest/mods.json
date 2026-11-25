@@ -779,16 +779,17 @@
       "packwiz_slug": "eidolon-repraised"
     },
     {
-      "id": "embeddium",
-      "name": "Embeddium",
+      "id": "sodium",
+      "name": "Sodium",
       "category": "performance",
       "desired": true,
-      "version": "embeddium-1.0.15+mc1.21.1",
+      "version": "sodium-neoforge-0.8.13+mc1.21.1",
       "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/sk9rgfiA",
+      "source": "https://modrinth.com/mod/AANobbMI",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "embeddium"
+      "packwiz_slug": "sodium",
+      "note": "Owner-approved #507 replacement. Exact publisher JAR verified in targeted audit run 45543055707; required MC 1.21.1 and NeoForge [21.1.82,) plus nested modules requiring up to 21.1.219 match selected 21.1.265. Embeddium explicitly incompatible. Full current client roster reverse-dependency audit remains blocking before merge; no game or renderer acceptance."
     },
     {
       "id": "embers-re-ignited",
