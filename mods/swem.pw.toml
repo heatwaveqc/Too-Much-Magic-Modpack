@@ -1,0 +1,13 @@
+name = "Star Worm Equestrian (Upgrading Horses)"
+filename = "swem-1.21.1-1.6.14.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "55ba0684e7bd852ba298a666595ac9c9f83977af"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 9156395
+project-id = 582697

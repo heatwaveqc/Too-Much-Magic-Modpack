@@ -1,0 +1,13 @@
+name = "Occult Cooking"
+filename = "occultcooking-1.0.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "456458c179b1633bf4cf4aab7783bf7eedb1ffa2"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8545035
+project-id = 1631139

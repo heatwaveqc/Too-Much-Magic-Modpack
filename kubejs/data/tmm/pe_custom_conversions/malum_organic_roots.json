@@ -1,0 +1,42 @@
+{
+  "comment": "Owner-approved organic/environmental root valuations, independently authored anchors informed by KURONAMI333/malum-emc v0.1.2. Verify effective recipe paths and installed IDs.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "malum:runewood_log",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:soulwood_log",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:soulwood_sapling",
+        "emc_value": 32
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:runewood_leaves",
+        "emc_value": 1
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:soulwood_leaves",
+        "emc_value": 1
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:tainted_rock",
+        "emc_value": 4
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:blighted_gunk",
+        "emc_value": 16
+      }
+    ]
+  }
+}

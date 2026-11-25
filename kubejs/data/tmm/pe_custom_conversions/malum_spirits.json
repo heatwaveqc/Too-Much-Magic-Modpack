@@ -1,0 +1,52 @@
+{
+  "comment": "Owner-approved 2026-11-18 spirit valuations, independently authored fixed anchors; pricing reference KURONAMI333/malum-emc v0.1.2. Native recipes and jars unchanged. Exact installed registry and effective EMC graph validation pending.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "malum:aerial_spirit",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:aqueous_spirit",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:earthen_spirit",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:arcane_spirit",
+        "emc_value": 96
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:infernal_spirit",
+        "emc_value": 96
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:umbral_spirit",
+        "emc_value": 96
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:sacred_spirit",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:wicked_spirit",
+        "emc_value": 128
+      },
+      {
+        "type": "projecte:item",
+        "id": "malum:eldritch_spirit",
+        "emc_value": 160
+      }
+    ]
+  }
+}

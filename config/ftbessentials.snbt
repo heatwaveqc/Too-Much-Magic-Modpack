@@ -1,0 +1,24 @@
+{
+  # FTB Essentials 2101.1.10: normal players may store one home and use /rtp.
+  # Future tier/rank-based home expansions require a separate explicit design decision.
+  teleportation: {
+    home: {
+      enabled: true
+      max: 1
+      cooldown: 10
+      warmup: 0
+    }
+    rtp: {
+      enabled: true
+      cooldown: 600
+      warmup: 0
+      min_distance: 500
+      max_distance: 25000
+      max_tries: 100
+      dimension_blacklist: ["minecraft:the_end"]
+      dimension_whitelist: []
+      allow_custom_max_distance: false
+      allow_custom_min_max_distance: false
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "comment": "Owner-approved 2026-11-18 complete rarity progression, Gem Dust 64 (half common Cracked 128), Godforged Pearl Mithril parity. Retain native salvage; verify final Mithril parity. Component-specific gem pricing owned by #350.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:gem_dust",
+        "emc_value": 64
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:mysterious_scrap_metal",
+        "emc_value": 144
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:timeworn_fabric",
+        "emc_value": 2304
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:luminous_crystal_shard",
+        "emc_value": 36864
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:arcane_sands",
+        "emc_value": 1179648
+      },
+      {
+        "type": "projecte:item",
+        "id": "apotheosis:godforged_pearl",
+        "emc_value": 37753920
+      }
+    ]
+  }
+}

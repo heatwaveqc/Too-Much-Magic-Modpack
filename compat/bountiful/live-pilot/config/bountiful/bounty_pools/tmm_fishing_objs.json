@@ -1,0 +1,23 @@
+{
+  "content": {
+    "item_minecraft_cod": {
+      "amount": {
+        "max": 128,
+        "min": 8
+      },
+      "content": "minecraft:cod",
+      "type": "item",
+      "unitWorth": 4
+    },
+    "item_minecraft_salmon": {
+      "amount": {
+        "max": 128,
+        "min": 8
+      },
+      "content": "minecraft:salmon",
+      "type": "item",
+      "unitWorth": 4
+    }
+  },
+  "replace": true
+}

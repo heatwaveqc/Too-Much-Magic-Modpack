@@ -18,8 +18,8 @@
 	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage, ritual space and exploration supplies."]
 	chapter.544D202000300000.title: "Endgame Roadmap"
 	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
-	chapter.544D202000400000.title: "Skills & Advancement"
-	chapter.544D202000400000.chapter_subtitle: ["Pufferfish skills, attributes and Improvable Skills progression."]
+	chapter.544D202000400000.title: "Skills & Factions"
+	chapter.544D202000400000.chapter_subtitle: ["Universal Core Magic and Improvable Skills; choose one specialization, with explicit combination exceptions."]
 	chapter.544D202000500000.title: "A Sufficiently Advanced Magic"
 	chapter.544D202000500000.chapter_subtitle: ["Draconic generation, energy storage, FE crystals, reactor safety and future approved technology."]
 	chapter.544D203000100000.title: "Ars Nouveau"
@@ -37,7 +37,7 @@
 	chapter.544D203000700000.title: "Forbidden & Arcanus"
 	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden & Arcanus; more quests are being authored."]
 	chapter.544D203000800000.title: "Goety"
-	chapter.544D203000800000.chapter_subtitle: ["Explore Goety; more quests are being authored."]
+	chapter.544D203000800000.chapter_subtitle: ["Dark arts, soul rituals and summoning; see Skills & Factions for lichdom."]
 	chapter.544D203000900000.title: "Hex Casting"
 	chapter.544D203000900000.chapter_subtitle: ["Explore Hex Casting; more quests are being authored."]
 	chapter.544D203000A00000.title: "Hexerei"
@@ -63,11 +63,11 @@
 	chapter.544D203001400000.title: "Scriptor Magicae"
 	chapter.544D203001400000.chapter_subtitle: ["Explore Scriptor Magicae; more quests are being authored."]
 	chapter.544D203001500000.title: "Theurgy"
-	chapter.544D203001500000.chapter_subtitle: ["Explore Theurgy; more quests are being authored."]
+	chapter.544D203001500000.chapter_subtitle: ["Hermetica, alchemical vessels, Niter, Reformation, and mercurial logistics."]
 	chapter.544D203001600000.title: "Totemic"
 	chapter.544D203001600000.chapter_subtitle: ["Explore Totemic; more quests are being authored."]
 	chapter.544D203001700000.title: "Just Another Witchery Remake"
-	chapter.544D203001700000.chapter_subtitle: ["Explore Just Another Witchery Remake; more quests are being authored."]
+	chapter.544D203001700000.chapter_subtitle: ["Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations."]
 	chapter.544D203001800000.title: "Embers Re-Ignited"
 	chapter.544D203001800000.chapter_subtitle: ["Explore Embers Re-Ignited; more quests are being authored."]
 	chapter.544D203001900000.title: "Reliquary Reincarnations"
@@ -83,65 +83,65 @@
 	chapter.544D204000500000.title: "Apotheosis"
 	chapter.544D204000500000.chapter_subtitle: ["Explore Apotheosis; more quests are being authored."]
 	chapter.544D204000600000.title: "Artifacts"
-	chapter.544D204000600000.chapter_subtitle: ["Explore Artifacts; more quests are being authored."]
+	chapter.544D204000600000.chapter_subtitle: ["Artifacts, Relics and Reliquified Artifacts: equipment, abilities and progression."]
 	chapter.544D204000700000.title: "Enigmatic Legacy+"
 	chapter.544D204000700000.chapter_subtitle: ["Explore Enigmatic Legacy+; more quests are being authored."]
 	chapter.544D205000100000.title: "Draconic Evolution"
 	chapter.544D205000100000.chapter_subtitle: ["Explore Draconic Evolution; more quests are being authored."]
 	chapter.544D205000200000.title: "ProjectE"
-	chapter.544D205000200000.chapter_subtitle: ["Explore ProjectE; more quests are being authored."]
+	chapter.544D205000200000.chapter_subtitle: ["EMC, Project Expansion and ProjectE Energy Converters."]
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
-	quest.544D301000100001.quest_desc: ["A magic-first modpack with many independent schools. Introduction gives you the essentials, Progression connects systems, and the other groups guide individual mods. Check this welcome entry to claim an Unwitnessed Amulet and a Ring of the Seven Curses. Equipping the cursed ring is optional and has significant drawbacks."]
+	quest.544D301000100001.quest_desc: ["Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path."]
 	quest.544D4D1100000001.title: "Punch a Tree"
-	quest.544D4D1100000001.quest_desc: ["Pick up any log or stem to complete this quest, then claim a 27-slot Trinkets Pouch and 10 XP. No hidden advancement or automatic item delivery is used. Do not place portable bags inside other bags; cross-mod enforcement is still in development."]
+	quest.544D4D1100000001.quest_desc: ["Collect any qualifying log or stem to claim the separate 27-slot Curios pouch and 10 XP. This is an actual item-tag objective, not a fake first-log advancement. Avoid nesting portable bags. The Tome, two steaks and sleeping bag come from Tips & Tricks instead; completing this step does not force you to progress through every mining tier."]
 	quest.544D501000300000.title: "Make a Crafting Table"
-	quest.544D501000300000.quest_desc: ["Craft a table to unlock the familiar 3x3 crafting grid. It is a useful baseline before you explore magical crafting."]
+	quest.544D501000300000.quest_desc: ["Get a crafting table and keep it nearby. Its 3x3 grid is enough to begin exploring many magical recipes, so the center branch now leads toward your first magic immediately. Take the optional conventional survival routes if you need materials or equipment."]
 	quest.544D501000400000.title: "Make a Wooden Pickaxe"
-	quest.544D501000400000.quest_desc: ["Craft your first wooden pickaxe. Ordinary tools are an easy way to get established before specializing in magic."]
+	quest.544D501000400000.quest_desc: ["Craft a wooden pickaxe if you want conventional Minecraft mining. This is a rewarded survival side quest, not an iron-tool requirement for unlocking the magical guide."]
 	quest.544D501000500000.title: "Gather Stone"
-	quest.544D501000500000.quest_desc: ["Collect sixteen cobblestone. Stone is useful for your first shelter, tools and furnace."]
+	quest.544D501000500000.quest_desc: ["Collect sixteen cobblestone for tools, shelter or a furnace. This survival branch is optional; magical material processing can provide alternative approaches later."]
 	quest.544D501000600000.title: "Upgrade to Stone"
-	quest.544D501000600000.quest_desc: ["Make a stone pickaxe so you can mine sturdier resources."]
+	quest.544D501000600000.quest_desc: ["Make a stone pickaxe when conventional mining calls for it. You can begin learning magic without completing this entire tool ladder."]
 	quest.544D501000700000.title: "A Place for Your Things"
-	quest.544D501000700000.quest_desc: ["Craft a chest for early base storage. Magic eventually offers more specialized options than generic storage networks."]
+	quest.544D501000700000.quest_desc: ["Craft a chest when you need basic local storage. Prefab may already provide an early house, and Occultism eventually supplies magical storage; neither requires a generic technology storage network."]
 	quest.544D501000800000.title: "Light the Furnace"
-	quest.544D501000800000.quest_desc: ["Craft a furnace. Smelting remains useful alongside later magical processing."]
+	quest.544D501000800000.quest_desc: ["Craft a furnace to smelt ordinary materials. Smelting remains useful beside magic; Tips & Tricks also introduces Scriptor Magicae's fuel-free alternative."]
 	quest.544D501000900000.title: "Find Your First Iron"
-	quest.544D501000900000.quest_desc: ["Bring back three raw iron. Magical mining and transmutation will eventually provide alternatives."]
+	quest.544D501000900000.quest_desc: ["Collect three raw iron when you decide to advance conventional tools. Iron is useful, but this objective no longer blocks your first spell, magical device or ritual."]
 	quest.544D501000A00000.title: "Iron Pickaxe"
-	quest.544D501000A00000.quest_desc: ["Craft an iron pickaxe. You now have the baseline tools to choose your first magical specialty."]
+	quest.544D501000A00000.quest_desc: ["An iron pickaxe is a useful mining milestone, not a ticket into the magic chapters. Complete this optional survival route when it fits your play style."]
 	quest.544D501000B00000.title: "Begin a Library"
-	quest.544D501000B00000.quest_desc: ["Craft a book to begin collecting magical research and manuals. Akashic Tome can organize compatible guides without replacing each school's progression."]
+	quest.544D501000B00000.quest_desc: ["Craft a separate book for research, spellwork or crafting materials. Your starter Akashic Tome organizes compatible guides, but it cannot replace every functional magic book or unlock."]
 	quest.544D501000C00000.title: "Build a Bookshelf"
-	quest.544D501000C00000.quest_desc: ["Craft a bookshelf to establish a magical research corner. Bookshelves also appear in early Scriptor Magicae tools. The spellbook and world-specific magical vocabulary must still be acquired or discovered."]
-	quest.544D501000D00000.title: "Iron Is Only the Beginning"
-	quest.544D501000D00000.quest_desc: ["An iron pickaxe is a baseline, not a finish line. Choose spellcasting, rituals, magical mining, farming or exploration. Basic Progression covers shared goals; Magic chapters cover individual schools. You do not need to master all 25 magical traditions."]
+	quest.544D501000C00000.quest_desc: ["Craft a bookshelf when enchanting, Scriptor Magicae or your chosen magical study needs one. This is a research-side objective, not a prerequisite for choosing a magical school."]
+	quest.544D501000D00000.title: "Pick Your First Magic"
+	quest.544D501000D00000.quest_desc: ["Choose one magic tradition to investigate: Ars Nouveau spells, Occultism spirits, Theurgy alchemy, Roots nature magic, or another available school. Find its dedicated Magic chapter and in-game guide, then check its first ingredients in JEI. You can start before iron, and choosing a school does NOT enroll you into an exclusive Progression Path."]
 	quest.544D501000E00000.title: "Find an Everyday Magical Shortcut"
-	quest.544D501000E00000.quest_desc: ["Look through Tips & Tricks for one practical benefit: Ars Break and Magelight, Scriptor's fuel-free Casting Lectern with Inflame, an Occultism ore crusher, portable crafting, or a broom. Check the costs in JEI and choose the magic that appeals to you."]
+	quest.544D501000E00000.quest_desc: ["Try a magical convenience that interests you: Ars lighting or breaking, Scriptor smelting, Occultism processing, or a broom when it becomes available. Use Tips & Tricks and the relevant mod chapter for recipes and operating steps. This is a manual orientation check, not an automatic magic-use detector."]
 	quest.544D501000F00000.title: "Try a First Spell or Ritual"
-	quest.544D501000F00000.quest_desc: ["Use any school's introductory magic: cast an Ars spell, perform a first Occultism ritual, make use of EvilCraft blood, try witchcraft, or write a Scriptor spell. This checkmark is manual because there is no honest single automatic criterion shared by all schools."]
+	quest.544D501000F00000.quest_desc: ["Perform a real introductory magical action using the in-game guide for your chosen school. Cast a spell, complete a safe ritual or operate an early magical device; inspect its JEI recipe and tutorial beforehand. Since TMM has many unrelated schools, this quest is a manual checkmark rather than pretending one automatic task covers every mod. It does not grant or lock a specialist Path."]
 	quest.544D501001000000.title: "A Little Protection"
-	quest.544D501001000000.quest_desc: ["Craft an iron chestplate for dangerous exploring. This is optional: players who prefer farming, research or base magic can progress without rushing combat."]
+	quest.544D501001000000.quest_desc: ["Craft an iron chestplate if your style uses armor and you want safer exploration. This branch is optional; Monk, Bare Zerker and other armor-restricted play styles should feel free to skip it without missing magical progression."]
 	quest.544D501001100000.title: "Take Your Magic Into the World"
-	quest.544D501001100000.quest_desc: ["Explore beyond your base for structures, new biomes and useful materials. Nature's Compass, FTB Chunks, your Trinkets Pouch and the exploration chapters all help. You may also specialize in base building without following every dungeon branch."]
+	quest.544D501001100000.quest_desc: ["Explore for magical materials, unusual biomes, structures or a first field adventure. Nature's Compass, FTB Chunks, and the exploration chapters help. You do not need an iron pickaxe or any specific specialty Path just to choose an exploratory route."]
 	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
-	quest.544D501001200000.quest_desc: ["Continue with any of our five categories: Introduction for practical shortcuts and food, Progression for shared milestones, Magic for independent schools, Exploration & Combat for adventure, and Endgame much later. The power chapter already contains all intended technology progression. This finishes orientation, not the game."]
+	quest.544D501001200000.quest_desc: ["Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. This orientation capstone does not finish the pack, require all side branches or force Normie graduation."]
 	quest.544D301000200001.title: "Tips & Tricks Index"
-	quest.544D301000200001.quest_desc: ["These optional read-and-check tips cover tools, keys and systems that a large modpack makes easy to overlook. The tips are not compulsory progression gates."]
+	quest.544D301000200001.quest_desc: ["Welcome to the TMM starter and convenience hub. Start by claiming your personal supplies, then browse the independent groups: books and discovery, controls and interface, inventory/crafting, comfort and survival, and practical magic shortcuts. Nothing here is required for specialization or endgame progress."]
 	quest.544D502000200000.title: "Find Recipes with JEI"
 	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
 	quest.544D502000300000.title: "Identify Blocks with Jade"
 	quest.544D502000300000.quest_desc: ["Jade identifies blocks and creatures under your crosshair and can display useful supported-mod information."]
 	quest.544D502000400000.title: "Sort Your Inventory"
-	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed provides inventory sorting and refill features. Middle-click sorting depends on key bindings and the container; Mouse Tweaks also changes dragging and scrolling."]
+	quest.544D502000400000.quest_desc: ["Inventory Tweaks ReFoxed supplies inventory sorting and replenishment conveniences; Mouse Tweaks changes item dragging and wheel interactions. Configure their keybindings to avoid overlapping native inventory controls and test sorting in an ordinary chest before using unusual modded storage."]
 	quest.544D502000500000.title: "Use Crafting Tweaks"
 	quest.544D502000500000.quest_desc: ["Crafting Tweaks can rotate, balance or clear a normal crafting grid. Test those controls before assuming they work in a modded ritual interface."]
 	quest.544D502000600000.title: "Search the Controls Screen"
-	quest.544D502000600000.quest_desc: ["Use the controls search to find conflicting mod keys. KeyBind Bundles can help organize different play styles."]
+	quest.544D502000600000.quest_desc: ["Open Options > Controls to search and resolve conflicting keys with Controlling. KeyBind Bundles and KeySets are available for deliberate grouping or switching where configured; the pack should not require all dozens of mod shortcuts to be assigned. Set spellcasting, skills, inventory and zoom keys you actually use."]
 	quest.544D502000700000.title: "Gather Your Guidebooks"
-	quest.544D502000700000.quest_desc: ["Akashic Tome can collect compatible magic manuals into one book. Not every guide is compatible and you may need to acquire some books individually."]
+	quest.544D502000700000.quest_desc: ["Your starting Akashic Tome is supplied by the personal Starter Supplies quest. TMM's separate guidebook integration is preparing a populated Tome with eligible introductory manuals, including Occultism and Roots Classic. Open the Tome's selector and switch among the books actually present. Some guides are gameplay tools or research-gated books rather than eligible starter manuals; don't assume every book is preloaded."]
 	quest.544D502000800000.title: "Curios and Portable Bags"
 	quest.544D502000800000.quest_desc: ["Curios provides extra equipment slots. Never nest portable bags: Ars Elemental has a partial blacklist, but Occultism and ProjectE require more complete safeguards before survival release."]
 	quest.544D502000900000.title: "Claim Your Base"
@@ -149,17 +149,17 @@
 	quest.544D502000A00000.title: "Understand Lootr Chests"
 	quest.544D502000A00000.quest_desc: ["Lootr supports per-player loot in many generated chests. Exact behavior can depend on the structure and container."]
 	quest.544D502000B00000.title: "Plan for Death"
-	quest.544D502000B00000.quest_desc: ["Corail Tombstone changes recovery after death. Learn how graves work before a dangerous expedition, and keep backups while death-handler compatibility is under review."]
+	quest.544D502000B00000.quest_desc: ["Corail Tombstone handles graves and recovery, while Smart Keep Inventory adds conditional retention and magical forms may have special death-resurrection rules. Do not assume all deaths have identical recovery behavior. Store irreplaceable equipment safely and read the relevant native-form chapter before dangerous bosses."]
 	quest.544D502000C00000.title: "Search Biomes"
 	quest.544D502000C00000.quest_desc: ["Nature's Compass can locate biomes relevant to exploration and magic. It is not a Waystone or teleport system."]
 	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
 	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
 	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["Pufferfish's Skills and Attributes will support the custom skill tree; Improvable Skills is separate. The two do not share a unified point pool."]
+	quest.544D502000E00000.quest_desc: ["New players begin in the Newbie baseline Path and graduate personally to Normie through the Introduction quest. Universal MXP and the shared Core progression are not tied to a specialty Path; Newbies do not earn MXP. Specialist Paths, compatible native transformations and their skill trees are coordinated by Tyr Progression. Improvable Skills uses its own progression. See Paths & Transformations for actual initiation and compatibility."]
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
-	quest.544D502001000000.quest_desc: ["Use /hqs shop to browse a curated list of convenience supplies, common magical materials, exploration finds, and specific Artifacts. Quest Shop coins belong to your FTB Team. Ordinary quests generally give thematic item rewards; specialized resource-selling quests pay coins."]
+	quest.544D502001000000.quest_desc: ["Use /qshop open tmm to browse the Too Much Magic shop. Choose a tab for supplies, magical materials, ores, exploration, artifacts or food. Shop coins belong to your personal Q Shop wallet, not your FTB Team; resource-sale quests grant coins and Bountiful contract payments are being integrated separately."]
 	quest.544D502001100000.title: "Smelt Without Fuel: Scriptor Lectern"
 	quest.544D502001100000.quest_desc: ["Scriptor Magicae's Casting Lectern (scriptor:casting_lectern) casts a written Inflame spell automatically. Upstream recipe: three wooden slabs, one bookshelf, purple wool. Inflame consumes smeltable ingredients and creates normal furnace outputs without coal, FE or player mana. Total spell cost limits cadence and complexity (default maximum 25) rather than consuming a resource. You must learn this world's magic vocabulary and prepare a book. Our pinned 2.0.14 build still needs an actual adjacent-chest input/output test; do not promise fully unattended chest smelting until verified."]
 	quest.544D502001200000.title: "Double Raw Ore: Occultism or Mahou?"
@@ -168,6 +168,34 @@
 	quest.544D502001300000.quest_desc: ["EvilCraft has a modular blood-powered broom. Hexerei has a different witch's broom. Both offer mobility before finding an Elytra, but have distinct recipes, fuels and handling. Check JEI and the appropriate Magic chapter; don't assume unlimited fuel or identical controls."]
 	quest.544D502001400000.title: "Vengeance Pickaxe: Fortune with a Price"
 	quest.544D502001400000.quest_desc: ["EvilCraft's Vengeance Pickaxe provides unusually high Fortune (often Fortune V) with a dangerous Vengeance curse. Upstream crafting uses diamonds, hardened blood and undead wood. It increases drops from ore mining; it does not automatically smelt ore or mine entire veins. Learn the curse before using it on dangerous expeditions."]
+	quest.544D502001500000.title: "Claim Your Starter Supplies"
+	quest.544D502001500000.quest_desc: ["This is TMM's one-time personal starting-kit claim. Claim it to receive one Akashic Tome, two ordinary steaks and one white Comforts sleeping bag. The Tome is being populated with all eligible introductory guidebooks through the separate source-verified starter-guide project; this quest uses that same starter-kit function. Your Prefab house and existing first-log Curios reward remain separate. Claim once per player; no Eternal Steak, boss resources or special powers are granted."]
+	quest.544D502001600000.title: "Comforts: Sleep Away from Home"
+	quest.544D502001600000.quest_desc: ["A Comforts sleeping bag lets you sleep while travelling without setting a new respawn location. Its hammocks serve a different purpose: using daytime rest to advance toward night, subject to the current config and time restrictions. Start with the free white sleeping bag from the Starter Supplies quest; keep a normal bed at home to control your spawn point."]
+	quest.544D502001700000.title: "AppleSkin: Know When to Eat"
+	quest.544D502001700000.quest_desc: ["AppleSkin adds hunger and saturation previews to food tooltips and the hunger HUD. Actual restoration can change under TMM's native-form dietary rules, so use the displayed information as guidance, not a promise that a Dragon or Vampire may eat every food."]
+	quest.544D502001800000.title: "Where Do Ores and Villager Trades Come From?"
+	quest.544D502001800000.quest_desc: ["Just Enough Resources (JER) complements JEI with world resources and mob-drop information, while Just Enough Professions (JEP) helps identify which villager profession can offer an item. Search an item and inspect the available usages/categories. Worldgen and trade displays are informational; TMM's actual datapacks and server gates determine obtainability."]
+	quest.544D502001900000.title: "Read Enchantments and Detailed Tooltips"
+	quest.544D502001900000.quest_desc: ["Enchantment Descriptions and Better Advanced Tooltips help explain unusual enchantments and components before you spend rare materials. Advanced information appears through the applicable tooltip controls, including Minecraft's advanced tooltips where enabled. Apotheosis and other mods may add their own meanings; consult the relevant mod's chapter for the mechanics."]
+	quest.544D502001A00000.title: "Quiet the World with Extreme Sound Muffler"
+	quest.544D502001A00000.quest_desc: ["Extreme Sound Muffler can suppress selected sound events without making every source silent. Open its installed controls or settings and mute the repetitive effect that bothers you; this changes your listening experience, not mob AI, sound propagation or danger detection."]
+	quest.544D502001B00000.title: "Use KeySets and KeyBind Bundles"
+	quest.544D502001B00000.quest_desc: ["TMM includes Controlling, KeyBind Bundles and KeySets to make dozens of mod shortcuts manageable. Open the Controls screen, identify duplicate assignments and choose deliberate bindings for spellcasting, inventory, zoom and quest/navigation controls. Profile or bundle actions are not assumed to have a default key on every machine."]
+	quest.544D502001C00000.title: "TrashSlot: Delete Only What You Mean To"
+	quest.544D502001C00000.quest_desc: ["TrashSlot provides a convenient place to dispose of unwanted items. Keep rare magical reagents and items with components out of the trash until you've checked JEI; trashing an item is not the same as exchanging it for EMC, coins or mana. Verify the exact open/close and delete controls in-game."]
+	quest.544D502001D00000.title: "Harvest with Ease"
+	quest.544D502001D00000.quest_desc: ["Harvest with Ease can simplify collecting mature crops while keeping farmland useful. Look for its supported harvesting interaction in the actual installed control settings. It does not mean every magical plant, crop, bee or modded block follows the same harvesting rules."]
+	quest.544D502001E00000.title: "TreeChop and Leaves Be Gone"
+	quest.544D502001E00000.quest_desc: ["HT's TreeChop changes how you fell trees, while Leaves Be Gone speeds leaf decay. Try the tree-cutting action on an ordinary trunk before relying on it for a rare enchanted tree; verify whether its harvesting counts as separate blocks for tool wear or progression skills. Leaf cleanup is automatic and needs no special quest task."]
+	quest.544D502001F00000.title: "What Does Smart Keep Inventory Protect?"
+	quest.544D502001F00000.quest_desc: ["Smart Keep Inventory changes selected item-retention behavior, while Corail Tombstone and other magic can influence deaths or recovery. TMM intentionally distinguishes normal deaths from boss and transformation interactions. Read the current in-game behavior before risking unique equipment; this card is guidance, not a promise that every inventory item is safe."]
+	quest.544D502002000000.title: "Prefab: A Head Start on Housing"
+	quest.544D502002000000.quest_desc: ["Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips & Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house."]
+	quest.544D502002100000.title: "Browse Better Advancements"
+	quest.544D502002100000.quest_desc: ["Better Advancements improves the vanilla advancement interface and navigation. Advancements record their own progress; they are not the same as FTB Quest claims, Progression Paths or MXP. Use both interfaces as complementary ways to understand what you've discovered."]
+	quest.544D502002200000.title: "Keep Controls Across Updates"
+	quest.544D502002200000.quest_desc: ["Default Options can supply a pack-wide baseline while your personal keybind changes remain your choice. After a mod update, search for newly added or conflicting actions with Controlling and review KeySets/KeyBind Bundles rather than assuming a missing shortcut is a broken mod. The pack's initial keybind defaults may be intentionally unassigned."]
 	quest.544D301000300001.title: "Food & Fishing Index"
 	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
 	quest.544D503000200000.title: "Start with Seeds"
@@ -253,29 +281,37 @@
 	quest.544D302000100001.title: "Chapter Overview"
 	quest.544D302000100001.quest_desc: ["An introduction to Basic Progression in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D504000100000.title: "Sell Copper I — First Trade"
-	quest.544D504000100000.quest_desc: ["Submit 8 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000100000.quest_desc: ["Submit 8 copper ingots for 10 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000200000.title: "Sell Copper II — Regular Buyer"
-	quest.544D504000200000.quest_desc: ["Submit 32 pieces of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000200000.quest_desc: ["Submit 32 copper ingots for 35 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000300000.title: "Sell Copper III — Packed Shipment"
-	quest.544D504000300000.quest_desc: ["Submit 16 blocks of copper as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000300000.quest_desc: ["Submit 16 copper blocks for 105 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000400000.title: "Sell Copper IV — Industrial Exchange"
-	quest.544D504000400000.quest_desc: ["Repeatable bulk sale: submit 256 full copper blocks (4 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000400000.quest_desc: ["Submit 256 copper blocks for 405 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000500000.title: "Sell Emeralds I — First Trade"
-	quest.544D504000500000.quest_desc: ["Submit 2 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000500000.quest_desc: ["Submit 2 emeralds for 5,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000600000.title: "Sell Emeralds II — Regular Buyer"
-	quest.544D504000600000.quest_desc: ["Submit 8 pieces of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000600000.quest_desc: ["Submit 8 emeralds for 15,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000700000.title: "Sell Emeralds III — Packed Shipment"
-	quest.544D504000700000.quest_desc: ["Submit 16 blocks of emeralds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000700000.quest_desc: ["Submit 16 emerald blocks for 185,000 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000800000.title: "Sell Emeralds IV — Industrial Exchange"
-	quest.544D504000800000.quest_desc: ["Repeatable bulk sale: submit 128 full emeralds blocks (2 stacks) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000800000.quest_desc: ["Submit 128 emerald blocks for 370,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000900000.title: "Sell Diamonds I — First Trade"
-	quest.544D504000900000.quest_desc: ["Submit 1 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000900000.quest_desc: ["Submit 1 diamond for 1,250 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000A00000.title: "Sell Diamonds II — Regular Buyer"
-	quest.544D504000A00000.quest_desc: ["Submit 4 pieces of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000A00000.quest_desc: ["Submit 4 diamonds for 3,850 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000B00000.title: "Sell Diamonds III — Packed Shipment"
-	quest.544D504000B00000.quest_desc: ["Submit 8 blocks of diamonds as a one-time sale. The exchange consumes the materials and credits your team's Quest Shop balance with one coin. Later tiers require larger deliveries."]
+	quest.544D504000B00000.quest_desc: ["Submit 8 diamond blocks for 46,500 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
 	quest.544D504000C00000.title: "Sell Diamonds IV — Industrial Exchange"
-	quest.544D504000C00000.quest_desc: ["Repeatable bulk sale: submit 64 full diamonds blocks (1 stack) for a single coin. The items must be consumed. After ProjectE unlocks, manufacturing large quantities for shop currency is an intended late-game option."]
+	quest.544D504000C00000.quest_desc: ["Submit 64 diamond blocks for 92,000 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
+	quest.544D504001700000.title: "Sell Iron I — First Trade"
+	quest.544D504001700000.quest_desc: ["Submit 8 iron ingots for 20 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001800000.title: "Sell Iron II — Regular Buyer"
+	quest.544D504001800000.quest_desc: ["Submit 32 iron ingots for 70 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001900000.title: "Sell Iron III — Packed Shipment"
+	quest.544D504001900000.quest_desc: ["Submit 16 iron blocks for 210 coins in your personal Q Shop wallet. One-time trade bonus; the materials are consumed."]
+	quest.544D504001A00000.title: "Sell Iron IV — Industrial Exchange"
+	quest.544D504001A00000.quest_desc: ["Submit 256 iron blocks for 810 coins in your personal Q Shop wallet. Repeatable bulk sale; the materials are consumed."]
 	quest.544D504000D00000.title: "Choose a Magical Tradition"
 	quest.544D504000D00000.quest_desc: ["Pick one school of magic that interests you, then open its own chapter. Ars Nouveau, Occultism, Botania, Hex Casting, and the other traditions can be explored in parallel. This is a guide checkmark, not a mandatory choice or a gate on the other chapters."]
 	quest.544D504000E00000.title: "Secure Some Copper"
@@ -333,21 +369,21 @@
 	quest.544D506000600000.title: "Roadmap: What Unlocks Afterwards"
 	quest.544D506000600000.quest_desc: ["After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded."]
 	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills & Advancement in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.quest_desc: ["An introduction to Skills & Factions in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D507000100000.title: "Read the Two Skill Systems"
-	quest.544D507000100000.quest_desc: ["This pack includes Pufferfish's Skills, Pufferfish's Attributes and Improvable Skills 3. The Pufferfish framework is meant to host TMM's custom cross-mod magic trees, but that tree is not published yet; do not assume unimplemented magic bonuses."]
+	quest.544D507000100000.quest_desc: ["Every character has access to Core Magic through Tyz's Skills in Regular Mode. Core is universal and does not occupy a specialization slot. Improvable Skills 3 uses ordinary experience separately and is also available to everyone. Graduate from Newbie Mode before earning MXP or joining a faction."]
 	quest.544D507000200000.title: "Open the Skill Interface"
-	quest.544D507000200000.quest_desc: ["Find Pufferfish's Skills in the controls/UI once the client is running. Inspect the interface and available trees. This is a manual learning checkmark, not a claim that the custom magic progression data is already available."]
+	quest.544D507000200000.quest_desc: ["Assign the Tyz's Skills key in Options > Controls > Key Binds and open the skill interface. Core Magic is the universal tree; any additional specialization is contingent on enrollment or native form acquisition. Available trees and effects depend on current integrated data. This is orientation, not proof of a purchase."]
 	quest.544D507000300000.title: "Understand Attributes"
-	quest.544D507000300000.quest_desc: ["Pufferfish's Attributes can expose and modify stats used by combat and magic systems. Before specialization, examine what each stat actually changes in this pack; do not assume cooldown, damage and resource effects apply to every mod."]
+	quest.544D507000300000.quest_desc: ["Inspect displayed skill effects and relevant attributes. Pufferfish Attributes is a supporting library, not the player skill tree. Damage, resource efficiency and cooldown hooks differ by magic system; do not assume every spell shares the same stats."]
 	quest.544D507000400000.title: "Experiment with Improvable Skills"
-	quest.544D507000400000.quest_desc: ["Improvable Skills 3 is a separate experience-powered perk system. Spend points only when you know what an upgrade does. Do not assume its perks are the same as the custom Pufferfish magic tree."]
+	quest.544D507000400000.quest_desc: ["Use the Improvable Skills guidebook from your Akashic Tome, or locate the guide in JEI if needed. Its ordinary experience-powered perks are separate from Tyz's shared skill points and MXP."]
 	quest.544D507000500000.title: "Inspect Cooldown and Casting Perks"
-	quest.544D507000500000.quest_desc: ["The planned skill tree emphasizes cooldown, skill efficiency and relevant item-crafting boosts rather than adding new global mana bars. Individual spell systems differ; some have no meaningful Pufferfish hook and should not receive fake bonuses."]
+	quest.544D507000500000.quest_desc: ["Core Magic is a universal tree, not a specialization choice. Read the Tyz node requirements and effects before investing; potency, resource efficiency, reservoir and recovery only work where a real mod adapter exists. No quest grants a skill bonus."]
 	quest.544D507000600000.title: "Plan for Practical Attribute Caps"
-	quest.544D507000600000.quest_desc: ["Some attributes have real mechanical limits (such as cooldown reduction). Others may eventually support very large values within their mods. Exact caps and any special bridging code belong to separate configuration work, not an undocumented quest reward."]
-	quest.544D507000700000.title: "Choose How to Specialize"
-	quest.544D507000700000.quest_desc: ["Advance whichever magical tradition interests you. Skill progress and individual spellbook or ritual progress are not necessarily shared; quests guide your choice without forcing every school down one main path."]
+	quest.544D507000600000.quest_desc: ["Read the configured skill ranks and test actual effects. Individual attributes have their own limits, and cross-mod interactions may differ. This is a reference check, not an attribute grant."]
+	quest.544D507000700000.title: "Choose One Specialization"
+	quest.544D507000700000.quest_desc: ["Core Magic is available to everyone, with Improvable Skills 3 separate. You may remain unspecialized or choose ONE specialization from the same pool: Monk, Hunter, Gilded, Vampire, Werewolf, a Cave/Forest/Sea Dragon, or either Lich route. Human disciplines and supernatural forms are not independent slots. Only explicitly authorized combinations are exceptions: Archlich joins both lich routes; Dracolich joins a dragon and exactly one lich route. Vampire/Werewolf Abomination is an approved planned hybrid, not yet fully implemented. Monk plus any dragon is prohibited. Other planned exceptions are Revenant (Hunter first, then either or both lichdoms), Golden Dragon (Gilded and Cave Dragon, either order), and Blood Immortal (Monk first, then the actual Lilith ritual). Unlisted combinations are not allowed by default. Read freely; checkmarks never enroll you, and the native acquisition/Progression engine enforces eligibility. An additional owner-approved design exception is Piglich: a character must enroll as Gilded first, then obtain either or both lichdoms. A preexisting lich cannot join Gilded. This exception is planned, not currently implemented."]
 	quest.544D302000500001.title: "Chapter Overview"
 	quest.544D302000500001.quest_desc: ["An introduction to A Sufficiently Advanced Magic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D508000100000.title: "Tech Overview: Energy Without a Tech Pack"
@@ -512,8 +548,46 @@
 	quest.544D303001300001.quest_desc: ["An introduction to Roots Classic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001400001.title: "Chapter Overview"
 	quest.544D303001400001.quest_desc: ["An introduction to Scriptor Magicae in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
-	quest.544D303001500001.title: "Chapter Overview"
-	quest.544D303001500001.quest_desc: ["An introduction to Theurgy in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303001500001.title: "Hermetica: Your Alchemical Field Guide"
+	quest.544D303001500001.quest_desc: ["Craft the Hermetica guide with a Book and two accepted sand-tag items. Open Getting Started and Spagyrics: Theurgy separates heat, Mercury, Salt, Sulfur, and fluid Sal Ammoniac. Identify each before buying machinery. Check this orientation when you have located those pages. This is a manual reading acknowledgement, not a detector for opening the guide. You are free to explore other schools afterward."]
+	quest.544D3A1500000001.title: "Light a Pyromantic Brazier"
+	quest.544D3A1500000001.quest_desc: ["Craft a Pyromantic Brazier and place it beneath a Theurgy machine with a heat receiver. Supply ordinary furnace fuel. This supplies Theurgy heat, not Forge Energy or Mercury Flux. In Hermetica, use Getting Started and Spagyrics' heat instructions to check spacing and accepted fuels. Task: possess the Brazier; FTB does not verify that a machine has heated up."]
+	quest.544D3A1500000002.title: "Distill Mercury from Stone"
+	quest.544D3A1500000002.quest_desc: ["Craft a Mercury Distiller and place it over a working heat source. In Hermetica or JEI, find Distillation and feed a supported material: the tagged-release default example uses ten stone-tag blocks or fifteen sand-tag items for one Mercury Shard. Collect the output. The quest detects the Distiller item, not successful Mercury production; consult JEI in the installed pack for the effective recipe."]
+	quest.544D3A1500000003.title: "Calcine the Four Salt Families"
+	quest.544D3A1500000003.quest_desc: ["Build and heat a Calcination Oven. Compare stone to Strata Salt, tagged ores/raw materials to Mineral Salt, plants to Plant Salt and eligible creature materials to Creature Salt in JEI/Spagyrics. The tagged source example grants three Mineral Salt for a qualifying ore; this is not a promise of universal ore doubling. Task: acquire the oven. Check a real output in-game yourself."]
+	quest.544D3A1500000004.title: "Collect Sal Ammoniac"
+	quest.544D3A1500000004.quest_desc: ["Craft a Sal Ammoniac Accumulator and its Tank, connect the tank as Hermetica shows, and supply water. The tagged-source baseline converts 1000 mB Water to 100 mB Sal Ammoniac without crystal assistance. A crystal-assisted recipe yields more but its exact reuse behavior needs runtime verification. Use the fluid gauges; owning an Accumulator does not establish that fluid was generated."]
+	quest.544D3A1500000005.title: "Liquefy a Material into Sulfur"
+	quest.544D3A1500000005.quest_desc: ["Make and heat a Liquefaction Cauldron. Supply stored Sal Ammoniac and an eligible source—an Oak Log is a useful beginner example—and retrieve its identity-specific Alchemical Sulfur. Check Liquefaction in JEI and Hermetica for the amount; many ordinary logs use 10 mB in tagged source. This is not generic Sulfur interchangeable between all targets. Quest task checks acquisition of the cauldron, not that liquefaction happened."]
+	quest.544D3A1500000006.title: "Assemble the Three-Vessel Incubator"
+	quest.544D3A1500000006.quest_desc: ["Craft the two-block Incubator and its Mercury, Salt and Sulfur vessels. Place the three named vessels adjacent to the Incubator's lower block, with effective heat beneath; use Hermetica's Incubation layout instead of assuming the decorative shape is enough. Fill each vessel with its own material class. The task detects an Incubator item only; placement, correct adjacency and heating must be checked in-world."]
+	quest.544D3A1500000007.title: "Incubate an Oak Log"
+	quest.544D3A1500000007.quest_desc: ["Use the three vessels with a Mercury Shard, Plant Salt and the Alchemical Sulfur made from an Oak Log. Run the heated Incubator and collect the Oak Log from its output. The tagged-release example takes 100 ticks, but your installed JEI/Hermetica is authoritative. This manual checkmark is an honest observation of your first recreation, not proof supplied by FTB. You now know a complete Theurgy production loop."]
+	quest.544D3A1500000008.title: "Repeat with Another Material"
+	quest.544D3A1500000008.quest_desc: ["Choose a second eligible material in JEI. Work backward from its Incubation recipe to the correct Salt class, source-specific Sulfur, Mercury and heat. Build only the missing components and observe the real output. Materials such as logs, ores and animal drops have different valid recipes and costs. Manually check this after completing a second loop; an ordinary inventory possession task cannot prove which workstation produced an item."]
+	quest.544D3A1500000009.title: "Ferment Your First Niter"
+	quest.544D3A1500000009.quest_desc: ["Craft a Fermentation Vat. Use its JEI/Hermetica recipe with an eligible Alchemical Sulfur, organic starter/crop/seed/sugar material and the correct Water amount. The tagged-release recipes vary from 125 to 1000 mB; the output is a material-family Niter, not a free universal substance. The item task checks the Vat, not an actual completed fermentation batch."]
+	quest.544D3A150000000A.title: "Digest Gold for Reagents"
+	quest.544D3A150000000A.quest_desc: ["Craft a Digestion Vat. In JEI, inspect the Purified Gold recipe: tagged-release source uses a Gold Ingot, compatible Alchemical Salt and 1000 mB Water for twenty Purified Gold. Operate the machine and collect output; the item task verifies possession of the vat, not its operation. Pay attention to the Vat's open/closed state when you later automate it."]
+	quest.544D3A150000000B.title: "Exalt Niter, Not Your Tool Tier"
+	quest.544D3A150000000B.quest_desc: ["Use a matching Niter family and Purified Gold to perform one legal Digestion rank upgrade. The common early source ratio is four lower-rank Niter to one higher-rank Niter with Sal Ammoniac; mob families and higher ranks can cost more. Abundant, Common, Rare and Precious are Niter categories, not the Stone/Iron/Diamond/Netherite divination-rod levels. Checkmark is manual: verify the real resulting Niter yourself."]
+	quest.544D3A150000000C.title: "Build a Mercury Flux Supply"
+	quest.544D3A150000000C.quest_desc: ["Build the Mercury Catalyst and use a Mercury Shard to fill its independent Mercury Flux store; tagged-release source converts one shard to 800 Mercury Flux. This is not Forge Energy and cannot be assumed compatible with Draconic energy machinery. Study Hermetica's Reformation apparatus and JEI before building the Sulfuric Flux Emitter and its three pedestal roles. The item task proves you acquired the catalyst, not a measured Flux transfer."]
+	quest.544D3A150000000D.title: "Reform with a Real Target Sample"
+	quest.544D3A150000000D.quest_desc: ["Build the Sulfuric Flux Emitter and separate Source, Target and Result Pedestals. Place a real pre-existing target Alchemical Sulfur or Niter in the Target Pedestal, compatible source reagents in Source, and supply sufficient Mercury Flux; collect an eligible result. Tagged source pricing varies by tier (50/100/150/200 Flux). The target sample is retained, but must exist first. This quest only detects possession of the Target Pedestal; it does not certify successful Reformation."]
+	quest.544D3A150000000E.title: "Scan with a Basic Divination Rod"
+	quest.544D3A150000000E.quest_desc: ["Craft the Stone-tier Divination Rod and use it on an allowed target. Consult Hermetica's Divination section for target tags and how scan results are shown. The tagged-source baseline describes a 96-block scan range and 40-tick duration; loaded configuration may differ. Possessing the rod is the FTB task; observing an actual scan is separate."]
+	quest.544D3A150000000F.title: "Upgrade Your Divination"
+	quest.544D3A150000000F.quest_desc: ["Upgrade to the Iron-tier Divination Rod and perform a scan against an eligible material. Compare Diamond and Netherite tiers and the specialized sulfur-attuned or Amethyst rods in JEI; those are separate tool categories, not Niter upgrades. The quest requires a Tier 2 rod item; higher and specialized models are optional follow-up exploration. It does not detect a successful scan."]
+	quest.544D3A1500000010.title: "Heat with a Caloric Flux Emitter"
+	quest.544D3A1500000010.quest_desc: ["Craft a Caloric Flux Emitter, select a legitimate heat-receiving Theurgy machine, supply its own Mercury Flux and observe heating without an ordinary Brazier fuel stack. The source uses 100 Flux per heating operation; follow Hermetica for target selection and range. The emitter provides Theurgy heat, not a generic FE energy grid. This item task verifies you obtained the emitter, not its action."]
+	quest.544D3A1500000011.title: "Move Items with Mercurial Wiring"
+	quest.544D3A1500000011.quest_desc: ["Craft a Mercurial Wand, Copper Wire, connection node and Item Extractor/Inserter. Use the Wand to set matching frequency, modes and sides, then move an item between machine inventories that actually expose the required capabilities. See Hermetica's Logistics section. The item task recognizes the Extractor only; it does not prove a successful transfer, infinite throughput or chunk loading."]
+	quest.544D3A1500000012.title: "Route Fluids Without Pretending They Are Items"
+	quest.544D3A1500000012.quest_desc: ["Craft Fluid Extractor and Inserter connectors and attach them to suitable Sal Ammoniac or Water tanks. Configure sides, frequency and any supported filters with the Mercurial Wand, then verify that actual fluid—not inventory item stacks—travels. Theurgy's native fluid routing is distinct from its item connectors and does not imply FE support. Quest task detects the Fluid Inserter item; verify transfer independently."]
+	quest.544D3A1500000013.title: "Rare Materials: Templates Before Replication"
+	quest.544D3A1500000013.quest_desc: ["This optional knowledge milestone explains a real safety boundary, not a required Nether Star or Dragon Egg kill. First acquire the original boss item legitimately. Liquefy it with 100 mB Sal Ammoniac to make its named Sulfur and retain a sample on the Reformation Target Pedestal. Tagged source requires two Precious Mob Niter and 200 Mercury Flux for a new Star Sulfur, or four and 200 for an Egg; then Incubate with Creature Salt and Mercury Shard. The physical sample is mandatory: Theurgy cannot conjure a first boss item without it through this chain. Check after reviewing the applicable JEI recipe and sample-gating rule; no boss item is rewarded."]
 	quest.544D303001600001.title: "Chapter Overview"
 	quest.544D303001600001.quest_desc: ["An introduction to Totemic in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303001700001.title: "Chapter Overview"
@@ -543,8 +617,34 @@
 	quest.544D305000300001.title: "Chapter Overview"
 	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D301000110001.title: "Choose Your Magic Controls"
-	quest.544D301000110001.quest_desc: ["Too Much Magic keeps Minecraft's normal movement, combat, and inventory controls. For a fresh player, mod-added keybindings are intended to start unbound so dozens of mods cannot silently fight over shortcuts. Open Options > Controls > Key Binds to assign only the magic and utility actions you want. Controlling helps find bindings and conflicts. Your changes are personal; this quest does not reset anything. KeySets is included for one test build and may be removed if its controls or saved profiles prove unreliable."]
+	quest.544D301000110001.quest_desc: ["Open Options > Controls and use Controlling to find duplicate keybinds. Assign only the spells, inventory controls and other actions you want to use. KeySets and KeyBind Bundles may help manage alternatives; Tips & Tricks explains them in more detail. This is a personal convenience tip, not a required step or a reset of your controls."]
 	task.544D4D1200000001.title: "Any Log or Stem"
 	quest.544D309000100001.title: "I'm Ready for Regular Mode"
-	quest.544D309000100001.quest_desc: ["New players begin in Newbie Mode, with protected inventory/experience and convenience travel, but without MXP or faction enrollment. When YOU are ready for full survival progression, check this box and claim your personal graduation reward. This permanently enables Regular Mode for your character: normal death and Corail graves, no home/rtp/back, MXP and class enrollment. Graduation is one-way without an administrator. In a team, each player must claim their own reward; never force graduation on teammates."]
+	quest.544D309000100001.quest_desc: ["You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice."]
+	quest.544DB10000000001.title: "The Monk Path"
+	quest.544DB10000000001.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you."]
+	quest.544DB10000000002.title: "The Hunter Path"
+	quest.544DB10000000002.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Hunters specialize against creature families and gain progression through qualifying kills. The intended initiation uses poison while regeneration is active; follow the current path requirements and then choose a specialization. Mutagenic Brews and permanent mutations are separate progression milestones; verify implemented recipes and effects in JEI. This guide does not enroll you."]
+	quest.544DB10000000003.title: "The Gilded Path"
+	quest.544DB10000000003.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Gilded is a planned TMM character path using the shared Progression engine. Inspect the available path definitions in your build. If no Gilded enrollment or tree is exposed, it is not yet available; this guide does not imply any implemented requirements or powers. Gilded-first lichdom (Piglich) is an approved future exception: enroll as Gilded before acquiring one or both native lich forms. Existing liches cannot enroll retroactively. Runtime implementation and testing are pending."]
+	quest.544DB10000000004.title: "Becoming a Vampire"
+	quest.544DB10000000004.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR owns vampirism in this pack; the separate Vampirism mod is retired. Consult JAWR's in-game guide for the native transformation and Lilith's blood route; inspect the Vampire skill category after successful transformation. Blood feeding and sunlight are native mechanics. This checkmark does not change your form."]
+	quest.544DB10000000005.title: "Becoming a Werewolf"
+	quest.544DB10000000005.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR also owns lycanthropy; the separate Werewolves mod is retired. Consult the JAWR in-game guide and its wolfsbane-related transformation route, then inspect the Werewolf skill category. Follow the current native cure rules before changing forms. This checkmark is not a transformation trigger."]
+	quest.544DB10000000006.title: "Becoming a Dragon"
+	quest.544DB10000000006.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Dragon Survival provides Cave, Forest and Sea dragon forms with different diets and abilities. Open its native species selection interface when installed and eligible; consult the current controls and diet tooltips before choosing. TMM's diet and form compatibility are subject to live testing. This quest is an informational guide, not a species setter."]
+	quest.544DB10000000007.title: "Lichdom: Forbidden Magic"
+	quest.544DB10000000007.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. JAWR: Forbidden Magic provides its own lich path and phylactery. Use the mod's guide for the native ritual, soul storage, resurrection anchor and cure; check the corresponding Tyz category after transformation where implemented. This guide does not grant lichdom or create a resurrection anchor."]
+	quest.544DB10000000008.title: "Lichdom: Goety"
+	quest.544DB10000000008.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Goety offers a distinct lich path. Follow the native guide's lich ritual and prepare the Arca for native soul storage and resurrection. The Goety chapter owns its general ritual and summoning progression; character form guidance lives here. No transformation is granted by this quest."]
+	quest.544DB10000000009.title: "The Archlich"
+	quest.544DB10000000009.quest_desc: ["This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Archlich combines the two distinct lich paths, with JAWR phylactery-first resurrection and Goety Arca fallback. This compatibility is experimental; do not treat it as a third independent lich source or assume untested death behavior. No transformation or resurrection is granted here. A Gilded-first character may also acquire both lich forms as a Piglich. That additional exception is approved design only; the runtime enrollment policy must be extended and tested."]
+	quest.544DB1000000000A.title: "The Dracolich"
+	quest.544DB1000000000A.quest_desc: ["This is an explicit exception to the one-specialization rule, not a separate slot or permission to combine arbitrary paths. The intended Dracolich combines one Dragon Survival form with exactly one lich source, not both. Dragon growth and the chosen native resurrection anchor should be retained. The integration is experimental; confirm current build support before attempting it. This guide cannot change species or create an anchor."]
+	quest.544DB1000000000B.title: "Relics: Learn Your Relic"
+	quest.544DB1000000000B.quest_desc: ["Discover Relics equipment, read its ability and condition tooltips and equip it in the appropriate Curios slot. Inspect its own progression interface before spending upgrades. Relics belongs in this chapter alongside Artifacts; this checkmark does not grant equipment or rank."]
+	quest.544DB1000000000C.title: "Reliquified Artifacts"
+	quest.544DB1000000000C.quest_desc: ["Reliquified Artifacts integrates Artifacts equipment with Relics-style progression, including item-specific XP, ranks and durability where supported. Inspect the actual item tooltip and progression interface; do not assume all accessories use identical triggers. This is orientation, not an automatic rank or repair."]
+	quest.544DB1000000000D.title: "ProjectE Energy Converters"
+	quest.544DB1000000000D.quest_desc: ["ProjectE Energy Converters bridges EMC with FE and supported energy systems. Find its conversion blocks through JEI when available; follow the actual ProjectE and Project Expansion recipe gates and check the configured conversion ratios before use. This guide grants no converter and does not bypass any gate."]
 }

@@ -1,0 +1,9 @@
+# TMM: permit positive EMC for ore and raw materials; retain other mapper defaults.
+usePregenerated = false
+logFoundExploits = true
+
+[mappers.Ore-Blacklist-Mapper]
+enabled = false
+
+[mappers.Raw-Ore-Blacklist-Mapper]
+enabled = false

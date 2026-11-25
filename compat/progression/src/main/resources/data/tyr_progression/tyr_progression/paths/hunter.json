@@ -1,0 +1,565 @@
+{
+  "xp_channel": "tyr_progression:hunter",
+  "schema": 1,
+  "exclusive_group": "tyr_progression:human_disciplines",
+  "milestones": [
+    {
+      "id": "tyr_progression:trial_of_venom",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:hunter_trial_of_venom",
+          "count": 1
+        }
+      ],
+      "xp": 0,
+      "points": 0
+    },
+    {
+      "id": "tyr_progression:undead_studies",
+      "criteria": [
+        {
+          "event": "kill",
+          "target": "#tyr_progression:undead",
+          "count": 20
+        }
+      ],
+      "xp": 100,
+      "points": 2
+    },
+    {
+      "id": "tyr_progression:raider_studies",
+      "criteria": [
+        {
+          "event": "kill",
+          "target": "#tyr_progression:raiders",
+          "count": 20
+        }
+      ],
+      "xp": 100,
+      "points": 2
+    }
+  ],
+  "skills": [
+    {
+      "id": "tyr_progression:undead_slayer",
+      "max_rank": 10,
+      "required_rank": 1,
+      "base_cost": 1,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "melee_bonus",
+          "target": "#tyr_progression:undead",
+          "weapon": "#tyr_progression:swords",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:raider_slayer",
+      "max_rank": 10,
+      "required_rank": 1,
+      "base_cost": 1,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "melee_bonus",
+          "target": "#tyr_progression:raiders",
+          "weapon": "#tyr_progression:axes",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:monster_resilience",
+      "max_rank": 5,
+      "required_rank": 5,
+      "base_cost": 2,
+      "step_cost": 1,
+      "requires_milestones": [
+        "tyr_progression:undead_studies"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:ranged_quarry",
+      "max_rank": 5,
+      "required_rank": 4,
+      "base_cost": 2,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "#tyr_progression:undead",
+          "weapon": "#tyr_progression:ranged_weapons",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:equipment_care",
+      "max_rank": 3,
+      "required_rank": 8,
+      "base_cost": 2,
+      "step_cost": 1,
+      "choice_group": "tyr_progression:hunter_training_style",
+      "effects": [
+        {
+          "type": "gear_durability",
+          "target": "*",
+          "per_rank": 1,
+          "params": {
+            "slot": "all",
+            "action": "repair",
+            "interval_ticks": "200"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:fortified_training",
+      "max_rank": 3,
+      "required_rank": 8,
+      "base_cost": 2,
+      "step_cost": 1,
+      "choice_group": "tyr_progression:hunter_training_style",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:armor",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:rooted",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:knockback_resistance",
+          "per_rank": 0.1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:evasion_undead",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "evasion",
+          "target": "#tyr_progression:undead",
+          "per_rank": 0.04
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:evasion_raiders",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "evasion",
+          "target": "#tyr_progression:raiders",
+          "per_rank": 0.04
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:sword_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tyr_progression:swords",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:axe_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tyr_progression:axes",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:scythe_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "#tyr_progression:scythes",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:bow_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "minecraft:bow",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:crossbow_specialist",
+      "max_rank": 5,
+      "required_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "*",
+          "weapon": "minecraft:crossbow",
+          "per_rank": 0.5,
+          "params": {
+            "delivery": "arrow"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:fast_hands_bow",
+      "max_rank": 5,
+      "required_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "fast_hands",
+          "weapon": "minecraft:bow",
+          "per_rank": 0.2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:fast_hands_crossbow",
+      "max_rank": 5,
+      "required_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "fast_hands",
+          "weapon": "minecraft:crossbow",
+          "per_rank": 0.2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_undead",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:undead"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_illager",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:illager"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_dragon",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:dragon"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_void",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:void"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_piglin",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:piglin"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_sculk",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:sculk"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_aquatic",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:aquatic"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_construct",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:construct"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_beast",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:beast"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_arthropod",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:arthropod"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_plant",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:plant"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_elemental",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:elemental"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_ooze",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:ooze"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:specialty_demon",
+      "max_rank": 1,
+      "required_rank": 1,
+      "base_cost": 0,
+      "step_cost": 0,
+      "choice_group": "tyr_progression:hunter_favored_enemy",
+      "effects": [
+        {
+          "type": "hunter_specialty",
+          "target": "#tyr_progression:demon"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:silver_hunter",
+      "max_rank": 5,
+      "required_rank": 5,
+      "base_cost": 2,
+      "step_cost": 1,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "target": "#tyr_progression:lycanthropes",
+          "weapon": "#tyr_progression:silver_weapons",
+          "per_rank": 1,
+          "params": {
+            "delivery": "melee"
+          }
+        }
+      ]
+    }
+  ],
+  "enrollment": "potion",
+  "enrollment_trigger": {
+    "item": "minecraft:potion",
+    "potions": [
+      "minecraft:poison",
+      "minecraft:long_poison",
+      "minecraft:strong_poison"
+    ],
+    "required_effect": "minecraft:regeneration",
+    "required_advancement": "minecraft:adventure/kill_a_mob",
+    "clear_effects": [
+      "minecraft:poison"
+    ],
+    "completion_event": "tyr_progression:hunter_trial_of_venom"
+  },
+  "hunter_mutations": {
+    "target_duration_ticks": 720000,
+    "exhaustion_per_mutation_tick": 0.0005,
+    "maximum_amplifier": 3,
+    "effect_blacklist": [
+      "minecraft:absorption",
+      "minecraft:saturation",
+      "minecraft:instant_health",
+      "minecraft:instant_damage",
+      "minecraft:bad_omen",
+      "minecraft:raid_omen",
+      "minecraft:trial_omen",
+      "minecraft:hero_of_the_village",
+      "minecraft:infested",
+      "minecraft:weaving",
+      "minecraft:oozing",
+      "minecraft:wind_charged",
+      "tombstone:ghostly_shape",
+      "minecraft:poison",
+      "minecraft:wither",
+      "minecraft:levitation",
+      "minecraft:blindness",
+      "minecraft:darkness",
+      "minecraft:hunger",
+      "minecraft:nausea",
+      "minecraft:weakness",
+      "minecraft:slowness",
+      "minecraft:mining_fatigue",
+      "minecraft:unluck"
+    ]
+  }
+}

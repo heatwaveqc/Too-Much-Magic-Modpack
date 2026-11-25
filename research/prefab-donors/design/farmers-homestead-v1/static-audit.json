@@ -1,0 +1,304 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    59,
+    18,
+    53
+  ],
+  "grade": 2,
+  "nonair": 4851,
+  "explicitAir": 12456,
+  "omitted": 38979,
+  "paletteStates": 47,
+  "farmland": 320,
+  "riceCenters": [
+    [
+      7,
+      2,
+      25
+    ],
+    [
+      18,
+      2,
+      25
+    ],
+    [
+      7,
+      2,
+      36
+    ],
+    [
+      18,
+      2,
+      36
+    ]
+  ],
+  "orchard": [
+    [
+      40,
+      2,
+      36
+    ],
+    [
+      50,
+      2,
+      36
+    ],
+    [
+      40,
+      2,
+      46
+    ],
+    [
+      50,
+      2,
+      46
+    ]
+  ],
+  "planted": 66,
+  "kitchenFloor": 87,
+  "kitchenGraph": 96,
+  "stationPlacement": {
+    "cooking_table": [
+      4,
+      3,
+      15
+    ],
+    "counter_1": [
+      5,
+      3,
+      15
+    ],
+    "oven": [
+      6,
+      3,
+      15
+    ],
+    "counter_2": [
+      7,
+      3,
+      15
+    ],
+    "sink": [
+      8,
+      3,
+      15
+    ],
+    "fridge": [
+      9,
+      3,
+      15
+    ],
+    "tool_rack": [
+      5,
+      4,
+      15
+    ],
+    "pantry_counter": [
+      14,
+      3,
+      15
+    ]
+  },
+  "provider": [
+    17,
+    3,
+    15
+  ],
+  "prep": {
+    "stove": [
+      10,
+      3,
+      9
+    ],
+    "cooking_pot": [
+      10,
+      4,
+      9
+    ],
+    "skillet_heat": [
+      12,
+      3,
+      9
+    ],
+    "skillet": [
+      12,
+      4,
+      9
+    ],
+    "cutting_board": [
+      11,
+      4,
+      11
+    ]
+  },
+  "stairChecks": 10,
+  "groundRoutes": 16,
+  "chest": [
+    17,
+    3,
+    14
+  ],
+  "items": [
+    [
+      "cookingforblockheads:cooking_table",
+      1
+    ],
+    [
+      "cookingforblockheads:counter",
+      3
+    ],
+    [
+      "cookingforblockheads:white_oven",
+      1
+    ],
+    [
+      "cookingforblockheads:sink",
+      1
+    ],
+    [
+      "cookingforblockheads:white_fridge",
+      1
+    ],
+    [
+      "cookingforblockheads:tool_rack",
+      1
+    ],
+    [
+      "farmersdelight:stove",
+      1
+    ],
+    [
+      "farmersdelight:cooking_pot",
+      1
+    ],
+    [
+      "farmersdelight:skillet",
+      1
+    ],
+    [
+      "farmersdelight:cutting_board",
+      1
+    ],
+    [
+      "farmersdelight:iron_knife",
+      1
+    ],
+    [
+      "farmingforblockheads:feeding_trough",
+      2
+    ],
+    [
+      "farmingforblockheads:chicken_nest",
+      1
+    ],
+    [
+      "farmersdelight:rice",
+      4
+    ],
+    [
+      "pamhc2crops:lettuceseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:cornseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:garlicseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:strawberryseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:spiceleafseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:chilipepperseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:beanseeditem",
+      3
+    ],
+    [
+      "pamhc2crops:mustardseedsseeditem",
+      3
+    ],
+    [
+      "pamhc2trees:apple_sapling",
+      1
+    ],
+    [
+      "pamhc2trees:avocado_sapling",
+      1
+    ],
+    [
+      "minecraft:red_mushroom",
+      1
+    ],
+    [
+      "minecraft:brown_mushroom",
+      1
+    ],
+    [
+      "minecraft:iron_hoe",
+      1
+    ]
+  ],
+  "rawSha256": "707fe282db0a76252970e64d3fef03aba3b3f2d0ca8de042f25dd5ba4eef76c6",
+  "gzipSha256": "f8e71748ec8616e527b336f9e8b8a4989aaddd9654d03d098c5395f6bb3f5784",
+  "gzipBytes": 52878,
+  "counts": {
+    "cookingforblockheads:black_kitchen_floor": 44,
+    "cookingforblockheads:white_kitchen_floor": 43,
+    "farmersdelight:budding_tomatoes[age=0]": 4,
+    "farmersdelight:cabbages[age=0]": 4,
+    "farmersdelight:onions[age=0]": 4,
+    "minecraft:air": 12456,
+    "minecraft:barrel[facing=up,open=false]": 14,
+    "minecraft:beetroots[age=0]": 12,
+    "minecraft:bookshelf": 1,
+    "minecraft:campfire[facing=north,lit=false,signal_fire=false,waterlogged=false]": 1,
+    "minecraft:carrots[age=0]": 12,
+    "minecraft:chest[facing=north,type=single,waterlogged=false]": 1,
+    "minecraft:cobblestone": 507,
+    "minecraft:composter[level=0]": 2,
+    "minecraft:crafting_table": 2,
+    "minecraft:dirt": 365,
+    "minecraft:dirt_path": 382,
+    "minecraft:farmland[moisture=7]": 320,
+    "minecraft:furnace[facing=south,lit=false]": 1,
+    "minecraft:glass": 32,
+    "minecraft:grass_block[snowy=false]": 619,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 7,
+    "minecraft:oak_door[facing=east,half=lower,hinge=left,open=false,powered=false]": 1,
+    "minecraft:oak_door[facing=east,half=upper,hinge=left,open=false,powered=false]": 1,
+    "minecraft:oak_door[facing=north,half=lower,hinge=left,open=false,powered=false]": 2,
+    "minecraft:oak_door[facing=north,half=upper,hinge=left,open=false,powered=false]": 2,
+    "minecraft:oak_door[facing=south,half=lower,hinge=left,open=false,powered=false]": 4,
+    "minecraft:oak_door[facing=south,half=upper,hinge=left,open=false,powered=false]": 4,
+    "minecraft:oak_fence[east=false,north=false,south=false,waterlogged=false,west=false]": 107,
+    "minecraft:oak_fence_gate[facing=east,in_wall=false,open=false,powered=false]": 4,
+    "minecraft:oak_fence_gate[facing=north,in_wall=false,open=false,powered=false]": 3,
+    "minecraft:potatoes[age=0]": 12,
+    "minecraft:red_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:red_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:red_terracotta": 406,
+    "minecraft:red_wool": 91,
+    "minecraft:smoker[facing=south,lit=false]": 1,
+    "minecraft:spruce_log[axis=y]": 116,
+    "minecraft:spruce_planks": 659,
+    "minecraft:spruce_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 322,
+    "minecraft:spruce_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 331,
+    "minecraft:stone_bricks": 1,
+    "minecraft:sugar_cane[age=0]": 6,
+    "minecraft:water[level=0]": 11,
+    "minecraft:wheat[age=0]": 12,
+    "minecraft:white_terracotta": 296,
+    "minecraft:white_wool": 78
+  }
+}

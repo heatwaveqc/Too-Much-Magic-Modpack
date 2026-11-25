@@ -3,19 +3,23 @@
   "modules": [
     {
       "directory": "compat/progression",
-      "mod_id": "tmm_progression"
+      "mod_id": "tyr_progression"
     },
     {
       "directory": "compat/transformations",
       "mod_id": "tmm_transformations"
     },
     {
-      "directory": "compat/mxp",
-      "mod_id": "tmm_mxp"
+      "directory": "compat/traders-vengeance",
+      "mod_id": "traders_vengeance"
     },
     {
-      "directory": "compat/traders-vengence",
-      "mod_id": "traders_vengence"
+      "directory": "compat/economy",
+      "mod_id": "tmm_economy"
+    },
+    {
+      "directory": "compat/friendship-garden",
+      "mod_id": "tmm_friendship_garden"
     }
   ]
 }

@@ -47,6 +47,11 @@ def render(manifest: dict) -> dict[str, str]:
         rewards = ([{"type": "gateways:summon", "entity": {
             "entity": entity, "count": 1, "finalize_spawn": True}}] if friendly else [])
         rewards.append({"type": "gateways:experience", "experience": 100 if elite else 40, "orb_size": 20})
+        parchment = t.get("parchment_completion_count", 0)
+        assert type(parchment) is int and 0 <= parchment <= 2
+        if parchment:
+            assert t["family"] == "irons" and not friendly
+            rewards.append({"type": "gateways:stack", "stack": {"id": "improvableskills:parchment_fragment", "count": parchment}})
         definition = {
             "type": "gateways:normal",
             "size": "medium" if elite else "small",

@@ -1,0 +1,3 @@
+# Historical Roots Classic KubeJS prototype — not installed
+
+Exact frozen source from 71253524c2ca73cc9873287e907fe43bdd7434bb. This directory is outside Packwiz runtime roots and is not loaded by KubeJS. The authoritative Progression engine owns all future executable mechanics. The first-pickup staff imprint (potency, efficiency, size; one-time custom-data marker), absolute Terra capacity and HUD synchronization remain capability-parity review targets; native paid Terra/ritual adapters alone do not establish parity. See active Progression #347 and the archived ROOTS-SKILLS-KUBEJS-PROTOTYPE.md. Do not restore these experimental stage-gated event handlers to live KubeJS.

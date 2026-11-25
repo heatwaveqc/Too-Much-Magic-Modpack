@@ -1,0 +1,205 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    67,
+    27,
+    62
+  ],
+  "boundingVolume": 112158,
+  "anchorSurfaceY": 6,
+  "nonair": 4600,
+  "explicitAir": 32281,
+  "paletteStates": 26,
+  "astralMarble": 3542,
+  "infusedWood": 533,
+  "facadePierPositions": 44,
+  "reservations": [
+    {
+      "name": "Altar T2–T4",
+      "cx": 15,
+      "cz": 15,
+      "r": 9,
+      "originY": 6,
+      "below": 1,
+      "height": 10,
+      "sunken": true,
+      "envelope": [
+        19,
+        10,
+        19
+      ],
+      "replaceableSubfloor": 361,
+      "explicitClearSkyCells": 7581,
+      "pass": true
+    },
+    {
+      "name": "Attunement",
+      "cx": 46,
+      "cz": 15,
+      "r": 11,
+      "originY": 7,
+      "below": 1,
+      "height": 7,
+      "envelope": [
+        23,
+        7,
+        23
+      ],
+      "replaceableSubfloor": 529,
+      "explicitClearSkyCells": 10580,
+      "pass": true
+    },
+    {
+      "name": "Infuser",
+      "cx": 12,
+      "cz": 39,
+      "r": 5,
+      "originY": 6,
+      "below": 2,
+      "height": 6,
+      "sunken": true,
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 242,
+      "explicitClearSkyCells": 2541,
+      "pass": true
+    },
+    {
+      "name": "Gateway",
+      "cx": 51,
+      "cz": 39,
+      "r": 5,
+      "originY": 7,
+      "below": 1,
+      "height": 4,
+      "envelope": [
+        11,
+        4,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    },
+    {
+      "name": "Lightwell and crystal handling",
+      "cx": 12,
+      "cz": 53,
+      "r": 5,
+      "originY": 6,
+      "below": 1,
+      "height": 6,
+      "sunken": true,
+      "provisional": true,
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2541,
+      "pass": true
+    },
+    {
+      "name": "Lumen and auxiliary machinery",
+      "cx": 51,
+      "cz": 53,
+      "r": 5,
+      "originY": 7,
+      "below": 1,
+      "height": 6,
+      "provisional": true,
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    }
+  ],
+  "recessedAccessTreads": 9,
+  "houseStairTreads": 12,
+  "lightwellMounts": [
+    {
+      "x": 9,
+      "y": 6,
+      "z": 50,
+      "removableCapY": 5,
+      "serviceAirY": [
+        3,
+        4
+      ]
+    },
+    {
+      "x": 15,
+      "y": 6,
+      "z": 50,
+      "removableCapY": 5,
+      "serviceAirY": [
+        3,
+        4
+      ]
+    },
+    {
+      "x": 9,
+      "y": 6,
+      "z": 56,
+      "removableCapY": 5,
+      "serviceAirY": [
+        3,
+        4
+      ]
+    },
+    {
+      "x": 15,
+      "y": 6,
+      "z": 56,
+      "removableCapY": 5,
+      "serviceAirY": [
+        3,
+        4
+      ]
+    }
+  ],
+  "counts": {
+    "astralsorcery:marble_bricks": 1410,
+    "astralsorcery:marble_engraved": 10,
+    "astralsorcery:marble_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 10,
+    "astralsorcery:marble_chiseled": 868,
+    "astralsorcery:sooty_marble_raw": 528,
+    "minecraft:air": 32281,
+    "minecraft:blue_terracotta": 340,
+    "astralsorcery:sooty_marble_bricks": 63,
+    "astralsorcery:infused_wood_planks": 505,
+    "astralsorcery:marble_pillar[pillartype=bottom]": 112,
+    "minecraft:crafting_table": 2,
+    "minecraft:furnace[facing=south,lit=false]": 1,
+    "minecraft:barrel[facing=south,open=false]": 3,
+    "astralsorcery:infused_wood_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 12,
+    "minecraft:white_bed[facing=north,occupied=false,part=head]": 2,
+    "minecraft:white_bed[facing=north,occupied=false,part=foot]": 2,
+    "astralsorcery:marble_pillar[pillartype=middle]": 200,
+    "astralsorcery:marble_raw": 202,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 33,
+    "minecraft:cyan_stained_glass": 137,
+    "astralsorcery:marble_pillar[pillartype=top]": 112,
+    "astralsorcery:marble_arch": 12,
+    "astralsorcery:infused_wood_engraved": 16,
+    "minecraft:bookshelf": 5,
+    "astralsorcery:marble_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 3,
+    "astralsorcery:marble_stairs[facing=west,half=bottom,shape=straight,waterlogged=false]": 12
+  },
+  "limitations": [
+    "Static sky through template only; actual terrain and altitude not tested.",
+    "Marble and infused wood registry/state source verified at 2.0.3 upstream, exact build 59 untested.",
+    "Lightwell service vault and recess stairs need collision/placement test; remove caps for underside extraction.",
+    "Auxiliary dimensions and Enigmatic Legacy+ requirements provisional.",
+    "Native material economy including recoverable infused wood needs review. No devices, fluids, catalysts or progression grants.",
+    "No live game import, block-state initialization, lighting or spawn-safety test."
+  ]
+}

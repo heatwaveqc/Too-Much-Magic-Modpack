@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "malum:natural_quartz"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 128,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "malum:natural_quartz"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 6
+}

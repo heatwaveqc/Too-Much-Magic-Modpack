@@ -1,40 +1,28 @@
 {
   "schema_version": 1,
-  "date": "2026-11-14",
-  "authority": "docs/PROJECTE-TIERED-GATING-PROPOSAL.md",
-  "decision_status": "owner_approved_recipe_ingredient_gates",
-  "runtime_enforcement": "KUBEJS_RECIPE_SOURCE_STAGED_CLIENT_UNTESTED",
-  "enforcement_scope": "Only crafting recipes; no per-player boss entitlement, no use-ban, no EMC knowledge restriction",
+  "date": "2026-11-19",
+  "authority": "docs/RITUAL-OF-EQUIVALENT-EXCHANGE.md",
+  "decision_status": "owner_approved_ritual_and_recipe_ingredient_gates",
+  "runtime_enforcement": "NATIVE_RITUAL_RECIPE_SOURCE_STAGED_CLIENT_UNTESTED",
+  "enforcement_scope": "Native Occultism ritual/recipe gates, no personal kill or use entitlement; actual acquisition and EMC bypass QA pending.",
   "do_not_allow_quest_only_gating": true,
   "trade_and_shared_boss_loot_allowed": true,
   "stages": [
     {
       "id": "basic_projecte",
-      "gate_logic": "ANY_ONE_OF_BOSS_ASSOCIATED_ITEMS",
+      "gate_logic": "TWELVE_CLOSED_RITUAL_OFFERING_TAGS",
       "target_item": "projecte:philosophers_stone",
       "original_recipe_ids": [
         "projecte:philosophers_stone",
         "projecte:philosophers_stone_alt"
       ],
-      "center_tag": "tmm:philosophers_stone_boss_trophies",
-      "accepted_center_items": [
-        {
-          "item": "ars_nouveau:wilden_tribute",
-          "source": "Wilden Chimera victory",
-          "exclusive_boss_drop": true
-        },
-        {
-          "item": "botania:life_essence",
-          "source": "Gaia Guardian I/II victory",
-          "exclusive_boss_drop": true
-        },
-        {
-          "item": "neovitae:mine_key",
-          "source": "Foreman and Mines trial spawners",
-          "exclusive_boss_drop": false
-        }
-      ],
-      "outer_ingredients_unchanged": true,
+      "ritual": "tmm:ritual/equivalent_exchange",
+      "offering_slots": 12,
+      "distinct_alternatives": 40,
+      "activation_item": "occultism:book_of_binding_bound_marid",
+      "pentacle": "occultism:craft_marid",
+      "duration": 600,
+      "twilight_finale": "deferred until exact addon reward verified",
       "personal_kill_tracking": false,
       "gameplay_tested": false
     },
@@ -77,13 +65,13 @@
     "current_coverage": "NOT_AUDITED_FULL_REGISTRY"
   },
   "mandatory_recipe_tests": [
-    "Both Philosopher's Stone recipe orientations require tag trophy and no diamond",
-    "Wilden Tribute, Gaia Spirit and Mine Key actual registry IDs exist",
+    "Both grid Stone recipe orientations suppressed; no regenerated grid recipe",
+    "Native 12-slot ritual, 40 registered alternatives; actual availability/cost/remainders and no circular ProjectE/Chaos prerequisites",
     "All direct MK3+ Power Flower crafts require a Chaos Shard",
     "Red MK3 upgrade route also requires Chaos Shard",
     "Initial early basic/dark flower recipes remain intact",
     "EMC duplication and Matter Upgrader bypasses inventoried",
     "No free positive-EMC loops from boss items, recipes or powers"
   ],
-  "acceptance_rule": "Source test plus real modded server KubeJS recipe registration plus Prism JEI/crafting and gameplay EMC audit, independently."
+  "acceptance_rule": "Source checks plus real modded server recipe registration, Prism JEI/crafting and gameplay EMC audit independently."
 }

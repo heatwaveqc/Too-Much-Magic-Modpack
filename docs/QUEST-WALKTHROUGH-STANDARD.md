@@ -53,6 +53,12 @@ Show the **choice boundary** in the matrix: distinguish mandatory tiers/capabili
 
 The chapter must remain browseable, with sensible dependency arrows and crosslinks. Use *optional* quest branches for side content; never create arbitrary mechanical gates by quest dependency when the game doesn't enforce them. The player should be able to look ahead, choose strategies and return later.
 
+## Required visual walkthrough layer (owner decision 2026-11-22)
+
+Use [Quest Presentation and Visual Authoring Standard v3](QUEST-PRESENTATION-STANDARD-V3.md) to convert the Atlas-supported progression graph into a legible, original TMM quest map. **Progression/how-to correctness remains primary:** the art explains tiers, decisions, machines and side systems but never replaces actionable steps or creates an artificial gate. Use meaningful **objective-specific icons on every authored quest**, not a repeated default book; select a left-to-right tree for a mod's tier sequence, center-out for truly independent topics, or a convergent layout for verified cross-mod alternatives. Give every substantial chapter a thematic header and relevant background-like **positioned images**, with section-level visual cues and appropriate node sizing/shapes. All textures must be source/pack verified, legally reusable and readable at normal and reduced zoom.
+
+Atlas lesson labels are research records, not one-to-one mandatory FTB node counts or saved IDs. Existing quest IDs, task truth and rewards take precedence during the presentation migration; cosmetic regeneration must not break claims. The active generator must be extended to preserve source-owned visual metadata **before** editing generated FTB SNBT. A source-based Atlas coverage PASS does not imply a rendered UI PASS.
+
 ## Existing pilot reconciliation
 
 When a chapter or pilot already exists, inspect its authoring manifest and generated runtime quest data. Map every quest to the researched progression matrix and compare its prose with the actual task criterion, reward, exact ID and evidence. Record omissions (including a guidebook access step) and overclaims (such as treating item possession as operation). A pilot with many entries is not coverage proof until every required path and every installed addon has been reconciled. Distinguish proposed, implemented, merged, server-smoke-tested and client-accepted states.
