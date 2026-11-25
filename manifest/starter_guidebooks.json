@@ -82,6 +82,13 @@
       "item": "astralsorcery:tome",
       "components": {},
       "source": "Astral Sorcery 1.21.1 tome recipe"
+    },
+    {
+      "mod": "feywild",
+      "name": "Feywild Lexicon",
+      "item": "feywild:feywild_lexicon",
+      "components": {},
+      "source": "Exact Feywild 5.6.4 SHA-1 e59b68dd85b92ebbdbde478ea4e52fdb8b84c9d0: native feywild_lexicon recipe, ModEventListener.onPlayerLogin and FeywildLexicon.use; native custom item opens sprite/menu, no generic Patchouli component required."
     }
   ],
   "pending_review": [

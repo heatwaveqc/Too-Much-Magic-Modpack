@@ -60,7 +60,7 @@ class TipsStarterA(unittest.TestCase):
         manifest = load("manifest/starter_guidebooks.json")
         self.assertEqual(manifest["schema"], 1)
         books = manifest["books"]
-        self.assertGreaterEqual(len(books), 11)
+        self.assertGreaterEqual(len(books), 12)
         self.assertEqual(len({b["mod"] for b in books}), len(books))
         self.assertEqual(len({(b["item"], tuple(sorted(b.get("components", {}).items())))
                               for b in books}), len(books))
@@ -77,6 +77,9 @@ class TipsStarterA(unittest.TestCase):
         self.assertEqual(by_mod["theurgy"]["components"], {"modonomicon:book_id": "theurgy:the_hermetica"})
         self.assertEqual(by_mod["goety"]["item"], "patchouli:guide_book")
         self.assertEqual(by_mod["goety"]["components"], {"patchouli:book": "goety:black_book"})
+        self.assertEqual(by_mod["feywild"]["item"], "feywild:feywild_lexicon")
+        self.assertEqual(by_mod["feywild"]["components"], {})
+        self.assertEqual(by_mod["astralsorcery"]["item"], "astralsorcery:tome")
         self.assertTrue(manifest["pending_review"])
 
         def render_stack(book):
@@ -90,6 +93,10 @@ class TipsStarterA(unittest.TestCase):
             "unless entity @s[advancements={tmm:starter_kit=true}] run give @s " + payload)
         config = tomllib.loads((ROOT / "defaultconfigs/ars_nouveau-server.toml").read_text())
         self.assertIs(config["general"]["spawnBook"], False)
+        feywild = tomllib.loads((ROOT / "config/feywild-common.toml").read_text())
+        self.assertIs(feywild["feywild"]["spawn_with_lexicon"], False)
+        astral = tomllib.loads((ROOT / "defaultconfigs/astralsorcery-server.toml").read_text())
+        self.assertIs(astral["general"]["giveTomeOnJoin"], False)
         self.assertIn("run give @s minecraft:cooked_beef 2", meaningful[1])
         self.assertIn("run give @s comforts:sleeping_bag_white 1", meaningful[2])
         self.assertEqual(meaningful[3], "advancement grant @s only tmm:starter_kit_claimed")
@@ -124,6 +131,8 @@ class TipsStarterA(unittest.TestCase):
                     "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
                     "kubejs/data/tmm/function/rewards/starter_first_login.mcfunction",
                     "defaultconfigs/ars_nouveau-server.toml",
+                    "defaultconfigs/astralsorcery-server.toml",
+                    "config/feywild-common.toml",
                     "config/ftbquests/quests/chapters/tips_tricks.snbt",
                     "config/ftbquests/quests/lang/en_us.snbt"):
             self.assertIn(rel, selected)
