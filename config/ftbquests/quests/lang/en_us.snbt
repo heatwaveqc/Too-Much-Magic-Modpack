@@ -2,13 +2,13 @@
 	chapter_group.544D101000000000.title: "Introduction"
 	chapter_group.544D102000000000.title: "Progression"
 	chapter_group.544D103000000000.title: "Magic"
-	chapter_group.544D104000000000.title: "Exploration & Combat"
+	chapter_group.544D104000000000.title: "Exploration \\& Combat"
 	chapter_group.544D105000000000.title: "Endgame"
 	chapter.544D4D1000000001.title: "Getting Started"
 	chapter.544D4D1000000001.chapter_subtitle: ["First tools and shelter, then a practical magic path of your choosing."]
-	chapter.544D201000200000.title: "Tips & Tricks"
+	chapter.544D201000200000.title: "Tips \\& Tricks"
 	chapter.544D201000200000.chapter_subtitle: ["Ore yield, fuel-free smelting, brooms, portable crafting, controls and storage."]
-	chapter.544D201000300000.title: "Food & Fishing"
+	chapter.544D201000300000.title: "Food \\& Fishing"
 	chapter.544D201000300000.chapter_subtitle: ["Farming, fishing, food preparation and modular kitchens."]
 	chapter.21C0000000000000.title: "Alcohol is Magic"
 	chapter.21C0000000000000.chapter_subtitle: ["Fermentation, cocktails, tropical bars and beverage effects."]
@@ -18,7 +18,7 @@
 	chapter.544D202000200000.chapter_subtitle: ["Enchanting, brewing, storage, ritual space and exploration supplies."]
 	chapter.544D202000300000.title: "Endgame Roadmap"
 	chapter.544D202000300000.chapter_subtitle: ["Read-only late-game map; actual boss objectives live in other chapters."]
-	chapter.544D202000400000.title: "Skills & Factions"
+	chapter.544D202000400000.title: "Skills \\& Factions"
 	chapter.544D202000400000.chapter_subtitle: ["Universal Core Magic and Improvable Skills; choose one specialization, with explicit combination exceptions."]
 	chapter.544D202000500000.title: "A Sufficiently Advanced Magic"
 	chapter.544D202000500000.chapter_subtitle: ["Draconic generation, energy storage, FE crystals, reactor safety and future approved technology."]
@@ -34,10 +34,10 @@
 	chapter.544D203000500000.chapter_subtitle: ["Explore Enchanted: Witchcraft; more quests are being authored."]
 	chapter.544D203000600000.title: "EvilCraft"
 	chapter.544D203000600000.chapter_subtitle: ["Explore EvilCraft; more quests are being authored."]
-	chapter.544D203000700000.title: "Forbidden & Arcanus"
-	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden & Arcanus; more quests are being authored."]
+	chapter.544D203000700000.title: "Forbidden \\& Arcanus"
+	chapter.544D203000700000.chapter_subtitle: ["Explore Forbidden \\& Arcanus; more quests are being authored."]
 	chapter.544D203000800000.title: "Goety"
-	chapter.544D203000800000.chapter_subtitle: ["Dark arts, soul rituals and summoning; see Skills & Factions for lichdom."]
+	chapter.544D203000800000.chapter_subtitle: ["Dark arts, soul rituals and summoning; see Skills \\& Factions for lichdom."]
 	chapter.544D203000900000.title: "Hex Casting"
 	chapter.544D203000900000.chapter_subtitle: ["Explore Hex Casting; more quests are being authored."]
 	chapter.544D203000A00000.title: "Hexerei"
@@ -67,7 +67,7 @@
 	chapter.544D203001600000.title: "Totemic"
 	chapter.544D203001600000.chapter_subtitle: ["Explore Totemic; more quests are being authored."]
 	chapter.544D203001700000.title: "Just Another Witchery Remake"
-	chapter.544D203001700000.chapter_subtitle: ["Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations."]
+	chapter.544D203001700000.chapter_subtitle: ["Witchcraft and Forbidden Magic rituals; see Skills \\& Factions for character transformations."]
 	chapter.544D203001800000.title: "Embers Re-Ignited"
 	chapter.544D203001800000.chapter_subtitle: ["Explore Embers Re-Ignited; more quests are being authored."]
 	chapter.544D203001900000.title: "Reliquary Reincarnations"
@@ -93,9 +93,9 @@
 	chapter.544D205000300000.title: "Replication"
 	chapter.544D205000300000.chapter_subtitle: ["Explore Replication; more quests are being authored."]
 	quest.544D301000100001.title: "Welcome to Too Much Magic"
-	quest.544D301000100001.quest_desc: ["Too Much Magic puts magic first. Visit Tips & Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path."]
+	quest.544D301000100001.quest_desc: ["Too Much Magic puts magic first. Visit Tips \\& Tricks to claim your personal Akashic Tome, two steaks and a Comforts sleeping bag, then follow this chapter's short central path to early magic. You may also explore optional mining, storage and library branches. This Welcome reward gives an Unwitnessed Amulet and a cursed Enigmatic Legacy ring; inspect the ring before equipping it. Neither gift commits you to a specialty Path."]
 	quest.544D4D1100000001.title: "Punch a Tree"
-	quest.544D4D1100000001.quest_desc: ["Collect any qualifying log or stem to claim the separate 27-slot Curios pouch and 10 XP. This is an actual item-tag objective, not a fake first-log advancement. Avoid nesting portable bags. The Tome, two steaks and sleeping bag come from Tips & Tricks instead; completing this step does not force you to progress through every mining tier."]
+	quest.544D4D1100000001.quest_desc: ["Collect any qualifying log or stem to claim the separate 27-slot Curios pouch and 10 XP. This is an actual item-tag objective, not a fake first-log advancement. Avoid nesting portable bags. The Tome, two steaks and sleeping bag come from Tips \\& Tricks instead; completing this step does not force you to progress through every mining tier."]
 	quest.544D501000300000.title: "Make a Crafting Table"
 	quest.544D501000300000.quest_desc: ["Get a crafting table and keep it nearby. Its 3x3 grid is enough to begin exploring many magical recipes, so the center branch now leads toward your first magic immediately. Take the optional conventional survival routes if you need materials or equipment."]
 	quest.544D501000400000.title: "Make a Wooden Pickaxe"
@@ -107,7 +107,7 @@
 	quest.544D501000700000.title: "A Place for Your Things"
 	quest.544D501000700000.quest_desc: ["Craft a chest when you need basic local storage. Prefab may already provide an early house, and Occultism eventually supplies magical storage; neither requires a generic technology storage network."]
 	quest.544D501000800000.title: "Light the Furnace"
-	quest.544D501000800000.quest_desc: ["Craft a furnace to smelt ordinary materials. Smelting remains useful beside magic; Tips & Tricks also introduces Scriptor Magicae's fuel-free alternative."]
+	quest.544D501000800000.quest_desc: ["Craft a furnace to smelt ordinary materials. Smelting remains useful beside magic; Tips \\& Tricks also introduces Scriptor Magicae's fuel-free alternative."]
 	quest.544D501000900000.title: "Find Your First Iron"
 	quest.544D501000900000.quest_desc: ["Collect three raw iron when you decide to advance conventional tools. Iron is useful, but this objective no longer blocks your first spell, magical device or ritual."]
 	quest.544D501000A00000.title: "Iron Pickaxe"
@@ -119,7 +119,7 @@
 	quest.544D501000D00000.title: "Pick Your First Magic"
 	quest.544D501000D00000.quest_desc: ["Choose one magic tradition to investigate: Ars Nouveau spells, Occultism spirits, Theurgy alchemy, Roots nature magic, or another available school. Find its dedicated Magic chapter and in-game guide, then check its first ingredients in JEI. You can start before iron, and choosing a school does NOT enroll you into an exclusive Progression Path."]
 	quest.544D501000E00000.title: "Find an Everyday Magical Shortcut"
-	quest.544D501000E00000.quest_desc: ["Try a magical convenience that interests you: Ars lighting or breaking, Scriptor smelting, Occultism processing, or a broom when it becomes available. Use Tips & Tricks and the relevant mod chapter for recipes and operating steps. This is a manual orientation check, not an automatic magic-use detector."]
+	quest.544D501000E00000.quest_desc: ["Try a magical convenience that interests you: Ars lighting or breaking, Scriptor smelting, Occultism processing, or a broom when it becomes available. Use Tips \\& Tricks and the relevant mod chapter for recipes and operating steps. This is a manual orientation check, not an automatic magic-use detector."]
 	quest.544D501000F00000.title: "Try a First Spell or Ritual"
 	quest.544D501000F00000.quest_desc: ["Perform a real introductory magical action using the in-game guide for your chosen school. Cast a spell, complete a safe ritual or operate an early magical device; inspect its JEI recipe and tutorial beforehand. Since TMM has many unrelated schools, this quest is a manual checkmark rather than pretending one automatic task covers every mod. It does not grant or lock a specialist Path."]
 	quest.544D501001000000.title: "A Little Protection"
@@ -127,8 +127,8 @@
 	quest.544D501001100000.title: "Take Your Magic Into the World"
 	quest.544D501001100000.quest_desc: ["Explore for magical materials, unusual biomes, structures or a first field adventure. Nature's Compass, FTB Chunks, and the exploration chapters help. You do not need an iron pickaxe or any specific specialty Path just to choose an exploratory route."]
 	quest.544D501001200000.title: "The Rest of the Pack Is Yours"
-	quest.544D501001200000.quest_desc: ["Your opening route is complete. Claim supplies in Tips & Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food & Fishing and Exploration & Combat provide other directions. This orientation capstone does not finish the pack, require all side branches or force Normie graduation."]
-	quest.544D301000200001.title: "Tips & Tricks Index"
+	quest.544D501001200000.quest_desc: ["Your opening route is complete. Claim supplies in Tips \\& Tricks, choose a magical school, and follow the relevant mod chapter; Basic Progression covers shared needs, while Food \\& Fishing and Exploration \\& Combat provide other directions. This orientation capstone does not finish the pack, require all side branches or force Normie graduation."]
+	quest.544D301000200001.title: "Tips \\& Tricks Index"
 	quest.544D301000200001.quest_desc: ["Welcome to the TMM starter and convenience hub. Start by claiming your personal supplies, then browse the independent groups: books and discovery, controls and interface, inventory/crafting, comfort and survival, and practical magic shortcuts. Nothing here is required for specialization or endgame progress."]
 	quest.544D502000200000.title: "Find Recipes with JEI"
 	quest.544D502000200000.quest_desc: ["Use Just Enough Items to explore recipes and item usages. Check both directions before assuming a resource has only one way to obtain it."]
@@ -155,7 +155,7 @@
 	quest.544D502000D00000.title: "Resolve Recipe Conflicts"
 	quest.544D502000D00000.quest_desc: ["Polymorph can help when multiple recipes have the same ingredients. Check the intended output before spending scarce materials."]
 	quest.544D502000E00000.title: "Understand Character Growth"
-	quest.544D502000E00000.quest_desc: ["New players begin in the Newbie baseline Path and graduate personally to Normie through the Introduction quest. Universal MXP and the shared Core progression are not tied to a specialty Path; Newbies do not earn MXP. Specialist Paths, compatible native transformations and their skill trees are coordinated by Tyr Progression. Improvable Skills uses its own progression. See Paths & Transformations for actual initiation and compatibility."]
+	quest.544D502000E00000.quest_desc: ["New players begin in the Newbie baseline Path and graduate personally to Normie through the Introduction quest. Universal MXP and the shared Core progression are not tied to a specialty Path; Newbies do not earn MXP. Specialist Paths, compatible native transformations and their skill trees are coordinated by Tyr Progression. Improvable Skills uses its own progression. See Paths \\& Transformations for actual initiation and compatibility."]
 	quest.544D502000F00000.title: "Zoom and Overlay Controls"
 	quest.544D502000F00000.quest_desc: ["Just Zoom and More Overlays Updated offer visual aids. Adjust key bindings if they conflict with other mod controls."]
 	quest.544D502001000000.title: "Use the Quest Shop"
@@ -191,12 +191,12 @@
 	quest.544D502001F00000.title: "What Does Smart Keep Inventory Protect?"
 	quest.544D502001F00000.quest_desc: ["Smart Keep Inventory changes selected item-retention behavior, while Corail Tombstone and other magic can influence deaths or recovery. TMM intentionally distinguishes normal deaths from boss and transformation interactions. Read the current in-game behavior before risking unique equipment; this card is guidance, not a promise that every inventory item is safe."]
 	quest.544D502002000000.title: "Prefab: A Head Start on Housing"
-	quest.544D502002000000.quest_desc: ["Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips & Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house."]
+	quest.544D502002000000.quest_desc: ["Prefab provides prebuilt structures and an optional mining-shaft feature. TMM currently allows the native starter-house grant and its ordinary bonus resources; nothing in Tips \\& Tricks removes it. Check terrain and placement before consuming a house item. A free starter kit from this chapter does not confer a second free Prefab house."]
 	quest.544D502002100000.title: "Browse Better Advancements"
 	quest.544D502002100000.quest_desc: ["Better Advancements improves the vanilla advancement interface and navigation. Advancements record their own progress; they are not the same as FTB Quest claims, Progression Paths or MXP. Use both interfaces as complementary ways to understand what you've discovered."]
 	quest.544D502002200000.title: "Keep Controls Across Updates"
 	quest.544D502002200000.quest_desc: ["Default Options can supply a pack-wide baseline while your personal keybind changes remain your choice. After a mod update, search for newly added or conflicting actions with Controlling and review KeySets/KeyBind Bundles rather than assuming a missing shortcut is a broken mod. The pack's initial keybind defaults may be intentionally unassigned."]
-	quest.544D301000300001.title: "Food & Fishing Index"
+	quest.544D301000300001.title: "Food \\& Fishing Index"
 	quest.544D301000300001.quest_desc: ["Farming, fishing and cooking offer useful alternatives to combat foraging. Explore these branches independently and use JEI for the many additional Pam's HarvestCraft recipes."]
 	quest.544D503000200000.title: "Start with Seeds"
 	quest.544D503000200000.quest_desc: ["Collect wheat seeds to start a farm. The installed food mods offer many additional crops as you explore."]
@@ -241,7 +241,7 @@
 	quest.544D503001600000.title: "Cooking for Blockheads: Oven"
 	quest.544D503001600000.quest_desc: ["Build an Oven to expand the modular kitchen. Check recipes and heating behavior in JEI and test compatibility with food ingredients before automating the kitchen."]
 	quest.21C1000000000001.title: "Welcome to the Magic of Alcohol"
-	quest.21C1000000000001.quest_desc: ["This chapter teaches three DIFFERENT installed drink systems: Brewin' and Chewin' ferments liquids and foods in a Keg; Cocktails Delight adds spirits and mixed drinks, some conditional on other food mods; Beachparty mixes tropical cocktails at a Palm Bar, with a Mini Fridge for ice. Food & Fishing covers farms and meals, while Advanced Progression covers the vanilla Brewing Stand. No separate brewmaster book is required. Read the branches, then check this orientation quest. Task: manual acknowledgment, not a recipe check."]
+	quest.21C1000000000001.quest_desc: ["This chapter teaches three DIFFERENT installed drink systems: Brewin' and Chewin' ferments liquids and foods in a Keg; Cocktails Delight adds spirits and mixed drinks, some conditional on other food mods; Beachparty mixes tropical cocktails at a Palm Bar, with a Mini Fridge for ice. Food \\& Fishing covers farms and meals, while Advanced Progression covers the vanilla Brewing Stand. No separate brewmaster book is required. Read the branches, then check this orientation quest. Task: manual acknowledgment, not a recipe check."]
 	quest.21C1000000000002.title: "Read the Brewer's In-Game Reference"
 	quest.21C1000000000002.quest_desc: ["Brewin' and Chewin' has NO physical guidebook. Open Advancements (L by default, or your custom keybinding), find the Brewin' and Chewin' tab marked with a beer icon, and browse its Keg progression. For a Keg item use JEI recipe lookup (R) and usages (U); search 'Keg', 'Fermenting' and 'Keg Pouring'. Cocktails Delight recipes are in JEI, including optional integrations; Beachparty uses JEI's Palm Bar Mixing and Mini Fridge Freezing categories. Task: manual check after you open the references; this does not prove brewing."]
 	quest.21C1000000000003.title: "Build a Keg"
@@ -323,7 +323,7 @@
 	quest.544D504001100000.title: "Collect Amethyst"
 	quest.544D504001100000.quest_desc: ["Collect eight amethyst shards, or buy them from Quest Shop if the geology refuses to cooperate. A purchased ingredient is an intentional anti-grind alternative, not a bypass of any late-game boss gate."]
 	quest.544D504001200000.title: "Bring a Water Bucket"
-	quest.544D504001200000.quest_desc: ["Keep water accessible for building, agriculture, and many magical structures. This milestone is separate from Food & Fishing's milk-bucket quest."]
+	quest.544D504001200000.quest_desc: ["Keep water accessible for building, agriculture, and many magical structures. This milestone is separate from Food \\& Fishing's milk-bucket quest."]
 	quest.544D504001300000.title: "Defend Yourself"
 	quest.544D504001300000.quest_desc: ["Make a shield. Early defensive options make it easier to travel while discovering spells and supernatural equipment."]
 	quest.544D504001400000.title: "Upgrade to Diamond Mining"
@@ -369,7 +369,7 @@
 	quest.544D506000600000.title: "Roadmap: What Unlocks Afterwards"
 	quest.544D506000600000.quest_desc: ["After verified Chaos Guardian completion, pursue the ProjectE and Project Expansion progression, Gem Armor and other genuinely late options. Replication and its miner route remain a separate arc. Re:Avaritia, Extended Crafting and the Ring of the Seven Deadly Sins are excluded."]
 	quest.544D302000400001.title: "Chapter Overview"
-	quest.544D302000400001.quest_desc: ["An introduction to Skills & Factions in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D302000400001.quest_desc: ["An introduction to Skills \\& Factions in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D507000100000.title: "Read the Two Skill Systems"
 	quest.544D507000100000.quest_desc: ["Every character has access to Core Magic through Tyz's Skills in Regular Mode. Core is universal and does not occupy a specialization slot. Improvable Skills 3 uses ordinary experience separately and is also available to everyone. Graduate from Newbie Mode before earning MXP or joining a faction."]
 	quest.544D507000200000.title: "Open the Skill Interface"
@@ -521,7 +521,7 @@
 	quest.544D303000600001.title: "Chapter Overview"
 	quest.544D303000600001.quest_desc: ["An introduction to EvilCraft in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000700001.title: "Chapter Overview"
-	quest.544D303000700001.quest_desc: ["An introduction to Forbidden & Arcanus in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
+	quest.544D303000700001.quest_desc: ["An introduction to Forbidden \\& Arcanus in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000800001.title: "Chapter Overview"
 	quest.544D303000800001.quest_desc: ["An introduction to Goety in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D303000900001.title: "Chapter Overview"
@@ -617,7 +617,7 @@
 	quest.544D305000300001.title: "Chapter Overview"
 	quest.544D305000300001.quest_desc: ["An introduction to Replication in Too Much Magic.", "This chapter's full questline is still being written. This optional overview does not unlock or gate any other chapter."]
 	quest.544D301000110001.title: "Choose Your Magic Controls"
-	quest.544D301000110001.quest_desc: ["Open Options > Controls and use Controlling to find duplicate keybinds. Assign only the spells, inventory controls and other actions you want to use. KeySets and KeyBind Bundles may help manage alternatives; Tips & Tricks explains them in more detail. This is a personal convenience tip, not a required step or a reset of your controls."]
+	quest.544D301000110001.quest_desc: ["Open Options > Controls and use Controlling to find duplicate keybinds. Assign only the spells, inventory controls and other actions you want to use. KeySets and KeyBind Bundles may help manage alternatives; Tips \\& Tricks explains them in more detail. This is a personal convenience tip, not a required step or a reset of your controls."]
 	task.544D4D1200000001.title: "Any Log or Stem"
 	quest.544D309000100001.title: "I'm Ready for Regular Mode"
 	quest.544D309000100001.quest_desc: ["You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice."]

@@ -266,7 +266,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "806e7597818b8e45de6241fb7a071fa4ccbceb344e49254b8ae6f883a897c723"
+hash = "e3629f818a0249d7c2fe19b78920781a79c27e56625cf0af15b3a12abf000234"
 
 [[files]]
 file = "config/improvableskills.cfg"
