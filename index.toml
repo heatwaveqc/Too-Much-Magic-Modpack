@@ -661,6 +661,42 @@ file = "kubejs/data/lootr/tags/block/convert/chests.json"
 hash = "a767a6cb4e7693098510edb86b1d68352d6f6733a5d12eca08e80ff9c240617c"
 
 [[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/elementium.json"
+hash = "12dd77f2ddc15f896364e74ab73918a57bd42b9aff32a0e21c6b9949f1984677"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/manasteel.json"
+hash = "db58acdf04df026b3aa9f8fb7a8cee5f2dbdbf276233ab70eaa911c69e7fe9ac"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/terrasteel.json"
+hash = "f1b0abc41e4a7cb26d8f653d9540b515467ababe1217488f86cc970fb10717c0"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/hexerei/broom.json"
+hash = "37e297358059ebb3a4ce206ba9ba1082d77089ea64883a7d71b10b16c97f892b"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/hexerei/witch_armor.json"
+hash = "22eb9bce02c5ae524258f9587d8375dc540b4a3cfe706084e7a3ef0113c153d7"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/gold_chalk.json"
+hash = "ebcb8c9b6e43544494d3579d00ced5ee168d6e37540315e7434d2ff4dd4b87fb"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/purple_chalk.json"
+hash = "67adfb75a44ba672021765859d2a9a738ccb2f228eeb13fa68cedc032df323d0"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/red_chalk.json"
+hash = "4c9d893b1afab6d919daee9f9136b5cea3d8d6cbacecb4b51212f83ba6ff6c8e"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/white_chalk.json"
+hash = "0b69d329cd5e55053a94b8f0efb3f11818198d9d5a798deee9ab207cce33628a"
+
+[[files]]
 file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
 hash = "6774b31442511ec57c9790eae91c89e95f2974f53ea933fdc9bdfbc25e6fbc77"
 
