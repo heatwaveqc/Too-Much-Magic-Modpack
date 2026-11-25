@@ -12,7 +12,8 @@ from audit_worldgen_resources import inventory, read_pins
 
 TARGETS = ("primal-magick", "pastel", "irons-spells-n-spellbooks", "ars-nouveau",
            "goety", "hexerei", "the-graveyard", "dungeon-crawl",
-           "l_enders-cataclysm", "mowzies-mobs", "aquamirae", "yungs-extras")
+           "l_enders-cataclysm", "mowzies-mobs", "aquamirae", "yungs-extras",
+           "botania-revived", "extra-botany-revived")
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
