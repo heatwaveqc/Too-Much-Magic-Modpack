@@ -72,4 +72,29 @@ class AdminCapabilityRegistryTest {
         assertTrue(Action.SET.requiresAmount());assertFalse(Action.FILL.requiresAmount());
         assertEquals("tea",registry.inspect(ID,target,"test:drink"));
     }
+
+    @Test void bulkDiagnosisIsBoundedAndReadOnly(){
+        var registry=new AdminCapabilityRegistry<Target>();
+        registry.register(ID,handler());
+        var t=new Target();t.values.put("test:a","");t.values.put("test:b","");t.values.put("test:c","ok");
+        var result=registry.diagnose(t,1,2);
+        assertEquals(1,result.checked());assertEquals(2,result.omitted());
+        assertEquals(List.of(new Finding(ID,"test:a","empty binding")),result.findings());
+        assertEquals(3,t.values.size());
+    }
+    @Test void brokenHandlerDoesNotHideOtherFindings(){
+        var registry=new AdminCapabilityRegistry<Target>();
+        registry.register("test:a_broken",new Handler<>(){
+            public String description(){return "broken";}
+            public Collection<String> keys(Target t){throw new IllegalStateException("broken");}
+            public String inspect(Target t,String key){return "";}
+            public List<String> validate(Target t,String key){return List.of();}
+        });
+        registry.register(ID,handler());
+        var t=new Target();t.values.put("test:drink","");
+        var result=registry.diagnose(t,3,6);
+        assertEquals(1,result.checked());assertEquals(2,result.findings().size());
+        assertEquals("test:a_broken",result.findings().getFirst().capability());
+        assertEquals(ID,result.findings().getLast().capability());
+    }
 }

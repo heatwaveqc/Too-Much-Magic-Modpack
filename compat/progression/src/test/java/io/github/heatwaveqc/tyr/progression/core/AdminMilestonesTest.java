@@ -33,4 +33,14 @@ class AdminMilestonesTest{
         assertThrows(IllegalArgumentException.class,()->AdminMilestones.counter(done,path(),FIRST,0,0));
         assertTrue(AdminMilestones.complete(done,path(),SECOND).get(PATH).completed(SECOND));
     }
+
+    @Test void completionReconciliationDoesNotReplayReward(){
+        var old=Ledger.empty().with(PATH,new Track(true,0,1,0,Map.of(),List.of(),Map.of()).complete(FIRST));
+        var repaired=AdminMilestones.reconcileCompletion(old,path(),FIRST);
+        assertTrue(repaired.economy().achievements().contains(FIRST));
+        assertEquals(old.paths(),repaired.paths());
+        assertEquals(old.economy().currentXp(),repaired.economy().currentXp());
+        assertEquals(old.economy().rewardReceipts(),repaired.economy().rewardReceipts());
+        assertThrows(IllegalArgumentException.class,()->AdminMilestones.reconcileCompletion(old,path(),SECOND));
+    }
 }
