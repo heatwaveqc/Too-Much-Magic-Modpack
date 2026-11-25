@@ -267,7 +267,11 @@ public final class ProgressionApi {
     /** Trusted server-side event provenance filter: reject rewards for a specific path. */
     public static void recordFiltered(ServerPlayer player, Signal signal,
                                       java.util.function.Predicate<Definition.Path> eligiblePath) {
-        if (!eligibleEarner(player)) return;
+        if (!eligibleEarner(player)){
+            io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"signal rejected at earning gate: "+signal.target());
+            return;
+        }
+        io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"signal received: "+signal.target());
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         MilestoneFeedback.Notice progressNotice = null;
@@ -287,14 +291,20 @@ public final class ProgressionApi {
             for(var source:system.sources()){
                 int sourceIndex=index++;
                 String cooldownKey=system.id()+"/"+sourceIndex;
-                if(!signal.matches(source.event(),source.selector())||!PathRegistry.sourceEligible(player,system.id(),sourceIndex))continue;
+                if(!signal.matches(source.event(),source.selector()))continue;
+                if(!PathRegistry.sourceEligible(player,system.id(),sourceIndex)){
+                    io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" rejected: source eligibility");continue;
+                }
                 long now=player.level().getGameTime();
                 var recent=cooldowns.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
-                if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
+                if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks()){
+                    io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" rejected: source cooldown");continue;
+                }
                 recent.put(cooldownKey,now);
                 long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),source.xp());
                 next=ChannelEngine.grant(next,system,xp,0);
+                io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" native grant nominal="+xp);
             }
         }
         // A shared source category is one authenticated accomplishment,
@@ -311,6 +321,7 @@ public final class ProgressionApi {
                         award.category(),first,award.nominal(),false));
             }
         }
+        if(activityAwards.isEmpty())io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"no eligible configured unified activity matched signal "+signal.target());
         next=ExperienceSourceRouter.batch(player,next,"activity:"+UUID.randomUUID(),activityAwards);
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;

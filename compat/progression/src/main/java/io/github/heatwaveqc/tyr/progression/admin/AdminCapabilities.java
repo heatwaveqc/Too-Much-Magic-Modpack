@@ -36,6 +36,7 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:native_form",new NativeForm());
         REGISTRY.register("tyr_progression:class_mode",new ClassMode());
         REGISTRY.register("tyr_progression:stage",new Stage());
+        REGISTRY.register("tyr_progression:native_wallet",new NativeWallet());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -466,6 +467,40 @@ public final class AdminCapabilities {
         }
     }
 
+    private static final class NativeWallet implements Handler<ServerPlayer>{
+        public String description(){return "Legacy Progression-owned native channel wallet; inspect and exact free-point adjustment only, never native mod data or purchase receipts";}
+        public Collection<String> keys(ServerPlayer p){
+            return PathRegistry.economies().values().stream().filter(c->!c.magic()
+                &&!PathRegistry.economyCatalog().systems().containsKey(c.id())).map(c->c.id()).toList();
+        }
+        private io.github.heatwaveqc.tyr.progression.state.Wallet wallet(ServerPlayer p,String key){
+            return ledger(p).wallet(key);
+        }
+        public String inspect(ServerPlayer p,String key){
+            var w=wallet(p,key);
+            return w==null?"Uninitialized wallet":"XP="+w.xp()+", rank="+w.rank()+", free points="+w.points()
+                +", recent transactions="+w.recentTransactions().size()+", first completions="+w.firstCompletions().size();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var w=wallet(p,key);if(w==null)return List.of();
+            var channel=PathRegistry.economy(key);
+            return w.rank()>channel.source().maxRank()?List.of("Wallet rank exceeds configured cap"):List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.SET,Action.ADD,Action.SUBTRACT);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
+            var old=ledger(p);var w=wallet(p,key);
+            if(w==null)throw new IllegalArgumentException("Native wallet not initialized");
+            if(!PathRegistry.config().usesNative(key,path->old.get(path).joined()&&PathRegistry.eligible(p,path)))
+                throw new IllegalArgumentException("No active configured native binding");
+            if(amount>Integer.MAX_VALUE)throw new IllegalArgumentException("Point amount too large");
+            long points=switch(action){case SET->amount;case ADD->w.points()+amount;case SUBTRACT->w.points()-amount;
+                default->throw new IllegalArgumentException("Unsupported action");};
+            if(points<0||points>Integer.MAX_VALUE)throw new IllegalArgumentException("Free points outside bounds");
+            var next=old.withWallet(key,w.points((int)points));
+            return ledgerChange(p,inspect(p,key),"free points="+points+"; XP, rank, investments and receipts unchanged",old,next);
+        }
+    }
+
     private static final class ClassMode implements Handler<ServerPlayer>{
         public String description(){return "Validated class switch; set 0/1 (off/on, fortune/silk, off/active), reset defaults; completed ordeal protected";}
         public Collection<String> keys(ServerPlayer p){return io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminModeKeys();}
@@ -502,7 +537,10 @@ public final class AdminCapabilities {
                 throw new IllegalArgumentException("Already Newbie with inconsistent investments; manual scoped recovery required");
             return new Change(old,action==Action.GRANT?"regular; normal graduation hooks":"newbie; normal destructive stage transition (XP and rank forfeiture)",()->{
                 if(!raw(p).equals(old)||!ledger(p).equals(prior))throw new IllegalStateException("Player stage changed");
-                if(action==Action.GRANT)io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.graduate(p);
+                if(action==Action.GRANT){
+                    if(!Set.of("newbie","regular").contains(old))throw new IllegalArgumentException("Invalid stage; use explicit Newbie reset before graduation");
+                    io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.graduate(p);
+                }
                 else io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.set(p,"newbie");
             });
         }
