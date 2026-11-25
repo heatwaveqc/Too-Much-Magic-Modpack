@@ -42,7 +42,8 @@
     "EidolonPersonalFilterMixin",
     "PortableEnchantingOpenMixin",
     "PortableEnchantingLegacyMenuMixin",
-    "PortableEnchantingLegacyBooksMixin"
+    "PortableEnchantingLegacyBooksMixin",
+    "PortableAnvilOpenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
