@@ -526,6 +526,7 @@ public final class ProgressionApi {
     }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
+        io.github.heatwaveqc.tyr.progression.admin.XpTrace.forget(playerId);
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.forget(playerId);
     }
 }

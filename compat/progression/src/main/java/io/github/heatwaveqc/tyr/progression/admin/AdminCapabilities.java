@@ -31,6 +31,7 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:milestone",new Milestone());
         REGISTRY.register("tyr_progression:counter",new Counter());
         REGISTRY.register("tyr_progression:path",new PathMembership());
+        REGISTRY.register("tyr_progression:xp_trace",new Trace());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -295,7 +296,7 @@ public final class AdminCapabilities {
     private static final class Counter implements Handler<ServerPlayer>{
         public String description(){return "Configured milestone criterion (zero-based index); edits do not settle rewards until a legitimate gameplay event";}
         private String[] ids(String key){
-            var parts=key.split("\\\\|",-1);
+            var parts=key.split("\\|",-1);
             if(parts.length!=3)throw new IllegalArgumentException("Expected path|milestone|index");
             return parts;
         }
@@ -325,6 +326,19 @@ public final class AdminCapabilities {
             long desired=switch(action){case SET->amount;case ADD->n+amount;case SUBTRACT->n-amount;case RESET->0;default->throw new IllegalArgumentException("Unsupported action");};
             var next=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.counter(old,PathRegistry.get(ids[0]),ids[1],Integer.parseInt(ids[2]),desired);
             return ledgerChange(p,inspect(p,key),"count="+desired+"; no immediate reward, normal event may settle completion",old,next);
+        }
+    }
+
+    private static final class Trace implements Handler<ServerPlayer>{
+        public String description(){return "Transient shared XP settlement trace; set duration 1..120 seconds, inspect recent entries, reset clears";}
+        public Collection<String> keys(ServerPlayer p){return List.of("player");}
+        public String inspect(ServerPlayer p,String key){return XpTrace.inspect(p);}
+        public List<String> validate(ServerPlayer p,String key){return List.of("Trace observes routed settlements, not upstream events which never reach the router");}
+        public Set<Action> actions(){return Set.of(Action.SET,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
+            if(action==Action.SET&&(amount<1||amount>XpTrace.MAX_SECONDS))throw new IllegalArgumentException("Trace duration must be 1..120 seconds");
+            return new Change(action==Action.SET?"replace prior trace":"existing trace",action==Action.SET?"trace enabled for "+amount+" seconds":"trace off and cleared",
+                ()->{if(action==Action.SET)XpTrace.start(p,(int)amount);else XpTrace.forget(p.getUUID());});
         }
     }
 
