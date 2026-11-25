@@ -19,6 +19,9 @@ BASELINE = "721ea058294f838b9d7f145af427f5db228d248d"
 LOADER = "21.1.265"
 PREGEN = "Chunk-Pregenerator-Neoforge-1.21-4.5.4.jar"
 PREGEN_URL = "https://mediafilez.forgecdn.net/files/8748/909/" + PREGEN
+PREGEN_SHA = "2acd1f3b50472d49e7af69582ed718ac93272752e50cb636a97fcb04b498aa51"
+CARBON = "CarbonConfig-Neoforge-1.21.1-2.0.3.jar"
+CARBON_URL = "https://mediafilez.forgecdn.net/files/9531/034/" + CARBON
 SEED = 424242
 INNER = (-32,-32,32,32)
 BUFFER = 24
@@ -41,7 +44,7 @@ def download(url, dest, sha=None):
         raise ValueError("audit dependency digest mismatch: "+dest.name)
     return actual
 
-def stage(pack, work, pregen_sha):
+def stage(pack, work, carbon_sha):
     if read_output(["git","rev-parse","HEAD"],pack)!=BASELINE:
         raise ValueError("not the frozen Thanksgiving snapshot")
     if read_output(["git","status","--porcelain","--untracked-files=no"],pack):
@@ -81,7 +84,8 @@ def stage(pack, work, pregen_sha):
     if any(p["status"]!="verified" for p in report["pins"]):
         raise ValueError("raw scanner pin verification failed")
     dep=server/"mods"/PREGEN
-    sha=download(PREGEN_URL,dep,pregen_sha)
+    sha=download(PREGEN_URL,dep,PREGEN_SHA)
+    carbon_actual=download(CARBON_URL,server/"mods"/CARBON,carbon_sha)
     installer=server/"installer.jar"
     installer_sha=download(f"https://maven.neoforged.net/releases/net/neoforged/neoforge/{LOADER}/neoforge-{LOADER}-installer.jar",installer)
     run(["java","-jar","installer.jar","--installServer"],server,900)
@@ -94,7 +98,7 @@ def stage(pack, work, pregen_sha):
         "max-tick-time=-1\nspawn-protection=0\ngenerate-structures=true\n")
     provenance={"baseline":BASELINE,"loader":LOADER,"seed":SEED,"bounds_chunks":INNER,
                 "buffer_chunks":BUFFER,"radius_chunks":RADIUS,"pregen_file":PREGEN,
-                "pregen_sha256":sha,"installer_sha256":installer_sha,
+                "pregen_sha256":sha,"carbon_file":CARBON,"carbon_sha256":carbon_actual,"installer_sha256":installer_sha,
                 "generation_command":START,"first_party_sha256":{
                     p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in jars},
                 "limitations":["Audit-only reconstructed snapshot, not release or installed-world acceptance.",
@@ -193,14 +197,14 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--pack-root",type=Path,required=True)
     p.add_argument("--work",type=Path,required=True)
-    p.add_argument("--pregen-sha256",required=True)
+    p.add_argument("--carbon-sha256",required=True)
     p.add_argument("--authorized",action="store_true")
     p.add_argument("--generation-seconds",type=int,default=1500)
     a=p.parse_args()
     if not a.authorized:
         p.error("explicit audit execution approval required")
-    if not re.fullmatch("[0-9a-f]{64}",a.pregen_sha256):
-        p.error("reviewed pregenerator SHA-256 required")
+    if not re.fullmatch("[0-9a-f]{64}",a.carbon_sha256):
+        p.error("reviewed Carbon Config SHA-256 required")
     if not 60<=a.generation_seconds<=1800:
         p.error("generation must be bounded to 60–1800 seconds")
     server,evidence=stage(a.pack_root.resolve(),a.work.resolve(),a.pregen_sha256)
