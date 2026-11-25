@@ -52,10 +52,15 @@ def main():
               "status": pin["status"], "structures": kinds["worldgen/structure"],
               "sets": kinds["worldgen/structure_set"], "templates": templates}), flush=True)
         for row in rows:
+            if row["kind"] == "worldgen/structure":
+                d = row.get("data", {})
+                print("WORLDGEN_STRUCTURE " + json.dumps({"mod": pin["name"], "id": row["id"], "type": d.get("type"), "biomes": d.get("biomes"), "step": d.get("step"), "start_height": d.get("start_height"), "project_start_to_heightmap": d.get("project_start_to_heightmap")}), flush=True)
             if row["kind"] == "worldgen/structure_set":
                 print("WORLDGEN_SET " + json.dumps({"mod": pin["name"], "id": row["id"],
                       "placement": row.get("placement"), "structures": row.get("structures"),
                       "attempts_per_million_blocks_before_filters": row.get("attempts_per_million_blocks_before_filters")}), flush=True)
+    for error in report["errors"]:
+        print("WORLDGEN_ERROR " + json.dumps(error), flush=True)
     print("WORLDGEN_TOTAL " + json.dumps(report["counts"]), flush=True)
     return int(bool(report["errors"] or failures))
 
