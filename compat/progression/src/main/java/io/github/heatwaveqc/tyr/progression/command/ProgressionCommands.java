@@ -183,6 +183,7 @@ public final class ProgressionCommands {
                 .then(DebugCommands.currency())
                 .then(DebugCommands.skill())
                 .then(DebugCommands.inspect())
+                .then(CapabilityCommands.root())
                 .then(Commands.literal("foodcensus")
                     .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.FoodRegistryCensus
                         .export(ctx.getSource())))

@@ -198,12 +198,7 @@ final class DebugCommands {
     }
 
     private static void reconcile(net.minecraft.server.level.ServerPlayer player) {
-        io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.reconcile(player);
-        io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime.reconcile(player);
-        io.github.heatwaveqc.tyr.progression.runtime.PassivePowers.reconcile(player,true);
-        io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra.reconcile(player,true);
-        io.github.heatwaveqc.tyr.progression.runtime.VisionRuntime.reconcile(player,true);
-        io.github.heatwaveqc.tyr.progression.network.ProgressionMenuNetwork.refresh(player);
+        io.github.heatwaveqc.tyr.progression.admin.AdminStateRefresh.reconcile(player);
     }
 
     static LiteralArgumentBuilder<CommandSourceStack> inspect() {

@@ -22,6 +22,7 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:activation",new Activation());
         REGISTRY.register("tyr_progression:mutation",new Mutation());
         REGISTRY.register("tyr_progression:reward_receipt",new Receipt());
+        REGISTRY.register("tyr_progression:derived_state",new Derived());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -123,6 +124,24 @@ public final class AdminCapabilities {
                     throw new IllegalStateException("Mutation state changed");
                 p.setData(ProgressionAttachments.MUTATIONS.get(),next);
             });
+        }
+    }
+
+    private static final class Derived implements Handler<ServerPlayer> {
+        public String description(){return "Refresh player-wide Progression-owned effects, activations, mutation attributes and client view";}
+        public Collection<String> keys(ServerPlayer p){return List.of("player");}
+        public String inspect(ServerPlayer p,String key){
+            return "joined paths="+PathRegistry.all().keySet().stream()
+                .filter(id->io.github.heatwaveqc.tyr.progression.core.ProgressionApi.track(p,id).joined()).count()
+                +", eligible mutation effects="+io.github.heatwaveqc.tyr.progression.runtime.HunterMutations.active(p).size();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            return List.of("Derived state is runtime-dependent; reconcile refreshes owned effects without resetting purchases or XP");
+        }
+        public Set<Action> actions(){return Set.of(Action.RECONCILE);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            return new Change(inspect(p,key),"refresh Progression-owned effects and client view",
+                ()->AdminStateRefresh.reconcile(p));
         }
     }
 
