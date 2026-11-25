@@ -1,0 +1,22 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+[[mods]]
+modId="tmm_worldgen_audit"
+version="0.1.0"
+displayName="TMM Disposable Worldgen Audit"
+description="Audit-only structure placement observation. Never part of production pack."
+[[dependencies.tmm_worldgen_audit]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.265]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.tmm_worldgen_audit]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"
+[[mixins]]
+config="tmm_worldgen_audit.mixins.json"

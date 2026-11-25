@@ -1,0 +1,81 @@
+name: Worldgen size audit (offline)
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_worldgen_size.py'
+      - 'scripts/audit_worldgen_placements.py'
+      - 'tests/test_audit_worldgen_placements.py'
+      - 'scripts/run_worldgen_pilot.py'
+      - 'research/worldgen-audit-instrumentation/**'
+      - 'tests/test_audit_worldgen_size.py'
+      - '.github/workflows/worldgen-size-audit.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 721ea058294f838b9d7f145af427f5db228d248d
+          path: frozen-pack
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test geometry, protected exclusions and NBT palette accounting
+        run: python -m unittest discover -s tests -p 'test_audit_worldgen_*.py' -v
+      - name: Recover exact completed pilot evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45693813249/artifacts" > "$RUNNER_TEMP/artifacts.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          a=json.loads((Path(os.environ['RUNNER_TEMP'])/'artifacts.json').read_text())
+          rows=[r for r in a['artifacts'] if r['id']==15060442691 and r['name']=='tmm-worldgen-pilot-evidence' and not r['expired']]
+          assert len(rows)==1 and rows[0]['digest']=='sha256:d2e5f4325cf19e42c22d1e383d12b7032e895118ad8084ec19e54ebd18c8c834'
+          PY
+          gh run download 45693813249 --name tmm-worldgen-pilot-evidence --dir "$RUNNER_TEMP/pilot-evidence" --repo "$GITHUB_REPOSITORY"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'pilot-evidence'
+          a=json.loads((p/'provenance.json').read_text())
+          assert a['baseline']=='721ea058294f838b9d7f145af427f5db228d248d' and a['seed']==424242
+          PY
+      - name: Analyze completed pilot and twelve selected exact-pin archives (no game)
+        run: python scripts/audit_worldgen_size.py --census "$RUNNER_TEMP/pilot-evidence/region-census.json" --pack-root frozen-pack --work "$RUNNER_TEMP/worldgen-size"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: worldgen-size-evidence
+          path: |
+            ${{ runner.temp }}/worldgen-size/geometry.json
+            ${{ runner.temp }}/worldgen-size/templates.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  instrumentation-compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile audit-only exact-loader instrumentation (no server)
+        run: gradle --no-daemon -p research/worldgen-audit-instrumentation clean build
