@@ -13,8 +13,17 @@ TOOLS = "9f10f668457c4596b26bb9124e847ca11e993bdf"
 LAUNCHER = ".github/workflows/worldgen-audit-pilot.yml"
 REQUIRED = {"Worldgen audit fixtures (offline)", "Verify bootstrap",
             "Python regression suite (NO GAME BOOT)", "Branch lifecycle report"}
-# Reuse the canonical live-comment validator for this distinct, fixed console.
-qa.ISSUE = ISSUE
+# Reuse canonical API and identity checks without permanently changing its console.
+def live_comment(api, event, now):
+    previous = qa.ISSUE
+    try:
+        qa.ISSUE = ISSUE
+        qa.live_comment(api, event, now)
+    finally:
+        qa.ISSUE = previous
+
+def report(api, message):
+    api(f"issues/{ISSUE}/comments", "POST", {"body": message})
 
 def validate(event):
     issue, comment, repo = event.get("issue", {}), event.get("comment", {}), event.get("repository", {})
@@ -60,7 +69,7 @@ def execute(api, event, now, launcher_sha):
     nonce = validate(event)
     if not re.fullmatch(r"[0-9a-f]{40}", launcher_sha):
         raise qa.Refused("Invalid launcher SHA")
-    qa.live_comment(api, event, now)
+    live_comment(api, event, now)
     if main_head(api) != launcher_sha:
         raise qa.Refused("Main advanced since authorization event")
     check_ci(api)
@@ -85,14 +94,14 @@ def main():
     url = f"https://github.com/{qa.REPO}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
     try:
         nonce = execute(api, event, dt.datetime.now(dt.timezone.utc), os.environ["GITHUB_SHA"])
-        qa.report(api, f"Worldgen pilot DISPATCH-ACCEPTED: exact tools {TOOLS}, nonce {nonce}. "
+        report(api, f"Worldgen pilot DISPATCH-ACCEPTED: exact tools {TOOLS}, nonce {nonce}. "
                    f"Not a successful generation result. [Bridge evidence]({url}).")
         return 0
     except (qa.Refused, OSError, KeyError, ValueError) as e:
         print("REFUSED:", str(e), file=sys.stderr)
         try:
             validate(event)
-            qa.report(api, f"Worldgen pilot refused or dispatch uncertain. No automatic retry. [Evidence]({url}).")
+            report(api, f"Worldgen pilot refused or dispatch uncertain. No automatic retry. [Evidence]({url}).")
         except Exception:
             pass
         return 1
