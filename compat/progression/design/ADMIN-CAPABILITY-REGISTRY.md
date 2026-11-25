@@ -26,10 +26,24 @@ Explicit online player target; permission level 2; console works with player nam
 
 Register a trusted Java handler through `AdminCapabilities.registry().register(id, handler)` during initialization. Duplicate IDs fail rather than override another mechanic. A handler provides description, dynamic keys, read-only inspect/validate, advertised mutating actions and a side-effect-free plan returning before/after plus a synchronous commit. Confirmed commits must validate current state and call the owning service/attachment; do not use reflection, blanket attachment replacement or arbitrary client-provided NBT. Reset commits get common derived-state reconciliation; custom reconcile handlers own their own refresh. Treat validation findings as scoped, not proof of global player health.
 
-Future binding/resource handlers should discover configured definitions (and stale owned records where safe), validate allowed values and use the mechanic's existing mutation API. Elixir (#610) must unbind through its actual exclusivity handler, not erase arbitrary mode keys. Resource #681 needs the final resource service and typed value-changing operations. Native forms, housing receipts and personal enchant escrow need dedicated ownership-safe handlers; generic clearing could destroy items or duplicate rewards. No automatic bulk repair, full reset, native cures, arbitrary set/add payloads or provider discovery is claimed here.
+Binding/resource handlers discover configured definitions and use owning service APIs. Explicit Elixir reset unbinds without awarding effects or XP. Resource amounts are raw integers; set/add/subtract require explicit amount and reject values outside the current capacity. Native forms, housing receipts and personal enchant escrow need dedicated ownership-safe handlers; generic clearing could destroy items or duplicate rewards. No automatic bulk repair, full reset, native cures, arbitrary untyped set/add payloads or provider discovery is claimed here.
 
 ## Acceptance
 
 A: pure registry tests cover duplicate IDs, dynamic key enumeration, read-only preview, stale-plan rejection by handler, re-planning, per-target isolation, unknown keys and unsupported actions. Module compile and existing progression tests at exact PR head required.
 B: with authorized candidate, inspect/list/validate from console and op, deny non-op; preview and confirm a configured activation, verify cooldown cleared without granting power or XP; reset one saved mutation and verify other effects remain; exact receipt reset permits eligible re-earn only under ordinary source rules; derived reconcile refreshes only selected player.
 C: multiplayer, relog/death persistence, menu and HUD updates, no unrelated native state/effects modified. No full boot or package automatically authorized.
+
+## Added after the dev/progression synchronization
+
+| Capability | Key | Supported edit |
+|---|---|---|
+| tyr_progression:resource | resource ID | set/add/subtract (amount before key), fill, empty, reset to configured initial; only joined path; strict bounds; preserve event receipts |
+| tyr_progression:elixir | configured owner path ID | explicit reset/unbind, no XP/effects; normal eligible serving rebinds |
+| tyr_progression:discovery | path ID + pipe + item ID | forget local item only, never a lifetime paid receipt |
+| tyr_progression:mode | stored key | read-only, no arbitrary edits to opaque state |
+| tyr_progression:tree | path ID | normal configured respec with its lifecycle hooks, not a forced blanket deletion |
+
+Example: `/tyrprogress admin capability Player tyr_progression:resource set confirm 50 namespace:meter`. Other numeric actions have the same syntax. Fill/empty/reset have no amount. Reconciliation refreshes the resource HUD. Typed skill command: `skill <player> <path> <skill> set <rank> [cascade] [no_refund] confirm` reduces by removing latest purchased ranks first, preserving original currency/payment order; `set <rank> via <currency> confirm` raises to an exact rank through normal admin grant gates. Elixir ownership loss calls the configured reset policy. Whole-tree respec retains/forfeits/refunds according to existing policy and clears local discoveries through normal lifecycle; no blanket raw attachment clearing.
+
+B/C additions: joined vs dormant resource owner, exact capacity and overflow rejection, confirm and HUD refresh, unbind and rebind from actual serving, discovery/receipt independence, multi-currency partial rank reduction and configured tree respec. No runtime acceptance yet.

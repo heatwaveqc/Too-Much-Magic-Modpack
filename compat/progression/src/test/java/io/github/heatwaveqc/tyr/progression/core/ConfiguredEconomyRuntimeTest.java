@@ -352,4 +352,22 @@ class ConfiguredEconomyRuntimeTest {
             ExperienceEconomyRuntime.install(previous);
         }
     }
+
+    @Test void partialAdminRankReductionPreservesOldestCurrencyCommitments(){
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();ExperienceEconomyRuntime.install(catalog);
+            var ledger=ChannelEngine.join(Ledger.empty(),tree(),XpChannel.mxp(1.02));
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,CULT);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            var reduced=AdminSkills.reduce(ledger,tree(),config(),SKILL,2,false,false).ledger();
+            assertEquals(2,ChannelEngine.view(reduced,tree(),config()).skillRank(SKILL));
+            assertEquals(List.of(XpChannel.MXP,CULT),reduced.economy().paidRanks().stream()
+                .map(ExperienceEconomy.PaidRank::system).toList());
+            assertEquals(List.of(XpChannel.MXP+"|1",CULT+"|1"),reduced.payments().get(PATH+"|"+SKILL));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(XpChannel.MXP)));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(CULT)));
+        } finally {ExperienceEconomyRuntime.install(previous);}
+    }
 }

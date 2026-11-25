@@ -61,4 +61,15 @@ class AdminCapabilityRegistryTest {
         assertThrows(IllegalArgumentException.class,()->registry.plan(ID,target,"test:z",Action.RECONCILE));
         assertEquals(2,target.values.size());
     }
+
+    @Test void numericActionsRequireExplicitSupportAndValidAmount(){
+        var registry=new AdminCapabilityRegistry<Target>();
+        registry.register(ID,handler());
+        var target=new Target();target.values.put("test:drink","tea");
+        assertThrows(IllegalArgumentException.class,()->registry.plan(ID,target,"test:drink",Action.SET,3));
+        assertThrows(IllegalArgumentException.class,()->registry.plan(ID,target,"test:drink",Action.RESET,3));
+        assertThrows(IllegalArgumentException.class,()->registry.plan(ID,target,"test:drink",Action.ADD,-1));
+        assertTrue(Action.SET.requiresAmount());assertFalse(Action.FILL.requiresAmount());
+        assertEquals("tea",registry.inspect(ID,target,"test:drink"));
+    }
 }
