@@ -45,6 +45,16 @@ public final class Eligibility {
                     catch(RuntimeException | LinkageError e) { return Condition.Result.UNAVAILABLE; }
                 };
             }
+            // A diet binding is active only when a real, currently eligible
+            // joined Path owns it. Unlike path_joined, this follows live
+            // species / hybrid compatibility as well as membership.
+            case "path_active" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                yield player -> PathRegistry.get(id)==null ? Condition.Result.UNAVAILABLE :
+                    (io.github.heatwaveqc.tyr.progression.core.ProgressionApi.track(player,id).joined()
+                        && PathRegistry.eligible(player,id)
+                        ? Condition.Result.PASS:Condition.Result.FAIL);
+            }
             case "path_joined" -> {
                 String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
                 yield player -> PathRegistry.get(id)==null ? Condition.Result.UNAVAILABLE :
@@ -59,6 +69,18 @@ public final class Eligibility {
                     if(PathRegistry.economy(id)==null)return Condition.Result.UNAVAILABLE;
                     var wallet=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get()).wallets().get(id);
                     return (wallet==null?0:wallet.rank())>=minimum?Condition.Result.PASS:Condition.Result.FAIL;
+                };
+            }
+            case "path_resource" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                int value=node.get("value").getAsBigDecimal().intValueExact();
+                if (!node.get("value").getAsJsonPrimitive().isNumber() || value<0 || value>1000000)
+                    throw new IllegalArgumentException("Invalid Path resource threshold");
+                var comparison=Comparison.fromKey(node.get("comparison").getAsString());
+                yield player -> {
+                    var current=io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.value(player,id);
+                    return current.isEmpty()?Condition.Result.UNAVAILABLE:
+                        (comparison.test(current.getAsInt(),value)?Condition.Result.PASS:Condition.Result.FAIL);
                 };
             }
             case "health_fraction","food_level" -> io.github.heatwaveqc.tyr.progression.foundation.ContextConditions.meter(type,

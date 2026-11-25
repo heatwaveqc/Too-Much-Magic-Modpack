@@ -6,10 +6,6 @@
       "mod_id": "tyr_progression"
     },
     {
-      "directory": "compat/transformations",
-      "mod_id": "tmm_transformations"
-    },
-    {
       "directory": "compat/traders-vengeance",
       "mod_id": "traders_vengeance"
     },

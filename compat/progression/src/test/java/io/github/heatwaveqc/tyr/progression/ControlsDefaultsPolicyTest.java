@@ -27,6 +27,62 @@ class ControlsDefaultsPolicyTest {
         assertEquals(Decision.DEFAULT_UNBOUND, ControlsDefaultsPolicy.decide("key.brand_new_mod.cast", Set.of()));
     }
 
+    @Test void contextualMiddleClickSortIsTheOnlyExplicitPackBinding() {
+        String sort = "key.invtweaks_sort_either.desc";
+        assertTrue(ControlsDefaultsPolicy.isContextualSort(sort));
+        assertEquals(Decision.DEFAULT_PACK_BOUND, ControlsDefaultsPolicy.decide(sort, Set.of()));
+        assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide(sort, Set.of(sort)));
+        assertEquals(Decision.DEFAULT_UNBOUND,
+            ControlsDefaultsPolicy.decide("key.invtweaks_sort_inventory.desc", Set.of()));
+        assertEquals(Decision.DEFAULT_UNBOUND,
+            ControlsDefaultsPolicy.decide("key.invtweaks_sort_player.desc", Set.of()));
+        assertFalse(ControlsDefaultsPolicy.isContextualSort("key.pickItem"));
+    }
+
+    @Test void exactJeiNativeDefaultsAreUntouchedForFreshAndSavedProfiles() {
+        Set<String> expected = Set.of(
+        "key.jei.bookmark",
+        "key.jei.clearSearchBar",
+        "key.jei.closeRecipeGui",
+        "key.jei.focusSearch",
+        "key.jei.nextCategory",
+        "key.jei.nextPage",
+        "key.jei.nextRecipePage",
+        "key.jei.nextSearch",
+        "key.jei.previousCategory",
+        "key.jei.previousPage",
+        "key.jei.previousRecipePage",
+        "key.jei.previousSearch",
+        "key.jei.recipeBack",
+        "key.jei.recipeForward",
+        "key.jei.showRecipe",
+        "key.jei.showUses",
+        "key.jei.toggleBookmarkOverlay",
+        "key.jei.toggleOverlay",
+        "key.jei.transferRecipeGui",
+        "key.jei.transferRecipeBookmark"
+        );
+        assertEquals(expected, ControlsDefaultsPolicy.nativeDefaults());
+        for (String key : expected) {
+            assertEquals(Decision.NATIVE_DEFAULT, ControlsDefaultsPolicy.decide(key, Set.of()));
+            assertEquals(Decision.NATIVE_DEFAULT, ControlsDefaultsPolicy.decide(key, Set.of(key)));
+        }
+        for (String key : Set.of("key.jei.showRecipe2", "key.jei.showUses2",
+                "key.jei.toggleCheatMode", "key.jei.cheatItemStack", "key.jei.toggleEditMode",
+                "key.jei.copy.recipe.id", "key.jei.unrecognizedFutureMapping")) {
+            assertEquals(Decision.DEFAULT_UNBOUND, ControlsDefaultsPolicy.decide(key, Set.of()));
+            assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide(key, Set.of(key)));
+        }
+    }
+
+    @Test void progressionOwnBindingsHaveNoExemption() {
+        for (String key : Set.of("key.tyr_progression.skills", "key.tyr_progression.blink",
+                "key.tyr_progression.charm", "key.tyr_progression.tame")) {
+            assertEquals(Decision.DEFAULT_UNBOUND, ControlsDefaultsPolicy.decide(key, Set.of()));
+            assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide(key, Set.of(key)));
+        }
+    }
+
     @Test void allSavedKeysIncludingDefaultValuedOnesArePlayerOwned() {
         Set<String> saved = Set.of("keyset.open", "key.dragonsurvival.ability", "key.attack");
         assertEquals(Decision.PRESERVE_PLAYER, ControlsDefaultsPolicy.decide("keyset.open", saved));
