@@ -53,7 +53,8 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ElixirRuntime::login);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
-        NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ToolForms::blockInteract);
         NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
         NeoForge.EVENT_BUS.addListener(BedrockRest::continueSleeping);
         NeoForge.EVENT_BUS.addListener(BedrockRest::wake);
@@ -155,6 +156,7 @@ public final class ProgressionEvents {
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
+        if (ToolForms.entityInteract(player,event)) return;
         if (!ClassAbilities.entityInteract(player,event)
                 && !EffectRuntime.animalFriendship(player,event))
             EffectHandlers.entityInteract(player,event);

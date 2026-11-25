@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("tame","charm","magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","otherworld_sight","otherworld_harvest","personal_elixir","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","native_harvest","tool_form","food_restriction","ore_practice","lava_fishing_practice","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -84,6 +84,22 @@ public final class MechanicalSpec {
             case "vanilla_xp_bonus" -> bounded(a,0,2);
             case "piglin_kinship" -> {bounded(a,0,1);bool(p,"alarm_protection",true);}
             case "fire_immunity" -> bounded(a,0,1);
+            case "native_harvest" -> {
+                bounded(a,0,1);
+                if(!fx.emptyHand()||fx.selector().isEmpty()
+                    ||!p.getOrDefault("tool","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                    throw new IllegalArgumentException("Native harvest requires empty hand, block selector and exact representative tool ID");
+            }
+            case "tool_form" -> {
+                bounded(a,0,1);
+                if(!fx.emptyHand()||fx.selector().isEmpty()
+                    ||!Set.of("axe","shovel","hoe","shears").contains(p.getOrDefault("form","")))
+                    throw new IllegalArgumentException("Tool form requires empty hand, block selector and supported form");
+                String entity=p.getOrDefault("entity_target","");
+                if(!entity.isEmpty()&&(!p.get("form").equals("shears")
+                    ||!entity.matches("(#?[a-z0-9_.-]+:[a-z0-9_./-]+|\\*)")))
+                    throw new IllegalArgumentException("Only shears can define an entity selector");
+            }
             case "held_harvest_tier" -> {
                 bounded(a,0,1);scoped(fx);
                 if(fx.weapon().isEmpty()||fx.weapon().equals("*")||fx.tier()<1||fx.tier()>3)

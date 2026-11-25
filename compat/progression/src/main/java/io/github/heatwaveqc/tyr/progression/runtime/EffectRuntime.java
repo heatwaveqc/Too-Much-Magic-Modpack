@@ -247,6 +247,7 @@ public final class EffectRuntime {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         BlockState state = event.getTargetBlock();
         int required = requiredTier(state);
+        if(NativeHarvest.canHarvest(player,state)){event.setCanHarvest(true);return;}
         if(GildedMechanics.heldHarvest(player,state,required)){event.setCanHarvest(true);return;}
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();

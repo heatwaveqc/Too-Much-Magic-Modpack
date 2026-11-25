@@ -27,6 +27,7 @@ public final class HarvestAbilities {
 
     // Shared eligibility for the actual Fortune loot formula and Silk Touch reroll.
     static boolean canHarvestBarehand(ServerPlayer player, BlockState state) {
+        if(NativeHarvest.canHarvest(player,state))return true;
         int required = EffectRuntime.requiredTier(state);
         if (required < 0) return false;
         for (var a : EffectRuntime.active(player)) {

@@ -53,7 +53,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -105,8 +105,12 @@ public final class PathJson {
                 JsonObject c = child.getAsJsonObject();
                 int n = number(c,"count",1);
                 if (n < 1 || n > 1000000) throw new IllegalArgumentException("Bad criterion count");
-                criteria.add(new Definition.Criterion(event(str(c,"event","")),
-                    selector(str(c,"target","")),n));
+                String kind=event(str(c,"event",""));
+                String target=selector(str(c,"target",""));
+                if(kind.equals("material_harvest_trial")&&(!strictFlag(j,"strict_order")
+                    ||target.startsWith("#")||target.equals("*")))
+                    throw new IllegalArgumentException("Material trial requires strict_order and an exact representative tool ID");
+                criteria.add(new Definition.Criterion(kind,target,n));
             }
             if (criteria.isEmpty()) throw new IllegalArgumentException("No criteria for " + mid);
             long xp = j.has("xp") ? j.get("xp").getAsLong() : 0;
@@ -227,6 +231,13 @@ public final class PathJson {
                 }
                 if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
                     throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
+                if(type.equals("tool_form")){
+                    var activation=ActivationSpec.read(j);
+                    if(activation==null||!activation.mode().equals("toggle")
+                        ||activation.exclusiveGroup().isEmpty()||"true".equals(params.get("passive"))
+                        ||params.containsKey("trial_milestone"))
+                        throw new IllegalArgumentException("Tool forms require an exclusive toggle activation: "+sid);
+                }
                 // A trial may expose only the specified effect of a single-rank
                 // achievement-backed skill, never ownership or its other effects.
                 if(params.containsKey("trial_milestone")){

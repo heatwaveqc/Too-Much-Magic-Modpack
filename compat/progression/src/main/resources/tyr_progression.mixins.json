@@ -16,6 +16,7 @@
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
+    "VirtualToolLootMixin",
     "MutationEffectQueryMixin",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
