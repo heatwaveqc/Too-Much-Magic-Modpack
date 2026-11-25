@@ -97,7 +97,7 @@ def validate_zip(path, snap, run_id, attempt):
         require(f"https://raw.githubusercontent.com/{REPO}/{snap}/pack.toml".encode() in z.read("instance.cfg"), "Installer floats or uses wrong snapshot")
         require(not any(line.startswith("key_") for line in z.read("minecraft/options.txt").decode().splitlines()), "Personal keybinds in QA seed")
         jars = meta["custom_jar_sha256"]
-        require(bool(jars) and all(re.fullmatch(r"(tmm_[a-z0-9_]+|traders_vengence)-[a-zA-Z0-9._-]+\.jar", n) for n in jars), "Unexpected non-first-party JAR")
+        require(bool(jars) and all(re.fullmatch(r"(tmm_[a-z0-9_]+|tyr_progression|traders_vengeance|traders_vengence)-[a-zA-Z0-9._-]+\.jar", n) for n in jars), "Unexpected non-first-party JAR")
         allowed = required | {"minecraft/mods/"+n for n in jars}
         require(set(n for n in names if not n.endswith("/")) == allowed, "Unexpected files in QA package")
         for name, digest in jars.items():
