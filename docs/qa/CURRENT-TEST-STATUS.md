@@ -1,5 +1,10 @@
 # Current test status — active QA handoff
 
+### Trader's Vengeance #648/#423 (2026-11-24)
+
+Rocket source merged `1f03761a3c32485543b6d63453cf15d096bd690a`; rename #653 pending final quick CI/merge. B/C awaiting authorized build; see [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md) for acceptance cases. No server, Prism or gameplay test performed.
+
+
 > **Current build handoff (2026-11-17):** use [run 44108614695 checklist](UNSTABLE-QA-2026-11-17.md) and [per-build results](UNSTABLE-QA-RESULTS-2026-11-17.md), frozen SHA `322cf3f9`. The older rows below are retained as historical, not current results.
 
 **Created:** 2026-11-16 (America/Phoenix)  
@@ -7,6 +12,10 @@
 **Source inspection:** repository files inspected in the November 16 readiness/recovery session; checklist initially committed at `45daad21634d6d59860b199da7cf7df9dc8c0557`. **This is not a tested build SHA.**  
 **Last actual test run from this checklist:** **NONE**. No server smoke, new Prism build, or in-game test was run while setting up these documents.  
 **Next instruction to Codex:** read [the executable checklist](NEXT-TEST-CODEX-CHECKLIST.md), run only its quick/source tests when authorized to work, and append evidence here. Read `AGENTS.md` before any action.
+
+## Next build correction — 2026-11-19
+
+Dragon Survival and Bountiful are owner-required. The current integration lock lacks both; a pin-only PR restores exact Dragon Survival 2.0.74 and stages Bountiful/Kambrik 8.0.0-beta.2. See [inclusion register](LIVE-TEST-INCLUSION-REGISTER.md). Existing Dracolich model/skin test must not be marked runnable until Dragon Survival and current Transformations JAR are actually present. Bountiful custom data (#365/#366), dependency runtime compatibility and all gameplay tests pending. No server/client test or package run.
 
 ## New inclusion requirement (owner correction, 2026-11-16)
 
@@ -121,3 +130,32 @@ If an agent has only inspected documentation or committed source, **do not upgra
 ## Dragon Survival native recipes — accepted upstream quirks and remaining tests (2026-11-16)
 
 **Owner's latest decision:** Hot Dragon Rod (`C13`) and Spearman Promotion (`C14`) should be marked as **likely bugs in Dragon Survival's own recipe JSON**. They are **not modpack bugs to repair**. Hot Dragon Rod's one-dust + blaze rod behavior was observed by a friend and reported by owner; this is now **accepted as the mod author's intended shipped behavior**, despite the source `count: 8` field. Spearman Promotion contains the analogous `count: 3` field, but no in-game behavior is established; assume the shipped behavior is intended. **Do not build KubeJS overrides and do not require further tests for C13/C14.** `C15` the three Sources of Magic remains queued for normal next live test. `C16` Bottle Caps Treasure remains conditional on `desert_monster_ds`; if absent record NOT BUILT/NOT APPLICABLE and do not add the addon.
+
+## Unified Progression runtime cutover — owner 2026-11-19
+
+Exact reviewed dev/progression donor `1063355f7ba920e113baae38ce4a6f03ba2c8e44` (#347/#344/#375) staged in isolated integration PR. Tyz 6.4.2 runtime pin, 27 configuration files and old KubeJS Thrift script excluded; standalone tmm_mxp JAR excluded, historical source kept inert. Retain Pufferfish Attributes. Independent target 219 third-party pins, four first-party runtime modules. Single award authority and Newbie gating require source checks and later fresh-world live acceptance. Core presently has zero authored nodes; individual native class/form trees and replacement of legacy purchased skills remain development scope. Legacy save migration is not required in pre-alpha QA. No rate or balance change and no assembly, boot or publication authorized.
+
+## 2026-11-21 Tyr Progression namespace promotion (source-only)
+
+Reviewed immutable `dev/progression` donor `bae3599dc9bb1520fd1fd0d16b7338b3fbb8e107` (merged #424 plus #432) replaces the identical #376-era `compat/progression` subtree in the next integration PR. The selected first-party runtime and QA target now identify `tyr_progression` exclusively; Tyz and standalone MXP stay retired. Source/metadata quick CI and preflight are required; no assembly, server/client boot, or gameplay PASS is claimed. See the live-test inclusion register for B/C acceptance.
+
+## 2026-11-21 owner-authorized modded server smoke — FAIL (before world initialization)
+
+- **Exact tested branch:** `test/full-integration@82b747dbd0ab6bb9fbf38f73a7804167ccd41d59`; **222** selected hash-pinned third-party NeoForge 1.21.1 mods and four selected first-party compiled modules, *before* five newly discovered optional upstream updates. [Workflow #44976454994](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44976454994).
+- **PASS:** owner-only QA bridge CHECK-PASS, immutable source preflight, authorized assembly, strict mod/JAR hash and first-party roster verification, material/recipe/dragon-diet/retired-mod/ProjectE/native-XP guards, Gradle compilation/unit tests, HexCast contract and offline Prism packaging regression. No Prism ZIP requested or published.
+- **FAIL:** server aborts during ItemStack Mixin apply, **before `Done`**, at `tyr_progression.mixins.json:OwnedWearMixin`: the `@ModifyVariable` handler `tmm$ownedUnbreaking` omitted the original damage `int` parameter preceding `ServerLevel`. Log reports `InvalidInjectionException`: expected `(int replacement, int originalDamage, ServerLevel, ServerPlayer, Consumer<Item>) -> int`. Server smoke exit 1; dropped-item tick and downstream gameplay **NOT RUN**.
+- **Repair status:** Progression source PR [#459](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/459) merged to `dev/progression@dffd83decb2c4e0aab817ba84549df80855b69ba` after four quick checks; focused callback signature and static validator only. This integration source promotion **does not** establish corrected Minecraft loading. **Another full server smoke requires fresh owner instruction; do not auto-retry**. No immutable server-tested tag created, no player/client PASS.
+- **Upstream update review:** newer Neo Vitae 1.1.54, Iron's Spells 3.16.4, Botania Revived 2.0.4, EvilCraft 1.2.102, Replication 1.2.8; all held out of this test. These were not implicated by the abort. Promote only after exact new-JAR hash/dependency/native mixin/API audits and later gameplay checks.
+
+## 2026-11-21 corrected Tyr Progression full server smoke — PASS (source snapshot, not gameplay)
+
+- **Authorized exact source head:** `2373d50732866e460dc9e9454f7187f9045e1cdc`, containing [OwnedWear Mixin startup fix #460](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/460). One-shot smoke-only (no Prism) [GitHub run #44980284571](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44980284571), completed **SUCCESS** 2026-11-22 UTC.
+- **A / Integration Assembly PASS:** frozen source preflight; 222 hash-locked selected third-party artifacts and four first-party built JARs verified against required next-QA inventory; no version updates applied. Progression compile/unit, retired runtime and material/recipe/dragon/ProjectE/HexCast checks passed.
+- **Server Boot Smoke PASS:** full modded dedicated server reached `Done`, ticked summoned dropped Stone without KubeJS errors, and shut down cleanly (`exit=0`). Earlier `OwnedWearMixin` fatal `InvalidInjectionException` in run #44976454994 **did not recur**. First attempt's FAIL remains a historical result, not erased.
+- **Frozen tested snapshot:** `integration-qa/44980284571-1` -> `c78479f52f9592ca1f139a6b874d630422c34042`, annotated tag verified. `Full-Integration-Test-Evidence` artifact ID `14738095397`; no Prism ZIP produced. The rolling branch remains an editable source integration branch; only the tag identifies the immutable assembled server-tested snapshot.
+- **B/C not run:** no client start, in-game player, GUI, inventory conservation, WorldWeaver generation, NPC ecology, Newbie/Normie XP rates, dragon diets or real gameplay mechanics tested. Feature acceptance status is unchanged. Five optional upstream mod updates are **not** part of this tested build; no claim about their compatibility.
+
+| Timestamp | Source/test SHA | Case ID(s) | Level | Status | Exact evidence / URL | Next action |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-11-22 UTC | `82b747dbd0ab6bb9fbf38f73a7804167ccd41d59` | First full server attempt | Server Boot Smoke | **FAIL** | [Run #44976454994](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44976454994), `OwnedWearMixin` invalid handler signature | Fixed in PR #460; compare second attempt |
+| 2026-11-22 UTC | `2373d50732866e460dc9e9454f7187f9045e1cdc`, frozen `c78479f52f9592ca1f139a6b874d630422c34042` | Corrected full server and dropped-item regression | Integration Assembly / Server Boot Smoke | **PASS** | [Run #44980284571](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/44980284571); `Done`, dropped Stone tick, no KubeJS errors, clean stop | Proceed to separately authorized B/C gameplay QA; do not treat uninstalled updates as tested |

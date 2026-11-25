@@ -44,16 +44,16 @@ jobs:
           python3 scripts/validate_newbie_integration.py
           python3 scripts/validate.py
           python3 scripts/validate_quests.py
-          python3 compat/magic/stage_preview.py --check
+          python3 scripts/verify_unified_progression.py
           python3 scripts/validate_integration_sources.py
   engine:
-    name: Compile shared Progression, MXP and transformations (no server)
+    name: Compile unified Progression and transformations (no server)
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
-        module: ['progression', 'mxp', 'transformations']
+        module: ['progression', 'transformations']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4

@@ -1,0 +1,16 @@
+{
+  "content": {
+    "item_minecraft_nautilus_shell": {
+      "amount": {
+        "max": 1,
+        "min": 1
+      },
+      "content": "minecraft:nautilus_shell",
+      "rarity": "RARE",
+      "repRequired": -30,
+      "type": "item",
+      "unitWorth": 64
+    }
+  },
+  "replace": true
+}

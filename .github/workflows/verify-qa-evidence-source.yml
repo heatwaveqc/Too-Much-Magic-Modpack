@@ -1,0 +1,31 @@
+name: QA evidence source regressions (no game)
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa-surveys/**'
+      - 'scripts/read_qa_world_state.py'
+      - 'scripts/export_saved_dimensions.py'
+      - 'scripts/audit_kubejs_syntax.py'
+      - 'scripts/build_replication_stonecutter_catalog.py'
+      - 'tests/test_qa_surveys.cjs'
+      - 'tests/test_replication_stonecutter_catalog.py'
+      - 'docs/qa/surveys-2026-11-18/**'
+      - '.github/workflows/verify-qa-evidence-source.yml'
+permissions:
+  contents: read
+jobs:
+  evidence-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 -m unittest discover -s tests -p 'test_replication_stonecutter_catalog.py' -v
+      - run: node --test tests/test_qa_surveys.cjs
+      - run: python3 -m py_compile scripts/read_qa_world_state.py scripts/export_saved_dimensions.py scripts/audit_kubejs_syntax.py scripts/qa-surveys/prepare_one_shot.py
+      - run: node --check scripts/qa-surveys/server_scripts/tmm_dimension_registry.js

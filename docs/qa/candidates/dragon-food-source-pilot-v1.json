@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "scope": "pilot",
+  "note": "LIMITED, SOURCE-CONSTRAINED PILOT. Not a complete registered edible-item census, approved values, or runtime diet data map. Exact pinned mod/JAR registry census still required.",
+  "edibles": [
+    {
+      "item": "minecraft:beef",
+      "evidence": "Minecraft 1.21.1 vanilla raw beef Item, known native registry ID"
+    },
+    {
+      "item": "minecraft:cooked_beef",
+      "evidence": "Minecraft 1.21.1 vanilla steak Item, known native registry ID"
+    },
+    {
+      "item": "minecraft:carrot",
+      "evidence": "Minecraft 1.21.1 vanilla edible carrot Item, known native registry ID"
+    },
+    {
+      "item": "minecraft:dried_kelp",
+      "evidence": "Minecraft 1.21.1 vanilla dried kelp Item, known native registry ID"
+    },
+    {
+      "item": "minecraft:seagrass",
+      "evidence": "Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a",
+      "dragon_only_edible": true
+    },
+    {
+      "item": "aquaculture:fish_fillet_raw",
+      "evidence": "Aquaculture 1.21 recipe sushi.json ingredient and Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a"
+    },
+    {
+      "item": "aquaculture:sushi",
+      "evidence": "TeamMetallurgy/Aquaculture master src/main/resources/data/aquaculture/recipe/sushi.json, plus Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a"
+    },
+    {
+      "item": "dragonsurvival:charred_meat",
+      "evidence": "Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a",
+      "dragon_only_edible": true
+    },
+    {
+      "item": "minecraft:suspicious_stew",
+      "evidence": "Minecraft 1.21.1 vanilla edible Suspicious Stew registry item; effective ingredients deliberately unresolved in pilot"
+    }
+  ],
+  "roots": [
+    {
+      "item": "minecraft:beef",
+      "family": "terrestrial_animal",
+      "preparation": "raw",
+      "habitat": "terrestrial",
+      "evidence": "Minecraft 1.21.1 native raw cattle meat"
+    },
+    {
+      "item": "minecraft:carrot",
+      "family": "plant_fungus",
+      "preparation": "raw",
+      "habitat": "terrestrial",
+      "evidence": "Minecraft 1.21.1 native crop"
+    },
+    {
+      "item": "minecraft:dried_kelp",
+      "family": "plant_fungus",
+      "preparation": "cooked",
+      "habitat": "marine",
+      "evidence": "Minecraft 1.21.1 dried kelp from kelp thermal processing"
+    },
+    {
+      "item": "minecraft:seagrass",
+      "family": "plant_fungus",
+      "preparation": "raw",
+      "habitat": "marine",
+      "evidence": "Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a (explicit Sea dragon-only edible seagrass)"
+    },
+    {
+      "item": "aquaculture:fish_fillet_raw",
+      "family": "marine_animal",
+      "preparation": "raw",
+      "habitat": "marine",
+      "evidence": "Aquaculture sushi recipe uses verified raw fish fillet"
+    },
+    {
+      "item": "dragonsurvival:charred_meat",
+      "family": "terrestrial_animal",
+      "preparation": "charred",
+      "habitat": "terrestrial",
+      "evidence": "Existing indexed Dragon Survival diet map @ ecf04d497416233ee8f24ad6423e243aa8c0fd2a Cave 6 nutrition, 3 saturation legacy value only, no new value assigned"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "minecraft:cooked_beef_from_smelting",
+      "type": "minecraft:smelting",
+      "output": "minecraft:cooked_beef",
+      "ingredients": [
+        {
+          "item": "minecraft:beef"
+        }
+      ],
+      "evidence": "Minecraft vanilla beef-to-steak smelting; check recipe id/version in pinned-game census"
+    },
+    {
+      "id": "aquaculture:sushi",
+      "type": "minecraft:crafting_shapeless",
+      "output": "aquaculture:sushi",
+      "ingredients": [
+        {
+          "item": "aquaculture:fish_fillet_raw"
+        },
+        {
+          "item": "minecraft:seagrass"
+        }
+      ],
+      "preparation": "minimally_processed",
+      "evidence": "TeamMetallurgy/Aquaculture master src/main/resources/data/aquaculture/recipe/sushi.json; no rice"
+    }
+  ],
+  "tags": {},
+  "reusable_tools": []
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "ars_nouveau:block/source_jar/source_jar0",
+  "loader": "neoforge:composite",
+  "textures": {
+    "particle": "tmm_economy:block/emc_source_still"
+  },
+  "children": {
+    "jar": {
+      "parent": "ars_nouveau:block/source_jar/source_jar0",
+      "textures": {
+        "0": "tmm_economy:block/emc_source_still",
+        "particle": "tmm_economy:block/emc_source_still"
+      }
+    },
+    "seal": {
+      "parent": "tmm_economy:block/emc_source_jar_seal"
+    }
+  },
+  "item_render_order": [
+    "jar",
+    "seal"
+  ]
+}

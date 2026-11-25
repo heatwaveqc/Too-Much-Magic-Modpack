@@ -1,0 +1,8 @@
+{
+  "criteria": {
+    "first_tick": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,154 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    47,
+    16,
+    43
+  ],
+  "surfaceY": 2,
+  "nonair": 3117,
+  "explicitAir": 13585,
+  "paletteStates": 37,
+  "zones": {
+    "enchanted_circle": [
+      2,
+      3,
+      20,
+      22,
+      15,
+      40
+    ],
+    "roots_circle": [
+      30,
+      3,
+      23,
+      44,
+      15,
+      37
+    ],
+    "altar": [
+      25,
+      3,
+      24,
+      27,
+      7,
+      25
+    ],
+    "oven_fume": [
+      24,
+      3,
+      5,
+      26,
+      6,
+      7
+    ],
+    "kettle": [
+      26,
+      3,
+      9,
+      28,
+      6,
+      11
+    ],
+    "hexerei": [
+      35,
+      3,
+      5,
+      39,
+      7,
+      9
+    ]
+  },
+  "altar": [
+    26,
+    3,
+    24
+  ],
+  "consumerSquaredDistances": {
+    "enchanted_ritual": 232,
+    "oven": 325,
+    "kettle": 198,
+    "future_distillery": 333,
+    "future_wheel": 221
+  },
+  "walkableRouteGoals": [
+    [
+      10,
+      8
+    ],
+    [
+      25,
+      8
+    ],
+    [
+      38,
+      10
+    ],
+    [
+      12,
+      30
+    ],
+    [
+      37,
+      30
+    ],
+    [
+      26,
+      24
+    ]
+  ],
+  "starterChest": {
+    "pos": [
+      22,
+      3,
+      5
+    ],
+    "items": [
+      "enchanted:witch_oven",
+      "enchanted:kettle"
+    ]
+  },
+  "decodedNbtBlocks": 16702,
+  "rawSha256": "22684de43d78e78749082ee4bfa899db3682bab8d24626976060b88c34eacfb9",
+  "gzipSha256": "4996bc44c6ad1be07e610938f66e6b823fa8f78292cad761d45f2a6e3e4d12d4",
+  "gzipBytes": 44773,
+  "counts": {
+    "minecraft:air": 13585,
+    "minecraft:allium": 2,
+    "minecraft:azure_bluet": 2,
+    "minecraft:barrel[facing=up,open=false]": 8,
+    "minecraft:bookshelf": 3,
+    "minecraft:bricks": 23,
+    "minecraft:carrots[age=0]": 8,
+    "minecraft:chest[facing=south,type=single,waterlogged=false]": 1,
+    "minecraft:cobblestone": 270,
+    "minecraft:cornflower": 2,
+    "minecraft:crafting_table": 4,
+    "minecraft:dandelion": 3,
+    "minecraft:dark_oak_log[axis=y]": 212,
+    "minecraft:dark_oak_planks": 43,
+    "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 273,
+    "minecraft:dark_oak_stairs[facing=south,half=bottom,shape=straight,waterlogged=false]": 275,
+    "minecraft:dirt_path": 183,
+    "minecraft:farmland[moisture=7]": 16,
+    "minecraft:furnace[facing=north,lit=false]": 1,
+    "minecraft:glass_pane[east=false,north=false,south=false,west=false,waterlogged=false]": 86,
+    "minecraft:grass_block[snowy=false]": 671,
+    "minecraft:green_bed[facing=south,occupied=false,part=foot]": 2,
+    "minecraft:green_bed[facing=south,occupied=false,part=head]": 2,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 16,
+    "minecraft:mossy_cobblestone": 142,
+    "minecraft:oxeye_daisy": 2,
+    "minecraft:poppy": 3,
+    "minecraft:smoker[facing=north,lit=false]": 1,
+    "minecraft:spruce_door[facing=north,half=lower,hinge=left,open=false,powered=false]": 3,
+    "minecraft:spruce_door[facing=north,half=upper,hinge=left,open=false,powered=false]": 3,
+    "minecraft:spruce_door[facing=south,half=lower,hinge=left,open=false,powered=false]": 3,
+    "minecraft:spruce_door[facing=south,half=upper,hinge=left,open=false,powered=false]": 3,
+    "minecraft:spruce_planks": 416,
+    "minecraft:stone_bricks": 68,
+    "minecraft:water[level=0]": 2,
+    "minecraft:wheat[age=0]": 8,
+    "minecraft:white_terracotta": 357
+  }
+}

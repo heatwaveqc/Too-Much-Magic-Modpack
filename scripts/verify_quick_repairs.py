@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def read(p): return (ROOT / p).read_text(encoding="utf-8")
 
 def main():
-    rec = json.loads(read("compat/progression/src/main/resources/data/tmm_progression/recipe/bio_mutagen.json"))
+    rec = json.loads(read("compat/progression/src/main/resources/data/tyr_progression/recipe/bio_mutagen.json"))
     assert rec["type"] == "minecraft:crafting_shapeless" and len(rec["ingredients"]) == 9
     assert all(isinstance(v, dict) and set(v) == {"item"} for v in rec["ingredients"])
     ids = [v["item"] for v in rec["ingredients"]]
@@ -49,7 +49,7 @@ def main():
     # require exact original provenance PLUS a positive pending-JAR gate instead.
     # Never silently treat source-only installation as a playable mod.
     trader_source = next(
-        (s for s in sources["streams"] if s["name"] == "traders-vengence-module"),
+        (s for s in sources["streams"] if s["name"] == "traders-vengeance-module"),
         None,
     )
     if trader_source is None:
@@ -58,13 +58,13 @@ def main():
         assert trader_source["branch"] == "test/full-integration"
         assert trader_source["integrated_into_baseline"] is True
         assert trader_source["source_commit"] == "a5c8f32bd50744e2b3e083273c50e75d93b27c82"
-        assert trader_source["paths"] == ["compat/traders-vengence/"]
+        assert trader_source["paths"] == ["compat/traders-vengeance/"]
         assert trader_source["mode"] == "source-module-ci-not-installed"
         assert "feature/traders-vengence" in sources["covered_by_baseline"]
-        assert any("TRADER'S VENGENCE" in s and "NOT an installed" in s
+        assert any("TRADER'S VENGEANCE" in s and "NOT an installed" in s
                    for s in sources["pending_runtime_work"])
         # Do not confuse a compiled source directory with a Packwiz-installed JAR.
-        assert not (ROOT / "mods/traders-vengence.pw.toml").exists()
+        assert not (ROOT / "mods/traders-vengeance.pw.toml").exists()
 
     index, pack = read("index.toml"), read("pack.toml")
     assert f'hash = "{hashlib.sha256(index.encode()).hexdigest()}"' in pack

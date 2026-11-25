@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "occultism:raw_iesnium"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 1728,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "occultism:raw_iesnium"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 6
+}

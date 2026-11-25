@@ -1,0 +1,52 @@
+{
+  "comment": "Owner-approved Primal Magick rate: 2 EMC per displayed Mana (50 centimana per EMC). Only dust is independently anchored at 2; higher-tier essences must derive item costs from effective synthesis inputs including quartz, not fixed fuel-equivalent anchors.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_earth",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_sea",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_sky",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_sun",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_moon",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_blood",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_infernal",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_void",
+        "emc_value": 2
+      },
+      {
+        "type": "projecte:item",
+        "id": "primalmagick:essence_dust_hallowed",
+        "emc_value": 2
+      }
+    ]
+  }
+}

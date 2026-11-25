@@ -1,0 +1,7 @@
+# Preserve the native sky in the approved non-Overworld realms.
+# Client visuals only; server starlight and attunement require live acceptance.
+[rendering]
+patreonEffects = true
+animateAdditionalInputs = true
+skyRenderDimensions = ["minecraft:overworld"]
+constellationOverlaySkyDimensions = ["eternal_starlight:starlight", "theaurorian:the_aurorian", "twilightforest:twilight_forest", "minecraft:the_end"]

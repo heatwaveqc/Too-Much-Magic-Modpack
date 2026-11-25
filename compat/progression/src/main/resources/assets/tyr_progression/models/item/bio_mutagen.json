@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tyr_progression:item/bio_mutagen"
+  }
+}

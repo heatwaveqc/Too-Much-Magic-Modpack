@@ -1,0 +1,50 @@
+name: Frozen donor consolidation (source and contract only)
+on:
+  pull_request:
+    paths:
+      - 'docs/qa/frozen-donor-reference/intake.json'
+      - '.github/workflows/frozen-donor-consolidation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read-only source and packwiz validation
+        run: |
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+          python3 scripts/validate_integration_sources.py --strict-overrides
+          python3 scripts/validate.py
+          python3 scripts/validate_quests.py
+          python3 scripts/verify_materials.py
+          python3 scripts/verify_silver_equipment.py
+          python3 scripts/verify_dragon_diets.py
+          python3 scripts/verify_retirement.py
+          python3 scripts/validate_b19_gateways.py
+          python3 scripts/validate_b20_trader_stock.py
+          python3 scripts/validate_progression_gates.py
+          python3 scripts/verify_emc_coverage_audit.py
+      - name: Parse selected scripts and run unchanged historical HexCast harness
+        run: |
+          node --check kubejs/server_scripts/material_unification.js
+          node --check kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js
+          node --check kubejs/server_scripts/tmm_wandering_trader_magic_stock.js
+          node --check kubejs/server_scripts/caerbannog_boss.js
+          node --check kubejs/startup_scripts/caerbannog_trophy.js
+          bash integration/hexcast-media-pilot/check-contract.sh
+      - name: Check preserved stream ownership and non-runtime prototypes
+        run: python3 scripts/validate_frozen_donor_consolidation.py

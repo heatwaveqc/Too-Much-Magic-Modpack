@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "#tyr_progression:undead",
+    "#tyr_progression:raiders",
+    "minecraft:creeper",
+    "minecraft:spider",
+    "minecraft:cave_spider",
+    "minecraft:slime",
+    "minecraft:magma_cube",
+    "minecraft:silverfish",
+    "minecraft:endermite",
+    "minecraft:enderman",
+    "minecraft:guardian",
+    "minecraft:elder_guardian",
+    "minecraft:blaze",
+    "minecraft:ghast",
+    "minecraft:shulker",
+    "minecraft:breeze",
+    "minecraft:vex",
+    "minecraft:piglin_brute",
+    "minecraft:piglin",
+    "minecraft:hoglin",
+    "minecraft:zoglin",
+    "minecraft:warden",
+    "minecraft:ender_dragon"
+  ]
+}

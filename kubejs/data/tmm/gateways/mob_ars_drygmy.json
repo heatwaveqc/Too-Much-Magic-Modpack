@@ -1,0 +1,63 @@
+{
+  "type": "gateways:normal",
+  "size": "small",
+  "color": "#5AA6D8",
+  "rules": {
+    "spawn_range": 8,
+    "leash_range": 32,
+    "spacing": 48,
+    "remove_mobs_on_failure": true,
+    "requires_nearby_player": true
+  },
+  "waves": [
+    {
+      "entities": [
+        {
+          "entity": "ars_nouveau:wilden_hunter",
+          "count": 1,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 100
+    },
+    {
+      "entities": [
+        {
+          "entity": "ars_nouveau:wilden_hunter",
+          "count": 2,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 160
+    },
+    {
+      "entities": [
+        {
+          "entity": "ars_nouveau:wilden_hunter",
+          "count": 3,
+          "finalize_spawn": true
+        }
+      ],
+      "max_wave_time": 1000,
+      "setup_time": 160
+    }
+  ],
+  "rewards": [
+    {
+      "type": "gateways:summon",
+      "entity": {
+        "entity": "ars_nouveau:drygmy",
+        "count": 1,
+        "finalize_spawn": true
+      }
+    },
+    {
+      "type": "gateways:experience",
+      "experience": 40,
+      "orb_size": 20
+    }
+  ],
+  "failures": []
+}

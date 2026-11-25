@@ -1,0 +1,12 @@
+{
+  "comment": "Owner-approved all 120 registered Pastel heads at native zombie-head parity, including previously held nine special heads. Preserve native useful vanilla skulls and acquisition mechanics; verify effective progression/availability.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "tag": "tmm:emc/ordinary/mob_heads",
+        "emc_value": 256
+      }
+    ]
+  }
+}

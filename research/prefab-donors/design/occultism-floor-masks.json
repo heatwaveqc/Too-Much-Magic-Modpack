@@ -1,0 +1,209 @@
+{
+  "status": "EXACT_RELEASE_SOURCE_VERIFIED_NOT_RUNTIME_TESTED",
+  "source": "https://github.com/klikli-dev/occultism/tree/release/v1.21.1-1.227.0/src/generated/resources/data/occultism/modonomicon/multiblocks/",
+  "releaseCommitShort": "990303e",
+  "legend": {
+    "W": "occultism:otherstone",
+    "K": "occultism:otherrock",
+    "B": "minecraft:chiseled_polished_blackstone",
+    ".": "minecraft:nether_bricks"
+  },
+  "coordinateConvention": "centered X/Z; rows in source order; project layer 0 onto floor below actual ritual position; ignore display-only layer 1. Main families union all listed variants, zero classification conflicts. Verify coordinates against actual pinned JAR before runtime.",
+  "masks": {
+    "craft": {
+      "variants": [
+        "craft_foliot",
+        "craft_djinni",
+        "craft_afrit",
+        "craft_marid"
+      ],
+      "rows": [
+        ".WWWWWWWWWWWWWWWWW.",
+        "WW.......K.......WW",
+        "W..WWWWWWWWWWWWW..W",
+        "W.WW....K.K....WW.W",
+        "W.W..WWWWWWWWW..W.W",
+        "W.W.WW.K...K.WW.W.W",
+        "W.W.W..WWWWW..W.W.W",
+        "W.W.WKWWK.KWWKW.W.W",
+        "W.WKW.WKW.WKW.WKW.W",
+        "WKW.W.W..B..W.W.WKW",
+        "W.WKW.WKW.WKW.WKW.W",
+        "W.W.WKWWK.KWWKW.W.W",
+        "W.W.W..WWWWW..W.W.W",
+        "W.W.WW.K...K.WW.W.W",
+        "W.W..WWWWWWWWW..W.W",
+        "W.WW....K.K....WW.W",
+        "W..WWWWWWWWWWWWW..W",
+        "WW.......K.......WW",
+        ".WWWWWWWWWWWWWWWWW."
+      ],
+      "width": 19,
+      "counts": {
+        "W": 196,
+        "K": 28,
+        "B": 1,
+        ".": 136
+      }
+    },
+    "summon": {
+      "variants": [
+        "summon_foliot",
+        "summon_djinni",
+        "summon_afrit",
+        "summon_marid",
+        "summon_unbound_afrit",
+        "summon_unbound_marid"
+      ],
+      "rows": [
+        "......WWWWWWW......",
+        "....WW..WKW..WW....",
+        "...W...WWWWW...W...",
+        "..WK.WWW.K.WWW.KW..",
+        ".W..WW.WWWWW.WW..W.",
+        ".W.WWKW.WKW.WKWW.W.",
+        "W..W.WK.WWW.KW.W..W",
+        "W.WWW..W.W.W..WWW.W",
+        "WWW.WWW.KWK.WWW.WWW",
+        "WKWKWKWWWBWWWKWKWKW",
+        "WWW.WWW.KWK.WWW.WWW",
+        "W.WWW..W.W.W..WWW.W",
+        "W..W.WK.WWW.KW.W..W",
+        ".W.WWKW.WKW.WKWW.W.",
+        ".W..WW.WWWWW.WW..W.",
+        "..WK.WWW.K.WWW.KW..",
+        "...W...WWWWW...W...",
+        "....WW..WKW..WW....",
+        "......WWWWWWW......"
+      ],
+      "width": 19,
+      "counts": {
+        "W": 176,
+        "K": 28,
+        "B": 1,
+        ".": 156
+      }
+    },
+    "possess": {
+      "variants": [
+        "possess_foliot",
+        "possess_djinni",
+        "possess_afrit",
+        "possess_marid",
+        "possess_unbound_afrit"
+      ],
+      "rows": [
+        ".........W.........",
+        "........WKW........",
+        ".......W.W.W.......",
+        "......W.WKW.W......",
+        ".....W.W.W.W.W.....",
+        "....WKW.WKW.WKW....",
+        "...W.WKW.W.WKW.W...",
+        "..W.W.WKWKWKW.W.W..",
+        ".W.W.W.W.W.W.W.W.W.",
+        "WKWKWKWKWBWKWKWKWKW",
+        ".W.W.W.W.W.W.W.W.W.",
+        "..W.W.WKWKWKW.W.W..",
+        "...W.WKW.W.WKW.W...",
+        "....WKW.WKW.WKW....",
+        ".....W.W.W.W.W.....",
+        "......W.WKW.W......",
+        ".......W.W.W.......",
+        "........WKW........",
+        ".........W........."
+      ],
+      "width": 19,
+      "counts": {
+        "W": 100,
+        "K": 28,
+        "B": 1,
+        ".": 232
+      }
+    },
+    "contact_wild_spirit": {
+      "variants": [
+        "contact_wild_spirit"
+      ],
+      "sourceBlob": "893e0dc290da1bd609f18e89558f3c5169f4734e",
+      "rows": [
+        ".....W.....",
+        ".W.WW.WW.W.",
+        "...WW.WW...",
+        ".WWW.W.WWW.",
+        ".WW.....WW.",
+        "W..W.B.W..W",
+        ".WW.....WW.",
+        ".WWW.W.WWW.",
+        "...WW.WW...",
+        ".W.WW.WW.W.",
+        ".....W....."
+      ],
+      "width": 11,
+      "counts": {
+        "W": 48,
+        "K": 0,
+        "B": 1,
+        ".": 72
+      }
+    },
+    "contact_eldritch_spirit": {
+      "variants": [
+        "contact_eldritch_spirit"
+      ],
+      "sourceBlob": "da9754d674d97e3a1ceeee8bca2dcf8e6264e2ed",
+      "rows": [
+        ".........W.........",
+        "........WKW........",
+        "........WWW........",
+        "...WW..WWWWW..WW...",
+        "...WKWWWWWWWWWKW...",
+        "....WWWWW.WWWWW....",
+        "....WW.WW.WW.WW....",
+        "...WWWWW.W.WWWWW...",
+        ".WWWWWW.....WWWWWW.",
+        "WKWWW..W.B.W..WWWKW",
+        ".WWWWWW.....WWWWWW.",
+        "...WWWWW.W.WWWWW...",
+        "....WW.WW.WW.WW....",
+        "....WWWWW.WWWWW....",
+        "...WKWWWWWWWWWKW...",
+        "...WW..WWWWW..WW...",
+        "........WWW........",
+        "........WKW........",
+        ".........W........."
+      ],
+      "width": 19,
+      "counts": {
+        "W": 144,
+        "K": 8,
+        "B": 1,
+        ".": 208
+      }
+    },
+    "resurrect_spirit": {
+      "variants": [
+        "resurrect_spirit"
+      ],
+      "sourceBlob": "46910723c11c50957c251147e31b41a6fe106a24",
+      "rows": [
+        "....W....",
+        ".W.....W.",
+        ".........",
+        "...WWW...",
+        "W..WBW..W",
+        "...WWW...",
+        ".........",
+        ".W.....W.",
+        "....W...."
+      ],
+      "width": 9,
+      "counts": {
+        "W": 16,
+        "K": 0,
+        "B": 1,
+        ".": 64
+      }
+    }
+  }
+}

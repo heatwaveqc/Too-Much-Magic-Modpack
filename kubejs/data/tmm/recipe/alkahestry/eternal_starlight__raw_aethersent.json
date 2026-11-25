@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "reliquary:alkahestry_enabled"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "eternal_starlight:raw_aethersent"
+    }
+  ],
+  "type": "reliquary:alkahestry_crafting",
+  "charge": 4914,
+  "ingredient": {
+    "type": "neoforge:components",
+    "items": [
+      "eternal_starlight:raw_aethersent"
+    ],
+    "components": {},
+    "strict": true
+  },
+  "result_count": 2
+}

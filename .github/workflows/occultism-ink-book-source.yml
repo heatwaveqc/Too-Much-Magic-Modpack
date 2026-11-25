@@ -1,0 +1,31 @@
+name: Occultism spirit-ink ritual/book source contract (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/occultism_ink_*.json'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_ink_rituals.json'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'tests/test_occultism_ink_rituals_book.py'
+      - '.github/workflows/occultism-ink-book-source.yml'
+  push:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/occultism_ink_*.json'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_ink_rituals.json'
+      - 'tests/test_occultism_ink_rituals_book.py'
+      - '.github/workflows/occultism-ink-book-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check recipes, book graph, localization and exact Packwiz digest chain
+        run: python -m unittest discover -s tests -p 'test_occultism_ink_rituals_book.py' -v

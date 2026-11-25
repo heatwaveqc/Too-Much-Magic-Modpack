@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tmm_economy:block/emc_catalyst"
+    }
+  }
+}

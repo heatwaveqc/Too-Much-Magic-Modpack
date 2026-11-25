@@ -1,0 +1,22 @@
+{
+  "comment": "Vanilla raw XP 5 EMC per point; bottle average 7 XP; Ars gems 3/12 points.",
+  "values": {
+    "before": [
+      {
+        "type": "projecte:item",
+        "id": "minecraft:experience_bottle",
+        "emc_value": 35
+      },
+      {
+        "type": "projecte:item",
+        "id": "ars_nouveau:experience_gem",
+        "emc_value": 15
+      },
+      {
+        "type": "projecte:item",
+        "id": "ars_nouveau:greater_experience_gem",
+        "emc_value": 60
+      }
+    ]
+  }
+}

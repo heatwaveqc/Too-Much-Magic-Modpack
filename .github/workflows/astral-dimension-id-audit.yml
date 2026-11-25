@@ -1,0 +1,19 @@
+name: Astral dimension pinned ID audit (static only)
+on:
+  pull_request:
+    paths:
+      - 'config/astralsorcery-client.toml'
+      - 'scripts/audit_as_dimension_ids.py'
+      - '.github/workflows/astral-dimension-id-audit.yml'
+permissions:
+  contents: read
+jobs:
+  dimension-ids:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/audit_as_dimension_ids.py
