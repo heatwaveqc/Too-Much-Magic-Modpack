@@ -46,6 +46,24 @@ class HarvestGenerationTest {
         assertThrows(IllegalArgumentException.class,()->expand(JSON.replace("test:stone\"]","test:obsidian\"]"),survey()));
         assertThrows(IllegalArgumentException.class,()->expand(JSON.replace("\"test:wood\":[\"test:stone\"]","\"test:missing\":[\"test:stone\"]"),survey()));
     }
+    @Test void generatedObjectivesUseTheRealTrainingDeltaAndOptInLane(){
+        var raw=JsonParser.parseString(JSON).getAsJsonObject();
+        raw.add("challenge_hud",JsonParser.parseString("[{\"id\":\"harvest\",\"title\":\"Harvesting\"}]"));
+        raw.getAsJsonArray("harvest_generation").get(0).getAsJsonObject().addProperty("hud_group","harvest");
+        var result=HarvestGeneration.expand(PATH,raw,(i,b)->survey());
+        var path=TestPaths.read(PATH,result.path());
+        var lanes=io.github.heatwaveqc.tyr.progression.data.ChallengeHudSpec.parse(result.path(),path);
+        var track=io.github.heatwaveqc.tyr.progression.state.Track.empty().joinedAtRankOne(0);
+        assertTrue(io.github.heatwaveqc.tyr.progression.data.ChallengeHudSpec.select(path,track,lanes).isEmpty());
+        track=track.complete("test:wood_speed");
+        var rows=io.github.heatwaveqc.tyr.progression.data.ChallengeHudSpec.select(path,track,lanes);
+        assertEquals(1,rows.size());
+        assertEquals(5,rows.getFirst().total());
+        assertTrue(rows.getFirst().objective().text().contains("test stone"));
+        track=track.complete(HarvestGeneration.receipt(PATH,FAMILY,"test:gold"));
+        var next=io.github.heatwaveqc.tyr.progression.data.ChallengeHudSpec.select(path,track,lanes);
+        assertFalse(next.getFirst().objective().text().contains("test wood:"));
+    }
     @Test void stableIdentityDoesNotDependOnRegistryOrdering(){
         var a=HarvestGeneration.receipt(PATH,FAMILY,"test:wood");
         assertEquals(a,HarvestGeneration.receipt(PATH,FAMILY,"test:wood"));
