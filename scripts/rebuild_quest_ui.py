@@ -13,6 +13,14 @@ import json
 import re
 from pathlib import Path
 
+# Direct CLI and importlib-based test loading both use the same serializer.
+try:
+    from scripts.quest_text import dump_quest_text_list, quote_quest_text, validate_quest_locale
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from quest_text import dump_quest_text_list, quote_quest_text, validate_quest_locale
+
 ROOT = Path(__file__).resolve().parents[1]
 QUESTDIR = ROOT / "config/ftbquests/quests"
 SPEC = json.loads((ROOT / "manifest/quest_chapters.json").read_text(encoding="utf-8"))
@@ -27,7 +35,7 @@ ROOT_SUBTITLE = re.compile(r'\n\tsubtitle: "(?:\\.|[^"\\])*"')
 
 
 def q(s: str) -> str:
-    return json.dumps(s, ensure_ascii=False)
+    return quote_quest_text(s)
 
 
 def layout() -> dict[str, dict[str, tuple[int, int]]]:
@@ -341,7 +349,7 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
         raise ValueError(f"Missing FTB quest position for {qid}")
     if title in {"Chapter Overview", "Welcome to Too Much Magic", "The Rest of the Pack Is Yours"} and "\n\t\t\tsize:" not in block:
         block = block.replace("\n\t\t\ttasks:", "\n\t\t\tsize: 1.5d\n\t\t\ttasks:", 1)
-    loc = f"\tquest.{qid}.title: {q(title)}\n\tquest.{qid}.quest_desc: {json.dumps(description, ensure_ascii=False)}"
+    loc = f"\tquest.{qid}.title: {q(title)}\n\tquest.{qid}.quest_desc: {dump_quest_text_list(description)}"
     return block, loc, xy, ledger is not None
 
 
@@ -427,7 +435,7 @@ def main() -> None:
         chapter_translations.append(f'\tchapter.{chapter["chapter_id"]}.title: {q(chapter["name"])}')
         subtitle = SUBTITLE.get(chapter["name"], f"Explore {chapter['name']}; more quests are being authored.")
         chapter_translations.append(
-            f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {json.dumps([subtitle], ensure_ascii=False)}')
+            f'\tchapter.{chapter["chapter_id"]}.chapter_subtitle: {dump_quest_text_list([subtitle])}')
     for group in SPEC["groups"]:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
     # Custom task titles must be emitted into the FTB localization table.
@@ -439,6 +447,8 @@ def main() -> None:
         *[f'\treward.{entry["id"]}.title: {q(entry["title"])}' for entry in housing["choices"]],
     ]
     changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations + task_translations + housing_translations) + "\n}\n"
+
+    validate_quest_locale(changes[QUESTDIR / "lang/en_us.snbt"])
 
     for path, content in changes.items():
         path.parent.mkdir(parents=True, exist_ok=True)

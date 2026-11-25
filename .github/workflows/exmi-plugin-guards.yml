@@ -1,0 +1,22 @@
+name: ExMI plugin guard contract (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'config/exmi/**'
+      - 'mods/extra-mod-integrations.pw.toml'
+      - 'mods/emisemble.pw.toml'
+      - 'mods/emi.pw.toml'
+      - 'tests/test_exmi_plugin_guards.py'
+      - '.github/workflows/exmi-plugin-guards.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p 'test_exmi_plugin_guards.py' -v

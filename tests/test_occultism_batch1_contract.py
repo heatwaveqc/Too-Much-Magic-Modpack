@@ -57,7 +57,7 @@ class Batch1Contract(unittest.TestCase):
         self.assertNotIn("entity_to_sacrifice", life)
         self.assertEqual(sorted(i["item"] for i in life["ingredients"]), sorted(
             ["occultism:iesnium_ingot"]*2 + ["malum:soul_stained_steel_ingot"]*4 +
-            ["neovitae:hellforged_ingot"]*2 + ["goety:cursed_ingot"]*2 +
+            ["neovitae:ingot_hellforged"]*2 + ["goety:cursed_ingot"]*2 +
             ["occultism:soul_gem", "minecraft:echo_shard"]))
         for recipe in (miner, life):
             self.assertEqual(recipe["pentacle_id"], "occultism:contact_eldritch_spirit")
@@ -65,6 +65,21 @@ class Batch1Contract(unittest.TestCase):
         book = load(ENTRIES / "crafting_rituals/tmm_perpetual_life.json")
         self.assertEqual(book["condition"]["entry_id"], "pentacles/contact_eldritch_spirit")
         self.assertIn("tmm:ritual/perpetual_life", {p.get("recipe_id_1") for p in book["pages"]})
+    def test_perpetual_life_neo_vitae_provider_id(self):
+        # Independent provider declaration inventory, upstream NVItems.java
+        # @2744123bb6e4f72c602178b23384be41956eef23 (HELLFORGED_INGOT).
+        # Thanksgiving QA #708 also verified the installed native recipe output.
+        inventory = (ROOT / "docs/mod-capabilities/inventories/neovitae-registries.md").read_text(encoding="utf-8")
+        provider_ids = [row.split("|")[2].strip().strip("`")
+                        for row in inventory.splitlines()
+                        if row.startswith("| `HELLFORGED_INGOT` |")]
+        self.assertEqual(provider_ids, ["neovitae:ingot_hellforged"])
+        recipe = load(DATA / "tmm/recipe/ritual/perpetual_life.json")
+        self.assertEqual([i["item"] for i in recipe["ingredients"]
+                          if i["item"].startswith("neovitae:")], provider_ids * 2)
+        self.assertEqual(len(recipe["ingredients"]), 12)
+        self.assertEqual(recipe["ritual_dummy"], {"id": "minecraft:spawner", "count": 1})
+
     def test_localized_pages(self):
         lang = load(ROOT / "kubejs/assets/tmm/lang/en_us.json")
         for name in ("getting_started/books_of_binding", "getting_started/spirit_fire",
