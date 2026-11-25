@@ -45,7 +45,8 @@ public final class ApotheosisCharmPotionBridge {
         return false;
     }
 
-    private static boolean permits(PotionContents contents) {
+    /** Shared by actual crafting and the native registered-potion discovery predicate. */
+    public static boolean permits(PotionContents contents) {
         Iterator<MobEffectInstance> effects = contents.getAllEffects().iterator();
         if (!effects.hasNext()) return false;
         MobEffectInstance effect = effects.next();

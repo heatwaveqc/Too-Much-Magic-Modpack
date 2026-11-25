@@ -41,11 +41,15 @@ def main() -> None:
         require(recipe, name)
 
     charm = subprocess.run(
-        ["javap", "-classpath", str(args.apotheosis), "-p", "-c",
+        ["javap", "-classpath", str(args.apotheosis), "-p", "-c", "-s",
          "dev.shadowsoffire.apotheosis.item.PotionCharmItem"],
         text=True, capture_output=True, check=True, timeout=25,
     ).stdout
     for name in ("getAllEffects", "isInstantenous", "setNoRepair", "POTION_CHARM_BLACKLIST"):
+        require(charm, name)
+
+    for name in ("public static boolean isValidPotion(net.minecraft.core.Holder<net.minecraft.world.item.alchemy.Potion>)",
+                 "(Lnet/minecraft/core/Holder;)Z"):
         require(charm, name)
 
     base = Path(__file__).resolve().parents[1]
@@ -54,6 +58,13 @@ def main() -> None:
     config = json.loads((base / "src/main/resources/tmm_economy.mixins.json").read_text())
     if config["mixins"].count("ApotheosisPotionCharmRecipeMixin") != 1:
         raise SystemExit("FAIL Apotheosis mixin not registered exactly once")
+    discovery = (base / "src/main/java/io/github/heatwaveqc/tmm/economy/mixin/ApotheosisPotionCharmEligibilityMixin.java").read_text()
+    if config["mixins"].count("ApotheosisPotionCharmEligibilityMixin") != 1:
+        raise SystemExit("FAIL shared viewer eligibility mixin not registered exactly once")
+    for name in ("isValidPotion(Lnet/minecraft/core/Holder;)Z", "potion.isBound()",
+                 "ApotheosisCharmPotionBridge.permits(new PotionContents(potion))"):
+        require(discovery, name)
+    require(bridge, "public static boolean permits(PotionContents contents)")
     for name in ("findPotion(", "assemble(", "charm.set(DataComponents.POTION_CONTENTS, contents)", "PotionContents.EMPTY"):
         require(mixin, name)
     for name in ("Items.POTION", "getComponentsPatch", "getAllEffects", "isInstantenous",
