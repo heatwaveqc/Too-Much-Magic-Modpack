@@ -45,6 +45,8 @@ jobs:
           python3 -m unittest discover -s compat/economy/tools -p 'test_verify_converter_contract.py' -v
       - name: Fetch exact hash-locked compile classpath
         run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Audit exact pinned native portable Iesnium Anvil ABI (Type A only)
+        run: python3 compat/economy/tools/audit_portable_anvil_abi.py "$RUNNER_TEMP/economy-compile-mods"
       - name: Audit native-first portable storage coverage and exact target ABI (Type A only)
         run: |
           python3 compat/economy/tools/audit_portable_storage.py
