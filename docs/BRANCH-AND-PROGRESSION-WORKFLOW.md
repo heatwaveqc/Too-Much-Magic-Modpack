@@ -2,6 +2,16 @@
 
 **Owner policy — 2026-11-16.** Applies to automated agents and human contributions. Read with [AGENTS.md](../AGENTS.md), [build channels](BUILD-CHANNELS-AND-TESTING.md), and the [QA level vocabulary](qa/TEST-LEVELS-AND-TERMINOLOGY.md). This policy governs future changes; it does **not** assert that all existing legacy code has already been converted.
 
+## General configuration-first rule (owner approval, 2026-11-23)
+
+**If a rule determines what a player can earn, buy, unlock, retain, combine, or lose, it should generally be configurable. If a rule determines whether an action is authentic, safe, or correctly synchronized, it belongs in the engine.**
+
+Implement reusable, validated, server-owned gameplay mechanisms once. Expose balances, currencies, skill-purchase sources, caps, Path coexistence/loss policies, achievements, prerequisites, XP awards and growth-modifier composition through data configuration where practical. Do not add special-case code for Monk, Hunter, or any single Path when a generic condition, effect, grant, transition, or ledger rule can represent it. This rule applies to all Progression XP systems and Paths, not just MXP.
+
+Keep transaction validation, server event provenance, source-commit verification, replay prevention, cancellation/protection checks, safe resource bounds, persistence, runtime integrations and client reconciliation implemented and enforced in code. Data files cannot invoke arbitrary Java or grant unverified awards. Treat external provider adapters as code-owned with data-defined bindings where feasible.
+
+The historical design, current implementation crosswalk and hard-code audit are tracked in [generic XP and multi-currency design](../compat/progression/design/CONFIGURABLE-XP-SYSTEMS-AND-MULTI-CURRENCY-SKILLS-2026-11-23.md) (documentation PR #570; current runtime work #475/#654). Old `unified`/`hybrid`/`separate` labels are representable data presets, **not three separate hard-coded economy pipelines**. TMM's default retains one shared MXP ledger and irreversible lost-Path purchase/XP forfeiture; the generic engine must support other configured economies.
+
 ## Architecture boundary: one executable Progression engine
 
 **`compat/progression` / `tyr_progression` owns ALL executable Progression behavior.** The engine owns Java, public and internal APIs, event subscribers, mixins, networking, effect handlers, commands, registration, persistence, integrations and reusable validation/tests. Prefer generic, data-driven primitives and registries rather than hard-coded Monk/Hunter/Gilded switches. A path may refer to a registered effect or event in config; the engine evaluates it authoritatively.

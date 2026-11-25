@@ -18,6 +18,8 @@
     "OwnedNativeMiningMixin",
     "MutationEffectQueryMixin",
     "MutationRegenerationMixin",
+    "CompanionMobGoalsAccess",
+    "CompanionPatrolAccess",
     "ElixirFoodDataMixin"
   ],
   "injectors": {

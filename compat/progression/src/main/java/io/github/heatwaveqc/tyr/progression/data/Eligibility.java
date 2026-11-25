@@ -71,6 +71,18 @@ public final class Eligibility {
                     return (wallet==null?0:wallet.rank())>=minimum?Condition.Result.PASS:Condition.Result.FAIL;
                 };
             }
+            case "path_resource" -> {
+                String id=ResourceLocation.parse(node.get("id").getAsString()).toString();
+                int value=node.get("value").getAsBigDecimal().intValueExact();
+                if (!node.get("value").getAsJsonPrimitive().isNumber() || value<0 || value>1000000)
+                    throw new IllegalArgumentException("Invalid Path resource threshold");
+                var comparison=Comparison.fromKey(node.get("comparison").getAsString());
+                yield player -> {
+                    var current=io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.value(player,id);
+                    return current.isEmpty()?Condition.Result.UNAVAILABLE:
+                        (comparison.test(current.getAsInt(),value)?Condition.Result.PASS:Condition.Result.FAIL);
+                };
+            }
             case "health_fraction","food_level" -> io.github.heatwaveqc.tyr.progression.foundation.ContextConditions.meter(type,
                 Comparison.fromKey(node.get("comparison").getAsString()),node.get("value").getAsDouble());
             case "time_window" -> io.github.heatwaveqc.tyr.progression.foundation.ContextConditions.time(node.get("start").getAsInt(),node.get("end").getAsInt());
