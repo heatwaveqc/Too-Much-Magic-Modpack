@@ -37,7 +37,9 @@
     "EvilCraftVengeanceSpiritMixin",
     "EvilCraftRandomSpiritMixin",
     "EvilCraftSpiritFurnaceMixin",
-    "EvilCraftSpiritReanimatorMixin"
+    "EvilCraftSpiritReanimatorMixin",
+    "ReliquaryCaptureMixin",
+    "ReliquaryFragmentEggMixin"
   ],
   "injectors": {
     "defaultRequire": 1
