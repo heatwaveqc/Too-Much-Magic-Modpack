@@ -23,7 +23,6 @@ function harness(enabled = false) {
     'com.google.common.hash.Hashing': {sha256: ()=>({hashUnencodedChars: s=>({toString: ()=>crypto.createHash('sha256').update(Buffer.from(s,'utf16le')).digest('hex')})})},
     'java.lang.String': JString,
     'java.security.MessageDigest': {getInstance: ()=>({digest: bytes=>crypto.createHash('sha256').update(bytes).digest()})},
-    'java.lang.System': {currentTimeMillis: ()=>++clock},
     'java.time.Instant': {now: ()=>'2026-11-18T20:00:00Z'},
     'net.minecraft.world.level.storage.LevelResource': {ROOT: 'root'},
     'net.minecraft.network.chat.Component': component,
@@ -37,11 +36,13 @@ function harness(enabled = false) {
     experienceLevel: 2, experienceProgress: 0.5, totalExperience: 9,
     getInventory: ()=>({getContainerSize: ()=>0})
   };
-  const server = {getWorldPath: ()=>'/private/test-world', overworld: ()=>({getGameTime: ()=>clock}), isSingleplayer: ()=>true};
+  const worldData = {gameTime: clock};
+  const server = {getWorldPath: ()=>'/private/test-world', overworld: ()=>({}), getWorldData: ()=>({overworldData: ()=>worldData}), isSingleplayer: ()=>true};
   const source = {hasPermission: ()=>true, getPlayerOrException: ()=>player, getServer: ()=>server,
     sendSuccess: ()=>{}, sendFailure: x=>errors.push(x)};
   const context = {getSource: ()=>source};
-  const sandbox = {Java: {loadClass: name=>{if (!(name in classes)) throw Error('Unavailable adapter: '+name);return classes[name];}},
+  const classLoads = [];
+  const sandbox = {Date: {now: ()=>1000}, Java: {loadClass: name=>{classLoads.push(name);if (!(name in classes)) throw Error('Unavailable adapter: '+name);return classes[name];}},
     JsonIO: {read: p=>files.has(p) ? JSON.parse(JSON.stringify(files.get(p))) : null,
       write: (p, data)=>{files.set(p, JSON.parse(JSON.stringify(data)));writes.push(p);}},
     ServerEvents: {commandRegistry: cb=>handlers.commands=cb, tick: cb=>handlers.tick=cb},
@@ -49,7 +50,7 @@ function harness(enabled = false) {
     console: {info: ()=>{}, error: ()=>{}}};
   vm.createContext(sandbox);vm.runInContext(serverText, sandbox);
   handlers.commands({register: b=>registered.push(b)});
-  return {sandbox, files, writes, handlers, registered, errors, source, context, classes, player, server};
+  return {sandbox, files, writes, handlers, registered, errors, source, context, classes, player, server, worldData, classLoads};
 }
 
 test('suite is opt-in and registers eleven operator-gated commands', ()=>{
@@ -182,4 +183,59 @@ test('client ignores stale requests; exports once per new request without changi
 });
 test('no destructive command execution or gameplay mutator calls in QA server source', ()=>{
   assert(!/runCommand|performPrefixedCommand|\.setData\(|\.setBlock\(|\.setHealth\(|\.awardServerXp\(|\.graduate\(|\.buy\(|\.getOffers\(/.test(serverText));
+});
+
+test('all three report adapters work without System or ServerLevel.getGameTime', ()=>{
+  const h=harness(true), q=h.sandbox.TMMQA;
+  h.classes['net.minecraft.core.registries.Registries']={STRUCTURE:'structure'};
+  h.server.getCommands=()=>({getDispatcher:()=>({getRoot:()=>({getChildren:()=>[{getName:()=>'help'}]})})});
+  h.server.registryAccess=()=>({registryOrThrow:()=>({keySet:()=>['minecraft:village']})});
+  h.server.levelKeys=()=>[{location:()=>'minecraft:overworld'}];
+  h.server.getPackRepository=()=>({getSelectedIds:()=>['vanilla']});
+  h.classes['net.minecraft.resources.ResourceLocation']={parse:s=>s};
+  h.server.getRecipeManager=()=>({byKey:()=>({isPresent:()=>false})});
+  assert.equal(q.execute('baseline',h.context,''),1);
+  assert.equal(q.execute('recipes',h.context,''),1);
+  assert.equal(q.execute('player',h.context,'before first'),1);
+  assert(h.writes.some(p=>p.includes('/baseline-')));
+  assert(h.writes.some(p=>p.includes('/recipes-')));
+  assert(h.writes.some(p=>p.includes('/player-first-before')));
+  assert.equal(h.files.get(h.writes[0]).tick,1000);
+  assert(!h.classLoads.includes('java.lang.System'));
+  // Reload at same wall clock must not overwrite the prior report.
+  const first=h.writes[0];h.worldData.gameTime=1234;
+  vm.runInContext(serverText,h.sandbox);
+  assert.equal(h.sandbox.TMMQA.execute('baseline',h.context,''),1);
+  assert.notEqual(h.writes.at(-1),first);
+  assert.equal(h.files.get(first).tick,1000);
+  assert.equal(h.files.get(h.writes.at(-1)).tick,1234);
+});
+test('missing or invalid world time fails closed without report or fabricated tick', ()=>{
+  const h=harness(true);
+  for (const value of [undefined,null,NaN,-1,1.5]) {
+    h.worldData.gameTime=value;
+    assert.equal(h.sandbox.TMMQA.execute('help',h.context,''),0);
+  }
+  assert.equal(h.writes.length,0);
+});
+test('monitor observes native object identity, rejects replacement and never exports references', ()=>{
+  const h=harness(true), q=h.sandbox.TMMQA;
+  let entity={privateNativeMarker:'must-not-export',equals(other){return this===other;},getMana:()=>100};
+  const pos={distSqr:()=>0};
+  h.classes['net.minecraft.core.BlockPos']=class {distSqr(){return 0;}};
+  h.classes['net.minecraft.core.registries.BuiltInRegistries']={BLOCK:{getKey:()=> 'botania:thermalily'}};
+  h.classes['net.minecraft.core.registries.Registries']={DIMENSION:'dimension'};
+  h.classes['net.minecraft.resources.ResourceLocation']={parse:s=>s};
+  h.classes['net.minecraft.resources.ResourceKey']={create:(_r,id)=>id};
+  const level={hasChunkAt:()=>true,getBlockEntity:()=>entity,getBlockState:()=>({getBlock:()=>({})}),dimension:()=>({location:()=> 'minecraft:overworld'})};
+  h.player.level=()=>level; h.player.blockPosition=()=>pos;h.server.getLevel=()=>level;
+  assert.equal(q.execute('botania',h.context,'start 0 0 0 10'),1);
+  h.worldData.gameTime++;q.tick(h.server);
+  entity={...entity};h.worldData.gameTime++;q.tick(h.server);
+  assert.equal(q.execute('botania',h.context,'stop'),1);
+  const report=h.files.get(h.writes.at(-1));
+  assert.equal(report.payload.summary.status,'INTERRUPTED');
+  assert.equal(report.payload.summary.sampleCount,2);
+  assert(!JSON.stringify(report).includes('must-not-export'));
+  assert(!h.classLoads.includes('java.lang.System'));
 });
