@@ -334,7 +334,7 @@ hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
 [[files]]
 file = "defaultconfigs/enigmaticlegacyplus-server.toml"
-hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
+hash = "81e3c8f6fda1d813608fdf6d0285a790eb6e7227ff047bd05a772224fded3eef"
 
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
