@@ -26,12 +26,14 @@ public final class StunningStrike {
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST,StunningStrike::interrupt);
     }
     private static boolean immune(Mob mob){
-        return !(mob instanceof Monster)||mob instanceof WitherBoss||mob instanceof EnderDragon
-            ||mob instanceof TamableAnimal animal&&animal.isTame()
+        return !(mob instanceof Monster)||boss(mob)||mob instanceof TamableAnimal animal&&animal.isTame()
+            ||Selectors.entity("#tyr_progression:stun_immune",mob);
+    }
+    static boolean boss(Mob mob){
+        return mob instanceof WitherBoss||mob instanceof EnderDragon
             ||Selectors.entity("#tyr_progression:bosses",mob)
             ||Selectors.entity("#tyr_progression:minibosses",mob)
             ||Selectors.entity("#tyr_progression:boss_generic_death_excluded",mob)
-            ||Selectors.entity("#tyr_progression:stun_immune",mob)
             ||mob.getPersistentData().getBoolean("apoth.boss")||mob.getPersistentData().getBoolean("apoth.miniboss");
     }
     private static long now(Mob mob){return ((ServerLevel)mob.level()).getServer().overworld().getGameTime();}

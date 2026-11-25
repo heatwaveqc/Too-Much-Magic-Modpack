@@ -242,6 +242,15 @@ public final class PathJson {
                 }
                 if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
                     throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
+                if(type.equals("feign_death")){
+                    var activation=ActivationSpec.read(j);
+                    if(activation==null||!activation.mode().equals("toggle")||!activation.exclusiveGroup().isEmpty()
+                        ||activation.jawrBloodCost()!=0||activation.jawrHealOnActivation()!=0
+                        ||"true".equals(params.get("passive"))||params.containsKey("trial_milestone"))
+                        throw new IllegalArgumentException("Feign Death requires a standalone owned toggle: "+sid);
+                }
+                if(type.equals("projectile_return")&&(j.has("activation")||params.containsKey("trial_milestone")))
+                    throw new IllegalArgumentException("Projectile return is automatic: "+sid);
                 if(type.equals("wall_climbing")){
                     var activation=ActivationSpec.read(j);
                     if(activation==null||!activation.mode().equals("toggle")

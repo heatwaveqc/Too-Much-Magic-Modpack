@@ -38,7 +38,7 @@ public final class AttackIdleDefense {
             &&!NewbieMode.isNewbie(p)&&!(p instanceof net.neoforged.neoforge.common.util.FakePlayer);
     }
     private static long now(ServerPlayer p){return p.getServer().overworld().getGameTime();}
-    public static void offensiveAction(ServerPlayer p){if(actor(p))LAST.put(p,now(p));}
+    public static void offensiveAction(ServerPlayer p){if(actor(p)){LAST.put(p,now(p));FeignDeath.offensiveAction(p);}}
     private static void attack(AttackEntityEvent e){if(e.getEntity() instanceof ServerPlayer p)offensiveAction(p);}
     private static void damage(LivingIncomingDamageEvent e){
         if(e.getSource().getEntity() instanceof ServerPlayer p&&e.getEntity()!=p&&e.getAmount()>0)offensiveAction(p);

@@ -39,7 +39,9 @@ public final class SkillActivation {
     public static boolean canRequest(ServerPlayer p,String path,String skill){
         var spec=PathRegistry.activation(path,skill);
         if(spec==null||!owned(p,path,skill)||spec.jawrHealOnActivation()>0&&p.getHealth()>=p.getMaxHealth())return false;
-        var before=get(p,path,skill);var next=before.request(spec,now(p));
+        var before=get(p,path,skill);
+        if(!before.active(now(p))&&hasEffect(path,skill,"feign_death")&&!FeignDeath.validPose(p))return false;
+        var next=before.request(spec,now(p));
         return !next.equals(before)&&(spec.jawrBloodCost()==0||before.active(now(p))||
             io.github.heatwaveqc.tyr.progression.runtime.forms.NativeBloodCost.affordable(p,spec.jawrBloodCost()));
     }
@@ -67,6 +69,7 @@ public final class SkillActivation {
             if(!ProgressionApi.setMode(p,key(path,skill),next.encode()))return false;
             if(spec.jawrHealOnActivation()>0&&!before.active(at)&&p.isAlive())
                 p.heal((float)Math.min(spec.jawrHealOnActivation(),Math.max(0,p.getMaxHealth()-p.getHealth())));
+            if(hasEffect(path,skill,"feign_death"))FeignDeath.activationChanged(p);
             return true;
         }finally{REQUESTING.remove();}
     }
@@ -90,6 +93,17 @@ public final class SkillActivation {
     public static void stopPath(ServerPlayer p,String path){
         var tree=PathRegistry.get(path);if(tree==null)return;
         for(var skill:tree.skills())if(PathRegistry.activation(path,skill.id())!=null)stop(p,path,skill.id());
+    }
+    static boolean hasEffect(String path,String skill,String type){
+        var def=PathRegistry.get(path);
+        return def!=null&&def.skills().stream().anyMatch(s->s.id().equals(skill)
+            &&s.effects().stream().anyMatch(e->e.type().equals(type)));
+    }
+    static void stopEffect(ServerPlayer p,String type){
+        for(var path:PathRegistry.all().values())for(var skill:path.skills())
+            if(PathRegistry.activation(path.id(),skill.id())!=null
+                &&skill.effects().stream().anyMatch(e->e.type().equals(type)))
+                stop(p,path.id(),skill.id());
     }
     private static void stop(ServerPlayer p,String path,String skill){
         var before=get(p,path,skill);

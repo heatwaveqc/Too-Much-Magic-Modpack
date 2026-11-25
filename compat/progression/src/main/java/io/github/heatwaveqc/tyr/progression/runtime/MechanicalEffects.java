@@ -226,7 +226,7 @@ public final class MechanicalEffects {
                 (hurt<0||hurt>now||now-hurt>=integer(a,"after_damage_ticks",80,0,72000)))
                 healing+=amount(a,20);
         }
-        if(healing>0&&p.getHealth()<p.getMaxHealth())p.heal((float)Math.min(20,healing));
+        if(healing>0&&!FeignDeath.active(p)&&p.getHealth()<p.getMaxHealth())p.heal((float)Math.min(20,healing));
         int budget=32,operations=4;
         var due=EffectRuntime.active(p).stream().filter(a->{
             String type=a.effect().type();

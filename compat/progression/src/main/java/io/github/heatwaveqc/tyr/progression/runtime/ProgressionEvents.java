@@ -32,6 +32,7 @@ public final class ProgressionEvents {
         AttackIdleDefense.register();
         DangerSenseRuntime.register();
         StunningStrike.register();
+        FeignDeath.register();
         VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
         io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
@@ -195,7 +196,9 @@ public final class ProgressionEvents {
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
-            { ClassAbilities.arrowImpact(defender,event);
+            { if(ProjectileReturn.tryReturn(defender,event))return;
+              if(FeignDeath.active(defender))return;
+              ClassAbilities.arrowImpact(defender,event);
               if (!event.isCanceled()) MechanicalEffects.deflect(defender,event);
               if (!event.isCanceled()) EffectHandlers.projectileImpact(defender,event); }
     }
