@@ -1,0 +1,41 @@
+name: Equivalent Exchange ritual and book contract (static only)
+
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/equivalent_exchange.json'
+      - 'kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/**'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'kubejs/data/projecte/recipe/philosophers_stone*.json'
+      - 'tests/test_occultism_equivalent_exchange_book.py'
+      - 'scripts/audit_occultism_recipe_census.py'
+      - '.github/workflows/occultism-equivalent-exchange-static.yml'
+  push:
+    paths:
+      - 'kubejs/data/tmm/recipe/ritual/equivalent_exchange.json'
+      - 'kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/**'
+      - 'kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json'
+      - 'kubejs/assets/tmm/lang/en_us.json'
+      - 'kubejs/data/projecte/recipe/philosophers_stone*.json'
+      - 'tests/test_occultism_equivalent_exchange_book.py'
+      - '.github/workflows/occultism-equivalent-exchange-static.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-book-and-ritual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate native ritual source, guide link and no old grid bypass
+        run: python3 -m unittest discover -s tests -p 'test_occultism_equivalent_exchange_book.py' -v
+      - name: Inspect frozen Experimental live recipe census (read-only)
+        run: |
+          # Only fetch the immutable QA commit from #504; no game/smoke/build.
+          git fetch --no-tags --depth=1 origin 014213fe8b82d85eabddf478243a4e7bdfa27a79
+          git show FETCH_HEAD:docs/qa/EXPERIMENTAL-2026-11-22-RESULTS/live-command-recipe-census.json.gz > "$RUNNER_TEMP/experimental-census.json.gz"
+          python3 scripts/audit_occultism_recipe_census.py "$RUNNER_TEMP/experimental-census.json.gz"

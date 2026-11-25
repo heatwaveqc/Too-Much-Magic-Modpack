@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "captured_utc": "2026-11-22T21:38:40.388687+00:00",
+  "evidence_status": "SAVED_REGISTRY_PLUS_INSTALLED_RESOURCE_AUDIT_NOT_LIVE_SERVER_EXPORT",
+  "build": {
+    "integration_commit": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+    "baseline_sha": "74165da57a97228559562e016e1f7b796f60e652",
+    "pinned_mod_count": 222,
+    "expected_client_mod_count": 226
+  },
+  "manifest_sha256": "1728619fdbb48b95873fa46b7e2f93d3211cb1893e29744b395d89793e1c8fc3",
+  "save_level_dat_sha256": "21034bb9010f21094e000689a4ff2c62ad3310a6885c05f018564df551f2de5f",
+  "dimensions": [
+    {
+      "id": "aether:the_aether",
+      "dimension_type": "aether:the_aether",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "aether-1.21.1-1.5.10-neoforge.jar"
+      ],
+      "resources": [
+        "data/aether/dimension/the_aether.json"
+      ],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "deeperdarker:otherside",
+      "dimension_type": "deeperdarker:otherside",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "deeperdarker-neoforge-1.21.1-1.4.1.jar"
+      ],
+      "resources": [
+        "data/deeperdarker/dimension/otherside.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "eternal_starlight:starlight",
+      "dimension_type": "eternal_starlight:starlight",
+      "generator_type": "eternal_starlight:biome_based",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "eternalstarlight-0.9.1+1.21.1+neoforge.jar"
+      ],
+      "resources": [
+        "data/eternal_starlight/dimension/starlight.json"
+      ],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "irons_spellbooks:pocket_dimension",
+      "dimension_type": "irons_spellbooks:pocket_dimension_type",
+      "generator_type": "minecraft:flat",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "irons_spellbooks-1.21.1-3.16.3.jar"
+      ],
+      "resources": [
+        "data/irons_spellbooks/dimension/pocket_dimension.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "mahoutsukai:reality_marble",
+      "dimension_type": "mahoutsukai:reality_marble",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "mahoutsukai-1.21.1-v1.36.31.jar"
+      ],
+      "resources": [
+        "data/mahoutsukai/dimension/reality_marble.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "minecraft:overworld",
+      "dimension_type": "minecraft:overworld",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [],
+      "resources": [],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "minecraft:the_end",
+      "dimension_type": "minecraft:the_end",
+      "generator_type": "wover:betterx",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [],
+      "resources": [],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "minecraft:the_nether",
+      "dimension_type": "minecraft:the_nether",
+      "generator_type": "wover:betterx",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [],
+      "resources": [],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "neovitae:dungeon",
+      "dimension_type": "neovitae:dungeon",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "neovitae-1.21.1-1.1.54.jar"
+      ],
+      "resources": [
+        "data/neovitae/dimension/dungeon.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "pastel:deeper_down",
+      "dimension_type": "pastel:deeper_down_type",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "Pastel-1.1.5.5.jar"
+      ],
+      "resources": [
+        "data/pastel/dimension/deeper_down.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "the_bumblezone:the_bumblezone",
+      "dimension_type": "the_bumblezone:the_bumblezone",
+      "generator_type": "the_bumblezone:chunk_generator",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "the_bumblezone-7.17.3+1.21.1-neoforge.jar"
+      ],
+      "resources": [
+        "data/the_bumblezone/dimension/the_bumblezone.json"
+      ],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "theaurorian:the_aurorian",
+      "dimension_type": "theaurorian:the_aurorian",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "theaurorian-1.21.1-1.0.6.jar"
+      ],
+      "resources": [
+        "data/theaurorian/dimension/the_aurorian.json"
+      ],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "twilightforest:twilight_forest",
+      "dimension_type": "twilightforest:twilight_forest_type",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "twilightforest-1.21.1-4.8.3345-universal.jar"
+      ],
+      "resources": [
+        "data/twilightforest/dimension/twilight_forest.json"
+      ],
+      "in_initial_owner_angel_allow_set": true
+    },
+    {
+      "id": "unicornacademy:unicorn_island",
+      "dimension_type": "unicornacademy:unicorn_island",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "unicornacademy-1.0.0.jar"
+      ],
+      "resources": [
+        "data/unicornacademy/dimension/unicorn_island.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "voidscape:void",
+      "dimension_type": "voidscape:void",
+      "generator_type": "voidscape:void",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "Voidscape-1.21.1-1.9.588.jar"
+      ],
+      "resources": [
+        "data/voidscape/dimension/void.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "wardentools:abyssdim",
+      "dimension_type": "wardentools:abyssdim_type",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "wardentools-1.1.4_neoforge_1.21.1.jar"
+      ],
+      "resources": [
+        "data/wardentools/dimension/abyssdim.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "witchery:dream_world",
+      "dimension_type": "witchery:dream_world",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "witchery-0.5.39+mc1.21.1.jar"
+      ],
+      "resources": [
+        "data/witchery/dimension/dream_world.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "witchery:mirror_world",
+      "dimension_type": "witchery:mirror_world",
+      "generator_type": "minecraft:flat",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "witchery-0.5.39+mc1.21.1.jar"
+      ],
+      "resources": [
+        "data/witchery/dimension/mirror_world.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    },
+    {
+      "id": "witchery:nightmare_world",
+      "dimension_type": "witchery:nightmare_world",
+      "generator_type": "minecraft:noise",
+      "evidence": "SAVED_WORLDGEN_DIMENSION_STEM",
+      "providers": [
+        "witchery-0.5.39+mc1.21.1.jar"
+      ],
+      "resources": [
+        "data/witchery/dimension/nightmare_world.json"
+      ],
+      "in_initial_owner_angel_allow_set": false
+    }
+  ],
+  "resource_only_not_confirmed_loaded": [
+    {
+      "id": "botania:skybox",
+      "provider": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+      "resource": "data/botania/dimension/skybox.json",
+      "dimension_type": "botania:skybox",
+      "conditions": [
+        {
+          "type": "botania:module_enabled",
+          "module": "skybox"
+        }
+      ]
+    }
+  ],
+  "provider_sha256": {
+    "aether-1.21.1-1.5.10-neoforge.jar": "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8",
+    "Botania-Revived-1.21.1-2.0.2-NeoForge.jar": "abd5b0feef60318e3ba0029fe1c7d00fdf1a9d1f300f178e9d10425d55ede62d",
+    "deeperdarker-neoforge-1.21.1-1.4.1.jar": "eee3f51222b0bcc714def002ff089ac9e131d3cae4575b542fd0a7dd101fe0af",
+    "eternalstarlight-0.9.1+1.21.1+neoforge.jar": "e77369ad1a779036b243ef0f7b24776640a3ff84968e6f3be1931bc953e92b09",
+    "irons_spellbooks-1.21.1-3.16.3.jar": "55a290db9b966e0c5d2f5c051d50775f3db6375cdb52730c4da528bcf5d5daa0",
+    "mahoutsukai-1.21.1-v1.36.31.jar": "4022fb3cee32b28df02994cc4c5b40069651583516f6abd04775789616739aad",
+    "neovitae-1.21.1-1.1.54.jar": "6a62fc0e6574d09071779548ae5ea23209b51e3db44f755d944cc2b8f803d08c",
+    "Pastel-1.1.5.5.jar": "33122d9a6bdeeb025d1a2a1210d035104da23c213750d13b3d10af55716a443a",
+    "the_bumblezone-7.17.3+1.21.1-neoforge.jar": "859d87b44d3d17c63f38317ac34d124e30b6de8c3043fa61ee987ff8b1f236d6",
+    "theaurorian-1.21.1-1.0.6.jar": "00a3d87f271bd9c5a89684d3245e09dc88b4d768b160e245eb1830a9036e9f41",
+    "twilightforest-1.21.1-4.8.3345-universal.jar": "493da16d10210f9f53a3c33b3d8fcb4ae9b14016ee420d753c894562bd9aba35",
+    "unicornacademy-1.0.0.jar": "e86b57de9944ffaa91a5d18573216ea0c2780d5f68fb52761d16bd8fcaebf621",
+    "Voidscape-1.21.1-1.9.588.jar": "f667d32e44286f0d75c18b0affbb8ecf87f5aac4b7c945e78df6db5a09f251a1",
+    "wardentools-1.1.4_neoforge_1.21.1.jar": "ffe5eb5da73b480e22361834b14109e8f380a91eeff56a33d6334ee0090b16a1",
+    "witchery-0.5.39+mc1.21.1.jar": "81557ceb1b878d2aa8df5fcbcc468b82479d1e38d38097873a6ffb225324e256"
+  },
+  "botania_modules": {
+    "botania_extras": true,
+    "skybox": false,
+    "exploration": true,
+    "creative": true,
+    "asg": true,
+    "sophisticated": true
+  },
+  "resource_parse_errors": [],
+  "limitations": [
+    "Minecraft was closed at capture; server.levelKeys was not observed.",
+    "Future/lazy/dynamic dimensions may differ; no invented JAWR Spirit World ID.",
+    "A saved registry entry does not prove a visited/generated dimension or safe Angel landing."
+  ]
+}

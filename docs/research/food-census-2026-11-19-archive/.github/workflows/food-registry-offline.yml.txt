@@ -1,0 +1,57 @@
+name: Food registry offline census
+on:
+  pull_request:
+    branches: ['test/full-integration']
+    paths:
+      - 'docs/food/**'
+      - 'scripts/build_food_review.py'
+      - 'scripts/audit_gilded_foods.py'
+      - 'scripts/classify_food_batches.py'
+      - 'scripts/complete_food_first_pass.py'
+      - 'scripts/audit_food_consumers.py'
+      - 'tests/test_food_consumers.py'
+      - 'tests/test_food_first_pass.py'
+      - 'tests/test_food_batches.py'
+      - 'tests/test_food_review.py'
+      - 'kubejs/data/tmm/tags/item/food/**'
+      - 'kubejs/data/cookingforblockheads/tags/item/**'
+      - '.github/workflows/food-registry-offline.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  food-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run fixture and source contract tests
+        run: python -m unittest discover -s tests -p 'test_food*.py' -v
+      - name: Read frozen installed survey without assembling or launching the game
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_commit=1ae3aa4569294b8904e6bf156a73b779758832f3
+          if ! git cat-file -e "$source_commit^{commit}"; then
+            git fetch --no-tags origin "$source_commit"
+          fi
+          mkdir -p "$RUNNER_TEMP/food-census"
+          git show "$source_commit:docs/qa/surveys-2026-11-18/items.csv" > "$RUNNER_TEMP/food-census/items.csv"
+          git show "$source_commit:docs/qa/surveys-2026-11-18/runtime-capture.json.gz" > "$RUNNER_TEMP/food-census/capture.gz"
+          python scripts/build_food_review.py --items "$RUNNER_TEMP/food-census/items.csv" --capture "$RUNNER_TEMP/food-census/capture.gz" --output "$RUNNER_TEMP/food-review"
+          cat "$RUNNER_TEMP/food-review/summary.json"
+          python scripts/audit_gilded_foods.py --capture "$RUNNER_TEMP/food-census/capture.gz" --review "$RUNNER_TEMP/food-review/food-review.jsonl" --output "$RUNNER_TEMP/food-review/gilded-audit.json"
+          python scripts/classify_food_batches.py --capture "$RUNNER_TEMP/food-census/capture.gz" --review "$RUNNER_TEMP/food-review/food-review.jsonl" --output "$RUNNER_TEMP/food-review"
+          python scripts/complete_food_first_pass.py --review "$RUNNER_TEMP/food-review/food-review.jsonl" --earlier "$RUNNER_TEMP/food-review/batch-1-3-review.jsonl" --output "$RUNNER_TEMP/food-review"
+          python scripts/audit_food_consumers.py --capture "$RUNNER_TEMP/food-census/capture.gz" --output "$RUNNER_TEMP/food-review/food-consumer-audit.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frozen-food-review
+          path: ${{ runner.temp }}/food-review/
+          retention-days: 14

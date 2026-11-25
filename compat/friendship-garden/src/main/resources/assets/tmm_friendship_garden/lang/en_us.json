@@ -1,0 +1,10 @@
+{
+  "block.tmm_friendship_garden.short_flower": "Friendship Flower",
+  "block.tmm_friendship_garden.tall_flower": "Tall Friendship Flower",
+  "item.tmm_friendship_garden.short_flower": "Friendship Flower",
+  "item.tmm_friendship_garden.tall_flower": "Tall Friendship Flower",
+  "message.tmm_friendship_garden.unbound": "This flower must be crafted by a player before it can be planted.",
+  "message.tmm_friendship_garden.inspect": "%s's Friendship Flower (%s)",
+  "message.tmm_friendship_garden.harmful_on": "Harmful Friendship potions enabled (server PvP rules still apply)",
+  "message.tmm_friendship_garden.harmful_off": "Harmful Friendship potions disabled"
+}

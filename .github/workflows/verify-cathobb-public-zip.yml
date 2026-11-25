@@ -1,0 +1,21 @@
+name: Cathobb public release publisher ZIP verification (no game boot)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/verify-cathobb-public-zip.yml'
+      - 'scripts/probe_cathobb_public_release.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-public-publisher-zip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probe official Cathobb v40 ZIP, CRC, pack.mcmeta and SHA; do not redistribute
+        run: python3 scripts/probe_cathobb_public_release.py

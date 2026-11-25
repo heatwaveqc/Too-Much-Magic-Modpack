@@ -22,7 +22,22 @@
     "OpConverterTierMixin",
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
-    "StoredResourceGuardMixin"
+    "StoredResourceGuardMixin",
+    "RepairTalismanCharmMixin",
+    "ApotheosisPotionCharmRecipeMixin",
+    "IronsAlchemistFlaskSafetyMixin",
+    "OccultismPartnerFlaskSafetyMixin",
+    "PortableStorageShulkerSlotMixin",
+    "PortableStorageShulkerHopperMixin",
+    "PortableStorageBundleInsertionMixin",
+    "PortableStorageOccultismSatchelMixin",
+    "PortableStorageMalumPouchMixin",
+    "PortableStorageBotaniaBackedInventoryMixin",
+    "PortableStorageMiniHandbagMenuMixin",
+    "EvilCraftVengeanceSpiritMixin",
+    "EvilCraftRandomSpiritMixin",
+    "EvilCraftSpiritFurnaceMixin",
+    "EvilCraftSpiritReanimatorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

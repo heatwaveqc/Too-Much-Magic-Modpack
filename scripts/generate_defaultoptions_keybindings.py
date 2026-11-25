@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create Default Options' mod-only defaults, with one approved middle-click exception.
+"""Create Default Options' mod-only initial key defaults with approved exceptions.
 
 Uses two actual /defaultoptions saveKeys exports. Does NOT change options.txt.
 No client runtime here; never assume a source mod's key ID or scrape defaults.
@@ -11,8 +11,37 @@ import re
 
 LINE = re.compile(r"key_([^:\n]+):([^:\n]+)(?::([^\n]*))?$")
 MIN_VANILLA = {"key.attack", "key.use", "key.forward", "key.back", "key.jump", "key.inventory"}
-# Issue #305: GUI-contextual sorting; leave vanilla pick-block untouched.
+
+# Owner-approved #305: contextual GUI sorting, not vanilla pick-block.
 PACK_DEFAULTS = {"key.invtweaks_sort_either.desc": "key.mouse.middle"}
+
+# Owner-approved #510: do not override JEI's normal non-cheat user-interface
+# bindings on a clean profile. Omitting an entry lets JEI provide its own native
+# default (including "unbound" where upstream deliberately chooses that).
+# Do not force duplicate second-key mappings, cheat/edit/debug shortcuts, or
+# user options.txt overrides via Default Options.
+JEI_NATIVE_DEFAULTS = frozenset({
+    "key.jei.bookmark",
+    "key.jei.clearSearchBar",
+    "key.jei.closeRecipeGui",
+    "key.jei.focusSearch",
+    "key.jei.nextCategory",
+    "key.jei.nextPage",
+    "key.jei.nextRecipePage",
+    "key.jei.nextSearch",
+    "key.jei.previousCategory",
+    "key.jei.previousPage",
+    "key.jei.previousRecipePage",
+    "key.jei.previousSearch",
+    "key.jei.recipeBack",
+    "key.jei.recipeForward",
+    "key.jei.showRecipe",
+    "key.jei.showUses",
+    "key.jei.toggleBookmarkOverlay",
+    "key.jei.toggleOverlay",
+    "key.jei.transferRecipeGui",
+    "key.jei.transferRecipeBookmark",
+})
 
 def read_keys(path: Path) -> dict[str, str]:
     if not path.is_file():
@@ -39,7 +68,7 @@ def build(loaded: dict[str, str], vanilla: dict[str, str]) -> str:
     absent = vanilla.keys() - loaded.keys()
     if absent:
         raise ValueError(f"Full modded export is missing vanilla controls: {sorted(absent)}")
-    modded = loaded.keys() - vanilla.keys()
+    modded = (loaded.keys() - vanilla.keys()) - JEI_NATIVE_DEFAULTS
     if not modded:
         raise ValueError("No modded bindings found; refuse empty output")
     if missing := PACK_DEFAULTS.keys() - modded:
@@ -58,7 +87,7 @@ def main() -> None:
     loaded, vanilla = read_keys(args.loaded), read_keys(args.vanilla)
     output = build(loaded, vanilla)
     total = len(loaded) - len(vanilla)
-    print(f"Validated {len(vanilla)} vanilla IDs and {total} modded IDs; vanilla will be untouched.")
+    print(f"Validated {len(vanilla)} vanilla IDs and {total} modded IDs; vanilla and JEI native defaults untouched.")
     if args.check:
         if not args.output.is_file() or args.output.read_text(encoding="utf-8") != output:
             raise SystemExit(f"FAIL: {args.output} absent/stale; regenerate and index in packwiz")

@@ -5,7 +5,7 @@ side = "both"
 [download]
 hash-format = "sha1"
 hash = "b989b1dfec0d4c1360f52682adfa4f2196c38c50"
-mode = "metadata:curseforge"
+url = "https://mediafilez.forgecdn.net/files/9150/781/unicornacademy-1.0.0.jar"
 
 [update]
 [update.curseforge]

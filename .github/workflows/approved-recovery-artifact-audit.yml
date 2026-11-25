@@ -1,0 +1,62 @@
+name: Approved Recovery Artifact Audit (targeted, no Minecraft build)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - '.github/workflows/approved-recovery-artifact-audit.yml'
+      - 'mods/aquamirae.pw.toml'
+      - 'mods/fragmentum-neoforge.pw.toml'
+      - 'mods/mowzies-mobs.pw.toml'
+      - 'mods/sons-of-sins.pw.toml'
+      - 'mods/the-graveyard.pw.toml'
+      - 'mods/villagerstradingplus.pw.toml'
+      - 'mods/aura-cascade-reimagined.pw.toml'
+      - 'mods/lets-do-herbalbrews.pw.toml'
+      - 'mods/aquaculture-delight.pw.toml'
+      - 'mods/born-in-chaos.pw.toml'
+      - 'mods/dungeon-crawl.pw.toml'
+      - 'mods/just-enough-professions.pw.toml'
+      - 'mods/ldlib2.pw.toml'
+      - 'mods/lets-do-brewery.pw.toml'
+      - 'mods/lets-do-farm-and-charm.pw.toml'
+      - 'mods/prefab-custom-addon.pw.toml'
+      - 'mods/yungs-better-end-island.pw.toml'
+      - 'mods/lets-do-foundation.pw.toml'
+      - 'mods/ars-conflux.pw.toml'
+      - 'scripts/verify_approved_recovery_artifacts.py'
+      - 'scripts/probe_missing_approved_mods.py'
+      - 'scripts/audit_foundation_overlap.py'
+      - 'scripts/probe_furniture_unbundled.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate-artifact-hashes-and-native-dependencies:
+    name: Candidate JAR hashes and required dependencies (not boot/assembly)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify candidate metadata without downloading
+        run: python3 scripts/verify_approved_recovery_artifacts.py
+      - name: Read-only Integration Preflight
+        run: python3 scripts/validate_integration_sources.py
+      - name: Fetch only approved candidate JARs from official sources and verify
+        run: python3 scripts/verify_approved_recovery_artifacts.py --verify-official --json-out approved-recovery-audit.json
+      - name: Probe remaining Aquamirae Nouveau addon (diagnostic only)
+        if: always()
+        continue-on-error: true
+        run: python3 scripts/probe_missing_approved_mods.py
+      - name: Probe official unbundled Furniture release for dependency remediation
+        if: always()
+        continue-on-error: true
+        run: python3 scripts/probe_furniture_unbundled.py
+      - name: Audit pre-existing Let's Do JARs against standalone Foundation (no game boot)
+        run: python3 scripts/audit_foundation_overlap.py
+      - name: Preserve evidence for integration review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-recovery-candidate-audit
+          path: approved-recovery-audit.json
+          if-no-files-found: ignore

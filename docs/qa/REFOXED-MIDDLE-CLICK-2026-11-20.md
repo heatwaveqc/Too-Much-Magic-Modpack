@@ -6,9 +6,9 @@
 
 Owner's 2026-11-17 unstable QA reported that middle-click no longer sorted chests. The 315-key Default Options file unbound the registered `key.invtweaks_sort_either.desc` control. The first-party Progression client first-run handler independently unbound all new mod mappings, so editing only Default Options would not survive a clean first launch.
 
-This config PR binds **only** `key_key.invtweaks_sort_either.desc:key.mouse.middle:`. Other ReFoxed sort mappings and mod controls remain unbound. Vanilla `key.pickItem` is absent from Default Options and must remain mouse-middle in the world. The dated 315-key observed inventory is kept immutable as provenance. Generator and validator explicitly allow the one controlled exception. Packwiz file/index SHA256s are updated.
+This config PR binds **only** `key_key.invtweaks_sort_either.desc:key.mouse.middle:`. Other ReFoxed sort mappings and ordinary mod controls remain unbound; the 20 JEI native-default exclusions from #564 remain omitted. Vanilla `key.pickItem` is absent from Default Options and must remain mouse-middle in the world. The dated 315-key observed inventory is kept immutable as provenance. Generator and validator explicitly allow the one controlled exception. Packwiz file/index SHA256s are updated.
 
-**Dependency:** Progression PR #393 against `dev/progression` makes the first-run client rule preserve the contextual GUI sort and set Reset default to mouse button 2 while preserving saved player assignments. Integrate the engine, rebuild its first-party JAR, and reconcile this pack config in `test/full-integration` before live acceptance. Changes must not be applied in isolation as a completed fix.
+**Dependency:** Progression PR #393 merged into `dev/progression` at `fd95f9933af052e60112b45fb2b1809879b5477f` and makes the first-run client rule preserve the contextual GUI sort and set Reset default to mouse button 2 while preserving saved player assignments. Integrate the engine, rebuild its first-party JAR, and reconcile this pack config in `test/full-integration` before live acceptance. Changes must not be applied in isolation as a completed fix.
 
 ## Quick checks and deferred QA
 

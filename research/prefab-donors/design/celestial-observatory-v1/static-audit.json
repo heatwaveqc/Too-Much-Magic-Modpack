@@ -1,0 +1,174 @@
+{
+  "status": "STATIC_QA_PREVIEW_ONLY",
+  "size": [
+    67,
+    24,
+    62
+  ],
+  "boundingVolume": 99696,
+  "anchorSurfaceY": 3,
+  "nonair": 4435,
+  "explicitAir": 31417,
+  "paletteStates": 19,
+  "entities": 0,
+  "blockEntityPayloads": 0,
+  "reservations": [
+    {
+      "name": "Altar T2–T4",
+      "cx": 15,
+      "cz": 15,
+      "r": 9,
+      "originY": 4,
+      "below": 1,
+      "height": 10,
+      "pattern": [
+        15,
+        8,
+        15
+      ],
+      "envelope": [
+        19,
+        10,
+        19
+      ],
+      "replaceableSubfloor": 361,
+      "explicitClearSkyCells": 7220,
+      "pass": true
+    },
+    {
+      "name": "Attunement",
+      "cx": 46,
+      "cz": 15,
+      "r": 11,
+      "originY": 4,
+      "below": 1,
+      "height": 7,
+      "pattern": [
+        19,
+        5,
+        19
+      ],
+      "envelope": [
+        23,
+        7,
+        23
+      ],
+      "replaceableSubfloor": 529,
+      "explicitClearSkyCells": 10580,
+      "pass": true
+    },
+    {
+      "name": "Infuser",
+      "cx": 12,
+      "cz": 39,
+      "r": 5,
+      "originY": 4,
+      "below": 2,
+      "height": 6,
+      "pattern": [
+        7,
+        4,
+        7
+      ],
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 242,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    },
+    {
+      "name": "Gateway",
+      "cx": 51,
+      "cz": 39,
+      "r": 5,
+      "originY": 4,
+      "below": 1,
+      "height": 4,
+      "pattern": [
+        7,
+        2,
+        7
+      ],
+      "envelope": [
+        11,
+        4,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    },
+    {
+      "name": "Lightwell and crystal handling",
+      "cx": 12,
+      "cz": 53,
+      "r": 5,
+      "originY": 4,
+      "below": 1,
+      "height": 6,
+      "provisional": true,
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    },
+    {
+      "name": "Lumen and auxiliary machinery",
+      "cx": 51,
+      "cz": 53,
+      "r": 5,
+      "originY": 4,
+      "below": 1,
+      "height": 6,
+      "provisional": true,
+      "envelope": [
+        11,
+        6,
+        11
+      ],
+      "replaceableSubfloor": 121,
+      "explicitClearSkyCells": 2420,
+      "pass": true
+    }
+  ],
+  "stairTreads": 12,
+  "groundRouteGoals": 12,
+  "groundRouteCells": 2525,
+  "counts": {
+    "minecraft:smooth_stone": 1942,
+    "minecraft:polished_diorite": 877,
+    "minecraft:deepslate_tiles": 63,
+    "minecraft:dark_oak_planks": 505,
+    "minecraft:blue_terracotta": 356,
+    "minecraft:polished_diorite_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 4,
+    "minecraft:polished_deepslate": 6,
+    "minecraft:air": 31417,
+    "minecraft:calcite": 113,
+    "minecraft:lantern[hanging=false,waterlogged=false]": 33,
+    "minecraft:stripped_dark_oak_log[axis=y]": 372,
+    "minecraft:cyan_stained_glass": 137,
+    "minecraft:dark_oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]": 12,
+    "minecraft:crafting_table": 2,
+    "minecraft:white_bed[facing=north,occupied=false,part=head]": 2,
+    "minecraft:white_bed[facing=north,occupied=false,part=foot]": 2,
+    "minecraft:furnace[facing=south,lit=false]": 1,
+    "minecraft:bookshelf": 5,
+    "minecraft:barrel[facing=south,open=false]": 3
+  },
+  "limitations": [
+    "Open sky only checked through template top; clear real terrain above.",
+    "Auxiliary bays provisional pending exact pinned Astral and Enigmatic Legacy+ device audit.",
+    "Ground route assumes unplaced exterior cells are clear; no real collision test.",
+    "Replaceable floors are not assembled machines.",
+    "No live import, lighting, material economy or progression verification."
+  ],
+  "nbtPayloadBytes": 1291835,
+  "decodedNbtBlocks": 35852
+}
