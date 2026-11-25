@@ -16,6 +16,19 @@ FEATURE = re.compile(r"^data/([^/]+)/worldgen/(configured_feature|placed_feature
 MAX_JSON = 8 * 1024 * 1024
 MAX_NESTED = 256 * 1024 * 1024
 
+# Strip only line/block comments outside JSON strings. Preserve raw parse status.
+JSON_TOKENS = re.compile(r'"(?:\\.|[^"\\])*"|//[^\r\n]*|/\*[\s\S]*?\*/')
+
+def parse_resource(raw):
+    try:
+        return json.loads(raw), "strict"
+    except json.JSONDecodeError:
+        text = raw.decode("utf-8-sig")
+        clean = JSON_TOKENS.sub(lambda m: m.group(0) if m.group(0).startswith('"') else " ", text)
+        if clean == text:
+            raise
+        return json.loads(clean), "comments-stripped"
+
 def digest(path, algorithm):
     h = hashlib.new(algorithm)
     with path.open("rb") as f:
@@ -54,7 +67,7 @@ def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=(), pin_
     report = {"schema": 1, "side": side, "classification": "raw candidates, not effective registry",
               "pin_scope": sorted(pin_paths) if pin_paths is not None else "all-side-pins",
               "pins": [], "archives": [], "resources": [], "templates": [],
-              "feature_candidates": [], "errors": [], "limitations": [
+              "feature_candidates": [], "errors": [], "warnings": [], "limitations": [
                   "Duplicate definitions are retained, not resolved by guessed pack precedence.",
                   "Runtime registrations, custom placement and configuration overrides require separate inspection.",
                   "Feature candidates and templates are not counts of actual structures. No biome/dimension or visibility inference.",
@@ -70,7 +83,10 @@ def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=(), pin_
             try:
                 if size > MAX_JSON:
                     raise ValueError("JSON exceeds size guard")
-                body = json.loads(read())
+                body, parse_mode = parse_resource(read())
+                row["parse_mode"] = parse_mode
+                if parse_mode != "strict":
+                    report["warnings"].append({"source": source, "path": name, "warning": "JSON comments stripped for offline analysis; effective runtime decoding unverified"})
                 if not isinstance(body, dict):
                     raise ValueError("expected JSON object")
                 row["data"] = body
@@ -97,7 +113,10 @@ def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=(), pin_
         for entry in sorted(z.infolist(), key=lambda e: e.filename):
             name = entry.filename
             if name in seen:
-                errors.append({"source": source, "path": name, "error": "duplicate archive member"})
+                if RESOURCE.fullmatch(name) or TEMPLATE.fullmatch(name) or FEATURE.fullmatch(name) or (name.startswith("META-INF/jarjar/") and name.endswith(".jar")):
+                    errors.append({"source": source, "path": name, "error": "duplicate worldgen/nested archive member"})
+                else:
+                    report["warnings"].append({"source": source, "path": name, "warning": "duplicate unrelated archive member"})
             seen.add(name)
             if entry.is_dir():
                 continue
@@ -161,7 +180,7 @@ def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=(), pin_
         "pins": dict(Counter(row["status"] for row in report["pins"])),
         "raw_resources": dict(Counter(row["kind"] for row in report["resources"])),
         "distinct_resource_ids": dict(Counter(k for k, rid in grouped)),
-        "archives": len(report["archives"]), "errors": len(errors)
+        "archives": len(report["archives"]), "errors": len(errors), "warnings": len(report["warnings"])
     }
     return report
 
