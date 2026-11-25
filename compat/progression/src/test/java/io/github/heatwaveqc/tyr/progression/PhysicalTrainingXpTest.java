@@ -39,6 +39,23 @@ class PhysicalTrainingXpTest {
         assertEquals(new BigDecimal("2"),p.meditativeDrink());
         assertFalse(p.discoveryReplay());
     }
+    @Test void shippedMonkCombatRatesAreOneFifthWhileMiningAndFoodRemainUnchanged() throws Exception {
+        try(var in=PhysicalTrainingXpTest.class.getClassLoader().getResourceAsStream(
+                "data/tyr_progression/tyr_progression/paths/monk.json")){
+            assertNotNull(in);
+            var raw=JsonParser.parseReader(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            var p=TrainingXpSpec.parse(raw,Map.of("tyr_progression:mxp",XpChannel.mxp(1.02)));
+            assertEquals(new BigDecimal("400.0"),p.kill(20,false));
+            assertEquals(new BigDecimal("2000.0"),p.kill(20,true));
+            assertEquals(new BigDecimal("30000.0"),p.kill(300,true));
+            assertEquals(new BigDecimal("52.5"),p.mining(1.5));
+            assertEquals(new BigDecimal("1.0"),p.sprint(1));
+            assertEquals(new BigDecimal("100"),p.discovery());
+            assertEquals(new BigDecimal("5"),p.meditativeFood());
+            assertEquals(new BigDecimal("2"),p.meditativeDrink());
+            assertEquals(6000,p.strictWindow());
+        }
+    }
     @Test void immutableStrictProofNeverRearmsAfterInvalidHit(){
         String monk=UUID.randomUUID().toString(),other=UUID.randomUUID().toString();
         var current=CombatProof.empty().hit(true,true,monk,100,300,6000);
