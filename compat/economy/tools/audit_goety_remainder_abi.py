@@ -31,7 +31,11 @@ def verify(directory):
     assert body.count("Item.hasCraftingRemainingItem:") == 1, "redirect target changed"
     assert "Item.getCraftingRemainingItem:" in body and "NSSItem.createItem:" in body
     nss = javap(pe, "moze_intel.projecte.api.nss.NSSItem")
-    assert "Can't make NSSItem with empty stack" in nss or "Can't make an NSSItem with an empty stack" in nss
+    factory = re.search(r"(?ms)^  public static .*?NSSItem createItem\(net\.minecraft\.world\.item\.ItemStack\);\n(.*?)(?=^  (?:public|private|protected) |\Z)", nss)
+    assert factory, "missing ItemStack factory"
+    factory_body = factory.group(1)
+    assert re.search(r"ItemStack\.isEmpty:\(\)Z.*?ifeq.*?class java/lang/IllegalArgumentException.*?athrow", factory_body, re.S), "empty-stack rejection changed"
+    assert "Can't make NSSItem with empty stack" in factory_body.replace("\\'", "'"), "empty-stack rejection message changed"
     roots = javap(goety, "com.Polarice3.Goety.common.items.magic.FullSpentTotem")
     souls = javap(goety, "com.Polarice3.Goety.common.items.magic.TotemOfSouls")
     assert "extends com.Polarice3.Goety.common.items.magic.TotemOfSouls" in roots
