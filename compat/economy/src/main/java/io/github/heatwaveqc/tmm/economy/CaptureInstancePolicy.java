@@ -2,6 +2,7 @@ package io.github.heatwaveqc.tmm.economy;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.ModList;
 
 /** Capture and charm restrictions only; never intercept actual entity spawning, death, or loot generally. */
@@ -25,6 +26,11 @@ public final class CaptureInstancePolicy {
         } catch (ReflectiveOperationException | RuntimeException | LinkageError ex) {
             return true;
         }
+    }
+
+    /** The typed fragment contains a registry ID, not the original entity instance. */
+    public static boolean denyFragmentEgg(ResourceLocation id) {
+        return ModList.get().isLoaded("apothic_spawners") && CapturingPolicy.blocked(id);
     }
 
     public static boolean denyCharm(Entity entity) {

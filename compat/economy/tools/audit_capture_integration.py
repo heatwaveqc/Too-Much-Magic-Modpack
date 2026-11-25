@@ -96,6 +96,13 @@ def main():
             print("Native blacklist:", native)
         abi(apoth, "dev.shadowsoffire.apothic_spawners.ASEvents", ["handleCapturing(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V", "SpawnEggItem.byId"])
         abi(reliq, "reliquary.item.MobCharmRegistry", ["handleAddingFragmentDrops(net.neoforged.neoforge.event.entity.living.LivingDropsEvent)", "getCharmDefinitionFor(net.minecraft.world.entity.Entity)", "(Lnet/minecraft/world/entity/Entity;)Ljava/util/Optional;"])
+        abi(apoth, "dev.shadowsoffire.apothic_spawners.ASEvents", ["handleUseItem(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock)", "SpawnEggItem.getType", "BLACKLISTED_FROM_SPAWNERS", "RightClickBlock.setCanceled"])
+        abi(apoth, "dev.shadowsoffire.apothic_spawners.block.ApothSpawnerTile$SpawnerLogicExt", ["setEntityId(net.minecraft.world.entity.EntityType", "SpawnData.\"<init>\"", "BaseSpawner.setEntityId", "spawnPotentials"])
+        abi(apoth, "dev.shadowsoffire.apothic_spawners.block.ApothSpawnerBlock", ["setPlacedBy(", "BlockEntity.saveToItem", "CustomData.loadInto"])
+        abi(reliq, "reliquary.item.MobCharmItem", ["onEntityTargetedEvent(", "onLivingUpdate(", "onLivingDeath(", "MobCharmRegistry.getCharmDefinitionFor:(Lnet/minecraft/world/entity/Entity;)Ljava/util/Optional;", "isMobCharmPresent", "pedestalWithCharmInRange"])
+        abi(reliq, "reliquary.reference.Config$Common$ItemSettings$MobCharmSettings", ["entityBlockList", "isBlockedEntity(net.minecraft.resources.ResourceLocation)", "ResourceLocation.parse", "minecraft:ender_dragon", "minecraft:wither"])
+        abi(reliq, "reliquary.crafting.FragmentRecipeHelper", ["public static java.util.Optional<net.minecraft.resources.ResourceLocation> getRegistryName(net.minecraft.world.item.crafting.CraftingInput)", "(Lnet/minecraft/world/item/crafting/CraftingInput;)Ljava/util/Optional;", "MobCharmFragmentItem.getEntityRegistryName", "SpawnEggItem.byId"])
+        abi(reliq, "reliquary.crafting.FragmentToSpawnEggRecipe", ["(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/world/level/Level;)Z", "(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", "FragmentRecipeHelper.hasOnlyOneFragmentType", "FragmentRecipeHelper.getRegistryName"])
         for neo_file in sorted(set(pins) & NEO_REVIEWED):
             neo = dest / neo_file
             abi(neo, "com.breakinblocks.neovitae.common.entity.mob.DaemoniumDolorisEntity", ["public boolean isForeman()", "()Z", "Field isForeman:Z", "IsForeman", "addAdditionalSaveData", "readAdditionalSaveData"])

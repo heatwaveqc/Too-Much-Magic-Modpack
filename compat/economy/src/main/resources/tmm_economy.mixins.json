@@ -25,6 +25,7 @@
     "StoredResourceGuardMixin",
     "CapturingForemanMixin",
     "ReliquaryCaptureMixin",
+    "ReliquaryFragmentEggMixin",
     "NeoImprisonmentMixin"
   ],
   "injectors": {
