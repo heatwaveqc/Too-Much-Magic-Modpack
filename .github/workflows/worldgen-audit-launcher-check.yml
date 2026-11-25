@@ -1,0 +1,34 @@
+name: Worldgen launcher offline authorization fixtures
+on:
+  pull_request:
+    paths:
+      - 'scripts/worldgen_audit_dispatch.py'
+      - 'tests/test_worldgen_audit_dispatch.py'
+      - '.github/workflows/worldgen-audit-dispatch.yml'
+      - '.github/workflows/worldgen-audit-pilot.yml'
+      - '.github/workflows/worldgen-audit-launcher-check.yml'
+permissions:
+  contents: read
+jobs:
+  fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p test_worldgen_audit_dispatch.py -v
+      - name: Validate launcher has only manual boot trigger
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/worldgen-audit-pilot.yml').read_text()
+          block=p.split('\non:\n',1)[1].split('\npermissions:',1)[0]
+          assert block.startswith('  workflow_dispatch:')
+          assert 'pull_request:' not in block and 'push:' not in block and 'schedule:' not in block and 'issue_comment:' not in block
+          assert 'default: false' in block
+          assert "github.event_name == 'workflow_dispatch' && inputs.authorized_build == true" in p
+          assert "github.run_attempt == 1" in p
+          print('Manual-only explicit-opt-in pilot gate present; no Minecraft execution.')
+          PY
