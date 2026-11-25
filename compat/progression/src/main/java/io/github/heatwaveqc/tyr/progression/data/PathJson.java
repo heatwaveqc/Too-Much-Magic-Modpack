@@ -127,7 +127,7 @@ public final class PathJson {
                 fixedAmount=reward.get("xp").getAsBigDecimal().longValueExact();
             }
             milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points,
-                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount,strictFlag(j,"strict_order")));
+                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount,strictFlag(j,"strict_order"),strings(j,"completion_aliases")));
         }
 
         List<Definition.Skill> skills = new ArrayList<>();
@@ -313,6 +313,9 @@ public final class PathJson {
             for (String prereq : m.after())
                 if (!milestonesSeen.contains(prereq))
                     throw new IllegalArgumentException("Unknown milestone prerequisite " + prereq);
+        Set<String> receiptIds=new HashSet<>(milestonesSeen);
+        for(var milestone:milestones)for(String alias:milestone.completionAliases())
+            if(!receiptIds.add(alias))throw new IllegalArgumentException("Duplicate milestone receipt ID "+alias);
         // Milestone prerequisites must be reachable, including strict sequences.
         Map<String,Integer> milestoneVisits = new HashMap<>();
         for (var milestone : milestones) checkMilestoneAcyclic(milestone.id(),milestones,milestoneVisits);

@@ -349,10 +349,12 @@ public final class ProgressionApi {
                         }
                     }
                     if (ready) {
-                        state=state.complete(milestone.id());
+                        state=ProgressionMath.completeMilestone(state,milestone);
                         // This is a permanent achievement, independent of
                         // current Path membership or purchased skill ranks.
                         next=next.withEconomy(next.economy().withAchievement(milestone.id()));
+                        for(String alias:milestone.completionAliases())
+                            next=next.withEconomy(next.economy().withAchievement(alias));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         // One permanent receipt per distinct Path trial, independent

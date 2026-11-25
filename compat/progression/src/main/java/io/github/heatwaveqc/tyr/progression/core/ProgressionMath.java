@@ -85,6 +85,32 @@ public final class ProgressionMath {
         return result;
     }
 
+    /** A completed equivalent representative satisfies the current graph node.
+     * This is a read-only projection: graph merges must not mint new receipts. */
+    public static Track projectCompletionAliases(Definition.Path path,Track raw) {
+        Track result=raw;
+        for(var milestone:path.milestones())
+            if(!raw.completed(milestone.id())&&milestone.completionAliases().stream().anyMatch(raw::completed))
+                result=result.complete(milestone.id());
+        return result;
+    }
+
+    /** Do not persist an alias-derived completion on unrelated transactions.
+     * Actual completion records all representatives that were equivalent at that time. */
+    public static List<String> persistentMilestones(Definition.Path path,Track raw,Track projected) {
+        var receipts=new java.util.ArrayList<>(projected.milestones());
+        for(var milestone:path.milestones())
+            if(!raw.completed(milestone.id())&&milestone.completionAliases().stream().anyMatch(raw::completed))
+                receipts.remove(milestone.id());
+        return List.copyOf(receipts);
+    }
+
+    public static Track completeMilestone(Track track,Definition.Milestone milestone) {
+        var next=track.complete(milestone.id());
+        for(String alias:milestone.completionAliases())next=next.complete(alias);
+        return next;
+    }
+
     /** Legacy milestones can pre-count. Strict milestones only collect once prerequisites
      * were completed at the start of this authoritative signal. */
     public static boolean canCollectMilestone(Definition.Milestone milestone,Track initial) {

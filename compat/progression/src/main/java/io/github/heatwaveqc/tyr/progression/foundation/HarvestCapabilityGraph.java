@@ -23,7 +23,8 @@ public final class HarvestCapabilityGraph {
     private static boolean strictlyBelow(Set<String> lower,Set<String> upper){
         return lower.size()<upper.size()&&upper.containsAll(lower);
     }
-    public static List<Group> plan(Map<String,Set<String>> fingerprints){
+    public static List<Group> plan(Map<String,Set<String>> fingerprints){return plan(fingerprints,List.of());}
+    public static List<Group> plan(Map<String,Set<String>> fingerprints,List<String> preferred){
         if(fingerprints.size()>256)throw new IllegalArgumentException("Too many harvest representatives");
         // Canonical ordering makes results independent of registry iteration order.
         var byBlocks=new LinkedHashMap<Set<String>,List<String>>();
@@ -32,7 +33,10 @@ public final class HarvestCapabilityGraph {
             if(!blocks.isEmpty())byBlocks.computeIfAbsent(blocks,key->new ArrayList<>()).add(entry.getKey());
         });
         var groups=new ArrayList<Group>();
-        byBlocks.forEach((blocks,tools)->groups.add(new Group(tools.getFirst(),tools,blocks,List.of())));
+        byBlocks.forEach((blocks,tools)->{
+            String representative=preferred.stream().filter(tools::contains).findFirst().orElse(tools.getFirst());
+            groups.add(new Group(representative,tools,blocks,List.of()));
+        });
         var result=new ArrayList<Group>();
         for(var upper:groups){
             var direct=new TreeSet<String>();
@@ -47,5 +51,13 @@ public final class HarvestCapabilityGraph {
         }
         result.sort(Comparator.comparingInt((Group g)->g.blocks().size()).thenComparing(Group::representative));
         return List.copyOf(result);
+    }
+
+    /** Unique training blocks relative to all direct predecessors. An upper
+     * capability covered by the union is redundant, not a new trial. */
+    public static Set<String> trainingBlocks(Group group,Map<String,Group> byId){
+        var delta=new TreeSet<>(group.blocks());
+        for(String predecessor:group.predecessors())delta.removeAll(byId.get(predecessor).blocks());
+        return Set.copyOf(delta);
     }
 }

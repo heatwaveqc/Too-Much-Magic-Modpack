@@ -26,7 +26,11 @@ public final class Definition {
     public record Criterion(String event, String selector, int count) {}
     public record Milestone(String id, List<Criterion> criteria, List<String> after,
                              long xp, int points, String title, boolean notifyProgress,
-                             String fixedRewardSystem, long fixedRewardXp, boolean strictOrder) {
+                             String fixedRewardSystem, long fixedRewardXp, boolean strictOrder, List<String> completionAliases) {
+        public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points,
+                         String title,boolean notifyProgress,String fixedRewardSystem,long fixedRewardXp,boolean strictOrder) {
+            this(id,criteria,after,xp,points,title,notifyProgress,fixedRewardSystem,fixedRewardXp,strictOrder,List.of());
+        }
         public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points,
                          String title,boolean notifyProgress,String fixedRewardSystem,long fixedRewardXp) {
             this(id,criteria,after,xp,points,title,notifyProgress,fixedRewardSystem,fixedRewardXp,false);
@@ -41,6 +45,13 @@ public final class Definition {
         public Milestone {
             criteria=List.copyOf(criteria);
             after=List.copyOf(after);
+            completionAliases=List.copyOf(completionAliases);
+            if(!completionAliases.isEmpty()&&(!strictOrder||xp!=0||points!=0||fixedRewardXp!=0
+                    ||criteria.size()!=1||!criteria.getFirst().event().equals("material_harvest_trial")
+                    ||completionAliases.contains(id)||completionAliases.size()>255
+                    ||new java.util.HashSet<>(completionAliases).size()!=completionAliases.size()
+                    ||completionAliases.stream().anyMatch(a->!a.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))))
+                throw new IllegalArgumentException("Invalid harvest completion aliases");
             if(title==null||title.length()>120||title.chars().anyMatch(Character::isISOControl)
                     ||fixedRewardSystem==null||fixedRewardXp<0||fixedRewardXp>1000000
                     ||fixedRewardXp>0&&!fixedRewardSystem.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")
