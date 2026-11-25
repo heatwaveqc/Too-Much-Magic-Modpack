@@ -36,6 +36,13 @@ public final class AdminMilestones {
         return next.with(path.id(),next.get(path.id()).complete(id))
             .withEconomy(next.economy().withAchievement(id));
     }
+    /** Repair a missing global achievement only when local completion proves it.
+     * Do not grant XP or alter any receipt, counter or ownership. */
+    public static Ledger reconcileCompletion(Ledger old,Definition.Path path,String id){
+        milestone(path,id);
+        if(!old.get(path.id()).completed(id))throw new IllegalArgumentException("No completed local milestone");
+        return old.withEconomy(old.economy().withAchievement(id));
+    }
     /** Reset unfinished counters only. Completed achievements are durable; do not re-arm paid trials. */
     public static Ledger resetProgress(Ledger old,Definition.Path path,String id){
         var m=milestone(path,id);

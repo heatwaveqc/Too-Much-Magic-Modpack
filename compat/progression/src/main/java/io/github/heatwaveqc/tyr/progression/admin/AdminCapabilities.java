@@ -288,9 +288,16 @@ public final class AdminCapabilities {
             }
             return issues;
         }
-        public Set<Action> actions(){return Set.of(Action.GRANT,Action.RESET);}
+        public Set<Action> actions(){return Set.of(Action.GRANT,Action.RESET,Action.RECONCILE);}
         public Change plan(ServerPlayer p,String key,Action action){
             var ids=pair(key);var path=PathRegistry.get(ids[0]);var old=ledger(p);
+            if(action==Action.RECONCILE){
+                var repaired=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.reconcileCompletion(old,path,ids[1]);
+                return new Change(inspect(p,key),"restore achievement from completed local milestone; no XP or receipts changed",()->{
+                    ledgerChange(p,"","",old,repaired).commit().run();
+                    AdminStateRefresh.reconcile(p);
+                });
+            }
             var next=action==Action.GRANT?io.github.heatwaveqc.tyr.progression.core.AdminMilestones.complete(old,path,ids[1])
                 :io.github.heatwaveqc.tyr.progression.core.AdminMilestones.resetProgress(old,path,ids[1]);
             return ledgerChange(p,inspect(p,key),action==Action.GRANT?"completed; achievement granted; NO XP or points awarded"
