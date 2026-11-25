@@ -73,6 +73,10 @@ file = "config/defaultoptions/keybindings.txt"
 hash = "dfa53a3e9f5fcdf112f83b2943fab03b7bc3f943045799264a328e3381c4f936"
 
 [[files]]
+file = "config/feywild-common.toml"
+hash = "0f377703342a688eff17a7cd7d6f38bdbdcca1e51e7cfc5c62ac7c6acaab9810"
+
+[[files]]
 file = "config/ftbchunks-client.snbt"
 hash = "01eb45c223662ddc950197f9fa6b5ece175dbf43ba61b7d40e5bc9ef51c56595"
 
@@ -307,6 +311,14 @@ hash = "0497f3137c9150105e877a79362303b8fc49f141890d7e098f6a8ae9cf8d8e45"
 [[files]]
 file = "defaultconfigs/ProjectE/mapping.toml"
 hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
+
+[[files]]
+file = "defaultconfigs/ars_nouveau-server.toml"
+hash = "cd6e01ae4e5d60d14516b3611e5d385305fbaa095aabe1dbe486f3f76f0a4848"
+
+[[files]]
+file = "defaultconfigs/astralsorcery-server.toml"
+hash = "0ff6a3cd1e3ceeadf6725ba6a4282eb4273794ecff12394a01064fe74e8daeb3"
 
 [[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
@@ -906,7 +918,7 @@ hash = "3f5b324642ee237cfc9f68ccd141a388a60fd8e6d1cf95527aa447729930e9fc"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
-hash = "4fdcdb0beb12591f3a211481670311ca32322f7fac9f89cf4fd3055c8f923519"
+hash = "dd70e6b4b2369524f636aacac4df045bafe0cde296a346700a714b659082b1c8"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/caerbannog.json"
