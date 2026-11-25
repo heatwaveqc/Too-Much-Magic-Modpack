@@ -259,6 +259,21 @@ public final class ProgressionApi {
         }
     }
 
+    /** Trusted server hit detector resets only an active, unfinished arrow-dodge trial. */
+    public static void resetArrowTrial(ServerPlayer player,String pathId,String milestoneId){
+        if(!eligibleEarner(player)||!PathRegistry.eligible(player,pathId))return;
+        var path=PathRegistry.get(pathId);
+        if(path==null||PathRegistry.channel(pathId)==null)return;
+        var milestone=path.milestones().stream().filter(m->m.id().equals(milestoneId)).findFirst().orElse(null);
+        if(milestone==null||milestone.criteria().size()!=1
+                ||!milestone.criteria().getFirst().event().equals("arrow_dodged"))return;
+        Ledger ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        Track initial=ChannelEngine.view(ledger,path,PathRegistry.config());
+        Track next=ProgressionMath.resetCriterion(initial,milestone,0);
+        if(!next.equals(initial))player.setData(ProgressionAttachments.LEDGER.get(),
+            ChannelEngine.ownership(ledger,path,next,PathRegistry.config()));
+    }
+
     /** Standardized activity events: one authoritative signal, all joined paths. */
     public static void record(ServerPlayer player, Signal signal) {
         recordFiltered(player,signal,path -> true);

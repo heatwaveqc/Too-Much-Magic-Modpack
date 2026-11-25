@@ -71,6 +71,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,HeightFallTrial::protectLanding);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
         NeoForge.EVENT_BUS.addListener(MechanicalEffects::postDamage);
+        NeoForge.EVENT_BUS.addListener(ObservedTrials::hit);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
@@ -256,6 +257,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
             Enrollment.tick(player);
+            ObservedTrials.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.JawrBloodCapacity.tick(player);
@@ -278,6 +280,7 @@ public final class ProgressionEvents {
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             PassivePowers.forget(player);
@@ -317,6 +320,7 @@ public final class ProgressionEvents {
             VerifiedSprintingXp.forget(player);
             VerifiedConsumptionXp.forget(player);
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             PassivePowers.forget(player);
             VirtualElytra.reconcile(player,true);
@@ -332,6 +336,7 @@ public final class ProgressionEvents {
             PassivePowers.forget(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);

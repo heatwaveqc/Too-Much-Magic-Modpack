@@ -282,6 +282,7 @@ public final class EffectRuntime {
             if (breeds) animal.setInLove(player);
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
+            ProgressionApi.record(player,Selectors.entityAction("animal_petted_unique",animal));
             ProgressionApi.record(player,Selectors.entityAction("animal_petted",animal));
             return true;
         }

@@ -190,14 +190,21 @@ public final class ClassAbilities {
         ordeal(p);
         if (unlocked(p,"water_breathing") && p.isUnderWater()) {
             int level = effect(p,"water_breathing").rank();
-            if (level >= 2) p.setAirSupply(p.getMaxAirSupply());
+            if (level >= 2 || "true".equals(effect(p,"water_breathing").effect().params().get("full_breathing"))) p.setAirSupply(p.getMaxAirSupply());
             else if (p.tickCount % 5 == 0)
                 p.setAirSupply(Math.min(p.getMaxAirSupply(),p.getAirSupply()+2));
         }
-        if (unlocked(p,"purification") && p.tickCount % 10 == 0) {
-            for (MobEffectInstance instance : new ArrayList<>(p.getActiveEffects()))
-                if (instance.getEffect().value().getCategory() == MobEffectCategory.HARMFUL)
-                    p.removeEffect(instance.getEffect());
+        var purify=effect(p,"purification");
+        if(purify!=null&&p.tickCount%Integer.parseInt(purify.effect().params().getOrDefault("interval_ticks","10"))==0){
+            var excluded=java.util.Set.copyOf(java.util.Arrays.asList(
+                purify.effect().params().getOrDefault("exclude_effects","").split(",")));
+            for(MobEffectInstance instance:new ArrayList<>(p.getActiveEffects())){
+                if(instance.getEffect().value().getCategory()!=MobEffectCategory.HARMFUL)continue;
+                if(instance.getEffect().equals(MobEffects.BLINDNESS)&&mode(p,"ordeal").equals("active")
+                        &&unlocked(p,"blindness_ordeal"))continue;
+                String id=instance.getEffect().unwrapKey().map(k->k.location().toString()).orElse("");
+                if(!id.isEmpty()&&!excluded.contains(id))p.removeEffect(instance.getEffect());
+            }
         }
     }
 
@@ -342,6 +349,7 @@ public final class ClassAbilities {
                 || !p.hasEffect(MobEffects.BLINDNESS)
                 || !(event.getEntity() instanceof Monster)
                 || event.getSource().getDirectEntity() != p
+                || !event.getSource().is(DamageTypes.PLAYER_ATTACK)
                 || !p.getMainHandItem().isEmpty()) return;
         var active=effect(p,"blindness_ordeal");
         if(active==null)return;

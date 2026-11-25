@@ -53,7 +53,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial", "height_fall_trial").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial", "height_fall_trial", "observed_trial", "animal_petted_unique", "arrow_dodged", "strict_fist_victory").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -107,6 +107,8 @@ public final class PathJson {
                 if (n < 1 || n > 1000000) throw new IllegalArgumentException("Bad criterion count");
                 String kind=event(str(c,"event",""));
                 String target=selector(str(c,"target",""));
+                if((kind.equals("animal_petted_unique")||kind.equals("arrow_dodged"))&&n>256)
+                    throw new IllegalArgumentException("Distinct trial count exceeds 256");
                 if(kind.equals("material_harvest_trial")&&(!strictFlag(j,"strict_order")
                     ||target.startsWith("#")||target.equals("*")))
                     throw new IllegalArgumentException("Material trial requires strict_order and an exact representative tool ID");
@@ -208,6 +210,15 @@ public final class PathJson {
                             throw new IllegalArgumentException("Effect parameter too long");
                         params.put(entry.getKey(),value);
                     });
+                }
+                if(type.equals("water_breathing")&&params.containsKey("full_breathing"))
+                    MechanicalSpec.bool(params,"full_breathing",false);
+                if(type.equals("purification")){
+                    MechanicalSpec.integer(params,"interval_ticks",10,1,1200);
+                    String excluded=params.getOrDefault("exclude_effects","");
+                    if(!excluded.isEmpty())for(String entry:excluded.split(",",-1))
+                        if(!entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                            throw new IllegalArgumentException("Invalid purification exclusion");
                 }
                 if (type.equals("gear_durability")) {
                     String slot = params.getOrDefault("slot","mainhand");

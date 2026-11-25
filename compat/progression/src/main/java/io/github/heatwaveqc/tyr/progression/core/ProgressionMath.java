@@ -125,12 +125,29 @@ public final class ProgressionMath {
             for(int i=0;i<milestone.criteria().size();i++){
                 var criterion=milestone.criteria().get(i);
                 String key=counterKey(milestone.id(),i);
-                if(signal.matches(criterion.event(),criterion.selector())
-                    &&next.criterionCount(key)<criterion.count())
-                    next=recordCriterion(next,key,1);
+                if(!signal.matches(criterion.event(),criterion.selector())
+                    ||next.criterionCount(key)>=criterion.count())continue;
+                if(criterion.event().equals("animal_petted_unique")||criterion.event().equals("arrow_dodged")){
+                    if(signal.subject()==null)continue;
+                    String distinct=key+"/subject/"+signal.subject();
+                    if(next.criterionCount(distinct)>0)continue;
+                    next=next.withCounter(distinct,1);
+                }
+                next=recordCriterion(next,key,1);
             }
         }
         return next;
+    }
+
+    /** Reset only an unfinished strict criterion and its distinct-subject receipts. */
+    public static Track resetCriterion(Track old,Definition.Milestone milestone,int index){
+        if(!old.joined()||old.completed(milestone.id())||!milestone.strictOrder()
+                ||!canCollectMilestone(milestone,old)||index<0||index>=milestone.criteria().size())return old;
+        String key=counterKey(milestone.id(),index);
+        if(old.criterionCount(key)==0)return old;
+        var counters=new java.util.HashMap<>(old.counters());
+        counters.keySet().removeIf(k->k.equals(key)||k.startsWith(key+"/subject/"));
+        return new Track(old.joined(),old.xp(),old.rank(),old.points(),old.skills(),old.milestones(),counters);
     }
 
     /** Temporary use of the designated effect only; no ownership, points or achievement receipt. */

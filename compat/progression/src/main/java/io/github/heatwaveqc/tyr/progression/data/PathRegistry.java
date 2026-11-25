@@ -107,6 +107,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
 
     private record Pending(Map<ResourceLocation,JsonElement> data,ResourceManager manager){}
     private static volatile Pending pending;
+    private static volatile Map<String,java.util.List<ObservedTrialSpec>> observedTrials=Map.of();
+    public static Map<String,java.util.List<ObservedTrialSpec>> observedTrials(){return observedTrials;}
     private static volatile Map<String,java.util.List<HeightFallTrialSpec>> heightFallTrials=Map.of();
     public static Map<String,java.util.List<HeightFallTrialSpec>> heightFallTrials(){return heightFallTrials;}
     private static volatile Map<String,java.util.List<ChallengeHudSpec.Lane>> challengeHuds=Map.of();
@@ -143,6 +145,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,Map<String,java.util.Set<String>>> nextGenerated=new HashMap<>();
         Map<String,java.util.List<ChallengeHudSpec.Lane>> nextHuds=new HashMap<>();
         Map<String,java.util.List<HeightFallTrialSpec>> nextFalls=new HashMap<>();
+        Map<String,java.util.List<ObservedTrialSpec>> nextObserved=new HashMap<>();
         Map<String,Definition.Path> next = new HashMap<>();
         Map<String,String> modes = new HashMap<>();
         Map<String,PotionEnrollmentTrigger> triggers = new HashMap<>();
@@ -213,6 +216,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 if(!hud.isEmpty())nextHuds.put(path.id(),hud);
                 var falls=HeightFallTrialSpec.parse(raw,path);
                 if(!falls.isEmpty())nextFalls.put(path.id(),falls);
+                var observed=ObservedTrialSpec.parse(raw,path);
+                if(!observed.isEmpty())nextObserved.put(path.id(),observed);
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
                 if(element.getAsJsonObject().has("hunter_xp")||element.getAsJsonObject().has("computed_xp"))
@@ -291,6 +296,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         generatedTrials=Map.copyOf(nextGenerated);
         challengeHuds=Map.copyOf(nextHuds);
         heightFallTrials=Map.copyOf(nextFalls);
+        observedTrials=Map.copyOf(nextObserved);
         active = Map.copyOf(next);
         io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.install(resourceCatalog);
         io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics.clearFoodCache();
