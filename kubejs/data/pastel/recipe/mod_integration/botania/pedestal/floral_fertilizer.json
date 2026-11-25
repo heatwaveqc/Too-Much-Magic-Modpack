@@ -1,0 +1,33 @@
+{
+  "type": "pastel:pedestal",
+  "group": "botania_mushrooms",
+  "time": 100,
+  "tier": "basic",
+  "experience": 0.1,
+  "pattern": [
+    "MPS"
+  ],
+  "key": {
+    "M": "minecraft:bone_meal",
+    "P": "#pastel:pigments",
+    "S": "#pastel:pigments"
+  },
+  "result": {
+    "id": "botania:fertilizer",
+    "count": 4
+  },
+  "required_advancement": "pastel:collect_pigment",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "colors": {
+    "pastel:cyan": 0,
+    "pastel:magenta": 0,
+    "pastel:yellow": 0,
+    "pastel:white": 0,
+    "pastel:black": 0
+  }
+}

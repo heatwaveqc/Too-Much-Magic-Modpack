@@ -73,6 +73,10 @@ file = "config/defaultoptions/keybindings.txt"
 hash = "c9f0f778728932ffdf391f224a6dd681402653497b13ae1abdb6538c449e7dd4"
 
 [[files]]
+file = "config/exmi/enable_config.json"
+hash = "2b5458f612e6e87f555ac901e56308051444183f6da48be6f5f70e256f2db413"
+
+[[files]]
 file = "config/feywild-common.toml"
 hash = "0f377703342a688eff17a7cd7d6f38bdbdcca1e51e7cfc5c62ac7c6acaab9810"
 
@@ -270,7 +274,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "cf59d631a33c04291d2c5202dd7866a61ea6371bc24fa3ec3b8fa5313011f8cc"
+hash = "d1d0ce5f34d55b9650980c09f20ed55a0aaaeb332f4e56c8249ebb37b354238c"
 
 [[files]]
 file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
@@ -569,6 +573,14 @@ file = "kubejs/data/c/tags/item/pasta.json"
 hash = "24bc87e3296c74599fc7c56eefed06c170e1e1e4890960ae46ac0c260244a08e"
 
 [[files]]
+file = "kubejs/data/cocktailsdelight/recipe/pouring/soymilk_bottle.json"
+hash = "818760174753c306115d03434ae5ec5c6eef54394a99d14d4dba35814674e1ef"
+
+[[files]]
+file = "kubejs/data/cocktailsdelight/recipe/pouring/soymilk_bucket.json"
+hash = "92b4e4d828a76d8ec7c74a3326d7524d17b5011c97d2ce0d2b06a9a6e02f3a65"
+
+[[files]]
 file = "kubejs/data/computercraft/recipe/computer_advanced.json"
 hash = "1b42ba9f0e2caea304b9b077f0ab624d4908ebad4f7a254a50843b031fc5ee0e"
 
@@ -617,8 +629,16 @@ file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
 
 [[files]]
+file = "kubejs/data/dungeonsdelight/recipe/integration/aether/smoker/ae_cooked_marbled_meat_from_smoking.json"
+hash = "2eaff7bba5db25f8504d5795fd4be7adec08beecc784891a6eb76f0995c44d28"
+
+[[files]]
 file = "kubejs/data/eidolon_repraised/recipe/sulfur.json"
 hash = "1a23b75bfc3f9ab98377feee2dd1d4c9846e2041e1cbd744d274d329064066bb"
+
+[[files]]
+file = "kubejs/data/endersdelight/recipe/chorus_pie_slice.json"
+hash = "12a0d9fa3ce6a3d6e8d908734f55573ec6a85b857e280d5def6e0d0f84b700e8"
 
 [[files]]
 file = "kubejs/data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json"
@@ -659,6 +679,42 @@ hash = "3d01668466e3b8bf4208780a2b6e0a99cb4b69e48a0d665eea7617eafbab7919"
 [[files]]
 file = "kubejs/data/lootr/tags/block/convert/chests.json"
 hash = "a767a6cb4e7693098510edb86b1d68352d6f6733a5d12eca08e80ff9c240617c"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/elementium.json"
+hash = "12dd77f2ddc15f896364e74ab73918a57bd42b9aff32a0e21c6b9949f1984677"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/manasteel.json"
+hash = "db58acdf04df026b3aa9f8fb7a8cee5f2dbdbf276233ab70eaa911c69e7fe9ac"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/botania/terrasteel.json"
+hash = "f1b0abc41e4a7cb26d8f653d9540b515467ababe1217488f86cc970fb10717c0"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/hexerei/broom.json"
+hash = "37e297358059ebb3a4ce206ba9ba1082d77089ea64883a7d71b10b16c97f892b"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/hexerei/witch_armor.json"
+hash = "22eb9bce02c5ae524258f9587d8375dc540b4a3cfe706084e7a3ef0113c153d7"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/gold_chalk.json"
+hash = "ebcb8c9b6e43544494d3579d00ced5ee168d6e37540315e7434d2ff4dd4b87fb"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/purple_chalk.json"
+hash = "67adfb75a44ba672021765859d2a9a738ccb2f228eeb13fa68cedc032df323d0"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/red_chalk.json"
+hash = "4c9d893b1afab6d919daee9f9136b5cea3d8d6cbacecb4b51212f83ba6ff6c8e"
+
+[[files]]
+file = "kubejs/data/malum/recipe/malum/spirit_repair/occultism/white_chalk.json"
+hash = "0b69d329cd5e55053a94b8f0efb3f11818198d9d5a798deee9ab207cce33628a"
 
 [[files]]
 file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
@@ -755,6 +811,158 @@ hash = "a858323669c22d2a88a75b6cb65c324022715b870da5328705b53e1868b1ccbf"
 [[files]]
 file = "kubejs/data/occultism/recipe/ritual/misc_miner_ancient_eldritch.json"
 hash = "9c339a4350b2cfd09d4646d296bd3d101ca447958dd9f6225ae263e9b646dede"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/floral_fertilizer.json"
+hash = "ab1bb2c3540769655bbaf32805df2e3edb9240ee92da7a5f41b2bf2181290dae"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/black_glimmering_flower.json"
+hash = "c49442badb8da6c57a5a5cb7de0afcad3356fae240fce36b150854c962f96c47"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/blue_glimmering_flower.json"
+hash = "3dcfb20de9c31f62bff332ce00d7666ad9cd40aa084ff7e00ac5fd1c8bcb0992"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/brown_glimmering_flower.json"
+hash = "a0be3873d64cd1ab949a9958a9b397d38918b1a8abc9062ca48c181709b9fd02"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/cyan_glimmering_flower.json"
+hash = "ebfa2b53f82c393e58ccd275e258d1089f3ef456fe0bee1b7ffa13701b96db0d"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/gray_glimmering_flower.json"
+hash = "b43a850c379fe50f2ac1a0c38c18cd177823f58b03166bb4e5afb05efbaf606b"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/green_glimmering_flower.json"
+hash = "68067094de27dfddf7cf917e239dde7b9015bce41d21239455fc3a8558bfb57c"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/light_blue_glimmering_flower.json"
+hash = "006b35187fee3fad5318b83421e51331190363112608f076da4e4d37bf09ea3a"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/light_gray_glimmering_flower.json"
+hash = "7bd759be7082a4ec190613638d6fb1152843be888b446a192ed295a30dbd0f62"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/lime_glimmering_flower.json"
+hash = "e4ff7dc6d51b979a8578e1b50dba2b22c61c36e9704e1fc6385da4dc88b50f83"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/magenta_glimmering_flower.json"
+hash = "d6b07fa6aeb1a164d2183d50e97c3380fcb4da2fe8ff4ef2533acfc38bb93d8e"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/orange_glimmering_flower.json"
+hash = "33a10fd166ec51c6fd047006409efb71b772fac0afddafe5fb9cdc280440fb21"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/pink_glimmering_flower.json"
+hash = "12d175d54f490746372b8ee8a737b3afb1b50d4a860ba2aedc5532ddbe51957e"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/purple_glimmering_flower.json"
+hash = "d2ecce612b2ee7b5af649cbb77619cc2431c198a7abfe1e1f6ee599dae8ad984"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/red_glimmering_flower.json"
+hash = "3e3cca60834a168b389640d45ea90b09596f6f2f3b299a2997e042b5ef9969b3"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/white_glimmering_flower.json"
+hash = "c76af1a9676b99ba821ac1662fe4f5ec18b75d107059949291e2e6fc1784db55"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/glimmering_flowers/yellow_glimmering_flower.json"
+hash = "1ea3171da4b3db4109ebfb9fd025322e28b0ed6ef869345666b3f2f5b1497057"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/black_mushroom.json"
+hash = "5565edf50d36493c137c34db04b5605bc124dcb59edaa5609c551fa2952b5c1e"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/blue_mushroom.json"
+hash = "586cb91700ef01d3dfe6b97c1d4cfbad8052d67907e46c1291c3922d06904c45"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/brown_mushroom.json"
+hash = "628225b22543147e3c03e3aa220f93fd52376e9a94cb3d9d73af9c4649569674"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/cyan_mushroom.json"
+hash = "91606ac92ce9c0aa6adc42fa4fd60209af76fa0641a03694966b9a0042ff92d5"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/gray_mushroom.json"
+hash = "15edd6b3c0410e6e3cf3a4aecd89b8895dadf47f8e78699421a21aba09de0c2a"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/green_mushroom.json"
+hash = "e347ef96bec274892548a7a53f14183908ec9e08d40331b11cf3baca2f17f01c"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/light_blue_mushroom.json"
+hash = "d3c4b8a8a989430aa1700e8050b02da9630e113f71314c55cc69a74d9c7b825e"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/light_gray_mushroom.json"
+hash = "b21f30edfd11aca50be371ee3c7ac52d22bba53271ab59fb8330c1853911b0ae"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/lime_mushroom.json"
+hash = "56a97b3f9eb7c1c536c60f7c9e632ae60875496849db736b15d5ef66912bda8b"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/magenta_mushroom.json"
+hash = "c2dc3f9b8634d643dfc5d3665bcb132a8a4d2330fb26647aa5a9d5fc64c4ce33"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/orange_mushroom.json"
+hash = "be3144ce7ce0be7922cfca34518e8b4ba7513ca12a5d152111d3bf0171901a98"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/pink_mushroom.json"
+hash = "c51ea04bbc0b7d94ee98b241ff588b3e501fb3c20975fd2ab5f5468a681bc5e2"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/purple_mushroom.json"
+hash = "a894e8798f0fc00ba9eb8524e33ac93889213f58b266d219106d8b7bf45edd94"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/red_mushroom.json"
+hash = "1aa18c9b3fec1cfde7d9c2032e468b57a7e9dac928f58c30161ebf6f3f70a805"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/white_mushroom.json"
+hash = "be1cf7cdfdcb52d4eda3f4597886c2e5516152c61bf5897e27cf28234bd0d012"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/pedestal/mushrooms/yellow_mushroom.json"
+hash = "0fec946c40582f60c3de5d46cd2f7f965db708f3056c1860a7237de51e60bded"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/potion_workshop_reacting/blackest_lotus.json"
+hash = "94a0f6905fa19e92bdbb6f58c22d9c412e9d9f6a9dd2c2c3fb03886b3a41afb7"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/potion_workshop_reacting/least_black_lotus.json"
+hash = "6c2ded5d922920c1bf6277bf305931b5ecdb78bf74df2e82135ccb451b9a31ab"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/primordial_fire_burning/least_black_lotus.json"
+hash = "d6bdaeb18479c1a32d1f4829ca02544fca468a3addbd6a254ec4ae70ddeee9b7"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/botania/spirit_instiller/blackest_lotus.json"
+hash = "c7ea78911bb1d30f3f944f6852fe819664d4212785727412720c3951bafa7595"
+
+[[files]]
+file = "kubejs/data/pastel/recipe/mod_integration/hexcasting/fusion_shrine/charged_amethyst_from_amethyst_shard_fusion.json"
+hash = "f8986b27b18aa495d0047d0a41c755f42d52e4f8d4a24c64e5fa53fb1a307478"
 
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
@@ -1558,7 +1766,7 @@ hash = "6ec9390b41dc8ff29e9be5f458950b5b0cba80333ed7dac549ed8f2f97771d67"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/ritual/perpetual_life.json"
-hash = "2bd9c53b7900a2578d6579ef1ddd951c612e4938dcf930d3a04c72f170452337"
+hash = "a32d1dec88725ea3774866f33676de378860cd619152d5098b47a195f764c8ac"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_chipped.json"
@@ -1754,7 +1962,7 @@ hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
 
 [[files]]
 file = "kubejs/server_scripts/zz_reactive_loot_books.js"
-hash = "1679a3b2393d49429ed3dca27e023b28fa14ed5d088b9c5ea6fdb711f291b77c"
+hash = "df749a86bfe793dfa711c179e73872e8a37f217e150c271ec48ab3888734911a"
 
 [[files]]
 file = "kubejs/startup_scripts/adventurer_coin.js"
@@ -1835,7 +2043,7 @@ metafile = true
 
 [[files]]
 file = "mods/aquaculture-delight.pw.toml"
-hash = "ff922921641f00ce799061a7cb2da483d2a1a240fbfa135f376579e1aa0917b6"
+hash = "f76fc84365a0ce3c7d988bb983b9ae817a4633a5b22beedde2219c1f7ee83a6b"
 metafile = true
 
 [[files]]

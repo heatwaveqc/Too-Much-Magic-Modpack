@@ -1,0 +1,19 @@
+name: Aquaculture Delight official source audit (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'mods/aquaculture-delight.pw.toml'
+      - 'scripts/audit_aquaculture_delight_source.py'
+      - '.github/workflows/aquaculture-delight-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/audit_aquaculture_delight_source.py

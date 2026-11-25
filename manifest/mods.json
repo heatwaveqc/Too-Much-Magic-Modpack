@@ -2980,13 +2980,11 @@
       "desired": true,
       "version": "1.2.0",
       "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/aquaculture-delight/files/6179576",
+      "source": "https://modrinth.com/mod/aquaculture-delight/version/VFpyJiVp",
       "enabled_in_pack": true,
       "dependencies_verified": true,
-      "curseforge_project_id": 961988,
-      "candidate_file_id": 6179576,
       "packwiz_slug": "aquaculture-delight",
-      "note": "OWNER APPROVED 2026-11-20. Official NeoForge 1.21.1 aquaculturedelight-1.2.0-neoforge-1.21.1.jar, CurseForge 961988/6179576. Needs pinned Aquaculture 2 and Farmer's Delight (both already active). Audit cut/fillet conversions, Neptunium, original Aquaculture sushi vs new sushi roll, Dragon Survival Sea diet, recipes/knives, food tags, cooking integrations and EMC. Exact native JAR dependency/hash verification and next authorized live test pending. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
+      "note": "OWNER APPROVED 2026-11-20. Official NeoForge 1.21.1 aquaculturedelight-1.2.0-neoforge-1.21.1.jar, CurseForge 961988/6179576. Needs pinned Aquaculture 2 and Farmer's Delight (both already active). Audit cut/fillet conversions, Neptunium, original Aquaculture sushi vs new sushi roll, Dragon Survival Sea diet, recipes/knives, food tags, cooking integrations and EMC. Exact native JAR dependency/hash verification and next authorized live test pending. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS. Nov 25 #709: same-version official Modrinth project U9GJqWrI/version VFpyJiVp, published manifest SHA1 matches historical CurseForge pin; official API and exact direct-download hash/ZIP verification required by targeted CI before merge. No version or dependency change."
     },
     {
       "id": "born-in-chaos",

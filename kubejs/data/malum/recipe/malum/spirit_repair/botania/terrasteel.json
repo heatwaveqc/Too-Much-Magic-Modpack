@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "type": "malum:spirit_repair",
+  "durabilityPercentage": 1,
+  "repairMaterial": {
+    "item": "botania:terrasteel_ingot",
+    "count": 1
+  },
+  "spirits": [
+    {
+      "type": "malum:arcane",
+      "count": 32
+    }
+  ],
+  "validItems": [
+    "botania:terrasteel_helmet",
+    "botania:terrasteel_chestplate",
+    "botania:terrasteel_leggings",
+    "botania:terrasteel_boots",
+    "botania:terra_sword",
+    "botania:terra_pick",
+    "botania:terra_axe"
+  ]
+}
