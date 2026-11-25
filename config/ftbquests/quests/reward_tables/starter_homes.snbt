@@ -1,0 +1,26 @@
+{
+	id: "544D7A0000000002"
+	loot_size: 1
+	use_title: true
+	rewards: [
+		{ id: "544D7A1000000001", type: "command", command: "tmmhome reward generic", permission_level: 2, team_reward: false, icon: { id: "prefab:item_house" } }
+		{ id: "544D7A1000000002", type: "command", command: "tmmhome reward adventurers_inn", permission_level: 2, team_reward: false, icon: { id: "minecraft:red_bed" } }
+		{ id: "544D7A1000000003", type: "command", command: "tmmhome reward arcane_forge", permission_level: 2, team_reward: false, icon: { id: "minecraft:anvil" } }
+		{ id: "544D7A1000000004", type: "command", command: "tmmhome reward arcane_sanctum", permission_level: 2, team_reward: false, icon: { id: "minecraft:amethyst_shard" } }
+		{ id: "544D7A1000000005", type: "command", command: "tmmhome reward castaways_retreat", permission_level: 2, team_reward: false, icon: { id: "minecraft:oak_boat" } }
+		{ id: "544D7A1000000006", type: "command", command: "tmmhome reward celestial_observatory", permission_level: 2, team_reward: false, icon: { id: "minecraft:spyglass" } }
+		{ id: "544D7A1000000007", type: "command", command: "tmmhome reward chromatic_manor", permission_level: 2, team_reward: false, icon: { id: "minecraft:purple_stained_glass" } }
+		{ id: "544D7A1000000008", type: "command", command: "tmmhome reward dark_citadel", permission_level: 2, team_reward: false, icon: { id: "minecraft:obsidian" } }
+		{ id: "544D7A1000000009", type: "command", command: "tmmhome reward dwarven_foundry", permission_level: 2, team_reward: false, icon: { id: "minecraft:blast_furnace" } }
+		{ id: "544D7A100000000A", type: "command", command: "tmmhome reward elven_garden", permission_level: 2, team_reward: false, icon: { id: "minecraft:flowering_azalea" } }
+		{ id: "544D7A100000000B", type: "command", command: "tmmhome reward farmers_homestead", permission_level: 2, team_reward: false, icon: { id: "minecraft:wheat" } }
+		{ id: "544D7A100000000C", type: "command", command: "tmmhome reward hearthkeeper", permission_level: 2, team_reward: false, icon: { id: "minecraft:campfire" } }
+		{ id: "544D7A100000000D", type: "command", command: "tmmhome reward mages_academy", permission_level: 2, team_reward: false, icon: { id: "minecraft:enchanting_table" } }
+		{ id: "544D7A100000000E", type: "command", command: "tmmhome reward summoners_lodge", permission_level: 2, team_reward: false, icon: { id: "minecraft:soul_campfire" } }
+		{ id: "544D7A100000000F", type: "command", command: "tmmhome reward sanguine_temple", permission_level: 2, team_reward: false, icon: { id: "minecraft:redstone" } }
+		{ id: "544D7A1000000010", type: "command", command: "tmmhome reward spirit_shrine", permission_level: 2, team_reward: false, icon: { id: "minecraft:soul_lantern" } }
+		{ id: "544D7A1000000011", type: "command", command: "tmmhome reward witch_cottage", permission_level: 2, team_reward: false, icon: { id: "minecraft:potion" } }
+		{ id: "544D7A1000000012", type: "command", command: "tmmhome reward witchs_manor", permission_level: 2, team_reward: false, icon: { id: "minecraft:cauldron" } }
+		{ id: "544D7A1000000013", type: "command", command: "tmmhome reward wizards_tower", permission_level: 2, team_reward: false, icon: { id: "minecraft:enchanted_book" } }
+	]
+}

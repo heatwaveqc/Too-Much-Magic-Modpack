@@ -2,3 +2,9 @@
 # Welcome quest now contains both of the original starter gifts.
 [sevenCurses]
 giveStarterGear = false
+# Keep the Ring of the Seven Curses a conscious opt-in.
+autoEquip = false
+
+# Leave broad death-inventory protection to the pack's chosen recovery system.
+[abyssItems.eldritchAmulet]
+keepInventory = false

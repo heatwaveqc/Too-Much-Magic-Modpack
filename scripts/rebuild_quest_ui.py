@@ -432,7 +432,13 @@ def main() -> None:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
     # Custom task titles must be emitted into the FTB localization table.
     task_translations = ['\ttask.544D4D1200000001.title: "Any Log or Stem"']
-    changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations + task_translations) + "\n}\n"
+    housing = json.loads((ROOT / "manifest/starter_home_choices.json").read_text(encoding="utf-8"))
+    housing_translations = [
+        f'\treward_table.{housing["table_id"]}.title: {q(housing["title"])}',
+        f'\treward.{housing["reward_id"]}.title: {q(housing["title"])}',
+        *[f'\treward.{entry["id"]}.title: {q(entry["title"])}' for entry in housing["choices"]],
+    ]
+    changes[QUESTDIR / "lang/en_us.snbt"] = "{\n" + "\n".join(group_translations + chapter_translations + all_quest_translations + task_translations + housing_translations) + "\n}\n"
 
     for path, content in changes.items():
         path.parent.mkdir(parents=True, exist_ok=True)

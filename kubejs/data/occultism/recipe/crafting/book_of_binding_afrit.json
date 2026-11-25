@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "occultism:taboo_book"
+    },
+    "c": {
+      "item": "occultism:purified_ink"
+    },
+    "f": {
+      "item": "occultism:awakened_feather"
+    },
+    "p": {
+      "tag": "c:dyes/yellow"
+    },
+    "a": {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "apotheosis:luminous_crystal_shard"
+        },
+        {
+          "type": "apotheosis:gem",
+          "purity": "flawed"
+        }
+      ]
+    }
+  },
+  "pattern": [
+    "cpf",
+    "pbp",
+    "ap "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultism:book_of_binding_afrit"
+  }
+}
