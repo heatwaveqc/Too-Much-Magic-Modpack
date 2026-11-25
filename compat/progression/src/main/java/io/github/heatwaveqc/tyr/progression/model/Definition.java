@@ -26,7 +26,11 @@ public final class Definition {
     public record Criterion(String event, String selector, int count) {}
     public record Milestone(String id, List<Criterion> criteria, List<String> after,
                              long xp, int points, String title, boolean notifyProgress,
-                             String fixedRewardSystem, long fixedRewardXp) {
+                             String fixedRewardSystem, long fixedRewardXp, boolean strictOrder) {
+        public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points,
+                         String title,boolean notifyProgress,String fixedRewardSystem,long fixedRewardXp) {
+            this(id,criteria,after,xp,points,title,notifyProgress,fixedRewardSystem,fixedRewardXp,false);
+        }
         public Milestone(String id,List<Criterion> criteria,List<String> after,long xp,int points) {
             this(id,criteria,after,xp,points,"",false,"",0);
         }

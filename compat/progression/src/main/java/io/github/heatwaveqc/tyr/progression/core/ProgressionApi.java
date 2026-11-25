@@ -331,24 +331,15 @@ public final class ProgressionApi {
             Track state=initial;
             if (!state.joined()) continue;
 
-            for (Definition.Milestone milestone : path.milestones()) {
-                if (state.completed(milestone.id())) continue;
-                int index = 0;
-                for (Definition.Criterion criterion : milestone.criteria()) {
-                    if (signal.matches(criterion.event(),criterion.selector())) {
-                        String key = ProgressionMath.counterKey(milestone.id(),index);
-                        if (state.criterionCount(key) < criterion.count())
-                            state = ProgressionMath.recordCriterion(state,key,1);
-                    }
-                    index++;
-                }
-            }
+            // Use the state at signal start: a single action cannot advance two strict steps.
+            state = ProgressionMath.collectMilestoneCriteria(path,initial,signal);
             // A single event may satisfy a chain of previously completed prerequisite counters.
             boolean changed;
             do {
                 changed = false;
                 for (Definition.Milestone milestone : path.milestones()) {
-                    if (state.completed(milestone.id()) || !state.milestones().containsAll(milestone.after()))
+                    if (state.completed(milestone.id()) || !state.milestones().containsAll(milestone.after())
+                            || !ProgressionMath.canCollectMilestone(milestone,initial))
                         continue;
                     boolean ready = true;
                     for (int i = 0; i < milestone.criteria().size(); i++) {

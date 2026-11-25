@@ -303,6 +303,12 @@ public final class ProgressionEvents {
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            // The actual server transition, not the vanilla advancement receipt or a client packet.
+            if (!event.getFrom().equals(event.getTo())
+                    && player.serverLevel().dimension().equals(event.getTo())
+                    && !player.isCreative() && !player.isSpectator() && player.isAlive())
+                ProgressionApi.record(player,new io.github.heatwaveqc.tyr.progression.core.Signal(
+                    "dimension_entered",event.getTo().location().toString(),java.util.Set.of()));
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
             VerifiedSprintingXp.forget(player);

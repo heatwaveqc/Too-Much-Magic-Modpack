@@ -85,7 +85,29 @@ public final class ProgressionMath {
         return result;
     }
 
-    /** Persistent, namespaced criterion counters, independent of current active dependencies. */
+    /** Legacy milestones can pre-count. Strict milestones only collect once prerequisites
+     * were completed at the start of this authoritative signal. */
+    public static boolean canCollectMilestone(Definition.Milestone milestone,Track initial) {
+        return !milestone.strictOrder() || initial.milestones().containsAll(milestone.after());
+    }
+
+    public static Track collectMilestoneCriteria(Definition.Path path,Track initial,Signal signal) {
+        if(!initial.joined())return initial;
+        Track next=initial;
+        for(var milestone:path.milestones()){
+            if(initial.completed(milestone.id())||!canCollectMilestone(milestone,initial))continue;
+            for(int i=0;i<milestone.criteria().size();i++){
+                var criterion=milestone.criteria().get(i);
+                String key=counterKey(milestone.id(),i);
+                if(signal.matches(criterion.event(),criterion.selector())
+                    &&next.criterionCount(key)<criterion.count())
+                    next=recordCriterion(next,key,1);
+            }
+        }
+        return next;
+    }
+
+    /** Persistent, namespaced criterion counters. */
     public static String counterKey(String milestone, int criterion) {
         return milestone + "/" + criterion;
     }
