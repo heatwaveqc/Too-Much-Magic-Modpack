@@ -18,6 +18,7 @@ class DefaultOptionsJeiTests(unittest.TestCase):
             "key.jei.showRecipe", "key.jei.showUses", "key.jei.focusSearch",
             "key.jei.bookmark", "key.jei.recipeBack", "key.jei.nextPage",
             "key.jei.cheatOneItem", "key.jei.showRecipe2", "key.some_mod.ability",
+            "key.invtweaks_sort_either.desc",
         }
         output = build({**vanilla, **{key: "native" for key in mod_keys}}, vanilla)
         self.assertNotIn("key_key.jei.showRecipe:", output)
@@ -27,6 +28,7 @@ class DefaultOptionsJeiTests(unittest.TestCase):
         self.assertIn("key_key.jei.cheatOneItem:key.keyboard.unknown:", output)
         self.assertIn("key_key.jei.showRecipe2:key.keyboard.unknown:", output)
         self.assertIn("key_key.some_mod.ability:key.keyboard.unknown:", output)
+        self.assertIn("key_key.invtweaks_sort_either.desc:key.mouse.middle:", output)
         self.assertNotIn("key_key.attack:", output)
 
     def test_exception_scope_is_exact(self):

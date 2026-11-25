@@ -60,7 +60,7 @@ python3 scripts/verify_dragon_diets.py
 python3 scripts/verify_tyz_migration.py
 python3 scripts/verify_next_test_roster.py
 python3 scripts/validate_quests.py
-node scripts/verify_projecte_boss_recipes.cjs
+python3 scripts/validate_progression_gates.py
 python3 scripts/verify_emc_coverage_audit.py
 python3 scripts/validate_progression_gates.py
 python3 compat/magic/stage_preview.py --check
@@ -84,7 +84,7 @@ python3 tests/test_prism_qa_packaging.py
 | A09 | Source/assert MXP `growth_factor=1.02`, allowed 1.00–1.20, ordinary `g^P`, fixed awards bypass, committed payer and shared transaction dedup; verify first-party JAR staging | **Source-only unless actual MXP runtime JAR present** |
 | A10 | `scripts/validate_quests.py`, quest sources/locale/advancement scan and same-build registry probe *only when authorized and available* | No undefined placeholders, ghost items, TeamLapen quests, stale reactors, duplicate rewards, or clobbered Alcohol questline |
 | A10B | Inspect FTB Filter System NeoForge 21.1.4 pin, FTB XMod Compat, `Punch a Tree` native `minecraft:logs` Smart Filter task, title and removed `tmm:first_log` advancement | Tag filter is properly indexed, label is readable, bag is quest-claimed only, all other quest IDs unchanged |
-| A11 | Verify ProjectE Philosopher's Stone trophy recipes and MK3+ Chaos Shard gates; `node scripts/verify_projecte_boss_recipes.cjs` | All original recipe orientations/gates, no diamond bypass; all-item EMC audit remains source-only until same-build registry export |
+| A11 | Verify ProjectE Philosopher's Stone trophy recipes and MK3+ Chaos Shard gates; `python3 scripts/validate_progression_gates.py` | All original recipe orientations/gates, no diamond bypass; all-item EMC audit remains source-only until same-build registry export |
 | A12 | Validate materials tags, Neo Vitae dusts, Occultism/Iesnium, no global Mahou dropped-item tick proxy, `scripts/verify_materials.py` | No double processing/free mana or invalid item paths; source checks only |
 | A13 | Inspect B20 draft `scripts/validate_b20_trader_stock.py` on its branch; **attempt to integrate the reported-ready trader source for the next full live candidate** | Six guarantees + four distinct premium rotations, valid prices, banned Ring excluded; current old artifact may be NOT BUILT but next-build inclusion must be reconciled |
 | A14 | Inspect B19 draft `scripts/validate_b19_gateways.py` and **attempt to integrate the reported-ready Gateway definitions/recipes into the next live candidate** | Seventeen real Gateways/catalysts; three friendly helper reward spawns, no guessed monster IDs; do not silently carry forward the old deferral |

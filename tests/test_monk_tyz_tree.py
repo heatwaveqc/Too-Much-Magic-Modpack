@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Validate Monk Tyz 6.4.2 JSON, native bridge, and release-stage contract.
+"""Validate historical Monk Tyz overlay and current native Tyr Progression contract.
 
 Run from repository root: python3 -m unittest tests/test_monk_tyz_tree.py
 No modded server/client/packwiz smoke is started by this check.
 """
 import json
 import pathlib
-import re
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -29,11 +28,13 @@ OTHER = [
 MONK = {"tmm_monk_" + name for values in LANES.values() for name in values}
 MONK |= {"tmm_monk_" + name for name in OTHER}
 MONK.add("tmm_monk_capstone")
-BRIDGE = ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/runtime/TyzMonkBridge.java"
+NATIVE = ROOT / "compat/progression/src/main"
+MONK_PATH = NATIVE / "resources/data/tyr_progression/tyr_progression/paths/monk.json"
+MXP = "tyr_progression:mxp"
 
 
 class MonkTyzTreeTests(unittest.TestCase):
-    def test_every_skill_loads_in_exactly_one_existing_tyz_wallet(self):
+    def test_historical_overlay_skill_inventory(self):
         actual = {p.stem for p in SKILLS.glob("tmm_*.json")}
         self.assertEqual(CORE | MONK, actual)
         self.assertEqual(18, len(MONK))
@@ -44,57 +45,61 @@ class MonkTyzTreeTests(unittest.TestCase):
         self.assertEqual({"-1": {"goal": 1000, "reward": 1}},
                          json.loads((OVERLAY / "config/tyzs_skills/custom/data/level-pool.json").read_text()))
 
-    def test_monk_immutable_rank_storage_and_discipline_rules(self):
-        bridge = BRIDGE.read_text()
-        stage = {}
-        for sid in sorted(MONK):
-            item = json.loads((SKILLS / f"{sid}.json").read_text())
-            self.assertEqual(sid, item["id"])
-            self.assertTrue(item["active"])
-            self.assertEqual("IMMUTABLE", item["type"])
-            self.assertEqual("tmm_monk", item["category"])
-            self.assertFalse(item["modifiers"], "No unrestricted attribute perks allowed")
-            count = item["maximumLevel"]
-            self.assertEqual(count, len(item["prices"]))
-            self.assertTrue(all(isinstance(price, int) and price > 0 for price in item["prices"]))
-            values = item["customValues"]["power"]["values"]
-            self.assertEqual(count, len(values))
-            self.assertGreater(values[-1], 0)
-            self.assertTrue(all(a < b for a, b in zip(values, values[1:])))
-            self.assertTrue(item["config"]["visible"])
-            self.assertTrue(item["config"]["purchasable"])
-            for parent in item["config"]["skillPrerequisites"]:
-                self.assertIn(parent, MONK)
-            self.assertIn(sid, bridge, f"{sid} lacks code-owned runtime or license")
-            stage[sid] = item
+    def test_native_monk_rank_storage_and_discipline_rules(self):
+        # The staged Tyz overlay is historical; live purchases use native Path JSON.
+        path = json.loads(MONK_PATH.read_text(encoding="utf-8"))
+        skills = {skill["id"]: skill for skill in path["skills"]}
+        self.assertEqual(len(skills), len(path["skills"]))
+        milestones = {row["id"] for row in path["milestones"]}
+        self.assertEqual(MXP, path["xp_channel"])
+        for sid, skill in skills.items():
+            with self.subTest(skill=sid):
+                self.assertTrue(sid.startswith("tyr_progression:"))
+                self.assertEqual(MXP, skill["level_system"])
+                self.assertGreater(skill["max_rank"], 0)
+                self.assertTrue(skill["effects"], "No purchasable no-op skill")
+                self.assertTrue(set(skill.get("requires_skills", [])) <= skills.keys())
+                self.assertTrue(set(skill.get("requires_milestones", [])) <= milestones)
+                if "auto_ranks" in skill:
+                    ranks = skill["auto_ranks"]
+                    self.assertEqual(skill["max_rank"], len(ranks))
+                    self.assertEqual(ranks, sorted(set(ranks)))
+                    self.assertEqual(0, skill["base_cost"])
+                    self.assertEqual(0, skill["step_cost"])
+                else:
+                    self.assertEqual(MXP, skill["xp_channel"])
+                    self.assertEqual(skill["max_rank"], len(skill["rank_costs"]))
+                    self.assertTrue(all(isinstance(price, int) and price > 0
+                                        for price in skill["rank_costs"]))
+        fist = skills["tyr_progression:empty_hand_force"]
+        self.assertTrue(fist["effects"][0]["empty_hand"])
+        self.assertTrue(fist["effects"][0]["unarmored"])
+        for name in ("body_speed", "graceful_step", "barehand_efficiency"):
+            self.assertTrue(skills["tyr_progression:" + name]["effects"][0]["unarmored"])
+        self.assertTrue(skills["tyr_progression:barehand_efficiency"]["effects"][0]["empty_hand"])
+        self.assertIn("tyr_progression:empty_hand_force",
+                      skills["tyr_progression:flowing_counter"]["requires_skills"])
+        self.assertIn("tyr_progression:barehand_efficiency",
+                      skills["tyr_progression:fortunate_hands"]["requires_skills"])
+        self.assertEqual(list(range(100, 951, 50)),
+                         skills["tyr_progression:enlightenment"]["rank_invested_requirements"])
 
-        for lane in LANES.values():
-            entry, advanced, mastery = ["tmm_monk_" + name for name in lane]
-            self.assertEqual([], stage[entry]["config"]["skillPrerequisites"])
-            self.assertEqual([entry], stage[advanced]["config"]["skillPrerequisites"])
-            self.assertEqual([advanced], stage[mastery]["config"]["skillPrerequisites"])
-        self.assertEqual(5,stage["tmm_monk_capstone"]["prices"][0])
-        self.assertEqual(1,stage["tmm_monk_capstone"]["maximumLevel"])
-        self.assertFalse(stage["tmm_monk_focused_advancement"]["config"]["refundable"])
-        self.assertIn("SkillActionEvent$PurchasePre",bridge)
-        self.assertIn("SkillActionEvent$RefundPre",bridge)
-        self.assertIn("getSkillLevel",bridge)
-        self.assertIn("FOCUS_PREFIX",bridge)
-        self.assertIn("emptyCurios",bridge)
+    def test_native_mxp_authority_and_retired_bridge_absence(self):
+        # Reuse the active source-selection guard rather than require dead Java.
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from verify_unified_progression import verify_selection
+        verify_selection(ROOT)
+        path = json.loads(MONK_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(MXP, path["training_mxp"]["system"])
+        self.assertEqual(MXP, path["mastery_stages"]["system"])
+        self.assertTrue(all(row["system"] == MXP for row in path["unified_mxp_sources"]))
+        ids = {skill["id"] for skill in path["skills"]}
+        self.assertNotIn("tyr_progression:spirit_projectile", ids)
+        self.assertNotIn("tyr_progression:creative_flight", ids)
+        self.assertFalse(any(NATIVE.rglob("TyzMonkBridge.java")))
 
-    def test_bridge_is_optional_and_global_mxp_is_unmodified(self):
-        bridge=BRIDGE.read_text()
-        self.assertIn('ModList.get().isLoaded("tyzs_skills")',bridge)
-        self.assertNotIn("import com.tyzsskills",bridge)
-        self.assertNotIn("minecraft:creative_flight",bridge)
-        self.assertNotIn("spirit_projectile",bridge)
-        native=(ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/core/ProgressionApi.java").read_text()
-        self.assertIn("awardMonkTyzPointOnce", native)
-        self.assertIn("bonusMonkXp",native)
-        self.assertIn("monk.complete(marker).grantPoints(1)", native)
-        self.assertNotIn("TyzsSkillsAPI.sp().add",native)
-
-    def test_pending_affixes_are_not_noop_purchases(self):
+    def test_historical_overlay_contains_no_placeholder_affixes(self):
         ids = [p.stem for p in SKILLS.glob("*.json") if p.stem.startswith("tmm_monk_")]
         self.assertEqual(18,len(ids))
         self.assertFalse(any("affix" in id for id in ids))
