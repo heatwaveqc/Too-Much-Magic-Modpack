@@ -34,6 +34,8 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:xp_trace",new Trace());
         REGISTRY.register("tyr_progression:source_cooldown",new SourceCooldown());
         REGISTRY.register("tyr_progression:native_form",new NativeForm());
+        REGISTRY.register("tyr_progression:class_mode",new ClassMode());
+        REGISTRY.register("tyr_progression:stage",new Stage());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -453,6 +455,48 @@ public final class AdminCapabilities {
                 if(!ledger(p).equals(old))throw new IllegalStateException("Path ledger changed");
                 if(!io.github.heatwaveqc.tyr.progression.core.ProgressionApi.respec(p,key))
                     throw new IllegalStateException("Path respec rejected");
+            });
+        }
+    }
+
+    private static final class ClassMode implements Handler<ServerPlayer>{
+        public String description(){return "Validated class switch; set 0/1 (off/on, fortune/silk, off/active), reset defaults; completed ordeal protected";}
+        public Collection<String> keys(ServerPlayer p){return io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminModeKeys();}
+        public String inspect(ServerPlayer p,String key){
+            return io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.mode(p,key)+", unlocked="+io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminUnlocked(p,key);
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            return io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminValues(key)
+                .contains(io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.mode(p,key))?List.of():List.of("Invalid saved class mode; reset recommended");
+        }
+        public Set<Action> actions(){return Set.of(Action.SET,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
+            var old=io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.mode(p,key);
+            if("ordeal".equals(key)&&"done".equals(old))throw new IllegalArgumentException("Completed ordeal is durable");
+            if(amount>1)throw new IllegalArgumentException("Use mode index 0 or 1");
+            String next=action==Action.RESET?io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminDefault(key):
+                switch(key){case "treasure"->amount==0?"fortune":"silk";case "ordeal"->amount==0?"off":"active";default->amount==0?"off":"on";};
+            if(!next.equals(io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminDefault(key))
+                &&!io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminUnlocked(p,key))throw new IllegalArgumentException("Ability not unlocked");
+            return new Change(old,next,()->io.github.heatwaveqc.tyr.progression.runtime.ClassAbilities.adminSetMode(p,key,old,next));
+        }
+    }
+    private static final class Stage implements Handler<ServerPlayer>{
+        public String description(){return "Player stage; grant graduates through normal gateway; reset restores Newbie and forfeits specialist/Core investment";}
+        public Collection<String> keys(ServerPlayer p){return List.of("player");}
+        private String raw(ServerPlayer p){return io.github.heatwaveqc.tyr.progression.core.ProgressionApi.mode(p,
+            io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.KEY,io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.NEWBIE);}
+        public String inspect(ServerPlayer p,String key){return raw(p);}
+        public List<String> validate(ServerPlayer p,String key){return Set.of("newbie","regular").contains(raw(p))?List.of():List.of("Invalid player stage");}
+        public Set<Action> actions(){return Set.of(Action.GRANT,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var old=raw(p);var prior=ledger(p);
+            if(action==Action.RESET&&"newbie".equals(old)&&(io.github.heatwaveqc.tyr.progression.core.BaselinePaths.hasSpecialist(prior)||prior.get(io.github.heatwaveqc.tyr.progression.core.BaselinePaths.CORE).joined()))
+                throw new IllegalArgumentException("Already Newbie with inconsistent investments; manual scoped recovery required");
+            return new Change(old,action==Action.GRANT?"regular; normal graduation hooks":"newbie; normal destructive stage transition (XP and rank forfeiture)",()->{
+                if(!raw(p).equals(old)||!ledger(p).equals(prior))throw new IllegalStateException("Player stage changed");
+                if(action==Action.GRANT)io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.graduate(p);
+                else io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.set(p,"newbie");
             });
         }
     }
