@@ -106,8 +106,17 @@ public final class PathJson {
             int points = number(j,"points",0);
             if (xp < 0 || xp > 1000000 || points < 0 || points > 10000)
                 throw new IllegalArgumentException("Unsafe milestone reward");
+            String fixedSystem="";
+            long fixedAmount=0;
+            if(j.has("fixed_reward")){
+                JsonObject reward=j.getAsJsonObject("fixed_reward");
+                if(!reward.keySet().equals(Set.of("system","xp")))
+                    throw new IllegalArgumentException("Invalid fixed milestone reward");
+                fixedSystem=id(reward.get("system").getAsString());
+                fixedAmount=reward.get("xp").getAsBigDecimal().longValueExact();
+            }
             milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points,
-                str(j,"title",""),flag(j,"notify_progress")));
+                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount));
         }
 
         List<Definition.Skill> skills = new ArrayList<>();
@@ -140,6 +149,15 @@ public final class PathJson {
             }
             if(j.has("rank_level_requirements")&&(rankRequirements.size()!=max||j.has("required_rank")))
                 throw new IllegalArgumentException("rank_level_requirements must cover all ranks and replace required_rank");
+            List<Integer> investedRequirements=new ArrayList<>();
+            for(var need:entries(j,"rank_invested_requirements")){
+                if(!need.isJsonPrimitive()||!need.getAsJsonPrimitive().isNumber())
+                    throw new IllegalArgumentException("Invested rank gate must be an integer");
+                investedRequirements.add(need.getAsBigDecimal().intValueExact());
+            }
+            if(j.has("rank_invested_requirements")&&(investedRequirements.size()!=max
+                || j.has("auto_achievements") || j.has("refundable")&&!flag(j,"refundable")))
+                throw new IllegalArgumentException("Invested gates require a refundable purchased rank schedule");
             List<Definition.Effect> effects = new ArrayList<>();
             for (JsonElement effect : entries(j,"effects")) {
                 JsonObject f = effect.getAsJsonObject();
@@ -211,7 +229,7 @@ public final class PathJson {
                         "magnet","heal_on_kill","heal_on_hit","critical_hit","status_on_hit","status_on_hurt",
                         "damage_at_low_health","food_efficiency","vanilla_xp_bonus","crop_bonus","ordinary_drop_bonus",
                         "virtual_fortune","virtual_looting","magic_cost_discount","hunger_efficiency",
-                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","vein_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity").contains(type))
+                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity").contains(type))
                         throw new IllegalArgumentException("rank_values not supported for "+type);
                     for(int rank=1;rank<=max;rank++){
                         var effective=parsedEffect.atRank(rank);
@@ -238,7 +256,7 @@ public final class PathJson {
                     || !choiceGroup.isEmpty())))
                 throw new IllegalArgumentException("Automatic baseline cannot have paid prerequisites or choices");
             skills.add(new Definition.Skill(sid,max,required,base,step,strings(j,"requires_skills"),
-                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects,prices,rankRequirements));
+                anySkills, strings(j,"requires_milestones"),choiceGroup,auto,effects,prices,rankRequirements,investedRequirements));
         }
         for (Definition.Skill skill : skills) {
             for (String needed : skill.requiresSkills()) {

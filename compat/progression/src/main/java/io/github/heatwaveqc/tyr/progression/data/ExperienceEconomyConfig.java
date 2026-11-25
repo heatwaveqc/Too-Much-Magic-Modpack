@@ -18,8 +18,8 @@ import java.util.Set;
 /**
  * Strict JSON parser for the generic economy's configuration vocabulary.
  *
- * This is a reusable validated schema, not a runtime data-pack registration.
- * PathRegistry integration and verified source routing are separate cutover work.
+ * PathRegistry installs the validated catalog for the runtime. Verified
+ * source routing remains server-owned.
  * No slot count, magic-only mode or hard-coded Path ID is assumed here.
  */
 public final class ExperienceEconomyConfig {
@@ -49,12 +49,27 @@ public final class ExperienceEconomyConfig {
 
     public record Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
                           Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
-                          Map<SkillKey, SkillPurchases> skills) {
+                          Map<SkillKey, SkillPurchases> skills,
+                          List<XpModifierConfig.Rule> modifiers,
+                          XpSourceRouting routing) {
+        public Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
+                       Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
+                       Map<SkillKey, SkillPurchases> skills, List<XpModifierConfig.Rule> modifiers) {
+            this(systems, defaultGrowth, defaultTransition, pathChanges, skills, modifiers,
+                    XpSourceRouting.empty());
+        }
+        public Catalog(Map<String, SystemSpec> systems, Map<String, Double> defaultGrowth,
+                       Transition defaultTransition, Map<PathSystem, Transition> pathChanges,
+                       Map<SkillKey, SkillPurchases> skills) {
+            this(systems, defaultGrowth, defaultTransition, pathChanges, skills, List.of());
+        }
         public Catalog {
             systems = Map.copyOf(systems);
             defaultGrowth = Map.copyOf(defaultGrowth);
             pathChanges = Map.copyOf(pathChanges);
             skills = Map.copyOf(skills);
+            modifiers = List.copyOf(modifiers);
+            java.util.Objects.requireNonNull(routing, "routing");
         }
         public Transition policy(String path, String system) {
             return pathChanges.getOrDefault(new PathSystem(path, system), defaultTransition);
@@ -63,6 +78,42 @@ public final class ExperienceEconomyConfig {
             Double value = defaultGrowth.get(system);
             if (value == null) throw new IllegalArgumentException("Unknown XP system " + system);
             return value;
+        }
+    }
+
+    /** Validate cross-resource references before publishing any new reload snapshot.
+     * Sources and achievements can be registered by trusted external adapters;
+     * unlike Paths and skills they are not a closed catalog. */
+    public static void validateReferences(Catalog catalog,
+            Map<String,io.github.heatwaveqc.tyr.progression.model.Definition.Path> paths,
+            Set<String> nativeSystemIds) {
+        for(String id:nativeSystemIds)
+            if(catalog.systems().containsKey(id))
+                throw new IllegalArgumentException("Duplicate native/configured XP system "+id);
+        for(var row:catalog.routing().policies().entrySet()){
+            String required=row.getValue().requiredPath();
+            if(!required.isEmpty()&&!paths.containsKey(required))
+                throw new IllegalArgumentException("Unknown earning Path "+required+" for "+row.getKey());
+        }
+        for(var key:catalog.pathChanges().keySet())
+            if(!paths.containsKey(key.path()))
+                throw new IllegalArgumentException("Unknown XP transition Path "+key.path());
+        for(var row:catalog.skills().entrySet()){
+            var tree=paths.get(row.getKey().path());
+            var skill=tree==null?null:tree.skill(row.getKey().skill());
+            if(skill==null||!skill.autoRanks().isEmpty()||row.getValue().totalRankCap()>skill.maxRank())
+                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
+        }
+        for(var rule:catalog.modifiers()){
+            if(rule.path().isEmpty())continue;
+            var tree=paths.get(rule.path());
+            if(tree==null)
+                throw new IllegalArgumentException("Unknown modifier Path "+rule.path()+" in "+rule.modifier().id());
+            if(rule.skill().isEmpty())continue;
+            var skill=tree.skill(rule.skill());
+            if(skill==null||rule.minRank()>skill.maxRank()
+                    ||rule.effectIndex()!=null&&rule.effectIndex()>=skill.effects().size())
+                throw new IllegalArgumentException("Invalid modifier skill/rank/effect "+rule.modifier().id());
         }
     }
 
@@ -75,22 +126,31 @@ public final class ExperienceEconomyConfig {
     }
 
     public static Catalog read(JsonObject root) {
-        only(root, "schema", "systems", "default_path_change", "path_changes", "skills");
-        if (root.has("schema") && root.get("schema").getAsInt() != 1)
+        only(root, "schema", "systems", "default_path_change", "path_changes", "skills", "modifiers", "source_routes");
+        if (root.has("schema") && root.get("schema").getAsBigDecimal().intValueExact() != 1)
             throw new IllegalArgumentException("Unsupported economy schema");
         if (!root.has("systems")) throw new IllegalArgumentException("Missing XP systems");
         Map<String, SystemSpec> systems = new HashMap<>();
         Map<String, Double> growth = new HashMap<>();
         for (JsonElement element : root.getAsJsonArray("systems")) {
             JsonObject j = element.getAsJsonObject();
-            only(j, "id", "xp_per_point", "growth_factor", "max_level", "max_base_award");
+            only(j, "id", "xp_per_point", "growth_factor", "max_level", "max_base_award",
+                    "min_reward", "round_subminimum_up", "earning_path", "default_reward_multiplier");
             String id = required(j, "id");
             BigDecimal threshold = number(j, "xp_per_point", "1000");
             BigDecimal awardCap = number(j, "max_base_award", "1e12");
             long maxLevel = j.has("max_level")
                     ? j.get("max_level").getAsBigDecimal().longValueExact()
                     : ExperienceEconomy.HARD_MAX_LEVEL;
-            var spec = new SystemSpec(id, threshold, maxLevel, awardCap);
+            BigDecimal minReward = number(j, "min_reward", ExperienceEconomy.HARD_MIN_REWARD.toString());
+            boolean roundUp = false;
+            if (j.has("round_subminimum_up")) {
+                var value = j.get("round_subminimum_up");
+                if (!value.isJsonPrimitive() || !value.getAsJsonPrimitive().isBoolean())
+                    throw new IllegalArgumentException("round_subminimum_up must be boolean");
+                roundUp = value.getAsBoolean();
+            }
+            var spec = new SystemSpec(id, threshold, maxLevel, awardCap, minReward, roundUp);
             double base = ExperienceEconomy.validateGrowth(
                     j.has("growth_factor") ? j.get("growth_factor").getAsDouble() : 1.02);
             if (systems.putIfAbsent(id, spec) != null)
@@ -135,16 +195,18 @@ public final class ExperienceEconomyConfig {
                     throw new IllegalArgumentException("Unknown purchase XP system " + system);
                 if (!seen.add(system)) throw new IllegalArgumentException(
                         "Duplicate system for skill purchase " + system);
-                int max = p.get("max_ranks").getAsInt();
-                int cost = p.has("points_per_rank") ? p.get("points_per_rank").getAsInt() : 1;
+                int max = p.get("max_ranks").getAsBigDecimal().intValueExact();
+                int cost = p.has("points_per_rank") ? p.get("points_per_rank").getAsBigDecimal().intValueExact() : 1;
                 purchases.add(new PurchaseSource(system, max, cost));
             }
-            int cap = j.get("total_rank_cap").getAsInt();
+            int cap = j.get("total_rank_cap").getAsBigDecimal().intValueExact();
             var key = new SkillKey(path, skill);
             if (skills.putIfAbsent(key, new SkillPurchases(cap, purchases)) != null)
                 throw new IllegalArgumentException("Duplicate configured skill " + key);
         }
-        return new Catalog(systems, growth, fallback, changes, skills);
+        return new Catalog(systems, growth, fallback, changes, skills,
+                XpModifierConfig.read(root, systems.keySet()),
+                XpSourceRouting.read(root, systems.keySet()));
     }
 
     private static Transition transition(JsonObject j, Transition inherited) {

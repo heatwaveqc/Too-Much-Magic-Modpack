@@ -27,6 +27,9 @@ public final class ClientKeys {
     public static final KeyMapping ORDEAL = key("ordeal",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping NIGHT_VISION=key("enhanced_night_vision",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping LAVA_VISION=key("lava_vision",GLFW.GLFW_KEY_UNKNOWN);
+    public static final KeyMapping CHARM=key("charm",GLFW.GLFW_KEY_C);
+    public static final KeyMapping TAME=new KeyMapping("key.tyr_progression.tame",
+            InputConstants.Type.MOUSE,GLFW.GLFW_MOUSE_BUTTON_RIGHT,CATEGORY);
     private static KeyMapping key(String name,int code) {
         return new KeyMapping("key.tyr_progression."+name,
             InputConstants.Type.KEYSYM,code,CATEGORY);
@@ -40,19 +43,39 @@ public final class ClientKeys {
         event.register(ORDEAL);
         event.register(NIGHT_VISION);
         event.register(LAVA_VISION);
+        event.register(CHARM);
+        event.register(TAME);
     }
     @EventBusSubscriber(modid = ProgressionMod.MOD_ID,value = Dist.CLIENT)
     public static final class Game {
         private Game() {}
+        private static net.minecraft.client.player.LocalPlayer lastPlayer;
+        private static boolean nativeTaming;
         @SubscribeEvent public static void tick(ClientTickEvent.Post event) {
             Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.player == null) return;
+            if (minecraft.player == null) { lastPlayer=null; return; }
+            // When the bindings coincide, keep the actual vanilla interaction pipeline.
+            boolean nativeUse=!TAME.isUnbound() && TAME.getKey().equals(minecraft.options.keyUse.getKey())
+                    && TAME.getKeyModifier()==minecraft.options.keyUse.getKeyModifier();
+            if(lastPlayer!=minecraft.player || nativeTaming!=nativeUse){
+                lastPlayer=minecraft.player; nativeTaming=nativeUse;
+                PacketDistributor.sendToServer(new AbilityNetwork.Action(nativeUse?"tame_native_on":"tame_native_off"));
+            }
             if (minecraft.screen == null) {
                 while (SKILLS.consumeClick()) {
                     minecraft.setScreen(new ProgressionScreen(""));
                 }
             }
-            if (minecraft.screen != null) return;
+            if (minecraft.screen != null) {
+                while(CHARM.consumeClick()){}
+                while(TAME.consumeClick()){}
+                return;
+            }
+            send(CHARM,"charm");
+            while(TAME.consumeClick()) {
+                if(!nativeUse && minecraft.player.getMainHandItem().isEmpty())
+                    PacketDistributor.sendToServer(new AbilityNetwork.Action("tame"));
+            }
             send(BLINK,"blink");
             send(ARMOR,"armor");
             send(TREASURE,"treasure");

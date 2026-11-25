@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:salmon_slice",
+  "provenance": "farmersdelight:cutting/salmon",
+  "source_units": 0.5,
+  "inferred_tags": [
+    "#c:foods/raw_fish",
+    "#tmm:foods/raw"
+  ]
+}

@@ -9,12 +9,35 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.ResourceLocation;
 import java.util.HashMap;
 import java.util.Map;
+import java.math.BigDecimal;
+import java.util.List;
+import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
+import io.github.heatwaveqc.tyr.progression.data.XpSourceRouting;
+import io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy;
 
 /** First-party MXP source contract, now backed by the shared authoritative attachment. */
 public final class MxpService {
     private MxpService(){}
     public record AwardStatus(boolean accepted,boolean duplicate,boolean first,double effectiveXP,
-             float deliveredToTyz,long lifetimeLevels,double progress,double pendingXP,String note){}
+             float deliveredToTyz,long lifetimeLevels,double progress,double pendingXP,String note,
+             Map<String,XpSourceRouting.Settlement> destinations){
+        public AwardStatus {
+            destinations=java.util.Collections.unmodifiableMap(new java.util.LinkedHashMap<>(destinations));
+        }
+        public AwardStatus(boolean accepted,boolean duplicate,boolean first,double effectiveXP,
+                float deliveredToTyz,long lifetimeLevels,double progress,double pendingXP,String note){
+            this(accepted,duplicate,first,effectiveXP,deliveredToTyz,lifetimeLevels,progress,pendingXP,note,Map.of());
+        }
+        /** Do not label non-MXP currencies as MXP or mix first/repeat state. */
+        public String rewardSummary(String firstLabel,String repeatLabel){
+            return destinations.entrySet().stream().map(row->{
+                String name=row.getKey().equals(XpChannel.MXP)?"MXP":row.getKey();
+                var reward=row.getValue();
+                return name+": "+String.format(java.util.Locale.ROOT,"%.2f",reward.effectiveXp())
+                        +(reward.first()?firstLabel:repeatLabel);
+            }).collect(java.util.stream.Collectors.joining("; "));
+        }
+    }
     public static final double FIRST_BOSS_MXP=1000;
     public record BossRule(double repeat,boolean repeatFixed){
         public BossRule {if(!Double.isFinite(repeat)||repeat<=0)throw new IllegalArgumentException("Invalid boss reward");}
@@ -36,20 +59,29 @@ public final class MxpService {
     }
     private static AwardStatus award(ServerPlayer player,String source,String tx,String completion,double first,double repeat,
                                      boolean firstFixed,boolean repeatFixed){
-        Wallet before=inspect(player);
-        var state=player.getData(ProgressionAttachments.LEDGER.get()).economy();
-        boolean duplicate=state.recentTransactions().contains(XpChannel.MXP+"|"+source+"|"+tx);
-        if(duplicate)return new AwardStatus(false,true,false,0,0,before.magicLevels(),before.magicProgress(),0,"Duplicate committed action");
-        boolean firstEligible=completion!=null&&!state.rewardReceipts().contains(
-            XpChannel.MXP+"|"+source+"|"+completion);
+        var before=player.getData(ProgressionAttachments.LEDGER.get()).economy();
+        var destinations=PathRegistry.economyCatalog().routing().destinations(source,XpChannel.MXP);
+        // The router must see the event even if MXP already settled: another
+        // destination might have been gated or disabled during the first call.
         boolean accepted=completion==null?
             ProgressionApi.awardMagicOrdinary(player,XpChannel.MXP,source,tx,repeat):
             ProgressionApi.awardMagicCompletion(player,XpChannel.MXP,source,tx,completion,first,repeat,firstFixed,repeatFixed);
-        Wallet after=inspect(player);
-        double effective=(after.magicLevels()-before.magicLevels())*1000.0+after.magicProgress()-before.magicProgress();
-        return new AwardStatus(accepted,false,accepted&&firstEligible,
-            effective,0,after.magicLevels(),after.magicProgress(),0,accepted?"Recorded":"Rejected");
+        return status(player,source,tx,completion,before,destinations,accepted);
     }
+
+    private static AwardStatus status(ServerPlayer player,String source,String tx,String completion,
+            ExperienceEconomy.Ledger before,List<XpSourceRouting.Destination> destinations,boolean accepted){
+        var after=player.getData(ProgressionAttachments.LEDGER.get()).economy();
+        var settled=XpSourceRouting.settled(destinations,source,tx,completion,before,after);
+        var mxp=settled.get(XpChannel.MXP);
+        Wallet display=inspect(player);
+        boolean duplicate=!accepted&&XpSourceRouting.alreadySettled(destinations,source,tx,before);
+        boolean first=settled.values().stream().anyMatch(XpSourceRouting.Settlement::first);
+        return new AwardStatus(accepted,duplicate,first,
+                mxp==null?0:mxp.effectiveXp().doubleValue(),0,display.magicLevels(),display.magicProgress(),0,
+                accepted?"Recorded":duplicate?"Duplicate committed action":"Rejected",settled);
+    }
+
     public static AwardStatus resource(ServerPlayer player,String source,String tx,double nominal,double pool,double actual){
         if(!Double.isFinite(actual)||actual<=0||!Double.isFinite(nominal)||nominal<=0||!Double.isFinite(pool)||pool<=0)
             return ignored(player,"No verified positive debit");
@@ -100,7 +132,16 @@ public final class MxpService {
             return ignored(player,"No verified eligible native JAWR form");
         return resource(player,"witchery:player_blood",tx,original,MxpSourceConfig.JAWR_INITIAL_BLOOD_POOL.get(),actual);
     }
+    /** Administrative test award: no fictitious ritual, debit or discovery receipt. */
+    public static AwardStatus diagnostic(ServerPlayer player,String tx,double amount,boolean fixed){
+        if(!Double.isFinite(amount)||amount<=0)return ignored(player,"Invalid diagnostic amount");
+        String source="tyr_progression:diagnostic";
+        var before=player.getData(ProgressionAttachments.LEDGER.get()).economy();
+        boolean accepted=ProgressionApi.awardExplicitConfiguredXp(player,XpChannel.MXP,source,tx,
+                null,BigDecimal.valueOf(amount),fixed);
+        return status(player,source,tx,null,before,List.of(new XpSourceRouting.Destination(XpChannel.MXP,1)),accepted);
+    }
     public static AwardStatus fixedDiagnostic(ServerPlayer player,String tx,double amount){
-        return ritual(player,"diagnostic:"+tx,tx,amount,amount);
+        return diagnostic(player,tx,amount,true);
     }
 }

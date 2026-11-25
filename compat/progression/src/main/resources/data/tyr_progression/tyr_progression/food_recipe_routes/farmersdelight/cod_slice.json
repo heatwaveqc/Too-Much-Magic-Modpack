@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:cod_slice",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "farmersdelight:cutting/cod",
+      "method": "nonthermal",
+      "result_count": 2,
+      "ingredients": [
+        {
+          "item": "minecraft:cod",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

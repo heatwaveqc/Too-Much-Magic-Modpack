@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "evilcraft:flesh_rejuvenated",
+      "required": false
+    },
+    {
+      "id": "botania:infinite_fruit",
+      "required": false
+    }
+  ]
+}

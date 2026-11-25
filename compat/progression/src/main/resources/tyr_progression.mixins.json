@@ -15,7 +15,12 @@
     "OwnedPiglinMixin",
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
-    "OwnedNativeMiningMixin"
+    "OwnedNativeMiningMixin",
+    "MutationEffectQueryMixin",
+    "MutationRegenerationMixin",
+    "CompanionMobGoalsAccess",
+    "CompanionPatrolAccess",
+    "ElixirFoodDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1

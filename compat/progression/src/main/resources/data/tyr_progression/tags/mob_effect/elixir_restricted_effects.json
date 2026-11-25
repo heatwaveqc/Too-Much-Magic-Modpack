@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:absorption",
+    "minecraft:conduit_power",
+    "minecraft:dolphins_grace",
+    "minecraft:fire_resistance",
+    "minecraft:haste",
+    "minecraft:health_boost",
+    "minecraft:hero_of_the_village",
+    "minecraft:instant_health",
+    "minecraft:invisibility",
+    "minecraft:jump_boost",
+    "minecraft:luck",
+    "minecraft:night_vision",
+    "minecraft:regeneration",
+    "minecraft:resistance",
+    "minecraft:saturation",
+    "minecraft:slow_falling",
+    "minecraft:speed",
+    "minecraft:strength",
+    "minecraft:water_breathing"
+  ]
+}
