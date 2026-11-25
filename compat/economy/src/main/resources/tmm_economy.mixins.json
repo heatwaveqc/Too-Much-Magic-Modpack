@@ -34,8 +34,15 @@
     "PortableStorageMalumPouchMixin",
     "PortableStorageBotaniaBackedInventoryMixin",
     "PortableStorageMiniHandbagMenuMixin",
+    "EvilCraftVengeanceSpiritMixin",
+    "EvilCraftRandomSpiritMixin",
+    "EvilCraftSpiritFurnaceMixin",
+    "EvilCraftSpiritReanimatorMixin",
     "ApothicPersonalFilterMixin",
-    "EidolonPersonalFilterMixin"
+    "EidolonPersonalFilterMixin",
+    "PortableEnchantingOpenMixin",
+    "PortableEnchantingLegacyMenuMixin",
+    "PortableEnchantingLegacyBooksMixin"
   ],
   "injectors": {
     "defaultRequire": 1

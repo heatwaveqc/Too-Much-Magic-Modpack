@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "farmersdelight:onion",
+      "required": false
+    },
+    {
+      "id": "pamhc2crops:onionitem",
+      "required": false
+    }
+  ]
+}
