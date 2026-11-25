@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:apple",
+  "provenance": "minecraft:apple",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/fruit",
+    "#tmm:foods/raw"
+  ]
+}

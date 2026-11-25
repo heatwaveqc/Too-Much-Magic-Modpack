@@ -6,9 +6,20 @@ import io.github.heatwaveqc.tyr.progression.model.XpChannel;
 import java.util.*;
 /** XP definitions are independent resources. Trees bind a default and optional per-skill currencies. */
 public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel> paths,
-                            Map<SkillKey,Binding> skills,Map<SkillKey,List<String>> achievements) {
+                            Map<SkillKey,Binding> skills,Map<SkillKey,List<String>> achievements,
+                             Map<String,MasteryStageProjection> masteryStages,
+                             Map<String,List<UnifiedMxpSource>> unifiedSources) {
     public ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel> paths,Map<SkillKey,Binding> skills){
-        this(channels,paths,skills,Map.of());
+        this(channels,paths,skills,Map.of(),Map.of(),Map.of());
+    }
+    public ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel> paths,
+                         Map<SkillKey,Binding> skills,Map<SkillKey,List<String>> achievements){
+        this(channels,paths,skills,achievements,Map.of(),Map.of());
+    }
+    public ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel> paths,
+                         Map<SkillKey,Binding> skills,Map<SkillKey,List<String>> achievements,
+                         Map<String,MasteryStageProjection> masteryStages){
+        this(channels,paths,skills,achievements,masteryStages,Map.of());
     }
     public record SkillKey(String path,String skill) {}
     public record Binding(XpChannel currency,XpChannel levelSystem,boolean permanent,XpChannel awardCurrency,int awardPoints) {
@@ -20,7 +31,26 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
         var copy=new HashMap<SkillKey,List<String>>();
         achievements.forEach((key,value)->copy.put(key,List.copyOf(value)));
         achievements=Map.copyOf(copy);
+        masteryStages=Map.copyOf(masteryStages);
+        var copiedSources=new HashMap<String,List<UnifiedMxpSource>>();
+        unifiedSources.forEach((key,value)->copiedSources.put(key,List.copyOf(value)));
+        unifiedSources=Map.copyOf(copiedSources);
     }
+    /** Native curves are reusable config, not unconditional earning destinations.
+     * A joined/eligible Path must actually bind this currency or mastery level. */
+    public boolean usesNative(String system,java.util.function.Predicate<String> activePath){
+        var nativeChannel=channels.get(system);
+        if(nativeChannel==null||nativeChannel.magic())return false;
+        for(var row:paths.entrySet())
+            if(row.getValue().id().equals(system)&&activePath.test(row.getKey()))return true;
+        for(var row:skills.entrySet()){
+            var binding=row.getValue();
+            if((binding.currency().id().equals(system)||binding.levelSystem().id().equals(system))
+                    &&activePath.test(row.getKey().path()))return true;
+        }
+        return false;
+    }
+
     public static Map<String,XpChannel> definitions(Map<String,JsonObject> raw,double growth){
         var result=new HashMap<String,XpChannel>();result.put(XpChannel.MXP,XpChannel.mxp(growth));
         for(var entry:raw.entrySet()){
@@ -54,11 +84,22 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
         var paths=new HashMap<String,XpChannel>();
         var skills=new HashMap<SkillKey,Binding>();
         var achievements=new HashMap<SkillKey,List<String>>();
+        var stages=new HashMap<String,MasteryStageProjection>();
+        var sharedSources=new HashMap<String,List<UnifiedMxpSource>>();
         for(var sys:systems.values())if(!sys.earningPath().isEmpty()&&!trees.containsKey(sys.earningPath()))
             throw new IllegalArgumentException("Unknown required earning path "+sys.earningPath());
         for(var tree:trees.values()){
             var j=raw.get(tree.id());var def=resolve(systems,j.has("xp_channel")?j.get("xp_channel").getAsString():XpChannel.MXP);
             paths.put(tree.id(),def);
+            var projected=MasteryStageProjection.parse(j,systems);
+            if(projected!=null)stages.put(tree.id(),projected);
+            for(var milestone:tree.milestones())if(milestone.fixedRewardXp()>0) {
+                XpChannel destination=systems.get(milestone.fixedRewardSystem());
+                if(destination==null||!destination.magic())
+                    throw new IllegalArgumentException("Fixed milestone requires configured XP system");
+            }
+            var activities=UnifiedMxpSource.parse(j,systems);
+            if(!activities.isEmpty())sharedSources.put(tree.id(),activities);
             if(def.magic()&&tree.milestones().stream().anyMatch(m->m.xp()!=0||m.points()!=0))
                 throw new IllegalArgumentException("Direct milestone XP requires a native wallet");
             if(j.has("skills"))for(var el:j.getAsJsonArray("skills")){
@@ -99,6 +140,6 @@ public record ChannelConfig(Map<String,XpChannel> channels,Map<String,XpChannel>
                 skills.put(new SkillKey(tree.id(),id),new Binding(currency,level,permanent,award,points));
             }
         }
-        return new ChannelConfig(systems,paths,skills,achievements);
+        return new ChannelConfig(systems,paths,skills,achievements,stages,sharedSources);
     }
 }

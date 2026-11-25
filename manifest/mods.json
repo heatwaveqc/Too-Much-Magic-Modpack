@@ -779,6 +779,19 @@
       "packwiz_slug": "eidolon-repraised"
     },
     {
+      "id": "sodium",
+      "name": "Sodium",
+      "category": "performance",
+      "desired": true,
+      "version": "sodium-neoforge-0.8.13+mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/AANobbMI",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "sodium",
+      "note": "Owner-approved #507 replacement. Exact publisher JAR verified in targeted audit run 45543055707; required MC 1.21.1 and NeoForge [21.1.82,) plus nested modules requiring up to 21.1.219 match selected 21.1.265. Embeddium explicitly incompatible. Full current client roster reverse-dependency audit remains blocking before merge; no game or renderer acceptance."
+    },
+    {
       "id": "embers-re-ignited",
       "name": "Embers Re-Ignited",
       "category": "magic_industry",
@@ -3128,18 +3141,6 @@
       "note": "Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
     },
     {
-      "id": "sodium",
-      "name": "Sodium",
-      "category": "performance",
-      "desired": true,
-      "version": "sodium-neoforge-0.8.13+mc1.21.1",
-      "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/AANobbMI",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "packwiz_slug": "sodium"
-    },
-    {
       "id": "sons-of-sins",
       "name": "Sons of Sins",
       "category": "adventure",
@@ -3354,10 +3355,10 @@
       "version": "1.3.0",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/lootr-liaison/files/9028796",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "packwiz_slug": "lootr-liaison",
-      "note": "Owner-selected next-build #542; source candidate #543 staged but provider exact binary hash not verified; not installed until direct publisher JAR digest, native deps and packwiz source are confirmed. Must attempt next integration, not owner-deferred."
+      "note": "Owner-required #542; exact publisher bytes, nested/native metadata and required provider ranges verified in targeted audit run 45543055707 (head 00d1bedd585c5262f47ae616b1dcb2178c013498). Minecraft [1.21.1], NeoForge [21,), Lootr [0.10,) (selected 1.21.1-1.11.38.127); optional Artifacts [1.21,) (pinned 13.2.5). Direct verified publisher CDN pin; combined server/client and individual loot B/C pending."
     },
     {
       "id": "twilight-lootr",
@@ -3367,10 +3368,10 @@
       "version": "0.0.0.1",
       "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/twilight-lootr/files/8327180",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "packwiz_slug": "twilight-lootr",
-      "note": "Owner-selected next-build #542; draft source #543 has secondary SHA1 only. Verify exact publisher binary digest and Twilight Forest/Lootr dependency ranges before enabling; unverified source is technical pending, not owner-deferred."
+      "note": "Owner-required #542; exact publisher bytes, nested/native metadata and required provider ranges verified in targeted audit run 45543055707 (head 00d1bedd585c5262f47ae616b1dcb2178c013498). Minecraft 1.21.1, NeoForge [21,), Lootr [1.21.1-1.11.37.121,) (selected 1.21.1-1.11.38.127), Twilight Forest [4.5.2439,) (selected 4.8.3345). Direct verified publisher CDN pin; combined server/client and individual loot B/C pending."
     },
     {
       "id": "swing-through-grass",
@@ -3549,7 +3550,7 @@
         "controlling",
         "corail-tombstone",
         "curios-api",
-        "sodium",
+        "embeddium",
         "entity-culling",
         "ferritecore",
         "ftb-chunks",

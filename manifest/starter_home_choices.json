@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "quest_id": "544D309000100001",
+  "reward_id": "544D7A0000000001",
+  "table_id": "544D7A0000000002",
+  "title": "Choose Your Home",
+  "choices": [
+    {
+      "house": "generic",
+      "title": "Generic Starter House",
+      "icon": "prefab:item_house",
+      "id": "544D7A1000000001"
+    },
+    {
+      "house": "adventurers_inn",
+      "title": "Adventurer's Inn",
+      "icon": "minecraft:red_bed",
+      "id": "544D7A1000000002"
+    },
+    {
+      "house": "arcane_forge",
+      "title": "Arcane Forge",
+      "icon": "minecraft:anvil",
+      "id": "544D7A1000000003"
+    },
+    {
+      "house": "arcane_sanctum",
+      "title": "Arcane Sanctum",
+      "icon": "minecraft:amethyst_shard",
+      "id": "544D7A1000000004"
+    },
+    {
+      "house": "castaways_retreat",
+      "title": "Castaway's Retreat",
+      "icon": "minecraft:oak_boat",
+      "id": "544D7A1000000005"
+    },
+    {
+      "house": "celestial_observatory",
+      "title": "Celestial Observatory",
+      "icon": "minecraft:spyglass",
+      "id": "544D7A1000000006"
+    },
+    {
+      "house": "chromatic_manor",
+      "title": "Chromatic Manor",
+      "icon": "minecraft:purple_stained_glass",
+      "id": "544D7A1000000007"
+    },
+    {
+      "house": "dark_citadel",
+      "title": "Dark Citadel",
+      "icon": "minecraft:obsidian",
+      "id": "544D7A1000000008"
+    },
+    {
+      "house": "dwarven_foundry",
+      "title": "Dwarven Foundry",
+      "icon": "minecraft:blast_furnace",
+      "id": "544D7A1000000009"
+    },
+    {
+      "house": "elven_garden",
+      "title": "Elven Garden",
+      "icon": "minecraft:flowering_azalea",
+      "id": "544D7A100000000A"
+    },
+    {
+      "house": "farmers_homestead",
+      "title": "Farmer's Homestead",
+      "icon": "minecraft:wheat",
+      "id": "544D7A100000000B"
+    },
+    {
+      "house": "hearthkeeper",
+      "title": "Hearthkeeper",
+      "icon": "minecraft:campfire",
+      "id": "544D7A100000000C"
+    },
+    {
+      "house": "mages_academy",
+      "title": "Mage's Academy",
+      "icon": "minecraft:enchanting_table",
+      "id": "544D7A100000000D"
+    },
+    {
+      "house": "summoners_lodge",
+      "title": "Summoner's Lodge",
+      "icon": "minecraft:soul_campfire",
+      "id": "544D7A100000000E"
+    },
+    {
+      "house": "sanguine_temple",
+      "title": "Sanguine Temple",
+      "icon": "minecraft:redstone",
+      "id": "544D7A100000000F"
+    },
+    {
+      "house": "spirit_shrine",
+      "title": "Spirit Shrine",
+      "icon": "minecraft:soul_lantern",
+      "id": "544D7A1000000010"
+    },
+    {
+      "house": "witch_cottage",
+      "title": "Witch's Cottage",
+      "icon": "minecraft:potion",
+      "id": "544D7A1000000011"
+    },
+    {
+      "house": "witchs_manor",
+      "title": "Witch's Manor",
+      "icon": "minecraft:cauldron",
+      "id": "544D7A1000000012"
+    },
+    {
+      "house": "wizards_tower",
+      "title": "Wizard's Tower",
+      "icon": "minecraft:enchanted_book",
+      "id": "544D7A1000000013"
+    }
+  ]
+}

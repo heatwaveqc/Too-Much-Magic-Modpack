@@ -70,7 +70,11 @@ hash = "e27af478bc2788d2dd9fdf679e746a49b32d7a7ce3c9519198db1c3b03776188"
 
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
-hash = "dfa53a3e9f5fcdf112f83b2943fab03b7bc3f943045799264a328e3381c4f936"
+hash = "c9f0f778728932ffdf391f224a6dd681402653497b13ae1abdb6538c449e7dd4"
+
+[[files]]
+file = "config/feywild-common.toml"
+hash = "0f377703342a688eff17a7cd7d6f38bdbdcca1e51e7cfc5c62ac7c6acaab9810"
 
 [[files]]
 file = "config/ftbchunks-client.snbt"
@@ -182,7 +186,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "13465c68200588ed60e4bb916023aa21454e1cfe2f8dae284b3031808e8bf7f1"
+hash = "91356eea472972b2bb3dfbdd5b5068b76e4f4a5d7338a8ff39ffad2f4dac0f55"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -266,7 +270,11 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "806e7597818b8e45de6241fb7a071fa4ccbceb344e49254b8ae6f883a897c723"
+hash = "cf59d631a33c04291d2c5202dd7866a61ea6371bc24fa3ec3b8fa5313011f8cc"
+
+[[files]]
+file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
+hash = "eae0377a7bf2e90f01048612a150606a544870e809984c46066f1d4e6241b35a"
 
 [[files]]
 file = "config/improvableskills.cfg"
@@ -297,6 +305,10 @@ file = "config/reliquary-common.toml"
 hash = "1a506c651bb81a5cc3edf0bf5f59bc91203af4a95f4027b3a38548c2d583b574"
 
 [[files]]
+file = "config/twilightforest-common.toml"
+hash = "d49610ac61a0f601a0a4745e5f1a5e0018dc5181522d5057536382ccefe357e6"
+
+[[files]]
 file = "config/wover/client.json"
 hash = "ab52947f0f8bc795e2e52f3fa874fb3ab7627afb061efb1a7e9d73e1646faf12"
 
@@ -309,12 +321,20 @@ file = "defaultconfigs/ProjectE/mapping.toml"
 hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
 
 [[files]]
+file = "defaultconfigs/ars_nouveau-server.toml"
+hash = "cd6e01ae4e5d60d14516b3611e5d385305fbaa095aabe1dbe486f3f76f0a4848"
+
+[[files]]
+file = "defaultconfigs/astralsorcery-server.toml"
+hash = "0ff6a3cd1e3ceeadf6725ba6a4282eb4273794ecff12394a01064fe74e8daeb3"
+
+[[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
 hash = "b49889d3d37b43a3702e31229a539c254e32f92704655b73ac61daf68bbc94a2"
 
 [[files]]
 file = "defaultconfigs/enigmaticlegacyplus-server.toml"
-hash = "99039cf5badb7fd5491cbaefa9324ba16d13165ec87fff0008cadd2c10e16342"
+hash = "81e3c8f6fda1d813608fdf6d0285a790eb6e7227ff047bd05a772224fded3eef"
 
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
@@ -342,7 +362,7 @@ hash = "2ee49d93fe81c76bc0743548b464618332d3b82b67d4fd7556bad1ea54250c0a"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "68b6ed6d6e249d9e953a8684189687372de74e8228d7194dbeb2f9be99aa9e20"
+hash = "a7b21c3200122e4c08666eafd17aa842cf54df73fbb5519b64e973d3f4dc6c31"
 
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
@@ -375,6 +395,10 @@ hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
 [[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "1ded0512fdbcbf6e73339a4957879ab63a0e4ea138baeb6c4af256fea275198f"
+
+[[files]]
+file = "kubejs/data/betterend/recipe/sulphur_gunpowder.json"
+hash = "75e18957f012f34c4b55a3dd8ece3eaaf17acc5663f57fb7271c25194ab2d645"
 
 [[files]]
 file = "kubejs/data/botania/recipe/creative/creative_corporea_spark_extreme.json"
@@ -469,6 +493,10 @@ file = "kubejs/data/botania/recipe/mana_infusion/spruce_leaves_dupe.json"
 hash = "c7f049dec24210dea854c74b8ed62c67e41f8475ab4a3a4dbc2e4c8a9c45da87"
 
 [[files]]
+file = "kubejs/data/botania/recipe/petal_apothecary/orechid.json"
+hash = "0349f5c8fdc82c9f06a2eded77c4dab43bed145a02e95fb72961b2e560a19403"
+
+[[files]]
 file = "kubejs/data/c/tags/fluid/blood.json"
 hash = "fd9928696fe7b6cfd1f5a8139a7747f81f9fb5d7bdf468b464f8c716efcc31e9"
 
@@ -491,6 +519,10 @@ hash = "0be8974e5d2ec22d1accf1367832640c0cf32c2111fd23703b436d8f8649f971"
 [[files]]
 file = "kubejs/data/c/tags/item/drinks/milk.json"
 hash = "d0c115bb22343d53c3f182247cf731438af43c478b015846ee9ee67d4909f404"
+
+[[files]]
+file = "kubejs/data/c/tags/item/dusts/sulfur.json"
+hash = "50cd0015874d3d4dadb84e63a39cf03e8afba482e7dcbd2a53439a1fcb32d6dd"
 
 [[files]]
 file = "kubejs/data/c/tags/item/foods/cabbage.json"
@@ -565,8 +597,32 @@ file = "kubejs/data/curios/tags/item/bundle.json"
 hash = "f9ffaafaad32dd4fafaa862ba15e1a6acb3a0db629d33fc538db97a24ae2a46a"
 
 [[files]]
+file = "kubejs/data/draconicevolution/neoforge/biome_modifier/end_comet.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
+file = "kubejs/data/draconicevolution/neoforge/biome_modifier/end_draconium_ore.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
+file = "kubejs/data/draconicevolution/neoforge/biome_modifier/nether_draconium_ore.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
+file = "kubejs/data/draconicevolution/neoforge/biome_modifier/overworld_draconium_ore.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
 file = "kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json"
 hash = "b5c04d49f1dbd4811a4cff824e103004487c538839c7ab1f735efea2201a9115"
+
+[[files]]
+file = "kubejs/data/eidolon_repraised/recipe/sulfur.json"
+hash = "1a23b75bfc3f9ab98377feee2dd1d4c9846e2041e1cbd744d274d329064066bb"
+
+[[files]]
+file = "kubejs/data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
 
 [[files]]
 file = "kubejs/data/hexerei/recipe/mahogany_broom_from_mixing_cauldron.json"
@@ -609,8 +665,32 @@ file = "kubejs/data/neovitae/recipe/ara_vitae/bucket_life.json"
 hash = "6774b31442511ec57c9790eae91c89e95f2974f53ea933fdc9bdfbc25e6fbc77"
 
 [[files]]
+file = "kubejs/data/neovitae/recipe/meteor/diamond.json"
+hash = "2884a6aa45056a78b7b1cd08c9ea4bc81cfcb9aa39982115c150adbdb86dc45b"
+
+[[files]]
+file = "kubejs/data/neovitae/recipe/meteor/iron.json"
+hash = "7ae0b1a5f0475defffb128e961740820234d7832866f5b8724d1fa84f7126f33"
+
+[[files]]
+file = "kubejs/data/neovitae/recipe/meteor/nether.json"
+hash = "972dd2ea9da3e6a79428b61fea17420e09be7d65efc92bfe1b052e6af4f9fbe9"
+
+[[files]]
+file = "kubejs/data/neovitae/recipe/meteor/nether_star.json"
+hash = "90098265be50458c0879cfd2f3779f26a560c08c688fec322abe07a772c430b5"
+
+[[files]]
+file = "kubejs/data/neovitae/recipe/meteor/stone.json"
+hash = "c27f763b089fd4eca19684d718ecfb7c9cd1a2cc41f49a42dbec4e4519b3a850"
+
+[[files]]
 file = "kubejs/data/neovitae/tags/fluid/essentia_vitae.json"
 hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/craft_ancient_miner.json"
+hash = "9b2b527e0831e79d2bc8e6108a8cb0953f998bbe19c4ab1ae56670fcbb082552"
 
 [[files]]
 file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json"
@@ -619,6 +699,62 @@ hash = "612a3423492b90fe67ace897145a0093ea1c5edc4bc74aaa9e52d58a6a81c160"
 [[files]]
 file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_ink_rituals.json"
 hash = "2c99d359f9106203a3843e6a097573e79c90b44de751bdd40188ee03332da891"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_perpetual_life.json"
+hash = "efd8351d1db6be16143ecec7b9492da8a7b6bed2c6bad9a54d7e97095fefe365"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/books_of_binding.json"
+hash = "d534cdbe45fad72892995311d36bd2b1c120c14a355a5f93bd4c555dd2275d21"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/spirit_fire.json"
+hash = "73b5ccae96cf3134e75ea9dd4daea08a38795888775daa54119fb758dba83ec9"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_afrit.json"
+hash = "2a2ce22249e43661ed1dc22c141d98bc7ae034abb34195a0b946a4fc878503f6"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_afrit_from_empty.json"
+hash = "5bea3050da70c781645e222435ab38a20d8d241b2cb07372ade30a8b55b95e7e"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_djinni.json"
+hash = "8d66ba1f054e000e37fe2d48698a8362fab1dad5c452439a13ee993fe3bb0b32"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_djinni_from_empty.json"
+hash = "45c9c16557a037ffa36c280313ac669e47222b48b851e8ac564011cd2f8bff51"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_foliot.json"
+hash = "564eb1519217282aa4e1afa34a11961c9ddfd5b71e67b55d6d4cd1827761aae8"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_foliot_from_empty.json"
+hash = "839ee4b4cdb259a5ef74644b6895147789414188cba831105bef344c77435b0d"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_marid.json"
+hash = "3232d819e168bfe0014b50d497b2e96f4ce9d6c2d1adb5b5876b405279dcdd9b"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_marid_from_empty.json"
+hash = "e9195ea42f49e126302411062821fdaf28984f88ee88e6c86c0c122db4d7cb75"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/miner/ores/draconium_ore.json"
+hash = "9e9ddbfc9ea5f032e28daad0976a5e7524579e4cd4b72235caf6c99119dd880b"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/miner/ores/uranium_ore.json"
+hash = "a858323669c22d2a88a75b6cb65c324022715b870da5328705b53e1868b1ccbf"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/ritual/misc_miner_ancient_eldritch.json"
+hash = "9c339a4350b2cfd09d4646d296bd3d101ca447958dd9f6225ae263e9b646dede"
 
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
@@ -901,12 +1037,16 @@ file = "kubejs/data/tmm/curios/slots/bundle.json"
 hash = "f3123083cbf0432962b7b84e7c8611a95585ce80aa0c3c7f6c0b129404b77f71"
 
 [[files]]
+file = "kubejs/data/tmm/forbidden_arcanus/hephaestus_forge/ritual/draconium_dust.json"
+hash = "0e658bbbd86d1a388e01ff71f1d4194bfeadfd15d17b0e5503fc5b6ad839198e"
+
+[[files]]
 file = "kubejs/data/tmm/function/rewards/starter_first_login.mcfunction"
 hash = "3f5b324642ee237cfc9f68ccd141a388a60fd8e6d1cf95527aa447729930e9fc"
 
 [[files]]
 file = "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
-hash = "4fdcdb0beb12591f3a211481670311ca32322f7fac9f89cf4fd3055c8f923519"
+hash = "dd70e6b4b2369524f636aacac4df045bafe0cde296a346700a714b659082b1c8"
 
 [[files]]
 file = "kubejs/data/tmm/gateways/caerbannog.json"
@@ -1145,6 +1285,10 @@ file = "kubejs/data/tmm/recipe/alkahestry/occultism__raw_silver.json"
 hash = "d9f983e111bb261fc21cf7f13fdf3682700bca3d8544fbbbcb08027db7bf5b8c"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/altar/draconium_dust.json"
+hash = "bff54763a5e9f86c65df78a7efb847d6d968c3462058638812ad55a4749b2308"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/blockgen/natural_stone/astralsorcery__marble_raw.json"
 hash = "eb5873aae0928e8509b649e2e057249e25e82a6ab27ee88b95d43c750eef3215"
 
@@ -1357,12 +1501,28 @@ file = "kubejs/data/tmm/recipe/matter_values/adventurer_coin.json"
 hash = "bc09fc07b8a1f88186f02b532d218b83e62b5af211d67cbabb1b111c1c3be5d5"
 
 [[files]]
+file = "kubejs/data/tmm/recipe/miner/draconium_ore_eldritch.json"
+hash = "460eceeaab6a249a9565a8a5469cb60cb7dea040e62ba06cfc8381f5c69c7efb"
+
+[[files]]
 file = "kubejs/data/tmm/recipe/miner/eldritch_logic_core.json"
 hash = "9346a9dfca3f4e5f9922ef791b00c283c4a9e617517a0eaf957eab31d6a48e93"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/miner/replica_ore_eldritch.json"
 hash = "b953803fbbd5b6de0bf512a83511c760816b4a21b8ab365f8d358a1dd8beaa2e"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/orechid/deepslate_draconium_ore.json"
+hash = "576b8ffb2b7e92db8b98c823affa3547e06946dba9adbe9c269d3631b42fa28d"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/orechid/deepslate_replica_ore.json"
+hash = "6387c5118e3d92690c2a67c051e0278b54069233ffaa91a490423ef175fe1c4c"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/orechid/draconium_ore.json"
+hash = "16e3393067c652433dbd758981f425721cfe2682a6a7ce9615de7e5760406edb"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/replica_ingot_from_nuggets.json"
@@ -1395,6 +1555,34 @@ hash = "1b7b10c54aadaa815244cef2941db6152518e9c69a43fbe53cc956d4150884db"
 [[files]]
 file = "kubejs/data/tmm/recipe/ritual/occultism_ink_uncommon.json"
 hash = "6ec9390b41dc8ff29e9be5f458950b5b0cba80333ed7dac549ed8f2f97771d67"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/perpetual_life.json"
+hash = "2bd9c53b7900a2578d6579ef1ddd951c612e4938dcf930d3a04c72f170452337"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_chipped.json"
+hash = "4f8ca41fd0241744ae6c59ec51b3deec3cab1e2ccf27a62e55103b87add27dad"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_cracked.json"
+hash = "73bffbc0e4e3f63beb8af6f6d89b33aa27a68ba35d66b6e312db786c3e0be5ac"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawed.json"
+hash = "8f31db25a4c6c592bf656230a4aafe6d0f27d462385278f07561c53a9bd4f69f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawless.json"
+hash = "7de3a12369098e3fc43ba9ded6d90734bfcaca2ae10da756a632bed74ded2709"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_normal.json"
+hash = "c869ec7ab351da60224f494e632701f39dd052fdd598734682fee3a93110c5ba"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_perfect.json"
+hash = "67c0a14e8d2b9ecaa00b28385a62470152634fd974baac2248d4e8beabf1443c"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"
@@ -2326,6 +2514,11 @@ hash = "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3"
 metafile = true
 
 [[files]]
+file = "mods/lootr-liaison.pw.toml"
+hash = "2e1308d1dd311a0074f409381a30f92a72f4bb326b84bc95cd177bd7d94932b0"
+metafile = true
+
+[[files]]
 file = "mods/lootr.pw.toml"
 hash = "0d3683a8c533e1fb67bf0b1668089a322fc5f594f9610d441657378ab4f64383"
 metafile = true
@@ -2738,6 +2931,11 @@ metafile = true
 [[files]]
 file = "mods/twilight-forest.pw.toml"
 hash = "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f"
+metafile = true
+
+[[files]]
+file = "mods/twilight-lootr.pw.toml"
+hash = "c2d6c3c2691115bdf0bdd5776446beb528e0ac7c5bd6b453e625ce8a7ced112b"
 metafile = true
 
 [[files]]

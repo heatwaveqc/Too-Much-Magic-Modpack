@@ -25,25 +25,46 @@ import java.util.Set;
 public final class ExperienceEconomy {
     private ExperienceEconomy() {}
 
-    private static final MathContext PRECISION = MathContext.DECIMAL128;
+    // More than the maximum stored integer + fractional digits, with guard digits
+    // for geometric cost subtraction near g=1. Arithmetic stays bounded.
+    private static final MathContext PRECISION = new MathContext(288, RoundingMode.HALF_EVEN);
     public static final double MIN_GROWTH = 0.001;
     public static final double MAX_GROWTH = 100.0;
     /** Hard computational guards, not balance presets or growth-factor clamps. */
     public static final long HARD_MAX_LEVEL = 10_000_000L;
-    public static final int MAX_LEVEL_CROSSINGS_PER_AWARD = 10_000;
     public static final int MAX_PAID_RANK_RECEIPTS = 1_000_000;
     public static final int MAX_RECENT_TRANSACTIONS = 1024;
     public static final int MAX_FIRST_COMPLETIONS = 65536;
+    /** Storage/work limits, not a gameplay growth-factor clamp. */
+    public static final int MAX_XP_SCALE = 128;
+    public static final int MAX_XP_INTEGER_DIGITS = 128;
+    public static final BigDecimal HARD_MIN_REWARD = BigDecimal.ONE.scaleByPowerOfTen(-MAX_XP_SCALE);
     private static final String DEFAULT_SOURCE = "tyr_progression:default";
 
-    public record SystemSpec(String id, BigDecimal xpPerPoint, long maxLevel, BigDecimal maxBaseAward) {
+    public record SystemSpec(String id, BigDecimal xpPerPoint, long maxLevel,
+                             BigDecimal maxBaseAward, BigDecimal minReward,
+                             boolean roundSubminimumUp) {
+        public SystemSpec(String id, BigDecimal xpPerPoint, long maxLevel, BigDecimal maxBaseAward) {
+            this(id, xpPerPoint, maxLevel, maxBaseAward, HARD_MIN_REWARD, false);
+        }
         public SystemSpec {
             requireId(id);
             Objects.requireNonNull(xpPerPoint, "xpPerPoint");
             Objects.requireNonNull(maxBaseAward, "maxBaseAward");
+            Objects.requireNonNull(minReward, "minReward");
+            requireBoundedDecimal(xpPerPoint);
+            requireBoundedDecimal(maxBaseAward);
+            requireBoundedDecimal(minReward);
             if (xpPerPoint.signum() <= 0 || maxBaseAward.signum() <= 0
-                    || maxLevel < 1 || maxLevel > HARD_MAX_LEVEL)
+                    || maxLevel < 1 || maxLevel > HARD_MAX_LEVEL
+                    || minReward.compareTo(HARD_MIN_REWARD) < 0)
                 throw new IllegalArgumentException("Invalid XP system limits");
+            // A legal configuration must have a representable maximum balance.
+            requireBoundedDecimal(xpPerPoint.multiply(BigDecimal.valueOf(maxLevel)));
+        }
+
+        public BigDecimal maxXp() {
+            return xpPerPoint.multiply(BigDecimal.valueOf(maxLevel));
         }
 
         /** Initial TMM values; other systems may use independent thresholds. */
@@ -54,7 +75,10 @@ public final class ExperienceEconomy {
     }
 
     /** Each receipt is ONE purchased rank, charged to exactly one XP system. */
-    public record PaidRank(String path, String skill, String system, int pointCost) {
+    public record PaidRank(String path, String skill, String system, int pointCost, boolean administrative) {
+        public PaidRank(String path, String skill, String system, int pointCost) {
+            this(path, skill, system, pointCost, false);
+        }
         public PaidRank {
             requireId(path);
             requireId(skill);
@@ -88,6 +112,7 @@ public final class ExperienceEconomy {
             currentXp.forEach((id, xp) -> {
                 requireId(id);
                 if (xp == null || xp.signum() < 0) throw new IllegalArgumentException("Negative or missing XP");
+                requireBoundedDecimal(xp);
             });
             if (paidRanks.size() > MAX_PAID_RANK_RECEIPTS)
                 throw new IllegalArgumentException("Too many skill purchase receipts");
@@ -131,9 +156,20 @@ public final class ExperienceEconomy {
     }
 
     public static long available(Ledger state, SystemSpec system) {
-        long free = level(state, system) - committed(state, system.id());
-        if (free < 0) throw new IllegalStateException("Spent more points than current XP permits");
-        return free;
+        long earned = level(state, system);
+        if (ordinaryCommitted(state, system.id()) > earned)
+            throw new IllegalStateException("Ordinary purchases exceed earned XP");
+        return Math.max(0L, earned - committed(state, system.id()));
+    }
+
+    public static long ordinaryCommitted(Ledger state, String id) {
+        return state.paidRanks().stream().filter(r -> r.system().equals(id) && !r.administrative())
+                .mapToLong(PaidRank::pointCost).sum();
+    }
+
+    public static long debt(Ledger state, SystemSpec system) {
+        available(state, system);
+        return Math.max(0L, committed(state, system.id()) - level(state, system));
     }
 
     public static int contributedRanks(Ledger state, String path, String skill, String system) {
@@ -153,17 +189,31 @@ public final class ExperienceEconomy {
      */
     public static Ledger buy(Ledger state, SystemSpec system, String path, String skill,
                              int pointCost, int systemRankCap, int totalRankCap) {
+        return purchase(state, system, path, skill, pointCost, systemRankCap, totalRankCap, false);
+    }
+
+    /** Trusted operator grant; only the spendable-point gate is bypassed. */
+    public static Ledger grantRank(Ledger state, SystemSpec system, String path, String skill,
+                                  int pointCost, int systemRankCap, int totalRankCap) {
+        return purchase(state, system, path, skill, pointCost, systemRankCap, totalRankCap, true);
+    }
+
+    private static Ledger purchase(Ledger state, SystemSpec system, String path, String skill,
+                                    int pointCost, int systemRankCap, int totalRankCap, boolean admin) {
         requireId(path);
         requireId(skill);
         if (pointCost < 1 || systemRankCap < 1 || totalRankCap < 1)
             throw new IllegalArgumentException("Invalid skill purchase config");
         if (contributedRanks(state, path, skill, system.id()) >= systemRankCap
                 || effectiveRank(state, path, skill) >= totalRankCap
-                || available(state, system) < pointCost
+                || (!admin && available(state, system) < pointCost)
                 || state.paidRanks().size() >= MAX_PAID_RANK_RECEIPTS)
             return state;
+        available(state, system); // validate ordinary commitments even for operator grants
+        if (committed(state, system.id()) + pointCost > system.maxLevel()) return state;
+        state = initialize(state, system);
         var purchases = new ArrayList<>(state.paidRanks());
-        purchases.add(new PaidRank(path, skill, system.id(), pointCost));
+        purchases.add(new PaidRank(path, skill, system.id(), pointCost, admin));
         return new Ledger(state.currentXp(), purchases, state.achievements(),
                 state.rewardReceipts(), state.recentTransactions());
     }
@@ -180,8 +230,9 @@ public final class ExperienceEconomy {
      * stored XP. Fixed sources skip growth. All numbers stay finite and exact
      * decimal XP accumulation is retained, including fractional ordinary awards.
      *
-     * A growth factor below 1 can imply an infinite number of levels for finite
-     * base XP; fail the WHOLE award rather than committing partial/overflow XP.
+     * A growth factor below 1 can imply infinitely many levels for finite base
+     * XP. Saturate at the configured level cap; settle subminimum gains using
+     * the configured rounding policy. An accepted award may pay zero XP.
      */
     public static Award earn(Ledger source, SystemSpec system, String transaction,
                              String firstCompletion, BigDecimal base,
@@ -198,26 +249,55 @@ public final class ExperienceEconomy {
     public static Award earn(Ledger source, SystemSpec system, String sourceCategory,
                              String transaction, String firstCompletion, BigDecimal base,
                              boolean fixed, double effectiveGrowth) {
+        return earnModified(source, system, sourceCategory, transaction, firstCompletion,
+                base, fixed, effectiveGrowth, 1.0);
+    }
+
+    /** The modifier multiplier is server-resolved; original nominal XP is still validated.
+     * A zero multiplier intentionally suppresses a legitimate event, including its minimum. */
+    public static Award earnModified(Ledger source, SystemSpec system, String sourceCategory,
+                                     String transaction, String firstCompletion, BigDecimal nominal,
+                                     boolean fixed, double effectiveGrowth, double multiplier) {
         requireId(sourceCategory);
         requireReceiptKey(transaction);
         if (firstCompletion != null) requireReceiptKey(firstCompletion);
         String txReceipt = system.id() + "|" + sourceCategory + "|" + transaction;
         String firstReceipt = firstCompletion == null ? null
                 : system.id() + "|" + sourceCategory + "|" + firstCompletion;
-        Objects.requireNonNull(base, "base");
+        Objects.requireNonNull(nominal, "nominal");
+        requireBoundedDecimal(nominal);
         validateGrowth(effectiveGrowth);
-        if (base.signum() <= 0 || base.compareTo(system.maxBaseAward()) > 0)
+        if (nominal.signum() <= 0 || nominal.compareTo(system.maxBaseAward()) > 0)
             throw new IllegalArgumentException("Award exceeds system source limits");
+        if (!Double.isFinite(multiplier) || multiplier < 0
+                || multiplier > XpModifierMath.MAX_REWARD_MULTIPLIER)
+            throw new IllegalArgumentException("Invalid XP reward multiplier");
+        // Modified XP can exceed the nominal-input limit, but remains bounded.
+        BigDecimal base = nominal.multiply(BigDecimal.valueOf(multiplier).stripTrailingZeros());
         if (source.recentTransactions().contains(txReceipt)
                 || firstReceipt != null && source.rewardReceipts().contains(firstReceipt))
             return new Award(source, BigDecimal.ZERO, false);
 
         Ledger current = initialize(source, system);
         BigDecimal oldXp = current.currentXp().get(system.id());
-        BigDecimal nextXp = fixed ? oldXp.add(base) : ordinary(oldXp, system, base, effectiveGrowth);
-        long derived = nextXp.divide(system.xpPerPoint(), 0, RoundingMode.DOWN).longValueExact();
-        if (derived > system.maxLevel())
-            throw new IllegalArgumentException("XP award exceeds configured level guard");
+        BigDecimal cap = system.maxXp();
+        BigDecimal nextXp = oldXp;
+        // Do not silently destroy existing XP if an administrator lowers the cap.
+        // Such a reload requires separate reconciliation of paid commitments.
+        if (oldXp.compareTo(cap) < 0 && multiplier > 0) {
+            nextXp = fixed ? oldXp.add(base).min(cap)
+                    : ordinary(oldXp, system, base, effectiveGrowth);
+            if (nextXp.scale() > MAX_XP_SCALE)
+                nextXp = nextXp.setScale(MAX_XP_SCALE, RoundingMode.DOWN);
+            BigDecimal gain = nextXp.subtract(oldXp);
+            // Reaching the cap takes precedence over minimum reward rounding.
+            if (nextXp.compareTo(cap) < 0 && gain.compareTo(system.minReward()) < 0)
+                nextXp = system.roundSubminimumUp()
+                        ? oldXp.add(system.minReward()).min(cap) : oldXp;
+        }
+        requireBoundedDecimal(nextXp);
+        // Settle legitimate zero-XP events too. Otherwise a first completion
+        // can be replayed after a Path reset or growth modifier change.
 
         var xp = new HashMap<>(current.currentXp());
         xp.put(system.id(), nextXp);
@@ -236,36 +316,60 @@ public final class ExperienceEconomy {
 
     private static BigDecimal ordinary(BigDecimal xp, SystemSpec system,
                                        BigDecimal base, double growth) {
-        if (growth == 1.0) return xp.add(base);
+        BigDecimal cap = system.maxXp();
+        if (growth == 1.0) return xp.add(base).min(cap);
+        BigDecimal threshold = system.xpPerPoint();
         BigDecimal factor = BigDecimal.valueOf(growth);
-        BigDecimal remaining = base;
-        BigDecimal nextXp = xp;
-        int crossings = 0;
+        long level = xp.divide(threshold, 0, RoundingMode.DOWN).longValueExact();
+        BigDecimal divisor = factor.pow(Math.toIntExact(level), PRECISION);
+        BigDecimal nextBoundary = threshold.multiply(BigDecimal.valueOf(level + 1));
+        BigDecimal firstCost = nextBoundary.subtract(xp).multiply(divisor, PRECISION);
+        if (base.compareTo(firstCost) < 0)
+            return partial(xp, base, divisor, nextBoundary);
 
-        while (remaining.signum() > 0) {
-            long level = nextXp.divide(system.xpPerPoint(), 0, RoundingMode.DOWN).longValueExact();
-            if (level >= system.maxLevel())
-                throw new IllegalArgumentException("XP level safety ceiling reached");
-            BigDecimal divisor = factor.pow(Math.toIntExact(level), PRECISION);
-            BigDecimal progress = nextXp.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(level)));
-            BigDecimal toNext = system.xpPerPoint().subtract(progress);
-            if (toNext.signum() <= 0)
-                throw new IllegalStateException("Invalid XP level fraction");
-            BigDecimal baseToNext = toNext.multiply(divisor, PRECISION);
-            if (remaining.compareTo(baseToNext) >= 0) {
-                if (++crossings > MAX_LEVEL_CROSSINGS_PER_AWARD)
-                    throw new IllegalArgumentException("Unsafe number of levels in one XP award");
-                remaining = remaining.subtract(baseToNext);
-                nextXp = system.xpPerPoint().multiply(BigDecimal.valueOf(level + 1L));
-            } else {
-                BigDecimal effective = remaining.divide(divisor, PRECISION);
-                if (effective.signum() <= 0)
-                    throw new IllegalArgumentException("XP award underflow");
-                nextXp = nextXp.add(effective);
-                remaining = BigDecimal.ZERO;
-            }
+        // Exact boundaries are common. Avoid a logarithmic search for a single crossing.
+        if (level + 1 == system.maxLevel()) return cap;
+        BigDecimal capCost = crossingCost(firstCost, threshold, factor, divisor,
+                system.maxLevel() - level - 1);
+        if (base.compareTo(capCost) >= 0) return cap;
+
+        // Find the highest affordable boundary in O(log(maxLevel)) comparisons,
+        // including awards crossing >10,000 levels without reaching the cap.
+        long lo = level + 1, hi = system.maxLevel() - 1;
+        while (lo < hi) {
+            long mid = lo + (hi - lo + 1) / 2;
+            BigDecimal cost = crossingCost(firstCost, threshold, factor, divisor,
+                    mid - level - 1);
+            if (base.compareTo(cost) >= 0) lo = mid;
+            else hi = mid - 1;
         }
-        return nextXp;
+        BigDecimal paid = crossingCost(firstCost, threshold, factor, divisor, lo - level - 1);
+        BigDecimal remaining = base.subtract(paid, PRECISION).max(BigDecimal.ZERO);
+        BigDecimal boundary = threshold.multiply(BigDecimal.valueOf(lo));
+        return partial(boundary, remaining, factor.pow(Math.toIntExact(lo), PRECISION),
+                threshold.multiply(BigDecimal.valueOf(lo + 1)));
+    }
+
+    /** First partial boundary plus n full subsequent levels: a geometric sum. */
+    private static BigDecimal crossingCost(BigDecimal firstCost, BigDecimal threshold,
+                                           BigDecimal factor, BigDecimal divisor, long n) {
+        if (n == 0) return firstCost;
+        BigDecimal sum = factor.pow(Math.toIntExact(n), PRECISION)
+                .subtract(BigDecimal.ONE, PRECISION)
+                .divide(factor.subtract(BigDecimal.ONE), PRECISION);
+        return firstCost.add(threshold.multiply(divisor, PRECISION)
+                .multiply(factor, PRECISION).multiply(sum, PRECISION), PRECISION);
+    }
+
+    /** Never expand an exponent of millions of digits into a stored decimal. */
+    private static BigDecimal partial(BigDecimal xp, BigDecimal base, BigDecimal divisor,
+                                      BigDecimal nextBoundary) {
+        BigDecimal gain = base.divide(divisor, PRECISION);
+        if (gain.compareTo(HARD_MIN_REWARD) < 0) return xp;
+        if (gain.compareTo(nextBoundary.subtract(xp)) >= 0) return nextBoundary;
+        if (gain.scale() > MAX_XP_SCALE)
+            gain = gain.setScale(MAX_XP_SCALE, RoundingMode.DOWN);
+        return xp.add(gain);
     }
 
     /**
@@ -324,13 +428,11 @@ public final class ExperienceEconomy {
             if (system == null) throw new IllegalArgumentException("Missing XP system " + row.getKey());
             long removed = forfeited.getOrDefault(row.getKey(), 0L);
             BigDecimal revised;
+            revised = forfeitFunded(row.getValue(), system, remaining, removed);
             if (wipeSystems.contains(row.getKey())) {
                 long retained = Math.addExact(committed(remaining, system.id()),
                         refunded.getOrDefault(system.id(), 0L));
-                revised = system.xpPerPoint().multiply(BigDecimal.valueOf(retained));
-            } else {
-                revised = row.getValue().subtract(
-                        system.xpPerPoint().multiply(BigDecimal.valueOf(removed)));
+                revised = revised.min(system.xpPerPoint().multiply(BigDecimal.valueOf(retained)));
             }
             if (revised.signum() < 0)
                 throw new IllegalStateException("Invalid forfeiture beyond earned XP");
@@ -342,6 +444,17 @@ public final class ExperienceEconomy {
         return result;
     }
 
+    /** Never mint XP or burn backing for surviving ordinary purchases when removing debt. */
+    public static BigDecimal forfeitFunded(BigDecimal current, SystemSpec system, Ledger remaining, long removed) {
+        long ordinary = ordinaryCommitted(remaining, system.id());
+        long earned = current.divide(system.xpPerPoint(),0,RoundingMode.DOWN).longValueExact();
+        if (earned < ordinary) throw new IllegalStateException("Ordinary purchases exceed earned XP");
+        // Only whole funded commitments can be forfeited; a fractional XP
+        // remainder is not an assigned point. Departure wipe is separate.
+        long funded = Math.min(removed,earned-ordinary);
+        return current.subtract(system.xpPerPoint().multiply(BigDecimal.valueOf(funded)));
+    }
+
     /**
      * Verified transaction keys may be composite IDs such as
      * boss:draconicevolution:draconic_guardian or advancement:namespace:path.
@@ -351,6 +464,15 @@ public final class ExperienceEconomy {
         if (key == null || key.isBlank() || key.length() > 240
                 || !key.matches("[a-zA-Z0-9_.:/#@-]+") || key.contains("|"))
             throw new IllegalArgumentException("Invalid verified transaction key");
+    }
+
+    private static void requireBoundedDecimal(BigDecimal value) {
+        // Check metadata before any addition, division or plain-string save.
+        // A short literal such as 1e-10000000 must not allocate megabytes.
+        long integerDigits = (long) value.precision() - value.scale();
+        if (Math.abs((long) value.scale()) > MAX_XP_SCALE
+                || integerDigits > MAX_XP_INTEGER_DIGITS)
+            throw new IllegalArgumentException("XP decimal exceeds storage safety limits");
     }
 
     private static void requireId(String id) {

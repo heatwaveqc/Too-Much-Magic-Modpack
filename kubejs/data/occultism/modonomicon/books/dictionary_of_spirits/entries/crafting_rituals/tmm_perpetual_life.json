@@ -1,0 +1,52 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "crafting_rituals",
+  "condition": {
+    "type": "modonomicon:entry_read",
+    "entry_id": "pentacles/contact_eldritch_spirit"
+  },
+  "description": "book.tmm.occultism_batch1.life_desc",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "minecraft:spawner"
+  },
+  "name": "book.tmm.occultism_batch1.life_name",
+  "pages": [
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "minecraft:spawner"
+      },
+      "text": "book.tmm.occultism_batch1.life_spot",
+      "title": ""
+    },
+    {
+      "type": "occultism:ritual_recipe",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "recipe_id_1": "tmm:ritual/perpetual_life",
+      "text": "book.tmm.occultism_batch1.life_recipe",
+      "title1": "",
+      "title2": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "crafting_rituals/craft_ancient_miner",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 71,
+  "x": 24,
+  "y": -12
+}

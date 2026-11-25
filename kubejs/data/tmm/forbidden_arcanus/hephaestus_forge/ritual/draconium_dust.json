@@ -1,0 +1,28 @@
+{
+  "essences": {
+    "aureal": 2000,
+    "blood": 2000,
+    "experience": 500,
+    "souls": 20
+  },
+  "forge_tier": 4,
+  "inputs": [
+    {
+      "amount": 4,
+      "ingredient": {
+        "item": "forbidden_arcanus:obsidiansteel_ingot"
+      }
+    }
+  ],
+  "magic_circle": "forbidden_arcanus:create_item",
+  "main_ingredient": {
+    "item": "dragonsurvival:elder_dragon_bone"
+  },
+  "result": {
+    "type": "forbidden_arcanus:create_item",
+    "result_item": {
+      "count": 4,
+      "id": "draconicevolution:draconium_dust"
+    }
+  }
+}

@@ -54,7 +54,7 @@ def main():
     assert len(matches) == 1
     newbie = matches[0]
     assert newbie["title"] == "I'm Ready for Regular Mode"
-    assert newbie["reward"] == {"xp": 5, "command": "tmmnewbie admin graduate {p}"}
+    assert newbie["reward"] == {"xp": 5, "command": "tmmnewbie admin graduate {p}", "housing_choice": "544D7A0000000002"}
     assert newbie["team_reward"] is False and newbie["criterion"]["type"] == "checkmark"
     layouts = data("manifest/quest_layouts.json")
     assert layouts["quest_count"] == len(layouts["positions"])

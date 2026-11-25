@@ -46,12 +46,14 @@
       "task_id": "544D409000100001",
       "xp_reward_id": "544D609000100001",
       "item_reward_id": "544D709000100001",
+      "housing_choice_reward_id": "544D7A0000000001",
       "criterion": {
         "type": "checkmark"
       },
       "reward": {
         "xp": 5,
-        "command": "tmmnewbie admin graduate {p}"
+        "command": "tmmnewbie admin graduate {p}",
+        "housing_choice": "544D7A0000000002"
       },
       "depends": null,
       "optional": true,

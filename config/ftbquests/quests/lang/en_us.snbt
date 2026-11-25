@@ -620,7 +620,7 @@
 	quest.544D301000110001.quest_desc: ["Open Options > Controls and use Controlling to find duplicate keybinds. Assign only the spells, inventory controls and other actions you want to use. KeySets and KeyBind Bundles may help manage alternatives; Tips & Tricks explains them in more detail. This is a personal convenience tip, not a required step or a reset of your controls."]
 	task.544D4D1200000001.title: "Any Log or Stem"
 	quest.544D309000100001.title: "I'm Ready for Regular Mode"
-	quest.544D309000100001.quest_desc: ["You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice."]
+	quest.544D309000100001.quest_desc: ["You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice. Choose one free home in the housing reward. Generic gives a native Prefab blueprint; custom homes give a personal paper blueprint. Find a suitable site and right-click the top of a block to build. You need not enter any commands. Choose carefully; lost items are not replaced automatically."]
 	quest.544DB10000000001.title: "The Monk Path"
 	quest.544DB10000000001.quest_desc: ["This is one of the mutually exclusive specialization choices, not a second class or species slot. Monks cultivate unarmed combat, movement and survival through class trials. Consult the Monk path in the skill interface and follow its current initiation requirements; the intended sunset initiation and reserved fist slot are subject to the integrated path data. Claiming this guide does not enroll you."]
 	quest.544DB10000000002.title: "The Hunter Path"
@@ -647,4 +647,25 @@
 	quest.544DB1000000000C.quest_desc: ["Reliquified Artifacts integrates Artifacts equipment with Relics-style progression, including item-specific XP, ranks and durability where supported. Inspect the actual item tooltip and progression interface; do not assume all accessories use identical triggers. This is orientation, not an automatic rank or repair."]
 	quest.544DB1000000000D.title: "ProjectE Energy Converters"
 	quest.544DB1000000000D.quest_desc: ["ProjectE Energy Converters bridges EMC with FE and supported energy systems. Find its conversion blocks through JEI when available; follow the actual ProjectE and Project Expansion recipe gates and check the configured conversion ratios before use. This guide grants no converter and does not bypass any gate."]
+	reward_table.544D7A0000000002.title: "Choose Your Home"
+	reward.544D7A0000000001.title: "Choose Your Home"
+	reward.544D7A1000000001.title: "Generic Starter House"
+	reward.544D7A1000000002.title: "Adventurer's Inn"
+	reward.544D7A1000000003.title: "Arcane Forge"
+	reward.544D7A1000000004.title: "Arcane Sanctum"
+	reward.544D7A1000000005.title: "Castaway's Retreat"
+	reward.544D7A1000000006.title: "Celestial Observatory"
+	reward.544D7A1000000007.title: "Chromatic Manor"
+	reward.544D7A1000000008.title: "Dark Citadel"
+	reward.544D7A1000000009.title: "Dwarven Foundry"
+	reward.544D7A100000000A.title: "Elven Garden"
+	reward.544D7A100000000B.title: "Farmer's Homestead"
+	reward.544D7A100000000C.title: "Hearthkeeper"
+	reward.544D7A100000000D.title: "Mage's Academy"
+	reward.544D7A100000000E.title: "Summoner's Lodge"
+	reward.544D7A100000000F.title: "Sanguine Temple"
+	reward.544D7A1000000010.title: "Spirit Shrine"
+	reward.544D7A1000000011.title: "Witch's Cottage"
+	reward.544D7A1000000012.title: "Witch's Manor"
+	reward.544D7A1000000013.title: "Wizard's Tower"
 }

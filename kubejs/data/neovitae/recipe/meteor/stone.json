@@ -1,0 +1,38 @@
+{
+  "type": "neovitae:meteor",
+  "explosion": 30,
+  "input": {
+    "tag": "neovitae:vitae_stone"
+  },
+  "layers": [
+    {
+      "fill": "minecraft:stone",
+      "minWeight": 164400,
+      "radius": 32,
+      "shell": "minecraft:cobblestone",
+      "weighted": [
+        {
+          "entry": "minecraft:coal_ore",
+          "weight": 61650
+        },
+        {
+          "entry": "minecraft:iron_ore",
+          "weight": 20550
+        },
+        {
+          "entry": "#neovitae:generative_ores",
+          "weight": 61650
+        },
+        {
+          "entry": "draconicevolution:deepslate_draconium_ore",
+          "weight": 1
+        },
+        {
+          "entry": "replication:deepslate_replica_ore",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "syphon": 1000000
+}

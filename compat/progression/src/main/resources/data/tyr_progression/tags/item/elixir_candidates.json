@@ -1,0 +1,369 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "beachparty:cocoa_cocktail",
+      "required": false
+    },
+    {
+      "id": "beachparty:coconut_cocktail",
+      "required": false
+    },
+    {
+      "id": "beachparty:honey_cocktail",
+      "required": false
+    },
+    {
+      "id": "beachparty:melon_cocktail",
+      "required": false
+    },
+    {
+      "id": "beachparty:pumpkin_cocktail",
+      "required": false
+    },
+    {
+      "id": "beachparty:sweetberries_cocktail",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_barley",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_haley",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_hops",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_nettle",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_oat",
+      "required": false
+    },
+    {
+      "id": "brewery:beer_wheat",
+      "required": false
+    },
+    {
+      "id": "brewery:dark_brew",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_ak",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_carrasconlabel",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_cristelwalker",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_highland_hearth",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_jamesons_malt",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_jojannik",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_lilitusinglemalt",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_maggoallan",
+      "required": false
+    },
+    {
+      "id": "brewery:whiskey_smokey_reverie",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:beer",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:bloody_mary",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:dread_nog",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:egg_grog",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:glittering_grenadine",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:mead",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:pale_jane",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:red_rum",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:rice_wine",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:saccharine_rum",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:salty_folly",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:steel_toe_stout",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:strongroot_ale",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:vodka",
+      "required": false
+    },
+    {
+      "id": "brewinandchewin:withering_dross",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:aqua_velva",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:bees_knees",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:black_cuban",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:black_russian",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:blue_curacao",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:bock",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:boilermaker",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:brass_monkey",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:china_blue",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:cream_ale",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:espresso_martini",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:gimlet",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:gin",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:gin_and_juice",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:gin_and_tonic",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:hard_cider",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:hard_lemonade",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:hot_toddy",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:ipa",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:johnny_silverhand",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:kahlua",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:kraken_rum",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:margarita",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:medina",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mermaid_lemonade",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mexican_hot_chocolate",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:milk_stout",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mint_julep",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mojito",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:moonshine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mulled_cider",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:mulled_wine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:nut_brown_ale",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:peach_wine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:pilsner",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:pina_colada",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:plum_wine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:porter",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:red_ale",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:red_wine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:rum",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:salted_margarita",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:screwdriver",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:singapore_sling",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:stout",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:sweet_red_wine",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:tequila",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:tequila_sunrise",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:vodka_tonic",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:whiskey",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:whiskey_sour",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:white_russian",
+      "required": false
+    },
+    {
+      "id": "cocktailsdelight:white_wine",
+      "required": false
+    },
+    {
+      "id": "pamhc2foodextended:pinacoladaitem",
+      "required": false
+    }
+  ]
+}

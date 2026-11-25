@@ -57,7 +57,46 @@ class TipsStarterA(unittest.TestCase):
             self.assertIn("unless entity @s[advancements={tmm:starter_kit_claimed=true}]", line)
         for line in meaningful[:2]:
             self.assertIn("unless entity @s[advancements={tmm:starter_kit=true}]", line)
-        self.assertIn("run give @s akashictome:tome 1", meaningful[0])
+        manifest = load("manifest/starter_guidebooks.json")
+        self.assertEqual(manifest["schema"], 1)
+        books = manifest["books"]
+        self.assertGreaterEqual(len(books), 12)
+        self.assertEqual(len({b["mod"] for b in books}), len(books))
+        self.assertEqual(len({(b["item"], tuple(sorted(b.get("components", {}).items())))
+                              for b in books}), len(books))
+        for book in books:
+            self.assertRegex(book["item"], r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
+            self.assertRegex(book["mod"], r"^[a-z0-9_.-]+$")
+            self.assertTrue(book["name"] and book["source"])
+            self.assertNotIn("akashictome:defined_mod", book.get("components", {}))
+            self.assertTrue(all(isinstance(v, str) for v in book.get("components", {}).values()))
+        by_mod = {b["mod"]: b for b in books}
+        self.assertEqual(by_mod["occultism"]["item"], "occultism:dictionary_of_spirits")
+        self.assertEqual(by_mod["rootsclassic"]["item"], "rootsclassic:runic_tablet")
+        self.assertEqual(by_mod["theurgy"]["item"], "modonomicon:modonomicon")
+        self.assertEqual(by_mod["theurgy"]["components"], {"modonomicon:book_id": "theurgy:the_hermetica"})
+        self.assertEqual(by_mod["goety"]["item"], "patchouli:guide_book")
+        self.assertEqual(by_mod["goety"]["components"], {"patchouli:book": "goety:black_book"})
+        self.assertEqual(by_mod["feywild"]["item"], "feywild:feywild_lexicon")
+        self.assertEqual(by_mod["feywild"]["components"], {})
+        self.assertEqual(by_mod["astralsorcery"]["item"], "astralsorcery:tome")
+        self.assertTrue(manifest["pending_review"])
+
+        def render_stack(book):
+            components = {"akashictome:defined_mod": book["mod"], **book.get("components", {})}
+            fields = ",".join(f"{json.dumps(k)}:{json.dumps(v)}" for k, v in components.items())
+            return f'{{id:{json.dumps(book["item"])},count:1,components:{{{fields}}}}}'
+
+        payload = "akashictome:tome[akashictome:tool_content=[" + ",".join(map(render_stack, books)) + "]] 1"
+        self.assertEqual(meaningful[0],
+            "execute unless entity @s[advancements={tmm:starter_kit_claimed=true}] "
+            "unless entity @s[advancements={tmm:starter_kit=true}] run give @s " + payload)
+        config = tomllib.loads((ROOT / "defaultconfigs/ars_nouveau-server.toml").read_text())
+        self.assertIs(config["general"]["spawnBook"], False)
+        feywild = tomllib.loads((ROOT / "config/feywild-common.toml").read_text())
+        self.assertIs(feywild["feywild"]["spawn_with_lexicon"], False)
+        astral = tomllib.loads((ROOT / "defaultconfigs/astralsorcery-server.toml").read_text())
+        self.assertIs(astral["general"]["giveTomeOnJoin"], False)
         self.assertIn("run give @s minecraft:cooked_beef 2", meaningful[1])
         self.assertIn("run give @s comforts:sleeping_bag_white 1", meaningful[2])
         self.assertEqual(meaningful[3], "advancement grant @s only tmm:starter_kit_claimed")
@@ -91,6 +130,9 @@ class TipsStarterA(unittest.TestCase):
                     "kubejs/data/tmm/advancement/starter_kit_claimed.json",
                     "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
                     "kubejs/data/tmm/function/rewards/starter_first_login.mcfunction",
+                    "defaultconfigs/ars_nouveau-server.toml",
+                    "defaultconfigs/astralsorcery-server.toml",
+                    "config/feywild-common.toml",
                     "config/ftbquests/quests/chapters/tips_tricks.snbt",
                     "config/ftbquests/quests/lang/en_us.snbt"):
             self.assertIn(rel, selected)
