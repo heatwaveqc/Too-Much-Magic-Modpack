@@ -182,7 +182,7 @@ hash = "59d22b452ad365a6e916a82b2be6a07722b15b514c3ae312d7bef277784751b5"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/intro.snbt"
-hash = "13465c68200588ed60e4bb916023aa21454e1cfe2f8dae284b3031808e8bf7f1"
+hash = "91356eea472972b2bb3dfbdd5b5068b76e4f4a5d7338a8ff39ffad2f4dac0f55"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/irons_spells_n_spellbooks.snbt"
@@ -266,7 +266,11 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "806e7597818b8e45de6241fb7a071fa4ccbceb344e49254b8ae6f883a897c723"
+hash = "cf59d631a33c04291d2c5202dd7866a61ea6371bc24fa3ec3b8fa5313011f8cc"
+
+[[files]]
+file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
+hash = "eae0377a7bf2e90f01048612a150606a544870e809984c46066f1d4e6241b35a"
 
 [[files]]
 file = "config/improvableskills.cfg"
