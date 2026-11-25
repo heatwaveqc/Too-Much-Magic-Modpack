@@ -23,13 +23,18 @@ def digest(path, algorithm):
             h.update(block)
     return h.hexdigest()
 
-def read_pins(root, side):
+def read_pins(root, side, pin_paths=None):
+    requested = set(pin_paths) if pin_paths is not None else None
+    found = set()
     index = tomllib.loads((root / "index.toml").read_text(encoding="utf-8"))
     result = {}
     for row in index["files"]:
         name = row["file"]
         if not (name.startswith("mods/") and name.endswith(".pw.toml")):
             continue
+        if requested is not None and name not in requested:
+            continue
+        found.add(name)
         path = root / name
         if digest(path, index["hash-format"]) != row["hash"].lower():
             raise ValueError(f"Index hash mismatch: {name}")
@@ -40,11 +45,14 @@ def read_pins(root, side):
         if filename in result or Path(filename).name != filename:
             raise ValueError(f"Duplicate or unsafe pin filename: {filename}")
         result[filename] = {"pin": name, "name": pin["name"], "download": pin["download"]}
+    if requested is not None and requested != found:
+        raise ValueError(f"Unknown requested pins: {sorted(requested - found)}")
     return result
 
-def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=()):
-    pins = read_pins(pack_root, side)
+def inventory(pack_root, mods_dir, side="server", extras=(), data_roots=(), pin_paths=None):
+    pins = read_pins(pack_root, side, pin_paths)
     report = {"schema": 1, "side": side, "classification": "raw candidates, not effective registry",
+              "pin_scope": sorted(pin_paths) if pin_paths is not None else "all-side-pins",
               "pins": [], "archives": [], "resources": [], "templates": [],
               "feature_candidates": [], "errors": [], "limitations": [
                   "Duplicate definitions are retained, not resolved by guessed pack precedence.",
@@ -164,10 +172,11 @@ def main():
     p.add_argument("--side", choices=("client", "server"), default="server")
     p.add_argument("--extra-jar", action="append", type=Path, default=[])
     p.add_argument("--data-root", action="append", type=Path, default=[])
+    p.add_argument("--pin", action="append", help="Explicit partial pin scope; default is all side-eligible pins")
     p.add_argument("--snapshot", required=True, help="Exact audited build SHA or other explicitly identified snapshot")
     p.add_argument("--output", required=True, type=Path)
     args = p.parse_args()
-    report = inventory(args.pack_root, args.mods_dir, args.side, args.extra_jar, args.data_root)
+    report = inventory(args.pack_root, args.mods_dir, args.side, args.extra_jar, args.data_root, args.pin)
     report["snapshot_label"] = args.snapshot
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("x", encoding="utf-8") as f:
