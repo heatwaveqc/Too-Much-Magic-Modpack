@@ -22,6 +22,7 @@
     "AttackIdleResistanceMixin",
     "StunnedMobAiMixin",
     "FlyingKickAttackMixin",
+    "VirtualProtectionMixin",
     "WallClimbingMixin",
     "FeignTargetingMixin",
     "FeignFoodRegenMixin",

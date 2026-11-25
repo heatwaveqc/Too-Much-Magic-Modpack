@@ -33,6 +33,7 @@ public final class ProgressionEvents {
         DangerSenseRuntime.register();
         StunningStrike.register();
         FlyingKick.register();
+        SoulStep.register();
         FeignDeath.register();
         VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
