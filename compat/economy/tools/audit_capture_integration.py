@@ -68,6 +68,10 @@ def main():
     neo_tag = TAG.parents[3] / "neovitae/tags/entity_type/deny_imprisonment.json"
     assert json.loads(neo_tag.read_text(encoding="utf-8")) == {"replace": False, "values": [{"id": "#apothic_spawners:blacklisted_from_spawners", "required": False}]}
     print("PASS Neo Vitae imprisonment shares effective native spawner blacklist")
+    mixins = json.loads((ROOT / "compat/economy/src/main/resources/tmm_economy.mixins.json").read_text(encoding="utf-8"))["mixins"]
+    assert not {"CapturingForemanMixin", "NeoImprisonmentMixin"} & set(mixins), "Type-only Foreman rewards must remain native"
+    assert {"ReliquaryCaptureMixin", "ReliquaryFragmentEggMixin"} <= set(mixins)
+    print("PASS Foreman type-only reward exception; actual charm and fragment-egg guards retained")
     if args.projection_only:
         return
     names = {"ApothicSpawners-1.21.1-1.4.0.jar", "reliquary-1.21.1-2.0.85.1599.jar"}

@@ -18,7 +18,8 @@ public abstract class ReliquaryCaptureMixin {
     @Inject(method = "handleAddingFragmentDrops(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V",
             at = @At("HEAD"), cancellable = true)
     private static void tmm$denyFragments(LivingDropsEvent event, CallbackInfo ci) {
-        if (CaptureInstancePolicy.denyCharm(event.getEntity())) ci.cancel();
+        // Fragments contain only a type ID; a Foreman kill can yield ordinary Doloris.
+        if (CaptureInstancePolicy.denyFragmentEgg(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()))) ci.cancel();
     }
 
     @Inject(method = "getCharmDefinitionFor(Lnet/minecraft/world/entity/Entity;)Ljava/util/Optional;",

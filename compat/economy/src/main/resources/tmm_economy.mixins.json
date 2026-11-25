@@ -23,10 +23,8 @@
     "OpConverterStatusMixin",
     "OpConverterTooltipMixin",
     "StoredResourceGuardMixin",
-    "CapturingForemanMixin",
     "ReliquaryCaptureMixin",
-    "ReliquaryFragmentEggMixin",
-    "NeoImprisonmentMixin"
+    "ReliquaryFragmentEggMixin"
   ],
   "injectors": {
     "defaultRequire": 1
