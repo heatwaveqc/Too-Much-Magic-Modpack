@@ -1,0 +1,26 @@
+name: EvilCraft replication (registry and exact ABI only)
+on:
+  pull_request:
+    paths:
+      - 'compat/economy/**'
+      - 'docs/creatures/**'
+      - 'mods/evilcraft.pw.toml'
+      - '.github/workflows/evilcraft-replication-abi.yml'
+permissions:
+  contents: read
+jobs:
+  replication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python compat/economy/tools/audit_evilcraft_replication.py
