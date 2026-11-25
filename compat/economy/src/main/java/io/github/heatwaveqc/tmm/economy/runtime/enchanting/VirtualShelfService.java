@@ -67,6 +67,7 @@ public final class VirtualShelfService {
         if (books > 0) owner.getInventory().setItem(free, new ItemStack(Items.BOOK, books));
         a.data().enchantPower = 0;
         a.data().persistedData.put(KEY, saved.get());
+        a.data().sync(); // Native client power must not retain the refunded book count.
         owner.getInventory().setChanged();
         owner.containerMenu.broadcastChanges();
         return true;
