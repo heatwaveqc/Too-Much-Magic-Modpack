@@ -157,6 +157,9 @@
     },
     {
       "id": "tyr_progression:evasion_undead",
+      "title": "Undead Evasion",
+      "description": "Existing Hunter defense: 4% per purchased rank against verified undead; test no protection against other families.",
+      "lane": "Defense & Evasion",
       "max_rank": 5,
       "required_rank": 2,
       "base_cost": 1,
@@ -303,6 +306,9 @@
     },
     {
       "id": "tyr_progression:specialty_undead",
+      "title": "Undead Specialty",
+      "description": "Existing mutually exclusive Hunter specialty: undead category grants the configured specialty XP multiplier.",
+      "lane": "Quarry Specialization",
       "max_rank": 1,
       "required_rank": 1,
       "base_cost": 0,
