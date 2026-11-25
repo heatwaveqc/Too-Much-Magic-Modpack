@@ -1558,7 +1558,7 @@ hash = "6ec9390b41dc8ff29e9be5f458950b5b0cba80333ed7dac549ed8f2f97771d67"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/ritual/perpetual_life.json"
-hash = "2bd9c53b7900a2578d6579ef1ddd951c612e4938dcf930d3a04c72f170452337"
+hash = "a32d1dec88725ea3774866f33676de378860cd619152d5098b47a195f764c8ac"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_chipped.json"
