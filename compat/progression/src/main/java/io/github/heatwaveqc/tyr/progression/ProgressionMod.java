@@ -55,6 +55,8 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener(FoodPolicyRegistry::serverStopped);
+        NeoForge.EVENT_BUS.addListener(PathRegistry::tagsUpdated);
+        NeoForge.EVENT_BUS.addListener(PathRegistry::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> {
             e.addListener(new PathRegistry());
             e.addListener(new FoodPolicyRegistry());

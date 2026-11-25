@@ -38,6 +38,9 @@ public final class NativeHarvest {
      * Default-state fingerprints intentionally exclude item-specific behavior. */
     public static List<io.github.heatwaveqc.tyr.progression.foundation.HarvestCapabilityGraph.Group>
             discover(String itemSelector,String blockSelector){
+        return io.github.heatwaveqc.tyr.progression.foundation.HarvestCapabilityGraph.plan(fingerprints(itemSelector,blockSelector));
+    }
+    public static java.util.Map<String,Set<String>> fingerprints(String itemSelector,String blockSelector){
         if(itemSelector==null||!itemSelector.matches("#?[a-z0-9_.-]+:[a-z0-9_./-]+")
             ||blockSelector==null||!blockSelector.matches("#?[a-z0-9_.-]+:[a-z0-9_./-]+"))
             throw new IllegalArgumentException("Discovery needs explicit item and block IDs/tags");
@@ -65,7 +68,7 @@ public final class NativeHarvest {
             blocks.forEach((block,state)->{if(stack.isCorrectToolForDrops(state))matches.add(block);});
             fingerprints.put(id,matches);
         });
-        return io.github.heatwaveqc.tyr.progression.foundation.HarvestCapabilityGraph.plan(fingerprints);
+        return java.util.Map.copyOf(fingerprints);
     }
     static boolean canHarvest(ServerPlayer p,BlockState state){
         if(!ToolForms.usable(p))return false;
@@ -80,7 +83,9 @@ public final class NativeHarvest {
     /** A configured material trial is derived from the representative's actual
      * correct-for-drops predicate, not the name or numerical rank of an ore. */
     private static List<Trial> eligibleTrials(ServerPlayer p,BlockState state){
-        if(!state.requiresCorrectToolForDrops()||canHarvest(p,state))return List.of();
+        if(!state.requiresCorrectToolForDrops())return List.of();
+        String block=BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString();
+        boolean alreadyHarvestable=canHarvest(p,state);
         var trials=new ArrayList<Trial>();
         for(var path:PathRegistry.all().values()){
             if(!PathRegistry.eligible(p,path.id()))continue;
@@ -91,6 +96,11 @@ public final class NativeHarvest {
                     ||!ProgressionMath.canCollectMilestone(milestone,track))continue;
                 for(var criterion:milestone.criteria()){
                     if(criterion.event().equals("material_harvest_trial")&&correct(criterion.selector(),state)){
+                        var delta=PathRegistry.generatedTrainingBlocks(path.id(),criterion.selector());
+                        // Generated parallel branches train relative to their own
+                        // prerequisites, not unrelated forms/paths. This avoids a
+                        // dead end when another incomparable branch covers a block.
+                        if(delta==null?alreadyHarvestable:!delta.contains(block))continue;
                         var trial=new Trial(path.id(),criterion.selector());
                         if(!trials.contains(trial))trials.add(trial);
                     }
