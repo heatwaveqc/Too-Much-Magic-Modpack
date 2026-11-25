@@ -342,7 +342,7 @@ hash = "2ee49d93fe81c76bc0743548b464618332d3b82b67d4fd7556bad1ea54250c0a"
 
 [[files]]
 file = "kubejs/assets/tmm/lang/en_us.json"
-hash = "68b6ed6d6e249d9e953a8684189687372de74e8228d7194dbeb2f9be99aa9e20"
+hash = "a7b21c3200122e4c08666eafd17aa842cf54df73fbb5519b64e973d3f4dc6c31"
 
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
@@ -613,12 +613,64 @@ file = "kubejs/data/neovitae/tags/fluid/essentia_vitae.json"
 hash = "7ac5ee77a38bd4ff3602e7770bffd3905eeb414f7b82e79e2d27b77aaf3c8677"
 
 [[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/craft_ancient_miner.json"
+hash = "9b2b527e0831e79d2bc8e6108a8cb0953f998bbe19c4ab1ae56670fcbb082552"
+
+[[files]]
 file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/equivalent_exchange.json"
 hash = "612a3423492b90fe67ace897145a0093ea1c5edc4bc74aaa9e52d58a6a81c160"
 
 [[files]]
 file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_ink_rituals.json"
 hash = "2c99d359f9106203a3843e6a097573e79c90b44de751bdd40188ee03332da891"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_perpetual_life.json"
+hash = "efd8351d1db6be16143ecec7b9492da8a7b6bed2c6bad9a54d7e97095fefe365"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/books_of_binding.json"
+hash = "d534cdbe45fad72892995311d36bd2b1c120c14a355a5f93bd4c555dd2275d21"
+
+[[files]]
+file = "kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/spirit_fire.json"
+hash = "73b5ccae96cf3134e75ea9dd4daea08a38795888775daa54119fb758dba83ec9"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_afrit.json"
+hash = "2a2ce22249e43661ed1dc22c141d98bc7ae034abb34195a0b946a4fc878503f6"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_afrit_from_empty.json"
+hash = "5bea3050da70c781645e222435ab38a20d8d241b2cb07372ade30a8b55b95e7e"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_djinni.json"
+hash = "8d66ba1f054e000e37fe2d48698a8362fab1dad5c452439a13ee993fe3bb0b32"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_djinni_from_empty.json"
+hash = "45c9c16557a037ffa36c280313ac669e47222b48b851e8ac564011cd2f8bff51"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_foliot.json"
+hash = "564eb1519217282aa4e1afa34a11961c9ddfd5b71e67b55d6d4cd1827761aae8"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_foliot_from_empty.json"
+hash = "839ee4b4cdb259a5ef74644b6895147789414188cba831105bef344c77435b0d"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_marid.json"
+hash = "3232d819e168bfe0014b50d497b2e96f4ce9d6c2d1adb5b5876b405279dcdd9b"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/crafting/book_of_binding_marid_from_empty.json"
+hash = "e9195ea42f49e126302411062821fdaf28984f88ee88e6c86c0c122db4d7cb75"
+
+[[files]]
+file = "kubejs/data/occultism/recipe/ritual/misc_miner_ancient_eldritch.json"
+hash = "9c339a4350b2cfd09d4646d296bd3d101ca447958dd9f6225ae263e9b646dede"
 
 [[files]]
 file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json"
@@ -1395,6 +1447,34 @@ hash = "1b7b10c54aadaa815244cef2941db6152518e9c69a43fbe53cc956d4150884db"
 [[files]]
 file = "kubejs/data/tmm/recipe/ritual/occultism_ink_uncommon.json"
 hash = "6ec9390b41dc8ff29e9be5f458950b5b0cba80333ed7dac549ed8f2f97771d67"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/ritual/perpetual_life.json"
+hash = "2bd9c53b7900a2578d6579ef1ddd951c612e4938dcf930d3a04c72f170452337"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_chipped.json"
+hash = "4f8ca41fd0241744ae6c59ec51b3deec3cab1e2ccf27a62e55103b87add27dad"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_cracked.json"
+hash = "73bffbc0e4e3f63beb8af6f6d89b33aa27a68ba35d66b6e312db786c3e0be5ac"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawed.json"
+hash = "8f31db25a4c6c592bf656230a4aafe6d0f27d462385278f07561c53a9bd4f69f"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawless.json"
+hash = "7de3a12369098e3fc43ba9ded6d90734bfcaca2ae10da756a632bed74ded2709"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_normal.json"
+hash = "c869ec7ab351da60224f494e632701f39dd052fdd598734682fee3a93110c5ba"
+
+[[files]]
+file = "kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_perfect.json"
+hash = "67c0a14e8d2b9ecaa00b28385a62470152634fd974baac2248d4e8beabf1443c"
 
 [[files]]
 file = "kubejs/data/tmm/recipe/spirit_fire/iesnium_from_thallasium.json"

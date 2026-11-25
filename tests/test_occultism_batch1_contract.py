@@ -1,5 +1,7 @@
 """Type A source-only checks for the four recovered #338 recipe families."""
 import json
+import hashlib
+import tomllib
 from pathlib import Path
 import unittest
 
@@ -72,6 +74,15 @@ class Batch1Contract(unittest.TestCase):
                 for v in node.values():
                     if isinstance(v, str) and v.startswith("book.tmm.occultism_batch1."):
                         self.assertTrue(lang.get(v), v)
+
+    def test_packwiz_includes_every_changed_runtime_file(self):
+        raw = (ROOT / "index.toml").read_bytes()
+        pack = tomllib.loads((ROOT / "pack.toml").read_text())
+        self.assertEqual(pack["index"]["hash"], hashlib.sha256(raw).hexdigest())
+        records = {x["file"]: x for x in tomllib.loads(raw.decode())["files"]}
+        for path in ["kubejs/assets/tmm/lang/en_us.json","kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/craft_ancient_miner.json","kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/crafting_rituals/tmm_perpetual_life.json","kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/books_of_binding.json","kubejs/data/occultism/modonomicon/books/dictionary_of_spirits/entries/getting_started/spirit_fire.json","kubejs/data/occultism/recipe/crafting/book_of_binding_afrit.json","kubejs/data/occultism/recipe/crafting/book_of_binding_afrit_from_empty.json","kubejs/data/occultism/recipe/crafting/book_of_binding_djinni.json","kubejs/data/occultism/recipe/crafting/book_of_binding_djinni_from_empty.json","kubejs/data/occultism/recipe/crafting/book_of_binding_foliot.json","kubejs/data/occultism/recipe/crafting/book_of_binding_foliot_from_empty.json","kubejs/data/occultism/recipe/crafting/book_of_binding_marid.json","kubejs/data/occultism/recipe/crafting/book_of_binding_marid_from_empty.json","kubejs/data/occultism/recipe/ritual/misc_miner_ancient_eldritch.json","kubejs/data/tmm/recipe/ritual/perpetual_life.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_chipped.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_cracked.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawed.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_flawless.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_normal.json","kubejs/data/tmm/recipe/spirit_fire/apotheosis_gem_perfect.json"]:
+            with self.subTest(path=path):
+                self.assertEqual(records[path]["hash"], hashlib.sha256((ROOT / path).read_bytes()).hexdigest())
 
 if __name__ == "__main__":
     unittest.main()
