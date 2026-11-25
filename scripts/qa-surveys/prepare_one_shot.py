@@ -20,11 +20,15 @@ survey=(root/'server_scripts/tmm_surveys.js').read_text(encoding='utf-8')
 survey=survey.replace("recipe: 'tmm_progression:bio_mutagen'", "recipe: 'tyr_progression:bio_mutagen'")
 world=(root/'server_scripts/tmm_world_observe.js').read_text(encoding='utf-8')
 tail='''
+let TMMQAOneShotClaimed = false
 PlayerEvents.loggedIn(event => {
   let flag = JsonIO.read('kubejs/config/tmm-observe-once.json')
-  if (!flag || flag.enabled !== true || !event.player.hasPermissions(2)) return
+  if (TMMQAOneShotClaimed || !flag || flag.enabled !== true || !event.player.hasPermissions(2)) return
+  TMMQAOneShotClaimed = true
   let p = event.player, server = event.server
   server.scheduleInTicks(40, () => {
+    let currentFlag = JsonIO.read('kubejs/config/tmm-observe-once.json')
+    if (!currentFlag || currentFlag.enabled !== true || !p.hasPermissions(2)) return
     let status = {schema: 1, invokedVia: 'QA API, not command parser', results: []}
     try {
       let world = tmmObserveWorld(p, server)
@@ -32,7 +36,8 @@ PlayerEvents.loggedIn(event => {
       let ctx = {getSource: () => p.createCommandSourceStack()}
       status.results.push({capture: 'baseline', status: TMMQA.execute('baseline', ctx, '') ? 'CAPTURED' : 'UNSUPPORTED'})
       status.results.push({capture: 'recipes', status: TMMQA.execute('recipes', ctx, '') ? 'CAPTURED' : 'UNSUPPORTED'})
-      status.results.push({capture: 'player', status: TMMQA.execute('player', ctx, 'before session22') ? 'CAPTURED' : 'UNSUPPORTED'})
+      let label = 'oneshot-' + String(Date.now())
+      status.results.push({capture: 'player', label: label, status: TMMQA.execute('player', ctx, 'before ' + label) ? 'CAPTURED' : 'UNSUPPORTED'})
     } catch(e) {status.error = String(e);console.error('TMM_QA_ONESHOT_FAILED ' + e)}
     JsonIO.write('kubejs/export/tmm-one-shot-status.json', status)
     console.info('TMM_QA_ONESHOT_FINISHED; inspect per-capture status, not this marker, for success')

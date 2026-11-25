@@ -1,0 +1,4 @@
+# Astral Sorcery 2.0.3.59: SERVER config explicitly registered as astralsorcery.toml.
+# NeoForge uses this global config unless the world's serverconfig contains an override.
+[general]
+giveTomeOnJoin = false
