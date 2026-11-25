@@ -22,11 +22,17 @@ public final class AdminSkills {
 
     public static Reset reset(Ledger before, Definition.Path path, ChannelConfig config,
                               String skillId, boolean cascade, boolean forfeit) {
+        return reduce(before,path,config,skillId,0,cascade,forfeit);
+    }
+
+    /** Keep earliest purchased ranks and release latest commitments in purchase order. */
+    public static Reset reduce(Ledger before, Definition.Path path, ChannelConfig config,
+                               String skillId,int desired,boolean cascade,boolean forfeit) {
         var oldView = ChannelEngine.view(before,path,config);
-        if (!oldView.joined() || oldView.skillRank(skillId) == 0)
-            throw new IllegalArgumentException("Skill not owned on active path");
+        if (!oldView.joined() || desired<0 || oldView.skillRank(skillId)<=desired)
+            throw new IllegalArgumentException("Requested rank must be below owned rank on an active path");
         var removed = new ArrayList<String>();
-        var next = remove(before,path,config,skillId,forfeit);
+        var next = remove(before,path,config,skillId,desired,forfeit);
         removed.add(skillId);
         // Re-evaluate actual AND/OR prerequisites after each removal, not merely ancestry.
         boolean changed;
@@ -38,7 +44,7 @@ public final class AdminSkills {
                         && !prerequisites(skill,view)) {
                     if (!cascade) throw new IllegalArgumentException("Dependent skill " + skill.id()
                         + " would become invalid; use cascade");
-                    next = remove(next,path,config,skill.id(),forfeit);
+                    next = remove(next,path,config,skill.id(),0,forfeit);
                     removed.add(skill.id());
                     changed = true;
                     break;
@@ -49,7 +55,7 @@ public final class AdminSkills {
     }
 
     private static Ledger remove(Ledger before, Definition.Path path, ChannelConfig config,
-                                 String skillId, boolean forfeit) {
+                                 String skillId,int desired, boolean forfeit) {
         var catalog = ExperienceEconomyRuntime.current();
         var skill = path.skill(skillId);
         var key = new ChannelConfig.SkillKey(path.id(),skillId);
@@ -65,24 +71,27 @@ public final class AdminSkills {
         var retained = new ArrayList<ExperienceEconomy.PaidRank>();
         var removedCosts = new HashMap<String,Long>();
         var expected = new ArrayList<String>();
+        int seen=0;
         for (var rank : old.paidRanks()) {
             if (!rank.path().equals(path.id()) || !rank.skill().equals(skillId)) {
                 retained.add(rank); continue;
             }
             if (!catalog.systems().containsKey(rank.system()))
                 throw new IllegalStateException("Missing currency " + rank.system());
-            removedCosts.merge(rank.system(),(long)rank.pointCost(),Math::addExact);
             expected.add(rank.system()+"|"+rank.pointCost());
+            if(seen++<desired)retained.add(rank);
+            else removedCosts.merge(rank.system(),(long)rank.pointCost(),Math::addExact);
         }
         String receiptKey = path.id()+"|"+skillId;
         var rows = new HashMap<>(before.payments());
         var actual = new ArrayList<String>();
         for (String row : rows.getOrDefault(receiptKey,List.of()))
             actual.add(row.startsWith("!") ? row.substring(1) : row);
-        Collections.sort(actual); Collections.sort(expected);
-        if (expected.isEmpty() || !actual.equals(expected))
-            throw new IllegalStateException("Purchase receipts disagree for " + skillId);
-        rows.remove(receiptKey);
+        if (expected.isEmpty() || desired>=expected.size() || !actual.equals(expected)
+                || expected.size()!=ChannelEngine.view(before,path,config).skillRank(skillId))
+            throw new IllegalStateException("Purchase receipts or rank disagree for " + skillId);
+        if(desired==0)rows.remove(receiptKey);
+        else rows.put(receiptKey,List.copyOf(rows.get(receiptKey).subList(0,desired)));
         var next = new ExperienceEconomy.Ledger(old.currentXp(),retained,old.achievements(),
                 old.rewardReceipts(),old.recentTransactions());
         if (forfeit) {
@@ -97,7 +106,7 @@ public final class AdminSkills {
         }
         for (var system : catalog.systems().values()) ExperienceEconomy.available(next,system);
         var raw = before.get(path.id());
-        var result = before.withEconomy(next).with(path.id(),raw.withSkill(skillId,0,raw.points()));
+        var result = before.withEconomy(next).with(path.id(),raw.withSkill(skillId,desired,raw.points()));
         return new Ledger(result.paths(),result.wallets(),rows,result.economy());
     }
 }

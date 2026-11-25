@@ -123,6 +123,23 @@ final class DebugCommands {
             .executes(ctx -> skillEdit(ctx,"reset",false,true,true))
             .then(Commands.literal("confirm").executes(ctx -> skillEdit(ctx,"reset",false,true,false))));
         node.then(reset);
+        var desired = Commands.argument("desired",IntegerArgumentType.integer(0,10000))
+            .executes(ctx->skillEdit(ctx,"set",false,false,true))
+            .then(Commands.literal("confirm").executes(ctx->skillEdit(ctx,"set",false,false,false)))
+            .then(Commands.literal("cascade")
+                .executes(ctx->skillEdit(ctx,"set",true,false,true))
+                .then(Commands.literal("confirm").executes(ctx->skillEdit(ctx,"set",true,false,false)))
+                .then(Commands.literal("no_refund")
+                    .executes(ctx->skillEdit(ctx,"set",true,true,true))
+                    .then(Commands.literal("confirm").executes(ctx->skillEdit(ctx,"set",true,true,false)))))
+            .then(Commands.literal("no_refund")
+                .executes(ctx->skillEdit(ctx,"set",false,true,true))
+                .then(Commands.literal("confirm").executes(ctx->skillEdit(ctx,"set",false,true,false))))
+            .then(Commands.literal("via").then(Commands.argument("system",ResourceLocationArgument.id())
+                .suggests((ctx,builder)->SharedSuggestionProvider.suggest(ExperienceEconomyRuntime.current().systems().keySet(),builder))
+                .executes(ctx->skillEdit(ctx,"set_up",false,false,true))
+                .then(Commands.literal("confirm").executes(ctx->skillEdit(ctx,"set_up",false,false,false)))));
+        node.then(Commands.literal("set").then(desired));
         return Commands.literal("skill").requires(s -> s.hasPermission(2))
             .then(Commands.argument("player",EntityArgument.player())
                 .then(Commands.argument("path",ResourceLocationArgument.id())
@@ -159,9 +176,11 @@ final class DebugCommands {
             }
             var next = before;
             String detail;
-            if (operation.equals("grant")) {
+            if (operation.equals("grant") || operation.equals("set_up")) {
                 var system = ResourceLocationArgument.getId(ctx,"system").toString();
-                int count = IntegerArgumentType.getInteger(ctx,"ranks");
+                int count = operation.equals("grant") ? IntegerArgumentType.getInteger(ctx,"ranks")
+                    : IntegerArgumentType.getInteger(ctx,"desired")-prior.skillRank(skillId);
+                if(count<=0)throw new IllegalArgumentException("Use set without via to lower the rank");
                 if (player.isCreative() || player.isSpectator()
                         || io.github.heatwaveqc.tyr.progression.runtime.NewbieMode.isNewbie(player)
                         || !PathRegistry.purchaseEligible(player,pathId,skillId))
@@ -177,10 +196,12 @@ final class DebugCommands {
                 detail = skillId + " rank " + prior.skillRank(skillId) + " -> "
                     + ChannelEngine.view(next,path,config).skillRank(skillId) + " via " + system;
             } else {
-                var result = AdminSkills.reset(before,path,config,skillId,cascade,forfeit);
+                int desiredRank=operation.equals("set")?IntegerArgumentType.getInteger(ctx,"desired"):0;
+                var result = AdminSkills.reduce(before,path,config,skillId,desiredRank,cascade,forfeit);
                 next = result.ledger();
-                detail = "Reset " + result.removed().stream()
-                    .map(id -> id + " " + prior.skillRank(id) + " -> 0").toList()
+                var revised=ChannelEngine.view(next,path,config);
+                detail = "Changed " + result.removed().stream()
+                    .map(id -> id + " " + prior.skillRank(id) + " -> "+revised.skillRank(id)).toList()
                     + (forfeit ? " (forfeit funded XP)" : " (release commitments)");
             }
             if (!preview) {
