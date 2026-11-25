@@ -29,6 +29,8 @@ public final class AdminCapabilityRegistry<T> {
         String inspect(T target,String key);
         /** Read-only, descriptive diagnostics; never fixes state. */
         List<String> validate(T target,String key);
+        /** Exclude purely informational handlers from bulk validation. */
+        default boolean diagnostic(){return true;}
         default Set<Action> actions() { return Set.of(); }
         default Change plan(T target,String key,Action action,long amount) {
             if(action.requiresAmount())throw new IllegalArgumentException("Numeric action unsupported");
@@ -54,6 +56,33 @@ public final class AdminCapabilityRegistry<T> {
     }
     public List<String> keys(String id,T target) {
         return require(id).keys(target).stream().distinct().sorted().toList();
+    }
+    public record Finding(String capability,String key,String detail){}
+    public record Diagnosis(int checked,int omitted,List<Finding> findings){}
+    /** Discover each key set once; never perform O(n^2) re-discovery for a bulk scan.
+     * Bounded per handler and total; exceptions become findings rather than hiding later checks. */
+    public Diagnosis diagnose(T target,int perHandler,int total){
+        if(perHandler<1||total<1||perHandler>total||total>4096)throw new IllegalArgumentException("Invalid diagnosis budget");
+        var findings=new ArrayList<Finding>();int checked=0,omitted=0;
+        for(String id:ids()){
+            var handler=require(id);
+            if(!handler.diagnostic())continue;
+            List<String> keys;
+            try{keys=keys(id,target);}
+            catch(RuntimeException ex){findings.add(new Finding(id,"","Key discovery failed: "+ex.getClass().getSimpleName()));continue;}
+            int count=Math.min(keys.size(),Math.min(perHandler,Math.max(0,total-checked)));
+            omitted+=keys.size()-count;
+            for(int i=0;i<count;i++){
+                String key=keys.get(i);checked++;
+                try{
+                    for(String detail:handler.validate(target,key))
+                        if(findings.size()<256)findings.add(new Finding(id,key,detail));
+                }catch(RuntimeException ex){
+                    if(findings.size()<256)findings.add(new Finding(id,key,"Validation failed: "+ex.getClass().getSimpleName()));
+                }
+            }
+        }
+        return new Diagnosis(checked,omitted,List.copyOf(findings));
     }
     private Handler<T> resolve(String id,T target,String key) {
         if(key==null || key.isBlank() || key.length()>1024 || key.chars().anyMatch(Character::isISOControl))

@@ -378,6 +378,7 @@ public final class AdminCapabilities {
     }
 
     private static final class Trace implements Handler<ServerPlayer>{
+        public boolean diagnostic(){return false;}
         public String description(){return "Transient shared XP settlement trace; set duration 1..120 seconds, inspect recent entries, reset clears";}
         public Collection<String> keys(ServerPlayer p){return List.of("player");}
         public String inspect(ServerPlayer p,String key){return XpTrace.inspect(p);}
@@ -457,6 +458,7 @@ public final class AdminCapabilities {
     }
 
     private static final class Mode implements Handler<ServerPlayer> {
+        public boolean diagnostic(){return false;}
         public String description(){return "Read-only stored mode inventory; edits require a registered mechanic-specific validator";}
         public Collection<String> keys(ServerPlayer p){return p.getData(ProgressionAttachments.PLAYER_MODES.get()).values().keySet();}
         public String inspect(ServerPlayer p,String key){return p.getData(ProgressionAttachments.PLAYER_MODES.get()).values().get(key);}
@@ -466,6 +468,7 @@ public final class AdminCapabilities {
     }
 
     private static final class Derived implements Handler<ServerPlayer> {
+        public boolean diagnostic(){return false;}
         public String description(){return "Refresh player-wide Progression-owned effects, activations, mutation attributes and client view";}
         public Collection<String> keys(ServerPlayer p){return List.of("player");}
         public String inspect(ServerPlayer p,String key){
