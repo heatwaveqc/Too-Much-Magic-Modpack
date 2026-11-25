@@ -47,3 +47,17 @@ C: multiplayer, relog/death persistence, menu and HUD updates, no unrelated nati
 Example: `/tyrprogress admin capability Player tyr_progression:resource set confirm 50 namespace:meter`. Other numeric actions have the same syntax. Fill/empty/reset have no amount. Reconciliation refreshes the resource HUD. Typed skill command: `skill <player> <path> <skill> set <rank> [cascade] [no_refund] confirm` reduces by removing latest purchased ranks first, preserving original currency/payment order; `set <rank> via <currency> confirm` raises to an exact rank through normal admin grant gates. Elixir ownership loss calls the configured reset policy. Whole-tree respec retains/forfeits/refunds according to existing policy and clears local discoveries through normal lifecycle; no blanket raw attachment clearing.
 
 B/C additions: joined vs dormant resource owner, exact capacity and overflow rejection, confirm and HUD refresh, unbind and rebind from actual serving, discovery/receipt independence, multi-currency partial rank reduction and configured tree respec. No runtime acceptance yet.
+
+## Additional debug coverage
+
+| Capability | Key | Action |
+|---|---|---|
+| tyr_progression:milestone | path ID + pipe + milestone ID | grant marks completed and records achievement without reward; reset clears unfinished criteria only |
+| tyr_progression:counter | path ID + pipe + milestone ID + pipe + zero-based index | set/add/subtract/reset unfinished count within criterion bounds; normal gameplay event may settle ready completion |
+| tyr_progression:mutation | owner path ID + pipe + effect ID | set/add/subtract human rank (1-based; zero removes), normalized threshold progress; policy/registry validation for positive rank |
+| tyr_progression:path | path ID | inspect join/leave blocker, validate dormant membership, join/leave through normal lifecycle and existing vetoes |
+| tyr_progression:xp_trace | player | set duration in seconds (1..120), inspect last 24 lines, reset disables/clears; transient per player, no disk logs |
+| tyr_progression:source_cooldown | legacy system ID / source index | reset that cooldown only; no receipts/XP edits |
+| tyr_progression:native_form | player | inspect provider observation, validate UNKNOWN, reconcile cached observation and owned effects only |
+
+Examples: `capability Player tyr_progression:milestone grant confirm test:path|test:trial`; `capability Player tyr_progression:counter set confirm 2 test:path|test:trial|0`; `capability Player tyr_progression:mutation set confirm 2 test:path|minecraft:speed`; `capability Player tyr_progression:xp_trace set confirm 30 player`, then inspect player. All are under /tyrprogress admin. No native transformation force/cure or completed milestone revocation: legacy reward replay and native provider-owned state need explicit safe adapters. Trace covers the shared router/modifier settlement boundary, not every pre-router rejected gameplay event. A trace reports a proposed ledger settlement, not independent confirmation of later attachment publication. B/C: verify normal trial payment vs admin completion, count limits, two players, mutation downgrade/no unrelated loss, join veto/leave effects, trace expiry/logout and native probe recheck.
