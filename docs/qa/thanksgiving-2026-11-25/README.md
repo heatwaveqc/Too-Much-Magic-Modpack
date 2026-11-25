@@ -56,6 +56,8 @@ No same-build recipe/item/food/EMC exports were present when inspected. A06/B04/
 
 Additional AS-A01 input: installed Astral 2.0.3.59 ships **364 distinct perk-resource IDs**, **5 roots**, **90 nodes without declared requirements**, **274 with declared requirements**, and config `perkLevelCap = 30`. Type counts and provider SHA are in [astral-partial.json](astral-partial.json). This is **PARTIAL**, not a live registered/accessible node count or a completed token-cost calculation. Hidden/access/exclusion/allocation-cost/native-point behavior still needs native review; no maximum simultaneous-unlock or bonus-token number is asserted.
 
+Read-only Integration Preflight also passed on clean QA handoff commit `faa80679011fc3133bb0d352d46621faa0f87d79` (the report branch, not a new frozen build). It reported unclassified draft refs as advisory; no exhaustive all-ready-features inclusion claim is made. Existing frozen-build preflight evidence remains attached to run 45550879036.
+
 ## Reproduction and handoff
 
 Run source checks from a canonical-LF copy of the exact frozen source:
