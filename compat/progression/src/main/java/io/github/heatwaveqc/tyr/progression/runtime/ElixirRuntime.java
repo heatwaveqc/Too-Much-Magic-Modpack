@@ -135,6 +135,19 @@ public final class ElixirRuntime {
         if(!adminBinding(p,path).equals(expected))throw new IllegalStateException("Elixir binding changed");
         if(!expected.isEmpty())store(p,path,"");
     }
+    /** Explicit skill removal should follow the same configured binding-reset policy
+     * only when the last owning skill is actually lost, not on arbitrary edits. */
+    public static void adminSkillsChanged(ServerPlayer p,String path,
+            io.github.heatwaveqc.tyr.progression.state.Track before,
+            io.github.heatwaveqc.tyr.progression.state.Track after){
+        var tree=PathRegistry.get(path);
+        if(tree==null)return;
+        var owners=tree.skills().stream().filter(skill->skill.effects().stream()
+            .anyMatch(effect->effect.type().equals("personal_elixir"))).toList();
+        if(owners.stream().anyMatch(skill->before.skillRank(skill.id())>0)
+                &&owners.stream().noneMatch(skill->after.skillRank(skill.id())>0))
+            resetPath(p,path);
+    }
     public static void resetPath(ServerPlayer p,String path){
         var tree=PathRegistry.get(path);
         if(tree!=null&&tree.skills().stream().flatMap(s->s.effects().stream())

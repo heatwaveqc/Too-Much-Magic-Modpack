@@ -27,6 +27,7 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:elixir",new Elixir());
         REGISTRY.register("tyr_progression:discovery",new Discovery());
         REGISTRY.register("tyr_progression:mode",new Mode());
+        REGISTRY.register("tyr_progression:tree",new Tree());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -219,6 +220,39 @@ public final class AdminCapabilities {
                 if(!p.getData(ProgressionAttachments.PATH_DISCOVERIES.get()).equals(old))
                     throw new IllegalStateException("Discovery state changed");
                 p.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),next);
+            });
+        }
+    }
+
+    private static final class Tree implements Handler<ServerPlayer> {
+        public String description(){return "Configured path tree respec using normal per-currency retain/refund/forfeit policy and path reset hooks";}
+        public Collection<String> keys(ServerPlayer p){return PathRegistry.all().keySet();}
+        private io.github.heatwaveqc.tyr.progression.state.Ledger ledger(ServerPlayer p){
+            return p.getData(ProgressionAttachments.LEDGER.get());
+        }
+        private String ranks(io.github.heatwaveqc.tyr.progression.state.Ledger ledger,String path){
+            var view=io.github.heatwaveqc.tyr.progression.core.ChannelEngine.view(ledger,PathRegistry.get(path),PathRegistry.config());
+            return "joined="+view.joined()+", ranks="+new TreeMap<>(view.skills())
+                +", invested="+io.github.heatwaveqc.tyr.progression.core.ChannelEngine.investedRanks(ledger,path,PathRegistry.config());
+        }
+        public String inspect(ServerPlayer p,String key){return ranks(ledger(p),key);}
+        public List<String> validate(ServerPlayer p,String key){
+            var view=io.github.heatwaveqc.tyr.progression.core.ChannelEngine.view(ledger(p),PathRegistry.get(key),PathRegistry.config());
+            var issues=new ArrayList<String>();
+            for(var skill:PathRegistry.get(key).skills())
+                if(view.skillRank(skill.id())>0&&!io.github.heatwaveqc.tyr.progression.core.AdminSkills.prerequisites(skill,view))
+                    issues.add("Owned skill has unmet declared prerequisites: "+skill.id());
+            return issues;
+        }
+        public Set<Action> actions(){return Set.of(Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var old=ledger(p);
+            if(!old.get(key).joined())throw new IllegalArgumentException("Path not joined");
+            var next=io.github.heatwaveqc.tyr.progression.core.ChannelEngine.refund(old,PathRegistry.get(key));
+            return new Change(ranks(old,key),ranks(next,key)+"; normal respec hooks clear local discoveries and eligible bindings, lifetime receipts retained",()->{
+                if(!ledger(p).equals(old))throw new IllegalStateException("Path ledger changed");
+                if(!io.github.heatwaveqc.tyr.progression.core.ProgressionApi.respec(p,key))
+                    throw new IllegalStateException("Path respec rejected");
             });
         }
     }

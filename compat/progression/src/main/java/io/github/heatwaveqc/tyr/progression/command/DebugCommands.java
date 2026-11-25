@@ -185,6 +185,8 @@ final class DebugCommands {
             }
             if (!preview) {
                 player.setData(ProgressionAttachments.LEDGER.get(),next);
+                io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminSkillsChanged(player,pathId,prior,
+                    ChannelEngine.view(next,path,config));
                 ProgressionMod.LOGGER.info("Admin skill {} by {} for {} ({}): {}",operation,source.getTextName(),
                     player.getScoreboardName(),player.getUUID(),detail);
                 reconcile(player);
