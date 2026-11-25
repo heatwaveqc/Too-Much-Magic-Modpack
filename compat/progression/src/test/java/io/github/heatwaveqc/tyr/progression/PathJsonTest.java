@@ -138,7 +138,7 @@ class PathJsonTest {
             assertEquals("#tyr_progression:undead",
                 path.skill("tyr_progression:evasion_undead").effects().getFirst().selector());
             assertEquals("fast_hands",path.skill("tyr_progression:fast_hands_bow").effects().getFirst().type());
-            assertEquals("minecraft:knockback_resistance",
+            assertEquals("minecraft:generic.knockback_resistance",
                 path.skill("tyr_progression:rooted").effects().getFirst().attribute());
         }
     }

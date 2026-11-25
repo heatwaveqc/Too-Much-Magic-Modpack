@@ -303,7 +303,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor",
+          "attribute": "minecraft:generic.armor",
           "operation": "add_value",
           "per_rank": 4,
           "unarmored": true
@@ -324,7 +324,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor_toughness",
+          "attribute": "minecraft:generic.armor_toughness",
           "per_rank": 2,
           "unarmored": true
         }
@@ -343,7 +343,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:max_health",
+          "attribute": "minecraft:generic.max_health",
           "per_rank": 6,
           "unarmored": true
         }
@@ -474,7 +474,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:movement_speed",
+          "attribute": "minecraft:generic.movement_speed",
           "operation": "add_multiplied_base",
           "per_rank": 0.05,
           "unarmored": true
@@ -728,7 +728,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:step_height",
+          "attribute": "minecraft:generic.step_height",
           "operation": "add_value",
           "per_rank": 0.5,
           "unarmored": true,
@@ -752,14 +752,14 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:movement_speed",
+          "attribute": "minecraft:generic.movement_speed",
           "operation": "add_multiplied_base",
           "per_rank": 0.12,
           "unarmored": true
         },
         {
           "type": "attribute",
-          "attribute": "minecraft:movement_speed",
+          "attribute": "minecraft:generic.movement_speed",
           "operation": "add_multiplied_base",
           "per_rank": 0.12,
           "unarmored": true,
@@ -980,7 +980,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:attack_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "per_rank": 0.175,
           "operation": "add_value",
           "empty_hand": true,
@@ -1122,7 +1122,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:attack_speed",
+          "attribute": "minecraft:generic.attack_speed",
           "per_rank": 0.005,
           "operation": "add_multiplied_base",
           "empty_hand": true,
@@ -1157,7 +1157,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:attack_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "per_rank": 0.02,
           "operation": "add_multiplied_base",
           "empty_hand": true,
@@ -1223,7 +1223,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:attack_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "per_rank": 5,
           "operation": "add_value",
           "empty_hand": true,
@@ -1231,7 +1231,7 @@
         },
         {
           "type": "attribute",
-          "attribute": "minecraft:armor",
+          "attribute": "minecraft:generic.armor",
           "per_rank": 3,
           "operation": "add_value",
           "unarmored": true
@@ -1292,7 +1292,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor",
+          "attribute": "minecraft:generic.armor",
           "per_rank": 0.25,
           "operation": "add_value",
           "unarmored": true
@@ -1356,7 +1356,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor_toughness",
+          "attribute": "minecraft:generic.armor_toughness",
           "per_rank": 0.25,
           "operation": "add_value",
           "unarmored": true
@@ -1420,7 +1420,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:max_health",
+          "attribute": "minecraft:generic.max_health",
           "per_rank": 0.5,
           "operation": "add_value",
           "unarmored": true
@@ -1608,7 +1608,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:movement_speed",
+          "attribute": "minecraft:generic.movement_speed",
           "per_rank": 0.0025,
           "operation": "add_value",
           "unarmored": true
@@ -1785,7 +1785,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:movement_speed",
+          "attribute": "minecraft:generic.movement_speed",
           "per_rank": 0.01,
           "operation": "add_multiplied_base",
           "unarmored": true,
@@ -1829,7 +1829,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:knockback_resistance",
+          "attribute": "minecraft:generic.knockback_resistance",
           "per_rank": 0.015,
           "operation": "add_value",
           "unarmored": true
@@ -1965,7 +1965,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:block_interaction_range",
+          "attribute": "minecraft:player.block_interaction_range",
           "per_rank": 0.075,
           "operation": "add_value",
           "empty_hand": true,
@@ -2481,7 +2481,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:luck",
+          "attribute": "minecraft:generic.luck",
           "per_rank": 1,
           "operation": "add_value",
           "unarmored": true

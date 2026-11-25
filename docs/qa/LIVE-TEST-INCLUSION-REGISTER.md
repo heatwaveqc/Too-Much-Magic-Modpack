@@ -427,3 +427,23 @@ Smoke [45546469223](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions
 ## EMI-only Thanksgiving trial — owner-approved 2026-11-24
 
 Exact official artifact audit [45550178507](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/actions/runs/45550178507) at 77b389a3424db58d83ff459c5b4324d2707bfb43 passed; all three approved pins selected on the current baseline. EMI both sides (optional server support), EMIsemble and Extra Mod Integrations client-only. Remove JEI, JEP, JER from active index/target, preserve catalog and server-tested rollback `173b539ce6a45c7961e89d595722ccf11c36178c`. No EMI Professions, bridge or dust hiding. EMI uses its own input settings; retain inert historic JEI native-key exceptions for rollback; verify R/U and fresh defaults in C17. Check duplicated Rechiseled categories and disable one provider only on observed duplication. No new gameplay mechanics. Full active pre-build survey covered 251 prior pins: 96 matching latest Modrinth stable IDs, 33 differing stable IDs, 122 without compatible/latest metadata (including non-Modrinth sources); exact pinned baseline retained for controlled migration. Detailed per-pin decision/metadata in audit log. Hold upgrades pending dependency/ABI/changelog review; first-party source unchanged. Client reverse dependency closure remains unverified for unavailable exact provider metadata; check client launch and C17, do not claim it passed. Owner authorized one server-gated Prism build, contingent on exact current merge and quick CI.
+
+
+## November 25 second Thanksgiving test — owner-authorized scope
+
+Owner requested one full build after integrating the starter routing repair; unfinished Monk redesign is explicitly held for the following test. Frozen source reconciliation from integration b69243a31c9f23b8f83044a25e23e85b30af7982.
+
+| Slice | Immutable source / disposition | Runtime destination or acceptance |
+|---|---|---|
+| Thanksgiving repair batch #733 | INCLUDED; merged 26c22e2a6f95a76279f8db2ee193a34cf5e9af9b | Reactive, Perpetual Life, quest formatting, food/Malum recipes, ExMI guards, Goety mapper; combined quick checks 26/26 |
+| Pastel #734 | INCLUDED; 3708b2f9f6e6014e989585a10a25baa6f006b2db | 38 recipe overrides (4 conditional); 20/20 quick checks |
+| Aquaculture #737 | INCLUDED; b69243a31c9f23b8f83044a25e23e85b30af7982 | Exact same JAR SHA1, official Modrinth download; 22/22 quick checks |
+| Starter config routing #739 | Selected exact d020cca9bd440d73a0c97b2ced61f0229d3414f6; integration source manifest reconciled | Native config/ars_nouveau-common.toml and config/astralsorcery.toml; remove obsolete templates; fresh-player QA remains |
+| Passive attribute hotfix #738 | Selected exact aa5add316342934b1c20a84f3e3c1a4af6373d26; 7/7 quick checks | Two Path JSONs and tests, no redesign; #717 B/C retest |
+| Optional survey adapters #735 | Selected exact b44d0c77e4feed2068e281df018e427151d7f33b; 5/5 quick checks | Optional QA scripts only, not live indexed runtime; live capture pending |
+| Classic Monk engine / tree redesign #731/#722 | OWNER-DEFERRED to next test; active unfinished | Preserve existing working TreeCapitator; no experimental tree import |
+| Horse Girl / Atlas #732/#265 | Research only, no runtime handoff | No quest/runtime selection |
+| Replication #565 / Lilith #656 | Existing owner-deferred per Nov 24; fresh census exists, but no refreshed source-ready exclusion or native path handoff | Preserve later work, no stale draft imports |
+| Chaos Bunny #556 / Angels #392 / HD #298/#296 / residual labels #345 | Existing explicit deferred or incomplete | Preserve existing source and owner holds |
+
+Other outstanding gameplay defects and verification obligations remain in #431, #509, #318, #717, #708 and subsystem issues; no blanket acceptance claimed. Final exact-head quick checks and dispatch receipt required before assembly, server boot and conditional Prism packaging. Preserve last successful unstable artifact if the run fails.
