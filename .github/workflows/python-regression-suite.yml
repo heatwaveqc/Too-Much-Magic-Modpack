@@ -1,0 +1,31 @@
+name: Python regression suite (NO GAME BOOT)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - 'tests/**'
+      - 'scripts/**'
+      - 'manifest/**'
+      - 'docs/FEATURE-CHECKLIST.md'
+      - 'compat/progression/src/main/resources/**'
+      - '.github/workflows/python-regression-suite.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run complete UTF-8 Python discovery on canonical LF checkout
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify generated acceptance checklist and current ProjectE gate validator
+        run: |
+          python3 scripts/feature_checklist.py render --check
+          python3 scripts/validate_progression_gates.py
