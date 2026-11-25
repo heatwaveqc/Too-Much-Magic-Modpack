@@ -28,3 +28,29 @@ jobs:
         with:
           python-version: '3.12'
       - run: python compat/economy/tools/audit_capture_integration.py --registry registry-donor/docs/creatures/registry-v1.json
+
+  # A conflicted draft has no merge ref; compile the actual feature head on push.
+  # The ordinary Economy PR workflow remains responsible for reconciled PR checks.
+  compile-feature:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Fetch reviewed compile classpath
+        run: python3 compat/economy/tools/fetch_compile_classpath.py "$RUNNER_TEMP/economy-compile-mods"
+      - name: Compile Economy and run unit tests (no game boot)
+        working-directory: compat/economy
+        run: gradle --no-daemon "-PtmmCompileModsDir=$RUNNER_TEMP/economy-compile-mods" clean build
