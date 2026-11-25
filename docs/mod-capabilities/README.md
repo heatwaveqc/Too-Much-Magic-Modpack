@@ -14,7 +14,7 @@ This is the **independent, capability-first parallel workstream** tracked by [is
 
 ## Live research intake — new magic mods and remaining families
 
-**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery, JAWR, Goety and Mahou Tsukai are now complete; Forbidden & Arcanus and Hexerei are complete; Hexcasting is complete; Psi + PsiTweaks are complete; Eidolon: Repraised is the next proposed major standalone system before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Eidolon, Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
+**[Research intake queue (2026-11-23)](RESEARCH-INTAKE.md)** is the Atlas's **live-work discovery starting point** alongside the 29-axis documentation. The user-approved/Packwiz-indexed **Arcane Archives: Reborn 1.0.2** and **Aura Cascade Reimagined 0.2.1+1.21.1** were missing from the Atlas; they have completed their native surveys. Astral Sorcery, JAWR, Goety and Mahou Tsukai are now complete; Forbidden & Arcanus and Hexerei are complete; Hexcasting is complete; Psi + PsiTweaks are complete; Eidolon: Repraised is complete; Embers Re-Ignited is the next proposed major standalone system before focused addons. Aquamirae & Nouveau's initial research is preserved but deferred. The intake also queues older pinned magic modules without standalone Atlas dossiers (including Embers, Scriptor Magicae, ProjectE and others) and new encounter-adjacent mods (Mowzie's Mobs, Aquamirae, Sons of Sins, The Graveyard, Born in Chaos). **31 source-indexed targets**, separated by scope and expected research depth; **no capability claims or research completion are implied by queueing them**. Doctor Who: Weeping Angels is an approved but not yet indexed case, tracked separately.
 
 This queue lists **what to research**, not **what to install, change or manually test**. Reconcile it against current `manifest/mods.json` and Packwiz before every new dossier and avoid duplicating Ars Nouveau/Occultism/Botania and other already surveyed parent modules. All regular released-mod behavior is presumed functional under the research-only scope above.
 
@@ -26,9 +26,13 @@ This queue lists **what to research**, not **what to install, change or manually
 4. [Machine-readable axis registry](taxonomy.v0.json) for stable axis IDs, descriptions and mandatory record fields.
 5. [Existing quest walkthrough acceptance standard](../QUEST-WALKTHROUGH-STANDARD.md): the eventual chapter must be a runnable guide using quests + JEI + in-game guide.
 
+## Eidolon: Repraised 0.5.0.8 — research COMPLETE
+
+[Exact-JAR dossier, 29 axes and 44 representative teaching slices](mods/eidolon-repraised.md): two patron paths, Crucible/Worktable, chants, 24 rituals, incenses, soul enchanting, equipment, staff/thralls and world encounters. Native research complete; enchanting economy, boss/ownership/claims and guide discrepancies remain downstream. No gameplay changes. Next: Embers Re-Ignited.
+
 ## Psi 110 + PsiTweaks 0.10.10-hotfix — research COMPLETE
 
-[Exact two-JAR family dossier, 29 axes and 36 representative teaching slices](mods/psi.md): base CAD tiers, programming/gear, non-Mekanism research and materials, flight, auto casting, mining, time acceleration, advanced combat, Ideaspace. Owner favors investigating time acceleration rather than removing it. Native research complete; storage balance, boss gates, flight/claims/performance and cross-mod interactions separate. No gameplay changes. Next: Eidolon: Repraised.
+[Exact two-JAR family dossier, 29 axes and 36 representative teaching slices](mods/psi.md): base CAD tiers, programming/gear, non-Mekanism research and materials, flight, auto casting, mining, time acceleration, advanced combat, Ideaspace. Owner favors investigating time acceleration rather than removing it. Native research complete; storage balance, boss gates, flight/claims/performance and cross-mod interactions separate. No gameplay changes. Next: Eidolon: Repraised (now complete).
 
 ## HexCast NEOFORGED 0.11.1-19 — research COMPLETE
 
