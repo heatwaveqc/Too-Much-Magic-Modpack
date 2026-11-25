@@ -44,6 +44,26 @@ public final class PathResources {
         var s=ResourceCatalog.current().get(id);
         return s==null||NewbieMode.isNewbie(p)||!joined(p,s)?OptionalInt.empty():OptionalInt.of(value(p,s));
     }
+    /** Operator read/commit surface, separate from gameplay reward receipts. */
+    public record AdminSnapshot(String id,int value,int capacity,int initial,Integer stored,boolean joined,boolean active){}
+    public static AdminSnapshot adminSnapshot(ServerPlayer p,String id){
+        var s=ResourceCatalog.current().get(id);
+        if(s==null)throw new IllegalArgumentException("Unknown configured resource "+id);
+        return new AdminSnapshot(id,value(p,s),capacity(p,s),s.initial(),
+            state(p).balances().get(id),joined(p,s),active(p,s));
+    }
+    public static void adminSet(ServerPlayer p,AdminSnapshot expected,int amount){
+        if(p.getServer()==null||!p.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        var current=adminSnapshot(p,expected.id());
+        if(!current.equals(expected))throw new IllegalStateException("Resource state changed");
+        if(!current.joined())throw new IllegalArgumentException("Resource owner path not joined");
+        if(amount<0||amount>current.capacity())throw new IllegalArgumentException("Resource outside current capacity");
+        if(!settle(p,List.of(new ResourcePolicy.Change(current.id(),current.initial(),current.capacity(),
+                ResourcePolicy.Operation.SET,amount)),null))
+            throw new IllegalStateException("Resource edit rejected");
+        sync(p,true);
+    }
+    public static void adminRefresh(ServerPlayer p){sync(p,true);}
     private static ResourcePolicy.Change change(ServerPlayer p,ResourceCatalog.Spec s,ResourceCatalog.Rule r,int units){
         return new ResourcePolicy.Change(s.id(),s.initial(),capacity(p,s),r.operation(),
             (long)r.amount()+(long)r.perUnit()*units);

@@ -181,7 +181,7 @@ public final class ProgressionScreen extends Screen {
         }
         if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
             line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
-                " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points",12,53,width-24,0xFFDBC895);
+                " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points"+(data.has("debt")&&data.get("debt").getAsLong()>0?" | debt "+data.get("debt").getAsLong():""),12,53,width-24,0xFFDBC895);
             if(data.has("next_challenge")){
                 JsonObject challenge=data.getAsJsonObject("next_challenge");
                 line(g,"Next challenge: "+challenge.get("title").getAsString()+
@@ -216,7 +216,7 @@ public final class ProgressionScreen extends Screen {
                     if(y+22>=viewportBottom()-18)break;
                     var wallet=entry.getAsJsonObject();
                     line(g,wallet.get("name").getAsString()+" · L"+wallet.get("level").getAsInt(),x,y,w,0xFFD7CAE9);
-                    line(g,wallet.get("points").getAsInt()+" points · "+wallet.get("xp").getAsLong()+" XP",x,y+10,w,0xFFBCB9C7);y+=23;
+                    line(g,wallet.has("debt")&&wallet.get("debt").getAsLong()>0?"Debt: "+wallet.get("debt").getAsLong()+" · "+wallet.get("xp").getAsLong()+" XP":wallet.get("points").getAsInt()+" points · "+wallet.get("xp").getAsLong()+" XP",x,y+10,w,0xFFBCB9C7);y+=23;
                 }
                 line(g,"Solid: all of · violet: any of",x,viewportBottom()-13,w,0xFFC0A7E1);
             }
