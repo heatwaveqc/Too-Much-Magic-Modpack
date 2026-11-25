@@ -15,7 +15,7 @@ public final class ArcaneDiscriminationScreens {
         if (EnchantingFeatureGate.enabled()) {
             event.register(ArcaneDiscriminationRegistration.MENU.get(), ArcaneDiscriminationScreen::new);
             event.register(io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.SHELVES.get(), VirtualShelfScreen::new);
-            event.<dev.shadowsoffire.apothic_enchanting.table.ApothEnchantmentMenu, PortableApothicScreen>register(
+            event.<net.minecraft.world.inventory.EnchantmentMenu, PortableApothicScreen>register(
                 io.github.heatwaveqc.tmm.economy.runtime.enchanting.VirtualShelfMenus.ENCHANTER.get(), PortableApothicScreen::new);
         }
     }
