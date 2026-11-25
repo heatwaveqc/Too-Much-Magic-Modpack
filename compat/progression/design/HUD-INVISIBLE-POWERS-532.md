@@ -2,6 +2,23 @@
 
 **Date:** 2026-11-23. This is a first-party `compat/progression` source implementation on isolated PR #616, not a selected live JAR or gameplay PASS.
 
+## Controlling visibility policy — owner approved 2026-11-24
+
+This supersedes any earlier blanket requirement to hide all Progression-granted effects, and the historical inventory's Hunter "NOT MIGRATED" row. No new invisible timed-buff engine is required.
+
+| Effect class | Presentation and implementation |
+| --- | --- |
+| Permanent entitlement or conditional/environmental passive | No status icon, particles or active potion entry merely for owning the power. Use scoped attributes, permission/state, vision, direct healing or native event callbacks. |
+| Finite triggered/activated buff, intentional trial or adversarial debuff | Ordinary native effect, normally visible with its remaining duration and subject to ordinary potion mechanics. Existing generic status handlers remain intact. |
+| Consumable effect | Ordinary native effect, including Elixir and mutagen penalty; no global HUD suppression. |
+| Cooldown/eligibility/internal counters | Internal state; not a potion. |
+
+At dev/progression 71424cd5cdf52de0bbe420d9f95325ee21e4f10b, permanent Hunter mutations are already derived from saved state; the legacy Elytra marker is only retained for cleanup. Native getEffect may expose a detached nominal 240-tick query view; do not treat it as the saved mutation or a true remaining duration. Ordinary vanilla blacklist and explicit modded whitelist cover normal potion API attributes, periodic callbacks and queries only; pack authors must verify opt-ins. No custom provider adapters are promised. Temporary/permanent stacking is acceptable for now; preserve existing stronger-effect handling and track excess overlap in #271 for a later balance pass. Hunter-blood mutation extraction is a possible future design, not a committed mechanic.
+
+Current runtime inventory: MechanicalEffects.status (hit/hurt/threshold/pulse, native visible icon), quarry Glowing, Lich rescue Resistance, Elixir buffs, intentional Monk Blindness and target Wither, and mutagen Wither penalty are legitimate finite statuses. No active self-pulse Path definition requires a new invisible continuous-power adapter. Existing delayed regeneration and permanent attributes already bypass the potion map. No gameplay mechanics changed in this follow-up.
+
+A regression: extend scripts/verify_invisible_powers.py to check both sides of the contract, and trigger its read-only workflow for the relevant runtime/whitelist/mixin edits. This is static evidence, not a runtime or exhaustive compatibility proof. B/C after authorized inclusion: compare permanent mutation vs ordinary timed potion (icon and actual duration, expiry, cleanse, retained permanent state), trigger native finite effects on eligible players/targets, check local and multiplayer flight/vision and skill removal, and record any overlap imbalance rather than rejecting it by default. No extra timed-buff engine, no dedicated extraction implementation, no full build.
+
 ## Core contract (implemented)
 
 1. `PassivePowers.register(powerId, sourceResolver)` registers a namespaced power with the **current** native Progression/Path state as its only authority. Providers return a set of source IDs; `PassivePowerGrants` is immutable and allows multiple independent sources for the same power. No Path-specific second wallet, saved ability flag, new button, equipment or vanilla status effect.

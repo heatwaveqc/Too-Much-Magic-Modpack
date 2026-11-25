@@ -10,6 +10,17 @@ on:
       - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/network/PassivePowerNetwork.java'
       - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mixin/VirtualElytraItemExtensionMixin.java'
       - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/core/PassivePowerGrants.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/HunterMutations.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/MutationPowers.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/MechanicalEffects.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/EffectRuntime.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/ElixirRuntime.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/ClassAbilities.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/MutagenicBrewItem.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/forms/LichEffects.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/data/HunterMutationPolicy.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mixin/MutationEffectQueryMixin.java'
+      - 'compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/mixin/MutationRegenerationMixin.java'
       - 'scripts/verify_invisible_powers.py'
       - '.github/workflows/progression-invisible-powers.yml'
   workflow_dispatch:
@@ -26,7 +37,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify nonpotion virtual Elytra and server-owned passive power boundaries
+      - name: Verify permanent passive and finite native status boundaries
         run: python3 scripts/verify_invisible_powers.py
       - name: Type A only — no game launch
         run: echo 'No first-party JAR installation, full assembly, Minecraft client/server or Prism test performed.'

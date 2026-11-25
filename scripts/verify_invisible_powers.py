@@ -67,6 +67,29 @@ def main() -> None:
     require("mixin/MutationEffectQueryMixin.java", "getEffect", "hasEffect")
     require("network/PassivePowerNetwork.java", "Snapshot::mutations")
     require("runtime/MutagenicBrewItem.java", "MobEffects.WITHER")
+    # Permanent entitlements and genuine temporary effects are distinct.
+    # The detached mutation descriptor is a query view, not an active potion.
+    mutation = read("runtime/MutationPowers.java")
+    if ".addEffect(" in mutation:
+        raise AssertionError("Permanent mutations must not grant native status instances")
+    require("runtime/MutationPowers.java",
+            "return new MobEffectInstance(effect,240,amp,true,false,false)",
+            "holder.value().createModifiers", "effect.applyEffectTick")
+    require("runtime/EffectRuntime.java", "addTransientModifier(")
+    # Finite buffs/debuffs remain ordinary potion effects with visible icons.
+    require("runtime/MechanicalEffects.java",
+            "target.addEffect(new MobEffectInstance(holder,duration,amp,true,false,true))",
+            "status_on_hit", "status_on_hurt", "health_threshold_status", "status_pulse",
+            "MobEffects.GLOWING")
+    require("runtime/forms/LichEffects.java",
+            "p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE")
+    require("runtime/ElixirRuntime.java",
+            "p.addEffect(new MobEffectInstance(holder,buff.ticks(),buff.amplifier()))")
+    require("runtime/ClassAbilities.java",
+            "new MobEffectInstance(MobEffects.BLINDNESS", "new MobEffectInstance(MobEffects.WITHER")
+    require("data/HunterMutationPolicy.java",
+            "moddedEffectWhitelist.contains(effectId)", "!effectBlacklist.contains(effectId)")
+    print("PASS #532: permanent powers stay out of the effect map; finite status effects remain native")
     print("PASS #532: nonpotion server-owned permission, client lease, legacy cleanup and native flight extension")
     print("TYPE A ONLY. Elytra physics, HUD invisibility in installed client, respawn and mod conflicts require B/C.")
 
