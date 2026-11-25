@@ -56,23 +56,37 @@ public final class ProgressionApi {
         return BaselinePaths.hasSpecialist(ledger);
     }
 
-    public static boolean join(ServerPlayer player, String pathId) {
-        // Only the personal graduation/admin gateway may change baseline Paths.
-        if(BaselinePaths.isBaseline(pathId))return false;
-        Definition.Path path = PathRegistry.get(pathId);
-        var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !PathRegistry.eligible(player,pathId)) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        if (ledger.get(pathId).joined()) return true;
-        if (NewbieMode.isNewbie(player)) return false;
-        // Core is a universal graduate tree, not a specialist enrollment.
-        if (!BaselinePaths.isCore(pathId))
-            for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
-                if (!veto.test(player,pathId)) return false;
-        if(!BaselinePaths.isCore(pathId))
-            for(Definition.Path other:PathRegistry.all().values())
+    /** Read-only operator-facing diagnosis, shared with the actual join gate. */
+    public static String joinBlocker(ServerPlayer player,String pathId){
+        if(BaselinePaths.isBaseline(pathId))return "Baseline requires graduation/stage gateway";
+        var path=PathRegistry.get(pathId);var channel=PathRegistry.channel(pathId);
+        if(path==null||channel==null)return "Unknown path or missing channel";
+        if(!PathRegistry.eligible(player,pathId))return "Configured eligibility failed";
+        var ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        if(ledger.get(pathId).joined())return "";
+        if(NewbieMode.isNewbie(player))return "Newbie stage blocks specialist enrollment";
+        if(!BaselinePaths.isCore(pathId)){
+            for(var veto:JOIN_VETOES)if(!veto.test(player,pathId))return "Registered join veto rejected";
+            for(var other:PathRegistry.all().values())
                 if(!pathId.equals(other.id())&&ledger.get(other.id()).joined()
-                    &&!PathRegistry.canCoexist(pathId,other.id()))return false;
+                        &&!PathRegistry.canCoexist(pathId,other.id()))return "Incompatible joined path: "+other.id();
+        }
+        return "";
+    }
+    public static String leaveBlocker(ServerPlayer player,String pathId){
+        if(player==null||player.getServer()==null||!player.getServer().isSameThread())return "Server thread required";
+        if(PathRegistry.get(pathId)==null)return "Unknown path";
+        if(BaselinePaths.isBaseline(pathId)||BaselinePaths.isCore(pathId)||"automatic".equals(PathRegistry.enrollment(pathId)))
+            return "Baseline, Core or automatic path cannot be manually removed";
+        if(!player.getData(ProgressionAttachments.LEDGER.get()).get(pathId).joined())return "Path not joined";
+        return "";
+    }
+    public static boolean join(ServerPlayer player, String pathId) {
+        if(!joinBlocker(player,pathId).isEmpty())return false;
+        Definition.Path path=PathRegistry.get(pathId);
+        var channel=PathRegistry.channel(pathId);
+        Ledger ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        if(ledger.get(pathId).joined())return true;
         // Join is a real Path change: TMM's configured default sacrifices
         // unallocated MXP, but never already purchased Core/retained Path ranks.
         Ledger next=ChannelEngine.join(ledger,path,channel);

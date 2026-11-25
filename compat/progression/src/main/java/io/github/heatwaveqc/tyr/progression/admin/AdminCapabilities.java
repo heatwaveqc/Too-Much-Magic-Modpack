@@ -30,6 +30,7 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:tree",new Tree());
         REGISTRY.register("tyr_progression:milestone",new Milestone());
         REGISTRY.register("tyr_progression:counter",new Counter());
+        REGISTRY.register("tyr_progression:path",new PathMembership());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -324,6 +325,39 @@ public final class AdminCapabilities {
             long desired=switch(action){case SET->amount;case ADD->n+amount;case SUBTRACT->n-amount;case RESET->0;default->throw new IllegalArgumentException("Unsupported action");};
             var next=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.counter(old,PathRegistry.get(ids[0]),ids[1],Integer.parseInt(ids[2]),desired);
             return ledgerChange(p,inspect(p,key),"count="+desired+"; no immediate reward, normal event may settle completion",old,next);
+        }
+    }
+
+    private static final class PathMembership implements Handler<ServerPlayer>{
+        public String description(){return "Path membership diagnosis and policy-aware join/leave; never bypasses provider vetoes or baseline stage gateway";}
+        public Collection<String> keys(ServerPlayer p){return PathRegistry.all().keySet();}
+        public String inspect(ServerPlayer p,String key){
+            var join=io.github.heatwaveqc.tyr.progression.core.ProgressionApi.joinBlocker(p,key);
+            var leave=io.github.heatwaveqc.tyr.progression.core.ProgressionApi.leaveBlocker(p,key);
+            return "joined="+ledger(p).get(key).joined()+", eligible="+PathRegistry.eligible(p,key)
+                +", enrollment="+PathRegistry.enrollment(key)+", join="+(join.isEmpty()?"allowed":join)
+                +", leave="+(leave.isEmpty()?"allowed":leave);
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            if(ledger(p).get(key).joined()&&!PathRegistry.eligible(p,key))
+                return List.of("Joined but currently ineligible; may be intentionally dormant");
+            return List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.JOIN,Action.LEAVE);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var old=ledger(p);
+            boolean join=action==Action.JOIN;
+            if(join&&old.get(key).joined())throw new IllegalArgumentException("Already joined");
+            var blocker=join?io.github.heatwaveqc.tyr.progression.core.ProgressionApi.joinBlocker(p,key)
+                :io.github.heatwaveqc.tyr.progression.core.ProgressionApi.leaveBlocker(p,key);
+            if(!blocker.isEmpty())throw new IllegalArgumentException(blocker);
+            return new Change(inspect(p,key),join?"join through normal enrollment; configured free-XP wipe may apply"
+                :"leave through normal lifecycle; configured investment forfeiture/refund and local discovery reset apply",()->{
+                if(!ledger(p).equals(old))throw new IllegalStateException("Path ledger changed");
+                boolean ok=join?io.github.heatwaveqc.tyr.progression.core.ProgressionApi.join(p,key)
+                    :io.github.heatwaveqc.tyr.progression.core.ProgressionApi.leave(p,key);
+                if(!ok)throw new IllegalStateException("Membership change rejected");
+            });
         }
     }
 
