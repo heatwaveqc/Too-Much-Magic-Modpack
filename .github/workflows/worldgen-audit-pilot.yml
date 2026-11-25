@@ -1,0 +1,114 @@
+name: Worldgen audit - authorized pilot
+run-name: Worldgen audit - Thanksgiving frozen baseline
+on:
+  workflow_dispatch:
+    inputs:
+      authorized_build:
+        description: 'I authorize this one disposable server reconstruction and pregeneration pilot'
+        type: boolean
+        default: false
+        required: true
+      expected_launcher_sha:
+        description: 'Exact reviewed main commit for connector dispatch; blank for direct owner dispatch'
+        type: string
+        default: ''
+        required: false
+      request_nonce:
+        description: 'One-shot connector reservation; blank for direct owner dispatch'
+        type: string
+        default: ''
+        required: false
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: tmm-worldgen-audit
+  cancel-in-progress: false
+jobs:
+  pilot:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.authorized_build == true && github.repository == 'heatwaveqc/Too-Much-Magic-Modpack' && github.ref == 'refs/heads/main' && github.actor_id == '22598785' && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    env:
+      TOOLS_SHA: '9f10f668457c4596b26bb9124e847ca11e993bdf'
+      BASELINE_SHA: '721ea058294f838b9d7f145af427f5db228d248d'
+      CARBON_SHA: '393a5ae752a419da970e9cacdf510c0822039b572cb189517b648a2a03cdb172'
+    steps:
+      - name: Validate one-shot authorization and exact tooling evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          APPROVED_SHA: ${{ inputs.expected_launcher_sha }}
+          NONCE: ${{ inputs.request_nonce }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$APPROVED_SHA" || -n "$NONCE" ]]; then
+            [[ "$APPROVED_SHA" =~ ^[0-9a-f]{40}$ && "$NONCE" =~ ^[0-9a-f]{32}$ ]]
+            [[ "$APPROVED_SHA" == "$GITHUB_SHA" ]]
+            [[ "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/worldgen-request/$NONCE" --jq '.object.sha')" == "$APPROVED_SHA" ]]
+          fi
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$TOOLS_SHA&event=pull_request&per_page=100" > "$RUNNER_TEMP/worldgen-checks.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          data=json.loads((Path(os.environ['RUNNER_TEMP'])/'worldgen-checks.json').read_text())
+          runs=data['workflow_runs']
+          assert data['total_count'] <= len(runs), 'Ambiguous truncated CI inventory'
+          required={'Worldgen audit fixtures (offline)','Verify bootstrap','Python regression suite (NO GAME BOOT)','Branch lifecycle report'}
+          for name in required:
+              matches=[r for r in runs if r['name']==name and r['head_sha']==os.environ['TOOLS_SHA']]
+              assert matches, f'Missing exact tooling check: {name}'
+              r=max(matches,key=lambda x:(x['run_number'],x.get('run_attempt',1),x['id']))
+              assert r['status']=='completed' and r['conclusion']=='success', f'Not green: {name}'
+              print(name, r['id'], r['conclusion'])
+          PY
+          for status in queued in_progress waiting pending requested; do
+            gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=workflow_dispatch&status=$status&per_page=100" > "$RUNNER_TEMP/worldgen-active.json"
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          data=json.loads((Path(os.environ['RUNNER_TEMP'])/'worldgen-active.json').read_text())
+          assert data['total_count'] <= len(data['workflow_runs']), 'Truncated active run inventory'
+          for r in data['workflow_runs']:
+              if r['id'] != int(os.environ['GITHUB_RUN_ID']) and r['path'].split('@')[0] in ('.github/workflows/full-integration-launcher.yml','.github/workflows/full-integration.yml','.github/workflows/worldgen-audit-pilot.yml'):
+                  raise SystemExit(f'Conflicting active full-run request: {r["id"]}')
+          PY
+          done
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TOOLS_SHA }}
+          path: audit-tools
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASELINE_SHA }}
+          path: frozen-pack
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Verify frozen inputs and offline regression fixtures
+        run: |
+          set -euo pipefail
+          test "$(git -C audit-tools rev-parse HEAD)" = "$TOOLS_SHA"
+          test "$(git -C frozen-pack rev-parse HEAD)" = "$BASELINE_SHA"
+          python -m unittest discover -s audit-tools/tests -p 'test_audit_worldgen_*.py' -v
+          python frozen-pack/scripts/download_mods.py --check-origins
+      - name: Reconstruct exact historical server and run bounded generation
+        run: |
+          set -euo pipefail
+          python audit-tools/scripts/run_worldgen_pilot.py --pack-root frozen-pack --work "$RUNNER_TEMP/tmm-worldgen-audit" --carbon-sha256 "$CARBON_SHA" --authorized --generation-seconds 1500
+      - name: Retain derived evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmm-worldgen-pilot-evidence
+          path: ${{ runner.temp }}/tmm-worldgen-audit/evidence/
+          if-no-files-found: warn
+          retention-days: 30
