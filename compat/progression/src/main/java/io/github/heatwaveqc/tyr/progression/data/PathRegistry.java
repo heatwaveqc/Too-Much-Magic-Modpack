@@ -96,6 +96,9 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     }
 
     public record FoodRite(FoodRiteSpec spec,Condition<ServerPlayer> conditions){}
+    public record MasteryCompletion(String milestone,String event,Condition<ServerPlayer> condition){}
+    private static volatile Map<String,MasteryCompletion> masteryCompletions=Map.of();
+    public static Map<String,MasteryCompletion> masteryCompletions(){return masteryCompletions;}
     private static volatile Map<String,FoodRite> foodRites=Map.of();
     public static Map<String,FoodRite> foodRites(){return foodRites;}
     private static volatile Map<String,TimedEnrollment> timedEnrollments=Map.of();
@@ -156,6 +159,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,TrainingXpSpec> newTraining=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
+        Map<String,MasteryCompletion> completions=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextPurchase=new HashMap<>();
@@ -227,6 +231,18 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 nextPresentation.put(new GateKey(path.id(),"",-1),PresentationSpec.parse(raw));
                 var rite=FoodRiteSpec.parse(raw);
                 if(rite!=null)rites.put(path.id(),new FoodRite(rite,Eligibility.parse(rite.when())));
+                if(raw.has("mastery_completion")){
+                    var completion=raw.getAsJsonObject("mastery_completion");
+                    if(!completion.keySet().equals(java.util.Set.of("milestone","event","when")))
+                        throw new IllegalArgumentException("Invalid mastery_completion fields");
+                    String milestone=ResourceLocation.parse(completion.get("milestone").getAsString()).toString();
+                    String event=ResourceLocation.parse(completion.get("event").getAsString()).toString();
+                    if(path.milestones().stream().noneMatch(m->m.id().equals(milestone)&&m.criteria().size()==1
+                        &&m.criteria().getFirst().event().equals("external")&&m.criteria().getFirst().selector().equals(event)
+                        &&m.criteria().getFirst().count()==1&&m.xp()==0&&m.points()==0&&m.fixedRewardXp()==0))
+                        throw new IllegalArgumentException("Mastery completion must match a zero-reward external milestone");
+                    completions.put(path.id(),new MasteryCompletion(milestone,event,Eligibility.parse(completion.get("when"))));
+                }
                 var timer=TimedEnrollment.parse(raw);
                 if(timer!=null)timed.put(path.id(),timer);
                 Map<GateKey,Condition<ServerPlayer>> localGates=new HashMap<>();
@@ -284,6 +300,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
         foodRites=Map.copyOf(rites);
+        masteryCompletions=Map.copyOf(completions);
         gates=Map.copyOf(nextGates);
         activations=Map.copyOf(nextActivations);
         purchaseGates=Map.copyOf(nextPurchase);

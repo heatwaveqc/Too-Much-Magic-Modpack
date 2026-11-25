@@ -265,6 +265,7 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
             Enrollment.tick(player);
+            MasteryCompletionRuntime.tick(player);
             ObservedTrials.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
