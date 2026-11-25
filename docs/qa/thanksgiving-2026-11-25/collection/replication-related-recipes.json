@@ -1,0 +1,1459 @@
+{
+  "scope": "EFFECTIVE_SERVER_RECIPE_ID_TYPE_OUTPUT_CENSUS",
+  "source_export_sha256": "17f00f43059e5206d9779135d19c60f9ee51a43525355b9809c726a257e998b5",
+  "count": 242,
+  "recipes": [
+    {
+      "id": "replication:blasting_raw_replica",
+      "type": "minecraft:blasting",
+      "output": "replication:replica_ingot",
+      "count": 1
+    },
+    {
+      "id": "replication:chip_storage",
+      "type": "minecraft:crafting",
+      "output": "replication:chip_storage",
+      "count": 1
+    },
+    {
+      "id": "replication:disintegrator",
+      "type": "minecraft:crafting",
+      "output": "replication:disintegrator",
+      "count": 1
+    },
+    {
+      "id": "replication:identification_chamber",
+      "type": "minecraft:crafting",
+      "output": "replication:identification_chamber",
+      "count": 1
+    },
+    {
+      "id": "replication:matter_blueprint",
+      "type": "minecraft:crafting",
+      "output": "replication:matter_blueprint",
+      "count": 1
+    },
+    {
+      "id": "replication:matter_network_pipe",
+      "type": "minecraft:crafting",
+      "output": "replication:matter_network_pipe",
+      "count": 8
+    },
+    {
+      "id": "replication:matter_tank",
+      "type": "minecraft:crafting",
+      "output": "replication:matter_tank",
+      "count": 1
+    },
+    {
+      "id": "replication:matter_values/c/tags/berries",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/cobblestones",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/cork",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/crops",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/dust/dark",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/food/berry",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/fruits",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/gems/dark",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/gravels",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/aluminum",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/antimony",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/iesnium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/iridium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/lead",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/mithril",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/nickel",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/osmium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/platinum",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/plutonium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/silver",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/tin",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/titanium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/tungsten",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/uraninite",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/ingots/uranium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/mushrooms",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/nuts",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/plastics",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/sands",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/silicon",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/c/tags/stones",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/amethyst_shard",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ancient_debris",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/apple",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/bamboo",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/basalt",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/beef",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/beetroot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/big_dripleaf",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/black_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/blackstone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/blaze_rod",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/blue_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/bone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/brain_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/brain_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/brain_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/brown_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/bubble_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/bubble_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/bubble_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/budding_amethyst",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/cactus",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/calcite",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/carrot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/carved_pumpkin",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/chicken",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/chorus_flower",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/chorus_fruit",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/chorus_plant",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/clay_ball",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/coal",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/cobweb",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/cocoa_beans",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/cod",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/copper_ingot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/creeper_head",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/crimson_fungus",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/crimson_nylium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/crimson_roots",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/crying_obsidian",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/cyan_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_brain_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_brain_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_brain_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_bubble_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_bubble_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_bubble_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_bush",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_fire_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_fire_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_fire_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_horn_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_horn_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_horn_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_tube_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_tube_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dead_tube_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/diamond",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dirt",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dragon_breath",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/dragon_head",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/echo_shard",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/egg",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/emerald",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/enchanted_golden_apple",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/end_stone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ender_pearl",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/exposed_copper",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/feather",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/fern",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/fire_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/fire_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/fire_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/flint",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ghast_tear",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/glow_berries",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/glow_ink_sac",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/glow_lichen",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/glowstone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/glowstone_dust",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/gold_ingot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/grass_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/gray_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/green_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/gunpowder",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/hanging_roots",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/heart_of_the_sea",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/honey_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/honeycomb",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/horn_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/horn_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/horn_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ice",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ink_sac",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/iron_ingot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/kelp",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/lapis_lazuli",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/large_fern",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/leather",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/light_blue_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/light_gray_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/lily_pad",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/lime_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/magenta_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/mangrove_roots",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/melon_slice",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/moss_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/mud",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/mutton",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/mycelium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/nautilus_shell",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/nether_sprouts",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/nether_star",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/nether_wart",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/netherrack",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/obsidian",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/ochre_froglight",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/orange_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/oxidized_copper",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pearlescent_froglight",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/phantom_membrane",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/piglin_head",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pink_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pitcher_pod",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/player_head",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/podzol",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pointed_dripstone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/poisonous_potato",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/porkchop",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/potato",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/prismarine_crystals",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/prismarine_shard",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pufferfish",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/pumpkin",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/purple_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/quartz",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/rabbit",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/rabbit_foot",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/rabbit_hide",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/red_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/redstone",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/rooted_dirt",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/rotten_flesh",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/salmon",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sculk",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sculk_catalyst",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sculk_sensor",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sculk_shrieker",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sculk_vein",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sea_pickle",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/seagrass",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/short_grass",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/shulker_shell",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/skeleton_skull",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/slime_ball",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/small_dripleaf",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/snowball",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/soul_sand",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/soul_soil",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/spider_eye",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/string",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sugar_cane",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/sweet_berries",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/tall_grass",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/torchflower_seeds",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/totem_of_undying",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/tropical_fish",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/tube_coral",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/tube_coral_block",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/tube_coral_fan",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/turtle_scute",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/twisting_vines",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/verdant_froglight",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/vine",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/warped_fungus",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/warped_nylium",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/warped_roots",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/weathered_copper",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/weeping_vines",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/wet_sponge",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/wheat",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/white_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/wither_skeleton_skull",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/yellow_concrete",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/items/zombie_head",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/creeper_drop_music_discs",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/leaves",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/logs",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/saplings",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/small_flowers",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/minecraft/tags/tall_flowers",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:matter_values/replication/items/replicator_motor",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "replication:memory_chip",
+      "type": "minecraft:crafting",
+      "output": "replication:memory_chip",
+      "count": 1
+    },
+    {
+      "id": "replication:raw_replica",
+      "type": "minecraft:crafting",
+      "output": "replication:raw_replica",
+      "count": 9
+    },
+    {
+      "id": "replication:raw_replica_block",
+      "type": "minecraft:crafting",
+      "output": "replication:raw_replica_block",
+      "count": 1
+    },
+    {
+      "id": "replication:replica_block",
+      "type": "minecraft:crafting",
+      "output": "replication:replica_block",
+      "count": 1
+    },
+    {
+      "id": "replication:replica_ingot",
+      "type": "minecraft:crafting",
+      "output": "replication:replica_ingot",
+      "count": 9
+    },
+    {
+      "id": "replication:replication_terminal",
+      "type": "minecraft:crafting",
+      "output": "replication:replication_terminal",
+      "count": 1
+    },
+    {
+      "id": "replication:replicator",
+      "type": "minecraft:crafting",
+      "output": "replication:replicator",
+      "count": 1
+    },
+    {
+      "id": "replication:replicator_enclosure",
+      "type": "minecraft:crafting",
+      "output": "replication:replicator_enclosure",
+      "count": 1
+    },
+    {
+      "id": "replication:smelting_raw_replica",
+      "type": "minecraft:smelting",
+      "output": "replication:replica_ingot",
+      "count": 1
+    },
+    {
+      "id": "tmm:matter_values/adventurer_coin",
+      "type": "replication:matter_value",
+      "output": "minecraft:air",
+      "count": 0
+    },
+    {
+      "id": "tmm:miner/replica_ore_eldritch",
+      "type": "occultism:miner",
+      "output": "replication:deepslate_replica_ore",
+      "count": 1
+    },
+    {
+      "id": "tmm:replica_ingot_from_nuggets",
+      "type": "minecraft:crafting",
+      "output": "replication:replica_ingot",
+      "count": 1
+    }
+  ]
+}

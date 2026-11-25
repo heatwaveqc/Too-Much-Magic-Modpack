@@ -1,0 +1,118 @@
+{
+  "scope": "SYNTAX_ONLY_NOT_EXECUTION",
+  "rhino": "rhino-2101.2.7-build.85.jar",
+  "checked": 22,
+  "failed": 0,
+  "results": [
+    {
+      "file": "kubejs/client_scripts/main.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\client_scripts\\main.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/ban_seven_sins_ring.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\ban_seven_sins_ring.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/bootstrap.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\bootstrap.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/caerbannog_boss.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\caerbannog_boss.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/dragon_diets.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\dragon_diets.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/dragon_seasoned_fish.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\dragon_seasoned_fish.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/mahou_neo_vitae_circle_bridge.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\mahou_neo_vitae_circle_bridge.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/material_processing_cleanup.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\material_processing_cleanup.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/material_unification.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\material_unification.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/parchment_fishing.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\parchment_fishing.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/silver_equipment_unification.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\silver_equipment_unification.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/tmm_structure_registry_export.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\tmm_structure_registry_export.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/tmm_wandering_trader_magic_stock.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\tmm_wandering_trader_magic_stock.js\n"
+    },
+    {
+      "file": "kubejs/server_scripts/zz_reactive_loot_books.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\server_scripts\\zz_reactive_loot_books.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/adventurer_coin.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\adventurer_coin.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/bootstrap.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\bootstrap.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/caerbannog_trophy.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\caerbannog_trophy.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/drinkable_blood_vial.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\drinkable_blood_vial.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/eldritch_logic_core.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\eldritch_logic_core.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/replica_nugget.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\replica_nugget.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/silver_equipment_stats.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\silver_equipment_stats.js\n"
+    },
+    {
+      "file": "kubejs/startup_scripts/vanilla_item_qol.js",
+      "exit": 0,
+      "detail": "PASS Rhino parse: <minecraft>\\kubejs\\startup_scripts\\vanilla_item_qol.js\n"
+    }
+  ]
+}

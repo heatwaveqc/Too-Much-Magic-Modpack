@@ -1,0 +1,323 @@
+{
+  "scope": "READ_ONLY_LOG_SNAPSHOT_NOT_GAMEPLAY_ACCEPTANCE",
+  "log_sha256": "e8a919b97307ddc616354f501bbe5130b1c05158b185c98c99c6b6c8d4bc55ef",
+  "bytes": 7559320,
+  "lines": 59473,
+  "invalid_unbound_key_lines": 15584,
+  "mixin_fatal_lines": 0,
+  "integrated_world_login_observed": true,
+  "loaded_recipe_counts": [
+    27947
+  ],
+  "server_script_loads": [
+    {
+      "loaded": 12,
+      "total": 13,
+      "errors": 1
+    },
+    {
+      "loaded": 12,
+      "total": 13,
+      "errors": 1
+    }
+  ],
+  "script_failures": [
+    {
+      "script": "zz_reactive_loot_books.js",
+      "line": 4,
+      "message": "dev.latvian.mods.rhino.EvaluatorException: TypeError: redeclaration of var TMMReactiveComponents.",
+      "occurrences": 2
+    }
+  ],
+  "recipe_failures": [
+    {
+      "id": "cocktailsdelight:pouring/soymilk_bottle",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: vegandelight:soymilk_bottle; Unknown registry key in ResourceKey[minecraft:root / minecraft:fluid]: vegandelight:soymilk"
+    },
+    {
+      "id": "cocktailsdelight:pouring/soymilk_bucket",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: vegandelight:soymilk_bucket; Unknown registry key in ResourceKey[minecraft:root / minecraft:fluid]: vegandelight:soymilk"
+    },
+    {
+      "id": "dungeonsdelight:integration/aether/smoker/ae_cooked_marbled_meat_from_smoking",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key result in MapLike[{\"type\":\"minecraft:smoking\",\"category\":\"food\",\"cookingtime\":100,\"experience\":0.1,\"ingredient\":{\"item\":\"dungeonsdelight:marbled_meat\"},\"id\":\"dungeonsdelight:cooked_marbled_meat\"}]"
+    },
+    {
+      "id": "endersdelight:chorus_pie_slice",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key item in MapLike[{\"id\":\"endersdelight:chorus_pie_slice\",\"count\":4}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/botania/elementium",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / malum:spirit_types]: minecraft:arcane"
+    },
+    {
+      "id": "malum:malum/spirit_repair/botania/manasteel",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / malum:spirit_types]: minecraft:arcane"
+    },
+    {
+      "id": "malum:malum/spirit_repair/botania/terrasteel",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / malum:spirit_types]: minecraft:arcane; No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1,\"repairMaterial\":{\"item\":\"botania:terrasteel_ingot\",\"count\":1},\"spirits\":[{\"type\":\"arcane\",\"count\":32}],\"regex\":{\"itemIdRegex\":\"terra.+\",\"modIdRegex\":\"botania\"}}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/hexerei/broom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1.0,\"repairMaterial\":{\"count\":4,\"item\":\"hexerei:mandrake_root\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":16},{\"type\":\"malum:aerial\",\"count\":16},{\"type\":\"malum:eldritch\",\"count\":16}],\"regex\":{\"itemIdRegex\":\".+broom_brush\",\"modIdRegex\":\"hexerei\"}}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/hexerei/witch_armor",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":0.5,\"repairMaterial\":{\"count\":4,\"item\":\"hexerei:infused_fabric\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":8},{\"type\":\"malum:wicked\",\"count\":8},{\"type\":\"malum:eldritch\",\"count\":8}],\"regex\":{\"itemIdRegex\":\"witch_.+\",\"modIdRegex\":\"hexerei\"}}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/occultism/gold_chalk",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1,\"repairMaterial\":{\"count\":1,\"tag\":\"c:dusts/gold\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":8}],\"inputs\":[\"occultism:chalk_gold\"]}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/occultism/purple_chalk",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1,\"repairMaterial\":{\"count\":2,\"tag\":\"c:dusts/obsidian\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":8}],\"inputs\":[\"occultism:chalk_purple\"]}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/occultism/red_chalk",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1,\"repairMaterial\":{\"count\":1,\"item\":\"occultism:afrit_essence\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":8}],\"inputs\":[\"occultism:chalk_red\"]}]"
+    },
+    {
+      "id": "malum:malum/spirit_repair/occultism/white_chalk",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key validItems in MapLike[{\"type\":\"malum:spirit_repair\",\"durabilityPercentage\":1,\"repairMaterial\":{\"count\":1,\"item\":\"occultism:burnt_otherstone\"},\"spirits\":[{\"type\":\"malum:arcane\",\"count\":8}],\"inputs\":[\"occultism:chalk_white\"]}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/floral_fertilizer",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"minecraft:bone_meal\",\"P\":\"#pastel:pigments\",\"S\":\"#pastel:pigments\"},\"result\":{\"id\":\"botania:fertilizer\",\"count\":4},\"required_advancement\":\"pastel:collect_pigment\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/black_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:black_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:black_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/blue_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:blue_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:blue_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/brown_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:brown_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:brown_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/cyan_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:cyan_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:cyan_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/gray_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:gray_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:gray_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/green_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:green_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:green_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/light_blue_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:light_blue_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:light_blue_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/light_gray_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:light_gray_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:light_gray_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/lime_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:lime_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:lime_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/magenta_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:magenta_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:magenta_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/orange_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:orange_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:orange_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/pink_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:pink_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:pink_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/purple_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:purple_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:purple_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/red_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:red_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:red_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/white_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:white_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:white_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/glimmering_flowers/yellow_glimmering_flower",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_glimmering_flowers\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"PS\"],\"key\":{\"P\":\"botania:yellow_mystical_flower\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:yellow_shiny_flower\",\"count\":1},\"required_advancement\":\"pastel:collect_shimmerstone\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/black_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:black_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:black_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/black\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/blue_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:blue_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:blue_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/blue\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/brown_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:brown_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:brown_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/brown\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/cyan_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:cyan_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:cyan_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/cyan\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/gray_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:gray_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:gray_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/gray\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/green_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:green_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:green_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/green\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/light_blue_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:light_blue_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:light_blue_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/light_blue\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/light_gray_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:light_gray_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:light_gray_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/light_gray\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/lime_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:lime_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:lime_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/lime\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/magenta_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:magenta_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:magenta_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/magenta\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/orange_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:orange_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:orange_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/orange\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/pink_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:pink_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:pink_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/pink\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/purple_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:purple_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:purple_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/purple\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/red_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:red_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:red_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/red\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/white_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:white_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:white_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/white\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/pedestal/mushrooms/yellow_mushroom",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key colors in MapLike[{\"type\":\"pastel:pedestal\",\"group\":\"botania_mushrooms\",\"time\":100,\"tier\":\"basic\",\"cyan\":0,\"magenta\":0,\"yellow\":0,\"white\":0,\"black\":0,\"experience\":0.1,\"pattern\":[\"MPS\"],\"key\":{\"M\":\"#c:mushrooms\",\"P\":\"pastel:yellow_pigment\",\"S\":\"pastel:shimmerstone_gem\"},\"result\":{\"id\":\"botania:yellow_mushroom\",\"count\":1},\"required_advancement\":\"pastel:hidden/collect_pigment/yellow\"}]"
+    },
+    {
+      "id": "pastel:mod_integration/botania/potion_workshop_reacting/blackest_lotus",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: pastel:blackest_lotus"
+    },
+    {
+      "id": "pastel:mod_integration/botania/potion_workshop_reacting/least_black_lotus",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: pastel:least_black_lotus"
+    },
+    {
+      "id": "pastel:mod_integration/botania/primordial_fire_burning/least_black_lotus",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: pastel:least_black_lotus"
+    },
+    {
+      "id": "pastel:mod_integration/botania/spirit_instiller/blackest_lotus",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: pastel:blackest_lotus"
+    },
+    {
+      "id": "pastel:mod_integration/hexcasting/fusion_shrine/charged_amethyst_from_amethyst_shard_fusion",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Failed to parse either. First: Not a json array: \"minecraft:water\"; Second: Not a JSON object: \"minecraft:water\""
+    },
+    {
+      "id": "tmm:ritual/perpetual_life",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: No key tag in MapLike[{\"item\":\"neovitae:hellforged_ingot\"}]; Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: neovitae:hellforged_ingot; No key tag in MapLike[{\"item\":\"neovitae:hellforged_ingot\"}]; Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: neovitae:hellforged_ingot"
+    }
+  ],
+  "recipe_failure_namespaces": {
+    "pastel": 38,
+    "malum": 9,
+    "dungeonsdelight": 1,
+    "cocktailsdelight": 2,
+    "tmm": 1,
+    "endersdelight": 1
+  },
+  "emi_plugin_failures": [
+    {
+      "plugin": "extra_mod_integrations_rechiseled",
+      "occurrences": 1,
+      "cause": {
+        "exception": "NoClassDefFoundError",
+        "class": "com/supermartijn642/rechiseled/chiseling/ChiselingRecipes"
+      }
+    },
+    {
+      "plugin": "extra_mod_integrations_reliquary",
+      "occurrences": 1,
+      "cause": {
+        "exception": "NoClassDefFoundError",
+        "class": "reliquary/items/AlkahestryTomeItem"
+      }
+    }
+  ],
+  "projecte_mapping_failures": {
+    "goety:savage_tooth_craft": 1
+  }
+}

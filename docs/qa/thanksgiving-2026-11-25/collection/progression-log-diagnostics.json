@@ -1,0 +1,4422 @@
+{
+  "scope": "SANITIZED_EXISTING_CLIENT_DIAGNOSTICS_NOT_INDEPENDENT_TEST_RESULTS",
+  "source_log_sha256": "cef771bdf2f771a4fe592efc592da046d534e72f596dd1902df1404c301fcfac",
+  "messages": [
+    {
+      "message": "TMM Controls: captured 0 pre-launch saved key IDs",
+      "occurrences": 1
+    },
+    {
+      "message": "Progression internal native compatibility registered: five probes, JAWR bottles, two death arbitrators, mob alliances and Dracolich visuals",
+      "occurrences": 1
+    },
+    {
+      "message": "Installed optional TreeChop per-felled-log Monk XP adapter",
+      "occurrences": 1
+    },
+    {
+      "message": "Assembled Cave/Center Dracolich geometry from the installed native rig",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM Controls: registry scan: vanilla=34, native defaults=0, saved mod keys=0, updated mod defaults=219, newly unbound=219, new pack bindings=0",
+      "occurrences": 1
+    },
+    {
+      "message": "Loaded 5 progression path definitions",
+      "occurrences": 4
+    },
+    {
+      "message": "Loaded shared food policy schema 1: 3 affinity profiles, 1 strict profiles, 162 roots, 8 recipes",
+      "occurrences": 4
+    },
+    {
+      "message": "JAWR ordinary blood bottle bridge enabled (strict component gate)",
+      "occurrences": 2
+    },
+    {
+      "message": "Hunter mutation stand-brew eligibility: 193 registered potion types, 0 exact custom recipe results",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=quest_giver:quest_villager category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:minds category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:machination category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:sinister category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:minedflayer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:powder_skull category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:wraith category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:mockingbird category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:pathogen category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:blossom category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:saint_solis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:detritus category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:trichael category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:hench category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:stained_glass category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:fisheye category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:coat_of_arms category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:beauty category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:fiend category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:fend category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:friend category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:blitz category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:eeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:nothing category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:canary category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:canary_part category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:vertigo category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:dreamweaver category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creaturefeature:cannonball_crab category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=evilcraft:werewolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=evilcraft:netherfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=evilcraft:poisonous_libelle category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=evilcraft:vengeance_spirit category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=evilcraft:controlled_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ribbits:ribbit category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:flame_squat_lobster category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:obsidian_sword_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:steam_flying_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:agni_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:arowana_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:quartz_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:scaly_foot_snail category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:yeti_crab category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=lavafishing:lava_lamprey category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swem:swem_horse category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swem:wormieboi category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swem:pet_rock category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:boarwarf category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:astral_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:gleech category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:lonestar_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:nightfall_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:seeker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:thirst_walker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:creteor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:tiny_creteor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:stranghoul category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:ent category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:ratlin category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:zombified_ratlin category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:shadow_snail category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:yeti category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:aurora_deer category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:crystallized_moth category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:shimmer_lacewing category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:starfire_bird category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:grimstone_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:aethersent_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:rookfish category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:luminofish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:luminaris category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:twilight_gaze category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:the_gatekeeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:starlight_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:freeze category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:permafrost category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:lunar_monstrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:tangled category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:tangled_skull category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eternal_starlight:solar_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=tombstone:grave_guardian category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=tombstone:spectral_wolf category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=scriptor:colorful_sheep category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=the_bumblezone:variant_bee category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=the_bumblezone:honey_slime category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=the_bumblezone:beehemoth category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=the_bumblezone:bee_queen category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=the_bumblezone:rootmin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=enigmaticlegacyplus:ichor_sprite category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=enigmaticlegacyplus:piglin_wanderer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ghosts:ghost category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ghosts:small_ghost category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ghosts:kodama category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:foliaath category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:baby_foliaath category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:ferrous_wroughtnaut category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana_follower_raptor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana_follower_player category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana_crane_player category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana_raptor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthana_crane category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:umvuthi category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:frostmaw category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:grottol category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:lantern category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:naga category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:bluff category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:elokosa_follower_howler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mowziesmobs:elokosa_howler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:spring_pixie category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:summer_pixie category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:winter_pixie category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:autumn_pixie category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:shroomling category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:mandragora category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:moo_shroom_cow category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:bellsnickel category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:bee_knight category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:bee_mount category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:spring_tree_ent category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:summer_tree_ent category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:autumn_tree_ent category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:winter_tree_ent category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:sprite category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:titania category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:mab category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:oberon category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=feywild:ashen_lord category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=pastel:egg_laying_wooly_pig category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=pastel:preservation_turret category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=pastel:lizard category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=pastel:kindling category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=pastel:eraser category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:gulber category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:wistiver category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:walking_bed category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:blud category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:prowler category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:kelvin category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:butcher category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:curse category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:devourer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:ditched category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:grub category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:gulber_organs category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:grub_organs category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:devourer_organs category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:guzzler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:guzzler_organs category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:betrayed_guzzler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:nibbler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:nibbler_organs category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:wistiver_jaw category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:blud_trade category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:blud_aggressive category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=sons_of_sins:ether_ghost category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=totemic:buffalo category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=totemic:bald_eagle category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=totemic:baykok category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_ignis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_corrodis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_cruoris category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_glaciaris category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_pestis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_voraxis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_doloris category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_fervidis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_animaris category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:daemonium_rancoris category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:necromancy_summon category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:necromancy_summon_husk category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:necromancy_summon_skeleton category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:necromancy_summon_stray category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=neovitae:slime_vitae category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:foliot category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:djinni category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:afrit category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:afrit_wild category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:marid category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:marid_unbound category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wondering_trader category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_endermite category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_ghast category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_phantom category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_weak_shulker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_shulker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_elder_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_hunt_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_warden category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_hoglin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_witch category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_blaze category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_zombie_piglin category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_bee category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:mercy_goat category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_hunt_wither_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:otherworld_bird category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_horde_husk category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_horde_drowned category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_horde_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_horde_silverfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_weak_breeze category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_breeze category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_strong_breeze category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_silverfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_bogged category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_slime category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_husk category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_stray category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:wild_cave_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:possessed_evoker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:greedy_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:bat_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:deer_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:cthulhu_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:devil_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:dragon_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:blacksmith_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:guardian_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:headless_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:chimera_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:goat_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:shub_niggurath_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:beholder_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:fairy_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:mummy_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:beaver_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:shub_niggurath_spawn category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:demonic_wife category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=occultism:demonic_husband category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:box_turtle category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:arrau_turtle category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:starshell_turtle category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:atlantic_cod category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:blackfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:pacific_halibut category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:atlantic_halibut category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:atlantic_herring category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:pink_salmon category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:pollock category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:rainbow_trout category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:bayad category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:boulti category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:capitaine category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:synodontis category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:smallmouth_bass category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:bluegill category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:brown_trout category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:carp category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:catfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:gar category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:minnow category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:muskellunge category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:perch category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:arapaima category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:piranha category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:tambaqui category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:brown_shrooma category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:red_shrooma category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:jellyfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:red_grouper category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquaculture:tuna category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:dragonfly category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:end_slime category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:end_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:shadow_walker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:cubozoa category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=betterend:silk_moth category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:scuttler category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:shellback category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:golden_moth category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:maw category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:spinefish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:abyssal_scyphoid category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:anglerfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:maze_mother category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:captain_cornelia category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:eel category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aquamirae:tortured_soul category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=hexerei:crow category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=hexerei:owl category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=astralsorcery:flare category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:starbuncle category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:alakarkinos category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:whirlisprig category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:wilden_hunter category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:summon_wolf category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:wilden_stalker category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:summon_horse category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:summon_skeleton category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:wilden_guardian category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:wilden_boss category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:drygmy category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_starbuncle category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_wixie category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_bookwyrm category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_drygmy category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_whirlisprig category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:familiar_amethyst_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:cascading_weald_walker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:flourishing_weald_walker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:blazing_weald_walker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:vexing_weald_walker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:amethyst_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_nouveau:gift_starby category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=botania:doppleganger category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=botania:manaseal_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:dragonfly category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:dumbo_octopus category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:ferret category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:jumping_spider category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:koi_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:leaf_insect category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:otter category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:red_panda category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:sea_bunny category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:shima_enaga category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:ladybug category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:stag_beetle category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:roly_poly category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:snail category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:stick_bug category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=crittersandcompanions:weevil category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=unicornacademy:unicorn category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:phyg category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:flying_cow category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:sheepuff category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:moa category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:aerbunny category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:aerwhale category=AETHER_AETHER_AERWHALE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:blue_swet category=AETHER_AETHER_SURFACE_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:golden_swet category=AETHER_AETHER_SURFACE_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:whirlwind category=AETHER_AETHER_SURFACE_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:evil_whirlwind category=AETHER_AETHER_SURFACE_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:aechor_plant category=AETHER_AETHER_SURFACE_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:cockatrice category=AETHER_AETHER_DARKNESS_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:zephyr category=AETHER_AETHER_SKY_MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:mimic category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:sentry category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:slider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:valkyrie category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:valkyrie_queen category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:fire_minion category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=aether:sun_spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:treefolk category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:inner_demon category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:friendly_witch category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:primalite_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:hexium_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:hallowsteel_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_earth category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_earth category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_earth category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_sea category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_sea category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_sea category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_sky category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_sky category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_sky category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_sun category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_sun category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_sun category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_moon category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_moon category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_moon category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_blood category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_blood category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_blood category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_infernal category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_infernal category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_infernal category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_void category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_void category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_void category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_basic_hallowed category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_grand_hallowed category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:pixie_majestic_hallowed category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:guardian_pixie_basic category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:guardian_pixie_grand category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=primalmagick:guardian_pixie_majestic category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=winteroverhaul:robin category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:adherent category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:alpha_yeti category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:armored_giant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:bighorn_sheep category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:blockchain_goblin category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:boar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:carminite_broodling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:carminite_ghastguard category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:carminite_ghastling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:carminite_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:death_tome category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:deer category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:dwarf_rabbit category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:fire_beetle category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:giant_miner category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:harbinger_cube category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:hedge_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:helmet_crab category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:hostile_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:hydra category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:ice_crystal category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:king_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:knight_phantom category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:kobold category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:lich category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:lich_minion category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:lower_goblin_knight category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:loyal_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:maze_slime category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:minoshroom category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:minotaur category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:mist_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:mosquito_swarm category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:naga category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:penguin category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:pinch_beetle category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:plateau_boss category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:quest_ram category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:raven category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:redcap category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:redcap_sapper category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:rising_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:roving_cube category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:skeleton_druid category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:slime_beetle category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:snow_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:snow_queen category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:squirrel category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:stable_ice_core category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:swarm_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:tiny_bird category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:towerwood_borer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:troll category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:unstable_ice_core category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:upper_goblin_knight category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:ur_ghast category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:winter_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilightforest:yeti category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dungeonsdelight:monster_yam category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dungeonsdelight:zombified_dryad category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=twilight_forest_final_boss:castle_keeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:decrepit_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:skeleton_demoman category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:decaying_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:baby_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:baby_skeleton_minion category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:controlled_baby_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:barrel_zombie category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:phantom_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:phantom_creeper_copy category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:door_knight category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:restless_spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:skeleton_thrasher category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:pumpkin_spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:seared_spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:firelight category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:diamond_termite category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:bonescaller category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:bone_imp category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:bone_imp_minion category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:supreme_bonescaller category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:supreme_bonescaller_stage_2 category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:dark_vortex category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:dread_hound category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:fallen_chaos_knight category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:scarlet_persecutor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:spirit_guide category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:spirit_guide_assistant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:zombie_clown category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:mr_pumpkin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:mr_pumpkin_controlled category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:sir_pumpkinhead category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:felsteed category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:sir_pumpkinhead_without_horse category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:sir_the_headless category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:pumpkinhead category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:riding_felsteed category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:decaying_zombie_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:door_knight_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:bonescaller_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:supreme_bonescaller_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:skeleton_thrasher_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:dread_hound_not_despawn category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:firelight_not_despawn category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:zombie_clown_not_despawn category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:seared_spirit_not_despawn category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:dire_hound_leader category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:maggot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:corpse_fly category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:bloody_gadfly category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:corpse_fish category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:zombie_fisherman category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:swarmer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:thornshell_crab category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:glutton_fish category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:zombie_bruiser category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:pumpkin_bomb category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:senor_pumpkin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lord_pumpkinhead category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lords_felsteed category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lord_pumpkinhead_withouta_horse category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lord_the_headless category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lord_pumpkinhead_head category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:infernal_spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:riding_lords_felsteed category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:zombie_lumberjack category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:siamese_skeletons category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:siamese_skeletonsleft category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:siamese_skeletonsright category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:missioner category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:phantom_bomb_entity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:controlled_spiritual_assistant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:spiritof_chaos category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lifestealer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:lifestealer_true_form category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:baby_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:mother_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:baby_spider_controlled category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:nightmare_stalker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:pumpkin_dunce category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:mrs_pumpkin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:pumpkin_bruiser category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:krampus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:krampus_henchman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=born_in_chaos_v1:missionary_raider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ender_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ender_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:netherite_monstrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:netherite_ministrosity category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ignis category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:endermaptera category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:deepling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:deepling_brute category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:deepling_angler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:deepling_priest category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:deepling_warlock category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:lionfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:coral_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:coralssus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ignited_revenant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ignited_berserker category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:the_harbinger category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:the_watcher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:the_prowler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:the_leviathan category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:the_baby_leviathan category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:amethyst_crab category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:ancient_remnant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:modern_remnant category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:koboleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:kobolediator category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:wadjet category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:maledictus category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:draugr category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:royal_draugr category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:elite_draugr category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:aptrgangr category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:hippocamtus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:cindaria category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:clawdian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:scylla category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:urchinkin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:drowned_host category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=cataclysm:symbiocto category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=extrabotany:void_herrscher category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=extrabotany:ego category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=extrabotany:ego_minion category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=extrabotany:gaia_legacy category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=extrabotany:gaia_3rd category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:american_quarter_horse category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:arabian category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:breton category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:donkey category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:fjord category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:friesian category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:irish_draught category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:kladruber category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:knabstrupper category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:marwari category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:mule category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:mustang category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:pegasus category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:shire category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:thoroughbred category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:turkoman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=swemaddendum:warmblood category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:deeplurker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:pale_wanderer category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:protector category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:contagion_incarnation category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:temper category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:parasyte category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:noctilure category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:shadow category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=wardentools:crystal_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:angler_fish category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:anger_pot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:fear_pot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:sorrow_pot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:sculk_centipede category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:sculk_leech category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:sculk_snapper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:shattered category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:shriek_worm category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:sludge category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=deeperdarker:stalker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:barrel_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:candle_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:coal_golem category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:hay_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:honey_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:kelp_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:netherite_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:slime_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=golemoverhaul:terracotta_golem category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=brewery:beer_elemental category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=voidscape:voidling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=voidscape:corrupted_pawn category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=voidscape:null_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=voidscape:voids_wrath category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=enchanted:familiar_cat category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=enchanted:mandrake category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_hound category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_griffin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_spearman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_knight category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_ambusher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=dragonsurvival:hunter_leader category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=rootsclassic:phantom_skeleton category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=mahoutsukai:fae_entity category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:lava_pufferfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:obsidianfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:searing_cod category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:bonefish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:wither_bonefish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:blazefish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:magmacubefish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:glowdine category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:soulsucker category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:fortressgrouper category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=netherdepthsupgrade:eyeball_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=draconicevolution:draconic_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=draconicevolution:guardian_wither category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:teletor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:magnetron category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:boundroid category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:boundroid_winch category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:ferrouslime category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:notor category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:subterranodon category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:vallumraptor category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:grottoceratops category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:trilocaris category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:tremorsaurus category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:relicheirus category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:luxtructosaurus category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:atlatitan category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:nucleeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:radgill category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:brainiac category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gammaroach category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:raycat category=ALEXSCAVES_CAVE_CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:tremorzilla category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:lanternfish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:sea_pig category=ALEXSCAVES_DEEP_SEA_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:hullbreaker category=UNDERGROUND_WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gossamer_worm category=ALEXSCAVES_DEEP_SEA_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:tripodfish category=ALEXSCAVES_DEEP_SEA_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:deep_one category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:deep_one_knight category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:deep_one_mage category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:mine_guardian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gloomoth category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:underzealot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:watcher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:corrodent category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:vesper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:forsaken category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:sweetish_fish category=WATER_AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:caniac category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gumbeeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:candicorn category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gum_worm category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:caramel_cube category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gummy_bear category=ALEXSCAVES_CAVE_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:licowitch category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=alexscaves:gingerbread_man category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:badlands_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:cave_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:crimson_forest_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:dark_oak_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:desert_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:end_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:end_islands_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:flower_fields_enderman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:ice_spikes_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:mushroom_fields_enderman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:nether_wastes_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:coral_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:savanna_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:snowy_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:soulsand_valley_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:swamp_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:warped_forest_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:windswept_hills_enderman category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:pet_enderman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:hammerhead_pet_enderman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:axolotl_pet_enderman category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:scarab category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=endermanoverhaul:spirit category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:obsidian_monolith category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:totemic_wall category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:totemic_bomb category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:glacial_wall category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:quick_growing_vine category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:quick_growing_kelp category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:poison_quill_vine category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:poison_anemone category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:spider_egg category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:insect_swarm category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:apostle category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:warlock category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wartling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:heretic category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:maverick category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:reprobate category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:crone category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:heresiarch category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skeleton_villager_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zpiglin_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zpiglin_brute_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:malghast category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:inferno category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:damned category=MONSTER alliance=demon",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vampire_bat category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hostile_black_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:frayed category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:rattled category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hostile_zombie_vindicator category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hostile_skeleton_pillager category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:reaper category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:border_wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:muck_wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:crypt_slime category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:web_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:icy_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bone_spider category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:brood_mother category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cairn_necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:mossy_necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:haunted_armor category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:watchling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:blastling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:snareling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:endersent category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ender_keeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vex_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:irk_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zombie_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zombie_villager_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:husk_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:drowned_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:frozen_zombie_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:jungle_zombie_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:frayed_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:blackguard_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:blackguard_variant_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skeleton_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:stray_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wither_skeleton_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:mossy_skeleton_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:sunken_skeleton_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:rattled_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cairn_necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:mossy_necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:drowned_necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wither_necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vanguard_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:reaper_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wraith_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:border_wraith_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:muck_wraith_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:phantom_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skeleton_pillager category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:rogueguard_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zombie_vindicator category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_evoker category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_geomancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_iceologer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_cryologer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_wind_caller category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bound_storm_caster category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:haunted_armor_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:haunted_skull category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:sprite category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:burning_hoglin category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:mini_ghast category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ghast_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:blaze_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wildfire category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:slime_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:magma_cube_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:crypt_slime_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:tropical_slime_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:spider_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cave_spider_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:web_spider_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:icy_spider_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bone_spider_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:brood_mother_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:prisoner category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:neollager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:pillager_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:imperial_guard_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:piker_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:signaler_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vindicator_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:royal_guard_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vindicator_chef_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:mountaineer_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:crusher_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:evoker_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:enchanter_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:geomancer_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:iceologer_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cryologer_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wind_caller_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:storm_caster_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ripper_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:trampler_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ravaged category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ravager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:armored_ravager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:zombie_ravager category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:witch_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:warlock_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:heretic_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:maverick_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:reprobate_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:black_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skeleton_wolf category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:winter_wolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:stormhound category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hellhound category=MONSTER alliance=demon",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:twilight_goat category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:snapper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:gnasher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:guardian_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:elder_guardian_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bear_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:polar_bear_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hoglin_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:black_beast category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:whisperer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wavewhisperer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:leapleaf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:stone_ministrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:redstone_ministrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:flame_construct category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ice_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:squall_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:redstone_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:grave_golem category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:haunt category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:redstone_monstrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:redstone_cube category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:grave_monstrosity category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:grave_cube category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:watchling_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:blastling_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:snareling_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:sorcerer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:envioker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:tormentor category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:inquillager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:conquillager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:piker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:ripper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:trampler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:crusher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:storm_caster category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cryologer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:preacher category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:minister category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hostile_redstone_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hostile_redstone_monstrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vizier category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:vizier_clone category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:irk category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wight category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:carrion_maggot category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:carrion_fly category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skull_lord category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:bone_lord category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:wither_necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:warg category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:skeletal_warg category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:cerberus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:breeze_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hurricane category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety:hurricane_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:ender_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:netherite_monstrosity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:deepling_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:deepling_brute_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:deepling_angler_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:deepling_priest_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:deepling_warlock_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:lionfish category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:coral_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:coralssus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:leviathan category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:ignited_revenant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:ignited_berserker category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:watcher_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:the_prowler category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:zombie_amethyst_crab category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:ancient_remnant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:koboleton_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:kobolediator category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:wadjet category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:draugr_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:royal_draugr_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:elite_draugr_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:draugr_necromancer_servant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:aptrgangr category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:draugr_necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:hippocamtus category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:cindaria_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:clawdian category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:urchinkin_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:drowned_host_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=goety_cataclysm:symbiocto_servant category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:zombie_brute category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:giant_skeleton category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:raven category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=eidolon_repraised:slimy_slug category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=embers:ancient_golem category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:reaper category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:acolyte category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:corrupted_vindicator category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:corrupted_pillager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:corrupted_evoker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:skeleton_creeper category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:ghoul category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:tormented_villager category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:revenant category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:wraith category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:nightmare category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:ghouling category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:lich category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:nameless_hanged category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:raven category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:magpie category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=graveyard:crow category=AMBIENT alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=forbidden_arcanus:lost_soul category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=forbidden_arcanus:corrupt_lost_soul category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=forbidden_arcanus:enchanted_lost_soul category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=forbidden_arcanus:dark_trader category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:dungeon_keeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:dungeon_slime category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:hollow category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:undead_knight category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:moon_queen category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:dungeon_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:spiderling category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:moon_acolyte category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:crystalline_sprite category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:spirit category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:disturbed_hollow category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:aurorian_pig category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:aurorian_rabbit category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=theaurorian:aurorian_sheep category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:siren_entity category=WATER_CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:siren_familiar category=WATER_CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:firenando_entity category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:firenando_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:flashjack_entity category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:flashjack_familiar category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:fire_mage category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:water_mage category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:air_mage category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:earth_mage category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:flashing_weald_walker category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_skelehorse category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_camel category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_dolphin category=WATER_CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_strider category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_direwolf category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_wskeleton category=CREATURE alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_slime category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_bee category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=ars_elemental:summon_vhex category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:debug_wizard category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:spectral_steed category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:summoned_vex category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:pyromancer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:cryomancer category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:necromancer category=MONSTER alliance=undead",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:summoned_polar_bear category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:dead_king category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:catacombs_zombie category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:archevoker category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:magehunter_vindicator category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:citadel_keeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:fire_boss category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:priest category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:apothecarist category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:cultist category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:cursed_armor_stand category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=irons_spellbooks:ice_spider category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:jungle_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:bamboo_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:desert_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:badlands_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:hills_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:savannah_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:mushroom_creeper category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:swamp_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:dripstone_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:cave_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:dark_oak_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:spruce_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:beach_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:snowy_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:ocean_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=creeperoverhaul:birch_creeper category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:owl category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:baba_yaga category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:ent category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:leonard category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:imp category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:mandrake category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:spectral_pig category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:demon category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:poltergeist category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:banshee category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:spectre category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:parasitic_louse category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:nightmare category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:coven_witch category=CREATURE alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:werewolf category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:lilith category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:elle category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:vampire category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:insanity category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:death category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:horned_huntsman category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:mirror_demon category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:hunter category=MONSTER alliance=unclassified",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:hobgoblin category=CREATURE alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:mog category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS id=witchery:gulg category=MONSTER alliance=fae",
+      "occurrences": 2
+    },
+    {
+      "message": "TMM_MOB_CENSUS_SUMMARY modded_nonmisc=1067 classified=282 unclassified=785",
+      "occurrences": 2
+    },
+    {
+      "message": "[System] [CHAT] Welcome! You are in Newbie Mode. Complete the Introduction graduation quest when ready.",
+      "occurrences": 1
+    },
+    {
+      "message": "Food recipe audit rejected 2 of 8 reviewed outputs (native fallback): {minecraft:cooked_cod=missing_or_uninspectable_active_recipe, minecraft:cooked_beef=missing_or_uninspectable_active_recipe}",
+      "occurrences": 3
+    },
+    {
+      "message": "[System] [CHAT] Paths: tyr_progression:newbie, tyr_progression:normie, tyr_progression:core, tyr_progression:hunter, tyr_progression:monk",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:newbie: joined=true, XP=0, rank=0, points=0, skills={}, milestones=[]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:normie: joined=false, XP=0, rank=0, points=0, skills={}, milestones=[]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:core: joined=false, XP=0, rank=0, points=0, skills={}, milestones=[]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 0 | progress: 0.0000/1000 | unspent points: 0 | configured base growth: 1.0200 | first completions: 0",
+      "occurrences": 2
+    },
+    {
+      "message": "[System] [CHAT] Your mode: Newbie",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP rejected: effective 0.0000, current P=0, progress 0.0000 (Rejected)",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] You're now in Regular Mode. Newbie inventory and travel protection has ended.",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP credited: effective 1000.0000, current P=1, progress 0.0000 (Recorded)",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 1 | progress: 0.0000/1000 | unspent points: 1 | configured base growth: 1.0200 | first completions: 0",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP credited: effective 980.3922, current P=1, progress 980.3922 (Recorded)",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 1 | progress: 980.3922/1000 | unspent points: 1 | configured base growth: 1.0200 | first completions: 0",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:core: joined=true, XP=1980, rank=2, points=0, skills={tyr_progression:tmm_magic_reservoir_1=1}, milestones=[]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 1 | progress: 980.3922/1000 | unspent points: 0 | configured base growth: 1.0200 | first completions: 0",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:monk: joined=true, XP=1000, rank=1, points=0, skills={tyr_progression:armor_lock=1, tyr_progression:iron_palm=1, tyr_progression:momentum_glide=1, tyr_progression:hand_mining=1, tyr_progression:reserved_fist=1}, milestones=[]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] Granted 1000 progression XP to tyr_progression:monk",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:core: rank 2, skills {tyr_progression:tmm_magic_reservoir_1=1}",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:monk: rank 1, skills {tyr_progression:armor_lock=1, tyr_progression:hand_mining=1, tyr_progression:iron_palm=1, tyr_progression:momentum_glide=1, tyr_progression:reserved_fist=1}",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:mxp: 1980.39215686274509803921568627450980392156862745098039215686274509803921568627450980392156862745098039215686274509803921568627450980 XP, committed points 1, debt 0",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP credited: effective 1000.0000, current P=2, progress 980.3922 (Recorded)",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 2 | progress: 980.3922/1000 | unspent points: 1 | configured base growth: 1.0200 | first completions: 0",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 4 | progress: 859.9079/1000 | unspent points: 0 | configured base growth: 1.0200 | first completions: 1",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] <player> has made the advancement [Monster Hunter]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] tyr_progression:monk: joined=true, XP=16284, rank=1, points=12, skills={tyr_progression:graceful_step=1, tyr_progression:barehand_efficiency=1, tyr_progression:iron_palm=1, tyr_progression:reserved_fist=1, tyr_progression:body_speed=1, tyr_progression:armor_lock=1, tyr_progression:momentum_glide=1, tyr_progression:hand_mining=1}, milestones=[tyr_progression:trial_ten_logs, tyr_progression:trial_five_stone]",
+      "occurrences": 1
+    },
+    {
+      "message": "[System] [CHAT] MXP current levels: 16 | progress: 284.7078/1000 | unspent points: 12 | configured base growth: 1.0200 | first completions: 6",
+      "occurrences": 1
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "unique_errors": [
+    "InternalError: Failed to load Java class 'java.lang.System': Class is not allowed by class filter! (server_scripts:zz_tmm_world_observe.js#8)",
+    "TypeError: Cannot find function getGameTime in object ServerLevel[<test-world>]."
+  ],
+  "not_bypassed": true
+}
