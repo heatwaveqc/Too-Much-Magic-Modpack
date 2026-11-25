@@ -23,6 +23,10 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:mutation",new Mutation());
         REGISTRY.register("tyr_progression:reward_receipt",new Receipt());
         REGISTRY.register("tyr_progression:derived_state",new Derived());
+        REGISTRY.register("tyr_progression:resource",new Resource());
+        REGISTRY.register("tyr_progression:elixir",new Elixir());
+        REGISTRY.register("tyr_progression:discovery",new Discovery());
+        REGISTRY.register("tyr_progression:mode",new Mode());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -124,6 +128,107 @@ public final class AdminCapabilities {
                     throw new IllegalStateException("Mutation state changed");
                 p.setData(ProgressionAttachments.MUTATIONS.get(),next);
             });
+        }
+    }
+
+    private static final class Resource implements Handler<ServerPlayer> {
+        public String description(){return "Configured personal resource; amounts are raw integer units, not displayed fractions";}
+        public Collection<String> keys(ServerPlayer p){
+            return io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.current().keySet();
+        }
+        private io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.AdminSnapshot snapshot(ServerPlayer p,String key){
+            return io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.adminSnapshot(p,key);
+        }
+        public String inspect(ServerPlayer p,String key){
+            var s=snapshot(p,key);
+            return s.value()+"/"+s.capacity()+", initial="+s.initial()+", stored="+s.stored()
+                +", joined="+s.joined()+", active="+s.active();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var s=snapshot(p,key);
+            return s.stored()!=null&&s.stored()>s.capacity()?List.of("Stored value exceeds current capacity"):List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.SET,Action.ADD,Action.SUBTRACT,Action.FILL,Action.EMPTY,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
+            var s=snapshot(p,key);
+            if(!s.joined())throw new IllegalArgumentException("Resource owner path not joined");
+            if(amount>s.capacity())throw new IllegalArgumentException("Amount exceeds current resource capacity");
+            long next=switch(action){
+                case SET -> amount;
+                case ADD -> s.value()+amount;
+                case SUBTRACT -> s.value()-amount;
+                case FILL -> s.capacity();
+                case EMPTY -> 0;
+                case RESET -> s.initial();
+                default -> throw new IllegalArgumentException("Unsupported resource action");
+            };
+            if(next<0||next>s.capacity())throw new IllegalArgumentException("Result outside current resource capacity");
+            return new Change(inspect(p,key),next+"/"+s.capacity(),()->io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.adminSet(p,s,(int)next));
+        }
+    }
+
+    private static final class Elixir implements Handler<ServerPlayer> {
+        public String description(){return "Personal elixir binding; reset explicitly unbinds and ends exclusive nourishment until the next eligible serving";}
+        public Collection<String> keys(ServerPlayer p){return io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminPaths();}
+        public String inspect(ServerPlayer p,String key){
+            var bound=io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminBinding(p,key);
+            return "bound="+(bound.isEmpty()?"none":bound)+", exclusive="+io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminExclusive(p,key);
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var bound=io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminBinding(p,key);
+            if(bound.isEmpty())return List.of();
+            var id=ResourceLocation.tryParse(bound);
+            if(id==null||!BuiltInRegistries.ITEM.containsKey(id)||io.github.heatwaveqc.tyr.progression.data.ElixirSpec.excluded(bound))
+                return List.of("Bound item missing or excluded; explicit unbind recommended");
+            return List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var bound=io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminBinding(p,key);
+            return new Change(inspect(p,key),"unbound; ordinary nourishment resumes unless another binding is active",
+                ()->io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.adminUnbind(p,key,bound));
+        }
+    }
+
+    private static final class Discovery implements Handler<ServerPlayer> {
+        public String description(){return "Per-path food discovery; reset forgets only that local item, never the lifetime XP receipt";}
+        public Collection<String> keys(ServerPlayer p){
+            var keys=new ArrayList<String>();
+            p.getData(ProgressionAttachments.PATH_DISCOVERIES.get()).consumed()
+                .forEach((path,items)->items.forEach(item->keys.add(path+"|"+item)));
+            return keys;
+        }
+        public String inspect(ServerPlayer p,String key){return "local discovery present: "+key;}
+        public List<String> validate(ServerPlayer p,String key){
+            var ids=pair(key);var item=ResourceLocation.tryParse(ids[1]);
+            var issues=new ArrayList<String>();
+            if(PathRegistry.get(ids[0])==null)issues.add("Path no longer configured");
+            if(item==null||!BuiltInRegistries.ITEM.containsKey(item))issues.add("Item no longer registered");
+            return issues;
+        }
+        public Set<Action> actions(){return Set.of(Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var ids=pair(key);
+            var old=p.getData(ProgressionAttachments.PATH_DISCOVERIES.get());
+            var rows=new HashMap<>(old.consumed());
+            var items=new ArrayList<>(rows.getOrDefault(ids[0],List.of()));
+            if(!items.remove(ids[1]))throw new IllegalStateException("Discovery already absent");
+            if(items.isEmpty())rows.remove(ids[0]);else rows.put(ids[0],items);
+            var next=new io.github.heatwaveqc.tyr.progression.state.PathDiscoveries(rows);
+            return new Change(inspect(p,key),"local discovery absent; lifetime reward receipts unchanged",()->{
+                if(!p.getData(ProgressionAttachments.PATH_DISCOVERIES.get()).equals(old))
+                    throw new IllegalStateException("Discovery state changed");
+                p.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),next);
+            });
+        }
+    }
+
+    private static final class Mode implements Handler<ServerPlayer> {
+        public String description(){return "Read-only stored mode inventory; edits require a registered mechanic-specific validator";}
+        public Collection<String> keys(ServerPlayer p){return p.getData(ProgressionAttachments.PLAYER_MODES.get()).values().keySet();}
+        public String inspect(ServerPlayer p,String key){return p.getData(ProgressionAttachments.PLAYER_MODES.get()).values().get(key);}
+        public List<String> validate(ServerPlayer p,String key){
+            return List.of("Opaque mechanic-owned value; use a dedicated handler to validate or edit");
         }
     }
 
