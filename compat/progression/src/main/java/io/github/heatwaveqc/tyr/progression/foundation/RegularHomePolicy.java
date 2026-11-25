@@ -14,6 +14,7 @@ public final class RegularHomePolicy {
     public static final String PENDING = "pending_graduation";
     public static final String LEGACY_REVIEW = "legacy_review";
     public static final String AVAILABLE = "available";
+    public static final String SELECTED = "selected_";
     public static final String RESERVED = "reserved_";
     public static final String SPENT = "spent_";
     public static final String GENERIC = "generic";
@@ -58,6 +59,16 @@ public final class RegularHomePolicy {
         if (PENDING.equals(stored) && regular && nativeGrant == NativeGrant.NOT_GIVEN)
             return AVAILABLE;
         return stored;
+    }
+
+    /** Select exactly one approved custom home; the owner-bound blueprint is issued once. */
+    public static String select(boolean regular, String stored, String choice) {
+        return canUse(regular, stored) && custom(choice) ? SELECTED + choice : null;
+    }
+
+    public static String reserveSelected(boolean regular, String stored, String choice) {
+        return regular && custom(choice) && (SELECTED + choice).equals(stored)
+            ? RESERVED + choice : null;
     }
 
     public static String reserve(boolean regular, String stored, String choice) {
