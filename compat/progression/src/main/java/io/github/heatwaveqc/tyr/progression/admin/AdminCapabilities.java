@@ -71,7 +71,7 @@ public final class AdminCapabilities {
     }
 
     private static final class Mutation implements Handler<ServerPlayer> {
-        public String description(){return "Saved mutation effect, potency and progress per policy owner; reset removes only this effect";}
+        public String description(){return "Saved mutation effect, potency and progress per policy owner; set uses human rank 1+; rank zero or reset removes only this effect";}
         public Collection<String> keys(ServerPlayer p){
             var result=new TreeSet<String>();
             p.getData(ProgressionAttachments.MUTATIONS.get()).paths().forEach((owner,state)->{
@@ -81,6 +81,14 @@ public final class AdminCapabilities {
                     if(at>0)result.add(owner+"|"+k.substring(0,at));
                 });
             });
+            for(var owner:PathRegistry.mutationPolicies().entrySet()){
+                if(!ledger(p).get(owner.getKey()).joined())continue;
+                for(var id:BuiltInRegistries.MOB_EFFECT.keySet()){
+                    var holder=BuiltInRegistries.MOB_EFFECT.getHolder(id).orElse(null);
+                    if(holder!=null&&owner.getValue().eligible(id.toString(),holder.value().isInstantenous()))
+                        result.add(owner.getKey()+"|"+id);
+                }
+            }
             return result;
         }
         private HunterMutationState state(ServerPlayer p,String owner){
@@ -95,7 +103,7 @@ public final class AdminCapabilities {
         public String inspect(ServerPlayer p,String key){
             var ids=pair(key);
             var state=state(p,ids[0]);
-            return "amplifier="+state.unlocked().getOrDefault(ids[1],-1)+", progress="+progress(state,ids[1]);
+            return "rank="+(state.unlocked().getOrDefault(ids[1],-1)+1)+", progress="+progress(state,ids[1]);
         }
         public List<String> validate(ServerPlayer p,String key){
             var ids=pair(key);
@@ -118,15 +126,25 @@ public final class AdminCapabilities {
             }
             return issues;
         }
-        public Set<Action> actions(){return Set.of(Action.RESET);}
-        public Change plan(ServerPlayer p,String key,Action action){
+        public Set<Action> actions(){return Set.of(Action.RESET,Action.SET,Action.ADD,Action.SUBTRACT);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
             var ids=pair(key);
             var old=p.getData(ProgressionAttachments.MUTATIONS.get());
             var state=state(p,ids[0]);
-            var unlocked=new HashMap<>(state.unlocked());unlocked.remove(ids[1]);
-            var progress=new HashMap<>(state.progress());progress.keySet().removeIf(k->k.startsWith(ids[1]+"@"));
-            var next=old.with(ids[0],new HunterMutationState(progress,unlocked));
-            return new Change(inspect(p,key),"mutation and its progress removed; other effects/owners preserved",()->{
+            int current=state.unlocked().getOrDefault(ids[1],-1)+1;
+            if(amount>10)throw new IllegalArgumentException("Mutation amount outside supported range");
+            long rank=switch(action){case RESET->0;case SET->amount;case ADD->current+amount;case SUBTRACT->current-amount;default->throw new IllegalArgumentException("Unsupported action");};
+            var policy=PathRegistry.hunterMutationPolicy(ids[0]);
+            if(rank<0)throw new IllegalArgumentException("Negative mutation rank");
+            if(rank>0){
+                var id=ResourceLocation.tryParse(ids[1]);
+                var effect=id==null?null:BuiltInRegistries.MOB_EFFECT.getHolder(id).orElse(null);
+                if(policy==null||!ledger(p).get(ids[0]).joined()||effect==null||!policy.eligible(ids[1],effect.value().isInstantenous()))
+                    throw new IllegalArgumentException("Requires joined owner and eligible registered effect");
+            }
+            var changed=state.adminRank(ids[1],(int)rank,policy==null?0:policy.maximumAmplifier(),policy==null?1:policy.targetDurationTicks());
+            var next=old.with(ids[0],changed);
+            return new Change(inspect(p,key),"mutation rank="+rank+"; selected effect progress normalized; other effects/owners preserved",()->{
                 if(!p.getData(ProgressionAttachments.MUTATIONS.get()).equals(old))
                     throw new IllegalStateException("Mutation state changed");
                 p.setData(ProgressionAttachments.MUTATIONS.get(),next);
