@@ -12,13 +12,17 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 public final class EconomyEnchantingMixinPlugin implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         boolean eidolon = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.EidolonPersonalFilterMixin");
+        boolean anvil = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.PortableAnvilOpenMixin");
         boolean portable = mixinClassName.startsWith("io.github.heatwaveqc.tmm.economy.mixin.PortableEnchanting");
-        if (!eidolon && !portable && !mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
+        if (!eidolon && !portable && !anvil && !mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.ApothicPersonalFilterMixin"))
             return true; // No changes to existing unrelated mixins.
         LoadingModList list = LoadingModList.get();
         if (list == null) return false;
         boolean enabled = EnchantingFeatureGate.enabled(id -> list.getMods().stream()
             .anyMatch(mod -> mod.getModId().equals(id)));
+        if (anvil) return EnchantingFeatureGate.portableAnvilEnabled(id -> list.getMods().stream()
+            .anyMatch(mod -> mod.getModId().equals(id)), list.getMods().stream().anyMatch(mod ->
+            mod.getModId().equals("occultism") && mod.getVersion().toString().equals("1.227.0")));
         return enabled && (!eidolon || list.getMods().stream().anyMatch(mod ->
             mod.getModId().equals("eidolon_repraised") && mod.getVersion().toString().equals("0.5.0.8")));
     }

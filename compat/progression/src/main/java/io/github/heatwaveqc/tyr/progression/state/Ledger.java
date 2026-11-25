@@ -45,9 +45,8 @@ public record Ledger(Map<String, Track> paths, Map<String, Wallet> wallets,
         BigDecimal total = economy.currentXp().get(id);
         BigDecimal goal = spec.xpPerPoint();
         long level = ExperienceEconomy.level(economy,spec);
-        long committed = ExperienceEconomy.committed(economy,id);
-        long free = level - committed;
-        if (free < 0 || free > Integer.MAX_VALUE)
+        long free = ExperienceEconomy.available(economy,spec);
+        if (free > Integer.MAX_VALUE)
             throw new IllegalStateException("MXP purchases exceed earned points or integer range");
         int rank = (int) Math.min(Integer.MAX_VALUE,(long)level+1);
         long display = total.compareTo(BigDecimal.valueOf(Long.MAX_VALUE))>0

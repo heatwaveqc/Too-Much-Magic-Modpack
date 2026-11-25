@@ -85,12 +85,15 @@ class ExperienceEconomyTest {
         assertEquals(0, threshold.ledger().currentXp().get(MXP.id()).compareTo(new BigDecimal("1250")));
     }
 
-    @Test void extremeGrowthIsAcceptedButUnboundedLevelEarningFailsAtomically() {
+    @Test void extremeGrowthSaturatesAtConfiguredMaximum() {
         var limited = new ExperienceEconomy.SystemSpec("test:limited",
                 new BigDecimal("1000"), 10, new BigDecimal("1e12"));
         var initial = earnFixed(ExperienceEconomy.Ledger.empty(), limited, "test:starter", 1000);
-        assertThrows(IllegalArgumentException.class, () -> ExperienceEconomy.earn(
-                initial, limited, "test:runaway", null, new BigDecimal("2"), false, 0.001));
+        var capped = ExperienceEconomy.earn(
+                initial, limited, "test:runaway", null, new BigDecimal("2"), false, 0.001);
+        assertTrue(capped.accepted());
+        assertEquals(9000, capped.effectiveXp().intValueExact());
+        assertEquals(10, ExperienceEconomy.level(capped.ledger(), limited));
         assertEquals(1000, initial.currentXp().get(limited.id()).intValueExact());
         assertEquals(1, ExperienceEconomy.level(initial, limited));
         assertThrows(IllegalArgumentException.class,

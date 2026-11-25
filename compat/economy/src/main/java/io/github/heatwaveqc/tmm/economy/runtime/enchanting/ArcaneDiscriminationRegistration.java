@@ -33,6 +33,7 @@ public final class ArcaneDiscriminationRegistration {
         if (!EnchantingFeatureGate.enabled()) return;
         MENUS.register(bus);
         VirtualShelfMenus.register(bus);
+        if (EnchantingFeatureGate.portableAnvilEnabled()) PortableAnvilMenus.register(bus);
         VirtualEnchantingReloads.register();
         bus.addListener(ArcaneDiscriminationRegistration::registerAbility);
         bus.addListener(ArcaneDiscriminationRegistration::registerPayload);

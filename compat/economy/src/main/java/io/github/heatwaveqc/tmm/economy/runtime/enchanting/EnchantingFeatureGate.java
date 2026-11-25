@@ -13,6 +13,17 @@ public final class EnchantingFeatureGate {
             && loaded.test("apothic_enchanting");
     }
 
+    public static boolean portableAnvilEnabled(Predicate<String> loaded, boolean reviewedOccultism) {
+        return reviewedOccultism && loaded.test("occultism") && enabled(loaded);
+    }
+
+    public static boolean portableAnvilEnabled() {
+        ModList mods = ModList.get();
+        return mods != null && portableAnvilEnabled(mods::isLoaded,
+            mods.getModContainerById("occultism").map(container ->
+                container.getModInfo().getVersion().toString().equals("1.227.0")).orElse(false));
+    }
+
     public static boolean enabled() {
         ModList mods = ModList.get();
         return mods != null && enabled(mods::isLoaded);

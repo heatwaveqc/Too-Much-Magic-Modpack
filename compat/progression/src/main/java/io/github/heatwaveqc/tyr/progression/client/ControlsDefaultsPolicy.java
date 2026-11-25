@@ -27,11 +27,49 @@ public final class ControlsDefaultsPolicy {
         "key.sprint", "key.swapOffhand", "key.togglePerspective", "key.use"
     );
 
-    public enum Decision { VANILLA, PRESERVE_PLAYER, DEFAULT_UNBOUND }
+    // Intentional GUI-only exception to the pack's otherwise unbound mod controls.
+    // Do not change the vanilla middle-mouse pick-block mapping.
+    private static final String CONTEXTUAL_SORT = "key.invtweaks_sort_either.desc";
+
+    // Exact IDs shared with the pack's Default Options generator (#510).
+    // Preserve upstream key AND modifier defaults, including intentionally unbound ones.
+    private static final Set<String> JEI_NATIVE_DEFAULTS = Set.of(
+        "key.jei.bookmark",
+        "key.jei.clearSearchBar",
+        "key.jei.closeRecipeGui",
+        "key.jei.focusSearch",
+        "key.jei.nextCategory",
+        "key.jei.nextPage",
+        "key.jei.nextRecipePage",
+        "key.jei.nextSearch",
+        "key.jei.previousCategory",
+        "key.jei.previousPage",
+        "key.jei.previousRecipePage",
+        "key.jei.previousSearch",
+        "key.jei.recipeBack",
+        "key.jei.recipeForward",
+        "key.jei.showRecipe",
+        "key.jei.showUses",
+        "key.jei.toggleBookmarkOverlay",
+        "key.jei.toggleOverlay",
+        "key.jei.transferRecipeGui",
+        "key.jei.transferRecipeBookmark"
+    );
+
+    public enum Decision { VANILLA, NATIVE_DEFAULT, PRESERVE_PLAYER, DEFAULT_UNBOUND, DEFAULT_PACK_BOUND }
+
+    public static Set<String> nativeDefaults() { return JEI_NATIVE_DEFAULTS; }
+
+    public static boolean isContextualSort(String keyName) {
+        return CONTEXTUAL_SORT.equals(keyName);
+    }
 
     public static Decision decide(String keyName, Set<String> namesPresentBeforeLaunch) {
         if (VANILLA.contains(keyName)) return Decision.VANILLA;
+        // No changes to current or Reset for these IDs, saved or fresh.
+        if (JEI_NATIVE_DEFAULTS.contains(keyName)) return Decision.NATIVE_DEFAULT;
         if (namesPresentBeforeLaunch.contains(keyName)) return Decision.PRESERVE_PLAYER;
+        if (isContextualSort(keyName)) return Decision.DEFAULT_PACK_BOUND;
         return Decision.DEFAULT_UNBOUND;
     }
 

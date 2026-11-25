@@ -14,7 +14,7 @@ def verify_selection(root=ROOT, manifest=None):
     selected = json.loads((root / "manifest/first-party-runtime.json").read_text(encoding="utf-8"))
     ids = {row["mod_id"] for row in selected["modules"]}
     assert ids == set(target["required_first_party_mod_ids"])
-    assert "tyr_progression" in ids and not ({"tmm_progression", "tmm_mxp"} & ids)
+    assert "tyr_progression" in ids and not ({"tmm_progression", "tmm_mxp", "tmm_transformations"} & ids)
     for path in ("mods/tyzs-skills.pw.toml", "mods/puffish-skills.pw.toml",
                  "mods/tmm-mxp.pw.toml", "config/tyzs_skills", "config/tyzs_skills-common.toml",
                  "config/tyzs_skills-client.toml", "kubejs/server_scripts/tmm_magic_core_thrift.js"):
@@ -22,10 +22,13 @@ def verify_selection(root=ROOT, manifest=None):
     base = root / "compat/progression/src/main"
     metadata = (base / "templates/META-INF/neoforge.mods.toml").read_text(encoding="utf-8")
     assert 'config="tyr_progression_mxp.mixins.json"' in metadata
+    assert 'config="tmm_transformations.mixins.json"' in metadata
     owner = base / "java/io/github/heatwaveqc/tyr/progression"
     entry = (owner / "ProgressionMod.java").read_text(encoding="utf-8")
     assert 'MOD_ID = "tyr_progression"' in entry
     assert "new io.github.heatwaveqc.tyr.progression.mxp.MxpMod" in entry
+    assert entry.count("io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container)") == 1
+    assert 'ModList.get().isLoaded("tmm_transformations")' in entry
     assert 'ModList.get().isLoaded("tmm_mxp")' in entry
     assert 'ModList.get().isLoaded("tyzs_skills")' in entry
     api = (owner / "core/ProgressionApi.java").read_text(encoding="utf-8")

@@ -60,6 +60,7 @@ public final class ProgressionMenuNetwork {
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
+    private static final Map<UUID,String> LAST_VIEW = new HashMap<>();
     private static final Map<UUID, Long> LAST_MUTATION = new HashMap<>();
 
     public static void register(RegisterPayloadHandlersEvent event) {
@@ -81,10 +82,17 @@ public final class ProgressionMenuNetwork {
                         boolean changed = switch (payload.action()) {
                             case "buy" -> validId(payload.skill()) && validId(payload.currency())
                                     && ProgressionApi.buy(player, payload.path(), payload.skill(),payload.currency());
+                            case "external_buy" -> "tyr_progression:core".equals(payload.path())
+                                    && validId(payload.skill())
+                                    && io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(player,payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
                             case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
                         };
+                        if (changed && ("buy".equals(payload.action()) || "respec".equals(payload.action()))) {
+                            io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime.reconcile(player);
+                            io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra.reconcile(player,true);
+                        }
                         // A rejected mutation also receives a fresh projection
                         // to explain the real server-side prerequisite.
                         send(player, payload.path());
@@ -114,6 +122,7 @@ public final class ProgressionMenuNetwork {
         if (!validId(pathId)) return;
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return;
+        LAST_VIEW.put(player.getUUID(),pathId);
         Track state = ProgressionApi.track(player, pathId);
         JsonObject json = new JsonObject();
         json.addProperty("path", pathId);
@@ -129,11 +138,17 @@ public final class ProgressionMenuNetwork {
         long level=spec==null?state.rank():
             io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.level(ledger.economy(),spec);
         json.addProperty("rank",level);
+        if(PathRegistry.config().masteryStages().containsKey(pathId))
+            json.addProperty("mastery_stage",state.rank());
         json.addProperty("max_rank",spec==null?channel.maxRank():spec.maxLevel());
+        if(PathRegistry.config().masteryStages().containsKey(pathId))
+            json.addProperty("max_mastery_stage",
+                PathRegistry.config().masteryStages().get(pathId).maxStage());
         json.addProperty("xp",spec==null?java.math.BigDecimal.valueOf(state.xp()):
                 ledger.economy().currentXp().getOrDefault(spec.id(),java.math.BigDecimal.ZERO));
         json.addProperty("points",spec==null?state.points():
                 io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.available(ledger.economy(),spec));
+        json.addProperty("debt",spec==null?0L:io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.debt(ledger.economy(),spec));
         long threshold;
         long currentStart;
         if(spec==null){
@@ -163,6 +178,7 @@ public final class ProgressionMenuNetwork {
             row.addProperty("point_name",channelName==null?"Points":channelName.pointName());
             row.addProperty("level",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
                 .level(ledger.economy(),systemSpec));
+            row.addProperty("debt",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.debt(ledger.economy(),systemSpec));
             row.addProperty("points",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
                 .available(ledger.economy(),systemSpec));
             row.addProperty("xp",ledger.economy().currentXp()
@@ -180,6 +196,7 @@ public final class ProgressionMenuNetwork {
             challenge.addProperty("goal",upcoming.total());
             json.add("next_challenge",challenge);
         }
+        long invested=io.github.heatwaveqc.tyr.progression.core.ChannelEngine.investedRanks(ledger,pathId,PathRegistry.config());
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
             JsonObject item = new JsonObject();
@@ -190,6 +207,10 @@ public final class ProgressionMenuNetwork {
             item.addProperty("owned", owned);
             item.addProperty("maximum", skill.maxRank());
             item.addProperty("required_rank", skill.nextRequiredRank(owned));
+            if(owned<skill.maxRank()&&skill.nextInvestedRequirement(owned)>0){
+                item.addProperty("required_invested_ranks",skill.nextInvestedRequirement(owned));
+                item.addProperty("invested_ranks",invested);
+            }
             item.addProperty("eligible",PathRegistry.skillEligible(player,pathId,skill.id()));
             item.addProperty("auto", !skill.autoRanks().isEmpty());
             var binding=PathRegistry.config().skills().get(new io.github.heatwaveqc.tyr.progression.data.ChannelConfig.SkillKey(pathId,skill.id()));
@@ -241,13 +262,32 @@ public final class ProgressionMenuNetwork {
             item.add("effects", effects);
             skills.add(item);
         }
+        // External native rewards are ordinary graph nodes in Core's server
+        // projection, not extra Path ranks or an alternate payment ledger.
+        if ("tyr_progression:core".equals(pathId)) {
+            for (var reward : io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.current().values()) {
+                if (path.skills().stream().anyMatch(skill -> skill.id().equals(reward.id()))
+                        || !io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.visible(player,reward.id()))
+                    continue;
+                int owned=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,reward.id());
+                int price=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,reward.id());
+                boolean buyable=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.canBuy(player,reward.id());
+                skills.add(io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardNode.project(reward,owned,price,buyable));
+            }
+        }
         json.add("skills", skills);
         String payload=json.toString();
         if(payload.length()>262144){ProgressionMod.LOGGER.warn("Tree snapshot too large: {}",pathId);return;}
         PacketDistributor.sendToPlayer(player, new Snapshot(payload));
     }
 
+    public static void refresh(ServerPlayer player) {
+        var path=LAST_VIEW.get(player.getUUID());
+        if(path!=null)send(player,path);
+    }
+
     public static void forget(ServerPlayer player) {
+        LAST_VIEW.remove(player.getUUID());
         LAST_MUTATION.remove(player.getUUID());
     }
 }

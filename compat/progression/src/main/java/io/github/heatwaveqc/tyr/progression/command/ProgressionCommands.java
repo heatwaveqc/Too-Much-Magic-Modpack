@@ -62,6 +62,30 @@ public final class ProgressionCommands {
                                 success ? "Skill rank purchased" : "Skill purchase blocked"),false);
                             return success ? 1 : 0;
                         }))))
+            .then(Commands.literal("astral")
+                .then(Commands.literal("status").executes(ctx -> {
+                    ServerPlayer player=ctx.getSource().getPlayerOrException();
+                    String id="tyr_progression:astral_perk_point";
+                    int count=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.owned(player,id);
+                    int price=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.nextPrice(player,id);
+                    var nativeState=io.github.heatwaveqc.tyr.progression.runtime.external.AstralPerkTokens.snapshot(player);
+                    boolean ready=nativeState.mastered();
+                    ctx.getSource().sendSuccess(() -> Component.literal(
+                        "Astral MXP perk tokens: "+count+" purchased | "+
+                        (price>0?"next price "+price+" MXP points":"price unset or purchase capped")+
+                        " | native mastery "+(ready?"reached": "locked/unavailable")+
+                        (nativeState.configuredCap()>0 ? " ("+nativeState.nativeLevel()+"/"+nativeState.configuredCap()+")" : "")),false);
+                    return 1;
+                }))
+                .then(Commands.literal("buy").executes(ctx -> {
+                    ServerPlayer player=ctx.getSource().getPlayerOrException();
+                    boolean ok=io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(
+                        player,"tyr_progression:astral_perk_point");
+                    ctx.getSource().sendSuccess(() -> Component.literal(ok
+                        ? "Purchased one permanent native Astral perk allocation token"
+                        : "Astral purchase blocked: reach native Astral level cap; check available points and offer limits"),false);
+                    return ok?1:0;
+                })))
             .then(Commands.literal("mutations")
                 .executes(ctx -> {
                     ServerPlayer player = ctx.getSource().getPlayerOrException();
@@ -156,6 +180,15 @@ public final class ProgressionCommands {
                         return ok ? 1 : 0;
                     })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
+                .then(DebugCommands.currency())
+                .then(DebugCommands.skill())
+                .then(DebugCommands.inspect())
+                .then(CapabilityCommands.root())
+                .then(DiagnosisCommands.diagnose())
+                .then(DiagnosisCommands.repair())
+                .then(Commands.literal("foodcensus")
+                    .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.FoodRegistryCensus
+                        .export(ctx.getSource())))
                 .then(Commands.literal("join")
                     .then(Commands.argument("path",ResourceLocationArgument.id())
                         .executes(ctx -> {
