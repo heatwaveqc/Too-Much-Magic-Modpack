@@ -17,6 +17,6 @@ public final class PortableApothicScreen extends ApothEnchantmentScreen {
         addRenderableWidget(Button.builder(Component.translatable("menu.tmm_economy.virtual_shelves.settings"), button -> {
             if (minecraft != null && minecraft.gameMode != null)
                 minecraft.gameMode.handleInventoryButtonClick(getMenu().containerId, PortableApothicMenu.SHELF_SETTINGS);
-        }).bounds(leftPos + 104, topPos + 4, 64, 18).build());
+        }).bounds(leftPos + 8, topPos + 4, 48, 18).build());
     }
 }
