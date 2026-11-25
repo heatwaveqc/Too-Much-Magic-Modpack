@@ -23,10 +23,6 @@ public final class ProgressionAttachments {
     public static final Supplier<AttachmentType<TooltipMilestones>> TOOLTIP_MILESTONES =
         ATTACHMENTS.register("tooltip_milestones", () -> AttachmentType.builder(TooltipMilestones::empty)
             .serialize(TooltipMilestonesCodec.CODEC).copyOnDeath().build());
-    public static final Supplier<AttachmentType<PersonalEnchantFilterState>> PERSONAL_ENCHANT_FILTER =
-        ATTACHMENTS.register("personal_enchant_filter", () ->
-            AttachmentType.builder(PersonalEnchantFilterState::empty)
-                .serialize(PersonalEnchantFilterState.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState>> PATH_RESOURCES =
         ATTACHMENTS.register("path_resources", () -> AttachmentType.builder(
             io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceState::empty)

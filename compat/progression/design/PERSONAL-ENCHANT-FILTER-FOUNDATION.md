@@ -1,5 +1,8 @@
 > Historical donor #449; consolidated into #471. Read PERSONAL-ENCHANT-FILTER-328.md for current scope and authority.
 
+> **Historical / superseded (2026-11-24):** Economy owns Arcane Discrimination and portable enchanting via [#682](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/pull/682). Do not restore this dormant Progression implementation. Original #471 source remains at `4209a4184ea146b071b503ab3a0d94cb63668c7b`. Retirement must follow #682 integration and confirmation of no deployed legacy escrow; Economy B/C acceptance remains outstanding.
+
+
 # Personal random-enchantment filter foundation (#328)
 
 ## Frozen source and exact runtime pins

@@ -69,7 +69,6 @@ public final class ProgressionMod {
         // Optional native form, death, mob-allegiance, magic and visual hooks.
         // Exactly one registration site in the one-JAR target architecture.
         io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
-        io.github.heatwaveqc.tyr.progression.runtime.PersonalEnchantFilterService.register();
         ProgressionEvents.register();
         io.github.heatwaveqc.tyr.progression.runtime.BountifulDecreeSeals.register();
         io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.register();
