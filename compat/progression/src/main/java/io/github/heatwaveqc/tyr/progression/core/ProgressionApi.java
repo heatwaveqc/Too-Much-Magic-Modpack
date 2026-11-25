@@ -56,23 +56,37 @@ public final class ProgressionApi {
         return BaselinePaths.hasSpecialist(ledger);
     }
 
-    public static boolean join(ServerPlayer player, String pathId) {
-        // Only the personal graduation/admin gateway may change baseline Paths.
-        if(BaselinePaths.isBaseline(pathId))return false;
-        Definition.Path path = PathRegistry.get(pathId);
-        var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !PathRegistry.eligible(player,pathId)) return false;
-        Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
-        if (ledger.get(pathId).joined()) return true;
-        if (NewbieMode.isNewbie(player)) return false;
-        // Core is a universal graduate tree, not a specialist enrollment.
-        if (!BaselinePaths.isCore(pathId))
-            for (BiPredicate<ServerPlayer,String> veto : JOIN_VETOES)
-                if (!veto.test(player,pathId)) return false;
-        if(!BaselinePaths.isCore(pathId))
-            for(Definition.Path other:PathRegistry.all().values())
+    /** Read-only operator-facing diagnosis, shared with the actual join gate. */
+    public static String joinBlocker(ServerPlayer player,String pathId){
+        if(BaselinePaths.isBaseline(pathId))return "Baseline requires graduation/stage gateway";
+        var path=PathRegistry.get(pathId);var channel=PathRegistry.channel(pathId);
+        if(path==null||channel==null)return "Unknown path or missing channel";
+        if(!PathRegistry.eligible(player,pathId))return "Configured eligibility failed";
+        var ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        if(ledger.get(pathId).joined())return "";
+        if(NewbieMode.isNewbie(player))return "Newbie stage blocks specialist enrollment";
+        if(!BaselinePaths.isCore(pathId)){
+            for(var veto:JOIN_VETOES)if(!veto.test(player,pathId))return "Registered join veto rejected";
+            for(var other:PathRegistry.all().values())
                 if(!pathId.equals(other.id())&&ledger.get(other.id()).joined()
-                    &&!PathRegistry.canCoexist(pathId,other.id()))return false;
+                        &&!PathRegistry.canCoexist(pathId,other.id()))return "Incompatible joined path: "+other.id();
+        }
+        return "";
+    }
+    public static String leaveBlocker(ServerPlayer player,String pathId){
+        if(player==null||player.getServer()==null||!player.getServer().isSameThread())return "Server thread required";
+        if(PathRegistry.get(pathId)==null)return "Unknown path";
+        if(BaselinePaths.isBaseline(pathId)||BaselinePaths.isCore(pathId)||"automatic".equals(PathRegistry.enrollment(pathId)))
+            return "Baseline, Core or automatic path cannot be manually removed";
+        if(!player.getData(ProgressionAttachments.LEDGER.get()).get(pathId).joined())return "Path not joined";
+        return "";
+    }
+    public static boolean join(ServerPlayer player, String pathId) {
+        if(!joinBlocker(player,pathId).isEmpty())return false;
+        Definition.Path path=PathRegistry.get(pathId);
+        var channel=PathRegistry.channel(pathId);
+        Ledger ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        if(ledger.get(pathId).joined())return true;
         // Join is a real Path change: TMM's configured default sacrifices
         // unallocated MXP, but never already purchased Core/retained Path ranks.
         Ledger next=ChannelEngine.join(ledger,path,channel);
@@ -253,7 +267,11 @@ public final class ProgressionApi {
     /** Trusted server-side event provenance filter: reject rewards for a specific path. */
     public static void recordFiltered(ServerPlayer player, Signal signal,
                                       java.util.function.Predicate<Definition.Path> eligiblePath) {
-        if (!eligibleEarner(player)) return;
+        if (!eligibleEarner(player)){
+            io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"signal rejected at earning gate: "+signal.target());
+            return;
+        }
+        io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"signal received: "+signal.target());
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         MilestoneFeedback.Notice progressNotice = null;
@@ -273,14 +291,20 @@ public final class ProgressionApi {
             for(var source:system.sources()){
                 int sourceIndex=index++;
                 String cooldownKey=system.id()+"/"+sourceIndex;
-                if(!signal.matches(source.event(),source.selector())||!PathRegistry.sourceEligible(player,system.id(),sourceIndex))continue;
+                if(!signal.matches(source.event(),source.selector()))continue;
+                if(!PathRegistry.sourceEligible(player,system.id(),sourceIndex)){
+                    io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" rejected: source eligibility");continue;
+                }
                 long now=player.level().getGameTime();
                 var recent=cooldowns.computeIfAbsent(player.getUUID(),ignored->new HashMap<>());
                 long last=recent.getOrDefault(cooldownKey,Long.MIN_VALUE);
-                if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks())continue;
+                if(last!=Long.MIN_VALUE&&now>=last&&now-last<source.cooldownTicks()){
+                    io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" rejected: source cooldown");continue;
+                }
                 recent.put(cooldownKey,now);
                 long xp=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,system.id(),source.xp());
                 next=ChannelEngine.grant(next,system,xp,0);
+                io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->cooldownKey+" native grant nominal="+xp);
             }
         }
         // A shared source category is one authenticated accomplishment,
@@ -297,6 +321,7 @@ public final class ProgressionApi {
                         award.category(),first,award.nominal(),false));
             }
         }
+        if(activityAwards.isEmpty())io.github.heatwaveqc.tyr.progression.admin.XpTrace.note(player,()->"no eligible configured unified activity matched signal "+signal.target());
         next=ExperienceSourceRouter.batch(player,next,"activity:"+UUID.randomUUID(),activityAwards);
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
@@ -510,8 +535,29 @@ public final class ProgressionApi {
                 ChannelEngine.grant(prior,system,nominal,0));
         return true;
     }
+    /** Existing legacy source cooldowns; separate from persisted skill activation. */
+    public static java.util.Set<String> adminSourceCooldownKeys(ServerPlayer p){
+        var keys=new java.util.TreeSet<String>();
+        for(var system:PathRegistry.economies().values()){
+            if(system.magic())continue;
+            for(int i=0;i<system.sources().size();i++)
+                if(system.sources().get(i).cooldownTicks()>0)keys.add(system.id()+"/"+i);
+        }
+        keys.addAll(cooldowns.getOrDefault(p.getUUID(),Map.of()).keySet());
+        return java.util.Set.copyOf(keys);
+    }
+    public static Long adminSourceCooldown(ServerPlayer p,String key){
+        return cooldowns.getOrDefault(p.getUUID(),Map.of()).get(key);
+    }
+    public static void adminResetSourceCooldown(ServerPlayer p,String key,Long expected){
+        if(p.getServer()==null||!p.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        if(!java.util.Objects.equals(adminSourceCooldown(p,key),expected))throw new IllegalStateException("Cooldown changed");
+        var rows=cooldowns.get(p.getUUID());
+        if(rows!=null){rows.remove(key);if(rows.isEmpty())cooldowns.remove(p.getUUID());}
+    }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
+        io.github.heatwaveqc.tyr.progression.admin.XpTrace.forget(playerId);
         io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.forget(playerId);
     }
 }
