@@ -1,0 +1,20 @@
+name: Pastel recipe compatibility (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/pastel/recipe/mod_integration/**'
+      - 'tests/test_pastel_recipe_compat.py'
+      - '.github/workflows/pastel-recipe-compat.yml'
+      - 'mods/pastel.pw.toml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p 'test_pastel_recipe_compat.py' -v
