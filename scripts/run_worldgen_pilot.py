@@ -22,7 +22,8 @@ PREGEN = "Chunk-Pregenerator-Neoforge-1.21-4.5.4.jar"
 PREGEN_URL = "https://mediafilez.forgecdn.net/files/8748/909/" + PREGEN
 PREGEN_SHA = "2acd1f3b50472d49e7af69582ed718ac93272752e50cb636a97fcb04b498aa51"
 CARBON = "CarbonConfig-Neoforge-1.21.1-2.0.3.jar"
-CARBON_URL = "https://mediafilez.forgecdn.net/files/9531/034/" + CARBON
+CARBON_URL = "https://edge.forgecdn.net/files/9531/034/" + CARBON
+CARBON_SHA = "393a5ae752a419da970e9cacdf510c0822039b572cb189517b648a2a03cdb172"
 SEED = 424242
 INNER = (-32,-32,32,32)
 BUFFER = 24
@@ -91,7 +92,7 @@ def stage(pack, work, carbon_sha):
     except urllib.error.HTTPError as exc:
         if exc.code not in (403,404):
             raise
-        carbon_actual=download(CARBON_URL.replace("mediafilez.forgecdn.net","edge.forgecdn.net"),server/"mods"/CARBON,carbon_sha)
+        carbon_actual=download(CARBON_URL.replace("edge.forgecdn.net","mediafilez.forgecdn.net"),server/"mods"/CARBON,carbon_sha)
     installer=server/"installer.jar"
     installer_sha=download(f"https://maven.neoforged.net/releases/net/neoforged/neoforge/{LOADER}/neoforge-{LOADER}-installer.jar",installer)
     run(["java","-jar","installer.jar","--installServer"],server,900)
@@ -209,11 +210,11 @@ def main():
     a=p.parse_args()
     if not a.authorized:
         p.error("explicit audit execution approval required")
-    if not re.fullmatch("[0-9a-f]{64}",a.carbon_sha256):
-        p.error("reviewed Carbon Config SHA-256 required")
+    if a.carbon_sha256 != CARBON_SHA:
+        p.error("reviewed exact Carbon Config SHA-256 required")
     if not 60<=a.generation_seconds<=1800:
         p.error("generation must be bounded to 60–1800 seconds")
-    server,evidence=stage(a.pack_root.resolve(),a.work.resolve(),a.pregen_sha256)
+    server,evidence=stage(a.pack_root.resolve(),a.work.resolve(),a.carbon_sha256)
     return generate(server,evidence,a.generation_seconds)
 
 if __name__=="__main__":
