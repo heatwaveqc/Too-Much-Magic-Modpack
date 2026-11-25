@@ -1,0 +1,23 @@
+name: Food addon recipe repairs (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/cocktailsdelight/recipe/**'
+      - 'kubejs/data/dungeonsdelight/recipe/**'
+      - 'kubejs/data/endersdelight/recipe/**'
+      - 'tests/test_food_addon_recipe_repairs.py'
+      - '.github/workflows/food-addon-recipe-repairs.yml'
+      - 'index.toml'
+      - 'pack.toml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p 'test_food_addon_recipe_repairs.py' -v

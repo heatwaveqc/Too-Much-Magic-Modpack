@@ -1,0 +1,20 @@
+name: Malum spirit repair source contract (NO GAME BOOT)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/malum/recipe/malum/spirit_repair/**'
+      - 'tests/test_malum_spirit_repair_compat.py'
+      - '.github/workflows/malum-spirit-repair-compat.yml'
+      - 'mods/malum.pw.toml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest discover -s tests -p 'test_malum_spirit_repair_compat.py' -v

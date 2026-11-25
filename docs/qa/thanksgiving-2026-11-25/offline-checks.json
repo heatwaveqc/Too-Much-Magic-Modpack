@@ -1,0 +1,163 @@
+[
+  {
+    "command": [
+      "python",
+      "scripts/validate.py"
+    ],
+    "exit": 0,
+    "seconds": 0.81,
+    "summary": "PASS: Default Options packages 294 unbound mod-key defaults and one contextual middle-click sort, excluding 20 JEI native defaults; no vanilla bindings\nLIMITATION: observed options.txt inventory is not a final all-mods registered-key export\nPASS: Curios 9.5.1 built-in singular icon, bundle slot identity, player assignment and bag tag\nSOURCE ONLY: client atlas, empty/occupied UI and equipping still require Prism QA\nPASS: packwiz metadata + hashes; 704 files, 251 active mods; 264 desired entries\nNOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_quests.py"
+    ],
+    "exit": 0,
+    "seconds": 0.28,
+    "summary": "PASS: 19 personal graduation choices with stable IDs and trusted reward commands\nPASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated\nPASS: five groups, 44 chapters, 277 quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin\nPASS: shared item criteria restricted to intentional copper/iron/emerald/diamond sales; no item reward completes a task\nNOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_retirement.py"
+    ],
+    "exit": 0,
+    "seconds": 0.08,
+    "summary": "PASS: TeamLapen retired; unified Tyr Progression with internal native transformation bridge selected; retired standalone JAR absent\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_unified_progression.py"
+    ],
+    "exit": 0,
+    "seconds": 0.08,
+    "summary": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_silver_equipment.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "summary": "PASS: five Eidolon tools + four Eidolon armor recipes; no global anti-lycan damage tag\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_materials.py"
+    ],
+    "exit": 0,
+    "seconds": 0.08,
+    "summary": "PASS: Neo Vitae conventional dust priorities, Mahou circle mappings and original-stack restoration\nPASS: source-audited silver/lead providers, conventional whitelist and special-ore guards\nNOT A BOOT, LIVE REGISTRY, CLIENT, RECIPE, OR WORLDGEN TEST\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_dragon_diets.py"
+    ],
+    "exit": 0,
+    "seconds": 0.25,
+    "summary": "PASS: dragon diets, magical nourishment, JAWR-only species policy, exclusions, native charring\nNOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_progression_gates.py"
+    ],
+    "exit": 0,
+    "seconds": 0.38,
+    "summary": "PASS: source-only native ritual, both grid suppressions, Stone-gated MK1 Collector/Relay, 12 closed tags/40 alternatives, 14 direct flowers + Red upgrade, no obsolete script.\nPENDING: actual loaded recipes, acquisition, transmutation and Matter Upgrader bypasses.\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_defaultoptions_keybindings.py"
+    ],
+    "exit": 0,
+    "seconds": 0.17,
+    "summary": "PASS: Default Options packages 294 unbound mod-key defaults and one contextual middle-click sort, excluding 20 JEI native defaults; no vanilla bindings\nLIMITATION: observed options.txt inventory is not a final all-mods registered-key export\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_b20_trader_stock.py"
+    ],
+    "exit": 0,
+    "seconds": 0.08,
+    "summary": "PASS: B20 six guaranteed stock slots, twelve premium items, weighted >= uncommon ink, true affixed gear, configured glyph tiers and packwiz hashes\nPENDING: NeoForge/KubeJS runtime API, actual server+client trader offers, Apotheosis rarity/affix generation and item GUI\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_b19_gateways.py"
+    ],
+    "exit": 0,
+    "seconds": 0.14,
+    "summary": "PASS: 17 dedicated spawn Gateways, exact JSON schema shape, source match, correct packwiz hashes\nPENDING: actual mob registry, Gate Pearl JEI, loot, mob AI, dedicated-server and client QA\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_qa_inventory.py"
+    ],
+    "exit": 0,
+    "seconds": 0.17,
+    "summary": "{\n  \"target\": 251,\n  \"pinned\": 251,\n  \"missing\": [],\n  \"unreviewed_additions\": [],\n  \"missing_first_party\": [],\n  \"unreviewed_first_party\": []\n}\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_newbie_integration.py"
+    ],
+    "exit": 0,
+    "seconds": 0.09,
+    "summary": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\nPASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, retired Tyz Safekept absent;\n277 total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;\nNewbie MXP and any-path species gates in source; every Packwiz index/root SHA256 matches\nSOURCE ONLY \u2014 no NeoForge boot, client/Corail tests or installed first-party JAR evidence\n"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify_projecte_boss_recipes.cjs"
+    ],
+    "exit": 1,
+    "seconds": 0.05,
+    "summary": "BLOCKED: stale checklist command points to absent script; current gate validator passes."
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify_dragon_seasoned_fish.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "summary": "PASS: Seasoned Fish KubeJS source swaps salmon for #c:foods/raw_fish only\nNOT TESTED: actual 2.0.74 recipe matching, expanded tags, JEI, crafting in game\n"
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/test_parchment_fishing.cjs",
+      "tests/test_qa_surveys.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.16,
+    "summary": " entries retain proportional weight and quality (0.6348ms)\n\u2714 a preexisting fragment never injects a duplicate or rescales loot (0.6859ms)\n\u2714 unrecognized composite pool fails closed without mutating items (0.6296ms)\n\u2714 bad/overflowing pools fail closed without partial mutation (1.5184ms)\n\u2714 missing treasure table fails without trying to replace it (0.6352ms)\n\u2714 suite is opt-in and registers eleven operator-gated commands (2.5117ms)\n\u2714 non-OP execution does not access player, classes or files (2.8215ms)\n\u2714 console and malformed/path-traversal labels are rejected without writes (1.2404ms)\n\u2714 snapshots survive script reload; unavailable adapters remain explicit; baseline cannot be clobbered (2.5453ms)\n\u2714 comparison rejects another build and missing baseline (0.9692ms)\n\u2714 numeric diffs preserve zero and negative changes and report deleted keys (0.5874ms)\n\u2714 absent progression attachments are not initialized by snapshot collection (0.8345ms)\n\u2714 missing recipes produce seven explicit unsupported observations, never match PASS (0.9795ms)\n\u2714 Tyr namespace uses LedgerCodec and MutationLedger without constructing attachments (0.9825ms)\n\u2714 monitor summary reports net storage rate and interruptions without a generation PASS (0.7475ms)\n\u2714 monitor enforces duration/coordinates and cannot stop a nonexistent session (1.0299ms)\n\u2714 client request refuses dedicated servers and does not report successful capture (0.8251ms)\n\u2714 client ignores stale requests; exports once per new request without changing bindings (1.5733ms)\n\u2714 no destructive command execution or gameplay mutator calls in QA server source (0.2459ms)\n\u2139 tests 20\n\u2139 suites 0\n\u2139 pass 20\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 105.29\n"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py"
+    ],
+    "exit": 1,
+    "seconds": 3.25,
+    "summary": "Broad suite failed; UTF-8 follow-up narrows to four test maintenance failures; see README."
+  }
+]

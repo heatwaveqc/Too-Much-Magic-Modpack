@@ -1,0 +1,11 @@
+{
+  "removed": [
+    "kubejs/server_scripts/zz_tmm_world_observe.js",
+    "kubejs/config/tmm-observe-once.json",
+    "kubejs/config/tmm-survey-build.json"
+  ],
+  "verified_absent": true,
+  "runtime_note": "Owner performed final /reload after helper removal; script roster returned to 12/13, with the pre-existing Reactive script failure.",
+  "owner_reported_final_reload": true,
+  "observer_unloaded_from_script_roster": true
+}
