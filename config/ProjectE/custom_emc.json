@@ -1,5 +1,5 @@
 {
-  "comment": "Owner-approved non-transmutable documents: Bountiful's signed decrees and bounty slips. Keep the craftable bountyboard ordinarily priced. Merge existing personal custom-EMC entries rather than overwriting on migration.",
+  "comment": "Owner-approved non-transmutable documents: Bountiful's signed decrees and bounty slips. Keep the craftable bountyboard ordinarily priced. Merge existing personal custom-EMC entries rather than overwriting on migration. Owner-approved physical money: one tmm:coin = 64 EMC; deliberately transmutable.",
   "entries": [
     {
       "id": "bountiful:decree",
@@ -8,6 +8,10 @@
     {
       "id": "bountiful:bounty",
       "emc": 0
+    },
+    {
+      "id": "tmm:coin",
+      "emc": 64
     }
   ]
 }

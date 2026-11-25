@@ -9,8 +9,9 @@ class GrowthFactorMathTest {
         assertEquals(1.002, GrowthFactorMath.effective(1.020, 18 * 0.001), 1e-12);
     }
 
-    @Test void clampsAtOneWithoutMintingExperience() {
-        assertEquals(1.0, GrowthFactorMath.effective(1.005, 0.018), 1e-12);
+    @Test void clampsAtConfiguredSafetyFloorWithoutMintingExperience() {
+        assertEquals(0.987, GrowthFactorMath.effective(1.005, 0.018), 1e-12);
+        assertEquals(0.001, GrowthFactorMath.effective(0.005, 0.018), 1e-12);
         assertEquals(1.020, GrowthFactorMath.effective(1.020, 0), 1e-12);
         assertThrows(IllegalArgumentException.class, () -> GrowthFactorMath.effective(1.020, -0.01));
         assertThrows(IllegalArgumentException.class, () -> GrowthFactorMath.effective(1.020, Double.NaN));

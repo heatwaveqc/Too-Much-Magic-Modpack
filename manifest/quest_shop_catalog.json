@@ -2,7 +2,7 @@
   "schema_version": 2,
   "currency": "coins",
   "team_shared": false,
-  "policy": "Q Shop: personal-player wallets, native category tabs, original 48 offers at unchanged prices. No boss/ritual-gated items; Bountiful board costs five personal coins. Expanded stock and coin-paying Bountiful contracts are separate #523/#365 work.",
+  "policy": "Personal Q Shop wallet; physical coin at parity; shop goods target 80–100% of effective EMC (buyer receives up to 25% extra value). Historical prices are provisional; unresolved offers retain existing prices until current post-map export.",
   "categories": [
     {
       "id": "supplies",
@@ -12,27 +12,27 @@
         [
           "minecraft:cobblestone",
           64,
-          2
+          1
         ],
         [
           "minecraft:oak_planks",
           64,
-          3
+          7
         ],
         [
           "minecraft:torch",
-          32,
-          2
+          24,
+          1
         ],
         [
           "minecraft:glass",
-          32,
-          4
+          64,
+          1
         ],
         [
           "minecraft:leather",
           8,
-          5
+          7
         ],
         [
           "minecraft:string",
@@ -42,12 +42,12 @@
         [
           "minecraft:coal",
           32,
-          5
+          60
         ],
         [
           "minecraft:arrow",
           64,
-          5
+          12
         ],
         [
           "bountiful:bountyboard",
@@ -64,32 +64,32 @@
         [
           "minecraft:amethyst_shard",
           16,
-          4
+          7
         ],
         [
           "minecraft:lapis_lazuli",
           16,
-          4
+          200
         ],
         [
           "minecraft:quartz",
           16,
-          5
+          60
         ],
         [
           "minecraft:glowstone_dust",
           16,
-          5
+          90
         ],
         [
           "minecraft:slime_ball",
           4,
-          5
+          2
         ],
         [
           "minecraft:prismarine_shard",
           16,
-          8
+          60
         ]
       ]
     },
@@ -198,27 +198,27 @@
         [
           "minecraft:heart_of_the_sea",
           1,
-          80
+          450
         ],
         [
           "minecraft:nautilus_shell",
           4,
-          15
+          60
         ],
         [
           "minecraft:name_tag",
           1,
-          12
+          3
         ],
         [
           "minecraft:saddle",
           1,
-          15
+          3
         ],
         [
           "minecraft:prismarine_crystals",
           16,
-          8
+          120
         ]
       ]
     },
@@ -266,25 +266,31 @@
       "entries": [
         [
           "minecraft:bread",
-          8,
-          4
+          6,
+          1
         ],
         [
           "minecraft:cooked_beef",
           8,
-          5
+          7
         ],
         [
           "minecraft:bone_meal",
           32,
-          5
+          22
         ],
         [
           "minecraft:honey_bottle",
           4,
-          6
+          3
         ]
       ]
     }
-  ]
+  ],
+  "coin_exchange": {
+    "item": "tmm:coin",
+    "emc": 64,
+    "price": 1,
+    "tab": "currency"
+  }
 }

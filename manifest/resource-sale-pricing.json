@@ -1,0 +1,188 @@
+{
+  "coin_emc": 64,
+  "valuation": "approved 9/18 metal targets; November 18 historical gem values; blocks at nine units; provisional until actual post-map export",
+  "target_multipliers": [
+    10,
+    7.5,
+    5,
+    1.25
+  ],
+  "sales": [
+    {
+      "title": "Sell Copper I — First Trade",
+      "item": "minecraft:copper_ingot",
+      "count": 8,
+      "unit_emc": 9,
+      "input_emc": 72,
+      "coins": 10,
+      "payout_emc": 640,
+      "ratio": 8.88888888888889,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Copper II — Regular Buyer",
+      "item": "minecraft:copper_ingot",
+      "count": 32,
+      "unit_emc": 9,
+      "input_emc": 288,
+      "coins": 35,
+      "payout_emc": 2240,
+      "ratio": 7.777777777777778,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Copper III — Packed Shipment",
+      "item": "minecraft:copper_block",
+      "count": 16,
+      "unit_emc": 81,
+      "input_emc": 1296,
+      "coins": 105,
+      "payout_emc": 6720,
+      "ratio": 5.185185185185185,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Copper IV — Industrial Exchange",
+      "item": "minecraft:copper_block",
+      "count": 256,
+      "unit_emc": 81,
+      "input_emc": 20736,
+      "coins": 405,
+      "payout_emc": 25920,
+      "ratio": 1.25,
+      "repeatable": true
+    },
+    {
+      "title": "Sell Emeralds I — First Trade",
+      "item": "minecraft:emerald",
+      "count": 2,
+      "unit_emc": 16384,
+      "input_emc": 32768,
+      "coins": 5000,
+      "payout_emc": 320000,
+      "ratio": 9.765625,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Emeralds II — Regular Buyer",
+      "item": "minecraft:emerald",
+      "count": 8,
+      "unit_emc": 16384,
+      "input_emc": 131072,
+      "coins": 15000,
+      "payout_emc": 960000,
+      "ratio": 7.32421875,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Emeralds III — Packed Shipment",
+      "item": "minecraft:emerald_block",
+      "count": 16,
+      "unit_emc": 147456,
+      "input_emc": 2359296,
+      "coins": 185000,
+      "payout_emc": 11840000,
+      "ratio": 5.018446180555555,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Emeralds IV — Industrial Exchange",
+      "item": "minecraft:emerald_block",
+      "count": 128,
+      "unit_emc": 147456,
+      "input_emc": 18874368,
+      "coins": 370000,
+      "payout_emc": 23680000,
+      "ratio": 1.2546115451388888,
+      "repeatable": true
+    },
+    {
+      "title": "Sell Diamonds I — First Trade",
+      "item": "minecraft:diamond",
+      "count": 1,
+      "unit_emc": 8192,
+      "input_emc": 8192,
+      "coins": 1250,
+      "payout_emc": 80000,
+      "ratio": 9.765625,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Diamonds II — Regular Buyer",
+      "item": "minecraft:diamond",
+      "count": 4,
+      "unit_emc": 8192,
+      "input_emc": 32768,
+      "coins": 3850,
+      "payout_emc": 246400,
+      "ratio": 7.51953125,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Diamonds III — Packed Shipment",
+      "item": "minecraft:diamond_block",
+      "count": 8,
+      "unit_emc": 73728,
+      "input_emc": 589824,
+      "coins": 46500,
+      "payout_emc": 2976000,
+      "ratio": 5.045572916666667,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Diamonds IV — Industrial Exchange",
+      "item": "minecraft:diamond_block",
+      "count": 64,
+      "unit_emc": 73728,
+      "input_emc": 4718592,
+      "coins": 92000,
+      "payout_emc": 5888000,
+      "ratio": 1.2478298611111112,
+      "repeatable": true
+    },
+    {
+      "title": "Sell Iron I — First Trade",
+      "item": "minecraft:iron_ingot",
+      "count": 8,
+      "unit_emc": 18,
+      "input_emc": 144,
+      "coins": 20,
+      "payout_emc": 1280,
+      "ratio": 8.88888888888889,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Iron II — Regular Buyer",
+      "item": "minecraft:iron_ingot",
+      "count": 32,
+      "unit_emc": 18,
+      "input_emc": 576,
+      "coins": 70,
+      "payout_emc": 4480,
+      "ratio": 7.777777777777778,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Iron III — Packed Shipment",
+      "item": "minecraft:iron_block",
+      "count": 16,
+      "unit_emc": 162,
+      "input_emc": 2592,
+      "coins": 210,
+      "payout_emc": 13440,
+      "ratio": 5.185185185185185,
+      "repeatable": false
+    },
+    {
+      "title": "Sell Iron IV — Industrial Exchange",
+      "item": "minecraft:iron_block",
+      "count": 256,
+      "unit_emc": 162,
+      "input_emc": 41472,
+      "coins": 810,
+      "payout_emc": 51840,
+      "ratio": 1.25,
+      "repeatable": true
+    }
+  ]
+}

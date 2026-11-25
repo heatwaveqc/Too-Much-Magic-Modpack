@@ -39,7 +39,7 @@ public final class ProgressionMenuNetwork {
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
-    public record Mutate(String path, String action, String skill) implements CustomPacketPayload {
+    public record Mutate(String path, String action, String skill, String currency) implements CustomPacketPayload {
         public static final Type<Mutate> TYPE = new Type<>(
                 ResourceLocation.fromNamespaceAndPath(ProgressionMod.MOD_ID, "menu_mutate"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Mutate> CODEC =
@@ -47,6 +47,7 @@ public final class ProgressionMenuNetwork {
                         ByteBufCodecs.STRING_UTF8, Mutate::path,
                         ByteBufCodecs.STRING_UTF8, Mutate::action,
                         ByteBufCodecs.STRING_UTF8, Mutate::skill,
+                        ByteBufCodecs.STRING_UTF8, Mutate::currency,
                         Mutate::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
@@ -71,14 +72,15 @@ public final class ProgressionMenuNetwork {
                     if (!(context.player() instanceof ServerPlayer player)) return;
                     context.enqueueWork(() -> {
                         if (player.isSpectator() || !validId(payload.path())
-                                || payload.skill().length() > 128) return;
+                                || payload.skill().length() > 128
+                                || payload.currency().length() > 128) return;
                         long tick = player.serverLevel().getGameTime();
                         Long old = LAST_MUTATION.get(player.getUUID());
                         if (old != null && tick >= old && tick - old < 2) return;
                         LAST_MUTATION.put(player.getUUID(), tick);
                         boolean changed = switch (payload.action()) {
-                            case "buy" -> validId(payload.skill()) &&
-                                    ProgressionApi.buy(player, payload.path(), payload.skill());
+                            case "buy" -> validId(payload.skill()) && validId(payload.currency())
+                                    && ProgressionApi.buy(player, payload.path(), payload.skill(),payload.currency());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
                             case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
@@ -121,34 +123,63 @@ public final class ProgressionMenuNetwork {
         json.add("paths",strings(PathRegistry.all().keySet().stream().sorted().toList()));
         json.addProperty("joined", state.joined());
         json.addProperty("eligible",PathRegistry.eligible(player,pathId));
-        json.addProperty("rank", state.rank());
-        json.addProperty("max_rank", channel.maxRank());
-        json.addProperty("xp", state.xp());
-        json.addProperty("points", state.points());
-        var curve=channel.magic()?java.util.List.of(0L):channel.source().rankXp();
-        long threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
-        if(channel!=null && channel.magic()) {
-            var wallet=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get()).wallet(channel.id());
-            long start=wallet==null?0:wallet.xp()-(long)wallet.magicProgress();
-            threshold=start>Long.MAX_VALUE-1000?Long.MAX_VALUE:start+1000;
+        var ledger=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get());
+        var catalog=PathRegistry.economyCatalog();
+        var spec=channel==null?null:catalog.systems().get(channel.id());
+        long level=spec==null?state.rank():
+            io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.level(ledger.economy(),spec);
+        json.addProperty("rank",level);
+        json.addProperty("max_rank",spec==null?channel.maxRank():spec.maxLevel());
+        json.addProperty("xp",spec==null?java.math.BigDecimal.valueOf(state.xp()):
+                ledger.economy().currentXp().getOrDefault(spec.id(),java.math.BigDecimal.ZERO));
+        json.addProperty("points",spec==null?state.points():
+                io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.available(ledger.economy(),spec));
+        long threshold;
+        long currentStart;
+        if(spec==null){
+            var curve=channel.source().rankXp();
+            threshold=state.rank()<curve.size()?curve.get(state.rank()):curve.getLast();
+            currentStart=state.rank()>0?curve.get(Math.min(state.rank()-1,curve.size()-1)):0;
+        } else {
+            // Level is a display projection of current XP, not persisted rank.
+            var start=spec.xpPerPoint().multiply(java.math.BigDecimal.valueOf(level));
+            var next=spec.xpPerPoint().multiply(java.math.BigDecimal.valueOf(level+1L));
+            var max=java.math.BigDecimal.valueOf(Long.MAX_VALUE);
+            currentStart=start.compareTo(max)>=0?Long.MAX_VALUE:start.longValue();
+            threshold=next.compareTo(max)>=0?Long.MAX_VALUE:next.longValue();
             json.addProperty("magic_channel",true);
         }
-        json.addProperty("next_xp", threshold);
-        long currentStart = state.rank() > 0
-                ? curve.get(Math.min(state.rank()-1,curve.size()-1))
-                : 0;
-        if(channel!=null && channel.magic()) currentStart=Math.max(0,threshold-1000);
-        json.addProperty("rank_start_xp", currentStart);
-        var ledger=player.getData(io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments.LEDGER.get());
+        json.addProperty("next_xp",threshold);
+        json.addProperty("rank_start_xp",currentStart);
         JsonArray wallets=new JsonArray();
-        for(var system:PathRegistry.economies().values().stream().sorted(java.util.Comparator.comparing(io.github.heatwaveqc.tyr.progression.model.XpChannel::id)).toList()){
-            var w=ledger.wallet(system.id());JsonObject row=new JsonObject();
-            row.addProperty("id",system.id());row.addProperty("name",system.name());row.addProperty("point_name",system.pointName());
-            row.addProperty("level",w==null?0:w.rank());row.addProperty("points",w==null?0:w.points());
-            row.addProperty("xp",w==null?0:w.xp());wallets.add(row);
+        for(var entry:catalog.systems().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()){
+            String id=entry.getKey();
+            var systemSpec=entry.getValue();
+            var w=ledger.wallet(id);
+            JsonObject row=new JsonObject();
+            row.addProperty("id",id);
+            var channelName=PathRegistry.economy(id);
+            row.addProperty("name",channelName==null?id:channelName.name());
+            row.addProperty("point_name",channelName==null?"Points":channelName.pointName());
+            row.addProperty("level",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
+                .level(ledger.economy(),systemSpec));
+            row.addProperty("points",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
+                .available(ledger.economy(),systemSpec));
+            row.addProperty("xp",ledger.economy().currentXp()
+                .getOrDefault(id,java.math.BigDecimal.ZERO));wallets.add(row);
         }
         json.add("wallets",wallets);
         json.add("completed_milestones", strings(state.milestones()));
+        var upcoming=state.joined()
+            ? io.github.heatwaveqc.tyr.progression.core.MilestoneFeedback.next(path,state) : null;
+        if(upcoming!=null){
+            JsonObject challenge=new JsonObject();
+            challenge.addProperty("id",upcoming.milestoneId());
+            challenge.addProperty("title",upcoming.title());
+            challenge.addProperty("progress",upcoming.current());
+            challenge.addProperty("goal",upcoming.total());
+            json.add("next_challenge",challenge);
+        }
         JsonArray skills = new JsonArray();
         for (Definition.Skill skill : path.skills()) {
             JsonObject item = new JsonObject();
@@ -166,7 +197,7 @@ public final class ProgressionMenuNetwork {
             item.addProperty("permanent",binding.permanent());
             item.addProperty("point_name",binding.currency().pointName());
             item.addProperty("level_system",binding.levelSystem().name());
-            item.addProperty("price", skill.price(owned));
+            item.addProperty("price", binding.currency().magic()?1:skill.price(owned));
             var activation=PathRegistry.activation(pathId,skill.id());
             if(activation!=null){
                 item.addProperty("activation_mode",activation.mode());
@@ -176,6 +207,32 @@ public final class ProgressionMenuNetwork {
             }
             item.addProperty("choice_group", skill.choiceGroup());
             item.addProperty("buyable", ProgressionApi.canBuy(player,pathId,skill.id()));
+            JsonArray purchaseSources=new JsonArray();
+            var rule=catalog.skills().get(
+                new io.github.heatwaveqc.tyr.progression.data.ExperienceEconomyConfig.SkillKey(pathId,skill.id()));
+            if(rule!=null){
+                for(var source:rule.sources()){
+                    JsonObject choice=new JsonObject();
+                    choice.addProperty("system",source.system());
+                    choice.addProperty("max_ranks",source.maxRanks());
+                    choice.addProperty("owned",
+                        io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.contributedRanks(
+                            ledger.economy(),pathId,skill.id(),source.system()));
+                    choice.addProperty("price",source.pointsPerRank());
+                    choice.addProperty("buyable",ProgressionApi.canBuy(
+                        player,pathId,skill.id(),source.system()));
+                    purchaseSources.add(choice);
+                }
+            } else {
+                JsonObject choice=new JsonObject();
+                choice.addProperty("system",binding.currency().id());
+                choice.addProperty("max_ranks",skill.maxRank());
+                choice.addProperty("owned",owned);
+                choice.addProperty("price",binding.currency().magic()?1:skill.price(owned));
+                choice.addProperty("buyable",ProgressionApi.canBuy(player,pathId,skill.id()));
+                purchaseSources.add(choice);
+            }
+            item.add("purchase_sources",purchaseSources);
             item.add("requires", strings(skill.requiresSkills()));
             item.add("requires_any", strings(skill.requiresAnySkills()));
             item.add("milestones", strings(skill.requiresMilestones()));

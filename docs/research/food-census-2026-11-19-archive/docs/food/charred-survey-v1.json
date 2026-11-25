@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "DragonSurvivalTeam/DragonSurvival",
+    "commit": "c1c6b7b99f6ed097a35fc98c9b99bd16993af941",
+    "version": "2.0.75 upstream; pack diet script references 2.0.74, exact binary not verified"
+  },
+  "status": "source_screen_only",
+  "outputs": [
+    "dragonsurvival:charred_meat",
+    "dragonsurvival:charred_seafood",
+    "dragonsurvival:charred_vegetable",
+    "dragonsurvival:charred_mushroom"
+  ],
+  "inputs": {
+    "meat": "c:foods/cooked_meat",
+    "seafood": "c:foods/cooked_fish",
+    "vegetable": "dragonsurvival:cooked_vegetables",
+    "fungus": "dragonsurvival:cooked_mushrooms"
+  },
+  "upstream_charred_tag_excludes_from_tmm": [
+    "dragonsurvival:charged_coal",
+    "dragonsurvival:charged_soup"
+  ],
+  "candidates": [
+    {
+      "id": "minecraft:pumpkin_pie",
+      "native_input_category": "vegetable",
+      "review": "existing_grain_filter_target",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "minecraft:baked_potato",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "minecraft:beetroot_soup",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "minecraft:dried_kelp_block",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodcore:butteredbakedpotatoitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedgarlicitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedonionitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedpeanutitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedarrowrootitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedrutabagaitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedradishitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedrhubarbitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedscallionitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedleekitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedjicamaitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedparsnipitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedturnipitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:roastedkohlrabiitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedtaroitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedsweetpotatoitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedwaterchestnutitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2crops:bakedcassavaitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2trees:loadedbakedpotatoitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodcore:chickennuggetitem",
+      "native_input_category": "vegetable",
+      "review": "existing_grain_filter_target",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodcore:friedchickenitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:loadedbakedpotatoitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofeakitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofuttonitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofaconitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofickenitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofabbititem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:cookedtofishitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:bakedvegetablemedlyitem",
+      "native_input_category": "vegetable",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "pamhc2foodextended:roastedsunflowerseedsitem",
+      "native_input_category": "vegetable",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_vegetables"
+    },
+    {
+      "id": "minecraft:mushroom_stew",
+      "native_input_category": "fungus",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_mushrooms"
+    },
+    {
+      "id": "minecraft:suspicious_stew",
+      "native_input_category": "fungus",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_mushrooms"
+    },
+    {
+      "id": "pamhc2crops:roastedmushroomitem",
+      "native_input_category": "fungus",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_mushrooms"
+    },
+    {
+      "id": "twilightforest:meef_stroganoff",
+      "native_input_category": "fungus",
+      "review": "candidate_native_input_verify_pin",
+      "source": "dragonsurvival:cooked_mushrooms"
+    },
+    {
+      "id": "forbidden_arcanus:edelwood_mushroom_stew_bucket",
+      "native_input_category": "fungus",
+      "review": "composition_or_container_review",
+      "source": "dragonsurvival:cooked_mushrooms"
+    }
+  ]
+}

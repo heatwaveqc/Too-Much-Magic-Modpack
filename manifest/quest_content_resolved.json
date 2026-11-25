@@ -997,7 +997,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 10
       },
       "depends": null,
       "optional": true,
@@ -1018,7 +1018,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 35
       },
       "depends": "Sell Copper I — First Trade",
       "optional": true,
@@ -1039,7 +1039,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 105
       },
       "depends": "Sell Copper II — Regular Buyer",
       "optional": true,
@@ -1060,7 +1060,7 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 405
       },
       "depends": "Sell Copper III — Packed Shipment",
       "optional": true,
@@ -1083,7 +1083,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 5000
       },
       "depends": null,
       "optional": true,
@@ -1104,7 +1104,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 15000
       },
       "depends": "Sell Emeralds I — First Trade",
       "optional": true,
@@ -1125,7 +1125,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 185000
       },
       "depends": "Sell Emeralds II — Regular Buyer",
       "optional": true,
@@ -1146,7 +1146,7 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 370000
       },
       "depends": "Sell Emeralds III — Packed Shipment",
       "optional": true,
@@ -1169,7 +1169,7 @@
       },
       "reward": {
         "xp": 5,
-        "coin": 1
+        "coin": 1250
       },
       "depends": null,
       "optional": true,
@@ -1190,7 +1190,7 @@
       },
       "reward": {
         "xp": 10,
-        "coin": 1
+        "coin": 3850
       },
       "depends": "Sell Diamonds I — First Trade",
       "optional": true,
@@ -1211,7 +1211,7 @@
       },
       "reward": {
         "xp": 15,
-        "coin": 1
+        "coin": 46500
       },
       "depends": "Sell Diamonds II — Regular Buyer",
       "optional": true,
@@ -1232,9 +1232,95 @@
       },
       "reward": {
         "xp": 1,
-        "coin": 1
+        "coin": 92000
       },
       "depends": "Sell Diamonds III — Packed Shipment",
+      "optional": true,
+      "repeatable": true,
+      "repeat_cooldown": 2,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron I — First Trade",
+      "quest_id": "544D504001700000",
+      "task_id": "544D804001700000",
+      "xp_reward_id": "544D604001700001",
+      "item_reward_id": "544D704001700002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "reward": {
+        "xp": 5,
+        "coin": 20
+      },
+      "depends": null,
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron II — Regular Buyer",
+      "quest_id": "544D504001800000",
+      "task_id": "544D804001800000",
+      "xp_reward_id": "544D604001800001",
+      "item_reward_id": "544D704001800002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_ingot",
+        "count": 32
+      },
+      "reward": {
+        "xp": 10,
+        "coin": 70
+      },
+      "depends": "Sell Iron I — First Trade",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron III — Packed Shipment",
+      "quest_id": "544D504001900000",
+      "task_id": "544D804001900000",
+      "xp_reward_id": "544D604001900001",
+      "item_reward_id": "544D704001900002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_block",
+        "count": 16
+      },
+      "reward": {
+        "xp": 15,
+        "coin": 210
+      },
+      "depends": "Sell Iron II — Regular Buyer",
+      "optional": true,
+      "consume_items": true,
+      "team_reward": true
+    },
+    {
+      "chapter": "Basic Progression",
+      "title": "Sell Iron IV — Industrial Exchange",
+      "quest_id": "544D504001A00000",
+      "task_id": "544D804001A00000",
+      "xp_reward_id": "544D604001A00001",
+      "item_reward_id": "544D704001A00002",
+      "criterion": {
+        "type": "item",
+        "id": "minecraft:iron_block",
+        "count": 256
+      },
+      "reward": {
+        "xp": 1,
+        "coin": 810
+      },
+      "depends": "Sell Iron III — Packed Shipment",
       "optional": true,
       "repeatable": true,
       "repeat_cooldown": 2,
