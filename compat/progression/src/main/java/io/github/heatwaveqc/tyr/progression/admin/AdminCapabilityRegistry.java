@@ -7,7 +7,7 @@ import java.util.*;
  * The command adapter must call handlers on the authoritative server thread. */
 public final class AdminCapabilityRegistry<T> {
     public enum Action {
-        RESET(false), RECONCILE(false), SET(true), ADD(true), SUBTRACT(true), FILL(false), EMPTY(false);
+        RESET(false), RECONCILE(false), GRANT(false), SET(true), ADD(true), SUBTRACT(true), FILL(false), EMPTY(false);
         private final boolean amount;
         Action(boolean amount){this.amount=amount;}
         public boolean requiresAmount(){return amount;}

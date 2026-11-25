@@ -28,6 +28,8 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:discovery",new Discovery());
         REGISTRY.register("tyr_progression:mode",new Mode());
         REGISTRY.register("tyr_progression:tree",new Tree());
+        REGISTRY.register("tyr_progression:milestone",new Milestone());
+        REGISTRY.register("tyr_progression:counter",new Counter());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -221,6 +223,89 @@ public final class AdminCapabilities {
                     throw new IllegalStateException("Discovery state changed");
                 p.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),next);
             });
+        }
+    }
+
+    private static io.github.heatwaveqc.tyr.progression.state.Ledger ledger(ServerPlayer p){
+        return p.getData(ProgressionAttachments.LEDGER.get());
+    }
+    private static Change ledgerChange(ServerPlayer p,String before,String after,
+            io.github.heatwaveqc.tyr.progression.state.Ledger old,
+            io.github.heatwaveqc.tyr.progression.state.Ledger next){
+        return new Change(before,after,()->{
+            if(!ledger(p).equals(old))throw new IllegalStateException("Ledger changed");
+            p.setData(ProgressionAttachments.LEDGER.get(),next);
+        });
+    }
+    private static final class Milestone implements Handler<ServerPlayer>{
+        public String description(){return "Configured trial; grant completion without XP, reset unfinished criteria only";}
+        public Collection<String> keys(ServerPlayer p){
+            var keys=new ArrayList<String>();
+            for(var path:PathRegistry.all().values())for(var m:path.milestones())keys.add(path.id()+"|"+m.id());
+            return keys;
+        }
+        public String inspect(ServerPlayer p,String key){
+            var ids=pair(key);var path=PathRegistry.get(ids[0]);
+            var m=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.milestone(path,ids[1]);
+            var old=ledger(p);var track=old.get(ids[0]);var counts=new ArrayList<String>();
+            for(int i=0;i<m.criteria().size();i++)counts.add(track.criterionCount(
+                io.github.heatwaveqc.tyr.progression.core.ProgressionMath.counterKey(m.id(),i))+"/"+m.criteria().get(i).count());
+            return "joined="+track.joined()+", complete="+track.completed(m.id())+", achievement="+old.economy().achievements().contains(m.id())
+                +", criteria="+counts+", requires="+m.after()+", fixed XP="+m.fixedRewardXp();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var ids=pair(key);var m=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.milestone(PathRegistry.get(ids[0]),ids[1]);
+            var old=ledger(p);var t=old.get(ids[0]);var issues=new ArrayList<String>();
+            if(t.completed(m.id())&&!old.economy().achievements().contains(m.id()))issues.add("Completion lacks achievement");
+            if(t.completed(m.id())&&!t.milestones().containsAll(m.after()))issues.add("Completed milestone lacks prerequisite");
+            for(int i=0;i<m.criteria().size();i++){
+                int count=t.criterionCount(io.github.heatwaveqc.tyr.progression.core.ProgressionMath.counterKey(m.id(),i));
+                if(count<0||count>m.criteria().get(i).count())issues.add("Counter "+i+" outside bounds");
+            }
+            return issues;
+        }
+        public Set<Action> actions(){return Set.of(Action.GRANT,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var ids=pair(key);var path=PathRegistry.get(ids[0]);var old=ledger(p);
+            var next=action==Action.GRANT?io.github.heatwaveqc.tyr.progression.core.AdminMilestones.complete(old,path,ids[1])
+                :io.github.heatwaveqc.tyr.progression.core.AdminMilestones.resetProgress(old,path,ids[1]);
+            return ledgerChange(p,inspect(p,key),action==Action.GRANT?"completed; achievement granted; NO XP or points awarded"
+                :"unfinished criteria cleared; achievements and receipts unchanged",old,next);
+        }
+    }
+    private static final class Counter implements Handler<ServerPlayer>{
+        public String description(){return "Configured milestone criterion (zero-based index); edits do not settle rewards until a legitimate gameplay event";}
+        private String[] ids(String key){
+            var parts=key.split("\\\\|",-1);
+            if(parts.length!=3)throw new IllegalArgumentException("Expected path|milestone|index");
+            return parts;
+        }
+        public Collection<String> keys(ServerPlayer p){
+            var keys=new ArrayList<String>();
+            for(var path:PathRegistry.all().values())for(var m:path.milestones())
+                for(int i=0;i<m.criteria().size();i++)keys.add(path.id()+"|"+m.id()+"|"+i);
+            return keys;
+        }
+        private int count(ServerPlayer p,String[] ids){
+            return ledger(p).get(ids[0]).criterionCount(io.github.heatwaveqc.tyr.progression.core.ProgressionMath.counterKey(ids[1],Integer.parseInt(ids[2])));
+        }
+        public String inspect(ServerPlayer p,String key){
+            var ids=ids(key);var m=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.milestone(PathRegistry.get(ids[0]),ids[1]);
+            var criterion=m.criteria().get(Integer.parseInt(ids[2]));
+            return count(p,ids)+"/"+criterion.count()+"; event="+criterion.event()+", selector="+criterion.selector();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var ids=ids(key);var m=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.milestone(PathRegistry.get(ids[0]),ids[1]);
+            int n=count(p,ids);
+            return n<0||n>m.criteria().get(Integer.parseInt(ids[2])).count()?List.of("Counter outside bounds"):List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.SET,Action.ADD,Action.SUBTRACT,Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action,long amount){
+            var ids=ids(key);var old=ledger(p);int n=count(p,ids);
+            if(amount>Integer.MAX_VALUE)throw new IllegalArgumentException("Amount too large");
+            long desired=switch(action){case SET->amount;case ADD->n+amount;case SUBTRACT->n-amount;case RESET->0;default->throw new IllegalArgumentException("Unsupported action");};
+            var next=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.counter(old,PathRegistry.get(ids[0]),ids[1],Integer.parseInt(ids[2]),desired);
+            return ledgerChange(p,inspect(p,key),"count="+desired+"; no immediate reward, normal event may settle completion",old,next);
         }
     }
 
