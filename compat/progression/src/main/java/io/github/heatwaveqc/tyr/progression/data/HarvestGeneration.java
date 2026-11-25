@@ -15,7 +15,7 @@ public final class HarvestGeneration {
         public Result {trials=Map.copyOf(trials);}
     }
     private static final Set<String> FIELDS=Set.of("id","item_selector","block_selector",
-        "count","after","prefer_tools","exclude_tools","training_blocks","lane","unarmored");
+        "count","after","prefer_tools","exclude_tools","training_blocks","lane","unarmored","hud_group");
     private static String id(String value,boolean tag){
         if(!value.matches((tag?"#?":"")+"[a-z0-9_.-]+:[a-z0-9_./-]+"))
             throw new IllegalArgumentException("Invalid harvest generation ID/selector "+value);
@@ -78,6 +78,7 @@ public final class HarvestGeneration {
             var overrides=row.has("training_blocks")?row.getAsJsonObject("training_blocks"):new JsonObject();
             boolean unarmored=bool(row,"unarmored",false);
             String lane=row.has("lane")?value(row,"lane"):"Harvesting";
+            String hudGroup=row.has("hud_group")?value(row,"hud_group"):"";
             var fingerprints=new TreeMap<>(survey.apply(items,blocks));
             excluded.forEach(fingerprints::remove);
             // The same exact signal cannot serve unrelated families in one path.
@@ -124,6 +125,16 @@ public final class HarvestGeneration {
                 milestone.addProperty("notify_progress",true);
                 milestone.addProperty("title",title("Harvesting: ",tool));
                 milestone.add("after",strings(parentIds));
+                if(!hudGroup.isEmpty()){
+                    var hud=new JsonObject();hud.addProperty("group",hudGroup);
+                    var objective=new JsonObject();
+                    var examples=selected.stream().limit(2).map(HarvestGeneration::readableId).toList();
+                    String message="Break blocks for "+readableId(tool)+": "+String.join(", ",examples);
+                    if(selected.size()>examples.size())message+=" or equivalent blocks";
+                    objective.addProperty("text",message.length()<=240?message:message.substring(0,240));
+                    var objectives=new JsonArray();objectives.add(objective);hud.add("objectives",objectives);
+                    milestone.add("hud",hud);
+                }
                 milestone.add("completion_aliases",strings(aliases));
                 var criteria=new JsonArray();criteria.add(criterion);milestone.add("criteria",criteria);
                 milestones.add(milestone);
@@ -158,6 +169,7 @@ public final class HarvestGeneration {
         copy.add("milestones",milestones);copy.add("skills",skills);
         return new Result(copy,trials);
     }
+    private static String readableId(String id){return id.replace(':',' ').replace('_',' ').replace('/',' ');}
     private static String title(String prefix,String tool){
         String title=prefix+tool;
         return title.length()<=120?title:title.substring(0,120);

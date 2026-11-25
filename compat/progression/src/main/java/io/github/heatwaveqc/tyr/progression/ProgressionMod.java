@@ -44,6 +44,7 @@ public final class ProgressionMod {
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.PathResourceNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.ChallengeHudNetwork::register);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
@@ -72,6 +73,7 @@ public final class ProgressionMod {
         // Exactly one registration site in the one-JAR target architecture.
         io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.ChallengeHudRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.BountifulDecreeSeals.register();
         io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.charm.CharmRuntime.register();

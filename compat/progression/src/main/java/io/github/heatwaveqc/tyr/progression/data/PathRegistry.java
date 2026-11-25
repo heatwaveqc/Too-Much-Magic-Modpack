@@ -107,6 +107,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
 
     private record Pending(Map<ResourceLocation,JsonElement> data,ResourceManager manager){}
     private static volatile Pending pending;
+    private static volatile Map<String,java.util.List<ChallengeHudSpec.Lane>> challengeHuds=Map.of();
+    public static Map<String,java.util.List<ChallengeHudSpec.Lane>> challengeHuds(){return challengeHuds;}
     private static volatile Map<String,Map<String,java.util.Set<String>>> generatedTrials=Map.of();
 
     /** Null means an explicitly authored material criterion, not a generated one. */
@@ -137,6 +139,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
 
     private static void install(Map<ResourceLocation,JsonElement> data, ResourceManager manager) {
         Map<String,Map<String,java.util.Set<String>>> nextGenerated=new HashMap<>();
+        Map<String,java.util.List<ChallengeHudSpec.Lane>> nextHuds=new HashMap<>();
         Map<String,Definition.Path> next = new HashMap<>();
         Map<String,String> modes = new HashMap<>();
         Map<String,PotionEnrollmentTrigger> triggers = new HashMap<>();
@@ -203,6 +206,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 var raw=generated.path();
                 Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(MagicCatalog.expand(raw,magicStats),systems));
                 nextGenerated.put(path.id(),generated.trials());
+                var hud=ChallengeHudSpec.parse(raw,path);
+                if(!hud.isEmpty())nextHuds.put(path.id(),hud);
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
                 if(element.getAsJsonObject().has("hunter_xp")||element.getAsJsonObject().has("computed_xp"))
@@ -279,6 +284,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         enrollmentModes = Map.copyOf(modes);
         nativeCompatibilityRules = NativePhysiologyGateway.withApprovedPairData(nativePairs);
         generatedTrials=Map.copyOf(nextGenerated);
+        challengeHuds=Map.copyOf(nextHuds);
         active = Map.copyOf(next);
         io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.install(resourceCatalog);
         io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics.clearFoodCache();
