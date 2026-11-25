@@ -21,6 +21,7 @@ public final class ClientDangerSense {
         }
     }
     public static boolean highlighted(Entity e){
+        if(!e.level().isClientSide())return false;
         var p=Minecraft.getInstance().player;
         return e.level().isClientSide()&&p!=null&&p==owner.get()&&p.level()==e.level()&&p.isAlive()
             &&!p.isCreative()&&!p.isSpectator()&&e.isAlive()&&received>=0&&p.tickCount>=received

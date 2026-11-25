@@ -44,7 +44,10 @@ public final class DangerSenseRuntime {
         }
         var prior=LAST.get(p);
         if(rules.isEmpty()){
-            if(prior!=null){DangerSenseNetwork.send(p,Set.of(),false);LAST.remove(p);}
+            if(prior!=null&&!prior.targets().isEmpty()){
+                DangerSenseNetwork.send(p,Set.of(),false);
+                LAST.put(p,new MartialAwarenessMath.ThreatState(Set.of(),prior.lastAlert()));
+            }
             return;
         }
         double radius=rules.stream().mapToDouble(Rule::radius).max().orElse(0);
@@ -62,7 +65,10 @@ public final class DangerSenseRuntime {
             DangerSenseNetwork.send(p,ids,transition.alert());
     }
     private static void clear(ServerPlayer p){
-        var prior=LAST.remove(p);if(prior!=null)DangerSenseNetwork.send(p,Set.of(),false);
+        var prior=LAST.get(p);if(prior!=null){
+            DangerSenseNetwork.send(p,Set.of(),false);
+            LAST.put(p,new MartialAwarenessMath.ThreatState(Set.of(),prior.lastAlert()));
+        }
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent e){if(e.getEntity() instanceof ServerPlayer p)clear(p);}
     private static void respawn(PlayerEvent.PlayerRespawnEvent e){if(e.getEntity() instanceof ServerPlayer p)clear(p);}

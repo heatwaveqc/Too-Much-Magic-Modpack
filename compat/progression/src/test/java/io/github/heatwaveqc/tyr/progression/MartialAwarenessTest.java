@@ -29,8 +29,8 @@ class MartialAwarenessTest {
         String raw="""
           {"schema":1,"rank_xp":[0],"skills":[{"id":"test:awareness","effects":[
             {"type":"attack_idle_resistance","params":{"idle_ticks":40,"amplifier":0}},
-            {"type":"danger_sense","target":"*","per_rank":8,"params":{"alert_cooldown_ticks":100}},
-            {"type":"detection_range","target":"*","per_rank":0.1,"params":{"native_range":true}}
+            {"type":"danger_sense","target":"#test:hostile","per_rank":8,"params":{"alert_cooldown_ticks":100}},
+            {"type":"detection_range","target":"#test:hostile","per_rank":0.1,"params":{"native_range":true}}
           ]}]}
           """;
         assertDoesNotThrow(()->TestPaths.read("test:path",JsonParser.parseString(raw).getAsJsonObject()));
