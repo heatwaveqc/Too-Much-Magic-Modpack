@@ -27,6 +27,21 @@ def inspect(label, raw, filename, url, hashes, project, version):
         path = next(x for x in ("META-INF/neoforge.mods.toml", "META-INF/mods.toml") if x in jar.namelist())
         metadata = tomllib.loads(jar.read(path).decode("utf-8-sig"))
     actual = {h: hashlib.new(h, raw).hexdigest() for h in ("sha1", "sha256", "sha512")}
+    pin_path = ROOT / "mods" / (label + ".pw.toml")
+    if pin_path.is_file():
+        pin = tomllib.loads(pin_path.read_text())
+        assert pin["filename"] == filename and pin["download"]["url"] == url
+        assert pin["download"]["hash"] == actual[pin["download"]["hash-format"]]
+    with zipfile.ZipFile(io.BytesIO(raw)) as jar:
+        embedded = []
+        for member in jar.namelist():
+            if member.startswith("META-INF/") and member.endswith(".jar"):
+                with zipfile.ZipFile(io.BytesIO(jar.read(member))) as nested:
+                    for meta_path in ("META-INF/neoforge.mods.toml", "META-INF/mods.toml"):
+                        if meta_path in nested.namelist():
+                            meta = tomllib.loads(nested.read(meta_path).decode("utf-8-sig"))
+                            embedded.append({"member": member, "mods": meta.get("mods"), "dependencies": meta.get("dependencies")})
+        print("NESTED " + json.dumps({"label": label, "embedded": embedded}), flush=True)
     for h, digest in hashes.items():
         if actual[h] != digest:
             raise ValueError(f"{label} {h} mismatch")
@@ -64,6 +79,19 @@ def main():
         except Exception as e: errors.append(str(e)); print("CANDIDATE ERROR",row[0],repr(e),flush=True)
     try: cf_candidate()
     except Exception as e: errors.append(str(e)); print("CANDIDATE ERROR emisemble",repr(e),flush=True)
+    try:
+        pin = tomllib.loads((ROOT/"mods/more-overlays-updated.pw.toml").read_text())
+        raw = read(pin["download"]["url"])
+        assert hashlib.new(pin["download"]["hash-format"], raw).hexdigest() == pin["download"]["hash"]
+        with zipfile.ZipFile(io.BytesIO(raw)) as jar:
+            meta_path = next(x for x in ("META-INF/neoforge.mods.toml", "META-INF/mods.toml") if x in jar.namelist())
+            meta = tomllib.loads(jar.read(meta_path).decode("utf-8-sig"))
+            print("MORE_OVERLAYS " + json.dumps(meta.get("dependencies", {})), flush=True)
+            for deps in meta.get("dependencies", {}).values():
+                for dep in deps:
+                    if dep.get("modId") == "jei" and (dep.get("type", "").lower() == "required" or dep.get("mandatory") is True):
+                        raise ValueError("More Overlays requires JEI")
+    except Exception as e: errors.append("More Overlays: " + str(e))
     rows = [r for r in tomllib.loads((ROOT/"index.toml").read_text())["files"] if r["file"].startswith("mods/") and r.get("metafile")]
     print("ROSTER_COUNT",len(rows),flush=True)
     # Read-only metadata survey; never download the existing roster.

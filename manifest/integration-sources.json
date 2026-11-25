@@ -424,14 +424,13 @@
       "branch": "test/full-integration",
       "paths": [
         "mods/alexs-caves-continued.pw.toml",
-        "mods/codxlib.pw.toml",
-        "mods/just-enough-resources-jer.pw.toml"
+        "mods/codxlib.pw.toml"
       ],
       "mode": "runtime-pinned-not-gameplay-tested",
       "integrated_into_baseline": true,
       "merged_from": "stage/next-qa-jer-alex-uranium",
       "original_source_commit": "ac250b44ae4a66b7d5eff9568e82ca61d51423c7",
-      "note": "Reconciled only three SHA-512 provider-verified mod metadata files into baseline packwiz; did NOT import retired Bigger Reactors ore modifier, uranium conversion, old manifest/index/workflows, stage script or stage-only validator. Both/server Alex + Codx, JER client only. Next owner-authorized client/server/worldgen acceptance remains open."
+      "note": "Reconciled only three SHA-512 provider-verified mod metadata files into baseline packwiz; did NOT import retired Bigger Reactors ore modifier, uranium conversion, old manifest/index/workflows, stage script or stage-only validator. Both/server Alex + Codx retained; JER removed from active path ownership for approved #593 EMI-only trial. Original donor remains historical provenance. Next owner-authorized client/server/worldgen acceptance remains open."
     },
     {
       "name": "betterend-newdawn-iesnium-pinned",
