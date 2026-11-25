@@ -54,11 +54,19 @@ def main() -> None:
     config = json.loads((base / "src/main/resources/tmm_economy.mixins.json").read_text())
     if config["mixins"].count("ApotheosisPotionCharmRecipeMixin") != 1:
         raise SystemExit("FAIL Apotheosis mixin not registered exactly once")
-    for name in ("findPotion(", "assemble(", "selection.contents()", "PotionContents.EMPTY"):
+    for name in ("findPotion(", "assemble(", "charm.set(DataComponents.POTION_CONTENTS, contents)", "PotionContents.EMPTY"):
         require(mixin, name)
-    for name in ("Items.POTION", "getComponentsPatch", "getAllEffects", "isValidPotion",
-                 "potion_charm_denied", "potion_charm_custom_effect_allowlist", "neovitae:flight"):
+    for name in ("Items.POTION", "getComponentsPatch", "getAllEffects", "isInstantenous",
+                 "MOB_EFFECT.getKey", "found.equals(contents)", "matchingBottles(bottles)"):
         require(bridge, name)
+    for name in ("isValidPotion", "POTION_CHARM_BLACKLIST", "potion_charm_denied",
+                 "potion_charm_custom_effect_allowlist", "privilegedAmplifier", "neovitae:flight",
+                 "minecraft:bad_omen", "minecraft:raid_omen", "minecraft:trial_omen"):
+        if name in bridge:
+            raise SystemExit(f"FAIL obsolete charm-specific restriction: {name}")
+    for name in ("potion_charm_denied", "potion_charm_custom_effect_allowlist"):
+        if (base / f"src/main/resources/data/tmm/tags/mob_effect/{name}.json").exists():
+            raise SystemExit(f"FAIL obsolete charm tag: {name}")
 
     print("PASS: exact pinned Apotheosis charm recipe ABI and narrow source boundaries; no game boot")
 

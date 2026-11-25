@@ -1,3 +1,5 @@
+> **2026-11-24 ALCH-03 owner supersession:** the old effect deny/allow rules below are historical. All actual single, registered, noninstant effects qualify, including native-blacklisted registered base potions, flight, omens, Resistance V+, and custom-only modded effects, with identical ordinary bottles and exact contents. Keep native six blaze powder, three bottles, durability and ticks; reject mixed/empty/multi/instant/unregistered or foreign carrier components. Old TMM charm tags removed. No global potion-tag or Hunter/flask change. Actual craft uses the bridge for all potions; native JEI/creative enumeration may still omit custom or native-tagged variants, not an eligibility restriction. B/C test normal base and custom flight/omens, amplified resistance and custom modded effects, mixed durations/colors, normal crafting cost, refusal cases, exact component preservation and native refresh/repair. Historical donor evidence below remains intact.
+
 # Alchemy compatibility: lossless potion charms and Neo Vitae multi-dose flask guards (#337)
 
 ## Immutable donor selection / current integration
