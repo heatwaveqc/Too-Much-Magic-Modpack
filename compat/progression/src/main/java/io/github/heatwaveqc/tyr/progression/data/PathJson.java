@@ -249,8 +249,8 @@ public final class PathJson {
                         ||"true".equals(params.get("passive"))||params.containsKey("trial_milestone"))
                         throw new IllegalArgumentException("Feign Death requires a standalone owned toggle: "+sid);
                 }
-                if(type.equals("projectile_return")&&(j.has("activation")||params.containsKey("trial_milestone")))
-                    throw new IllegalArgumentException("Projectile return is automatic: "+sid);
+                if((type.equals("projectile_return")||type.equals("flying_kick"))&&(j.has("activation")||params.containsKey("trial_milestone")))
+                    throw new IllegalArgumentException("Effect is automatic: "+sid);
                 if(type.equals("wall_climbing")){
                     var activation=ActivationSpec.read(j);
                     if(activation==null||!activation.mode().equals("toggle")

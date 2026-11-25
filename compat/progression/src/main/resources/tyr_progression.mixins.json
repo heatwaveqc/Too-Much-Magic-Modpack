@@ -21,6 +21,7 @@
     "MutationEffectQueryMixin",
     "AttackIdleResistanceMixin",
     "StunnedMobAiMixin",
+    "FlyingKickAttackMixin",
     "WallClimbingMixin",
     "FeignTargetingMixin",
     "FeignFoodRegenMixin",
