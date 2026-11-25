@@ -6,7 +6,12 @@ import java.util.*;
  * are discovered from live data. No reflection, raw NBT writes or client actions.
  * The command adapter must call handlers on the authoritative server thread. */
 public final class AdminCapabilityRegistry<T> {
-    public enum Action { RESET, RECONCILE }
+    public enum Action {
+        RESET(false), RECONCILE(false), SET(true), ADD(true), SUBTRACT(true), FILL(false), EMPTY(false);
+        private final boolean amount;
+        Action(boolean amount){this.amount=amount;}
+        public boolean requiresAmount(){return amount;}
+    }
 
     /** Pure preparation; commit runs synchronously only after explicit confirmation.
      * A handler must recheck its preconditions and use its owning state service.
@@ -25,6 +30,10 @@ public final class AdminCapabilityRegistry<T> {
         /** Read-only, descriptive diagnostics; never fixes state. */
         List<String> validate(T target,String key);
         default Set<Action> actions() { return Set.of(); }
+        default Change plan(T target,String key,Action action,long amount) {
+            if(action.requiresAmount())throw new IllegalArgumentException("Numeric action unsupported");
+            return plan(target,key,action);
+        }
         default Change plan(T target,String key,Action action) {
             throw new IllegalArgumentException("Unsupported capability action");
         }
@@ -61,9 +70,14 @@ public final class AdminCapabilityRegistry<T> {
         return List.copyOf(resolve(id,target,key).validate(target,key));
     }
     public Change plan(String id,T target,String key,Action action) {
+        return plan(id,target,key,action,0);
+    }
+    public Change plan(String id,T target,String key,Action action,long amount) {
+        if(amount<0 || !action.requiresAmount()&&amount!=0)
+            throw new IllegalArgumentException("Invalid action amount");
         var handler=resolve(id,target,key);
         if(!handler.actions().contains(action))
             throw new IllegalArgumentException("Capability does not support " + action);
-        return Objects.requireNonNull(handler.plan(target,key,action));
+        return Objects.requireNonNull(handler.plan(target,key,action,amount));
     }
 }

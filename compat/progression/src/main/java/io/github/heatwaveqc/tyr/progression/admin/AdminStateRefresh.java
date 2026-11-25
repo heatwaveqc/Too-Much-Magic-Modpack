@@ -14,6 +14,7 @@ public final class AdminStateRefresh {
         PassivePowers.reconcile(player,true);
         VirtualElytra.reconcile(player,true);
         VisionRuntime.reconcile(player,true);
+        io.github.heatwaveqc.tyr.progression.runtime.resources.PathResources.adminRefresh(player);
         ProgressionMenuNetwork.refresh(player);
     }
 }

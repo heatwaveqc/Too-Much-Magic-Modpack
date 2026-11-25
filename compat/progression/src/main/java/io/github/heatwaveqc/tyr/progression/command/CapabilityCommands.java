@@ -1,6 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -53,9 +54,16 @@ final class CapabilityCommands {
             .then(Commands.literal("inspect").then(keyArgument().executes(ctx->read(ctx,false))))
             .then(Commands.literal("validate").then(keyArgument().executes(ctx->read(ctx,true))));
         for(var action:AdminCapabilityRegistry.Action.values()){
-            capability.then(Commands.literal(action.name().toLowerCase(Locale.ROOT))
-                .then(Commands.literal("preview").then(keyArgument().executes(ctx->change(ctx,action,false))))
-                .then(Commands.literal("confirm").then(keyArgument().executes(ctx->change(ctx,action,true)))));
+            var literal=Commands.literal(action.name().toLowerCase(Locale.ROOT));
+            for(boolean confirm:new boolean[]{false,true}){
+                var phase=Commands.literal(confirm?"confirm":"preview");
+                if(action.requiresAmount())
+                    phase.then(Commands.argument("amount",LongArgumentType.longArg(0))
+                        .then(keyArgument().executes(ctx->change(ctx,action,confirm,LongArgumentType.getLong(ctx,"amount")))));
+                else phase.then(keyArgument().executes(ctx->change(ctx,action,confirm,0)));
+                literal.then(phase);
+            }
+            capability.then(literal);
         }
         return Commands.literal("capability").requires(s->s.hasPermission(2))
             .then(Commands.argument("player",EntityArgument.player())
@@ -86,24 +94,24 @@ final class CapabilityCommands {
             return 1;
         }catch(IllegalArgumentException | IllegalStateException ex){return fail(ctx,ex);}
     }
-    private static int change(CommandContext<CommandSourceStack> ctx,AdminCapabilityRegistry.Action action,boolean confirm)
+    private static int change(CommandContext<CommandSourceStack> ctx,AdminCapabilityRegistry.Action action,boolean confirm,long amount)
             throws CommandSyntaxException {
         var p=target(ctx);
         try{
             if(p.getServer()==null || !p.getServer().isSameThread())
                 throw new IllegalStateException("Administrative changes require the server thread");
             // Re-plan on confirmation against current state; never execute a cached preview.
-            var plan=registry().plan(id(ctx),p,key(ctx),action);
+            var plan=registry().plan(id(ctx),p,key(ctx),action,amount);
             String detail=id(ctx)+" "+key(ctx)+": "+plan.before()+" -> "+plan.after();
             if(!confirm){reply(ctx,"Preview only; use confirm: "+detail);return 1;}
             plan.commit().run();
             ProgressionMod.LOGGER.info("Admin capability {} by {} for {} ({}): {}",action,
                 ctx.getSource().getTextName(),p.getScoreboardName(),p.getUUID(),detail);
-            if(action==AdminCapabilityRegistry.Action.RESET){
+            if(action!=AdminCapabilityRegistry.Action.RECONCILE){
                 try{AdminStateRefresh.reconcile(p);}
                 catch(RuntimeException ex){
-                    ProgressionMod.LOGGER.error("Admin reset committed but derived refresh failed for {}",p.getUUID(),ex);
-                    ctx.getSource().sendFailure(Component.literal("Reset committed; derived refresh failed. Inspect before retrying."));
+                    ProgressionMod.LOGGER.error("Admin edit committed but derived refresh failed for {}",p.getUUID(),ex);
+                    ctx.getSource().sendFailure(Component.literal("Edit committed; derived refresh failed. Inspect before retrying."));
                     return 0;
                 }
             }

@@ -116,6 +116,25 @@ public final class ElixirRuntime {
         awards.add(TrainingRewards.candidate(rates,"elixir",BigDecimal.valueOf(spec.fixedMxp()),true,null));
         return !spec.stackMeditative();
     }
+    /** Explicit operator unbind ignores ordinary reset-on-path-reset policy;
+     * it does not grant drinks, effects or XP, or delete existing native effects. */
+    public static List<String> adminPaths(){
+        return PathRegistry.all().values().stream().filter(tree->tree.skills().stream()
+            .flatMap(skill->skill.effects().stream()).anyMatch(effect->effect.type().equals("personal_elixir")))
+            .map(tree->tree.id()).sorted().toList();
+    }
+    public static String adminBinding(ServerPlayer p,String path){
+        if(!adminPaths().contains(path))throw new IllegalArgumentException("Unknown personal elixir path");
+        return binding(p,path);
+    }
+    public static boolean adminExclusive(ServerPlayer p,String path){
+        return !adminBinding(p,path).isEmpty()&&!ElixirSpec.excluded(binding(p,path))&&spec(p,path)!=null;
+    }
+    public static void adminUnbind(ServerPlayer p,String path,String expected){
+        if(p.getServer()==null||!p.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        if(!adminBinding(p,path).equals(expected))throw new IllegalStateException("Elixir binding changed");
+        if(!expected.isEmpty())store(p,path,"");
+    }
     public static void resetPath(ServerPlayer p,String path){
         var tree=PathRegistry.get(path);
         if(tree!=null&&tree.skills().stream().flatMap(s->s.effects().stream())
