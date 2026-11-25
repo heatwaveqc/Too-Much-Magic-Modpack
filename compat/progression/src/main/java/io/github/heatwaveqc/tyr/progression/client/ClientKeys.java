@@ -25,6 +25,7 @@ public final class ClientKeys {
     public static final KeyMapping TREASURE = key("treasure",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping GLIDE = key("glide",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping ORDEAL = key("ordeal",GLFW.GLFW_KEY_UNKNOWN);
+    public static final KeyMapping FEIGN_DEATH = key("feign_death",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping NIGHT_VISION=key("enhanced_night_vision",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping LAVA_VISION=key("lava_vision",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping CHARM=key("charm",GLFW.GLFW_KEY_C);
@@ -41,6 +42,7 @@ public final class ClientKeys {
         event.register(TREASURE);
         event.register(GLIDE);
         event.register(ORDEAL);
+        event.register(FEIGN_DEATH);
         event.register(NIGHT_VISION);
         event.register(LAVA_VISION);
         event.register(CHARM);
@@ -69,6 +71,7 @@ public final class ClientKeys {
             if (minecraft.screen != null) {
                 while(CHARM.consumeClick()){}
                 while(TAME.consumeClick()){}
+                while(FEIGN_DEATH.consumeClick()){}
                 return;
             }
             send(CHARM,"charm");
@@ -81,6 +84,7 @@ public final class ClientKeys {
             send(TREASURE,"treasure");
             send(GLIDE,"glide");
             send(ORDEAL,"ordeal");
+            send(FEIGN_DEATH,"feign_death");
             send(NIGHT_VISION,"enhanced_night_vision");
             send(LAVA_VISION,"lava_vision");
         }

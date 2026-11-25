@@ -16,12 +16,24 @@
     "OwnedPiglinBruteMixin",
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
+    "VirtualToolLootMixin",
+    "HeightFallTrialMixin",
     "MutationEffectQueryMixin",
+    "AttackIdleResistanceMixin",
+    "StunnedMobAiMixin",
+    "FlyingKickAttackMixin",
+    "DirectMobAttackMixin",
+    "VirtualProtectionMixin",
+    "WallClimbingMixin",
+    "FeignTargetingMixin",
+    "FeignFoodRegenMixin",
+    "ProjectileOwnerAccess",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
     "CompanionPatrolAccess",
     "ElixirFoodDataMixin"
   ],
+  "client": ["ThreatOutlineMixin","ThreatColorMixin"],
   "injectors": {
     "defaultRequire": 1
   }

@@ -21,6 +21,7 @@ public final class ChannelEngine {
     private ChannelEngine() {}
     public static Track view(Ledger ledger,Definition.Path path,ChannelConfig config) {
         Track raw=ledger.get(path.id());if(!raw.joined())return raw;
+        raw=ProgressionMath.projectCompletionAliases(path,raw);
         var def=config.paths().get(path.id());if(def==null)return Track.empty();
         Wallet w=ledger.wallet(def.id());
         var projection=config.masteryStages().get(path.id());
@@ -95,7 +96,8 @@ public final class ChannelEngine {
             if(!skill.autoRanks().isEmpty()
                 || config.achievements().containsKey(new ChannelConfig.SkillKey(path.id(),skill.id())))
                 skills.remove(skill.id());
-        return ledger.with(path.id(),new Track(after.joined(),0,0,0,skills,after.milestones(),after.counters()));
+        return ledger.with(path.id(),new Track(after.joined(),0,0,0,skills,
+                ProgressionMath.persistentMilestones(path,ledger.get(path.id()),after),after.counters()));
     }
     /** Count current paid ranks in this Path, never projected automatic ranks or available XP. */
     public static long investedRanks(Ledger ledger,String path,ChannelConfig config){

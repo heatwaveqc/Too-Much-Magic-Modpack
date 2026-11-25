@@ -96,6 +96,9 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     }
 
     public record FoodRite(FoodRiteSpec spec,Condition<ServerPlayer> conditions){}
+    public record MasteryCompletion(String milestone,String event,Condition<ServerPlayer> condition){}
+    private static volatile Map<String,MasteryCompletion> masteryCompletions=Map.of();
+    public static Map<String,MasteryCompletion> masteryCompletions(){return masteryCompletions;}
     private static volatile Map<String,FoodRite> foodRites=Map.of();
     public static Map<String,FoodRite> foodRites(){return foodRites;}
     private static volatile Map<String,TimedEnrollment> timedEnrollments=Map.of();
@@ -105,8 +108,47 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
     public static Definition.Path get(String id) { return active.get(id); }
     public static Map<String,Definition.Path> all() { return active; }
 
+    private record Pending(Map<ResourceLocation,JsonElement> data,ResourceManager manager){}
+    private static volatile Pending pending;
+    private static volatile Map<String,java.util.List<ObservedTrialSpec>> observedTrials=Map.of();
+    public static Map<String,java.util.List<ObservedTrialSpec>> observedTrials(){return observedTrials;}
+    private static volatile Map<String,java.util.List<HeightFallTrialSpec>> heightFallTrials=Map.of();
+    public static Map<String,java.util.List<HeightFallTrialSpec>> heightFallTrials(){return heightFallTrials;}
+    private static volatile Map<String,java.util.List<ChallengeHudSpec.Lane>> challengeHuds=Map.of();
+    public static Map<String,java.util.List<ChallengeHudSpec.Lane>> challengeHuds(){return challengeHuds;}
+    private static volatile Map<String,Map<String,java.util.Set<String>>> generatedTrials=Map.of();
+
+    /** Null means an explicitly authored material criterion, not a generated one. */
+    public static java.util.Set<String> generatedTrainingBlocks(String path,String tool){
+        return generatedTrials.getOrDefault(path,Map.of()).get(tool);
+    }
+
     @Override
     protected void apply(Map<ResourceLocation,JsonElement> data, ResourceManager manager, ProfilerFiller profiler) {
+        pending=null;
+        // Minecraft binds registry tags after ordinary resource listeners.
+        // Opt-in paths must use the NEW tags, not the previous world's tags.
+        if(data.values().stream().anyMatch(e->e.isJsonObject()&&e.getAsJsonObject().has("harvest_generation"))){
+            var copied=new HashMap<ResourceLocation,JsonElement>();
+            data.forEach((k,v)->copied.put(k,v.deepCopy()));
+            pending=new Pending(Map.copyOf(copied),manager);
+            return;
+        }
+        install(data,manager);
+    }
+
+    public static void tagsUpdated(net.neoforged.neoforge.event.TagsUpdatedEvent event){
+        if(event.getUpdateCause()!=net.neoforged.neoforge.event.TagsUpdatedEvent.UpdateCause.SERVER_DATA_LOAD)return;
+        var ready=pending;pending=null;
+        if(ready!=null)install(ready.data(),ready.manager());
+    }
+    public static void serverStopped(net.neoforged.neoforge.event.server.ServerStoppedEvent event){pending=null;}
+
+    private static void install(Map<ResourceLocation,JsonElement> data, ResourceManager manager) {
+        Map<String,Map<String,java.util.Set<String>>> nextGenerated=new HashMap<>();
+        Map<String,java.util.List<ChallengeHudSpec.Lane>> nextHuds=new HashMap<>();
+        Map<String,java.util.List<HeightFallTrialSpec>> nextFalls=new HashMap<>();
+        Map<String,java.util.List<ObservedTrialSpec>> nextObserved=new HashMap<>();
         Map<String,Definition.Path> next = new HashMap<>();
         Map<String,String> modes = new HashMap<>();
         Map<String,PotionEnrollmentTrigger> triggers = new HashMap<>();
@@ -117,6 +159,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,TrainingXpSpec> newTraining=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
+        Map<String,MasteryCompletion> completions=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
         Map<GateKey,ActivationSpec> nextActivations=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextPurchase=new HashMap<>();
@@ -168,17 +211,38 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         }catch(java.io.IOException e){throw new IllegalArgumentException("Cannot load magic stat catalog",e);}
         data.forEach((key,element) -> {
             try {
-                Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(MagicCatalog.expand(element.getAsJsonObject(),magicStats),systems));
+                var generated=HarvestGeneration.expand(key.toString(),element.getAsJsonObject(),
+                    io.github.heatwaveqc.tyr.progression.runtime.NativeHarvest::fingerprints);
+                var raw=generated.path();
+                Definition.Path path = PathJson.read(key.toString(), ChannelConfig.treeInput(MagicCatalog.expand(raw,magicStats),systems));
+                nextGenerated.put(path.id(),generated.trials());
+                var hud=ChallengeHudSpec.parse(raw,path);
+                if(!hud.isEmpty())nextHuds.put(path.id(),hud);
+                var falls=HeightFallTrialSpec.parse(raw,path);
+                if(!falls.isEmpty())nextFalls.put(path.id(),falls);
+                var observed=ObservedTrialSpec.parse(raw,path);
+                if(!observed.isEmpty())nextObserved.put(path.id(),observed);
                 PotionEnrollmentTrigger trigger = PotionEnrollmentTrigger.parse(element.getAsJsonObject());
                 if (trigger != null) triggers.put(path.id(),trigger);
                 if(element.getAsJsonObject().has("hunter_xp")||element.getAsJsonObject().has("computed_xp"))
                     throw new IllegalArgumentException("Computed XP belongs in experience_systems");
                 HunterMutationPolicy mutationPolicy = HunterMutationPolicy.parse(element.getAsJsonObject());
                 if (mutationPolicy != null) mutations.put(path.id(),mutationPolicy);
-                var raw=element.getAsJsonObject();
                 nextPresentation.put(new GateKey(path.id(),"",-1),PresentationSpec.parse(raw));
                 var rite=FoodRiteSpec.parse(raw);
                 if(rite!=null)rites.put(path.id(),new FoodRite(rite,Eligibility.parse(rite.when())));
+                if(raw.has("mastery_completion")){
+                    var completion=raw.getAsJsonObject("mastery_completion");
+                    if(!completion.keySet().equals(java.util.Set.of("milestone","event","when")))
+                        throw new IllegalArgumentException("Invalid mastery_completion fields");
+                    String milestone=ResourceLocation.parse(completion.get("milestone").getAsString()).toString();
+                    String event=ResourceLocation.parse(completion.get("event").getAsString()).toString();
+                    if(path.milestones().stream().noneMatch(m->m.id().equals(milestone)&&m.criteria().size()==1
+                        &&m.criteria().getFirst().event().equals("external")&&m.criteria().getFirst().selector().equals(event)
+                        &&m.criteria().getFirst().count()==1&&m.xp()==0&&m.points()==0&&m.fixedRewardXp()==0))
+                        throw new IllegalArgumentException("Mastery completion must match a zero-reward external milestone");
+                    completions.put(path.id(),new MasteryCompletion(milestone,event,Eligibility.parse(completion.get("when"))));
+                }
                 var timer=TimedEnrollment.parse(raw);
                 if(timer!=null)timed.put(path.id(),timer);
                 Map<GateKey,Condition<ServerPlayer>> localGates=new HashMap<>();
@@ -236,6 +300,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         sourceGates=Map.copyOf(newSourceGates);
         timedEnrollments=Map.copyOf(timed);
         foodRites=Map.copyOf(rites);
+        masteryCompletions=Map.copyOf(completions);
         gates=Map.copyOf(nextGates);
         activations=Map.copyOf(nextActivations);
         purchaseGates=Map.copyOf(nextPurchase);
@@ -245,6 +310,10 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         mutationPolicies = Map.copyOf(mutations);
         enrollmentModes = Map.copyOf(modes);
         nativeCompatibilityRules = NativePhysiologyGateway.withApprovedPairData(nativePairs);
+        generatedTrials=Map.copyOf(nextGenerated);
+        challengeHuds=Map.copyOf(nextHuds);
+        heightFallTrials=Map.copyOf(nextFalls);
+        observedTrials=Map.copyOf(nextObserved);
         active = Map.copyOf(next);
         io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.install(resourceCatalog);
         io.github.heatwaveqc.tyr.progression.runtime.GildedMechanics.clearFoodCache();

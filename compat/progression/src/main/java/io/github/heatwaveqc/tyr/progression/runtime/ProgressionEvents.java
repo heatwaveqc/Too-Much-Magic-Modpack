@@ -29,6 +29,12 @@ public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
         TreeChopXpBridge.register();
+        AttackIdleDefense.register();
+        DangerSenseRuntime.register();
+        StunningStrike.register();
+        FlyingKick.register();
+        SoulStep.register();
+        FeignDeath.register();
         VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
         io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
@@ -53,7 +59,8 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ElixirRuntime::login);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
-        NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ProgressionEvents::entityInteract);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ToolForms::blockInteract);
         NeoForge.EVENT_BUS.addListener(BedrockRest::interact);
         NeoForge.EVENT_BUS.addListener(BedrockRest::continueSleeping);
         NeoForge.EVENT_BUS.addListener(BedrockRest::wake);
@@ -67,8 +74,10 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::targetChange);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::jump);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,HeightFallTrial::protectLanding);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
         NeoForge.EVENT_BUS.addListener(MechanicalEffects::postDamage);
+        NeoForge.EVENT_BUS.addListener(ObservedTrials::hit);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::harvest);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::tick);
@@ -80,8 +89,8 @@ public final class ProgressionEvents {
     }
 
     /** Only the verified full-health, same-owner fist challenge can emit this deed. */
-    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim) {
-        if (victim.getType() == net.minecraft.world.entity.EntityType.WITHER
+    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim,String verifiedPath) {
+        if (verifiedPath.equals("tyr_progression:monk") && victim.getType() == net.minecraft.world.entity.EntityType.WITHER
                 && TrainingRewards.eligible(owner, "tyr_progression:monk")) {
             ProgressionApi.recordFiltered(owner,
                 io.github.heatwaveqc.tyr.progression.core.Signal.external("tyr_progression:strict_barehand_wither_victory"),
@@ -155,6 +164,7 @@ public final class ProgressionEvents {
     }
     private static void entityInteract(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || event.isCanceled()) return;
+        if (ToolForms.entityInteract(player,event)) return;
         if (!ClassAbilities.entityInteract(player,event)
                 && !EffectRuntime.animalFriendship(player,event))
             EffectHandlers.entityInteract(player,event);
@@ -188,7 +198,9 @@ public final class ProgressionEvents {
     }
     private static void projectileImpact(ProjectileImpactEvent event) {
         if (event.getRayTraceResult() instanceof EntityHitResult hit && hit.getEntity() instanceof ServerPlayer defender)
-            { ClassAbilities.arrowImpact(defender,event);
+            { if(ProjectileReturn.tryReturn(defender,event))return;
+              if(FeignDeath.active(defender))return;
+              ClassAbilities.arrowImpact(defender,event);
               if (!event.isCanceled()) MechanicalEffects.deflect(defender,event);
               if (!event.isCanceled()) EffectHandlers.projectileImpact(defender,event); }
     }
@@ -253,6 +265,8 @@ public final class ProgressionEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (player.tickCount % 10 == 0) { SkillActivation.reconcile(player); EffectRuntime.reconcile(player); }
             Enrollment.tick(player);
+            MasteryCompletionRuntime.tick(player);
+            ObservedTrials.tick(player);
             if (player.tickCount % 20 == 0) HunterMutations.tick(player);
             ClassAbilities.tick(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.JawrBloodCapacity.tick(player);
@@ -275,6 +289,7 @@ public final class ProgressionEvents {
     private static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             PassivePowers.forget(player);
@@ -303,11 +318,18 @@ public final class ProgressionEvents {
     }
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            // The actual server transition, not the vanilla advancement receipt or a client packet.
+            if (!event.getFrom().equals(event.getTo())
+                    && player.serverLevel().dimension().equals(event.getTo())
+                    && !player.isCreative() && !player.isSpectator() && player.isAlive())
+                ProgressionApi.record(player,new io.github.heatwaveqc.tyr.progression.core.Signal(
+                    "dimension_entered",event.getTo().location().toString(),java.util.Set.of()));
             MiningUtilities.forget(player);
             VerifiedMiningXp.forget(player);
             VerifiedSprintingXp.forget(player);
             VerifiedConsumptionXp.forget(player);
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             PassivePowers.forget(player);
             VirtualElytra.reconcile(player,true);
@@ -323,6 +345,7 @@ public final class ProgressionEvents {
             PassivePowers.forget(player);
             ProgressionApi.forgetTransient(player.getUUID());
             Enrollment.clear(player);
+            ObservedTrials.forget(player);
             BedrockRest.forget(player);
             ClassAbilities.forget(player);
             MechanicalEffects.forget(player);
