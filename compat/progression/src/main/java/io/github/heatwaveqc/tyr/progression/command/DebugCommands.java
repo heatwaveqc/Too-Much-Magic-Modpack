@@ -24,6 +24,12 @@ import net.minecraft.network.chat.Component;
 final class DebugCommands {
     private DebugCommands() {}
 
+    private enum AwardKind { REGULAR, FIXED, TRUE }
+    private static com.mojang.brigadier.builder.RequiredArgumentBuilder<CommandSourceStack,Long> awardAmount(AwardKind kind){
+        return Commands.argument("amount",LongArgumentType.longArg(1))
+            .executes(ctx->award(ctx,kind,LongArgumentType.getLong(ctx,"amount")));
+    }
+
     static LiteralArgumentBuilder<CommandSourceStack> currency() {
         var system = Commands.argument("system", ResourceLocationArgument.id())
             .suggests((ctx, builder) -> SharedSuggestionProvider.suggest(
@@ -46,8 +52,56 @@ final class DebugCommands {
             }
             system.then(action);
         }
+        system.then(Commands.literal("award")
+            .then(awardAmount(AwardKind.REGULAR))
+            .then(Commands.literal("fixed").then(awardAmount(AwardKind.FIXED)))
+            .then(Commands.literal("true").then(awardAmount(AwardKind.TRUE))));
         return Commands.literal("currency").requires(s -> s.hasPermission(2))
             .then(Commands.argument("player", EntityArgument.player()).then(system));
+    }
+
+    /** The explicitly selected currency is never rerouted to another destination.
+     * Regular/fixed grants use the existing gameplay settlement adapter and its gates.
+     * True grants are exact administrative edits, without settlement receipts. */
+    private static int award(CommandContext<CommandSourceStack> ctx,AwardKind kind,long amount)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        var source=ctx.getSource();
+        var player=EntityArgument.getPlayer(ctx,"player");
+        var id=ResourceLocationArgument.getId(ctx,"system").toString();
+        var system=ExperienceEconomyRuntime.current().systems().get(id);
+        if(system==null){source.sendFailure(Component.literal("Unknown configured XP system: "+id));return 0;}
+        if(player.getServer()==null||!player.getServer().isSameThread()){
+            source.sendFailure(Component.literal("XP award requires the server thread"));return 0;
+        }
+        var before=player.getData(ProgressionAttachments.LEDGER.get());
+        try{
+            if(kind==AwardKind.TRUE){
+                var edited=AdminExperience.edit(before.economy(),system,AdminExperience.Operation.ADD,amount);
+                player.setData(ProgressionAttachments.LEDGER.get(),before.withEconomy(edited));
+            }else if(!ProgressionApi.awardExplicitConfiguredXp(player,id,"tyr_progression:admin_grant",
+                "admin:"+java.util.UUID.randomUUID(),null,java.math.BigDecimal.valueOf(amount),kind==AwardKind.FIXED)){
+                source.sendFailure(Component.literal("XP award rejected by player/currency earning policy or settlement"));
+                return 0;
+            }
+            var after=player.getData(ProgressionAttachments.LEDGER.get());
+            var oldXp=AdminExperience.balance(before.economy(),system);
+            var newXp=AdminExperience.balance(after.economy(),system);
+            String detail=player.getScoreboardName()+" "+id+": "+kind.name().toLowerCase(java.util.Locale.ROOT)
+                +" requested "+amount+", credited "+newXp.subtract(oldXp).toPlainString()
+                +" XP; "+oldXp.toPlainString()+" -> "+newXp.toPlainString()
+                +"; debt "+ExperienceEconomy.debt(after.economy(),system);
+            ProgressionMod.LOGGER.info("Admin XP award by {} for {} ({}): {}",source.getTextName(),
+                player.getScoreboardName(),player.getUUID(),detail);
+            try{reconcile(player);}catch(RuntimeException ex){
+                ProgressionMod.LOGGER.error("Admin XP award committed but refresh failed for {}",player.getUUID(),ex);
+                source.sendFailure(Component.literal("Award committed; refresh failed. Inspect balance before retrying."));
+                return 0;
+            }
+            source.sendSuccess(()->Component.literal(detail),false);
+            return 1;
+        }catch(IllegalArgumentException|IllegalStateException ex){
+            source.sendFailure(Component.literal("XP award rejected: "+ex.getMessage()));return 0;
+        }
     }
 
     private static int xp(CommandContext<CommandSourceStack> ctx, AdminExperience.Operation op,

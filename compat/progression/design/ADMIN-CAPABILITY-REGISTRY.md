@@ -61,3 +61,11 @@ B/C additions: joined vs dormant resource owner, exact capacity and overflow rej
 | tyr_progression:native_form | player | inspect provider observation, validate UNKNOWN, reconcile cached observation and owned effects only |
 
 Examples: `capability Player tyr_progression:milestone grant confirm test:path|test:trial`; `capability Player tyr_progression:counter set confirm 2 test:path|test:trial|0`; `capability Player tyr_progression:mutation set confirm 2 test:path|minecraft:speed`; `capability Player tyr_progression:xp_trace set confirm 30 player`, then inspect player. All are under /tyrprogress admin. No native transformation force/cure or completed milestone revocation: legacy reward replay and native provider-owned state need explicit safe adapters. Trace covers the shared router/modifier settlement boundary, not every pre-router rejected gameplay event. A trace reports a proposed ledger settlement, not independent confirmation of later attachment publication. B/C: verify normal trial payment vs admin completion, count limits, two players, mutation downgrade/no unrelated loss, join veto/leave effects, trace expiry/logout and native probe recheck.
+
+## XP award syntax (owner-approved regular default)
+
+- `/tyrprogress admin currency <player> <currency> award <amount>` — regular, applies configured reward modifiers and growth divisor.
+- `/tyrprogress admin currency <player> <currency> award fixed <amount>` — fixed, bypasses growth, uses applicable reward modifiers and normal settlement policy.
+- `/tyrprogress admin currency <player> <currency> award true <amount>` — exact direct ledger credit, no modifiers, growth or settlement receipt; rejects cap overflow.
+
+Regular/fixed use the explicit-destination award API with the existing admin_grant source ID, unique transaction and no first-completion identity. They respect normal earning eligibility, nominal award limits, minimum reward rounding and cap. No rerouting. True is equivalent to direct add, preserving receipts and commitments; direct add/subtract/set/reset retain their existing semantics. Report both requested and credited XP, plus new balance/debt. Existing legacy path XP command remains regular. B: compare the three forms on same restored balance/known growth and multiplier, verify console/permissions, cap behavior and no first-completion receipts.

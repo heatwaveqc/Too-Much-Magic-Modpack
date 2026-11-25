@@ -38,4 +38,22 @@ class AdminExperienceTest {
         assertEquals(0, ExperienceEconomy.available(reduced, MXP));
         assertEquals(paid.paidRanks(), reduced.paidRanks());
     }
+
+    @Test void regularFixedAndTrueAwardsHaveDistinctAccounting(){
+        var before=AdminExperience.edit(ExperienceEconomy.Ledger.empty(),MXP,AdminExperience.Operation.SET,2000);
+        var nominal=BigDecimal.valueOf(100);
+        var regular=ExperienceEconomy.earnModified(before,MXP,"tyr_progression:admin_grant",
+            "test:regular",null,nominal,false,1.02,1.5);
+        var fixed=ExperienceEconomy.earnModified(before,MXP,"tyr_progression:admin_grant",
+            "test:fixed",null,nominal,true,1.02,1.5);
+        var exact=AdminExperience.edit(before,MXP,AdminExperience.Operation.ADD,100);
+        assertTrue(regular.accepted());
+        assertTrue(fixed.accepted());
+        assertTrue(regular.effectiveXp().compareTo(fixed.effectiveXp())<0);
+        assertEquals(0,fixed.effectiveXp().compareTo(BigDecimal.valueOf(150)));
+        assertEquals(0,AdminExperience.balance(exact,MXP).compareTo(BigDecimal.valueOf(2100)));
+        assertEquals(before.recentTransactions(),exact.recentTransactions());
+        assertNotEquals(before.recentTransactions(),fixed.ledger().recentTransactions());
+        assertEquals(before.rewardReceipts(),fixed.ledger().rewardReceipts());
+    }
 }
