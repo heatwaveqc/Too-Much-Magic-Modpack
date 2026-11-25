@@ -14,7 +14,10 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class FlyingKickAttackMixin {
     @WrapMethod(method="attack")
     private void tmm$attack(Entity target,Operation<Void> original){
-        FlyingKick.attack((Player)(Object)this,target,()->original.call(target));
+        var player=(Player)(Object)this;
+        io.github.heatwaveqc.tyr.progression.runtime.DirectDodge.attack(player,target,()->{
+            FlyingKick.attack(player,target,()->original.call(target));return true;
+        });
     }
     @WrapOperation(method="attack",at=@At(value="INVOKE",target="Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"))
     private boolean tmm$primary(Entity target,DamageSource source,float amount,Operation<Boolean> original){

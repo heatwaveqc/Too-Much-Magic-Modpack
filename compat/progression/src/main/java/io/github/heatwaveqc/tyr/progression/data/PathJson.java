@@ -249,7 +249,7 @@ public final class PathJson {
                         ||"true".equals(params.get("passive"))||params.containsKey("trial_milestone"))
                         throw new IllegalArgumentException("Feign Death requires a standalone owned toggle: "+sid);
                 }
-                if((type.equals("projectile_return")||type.equals("flying_kick")||type.equals("virtual_protection")||type.equals("soul_step"))&&(j.has("activation")||params.containsKey("trial_milestone")))
+                if((type.equals("projectile_return")||type.equals("flying_kick")||type.equals("direct_dodge")||type.equals("virtual_protection")||type.equals("soul_step"))&&(j.has("activation")||params.containsKey("trial_milestone")))
                     throw new IllegalArgumentException("Effect is automatic: "+sid);
                 if(type.equals("wall_climbing")){
                     var activation=ActivationSpec.read(j);

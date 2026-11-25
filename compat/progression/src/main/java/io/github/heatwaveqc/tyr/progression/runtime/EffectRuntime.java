@@ -177,11 +177,14 @@ public final class EffectRuntime {
         if (event.getEntity() instanceof ServerPlayer defender) {
             // Avoid an incoming hit from a configured quarry group before armor reduction.
             // Source owner attribution handles arrows; environmental damage has no quarry.
-            if (!event.isCanceled() && event.getSource().getEntity() instanceof LivingEntity attacker) {
+            if (!event.isCanceled()) {
                 double evasionChance = 0;
+                boolean direct = DirectDodge.eligible(defender,event.getSource());
                 for (Active a : active(defender)) {
                     Definition.Effect fx = a.effect();
-                    if ("evasion".equals(fx.type()) && Selectors.entity(fx.selector(),attacker))
+                    if (("evasion".equals(fx.type()) && event.getSource().getEntity() instanceof LivingEntity attacker
+                            && Selectors.entity(fx.selector(),attacker))
+                        || ("direct_dodge".equals(fx.type()) && direct))
                         evasionChance = Math.min(0.75, evasionChance + fx.amountPerRank() * a.rank());
                 }
                 if (evasionChance > 0 && defender.getRandom().nextDouble() < evasionChance) {

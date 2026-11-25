@@ -58,6 +58,9 @@ public final class FlyingKick {
             if(a.committed&&actor(p)&&p.level()==living.level())release(a);
         }finally{CURRENT.remove();}
     }
+    public static boolean areaAttack(DamageSource source){
+        Attempt a=CURRENT.get();return a!=null&&a.selected!=null&&source.getEntity()==a.player;
+    }
     private static double radius(EffectRuntime.Active a){
         return FlyingKickMath.radius(MechanicalSpec.number(a.effect().params(),"base_radius",0,0,16),
             a.effect().amountPerRank(),a.rank());
