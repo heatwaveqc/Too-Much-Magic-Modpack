@@ -2159,6 +2159,16 @@ hash = "ca8d4b29f55c79a5b5534e7542e908fb77e0d66c9c68a10a6bfd91a8c08b149d"
 metafile = true
 
 [[files]]
+file = "mods/emi.pw.toml"
+hash = "67bb77eae0b644960be3b1074178ceb5d54facbb42f326981b9d94625238a54a"
+metafile = true
+
+[[files]]
+file = "mods/emisemble.pw.toml"
+hash = "7bba293bbc33e81492b3040e9435828818e59f485fa4a99b3eea87efd36eb0bb"
+metafile = true
+
+[[files]]
 file = "mods/enchanted-witchcraft.pw.toml"
 hash = "4a082b19098f0cfac6bf8b65fa154e1e06ecb5cd7b6636942e2d373d72f00253"
 metafile = true
@@ -2206,6 +2216,11 @@ metafile = true
 [[files]]
 file = "mods/extra-botany-revived.pw.toml"
 hash = "59d705837501e88f2323b7015c10dca32822b0bc8f0613d2f75da32f71555d7f"
+metafile = true
+
+[[files]]
+file = "mods/extra-mod-integrations.pw.toml"
+hash = "1c516c3cdedc1a2b6bdd4d7ab12469142d5ee9dadc03e815be3f2a04b95f7135"
 metafile = true
 
 [[files]]
@@ -2389,23 +2404,8 @@ hash = "2b3863afe380785b94944c1793be81a17a4dc977212e2bd99c96368120bd0fc7"
 metafile = true
 
 [[files]]
-file = "mods/jei.pw.toml"
-hash = "58333a1b7c35bd5940e63b498cf44da16b1f2464c73d72203d1fed84ccfd352a"
-metafile = true
-
-[[files]]
 file = "mods/just-another-witchery-remake.pw.toml"
 hash = "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566"
-metafile = true
-
-[[files]]
-file = "mods/just-enough-professions.pw.toml"
-hash = "5831aa23204273af1ce6aeb9e3615425271689105ea9035fdb7d6ea871d08a3c"
-metafile = true
-
-[[files]]
-file = "mods/just-enough-resources-jer.pw.toml"
-hash = "0ffbcb406354628ad32de0c93ada14835fde4a03bda26d8cb72b4649344a838b"
 metafile = true
 
 [[files]]

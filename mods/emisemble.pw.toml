@@ -1,0 +1,13 @@
+name = "EMIsemble"
+filename = "emisemble-1.2.1.jar"
+side = "client"
+
+[download]
+url = "https://mediafilez.forgecdn.net/files/9734/643/emisemble-1.2.1.jar"
+hash-format = "sha512"
+hash = "93cd951bfab7329b3d3d7da2f6c4061ba0fed75d093031047d8d19fce5dfaa645fc0ae1eee36f529e17413be453fa20a46bc6bbd4b7098fc98d2c29a9a5b228d"
+
+[update]
+[update.curseforge]
+file-id = 9734643
+project-id = 1813595
