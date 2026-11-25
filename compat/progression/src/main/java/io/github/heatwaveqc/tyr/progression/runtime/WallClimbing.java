@@ -4,7 +4,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /** Uses native climbable movement on both sides, via an existing permission projection. */
 public final class WallClimbing {
@@ -14,8 +13,10 @@ public final class WallClimbing {
     private static Set<String> sources(ServerPlayer p){
         if(!p.isAlive()||p.isSpectator()||p.isCreative()||NewbieMode.isNewbie(p)
             ||p instanceof net.neoforged.neoforge.common.util.FakePlayer)return Set.of();
-        return EffectRuntime.active(p).stream().filter(a->a.effect().type().equals("wall_climbing"))
-            .map(EffectRuntime.Active::id).collect(Collectors.toUnmodifiableSet());
+        // Aggregate currently eligible sources under one valid namespaced ID.
+        // Any remaining eligible toggle keeps the power; no second ownership ledger.
+        return EffectRuntime.active(p).stream().anyMatch(a->a.effect().type().equals("wall_climbing"))
+            ?Set.of("tyr_progression:owned_wall_climbing"):Set.of();
     }
     public static boolean canClimb(LivingEntity entity){
         if(!(entity instanceof Player p)||!p.isAlive()||p.isSpectator()||p.isCreative()
