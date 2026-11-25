@@ -177,10 +177,14 @@
       "branch": "test/full-integration",
       "paths": [
         "kubejs/data/tmm/advancement/starter_kit.json",
-        "kubejs/data/tmm/function/rewards/starter_kit.mcfunction"
+        "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
+        "config/feywild-common.toml",
+        "defaultconfigs/ars_nouveau-server.toml",
+        "defaultconfigs/astralsorcery-server.toml",
+        "manifest/starter_guidebooks.json"
       ],
       "mode": "runtime-experimental",
-      "note": "Once-per-player vanilla tick advancement: one empty akashictome:tome, two minecraft:cooked_beef, and Improvable Skills book access via native command; distinct from first-log pouch. Consolidated 2026-11-19. Exact reviewed frozen source; future gameplay acceptance remains required where applicable.",
+      "note": "Historical #369 donor preserved; current #586 reconciles owner correction: no physical first-login grants, populated 12-guide Akashic Tome and two steaks only by personal guarded Introduction quest claim; silent Improvable Skills enrollment retained. Native Feywild, Ars and Astral starter-book suppressions selected. Exact source donor ba6eaaae4958e714c1d0630da87f06c8b38ae4b4; full all-roster native gift audit and fresh-player B/C acceptance pending #509.",
       "source_commit": "7ef6ddd5d2fdc6a27e2241ed905f9970a73762d7",
       "integrated_into_baseline": true,
       "merged_from": "feature/starter-kit-akashic-improvable",
@@ -894,7 +898,7 @@
     "EMC COMPLETENESS: same-build item/variant and post-mapping EMC census, explicit approved zero exclusions and Capturing resolved blacklist, held recipes and productive/cycle audit. Do not auto-price missing items or mark intentional denials as failures.",
     "B14 custom starter-choice reward table is generated and statically validated but requires graphical Prism choice selection and multiplayer once-per-player claim tests; Quest Shop in-book sidebar button also requires UI verification.",
     "XP-bottle item reward blacklist applied in B14; informational/checkmark-heavy preexisting chapters still require the next content/detection audit.",
-    "B15 starting inventory (Akashic Tome, two ordinary steaks and Improvable Skills book-access flag) has not yet been player-tested. Validate one-time per-player tick advancement behavior and no duplication.",
+    "B15 owner correction #586: empty physical first-login inventory, then once-per-player personal Introduction quest reward for populated Tome and steaks; silent IS3 enrollment only at first login. Native grant audit #509, delayed grants, fresh-player inventory and quest claim isolation remain B/C.",
     "Neo Vitae canonical-dust branch now supplies integrated material sources; final recipe export checks and client JEI validation remain pending.",
     "Shop: Ore Blocks & Mining 18 offers (47 custom total); actual UI, exact item delivery and no net-positive coin via Fortune/ore processing must be tested in next all-stream QA.",
     "EvilCraft magic chapter pilot authored source-only (9 nodes) including useful Crushed Dark Gem gift. Await item/recipe runtime registry verification, compiler allocation and client/multiplayer quest tests.",
