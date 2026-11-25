@@ -2868,8 +2868,5 @@ hash = "1a23b75bfc3f9ab98377feee2dd1d4c9846e2041e1cbd744d274d329064066bb"
 
 [[files]]
 file = "kubejs/data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json"
-hash = "cb455d33220f4cef817a08381a796d0312a337a3a13580fd9a6611274a883ec4"
+hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
 
-[[files]]
-file = "kubejs/data/tmm/tags/worldgen/biome/natural_lost_soul_biomes.json"
-hash = "b86814e4c7a39064b81092a9ba960ce1ab26b22a727d4cf1a20713b9c3f54b8d"
