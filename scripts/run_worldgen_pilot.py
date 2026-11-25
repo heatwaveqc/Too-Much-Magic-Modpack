@@ -15,6 +15,7 @@ from pathlib import Path
 
 from audit_worldgen_regions import census
 from audit_worldgen_resources import inventory
+from audit_worldgen_placements import report as placement_report
 
 BASELINE = "721ea058294f838b9d7f145af427f5db228d248d"
 LOADER = "21.1.265"
@@ -46,7 +47,10 @@ def download(url, dest, sha=None):
         raise ValueError("audit dependency digest mismatch: "+dest.name)
     return actual
 
-def stage(pack, work, carbon_sha):
+def progress(message):
+    print(time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())+' WORLDGEN '+message,flush=True)
+
+def stage(pack, work, carbon_sha, instrumented=False):
     if read_output(["git","rev-parse","HEAD"],pack)!=BASELINE:
         raise ValueError("not the frozen Thanksgiving snapshot")
     if read_output(["git","status","--porcelain","--untracked-files=no"],pack):
@@ -56,11 +60,13 @@ def stage(pack, work, carbon_sha):
     evidence.mkdir()
     server=work/"server"
     server.mkdir()
+    progress("compile frozen first-party modules")
     run([sys.executable,"scripts/first_party_runtime.py","build"],pack)
     paths=read_output([sys.executable,"scripts/first_party_runtime.py","paths"],pack)
     jars=[Path(p) if Path(p).is_absolute() else pack/p for p in paths.split(":") if p]
     if len(jars)!=4 or any(not p.is_file() for p in jars):
         raise ValueError("expected four exact first-party modules")
+    progress("download frozen server pins")
     run([sys.executable,str(pack/"scripts/download_mods.py"),str(server/"mods")],pack)
     for jar in jars:
         shutil.copy2(jar, server/"mods"/jar.name)
@@ -78,6 +84,7 @@ def stage(pack, work, carbon_sha):
              "--stage-qa-game-dir",str(server),"--target","server"],pack)
         if len(list((server/"prefab-extension/server-cache").glob("*.nbt")))!=18:
             raise ValueError("missing approved prefab templates")
+    progress("scan raw resource inventory")
     report=inventory(pack,server/"mods",data_roots=[server/"kubejs"])
     report["snapshot_label"]=BASELINE
     (evidence/"raw-inventory.json").write_text(json.dumps(report,indent=2,sort_keys=True),encoding="utf-8")
@@ -93,9 +100,20 @@ def stage(pack, work, carbon_sha):
         if exc.code not in (403,404):
             raise
         carbon_actual=download(CARBON_URL.replace("edge.forgecdn.net","mediafilez.forgecdn.net"),server/"mods"/CARBON,carbon_sha)
+    instrumentation_sha=None
+    if instrumented:
+        progress("compile audit-only instrumentation")
+        module=Path(__file__).resolve().parents[1]/"research/worldgen-audit-instrumentation"
+        run(["gradle","--no-daemon","clean","build"],module)
+        jar=module/"build/libs/tmm_worldgen_audit-0.1.0.jar"
+        if not jar.is_file(): raise ValueError("audit instrumentation jar missing")
+        shutil.copy2(jar,server/"mods"/jar.name)
+        instrumentation_sha=hashlib.sha256(jar.read_bytes()).hexdigest()
+    progress("install NeoForge dedicated server")
     installer=server/"installer.jar"
     installer_sha=download(f"https://maven.neoforged.net/releases/net/neoforged/neoforge/{LOADER}/neoforge-{LOADER}-installer.jar",installer)
     run(["java","-jar","installer.jar","--installServer"],server,900)
+    installer.unlink()
     (server/"eula.txt").write_text("eula=true\n")
     (server/"user_jvm_args.txt").write_text("-Xms2G\n-Xmx6G\n")
     (server/"server.properties").write_text(
@@ -106,7 +124,7 @@ def stage(pack, work, carbon_sha):
     provenance={"baseline":BASELINE,"loader":LOADER,"seed":SEED,"bounds_chunks":INNER,
                 "buffer_chunks":BUFFER,"radius_chunks":RADIUS,"pregen_file":PREGEN,
                 "pregen_sha256":sha,"carbon_file":CARBON,"carbon_sha256":carbon_actual,"installer_sha256":installer_sha,
-                "generation_command":START,"first_party_sha256":{
+                "generation_command":START,"instrumentation_sha256":instrumentation_sha,"first_party_sha256":{
                     p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in jars},
                 "limitations":["Audit-only reconstructed snapshot, not release or installed-world acceptance.",
                                "World preset/actual datapacks and completion must be verified from runtime evidence."]}
@@ -131,7 +149,8 @@ def header_coverage(region, bounds):
                     n+=1
     return n
 
-def generate(server,evidence,seconds):
+def generate(server,evidence,seconds,instrumented=False):
+    progress("start isolated server")
     log=evidence/"server.log"
     outer=tuple(v+delta for v,delta in zip(INNER,(-BUFFER,-BUFFER,BUFFER,BUFFER)))
     expected=(outer[2]-outer[0])*(outer[3]-outer[1])
@@ -162,10 +181,12 @@ def generate(server,evidence,seconds):
             send("datapack list enabled")
             send("seed")
             send("tmm_structure_registry")
+            progress("server ready; starting pregeneration")
             send(START)
             stage_state["command_sent"]=True
             deadline=time.monotonic()+seconds
             next_save=time.monotonic()+60
+            next_progress=time.monotonic()
             while time.monotonic()<deadline:
                 if proc.poll() is not None:
                     raise RuntimeError("server exited during generation")
@@ -176,6 +197,9 @@ def generate(server,evidence,seconds):
                     send("save-all flush")
                     next_save=time.monotonic()+60
                 stage_state["header_coverage"]=header_coverage(server/"world/region",outer)
+                if time.monotonic()>=next_progress:
+                    progress(f"region header coverage {stage_state['header_coverage']}/{expected}; disk free {shutil.disk_usage(server).free//(1024**2)} MiB; headers are not full chunk status")
+                    next_progress=time.monotonic()+30
                 if stage_state["header_coverage"]==expected:
                     stage_state["reason"]="all expected headers present (full status unverified)"
                     break
@@ -195,10 +219,21 @@ def generate(server,evidence,seconds):
                 proc.wait(timeout=30)
             stage_state["clean_exit"]=proc.returncode==0
             (evidence/"execution.json").write_text(json.dumps(stage_state,indent=2))
+    progress("server stopped; census full chunk NBT")
     report=census(server/"world/region",INNER,BUFFER)
     (evidence/"region-census.json").write_text(json.dumps(report,indent=2,sort_keys=True))
     print("PILOT "+json.dumps({k:v for k,v in report.items() if k not in ("starts","errors")}),flush=True)
-    return int(not stage_state["clean_exit"] or not report["complete"] or report["outer_full_chunks"]!=report["outer_expected_chunks"])
+    failed=not stage_state["clean_exit"] or not report["complete"] or report["outer_full_chunks"]!=report["outer_expected_chunks"]
+    if instrumented:
+        progress("reconcile placement events with census")
+        source=server/"tmm-placement.tsv"
+        if not source.is_file(): raise ValueError("instrumentation produced no placement events")
+        shutil.copy2(source,evidence/"placements.tsv")
+        with source.open() as stream: placement=placement_report(report,stream)
+        (evidence/"placement-census.json").write_text(json.dumps(placement,indent=2,sort_keys=True))
+        print("PLACEMENT "+json.dumps({k:v for k,v in placement.items() if k!="starts"}),flush=True)
+        failed=failed or not placement["complete_start_reconciliation"]
+    return int(failed)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
@@ -206,6 +241,7 @@ def main():
     p.add_argument("--work",type=Path,required=True)
     p.add_argument("--carbon-sha256",required=True)
     p.add_argument("--authorized",action="store_true")
+    p.add_argument("--instrumented",action="store_true")
     p.add_argument("--generation-seconds",type=int,default=1500)
     a=p.parse_args()
     if not a.authorized:
@@ -214,8 +250,8 @@ def main():
         p.error("reviewed exact Carbon Config SHA-256 required")
     if not 60<=a.generation_seconds<=1800:
         p.error("generation must be bounded to 60–1800 seconds")
-    server,evidence=stage(a.pack_root.resolve(),a.work.resolve(),a.carbon_sha256)
-    return generate(server,evidence,a.generation_seconds)
+    server,evidence=stage(a.pack_root.resolve(),a.work.resolve(),a.carbon_sha256,a.instrumented)
+    return generate(server,evidence,a.generation_seconds,a.instrumented)
 
 if __name__=="__main__":
     raise SystemExit(main())
