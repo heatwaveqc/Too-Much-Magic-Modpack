@@ -6,6 +6,11 @@ import io.github.heatwaveqc.tyr.progression.core.ProgressionApi;
 import io.github.heatwaveqc.tyr.progression.foundation.RegularHomePolicy;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.InteractionResult;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -58,6 +63,7 @@ public final class RegularHomePower {
     public static void register() {
         NeoForge.EVENT_BUS.addListener(RegularHomePower::onCommands);
         PrefabHomeGrant.register();
+        NeoForge.EVENT_BUS.addListener(RegularHomePower::onBlueprintUse);
     }
 
     private static String state(ServerPlayer player) {
@@ -78,7 +84,7 @@ public final class RegularHomePower {
         state(player, RegularHomePolicy.graduate(state(player)));
         reconcileLogin(player);
         if (RegularHomePolicy.AVAILABLE.equals(state(player)))
-            message(player, "Choose one free home with /tmmhome list.");
+            message(player, "Choose one free home in the Introduction graduation quest.");
     }
 
     public static void reconcileLogin(ServerPlayer player) {
@@ -87,13 +93,16 @@ public final class RegularHomePower {
         if (after != null && !after.equals(ProgressionApi.mode(player, KEY, null))) state(player, after);
     }
 
-    private static boolean canClaim(ServerPlayer player) {
+    private static boolean eligible(ServerPlayer player) {
         reconcileLogin(player);
         return regular(player) && !player.isCreative() && !player.isSpectator()
             && player.getServer() != null && player.getServer().isSameThread()
             && player.getServer().getPlayerList().getPlayer(player.getUUID()) == player
-            && PrefabHomeGrant.nativeGrant(player) == RegularHomePolicy.NativeGrant.NOT_GIVEN
-            && RegularHomePolicy.canUse(true, state(player));
+            && PrefabHomeGrant.nativeGrant(player) == RegularHomePolicy.NativeGrant.NOT_GIVEN;
+    }
+
+    private static boolean canClaim(ServerPlayer player) {
+        return eligible(player) && RegularHomePolicy.canUse(true, state(player));
     }
 
     private static void message(ServerPlayer player, String text) {
@@ -102,6 +111,11 @@ public final class RegularHomePower {
 
     private static void onCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("tmmhome")
+            .requires(source -> source.hasPermission(2))
+            .then(Commands.literal("reward")
+                .then(Commands.argument("house", StringArgumentType.word())
+                    .executes(ctx -> reward(ctx.getSource().getPlayerOrException(),
+                        StringArgumentType.getString(ctx, "house")))))
             .then(Commands.literal("status")
                 .executes(ctx -> status(ctx.getSource().getPlayerOrException())))
             .then(Commands.literal("list")
@@ -139,7 +153,9 @@ public final class RegularHomePower {
             message(player, "No verified personal graduation receipt; contact an operator if you never received a free home.");
         else if (RegularHomePolicy.AVAILABLE.equals(status))
             message(player, PrefabHomeGrant.nativeGrant(player)==RegularHomePolicy.NativeGrant.NOT_GIVEN
-                ? "One free home available. /tmmhome list" : "Native house grant check unavailable; no house issued.");
+                ? "One free home available. Choose a home in the graduation quest." : "Native house grant check unavailable; no house issued.");
+        else if (status.startsWith(RegularHomePolicy.SELECTED))
+            message(player, "Your selected home is " + status.substring(RegularHomePolicy.SELECTED.length()) + ". Use its blueprint.");
         else if (status.startsWith(RegularHomePolicy.RESERVED))
             message(player, "A prior build is reserved for safety (" + status
                 + "). Contact an operator before any reset.");
@@ -284,8 +300,14 @@ public final class RegularHomePower {
     }
 
     private static int place(ServerPlayer player, String name) {
-        if (!canClaim(player)) return status(player);
-        String reserved = RegularHomePolicy.reserve(true, state(player), name);
+        return place(player, name, false);
+    }
+
+    private static int place(ServerPlayer player, String name, boolean blueprint) {
+        if (!eligible(player)) return status(player);
+        String reserved = blueprint
+            ? RegularHomePolicy.reserveSelected(true, state(player), name)
+            : RegularHomePolicy.reserve(true, state(player), name);
         if (reserved == null || !RegularHomePolicy.custom(name)) return status(player);
         try {
             StructureTemplate structure = template(player, name);
@@ -316,6 +338,63 @@ public final class RegularHomePower {
         }
     }
 
+    /** Trusted FTB choice command. Selecting before the separate graduation reward is
+     * equivalent to personally claiming graduation; both are on the same quest. */
+    private static int reward(ServerPlayer player, String name) {
+        if (!RegularHomePolicy.choice(name) || player.isCreative() || player.isSpectator()) return 0;
+        if (NewbieMode.isNewbie(player)) NewbieMode.graduate(player);
+        if (!canClaim(player)) return status(player);
+        if (RegularHomePolicy.GENERIC.equals(name)) return generic(player);
+        // Check the approved immutable asset now, but defer terrain checks to placement.
+        try {
+            template(player, name);
+        } catch (Exception ex) {
+            message(player, "Selected home is unavailable: " + ex.getMessage());
+            return 0;
+        }
+        String selected = RegularHomePolicy.select(true, state(player), name);
+        if (selected == null) return 0;
+        ItemStack blueprint = new ItemStack(Items.PAPER);
+        CompoundTag tag = new CompoundTag();
+        tag.putString("tmm_starter_home", name);
+        tag.putUUID("tmm_starter_home_owner", player.getUUID());
+        blueprint.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+        blueprint.set(DataComponents.CUSTOM_NAME, Component.literal("Starter Home Blueprint: " + name.replace('_', ' ')));
+        state(player, selected);
+        deliver(player, blueprint);
+        message(player, "Right-click the top of a block at your intended building site with your blueprint.");
+        return 1;
+    }
+
+    private static void deliver(ServerPlayer player, ItemStack item) {
+        player.getInventory().add(item);
+        if (!item.isEmpty()) player.drop(item, false);
+    }
+
+    private static void onBlueprintUse(PlayerInteractEvent.RightClickBlock event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        ItemStack item = event.getItemStack();
+        if (!item.is(Items.PAPER)) return;
+        CustomData data = item.get(DataComponents.CUSTOM_DATA);
+        if (data == null) return;
+        CompoundTag tag = data.copyTag();
+        if (!tag.contains("tmm_starter_home")) return;
+        event.setCanceled(true);
+        event.setCancellationResult(InteractionResult.SUCCESS);
+        String name = tag.getString("tmm_starter_home");
+        if (!tag.hasUUID("tmm_starter_home_owner")
+            || !player.getUUID().equals(tag.getUUID("tmm_starter_home_owner"))
+            || !RegularHomePolicy.custom(name)) {
+            message(player, "This blueprint is not yours or is invalid.");
+            return;
+        }
+        if (event.getFace() != Direction.UP) {
+            message(player, "Right-click the TOP face of the intended base block.");
+            return;
+        }
+        if (place(player, name, true) == 1) item.shrink(1);
+    }
+
     private static int generic(ServerPlayer player) {
         if (!canClaim(player)) return status(player);
         String reserved = RegularHomePolicy.reserve(true, state(player),
@@ -329,12 +408,8 @@ public final class RegularHomePower {
         // No dropped/tradable bonus if the inventory is full. Reserve first to
         // prevent repeated command issues in one tick.
         state(player, reserved);
-        if (!player.getInventory().add(item)) {
-            state(player, RegularHomePolicy.AVAILABLE);
-            message(player, "Clear one inventory slot and try again.");
-            return 0;
-        }
         state(player, RegularHomePolicy.SPENT + RegularHomePolicy.GENERIC);
+        deliver(player, item);
         message(player, "You chose Generic. Prefab's native one-use Starter House blueprint"
             + " is in your inventory. The graduation entitlement is now spent.");
         return 1;
