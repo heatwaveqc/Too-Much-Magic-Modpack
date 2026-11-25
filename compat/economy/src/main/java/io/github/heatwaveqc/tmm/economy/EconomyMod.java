@@ -10,6 +10,9 @@ import net.neoforged.fml.common.Mod;
 @Mod("tmm_economy")
 public final class EconomyMod {
     public EconomyMod(IEventBus bus) {
+        // Native-only optional compatibility: no IS3 classes loaded when absent.
+        if (io.github.heatwaveqc.tmm.economy.runtime.enchanting.EnchantingFeatureGate.enabled())
+            io.github.heatwaveqc.tmm.economy.runtime.enchanting.ArcaneDiscriminationRegistration.register(bus);
         if (ModList.get().isLoaded("projecte")) EmcCoverageCommands.registerIfProjectEInstalled();
         if (ModList.get().isLoaded("botania")) ManaConverters.register(bus);
         if (ModList.get().isLoaded("ars_nouveau")) SourceConverters.register(bus);
