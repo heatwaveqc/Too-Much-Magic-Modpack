@@ -73,6 +73,10 @@ file = "config/defaultoptions/keybindings.txt"
 hash = "c9f0f778728932ffdf391f224a6dd681402653497b13ae1abdb6538c449e7dd4"
 
 [[files]]
+file = "config/exmi/enable_config.json"
+hash = "2b5458f612e6e87f555ac901e56308051444183f6da48be6f5f70e256f2db413"
+
+[[files]]
 file = "config/feywild-common.toml"
 hash = "0f377703342a688eff17a7cd7d6f38bdbdcca1e51e7cfc5c62ac7c6acaab9810"
 
