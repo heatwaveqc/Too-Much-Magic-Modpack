@@ -4,6 +4,7 @@ No game boot, code execution from ZIP, downloads of third-party mods, or stable 
 """
 from __future__ import annotations
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -99,6 +100,44 @@ def validate_zip(path, snap, run_id, attempt):
         jars = meta["custom_jar_sha256"]
         require(bool(jars) and all(re.fullmatch(r"(tmm_[a-z0-9_]+|tyr_progression|traders_vengeance|traders_vengence)-[a-zA-Z0-9._-]+\.jar", n) for n in jars), "Unexpected non-first-party JAR")
         allowed = required | {"minecraft/mods/"+n for n in jars}
+        # Newer canonical QA packages also contain a read-only client inventory
+        # and approved, paired Prefab previews. Validate them without allowing
+        # arbitrary additional paths or third-party binaries.
+        inventory_path = "minecraft/tmm-qa-expected-mods.json"
+        if inventory_path in names:
+            inventory = json.loads(z.read(inventory_path))
+            require(inventory["schema"] == 1 and inventory["source_commit"] == snap,
+                    "Wrong client inventory identity")
+            rows = inventory["mods"]
+            require(len(rows) == meta["expected_client_mod_count"] and
+                    len({r["filename"].casefold() for r in rows}) == len(rows),
+                    "Wrong or duplicate client inventory")
+            first_party = {r["filename"]: r["hash"] for r in rows
+                           if r["mod_id"] == "first-party" and r["algorithm"] == "sha256"}
+            require(first_party == jars, "Client inventory first-party hash mismatch")
+            allowed.add(inventory_path)
+        elif "expected_client_mod_count" in meta:
+            raise RuntimeError("Missing declared client inventory")
+        if "qa_only_prefab_houses" in meta:
+            homes = meta["qa_only_prefab_houses"]
+            require(meta["housing_grants_changed"] is False, "Unexpected housing grant changes")
+            catalog = json.loads(base64.b64decode(api(
+                "contents/research/prefab-donors/houses-qa-v1.json?ref="+snap)["content"]))
+            filenames = {h["filename"] for h in catalog["custom_houses"]}
+            require(len(filenames) == 18 and all(re.fullmatch(r"[a-z0-9_]+\.nbt", n) for n in filenames),
+                    "Unexpected approved housing catalog")
+            expected = {"minecraft/prefab-extension/"+prefix+n
+                        for n in filenames for prefix in ("", "server-cache/")}
+            require(set(homes) == expected, "Missing or extraneous declared housing previews")
+            for n in filenames:
+                client = "minecraft/prefab-extension/"+n
+                server = "minecraft/prefab-extension/server-cache/"+n
+                payload = z.read(client)
+                require(payload.startswith(b"\x1f\x8b") and payload == z.read(server),
+                        "Invalid or mismatched paired housing preview: "+n)
+                require(hashlib.sha256(payload).hexdigest() == homes[client] == homes[server],
+                        "Housing preview digest mismatch: "+n)
+            allowed.update(expected)
         require(set(n for n in names if not n.endswith("/")) == allowed, "Unexpected files in QA package")
         for name, digest in jars.items():
             require(hashlib.sha256(z.read("minecraft/mods/"+name)).hexdigest() == digest, "First-party JAR digest mismatch: "+name)
