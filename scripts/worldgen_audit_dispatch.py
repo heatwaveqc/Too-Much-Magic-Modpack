@@ -9,9 +9,9 @@ import sys
 import qa_dispatch_bridge as qa
 
 ISSUE = 746
-TOOLS = "9f10f668457c4596b26bb9124e847ca11e993bdf"
+TOOLS = "990c97ce355aac191419354809ab013efddb10f0"
 LAUNCHER = ".github/workflows/worldgen-audit-pilot.yml"
-REQUIRED = {"Worldgen audit fixtures (offline)", "Verify bootstrap",
+REQUIRED = {"Worldgen audit fixtures (offline)", "Worldgen size audit (offline)", "Verify bootstrap",
             "Python regression suite (NO GAME BOOT)", "Branch lifecycle report"}
 # Reuse canonical API and identity checks without permanently changing its console.
 def live_comment(api, event, now):
