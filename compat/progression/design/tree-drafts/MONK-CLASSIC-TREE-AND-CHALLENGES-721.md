@@ -37,23 +37,24 @@ Proposed purchase layout: all families available on initiation, initial Iron Pal
 
 ## Journey — revised sequential non-block-breaking challenges (owner correction 2026-11-25)
 
-Previous Nov 23 decisions: sunrise OR sunset initiation, generous window; remove separate sunrise, underwater and sprint trials, replace void trial with strict Wither glide. Current pinned monk.json actually has sunset-only timed enrollment (12000–13000, 200 ticks), so reconcile the prior sunrise-or-sunset decision separately, not a second challenge. VerifiedSprintingXp observes genuine on-foot horizontal sprint distance server-side and TrainingRewards uses configured base 1 MXP/block. Keep repeatable training, no sprint or movement skill gates. Hunger Discipline, Swift Step, Monk Leap and martial ranks are purchases, no sunrise, sprint, or undead-kill challenge gates. Classic Hunger Discipline reduces exhaustion; its advanced counterpart periodically grants small amounts of saturation instead of further hunger-loss reduction, cadence and amount pending. No Blink or Withering Stare unlocks in Classic; no respective Enderman or Wither Skeleton challenge. Advanced disposition not decided.
+Previous Nov 23 decisions: sunrise OR sunset initiation, generous window; remove separate sunrise and sprint trials, replace void trial with strict Wither glide. Owner now restores underwater trial (ten primary Journey challenges after initiation). Current pinned monk.json actually has sunset-only timed enrollment (12000–13000, 200 ticks), so reconcile the prior sunrise-or-sunset decision separately, not a second challenge. VerifiedSprintingXp observes genuine on-foot horizontal sprint distance server-side and TrainingRewards uses configured base 1 MXP/block. Keep repeatable training, no sprint or movement skill gates. Hunger Discipline, Swift Step, Monk Leap and martial ranks are purchases, no sunrise, sprint, or undead-kill challenge gates. Classic Hunger Discipline reduces exhaustion; its advanced counterpart periodically grants small amounts of saturation instead of further hunger-loss reduction, cadence and amount pending. No Blink or Withering Stare unlocks in Classic; no respective Enderman or Wither Skeleton challenge. Advanced disposition not decided.
 
 | Order | Qualifying deed | Reward |
 |---:|---|---|
-| 0 | Existing sun meditation initiation | Enrollment, Reserved Fist and Armor Lock; propose full Water Breathing here (prior owner removed separate underwater trial; placement needs review) |
-| 1 | Pet 20 distinct eligible animals barehanded | Animal Friendship, hidden trial access |
-| 2 | Dodge 5 skeleton arrows | Arrow Catching and Step Assist |
-| 3 | Moon meditation from boat, 200 ticks | Water Walking |
-| 4 | Walk 10 blocks through fire under controlled conditions | Full fire/lava immunity |
-| 5 | Pacify a creeper barehanded | Creeper Kiss, hidden trial access |
-| 6 | Caves & Cliffs full-height fall, see below | Full fall damage immunity |
-| 7 | Sleep and wake on adjacent exposed bedrock at night | Bedrock Rest, hidden trial access |
-| 8 | Activate trial blindness, kill 5 hostiles barehanded | Night Vision |
-| 9 | Strict verified barehand Wither victory | Purification and Momentum Glide |
+| 0 | Existing sun meditation initiation | Enrollment, Reserved Fist and Armor Lock |
+| 1 | Remain continuously submerged 280 ticks (14 seconds; proposed deterministic original duration, no actual drowning required) | Full Water Breathing |
+| 2 | Pet 20 distinct eligible animals barehanded | Animal Friendship, hidden trial access |
+| 3 | Dodge 5 skeleton arrows | Arrow Catching and Step Assist |
+| 4 | Moon meditation from boat, 200 ticks | Water Walking |
+| 5 | Walk 10 blocks through fire under controlled conditions | Full fire/lava immunity |
+| 6 | Pacify a creeper barehanded | Creeper Kiss, hidden trial access |
+| 7 | Caves & Cliffs full-height fall, see below | Full fall damage immunity |
+| 8 | Sleep and wake on adjacent exposed bedrock at night | Bedrock Rest, hidden trial access |
+| 9 | Activate trial blindness, kill 5 hostiles barehanded | Night Vision |
+| 10 | Strict verified barehand Wither victory | Purification and Momentum Glide |
 | Finale | Ender Dragon + Classic purchased mastery + required challenge completion | Classic mastery/Go No Further / Unlimited entry |
 
-Water Breathing remains required; proposed free initiation entitlement avoids restoring removed underwater trial; alternatively group with moon meditation if owner prefers. Exact tool/magic branch predicates remain proposals. Preserve ordered original relative sequence for retained original deeds and current objective HUD. No duplicate award or purchase credit. Prior owner wanted 16 trials under old XP-only design, not a fixed count under current redesign.
+Owner restores the underwater trial as first Journey challenge. Exactly ten primary challenges after enrollment; underwater duration and deterministic conditions are proposed pending review. Exact tool/magic branch predicates remain proposals. Preserve ordered original relative sequence for retained original deeds and current objective HUD. No duplicate award or purchase credit. Ten primary Journey challenges are the current design; independent harvest, tool and magic challenges do not count toward ten.
 
 ### Caves & Cliffs fall trial
 
@@ -78,21 +79,21 @@ Count genuine no-drop removals; never award speed with subsequent material tiers
 
 ## Tool utility and magic — proposed parallel challenge branches
 
-These are proposals, not additions to required ordered original journey. Grant trial action only after its prerequisite, then retain entitlement when action succeeds. Use explicit selectable action mode rather than overriding normal right-click behavior; prevent accidental block transformation, conflict with Animal Friendship/Bedrock Rest, use native action and loot context, claim permission, correct tool family and relevant material eligibility. No durability item or special modded item powers; no double output or simultaneous Fortune/Silk. Block eligibility not bypassed by tool action; material/tool rules still govern drops. Mode UI/keybind details and exact predicates need owner review.
+These are independent of the ordered original journey. Owner selects four block-breaking tool trials, each 20 qualifying barehand block removals, rather than right-click actions. Award the corresponding tool action only on completion; no hidden tool unlock needed for break-based trials. Other utility/magic predicates remain proposals. Use explicit selectable action mode rather than overriding normal right-click behavior; prevent accidental block transformation, conflict with Animal Friendship/Bedrock Rest, use native action and loot context, claim permission, correct tool family and relevant material eligibility. No durability item or special modded item powers; no double output or simultaneous Fortune/Silk. Block eligibility not bypassed by tool action; material/tool rules still govern drops. Mode UI/keybind details and exact predicates need owner review.
 
 | Ability | Proposed trial and prerequisite | Entitlement |
 |---|---|---|
 | Glass Touch | Break 5 glass blocks after wooden harvest | Glass/pane harvest only, no universal silk yet |
 | Silk Touch | Successfully harvest 5 glass blocks with Glass Touch | Toggle native Silk Touch I vs Fortune; no paid Silk ranks |
-| Shearing Hands | After Animal Friendship and wooden harvest, shear 5 distinct sheep with hidden trial mode | Native shears entity/block actions, leaves/vines/cobweb correct drops and pumpkin carving; no breeding while shearing |
-| Earth Shaping | After wooden harvest, create 5 dirt paths with hidden trial mode | Native shovel path and campfire extinguishing |
-| Cultivating Hands | After wooden harvest, till 5 valid soil blocks with hidden trial mode | Native hoe tilling |
-| Wood Shaping | After wooden harvest, strip 5 logs with hidden trial mode | Native axe stripping; scraping/dewaxing optional separate vanilla action review |
+| Shearing Hands | Break 20 cobwebs barehanded | Native shears entity/block actions, leaves/vines/cobweb correct drops and pumpkin carving; no breeding while shearing |
+| Earth Shaping | Break 20 dirt blocks barehanded | Native shovel path and campfire extinguishing |
+| Cultivating Hands | Break 20 tall grass plants barehanded (propose count short_grass and tall_grass; one double-height plant counts once) | Native hoe tilling |
+| Wood Shaping | Break 20 logs barehanded | Native axe stripping; scraping/dewaxing optional separate vanilla action review |
 | Aqua Affinity | After full breathing, break 5 eligible underwater blocks | Remove submerged mining penalty (no airborne penalty change) |
 | Otherworld Sight | Occultism native sight/ritual trial TBD | Intrinsic Otherworld Sight (Classic) |
 | Iesnium Palm | Otherworld Sight + appropriate harvest entitlement, native requirement verified | Barehand native Iesnium harvesting (no generic bypass) |
 
-Existing Treasure Hand folded into Silk/Fortune switch; Fortune purchase grants integer native levels, no free Fortune I duplicate. Shears/shovel/hoe/axe utility proposed by research, exact predicates not approved. Invisibility optional separate trial pending owner; no absorption. Vein mining, radial mining, Elixir of Life and additional advanced magic/flight remain deferred to Unlimited challenge inventory, rather than silently dropping active mechanics. Existing Elixir absorption conflicts with new no-intrinsic-absorption design if interpreted globally; resolve before changing existing effect. Withering Stare, Blink, Catch Arrows, Water Walking and other original abilities remain fixed challenge powers.
+Existing Treasure Hand folded into Silk/Fortune switch; Fortune purchase grants integer native levels, no free Fortune I duplicate. Owner-selected 20-block requirements supersede five right-click trials. Proposed tag choices: #minecraft:logs (20), minecraft:dirt (20), minecraft:cobweb (20), minecraft:short_grass or minecraft:tall_grass (20 plants; count double-height removal once). Literal tall_grass-only vs both grass variants remains to confirm. Count genuine no-drop breaks, no canceled actions. No tool-action entitlement until completion. Proposed tool trials count from enrollment in parallel, including overlap of first five logs with wooden speed challenge, so no redundant log breaking. No extra prerequisites such as Animal Friendship or wood tier unless owner decides. Hoe's tall-grass training is thematic, not a claim of native hoe-specific grass drops. Tool action mode remains proposed. Invisibility optional separate trial pending owner; no absorption. Vein mining, radial mining, Elixir of Life and additional advanced magic/flight remain deferred to Unlimited challenge inventory, rather than silently dropping active mechanics. Existing Elixir absorption conflicts with new no-intrinsic-absorption design if interpreted globally; resolve before changing existing effect. Catch Arrows, Water Walking and retained original abilities remain fixed challenge powers. Blink and Withering Stare removed from Classic.
 
 ## Work / verification
 
