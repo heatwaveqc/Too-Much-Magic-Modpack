@@ -32,6 +32,8 @@ public final class AdminCapabilities {
         REGISTRY.register("tyr_progression:counter",new Counter());
         REGISTRY.register("tyr_progression:path",new PathMembership());
         REGISTRY.register("tyr_progression:xp_trace",new Trace());
+        REGISTRY.register("tyr_progression:source_cooldown",new SourceCooldown());
+        REGISTRY.register("tyr_progression:native_form",new NativeForm());
     }
     public static AdminCapabilityRegistry<ServerPlayer> registry(){ return REGISTRY; }
 
@@ -326,6 +328,52 @@ public final class AdminCapabilities {
             long desired=switch(action){case SET->amount;case ADD->n+amount;case SUBTRACT->n-amount;case RESET->0;default->throw new IllegalArgumentException("Unsupported action");};
             var next=io.github.heatwaveqc.tyr.progression.core.AdminMilestones.counter(old,PathRegistry.get(ids[0]),ids[1],Integer.parseInt(ids[2]),desired);
             return ledgerChange(p,inspect(p,key),"count="+desired+"; no immediate reward, normal event may settle completion",old,next);
+        }
+    }
+
+    private static final class SourceCooldown implements Handler<ServerPlayer>{
+        public String description(){return "Transient configured legacy XP source cooldown; reset clears only selected source";}
+        public Collection<String> keys(ServerPlayer p){return io.github.heatwaveqc.tyr.progression.core.ProgressionApi.adminSourceCooldownKeys(p);}
+        public String inspect(ServerPlayer p,String key){
+            var last=io.github.heatwaveqc.tyr.progression.core.ProgressionApi.adminSourceCooldown(p,key);
+            int slash=key.lastIndexOf('/');
+            var system=slash<0?null:PathRegistry.economy(key.substring(0,slash));
+            if(system!=null)try{
+                var source=system.sources().get(Integer.parseInt(key.substring(slash+1)));
+                long now=p.level().getGameTime();
+                long remaining=last==null||now<last?0:Math.max(0,source.cooldownTicks()-(now-last));
+                return "last="+last+", remaining ticks="+remaining+", event="+source.event()+", selector="+source.selector();
+            }catch(IndexOutOfBoundsException|NumberFormatException ignored){}
+            return "stale source key; last="+last;
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            return inspect(p,key).startsWith("stale")?List.of("Source no longer configured"):List.of();
+        }
+        public Set<Action> actions(){return Set.of(Action.RESET);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            var last=io.github.heatwaveqc.tyr.progression.core.ProgressionApi.adminSourceCooldown(p,key);
+            return new Change(inspect(p,key),"source cooldown cleared; XP and receipts unchanged",
+                ()->io.github.heatwaveqc.tyr.progression.core.ProgressionApi.adminResetSourceCooldown(p,key,last));
+        }
+    }
+    private static final class NativeForm implements Handler<ServerPlayer>{
+        public String description(){return "Native provider form observations; reconcile re-probes providers and refreshes owned effects only";}
+        public Collection<String> keys(ServerPlayer p){return List.of("player");}
+        public String inspect(ServerPlayer p,String key){
+            return io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.adminSnapshot(p).states().toString();
+        }
+        public List<String> validate(ServerPlayer p,String key){
+            var snapshot=io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.adminSnapshot(p);
+            return snapshot.states().entrySet().stream()
+                .filter(row->row.getValue()==io.github.heatwaveqc.tyr.progression.compat.physiology.NativePhysiologyPolicy.Presence.UNKNOWN)
+                .map(row->"Provider state unverified: "+row.getKey()).toList();
+        }
+        public Set<Action> actions(){return Set.of(Action.RECONCILE);}
+        public Change plan(ServerPlayer p,String key,Action action){
+            return new Change(inspect(p,key),"invalidate native observation cache and refresh Progression-owned derived effects; no transformation",()->{
+                io.github.heatwaveqc.tyr.progression.runtime.forms.ProviderFlags.forget(p.getUUID());
+                AdminStateRefresh.reconcile(p);
+            });
         }
     }
 

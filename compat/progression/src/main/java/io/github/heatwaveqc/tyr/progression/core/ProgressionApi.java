@@ -524,6 +524,26 @@ public final class ProgressionApi {
                 ChannelEngine.grant(prior,system,nominal,0));
         return true;
     }
+    /** Existing legacy source cooldowns; separate from persisted skill activation. */
+    public static java.util.Set<String> adminSourceCooldownKeys(ServerPlayer p){
+        var keys=new java.util.TreeSet<String>();
+        for(var system:PathRegistry.economies().values()){
+            if(system.magic())continue;
+            for(int i=0;i<system.sources().size();i++)
+                if(system.sources().get(i).cooldownTicks()>0)keys.add(system.id()+"/"+i);
+        }
+        keys.addAll(cooldowns.getOrDefault(p.getUUID(),Map.of()).keySet());
+        return java.util.Set.copyOf(keys);
+    }
+    public static Long adminSourceCooldown(ServerPlayer p,String key){
+        return cooldowns.getOrDefault(p.getUUID(),Map.of()).get(key);
+    }
+    public static void adminResetSourceCooldown(ServerPlayer p,String key,Long expected){
+        if(p.getServer()==null||!p.getServer().isSameThread())throw new IllegalStateException("Server thread required");
+        if(!java.util.Objects.equals(adminSourceCooldown(p,key),expected))throw new IllegalStateException("Cooldown changed");
+        var rows=cooldowns.get(p.getUUID());
+        if(rows!=null){rows.remove(key);if(rows.isEmpty())cooldowns.remove(p.getUUID());}
+    }
     public static void forgetTransient(UUID playerId) {
         cooldowns.remove(playerId);
         io.github.heatwaveqc.tyr.progression.admin.XpTrace.forget(playerId);

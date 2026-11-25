@@ -114,5 +114,7 @@ public final class ProviderFlags {
         return Map.copyOf(flags);
     }
 
+    /** Read-only provider-owned native truth; no transformation is performed. */
+    public static Snapshot adminSnapshot(ServerPlayer player){return snapshot(player);}
     public static void forget(UUID player) { CACHE.remove(player); }
 }
