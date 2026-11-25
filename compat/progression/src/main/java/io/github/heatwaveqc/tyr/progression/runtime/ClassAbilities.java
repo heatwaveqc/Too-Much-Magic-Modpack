@@ -461,15 +461,28 @@ public final class ClassAbilities {
         var last = RETALIATION.get(mob.getUUID());
         if (last != null && last.attacker().equals(p.getUUID())
                 && p.serverLevel().getGameTime() <= last.until()) return;
-        double detection=1,reference=0;
+        double detection=1,reference=0,nativeDetection=1;
+        boolean nativeRange=false;
         for(var active:EffectRuntime.active(p)){
             var fx=active.effect();
             if(fx.type().equals("detection_range")&&mob instanceof net.minecraft.world.entity.monster.Monster&&Selectors.entity(fx.selector(),mob)){
-                detection*=1-io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.scaled(fx.amountPerRank(),active.rank(),0.95);
-                reference=Math.max(reference,io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.number(fx.params(),"reference_range",16,1,64));
+                var params=fx.params();
+                if(io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.bool(params,"sneak_only",false)&&!p.isCrouching())continue;
+                double remaining=1-io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.scaled(fx.amountPerRank(),active.rank(),0.95);
+                if(io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.bool(params,"native_range",false)){
+                    nativeDetection*=remaining;nativeRange=true;
+                }else{
+                    detection*=remaining;
+                    reference=Math.max(reference,io.github.heatwaveqc.tyr.progression.data.MechanicalSpec.number(params,"reference_range",16,1,64));
+                }
             }
         }
-        if(reference>0&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p)&&mob.getTarget()!=p&&mob.distanceToSqr(p)>Math.pow(Math.max(2,reference*Math.max(.05,detection)),2)){
+        double limit=reference>0?Math.max(2,reference*Math.max(.05,detection)):Double.POSITIVE_INFINITY;
+        if(nativeRange&&mob.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE)!=null){
+            double follow=mob.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE);
+            if(Double.isFinite(follow)&&follow>0)limit=Math.min(limit,Math.max(2,follow*Math.max(.05,nativeDetection)));
+        }
+        if(Double.isFinite(limit)&&!p.isCreative()&&!p.isSpectator()&&!NewbieMode.isNewbie(p)&&mob.getTarget()!=p&&mob.distanceToSqr(p)>limit*limit){
             event.setNewAboutToBeSetTarget(null);return;
         }
         for (var a : EffectRuntime.active(p))

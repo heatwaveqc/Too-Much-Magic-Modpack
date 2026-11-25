@@ -49,6 +49,7 @@ public final class ProgressionMod {
         modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DangerSenseNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.TooltipMilestoneNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);

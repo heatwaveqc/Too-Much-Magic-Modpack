@@ -19,11 +19,13 @@
     "VirtualToolLootMixin",
     "HeightFallTrialMixin",
     "MutationEffectQueryMixin",
+    "AttackIdleResistanceMixin",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
     "CompanionPatrolAccess",
     "ElixirFoodDataMixin"
   ],
+  "client": ["ThreatOutlineMixin","ThreatColorMixin"],
   "injectors": {
     "defaultRequire": 1
   }
