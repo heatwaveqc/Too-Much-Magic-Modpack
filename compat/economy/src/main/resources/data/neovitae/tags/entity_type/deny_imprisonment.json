@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#apothic_spawners:blacklisted_from_spawners",
+      "required": false
+    }
+  ]
+}

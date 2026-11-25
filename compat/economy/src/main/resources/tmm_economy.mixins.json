@@ -38,6 +38,8 @@
     "EvilCraftRandomSpiritMixin",
     "EvilCraftSpiritFurnaceMixin",
     "EvilCraftSpiritReanimatorMixin",
+    "ReliquaryCaptureMixin",
+    "ReliquaryFragmentEggMixin",
     "ApothicPersonalFilterMixin",
     "EidolonPersonalFilterMixin",
     "PortableEnchantingOpenMixin",
