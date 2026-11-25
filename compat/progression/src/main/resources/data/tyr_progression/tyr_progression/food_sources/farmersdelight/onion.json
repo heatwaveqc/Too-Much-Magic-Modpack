@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "farmersdelight:onion",
+  "provenance": "c:foods/onion",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/vegetable",
+    "#tmm:foods/raw"
+  ]
+}

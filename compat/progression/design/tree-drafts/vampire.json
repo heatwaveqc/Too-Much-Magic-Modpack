@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:vampire",
+  "id": "tyr_progression:vampire",
   "title": "Vampire",
   "legacy_eligibility": "JAWR verified vampire state",
   "notes": [
@@ -9,7 +9,7 @@
     "Cure suspends effects without deleting invested ranks; JAWR blood HUD bug must be fixed independently.",
     "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages."
   ],
-  "proposed_paid_currency": "tmm_progression:mxp",
+  "proposed_paid_currency": "tyr_progression:mxp",
   "native_level_gates_pending": true,
   "nodes": [
     {

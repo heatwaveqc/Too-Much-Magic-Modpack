@@ -34,7 +34,7 @@ with tempfile.TemporaryDirectory() as d:
                 if re.search(r"/(?:PlayerAttunementRecipe\$Active|PlayerProgress|ResearchHelper|ResearchManager|TileAttunementAltar(?:\$Data)?|AttunementRecipe\$Active)\.class$",n):
                     classes.append(n[:-6].replace("/","."))
             else:
-                if n.endswith(".class") and not n.startswith("META-INF/") and re.search(r"totem|geas|soulbind|soulbrazier|spiritrite",n,re.I):
+                if n.endswith(".class") and not n.startswith("META-INF/") and re.search(r"totem|geas|soulbind|soulbrazier|spiritrite|GazeRiteRegistry",n,re.I):
                     classes.append(n[:-6].replace("/","."))
                 elif n.startswith("data/") and n.endswith(".json") and re.search(r"totem|geas|soul.bind|rite",n,re.I):
                     if "/recipe/" in n or "/recipes/" in n:
@@ -54,6 +54,7 @@ with tempfile.TemporaryDirectory() as d:
                     if cls not in classes: classes.append(cls)
         print("CLASSES",key,json.dumps(classes),flush=True)
     rite_ids=set()
+    gaze_rite_ids=set()
     geas_ids=set()
     for cls in classes:
         # Detailed bytecode only for authoritative lifecycle and registry, not every cosmetic/renderer class.
@@ -78,6 +79,11 @@ with tempfile.TemporaryDirectory() as d:
                 "GeasSoulData":("boolean tryAddGeasEffect(",),
             }.get(short,())
             for token in expected: assert token in out,(cls,token)
+            if short=="GazeRiteRegistry" and key=="gaze":
+                init=out.split("static {};",1)[-1]
+                gaze_rite_ids={v for v in re.findall(r"// String ((?:corrupt_)?gaze_[a-z0-9_]+)$",init,re.M)}
+                assert len(gaze_rite_ids)==26, ("Expected 26 Gaze shared-register Rite IDs",len(gaze_rite_ids))
+                assert "MalumSpiritRiteTypes.RITE_TYPES" in init, "Gaze Rites must target Malum's shared register"
             if short in ("MalumSpiritRiteTypes","MalumGeasEffectTypes","GazeGeasEffectTypeRegistry"):
                 init=out.split("static {};",1)[-1]
                 ids=set(re.findall(r"// String ([a-z0-9_]+)$",init,re.M))
@@ -94,7 +100,7 @@ with tempfile.TemporaryDirectory() as d:
 if key=="astral": print("ASTRAL_PERSONAL_ABI_MATCH",flush=True)
 
 if key!="astral":
-    catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tmm/progression/mxp/core/MalumRitualCatalog.java").read_text()
+    catalog=(pathlib.Path(__file__).resolve().parents[1]/"src/main/java/io/github/heatwaveqc/tyr/progression/mxp/core/MalumRitualCatalog.java").read_text()
     mapped={}
     for recipe,effect,main,extras,spirits in re.findall(r'add\(out,"([^"]+)","([^"]+)",(\d+),List.of\(([\d,]*)\),List.of\(([\d,]*)\)\);',catalog):
         if effect.startswith(key+":"):
@@ -103,5 +109,11 @@ if key!="astral":
     assert set(mapped)==geas_ids-({"malum:creed_of_the_blight_eater"} if key=="malum" else set()),(set(mapped)^geas_ids)
     if key=="malum":
         block=catalog.split("RITES=Set.of(",1)[1].split(");",1)[0]
-        assert set(re.findall(r'"([^"]+)"',block))==rite_ids and len(rite_ids)==26
+        registered=set(re.findall(r'"([^"]+)"',block))
+        assert len(registered)==52, ("Malum + Gaze catalog count",len(registered))
+        assert {v for v in registered if not v.startswith("malum:gaze_") and not v.startswith("malum:corrupt_gaze_")}==rite_ids and len(rite_ids)==26
+    if key=="gaze":
+        block=catalog.split("RITES=Set.of(",1)[1].split(");",1)[0]
+        registered={v for v in re.findall(r'"([^"]+)"',block) if v.startswith(("malum:gaze_","malum:corrupt_gaze_"))}
+        assert registered=={"malum:"+v for v in gaze_rite_ids} and len(registered)==26, ("Gaze rite catalog mismatch",registered.symmetric_difference({"malum:"+v for v in gaze_rite_ids}))
     print("MALUM_CATALOG_MATCH",key,"rites",len(rite_ids),"recipe_geas",len(mapped),flush=True)

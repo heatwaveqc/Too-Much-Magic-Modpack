@@ -29,7 +29,7 @@ OTHER = [
 MONK = {"tmm_monk_" + name for values in LANES.values() for name in values}
 MONK |= {"tmm_monk_" + name for name in OTHER}
 MONK.add("tmm_monk_capstone")
-BRIDGE = ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/runtime/TyzMonkBridge.java"
+BRIDGE = ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/TyzMonkBridge.java"
 
 
 class MonkTyzTreeTests(unittest.TestCase):
@@ -88,10 +88,10 @@ class MonkTyzTreeTests(unittest.TestCase):
         self.assertNotIn("import com.tyzsskills",bridge)
         self.assertNotIn("minecraft:creative_flight",bridge)
         self.assertNotIn("spirit_projectile",bridge)
-        native=(ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tmm/progression/core/ProgressionApi.java").read_text()
+        native=(ROOT / "compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/core/ProgressionApi.java").read_text()
         self.assertIn("awardMonkTyzPointOnce", native)
         self.assertIn("bonusMonkXp",native)
-        self.assertIn("monk.complete(marker).grantPoints(1)", native)
+        self.assertIn("ChannelEngine.grant(ChannelEngine.ownership(ledger,path,monk.complete(marker)),channel,0,1)", native)
         self.assertNotIn("TyzsSkillsAPI.sp().add",native)
 
     def test_pending_affixes_are_not_noop_purchases(self):

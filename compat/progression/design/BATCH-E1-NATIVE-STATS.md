@@ -11,7 +11,7 @@ Owner authorized E1 on 2026-11-18. Existing native generic attribute runtime and
 
 ## Added bindings
 
-| Alias (tmm_progression:) | Native attribute |
+| Alias (tyr_progression:) | Native attribute |
 |---|---|
 | goety_duration | goety:spell_duration |
 | goety_range | goety:spell_range |
