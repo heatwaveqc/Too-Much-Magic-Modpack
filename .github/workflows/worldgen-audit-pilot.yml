@@ -1,5 +1,5 @@
 name: Worldgen audit - authorized pilot
-run-name: Worldgen audit - Thanksgiving frozen baseline
+run-name: Worldgen audit - instrumented Thanksgiving baseline
 on:
   workflow_dispatch:
     inputs:
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 100
     env:
-      TOOLS_SHA: '9f10f668457c4596b26bb9124e847ca11e993bdf'
+      TOOLS_SHA: '990c97ce355aac191419354809ab013efddb10f0'
       BASELINE_SHA: '721ea058294f838b9d7f145af427f5db228d248d'
       CARBON_SHA: '393a5ae752a419da970e9cacdf510c0822039b572cb189517b648a2a03cdb172'
     steps:
@@ -53,7 +53,7 @@ jobs:
           data=json.loads((Path(os.environ['RUNNER_TEMP'])/'worldgen-checks.json').read_text())
           runs=data['workflow_runs']
           assert data['total_count'] <= len(runs), 'Ambiguous truncated CI inventory'
-          required={'Worldgen audit fixtures (offline)','Verify bootstrap','Python regression suite (NO GAME BOOT)','Branch lifecycle report'}
+          required={'Worldgen audit fixtures (offline)','Worldgen size audit (offline)','Verify bootstrap','Python regression suite (NO GAME BOOT)','Branch lifecycle report'}
           for name in required:
               matches=[r for r in runs if r['name']==name and r['head_sha']==os.environ['TOOLS_SHA']]
               assert matches, f'Missing exact tooling check: {name}'
@@ -103,7 +103,7 @@ jobs:
       - name: Reconstruct exact historical server and run bounded generation
         run: |
           set -euo pipefail
-          python audit-tools/scripts/run_worldgen_pilot.py --pack-root frozen-pack --work "$RUNNER_TEMP/tmm-worldgen-audit" --carbon-sha256 "$CARBON_SHA" --authorized --generation-seconds 1500
+          python audit-tools/scripts/run_worldgen_pilot.py --pack-root frozen-pack --work "$RUNNER_TEMP/tmm-worldgen-audit" --carbon-sha256 "$CARBON_SHA" --authorized --instrumented --generation-seconds 1800
       - name: Retain derived evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4
