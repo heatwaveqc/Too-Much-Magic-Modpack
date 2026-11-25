@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "systems": [
+    {
+      "id": "tyr_progression:mxp",
+      "xp_per_point": 1000,
+      "growth_factor": 1.02,
+      "max_level": 10000000,
+      "max_base_award": 1000000000000,
+      "min_reward": 1e-128,
+      "round_subminimum_up": false
+    }
+  ],
+  "default_path_change": {
+    "on_leave": "forfeit",
+    "on_respec": "refund",
+    "wipe_unallocated": true
+  },
+  "path_changes": [],
+  "skills": []
+}

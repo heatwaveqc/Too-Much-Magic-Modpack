@@ -1,0 +1,97 @@
+package io.github.heatwaveqc.tyr.progression.mxp;
+
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import io.github.heatwaveqc.tyr.progression.state.Wallet;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.commands.Commands;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
+
+public final class MxpMod {
+    public static final String ID = "tyr_progression";
+    // The unified engine is always the MXP authority. ProgressionMod rejects
+    // legacy providers on startup rather than disabling awards invisibly.
+    public static boolean active() { return true; }
+    public static final Logger LOGGER = LoggerFactory.getLogger(MxpMod.class);
+
+    public MxpMod(IEventBus bus, ModContainer container) {
+        container.registerConfig(ModConfig.Type.COMMON, MxpSourceConfig.SPEC);
+        container.registerConfig(ModConfig.Type.SERVER, MxpProgressionConfig.SPEC);
+        NeoForge.EVENT_BUS.addListener(this::registerCommands);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,BossRewards::onDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,BossRewards::onDeath);
+        NeoForge.EVENT_BUS.addListener(this::onServerStopping);
+        NeoForge.EVENT_BUS.addListener(this::onTickEnd);
+        LOGGER.info("Tyr Progression MXP initialized (registry-projected boss/miniboss rewards)");
+    }
+
+    private static void clearPaymentScopes() {
+        io.github.heatwaveqc.tyr.progression.mxp.hooks.MxpCastHooks.clear();
+        io.github.heatwaveqc.tyr.progression.mxp.hooks.MxpPortableManaHook.clear();
+        io.github.heatwaveqc.tyr.progression.mxp.hooks.PsiCastHooks.clear();
+    }
+
+    private void onTickEnd(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) { BossRewards.finishTick(); clearPaymentScopes(); }
+
+    private void onServerStopping(ServerStoppingEvent event) {
+        clearPaymentScopes();
+        BossRewards.clear();
+        MxpService.clearBossRules();
+    }
+
+    private void registerCommands(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("tyrmxp")
+            .then(Commands.literal("status").executes(ctx -> {
+                ServerPlayer player = ctx.getSource().getPlayerOrException();
+                Wallet account = MxpService.inspect(player);
+                var catalog=io.github.heatwaveqc.tyr.progression.data.PathRegistry.economyCatalog();
+                String id=io.github.heatwaveqc.tyr.progression.model.XpChannel.MXP;
+                ctx.getSource().sendSuccess(() -> Component.literal(String.format(
+                    "MXP current levels: %d | progress: %.4f/%s | "
+                    + "unspent points: %d | configured base growth: %.4f | first completions: %d",
+                    account.magicLevels(), account.magicProgress(),
+                    catalog.systems().get(id).xpPerPoint().toPlainString(),
+                    account.points(), catalog.growth(id),
+                    account.firstCompletions().size())), false);
+                return 1;
+            }))
+            .then(Commands.literal("test").requires(src -> src.hasPermission(2))
+                .then(Commands.literal("fixed")
+                    .then(Commands.argument("amount", DoubleArgumentType.doubleArg(0.01, 100_000))
+                        .executes(ctx -> {
+                            ServerPlayer player = ctx.getSource().getPlayerOrException();
+                            double amount = DoubleArgumentType.getDouble(ctx, "amount");
+                            MxpService.AwardStatus award = MxpService.diagnostic(player,
+                                "diagnostic:" + UUID.randomUUID(),amount,true);
+                            output(ctx.getSource(), award);
+                            return award.accepted() ? 1 : 0;
+                        })))
+                .then(Commands.literal("ordinary")
+                    .then(Commands.argument("base", DoubleArgumentType.doubleArg(0.01, 100_000))
+                        .executes(ctx -> {
+                            ServerPlayer player = ctx.getSource().getPlayerOrException();
+                            double amount = DoubleArgumentType.getDouble(ctx, "base");
+                            MxpService.AwardStatus award = MxpService.diagnostic(player,
+                                "diagnostic:" + UUID.randomUUID(),amount,false);
+                            output(ctx.getSource(), award);
+                            return award.accepted() ? 1 : 0;
+                        })))));
+    }
+
+    private static void output(net.minecraft.commands.CommandSourceStack source,
+                               MxpService.AwardStatus award) {
+        source.sendSuccess(() -> Component.literal(String.format(
+            "MXP %s: effective %.4f, current P=%d, progress %.4f (%s)",
+            award.accepted() ? "credited" : "rejected", award.effectiveXP(),
+            award.lifetimeLevels(), award.progress(), award.note())), false);
+    }
+}

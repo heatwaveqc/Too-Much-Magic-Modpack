@@ -1,10 +1,10 @@
 {
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "target": "tmm_progression:core",
+  "target": "tyr_progression:core",
   "description": "Exact four old attribute pilot conversions; balance and duplicate-Tyz cutover gates required.",
   "skills": [
     {
-      "id": "tmm_progression:tmm_magic_reservoir_1",
+      "id": "tyr_progression:tmm_magic_reservoir_1",
       "max_rank": 5,
       "rank_costs": [
         1,
@@ -13,7 +13,7 @@
         1,
         1
       ],
-      "xp_channel": "tmm_progression:mxp",
+      "xp_channel": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "id": "tmm_progression:tmm_magic_wellspring_1",
+      "id": "tyr_progression:tmm_magic_wellspring_1",
       "max_rank": 5,
       "rank_costs": [
         1,
@@ -63,7 +63,7 @@
         1,
         1
       ],
-      "xp_channel": "tmm_progression:mxp",
+      "xp_channel": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "id": "tmm_progression:tmm_magic_thrift_1",
+      "id": "tyr_progression:tmm_magic_thrift_1",
       "max_rank": 5,
       "rank_costs": [
         1,
@@ -125,7 +125,7 @@
         1,
         1
       ],
-      "xp_channel": "tmm_progression:mxp",
+      "xp_channel": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",
@@ -154,7 +154,7 @@
       ]
     },
     {
-      "id": "tmm_progression:tmm_magic_potency_1",
+      "id": "tyr_progression:tmm_magic_potency_1",
       "max_rank": 5,
       "rank_costs": [
         1,
@@ -163,7 +163,7 @@
         1,
         1
       ],
-      "xp_channel": "tmm_progression:mxp",
+      "xp_channel": "tyr_progression:mxp",
       "effects": [
         {
           "type": "attribute",

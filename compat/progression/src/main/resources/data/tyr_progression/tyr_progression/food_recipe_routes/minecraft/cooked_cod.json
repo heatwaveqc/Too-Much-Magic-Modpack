@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "item": "minecraft:cooked_cod",
+  "identity": "ordinary",
+  "complete": true,
+  "routes": [
+    {
+      "receipt": "minecraft:cooked_cod_from_smelting",
+      "method": "heat",
+      "result_count": 1,
+      "ingredients": [
+        {
+          "item": "minecraft:cod",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}
