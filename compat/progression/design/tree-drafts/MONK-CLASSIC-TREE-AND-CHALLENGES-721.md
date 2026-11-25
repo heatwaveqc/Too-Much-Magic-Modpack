@@ -33,34 +33,35 @@
 
 Totals: 15 martial +45 body +19 movement +12 earthly +20 magic =111 provisional ranks, including 28 reserved for protection/magic. 9 unallocated against provisional 120 planning budget, not purchasable filler. Exact Classic budget is final sum, Unlimited =1000−Classic, transcendence final point. No absorption, specialized weapon damage, separate fire/fall or damage-type protection ranks. Magic registry evidence and Core overlap unresolved. Every rank meaningful; additive increments use reference baseline/endpoint, not compounding current value; exact 10% criterion remains owner decision. Mining speed must use native effective tool/block speed; no drop eligibility before relevant challenge. Classic has no paid reach extension. No claim that all listed handlers exist. Native loot and sweeping/thorns parity require audits.
 
-Proposed purchase layout: all families available on initiation, initial Iron Palm/Armor/Hand Mining available without challenge deadlocks; spiritual challenge gates may unlock later purchases (sunrise Hunger Discipline, sprint Swift/Leap, undead combat later martial ranks) rather than award numeric bonuses. Exact skill prerequisites/order TBD; do not make the player fight Wither without ability to buy Classic defense. Phase gate at Classic mastery + Ender Dragon + required Classic challenges, with configurable Go No Further. No final allocation or stopping policy ratified.
+Proposed purchase layout: all families available on initiation, initial Iron Palm/Armor/Hand Mining available without challenge deadlocks; no sunrise, sprint or undead-kill gates for quantitative training skills. Exact other skill prerequisites/order TBD; do not make the player fight Wither without ability to buy Classic defense. Phase gate at Classic mastery + Ender Dragon + required Classic challenges, with configurable Go No Further. No final allocation or stopping policy ratified.
 
-## Journey — sequential non-block-breaking challenges
+## Journey — revised sequential non-block-breaking challenges (owner correction 2026-11-25)
 
-Maintain original relative ordering from archived 21-stage audit. First Sunset is already current initiation; old log and stone/iron/obsidian stages move to harvest branch. Original numeric-only trials remain as pilgrimage checkpoints or gates to purchased skills, not automatic numeric grants. Exact gate links are proposals. Hidden trial entitlement for self-dependent action, not a purchased rank, permanent on completion; no out-of-order credit. HUD current localized objective bottom-right; harvest/tool lane tracked separately. Original timings below proposed deterministic, avoid lethal compulsory trial conditions; exact tolerances/criteria pending. 
+Previous Nov 23 decisions: sunrise OR sunset initiation, generous window; remove separate sunrise, underwater and sprint trials, replace void trial with strict Wither glide. Current pinned monk.json actually has sunset-only timed enrollment (12000–13000, 200 ticks), so reconcile the prior sunrise-or-sunset decision separately, not a second challenge. VerifiedSprintingXp observes genuine on-foot horizontal sprint distance server-side and TrainingRewards uses configured base 1 MXP/block. Keep repeatable training, no sprint or movement skill gates. Hunger Discipline, Swift Step, Monk Leap and martial ranks are purchases, no sunrise, sprint, or undead-kill challenge gates. Classic Hunger Discipline reduces exhaustion; its advanced counterpart periodically grants small amounts of saturation instead of further hunger-loss reduction, cadence and amount pending. No Blink or Withering Stare unlocks in Classic; no respective Enderman or Wither Skeleton challenge. Advanced disposition not decided.
 
-| Order | Original stage | Proposed qualifying deed | Proposed reward / unlock |
-|---:|---:|---|---|
-| 0 | Current initiation | First Sunset meditation | Monk path, Reserved Fist and Armor Lock controls |
-| 1 | 2 | Meditate facing sunrise (200 ticks with generous tolerance) | Journey checkpoint; opens Hunger Discipline purchases if gated |
-| 2 | 3 | Remain submerged 280 ticks, no actual drowning required | Full water breathing |
-| 3 | 5 | Successful barehand affection of 20 distinct eligible animals | Animal Friendship; hidden trial access |
-| 4 | 6 | Sprint 200 blocks unarmored | Journey checkpoint; opens Swift Step / Monk Leap purchases if gated |
-| 5 | 7 | Defeat 10 undead with bare hands | Journey checkpoint; later martial purchase gate if needed |
-| 6 | 8 | Dodge 5 skeleton arrows (original reset on hit; verify detector) | Catch Arrows and Step Assist (two qualitative entitlements from same deed; confirm grouping) |
-| 7 | 10 | Meditate facing moon from boat, 200 ticks | Water Walking |
-| 8 | 11 | Meditate near calm Endermen 600 ticks within 20 blocks | Blink |
-| 9 | 12 | Walk 10 blocks through fire under controlled trial conditions | Full fire/lava immunity; do not grant it prematurely unless limited trial safeguard is needed |
-| 10 | 14 | Successfully kiss/pacify a creeper barehanded | Creeper Kiss; hidden trial access |
-| 11 | 15 | Gaze at hostile Wither Skeleton in Nether Fortress 200 ticks, within 20 blocks | Withering Stare |
-| 12 | 16 | Fall 40 blocks onto hay bale; qualifying landing safeguarded like original | Full fall immunity |
-| 13 | 17 | Sleep and wake on adjacent exposed bedrock at night | Bedrock Rest; hidden trial access |
-| 14 | 18 | Activate trial blindness, kill 5 hostiles barehanded | End ordeal, toggleable Night Vision |
-| 15 | 19 | Strict verified barehand Wither victory (preserve existing five-minute/full-health same-owner predicate) | Purification and Momentum Glide (original void-fall flight replaced, no creative flight; same deed, two qualitative entitlements) |
-| — | 20 | Original void-fall trial removed | No void deaths required |
-| Finale | New | Defeat Ender Dragon + finish Classic purchases + required Classic trials | Classic mastery and configurable Go No Further / Unlimited entry; no extra point charge |
+| Order | Qualifying deed | Reward |
+|---:|---|---|
+| 0 | Existing sun meditation initiation | Enrollment, Reserved Fist and Armor Lock; propose full Water Breathing here (prior owner removed separate underwater trial; placement needs review) |
+| 1 | Pet 20 distinct eligible animals barehanded | Animal Friendship, hidden trial access |
+| 2 | Dodge 5 skeleton arrows | Arrow Catching and Step Assist |
+| 3 | Moon meditation from boat, 200 ticks | Water Walking |
+| 4 | Walk 10 blocks through fire under controlled conditions | Full fire/lava immunity |
+| 5 | Pacify a creeper barehanded | Creeper Kiss, hidden trial access |
+| 6 | Caves & Cliffs full-height fall, see below | Full fall damage immunity |
+| 7 | Sleep and wake on adjacent exposed bedrock at night | Bedrock Rest, hidden trial access |
+| 8 | Activate trial blindness, kill 5 hostiles barehanded | Night Vision |
+| 9 | Strict verified barehand Wither victory | Purification and Momentum Glide |
+| Finale | Ender Dragon + Classic purchased mastery + required challenge completion | Classic mastery/Go No Further / Unlimited entry |
 
-Open decisions: whether original checkpoints 1/4/5 gate specific purchases or only the next trial; one reward per deed vs two related entitlements for arrows/Wither; original distinctness/counts, safe fire/fall trial implementation, exact timing tolerances. Original partial breathing superseded by full breathing; no duplicate purchasable breathing or safe-fall levels. Bedrock rest does not reset spawn. Purification must not clear trial blindness or protected effects. Strict Wither condition source verified separately; no live QA implied. Additional new abilities below separate utility/magic lanes so no original-order violation.
+Water Breathing remains required; proposed free initiation entitlement avoids restoring removed underwater trial; alternatively group with moon meditation if owner prefers. Exact tool/magic branch predicates remain proposals. Preserve ordered original relative sequence for retained original deeds and current objective HUD. No duplicate award or purchase credit. Prior owner wanted 16 trials under old XP-only design, not a fixed count under current redesign.
+
+### Caves & Cliffs fall trial
+
+Owner replaces 40-block hay-bale fall with vanilla Caves & Cliffs, no hay landing requirement. Exact 1.21.1 advancement JSON inspected: https://github.com/misode/mcmeta/blob/1.21.1-data/data/minecraft/advancement/adventure/fall_from_world_height.json ; advancement minecraft:adventure/fall_from_world_height, criterion fall_from_world_height, trigger minecraft:fall_from_height, start Y>=319, end Y<=-59, vertical displacement >=379. Vanilla triggers on landing. Use server-verified native-equivalent continuous fall (Overworld default height; exact dimension and datapack-height policy TBD). When trial is current and full fall conditions satisfied, protect from qualifying landing damage BEFORE damage resolution; preserve native fall start/landing tracking so vanilla criterion fires; if hook ordering prevents that, grant exact criterion only after trusted verified qualifying landing. Grant durable fall immunity and advancement together, even if advancement was earned before Monk (fresh qualifying trial should not depend on advancement-earned event firing again). Never give general temporary fall immunity or cancel arbitrary lethal damage, void damage, unrelated falls, teleport/flight spoof, or award for simply having advancement. Verify native trigger/event order in 1.21.1 engine and test both previously earned and first-time cases. No runtime implementation or QA yet.
+
+### Bedrock rest source finding
+
+BedrockRest.java at baseline explicitly calls startSleeping rather than startSleepInBed; no spawn reset. Two exposed adjacent bedrock blocks, safe area, night/thunder, bed-valid dimension, true sleep vote, resets insomnia and triggers slept-in-bed after successful rest. Preserve existing respawn point. Verified in source only.
 
 ## Harvest cultivation — independent semi-dynamic material graph
 
@@ -95,4 +96,4 @@ Existing Treasure Hand folded into Silk/Fortune switch; Fortune purchase grants 
 
 ## Work / verification
 
-No executable edits. New generic engine capability survey: ordered challenge prerequisites, trial vs permanent entitlements, unique entity action tracking, safe fall trial, timed/look/movement detectors, challenge HUD/sync, separate harvest graph, native virtual tool-action execution and loot, true Fortune/Looting levels, sweeping/thorns, protection math and native attribute stacking, migration from current automatic/purchased skills. Verify which existing code already handles these before opening engine PRs. Offline source review only; no compile/QA/build authorized. Pending owner decisions: exact challenge grouping/predicates, purchase gates, tool modes and utility scope, general Protection, magic increments, exact Classic total, 10% criterion, Classic-only harvest policy, capstone and external effect stacking. No new ready-to-code slice claimed until engine audit and design acceptance. 
+No executable edits. New generic engine capability survey: ordered challenge prerequisites, trial vs permanent entitlements, unique entity action tracking, safe fall trial, timed/look/movement detectors, challenge HUD/sync, separate harvest graph, native virtual tool-action execution and loot, true Fortune/Looting levels, sweeping/thorns, protection math and native attribute stacking, migration from current automatic/purchased skills. Verify which existing code already handles these before opening engine PRs. Offline source review only; no compile/QA/build authorized. Pending owner decisions: exact challenge grouping/predicates, purchase gates, tool modes and utility scope, general Protection, magic increments, exact Classic total, 10% criterion, Classic-only harvest policy, capstone and external effect stacking. No new ready-to-code slice claimed until engine audit and design acceptance. Earlier references to removed challenge gates, if any, are superseded by the revised Journey section. 
