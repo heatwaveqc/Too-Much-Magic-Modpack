@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "capture_schema": 1,
+  "observed_recipe_count": 24857,
+  "observed_stonecutting_recipe_count": 2503,
+  "unique_stonecutting_output_count": 1720,
+  "outputs_with_other_observed_recipe_count": 1545,
+  "replication_matter_value_recipe_count": 223,
+  "direct_item_anchor_count": 186,
+  "tag_anchor_count": 37,
+  "stonecutting_outputs_with_explicit_anchor_count": 4,
+  "stonecutting_outputs_with_explicit_anchor": [
+    "minecraft:polished_andesite",
+    "minecraft:polished_deepslate",
+    "minecraft:polished_diorite",
+    "minecraft:polished_granite"
+  ],
+  "proposed_native_tags": [
+    "replication:cant_be_scanned",
+    "replication:cant_be_disintegrated",
+    "replication:skip_calculation"
+  ],
+  "limits": [
+    "The catalog is exact only for the captured RecipeManager snapshot.",
+    "A newer mod roster or datapack set requires a fresh authorized capture and regeneration.",
+    "The catalog does not prove Replication blocks printing of previously learned patterns."
+  ],
+  "capture_sha256": "193076c93bb39a31ee082961d53cbaaa25d9702918e9c8721508bbd82b4586a4",
+  "capture_path": "docs/qa/surveys-2026-11-18/runtime-capture.json.gz"
+}

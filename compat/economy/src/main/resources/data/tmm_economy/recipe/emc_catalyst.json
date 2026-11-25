@@ -12,7 +12,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "botania:alchemy_catalyst"
+      "item": "botania:conjuration_catalyst"
     },
     {
       "item": "projectexpansion:basic_emc_link"

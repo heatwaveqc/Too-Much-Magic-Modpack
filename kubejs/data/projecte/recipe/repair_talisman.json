@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "forbidden_arcanus:eternal_stella"
+    },
+    {
+      "item": "occultism:iesnium_anvil"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "projecte:repair_talisman"
+  }
+}

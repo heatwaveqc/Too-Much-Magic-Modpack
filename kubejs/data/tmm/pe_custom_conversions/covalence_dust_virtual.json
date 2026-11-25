@@ -1,0 +1,62 @@
+{
+  "comment": "#44: These are EMC MAPPING conversions ONLY, not recipes. Preserve ProjectE's native 40-dust ingredient costs after disabling physical dust crafting; values track the live TMM EMC map.",
+  "groups": {
+    "legacy_covalence_dust_costs": {
+      "comment": "Virtual conversions preserve native 40-output source ingredient relationships; ProjectE's custom-conversion mapper computes values without enabling physical crafts.",
+      "conversions": [
+        {
+          "count": 40,
+          "output": {
+            "type": "projecte:item",
+            "id": "projecte:low_covalence_dust"
+          },
+          "ingredients": [
+            {
+              "type": "projecte:item",
+              "id": "minecraft:charcoal"
+            },
+            {
+              "type": "projecte:item",
+              "tag": "c:cobblestones/normal",
+              "amount": 8
+            }
+          ]
+        },
+        {
+          "count": 40,
+          "output": {
+            "type": "projecte:item",
+            "id": "projecte:medium_covalence_dust"
+          },
+          "ingredients": [
+            {
+              "type": "projecte:item",
+              "tag": "c:ingots/iron"
+            },
+            {
+              "type": "projecte:item",
+              "tag": "c:dusts/redstone"
+            }
+          ]
+        },
+        {
+          "count": 40,
+          "output": {
+            "type": "projecte:item",
+            "id": "projecte:high_covalence_dust"
+          },
+          "ingredients": [
+            {
+              "type": "projecte:item",
+              "tag": "c:gems/diamond"
+            },
+            {
+              "type": "projecte:item",
+              "id": "minecraft:coal"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

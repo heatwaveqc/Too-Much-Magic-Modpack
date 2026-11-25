@@ -25,7 +25,7 @@ def selected(root=ROOT):
         d, mod = row["directory"], row["mod_id"]
         if not re.fullmatch(r"compat/[a-z0-9-]+", d) or not re.fullmatch(r"[a-z][a-z0-9_]+", mod):
             raise ValueError("Unsafe module path or mod ID")
-        if mod in ids or d in dirs or mod == "tmm_monk":
+        if mod in ids or d in dirs or mod in {"tmm_monk", "tmm_mxp"}:
             raise ValueError("Duplicate or retired module")
         ids.add(mod); dirs.add(d)
         directory = root / d
@@ -45,15 +45,73 @@ def validate_jar(jar, mod):
         if [m["modId"] for m in metadata.get("mods", [])] != [mod]:
             raise ValueError("Wrong or duplicate declared mod IDs in " + jar.name)
 
+def expected_license(directory):
+    return "GPL-3.0-only" if directory.name == "traders-vengeance" else "MIT"
+
+CALIBERARMS_MANIFEST = "META-INF/traders_vengeance/caliberarms/provenance.json"
+CALIBERARMS_JAR_SHA256 = "88068f10a62af5af35b2e8256137cb5160ea5eb2cc8f42644a0fa42722931f90"
+
+def caliberarms_asset_paths(directory):
+    """The donor model, audio and separate MIT/CC0 notices must ship together."""
+    root = directory / "src/main/resources"
+    manifest = json.loads((root / CALIBERARMS_MANIFEST).read_text(encoding="utf-8"))
+    expected_paths = {
+        "META-INF/traders_vengeance/caliberarms/LICENSE.txt",
+        "META-INF/traders_vengeance/caliberarms/CREDITS.md",
+        "assets/traders_vengeance/models/item/npc_pistol.json",
+        "assets/traders_vengeance/textures/item/gun/m1911.png",
+        "assets/traders_vengeance/sounds.json",
+        *(f"assets/traders_vengeance/sounds/guns/m1911/fire_{i}.ogg" for i in (1, 2)),
+        *(f"assets/traders_vengeance/sounds/reload/pistol/{action}_{i}.ogg"
+          for action, count in (("mag_in", 2), ("mag_out", 2), ("slide", 4))
+          for i in range(1, count + 1)),
+    }
+    files = manifest.get("files", {})
+    adapted = manifest.get("adapted_files", {})
+    if (manifest.get("jar_sha256") != CALIBERARMS_JAR_SHA256
+            or set(files) != expected_paths or not set(adapted) <= expected_paths):
+        raise ValueError("Unreviewed Caliber Arms donor manifest")
+    for path, source_hash in files.items():
+        record = adapted.get(path)
+        if record is not None and record.get("source_sha256") != source_hash:
+            raise ValueError("Caliber Arms donor provenance mismatch: " + path)
+        expected_hash = record["packaged_sha256"] if record else source_hash
+        if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected_hash:
+            raise ValueError("Caliber Arms packaged asset hash mismatch: " + path)
+    return sorted(expected_paths | {CALIBERARMS_MANIFEST})
+
+def validate_caliberarms_assets(directory, z):
+    root = directory / "src/main/resources"
+    for name in caliberarms_asset_paths(directory):
+        if z.namelist().count(name) != 1 or z.read(name) != (root / name).read_bytes():
+            raise ValueError("Missing, duplicate or inconsistent Caliber Arms resource: " + name)
+
+MINIGUN_AUDIO_BLOBS = {
+    "assets/traders_vengeance/sounds/minigun/minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
+    "assets/traders_vengeance/sounds/minigun/minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019",
+    "assets/traders_vengeance/sounds/minigun/minigun_spinup.ogg": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed",
+}
+
+def validate_minigun_audio(directory, z):
+    for name, expected in MINIGUN_AUDIO_BLOBS.items():
+        data = (directory / "src/main/resources" / name).read_bytes()
+        blob = hashlib.sha1(f"blob {len(data)}".encode() + bytes(1) + data).hexdigest()
+        if blob != expected or z.namelist().count(name) != 1 or z.read(name) != data:
+            raise ValueError("Missing or modified audited minigun recording: " + name)
+    if any(name.endswith("/hud_init.ogg") for name in z.namelist()):
+        raise ValueError("Uncleared third-party HUD audio must not be packaged")
+
 def validate_jar_license(directory, jar):
-    """Verify the release license and notices, not just an SPDX metadata label."""
+    """Require the approved module-specific license and exact bundled notices."""
+    expected_id = expected_license(directory)
+    props = dict(line.split("=", 1) for line in (directory / "gradle.properties").read_text().splitlines()
+                 if "=" in line and not line.startswith("#"))
+    if props.get("mod_license") != expected_id:
+        raise ValueError("Unexpected module license: " + str(directory))
     with zipfile.ZipFile(jar) as z:
         metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
-        if metadata.get("license") != "MIT":
-            raise ValueError("First-party JAR must declare MIT: " + jar.name)
-        # Economy already ships its MIT code license and independently licensed
-        # Botania-derived art notices in META-INF; preserve that established
-        # location and verify every required notice rather than relicensing art.
+        if metadata.get("license") != expected_id:
+            raise ValueError("First-party JAR must declare " + expected_id + ": " + jar.name)
         economy = directory.name == "economy"
         prefix = "META-INF/" if economy else ""
         names = ("LICENSE", "THIRD_PARTY_NOTICES.md")
@@ -62,16 +120,22 @@ def validate_jar_license(directory, jar):
         for name in names:
             entry = prefix + name
             if z.namelist().count(entry) != 1:
-                raise ValueError("Missing or duplicate " + entry + " in " + jar.name)
+                raise ValueError("Missing or duplicate " + name + " in " + jar.name)
             expected = (directory / name).read_bytes()
             if not expected or z.read(entry) != expected:
-                raise ValueError("Missing or inconsistent notice " + entry + " in " + jar.name)
+                raise ValueError("Missing or inconsistent notice " + name + " in " + jar.name)
         license_text = z.read(prefix + "LICENSE").decode()
-        for required in ("MIT License", "Copyright (c)", "Permission is hereby granted",
-                         "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"',
-                         "SOFTWARE."):
+        markers = (("MIT License", "Copyright (c)", "Permission is hereby granted",
+                    "The above copyright notice", 'THE SOFTWARE IS PROVIDED "AS IS"', "SOFTWARE.")
+                   if expected_id == "MIT" else
+                   ("GNU GENERAL PUBLIC LICENSE", "Version 3", "TERMS AND CONDITIONS",
+                    "Corresponding Source", "END OF TERMS AND CONDITIONS"))
+        for required in markers:
             if required not in license_text:
-                raise ValueError("Incomplete MIT license in " + jar.name)
+                raise ValueError("Incomplete " + expected_id + " license in " + jar.name)
+        if directory.name == "traders-vengeance":
+            validate_caliberarms_assets(directory, z)
+            validate_minigun_audio(directory, z)
 
 def verify_trader_irons_pin(jar, root=ROOT):
     """Fail before server boot if packaged Trader dependency disagrees with the exact Iron's pin.
@@ -86,11 +150,11 @@ def verify_trader_irons_pin(jar, root=ROOT):
     expected = "[" + match.group(1) + "]"
     with zipfile.ZipFile(jar) as z:
         metadata = tomllib.loads(z.read("META-INF/neoforge.mods.toml").decode())
-    rows = [d for d in metadata.get("dependencies", {}).get("traders_vengence", [])
+    rows = [d for d in metadata.get("dependencies", {}).get("traders_vengeance", [])
             if d.get("modId") == "irons_spellbooks"]
     if len(rows) != 1 or rows[0].get("versionRange") != expected or rows[0].get("type") != "required" or rows[0].get("ordering") != "AFTER" or rows[0].get("side") != "BOTH":
-        raise ValueError("Trader's Vengence Iron's dependency must be required, BOTH, AFTER, exact native pinned range " + expected)
-    print("PASS: compiled Trader's Vengence requires exact native Iron's version " + expected)
+        raise ValueError("Trader's Vengeance Iron's dependency must be required, BOTH, AFTER, exact native pinned range " + expected)
+    print("PASS: compiled Trader's Vengeance requires exact native Iron's version " + expected)
 
 def verify_packaging_inputs(addons, root=ROOT):
     expected = {jar.name: (directory, mod) for directory, mod, jar in selected(root)}
@@ -108,18 +172,55 @@ def main():
     args = p.parse_args()
     rows = selected()
     if args.action == "build":
-        for directory, mod, jar in rows:
-            if mod == "tmm_economy":
-                with tempfile.TemporaryDirectory(prefix="tmm-economy-classpath-") as temp:
-                    mods = Path(temp) / "verified-mods"
-                    subprocess.run([sys.executable, str(directory / "tools/fetch_compile_classpath.py"), str(mods)], cwd=ROOT, check=True)
-                    subprocess.run(["gradle", "--no-daemon", f"-PtmmCompileModsDir={mods}", "clean", "build"], cwd=directory, check=True)
-            else:
-                subprocess.run(["gradle", "--no-daemon", "clean", "build"], cwd=directory, check=True)
-            validate_jar(jar, mod)
-            validate_jar_license(directory, jar)
-            if mod == "traders_vengence":
-                verify_trader_irons_pin(jar)
+        # All provider archives are first verified against their selected
+        # Packwiz hashes. Keep them until *all* first-party JARs are built, so
+        # one common gate can inspect every compiled dependency declaration.
+        with tempfile.TemporaryDirectory(prefix="tmm-firstparty-closure-") as temp:
+            mods = Path(temp) / "verified-mods"
+            for directory, mod, jar in rows:
+                if mod == "tmm_economy":
+                    subprocess.run([sys.executable, "-m", "unittest", "discover",
+                                    "-s", str(directory / "tools"),
+                                    "-p", "test_verify_client_dependency_closure.py", "-v"],
+                                   cwd=ROOT, check=True)
+                    subprocess.run([sys.executable,
+                                    str(directory / "tools/fetch_compile_classpath.py"),
+                                    str(mods)], cwd=ROOT, check=True)
+                    subprocess.run(["gradle", "--no-daemon",
+                                    f"-PtmmCompileModsDir={mods}", "clean", "build"],
+                                   cwd=directory, check=True)
+                    # Retain the focused Jade ABI/metadata test as a stricter
+                    # subsystem-specific guard in addition to shared closure.
+                    subprocess.run([sys.executable,
+                                    str(directory / "tools/verify_client_dependency_closure.py"),
+                                    "--module-jar", str(jar),
+                                    "--provider-jar", str(mods / "Jade-1.21.1-NeoForge-15.10.6.jar"),
+                                    "--pin", str(ROOT / "mods/jade.pw.toml")],
+                                   cwd=ROOT, check=True)
+                else:
+                    subprocess.run(["gradle", "--no-daemon", "clean", "build"],
+                                   cwd=directory, check=True)
+                validate_jar(jar, mod)
+                validate_jar_license(directory, jar)
+                if mod == "traders_vengeance":
+                    verify_trader_irons_pin(jar)
+
+            # Source tests alone cannot prove loader acceptance. Verify each
+            # compiled module against the real native versions in the pinned,
+            # hash-verified provider JARs *before* any authorized full smoke.
+            subprocess.run([sys.executable, "-m", "unittest", "discover",
+                            "-s", str(ROOT / "tests"),
+                            "-p", "test_first_party_dependency_closure.py", "-v"],
+                           cwd=ROOT, check=True)
+            pairs = Path(temp) / "native-dependencies.tsv"
+            subprocess.run([sys.executable,
+                            str(ROOT / "scripts/verify_first_party_dependency_closure.py"),
+                            "--providers-dir", str(mods), "--pairs-out", str(pairs)],
+                           cwd=ROOT, check=True)
+            environment = dict(os.environ, TMM_DEPENDENCY_PAIRS=str(pairs))
+            subprocess.run(["gradle", "--no-daemon", "-p",
+                            str(ROOT / "tools/dependency-closure"), "run"],
+                           cwd=ROOT, env=environment, check=True)
     elif args.action == "paths":
         paths = [jar for _, _, jar in rows]
         verify_packaging_inputs(paths)
@@ -128,7 +229,7 @@ def main():
         if args.mods_dir is None:
             p.error("--mods-dir required")
         expected = {jar.name for _, _, jar in rows}
-        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith("traders_vengence-") or j.name in expected}
+        actual = {j.name for j in args.mods_dir.glob("*.jar") if j.name.startswith("tmm_") or j.name.startswith(("traders_vengeance-", "traders_vengence-")) or j.name in expected}
         if actual != expected:
             raise ValueError(f"Smoke custom JAR mismatch: missing={expected-actual}, extra={actual-expected}")
         for directory, mod, jar in rows:

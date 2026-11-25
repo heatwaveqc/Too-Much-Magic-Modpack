@@ -7,18 +7,32 @@ on:
       - 'scripts/assemble_integration.py'
       - 'scripts/validate_integration_sources.py'
       - 'manifest/mods.json'
+      - 'mods/**'
+      - 'index.toml'
+      - 'pack.toml'
+      - 'scripts/verify_client_download_links.py'
       - 'AGENTS.md'
       - '.gitattributes'
       - 'scripts/pin_next_test_mods.py'
       - 'scripts/retire_teamlapen.py'
       - 'scripts/verify_retirement.py'
       - 'scripts/verify_next_test_roster.py'
+      - 'scripts/verify_qa_inventory.py'
+      - 'scripts/verify_unified_progression.py'
+      - 'manifest/next-qa-target.json'
+      - 'tests/test_qa_inventory.py'
+      - 'scripts/tmm_qa_install_verify.ps1'
       - 'scripts/validate_quests.py'
       - 'compat/progression/**'
       - 'compat/**'
       - 'manifest/first-party-runtime.json'
       - 'scripts/first_party_runtime.py'
+      - 'scripts/verify_first_party_dependency_closure.py'
+      - 'tests/test_first_party_dependency_closure.py'
+      - 'tools/dependency-closure/**'
       - 'tests/test_prism_qa_packaging.py'
+      - 'scripts/audit_client_inventory.py'
+      - 'tests/test_audit_client_inventory.py'
       - 'kubejs/server_scripts/silver_equipment_unification.js'
       - 'kubejs/startup_scripts/silver_equipment_stats.js'
       - 'scripts/build_full_integration_prism.py'
@@ -143,13 +157,18 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_integration_source_preflight.py'
           python3 scripts/validate.py
           python3 scripts/validate_quests.py
+          python3 -m unittest discover -s tests -p test_qa_inventory.py
+          python3 scripts/verify_qa_inventory.py
+          python3 scripts/verify_client_download_links.py
           python3 -m py_compile scripts/validate_integration_sources.py scripts/assemble_integration.py scripts/activate_tyzs.py scripts/stage_monk_tyz.py scripts/pin_next_test_mods.py scripts/verify_next_test_roster.py scripts/verify_tyz_migration.py scripts/retire_teamlapen.py scripts/verify_retirement.py scripts/build_full_integration_prism.py
       - name: Integration Assembly — explicitly authorized, never on automatic push
         if: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') && (inputs.full_smoke == true || inputs.assemble_only == true) }}
         run: |
+          python3 scripts/verify_qa_inventory.py --strict-target
           python3 scripts/assemble_integration.py
+          python3 scripts/verify_qa_inventory.py --strict-target
           python3 scripts/validate.py
-          python3 scripts/verify_tyz_migration.py
+          python3 scripts/verify_unified_progression.py
           python3 scripts/verify_next_test_roster.py
           python3 scripts/validate_quests.py
       - name: Baseline silver and Seasoned Fish source checks (quick)
@@ -170,8 +189,8 @@ jobs:
           python3 -m py_compile scripts/audit_jawr_food_jar.py scripts/verify_emc_coverage_audit.py
           python3 scripts/validate_progression_gates.py
           python3 scripts/verify_emc_coverage_audit.py
-      - name: Re-validate live-staged Tyz 99-rank Core Magic source (exclusive skill backend)
-        run: python3 compat/magic/stage_preview.py --check
+      - name: Verify unified Progression is the sole runtime XP owner
+        run: python3 scripts/verify_unified_progression.py
       - name: Compile and unit test all explicitly selected first-party modules
         run: python3 scripts/first_party_runtime.py build
       - name: Resolve exact built first-party JAR paths
@@ -193,6 +212,7 @@ jobs:
         if: ${{ inputs.full_smoke == true && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
         env:
           SMOKE_WITH_MODS: '1'
+          VERIFY_FULL_QA_INVENTORY: '1'
           SMOKE_TIMEOUT_SECONDS: '900'
           WORK_DIR: ${{ runner.temp }}/tmm-full-integration-smoke
         run: bash scripts/smoke_server.sh

@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.heatwaveqc.tyr.progression.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "InventoryReservationMixin",
+    "MonkFortuneMixin",
+    "HunterLootingMixin",
+    "HunterRareLootMixin",
+    "VirtualElytraItemExtensionMixin",
+    "OwnedWearMixin",
+    "MobEffectDurationAccess",
+    "OwnedEffectDurationMixin",
+    "OwnedPiglinMixin",
+    "OwnedPiglinBruteMixin",
+    "OwnedAmmoMixin",
+    "OwnedNativeMiningMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

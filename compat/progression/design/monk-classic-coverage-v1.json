@@ -4,7 +4,7 @@
   "date": "2026-11-15",
   "status": "CONFIGURED_PATH_NOT_RUNTIME_PARITY_COMPLETE",
   "source_of_truth": "docs/monk/standalone-pre-tyz-classic-parity-v1.json in draft PR #100",
-  "path": "data/tmm_progression/tmm_progression/paths/monk.json",
+  "path": "data/tyr_progression/tyr_progression/paths/monk.json",
   "engine_owner": "feature/progression-chassis-hunter-monk-capabilities-2026-11-15 PR #127",
   "all_original_classic_abilities": 25,
   "no_tyz_dependency": true,
@@ -13,7 +13,7 @@
       "classic_id": "armor",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:natural_armor"
+        "tyr_progression:natural_armor"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -32,7 +32,7 @@
       "classic_id": "armor_toughness",
       "original_default": false,
       "native_skill_ids": [
-        "tmm_progression:natural_toughness"
+        "tyr_progression:natural_toughness"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -48,7 +48,7 @@
       "classic_id": "blindness",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:optional_blindness_ordeal"
+        "tyr_progression:optional_blindness_ordeal"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -63,7 +63,7 @@
       "classic_id": "blink",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:blink"
+        "tyr_progression:blink"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -78,7 +78,7 @@
       "classic_id": "catch_arrows",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:catch_arrows"
+        "tyr_progression:catch_arrows"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -93,7 +93,7 @@
       "classic_id": "kiss_creeper",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:creeper_kiss"
+        "tyr_progression:creeper_kiss"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -108,7 +108,7 @@
       "classic_id": "explosion_resistance",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:blast_discipline"
+        "tyr_progression:blast_discipline"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -123,7 +123,7 @@
       "classic_id": "feather_fall",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:feather_fall"
+        "tyr_progression:feather_fall"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -138,7 +138,7 @@
       "classic_id": "fly",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:momentum_glide"
+        "tyr_progression:momentum_glide"
       ],
       "status": "approved_substitution_handler_partial",
       "auto_ranks": [
@@ -153,7 +153,7 @@
       "classic_id": "glass_touch",
       "original_default": false,
       "native_skill_ids": [
-        "tmm_progression:glass_touch"
+        "tyr_progression:glass_touch"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -168,7 +168,7 @@
       "classic_id": "potion_immunity",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:purification"
+        "tyr_progression:purification"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -183,7 +183,7 @@
       "classic_id": "health",
       "original_default": false,
       "native_skill_ids": [
-        "tmm_progression:vitality"
+        "tyr_progression:vitality"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -198,7 +198,7 @@
       "classic_id": "hunger",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:hunger_discipline"
+        "tyr_progression:hunger_discipline"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -213,7 +213,7 @@
       "classic_id": "jump",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:monk_leap"
+        "tyr_progression:monk_leap"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -228,8 +228,8 @@
       "classic_id": "mining",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:hand_mining",
-        "tmm_progression:hand_harvest"
+        "tyr_progression:hand_mining",
+        "tyr_progression:hand_harvest"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -248,7 +248,7 @@
       "classic_id": "fire_resistance",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:fire_discipline"
+        "tyr_progression:fire_discipline"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -263,7 +263,7 @@
       "classic_id": "lava_protection",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:lava_protection"
+        "tyr_progression:lava_protection"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -278,7 +278,7 @@
       "classic_id": "swift",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:swift_step"
+        "tyr_progression:swift_step"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -294,7 +294,7 @@
       "classic_id": "step_up",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:step_assist"
+        "tyr_progression:step_assist"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -309,7 +309,7 @@
       "classic_id": "strength",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:iron_palm"
+        "tyr_progression:iron_palm"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -331,7 +331,7 @@
       "classic_id": "tame_animals",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:animal_friendship"
+        "tyr_progression:animal_friendship"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -346,7 +346,7 @@
       "classic_id": "water_walking",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:water_walking"
+        "tyr_progression:water_walking"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -361,7 +361,7 @@
       "classic_id": "water_breathing_partial",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:breath_meditation"
+        "tyr_progression:breath_meditation"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -377,7 +377,7 @@
       "classic_id": "water_breathing_full",
       "original_default": false,
       "native_skill_ids": [
-        "tmm_progression:breath_meditation"
+        "tyr_progression:breath_meditation"
       ],
       "status": "handler_present_qa_pending",
       "auto_ranks": [
@@ -393,7 +393,7 @@
       "classic_id": "withering_stare",
       "original_default": true,
       "native_skill_ids": [
-        "tmm_progression:withering_stare"
+        "tyr_progression:withering_stare"
       ],
       "status": "handler_partial",
       "auto_ranks": [
@@ -408,25 +408,25 @@
   "native_free_extensions": [
     {
       "name": "reserved_fist_slot_1",
-      "skill": "tmm_progression:reserved_fist",
+      "skill": "tyr_progression:reserved_fist",
       "status": "partial_guard_only",
       "gap": "Runtime has pre-pickup capacity check and tick relocation; does not fully intercept GUI/number-key/creative/admin/modded direct insertion before placement or perform legal stack merge relocation."
     },
     {
       "name": "armor_lock",
-      "skill": "tmm_progression:armor_lock",
+      "skill": "tyr_progression:armor_lock",
       "status": "partial_guard_only",
       "gap": "Mode ON/OFF exists; bound armor already takes 1 normal durability wear per 20 ticks and may be lethally Life Mended as approved. Inventory tick relocation is not hard pre-equip guard against graveyard auto-equip, GUI swaps, direct slot insertion. Non-removable mod gear needs more checks."
     },
     {
       "name": "treasure_hand",
-      "skill": "tmm_progression:treasure_hand",
+      "skill": "tyr_progression:treasure_hand",
       "status": "partial_loot_adapter",
       "gap": "Mode Fortune I or Silk Touch I is native and mutually exclusive. Runtime rerolls using a Netherite pickaxe regardless of actual hand-tool category; may defeat correct harvest-context semantics; blocks Glass Touch and possible modded block loot. Do not grant Tyz-only levels as native."
     },
     {
       "name": "first_sunset",
-      "milestone": "tmm_progression:first_sunset",
+      "milestone": "tyr_progression:first_sunset",
       "status": "active_server_pilot",
       "gap": "Server 200-tick sunset initiation exists; no robust sunlight ray to sun and no transformation/other-class arbitration yet."
     }

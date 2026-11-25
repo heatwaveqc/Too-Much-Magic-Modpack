@@ -1,0 +1,82 @@
+{
+  "upstream": "https://github.com/TeamPneumatic/pnc-repressurized",
+  "commit": "7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28",
+  "license": "GPL-3.0-or-later (source headers); project GPLv3",
+  "references": [
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/model/ModelMinigun.java",
+      "blob": "67367e391cfc66a6e950e44342a5dd5f61dd541d",
+      "staged": "donor-reference/pneumaticcraft/ModelMinigun.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/common/minigun/Minigun.java",
+      "blob": "0fdd48db9a310bcd097a2ce6868ad73994c30650",
+      "staged": "donor-reference/pneumaticcraft/Minigun.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/render/entity/drone/DroneMinigunLayer.java",
+      "blob": "b4405f27c6acc74d3df8b1bef246febbd3d6e76a",
+      "staged": "donor-reference/pneumaticcraft/DroneMinigunLayer.java.txt"
+    },
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/sound/MovingSoundMinigun.java",
+      "blob": "43d561fb2b7b45fea6fb645e2fa482732c6df743",
+      "staged": "donor-reference/pneumaticcraft/MovingSoundMinigun.java.txt"
+    }
+  ],
+  "adapted": [
+    {
+      "upstream": "src/main/java/me/desht/pneumaticcraft/client/model/ModelMinigun.java",
+      "destination": "src/main/java/io/github/heatwaveqc/traders/vengeance/client/GolemMinigunModel.java",
+      "changes": "Standalone model; caller-supplied angle and neutral magazine tint."
+    },
+    {
+      "upstream": "src/main/resources/assets/pneumaticcraft/textures/pnc_model/drone_minigun.png",
+      "blob": "8278f82e3211050172b5748d918fc3decb489536",
+      "destination": "src/main/resources/assets/traders_vengeance/textures/entity/golem_minigun.png",
+      "changes": "Renamed path only; identical Git blob."
+    }
+  ],
+  "excluded": "Audio not imported until specific licensing is resolved; no donor JAR or API.",
+  "audio": {
+    "upstream_commit": "7bcbcbc744a851d158d924cfa3ce6e88fb8ccb28",
+    "imported": {
+      "minigun.ogg": "20b0041019891539b9df3473df7ab1c40ca93ec1",
+      "minigun_stop.ogg": "b81e9252251729ff50736258e07974b25afaf019"
+    },
+    "license_basis": "Upstream README blanket GPLv3 grant. Both recordings present in 2017 initial port, loop converted to mono in 2020. No separate license found for these exact files. Retain both upstream Freesound credits as precaution; exact sample mapping unconfirmed.",
+    "upstream_third_party_credits": [
+      {
+        "creator": "ThompsonMan",
+        "url": "https://freesound.org/people/ThompsonMan/sounds/237245/",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0/"
+      },
+      {
+        "creator": "Crinkem",
+        "url": "https://freesound.org/people/Crinkem/sounds/481787/",
+        "license": "CC0 1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+    ],
+    "excluded": {
+      "file": "hud_init.ogg",
+      "reason": "Embedded ARTIST=Affordable Audio 4 Everyone; DESCRIPTION=Hud/Menu/Interactions ToolBox. No independent redistribution license verified. Upstream minigun_spinup aliases this unrelated recording. Use vanilla substitute, not a copy."
+    },
+    "spinup_replacement": {
+      "source": "https://freesound.org/people/SamsterBirdies/sounds/560508/",
+      "credit": "SamsterBirdies; scorepion; pgi",
+      "license": "CC0-1.0",
+      "mirror": "https://pixabay.com/sound-effects/film-special-effects-minigun-36769/",
+      "input_sha256": "fe1d17dd7ba7279b2274143095eccaaf9a3d5e51dff8882fd489caffdee015ac",
+      "trim_seconds": [
+        0.055,
+        1.245
+      ],
+      "duration_seconds": 1.19,
+      "format": "mono Ogg Vorbis 24000 Hz",
+      "output_sha256": "30f6ae6ca5fc8fb608f0382fcb17a525b9dc66950fb568ae54c3ace1118b5b19",
+      "git_blob": "aebb1dd5ffc561193f57e4ccfa0b07933659b3ed"
+    }
+  }
+}

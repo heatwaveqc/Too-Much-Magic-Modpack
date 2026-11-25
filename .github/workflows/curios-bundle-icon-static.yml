@@ -1,0 +1,37 @@
+name: Curios bundle-slot icon regression (source only)
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/tmm/curios/slots/bundle.json'
+      - 'kubejs/data/tmm/curios/entities/player.json'
+      - 'kubejs/data/curios/tags/item/bundle.json'
+      - 'mods/curios.pw.toml'
+      - 'scripts/validate_curios_bundle_slot.py'
+      - 'scripts/validate.py'
+      - 'tests/test_curios_bundle_slot.py'
+      - '.github/workflows/curios-bundle-icon-static.yml'
+  push:
+    paths:
+      - 'kubejs/data/tmm/curios/slots/bundle.json'
+      - 'kubejs/data/tmm/curios/entities/player.json'
+      - 'kubejs/data/curios/tags/item/bundle.json'
+      - 'mods/curios.pw.toml'
+      - 'scripts/validate_curios_bundle_slot.py'
+      - 'scripts/validate.py'
+      - 'tests/test_curios_bundle_slot.py'
+      - '.github/workflows/curios-bundle-icon-static.yml'
+permissions:
+  contents: read
+jobs:
+  slot-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check pinned built-in Curios icon and slot contract
+        run: python3 scripts/validate_curios_bundle_slot.py
+      - name: Reject old plural icon and other structural regressions
+        run: python3 -m unittest discover -s tests -p 'test_curios_bundle_slot.py'

@@ -1,0 +1,16 @@
+{
+  "type": "replication:matter_value",
+  "input": {
+    "item": "tmm:coin"
+  },
+  "matter": [
+    {
+      "type": "replication:metallic",
+      "amount": 4
+    },
+    {
+      "type": "replication:precious",
+      "amount": 4
+    }
+  ]
+}

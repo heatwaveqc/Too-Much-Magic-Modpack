@@ -1,0 +1,13 @@
+name = "Huaxia Delight / 华夏乐事"
+filename = "huaxia-delight-1.21.1-1.2.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "8c4eb34973a6f2ca5d0aac29e1bdff065bfc6919"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8829017
+project-id = 1685797
