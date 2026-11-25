@@ -4,6 +4,7 @@ var TMMQA = (function () {
   let VERSION = '1.1.0';
   let ROOT = 'kubejs/export/tmm-surveys/';
   let watches = {};
+  let watchEntities = {}; // Native references are memory-only; never serialized.
   let sequence = 0;
   function cls(name) { return Java.loadClass(name); }
   function error(e) { return String(e).slice(0, 600); }
@@ -21,7 +22,14 @@ var TMMQA = (function () {
   function registry() { return cls('net.minecraft.core.registries.BuiltInRegistries'); }
   function resource(id) { return cls('net.minecraft.resources.ResourceLocation').parse(id); }
   function idOf(stack) { return String(registry().ITEM.getKey(stack.getItem())); }
-  function time(server) { return Number(server.overworld().getGameTime()); }
+  function time(server) {
+    // ServerLevel's wrapper does not expose getGameTime in the installed KubeJS.
+    // Read persistent overworld game time through WorldData instead (not day time).
+    let raw = server.getWorldData().overworldData().gameTime;
+    let value = Number(raw);
+    if (raw == null || !Number.isSafeInteger(value) || value < 0) throw Error('Overworld game time unavailable');
+    return value;
+  }
   function identity(ctx) {
     let server = ctx.getSource().getServer();
     let player = ctx.getSource().getPlayerOrException();
@@ -40,7 +48,14 @@ var TMMQA = (function () {
     return ROOT + key.world + '/' + key.subject + '/';
   }
   function write(ctx, kind, data) {
-    let path = base(ctx) + kind + '-' + String(cls('java.lang.System').currentTimeMillis()) + '-' + (++sequence) + '.json';
+    let directory = base(ctx), stamp = String(Date.now()), path;
+    // Avoid overwriting a report even after a script reload resets sequence.
+    for (let i = 0; i < 1000; i++) {
+      path = directory + kind + '-' + stamp + '-' + (++sequence) + '.json';
+      if (JsonIO.read(path) == null) break;
+      path = null;
+    }
+    if (path == null) throw Error('No unused survey report filename');
     JsonIO.write(path, envelope(ctx, kind, data));
     ctx.getSource().sendSuccess(() => cls('net.minecraft.network.chat.Component').literal('TMM survey saved: ' + path), false);
     return 1;
@@ -242,15 +257,16 @@ var TMMQA = (function () {
       limits: ['Telemetry is instantaneous. Missing/despawned arena is not proof of successful completion.',
         'Wave/entity definitions, rewards and item delivery still require dedicated validation and before/after inventory observations.']});
   }
-  function blockSample(level, pos) {
+  function blockSample(level, pos, expected) {
     if (!level.hasChunkAt(pos)) throw Error('Chunk unloaded; refusing to load it');
     let be = level.getBlockEntity(pos);
     if (be == null) throw Error('No block entity at selected position');
-    return {block: String(registry().BLOCK.getKey(level.getBlockState(pos).getBlock())),
-      instance: String(cls('java.lang.System').identityHashCode(be)),
+    // BlockEntity inherits Object.equals; compare live native references, not hashes.
+    if (expected != null && !be.equals(expected)) throw Error('Monitored block instance changed');
+    return {entity: be, sample: {block: String(registry().BLOCK.getKey(level.getBlockState(pos).getBlock())),
       mana: probe(() => be.getMana()), currentMana: probe(() => be.getCurrentMana()),
       maxMana: probe(() => be.getMaxMana()),
-      burnTimeLeft: probe(() => be.getBurnTimeLeft()), cooldown: probe(() => be.getCooldown())};
+      burnTimeLeft: probe(() => be.getBurnTimeLeft()), cooldown: probe(() => be.getCooldown())}};
   }
   function monitorSummary(w) {
     let observed = w.samples.filter(s => s.observation.status === 'OBSERVED');
@@ -271,7 +287,7 @@ var TMMQA = (function () {
     let key = base(ctx), p = ctx.getSource().getPlayerOrException();
     if (args.length === 1 && args[0] === 'stop') {
       if (!watches[key]) throw Error('No active monitor');
-      let result = watches[key]; delete watches[key];
+      let result = watches[key]; delete watches[key]; delete watchEntities[key];
       result.summary = monitorSummary(result);
       return write(ctx, 'botania', result);
     }
@@ -284,13 +300,14 @@ var TMMQA = (function () {
     let pos = new (cls('net.minecraft.core.BlockPos'))(values[0], values[1], values[2]);
     if (pos.distSqr(p.blockPosition()) > 256) throw Error('Monitor must be within 16 blocks');
     let level = p.level();
-    let first = blockSample(level, pos);
+    let observed = blockSample(level, pos, null), first = observed.sample;
     if (first.block.indexOf('botania:') !== 0)
       throw Error('This monitor is for Botania blocks; converter adapters are not yet supported');
     watches[key] = {dimension: String(level.dimension().location()), coordinates: values.slice(0, 3),
       startedTick: time(ctx.getSource().getServer()), duration: values[3], samples: [{elapsed: 0, observation: {status: 'OBSERVED', value: first}}],
       limits: ['Net buffer deltas are not gross generation when mana is transferred or consumed.',
         'Block replacement, unloading or reload interrupts monitoring. No ticks are forced.'], done: false};
+    watchEntities[key] = observed.entity;
     return write(ctx, 'botania-start', {duration: values[3], sample: first});
   }
   function tick(server) {
@@ -304,12 +321,13 @@ var TMMQA = (function () {
         let level = server.getLevel(dim);
         if (level == null) throw Error('Dimension unavailable');
         let pos = new (cls('net.minecraft.core.BlockPos'))(w.coordinates[0], w.coordinates[1], w.coordinates[2]);
-        let now = blockSample(level, pos);
-        if (now.block !== w.samples[0].observation.value.block || now.instance !== w.samples[0].observation.value.instance) throw Error('Monitored block instance changed');
+        let now = blockSample(level, pos, watchEntities[key]).sample;
+        if (now.block !== w.samples[0].observation.value.block) throw Error('Monitored block type changed');
         return now;
       });
       w.samples.push({elapsed: elapsed, observation: sample});
       w.done = elapsed >= w.duration || sample.status !== 'OBSERVED';
+      if (w.done) delete watchEntities[key];
       // Retain only bounded in-memory samples until operator invokes stop.
     });
   }

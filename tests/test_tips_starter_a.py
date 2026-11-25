@@ -91,12 +91,17 @@ class TipsStarterA(unittest.TestCase):
         self.assertEqual(meaningful[0],
             "execute unless entity @s[advancements={tmm:starter_kit_claimed=true}] "
             "unless entity @s[advancements={tmm:starter_kit=true}] run give @s " + payload)
-        config = tomllib.loads((ROOT / "defaultconfigs/ars_nouveau-server.toml").read_text())
+        config = tomllib.loads((ROOT / "config/ars_nouveau-common.toml").read_text())
         self.assertIs(config["general"]["spawnBook"], False)
         feywild = tomllib.loads((ROOT / "config/feywild-common.toml").read_text())
         self.assertIs(feywild["feywild"]["spawn_with_lexicon"], False)
-        astral = tomllib.loads((ROOT / "defaultconfigs/astralsorcery-server.toml").read_text())
+        astral = tomllib.loads((ROOT / "config/astralsorcery.toml").read_text())
         self.assertIs(astral["general"]["giveTomeOnJoin"], False)
+        # #509: these misleading filenames were ignored by the pinned native mods.
+        self.assertFalse((ROOT / "defaultconfigs/ars_nouveau-server.toml").exists())
+        self.assertFalse((ROOT / "defaultconfigs/astralsorcery-server.toml").exists())
+        self.assertEqual(config, {"general": {"spawnBook": False}})
+        self.assertEqual(astral, {"general": {"giveTomeOnJoin": False}})
         self.assertIn("run give @s minecraft:cooked_beef 2", meaningful[1])
         self.assertIn("run give @s comforts:sleeping_bag_white 1", meaningful[2])
         self.assertEqual(meaningful[3], "advancement grant @s only tmm:starter_kit_claimed")
@@ -125,13 +130,15 @@ class TipsStarterA(unittest.TestCase):
         self.assertEqual(pack["index"]["hash"], hashlib.sha256(index_bytes).hexdigest())
         files = tomllib.loads(index_bytes.decode("utf-8"))["files"]
         selected = {r["file"]: r["hash"] for r in files}
+        self.assertNotIn("defaultconfigs/ars_nouveau-server.toml", selected)
+        self.assertNotIn("defaultconfigs/astralsorcery-server.toml", selected)
         for rel in ("kubejs/data/tmm/advancement/starter_kit.json",
                     "kubejs/data/tmm/advancement/starter_first_login.json",
                     "kubejs/data/tmm/advancement/starter_kit_claimed.json",
                     "kubejs/data/tmm/function/rewards/starter_kit.mcfunction",
                     "kubejs/data/tmm/function/rewards/starter_first_login.mcfunction",
-                    "defaultconfigs/ars_nouveau-server.toml",
-                    "defaultconfigs/astralsorcery-server.toml",
+                    "config/ars_nouveau-common.toml",
+                    "config/astralsorcery.toml",
                     "config/feywild-common.toml",
                     "config/ftbquests/quests/chapters/tips_tricks.snbt",
                     "config/ftbquests/quests/lang/en_us.snbt"):

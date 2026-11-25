@@ -83,7 +83,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor",
+          "attribute": "minecraft:generic.armor",
           "per_rank": 1
         }
       ]
@@ -136,7 +136,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:armor",
+          "attribute": "minecraft:generic.armor",
           "per_rank": 1
         }
       ]
@@ -150,7 +150,7 @@
       "effects": [
         {
           "type": "attribute",
-          "attribute": "minecraft:knockback_resistance",
+          "attribute": "minecraft:generic.knockback_resistance",
           "per_rank": 0.1
         }
       ]

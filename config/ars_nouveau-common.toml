@@ -1,0 +1,4 @@
+# Ars Nouveau 5.13.5: Config.COMMON_CONFIG is registered as COMMON.
+# Keep native manual access; suppress only the duplicate first-login Worn Notebook.
+[general]
+    spawnBook = false

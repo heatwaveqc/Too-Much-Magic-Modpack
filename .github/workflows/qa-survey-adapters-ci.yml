@@ -1,0 +1,42 @@
+name: Optional QA survey adapters (no game boot)
+on:
+  pull_request:
+    paths:
+      - 'scripts/qa-surveys/**'
+      - 'tests/test_qa_surveys.cjs'
+      - 'tests/ParseQaSurveys.java'
+      - 'mods/rhino.pw.toml'
+      - '.github/workflows/qa-survey-adapters-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Node contract tests and optional staging syntax
+        run: |
+          node --check scripts/qa-surveys/server_scripts/tmm_surveys.js
+          node --check scripts/qa-surveys/client_scripts/tmm_survey_client.js
+          node --test tests/test_qa_surveys.cjs
+          python3 -m py_compile scripts/qa-surveys/prepare_one_shot.py
+      - name: Pinned Rhino syntax (no Minecraft boot)
+        run: |
+          python3 - <<'PY'
+          import hashlib, pathlib, tomllib, urllib.request
+          pin = tomllib.loads(pathlib.Path('mods/rhino.pw.toml').read_text())['download']
+          req = urllib.request.Request(pin['url'], headers={'User-Agent':'TMM QA exact pinned Rhino syntax check'})
+          data = urllib.request.urlopen(req, timeout=60).read()
+          assert hashlib.new(pin['hash-format'], data).hexdigest() == pin['hash']
+          pathlib.Path('/tmp/tmm-qa-rhino.jar').write_bytes(data)
+          PY
+          java -cp /tmp/tmm-qa-rhino.jar tests/ParseQaSurveys.java scripts/qa-surveys/server_scripts/tmm_surveys.js scripts/qa-surveys/client_scripts/tmm_survey_client.js
