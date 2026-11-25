@@ -8,9 +8,17 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from audit_worldgen_resources import inventory
+from audit_worldgen_resources import inventory, parse_resource
 
 class InventoryTests(unittest.TestCase):
+    def test_comments_preserve_strings(self):
+        raw = b'{// annotation\n"url":"https://test.invalid/a/*not-comment*/", /* comment */ "n": 7}'
+        parsed, mode = parse_resource(raw)
+        self.assertEqual(mode, 'comments-stripped')
+        self.assertEqual(parsed, {'url':'https://test.invalid/a/*not-comment*/','n':7})
+        with self.assertRaises(ValueError):
+            parse_resource(b'{broken: 7}')
+
     def test_pins_placement_duplicates_and_missing(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
