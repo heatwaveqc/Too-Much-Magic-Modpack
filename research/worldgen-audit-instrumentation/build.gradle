@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+group = 'io.github.heatwaveqc.tmm'
+version = '0.1.0'
+base { archivesName = 'tmm_worldgen_audit' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+neoForge {
+    version = '21.1.265'
+    mods { tmm_worldgen_audit { sourceSet(sourceSets.main) } }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
