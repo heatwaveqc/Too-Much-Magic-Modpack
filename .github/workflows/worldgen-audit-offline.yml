@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m unittest discover -s tests -p test_audit_worldgen_resources.py -v
+      - run: python -m unittest discover -s tests -p 'test_audit_worldgen_*.py' -v
   targeted-scan:
     runs-on: ubuntu-latest
     timeout-minutes: 12
@@ -35,6 +35,12 @@ jobs:
           python-version: '3.12'
       - name: Scan only twelve preselected exact archive pins (no game)
         run: python scripts/audit_worldgen_targeted.py --pack-root frozen-pack --work "${{ runner.temp }}/worldgen-targeted" --snapshot 721ea058294f838b9d7f145af427f5db228d248d
+      - name: Inspect pinned pregenerator release bytes without executing
+        if: always()
+        run: |
+          curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/pregen.jar" 'https://mediafilez.forgecdn.net/files/8748/909/Chunk-Pregenerator-Neoforge-1.21-4.5.4.jar'
+          sha256sum "$RUNNER_TEMP/pregen.jar"
+          unzip -p "$RUNNER_TEMP/pregen.jar" META-INF/neoforge.mods.toml | head -80
       - uses: actions/upload-artifact@v4
         if: always()
         with:
