@@ -28,7 +28,7 @@ public final class VerifiedCombatXp {
                           DamageSource source,long tick) {}
     private static final Map<UUID,Before> PENDING=new HashMap<>();
     @FunctionalInterface public interface StrictVictory {
-        void completed(ServerPlayer owner,LivingEntity victim);
+        void completed(ServerPlayer owner,LivingEntity victim,String verifiedPath);
     }
     private static final java.util.List<StrictVictory> VICTORY_LISTENERS=
         new java.util.concurrent.CopyOnWriteArrayList<>();
@@ -130,7 +130,6 @@ public final class VerifiedCombatXp {
             .equals(barehandOwner(victim,event.getSource()));
         long now=victim.level().getGameTime();
         TrainingRewards.kill(credited,baseline,proof,directFistFinisher,now);
-        boolean notified=false;
         if(directFistFinisher)for(var entry:PathRegistry.trainingXp().entrySet()){
             if(TrainingRewards.eligible(credited,entry.getKey())
                     &&proof.strict(credited.getUUID().toString(),
@@ -140,10 +139,8 @@ public final class VerifiedCombatXp {
                 var target=Selectors.entityAction("strict_fist_victory",victim);
                 io.github.heatwaveqc.tyr.progression.core.ProgressionApi.recordFiltered(credited,target,
                     path->path.id().equals(entry.getKey()));
-                if(notified)continue;
-                notified=true;
                 for(StrictVictory observer:VICTORY_LISTENERS) {
-                    try{observer.completed(credited,victim);}
+                    try{observer.completed(credited,victim,entry.getKey());}
                     catch(RuntimeException failure){
                         io.github.heatwaveqc.tyr.progression.ProgressionMod.LOGGER.error(
                             "Strict-victory observer failed for {}",victim.getUUID(),failure);

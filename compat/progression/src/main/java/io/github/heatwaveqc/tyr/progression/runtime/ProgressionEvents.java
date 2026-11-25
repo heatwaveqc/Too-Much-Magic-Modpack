@@ -83,8 +83,8 @@ public final class ProgressionEvents {
     }
 
     /** Only the verified full-health, same-owner fist challenge can emit this deed. */
-    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim) {
-        if (victim.getType() == net.minecraft.world.entity.EntityType.WITHER
+    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim,String verifiedPath) {
+        if (verifiedPath.equals("tyr_progression:monk") && victim.getType() == net.minecraft.world.entity.EntityType.WITHER
                 && TrainingRewards.eligible(owner, "tyr_progression:monk")) {
             ProgressionApi.recordFiltered(owner,
                 io.github.heatwaveqc.tyr.progression.core.Signal.external("tyr_progression:strict_barehand_wither_victory"),

@@ -2,8 +2,6 @@ package io.github.heatwaveqc.tyr.progression.runtime;
 
 import io.github.heatwaveqc.tyr.progression.core.*;
 import io.github.heatwaveqc.tyr.progression.data.*;
-import io.github.heatwaveqc.tyr.progression.model.Definition;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Mob;
@@ -87,9 +85,10 @@ public final class ObservedTrials {
         return p.getLookAngle().dot(moon)>=cosine;
     }
     private static boolean fire(ServerPlayer p,Session s){
-        Vec3 pos=p.position(),prior=s.previous;s.previous=pos;
+        Vec3 pos=p.position(),prior=s.previous;
         boolean valid=p.onGround()&&!p.isPassenger()&&!p.isFallFlying()&&!p.getAbilities().flying
             &&p.serverLevel().getBlockState(p.blockPosition()).is(BlockTags.FIRE);
+        s.previous=valid?pos:null;
         if(!valid||prior==null){s.distance=0;return false;}
         double dy=Math.abs(pos.y-prior.y),dx=pos.x-prior.x,dz=pos.z-prior.z;
         double d=Math.hypot(dx,dz);
@@ -133,15 +132,13 @@ public final class ObservedTrials {
         if(!(event.getEntity() instanceof ServerPlayer p)||event.getNewDamage()<=0
             ||!(event.getSource().getDirectEntity() instanceof AbstractArrow arrow)
             ||arrow instanceof ThrownTrident||!(arrow.getOwner() instanceof Mob owner))return;
-        var sessions=ACTIVE.get(p.getUUID());
-        if(sessions==null)return;
-        for(var row:sessions.entrySet()){
-            var s=row.getValue();s.arrows.remove(arrow.getUUID());
-            if(s.spec.kind().equals("arrow_dodge")&&Selectors.entity(s.spec.shooter(),owner)
-                &&active(p,row.getKey().path(),s.spec)){
-                s.arrows.clear();
-                ProgressionApi.resetArrowTrial(p,row.getKey().path(),row.getKey().milestone());
-            }
+        var sessions=ACTIVE.getOrDefault(p.getUUID(),Map.of());
+        for(var path:PathRegistry.observedTrials().entrySet())for(var spec:path.getValue()){
+            if(!spec.kind().equals("arrow_dodge")||!Selectors.entity(spec.shooter(),owner)
+                ||!active(p,path.getKey(),spec))continue;
+            var s=sessions.get(new Key(path.getKey(),spec.milestone()));
+            if(s!=null)s.arrows.clear();
+            ProgressionApi.resetArrowTrial(p,path.getKey(),spec.milestone());
         }
     }
     public static void forget(ServerPlayer p){ACTIVE.remove(p.getUUID());}
