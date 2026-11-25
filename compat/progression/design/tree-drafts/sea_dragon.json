@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "INACTIVE_REVIEW_ONLY_NOT_A_DATAPACK",
-  "id": "tmm_progression:sea_dragon",
+  "id": "tyr_progression:sea_dragon",
   "title": "Sea Dragon",
   "legacy_eligibility": "Dragon Survival verified species and real growth gates",
   "notes": [
@@ -13,7 +13,7 @@
     "Power budget reference is a comparably advanced MONK WITH NO WORN EQUIPMENT against THIS TREE WITH APPROPRIATELY-TIERED FULLY ENCHANTED/APOTHEOSIS-AFFIXED GEAR. Endgame balance targets broadly similar whole-build ability, with only slight role-specific advantages.",
     "Dragon gear-inclusive magic capability must slightly surpass gearless Monk in maximum personal mana and practical spell power after armor/Curios/wands, enchantments and Apotheosis affixes; recalibrate prior Extreme mana/potency skill percentages against total equipped output before approving numbers."
   ],
-  "proposed_paid_currency": "tmm_progression:mxp",
+  "proposed_paid_currency": "tyr_progression:mxp",
   "native_level_gates_pending": true,
   "nodes": [
     {

@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "item": "minecraft:cooked_cod",
+  "provenance": "minecraft:cooked_cod",
+  "source_units": 1,
+  "inferred_tags": [
+    "#c:foods/fish",
+    "#tmm:foods/cooked"
+  ]
+}

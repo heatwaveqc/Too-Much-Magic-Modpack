@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "identifier": "tmm_progression:classic_monk_21_gate_inventory",
+  "identifier": "tyr_progression:classic_monk_21_gate_inventory",
   "historical_source": "RWTema Monk Mod 1.4, https://github.com/rwtema/Monk-Mod/blob/master/src/main/java/com/rwtema/monkmod/config/MonkConfiguration.java",
   "verified_source_files": "src/main/java/com/rwtema/monkmod/advancements/criteria/*",
   "captured_on": "2026-11-15",
   "status": "AUDITED_SOURCE_REQUIREMENTS_AND_EXPERIMENTAL_XP_TRIAL_DESIGN",
   "original_hard_sequence": true,
   "original_numbered_stages": 21,
-  "current_engine": "NeoForge 1.21.1 tmm_progression path JSON; no Vampirism and no Tyz dependencies",
+  "current_engine": "NeoForge 1.21.1 tyr_progression path JSON; no Vampirism and no Tyz dependencies",
   "new_policy": {
     "initiation": "First Sunset mandatory (200 server ticks); original stage0 log requirement inspiration only, not another compulsory gate.",
     "advancement": "Cumulative cultivation XP rank thresholds. All classic powers autogrant by rank; no mandatory classic deed except explicit Ender Dragon gate for Momentum Gliding.",
@@ -29,7 +29,7 @@
       "original_rewards": [],
       "xp_design": {
         "role": "replacement_gate",
-        "milestone_id": "tmm_progression:first_sunset",
+        "milestone_id": "tyr_progression:first_sunset",
         "bonus_xp": 0,
         "enforced_as_rank_gate": false,
         "status": "replaced_by_first_sunset_initiation",
@@ -54,7 +54,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_ten_logs",
+        "milestone_id": "tyr_progression:trial_ten_logs",
         "bonus_xp": 35,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_barehand_event",
@@ -77,11 +77,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_sunrise",
+        "milestone_id": "tyr_progression:trial_sunrise",
         "bonus_xp": 70,
         "enforced_as_rank_gate": false,
         "status": "pending_server_sky_look_adapter",
-        "server_source_event": "external tmm_progression:trial_sunrise_verified"
+        "server_source_event": "external tyr_progression:trial_sunrise_verified"
       },
       "notes": [],
       "original_code": "MonkRequirementSunriseSunset.java"
@@ -102,11 +102,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_deep_breath",
+        "milestone_id": "tyr_progression:trial_deep_breath",
         "bonus_xp": 70,
         "enforced_as_rank_gate": false,
         "status": "pending_server_water_breath_adapter",
-        "server_source_event": "external tmm_progression:trial_deep_breath_verified"
+        "server_source_event": "external tyr_progression:trial_deep_breath_verified"
       },
       "notes": [
         "Original RNG is not needed for optional XP challenge; use deterministic sustained underwater criterion instead."
@@ -127,7 +127,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_five_stone",
+        "milestone_id": "tyr_progression:trial_five_stone",
         "bonus_xp": 50,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_barehand_event",
@@ -150,7 +150,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_animal_friendship",
+        "milestone_id": "tyr_progression:trial_animal_friendship",
         "bonus_xp": 80,
         "enforced_as_rank_gate": false,
         "status": "partial_repeatable_petting_not_distinct",
@@ -176,11 +176,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_sprint_200",
+        "milestone_id": "tyr_progression:trial_sprint_200",
         "bonus_xp": 90,
         "enforced_as_rank_gate": false,
         "status": "pending_server_distance_adapter",
-        "server_source_event": "external tmm_progression:sprint_200_verified"
+        "server_source_event": "external tyr_progression:sprint_200_verified"
       },
       "notes": [],
       "original_code": "MonkRequirementWalk.java"
@@ -199,11 +199,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_ten_unarmed_undead",
+        "milestone_id": "tyr_progression:trial_ten_unarmed_undead",
         "bonus_xp": 120,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_direct_melee_event",
-        "server_source_event": "unarmed_kill #tmm_progression:undead"
+        "server_source_event": "unarmed_kill #tyr_progression:undead"
       },
       "notes": [],
       "original_code": "MonkRequirementKill.java"
@@ -223,11 +223,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_arrow_dodges",
+        "milestone_id": "tyr_progression:trial_arrow_dodges",
         "bonus_xp": 100,
         "enforced_as_rank_gate": false,
         "status": "pending_server_trajectory_adapter",
-        "server_source_event": "external tmm_progression:five_skeleton_arrow_dodges"
+        "server_source_event": "external tyr_progression:five_skeleton_arrow_dodges"
       },
       "notes": [],
       "original_code": "MonkRequirementArrow.java"
@@ -246,7 +246,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_four_iron_blocks",
+        "milestone_id": "tyr_progression:trial_four_iron_blocks",
         "bonus_xp": 100,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_barehand_event",
@@ -270,11 +270,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_moon_boat",
+        "milestone_id": "tyr_progression:trial_moon_boat",
         "bonus_xp": 130,
         "enforced_as_rank_gate": false,
         "status": "pending_server_moon_boat_adapter",
-        "server_source_event": "external tmm_progression:moon_boat_verified"
+        "server_source_event": "external tyr_progression:moon_boat_verified"
       },
       "notes": [],
       "original_code": "MonkRequirementWaterMeditation.java"
@@ -293,11 +293,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_calm_enderman",
+        "milestone_id": "tyr_progression:trial_calm_enderman",
         "bonus_xp": 140,
         "enforced_as_rank_gate": false,
         "status": "pending_server_enderman_adapter",
-        "server_source_event": "external tmm_progression:calm_enderman_verified"
+        "server_source_event": "external tyr_progression:calm_enderman_verified"
       },
       "notes": [
         "Source can count multiple Endermen per tick; new version should count real duration, not number of nearby mobs."
@@ -318,11 +318,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_fire_walk",
+        "milestone_id": "tyr_progression:trial_fire_walk",
         "bonus_xp": 140,
         "enforced_as_rank_gate": false,
         "status": "pending_server_fire_walk_adapter",
-        "server_source_event": "external tmm_progression:fire_walk_verified"
+        "server_source_event": "external tyr_progression:fire_walk_verified"
       },
       "notes": [],
       "original_code": "MonkRequirementWalk.java"
@@ -342,7 +342,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_obsidian_hand",
+        "milestone_id": "tyr_progression:trial_obsidian_hand",
         "bonus_xp": 175,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_barehand_event",
@@ -365,11 +365,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_creeper_kiss",
+        "milestone_id": "tyr_progression:trial_creeper_kiss",
         "bonus_xp": 175,
         "enforced_as_rank_gate": false,
         "status": "live_trusted_server_creeper_interaction",
-        "server_source_event": "external tmm_progression:creeper_kissed"
+        "server_source_event": "external tyr_progression:creeper_kissed"
       },
       "notes": [
         "New native creeper pacification unlocks at cultivation rank 14; optional bonus is earned after unlock, not a circular prerequisite.",
@@ -392,11 +392,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_wither_skeleton_gaze",
+        "milestone_id": "tyr_progression:trial_wither_skeleton_gaze",
         "bonus_xp": 190,
         "enforced_as_rank_gate": false,
         "status": "pending_server_fortress_gaze_adapter",
-        "server_source_event": "external tmm_progression:wither_skeleton_gaze_verified"
+        "server_source_event": "external tyr_progression:wither_skeleton_gaze_verified"
       },
       "notes": [],
       "original_code": "MonkRequirementStare.java"
@@ -416,11 +416,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_hay_bale_fall",
+        "milestone_id": "tyr_progression:trial_hay_bale_fall",
         "bonus_xp": 210,
         "enforced_as_rank_gate": false,
         "status": "pending_server_safe_landing_adapter",
-        "server_source_event": "external tmm_progression:hay_bale_fall_verified"
+        "server_source_event": "external tyr_progression:hay_bale_fall_verified"
       },
       "notes": [
         "Do not recreate a fatal fall as mandatory rank gate."
@@ -442,11 +442,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_bedrock_sleep",
+        "milestone_id": "tyr_progression:trial_bedrock_sleep",
         "bonus_xp": 230,
         "enforced_as_rank_gate": false,
         "status": "live_repeatable_bedrock_rest_after_rank17",
-        "server_source_event": "external tmm_progression:bedrock_rest_completed after full real sleep"
+        "server_source_event": "external tyr_progression:bedrock_rest_completed after full real sleep"
       },
       "notes": [
         "New Minecraft versions and dimensions may not permit this old custom sleep mechanic; use a safe meditation equivalent.",
@@ -469,11 +469,11 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:blind_ordeal_victory",
+        "milestone_id": "tyr_progression:blind_ordeal_victory",
         "bonus_xp": 270,
         "enforced_as_rank_gate": false,
         "status": "live_server_count_five_ordeal_event",
-        "server_source_event": "external tmm_progression:blind_hostile_kill count5"
+        "server_source_event": "external tyr_progression:blind_hostile_kill count5"
       },
       "notes": [
         "Native ordeal is optional and re-startable; server now requires five kills instead of auto-completing on the first kill or rank18.",
@@ -497,7 +497,7 @@
       ],
       "xp_design": {
         "role": "optional_one_time_deed",
-        "milestone_id": "tmm_progression:trial_wither_victory",
+        "milestone_id": "tyr_progression:trial_wither_victory",
         "bonus_xp": 550,
         "enforced_as_rank_gate": false,
         "status": "partial_kill_credit_missing_contribution_validation",
@@ -522,7 +522,7 @@
       ],
       "xp_design": {
         "role": "replacement_gate",
-        "milestone_id": "tmm_progression:dragon_defeated",
+        "milestone_id": "tyr_progression:dragon_defeated",
         "bonus_xp": 500,
         "enforced_as_rank_gate": false,
         "status": "replaced_by_verified_dragon_momentum_glide",
