@@ -793,7 +793,7 @@
       "base_cost": 0,
       "step_cost": 0,
       "auto_ranks": [
-        20
+        1
       ],
       "effects": [
         {
@@ -1703,7 +1703,7 @@
     {
       "id": "tyr_progression:glide_control",
       "title": "Glide Control",
-      "description": "+1%/rank post-Dragon Momentum Glide control (20% max). QA candidate: source handler present; numbers pending player testing.",
+      "description": "Improves Momentum Gliding after the strict barehanded Wither trial. Each rank adds 0.005 control bonus (0.1 maximum); actual flight tuning pending gameplay QA.",
       "lane": "Footwork",
       "max_rank": 20,
       "required_rank": 17,
