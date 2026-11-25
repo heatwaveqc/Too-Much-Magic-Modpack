@@ -10,6 +10,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+import urllib.error
 from pathlib import Path
 
 from audit_worldgen_regions import census
@@ -85,7 +86,12 @@ def stage(pack, work, carbon_sha):
         raise ValueError("raw scanner pin verification failed")
     dep=server/"mods"/PREGEN
     sha=download(PREGEN_URL,dep,PREGEN_SHA)
-    carbon_actual=download(CARBON_URL,server/"mods"/CARBON,carbon_sha)
+    try:
+        carbon_actual=download(CARBON_URL,server/"mods"/CARBON,carbon_sha)
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (403,404):
+            raise
+        carbon_actual=download(CARBON_URL.replace("mediafilez.forgecdn.net","edge.forgecdn.net"),server/"mods"/CARBON,carbon_sha)
     installer=server/"installer.jar"
     installer_sha=download(f"https://maven.neoforged.net/releases/net/neoforged/neoforge/{LOADER}/neoforge-{LOADER}-installer.jar",installer)
     run(["java","-jar","installer.jar","--installServer"],server,900)
