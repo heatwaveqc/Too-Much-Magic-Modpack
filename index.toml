@@ -2519,6 +2519,11 @@ hash = "8307f7ef7e3937203ce2fd28779c9e3f3f89016a788aa6c7fce4b9f12cb2bbd3"
 metafile = true
 
 [[files]]
+file = "mods/lootr-liaison.pw.toml"
+hash = "2e1308d1dd311a0074f409381a30f92a72f4bb326b84bc95cd177bd7d94932b0"
+metafile = true
+
+[[files]]
 file = "mods/lootr.pw.toml"
 hash = "0d3683a8c533e1fb67bf0b1668089a322fc5f594f9610d441657378ab4f64383"
 metafile = true
@@ -2926,6 +2931,11 @@ metafile = true
 [[files]]
 file = "mods/twilight-forest.pw.toml"
 hash = "d2076fa495904c5a47b414c965e0fa3ce5fa06876d56ed9ab106b0c88a0b0d4f"
+metafile = true
+
+[[files]]
+file = "mods/twilight-lootr.pw.toml"
+hash = "c2d6c3c2691115bdf0bdd5776446beb528e0ac7c5bd6b453e625ce8a7ced112b"
 metafile = true
 
 [[files]]
