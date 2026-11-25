@@ -1,0 +1,54 @@
+name: Worldgen audit fixtures (offline)
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_worldgen_resources.py'
+      - 'tests/test_audit_worldgen_resources.py'
+      - 'scripts/audit_worldgen_targeted.py'
+      - 'scripts/audit_worldgen_regions.py'
+      - 'tests/test_audit_worldgen_regions.py'
+      - 'scripts/run_worldgen_pilot.py'
+      - 'tests/test_audit_worldgen_pilot.py'
+      - '.github/workflows/worldgen-audit-offline.yml'
+permissions:
+  contents: read
+jobs:
+  fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_audit_worldgen_*.py' -v
+  targeted-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 721ea058294f838b9d7f145af427f5db228d248d
+          path: frozen-pack
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan only fourteen preselected exact archive pins (no game)
+        run: python scripts/audit_worldgen_targeted.py --pack-root frozen-pack --work "${{ runner.temp }}/worldgen-targeted" --snapshot 721ea058294f838b9d7f145af427f5db228d248d
+      - name: Inspect pinned pregenerator release bytes without executing
+        if: always()
+        run: |
+          curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/pregen.jar" 'https://mediafilez.forgecdn.net/files/8748/909/Chunk-Pregenerator-Neoforge-1.21-4.5.4.jar'
+          sha256sum "$RUNNER_TEMP/pregen.jar"
+          unzip -p "$RUNNER_TEMP/pregen.jar" META-INF/neoforge.mods.toml | head -80
+          curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/carbon.jar" 'https://mediafilez.forgecdn.net/files/9531/034/CarbonConfig-Neoforge-1.21.1-2.0.3.jar' || curl --fail --location --retry 2 --max-time 120 -o "$RUNNER_TEMP/carbon.jar" 'https://edge.forgecdn.net/files/9531/034/CarbonConfig-Neoforge-1.21.1-2.0.3.jar'
+          sha256sum "$RUNNER_TEMP/carbon.jar"
+          unzip -p "$RUNNER_TEMP/carbon.jar" META-INF/neoforge.mods.toml | head -80
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: worldgen-targeted-inventory
+          path: ${{ runner.temp }}/worldgen-targeted/inventory.json
+          if-no-files-found: warn
