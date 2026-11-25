@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "occultism:book_of_binding_empty"
+    },
+    "g": {
+      "tag": "c:dyes/purple"
+    },
+    "a": {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "apotheosis:timeworn_fabric"
+        },
+        {
+          "type": "apotheosis:gem",
+          "purity": "chipped"
+        }
+      ]
+    }
+  },
+  "pattern": [
+    " g ",
+    "gbg",
+    "ag "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultism:book_of_binding_djinni"
+  }
+}

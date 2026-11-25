@@ -37,5 +37,16 @@
   "tmm.mob_irons_ice_spider": "Ice Spider Encounter",
   "tmm.mob_irons_magehunter_vindicator": "Magehunter Vindicator Encounter",
   "tmm.mob_irons_necromancer": "Necromancer Encounter",
-  "tmm.mob_irons_pyromancer": "Pyromancer Encounter"
+  "tmm.mob_irons_pyromancer": "Pyromancer Encounter",
+  "book.tmm.occultism_batch1.binding_intro": "In Too Much Magic, each tier also needs an Apotheosis salvage material or an unsocketed gem of the exact listed purity. Both the direct recipe and the empty-book recipe consume that additional offering. Binding and recycling otherwise work as usual.",
+  "book.tmm.occultism_batch1.foliot": "Foliot: Mysterious Scrap Metal or a Cracked gem.",
+  "book.tmm.occultism_batch1.djinni": "Djinni: Timeworn Fabric or a Chipped gem.",
+  "book.tmm.occultism_batch1.afrit": "Afrit: Luminous Crystal Shard or a Flawed gem.",
+  "book.tmm.occultism_batch1.marid": "Marid: Arcane Sands or a Normal gem.",
+  "book.tmm.occultism_batch1.fire_intro": "Spirit Fire reduces any valid unsocketed Apotheosis gem to one Gem Dust per gem. Higher purities still yield more dust at the Salvaging Table; Spirit Fire is the simple alternative.",
+  "book.tmm.occultism_batch1.miner": "The Eternal Stella consumed by this ritual makes the resulting Ancient Eldritch Miner permanently unbreakable. Mining speed and output rolls are unchanged.",
+  "book.tmm.occultism_batch1.life_name": "Ritual of Perpetual Life",
+  "book.tmm.occultism_batch1.life_desc": "Conjure an empty Monster Spawner.",
+  "book.tmm.occultism_batch1.life_spot": "Bind the essence of a Nether Star into an empty Monster Spawner using Ronaza's Contact. The ritual needs twelve offerings and no sacrifice. Program the spawner with an eligible spawn egg after placement.",
+  "book.tmm.occultism_batch1.life_recipe": "The Nether Star is the activation item. The ordinary golden bowl uses the ritual's native 780 duration units; faster bowls shorten the wait."
 }

@@ -545,13 +545,16 @@
         "manifest/quest_content_resolved.json",
         "manifest/quest_layouts.json",
         "scripts/rebuild_quest_ui.py",
-        "scripts/validate_quests.py"
+        "scripts/validate_quests.py",
+        "config/ftbquests/quests/reward_tables/starter_homes.snbt",
+        "manifest/starter_home_choices.json",
+        "scripts/validate_newbie_integration.py"
       ],
       "source_commit": "2051b0b5986f33cc542b74b4375a5eef7770cf91",
       "merged_from": "feature/newbie-mode-smartkeep-2026-11-16",
       "mode": "exact-mod-pinned-and-config-source-not-gameplay-tested",
       "integrated_into_baseline": true,
-      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending. Owner-approved unified cutover retires Tyz itself; disabled Safekept overlay no longer required. Native Smart Keep and graduation predicates remain unchanged."
+      "note": "Original #241 donor replayed selectively, never wholesale. Smart Keep Inventory exact Modrinth 1.21.1-1.0.1 NeoForge JqVOLkFB source SHA512 pinned and Packwiz indexed side both; two player/boss death predicates indexed; actual Tyz Safekept active=false override indexed, separate from overlay. 227 total quest nodes (188 authored) with individual checkmark graduation command and per-player claim. Shared Progression/MXP engine from reviewed #285: virtual vanilla Elytra + Newbie/no-MXP/any joined path guard. Native transformations species setters grafted onto current Archlich/Dracolich/thermalily/visual stack. No first-party Progression/MXP/Transformations JAR is newly built/installed, no FTB Essentials pin proven, no Corail Tombstone/player death or client flight gameplay tests. Prefab 1.0.9 is OWNER-APPROVED for next comprehensive QA (#236/#287, 2026-11-18); UNPINNED, configuration/reward pending. Owner-approved unified cutover retires Tyz itself; disabled Safekept overlay no longer required. Native Smart Keep and graduation predicates remain unchanged. 2026-11-24 #699: promoted #698 engine and 19 personal native graduation choice rewards; exact quest donor 090dfa282296e7c44e3bc3fe02755e9e4be40d43; no player command typing; B/C personal choice, full inventory drop and placement pending."
     },
     {
       "name": "parchment-fragment-acquisition",
@@ -924,7 +927,9 @@
     "QUESTS #327: guide ownership, localization and layout integrated; actual client quest display, claim and ProjectE converter descriptions still require next QA.",
     "Frozen donor consolidation: all twelve source streams baseline-owned. Next authorized QA must attempt the exact 18 ore offers, canonical dust processing and blank-circle compatibility, FTB Essentials commands, starter kit, Curios, current dragon diets, B20 trades and experimental Caerbannog. Live checks in docs/qa/FROZEN-DONOR-CONSOLIDATION-2026-11-19.md.",
     "Roots staff imprint, Terra maximum/HUD and HexCast media-efficiency prototypes are source evidence, not runtime implementations; shared Progression #347 retains parity review obligations; no separate pilot JAR or legacy KubeJS skill hooks.",
-    "Unified Progression owner-approved cutover from immutable dev/progression 1063355f7ba920e113baae38ce4a6f03ba2c8e44: single native MXP authority, Tyz and standalone tmm_mxp not selected. Validate first/repeat/disallowed receipts, no duplicate awards, persistence, optional mixin weave and current native trees on fresh worlds. Individual final tree content and retired skill parity remain development scope."
+    "Unified Progression owner-approved cutover from immutable dev/progression 1063355f7ba920e113baae38ce4a6f03ba2c8e44: single native MXP authority, Tyz and standalone tmm_mxp not selected. Validate first/repeat/disallowed receipts, no duplicate awards, persistence, optional mixin weave and current native trees on fresh worlds. Individual final tree content and retired skill parity remain development scope.",
+    "2026-11-24 owner-deferred #565/#448 until after Thanksgiving build and fresh effective runtime recipe export; #656 Lilith enrollment until Christmas/actual Sexy Demon path. Preserve both frozen donors, do not install them in this candidate.",
+    "2026-11-24 #542 targeted candidate artifact audit run 45543055707 verified Liaison and Twilight Lootr exact publisher hashes and pinned native dependencies; source pin candidate #543, multiplayer full personal loot/boss rewards/BetterEnd conversion B/C pending."
   ],
   "deferred_pending_runtime": {}
 }

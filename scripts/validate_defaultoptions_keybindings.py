@@ -21,10 +21,11 @@ RENAMED_MOD_KEYS = {
     "key.tmm_progression.ordeal": "key.tyr_progression.ordeal",
     "key.tmm_progression.treasure": "key.tyr_progression.treasure",
 }
-LINE = re.compile(r"key_([^:\n]+):key\.keyboard\.unknown:$")
+LINE = re.compile(r"key_([^:\n]+):(key\.keyboard\.unknown|key\.mouse\.middle):$")
+SORT_KEY = "key.invtweaks_sort_either.desc"
 
 
-def parse_unbound(path: Path) -> set[str]:
+def parse_unbound(path: Path, *, allow_sort_exception: bool = False) -> set[str]:
     names = set()
     for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         if not line:
@@ -32,7 +33,10 @@ def parse_unbound(path: Path) -> set[str]:
         match = LINE.fullmatch(line)
         if not match:
             raise ValueError(f"Non-unbound/invalid Default Options mapping {path}:{number}: {line!r}")
-        name = match.group(1)
+        name, binding = match.groups()
+        expected = "key.mouse.middle" if allow_sort_exception and name == SORT_KEY else "key.keyboard.unknown"
+        if binding != expected:
+            raise ValueError(f"Unexpected binding {path}:{number}: {name} must be {expected}, got {binding}")
         if name in names:
             raise ValueError(f"Duplicate Default Options key mapping: {name}")
         names.add(name)
@@ -47,7 +51,9 @@ def validate() -> None:
     original = parse_unbound(SNAPSHOT)
     if len(original) != 315:
         raise ValueError(f"Expected 315 unique observed modded controls, found {len(original)}")
-    current = parse_unbound(CONFIG)
+    current = parse_unbound(CONFIG, allow_sort_exception=True)
+    if SORT_KEY not in current:
+        raise ValueError("Missing approved middle-click sort binding")
     if not set(RENAMED_MOD_KEYS) <= original:
         raise ValueError("Observed key snapshot does not contain the expected old Progression key IDs")
     expected = ((original - set(RENAMED_MOD_KEYS)) | set(RENAMED_MOD_KEYS.values())) - JEI_NATIVE_DEFAULTS
@@ -74,7 +80,7 @@ def validate() -> None:
     regenerated = build({**vanilla_export, **observed_export}, vanilla_export)
     if regenerated != CONFIG.read_text(encoding="utf-8"):
         raise ValueError("Default Options file differs from generated observed-key baseline")
-    print(f"PASS: Default Options packages {len(current)} unbound mod-key defaults, excluding {len(JEI_NATIVE_DEFAULTS)} JEI native defaults; no vanilla bindings")
+    print(f"PASS: Default Options packages {len(current) - 1} unbound mod-key defaults and one contextual middle-click sort, excluding {len(JEI_NATIVE_DEFAULTS)} JEI native defaults; no vanilla bindings")
     print("LIMITATION: observed options.txt inventory is not a final all-mods registered-key export")
 
 

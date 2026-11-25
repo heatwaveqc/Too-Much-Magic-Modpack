@@ -1,0 +1,55 @@
+{
+  "type": "occultism:ritual",
+  "activation_item": {
+    "item": "minecraft:nether_star"
+  },
+  "duration": 780,
+  "ingredients": [
+    {
+      "item": "occultism:iesnium_ingot"
+    },
+    {
+      "item": "occultism:iesnium_ingot"
+    },
+    {
+      "item": "malum:soul_stained_steel_ingot"
+    },
+    {
+      "item": "malum:soul_stained_steel_ingot"
+    },
+    {
+      "item": "malum:soul_stained_steel_ingot"
+    },
+    {
+      "item": "malum:soul_stained_steel_ingot"
+    },
+    {
+      "item": "neovitae:hellforged_ingot"
+    },
+    {
+      "item": "neovitae:hellforged_ingot"
+    },
+    {
+      "item": "goety:cursed_ingot"
+    },
+    {
+      "item": "goety:cursed_ingot"
+    },
+    {
+      "item": "occultism:soul_gem"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    }
+  ],
+  "pentacle_id": "occultism:contact_eldritch_spirit",
+  "result": {
+    "id": "minecraft:spawner",
+    "count": 1
+  },
+  "ritual_dummy": {
+    "id": "minecraft:spawner",
+    "count": 1
+  },
+  "ritual_type": "occultism:craft"
+}

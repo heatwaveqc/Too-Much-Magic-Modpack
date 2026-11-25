@@ -49,13 +49,14 @@
     {
       "chapter": "Getting Started",
       "title": "I'm Ready for Regular Mode",
-      "description": "You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice.",
+      "description": "You begin in the Newbie baseline Path and cannot earn MXP while Newbie. When YOU want full survival progression, use this personal reward to graduate to Normie. Shared Core skills and MXP do not belong to a specialist Path; joining a specialty or acquiring a native transformation is separate. Graduation may change death and travel behavior and may be one-way without administrator assistance. Your teammates are not graduated by your choice. Choose one free home in the housing reward. Generic gives a native Prefab blueprint; custom homes give a personal paper blueprint. Find a suitable site and right-click the top of a block to build. You need not enter any commands. Choose carefully; lost items are not replaced automatically.",
       "criterion": {
         "type": "checkmark"
       },
       "reward": {
         "xp": 5,
-        "command": "tmmnewbie admin graduate {p}"
+        "command": "tmmnewbie admin graduate {p}",
+        "housing_choice": "544D7A0000000002"
       },
       "depends": null,
       "optional": true,
