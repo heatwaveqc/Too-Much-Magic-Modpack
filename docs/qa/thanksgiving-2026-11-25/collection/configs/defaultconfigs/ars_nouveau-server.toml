@@ -1,0 +1,4 @@
+# Ars Nouveau 1.21.1 SERVER config defaults for newly created worlds.
+# Keep native recipes/manual access; suppress only the duplicate first-login Worn Notebook.
+[general]
+    spawnBook = false

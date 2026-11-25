@@ -2,7 +2,7 @@
 
 ## November 25 installed Thanksgiving build
 
-Frozen `721ea058294f838b9d7f145af427f5db228d248d`, run 45550879036: [current per-build ledger](THANKSGIVING-QA-RESULTS-2026-11-24.md), [automated execution evidence](thanksgiving-2026-11-25/README.md). Installed 255/255 hashes pass, 543 Java tests pass; client log reveals Reactive scope failure, missing Perpetual Life recipe, two EMI plugin API failures and other decoder/key errors. B commands not run; no world/client launch or package by this QA chat. Older handoffs below remain historical.
+Frozen `721ea058294f838b9d7f145af427f5db228d248d`, run 45550879036: [current per-build ledger](THANKSGIVING-QA-RESULTS-2026-11-24.md), [automated execution evidence](thanksgiving-2026-11-25/README.md). Installed 255/255 hashes pass, 543 Java tests pass; client log reveals Reactive scope failure, missing Perpetual Life recipe, two EMI plugin API failures and other decoder/key errors. B commands not run; no world/client launch or package by this QA chat. [Follow-up collection](thanksgiving-2026-11-25/collection/README.md): food/EMC reports, 27,947 effective recipes (2,571 stonecutting / 242 Replication-related), native configs, sanitized logs/Progression diagnostics collected; helper cleanup and final reload verified. B04/B05 now PARTIAL capture evidence; remaining acceptance retained. Older handoffs below remain historical.
 
 ### Trader's Vengeance #648/#423 (2026-11-24)
 

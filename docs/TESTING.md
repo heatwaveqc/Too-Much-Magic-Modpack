@@ -152,3 +152,7 @@ Routine preflight passed; strict override gate failed for silver-ore-materials c
 ## 2026-11-25 — installed Thanksgiving Type A execution
 
 Owner-requested existing PR #708 continuation, frozen `721ea058294f838b9d7f145af427f5db228d248d` / run 45550879036. [Per-build ledger](qa/THANKSGIVING-QA-RESULTS-2026-11-24.md), [sanitized automated report](qa/thanksgiving-2026-11-25/README.md). 255 installed JAR hashes pass; 543 Java tests pass; 13 validators and 20 Node tests pass. Broad Python suite has four maintenance failures; observed client runtime fails Reactive script execution, Perpetual Life recipe loading and two EMI plugin registrations. No Minecraft launch, in-game command, world edit, assembly, full smoke or package performed. Existing logs establish local login only; do not promote remaining gameplay acceptance.
+
+### November 25 follow-up — food/EMC/config/recipe capture
+
+[Existing #708 collection](qa/thanksgiving-2026-11-25/collection/README.md) preserves 26,940 registry IDs / 2,543 foods, 11,349 positive EMC mappings / 15,591 unmapped, 27,947 effective recipe rows, 2,571 stonecutting recipes / 1,775 outputs and 242 Replication-related entries. Existing optional one-shot world capture succeeded after owner reload/rejoin; auxiliary adapters unsupported, recorded without bypass. Native configs and sanitized client/saved Progression diagnostics collected. Three helper files removed; final owner reload restored original script roster. No gameplay code/config edits, new build or collector-initiated launch.
