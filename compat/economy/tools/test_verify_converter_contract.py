@@ -1,6 +1,7 @@
 """Offline negative/regression tests for exact Economy converter recipe contract."""
 import copy
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -77,6 +78,36 @@ class ConverterRecipeTests(unittest.TestCase):
         })
         with self.assertRaises(ValueError):
             validator.validate_recipe(obj, name="emc_source_jar")
+
+    def test_arcane_recipe_rejects_gate_and_result_drift(self):
+        obj = json.loads((validator.RECIPES / "arcane_discrimination.json").read_text())
+        validator.validate_arcane_recipe(obj)
+        bad = copy.deepcopy(obj)
+        bad["neoforge:conditions"].pop()
+        with self.assertRaises(ValueError):
+            validator.validate_arcane_recipe(bad)
+        bad = copy.deepcopy(obj)
+        bad["result"]["components"]["improvableskills:stored_ability"]["ability"] = "other:ability"
+        with self.assertRaises(ValueError):
+            validator.validate_arcane_recipe(bad)
+
+    def test_portable_enchanting_cutover_manifest_is_atomic(self):
+        manifest = json.loads((validator.ECONOMY / "src/main/resources/tmm_economy.mixins.json").read_text())
+        hooks = {
+            "PortableEnchantingOpenMixin",
+            "PortableEnchantingLegacyMenuMixin",
+            "PortableEnchantingLegacyBooksMixin",
+        }
+        self.assertEqual(hooks, {name for name in manifest["mixins"]
+                                 if name.startswith("PortableEnchanting")})
+        self.assertEqual(len(manifest["mixins"]), len(set(manifest["mixins"])))
+        self.assertEqual("io.github.heatwaveqc.tmm.economy.mixin.EconomyEnchantingMixinPlugin",
+                         manifest["plugin"])
+        self.assertTrue({"ApothicPersonalFilterMixin", "EidolonPersonalFilterMixin"} <= set(manifest["mixins"]))
+        # Common-side hooks, never client-only; all remain mandatory under the shared optional gate.
+        self.assertFalse(hooks.intersection(manifest.get("client", [])))
+        self.assertTrue(manifest["required"])
+        self.assertEqual(1, manifest["injectors"]["defaultRequire"])
 
     def test_actual_source_and_account_guards(self):
         validator.verify()

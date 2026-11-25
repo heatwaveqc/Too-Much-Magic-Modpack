@@ -46,5 +46,17 @@
   "tmm_economy.mapper.relic_templates.tooltip": "Use a fixed price for fresh relic and artifact equipment, independent of stats.",
   "tmm_economy.mapper.canonical_buckets": "TMM Canonical Bucket Mapper",
   "tmm_economy.mapper.canonical_buckets.tooltip": "Map verified full buckets and returned empty buckets.",
-  "message.tmm_economy.alchemy.multiuse_flask_refused": "Use a single potion bottle here. This eight-use flask is protected."
+  "message.tmm_economy.alchemy.multiuse_flask_refused": "Use a single potion bottle here. This eight-use flask is protected.",
+  "ability.tmm_economy:arcane_discrimination.name": "Arcane Discrimination",
+  "ability.tmm_economy:arcane_discrimination.desc": "Exclude up to six enchantment types from random enchanting using real single-enchantment books.",
+  "menu.tmm_economy.arcane_discrimination": "Arcane Discrimination",
+  "menu.tmm_economy.arcane_discrimination.deposit": "Click a book to store it.",
+  "menu.tmm_economy.arcane_discrimination.withdraw": "Click a stored book to return it.",
+  "menu.tmm_economy.virtual_shelves": "Virtual Bookshelves",
+  "menu.tmm_economy.virtual_shelves.count": "Positions: %s / %s",
+  "menu.tmm_economy.virtual_shelves.deposit": "Click inventory item to store.",
+  "menu.tmm_economy.virtual_shelves.withdraw": "Click shelf to refund.",
+  "menu.tmm_economy.virtual_shelves.back": "Enchant",
+  "menu.tmm_economy.virtual_shelves.settings": "Shelves",
+  "menu.tmm_economy.virtual_shelves.unavailable": "Portable shelves unavailable. If you have legacy books, free an inventory slot and try again."
 }
