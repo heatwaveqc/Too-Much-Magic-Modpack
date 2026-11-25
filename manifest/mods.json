@@ -3345,7 +3345,7 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "multiplayer-spawners",
-      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Loader/server/Apothic/player test remains pending."
+      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Smoke 45546469223 failed before mod discovery on the publisher filename. Install the same verified 2.0.2 bytes under multiplayerspawners-2.0.2.jar; no version change. Loader/server/Apothic/player test remains pending."
     },
     {
       "id": "lootr-liaison",

@@ -16,7 +16,8 @@ CDN_HOSTS = {"cdn.modrinth.com", "edge.forgecdn.net", "mediafilez.forgecdn.net"}
 # Exact release assets previously approved and hash-pinned in #569/#572.
 # GitHub is NOT a general-purpose artifact origin; changing these paths requires review.
 GITHUB_ASSETS = {
-    "Multiplayer.Spawners.-.NeoForge.-.1.21.1.-.2.0.2.jar":
+    # Preserve publisher URL and digest; install under a loader-safe local basename.
+    "multiplayerspawners-2.0.2.jar":
         "https://github.com/The-Plum-Team/Multiplayer-Spawners-Mod/releases/download/v2.0.2/Multiplayer.Spawners.-.NeoForge.-.1.21.1.-.2.0.2.jar",
     "qshop-neoforge-1.21.1-1.8.5.jar":
         "https://github.com/QLNPLUS/Q-shop/releases/download/v1.8.5-neoforge-1.21.1/qshop-neoforge-1.21.1-1.8.5.jar",

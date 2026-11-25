@@ -27,6 +27,21 @@ class DownloaderTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     d.source_urls(pin(name, bad))
 
+    def test_multiplayer_spawners_safe_local_filename(self):
+        name = "multiplayerspawners-2.0.2.jar"
+        remote = "Multiplayer.Spawners.-.NeoForge.-.1.21.1.-.2.0.2.jar"
+        url = d.GITHUB_ASSETS[name]
+        self.assertTrue(url.endswith("/" + remote))
+        selected = [m for m in d.selected_pins(d.ROOT, include_client=True)
+                    if m.get("name") == "Multiplayer Spawners"]
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]["filename"], name)
+        self.assertEqual(selected[0]["download"]["hash"],
+                         "3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67")
+        self.assertEqual(d.source_urls(selected[0]), [url])
+        with self.assertRaises(ValueError):
+            d.source_urls(pin(remote, url))
+
     def test_wrong_filename_and_unreviewed_repo(self):
         name, url = next(iter(d.GITHUB_ASSETS.items()))
         for n, u in (("other.jar", url),
