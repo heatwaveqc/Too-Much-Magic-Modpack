@@ -25,8 +25,16 @@ file = "config/almostunified/unification/materials.json"
 hash = "19606ddfbb444946f45852c8fcc4913018f694091d101766fcfaf79cdb46494c"
 
 [[files]]
+file = "config/ars_nouveau-common.toml"
+hash = "9c33222fcf38f49c20ced8bda6ea3f0eab7ce616d93503ee374c23ad75ae5d4a"
+
+[[files]]
 file = "config/astralsorcery-client.toml"
 hash = "e556d8de1e028ec2ad58b254ef82cbf181769a1f236700ff1fb8624fb705618e"
+
+[[files]]
+file = "config/astralsorcery.toml"
+hash = "5a3de399c7d8fb2bfef63505954d31e50b6e702cfae30d630bbb9e190f2ba793"
 
 [[files]]
 file = "config/bountiful/bountiful.json"
@@ -323,14 +331,6 @@ hash = "0497f3137c9150105e877a79362303b8fc49f141890d7e098f6a8ae9cf8d8e45"
 [[files]]
 file = "defaultconfigs/ProjectE/mapping.toml"
 hash = "2029e1b66e3550c564972772b2d5169aedc5459fd3a069dba0ca9dd7f25a5607"
-
-[[files]]
-file = "defaultconfigs/ars_nouveau-server.toml"
-hash = "cd6e01ae4e5d60d14516b3611e5d385305fbaa095aabe1dbe486f3f76f0a4848"
-
-[[files]]
-file = "defaultconfigs/astralsorcery-server.toml"
-hash = "0ff6a3cd1e3ceeadf6725ba6a4282eb4273794ecff12394a01064fe74e8daeb3"
 
 [[files]]
 file = "defaultconfigs/dragonsurvival-server.toml"
