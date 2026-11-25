@@ -33,7 +33,11 @@
     "PortableStorageOccultismSatchelMixin",
     "PortableStorageMalumPouchMixin",
     "PortableStorageBotaniaBackedInventoryMixin",
-    "PortableStorageMiniHandbagMenuMixin"
+    "PortableStorageMiniHandbagMenuMixin",
+    "EvilCraftVengeanceSpiritMixin",
+    "EvilCraftRandomSpiritMixin",
+    "EvilCraftSpiritFurnaceMixin",
+    "EvilCraftSpiritReanimatorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

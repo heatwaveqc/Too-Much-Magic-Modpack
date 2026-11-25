@@ -779,18 +779,6 @@
       "packwiz_slug": "eidolon-repraised"
     },
     {
-      "id": "embeddium",
-      "name": "Embeddium",
-      "category": "performance",
-      "desired": true,
-      "version": "embeddium-1.0.15+mc1.21.1",
-      "release_status": "verified_release",
-      "source": "https://modrinth.com/mod/sk9rgfiA",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "packwiz_slug": "embeddium"
-    },
-    {
       "id": "embers-re-ignited",
       "name": "Embers Re-Ignited",
       "category": "magic_industry",
@@ -3140,6 +3128,18 @@
       "note": "Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
     },
     {
+      "id": "sodium",
+      "name": "Sodium",
+      "category": "performance",
+      "desired": true,
+      "version": "sodium-neoforge-0.8.13+mc1.21.1",
+      "release_status": "verified_release",
+      "source": "https://modrinth.com/mod/AANobbMI",
+      "enabled_in_pack": true,
+      "dependencies_verified": false,
+      "packwiz_slug": "sodium"
+    },
+    {
       "id": "sons-of-sins",
       "name": "Sons of Sins",
       "category": "adventure",
@@ -3549,7 +3549,7 @@
         "controlling",
         "corail-tombstone",
         "curios-api",
-        "embeddium",
+        "sodium",
         "entity-culling",
         "ferritecore",
         "ftb-chunks",

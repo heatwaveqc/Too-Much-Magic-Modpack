@@ -1,5 +1,15 @@
 # Next live-test inclusion register
 
+## Creature registry #324 / #353 — revision 6 evidence intake (2026-11-24)
+
+**SOURCE RESEARCH ONLY; B/C NOT RUN.** Frozen historical registry of 1,763 types at `fe75e7f936fa3c9262770c8d26e12c412b06fd11`, [revision 6 evidence handoff](../creatures/REVISION-6-HANDOFF-2026-11-24.md). Preserve actual next authorized candidate's current Progression and Capture owners' verified scope; do not stage historical runtime donors blindly. A: validate registry/schema, frozen projection parity, current installed entity classes, resolved native tags, egg/item mappings and source differences. B/C: Hunter wild/owned/native attribution and selected prey/specialty, boss ordinary/special native receipt and repeated/multiplayer/relog, 102 capture holds and 69 prey holds, physical worker transport preserving job/owner versus denied reproduction, legitimate native acquisition and no state transfer/duplication. Native resource fields remain research; no new live claims, generated tags, build authorization or owner decisions. #373/#413 own capture guards; #324 and Progression owners own current taxonomy/behavior. Historical 2026-11-19 intake retained in docs/creatures, not restored as active old balance or pin rules.
+
+
+## Unified Kitchen #367 — approved source extraction (2026-11-24)
+
+**Source candidate; awaiting integration and separately authorized build, NOT RUN.** Scope and exact donor/paths: [Unified Kitchen handoff](UNIFIED-KITCHEN-367-SOURCE-EXTRACTION.md). Occult Cooking already indexed. A: confirm current Packwiz hash chain and effective loaded ingredient tags. C: both FD/Pam variants, milk remainders, raw Aquaculture fillet, native local CFB and linked Occult Cooking storage, cabinet/barrel, item conservation and permissions, manual specialty processing; no diet or gating change. Skillet automation deferred; prefab owner playtest. No new build authorization.
+
+
 ## Trader's Vengeance #648 / #423 — source integration handoff (2026-11-24)
 
 Rocket #651 merged at `1f03761a3c32485543b6d63453cf15d096bd690a`; rename #653 proposes corrected `compat/traders-vengeance` / `traders_vengeance` with original source `da1b9cf0649f6f43f3cb7811c3c4c14933e5789e`. Once #653 merges the baseline owns both. Next authorized comprehensive QA must attempt inclusion of the renamed JAR alongside exact Iron's 3.16.3; **awaiting build, NOT RUN**. No old namespace alias (owner decision); fresh disposable world first, old-save migration not promised. Historical #219 checklist remains evidence, not a requirement to restore old code.

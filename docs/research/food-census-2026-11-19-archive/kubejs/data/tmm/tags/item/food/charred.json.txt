@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dragonsurvival:charred_meat",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:charred_seafood",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:charred_vegetable",
+      "required": false
+    },
+    {
+      "id": "dragonsurvival:charred_mushroom",
+      "required": false
+    }
+  ]
+}
