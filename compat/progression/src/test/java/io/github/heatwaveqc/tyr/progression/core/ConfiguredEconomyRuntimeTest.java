@@ -315,4 +315,59 @@ class ConfiguredEconomyRuntimeTest {
             assertTrue(catalog.defaultTransition().wipeUnallocated());
         }
     }
+
+    @Test void adminResetUsesActualPrerequisitesAndReleasesOriginalCurrencyCommitments() {
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            ExperienceEconomyRuntime.install(ExperienceEconomyConfig.tmmDefault());
+            var mxp=XpChannel.mxp(1.02);
+            var a=new Definition.Skill("test:a",2,1,1,0,List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var b=new Definition.Skill("test:b",2,1,1,0,List.of(),List.of(),List.of(),"",List.of(),List.of());
+            var c=new Definition.Skill("test:c",2,1,1,0,List.of(),List.of(a.id(),b.id()),List.of(),"",List.of(),List.of());
+            var d=new Definition.Skill("test:d",2,1,1,0,List.of(a.id()),List.of(),List.of(),"",List.of(),List.of());
+            var tree=new Definition.Path(PATH,"",List.of(0L,1000L),0,List.of(),List.of(),List.of(a,b,c,d));
+            var bindings=new java.util.HashMap<ChannelConfig.SkillKey,ChannelConfig.Binding>();
+            for(var skill:tree.skills())bindings.put(new ChannelConfig.SkillKey(PATH,skill.id()),new ChannelConfig.Binding(mxp,mxp));
+            var config=new ChannelConfig(Map.of(mxp.id(),mxp),Map.of(PATH,mxp),bindings);
+            var ledger=ChannelEngine.join(Ledger.empty(),tree,mxp);
+            assertSame(ledger,ChannelEngine.grantRank(ledger,tree,config,d.id(),mxp.id()));
+            for(var skill:tree.skills())ledger=ChannelEngine.grantRank(ledger,tree,config,skill.id(),mxp.id());
+            var owned=ledger;
+            assertEquals(4,ExperienceEconomy.debt(owned.economy(),ExperienceEconomyRuntime.current().systems().get(mxp.id())));
+            assertThrows(IllegalArgumentException.class,()->AdminSkills.reset(owned,tree,config,a.id(),false,false));
+            var result=AdminSkills.reset(owned,tree,config,a.id(),true,false);
+            assertEquals(List.of(a.id(),d.id()),result.removed());
+            var view=ChannelEngine.view(result.ledger(),tree,config);
+            assertEquals(1,view.skillRank(b.id()));
+            assertEquals(1,view.skillRank(c.id()));
+            assertEquals(0,view.skillRank(d.id()));
+            assertEquals(0,result.ledger().economy().currentXp().get(mxp.id()).signum());
+            assertEquals(2,result.ledger().economy().paidRanks().size());
+            assertFalse(result.ledger().payments().containsKey(PATH+"|"+a.id()));
+            var last=AdminSkills.reset(result.ledger(),tree,config,b.id(),true,true);
+            assertEquals(List.of(b.id(),c.id()),last.removed());
+            assertEquals(0,last.ledger().economy().paidRanks().size());
+            assertEquals(0,last.ledger().economy().currentXp().get(mxp.id()).signum());
+        } finally {
+            ExperienceEconomyRuntime.install(previous);
+        }
+    }
+
+    @Test void partialAdminRankReductionPreservesOldestCurrencyCommitments(){
+        var previous=ExperienceEconomyRuntime.current();
+        try {
+            var catalog=catalog();ExperienceEconomyRuntime.install(catalog);
+            var ledger=ChannelEngine.join(Ledger.empty(),tree(),XpChannel.mxp(1.02));
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,CULT);
+            ledger=ChannelEngine.grantRank(ledger,tree(),config(),SKILL,XpChannel.MXP);
+            var reduced=AdminSkills.reduce(ledger,tree(),config(),SKILL,2,false,false).ledger();
+            assertEquals(2,ChannelEngine.view(reduced,tree(),config()).skillRank(SKILL));
+            assertEquals(List.of(XpChannel.MXP,CULT),reduced.economy().paidRanks().stream()
+                .map(ExperienceEconomy.PaidRank::system).toList());
+            assertEquals(List.of(XpChannel.MXP+"|1",CULT+"|1"),reduced.payments().get(PATH+"|"+SKILL));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(XpChannel.MXP)));
+            assertEquals(1,ExperienceEconomy.debt(reduced.economy(),catalog.systems().get(CULT)));
+        } finally {ExperienceEconomyRuntime.install(previous);}
+    }
 }

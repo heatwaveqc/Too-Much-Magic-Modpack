@@ -34,6 +34,15 @@ public record HunterMutationState(Map<String,Long> progress, Map<String,Integer>
         return progress.getOrDefault(effectId + "@" + amplifier,0L);
     }
 
+    /** Exact administrative potency (human rank 0 removes), with progress
+     * consistent with the configured threshold and no other effect changed. */
+    public HunterMutationState adminRank(String effectId,int rank,int maxAmplifier,long threshold){
+        if(rank<0||rank>maxAmplifier+1||threshold<=0)throw new IllegalArgumentException("Mutation rank outside policy");
+        var p=new HashMap<>(progress);p.keySet().removeIf(k->k.startsWith(effectId+"@"));
+        var u=new HashMap<>(unlocked);u.remove(effectId);
+        if(rank>0){p.put(effectId+"@"+(rank-1),threshold);u.put(effectId,rank-1);}
+        return new HunterMutationState(p,u);
+    }
     public HunterMutationState credit(String effectId, int amplifier, long duration, long threshold) {
         if (duration <= 0 || threshold <= 0 || amplifier < 0) return this;
         // Higher permanent potency supersedes lower, and lower-tier bottles

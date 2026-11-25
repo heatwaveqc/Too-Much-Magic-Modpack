@@ -180,6 +180,12 @@ public final class ProgressionCommands {
                         return ok ? 1 : 0;
                     })))
             .then(Commands.literal("admin").requires(s -> s.hasPermission(2))
+                .then(DebugCommands.currency())
+                .then(DebugCommands.skill())
+                .then(DebugCommands.inspect())
+                .then(CapabilityCommands.root())
+                .then(DiagnosisCommands.diagnose())
+                .then(DiagnosisCommands.repair())
                 .then(Commands.literal("foodcensus")
                     .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.FoodRegistryCensus
                         .export(ctx.getSource())))

@@ -60,6 +60,7 @@ public final class ProgressionMenuNetwork {
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
+    private static final Map<UUID,String> LAST_VIEW = new HashMap<>();
     private static final Map<UUID, Long> LAST_MUTATION = new HashMap<>();
 
     public static void register(RegisterPayloadHandlersEvent event) {
@@ -121,6 +122,7 @@ public final class ProgressionMenuNetwork {
         if (!validId(pathId)) return;
         Definition.Path path = PathRegistry.get(pathId);
         if (path == null) return;
+        LAST_VIEW.put(player.getUUID(),pathId);
         Track state = ProgressionApi.track(player, pathId);
         JsonObject json = new JsonObject();
         json.addProperty("path", pathId);
@@ -146,6 +148,7 @@ public final class ProgressionMenuNetwork {
                 ledger.economy().currentXp().getOrDefault(spec.id(),java.math.BigDecimal.ZERO));
         json.addProperty("points",spec==null?state.points():
                 io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.available(ledger.economy(),spec));
+        json.addProperty("debt",spec==null?0L:io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.debt(ledger.economy(),spec));
         long threshold;
         long currentStart;
         if(spec==null){
@@ -175,6 +178,7 @@ public final class ProgressionMenuNetwork {
             row.addProperty("point_name",channelName==null?"Points":channelName.pointName());
             row.addProperty("level",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
                 .level(ledger.economy(),systemSpec));
+            row.addProperty("debt",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.debt(ledger.economy(),systemSpec));
             row.addProperty("points",io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy
                 .available(ledger.economy(),systemSpec));
             row.addProperty("xp",ledger.economy().currentXp()
@@ -277,7 +281,13 @@ public final class ProgressionMenuNetwork {
         PacketDistributor.sendToPlayer(player, new Snapshot(payload));
     }
 
+    public static void refresh(ServerPlayer player) {
+        var path=LAST_VIEW.get(player.getUUID());
+        if(path!=null)send(player,path);
+    }
+
     public static void forget(ServerPlayer player) {
+        LAST_VIEW.remove(player.getUUID());
         LAST_MUTATION.remove(player.getUUID());
     }
 }
