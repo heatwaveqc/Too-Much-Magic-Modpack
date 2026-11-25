@@ -45,6 +45,63 @@ public record XpSourceRouting(Map<String, EarningPolicy> policies,
         }
     }
 
+    /** A source candidate is a measurement from an eligible Path, not a second event. */
+    public record Candidate(String fallback, String source, String completion,
+                            java.math.BigDecimal nominal, boolean fixed) {}
+
+    private record Group(String source,String fallback) {}
+
+    /**
+     * One configured source measurement per authenticated event and destination.
+     * Explicit routing replaces fallback identity. Identical candidates collapse;
+     * incompatible measurements or receipt semantics fail closed rather than
+     * selecting by arbitrary Path iteration order. Independent categories remain additive.
+     * Preserve source order so a fixed reward cannot jump ahead of the preceding
+     * ordinary reward and unexpectedly change its growth calculation.
+     */
+    public List<Candidate> normalize(List<Candidate> candidates) {
+        var groups=new java.util.LinkedHashMap<Group,Candidate>();
+        var conflicts=new HashSet<Group>();
+        for(var c:candidates){
+            if(c.nominal()==null || c.nominal().signum()<=0)continue;
+            String fallback=routes.containsKey(c.source())?"":c.fallback();
+            var group=new Group(c.source(),fallback==null?"":fallback);
+            var normalized=new Candidate(group.fallback(),c.source(),c.completion(),
+                    c.nominal().stripTrailingZeros(),c.fixed());
+            var existing=groups.putIfAbsent(group,normalized);
+            if(existing!=null&&!existing.equals(normalized))conflicts.add(group);
+        }
+        conflicts.forEach(groups::remove);
+        return List.copyOf(groups.values());
+    }
+
+    /** Observed settlement, including accepted zero rewards and first/repeat per currency. */
+    public record Settlement(java.math.BigDecimal effectiveXp,boolean first) {}
+
+    public static Map<String,Settlement> settled(List<Destination> destinations,String source,
+            String transaction,String completion,
+            io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.Ledger before,
+            io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.Ledger after){
+        var result=new java.util.LinkedHashMap<String,Settlement>();
+        for(var destination:destinations){
+            String id=destination.system(),prefix=id+"|"+source+"|";
+            String tx=prefix+transaction;
+            if(before.recentTransactions().contains(tx)||!after.recentTransactions().contains(tx))continue;
+            boolean first=completion!=null&&!before.rewardReceipts().contains(prefix+completion)
+                    &&after.rewardReceipts().contains(prefix+completion);
+            var delta=after.currentXp().getOrDefault(id,java.math.BigDecimal.ZERO)
+                    .subtract(before.currentXp().getOrDefault(id,java.math.BigDecimal.ZERO));
+            result.put(id,new Settlement(delta,first));
+        }
+        return java.util.Collections.unmodifiableMap(result);
+    }
+
+    public static boolean alreadySettled(List<Destination> destinations,String source,
+            String transaction,io.github.heatwaveqc.tyr.progression.core.ExperienceEconomy.Ledger before){
+        return !destinations.isEmpty()&&destinations.stream().allMatch(d->
+                before.recentTransactions().contains(d.system()+"|"+source+"|"+transaction));
+    }
+
     public static XpSourceRouting empty() { return new XpSourceRouting(Map.of(),Map.of()); }
     public EarningPolicy policy(String system) { return policies.getOrDefault(system,DEFAULT); }
 

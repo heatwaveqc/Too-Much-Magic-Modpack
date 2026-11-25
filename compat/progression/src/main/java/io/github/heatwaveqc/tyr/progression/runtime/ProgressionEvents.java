@@ -29,11 +29,17 @@ public final class ProgressionEvents {
     private ProgressionEvents() {}
     public static void register() {
         TreeChopXpBridge.register();
+        VerifiedCombatXp.registerStrictVictory(ProgressionEvents::strictVictory);
         GildedMechanics.register();
         io.github.heatwaveqc.tyr.progression.runtime.forms.NativeDietAdapters.register();
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,MiningUtilities::observe);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakBlock);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedMiningXp::beforeBreak);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::kill);
+        NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityLeave);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::beforeDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::afterDamage);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,VerifiedCombatXp::death);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::mobDrops);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::fall);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, MechanicalEffects::landing);
@@ -42,6 +48,9 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(UtilityEffects::foodStopped);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::vanillaXp);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::immunity);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,ElixirRuntime::applicable);
+        NeoForge.EVENT_BUS.addListener(ElixirRuntime::playerTick);
+        NeoForge.EVENT_BUS.addListener(ElixirRuntime::login);
         NeoForge.EVENT_BUS.addListener(UtilityEffects::crafted);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::useTick);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::entityInteract);
@@ -70,6 +79,16 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::dimension);
     }
 
+    /** Only the verified full-health, same-owner fist challenge can emit this deed. */
+    private static void strictVictory(ServerPlayer owner, net.minecraft.world.entity.LivingEntity victim) {
+        if (victim.getType() == net.minecraft.world.entity.EntityType.WITHER
+                && TrainingRewards.eligible(owner, "tyr_progression:monk")) {
+            ProgressionApi.recordFiltered(owner,
+                io.github.heatwaveqc.tyr.progression.core.Signal.external("tyr_progression:strict_barehand_wither_victory"),
+                path -> path.id().equals("tyr_progression:monk"));
+        }
+    }
+
     private static void breakBlock(BlockEvent.BreakEvent event) {
         if (!event.isCanceled() && event.getPlayer() instanceof ServerPlayer player
             && !event.getState().isAir()) {
@@ -78,6 +97,10 @@ public final class ProgressionEvents {
             // XP is NOT earned here: this is pre-commit and can still be vetoed.
             EffectHandlers.blockBreak(player,event);
         }
+    }
+    private static void entityLeave(net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent event) {
+        if(event.getEntity() instanceof net.minecraft.world.entity.LivingEntity entity)
+            VerifiedCombatXp.forget(entity);
     }
     private static void kill(LivingDeathEvent event) {
         if(event.isCanceled())return;
@@ -105,7 +128,15 @@ public final class ProgressionEvents {
         // Detect completed vanilla potion drinking independently of whether it counts as food.
         UtilityEffects.foodFinished(player,event.getItem());
         Enrollment.potionFinished(player,event.getItem());
-        HunterExperience.potionFinished(player,event.getItem());
+        if(!net.minecraft.world.item.ItemStack.matches(event.getItem(),event.getResultStack()))
+            HunterExperience.potionFinished(player,event.getItem());
+        // Drunk items (potions/teas) can have no Food component.
+        // This callback follows a completed use, not a use-start prediction.
+        // Finish means effects were applied; require proof that the held
+        // serving actually changed (stack count, item, or components).
+        // Nondepleting/infinite-use drinks need a dedicated trusted adapter.
+        if(!net.minecraft.world.item.ItemStack.matches(event.getItem(),event.getResultStack()))
+            VerifiedConsumptionXp.finished(player,event.getItem());
         // getItem() is the original pre-consumption stack; successful completion only.
         if (event.getItem().getFoodProperties(player) == null) return;
         Enrollment.foodFinished(player,event.getItem());
@@ -132,12 +163,21 @@ public final class ProgressionEvents {
     private static void blockDrops(BlockDropsEvent event) {
         if (!event.isCanceled() && event.getBreaker() instanceof ServerPlayer player) {
             // TreeChop and normal drops can report the same physical log.
-            if (!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
+            if(SpellMiningScope.captures(event.getLevel(),event.getPos())) {
+                // The scoped spell's verified removal owns progression signals.
+            } else if(VerifiedMiningXp.participates(player)) {
+                VerifiedMiningXp.drops(event);
+                // Tool breaks remain visible to other Paths' ordinary
+                // block_break criteria, but never pay Monk barehand MXP.
+                if(!event.getTool().isEmpty()||!player.getMainHandItem().isEmpty())
+                    ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
+            } else if(!event.getState().is(net.minecraft.tags.BlockTags.LOGS)
                     || RecentBlockCredits.first(player.getUUID(),
                     event.getLevel().dimension().location().toString(),
                     event.getPos().asLong(),event.getLevel().getGameTime())) {
+                // Legacy non-Monk Paths still receive their existing signals.
                 ProgressionApi.record(player,Selectors.blockBreak(event.getState()));
-                if (event.getTool().isEmpty() && player.getMainHandItem().isEmpty())
+                if(event.getTool().isEmpty()&&player.getMainHandItem().isEmpty())
                     ProgressionApi.record(player,Selectors.barehandBlockBreak(event.getState()));
             }
             HarvestAbilities.blockDrops(player,event);
@@ -222,6 +262,8 @@ public final class ProgressionEvents {
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);
             MiningUtilities.tick(player);
+            VerifiedMiningXp.tick(player);
+            VerifiedSprintingXp.tick(player);
             VillagerAttraction.tick(player);
             if(player.tickCount%10==0){
                 VisionRuntime.reconcile(player,false);
@@ -239,6 +281,9 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);
@@ -259,6 +304,9 @@ public final class ProgressionEvents {
     private static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             Enrollment.clear(player);
             BedrockRest.forget(player);
             PassivePowers.forget(player);
@@ -280,6 +328,9 @@ public final class ProgressionEvents {
             MechanicalEffects.forget(player);
             UtilityEffects.forget(player);
             MiningUtilities.forget(player);
+            VerifiedMiningXp.forget(player);
+            VerifiedSprintingXp.forget(player);
+            VerifiedConsumptionXp.forget(player);
             VisionRuntime.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPermissions.forget(player);
             io.github.heatwaveqc.tyr.progression.runtime.forms.DietPreviewSync.forget(player);

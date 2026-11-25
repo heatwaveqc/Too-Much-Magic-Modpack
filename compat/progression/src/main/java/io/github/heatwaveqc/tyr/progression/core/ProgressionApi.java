@@ -1,12 +1,16 @@
 package io.github.heatwaveqc.tyr.progression.core;
 
 import io.github.heatwaveqc.tyr.progression.data.PathRegistry;
+import io.github.heatwaveqc.tyr.progression.data.XpSourceRouting;
 import io.github.heatwaveqc.tyr.progression.model.Definition;
 import io.github.heatwaveqc.tyr.progression.state.Ledger;
 import io.github.heatwaveqc.tyr.progression.state.Discoveries;
 import io.github.heatwaveqc.tyr.progression.state.Modes;
 import io.github.heatwaveqc.tyr.progression.runtime.Selectors;
 import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
+import io.github.heatwaveqc.tyr.progression.runtime.ExperienceSourceRouter;
+import io.github.heatwaveqc.tyr.progression.runtime.ExperienceModifiers;
+import net.neoforged.neoforge.common.util.FakePlayer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import io.github.heatwaveqc.tyr.progression.state.ProgressionAttachments;
@@ -99,6 +103,7 @@ public final class ProgressionApi {
         Ledger changed=ChannelEngine.depart(old,path,PathRegistry.economyCatalog());
         changed=BaselinePaths.reconcile(changed,false);
         player.setData(ProgressionAttachments.LEDGER.get(),changed);
+        clearPathDiscoveries(player,pathId);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
@@ -124,8 +129,10 @@ public final class ProgressionApi {
         }
         next=ChannelEngine.pathChange(next,departed);
         player.setData(ProgressionAttachments.LEDGER.get(),next);
-        for(String id:departed)
+        for(String id:departed){
+            clearPathDiscoveries(player,id);
             io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,id);
+        }
     }
 
     private static String defaultCurrency(String pathId,String skillId){
@@ -174,6 +181,7 @@ public final class ProgressionApi {
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         player.setData(ProgressionAttachments.LEDGER.get(),
             ChannelEngine.refund(ledger,path));
+        clearPathDiscoveries(player,pathId);
         io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.stopPath(player,pathId);
         return true;
     }
@@ -183,12 +191,17 @@ public final class ProgressionApi {
      * quarry maximum-health XP and potion potency. Never expose over a client packet.
      */
     public static boolean awardServerXp(ServerPlayer player, String pathId, long xp) {
-        if (player.isCreative() || player.isSpectator() || xp <= 0 || xp > 1_000_000L) return false;
+        if (!eligibleEarner(player) || xp <= 0 || xp > 1_000_000L) return false;
         Definition.Path path = PathRegistry.get(pathId);
         var channel=PathRegistry.channel(pathId);
-        if (path == null || channel==null || !channel.earnsFrom(pathId) || !PathRegistry.eligible(player,pathId) || !PathRegistry.economyEligible(player,channel.id()) || NewbieMode.isNewbie(player)) return false;
+        if (path == null || channel==null || !PathRegistry.eligible(player,pathId)
+                || !PathRegistry.economyEligible(player,channel.id())) return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         if(!ledger.get(pathId).joined())return false;
+        if(channel.magic())
+            return awardExplicitConfiguredXp(player,channel.id(),"tyr_progression:admin_grant",
+                    "admin:"+UUID.randomUUID(),null,BigDecimal.valueOf(xp),false);
+        if(!channel.earnsFrom(pathId))return false;
         player.setData(ProgressionAttachments.LEDGER.get(),ChannelEngine.grant(ledger,channel,io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,channel.id(),xp),0));
         return true;
     }
@@ -209,6 +222,14 @@ public final class ProgressionApi {
         Modes after = before.with(key,value);
         if (before != after) player.setData(ProgressionAttachments.PLAYER_MODES.get(),after);
         return true;
+    }
+
+    /** Reset local first-taste progress, not permanent paid XP receipts. */
+    private static void clearPathDiscoveries(ServerPlayer player,String pathId){
+        io.github.heatwaveqc.tyr.progression.runtime.ElixirRuntime.resetPath(player,pathId);
+        var previous=player.getData(ProgressionAttachments.PATH_DISCOVERIES.get());
+        var cleared=previous.clear(pathId);
+        if(cleared!=previous)player.setData(ProgressionAttachments.PATH_DISCOVERIES.get(),cleared);
     }
 
     /** First-consumption reward is global per player, not per NBT variant, saved across death/relog. */
@@ -232,12 +253,17 @@ public final class ProgressionApi {
     /** Trusted server-side event provenance filter: reject rewards for a specific path. */
     public static void recordFiltered(ServerPlayer player, Signal signal,
                                       java.util.function.Predicate<Definition.Path> eligiblePath) {
-        if (player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return;
+        if (!eligibleEarner(player)) return;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         Ledger next = ledger;
         MilestoneFeedback.Notice progressNotice = null;
         for(var system:PathRegistry.economies().values()){
             if(system.magic()||!PathRegistry.economyEligible(player,system.id()))continue;
+            if(!PathRegistry.config().usesNative(system.id(),id->{
+                var bound=PathRegistry.get(id);
+                return bound!=null&&ledger.get(id).joined()&&PathRegistry.eligible(player,id)
+                        &&eligiblePath.test(bound);
+            }))continue;
             String required=system.earningPath();
             if(!required.isEmpty()){
                 var gate=PathRegistry.get(required);
@@ -257,6 +283,21 @@ public final class ProgressionApi {
                 next=ChannelEngine.grant(next,system,xp,0);
             }
         }
+        // A shared source category is one authenticated accomplishment,
+        // not one award per joined Path. Collect measurements before routing.
+        var activityAwards=new java.util.ArrayList<XpSourceRouting.Candidate>();
+        for (Definition.Path path : PathRegistry.all().values()) {
+            if(!eligiblePath.test(path)||!PathRegistry.eligible(player,path.id())
+                    ||!next.get(path.id()).joined())continue;
+            for(var award:PathRegistry.config().unifiedSources().getOrDefault(path.id(),List.of())){
+                if(!signal.matches(award.event(),award.selector()))continue;
+                String first=award.oncePerTarget()
+                        ?award.firstCompletionKey(path.id(),signal.target()):null;
+                activityAwards.add(new XpSourceRouting.Candidate(award.systemId(),
+                        award.category(),first,award.nominal(),false));
+            }
+        }
+        next=ExperienceSourceRouter.batch(player,next,"activity:"+UUID.randomUUID(),activityAwards);
         for (Definition.Path path : PathRegistry.all().values()) {
             if (!eligiblePath.test(path)) continue;
             var channel=PathRegistry.channel(path.id());
@@ -298,6 +339,15 @@ public final class ProgressionApi {
                         next=next.withEconomy(next.economy().withAchievement(milestone.id()));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
+                        // One permanent receipt per distinct Path trial, independent
+                        // of the ordinary event's independent scaled earning.
+                        if(milestone.fixedRewardXp()>0) {
+                            next=ExperienceSourceRouter.award(player,next,
+                                milestone.fixedRewardSystem(),"tyr_progression:path_trial",
+                                "trial:"+path.id()+"/"+milestone.id(),
+                                path.id()+"/"+milestone.id(),
+                                BigDecimal.valueOf(milestone.fixedRewardXp()),true);
+                        }
                         changed = true;
                     }
                 }
@@ -322,12 +372,14 @@ public final class ProgressionApi {
      * This deliberately does NOT mint Tyz SP or global MXP.
      */
     public static boolean awardMonkTyzPointOnce(ServerPlayer player, String marker) {
-        if (marker == null || !marker.matches("tyr_progression:tyz_focused_advancement_[1-5]"))
+        if (!eligibleEarner(player) || marker == null || !marker.matches("tyr_progression:tyz_focused_advancement_[1-5]"))
             return false;
         Ledger ledger = player.getData(ProgressionAttachments.LEDGER.get());
         var path=PathRegistry.get("tyr_progression:monk");
         var channel=PathRegistry.channel("tyr_progression:monk");
-        if(path==null || channel==null) return false;
+        // Legacy native bonus points must never mint a second spendable
+        // Monk wallet after the data-defined shared-MXP cutover.
+        if(path==null || channel==null || channel.magic()) return false;
         Track monk=ChannelEngine.view(ledger,path,PathRegistry.config());
         if (!monk.joined() || monk.rank() < 17 || monk.completed(marker)) return false;
         player.setData(ProgressionAttachments.LEDGER.get(),
@@ -368,18 +420,29 @@ public final class ProgressionApi {
     private static boolean awardMagic(ServerPlayer player,String channelId,
             String sourceCategory,String tx,String first,
             double firstBase,double repeatBase,boolean firstFixed,boolean repeatFixed) {
-        if(player==null || player.getServer()==null || !player.getServer().isSameThread()
-            || player.isCreative() || player.isSpectator() || NewbieMode.isNewbie(player)) return false;
+        if(!eligibleEarner(player)) return false;
         XpChannel channel=PathRegistry.economy(channelId);
         if(channel==null || !channel.magic()) return false;
+        if(!Double.isFinite(repeatBase)||repeatBase<0||
+                first!=null&&(!Double.isFinite(firstBase)||firstBase<0)) return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        double configured=PathRegistry.economyCatalog().growth(channelId);
-        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
-            .effective(player,configured,channelId);
-        Ledger next=ChannelEngine.magic(prior,
-            XpChannel.generic(channelId,growth,channel.name(),channel.pointName()),
-            sourceCategory,tx,first,firstBase,repeatBase,firstFixed,repeatFixed);
-        if(next==prior) return false;
+        Ledger next=first==null
+                ?ExperienceSourceRouter.award(player,prior,channelId,sourceCategory,tx,null,
+                        BigDecimal.valueOf(repeatBase),repeatFixed)
+                :ExperienceSourceRouter.completion(player,prior,channelId,sourceCategory,tx,first,
+                        BigDecimal.valueOf(firstBase),BigDecimal.valueOf(repeatBase),firstFixed,repeatFixed);
+        return publishAward(player,prior,next);
+    }
+
+    private static boolean eligibleEarner(ServerPlayer player){
+        return player!=null&&player.getServer()!=null&&player.getServer().isSameThread()
+                &&!(player instanceof FakePlayer)&&!player.isCreative()&&!player.isSpectator()
+                &&!NewbieMode.isNewbie(player)
+                &&player.getServer().getPlayerList().getPlayer(player.getUUID())==player;
+    }
+
+    private static boolean publishAward(ServerPlayer player,Ledger prior,Ledger next){
+        if(next==prior)return false;
         player.setData(ProgressionAttachments.LEDGER.get(),next);
         return true;
     }
@@ -392,21 +455,35 @@ public final class ProgressionApi {
     public static boolean awardConfiguredXp(ServerPlayer player,String systemId,
             String sourceCategory,String transaction,String completionId,
             BigDecimal nominalXp,boolean fixed) {
-        if(player==null||player.getServer()==null||!player.getServer().isSameThread()
-            ||player.isCreative()||player.isSpectator()||NewbieMode.isNewbie(player))
-            return false;
+        if(!eligibleEarner(player))return false;
         var catalog=PathRegistry.economyCatalog();
         if(!catalog.systems().containsKey(systemId))return false;
-        var nativeChannel=PathRegistry.economy(systemId);
-        if(nativeChannel!=null&&!PathRegistry.economyEligible(player,systemId))return false;
-        double growth=io.github.heatwaveqc.tyr.progression.runtime.ExperienceGrowth
-                .effective(player,catalog.growth(systemId),systemId);
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
-        Ledger next=ChannelEngine.awardConfigured(prior,catalog,systemId,
-                sourceCategory,transaction,completionId,nominalXp,fixed,growth);
-        if(next==prior)return false;
-        player.setData(ProgressionAttachments.LEDGER.get(),next);
-        return true;
+        return publishAward(player,prior,ExperienceSourceRouter.award(player,prior,systemId,
+                sourceCategory,transaction,completionId,nominalXp,fixed));
+    }
+
+    /** Explicit destination grant, not a gameplay-source reroute. */
+    public static boolean awardExplicitConfiguredXp(ServerPlayer player,String systemId,
+            String sourceCategory,String transaction,String completionId,
+            BigDecimal nominalXp,boolean fixed) {
+        if(!eligibleEarner(player))return false;
+        var catalog=PathRegistry.economyCatalog();
+        var spec=catalog.systems().get(systemId);
+        if(spec==null || PathRegistry.economy(systemId)!=null
+                && !PathRegistry.economyEligible(player,systemId))return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        var result=ExperienceModifiers.earn(player,prior,spec,sourceCategory,transaction,
+                completionId,nominalXp,fixed,catalog.growth(systemId));
+        return result.accepted()&&publishAward(player,prior,prior.withEconomy(result.ledger()));
+    }
+
+    /** One authenticated event, potentially several independently configured categories. */
+    public static boolean awardSourceBatch(ServerPlayer player,String transaction,
+            List<XpSourceRouting.Candidate> candidates) {
+        if(!eligibleEarner(player))return false;
+        Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
+        return publishAward(player,prior,ExperienceSourceRouter.batch(player,prior,transaction,candidates));
     }
 
     /** Existing trusted server consumers may grant a native-style source award. */
@@ -417,18 +494,18 @@ public final class ProgressionApi {
     /** Source-aware overload ensures repeat callbacks can share one receipt. */
     public static boolean awardExperience(ServerPlayer player,String id,
             String sourceCategory,String transaction,long xp) {
-        if(player==null||player.getServer()==null||!player.getServer().isSameThread()||player.isCreative()
-            ||player.isSpectator()||NewbieMode.isNewbie(player)||xp<=0||xp>1_000_000L)return false;
+        if(!eligibleEarner(player)||xp<=0||xp>1_000_000L)return false;
         var system=PathRegistry.economy(id);
         if(system==null||!PathRegistry.economyEligible(player,id))return false;
         Ledger prior=player.getData(ProgressionAttachments.LEDGER.get());
         String gate=system.earningPath();
         if(!gate.isEmpty()&&(!prior.get(gate).joined()||!PathRegistry.eligible(player,gate)))return false;
-        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
         if(PathRegistry.economyCatalog().systems().containsKey(id))
             return awardConfiguredXp(player,id,sourceCategory,transaction,null,
-                    BigDecimal.valueOf(nominal),false);
-        if(system.magic())return false; // No unconfigured money printer.
+                    BigDecimal.valueOf(xp),false);
+        if(system.magic()||!PathRegistry.config().usesNative(id,path->
+                prior.get(path).joined()&&PathRegistry.eligible(player,path)))return false;
+        long nominal=io.github.heatwaveqc.tyr.progression.runtime.ExperienceBonuses.apply(player,id,xp);
         player.setData(ProgressionAttachments.LEDGER.get(),
                 ChannelEngine.grant(prior,system,nominal,0));
         return true;

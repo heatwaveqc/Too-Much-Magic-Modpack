@@ -53,6 +53,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         return ExperienceEconomyRuntime.current();
     }
     public static Map<String,XpChannel> economies(){return channelConfig.channels();}
+    private static volatile Map<String,TrainingXpSpec> training=Map.of();
+    public static Map<String,TrainingXpSpec> trainingXp(){return training;}
 
     private record SourceKey(String system,int index) {}
     private static volatile Map<String,Condition<ServerPlayer>> economyGates=Map.of();
@@ -112,6 +114,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         Map<String,HunterMutationPolicy> mutations = new HashMap<>();
         Map<String,JsonObject> rawPaths=new HashMap<>();
         Map<String,java.util.Set<Form>> nativePairs=new HashMap<>();
+        Map<String,TrainingXpSpec> newTraining=new HashMap<>();
         Map<String,TimedEnrollment> timed=new HashMap<>();
         Map<String,FoodRite> rites=new HashMap<>();
         Map<GateKey,Condition<ServerPlayer>> nextGates=new HashMap<>();
@@ -198,6 +201,8 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
                 nextGates.putAll(localGates);
                 var permittedForms = NativeCompatibilityDeclarations.read(raw);
                 if (!permittedForms.isEmpty()) nativePairs.put(path.id(), permittedForms);
+                var physical=TrainingXpSpec.parse(raw,systems);
+                if(physical!=null)newTraining.put(path.id(),physical);
                 rawPaths.put(path.id(),raw);
                 next.put(path.id(),path);
                 modes.put(path.id(),element.getAsJsonObject().has("enrollment") ?
@@ -208,14 +213,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         });
         ChannelConfig config=ChannelConfig.bind(systems,next,rawPaths);
         if(next.size()!=data.size()) throw new IllegalArgumentException("Rejected path; retaining previous configuration");
-        // A declared multi-currency purchase must reference a real loaded skill.
-        for(var row:economy.skills().entrySet()){
-            var tree=next.get(row.getKey().path());
-            var skill=tree==null?null:tree.skill(row.getKey().skill());
-            if(skill==null || !skill.autoRanks().isEmpty()
-                || row.getValue().totalRankCap()>skill.maxRank())
-                throw new IllegalArgumentException("Invalid configured economy skill "+row.getKey());
-        }
+        ExperienceEconomyConfig.validateReferences(economy,next,experience.keySet());
         if(!economy.systems().containsKey(XpChannel.MXP))
             throw new IllegalArgumentException("Current TMM live legacy adapters require configured MXP");
         var resourceCatalog=io.github.heatwaveqc.tyr.progression.runtime.resources.ResourceCatalog.parse(rawPaths,next);
@@ -230,6 +228,7 @@ public final class PathRegistry extends SimpleJsonResourceReloadListener {
         for(var policy:xpPolicies.values())if(!policy.specialtyPath().isEmpty()&&!next.containsKey(policy.specialtyPath()))
             throw new IllegalArgumentException("Unknown specialty path "+policy.specialtyPath());
         channelConfig=config;
+        training=Map.copyOf(newTraining);
         compatibility=nextCompatibility;
         ExperienceEconomyRuntime.install(economy);
         io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardConfig.install(externalOffers);

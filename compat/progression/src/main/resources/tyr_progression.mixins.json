@@ -19,7 +19,8 @@
     "MutationEffectQueryMixin",
     "MutationRegenerationMixin",
     "CompanionMobGoalsAccess",
-    "CompanionPatrolAccess"
+    "CompanionPatrolAccess",
+    "ElixirFoodDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1
