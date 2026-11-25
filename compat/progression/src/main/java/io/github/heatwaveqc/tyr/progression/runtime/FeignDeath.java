@@ -48,6 +48,16 @@ public final class FeignDeath {
         ACTIVE.put(p,new Session(p.position(),p.level()));
         dump(p,radius);
     }
+    /** Dedicated key selects only an actually owned and eligible configured toggle. */
+    public static boolean hotkey(ServerPlayer p){
+        if(ACTIVE.containsKey(p)){end(p);return true;}
+        for(var entry:new TreeMap<>(io.github.heatwaveqc.tyr.progression.data.PathRegistry.all()).entrySet())
+            for(var skill:entry.getValue().skills())
+                if(skill.effects().stream().anyMatch(e->e.type().equals("feign_death"))
+                    &&SkillActivation.canRequest(p,entry.getKey(),skill.id()))
+                    return SkillActivation.request(p,entry.getKey(),skill.id());
+        return false;
+    }
     static void offensiveAction(ServerPlayer p){if(ACTIVE.containsKey(p))end(p);}
     private static void end(ServerPlayer p){
         ACTIVE.remove(p);SkillActivation.stopEffect(p,"feign_death");
