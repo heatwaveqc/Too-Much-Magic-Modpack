@@ -24,121 +24,39 @@
     "rewards": "Fixed useful thematic one-time personal items + positive XP, no currency or gem giveaway; verify loaded IDs and all current task/reward collisions on integration."
   },
   "presentation": {
-    "archetype": "left-to-right branching",
-    "visual_theme": "pastel sky, rainbow trails, island greenery; no borrowed promotional art",
-    "section_labels": [
-      {
-        "id": "journey",
-        "label": "Across the Rainbow",
-        "position": [
-          3,
-          -2
-        ]
-      },
-      {
-        "id": "bond",
-        "label": "A Friend for Life",
-        "position": [
-          14,
-          -2
-        ]
-      },
-      {
-        "id": "care",
-        "label": "Care and Trust",
-        "position": [
-          13,
-          2
-        ]
-      },
-      {
-        "id": "magic",
-        "label": "Awaken Your Magic",
-        "position": [
-          20,
-          -2
-        ]
-      },
-      {
-        "id": "elements",
-        "label": "Six Ways to Shine",
-        "position": [
-          25,
-          -8
-        ]
-      },
-      {
-        "id": "wings",
-        "label": "Fairy Wings",
-        "position": [
-          28,
-          2
-        ]
-      }
-    ],
+    "archetype": "top-to-bottom branching (owner-approved exception for this chapter, 2026-11-25)",
+    "visual_theme": "Owner-approved full illustrated rainbow/unicorn island background; actual quest titles, nodes and dependency lines remain dynamic.",
+    "section_labels": [],
     "images": [
       {
-        "role": "header emblem",
-        "texture": "unicornacademy:textures/item/magical_ferry.png",
+        "role": "full chapter background and title",
+        "texture": "tmm:textures/questpics/friendship_is_magic/background.png",
+        "source_path": "kubejs/assets/tmm/textures/questpics/friendship_is_magic/background.png",
         "position": [
           0,
-          -4
+          15
         ],
-        "width": 2.5,
-        "height": 2.5,
-        "origin": "installed exact JAR; reference only",
-        "interaction": "none"
-      },
-      {
-        "role": "section emblem",
-        "texture": "unicornacademy:textures/gui/ability/rainbow_bridge.png",
-        "position": [
-          19,
-          -4
-        ],
-        "width": 2,
-        "height": 2,
-        "origin": "installed exact JAR; reference only",
-        "interaction": "none"
-      },
-      {
-        "role": "section emblem",
-        "texture": "unicornacademy:textures/item/fairy_gemstone.png",
-        "position": [
-          31,
-          -3
-        ],
-        "width": 2,
-        "height": 2,
-        "origin": "installed exact JAR; reference only",
-        "interaction": "none"
+        "width": 32,
+        "height": 39.98574,
+        "position_semantics": "proposed center coordinates; confirm pinned FTB image anchor and rendering order before generating runtime SNBT",
+        "layer_intent": "behind all dependency lines, nodes, completion state and hitboxes",
+        "interaction": "none",
+        "origin": "Original generated artwork requested and approved by owner; chapter title only, no embedded quest titles, nodes or connecting lines. Source PNG unchanged.",
+        "pixel_width": 1122,
+        "pixel_height": 1402,
+        "bytes": 2414446,
+        "sha256": "307e155f17280405ae9ccbdf694a0cab8b919b7fb72d379fc1184cb50af2c819",
+        "git_blob": "79d9432cc5eb7838faa466241b05ab047942dfeb",
+        "verification": "exact PNG verified locally; repository path verification and Packwiz integration required; actual UI layering untested"
       }
     ],
-    "planned_original_panels": [
-      {
-        "role": "title and thematic illustration",
-        "description": "Original soft pastel island silhouette, arc of rainbow, ferry and unicorn silhouette. No small text; title uses localized label.",
-        "bounds": [
-          -5,
-          -9,
-          11,
-          3
-        ],
-        "status": "art not produced/packaged; no invented asset URI"
-      },
-      {
-        "role": "magic lane panel",
-        "description": "Low contrast pastel sky and small stars; sit beneath optional spell lanes, never cover hitboxes.",
-        "bounds": [
-          20,
-          -9,
-          10,
-          18
-        ],
-        "status": "art and layer validation pending"
-      }
-    ],
-    "visual_note": "All nodes have objective-specific icons; exact model/locale checked for UA and SWEM. Egg icons depict creatures only, never grant/require spawn eggs. Native image existence checked; custom art, actual shapes, image generator serialization, layering and client acceptance pending."
+    "visual_note": "Background is the entire approved illustration, not a screenshot or interactive mockup. Do not bake quest titles, dependency arrows, completion markers or extra gates into the art. Main bond milestones occupy the center lane; optional tack, care, elemental and wing activities offset left/right. Preserve all author keys, criteria, rewards and dependency edges. Distinguish actual image layering, localization (English title is part of artwork), node size and zoom/contrast acceptance from source data. No image serialization or Packwiz relock yet.",
+    "qa": [
+      "Verify asset is present in actual distributed KubeJS resource namespace and Packwiz index.",
+      "Render background below FTB dependency lines and actual interactive quest icons; no click action or obstructed hitboxes.",
+      "Check both normal and reduced zoom: title, contrast, quest states, wing branch versus independent bond-10 capstone; adjust layout if needed, preserving dependencies.",
+      "Run existing chapter generator/validator and idempotent regeneration after presentation support; do not hand-edit generated-only SNBT."
+    ]
   },
   "quests": [
     {
@@ -169,7 +87,8 @@
         "count": 2,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA02",
@@ -177,8 +96,8 @@
       "depends": [],
       "optional": false,
       "position": [
-        4,
-        0
+        0,
+        2.4
       ],
       "section": "journey",
       "node_role": "milestone",
@@ -200,7 +119,8 @@
         "team_reward": false,
         "autoclaim": false
       },
-      "hold": "Effective Newbie dimension entry and safe return acceptance #742"
+      "hold": "Effective Newbie dimension entry and safe return acceptance #742",
+      "presentation_size": 1
     },
     {
       "key": "UA03",
@@ -210,8 +130,8 @@
       ],
       "optional": false,
       "position": [
-        7,
-        0
+        0,
+        4.8
       ],
       "section": "journey",
       "node_role": "action",
@@ -232,7 +152,8 @@
         "count": 3,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA04",
@@ -242,8 +163,8 @@
       ],
       "optional": false,
       "position": [
-        10,
-        0
+        0,
+        7.2
       ],
       "section": "bond",
       "node_role": "milestone",
@@ -264,7 +185,8 @@
         "count": 1,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA05",
@@ -274,8 +196,8 @@
       ],
       "optional": false,
       "position": [
-        13,
-        0
+        -3.5,
+        9.7
       ],
       "section": "bond",
       "node_role": "action",
@@ -296,7 +218,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA06",
@@ -306,8 +229,8 @@
       ],
       "optional": true,
       "position": [
-        13,
-        -4
+        -7,
+        7.8
       ],
       "section": "care",
       "node_role": "action",
@@ -328,7 +251,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA07",
@@ -338,8 +262,8 @@
       ],
       "optional": true,
       "position": [
-        13,
-        4
+        7,
+        7.8
       ],
       "section": "care",
       "node_role": "action",
@@ -360,7 +284,8 @@
         "count": 2,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA08",
@@ -370,8 +295,8 @@
       ],
       "optional": false,
       "position": [
-        16,
-        0
+        -3.5,
+        12
       ],
       "section": "bond",
       "node_role": "action",
@@ -392,7 +317,8 @@
         "count": 8,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA09",
@@ -402,8 +328,8 @@
       ],
       "optional": false,
       "position": [
-        19,
-        0
+        0,
+        13.6
       ],
       "section": "magic",
       "node_role": "milestone",
@@ -424,7 +350,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1.5
     },
     {
       "key": "UA10",
@@ -434,8 +361,8 @@
       ],
       "optional": false,
       "position": [
-        22,
-        0
+        -3.5,
+        16.6
       ],
       "section": "magic",
       "node_role": "action",
@@ -456,7 +383,8 @@
         "count": 8,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA11",
@@ -466,8 +394,8 @@
       ],
       "optional": true,
       "position": [
-        22,
-        -6
+        -8.5,
+        15.7
       ],
       "section": "elements",
       "node_role": "branch",
@@ -488,7 +416,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA12",
@@ -498,8 +427,8 @@
       ],
       "optional": true,
       "position": [
-        25,
-        -6
+        -8.5,
+        18.2
       ],
       "section": "elements",
       "node_role": "branch",
@@ -520,7 +449,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA13",
@@ -530,8 +460,8 @@
       ],
       "optional": true,
       "position": [
-        28,
-        -6
+        -8.5,
+        20.7
       ],
       "section": "elements",
       "node_role": "branch",
@@ -552,7 +482,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA14",
@@ -562,8 +493,8 @@
       ],
       "optional": true,
       "position": [
-        22,
-        6
+        8.5,
+        15.7
       ],
       "section": "elements",
       "node_role": "branch",
@@ -584,7 +515,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA15",
@@ -594,8 +526,8 @@
       ],
       "optional": true,
       "position": [
-        25,
-        6
+        8.5,
+        18.2
       ],
       "section": "elements",
       "node_role": "branch",
@@ -616,7 +548,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA16",
@@ -626,8 +559,8 @@
       ],
       "optional": true,
       "position": [
-        28,
-        6
+        8.5,
+        20.7
       ],
       "section": "elements",
       "node_role": "branch",
@@ -648,7 +581,8 @@
         "count": 4,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1
     },
     {
       "key": "UA17",
@@ -658,8 +592,8 @@
       ],
       "optional": true,
       "position": [
-        25,
-        0
+        3.8,
+        21.2
       ],
       "section": "wings",
       "node_role": "milestone",
@@ -680,7 +614,8 @@
         "count": 6,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1.5
     },
     {
       "key": "UA18",
@@ -690,8 +625,8 @@
       ],
       "optional": true,
       "position": [
-        28,
-        0
+        3.8,
+        24
       ],
       "section": "wings",
       "node_role": "branch",
@@ -713,7 +648,8 @@
         "team_reward": false,
         "autoclaim": false
       },
-      "hold": "Owner decision and actual legal survival acquisition required; no gemstone reward or new recipe authorized"
+      "hold": "Owner decision and actual legal survival acquisition required; no gemstone reward or new recipe authorized",
+      "presentation_size": 1
     },
     {
       "key": "UA19",
@@ -723,8 +659,8 @@
       ],
       "optional": true,
       "position": [
-        31,
-        0
+        3.8,
+        27
       ],
       "section": "wings",
       "node_role": "milestone",
@@ -746,7 +682,8 @@
         "team_reward": false,
         "autoclaim": false
       },
-      "hold": "Requires approved gemstone route, effective mounted flight and actual detector"
+      "hold": "Requires approved gemstone route, effective mounted flight and actual detector",
+      "presentation_size": 1.5
     },
     {
       "key": "UA20",
@@ -756,8 +693,8 @@
       ],
       "optional": false,
       "position": [
-        34,
-        0
+        0,
+        32.2
       ],
       "section": "bond",
       "node_role": "capstone",
@@ -778,7 +715,8 @@
         "count": 8,
         "team_reward": false,
         "autoclaim": false
-      }
+      },
+      "presentation_size": 1.8
     },
     {
       "key": "UA21",
@@ -789,7 +727,7 @@
       "optional": true,
       "position": [
         7,
-        -4
+        2.4
       ],
       "section": "journey",
       "node_role": "action",
@@ -811,7 +749,8 @@
         "team_reward": false,
         "autoclaim": false
       },
-      "hold": "Safe island-side ferry and Newbie travel acceptance"
+      "hold": "Safe island-side ferry and Newbie travel acceptance",
+      "presentation_size": 1
     }
   ],
   "coverage": {
