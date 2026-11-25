@@ -33,6 +33,40 @@ public final class NativeHarvest {
         var tool=representative(id);
         return !tool.isEmpty()&&tool.isCorrectToolForDrops(state);
     }
+    /** Read-only discovery API for a path-author-selected native item ID/tag and
+     * block family. Call after server registry tags have been bound, not every tick.
+     * Default-state fingerprints intentionally exclude item-specific behavior. */
+    public static List<io.github.heatwaveqc.tyr.progression.foundation.HarvestCapabilityGraph.Group>
+            discover(String itemSelector,String blockSelector){
+        if(itemSelector==null||!itemSelector.matches("#?[a-z0-9_.-]+:[a-z0-9_./-]+")
+            ||blockSelector==null||!blockSelector.matches("#?[a-z0-9_.-]+:[a-z0-9_./-]+"))
+            throw new IllegalArgumentException("Discovery needs explicit item and block IDs/tags");
+        var tools=new java.util.TreeMap<String,ItemStack>();
+        for(var item:BuiltInRegistries.ITEM){
+            var stack=new ItemStack(item);
+            if(!stack.isEmpty()&&stack.has(DataComponents.TOOL)&&Selectors.item(itemSelector,stack)){
+                tools.put(BuiltInRegistries.ITEM.getKey(item).toString(),stack);
+                if(tools.size()>256)throw new IllegalArgumentException("Harvest discovery item selector too broad");
+            }
+        }
+        var blocks=new java.util.TreeMap<String,BlockState>();
+        for(var block:BuiltInRegistries.BLOCK){
+            var state=block.defaultBlockState();
+            if(state.requiresCorrectToolForDrops()&&Selectors.block(blockSelector,state)){
+                blocks.put(BuiltInRegistries.BLOCK.getKey(block).toString(),state);
+                if(blocks.size()>32768)throw new IllegalArgumentException("Harvest discovery block selector too broad");
+            }
+        }
+        if((long)tools.size()*blocks.size()>2_000_000)
+            throw new IllegalArgumentException("Harvest discovery comparison budget exceeded");
+        var fingerprints=new java.util.TreeMap<String,Set<String>>();
+        tools.forEach((id,stack)->{
+            var matches=new java.util.TreeSet<String>();
+            blocks.forEach((block,state)->{if(stack.isCorrectToolForDrops(state))matches.add(block);});
+            fingerprints.put(id,matches);
+        });
+        return io.github.heatwaveqc.tyr.progression.foundation.HarvestCapabilityGraph.plan(fingerprints);
+    }
     static boolean canHarvest(ServerPlayer p,BlockState state){
         if(!ToolForms.usable(p))return false;
         for(var active:EffectRuntime.active(p)){
