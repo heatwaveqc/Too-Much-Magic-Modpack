@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'scripts/audit_worldgen_size.py'
+      - 'scripts/audit_worldgen_placements.py'
+      - 'tests/test_audit_worldgen_placements.py'
+      - 'scripts/run_worldgen_pilot.py'
+      - 'research/worldgen-audit-instrumentation/**'
       - 'tests/test_audit_worldgen_size.py'
       - '.github/workflows/worldgen-size-audit.yml'
 permissions:
@@ -58,3 +62,20 @@ jobs:
             ${{ runner.temp }}/worldgen-size/templates.json
           if-no-files-found: warn
           retention-days: 30
+
+  instrumentation-compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Compile audit-only exact-loader instrumentation (no server)
+        run: gradle --no-daemon -p research/worldgen-audit-instrumentation clean build
