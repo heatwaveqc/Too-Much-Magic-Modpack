@@ -14,6 +14,13 @@ Approved 2026-11-14. Inspired by ATM10's navigational and branching approach. Qu
 4. Branch freely across magic schools, exploration and food. Within a chapter, give sensible optional dependency lines without enforcing unrelated specialties or duplicating rewards.
 5. **Follow the current, externally enforced ProjectE/Project Expansion recipe and tier gates** (see the current policy note above and its linked plan): the Philosopher's Stone has a boss-associated ingredient route and red MK3+ Power Flowers require a Chaos Shard; do not resurrect the superseded blanket all-post-Chaos statement. No quest may award a bypass, the excluded Ring of the Seven Deadly Sins, Re:Avaritia or Extended Crafting items. Quests explain real gates; they do not implement those gates.
 
+## Quest naming and FTB text formatting (2026-11-24)
+
+- Keep chapter and quest titles short, clear and recognizable; preserve intentional named references (particularly **A Sufficiently Advanced Magic**) and established mod names. Do not rename correct content to work around formatting errors. Canonical authoring manifests and layout lookup names remain ordinary human-readable text.
+- FTB Quests 2101.x interprets ampersands as formatting controls. A literal ampersand before whitespace or end of text must be escaped in the **decoded** FTB string as `\&`; inside a quoted SNBT value use two backslashes (`"Tips \\& Tricks"`). Preserve intentional formatting codes such as `&a` and `&r`; do not double-escape existing literals.
+- Use `scripts/quest_text.py` serialization helpers for every player-facing localized string: group/chapter names, subtitles, quest titles/descriptions, task/reward labels and other localized text. Do not escape IDs, registry names, manifest lookup keys or filenames. New generators and hand-edited locale entries must follow this rule.
+- `scripts/validate_quests.py` rejects unescaped literal ampersands and checks serialization regression cases. Verify the sidebar and quest details in the next authorized client QA; offline validation is not gameplay acceptance.
+
 ## Required instructional structure for every mod chapter
 
 - **Start with the guide:** If an in-game guide/manual/Notebook/UI guide exists, include an early quest describing the *actual* way to obtain, craft, receive or open it; alternatively provide it as a safe quest reward. A physical book is not required if the guide is a menu/keybind, but the player must know how to access it.
