@@ -25,6 +25,7 @@
     "StoredResourceGuardMixin",
     "RepairTalismanCharmMixin",
     "ApotheosisPotionCharmRecipeMixin",
+    "ApotheosisPotionCharmEligibilityMixin",
     "IronsAlchemistFlaskSafetyMixin",
     "OccultismPartnerFlaskSafetyMixin",
     "PortableStorageShulkerSlotMixin",
