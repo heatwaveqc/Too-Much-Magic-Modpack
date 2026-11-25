@@ -1985,12 +1985,12 @@
       "name": "Relics",
       "category": "power",
       "desired": true,
-      "version": "0.12.5",
+      "version": "0.12.9",
       "release_status": "experimental_release",
-      "source": "https://modrinth.com/mod/relics-mod/version/0.12.5",
+      "source": "https://modrinth.com/mod/relics-mod/version/CWPAvFMI",
       "enabled_in_pack": true,
-      "dependencies_verified": true,
-      "note": "B12: user expected Reliquified Artifacts durability+skill progression; Relics currently disabled and must be enabled, with OctoLib and existing Curios/Architectury.\nB12 official hash pin and 147-mod fresh NeoForge server smoke PASSED (run 43625296741). Real Prism client mechanic testing pending.",
+      "dependencies_verified": false,
+      "note": "B12: user expected Reliquified Artifacts durability+skill progression; Relics currently disabled and must be enabled, with OctoLib and existing Curios/Architectury.\nB12 official hash pin and 147-mod fresh NeoForge server smoke PASSED (run 43625296741). Real Prism client mechanic testing pending.\nNov 25 #716: owner-approved minimal fixed beta 0.12.9, Modrinth CWPAvFMI. Published SHA1 corroborated across CF 9241566 and Modrinth pack record; exact JAR download/ABI and runtime checks pending. Existing Curios, OctoLib, Architectury retained; verify Reliquified Artifacts compatibility.",
       "packwiz_slug": "relics"
     },
     {
