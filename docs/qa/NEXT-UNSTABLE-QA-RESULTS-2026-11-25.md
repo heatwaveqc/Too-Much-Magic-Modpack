@@ -54,7 +54,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C24 | PARTIAL | World 1 save/rejoin good. Nov 26 screenshots: Java process 11,111.5 MB (Task Manager), system memory 90%; F3 5976/8192 MB heap, 8080 MB allocated, off-heap +1101 MB, allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. One snapshot, no leak inference; #802. Long-play/multiplayer pending. |
 | C25 | PARTIAL | Owner approves Friendship is Magic visual presentation (looks amazing); task credit, rewards, exact zoom and native progression still not independently verified. |
 | C26 | PARTIAL | World 1: Reserved Fist, Armor Lock, Step Assist, Arrow Catching work per owner; movement increase likely; Patient Defense looks functional (provisional, exact health comparison not supplied). Flying Kick suspected failure, controlled setup pending. |
-| C27 | PARTIAL | World 1 owner reports Otherworld Sight acquired; actual no-Third-Eye visibility and native harvest drop acceptance pending. Frozen client and server harvest hooks inspected; Iesnium requires separate Palm and harvest permission. |
+| C27 | FAIL | World 1 innate Otherworld Sight reveals trees (brief texture flash), direct Otherwood and sapling drops correct per owner. TreeChop felling produces regular oak instead; #808 native compatibility investigation. Iesnium/Palm and other magic tests remain pending. |
 | C28 | PARTIAL | World 1: owner reports Reactive crash no longer occurs with local #801 overlay; actual loot transformation, other targeted recipe fixes and log regressions remain unverified. |
 | C29 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C30 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -114,3 +114,7 @@ Owner confirms Arrow Catching works, requests organized Monk tree rather than sc
 ## World 1 — Patient Defense and Otherworld Sight
 
 Owner reports Patient Defense looks functional; provisional positive, no exact controlled damage values supplied. Otherworld Sight acquired; frozen monk.json grants tier 2, OtherworldSightClient reveals native blocks locally, OccultismOtherworldHarvestMixin targets natural logs/leaves/saplings/stripped logs and Iesnium native playerDestroy with OtherworldHarvest revealing server loot input. Actual tree reveal and correct native drops after Third Eye expires remain untested; native loot rules retained. Iesnium separately requires sight tier 2, Iesnium Palm, empty hand and correct harvest permission. No build or game commands by coordinator.
+
+## World 1 — Otherworld harvesting
+
+Owner confirms innate Otherworld Sight/direct Otherwood harvesting correct, direct sapling drops correct, brief ordinary-texture flash before revealed texture. TreeChop felling drops ordinary oak. Direct perception/harvest PASS, combined TreeChop loot FAIL; #808 tracks exact pinned adapter repair. Frozen TreeChopXpBridge handles XP receipts for indirect Block.dropResources and does not alter loot state; native Occultism playerDestroy hook is likely bypassed. No duplicate drop or precise XP count measured. No new build or game commands by coordinator.
