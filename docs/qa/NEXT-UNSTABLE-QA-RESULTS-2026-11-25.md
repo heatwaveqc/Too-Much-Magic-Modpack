@@ -18,7 +18,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | A11 | BLOCKED | Reference registry revision 6 / 1763 IDs/dispositions validates but is historical and not runtime active. Current entity/tags/boss/egg/blood/sulfur native census absent. |
 | A12 | PASS | All 69 source and installed frequency overrides match; 69 native originals across 13 verified providers match recorded originals. Historical paired-pilot evidence linked; no new worldgen run or multi-seed claim. |
 | A13 | PASS | Installed Classic equals frozen source: 55 skills, 21 milestones, mastery max 20; 511 Progression test cases pass. Runtime attributes, harvesting and combat acceptance remain C tests. |
-| B01 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| B01 | PARTIAL | World 1 08:35 Nov 26: all six commands execute; Paths core,normie,newbie,monk,hunter; newbie joined=true, normie/core joined=false, all XP/rank/points=0, skills={} milestones=[]; MXP 0 levels, 0.0000/1000, 0 unspent, growth 1.0200, first completions 0; mode Newbie. Core automatic config confirmed; verify graduation enrollment before deciding defect. |
 | B02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -48,7 +48,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C18 | FAIL | World 1: villager ranged damage works, gun model absent; owner confirms ranged engagement: golem aggroed, advanced and used melee rather than firing; both weapons invisible (provenance/LOS/exact distance not established; #803); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
 | C19 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C20 | PARTIAL | World 1: owner observed missing/broken texture on a Stray spawner attributed to individual/multiplayer spawner mod; exact registry ID/screenshot pending. Multiplayer independent state and cooldown NOT RUN. |
-| C21 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C21 | PARTIAL | World 1 login chat reports Alex's Caves 1.1.2 update to 1.1.3 and explicit Tectonic incompatibility (possible missing cave biomes, crash/hang). Warning observed, actual generation failure not established. #55/#746 follow-up; no pin/config change. |
 | C22 | PARTIAL | World 1: no further Reactive crash reported after #801 local script overlay; no confirmed Reactive-only/mixed/configured chest book or filter diagnostic log yet. Remaining loot/Gateway/fishing cases NOT RUN. |
 | C23 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C24 | PARTIAL | World 1 save/rejoin good. Nov 26 screenshots: Java process 11,111.5 MB (Task Manager), system memory 90%; F3 5976/8192 MB heap, 8080 MB allocated, off-heap +1101 MB, allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. One snapshot, no leak inference; #802. Long-play/multiplayer pending. |
@@ -86,3 +86,7 @@ Owner confirms 11 GB memory, and that the golem test was at engagement range: ac
 ## World 1 — Thanksgiving morning Batch 1 (2026-11-26 ~08:33 Arizona)
 
 Owner-reported: save/rejoin good, starting inventory empty, FTB hover text still black, EMI looks good, EMC and material values correctly hidden, controls work, quests generally look good (not exhaustive), Friendship is Magic chapter visually excellent. No B results yet. Two supplied screenshots inspected; Task Manager Java process 11,111.5 MB, total system memory 90%; Chrome 4,407.8 MB, F3 Java 21.0.7, heap used 5976/8192 MB (72% displayed), allocated 8080 MB (98%), off-heap +1101 MB, instantaneous allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. Measurements from nearby snapshots rather than synchronized instrumentation; not a memory leak diagnosis. #802 and #507 updated. No raw screenshots uploaded (contain coordinates/system details). No new build or commands run by QA coordinator. Next B01 owner-run, then Batch 2 non-OP onboarding.
+
+## World 1 — B01 (2026-11-26 ~08:35 Arizona)
+
+All six owner-run baseline commands returned as recorded above. Core automatic enrollment is configured but Core not joined while Newbie; follow up after natural graduation. Backup succeeded in 3.130s (60.6 MB / 60.8 MB displayed). Alex's Caves warning names Tectonic incompatibility; investigate actual cave generation and compatibility before suppressing warning or updating. No raw screenshot committed. Continue Batch 2 natural Newbie setup.
