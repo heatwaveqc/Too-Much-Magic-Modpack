@@ -53,7 +53,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial", "height_fall_trial", "observed_trial", "animal_petted_unique", "arrow_dodged", "strict_fist_victory").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial", "height_fall_trial", "observed_trial", "animal_petted_unique", "arrow_dodged", "strict_fist_victory", "submerged_barehand_harvest").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -112,6 +112,8 @@ public final class PathJson {
                 if(kind.equals("material_harvest_trial")&&(!strictFlag(j,"strict_order")
                     ||target.startsWith("#")||target.equals("*")))
                     throw new IllegalArgumentException("Material trial requires strict_order and an exact representative tool ID");
+                if(kind.equals("submerged_barehand_harvest")&&!strictFlag(j,"strict_order"))
+                    throw new IllegalArgumentException("Submerged harvest trial requires strict_order");
                 criteria.add(new Definition.Criterion(kind,target,n));
             }
             if (criteria.isEmpty()) throw new IllegalArgumentException("No criteria for " + mid);

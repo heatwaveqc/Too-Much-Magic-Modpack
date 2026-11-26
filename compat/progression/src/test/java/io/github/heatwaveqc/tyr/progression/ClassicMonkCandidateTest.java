@@ -48,6 +48,16 @@ class ClassicMonkCandidateTest {
                 assertEquals(expected.getAsJsonArray("effects"),effects,"Core schedule parity: "+family);
             }
         }
+        var aqua=raw.getAsJsonArray("skills").asList().stream().map(x->x.getAsJsonObject()).filter(x->x.get("id").getAsString().equals("tyr_progression:classic/aqua_affinity")).findFirst().orElseThrow();
+        assertEquals(0,aqua.get("base_cost").getAsInt());
+        var aquaEffect=aqua.getAsJsonArray("effects").get(0).getAsJsonObject();
+        assertEquals("minecraft:player.submerged_mining_speed",aquaEffect.get("attribute").getAsString());
+        assertEquals(0.8,aquaEffect.get("per_rank").getAsDouble());
+        assertTrue(aquaEffect.get("empty_hand").getAsBoolean()&&aquaEffect.get("unarmored").getAsBoolean());
+        var aquaTrial=path.milestones().stream().filter(m->m.id().equals("tyr_progression:classic/aqua_trial")).findFirst().orElseThrow();
+        assertTrue(aquaTrial.strictOrder());assertEquals(java.util.List.of("tyr_progression:classic/deep_breath"),aquaTrial.after());
+        assertEquals("submerged_barehand_harvest",aquaTrial.criteria().getFirst().event());assertEquals(5,aquaTrial.criteria().getFirst().count());
+        assertTrue(conditions.asList().stream().anyMatch(x->x.getAsJsonObject().get("id").getAsString().equals(aquaTrial.id())));
         int rankSum=0;boolean dragon=false,wither=false;
         var skillIds=new java.util.HashSet<String>();
         for(var el:conditions){
