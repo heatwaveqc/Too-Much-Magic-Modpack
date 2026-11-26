@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'scripts/worldgen_audit_dispatch.py'
+      - 'scripts/run_worldgen_vanilla_control.py'
       - 'tests/test_worldgen_audit_dispatch.py'
       - '.github/workflows/worldgen-audit-dispatch.yml'
       - '.github/workflows/worldgen-audit-pilot.yml'
