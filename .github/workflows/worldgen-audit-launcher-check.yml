@@ -5,6 +5,7 @@ on:
       - 'scripts/worldgen_audit_dispatch.py'
       - 'scripts/worldgen_dispatch_diagnostics.py'
       - 'scripts/run_worldgen_vanilla_control.py'
+      - 'scripts/run_worldgen_density_pilot.py'
       - 'tests/test_worldgen_audit_dispatch.py'
       - '.github/workflows/worldgen-audit-dispatch.yml'
       - '.github/workflows/worldgen-audit-pilot.yml'
@@ -15,13 +16,30 @@ permissions:
 jobs:
   fixtures:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_worldgen_audit_dispatch.py -v
+      - uses: actions/checkout@v4
+        with:
+          ref: 990c97ce355aac191419354809ab013efddb10f0
+          path: audit-tools
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 721ea058294f838b9d7f145af427f5db228d248d
+          path: frozen-pack
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5beae36105a61e5671d5a9e12989bfa0a8ae2904
+          path: density-overlay
+          persist-credentials: false
+      - name: Verify exact density overlay against frozen baseline (no game)
+        run: python scripts/run_worldgen_density_pilot.py --tools audit-tools --pack-root frozen-pack --density-root density-overlay --work "$RUNNER_TEMP/not-created" --check-only
       - name: Read-only registered workflow diagnostics
         env:
           GH_TOKEN: ${{ github.token }}
