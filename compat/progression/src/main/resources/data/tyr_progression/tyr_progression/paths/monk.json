@@ -1881,7 +1881,10 @@
       },
       "lane": "Harvesting",
       "hud_group": "harvesting",
-      "unarmored": true
+      "unarmored": true,
+      "exclude_tools": [
+        "minecraft:netherite_pickaxe"
+      ]
     }
   ],
   "mastery_completion": {
