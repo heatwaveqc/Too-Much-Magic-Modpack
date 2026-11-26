@@ -37,5 +37,9 @@ final class TestPaths {
             return j;
         }catch(java.io.IOException e){throw new IllegalStateException(e);}
     }
-    static Definition.Path read(String id,JsonObject raw){return PathJson.read(id,project(raw));}
+    static Definition.Path read(String id,JsonObject raw){
+        if(raw.has("harvest_generation")&&id.equals("tyr_progression:monk"))
+            raw=io.github.heatwaveqc.tyr.progression.data.HarvestGeneration.expand(id,raw,(i,b)->ClassicMonkCandidateTest.vanillaSurvey()).path();
+        return PathJson.read(id,project(raw));
+    }
 }

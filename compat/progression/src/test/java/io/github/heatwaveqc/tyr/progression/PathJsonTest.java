@@ -85,7 +85,7 @@ class PathJsonTest {
     }
 
     @Test void automaticBaselineNeverRequiresSkillPurchases() throws Exception {
-        String resource = "data/tyr_progression/tyr_progression/paths/monk.json";
+        String resource = "legacy-monk-before-classic-v1.json";
         try (var stream = PathJsonTest.class.getClassLoader().getResourceAsStream(resource)) {
             assertNotNull(stream);
             var path = TestPaths.read("tyr_progression:monk",JsonParser.parseReader(

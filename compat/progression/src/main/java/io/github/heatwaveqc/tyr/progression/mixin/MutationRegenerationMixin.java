@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MutationRegenerationMixin {
     @Inject(method="applyEffectTick",at=@At("HEAD"),cancellable=true)
     private void tmm$strongestOnly(LivingEntity entity,int amp,CallbackInfoReturnable<Boolean> cir){
-        if(MutationPowers.amplifier(entity,MobEffects.REGENERATION)>amp)cir.setReturnValue(true);
+        if(entity instanceof net.minecraft.server.level.ServerPlayer p&&io.github.heatwaveqc.tyr.progression.runtime.FeignDeath.active(p)
+            ||MutationPowers.amplifier(entity,MobEffects.REGENERATION)>amp)cir.setReturnValue(true);
     }
 }

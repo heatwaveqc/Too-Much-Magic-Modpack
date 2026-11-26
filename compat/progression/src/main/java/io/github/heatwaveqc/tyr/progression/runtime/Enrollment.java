@@ -15,10 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/** Configurable manual enrollment or server-verified Monk sunset contemplation. */
+/** Configurable manual enrollment or server-verified timed contemplation. */
 public final class Enrollment {
     private Enrollment() {}
-    private static final Map<UUID,Map<String,Integer>> sunsetTicks = new HashMap<>();
+    private record Contemplation(int window,int ticks){}
+    private static final Map<UUID,Map<String,Contemplation>> sunsetTicks = new HashMap<>();
 
     public static boolean enrollManual(ServerPlayer player, String path) {
         if (!"manual".equals(PathRegistry.enrollment(path))
@@ -95,17 +96,18 @@ public final class Enrollment {
             }
             long time=Math.floorMod(player.level().getDayTime(),24000L);
             var pos=player.blockPosition();
+            int window=ritual.window(time,player.getLookAngle().x);
             boolean valid=!player.isCreative()&&!player.isSpectator()
                 &&player.level().dimension().location().toString().equals(ritual.dimension())
-                &&ritual.acceptsTime(time)
+                &&window!=0
                 &&(!ritual.dry()||!player.level().isRainingAt(pos))
                 &&(!ritual.clearSky()||player.level().canSeeSky(pos.above()))
-                &&player.getLookAngle().x<ritual.maxLookX()
                 &&Math.abs(player.getLookAngle().y)<ritual.maxAbsLookY()
                 &&(!ritual.emptyHand()||player.getMainHandItem().isEmpty());
             if(valid&&ritual.unarmored())for(var stack:player.getArmorSlots())if(!stack.isEmpty())valid=false;
-            int ticks=valid?timers.getOrDefault(path,0)+1:0;
-            if(ticks==0)timers.remove(path);else timers.put(path,ticks);
+            var prior=timers.getOrDefault(path,new Contemplation(0,0));
+            int ticks=io.github.heatwaveqc.tyr.progression.data.TimedEnrollment.nextTicks(prior.window(),prior.ticks(),window,valid);
+            if(ticks==0)timers.remove(path);else timers.put(path,new Contemplation(window,ticks));
             if(ticks>0&&ticks%20==0)player.displayClientMessage(Component.literal(ritual.label()+": "+ticks+"/"+ritual.ticks()),true);
             if(ticks>=ritual.ticks()){
                 timers.remove(path);

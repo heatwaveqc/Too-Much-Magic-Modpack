@@ -24,7 +24,9 @@ public final class NativeLootBonuses {
         ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
         BlockState block = context.getParamOrNull(LootContextParams.BLOCK_STATE);
         // Only the player's actual empty fist; no doubling Fortune on equipped tools.
-        if (tool == null || !tool.isEmpty() || block == null
+        if (tool == null || block == null || NativeHarvest.silkContext(player,tool)
+                || tool.is(net.minecraft.world.item.Items.SHEARS)
+                || (!tool.isEmpty()&&!NativeHarvest.virtualContext(player,tool))
                 || !player.getMainHandItem().isEmpty())
             return 0;
         if (!ClassAbilities.unlocked(player, "treasure_hand")
@@ -53,6 +55,13 @@ public final class NativeLootBonuses {
         var tool=context.getParamOrNull(LootContextParams.TOOL);
         var block=context.getParamOrNull(LootContextParams.BLOCK_STATE);
         if(tool==null||block==null||context.getParamOrNull(LootContextParams.BLOCK_ENTITY)!=null)return 0;
+        if(NativeHarvest.silkContext(player,tool))return 0;
+        // Virtual material stacks represent a genuine fist, not a held tool.
+        // Shears are a distinct loot mode and do not receive the fist Fortune bonus.
+        if(NativeHarvest.virtualContext(player,tool)){
+            if(tool.is(net.minecraft.world.item.Items.SHEARS))return 0;
+            tool=ItemStack.EMPTY;
+        }
         // A fist cannot become a higher-tier harvester through Fortune alone.
         if(tool.isEmpty()&&!HarvestAbilities.canHarvestBarehand(player,block))return 0;
         double total=0;int cap=8;

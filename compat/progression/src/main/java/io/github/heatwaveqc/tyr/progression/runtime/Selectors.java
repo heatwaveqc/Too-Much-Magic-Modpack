@@ -78,7 +78,7 @@ public final class Selectors {
     public static Signal entityAction(String event, LivingEntity entity) {
         Set<String> tags = entity.getType().getTags().map(tag -> tag.location().toString())
             .collect(Collectors.toSet());
-        return new Signal(event,BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString(),tags);
+        return new Signal(event,BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString(),tags,entity.getUUID());
     }
     public static Signal kill(LivingEntity target) {
         Set<String> tags = target.getType().getTags().map(tag -> tag.location().toString())

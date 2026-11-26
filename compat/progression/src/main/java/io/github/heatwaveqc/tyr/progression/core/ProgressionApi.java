@@ -259,6 +259,21 @@ public final class ProgressionApi {
         }
     }
 
+    /** Trusted server hit detector resets only an active, unfinished arrow-dodge trial. */
+    public static void resetArrowTrial(ServerPlayer player,String pathId,String milestoneId){
+        if(!eligibleEarner(player)||!PathRegistry.eligible(player,pathId))return;
+        var path=PathRegistry.get(pathId);
+        if(path==null||PathRegistry.channel(pathId)==null)return;
+        var milestone=path.milestones().stream().filter(m->m.id().equals(milestoneId)).findFirst().orElse(null);
+        if(milestone==null||milestone.criteria().size()!=1
+                ||!milestone.criteria().getFirst().event().equals("arrow_dodged"))return;
+        Ledger ledger=player.getData(ProgressionAttachments.LEDGER.get());
+        Track initial=ChannelEngine.view(ledger,path,PathRegistry.config());
+        Track next=ProgressionMath.resetCriterion(initial,milestone,0);
+        if(!next.equals(initial))player.setData(ProgressionAttachments.LEDGER.get(),
+            ChannelEngine.ownership(ledger,path,next,PathRegistry.config()));
+    }
+
     /** Standardized activity events: one authoritative signal, all joined paths. */
     public static void record(ServerPlayer player, Signal signal) {
         recordFiltered(player,signal,path -> true);
@@ -331,24 +346,15 @@ public final class ProgressionApi {
             Track state=initial;
             if (!state.joined()) continue;
 
-            for (Definition.Milestone milestone : path.milestones()) {
-                if (state.completed(milestone.id())) continue;
-                int index = 0;
-                for (Definition.Criterion criterion : milestone.criteria()) {
-                    if (signal.matches(criterion.event(),criterion.selector())) {
-                        String key = ProgressionMath.counterKey(milestone.id(),index);
-                        if (state.criterionCount(key) < criterion.count())
-                            state = ProgressionMath.recordCriterion(state,key,1);
-                    }
-                    index++;
-                }
-            }
+            // Use the state at signal start: a single action cannot advance two strict steps.
+            state = ProgressionMath.collectMilestoneCriteria(path,initial,signal);
             // A single event may satisfy a chain of previously completed prerequisite counters.
             boolean changed;
             do {
                 changed = false;
                 for (Definition.Milestone milestone : path.milestones()) {
-                    if (state.completed(milestone.id()) || !state.milestones().containsAll(milestone.after()))
+                    if (state.completed(milestone.id()) || !state.milestones().containsAll(milestone.after())
+                            || !ProgressionMath.canCollectMilestone(milestone,initial))
                         continue;
                     boolean ready = true;
                     for (int i = 0; i < milestone.criteria().size(); i++) {
@@ -358,10 +364,12 @@ public final class ProgressionApi {
                         }
                     }
                     if (ready) {
-                        state=state.complete(milestone.id());
+                        state=ProgressionMath.completeMilestone(state,milestone);
                         // This is a permanent achievement, independent of
                         // current Path membership or purchased skill ranks.
                         next=next.withEconomy(next.economy().withAchievement(milestone.id()));
+                        for(String alias:milestone.completionAliases())
+                            next=next.withEconomy(next.economy().withAchievement(alias));
                         if(milestone.xp()>0||milestone.points()>0)
                             next=ChannelEngine.grant(next,channel,milestone.xp(),milestone.points());
                         // One permanent receipt per distinct Path trial, independent

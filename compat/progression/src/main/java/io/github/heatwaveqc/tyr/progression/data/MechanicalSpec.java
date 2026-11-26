@@ -9,7 +9,7 @@ public final class MechanicalSpec {
     private MechanicalSpec(){}
     public static final Set<String> TYPES=Set.of("tame","charm","magnet","status_pulse","status_on_hit","status_on_hurt","heal_on_kill",
         "heal_on_hit","critical_hit","damage_at_low_health","enhanced_night_vision","otherworld_sight","otherworld_harvest","personal_elixir","lava_vision","food_efficiency","vanilla_xp_bonus","status_immunity",
-        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","food_restriction","ore_practice","lava_fishing_practice","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
+        "crop_bonus","ordinary_drop_bonus","virtual_fortune","virtual_looting","magic_cost_discount","diet_permission","delayed_regeneration","hunger_efficiency","jump_bonus","fall_reduction","experience_gain_bonus","xp_growth_reduction","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","attack_idle_resistance","danger_sense","stunning_strike","flying_kick","direct_dodge","virtual_protection","soul_step","wall_climbing","feign_death","projectile_return","status_duration_reduction","beneficial_duration_bonus","virtual_unbreaking","piglin_kinship","fire_immunity","held_harvest_tier","native_harvest","tool_form","virtual_silk_touch","food_restriction","ore_practice","lava_fishing_practice","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity");
     public static boolean known(String type){return TYPES.contains(type);}
     public static double number(Map<String,String> p,String key,double fallback,double min,double max){
         double n=Double.parseDouble(p.getOrDefault(key,Double.toString(fallback)));
@@ -84,6 +84,27 @@ public final class MechanicalSpec {
             case "vanilla_xp_bonus" -> bounded(a,0,2);
             case "piglin_kinship" -> {bounded(a,0,1);bool(p,"alarm_protection",true);}
             case "fire_immunity" -> bounded(a,0,1);
+            case "native_harvest" -> {
+                bounded(a,0,1);
+                if(!fx.emptyHand()||fx.selector().isEmpty()
+                    ||!p.getOrDefault("tool","").matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                    throw new IllegalArgumentException("Native harvest requires empty hand, block selector and exact representative tool ID");
+            }
+            case "virtual_silk_touch" -> {
+                bounded(a,0,1);
+                if(!fx.emptyHand()||fx.selector().isEmpty())
+                    throw new IllegalArgumentException("Silk Touch requires empty hand and explicit block selector");
+            }
+            case "tool_form" -> {
+                bounded(a,0,1);
+                if(!fx.emptyHand()||fx.selector().isEmpty()
+                    ||!Set.of("axe","shovel","hoe","shears").contains(p.getOrDefault("form","")))
+                    throw new IllegalArgumentException("Tool form requires empty hand, block selector and supported form");
+                String entity=p.getOrDefault("entity_target","");
+                if(!entity.isEmpty()&&(!p.get("form").equals("shears")
+                    ||!entity.matches("(#?[a-z0-9_.-]+:[a-z0-9_./-]+|\\*)")))
+                    throw new IllegalArgumentException("Only shears can define an entity selector");
+            }
             case "held_harvest_tier" -> {
                 bounded(a,0,1);scoped(fx);
                 if(fx.weapon().isEmpty()||fx.weapon().equals("*")||fx.tier()<1||fx.tier()>3)
@@ -112,7 +133,26 @@ public final class MechanicalSpec {
             case "melee_reflection" -> {bounded(a,0,1);scoped(fx);proc(p);number(p,"reflect_fraction",1,0,1);number(p,"max_damage",20,0.01,100);}
             case "quarry_mark" -> {bounded(a,0,32);scoped(fx);integer(p,"interval_ticks",20,10,200);integer(p,"duration_ticks",80,1,1200);number(p,"min_look_cosine",0.985,0.5,1);}
             case "area_pull","landing_shockwave" -> {bounded(a,0,2);scoped(fx);number(p,"radius",4,0.5,16);integer(p,"max_targets",8,1,16);integer(p,"interval_ticks",20,10,200);number(p,"min_fall_distance",3,1,64);proc(p);}
-            case "detection_range" -> {bounded(a,0,0.95);scoped(fx);number(p,"reference_range",16,1,64);}
+            case "detection_range" -> {bounded(a,0,0.95);scoped(fx);number(p,"reference_range",16,1,64);bool(p,"native_range",false);bool(p,"sneak_only",false);}
+            case "attack_idle_resistance" -> {bounded(a,0,4);integer(p,"idle_ticks",40,1,1200);integer(p,"amplifier",0,0,3);}
+            case "danger_sense" -> {bounded(a,1,64);scoped(fx);integer(p,"alert_cooldown_ticks",100,20,1200);}
+            case "direct_dodge" -> {bounded(a,0,0.75);}
+            case "virtual_protection" -> {bounded(a,0,20);}
+            case "soul_step" -> {bounded(a,0,3);}
+            case "flying_kick" -> {
+                bounded(a,0,16);scoped(fx);
+                if(!fx.emptyHand())throw new IllegalArgumentException("Flying kick requires empty hand");
+                number(p,"base_radius",0,0,16);
+                number(p,"min_clearance",1,1,4);
+            }
+            case "stunning_strike" -> {
+                bounded(a,1,60);scoped(fx);
+                if(!fx.emptyHand())throw new IllegalArgumentException("Stunning strike requires empty hand");
+                number(p,"chance",1,0,1);integer(p,"recovery_ticks",100,20,1200);
+            }
+            case "wall_climbing" -> {bounded(a,0,1);}
+            case "feign_death" -> {bounded(a,0,1);integer(p,"aggro_radius",64,8,96);}
+            case "projectile_return" -> {bounded(a,0,1);bool(p,"allow_player_projectiles",false);bool(p,"allow_ownerless",true);}
             case "status_duration_reduction" -> {bounded(a,0,0.95);scoped(fx);if(!fx.selector().matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))throw new IllegalArgumentException("Exact status ID required");}
             case "beneficial_duration_bonus" -> {
                 bounded(a,0,0.25);

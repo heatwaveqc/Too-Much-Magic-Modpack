@@ -15,7 +15,18 @@ public final class SkillActivation {
         return "tyr_progression:activation/"+UUID.nameUUIDFromBytes((path+"|"+skill).getBytes(StandardCharsets.UTF_8));
     }
     private static long now(ServerPlayer p){return p.server.overworld().getGameTime();}
+    private static String groupKey(String path,String group){
+        return "tyr_progression:activation_group/"+UUID.nameUUIDFromBytes((path+"|"+group).getBytes(StandardCharsets.UTF_8));
+    }
+    private static String member(String skill){
+        return UUID.nameUUIDFromBytes(skill.getBytes(StandardCharsets.UTF_8)).toString();
+    }
     private static ActivationSpec.State get(ServerPlayer p,String path,String skill){
+        var spec=PathRegistry.activation(path,skill);
+        if(spec!=null&&!spec.exclusiveGroup().isEmpty()){
+            var selected=ProgressionApi.mode(p,groupKey(path,spec.exclusiveGroup()),"off");
+            return selected.equals(member(skill))?new ActivationSpec.State(Long.MAX_VALUE,0):ActivationSpec.State.empty();
+        }
         return ActivationSpec.State.decode(ProgressionApi.mode(p,key(path,skill),"0/0"));
     }
     private static boolean owned(ServerPlayer p,String path,String skill){
@@ -28,7 +39,9 @@ public final class SkillActivation {
     public static boolean canRequest(ServerPlayer p,String path,String skill){
         var spec=PathRegistry.activation(path,skill);
         if(spec==null||!owned(p,path,skill)||spec.jawrHealOnActivation()>0&&p.getHealth()>=p.getMaxHealth())return false;
-        var before=get(p,path,skill);var next=before.request(spec,now(p));
+        var before=get(p,path,skill);
+        if(!before.active(now(p))&&hasEffect(path,skill,"feign_death")&&!FeignDeath.validPose(p))return false;
+        var next=before.request(spec,now(p));
         return !next.equals(before)&&(spec.jawrBloodCost()==0||before.active(now(p))||
             io.github.heatwaveqc.tyr.progression.runtime.forms.NativeBloodCost.affordable(p,spec.jawrBloodCost()));
     }
@@ -42,6 +55,12 @@ public final class SkillActivation {
             var spec=PathRegistry.activation(path,skill);
             var before=get(p,path,skill);long at=now(p);var next=before.request(spec,at);
             if(next.equals(before))return false;
+            if(!spec.exclusiveGroup().isEmpty()){
+                // Atomic single selection; switching to a different form implicitly disables the old one.
+                var group=groupKey(path,spec.exclusiveGroup());
+                return ProgressionApi.setMode(p,group,ActivationSpec.toggleSelection(
+                    ProgressionApi.mode(p,group,"off"),member(skill)));
+            }
             // Paid timed activation only. No spell credit here: the existing native
             // BloodPoolHandler receipt is the sole source of eligible MXP.
             if(spec.jawrBloodCost()>0&&!before.active(at)&&
@@ -50,16 +69,24 @@ public final class SkillActivation {
             if(!ProgressionApi.setMode(p,key(path,skill),next.encode()))return false;
             if(spec.jawrHealOnActivation()>0&&!before.active(at)&&p.isAlive())
                 p.heal((float)Math.min(spec.jawrHealOnActivation(),Math.max(0,p.getMaxHealth()-p.getHealth())));
+            if(hasEffect(path,skill,"feign_death"))FeignDeath.activationChanged(p);
             return true;
         }finally{REQUESTING.remove();}
     }
     /** Scoped operator recovery through the same state owner; does not activate or pay a skill. */
     public static String adminState(ServerPlayer p,String path,String skill){
         if(PathRegistry.activation(path,skill)==null)throw new IllegalArgumentException("Unknown activation");
+        var spec=PathRegistry.activation(path,skill);
+        if(!spec.exclusiveGroup().isEmpty())return get(p,path,skill).encode();
         return ProgressionApi.mode(p,key(path,skill),"0/0");
     }
     public static void adminReset(ServerPlayer p,String path,String skill,String expected){
         if(!adminState(p,path,skill).equals(expected))throw new IllegalStateException("Activation changed");
+        var spec=PathRegistry.activation(path,skill);
+        if(!spec.exclusiveGroup().isEmpty()){
+            stop(p,path,skill);
+            return;
+        }
         if(!ProgressionApi.setMode(p,key(path,skill),ActivationSpec.State.empty().encode()))
             throw new IllegalStateException("Activation reset rejected");
     }
@@ -67,9 +94,24 @@ public final class SkillActivation {
         var tree=PathRegistry.get(path);if(tree==null)return;
         for(var skill:tree.skills())if(PathRegistry.activation(path,skill.id())!=null)stop(p,path,skill.id());
     }
+    static boolean hasEffect(String path,String skill,String type){
+        var def=PathRegistry.get(path);
+        return def!=null&&def.skills().stream().anyMatch(s->s.id().equals(skill)
+            &&s.effects().stream().anyMatch(e->e.type().equals(type)));
+    }
+    static void stopEffect(ServerPlayer p,String type){
+        for(var path:PathRegistry.all().values())for(var skill:path.skills())
+            if(PathRegistry.activation(path.id(),skill.id())!=null
+                &&skill.effects().stream().anyMatch(e->e.type().equals(type)))
+                stop(p,path.id(),skill.id());
+    }
     private static void stop(ServerPlayer p,String path,String skill){
         var before=get(p,path,skill);
-        if(before.until()!=0)ProgressionApi.setMode(p,key(path,skill),before.stop().encode());
+        if(before.until()==0)return;
+        var spec=PathRegistry.activation(path,skill);
+        if(spec!=null&&!spec.exclusiveGroup().isEmpty())
+            ProgressionApi.setMode(p,groupKey(path,spec.exclusiveGroup()),"off");
+        else ProgressionApi.setMode(p,key(path,skill),before.stop().encode());
     }
     public static void reconcile(ServerPlayer p){
         for(var tree:PathRegistry.all().values())for(var skill:tree.skills()){

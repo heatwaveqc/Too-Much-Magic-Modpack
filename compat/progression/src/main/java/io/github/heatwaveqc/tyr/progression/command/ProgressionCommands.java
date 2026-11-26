@@ -186,6 +186,13 @@ public final class ProgressionCommands {
                 .then(CapabilityCommands.root())
                 .then(DiagnosisCommands.diagnose())
                 .then(DiagnosisCommands.repair())
+                .then(Commands.literal("harvestcensus")
+                    .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.HarvestRegistryCensus.export(
+                        ctx.getSource(),"#minecraft:pickaxes","#minecraft:mineable/pickaxe"))
+                    .then(Commands.argument("items",StringArgumentType.string())
+                        .then(Commands.argument("blocks",StringArgumentType.string())
+                            .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.HarvestRegistryCensus.export(
+                                ctx.getSource(),StringArgumentType.getString(ctx,"items"),StringArgumentType.getString(ctx,"blocks"))))))
                 .then(Commands.literal("foodcensus")
                     .executes(ctx -> io.github.heatwaveqc.tyr.progression.data.FoodRegistryCensus
                         .export(ctx.getSource())))

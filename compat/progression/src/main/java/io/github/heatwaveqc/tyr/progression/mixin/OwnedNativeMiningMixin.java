@@ -16,6 +16,7 @@ public abstract class OwnedNativeMiningMixin {
     @Shadow @Final protected ServerPlayer player;
     @WrapMethod(method="destroyBlock")
     private boolean tmm$nativeBreak(BlockPos pos,Operation<Boolean> original){
-        return MiningUtilities.nativeBreak(player,pos,()->original.call(pos));
+        return io.github.heatwaveqc.tyr.progression.runtime.NativeHarvest.nativeBreak(player,pos,
+            ()->MiningUtilities.nativeBreak(player,pos,()->original.call(pos)));
     }
 }

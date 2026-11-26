@@ -52,10 +52,11 @@ public final class EffectRuntime {
             Track track = ProgressionApi.track(player,path.id());
             if (!track.joined() || !PathRegistry.eligible(player,path.id())) continue;
             for (Definition.Skill skill : path.skills()) {
-                int rank = track.skillRank(skill.id());
-                if (rank < 1) continue;
                 for (int n = 0; n < skill.effects().size(); n++) {
-                    Definition.Effect effect = skill.effects().get(n).atRank(rank);
+                    Definition.Effect configured=skill.effects().get(n);
+                    int rank=io.github.heatwaveqc.tyr.progression.core.ProgressionMath.effectRank(path,track,skill,configured);
+                    if(rank<1)continue;
+                    Definition.Effect effect = configured.atRank(rank);
                     if(PathRegistry.activation(path.id(),skill.id())!=null&&
                         !"true".equals(effect.params().get("passive"))&&!SkillActivation.active(player,path.id(),skill.id()))continue;
                     if (PathRegistry.effectEligible(player,path.id(),skill.id(),n) && eligible(player,effect,track)) {
@@ -176,11 +177,14 @@ public final class EffectRuntime {
         if (event.getEntity() instanceof ServerPlayer defender) {
             // Avoid an incoming hit from a configured quarry group before armor reduction.
             // Source owner attribution handles arrows; environmental damage has no quarry.
-            if (!event.isCanceled() && event.getSource().getEntity() instanceof LivingEntity attacker) {
+            if (!event.isCanceled()) {
                 double evasionChance = 0;
+                boolean direct = DirectDodge.eligible(defender,event.getSource());
                 for (Active a : active(defender)) {
                     Definition.Effect fx = a.effect();
-                    if ("evasion".equals(fx.type()) && Selectors.entity(fx.selector(),attacker))
+                    if (("evasion".equals(fx.type()) && event.getSource().getEntity() instanceof LivingEntity attacker
+                            && Selectors.entity(fx.selector(),attacker))
+                        || ("direct_dodge".equals(fx.type()) && direct))
                         evasionChance = Math.min(0.75, evasionChance + fx.amountPerRank() * a.rank());
                 }
                 if (evasionChance > 0 && defender.getRandom().nextDouble() < evasionChance) {
@@ -246,6 +250,7 @@ public final class EffectRuntime {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         BlockState state = event.getTargetBlock();
         int required = requiredTier(state);
+        if(NativeHarvest.canHarvest(player,state)){event.setCanHarvest(true);return;}
         if(GildedMechanics.heldHarvest(player,state,required)){event.setCanHarvest(true);return;}
         for (Active a : active(player)) {
             Definition.Effect fx = a.effect();
@@ -280,6 +285,7 @@ public final class EffectRuntime {
             if (breeds) animal.setInLove(player);
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
+            ProgressionApi.record(player,Selectors.entityAction("animal_petted_unique",animal));
             ProgressionApi.record(player,Selectors.entityAction("animal_petted",animal));
             return true;
         }

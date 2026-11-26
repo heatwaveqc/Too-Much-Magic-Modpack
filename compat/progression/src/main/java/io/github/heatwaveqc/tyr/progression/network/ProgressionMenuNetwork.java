@@ -86,12 +86,18 @@ public final class ProgressionMenuNetwork {
                                     && validId(payload.skill())
                                     && io.github.heatwaveqc.tyr.progression.runtime.external.ExternalRewardService.purchase(player,payload.skill());
                             case "respec" -> ProgressionApi.respec(player, payload.path());
-                            case "activate" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
+                            case "activate","activate_key" -> validId(payload.skill()) && io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.request(player,payload.path(),payload.skill());
                             default -> false;
                         };
                         if (changed && ("buy".equals(payload.action()) || "respec".equals(payload.action()))) {
                             io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime.reconcile(player);
                             io.github.heatwaveqc.tyr.progression.runtime.VirtualElytra.reconcile(player,true);
+                        }
+                        if("activate_key".equals(payload.action())){
+                            if(changed)player.displayClientMessage(net.minecraft.network.chat.Component.literal(
+                                PathRegistry.presentation(payload.path(),payload.skill()).title()+": "+
+                                (io.github.heatwaveqc.tyr.progression.runtime.SkillActivation.active(player,payload.path(),payload.skill())?"on":"off")),true);
+                            return; // hotkey does not reopen or request a large menu snapshot
                         }
                         // A rejected mutation also receives a fresh projection
                         // to explain the real server-side prerequisite.
