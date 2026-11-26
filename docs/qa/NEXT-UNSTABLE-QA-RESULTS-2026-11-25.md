@@ -38,7 +38,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C10 | FAIL | World 1 First Light, Reserved Fist, armor auto-unequip, harvest tiers, sprint/mining/TreeChop/combat MXP qualitative PASS; owner thinks increased movement works (not measured). Hand Mining stone/copper speed FAIL #805, reload stable. Exact combat rate/attribute deltas pending. |
-| C11 | PARTIAL | World 1 Deep Breath, Water Breathing, Underwater Cultivation, Animal Friendship work per owner. Untouchable completed and Step Assist observed; frozen config grants both Arrow Catching and Step Assist. Reconcile one-challenge/one-reward policy #721. Harvest tier positive, speed #805, raw challenge text #806. Remaining trials pending. |
+| C11 | PARTIAL | Deep Breath, Water Breathing, Underwater Cultivation, Animal Friendship, Untouchable, Step Assist, harvest tiers observed. Jade incorrectly reports coal unharvestable despite successful drop; aquamarine shale no drop (iron-tier requirement suspected, verify actual registry predicate). Mining speed FAIL #805; remaining Monk trials paused at owner request pending speed repair. |
 | C12 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C14 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -118,3 +118,7 @@ Owner reports Patient Defense looks functional; provisional positive, no exact c
 ## World 1 — Otherworld harvesting
 
 Owner confirms innate Otherworld Sight/direct Otherwood harvesting correct, direct sapling drops correct, brief ordinary-texture flash before revealed texture. TreeChop felling drops ordinary oak. Direct perception/harvest PASS, combined TreeChop loot FAIL; #808 tracks exact pinned adapter repair. Frozen TreeChopXpBridge handles XP receipts for indirect Block.dropResources and does not alter loot state; native Occultism playerDestroy hook is likely bypassed. No duplicate drop or precise XP count measured. No new build or game commands by coordinator.
+
+## World 1 — Monk pause / registry batch
+
+Owner requests mining speed repair before Iesnium and further Monk mining-dependent trials; preserve character, ranks and world. Jade labels blocks unharvestable despite successful coal harvest; investigate client harvest correctness separately from speed and actual server drops in #805. Aquamarine shale did not drop; owner suspects iron-tier restriction, exact native tool predicate not yet verified. Remaining Monk tests deferred pending local/installable repair; no new build authorization. Switch to read-only B04/B05/B07 command surveys, avoiding respec/path leave or progression mutations. Survey helpers optional and require explicit local staging/restart; native foodcensus and EMC audit first. Exact frozen SHA 20729a369e6f811730cea04cadfd12f265c96424 + unrelated #801 overlay. No commands executed by coordinator.
