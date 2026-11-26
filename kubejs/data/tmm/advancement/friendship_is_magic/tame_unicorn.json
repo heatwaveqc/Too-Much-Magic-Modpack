@@ -3,9 +3,15 @@
     "tame_unicorn": {
       "trigger": "minecraft:tame_animal",
       "conditions": {
-        "entity": {
-          "type": "unicornacademy:unicorn"
-        }
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unicornacademy:unicorn"
+            }
+          }
+        ]
       }
     }
   },

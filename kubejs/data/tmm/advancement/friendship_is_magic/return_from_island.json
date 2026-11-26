@@ -1,0 +1,16 @@
+{
+  "criteria": {
+    "return_from_island": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "from": "unicornacademy:unicorn_island",
+        "to": "minecraft:overworld"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "return_from_island"
+    ]
+  ]
+}

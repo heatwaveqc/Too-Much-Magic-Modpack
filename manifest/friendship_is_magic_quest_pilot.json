@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "native-first instructional candidate; no custom tasks; optional gemstone acquisition held; canonical integration and runtime QA pending",
+  "status": "native-first second pass; 11 automatic tasks and 10 guide acknowledgements; exact personal bond milestones and spell detection unresolved; optional gemstone acquisition held; integration/runtime pending",
   "chapter": "Friendship is Magic",
   "category": "Exploration & Combat",
   "category_note": "Proposed existing exploration group; no sixth group, integrator verifies position with owner-approved architecture.",
@@ -18,7 +18,7 @@
     "no_graduation": true,
     "global_mxp": false,
     "personal_rewards": true,
-    "criteria": "Use verified native FTB dimension, observation, item and advancement tasks. Manual checkmarks are explicit guide acknowledgements, not assertions of successful operation or native bond. No new bespoke detector code. UA18 remains a real item objective with no established survival source. Native gates remain authoritative.",
+    "criteria": "Use native dimension, observation, item and data-only advancements. No bespoke code. Manual checkmarks are guide acknowledgements only. Native care interaction proxy for UA09 does not certify bond level. UA17/UA20 exact personal bond validation and UA10 cast remain unresolved, not gameplay-complete. UA18 acquisition held.",
     "ids": "Preserve 86 candidate IDs from quest_id_map.json; final global registry check at integration.",
     "dependencies": "Browsing/teaching edges only. Do not gate level milestones on arbitrary care demonstrations; UA02 independent of UA01, UA09/UA20 direct from prior bond/tame. No all-element AND.",
     "rewards": "Fixed useful thematic one-time personal items + positive XP, no currency or gem giveaway; verify loaded IDs and all current task/reward collisions on integration."
@@ -300,10 +300,11 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "checkmark",
-        "label": "Read the riding and bond guide"
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/ride_unicorn",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
       },
-      "description": "Ride your equipped unicorn across safe terrain and explore new chunks. Native magical bond gains 2 XP per 16 ridden blocks and 5 for a newly ridden chunk. Ride, brush and feed over time; inspect your own bond in the Unicorn Screen. Native training and magical bond are separate systems.\n\nGuide acknowledgement only. FTB does not verify ridden distance or bond XP.",
+      "description": "Ride your equipped unicorn across safe terrain and explore new chunks. Native magical bond gains 2 XP per 16 ridden blocks and 5 for a newly ridden chunk. Ride, brush and feed over time; inspect your own bond in the Unicorn Screen. Native training and magical bond are separate systems.\n\nQuest task: mount a unicorn; the native started-riding advancement verifies the vehicle type. It does not measure distance or XP. Follow the riding instructions above to grow your bond.",
       "reward": {
         "xp": 15,
         "item": "minecraft:oak_fence",
@@ -331,10 +332,11 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "checkmark",
-        "label": "Read the bond level 5 awakening guide"
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/care_for_unicorn",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending. Care interaction proxy, not bond-level detection."
       },
-      "description": "Grow the bond with one unicorn to level 5. Each next level costs 50 times the next level; 750 total XP reaches awakening. The horn and bond markings reveal its element and powers. Energy is normally 100 maximum and regenerates 2 per second after awakening. The displayed unlock levels matter: wild unicorns receive their own random subset of abilities and schedules.\n\nGuide acknowledgement only: check your own bond in the Unicorn Screen; the quest itself does not verify level 5 or unlock magic.",
+      "description": "Grow the bond with one unicorn to level 5. Each next level costs 50 times the next level; 750 total XP reaches awakening. The horn and bond markings reveal its element and powers. Energy is normally 100 maximum and regenerates 2 per second after awakening. The displayed unlock levels matter: wild unicorns receive their own random subset of abilities and schedules.\n\nQuest task: interact with a unicorn using a SWEM Brush and with a unicorn using Sky Berries. These two native interaction milestones teach ways to grow bond. They do not certify successful bond XP, the same unicorn, or level 5; check your own bond in the Unicorn Screen before attempting magic.",
       "reward": {
         "xp": 25,
         "item": "minecraft:pink_petals",
@@ -644,10 +646,11 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "checkmark",
-        "label": "Read the fairy-wing flight guide"
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/ride_with_fairy_wings",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
       },
-      "description": "At bond 8 or higher, open the Unicorn Screen and equip the Fairy Gemstone in its own slot. Bind Fairy Wings (default Y) to deploy or retract; bind SWEM Flight (default J) to take off, Space rises and Shift dives. Practice close to the ground, land safely, and keep your gemstone. Retracting wings in flight gives brief Slow Falling, not permanent immunity. Separate inherited SWEM armor-based flight is taught in the horse chapter; it does not prove fairy-wing flight.\n\nGuide acknowledgement only; actual wings and flight are not verified. The native equipment requirements still apply.",
+      "description": "At bond 8 or higher, open the Unicorn Screen and equip the Fairy Gemstone in its own slot. Bind Fairy Wings (default Y) to deploy or retract; bind SWEM Flight (default J) to take off, Space rises and Shift dives. Practice close to the ground, land safely, and keep your gemstone. Retracting wings in flight gives brief Slow Falling, not permanent immunity. Separate inherited SWEM armor-based flight is taught in the horse chapter; it does not prove fairy-wing flight.\n\nQuest task: mount a unicorn with its Fairy Wings deployed; the native player predicate checks the ridden unicorn's saved wings flag. It does not verify sustained flight. Practice taking off and landing using the controls above. Gemstone survival acquisition remains held.",
       "reward": {
         "xp": 30,
         "item": "minecraft:light_blue_wool",
@@ -707,10 +710,11 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "checkmark",
-        "label": "Read the return ferry guide"
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/return_from_island",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
       },
-      "description": "Return to the paired ferry dock you arrived at, board beneath open sky and wait for safe destination preparation. Record the route home. The island-side generation and safe return path require pack verification; do not assume a loose ferry item is obtainable. Before bringing your unicorn across dimensions, check the verified transport route in the next horse chapter. This optional lesson is held until the route works for Newbie players.\n\nOptional return guide acknowledgement, not a verified successful crossing. Return availability is a separate pack QA requirement.",
+      "description": "Return to the paired ferry dock you arrived at, board beneath open sky and wait for safe destination preparation. Record the route home. The island-side generation and safe return path require pack verification; do not assume a loose ferry item is obtainable. Before bringing your unicorn across dimensions, check the verified transport route in the next horse chapter. This optional lesson is held until the route works for Newbie players.\n\nQuest task: actually change dimensions from Unicorn Island to the Overworld, using any legal route. This does not verify travel aboard a ferry specifically. A working return route remains a pack QA requirement.",
       "reward": {
         "xp": 15,
         "item": "minecraft:light_blue_carpet",

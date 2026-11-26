@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "ride_unicorn": {
+      "trigger": "minecraft:started_riding",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "unicornacademy:unicorn"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ride_unicorn"
+    ]
+  ]
+}
