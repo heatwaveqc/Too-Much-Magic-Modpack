@@ -35,6 +35,10 @@ The owner-requested **11-domain capability evaluations** are separate editorial 
 
 Companion survey (native instructional research): [Unicorn Academy](mods/unicorn-academy.md), [SWEM](mods/swem.md), [Equestrian addons](mods/equestrian-addons.md), [Critters and Companions](mods/critters-and-companions.md), [Ribbits](mods/ribbits.md), [Ghosts](mods/ghosts.md), [Winter Overhaul](mods/winter-overhaul.md), [Golem Overhaul](mods/golem-overhaul.md). [Creature Feature](mods/creature-feature.md) belongs to Monster Hunter. Proposed 165 companion lessons: Friendship is Magic 21, equestrian 45, Disney Princess 63, Friends Like These 36. Newbie access and pack-specific implementation remain tracked in #742; not an implemented quest tree.
 
+### Preliminary source evaluations — full native surveys outstanding
+
+[Draconic Evolution and Replication](mods/endgame-infrastructure-evaluations.md), [Voidscape](mods/voidscape-evaluation.md), and [Relics / Artifacts / Reliquified Artifacts](mods/artifact-family-evaluation.md). These are dated, source-aligned provisional evaluations, not exact-JAR 29-axis research completion or gameplay acceptance.
+
 ## Apotheosis family — research COMPLETE
 
 [Four exact-JAR dossier, 29 axes and 51 representative lessons](mods/apotheosis.md): Adventure tiers, affix/gem optimization, Enchanting, Attributes, potion charms, Spawners, exact numeric checkpoints handed to Monk #721. Effective runtime cap and gearless tier policy remain separate. Next proposed Goety Cataclysm.
