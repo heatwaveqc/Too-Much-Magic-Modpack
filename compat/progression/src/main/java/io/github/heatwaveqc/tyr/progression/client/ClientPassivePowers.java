@@ -14,11 +14,17 @@ import net.minecraft.client.player.LocalPlayer;
 public final class ClientPassivePowers {
     private ClientPassivePowers() {}
 
-    public static void accept(String dimension, String encoded,String mutations) {
+    public static void accept(String dimension, String encoded,String mutations,String mining) {
         LocalPlayer player = Minecraft.getInstance().player;
-        ClientPowerSnapshot.accept(player, dimension, encoded,mutations);
+        ClientPowerSnapshot.accept(player, dimension, encoded,mutations,mining);
     }
 
+    @SubscribeEvent public static void breakSpeed(net.neoforged.neoforge.event.entity.player.PlayerEvent.BreakSpeed event){
+        io.github.heatwaveqc.tyr.progression.runtime.MiningPrediction.breakSpeed(event);
+    }
+    @SubscribeEvent public static void harvest(net.neoforged.neoforge.event.entity.player.PlayerEvent.HarvestCheck event){
+        io.github.heatwaveqc.tyr.progression.runtime.MiningPrediction.harvest(event);
+    }
     @SubscribeEvent public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
         ClientPowerSnapshot.clear();
     }

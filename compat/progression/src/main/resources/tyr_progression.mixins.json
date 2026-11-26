@@ -17,6 +17,7 @@
     "OwnedAmmoMixin",
     "OwnedNativeMiningMixin",
     "VirtualToolLootMixin",
+    "ClientHarvestPredictionMixin",
     "HeightFallTrialMixin",
     "MutationEffectQueryMixin",
     "AttackIdleResistanceMixin",

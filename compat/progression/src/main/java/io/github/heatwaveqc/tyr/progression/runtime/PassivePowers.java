@@ -24,7 +24,7 @@ public final class PassivePowers {
     private static final Map<String, Function<ServerPlayer, Set<String>>> PROVIDERS =
             new TreeMap<>();
     private static final Map<UUID, Sent> LAST_SENT = new HashMap<>();
-    private record Sent(String dimension, String encoded,String mutations) {}
+    private record Sent(String dimension, String encoded,String mutations,String mining) {}
 
     public static void register(String power, Function<ServerPlayer, Set<String>> sourceResolver) {
         PassivePowerGrants.validate(power);
@@ -58,10 +58,11 @@ public final class PassivePowers {
         String dimension = player.level().dimension().location().toString();
         String encoded = calculate(player).encodeActive();
         String mutations=MutationPowerPolicy.encode(HunterMutations.active(player));
-        var value = new Sent(dimension, encoded,mutations);
+        String mining=MiningPrediction.encode(player);
+        var value = new Sent(dimension, encoded,mutations,mining);
         var old = LAST_SENT.put(player.getUUID(), value);
         if (force || !value.equals(old) || player.tickCount % 20 == 0)
-            PassivePowerNetwork.send(player, dimension, encoded,mutations);
+            PassivePowerNetwork.send(player, dimension, encoded,mutations,mining);
     }
 
     /** Death/logout/respawn clears only the transient network cache. */

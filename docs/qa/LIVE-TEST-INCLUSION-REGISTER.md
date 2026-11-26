@@ -1,5 +1,9 @@
 # Next live-test inclusion register
 
+## Nov 26 Monk mining and TreeChop hotfix (#805/#808)
+
+Source merged #810 at `34ab79e76852f02be0ff6f878161862eaf999542`; exact reviewed head `28df2b35da8c7d87e2330ddcda824580c04ab0c1` five quick checks passed. Promote 17 module paths; matching client and server JAR required (passive snapshot protocol 4). A: verify exact compiled module and mixins. C: preserve World 1 backup; compare grounded stone/copper/coal/dirt/sand speed and Jade harvest indicators at same ranks; check relog/equipment/leave and two players. With Otherworld Sight, fell Otherwood and verify native drops versus direct mining; no duplicate loot/XP. Exact TreeChop binary ABI and gameplay remain unverified. No claim of runtime acceptance.
+
 ## Creature registry #324 / #353 — revision 6 evidence intake (2026-11-24)
 
 **SOURCE RESEARCH ONLY; B/C NOT RUN.** Frozen historical registry of 1,763 types at `fe75e7f936fa3c9262770c8d26e12c412b06fd11`, [revision 6 evidence handoff](../creatures/REVISION-6-HANDOFF-2026-11-24.md). Preserve actual next authorized candidate's current Progression and Capture owners' verified scope; do not stage historical runtime donors blindly. A: validate registry/schema, frozen projection parity, current installed entity classes, resolved native tags, egg/item mappings and source differences. B/C: Hunter wild/owned/native attribution and selected prey/specialty, boss ordinary/special native receipt and repeated/multiplayer/relog, 102 capture holds and 69 prey holds, physical worker transport preserving job/owner versus denied reproduction, legitimate native acquisition and no state transfer/duplication. Native resource fields remain research; no new live claims, generated tags, build authorization or owner decisions. #373/#413 own capture guards; #324 and Progression owners own current taxonomy/behavior. Historical 2026-11-19 intake retained in docs/creatures, not restored as active old balance or pin rules.

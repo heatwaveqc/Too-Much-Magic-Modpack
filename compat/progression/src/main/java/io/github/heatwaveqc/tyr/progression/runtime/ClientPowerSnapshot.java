@@ -20,16 +20,17 @@ public final class ClientPowerSnapshot {
     private static WeakReference<LivingEntity> owner = new WeakReference<>(null);
     private static Set<String> active = Set.of();
     private static Map<String,Integer> mutations=Map.of();
+    private static java.util.List<io.github.heatwaveqc.tyr.progression.core.MiningPredictionRules.Rule> mining=java.util.List.of();
     private static int receivedAt = -1;
     private static String dimension = "";
 
-    public static void accept(LivingEntity player, String incomingDimension, String encoded,String mutationData) {
+    public static void accept(LivingEntity player, String incomingDimension, String encoded,String mutationData,String miningData) {
         if (player == null || !player.level().isClientSide()
                 || !player.level().dimension().location().toString().equals(incomingDimension)) {
             clear(); return;
         }
         Set<String> parsed;
-        try { parsed = PassivePowerGrants.decodeActive(encoded); mutations=MutationPowerPolicy.decode(mutationData); }
+        try { parsed = PassivePowerGrants.decodeActive(encoded); mutations=MutationPowerPolicy.decode(mutationData); mining=io.github.heatwaveqc.tyr.progression.core.MiningPredictionRules.decode(miningData); }
         catch (IllegalArgumentException invalid) { clear(); return; }
         owner = new WeakReference<>(player);
         dimension = incomingDimension;
@@ -39,6 +40,7 @@ public final class ClientPowerSnapshot {
 
     public static boolean active(LivingEntity player, String id) {return valid(player)&&active.contains(id);}
     public static int mutation(LivingEntity player,String id){return valid(player)?mutations.getOrDefault(id,-1):-1;}
+    public static java.util.List<io.github.heatwaveqc.tyr.progression.core.MiningPredictionRules.Rule> mining(LivingEntity player){return valid(player)?mining:java.util.List.of();}
     private static boolean valid(LivingEntity player){
         return player != null && player.level().isClientSide()
                 && owner.get() == player
@@ -52,6 +54,7 @@ public final class ClientPowerSnapshot {
         owner = new WeakReference<>(null);
         active = Set.of();
         mutations=Map.of();
+        mining=java.util.List.of();
         dimension = "";
         receivedAt = -1;
     }
