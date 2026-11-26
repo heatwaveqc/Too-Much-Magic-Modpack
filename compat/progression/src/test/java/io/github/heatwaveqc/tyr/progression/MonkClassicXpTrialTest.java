@@ -25,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.*;
 /** Source-checked training XP experiment, not multiplayer or client gameplay QA. */
 final class MonkClassicXpTrialTest {
     private static JsonObject json() throws Exception {
-        String resource = "data/tyr_progression/tyr_progression/paths/monk.json";
+        String resource = "legacy-monk-before-classic-v1.json";
         try (InputStream input = MonkClassicXpTrialTest.class.getClassLoader()
                 .getResourceAsStream(resource)) {
-            assertNotNull(input,"Standalone Monk datapack missing");
+            assertNotNull(input,"Historical Monk snapshot missing");
             return TestPaths.project(JsonParser.parseReader(
                     new InputStreamReader(input,StandardCharsets.UTF_8)).getAsJsonObject());
         }

@@ -24,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 final class MonkPathParityCoverageTest {
     private static Definition.Path monkPath() throws Exception {
-        String resource = "data/tyr_progression/tyr_progression/paths/monk.json";
+        String resource = "legacy-monk-before-classic-v1.json";
         try (InputStream input = MonkPathParityCoverageTest.class.getClassLoader()
                 .getResourceAsStream(resource)) {
-            assertNotNull(input, "Loadable Monk datapack missing: " + resource);
+            assertNotNull(input, "Historical Monk snapshot missing: " + resource);
             JsonObject source = JsonParser.parseReader(
                     new InputStreamReader(input, StandardCharsets.UTF_8)).getAsJsonObject();
             return TestPaths.read("tyr_progression:monk", source);

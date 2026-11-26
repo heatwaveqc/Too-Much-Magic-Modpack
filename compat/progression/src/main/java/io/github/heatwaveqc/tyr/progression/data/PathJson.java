@@ -28,6 +28,13 @@ public final class PathJson {
     private static boolean flag(JsonObject j, String key) {
         return j.has(key) && j.get(key).getAsBoolean();
     }
+    private static boolean strictFlag(JsonObject j, String key) {
+        if (!j.has(key)) return false;
+        var value=j.get(key);
+        if (!value.isJsonPrimitive() || !value.getAsJsonPrimitive().isBoolean())
+            throw new IllegalArgumentException("Expected boolean "+key);
+        return value.getAsBoolean();
+    }
     private static JsonArray entries(JsonObject j, String key) {
         return j.has(key) ? j.getAsJsonArray(key) : new JsonArray();
     }
@@ -46,7 +53,7 @@ public final class PathJson {
         return "*".equals(text) ? text : id(text);
     }
     private static String event(String text) {
-        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted").contains(text))
+        if (!Set.of("kill", "unarmed_kill", "block_break", "barehand_block_break", "external", "food_consumed", "food_discovered", "animal_petted", "advancement", "item_crafted", "dimension_entered", "material_harvest_trial", "height_fall_trial", "observed_trial", "animal_petted_unique", "arrow_dodged", "strict_fist_victory", "submerged_barehand_harvest").contains(text))
             throw new IllegalArgumentException("Unsupported event " + text);
         return text;
     }
@@ -98,8 +105,16 @@ public final class PathJson {
                 JsonObject c = child.getAsJsonObject();
                 int n = number(c,"count",1);
                 if (n < 1 || n > 1000000) throw new IllegalArgumentException("Bad criterion count");
-                criteria.add(new Definition.Criterion(event(str(c,"event","")),
-                    selector(str(c,"target","")),n));
+                String kind=event(str(c,"event",""));
+                String target=selector(str(c,"target",""));
+                if((kind.equals("animal_petted_unique")||kind.equals("arrow_dodged"))&&n>256)
+                    throw new IllegalArgumentException("Distinct trial count exceeds 256");
+                if(kind.equals("material_harvest_trial")&&(!strictFlag(j,"strict_order")
+                    ||target.startsWith("#")||target.equals("*")))
+                    throw new IllegalArgumentException("Material trial requires strict_order and an exact representative tool ID");
+                if(kind.equals("submerged_barehand_harvest")&&!strictFlag(j,"strict_order"))
+                    throw new IllegalArgumentException("Submerged harvest trial requires strict_order");
+                criteria.add(new Definition.Criterion(kind,target,n));
             }
             if (criteria.isEmpty()) throw new IllegalArgumentException("No criteria for " + mid);
             long xp = j.has("xp") ? j.get("xp").getAsLong() : 0;
@@ -116,7 +131,7 @@ public final class PathJson {
                 fixedAmount=reward.get("xp").getAsBigDecimal().longValueExact();
             }
             milestones.add(new Definition.Milestone(mid,criteria,strings(j,"after"),xp,points,
-                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount));
+                str(j,"title",""),flag(j,"notify_progress"),fixedSystem,fixedAmount,strictFlag(j,"strict_order"),strings(j,"completion_aliases")));
         }
 
         List<Definition.Skill> skills = new ArrayList<>();
@@ -198,6 +213,15 @@ public final class PathJson {
                         params.put(entry.getKey(),value);
                     });
                 }
+                if(type.equals("water_breathing")&&params.containsKey("full_breathing"))
+                    MechanicalSpec.bool(params,"full_breathing",false);
+                if(type.equals("purification")){
+                    MechanicalSpec.integer(params,"interval_ticks",10,1,1200);
+                    String excluded=params.getOrDefault("exclude_effects","");
+                    if(!excluded.isEmpty())for(String entry:excluded.split(",",-1))
+                        if(!entry.matches("[a-z0-9_.-]+:[a-z0-9_./-]+"))
+                            throw new IllegalArgumentException("Invalid purification exclusion");
+                }
                 if (type.equals("gear_durability")) {
                     String slot = params.getOrDefault("slot","mainhand");
                     String action = params.getOrDefault("action","repair");
@@ -220,6 +244,39 @@ public final class PathJson {
                 }
                 if(f.has("rank_values")&&(rankValues.size()!=max||f.has("per_rank")))
                     throw new IllegalArgumentException("rank_values must cover every rank and replace per_rank");
+                if(type.equals("feign_death")){
+                    var activation=ActivationSpec.read(j);
+                    if(activation==null||!activation.mode().equals("toggle")||!activation.exclusiveGroup().isEmpty()
+                        ||activation.jawrBloodCost()!=0||activation.jawrHealOnActivation()!=0
+                        ||"true".equals(params.get("passive"))||params.containsKey("trial_milestone"))
+                        throw new IllegalArgumentException("Feign Death requires a standalone owned toggle: "+sid);
+                }
+                if((type.equals("projectile_return")||type.equals("flying_kick")||type.equals("direct_dodge")||type.equals("virtual_protection")||type.equals("soul_step"))&&(j.has("activation")||params.containsKey("trial_milestone")))
+                    throw new IllegalArgumentException("Effect is automatic: "+sid);
+                if(type.equals("wall_climbing")){
+                    var activation=ActivationSpec.read(j);
+                    if(activation==null||!activation.mode().equals("toggle")
+                        ||"true".equals(params.get("passive"))||params.containsKey("trial_milestone"))
+                        throw new IllegalArgumentException("Wall climbing requires an owned toggle: "+sid);
+                }
+                if(type.equals("tool_form")||type.equals("virtual_silk_touch")){
+                    var activation=ActivationSpec.read(j);
+                    if(activation==null||!activation.mode().equals("toggle")
+                        ||activation.exclusiveGroup().isEmpty()||"true".equals(params.get("passive"))
+                        ||params.containsKey("trial_milestone"))
+                        throw new IllegalArgumentException("Virtual tools and Silk Touch require an exclusive toggle activation: "+sid);
+                }
+                // A trial may expose only the specified effect of a single-rank
+                // achievement-backed skill, never ownership or its other effects.
+                if(params.containsKey("trial_milestone")){
+                    String trial=params.get("trial_milestone");
+                    var achievement=entries(j,"auto_achievements");
+                    if(max!=1||achievement.size()!=1||!achievement.get(0).getAsString().equals(trial)
+                            ||j.has("auto_ranks")||j.has("activation")
+                            ||params.containsKey("requires_milestone")
+                            ||milestones.stream().noneMatch(m->m.id().equals(trial)&&m.strictOrder()))
+                        throw new IllegalArgumentException("Trial effect must belong to a single-rank achievement skill with matching strict milestone: "+sid);
+                }
                 var parsedEffect=new Definition.Effect(type,attribute,operation,target,weapon,damageTag,
                     amount,tier,flag(f,"empty_hand"),flag(f,"unarmored"),params,rankValues);
                 if(rankValues.isEmpty())MechanicalSpec.validate(parsedEffect);
@@ -229,7 +286,7 @@ public final class PathJson {
                         "magnet","heal_on_kill","heal_on_hit","critical_hit","status_on_hit","status_on_hurt",
                         "damage_at_low_health","food_efficiency","vanilla_xp_bonus","crop_bonus","ordinary_drop_bonus",
                         "virtual_fortune","virtual_looting","magic_cost_discount","hunger_efficiency",
-                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","status_duration_reduction","virtual_unbreaking","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity").contains(type))
+                        "jump_bonus","fall_reduction","delayed_regeneration","lava_vision","experience_gain_bonus","glide_control_bonus","backstab","counter_attack","breeding_cooldown","baby_growth","bonemeal_growth","projectile_deflection","hit_streak","health_threshold_status","melee_reflection","quarry_mark","area_pull","landing_shockwave","detection_range","stunning_strike","status_duration_reduction","virtual_unbreaking","vein_mining","radial_mining","ore_sense","villager_attraction","ammo_conservation","jawr_blood_thrift","jawr_feeding_bonus","jawr_sun_resistance","jawr_blood_capacity","jawr_bat_duration","lich_soul_recovery","lich_soul_treasury","lich_soul_capacity","lich_servant_damage","lich_servant_protection","lich_rescue_heal","lich_rescue_resistance","lich_servant_capacity").contains(type))
                         throw new IllegalArgumentException("rank_values not supported for "+type);
                     for(int rank=1;rank<=max;rank++){
                         var effective=parsedEffect.atRank(rank);
@@ -284,11 +341,27 @@ public final class PathJson {
             for (String prereq : m.after())
                 if (!milestonesSeen.contains(prereq))
                     throw new IllegalArgumentException("Unknown milestone prerequisite " + prereq);
+        Set<String> receiptIds=new HashSet<>(milestonesSeen);
+        for(var milestone:milestones)for(String alias:milestone.completionAliases())
+            if(!receiptIds.add(alias))throw new IllegalArgumentException("Duplicate milestone receipt ID "+alias);
+        // Milestone prerequisites must be reachable, including strict sequences.
+        Map<String,Integer> milestoneVisits = new HashMap<>();
+        for (var milestone : milestones) checkMilestoneAcyclic(milestone.id(),milestones,milestoneVisits);
         // Fail closed on circular dependency graphs, even via alternative branches.
         Map<String,Integer> visits = new HashMap<>();
         for (Definition.Skill skill : skills) checkAcyclic(skill.id(),skills,visits);
         return new Definition.Path(pathId,str(source,"exclusive_group",""),
             thresholds,pointsPerRank,activities,milestones,skills);
+    }
+    private static void checkMilestoneAcyclic(String id,List<Definition.Milestone> milestones,
+                                              Map<String,Integer> visits) {
+        int visit=visits.getOrDefault(id,0);
+        if(visit==2)return;
+        if(visit==1)throw new IllegalArgumentException("Cyclic milestone prerequisites at "+id);
+        visits.put(id,1);
+        for(var milestone:milestones)if(milestone.id().equals(id))
+            for(String prerequisite:milestone.after())checkMilestoneAcyclic(prerequisite,milestones,visits);
+        visits.put(id,2);
     }
     private static void checkAcyclic(String id, List<Definition.Skill> skills,
                                      Map<String,Integer> visits) {

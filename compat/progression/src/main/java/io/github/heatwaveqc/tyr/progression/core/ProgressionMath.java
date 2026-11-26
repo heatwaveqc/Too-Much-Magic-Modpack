@@ -85,7 +85,86 @@ public final class ProgressionMath {
         return result;
     }
 
-    /** Persistent, namespaced criterion counters, independent of current active dependencies. */
+    /** A completed equivalent representative satisfies the current graph node.
+     * This is a read-only projection: graph merges must not mint new receipts. */
+    public static Track projectCompletionAliases(Definition.Path path,Track raw) {
+        Track result=raw;
+        for(var milestone:path.milestones())
+            if(!raw.completed(milestone.id())&&milestone.completionAliases().stream().anyMatch(raw::completed))
+                result=result.complete(milestone.id());
+        return result;
+    }
+
+    /** Do not persist an alias-derived completion on unrelated transactions.
+     * Actual completion records all representatives that were equivalent at that time. */
+    public static List<String> persistentMilestones(Definition.Path path,Track raw,Track projected) {
+        var receipts=new java.util.ArrayList<>(projected.milestones());
+        for(var milestone:path.milestones())
+            if(!raw.completed(milestone.id())&&milestone.completionAliases().stream().anyMatch(raw::completed))
+                receipts.remove(milestone.id());
+        return List.copyOf(receipts);
+    }
+
+    public static Track completeMilestone(Track track,Definition.Milestone milestone) {
+        var next=track.complete(milestone.id());
+        for(String alias:milestone.completionAliases())next=next.complete(alias);
+        return next;
+    }
+
+    /** Legacy milestones can pre-count. Strict milestones only collect once prerequisites
+     * were completed at the start of this authoritative signal. */
+    public static boolean canCollectMilestone(Definition.Milestone milestone,Track initial) {
+        return !milestone.strictOrder() || initial.milestones().containsAll(milestone.after());
+    }
+
+    public static Track collectMilestoneCriteria(Definition.Path path,Track initial,Signal signal) {
+        if(!initial.joined())return initial;
+        Track next=initial;
+        for(var milestone:path.milestones()){
+            if(initial.completed(milestone.id())||!canCollectMilestone(milestone,initial))continue;
+            for(int i=0;i<milestone.criteria().size();i++){
+                var criterion=milestone.criteria().get(i);
+                String key=counterKey(milestone.id(),i);
+                if(!signal.matches(criterion.event(),criterion.selector())
+                    ||next.criterionCount(key)>=criterion.count())continue;
+                if(criterion.event().equals("animal_petted_unique")||criterion.event().equals("arrow_dodged")){
+                    if(signal.subject()==null)continue;
+                    String distinct=key+"/subject/"+signal.subject();
+                    if(next.criterionCount(distinct)>0)continue;
+                    next=next.withCounter(distinct,1);
+                }
+                next=recordCriterion(next,key,1);
+            }
+        }
+        return next;
+    }
+
+    /** Reset only an unfinished strict criterion and its distinct-subject receipts. */
+    public static Track resetCriterion(Track old,Definition.Milestone milestone,int index){
+        if(!old.joined()||old.completed(milestone.id())||!milestone.strictOrder()
+                ||!canCollectMilestone(milestone,old)||index<0||index>=milestone.criteria().size())return old;
+        String key=counterKey(milestone.id(),index);
+        if(old.criterionCount(key)==0)return old;
+        var counters=new java.util.HashMap<>(old.counters());
+        counters.keySet().removeIf(k->k.equals(key)||k.startsWith(key+"/subject/"));
+        return new Track(old.joined(),old.xp(),old.rank(),old.points(),old.skills(),old.milestones(),counters);
+    }
+
+    /** Temporary use of the designated effect only; no ownership, points or achievement receipt. */
+    public static int effectRank(Definition.Path path,Track track,Definition.Skill skill,Definition.Effect effect) {
+        if(!track.joined())return 0;
+        int owned=track.skillRank(skill.id());
+        if(owned>0)return owned;
+        String trial=effect.params().get("trial_milestone");
+        if(trial==null)return 0;
+        for(var milestone:path.milestones())
+            if(milestone.id().equals(trial)&&milestone.strictOrder()
+                    &&!track.completed(trial)&&canCollectMilestone(milestone,track))
+                return 1;
+        return 0;
+    }
+
+    /** Persistent, namespaced criterion counters. */
     public static String counterKey(String milestone, int criterion) {
         return milestone + "/" + criterion;
     }

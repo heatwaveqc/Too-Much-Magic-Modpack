@@ -40,14 +40,17 @@ public final class ProgressionMod {
         new io.github.heatwaveqc.tyr.progression.mxp.MxpMod(modBus,container);
         ProgressionAttachments.ATTACHMENTS.register(modBus);
         VirtualElytra.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.WallClimbing.register();
         HunterItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.PathResourceNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.ChallengeHudNetwork::register);
         modBus.addListener(AbilityNetwork::register);
         modBus.addListener(PassivePowerNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DietNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.VisionNetwork::register);
+        modBus.addListener(io.github.heatwaveqc.tyr.progression.network.DangerSenseNetwork::register);
         modBus.addListener(ProgressionMenuNetwork::register);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.TooltipMilestoneNetwork::register);
         NeoForge.EVENT_BUS.addListener(ProgressionCommands::register);
@@ -55,6 +58,8 @@ public final class ProgressionMod {
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStarted);
         NeoForge.EVENT_BUS.addListener(StandPotionEligibility::serverStopped);
         NeoForge.EVENT_BUS.addListener(FoodPolicyRegistry::serverStopped);
+        NeoForge.EVENT_BUS.addListener(PathRegistry::tagsUpdated);
+        NeoForge.EVENT_BUS.addListener(PathRegistry::serverStopped);
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> {
             e.addListener(new PathRegistry());
             e.addListener(new FoodPolicyRegistry());
@@ -70,6 +75,7 @@ public final class ProgressionMod {
         // Exactly one registration site in the one-JAR target architecture.
         io.github.heatwaveqc.tmm.transformations.TransformationsMod.register(modBus, container);
         ProgressionEvents.register();
+        io.github.heatwaveqc.tyr.progression.runtime.ChallengeHudRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.BountifulDecreeSeals.register();
         io.github.heatwaveqc.tyr.progression.runtime.taming.TamingRuntime.register();
         io.github.heatwaveqc.tyr.progression.runtime.charm.CharmRuntime.register();

@@ -15,11 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MutationEffectQueryMixin {
     @Inject(method="hasEffect",at=@At("RETURN"),cancellable=true)
     private void tmm$hasMutation(Holder<MobEffect> effect,CallbackInfoReturnable<Boolean> cir){
-        if(!cir.getReturnValue()&&MutationPowers.amplifier((LivingEntity)(Object)this,effect)>=0)cir.setReturnValue(true);
+        if(!cir.getReturnValue()&&(MutationPowers.amplifier((LivingEntity)(Object)this,effect)>=0
+            ||io.github.heatwaveqc.tyr.progression.runtime.AttackIdleDefense.scopedAmplifier((LivingEntity)(Object)this,effect)>=0))cir.setReturnValue(true);
     }
     @Inject(method="getEffect",at=@At("RETURN"),cancellable=true)
     private void tmm$mutation(Holder<MobEffect> effect,CallbackInfoReturnable<MobEffectInstance> cir){
         var result=MutationPowers.query((LivingEntity)(Object)this,effect,cir.getReturnValue());
+        result=io.github.heatwaveqc.tyr.progression.runtime.AttackIdleDefense.query((LivingEntity)(Object)this,effect,result);
         if(result!=cir.getReturnValue())cir.setReturnValue(result);
     }
 }
