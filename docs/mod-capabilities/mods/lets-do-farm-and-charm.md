@@ -23,4 +23,68 @@ gear: cleavers, dungarees, pitchfork; movement: carts and horse fodder speed/jum
 FC01 locate wild crops (native find_wild_crops advancement); FC02 seed/grain harvest; FC03 pitchfork/soil, FC04 hoe fertilized soil (native use_pitchfork_on_fertilized_soil and use_hoe_on_fertilized_soil); FC05 well/sprinkler (place_water_sprinkler); FC06 compost/giant crop optional; FC07 cutting board (use_cutting_board); FC08 cleavers (get_cleaver, optional cleaver_kill; no mandatory player kills); FC09 mincer (introduction_mincing); FC10 flour and mineral-processing branch; FC11 bowl butter/dough; FC12 stove (place_stove); FC13 grill/campfire (campfire_meats inventory criterion); FC14 pot (place_cooking_pot); FC15 yeast; FC16 soup/tea; FC17 roaster (place_roaster); FC18 feasts/cake; FC19 silo (introduction_drying); FC20 fertilizer; FC21 supply cart; FC22 plow/seeder; FC23 feeding trough (place_feeding_trough); FC24 water trough; FC25 chicken coop (place_chicken_coop); FC26 nest (place_chicken_nest); FC27 pet bowls and food; FC28 dungarees; FC29 optional native 30-food make_everything; FC30 scarecrow and replenishment. These are candidate teaching beats, not approved quest count, no FTB IDs or assigned rewards. Exact native criteria verify before binding, possession is not operation. Native craft/cook/bake/roast collection advancements use inventory_changed (cook10, bake9, roast9, make30), 25 nonrecipe advancement files total. Ensure no duplicate task/reward items in later FTB design; avoid overlapping Pam/FD culinary chapter. Native completionist alone grants native reward; don't bypass with quest reward.
 
 ## Follow-up queue
-Exact pinned JAR verification, recipe/effect/food component inventory, native station GUI and capacity details, cleaver loot policy, all food acquisition paths, effective food provenance, crop/flower tags, EMC cycles (ore/stone conversion, free dungarees, bucket duplication, stable floors/straw), claims on plow/seeder, SWEM carts/feeding, patch release decision and 11-domain score. No runtime, code, new items, config, quest or build changes. Source pass not complete, no gameplay test required for native factual Atlas work.
+Exact pinned JAR verification, recipe/effect/food component inventory, native station GUI and capacity details, cleaver loot policy, all food acquisition paths, effective food provenance, crop/flower tags, EMC cycles (ore/stone conversion, free dungarees, bucket duplication, stable floors/straw), claims on plow/seeder, SWEM carts/feeding, patch release decision and 11-domain score. No runtime, code, new items, config, quest or build changes. Source pass not complete, no gameplay test required for native factual Atlas work. See pass 2 below for resolved details.
+
+## Pass 2 — station, food and conservation source audit (2026-11-25)
+Same immutable 1.1.29 source ef780c81b235d70f9d8ed2c6ba5ef56575e70059; exact binary not reopened. This section supersedes unresolved or approximate figures above.
+
+| Station | Capacity/operation | Timing |
+|---|---|---|
+| Cutting board | 5 items, knife wear per completed cut/strip, assembly inputs | 4t chop animation; cleaver defaults 5/3/1 chops |
+| Mincer | 2 slots (one input up to item stack max, output ejected as entity) | 20 accumulated normalized crank units, speed cap 0.5, click sustains target for 10t; progress persisted; not 20 clicks |
+| Crafting bowl | 4 ingredient slots + output, hand inserts one ingredient at a time | 200 normalized stir units, max whisk speed 1.2, rate 1.25/t at cap, theoretical min 160t at full speed (ramp/decay adds time) |
+| Cooking pot | 6 ingredient + container + output | 900t=45s at valid heat/recipe; recipe lock checked when required; stored owner UUID |
+| Roaster | 6 ingredient + container + output | max roasting counter900t=45s; verify actual heat/craft branch in follow-up |
+| Stove | 3 ingredient slots, output, fuel; 4 separate grill slots | 240t=12s internal cooking, campfire recipe time for grill, flip cooldown40t |
+| Silo | width 1–3, height1–9, capacity width²×height; separate input/output arrays | 200t=10s drying, one item per input cell from manual insertion, up to 81 raw and 81 finished individual items at max size, not 81 stacks per region |
+| Supply cart | 27 slots | pulled transport |
+| Seeder cart | 5 seed-only slots | nearby item pickup every4t, delayed sow animation16t |
+| Timber well | 3 water levels, one bucket extracted per level | manual pump +1 if groundwater in configured depth; 12t animation/pump lock |
+| Chicken coop | 3 chickens, 9 eggs by default | captured chicken rests 200–399t, then releases healed and cooldown4–5min; no claim of hopper collection in 1.1.29 |
+
+Source classes BlockEntity names matching stations, MincerBlock.CRANKS_NEEDED=20, CraftingBowlBlock.STIRS_NEEDED=200. Silo tryAddItem splits one item into each empty raw slot; output uses count of original input. No claim that general sided access enforces same bound; 1.1.30 specifically fixes hopper interaction. Native item/XP production must be reconciled with EMC and recipe provenance, not automatically nerfed.
+
+### Farming and husbandry exact mechanics
+Fertilizer selects 2–6 random valid candidate positions per use within 5x5; FertilizedSoil SIZE 3..0, pitchfork use reduces size, applies 20% bonemeal attempt per eligible position for remaining size (last use removes block), full-size soil converts to fertilized farmland using hoe. Full soil random tick has 1/4 gate, separate sugar cane logic. Sprinkler scheduled tick every20t scans square offsets ±range horizontal and ±1 vertical, default 867 block positions per second per sprinkler; hydrates farmland to7, extinguishes fire, lit campfires and candles, no fuel/water supply check in method. At range16 3,267 positions/sec. Scarecrow default scan same volume every25s; many loaded sprinklers much more concerning than static decoration. Verify interactions with Hexerei/ritual candles and claims; 1.1.30 adds redstone-off switch. Dungarees leggings cloth armor1, enchantability15, wool repair, no toughness/knockback.
+Horse fodder item specifically checks vanilla Horse: tames untamed horse when enabled (consumes1), otherwise +10 HP and 6000t=5min Horse Fodder effect; AbstractHorseMixin separately intercepts isFood/fedFood for barley (heal2, age20s, temper3), oat (heal3, age60s, temper3), fodder on tamed AbstractHorse (heal4, no growth/temper). No assumption that SWEM or Unicorn Academy extends vanilla Horse or invokes same path; verify exact inheritance. Dog food item uses wolf tag + untamed TamableAnimal, tames, heals10, grants 3600t=3min Dog Food effect. CatFoodItem only tooltip; exact cat interaction elsewhere pending. Coop stores chicken NBT and respawns with health reset; preserve ownership/identity and duplication tests. CleaverEvents registers living-death hook: direct player attack using mainhand tagged cleaver deterministically drops mapped head (zombie, skeleton, wither skeleton, creeper, piglin, Ender Dragon; player head with profile). No random chance in hook. **Dragon head acquisition via event** potentially bypasses pack dragon loot-table removal; audit against actual policy, do not silently disable all heads.
+
+### Food registry and native config defaults
+Nutrition and saturation modifier are configured inputs, not measured effective food component values: pinned 1.1.29 has known NeoForge saturation bug. Durations below are registry food settings argument (ticks/20); where constructor differs explicitly flagged. Placed bites may use distinct block food properties; don't multiply inventory duration by servings or claim identical behavior.
+
+| item id (farm_and_charm:) | nutrition | saturation modifier | effect / registry duration seconds |
+|---|---:|---:|---|
+| oat_pancake |5|0.6|Satiation120|
+| roasted_corn |6|0.5|Feast180|
+| potato_with_roast_meat |4|0.6|Sustenance180|
+| baked_lamb_ham |5|0.8|Feast240|
+| farmers_breakfast |7|0.8|Farmer's Blessing480|
+| stuffed_chicken |5|0.7|Feast480|
+| stuffed_rabbit |5|0.7|Feast480|
+| grandmothers_strawberry_cake |4|0.5|Grandma's Blessing120|
+| farmers_bread |3|0.6|Farmer's Blessing180|
+| farmer_salad |6|0.5|Satiation240|
+| goulash |14|0.8|ingredient carrier, no built-in effect|
+| simple_tomato_soup |7|0.6|Rested90|
+| barley_soup |7|0.65|Rested150|
+| onion_soup |9|0.5|Rested120|
+| potato_soup |8|0.55|Rested120|
+| pasta_with_onion_sauce |5|0.6|Satiation180|
+| corn_grits |6|0.5|Satiation120|
+| oatmeal_with_strawberries |5|0.5|Farmer's Blessing45; constructor duration300, trace Foundation semantics|
+| sausage_with_oat_patty |13|0.9|Sustenance120|
+| lamb_with_corn |12|0.8|Satiation180|
+| beef_patty_with_vegetables |11|0.75|Sustenance240; constructor duration300|
+| barley_patties_with_potatoes |10|0.65|Satiation240|
+| bacon_with_eggs |6|0.75|Sustenance180|
+| chicken_wrapped_in_bacon |12|0.7|Sustenance300|
+| cooked_salmon |12|0.8|Satiation240|
+| cooked_cod |11|0.75|Sustenance240|
+| roasted_chicken |5|0.6|Satiation240|
+
+Tea cups: strawberry Haste6s, nettle instant healing (duration argument0), ribwort Regeneration3s; jug registration durations strawberry12s, nettle0, ribwort6s. These are short tick arguments, not minute claims. Raw bacon 2/0.3; chicken parts1/0.3 with 30% Hunger30s; cooked bacon4/0.8; cooked chicken parts2/0.6. Other raw foods inherit vanilla food properties; exact component census remains. Native Goulash uses IngredientEffectFoodItem; cooking pot and roaster generateOutputItem copies recipe result and, only if it implements IngredientEffectCarrier, collectMergedSortedEffects across ingredient slots and adds each with factor1.0. **This is real ingredient-to-meal effect propagation**, not merely decorative metadata. Audit Foundation merge rules and consumption probability/duration, component preservation and ProjectE on crafted carriers (#337). Reuse existing alchemy guard; do not invent restrictions.
+Source: registry/ObjectRegistry.java, FarmAndCharmNeoForgeConfig.java, core/item and core/block/entity classes. Keep distinct native intended numbers vs effective config and source implementation.
+
+### Provisional Atlas scoring
+Using current 11-domain thresholds (independent >=3; Substantial 4–8 domains), working scores Combat2 Protection1 Survival4 Gathering3 Industry3 Construction1 Transportation2 Logistics2 Life5 Death0 Advancement2 =25/55, 4 independent. Substantial, principally agriculture and survival; no independent magic energy/innate progression or general-purpose logistics. Calibrate with Atlas writer; no final rubric lock inferred. 
+### Remaining targeted source gaps
+Exact pin binary equivalence, exhaustive 221 recipe input/output inventory (selected yields verified, full path census only), Foundation 1.0.7/active 1.1.0 food/placed block effect semantics, Rested consumer, cat taming, exact worldgen placements, claim and SWEM integration. Native source main progression and core stations mapped, but mark needs-research rather than complete exact binary survey. No runtime or build changes.
