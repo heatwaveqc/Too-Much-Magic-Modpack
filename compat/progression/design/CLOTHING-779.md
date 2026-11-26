@@ -1,0 +1,9 @@
+# Shared non-protective clothing (#779)
+
+Owner-approved feature, independent of the deferred Bare Zerker combat tree (#454). Base dev/progression @ da45fa2e428efcd39ff1ae7a1d876af6f5b2d9c6, which already contains the Classic challenge hooks. One feature PR, no shared branch writes.
+
+## First checkpoint — clothing classification
+- `ClothingApi.isNonProtective(stack)` and `isUnarmored(entity)`: server policy from two reloadable item tags `#tyr_progression:non_protective_clothing` and `#tyr_progression:clothing_blacklist`. Extend by datapack with exact item IDs/nested tags, deny wins, empty slot is not a clothing item. Default empty allowlist intentionally grants nothing until actual garments ship. Reject damage capacity, stored/ordinary enchantments, nonzero item attribute modifiers, trim and native Apotheosis augmentation components. Optional third-party item-specific capabilities cannot be proven cosmetic by this predicate; whitelist only audited third-party items. No optional class linkage.
+- Replaced actual standard armor emptiness gates in EffectRuntime, Armor Lock, Enrollment and NativeHarvest (Aqua). Empty hands, strict empty chest requirements and unrelated equipment wear mechanics preserved. Actual modded slot-specific event-supplied modifiers and client/server behavior require QA.
+- Native Apotheosis loot category override for the canonical clothing allowlist tag -> apotheosis:none; exact 8.9.0 data map shape and component IDs verified. Tag-key loading and category precedence on effective pack remain runtime checks.
+- Pure policy tests; no full launch. Ordinary clothing items not registered yet. Next checkpoint is original garments/recipes, item models and 64×64 assets; then weighted training provenance and palette renderer. All remain in this PR, no Red Cap blood effect/Fury.

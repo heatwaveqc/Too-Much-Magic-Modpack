@@ -132,7 +132,7 @@ public final class NativeHarvest {
         // Snapshot the real actor and pre-break harvest permission; a new tier
         // unlocked by this break must not retroactively qualify the same block.
         boolean submergedHarvest=parent==null&&p.isEyeInFluid(net.minecraft.tags.FluidTags.WATER)
-            &&java.util.stream.StreamSupport.stream(p.getArmorSlots().spliterator(),false).allMatch(ItemStack::isEmpty)
+            &&ClothingApi.isUnarmored(p)
             &&HarvestAbilities.canHarvestBarehand(p,state);
         var submergedSignal=submergedHarvest?Selectors.blockBreak(state):null;
         SCOPE.set(new Scope(p,level,pos.immutable()));

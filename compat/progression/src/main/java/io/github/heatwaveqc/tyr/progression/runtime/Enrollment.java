@@ -104,7 +104,7 @@ public final class Enrollment {
                 &&(!ritual.clearSky()||player.level().canSeeSky(pos.above()))
                 &&Math.abs(player.getLookAngle().y)<ritual.maxAbsLookY()
                 &&(!ritual.emptyHand()||player.getMainHandItem().isEmpty());
-            if(valid&&ritual.unarmored())for(var stack:player.getArmorSlots())if(!stack.isEmpty())valid=false;
+            if(valid&&ritual.unarmored()&&!ClothingApi.isUnarmored(player))valid=false;
             var prior=timers.getOrDefault(path,new Contemplation(0,0));
             int ticks=io.github.heatwaveqc.tyr.progression.data.TimedEnrollment.nextTicks(prior.window(),prior.ticks(),window,valid);
             if(ticks==0)timers.remove(path);else timers.put(path,new Contemplation(window,ticks));

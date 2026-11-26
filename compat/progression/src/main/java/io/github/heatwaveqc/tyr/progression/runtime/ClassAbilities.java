@@ -162,7 +162,7 @@ public final class ClassAbilities {
             for (EquipmentSlot slot : List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,
                     EquipmentSlot.LEGS,EquipmentSlot.FEET)) {
                 ItemStack worn = p.getItemBySlot(slot);
-                if (worn.isEmpty()) continue;
+                if (worn.isEmpty() || ClothingApi.isNonProtective(worn)) continue;
                 boolean bound = EnchantmentHelper.has(worn,EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE);
                 if (bound) {
                     // Must remain equipped. Ordinary wear triggers Unbreaking/break handlers,
