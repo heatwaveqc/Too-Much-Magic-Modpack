@@ -3423,6 +3423,47 @@
       "dependencies_verified": false,
       "packwiz_slug": "emisemble",
       "note": "Owner-approved #593 EMI-only trial. Exact official binary downloaded, provider hash verified and top-level native metadata inspected in run 45550178507. CurseForge bytes match publisher GitHub v1.2.1 SHA256; native requires NeoForge >=21.1.265. Client-only. Client C17, category duplication and reverse-dependency acceptance pending."
+    },
+    {
+      "id": "lets-do-bakery",
+      "name": "[Let's Do] Bakery - Farm&Charm Compat",
+      "version": "2.1.12",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/lets-do-bakery-farm-charm-compat/files/9747401",
+      "curseforge_project_id": 1038130,
+      "candidate_file_id": 9747401,
+      "category": "food",
+      "desired": true,
+      "release_status": "verified_release",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "lets-do-bakery",
+      "note": "Owner-approved #770 scope-freeze exception; exact publisher JAR and native dependency audit #771 / run 45734442559 PASS, unchanged existing dependency pins. Source integration only, diet/EMC/recipe/potion conservation and gameplay QA pending."
+    },
+    {
+      "id": "oaks-delight",
+      "name": "Oaks Delight",
+      "version": "1.0.9",
+      "source": "https://modrinth.com/mod/aWAAHxYu/version/DagHrUgg",
+      "category": "food",
+      "desired": true,
+      "release_status": "verified_release",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "oaks-delight",
+      "note": "Owner-approved #770 scope-freeze exception; exact publisher JAR and native dependency audit #771 / run 45734442559 PASS, unchanged existing dependency pins. Source integration only, diet/EMC/recipe/potion conservation and gameplay QA pending."
+    },
+    {
+      "id": "sweet-cakes",
+      "name": "Sweet Cakes",
+      "version": "1.1.1",
+      "source": "https://modrinth.com/mod/M0IszrLu/version/CPBGE6mL",
+      "category": "food",
+      "desired": true,
+      "release_status": "verified_release",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "packwiz_slug": "sweet-cakes",
+      "note": "Owner-approved #770 scope-freeze exception; exact publisher JAR and native dependency audit #771 / run 45734442559 PASS, unchanged existing dependency pins. Source integration only, diet/EMC/recipe/potion conservation and gameplay QA pending."
     }
   ],
   "excluded": [

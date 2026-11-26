@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 1694756141,
+    "separation": 8,
+    "spacing": 48,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "witchery:well",
+      "weight": 1
+    }
+  ]
+}

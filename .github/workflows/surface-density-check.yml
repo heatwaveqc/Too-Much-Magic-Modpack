@@ -1,0 +1,31 @@
+name: Verify surface density overlay
+on:
+  pull_request:
+    paths:
+      - 'kubejs/data/**/worldgen/structure_set/**'
+      - 'research/worldgen-surface-density/**'
+      - 'scripts/check_surface_density.py'
+      - 'tests/test_surface_density.py'
+      - 'scripts/download_mods.py'
+      - 'scripts/audit_worldgen_resources.py'
+      - 'mods/**'
+      - 'index.toml'
+      - 'pack.toml'
+      - '.github/workflows/surface-density-check.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline policy tests
+        run: python -m unittest discover -s tests -p test_surface_density.py -v
+      - name: Compare selected original sets to exact verified upstream JARs
+        run: python scripts/check_surface_density.py --verify-archives

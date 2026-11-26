@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 1654323456,
+    "separation": 8,
+    "spacing": 32,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "goety:mangrove_tower",
+      "weight": 1
+    }
+  ]
+}
