@@ -12,6 +12,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import tempfile
+import time
 import zipfile
 
 REPO = "heatwaveqc/Too-Much-Magic-Modpack"
@@ -35,10 +36,27 @@ def gh(*args):
 def api(path, *args):
     return json.loads(gh("api", f"repos/{REPO}/{path}", *args))
 
+def wait_for_source(run_id, attempts=30, delay=10):
+    """The dispatch job is part of the source run: wait for terminal status, never publish early."""
+    require(re.fullmatch(r"[0-9]+", str(run_id)), "Invalid source run ID")
+    for index in range(attempts):
+        run = api(f"actions/runs/{run_id}")
+        require(run["id"] == int(run_id) and run["event"] == "workflow_dispatch"
+                and run["head_branch"] == "main"
+                and run["path"].split("@")[0] == ".github/workflows/full-integration-launcher.yml"
+                and run.get("display_title", "").startswith("QA Prism "),
+                "Source is not the canonical Prism launcher")
+        if run["status"] == "completed":
+            require(run["conclusion"] == "success", "Source launcher did not succeed")
+            return
+        if index + 1 < attempts:
+            time.sleep(delay)
+    raise RuntimeError("Source launcher did not reach completion before publication deadline")
+
 def read_run(run_id):
     require(re.fullmatch(r"[0-9]+", str(run_id)), "Invalid source run ID")
     run = api(f"actions/runs/{run_id}")
-    require(run["id"] == int(run_id) and run["status"] == "completed" and run["conclusion"] == "success"
+    require(run.get("display_title", "").startswith("QA Prism ") and run["id"] == int(run_id) and run["status"] == "completed" and run["conclusion"] == "success"
             and run["event"] == "workflow_dispatch" and run["head_branch"] == "main"
             and run["path"].split("@")[0] == ".github/workflows/full-integration-launcher.yml",
             "Source is not a successful authorized main launcher")
@@ -241,6 +259,9 @@ def main():
     reconcile = os.environ.get("RECONCILE_LATEST") == "1"
     require(not (source_run and reconcile), "Ambiguous publication source")
     run_id = source_run or (latest_prism_run() if reconcile else str(seed["run_id"]))
+    if os.environ.get("WAIT_FOR_SOURCE") == "1":
+        require(bool(source_run) and not reconcile, "Explicit publication requires a source run")
+        wait_for_source(run_id)
     run, attempt, snap, artifact = read_run(run_id)
     if not source_run and not reconcile:
         require((attempt,snap,artifact["id"],artifact["digest"]) ==

@@ -35,3 +35,20 @@ jobs:
       package_prism: ${{ inputs.package_prism == true }}
       expected_integration_sha: ${{ inputs.expected_integration_sha }}
       qa_request_id: ${{ inputs.qa_request_id }}
+
+  dispatch-unstable-publication:
+    # Explicit dispatch is supported even when this launcher was started by GITHUB_TOKEN.
+    # The publisher independently waits for this run to finish and checks every build gate.
+    needs: run-current-workstreams
+    if: ${{ inputs.full_smoke && inputs.package_prism && needs.run-current-workstreams.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      actions: write
+    steps:
+      - name: Request verified publication of this exact Prism run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_RUN: ${{ github.run_id }}
+        run: gh workflow run publish-unstable-prism.yml --ref main -f source_run="$SOURCE_RUN"
