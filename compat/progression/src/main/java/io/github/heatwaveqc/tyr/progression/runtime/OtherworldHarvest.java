@@ -10,8 +10,9 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 public final class OtherworldHarvest {
     private OtherworldHarvest(){}
     /** Only the natural log classes already covered by the native Occultism adapter. */
-    public static BlockState revealIndirectLog(BlockState state,net.minecraft.world.entity.Entity breaker,ItemStack tool){
-        if(!(breaker instanceof Player player))return state;
+    public static BlockState revealIndirectLog(BlockState state,net.minecraft.server.level.ServerLevel level,
+            net.minecraft.core.BlockPos pos,net.minecraft.world.entity.Entity breaker,ItemStack tool){
+        if(!(TreeChopLootScope.sightActor(breaker,level,pos) instanceof Player player))return state;
         String type=state.getBlock().getClass().getName();
         if(!type.equals("com.klikli_dev.occultism.common.block.otherworld.OtherworldLogNaturalBlock")
             &&!type.equals("com.klikli_dev.occultism.common.block.otherworld.OtherworldStrippedLogNaturalBlock"))return state;
