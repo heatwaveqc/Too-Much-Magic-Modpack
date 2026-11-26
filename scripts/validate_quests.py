@@ -16,7 +16,7 @@ except ModuleNotFoundError as exc:
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "config" / "ftbquests" / "quests"
-EXPECTED = {"Introduction": 4, "Progression": 5, "Magic": 25, "Exploration & Combat": 7, "Endgame": 3}
+EXPECTED = {"Introduction": 4, "Progression": 5, "Magic": 25, "Exploration & Combat": 8, "Endgame": 3}
 ID_RE = re.compile(r"^[0-9A-F]{16}$")
 
 
@@ -103,7 +103,7 @@ def main() -> None:
     groups = chapters_spec["groups"]
     chapters = chapters_spec["chapters"]
     ensure({g["name"]: g["count"] for g in groups} == EXPECTED, "Wrong group counts")
-    ensure(len(groups) == 5 and len(chapters) == 44, "Expected five groups and 44 chapters")
+    ensure(len(groups) == 5 and len(chapters) == 45, "Expected five groups and 45 chapters")
     from build_theurgy_quest_pilot import check_spec as check_theurgy_spec, render as render_theurgy
     pilot = json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))
     check_theurgy_spec(pilot)
@@ -117,7 +117,9 @@ def main() -> None:
         ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
         ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 239, "Expected 239 authored quests including 20 Theurgy and 34 Tips & Tricks lessons")
+    from build_friendship_quest import check as check_friendship
+    check_friendship()
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 260, "Expected 260 authored quests including Friendship is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -137,10 +139,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 277,
-           f"Expected 277 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 298,
+           f"Expected 298 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 277 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 298 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {quote_quest_text(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -181,7 +183,7 @@ def main() -> None:
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 20, "Tips & Tricks": 34, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
                     "Basic Progression": 27, "Advanced Progression": 11, "Endgame Roadmap": 7,
-                    "Skills & Factions": 18, "Theurgy": 20, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
+                    "Skills & Factions": 18, "Theurgy": 20, "Friendship is Magic": 21, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
         for block in blocks:
@@ -204,6 +206,8 @@ def main() -> None:
                 desc = authored_record["description"]
                 ensure(isinstance(desc, str) and bool(desc.strip()), f"Empty authoring description for {qid}")
                 wanted_desc = f'quest.{qid}.quest_desc: [{quote_quest_text(desc)}]'
+                if c["name"] == "Friendship is Magic":
+                    wanted_desc = f'quest.{qid}.quest_desc: [' + ", ".join(quote_quest_text(x) for x in desc.split("\n\n")) + "]"
                 ensure(wanted_desc in lang_text, f"Quest description differs from its authoring source: {qid}")
             ensure(qid not in all_blocks, f"Duplicate quest ID: {qid}")
             all_blocks[qid] = block
@@ -276,13 +280,13 @@ def main() -> None:
                 ensure(advance not in advancement_tasks, f"Accidental repeated advancement criterion {advance}")
                 advancement_tasks[advance] = qid
             if c["name"] not in {"Getting Started", "Tips & Tricks", "Food & Fishing", "Alcohol is Magic", "Basic Progression",
-                                 "Advanced Progression", "Endgame Roadmap", "Skills & Factions", "Artifacts", "ProjectE", "A Sufficiently Advanced Magic", "Ars Nouveau", "Theurgy"}:
+                                 "Advanced Progression", "Endgame Roadmap", "Skills & Factions", "Artifacts", "ProjectE", "A Sufficiently Advanced Magic", "Ars Nouveau", "Theurgy", "Friendship is Magic"}:
                 ensure(qid == c["overview_quest_id"], f"Unexpected nonintro quest in {path.name}")
                 ensure("optional: true" in block and 'type: "checkmark"' in tasks, f"Unapproved placeholder objective in {path.name}")
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 277, f"Expected 277 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 298, f"Expected 298 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -310,11 +314,11 @@ def main() -> None:
         if q.get("depends"):
             match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == q["depends"]), None)
             ensure(match is not None and f'dependencies: ["{match["quest_id"]}"]' in block, f"Broken prerequisite {q['title']}")
-        if q["chapter"] == "Theurgy":
+        if q["chapter"] in {"Theurgy", "Friendship is Magic"}:
             predecessors = q.get("prerequisites", [])
             ids = []
             for predecessor in predecessors:
-                match = next((x for x in resolved["quests"] if x["chapter"] == "Theurgy" and x["title"] == predecessor), None)
+                match = next((x for x in resolved["quests"] if x["chapter"] == q["chapter"] and x["title"] == predecessor), None)
                 ensure(match is not None, f"Theurgy unknown prerequisite: {predecessor}")
                 ids.append(match["quest_id"])
             if ids:
@@ -348,7 +352,7 @@ def main() -> None:
     ensure(not shortcuts, f"Quest item rewards alone could complete another item task: {shortcuts}")
     expected_advancement_tasks = {q["criterion"]["id"]: q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "advancement"}
     ensure(advancement_tasks == expected_advancement_tasks, "Unexpected advancement objective overlap")
-    ensure(len(item_tasks) == 117, f"Unexpected unique item-task count: {len(item_tasks)}")
+    ensure(len(item_tasks) == 121, f"Unexpected unique item-task count: {len(item_tasks)}")
     ensure([q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "item_tag"] == ["544D4D1100000001"],
            "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
@@ -468,7 +472,7 @@ def main() -> None:
            "Missing housing reward/table title")
     print("PASS: 19 personal graduation choices with stable IDs and trusted reward commands")
     print("PASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated")
-    print(f"PASS: five groups, 44 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
+    print(f"PASS: five groups, 45 chapters, {len(all_blocks)} quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin")
     print("PASS: shared item criteria restricted to intentional copper/iron/emerald/diamond sales; no item reward completes a task")
     print("NOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified")
 

@@ -3,8 +3,8 @@
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
   "notes": "Stable signed IDs and layouts: 259 quests / 221 authored; includes the 20-node Atlas-derived Theurgy branch and 5 original procedural quest backgrounds. Updated by scripts/rebuild_quest_ui.py; client rendering not yet tested. Four Iron sale tiers added (owner 2026-11-23).",
-  "quest_count": 277,
-  "chapters": 44,
+  "quest_count": 298,
+  "chapters": 45,
   "positions": [
     {
       "quest_id": "544D301000100001",
@@ -2496,6 +2496,195 @@
       "position": [
         4,
         0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000001",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        0
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000002",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        2.4
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000003",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        4.8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000004",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        7.2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000005",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -3.5,
+        9.7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000006",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -7,
+        7.8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000007",
+      "chapter": "Friendship is Magic",
+      "position": [
+        7,
+        7.8
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000008",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -3.5,
+        12
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000009",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        13.6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000A",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -3.5,
+        16.6
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000B",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -8.5,
+        15.7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000C",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -8.5,
+        18.2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000D",
+      "chapter": "Friendship is Magic",
+      "position": [
+        -8.5,
+        20.7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000E",
+      "chapter": "Friendship is Magic",
+      "position": [
+        8.5,
+        15.7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A030000000F",
+      "chapter": "Friendship is Magic",
+      "position": [
+        8.5,
+        18.2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000010",
+      "chapter": "Friendship is Magic",
+      "position": [
+        8.5,
+        20.7
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000011",
+      "chapter": "Friendship is Magic",
+      "position": [
+        3.8,
+        21.2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000012",
+      "chapter": "Friendship is Magic",
+      "position": [
+        3.8,
+        24
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000013",
+      "chapter": "Friendship is Magic",
+      "position": [
+        3.8,
+        27
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000014",
+      "chapter": "Friendship is Magic",
+      "position": [
+        0,
+        32.2
+      ],
+      "authored": true
+    },
+    {
+      "quest_id": "544D7A0300000015",
+      "chapter": "Friendship is Magic",
+      "position": [
+        7,
+        2.4
       ],
       "authored": true
     }

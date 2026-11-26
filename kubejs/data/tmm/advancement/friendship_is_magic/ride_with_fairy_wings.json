@@ -1,0 +1,27 @@
+{
+  "criteria": {
+    "wings_deployed": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "periodic_tick": 20,
+              "vehicle": {
+                "type": "unicornacademy:unicorn",
+                "nbt": "{UnicornWingsOut:1b}"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wings_deployed"
+    ]
+  ]
+}
