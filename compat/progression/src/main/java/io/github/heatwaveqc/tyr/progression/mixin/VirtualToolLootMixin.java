@@ -19,7 +19,8 @@ public abstract class VirtualToolLootMixin {
     @WrapMethod(method="getDrops(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Ljava/util/List;")
     private static List<ItemStack> tmm$virtualTool(BlockState state,ServerLevel level,BlockPos pos,
             BlockEntity blockEntity,Entity breaker,ItemStack tool,Operation<List<ItemStack>> original){
-        return original.call(state,level,pos,blockEntity,breaker,
+        var lootState=io.github.heatwaveqc.tyr.progression.runtime.OtherworldHarvest.revealIndirectLog(state,breaker,tool);
+        return original.call(lootState,level,pos,blockEntity,breaker,
             blockEntity==null?NativeHarvest.lootTool(state,level,pos,breaker,tool):tool);
     }
 }

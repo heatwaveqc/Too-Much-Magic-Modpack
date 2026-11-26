@@ -9,6 +9,14 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 /** Only modifies the native harvest-state input, not the world or the generated loot. */
 public final class OtherworldHarvest {
     private OtherworldHarvest(){}
+    /** Only the natural log classes already covered by the native Occultism adapter. */
+    public static BlockState revealIndirectLog(BlockState state,net.minecraft.world.entity.Entity breaker,ItemStack tool){
+        if(!(breaker instanceof Player player))return state;
+        String type=state.getBlock().getClass().getName();
+        if(!type.equals("com.klikli_dev.occultism.common.block.otherworld.OtherworldLogNaturalBlock")
+            &&!type.equals("com.klikli_dev.occultism.common.block.otherworld.OtherworldStrippedLogNaturalBlock"))return state;
+        return revealForHarvest(state,player,tool);
+    }
     public static BlockState revealForHarvest(BlockState state,Player player,ItemStack tool){
         if(!(player instanceof ServerPlayer owner)||owner.isCreative()||owner.isSpectator()
             ||owner.getServer()==null||owner.getServer().getPlayerList().getPlayer(owner.getUUID())!=owner)
