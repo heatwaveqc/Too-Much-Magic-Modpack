@@ -1,0 +1,117 @@
+{
+  "scope": "READ_ONLY_LOG_SNAPSHOT_NOT_GAMEPLAY_ACCEPTANCE",
+  "log_sha256": "027d28185d682126f17a09c447f41078a42ea5b50a3df4c6f7c7ef1690350a8f",
+  "bytes": 2648087,
+  "lines": 14360,
+  "invalid_unbound_key_lines": 526,
+  "mixin_fatal_lines": 0,
+  "integrated_world_login_observed": true,
+  "loaded_recipe_counts": [
+    28188
+  ],
+  "server_script_loads": [
+    {
+      "loaded": 13,
+      "total": 13,
+      "errors": 0
+    },
+    {
+      "loaded": 13,
+      "total": 13,
+      "errors": 0
+    }
+  ],
+  "script_failures": [],
+  "recipe_failures": [
+    {
+      "id": "oaksdelight:crafting/black_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:black_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/blue_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:blue_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/brown_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:brown_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/cyan_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:cyan_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/gray_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:gray_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/green_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:green_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/light_blue_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:light_blue_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/light_gray_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:light_gray_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/lime_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:lime_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/magenta_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:magenta_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/orange_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:orange_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/pink_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:pink_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/purple_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:purple_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/red_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:red_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/white_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:white_stained_display_case"
+    },
+    {
+      "id": "oaksdelight:crafting/yellow_stained_display_case",
+      "occurrences": 1,
+      "reason": "com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:item]: oaksdelight:yellow_stained_display_case"
+    }
+  ],
+  "recipe_failure_namespaces": {
+    "oaksdelight": 17
+  },
+  "emi_plugin_failures": [],
+  "projecte_mapping_failures": {}
+}

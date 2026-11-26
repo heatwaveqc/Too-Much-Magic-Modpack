@@ -1,0 +1,30 @@
+[
+  {
+    "module": "progression",
+    "tests": 511,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "economy",
+    "tests": 62,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "traders-vengeance",
+    "tests": 14,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "friendship-garden",
+    "tests": 9,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  }
+]

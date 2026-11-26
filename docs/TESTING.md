@@ -156,3 +156,7 @@ Owner-requested existing PR #708 continuation, frozen `721ea058294f838b9d7f145af
 ### November 25 follow-up — food/EMC/config/recipe capture
 
 [Existing #708 collection](qa/thanksgiving-2026-11-25/collection/README.md) preserves 26,940 registry IDs / 2,543 foods, 11,349 positive EMC mappings / 15,591 unmapped, 27,947 effective recipe rows, 2,571 stonecutting recipes / 1,775 outputs and 242 Replication-related entries. Existing optional one-shot world capture succeeded after owner reload/rejoin; auxiliary adapters unsupported, recorded without bypass. Native configs and sanitized client/saved Progression diagnostics collected. Three helper files removed; final owner reload restored original script roster. No gameplay code/config edits, new build or collector-initiated launch.
+
+## 2026-11-25 evening — current installed 20729a36 A sweep
+
+[Exact build-scoped report](qa/a-results-2026-11-25-20729a36/README.md), existing PR #796: replacement current ZIP/source/JAR identity verified, 596 Java and 23 Node cases pass, 14 validators pass; Python 233/234 with generated-checklist failure. Native structure 69 override/original comparisons pass. New Oaks 17 decoder errors, persistent key errors and second Reactive crash remain failures. Fresh runtime registries and complete Astral token calculus unresolved. At owner request only, exact #801 repaired script applied to local install after baseline tests, original backed up; five mock groups and pinned Rhino parse pass, live loot NOT RUN. No new build or collector world launch.
