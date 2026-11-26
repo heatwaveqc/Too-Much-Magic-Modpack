@@ -28,7 +28,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | B08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C01 | FAIL | Earlier 887a4ffb crash at 21:07 preserved. Replacement 20729a36 crashed at 21:19:40 with same Reactive overload error; sanitized stack in current A report. Owner-requested PR801 local script overlay applied after checks, live retest NOT RUN. |
+| C01 | FAIL | Earlier unpatched crashes retained (887a4ffb at 21:07; 20729a36 at 21:19:40). World 1 post-#801 local overlay: owner reports successful entry/exploration and no further crash during session; partial retest only, clean rebuilt package/save-rejoin not yet tested. |
 | C02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -45,17 +45,17 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C15 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C16 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C17 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C18 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C18 | FAIL | World 1: villager ranged damage works, gun model absent; tested iron golem advanced and used melee rather than ranged weapons (range/LOS/eligibility not established); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
 | C19 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C20 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C20 | PARTIAL | World 1: owner observed missing/broken texture on a Stray spawner attributed to individual/multiplayer spawner mod; exact registry ID/screenshot pending. Multiplayer independent state and cooldown NOT RUN. |
 | C21 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C22 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C22 | PARTIAL | World 1: no further Reactive crash reported after #801 local script overlay; no confirmed Reactive-only/mixed/configured chest book or filter diagnostic log yet. Remaining loot/Gateway/fishing cases NOT RUN. |
 | C23 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C24 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C25 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C26 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C27 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C28 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C28 | PARTIAL | World 1: owner reports Reactive crash no longer occurs with local #801 overlay; actual loot transformation, other targeted recipe fixes and log regressions remain unverified. |
 | C29 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C30 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C31 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -74,3 +74,7 @@ Owner-reported session: client booted and all mods loaded correctly; world creat
 ## A sweep and requested local #801 overlay
 
 [Current A report and evidence](a-results-2026-11-25-20729a36/README.md) distinguishes initial 887a4ffb checks from the replacement 20729a36 candidate. All fourteen A rows reconciled above; A06/A11 data and remaining Astral research explicitly unresolved. No B commands/game launch/build by this collector. After baseline checks the owner requested the exact #801 script: backed up original, applied one local file, five mock groups and pinned Rhino parse pass; no world/loot retest yet. Source/pack files in this QA PR remain documentation/evidence only.
+
+## World 1 — November 25 evening, post-hotfix gameplay
+
+Installed snapshot `20729a369e6f811730cea04cadfd12f265c96424`, locally applied Reactive script #801 per A report. Owner's named world is **World 1**, distinct from prior crash fixtures; do not rename it Test 2. Owner reported spawning close to a village, then villager gun attacks causing damage without a visible weapon model, iron golem walking up to melee rather than visibly using its minigun/rocket, and subsequent village also firing (cross-village vendetta persistence observed, not a save/reload or command proof). Stray spawner texture broken (owner attribution: individual spawner mod; exact block/model or entity renderer unknown). Memory reported verbatim as '11 mb'; likely 11 GB or 11,000 MB but unit/measurement source unverified; collect heap used/committed/max, process working set, idle vs exploration and GC behavior before classifying. No further crash reported during this session after Reactive hotfix; actual successful book replacement and absence of filter-disabled diagnostic still unverified. No commands executed or save/rejoin claimed. Owner stopped for the evening; continue tomorrow. Route Trader's Vengeance to #423 / #284, texture and memory triage to QA #274; no new build or gameplay patch authorized by these observations.
