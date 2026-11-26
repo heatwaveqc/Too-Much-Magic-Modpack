@@ -129,6 +129,12 @@ public final class NativeHarvest {
             ||!level.mayInteract(p,pos))return original.getAsBoolean();
         // Secondary native breaks may use loot context but do not add trial credit.
         var trials=parent==null?eligibleTrials(p,state):List.<Trial>of();
+        // Snapshot the real actor and pre-break harvest permission; a new tier
+        // unlocked by this break must not retroactively qualify the same block.
+        boolean submergedHarvest=parent==null&&p.isEyeInFluid(net.minecraft.tags.FluidTags.WATER)
+            &&java.util.stream.StreamSupport.stream(p.getArmorSlots().spliterator(),false).allMatch(ItemStack::isEmpty)
+            &&HarvestAbilities.canHarvestBarehand(p,state);
+        var submergedSignal=submergedHarvest?Selectors.blockBreak(state):null;
         SCOPE.set(new Scope(p,level,pos.immutable()));
         boolean result;
         try{result=original.getAsBoolean();}
@@ -138,6 +144,8 @@ public final class NativeHarvest {
             for(var trial:trials)ProgressionApi.recordFiltered(p,
                 new Signal("material_harvest_trial",trial.tool(),Set.of()),
                 path->path.id().equals(trial.path()));
+            if(submergedSignal!=null)ProgressionApi.record(p,new Signal("submerged_barehand_harvest",
+                submergedSignal.target(),submergedSignal.tags()));
         }
         return result;
     }

@@ -117,6 +117,30 @@
       }
     },
     {
+      "id": "tyr_progression:classic/aqua_trial",
+      "title": "Underwater Cultivation",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "submerged_barehand_harvest",
+          "target": "#tyr_progression:classic_mineable",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/deep_breath"
+      ],
+      "hud": {
+        "group": "harvesting",
+        "objectives": [
+          {
+            "text": "Harvest five eligible blocks barehanded and unarmored with your head underwater"
+          }
+        ]
+      }
+    },
+    {
       "id": "tyr_progression:classic/animal_trial",
       "title": "Animal Friendship",
       "strict_order": true,
@@ -572,7 +596,8 @@
         "tyr_progression:classic/hoe_trial",
         "tyr_progression:classic/axe_trial",
         "tyr_progression:classic/otherworld_trial",
-        "tyr_progression:classic/nether_trial"
+        "tyr_progression:classic/nether_trial",
+        "tyr_progression:classic/aqua_trial"
       ],
       "criteria": [
         {
@@ -634,6 +659,27 @@
           "params": {
             "full_breathing": true
           }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/aqua_affinity",
+      "title": "Aqua Affinity",
+      "lane": "Harvesting",
+      "description": "Mine underwater at normal submerged mining speed with bare hands and no armor. Floating mining penalty still applies.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/aqua_trial"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "operation": "add_value",
+          "per_rank": 0.8,
+          "empty_hand": true,
+          "unarmored": true
         }
       ]
     },
@@ -2130,6 +2176,11 @@
         {
           "type": "advancement",
           "id": "minecraft:end/kill_dragon"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/aqua_trial"
         }
       ]
     }
