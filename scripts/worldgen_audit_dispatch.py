@@ -34,7 +34,7 @@ def validate(event):
         or not qa.owner(comment.get("user", {})) or not qa.owner(event.get("sender", {}))
         or not isinstance(comment.get("id"), int)):
         raise qa.Refused("Untrusted worldgen command")
-    match = re.fullmatch(r"/tmm worldgen ([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
+    match = re.fullmatch(r"/tmm worldgen (?:vanilla )?([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
     if not match or match[1] != TOOLS:
         raise qa.Refused("Expected exact reviewed worldgen tooling SHA and a fresh nonce")
     return match[2]
@@ -67,6 +67,8 @@ def check_active(api):
 
 def execute(api, event, now, launcher_sha):
     nonce = validate(event)
+    vanilla = event["comment"]["body"].strip().startswith("/tmm worldgen vanilla ")
+    prefix = "worldgen-vanilla-request/" if vanilla else "worldgen-request/"
     if not re.fullmatch(r"[0-9a-f]{40}", launcher_sha):
         raise qa.Refused("Invalid launcher SHA")
     live_comment(api, event, now)
@@ -77,13 +79,14 @@ def execute(api, event, now, launcher_sha):
     if main_head(api) != launcher_sha:
         raise qa.Refused("Main advanced during checks")
     # Atomic create; no tag deletion or reuse, even on an ambiguous dispatch.
-    api("git/refs", "POST", {"ref": "refs/tags/worldgen-request/" + nonce, "sha": launcher_sha})
+    api("git/refs", "POST", {"ref": "refs/tags/" + prefix + nonce, "sha": launcher_sha})
     if main_head(api) != launcher_sha:
         raise qa.Refused("Main advanced after reservation; nonce consumed")
     check_active(api)
     api("actions/workflows/worldgen-audit-pilot.yml/dispatches", "POST",
         {"ref": "main", "inputs": {"authorized_build": "true",
-         "expected_launcher_sha": launcher_sha, "request_nonce": nonce}})
+         "expected_launcher_sha": launcher_sha, "request_nonce": nonce,
+         **({"audit_mode": "vanilla"} if vanilla else {})}})
     return nonce
 
 def main():
