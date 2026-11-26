@@ -4,7 +4,9 @@
 
 ## Start here
 
-- **[Active Thanksgiving unstable QA checklist — run 45550879036](THANKSGIVING-QA-2026-11-24.md)** and [per-build results](THANKSGIVING-QA-RESULTS-2026-11-24.md); frozen installed SHA `721ea058`, published November 24, 2026. Prior November 17 checklist below is historical. Client and gameplay acceptance pending.
+- **[Next unstable QA worksheet — November 25](NEXT-UNSTABLE-QA-2026-11-25.md)** and [new results ledger](NEXT-UNSTABLE-QA-RESULTS-2026-11-25.md); input `cc8bb188`, Prism dispatch accepted; installed SHA and downstream artifact pending. Use only after exact build identity verified. Thanksgiving remains the last recorded historical installed evidence.
+
+- **[Prior Thanksgiving unstable QA checklist — run 45550879036](THANKSGIVING-QA-2026-11-24.md)** and [per-build results](THANKSGIVING-QA-RESULTS-2026-11-24.md); frozen installed SHA `721ea058`, published November 24, 2026. Prior November 17 checklist below is historical. Client and gameplay acceptance pending.
 
 - **[Historical unstable QA checklist — run 44108614695](UNSTABLE-QA-2026-11-17.md):** Codex A offline/source, owner B exact in-game commands, owner C play/setup. Frozen installed SHA `322cf3f9`; update its [results ledger](UNSTABLE-QA-RESULTS-2026-11-17.md). This supersedes yesterday's worksheet for this build, not the historical evidence.
 - **[Required QA execution type standard](QA-EXECUTION-TYPES.md):** A/B/C for every future build; separate from canonical testing levels.
