@@ -84,8 +84,14 @@ class ClassicMonkCandidateTest {
         var raw=JsonParser.parseString(Files.readString(CANDIDATE)).getAsJsonObject();
         var survey=new java.util.HashMap<>(vanillaSurvey());
         survey.put("minecraft:golden_pickaxe",survey.get("minecraft:wooden_pickaxe"));
-        survey.put("minecraft:netherite_pickaxe",survey.get("minecraft:diamond_pickaxe"));
+        // Pastel distinguishes diamond from netherite. Even if a wider
+        // selector supplies netherite, Classic must not generate that deed.
+        var aboveDiamond=new java.util.HashSet<>(survey.get("minecraft:diamond_pickaxe"));
+        aboveDiamond.add("pastel:rock_crystal");
+        survey.put("minecraft:netherite_pickaxe",Set.copyOf(aboveDiamond));
         var expanded=HarvestGeneration.expand(MONK,raw,(i,b)->survey);
+        assertEquals(Set.of("minecraft:wooden_pickaxe","minecraft:stone_pickaxe","minecraft:iron_pickaxe","minecraft:diamond_pickaxe"),expanded.trials().keySet());
+        assertFalse(expanded.path().toString().contains("pastel:rock_crystal"));
         var path=TestPaths.read(MONK,expanded.path());
         String finale=raw.getAsJsonObject("mastery_completion").get("milestone").getAsString();
         var gate=raw.getAsJsonObject("mastery_completion").getAsJsonObject("when").getAsJsonArray("conditions");
