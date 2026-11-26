@@ -7,6 +7,7 @@ import re
 import sys
 
 import qa_dispatch_bridge as qa
+from worldgen_dispatch_diagnostics import DiagnosticAPI, registration
 
 ISSUE = 746
 TOOLS = "990c97ce355aac191419354809ab013efddb10f0"
@@ -92,9 +93,10 @@ def main():
     if os.environ.get("GITHUB_RUN_ATTEMPT") != "1":
         return 1
     event = json.load(open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8"))
-    api = qa.API(os.environ["GH_TOKEN"])
+    api = DiagnosticAPI(os.environ["GH_TOKEN"])
     url = f"https://github.com/{qa.REPO}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
     try:
+        print('WORKFLOW_REGISTRATION '+json.dumps(registration(api),sort_keys=True),flush=True)
         nonce = execute(api, event, dt.datetime.now(dt.timezone.utc), os.environ["GITHUB_SHA"])
         report(api, f"Worldgen pilot DISPATCH-ACCEPTED: exact tools {TOOLS}, nonce {nonce}. "
                    f"Not a successful generation result. [Bridge evidence]({url}).")
