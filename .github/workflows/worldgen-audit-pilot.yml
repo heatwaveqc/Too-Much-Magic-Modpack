@@ -1,5 +1,5 @@
 name: Worldgen audit - authorized pilot
-run-name: Worldgen audit - instrumented Thanksgiving baseline
+run-name: Worldgen audit - ${{ inputs.audit_mode }}
 on:
   workflow_dispatch:
     inputs:
@@ -8,7 +8,13 @@ on:
         type: boolean
         default: false
         required: true
-      expected_launcher_sha:
+      audit_mode:
+        description: 'Exact control mode: TMM or vanilla worldgen with audit-only jars'
+        type: choice
+        options: [tmm, vanilla]
+        default: tmm
+        required: true
+    expected_launcher_sha:
         description: 'Exact reviewed main commit for connector dispatch; blank for direct owner dispatch'
         type: string
         default: ''
@@ -39,12 +45,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           APPROVED_SHA: ${{ inputs.expected_launcher_sha }}
           NONCE: ${{ inputs.request_nonce }}
+          AUDIT_MODE: ${{ inputs.audit_mode }}
         run: |
           set -euo pipefail
+          [[ "$AUDIT_MODE" == tmm || "$AUDIT_MODE" == vanilla ]]
+          PREFIX=worldgen-request
+          if [[ "$AUDIT_MODE" == vanilla ]]; then PREFIX=worldgen-vanilla-request; fi
           if [[ "$GITHUB_ACTOR_ID" != 22598785 || -n "$APPROVED_SHA" || -n "$NONCE" ]]; then
             [[ "$APPROVED_SHA" =~ ^[0-9a-f]{40}$ && "$NONCE" =~ ^[0-9a-f]{32}$ ]]
             [[ "$APPROVED_SHA" == "$GITHUB_SHA" ]]
-            [[ "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/worldgen-request/$NONCE" --jq '.object.sha')" == "$APPROVED_SHA" ]]
+            [[ "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$PREFIX/$NONCE" --jq '.object.sha')" == "$APPROVED_SHA" ]]
           fi
           gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$TOOLS_SHA&event=pull_request&per_page=100" > "$RUNNER_TEMP/worldgen-checks.json"
           python3 - <<'PY'
@@ -79,9 +89,16 @@ jobs:
           path: audit-tools
           persist-credentials: false
       - uses: actions/checkout@v4
+        if: inputs.audit_mode == 'tmm'
         with:
           ref: ${{ env.BASELINE_SHA }}
           path: frozen-pack
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        if: inputs.audit_mode == 'vanilla'
+        with:
+          ref: ${{ github.sha }}
+          path: launcher
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
@@ -97,13 +114,20 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git -C audit-tools rev-parse HEAD)" = "$TOOLS_SHA"
-          test "$(git -C frozen-pack rev-parse HEAD)" = "$BASELINE_SHA"
+          if [[ "${{ inputs.audit_mode }}" == tmm ]]; then test "$(git -C frozen-pack rev-parse HEAD)" = "$BASELINE_SHA"; fi
           python -m unittest discover -s audit-tools/tests -p 'test_audit_worldgen_*.py' -v
-          python frozen-pack/scripts/download_mods.py --check-origins
+          if [[ "${{ inputs.audit_mode }}" == tmm ]]; then python frozen-pack/scripts/download_mods.py --check-origins; fi
       - name: Reconstruct exact historical server and run bounded generation
+        if: inputs.audit_mode == 'tmm'
         run: |
           set -euo pipefail
           python audit-tools/scripts/run_worldgen_pilot.py --pack-root frozen-pack --work "$RUNNER_TEMP/tmm-worldgen-audit" --carbon-sha256 "$CARBON_SHA" --authorized --instrumented --generation-seconds 1800
+      - name: Run vanilla worldgen control with identical observer and seed
+        if: inputs.audit_mode == 'vanilla'
+        run: |
+          set -euo pipefail
+          test "$(git -C launcher rev-parse HEAD)" = "$GITHUB_SHA"
+          python launcher/scripts/run_worldgen_vanilla_control.py --tools audit-tools --work "$RUNNER_TEMP/tmm-worldgen-audit" --authorized
       - name: Retain derived evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4
