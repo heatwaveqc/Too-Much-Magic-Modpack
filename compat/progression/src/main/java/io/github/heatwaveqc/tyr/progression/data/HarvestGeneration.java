@@ -145,7 +145,7 @@ public final class HarvestGeneration {
                 var skill=new JsonObject();
                 skill.addProperty("id",receipt+"/skill");skill.addProperty("title",title("Harvest: ",tool));
                 skill.addProperty("description","Complete the material harvesting challenge. Grants native drop eligibility, not mining speed.");
-                skill.addProperty("lane",lane);skill.addProperty("max_rank",1);
+                skill.addProperty("lane",lane);skill.addProperty("max_rank",1);skill.addProperty("base_cost",0);
                 skill.add("auto_achievements",strings(List.of(receipt)));
                 var effects=new JsonArray();effects.add(effect);skill.add("effects",effects);
                 skills.add(skill);
