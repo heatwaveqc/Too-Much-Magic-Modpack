@@ -43,7 +43,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C14 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C15 | PARTIAL | Binding books craft, dyes correction #809; Spirit Fire dust works; miner/spawner/Stone discoverable in EMI, both custom Dictionary entries visible, layout #809. Owner reports Ronaza's Contact succeeded using Ars Ocultas alternate sacrifice setup and resulting Eldritch Miner tooltip Unbreakable. Actual sustained mining/wear, precise Source debit/villager retention, spawner ritual and programming pending. |
-| C16 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C16 | PARTIAL | Owner reports actual Ancient Eldritch Miner output: deepslate Replica Ore and deepslate Draconium Ore (both configured eldritch-specific recipes weight 90), Stellarite blocks, Ancient Debris. Eldritch Logic Core weight 250 not yet reported. Durability and negative lower-tier eligibility, Orechid, remaining material/blood bridges pending. |
 | C17 | PARTIAL | Philosopher's Stone ritual visible in EMI and Equivalent Exchange present in Dictionary, correcting earlier #505 discovery failure. Actual ritual, gate, conversion and economy gameplay pending. |
 | C18 | FAIL | World 1: villager ranged damage works, gun model absent; owner confirms ranged engagement: golem aggroed, advanced and used melee rather than firing; both weapons invisible (provenance/LOS/exact distance not established; #803); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
 | C19 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -138,3 +138,7 @@ Owner reports receiving Pastel guidebook upon picking up amethyst; requests supp
 ## Laboratory — Eldritch Miner ritual acceptance, Nov 26
 
 Owner reports successful Ronaza's Contact following Ars Ocultas sacrificial altar/containment jar/Source setup, and resulting Ancient Eldritch Miner tooltip explicitly Unbreakable. Native ritual acquisition and alternate sacrifice route observed positive; exact Source delta and retained entity not independently reported. Tooltip confirms component presentation, not actual wear resistance; test mineshaft operation, durability before/after, sustained 3200+ operations and reload, and output pool separately. No new build or game commands by coordinator.
+
+## Laboratory — Eldritch Miner output pool
+
+Owner observes Stellarite blocks, deepslate Replica Ore, Ancient Debris, deepslate Draconium Ore from actual ritual-acquired miner. Frozen custom recipes tmm:miner/replica_ore_eldritch and draconium_ore_eldritch each produce one ore at weight90, tmm:miner/eldritch_logic_core weight250 remains unobserved. Positive output acceptance only: Draconium also has a separate frozen master-tag recipe weight142; cannot infer exclusivity, chance or natural generation suppression. Actual wear/reload and lower-tier comparison remain pending. No game commands or build by coordinator.
