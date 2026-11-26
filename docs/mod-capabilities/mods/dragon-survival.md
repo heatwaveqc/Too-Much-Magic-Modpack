@@ -1,6 +1,6 @@
 # Dragon Survival 2.0.74 — Mod Capability Atlas
 
-**Status: source-backed-partial, pass 2 numerical checkpoint of 3 (2026-11-25).** Evidence-only research, tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Separate from TMM Path trees, integration and capability evaluation. No runtime changes.
+**Status: quest-source-ready for the documented native capability scope, pass 3 (2026-11-25).** Evidence-only research, tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Separate from TMM Path trees, integration and capability evaluation. No runtime changes.
 
 ## 1. Exact release provenance
 
@@ -205,3 +205,105 @@ Twelve actual base enchantment records under data/dragonsurvival/enchantment: ae
 ### 9.8 Handoff
 
 43/43 native ability definitions numerically mapped, compiled XP, mana, growth, heart loot, hoard, armor-ignore and two aligned enchantment handlers inspected. No claim of exhaustive gear/death/flight runtime or effective pack config. Pass 3 should first close remaining native handler questions (gear and 12 enchantment names/stats, flight grant and spin source, beacon/source and death lifecycle), then reconcile TMM diet, Path/Dracolich, quest steps and evaluation. Same PR; no new design, gameplay or config. 
+
+
+## 10. Pass 3 — remaining native mechanics and TMM reconciliation
+
+Exact Drive binary SHA1 rechecked locally against section 1. Compiled javap -p -c inspected SourceOfMagicBlock/BlockEntity, DSItems, DragonBeacon/BlockEntity, ServerFlightHandler, FlightGrantItem, SpinGrantItem, PrimordialAnchorBlock, EnderDragonMarkHandler, OnDeath, EffectHandler, DSEquipment, Light/DarkDragonArmorItem (including switch maps), DragonSoulItem, PlayerLoginHandler. No gameplay claimed. This closes the substantial native capability survey, not every nonblocking coefficient or effective server override. Earlier unknowns/next-pass statements are historical checkpoints; latest resolutions below prevail.
+
+### 10.1 Source of Magic, beacon, and player-state economy
+
+All three Source of Magic item constructors in DSItems define the same five consumables and durations: elder_dragon_dust 10s, elder_dragon_bone 30s, dragon_heart_shard 60s, weak_dragon_heart 120s, elder_dragon_heart 300s. Species-specific component transferred to block entity. Place station with room for its placeholder structure, open GUI and insert one stack or drop eligible fuel into it. Container size exactly one; only same-item stacks merge up to item stack limit. Applicable dragon must occupy magic portion while charged until magicSource counter exceeds secondsToTicks(10); counter reset, one fuel removed, effect granted/extended. Duration capped at 30 minutes for extensions; at cap no debit. This is a consumable-to-player-effect operation, not mana in a block battery. Wrong-species/human player damage if damageWrongSourceOfMagic enabled: 1 HP magic state, .5 HP otherwise per hurt call; not damage every tick to all mobs (entityInside returns on non-player after item handling). Ordinary mana debit bypassed while effect active, not cooldown bypass. No FE interface established. Source storage axis limited to dedicated one-stack fuel buffer.
+
+DragonBeacon.useWithoutItem checks total vanilla XP >=60 (creative bypass), calls applyEffects(player,true) then debits 60 XP only on success. Default data effects duration 400 ticks; paid duration multiplier 30 =12000 ticks/10min. Construct and configure with Beacon Activator as in section 4. Memory Block immediately beneath lit beacon: once every 20 world ticks apply unpaid 400-tick effects to all players in AABB inflated by 50 in all dimensions and expanded upwards by world max build height; not a spherical radius or global cross-dimension buff. Continuous operation while loaded, no per-tick fuel; no ownership gate in serverTick. Species data sets effects Cave Fire/Sturdy Skin, Forest Magic/Animal Peace, Sea Peace/Haste; each Empowered Soul. EffectHandler prevents Exhausted Soul application while Empowered Soul active and removes existing conflicting effect when applied. Hence beacon also supports switching stored forms, not player resurrection. Source and beacon are genuine distinct stations.
+
+### 10.2 Flight, travel and native death
+
+Flight Grant (wing_grant) and Spin Grant (spin_grant) use respective permanent flags only for dragons, consume item when used successfully. Exact loot_table/chests/end_spin.json contains two guaranteed independent pools (one of each grant). Do not promise TMM Ender Dragon drops: these are chest loot. Primordial Anchor is a distinct dragon travel/flight unlock route: fuel tag contains ender pearl; charge/use by dragon, teleports to End platform; defaults anchorGivesFlightGrantState=true and anchorGivesSpinGrantState=false. Thus merely reaching End is not equivalent to spin unlock. EnderDragonMarkHandler records contributing players and marks participating dragons on boss death if native default curse enabled; optional unlock_wings datapack is distinct and bypasses wing restrictions. Native grant state not proof of continuous flight during broken wings or other restrictions. Use actual wings/spin controls shown in Controls menu.
+
+ServerFlightHandler defaults: maxFlightSpeed config .3 (internal motion scalar, not blocks/sec), flightHungerThreshold 6, foldWingsThreshold 0, foldWingsOnLand false, flightHungerTicks 50, spin cooldown 5, spin duration secondsToTicks(.76). Stable hover false, collision damage enabled, fall damage enabled, collision threshold 3 and speed factor 10 (not universal fixed impact damage). Flight cost is FOOD EXHAUSTION, not a separate rechargeable stamina bar: when dragon flying with wings spread, default per-tick exhaustion max(.008,min(1,max(0,1−horizontal velocity))* .08), divided by positive FLIGHT_STAMINA_COST attribute. At food <=fold threshold noncreative server folds wings; gliding eligibility uses hunger threshold. West body doubles native positive stamina-cost divisor, Aerodynamic Mastery +.5 attribute; attribute clamp 5. Do not resell flight or interpret stamina as mana.
+
+**Critical correction/clarification:** compiled OnDeath.trigger enumerates active passive abilities with OnDeath activation; cancels LivingDeathEvent only if pre-trigger health <=0 and post-trigger health >0. Exhaustive text search of all packaged dragon_ability JSONs: ONLY test_heal uses on_death; no species-assigned default ability grants a death save. Engine supports a datapack-configurable rescue, not a native attainable guaranteed revival. Do not count test_heal toward combat or death domain, and do not imply all dragons revive. EffectHandler.preserveEffects copies Hunter Omen and Exhausted Soul on death; state preservation is not resurrection. Dragon Soul item is form storage/reapplication with Exhausted Soul cooldown, not an Arca or phylactery. No independent general grave or resurrection facility found.
+
+### 10.3 Human/dragon equipment, trade and world route
+
+DSEquipment both aligned materials: helmet3/chest8/legs6/boots3, total20 armor; toughness3 each, knockback resistance .1 each; enchantability30. Permanent intrinsic enchantment switch maps:
+- Light helmet Combat Recovery, chest Aerodynamic Mastery, leggings Unbreakable Spirit, boots Sacred Scales; every piece Curse of Kindness.
+- Dark helmet Blood Siphon, chest Murderer's Cunning, leggings Overwhelming Might, boots Draconic Superiority; every piece Curse of Outlaw.
+- Light cannot equip if Hunter Omen or another worn Dark piece; Dark cannot equip if Animal Peace or another worn Light piece. Unbreakable Spirit/Overwhelming Might use effect blacklist handlers; no universal immunity or invented multiplicative stack. Equipment recipes smith matching upgrade template, corresponding netherite piece and Elder Heart. Native hunter faction route diamond partisan → netherite smithing, bolas, promotion, leader/key/vault; Dragon Rider Workbench and aligned equipment independent access. Native loot dragon_chest_loot has Elder Bone pool 1 roll, item weight1 (1–3) vs empty5, Elder Dust 1–10 weight1 vs empty5, Star Bone weight1 vs empty20. Hunter chest loot separately contains Elder Bone. First altar also has alternative materials, not only oak. Native advancements find_bones/place_altar, find_overworld_structures/find_nether_structures/find_end_structures, hunter/collect_key/open_vault/promotion/fire_bolas, light and dark key/vault/armor items/set support optional quest branch. No need to force hunter crime on pacifist player or a dragon transformation on every player. Exact trader prices/loot odds outside the major gates are reference precision, not mandatory quest instructions; use actual trading screen/JEI. No ordinary pet creation, item routing network, ore generation or arbitrary construction machine established in native normal ability/registry/data census. Test summons excluded. Sun Breath agricultural growth is genuine.
+
+### 10.4 TMM integration comparison — source snapshot, not installed-world proof
+
+Read test/full-integration index and actual files: defaultconfigs/dragonsurvival-server.toml sets start_with_dragon_choice=false, allow_dragon_choice_from_inventory=false, transform_altar=true, no_humans_allowed=false. Thus teach altar-based transformation, not native login prompt or inventory choice; existing world migration separate. Other native config defaults not overridden by that short file, but actual world serverconfig not inspected. Newbie restrictions/graduation belong to Progression, not native species unlocks. 
+
+[Existing diet map](../../../kubejs/data/dragonsurvival/data_maps/dragonsurvival/dragon_species/diet_entries.json) and [dragon_diets.js](../../../kubejs/server_scripts/dragon_diets.js) still indexed; legacy Cave charred/coal values e.g. charred_meat 6/3, charred_seafood 7/11 are NOT the latest approved nutrition policy. Current integrated [DragonDietHook](../../../compat/progression/src/main/java/io/github/heatwaveqc/tyr/progression/runtime/forms/DragonDietHook.java) checks exact 2.0.74, original FOOD component, server authoritative provider flags, delegates NativeDietAdapters.decide: DENY=null, PERMIT_NATIVE=original, NUTRITION=rebuild properties preserving original use time, conversions and effects, NATIVE=fallback. Magical foods retain their own properties, unknown source fallback, permission-only drinking gives 0 nutrition and 0 saturation while permitting use. Reentrancy guard, client preview. Actual custom non-component special consumption remains upstream; recipe-provenance coverage matters. Do not assume every old diet record overridden by engine. Owner #444 raw preferred Cave terrestrial animal, Sea marine animal and sea plants, Forest plant/fungus; raw preferred 6/2.0 modifier, cooked half, charred quarter, mixed diet-relative ceiling/worst-case variants; separate food source coverage and runtime acceptance. Forest older grain-free legacy map versus newer plant-family draft explicitly distinguish. Seasoned Fish override confirmed in indexed dragon_seasoned_fish.js: raw salmon → #c:foods/raw_fish, ink sac + kelp unchanged; Sea Dragon Treat separate. Hot Dragon Rod/Spearman accepted native quirks #239; no new fix. 
+
+All three 100-point design documents exist on integration source: Sea 22 nodes #514; Cave 25 #530; Forest 26 #536; each explicitly DESIGN ONLY, not proof installed skill tree. Shared Draconic Reservoir +60% candidate is not native Magic X; native cap 20 plus body bonus before equipment, effective order is attribute modification before XP-derived bonus, so a +60% multiplier to native mana attribute does not necessarily equal +60% total pool. Draconic Potency candidate +20% must use native damage attribute/event only once; native ability damage clamp 10 multiplier distinct from damage cap; keep typed spell attribution and Core stacking. Scales +3 additional armor, Claws +3 damage natural attacks only, Talons +45% legal harvesting speed must not sell native species claw/tool permission again. Sea: Amphibious, Diver, Ore Glow, Soul Revelation, Spectral Impact and native storm attacks are already native; any dodge/luck/breath/reservoir enhancement separate. Forest: Sun Breath, Hunter, Haste, Cliffhanger, natural immunities and darkness mitigation native; nature support/cultivation enhancements not duplicate gates. Cave: fire immunity, lava swimming, Sturdy Skin, Furnace Heat, breath/fireball, pickaxe claws native; do not infer ore generation/doubling or global water immunity. Shared native flight/spin remains conditional, not purchased. XP-level gates recalculate even if custom MXP points retained; Soul Revelation only native LivingExperienceDropEvent, no automatic MXP multiplication. New Path caps and stacking remain owner/Progression work, not changed here.
+
+Dracolich integration exact active source DracolichDragonFirstEvents and DragonSurvivalDeathRepeatMixin (PR #69): invokes original OnDeath.trigger at HIGHEST for valid single-provider Dracolich, records event once, suppresses repeat normal invocation; missing provider flags fail closed, lich fallback if dragon does not save. This preserves extensibility but base 2.0.74 has no assigned rescue as above. No redesign requested, don't remove hook or grant test_heal. Goety Arca OR Forbidden Magic phylactery, not both; native provider hunger ownership, diet interaction separate. Existing pilot documentation has older dependency pins, not evidence current provider versions. No change to resurrection ordering, transformation access, skills, food, claims, XP or recipes.
+
+### 10.5 Quest-source matrix — proposed instructional beats (not FTB files)
+
+Legend A = exact native advancement ID below (criteria may be a possession proxy; not proof of operation unless verified), I = inventory/craft proxy, O = observable operation/checkmark, P = later verified personal provider state detector. No invented reward amounts, no repeated quest XP for freely reversible actions, no mandatory death or crime. JEI and native controls supplement instructions. All IDs prefixed dragonsurvival:. Lesson map groups optional branches rather than forcing every species on one character.
+
+| ID | Prerequisite and player-facing action | Completion evidence |
+|---|---|---|
+| DS01 | Explore dragon/hunter structure loot; obtain Elder Dragon Bone | A find_bones / I |
+| DS02 | Craft any altar variant, place and open it | A place_altar; O menu |
+| DS03 | After TMM graduation eligibility, select ONE species and body, customize appearance | A cave/forest/sea/be_dragon, P current species; no forced transformation |
+| DS04 | Learn inventory/ability GUI, mana bar, native skill controls and raw XP vs XP levels | O menu and first cast |
+| DS05 | Read chosen species' actual diet, eat a suitable raw food; compare native special foods and TMM nutrition | O hunger; no legacy raw/charred reward incentive |
+| DS06 | Find a suitable mob, collect Heart Element/Shard | A collect_heart_from_monster |
+| DS07 | Craft Weak Dragon Heart; use eligible growth input | I then O size changes |
+| DS08 | Reach young stage, observe growth and claw upgrade | A be_young_dragon |
+| DS09 | Craft Elder Dragon Heart, use it or grow naturally | I / O |
+| DS10 | Reach adult stage, see body size and health/reach | A be_adult_dragon |
+| DS11 | Optional craft/use Star Bone to reduce size | I / O size decrease |
+| DS12 | Optional Star Heart stop natural growth | A stop_natural_growth |
+| DS13 | Rest on treasure and expand hoard, see health recovery | A sleep_on_treasure, sleep_on_hoard, sleep_on_massive_hoard |
+| DS14 | Purchase one species Magic rank using raw XP, observe pool; downgrade optionally | P ability rank; O |
+| DS15 | Retain XP levels to improve native breath; note rank may decrease after spending XP | P / O |
+| DS16 | Craft matching Source of Magic; fuel, bathe, cast while buffed | I / O Source of Magic effect |
+| DS17 | Locate/use native Primordial Anchor, ender pearl fuel, only if appropriate to native stage and dimension access | A find_end_platform / O flight flag |
+| DS18 | Find End platform chest, obtain/use Flight Grant if needed and Spin Grant | I / P flag; O |
+| DS19 | Spread wings, safely take off, land; learn hunger/collision constraints | O / P flight, no creative-mode proxy |
+| DS20 | Demonstrate spin in valid medium, understand cooldown | O native spin |
+| DS21 | Craft/activate Dragon Beacon using species activator, buy effects for 60 XP | A change_beacon / O actual buff |
+| DS22 | Place Dragon Memory Block underneath, observe free area effects | A use_memory_block |
+| DS23 | Optional obtain/visit all three beacon variants; buy each effect without requiring species swap | A get_all_beacons if actual criteria met |
+| DS24 | Obtain Dragon Soul, save/reapply form only if player chooses; explain Exhausted Soul and Empowered Soul | A use_dragon_soul; not compulsory path reset |
+| DS25C | Cave: mine stone/ore with native claws, then observe size-dependent upgrades | O harvesting |
+| DS26C | Cave: cast Nether Breath, observe fire, respect environment and claims | O |
+| DS27C | Cave: learn Fireball and practice on appropriate targets | O |
+| DS28C | Cave: Furnace Heat on dropped smeltable input, collect output | O actual smelting |
+| DS29C | Cave: Lava Vision and Lava Swimming; safe lava route | A cave/swim_in_lava / O |
+| DS30C | Cave: Sturdy Skin/Friendly Fire with allies, Magic/Athletics/Burn upgrades | O buffs / P rank |
+| DS31C | Cave: manage rain/water/cold penalty, Contrast Shower; no water immunity assumption | A cave/water_safety / O |
+| DS25F | Forest: use axe claws, upgrade at growth stages | O |
+| DS26F | Forest: toxic breath and Spike target practice | O |
+| DS27F | Forest: cast Sun Breath on crop; optionally potato mutation/soil conversion | A forest/poisonous_potato / O growth |
+| DS28F | Forest: Hunter camouflage and Inspiration allied Haste | O |
+| DS29F | Forest: Magic/Athletics and Cliffhanger safe-fall upgrades | P / O |
+| DS30F | Forest: avoid darkness Stress with light and native mitigation; thorn immunity | A forest/prevent_darkness_penalty, forest/stand_on_sweet_berries |
+| DS25S | Sea: shovel claws, Amphibious and Diver; harvest underwater | O |
+| DS26S | Sea: Storm Breath and Ball Lightning; demonstrate electrical effects safely | O |
+| DS27S | Sea: Sea Eyes and Ore Glow, mine actual revealed ore | O |
+| DS28S | Sea: Soul Revelation on eligible kill, compare native XP (not MXP) | O |
+| DS29S | Sea: Magic/Athletics/Spectral Impact upgrades | P / O |
+| DS30S | Sea: maintain hydration, water/rain/ice/snow and Sea Peace; Nether is optional | A sea/rain_dancing, sea/peace_in_nether / O |
+| DS32 | Chosen species only: master its native paid passives and see level-dependent abilities separately | A species/master_all_passives; P |
+| DS33 | Human/optional exploration: find overworld, Nether and End structure routes | A respective find_* |
+| DS34 | Dragon Rider Workbench, establish native profession/trade | A light/dragon_rider_workbench; O trade |
+| DS35 | Light key and vault, obtain matching upgrade template | A light/collect_key, light/open_vault |
+| DS36 | Smith Light piece/full set, explain Kindness and Hunter Omen restriction | A light/get_armor_item, light/get_armor_set |
+| DS37 | Separate Dark optional branch: hunter omen, key/vault, obtain Dark template | A dark/affected_by_hunter_omen, dark/collect_key, dark/open_vault |
+| DS38 | Smith Dark armor, explain Outlaw and Animal Peace restriction | A dark/get_armor_item, dark/get_armor_set |
+| DS39 | Separate Hunter faction: collect key, open vault, upgrade partisan and promotion | A hunter/collect_key, hunter/open_vault, hunter/promotion |
+| DS40 | Demonstrate bolas on appropriate target, species/human pressure plates/doors | A hunter/fire_bolas / O |
+| DS41 | Optional late TMM Dracolich informational link to Lich chapter; one provider only, no death requirement | P verified transformation, separate implementation |
+
+Native research supports these 53 teaching rows (24 shared + 7 Cave + 6 Forest + 6 Sea + 10 closing rows). IDs are editorial not quest GUIDs. Use native advancements only after downstream criterion check; O/P where possession cannot prove mechanic. Reward proposal: small thematic ordinary materials or modest appropriate XP after quest balance review; do not duplicate expensive gate items, free resurrection, repeated flight grant or bypass graduation.
+
+### 10.6 Final axis dispositions and boundary
+
+Section 6 contains the 29-axis index. Resolve prior unknowns: storage = limited dedicated Source one-slot fuel / Dragon Soul character state, not general storage; logistics = limited ground-item fuel insertion, no routing network found; ore_generation = no normal native generator confirmed; permanent_pets = no independent creation/taming system confirmed (allied buffs do not create pets); temporary_pets = no normal species summon (test only); death_respawn = limited state/effect preservation and configurable hook, no default death save or grave. No additional independent industry/construction machine inferred. Native systems and numerical ceilings, gate recipes and teaching map are documented to owner-required depth. Remaining precision (exact village trade prices/gear proc ordering, every minor loot table, some conditional effect amplifiers) and actual loaded TMM settings are not completion gates; no claim of exhaustive reference manual. Cross-mod diet, custom modifier stack and death listener sequencing belong to downstream existing work, not fresh native QA. Source/JAR evidence sufficient for native quest-source-ready scope. Separate evaluation in dragon-survival-evaluation.md. No JAR redistribution; no tests/builds/quest edits. 
