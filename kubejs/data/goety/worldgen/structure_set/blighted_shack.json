@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 1765432345,
+    "separation": 20,
+    "spacing": 60,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "goety:blighted_shack",
+      "weight": 1
+    }
+  ]
+}

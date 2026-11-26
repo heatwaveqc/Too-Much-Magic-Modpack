@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 381629534,
+    "separation": 12,
+    "spacing": 24,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "astralsorcery:column",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "placement": {
+    "salt": 12121818,
+    "separation": 18,
+    "spacing": 26,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "apotheosis:tower_leaf",
+      "weight": 1
+    },
+    {
+      "structure": "apotheosis:tower_main",
+      "weight": 1
+    },
+    {
+      "structure": "apotheosis:tower_sand",
+      "weight": 1
+    },
+    {
+      "structure": "apotheosis:tower_spruce",
+      "weight": 1
+    }
+  ]
+}

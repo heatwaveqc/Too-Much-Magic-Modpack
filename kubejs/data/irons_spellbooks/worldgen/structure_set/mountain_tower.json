@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 194767080,
+    "separation": 33,
+    "spacing": 45,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "irons_spellbooks:mountain_tower",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 467108394,
+    "separation": 12,
+    "spacing": 16,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "graveyard:ruins",
+      "weight": 1
+    }
+  ]
+}
