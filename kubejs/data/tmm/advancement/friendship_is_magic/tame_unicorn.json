@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "tame_unicorn": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unicornacademy:unicorn"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tame_unicorn"
+    ]
+  ]
+}

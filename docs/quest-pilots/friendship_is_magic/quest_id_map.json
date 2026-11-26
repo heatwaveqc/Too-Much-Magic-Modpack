@@ -1,0 +1,132 @@
+{
+  "chapter_id": "544D7A0100000000",
+  "image_id": "544D7A0200000000",
+  "quests": {
+    "UA01": {
+      "quest_id": "544D7A0300000001",
+      "task_id": "544D7A0400000001",
+      "xp_reward_id": "544D7A0500000001",
+      "item_reward_id": "544D7A0600000001"
+    },
+    "UA02": {
+      "quest_id": "544D7A0300000002",
+      "task_id": "544D7A0400000002",
+      "xp_reward_id": "544D7A0500000002",
+      "item_reward_id": "544D7A0600000002"
+    },
+    "UA03": {
+      "quest_id": "544D7A0300000003",
+      "task_id": "544D7A0400000003",
+      "xp_reward_id": "544D7A0500000003",
+      "item_reward_id": "544D7A0600000003"
+    },
+    "UA04": {
+      "quest_id": "544D7A0300000004",
+      "task_id": "544D7A0400000004",
+      "xp_reward_id": "544D7A0500000004",
+      "item_reward_id": "544D7A0600000004"
+    },
+    "UA05": {
+      "quest_id": "544D7A0300000005",
+      "task_id": "544D7A0400000005",
+      "xp_reward_id": "544D7A0500000005",
+      "item_reward_id": "544D7A0600000005"
+    },
+    "UA06": {
+      "quest_id": "544D7A0300000006",
+      "task_id": "544D7A0400000006",
+      "xp_reward_id": "544D7A0500000006",
+      "item_reward_id": "544D7A0600000006"
+    },
+    "UA07": {
+      "quest_id": "544D7A0300000007",
+      "task_id": "544D7A0400000007",
+      "xp_reward_id": "544D7A0500000007",
+      "item_reward_id": "544D7A0600000007"
+    },
+    "UA08": {
+      "quest_id": "544D7A0300000008",
+      "task_id": "544D7A0400000008",
+      "xp_reward_id": "544D7A0500000008",
+      "item_reward_id": "544D7A0600000008"
+    },
+    "UA09": {
+      "quest_id": "544D7A0300000009",
+      "task_id": "544D7A0400000009",
+      "xp_reward_id": "544D7A0500000009",
+      "item_reward_id": "544D7A0600000009"
+    },
+    "UA10": {
+      "quest_id": "544D7A030000000A",
+      "task_id": "544D7A040000000A",
+      "xp_reward_id": "544D7A050000000A",
+      "item_reward_id": "544D7A060000000A"
+    },
+    "UA11": {
+      "quest_id": "544D7A030000000B",
+      "task_id": "544D7A040000000B",
+      "xp_reward_id": "544D7A050000000B",
+      "item_reward_id": "544D7A060000000B"
+    },
+    "UA12": {
+      "quest_id": "544D7A030000000C",
+      "task_id": "544D7A040000000C",
+      "xp_reward_id": "544D7A050000000C",
+      "item_reward_id": "544D7A060000000C"
+    },
+    "UA13": {
+      "quest_id": "544D7A030000000D",
+      "task_id": "544D7A040000000D",
+      "xp_reward_id": "544D7A050000000D",
+      "item_reward_id": "544D7A060000000D"
+    },
+    "UA14": {
+      "quest_id": "544D7A030000000E",
+      "task_id": "544D7A040000000E",
+      "xp_reward_id": "544D7A050000000E",
+      "item_reward_id": "544D7A060000000E"
+    },
+    "UA15": {
+      "quest_id": "544D7A030000000F",
+      "task_id": "544D7A040000000F",
+      "xp_reward_id": "544D7A050000000F",
+      "item_reward_id": "544D7A060000000F"
+    },
+    "UA16": {
+      "quest_id": "544D7A0300000010",
+      "task_id": "544D7A0400000010",
+      "xp_reward_id": "544D7A0500000010",
+      "item_reward_id": "544D7A0600000010"
+    },
+    "UA17": {
+      "quest_id": "544D7A0300000011",
+      "task_id": "544D7A0400000011",
+      "xp_reward_id": "544D7A0500000011",
+      "item_reward_id": "544D7A0600000011"
+    },
+    "UA18": {
+      "quest_id": "544D7A0300000012",
+      "task_id": "544D7A0400000012",
+      "xp_reward_id": "544D7A0500000012",
+      "item_reward_id": "544D7A0600000012"
+    },
+    "UA19": {
+      "quest_id": "544D7A0300000013",
+      "task_id": "544D7A0400000013",
+      "xp_reward_id": "544D7A0500000013",
+      "item_reward_id": "544D7A0600000013"
+    },
+    "UA20": {
+      "quest_id": "544D7A0300000014",
+      "task_id": "544D7A0400000014",
+      "xp_reward_id": "544D7A0500000014",
+      "item_reward_id": "544D7A0600000014"
+    },
+    "UA21": {
+      "quest_id": "544D7A0300000015",
+      "task_id": "544D7A0400000015",
+      "xp_reward_id": "544D7A0500000015",
+      "item_reward_id": "544D7A0600000015"
+    }
+  }
+}

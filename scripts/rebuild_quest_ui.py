@@ -21,6 +21,13 @@ except ModuleNotFoundError as exc:
         raise
     from quest_text import dump_quest_text_list, quote_quest_text, validate_quest_locale
 
+try:
+    from scripts.build_friendship_quest import load as load_friendship, render as render_friendship
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from build_friendship_quest import load as load_friendship, render as render_friendship
+
 ROOT = Path(__file__).resolve().parents[1]
 QUESTDIR = ROOT / "config/ftbquests/quests"
 SPEC = json.loads((ROOT / "manifest/quest_chapters.json").read_text(encoding="utf-8"))
@@ -256,10 +263,14 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     # Theurgy pilot positions are first-class source; never flatten its branching graph.
     for node in json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
         put("Theurgy", node["title"], *node["position"])
+    companion, _, _ = load_friendship()
+    for node in companion["quests"]:
+        put(companion["chapter"], node["title"], *node["position"])
     return result
 
 
 SUBTITLE = {
+    "Friendship is Magic": "Unicorn Academy - a guide to bonded magic",
     "Theurgy": "Hermetica, alchemical vessels, Niter, Reformation, and mercurial logistics.",
     "Goety": "Dark arts, soul rituals and summoning; see Skills & Factions for lichdom.",
     "Just Another Witchery Remake": "Witchcraft and Forbidden Magic rituals; see Skills & Factions for character transformations.",
@@ -314,7 +325,7 @@ def rewrite_quest_block(block: str, id_to_chapter: dict, positions: dict) -> tup
         item = BY_AUTHOR.get((chapter, title))
         if item is None or not isinstance(item.get("description"), str):
             raise ValueError(f"Missing authored quest description: {chapter} / {title}")
-        description = [item["description"]]
+        description = item["description"].split("\n\n") if chapter == "Friendship is Magic" else [item["description"]]
     else:
         title = "Chapter Overview"
         description = [
@@ -362,7 +373,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
         regex = re.compile(r'(file = "' + re.escape(key) + r'"\nhash = ")[0-9a-f]+(")')
         if regex.search(index):
             index = regex.sub(lambda m: m.group(1) + value + m.group(2), index, count=1)
-        elif key.endswith("/lang/en_us.snbt") or key == "config/ftbquests/quests/chapters/alcohol_is_magic.snbt":
+        elif key.endswith("/lang/en_us.snbt") or key in {"config/ftbquests/quests/chapters/alcohol_is_magic.snbt", "config/ftbquests/quests/chapters/friendship_is_magic.snbt"}:
             index += f'\n[[files]]\nfile = "{key}"\nhash = "{value}"\n'
         else:
             raise ValueError(f"Packwiz omitted existing config file: {key}")
@@ -380,6 +391,7 @@ def update_packwiz(changed: dict[Path, str]) -> None:
 
 
 def main() -> None:
+    companion, companion_ids, companion_meta = load_friendship()
     positions = layout()
     changes: dict[Path, str] = {}
     all_quest_translations: list[str] = []
@@ -389,7 +401,8 @@ def main() -> None:
     intro_count = 0
     for chapter in SPEC["chapters"]:
         chapter_path = QUESTDIR / "chapters" / chapter["filename"]
-        original = chapter_path.read_text(encoding="utf-8")
+        original = (render_friendship(companion, companion_ids, companion_meta)
+                    if chapter["name"] == companion["chapter"] else chapter_path.read_text(encoding="utf-8"))
         matches = list(BLOCK.finditer(original))
         if not matches:
             raise ValueError(f"No quest objects in {chapter['name']}")
@@ -427,7 +440,7 @@ def main() -> None:
         changes[chapter_path] = original
         all_quest_translations.extend(translations)
 
-    if len(seen) != 277 or intro_count != 239:
+    if len(seen) != 277 + len(companion["quests"]) or intro_count != 239 + len(companion["quests"]):
         raise ValueError(f"Expected 277 objects / 239 authored, got {len(seen)} / {intro_count}")
     chapter_translations = []
     group_translations = []
@@ -440,6 +453,7 @@ def main() -> None:
         group_translations.append(f'\tchapter_group.{group["id"]}.title: {q(group["name"])}')
     # Custom task titles must be emitted into the FTB localization table.
     task_translations = ['\ttask.544D4D1200000001.title: "Any Log or Stem"']
+    task_translations += [f'\ttask.{companion_ids["quests"][n["key"]]["task_id"]}.title: {q(n["task_label"])}' for n in companion["quests"]]
     housing = json.loads((ROOT / "manifest/starter_home_choices.json").read_text(encoding="utf-8"))
     housing_translations = [
         f'\treward_table.{housing["table_id"]}.title: {q(housing["title"])}',

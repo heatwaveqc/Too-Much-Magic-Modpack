@@ -21,7 +21,7 @@
     {
       "name": "Exploration & Combat",
       "id": "544D104000000000",
-      "count": 7
+      "count": 8
     },
     {
       "name": "Endgame",
@@ -666,6 +666,21 @@
       ],
       "overview_quest_id": "544D304000700001",
       "overview_task_id": "544D404000700001"
+    },
+    {
+      "category": "Exploration & Combat",
+      "group_id": "544D104000000000",
+      "chapter_id": "544D7A0100000000",
+      "name": "Friendship is Magic",
+      "filename": "friendship_is_magic.snbt",
+      "order_index": 7,
+      "icon": "unicornacademy:fairy_gemstone",
+      "mod_ids": [
+        "unicorn-academy-bonded-magic-unofficial"
+      ],
+      "overview_quest_id": "544D7A0300000001",
+      "overview_task_id": "544D7A0400000001",
+      "source_manifest": "manifest/friendship_is_magic_quest_pilot.json"
     },
     {
       "category": "Endgame",

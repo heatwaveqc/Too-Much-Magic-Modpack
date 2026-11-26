@@ -4731,6 +4731,542 @@
       "prerequisites": [
         "Reform with a Real Target Sample"
       ]
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "All Aboard!",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the ferry travel guide"
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:lead",
+        "count": 2,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA01",
+      "prerequisites": [],
+      "quest_id": "544D7A0300000001",
+      "task_id": "544D7A0400000001",
+      "xp_reward_id": "544D7A0500000001",
+      "item_reward_id": "544D7A0600000001"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Whole New Island",
+      "criterion": {
+        "type": "dimension",
+        "id": "unicornacademy:unicorn_island"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:lantern",
+        "count": 2,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA02",
+      "prerequisites": [],
+      "quest_id": "544D7A0300000002",
+      "task_id": "544D7A0400000002",
+      "xp_reward_id": "544D7A0500000002",
+      "item_reward_id": "544D7A0600000002"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Meet the Herd",
+      "criterion": {
+        "type": "observation",
+        "observation_type": "entity_type",
+        "to_observe": "unicornacademy:unicorn",
+        "timer": 0
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:apple",
+        "count": 3,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA03",
+      "prerequisites": [
+        "A Whole New Island"
+      ],
+      "quest_id": "544D7A0300000003",
+      "task_id": "544D7A0400000003",
+      "xp_reward_id": "544D7A0500000003",
+      "item_reward_id": "544D7A0600000003"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Friend of My Own",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/tame_unicorn",
+        "source": "Vanilla minecraft:tame_animal filtered to unicornacademy:unicorn; exact SWEM tameWithName trigger confirmed in Atlas; actual unicorn inheritance/credit test pending."
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:name_tag",
+        "count": 1,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA04",
+      "prerequisites": [
+        "Meet the Herd"
+      ],
+      "quest_id": "544D7A0300000004",
+      "task_id": "544D7A0400000004",
+      "xp_reward_id": "544D7A0500000004",
+      "item_reward_id": "544D7A0600000004"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Open Your Heart",
+      "criterion": {
+        "type": "item",
+        "id": "swem:western_saddle_purple",
+        "count": 1,
+        "consume": false
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:leather",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA05",
+      "prerequisites": [
+        "A Friend of My Own"
+      ],
+      "quest_id": "544D7A0300000005",
+      "task_id": "544D7A0400000005",
+      "xp_reward_id": "544D7A0500000005",
+      "item_reward_id": "544D7A0600000005"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Brushing Up",
+      "criterion": {
+        "type": "item",
+        "id": "swem:brush",
+        "count": 1,
+        "consume": false
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:white_wool",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA06",
+      "prerequisites": [
+        "A Friend of My Own"
+      ],
+      "quest_id": "544D7A0300000006",
+      "task_id": "544D7A0400000006",
+      "xp_reward_id": "544D7A0500000006",
+      "item_reward_id": "544D7A0600000006"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Berry Special Treat",
+      "criterion": {
+        "type": "item",
+        "id": "unicornacademy:sky_berries",
+        "count": 1,
+        "consume": false
+      },
+      "reward": {
+        "xp": 10,
+        "item": "minecraft:flower_pot",
+        "count": 2,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA07",
+      "prerequisites": [
+        "A Friend of My Own"
+      ],
+      "quest_id": "544D7A0300000007",
+      "task_id": "544D7A0400000007",
+      "xp_reward_id": "544D7A0500000007",
+      "item_reward_id": "544D7A0600000007"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Happy Trails",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/ride_unicorn",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:oak_fence",
+        "count": 8,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA08",
+      "prerequisites": [
+        "Open Your Heart"
+      ],
+      "quest_id": "544D7A0300000008",
+      "task_id": "544D7A0400000008",
+      "xp_reward_id": "544D7A0500000008",
+      "item_reward_id": "544D7A0600000008"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "The Magic Awakens",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/care_for_unicorn",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending. Care interaction proxy, not bond-level detection."
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:pink_petals",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA09",
+      "prerequisites": [
+        "A Friend of My Own"
+      ],
+      "quest_id": "544D7A0300000009",
+      "task_id": "544D7A0400000009",
+      "xp_reward_id": "544D7A0500000009",
+      "item_reward_id": "544D7A0600000009"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "My First Magic",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the casting controls and practice guide"
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:soul_torch",
+        "count": 8,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA10",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000A",
+      "task_id": "544D7A040000000A",
+      "xp_reward_id": "544D7A050000000A",
+      "item_reward_id": "544D7A060000000A"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Little Light",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the light magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:yellow_dye",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA11",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000B",
+      "task_id": "544D7A040000000B",
+      "xp_reward_id": "544D7A050000000B",
+      "item_reward_id": "544D7A060000000B"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Green Magic",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the plant magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:moss_block",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA12",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000C",
+      "task_id": "544D7A040000000C",
+      "xp_reward_id": "544D7A050000000C",
+      "item_reward_id": "544D7A060000000C"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Let It Snow",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the ice magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:packed_ice",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA13",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000D",
+      "task_id": "544D7A040000000D",
+      "xp_reward_id": "544D7A050000000D",
+      "item_reward_id": "544D7A060000000D"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Under the Sea",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the water magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:prismarine_shard",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA14",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000E",
+      "task_id": "544D7A040000000E",
+      "xp_reward_id": "544D7A050000000E",
+      "item_reward_id": "544D7A060000000E"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Some Like It Hot",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the fire magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:red_dye",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA15",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A030000000F",
+      "task_id": "544D7A040000000F",
+      "xp_reward_id": "544D7A050000000F",
+      "item_reward_id": "544D7A060000000F"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Riding the Storm",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the weather magic guide"
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:cyan_dye",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA16",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A0300000010",
+      "task_id": "544D7A0400000010",
+      "xp_reward_id": "544D7A0500000010",
+      "item_reward_id": "544D7A0600000010"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Bond Beyond Words",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the bond level 8 guide"
+      },
+      "reward": {
+        "xp": 25,
+        "item": "minecraft:purple_carpet",
+        "count": 6,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA17",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A0300000011",
+      "task_id": "544D7A0400000011",
+      "xp_reward_id": "544D7A0500000011",
+      "item_reward_id": "544D7A0600000011"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "A Spark of Fairy Magic",
+      "criterion": {
+        "type": "item",
+        "id": "unicornacademy:fairy_gemstone",
+        "count": 1,
+        "consume": false
+      },
+      "reward": {
+        "xp": 20,
+        "item": "minecraft:magenta_stained_glass",
+        "count": 4,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA18",
+      "prerequisites": [
+        "A Bond Beyond Words"
+      ],
+      "quest_id": "544D7A0300000012",
+      "task_id": "544D7A0400000012",
+      "xp_reward_id": "544D7A0500000012",
+      "item_reward_id": "544D7A0600000012"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Spread Your Wings",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/ride_with_fairy_wings",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
+      },
+      "reward": {
+        "xp": 30,
+        "item": "minecraft:light_blue_wool",
+        "count": 8,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA19",
+      "prerequisites": [
+        "A Spark of Fairy Magic"
+      ],
+      "quest_id": "544D7A0300000013",
+      "task_id": "544D7A0400000013",
+      "xp_reward_id": "544D7A0500000013",
+      "item_reward_id": "544D7A0600000013"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Friends Forever",
+      "criterion": {
+        "type": "checkmark",
+        "label": "Read the maximum bond guide"
+      },
+      "reward": {
+        "xp": 35,
+        "item": "minecraft:pink_wool",
+        "count": 8,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": false,
+      "source_key": "UA20",
+      "prerequisites": [
+        "The Magic Awakens"
+      ],
+      "quest_id": "544D7A0300000014",
+      "task_id": "544D7A0400000014",
+      "xp_reward_id": "544D7A0500000014",
+      "item_reward_id": "544D7A0600000014"
+    },
+    {
+      "chapter": "Friendship is Magic",
+      "title": "Homeward Bound",
+      "criterion": {
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/return_from_island",
+        "source": "Minecraft 1.21.1 native advancement; data-only; loaded registry and credit pending."
+      },
+      "reward": {
+        "xp": 15,
+        "item": "minecraft:light_blue_carpet",
+        "count": 6,
+        "team_reward": false,
+        "autoclaim": false
+      },
+      "depends": null,
+      "optional": true,
+      "source_key": "UA21",
+      "prerequisites": [
+        "A Whole New Island"
+      ],
+      "quest_id": "544D7A0300000015",
+      "task_id": "544D7A0400000015",
+      "xp_reward_id": "544D7A0500000015",
+      "item_reward_id": "544D7A0600000015"
     }
   ]
 }

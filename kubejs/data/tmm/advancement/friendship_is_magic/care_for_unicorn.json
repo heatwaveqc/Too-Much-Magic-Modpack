@@ -1,0 +1,46 @@
+{
+  "criteria": {
+    "brush": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": "swem:brush"
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unicornacademy:unicorn"
+            }
+          }
+        ]
+      }
+    },
+    "berry": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": "unicornacademy:sky_berries"
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unicornacademy:unicorn"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "brush"
+    ],
+    [
+      "berry"
+    ]
+  ]
+}

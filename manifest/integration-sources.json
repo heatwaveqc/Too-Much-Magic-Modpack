@@ -887,6 +887,28 @@
       "merged_from": "feature/cozy-pastry-pin-resolution-20261125",
       "merged_pr": 771,
       "note": "Owner-approved #770; exact donor pin blobs copied from audited candidate paths to mods/; no new required libraries, QA pending."
+    },
+    {
+      "name": "friendship-is-magic-chapter",
+      "branch": "test/full-integration",
+      "paths": [
+        "config/ftbquests/quests/chapters/friendship_is_magic.snbt",
+        "kubejs/data/tmm/advancement/friendship_is_magic/care_for_unicorn.json",
+        "kubejs/data/tmm/advancement/friendship_is_magic/return_from_island.json",
+        "kubejs/data/tmm/advancement/friendship_is_magic/ride_unicorn.json",
+        "kubejs/data/tmm/advancement/friendship_is_magic/ride_with_fairy_wings.json",
+        "kubejs/data/tmm/advancement/friendship_is_magic/tame_unicorn.json",
+        "kubejs/assets/tmm/textures/questpics/friendship_is_magic/background.png",
+        "manifest/friendship_is_magic_quest_pilot.json",
+        "scripts/build_friendship_quest.py",
+        "manifest/quest_chapters.json"
+      ],
+      "mode": "runtime-qa-staging",
+      "source_commit": "0d320445fda2d0aa20b975bdbadd6f8f1992395d",
+      "integrated_into_baseline": true,
+      "merged_from": "feature/quests-friendship-is-magic-20261125",
+      "merged_pr": 755,
+      "note": "Owner approves integration with manual UA17/UA20 checkmarks, UA09 care proxy; canonical authored renderer, global IDs, chapter/locale/Packwiz, five native advancement resources, original artwork. Shared generator/ledger remain baseline-owned. #768 actual bond automation deferred; #742 Newbie access, legal optional gemstone acquisition, ferry round trip and visual/client acceptance remain. No progression engine changes."
     }
   ],
   "covered_by_baseline": {
