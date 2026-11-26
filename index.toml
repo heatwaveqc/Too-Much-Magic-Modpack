@@ -381,6 +381,26 @@ file = "kubejs/assets/tmm/textures/questpics/friendship_is_magic/background.png"
 hash = "307e155f17280405ae9ccbdf694a0cab8b919b7fb72d379fc1184cb50af2c819"
 
 [[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/niter.png"
+hash = "398add376f5f8d46566a8fce642387cd7c4967b6f70091674cbfc9bee1d81213"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/reformation.png"
+hash = "1952a88eb207ee49a6ad10f17cd612530539cd353e55c77afcb86c4266ce1b8c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/title.png"
+hash = "9b6d61d790006bda18df6adda9eec450a746c0be263bbcd9a9d5f3be2119ad6c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/vessels.png"
+hash = "15fa710162c9c8407755d2410f4da7f1cdaced8f4fe9f59b1b154ee70199c80c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/theurgy/wires.png"
+hash = "3db6bfa79693ce47a6cb408204b0f47013f4bba17284f1adc6226e4fe7882c4c"
+
+[[files]]
 file = "kubejs/data/apotheosis/worldgen/structure_set/towers.json"
 hash = "8fe98766b62785cbe217864fe235745ecaae5791249b61af4d624c218e54e7a3"
 
@@ -3574,4 +3594,3 @@ metafile = true
 file = "resourcepacks/cathobb-unified-64.pw.toml"
 hash = "4e414e3b03da6cbd0c30f9562686e461b03790765ef1b733137190e381734f01"
 metafile = true
-
