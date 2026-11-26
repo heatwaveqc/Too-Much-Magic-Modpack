@@ -210,3 +210,7 @@ Join checks use the existing server-only `ProgressionApi.join` veto and the
 native observation snapshots from #470. **Native-form acquisition interception is wired in the stacked #515 source branch** and the separate Transformations module is source-internalized in stacked PR #515; its deployed JAR still awaits integration removal. Integration remains gated on that work and optional-mod,
 death-order, one-JAR, client, and gameplay verification. No additional button
 or standalone skill is introduced.
+
+## Player-controlled activation keybind policy (owner decision Nov 25)
+
+Every player-selectable toggle must support a configurable individual keybinding. Data-defined `activation` nodes (toggle and timed) expose a generic Bind key control in the Progression screen; bindings are client preferences, stable by exact path+skill IDs, unbound by default, persisted in the client config, and sent through the same server-owned SkillActivation request as the menu button. No per-skill Java registration or client authority over ownership, costs, cooldown or exclusive groups. Existing legacy Controls bindings remain available; duplicate/conflicting native keys are rejected or suppressed until rebound. New datapack skills need no new Java key mapping, and server-supplied skill snapshots define the available UI. Client launch, persistence, keyboard conflicts and multiplayer acceptance remain required; generic bindings are configured in Progression, not injected into the vanilla Controls menu.
