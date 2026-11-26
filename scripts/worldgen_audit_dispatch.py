@@ -85,8 +85,7 @@ def execute(api, event, now, launcher_sha):
     check_active(api)
     api("actions/workflows/worldgen-audit-pilot.yml/dispatches", "POST",
         {"ref": "main", "inputs": {"authorized_build": "true",
-         "expected_launcher_sha": launcher_sha, "request_nonce": nonce,
-         **({"audit_mode": "vanilla"} if vanilla else {})}})
+         "expected_launcher_sha": launcher_sha, "request_nonce": nonce}})
     return nonce
 
 def main():
