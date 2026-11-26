@@ -1567,22 +1567,40 @@
         {
           "type": "attribute",
           "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
-          "per_rank": 5,
           "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "irons_spellbooks:max_mana",
-          "per_rank": 5,
           "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "psi:total_psi",
-          "per_rank": 50,
           "operation": "add_value",
+          "rank_values": [
+            990,
+            1980,
+            2970,
+            3960,
+            4950
+          ],
           "unarmored": true
         }
       ]
@@ -1599,29 +1617,53 @@
         {
           "type": "attribute",
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "per_rank": 0.2,
           "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "irons_spellbooks:mana_regen",
-          "per_rank": 0.1,
           "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "psi:regen",
-          "per_rank": 1,
           "operation": "add_value",
+          "rank_values": [
+            4.95,
+            9.9,
+            14.85,
+            19.8,
+            24.75
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "forbidden_arcanus:generic.aureal_regeneration",
-          "per_rank": 0.1,
           "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ],
           "unarmored": true
         }
       ]
@@ -1638,15 +1680,27 @@
         {
           "type": "attribute",
           "attribute": "goety:soul_discount",
-          "per_rank": 0.003,
           "operation": "add_value",
+          "rank_values": [
+            0.0594,
+            0.1188,
+            0.1782,
+            0.2376,
+            0.297
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "neovitae:sigil_cost_reduction",
-          "per_rank": 0.3,
           "operation": "add_value",
+          "rank_values": [
+            5.94,
+            11.88,
+            17.82,
+            23.76,
+            29.7
+          ],
           "unarmored": true
         }
       ]
@@ -1663,29 +1717,53 @@
         {
           "type": "attribute",
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "per_rank": 0.2,
           "operation": "add_value",
+          "rank_values": [
+            0.99,
+            1.98,
+            2.97,
+            3.96,
+            4.95
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "irons_spellbooks:spell_power",
-          "per_rank": 0.05,
           "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "goety:spell_potency",
-          "per_rank": 2,
           "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
           "unarmored": true
         },
         {
           "type": "attribute",
           "attribute": "eidolon_repraised:magic_power",
-          "per_rank": 0.05,
           "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
           "unarmored": true
         }
       ]

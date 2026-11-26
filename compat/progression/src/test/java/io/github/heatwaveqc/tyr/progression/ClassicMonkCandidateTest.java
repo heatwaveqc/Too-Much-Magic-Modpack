@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClassicMonkCandidateTest {
     private static final String MONK="tyr_progression:monk";
     private static final Path CANDIDATE=Path.of("design","tree-drafts","classic-monk-v1","monk.json");
-    private static Map<String,Set<String>> vanillaSurvey(){
+    static Map<String,Set<String>> vanillaSurvey(){
         return Map.of(
             "minecraft:wooden_pickaxe",Set.of("minecraft:stone"),
             "minecraft:stone_pickaxe",Set.of("minecraft:stone","minecraft:iron_ore","minecraft:copper_ore"),
@@ -35,6 +35,17 @@ class ClassicMonkCandidateTest {
         var gate=raw.getAsJsonObject("mastery_completion");
         var conditions=gate.getAsJsonObject("when").getAsJsonArray("conditions");
         Eligibility.parse(gate.get("when"));
+        try(var core=ClassicMonkCandidateTest.class.getClassLoader().getResourceAsStream("data/tyr_progression/tyr_progression/paths/core.json")){
+            assertNotNull(core);
+            var coreSkills=JsonParser.parseReader(new java.io.InputStreamReader(core,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject().getAsJsonArray("skills");
+            for(String family:new String[]{"reservoir","wellspring","thrift","potency"}){
+                var expected=java.util.stream.StreamSupport.stream(coreSkills.spliterator(),false).map(x->x.getAsJsonObject()).filter(x->x.get("id").getAsString().equals("tyr_progression:tmm_magic_"+family+"_1")).findFirst().orElseThrow();
+                var actual=java.util.stream.StreamSupport.stream(raw.getAsJsonArray("skills").spliterator(),false).map(x->x.getAsJsonObject()).filter(x->x.get("id").getAsString().equals("tyr_progression:classic/inner_"+family)).findFirst().orElseThrow();
+                var effects=actual.getAsJsonArray("effects").deepCopy();
+                for(var e:effects){assertTrue(e.getAsJsonObject().remove("unarmored").getAsBoolean());}
+                assertEquals(expected.getAsJsonArray("effects"),effects,"Core schedule parity: "+family);
+            }
+        }
         int rankSum=0;boolean dragon=false,wither=false;
         var skillIds=new java.util.HashSet<String>();
         for(var el:conditions){
@@ -46,7 +57,10 @@ class ClassicMonkCandidateTest {
                 rankSum+=skill.maxRank();
             }
             if(type.equals("advancement")&&id.equals("minecraft:end/kill_dragon"))dragon=true;
-            if(type.equals("milestone")&&id.equals("tyr_progression:classic/wither_trial"))wither=true;
+            if(type.equals("milestone")){
+                assertTrue(path.milestones().stream().anyMatch(m->m.id().equals(id)),"Missing mastery receipt "+id);
+                if(id.equals("tyr_progression:classic/wither_trial"))wither=true;
+            }
         }
         assertEquals(125,rankSum);assertTrue(dragon&&wither);
         assertTrue(path.milestones().stream().anyMatch(m->m.id().equals(gate.get("milestone").getAsString())&&m.points()==0&&m.xp()==0));
