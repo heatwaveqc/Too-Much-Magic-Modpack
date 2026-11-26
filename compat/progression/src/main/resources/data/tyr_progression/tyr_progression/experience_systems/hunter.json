@@ -81,7 +81,7 @@
     "exclude_tag": "tyr_progression:hunt_excluded",
     "specialty_group": "tyr_progression:hunter_favored_enemy",
     "specialty_path": "tyr_progression:hunter",
-    "mxp_kill_per_hp": 200,
+    "mxp_kill_per_hp": 40,
     "mxp_potion_base_xp": 100
   }
 }
