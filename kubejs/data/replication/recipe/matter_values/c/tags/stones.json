@@ -1,0 +1,18 @@
+{
+  "type": "replication:matter_value",
+  "input": {
+    "type": "neoforge:difference",
+    "base": {
+      "tag": "c:stones"
+    },
+    "subtracted": {
+      "tag": "tmm:replication/stonecutter_outputs"
+    }
+  },
+  "matter": [
+    {
+      "type": "replication:earth",
+      "amount": 2.0
+    }
+  ]
+}
