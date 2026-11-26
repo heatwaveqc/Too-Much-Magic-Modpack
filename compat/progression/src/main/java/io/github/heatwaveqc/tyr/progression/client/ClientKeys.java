@@ -25,6 +25,7 @@ public final class ClientKeys {
     public static final KeyMapping TREASURE = key("treasure",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping GLIDE = key("glide",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping ORDEAL = key("ordeal",GLFW.GLFW_KEY_UNKNOWN);
+    public static final KeyMapping FEIGN_DEATH = key("feign_death",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping NIGHT_VISION=key("enhanced_night_vision",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping LAVA_VISION=key("lava_vision",GLFW.GLFW_KEY_UNKNOWN);
     public static final KeyMapping CHARM=key("charm",GLFW.GLFW_KEY_C);
@@ -41,10 +42,12 @@ public final class ClientKeys {
         event.register(TREASURE);
         event.register(GLIDE);
         event.register(ORDEAL);
+        event.register(FEIGN_DEATH);
         event.register(NIGHT_VISION);
         event.register(LAVA_VISION);
         event.register(CHARM);
         event.register(TAME);
+        NativeSkillKeys.register(event,FEIGN_DEATH);
     }
     @EventBusSubscriber(modid = ProgressionMod.MOD_ID,value = Dist.CLIENT)
     public static final class Game {
@@ -53,7 +56,7 @@ public final class ClientKeys {
         private static boolean nativeTaming;
         @SubscribeEvent public static void tick(ClientTickEvent.Post event) {
             Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.player == null) { lastPlayer=null; return; }
+            if (minecraft.player == null) { lastPlayer=null; NativeSkillKeys.tick(false); return; }
             // When the bindings coincide, keep the actual vanilla interaction pipeline.
             boolean nativeUse=!TAME.isUnbound() && TAME.getKey().equals(minecraft.options.keyUse.getKey())
                     && TAME.getKeyModifier()==minecraft.options.keyUse.getKeyModifier();
@@ -69,6 +72,8 @@ public final class ClientKeys {
             if (minecraft.screen != null) {
                 while(CHARM.consumeClick()){}
                 while(TAME.consumeClick()){}
+                while(FEIGN_DEATH.consumeClick()){}
+                NativeSkillKeys.tick(false);
                 return;
             }
             send(CHARM,"charm");
@@ -81,8 +86,15 @@ public final class ClientKeys {
             send(TREASURE,"treasure");
             send(GLIDE,"glide");
             send(ORDEAL,"ordeal");
+            send(FEIGN_DEATH,"feign_death");
             send(NIGHT_VISION,"enhanced_night_vision");
             send(LAVA_VISION,"lava_vision");
+            NativeSkillKeys.tick(minecraft.getConnection()!=null);
+        }
+        @SubscribeEvent public static void skillKey(net.neoforged.neoforge.client.event.InputEvent.Key event){
+            Minecraft mc=Minecraft.getInstance();
+            if(mc.player==null||mc.getConnection()==null||mc.screen!=null||event.getAction()!=GLFW.GLFW_PRESS)return;
+            SkillKeybindings.activate(event.getKey(),event.getModifiers());
         }
         private static void send(KeyMapping key,String action) {
             while (key.consumeClick()) PacketDistributor.sendToServer(new AbilityNetwork.Action(action));

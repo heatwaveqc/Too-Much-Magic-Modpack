@@ -39,6 +39,10 @@ Companion survey (native instructional research): [Unicorn Academy](mods/unicorn
 
 [Draconic Evolution and Replication](mods/endgame-infrastructure-evaluations.md), [Voidscape](mods/voidscape-evaluation.md), and [Relics / Artifacts / Reliquified Artifacts](mods/artifact-family-evaluation.md). These are dated, source-aligned provisional evaluations, not exact-JAR 29-axis research completion or gameplay acceptance.
 
+### Additional completed exact-binary dossiers
+
+[Dragon Survival](mods/dragon-survival.md) and [capability evaluation](mods/dragon-survival-evaluation.md); [Improvable Skills](mods/improvable-skills.md) and [capability evaluation](mods/improvable-skills-evaluation.md). Native research complete for scoped instructional mapping; effective TMM interactions and gameplay remain unverified.
+
 ## Apotheosis family — research COMPLETE
 
 [Four exact-JAR dossier, 29 axes and 51 representative lessons](mods/apotheosis.md): Adventure tiers, affix/gem optimization, Enchanting, Attributes, potion charms, Spawners, exact numeric checkpoints handed to Monk #721. Effective runtime cap and gearless tier policy remain separate. Next proposed Goety Cataclysm.

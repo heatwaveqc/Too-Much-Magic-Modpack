@@ -41,7 +41,7 @@ public final class MutationPowers {
             reconcile(p);
             int regen=amplifier(p,MobEffects.REGENERATION);
             var nativeRegen=p.getActiveEffectsMap().get(MobEffects.REGENERATION);
-            if(regen>=0&&(nativeRegen==null||nativeRegen.getAmplifier()<regen)
+            if(regen>=0&&!FeignDeath.active(p)&&(nativeRegen==null||nativeRegen.getAmplifier()<regen)
                 &&p.tickCount%MutationPowerPolicy.regenerationInterval(regen)==0&&p.getHealth()<p.getMaxHealth())
                 p.heal(1.0F);
             // Opted-in effects use the native periodic callback without adding a

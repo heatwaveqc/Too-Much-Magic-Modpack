@@ -48,9 +48,14 @@ public final class AbilityNetwork {
                     case "treasure" -> ClassAbilities.toggle(player,"treasure");
                     case "glide" -> ClassAbilities.toggle(player,"glide");
                     case "ordeal" -> ClassAbilities.toggle(player,"ordeal");
+                    case "feign_death" -> io.github.heatwaveqc.tyr.progression.runtime.FeignDeath.hotkey(player);
                     case "enhanced_night_vision","lava_vision" -> io.github.heatwaveqc.tyr.progression.runtime.VisionRuntime.toggle(player,action);
                     default -> false;
                 };
+                if(ok&&action.equals("feign_death")){
+                    player.displayClientMessage(Component.literal(io.github.heatwaveqc.tyr.progression.runtime.FeignDeath.active(player)?"Feign Death: on":"Feign Death: off"),true);
+                    return;
+                }
                 if (ok && !action.equals("blink") && !action.equals("charm") && !action.equals("tame"))
                     player.displayClientMessage(Component.literal(action + ": " +
                         (action.equals("enhanced_night_vision")||action.equals("lava_vision")?

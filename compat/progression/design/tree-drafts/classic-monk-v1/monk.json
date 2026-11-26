@@ -1,0 +1,2191 @@
+{
+  "schema": 1,
+  "xp_channel": "tyr_progression:mxp",
+  "exclusive_group": "",
+  "enrollment": "sunset",
+  "timed_enrollment": {
+    "dimension": "minecraft:overworld",
+    "start_time": 12000,
+    "end_time": 13000,
+    "ticks": 200,
+    "clear_sky": true,
+    "dry": true,
+    "empty_hand": true,
+    "unarmored": true,
+    "max_look_x": -0.7,
+    "max_abs_look_y": 0.45,
+    "completion_event": "tyr_progression:monk_first_sunset",
+    "label": "First Light",
+    "sunrise_start_time": 23000,
+    "sunrise_end_time": 1000,
+    "sunrise_min_look_x": 0.7
+  },
+  "mastery_stages": {
+    "system": "tyr_progression:mxp",
+    "points_per_stage": 50,
+    "max_stage": 20
+  },
+  "unified_mxp_sources": [
+    {
+      "system": "tyr_progression:mxp",
+      "source": "tyr_progression:monk_advancement",
+      "event": "advancement",
+      "target": "*",
+      "base_mxp": 100,
+      "once_per_target": true
+    },
+    {
+      "system": "tyr_progression:mxp",
+      "source": "tyr_progression:monk_animal_friendship",
+      "event": "animal_petted",
+      "target": "*",
+      "base_mxp": 10,
+      "once_per_target": false
+    }
+  ],
+  "training_mxp": {
+    "system": "tyr_progression:mxp",
+    "hardness": 35,
+    "sprint": 1,
+    "ordinary_kill_per_hp": 20,
+    "strict_fist_kill_per_hp": 100,
+    "strict_window_ticks": 6000,
+    "first_consumable": 100,
+    "meditative_food_fixed": 5,
+    "meditative_drink_fixed": 2,
+    "meditative_tag": "tyr_progression:meditative",
+    "discovery_replay": false
+  },
+  "challenge_hud": [
+    {
+      "id": "journey",
+      "title": "Monk's Journey"
+    },
+    {
+      "id": "harvesting",
+      "title": "Harvesting"
+    },
+    {
+      "id": "tools",
+      "title": "Earthly Arts"
+    },
+    {
+      "id": "magic",
+      "title": "Otherworldly Discoveries"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "tyr_progression:first_sunset",
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:monk_first_sunset",
+          "count": 1
+        }
+      ],
+      "xp": 0,
+      "points": 0
+    },
+    {
+      "id": "tyr_progression:classic/deep_breath",
+      "title": "Deep Breath",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "observed_trial",
+          "target": "tyr_progression:classic/deep_breath",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Remain submerged for 14 consecutive seconds"
+          }
+        ]
+      },
+      "observed_trial": {
+        "kind": "underwater",
+        "dimension": "minecraft:overworld",
+        "ticks": 280
+      }
+    },
+    {
+      "id": "tyr_progression:classic/aqua_trial",
+      "title": "Underwater Cultivation",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "submerged_barehand_harvest",
+          "target": "#tyr_progression:classic_mineable",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/deep_breath"
+      ],
+      "hud": {
+        "group": "harvesting",
+        "objectives": [
+          {
+            "text": "Harvest five eligible blocks barehanded and unarmored with your head underwater"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/animal_trial",
+      "title": "Animal Friendship",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "animal_petted_unique",
+          "target": "*",
+          "count": 20
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/deep_breath"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Befriend 20 different animals"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/arrow_trial",
+      "title": "Untouchable",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "arrow_dodged",
+          "target": "tyr_progression:classic/arrow_trial",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/animal_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Dodge five skeleton arrows without a damaging hit"
+          }
+        ]
+      },
+      "observed_trial": {
+        "kind": "arrow_dodge",
+        "dimension": "minecraft:overworld",
+        "shooter": "minecraft:skeleton",
+        "radius": 2.5
+      }
+    },
+    {
+      "id": "tyr_progression:classic/lunar_trial",
+      "title": "Lunar Meditation",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "observed_trial",
+          "target": "tyr_progression:classic/lunar_trial",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/arrow_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Face the moon from a boat for ten seconds"
+          }
+        ]
+      },
+      "observed_trial": {
+        "kind": "moon_boat",
+        "dimension": "minecraft:overworld",
+        "ticks": 200,
+        "look_cosine": 0.92
+      }
+    },
+    {
+      "id": "tyr_progression:classic/fire_trial",
+      "title": "Trial by Fire",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "observed_trial",
+          "target": "tyr_progression:classic/fire_trial",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/lunar_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Walk ten consecutive blocks through fire"
+          }
+        ]
+      },
+      "observed_trial": {
+        "kind": "fire_walk",
+        "dimension": "minecraft:overworld",
+        "distance": 10
+      }
+    },
+    {
+      "id": "tyr_progression:classic/creeper_trial",
+      "title": "Creeper Kiss",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:creeper_kissed",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/fire_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "A little kindness might defuse a dangerous situation"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/height_trial",
+      "title": "Leap of Faith",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "height_fall_trial",
+          "target": "tyr_progression:classic/height_trial",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/creeper_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Fall from world height to the depths and survive"
+          }
+        ]
+      },
+      "fall_trial": {
+        "dimension": "minecraft:overworld",
+        "start_y": 319,
+        "end_y": -59,
+        "distance": 379,
+        "advancement": "minecraft:adventure/fall_from_world_height",
+        "advancement_criterion": "fall_from_world_height"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/bedrock_trial",
+      "title": "Earthly Rest",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:bedrock_rest_completed",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/height_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Find a place to rest against the foundations of the world"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/blind_trial",
+      "title": "Beyond Sight",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:classic/blind_hostile_kill",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/bedrock_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Fight five hostile creatures barehanded while blind"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/wither_trial",
+      "title": "Conquer Death",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "strict_fist_victory",
+          "target": "minecraft:wither",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:classic/blind_trial"
+      ],
+      "hud": {
+        "group": "journey",
+        "objectives": [
+          {
+            "text": "Defeat a full-health Wither using only your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/wood_speed_trial",
+      "title": "Wooden Hands",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "#minecraft:logs",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "harvesting",
+        "objectives": [
+          {
+            "text": "Break five logs with your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/glass_trial",
+      "title": "Silk Touch",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "#tyr_progression:classic_glass",
+          "count": 5
+        }
+      ],
+      "after": [
+        "tyr_progression:harvest/b4fbdbe1-8118-3cb0-95a6-0ba04568502f"
+      ],
+      "hud": {
+        "group": "tools",
+        "objectives": [
+          {
+            "text": "Break five glass blocks or panes with your fists to unlock Silk Touch"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/shears_trial",
+      "title": "Shearing Hands",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "minecraft:cobweb",
+          "count": 20
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "tools",
+        "objectives": [
+          {
+            "text": "Break twenty cobwebs with your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/shovel_trial",
+      "title": "Earth Shaping",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "minecraft:dirt",
+          "count": 20
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "tools",
+        "objectives": [
+          {
+            "text": "Break twenty dirt blocks with your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/hoe_trial",
+      "title": "Cultivating Hands",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "#tyr_progression:classic_grass",
+          "count": 20
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "tools",
+        "objectives": [
+          {
+            "text": "Break twenty grass plants with your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/axe_trial",
+      "title": "Wood Shaping",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "barehand_block_break",
+          "target": "#minecraft:logs",
+          "count": 20
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "tools",
+        "objectives": [
+          {
+            "text": "Break twenty logs with your fists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/otherworld_trial",
+      "title": "Otherworld Sight",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "food_consumed",
+          "target": "occultism:datura",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "magic",
+        "objectives": [
+          {
+            "text": "Taste a Demon's Dream Fruit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/nether_trial",
+      "title": "Iesnium Palm",
+      "strict_order": true,
+      "notify_progress": true,
+      "criteria": [
+        {
+          "event": "dimension_entered",
+          "target": "minecraft:the_nether",
+          "count": 1
+        }
+      ],
+      "after": [
+        "tyr_progression:first_sunset"
+      ],
+      "hud": {
+        "group": "magic",
+        "objectives": [
+          {
+            "text": "Enter the Nether as a Monk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tyr_progression:classic/unlimited_unlocked",
+      "title": "Classic Mastery — Unlimited Unlocked",
+      "notify_progress": true,
+      "after": [
+        "tyr_progression:first_sunset",
+        "tyr_progression:classic/deep_breath",
+        "tyr_progression:classic/animal_trial",
+        "tyr_progression:classic/arrow_trial",
+        "tyr_progression:classic/lunar_trial",
+        "tyr_progression:classic/fire_trial",
+        "tyr_progression:classic/creeper_trial",
+        "tyr_progression:classic/height_trial",
+        "tyr_progression:classic/bedrock_trial",
+        "tyr_progression:classic/blind_trial",
+        "tyr_progression:classic/wither_trial",
+        "tyr_progression:classic/wood_speed_trial",
+        "tyr_progression:classic/glass_trial",
+        "tyr_progression:classic/shears_trial",
+        "tyr_progression:classic/shovel_trial",
+        "tyr_progression:classic/hoe_trial",
+        "tyr_progression:classic/axe_trial",
+        "tyr_progression:classic/otherworld_trial",
+        "tyr_progression:classic/nether_trial",
+        "tyr_progression:classic/aqua_trial"
+      ],
+      "criteria": [
+        {
+          "event": "external",
+          "target": "tyr_progression:classic_mastery_completed",
+          "count": 1
+        }
+      ],
+      "xp": 0,
+      "points": 0
+    }
+  ],
+  "skills": [
+    {
+      "id": "tyr_progression:classic/reserved_fist",
+      "title": "Reserved Fist",
+      "lane": "Journey",
+      "description": "Reserve the first hotbar slot for your fist.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:first_sunset"
+      ],
+      "effects": [
+        {
+          "type": "reserved_fist"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/armor_lock",
+      "title": "Armor Lock",
+      "lane": "Journey",
+      "description": "Your training requires freedom from armor.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:first_sunset"
+      ],
+      "effects": [
+        {
+          "type": "armor_lock"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/water_breathing",
+      "title": "Water Breathing",
+      "lane": "Journey",
+      "description": "Breathe freely underwater.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/deep_breath"
+      ],
+      "effects": [
+        {
+          "type": "water_breathing",
+          "params": {
+            "full_breathing": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/aqua_affinity",
+      "title": "Aqua Affinity",
+      "lane": "Harvesting",
+      "description": "Mine underwater at normal submerged mining speed with bare hands and no armor. Floating mining penalty still applies.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/aqua_trial"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "operation": "add_value",
+          "per_rank": 0.8,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/patient_defense",
+      "title": "Patient Defense",
+      "lane": "Martial Arts",
+      "description": "Gain Resistance I after two seconds without attacking.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/deep_breath"
+      ],
+      "effects": [
+        {
+          "type": "attack_idle_resistance",
+          "params": {
+            "idle_ticks": 40,
+            "amplifier": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/animal_friendship",
+      "title": "Animal Friendship",
+      "lane": "Journey",
+      "description": "Pet eligible animals with empty hands.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/animal_trial"
+      ],
+      "effects": [
+        {
+          "type": "animal_friendship",
+          "target": "*",
+          "empty_hand": true,
+          "params": {
+            "trial_milestone": "tyr_progression:classic/animal_trial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/catch_arrows",
+      "title": "Arrow Catching",
+      "lane": "Journey",
+      "description": "Automatically return incoming arrows and ghast fireballs toward your aim; legacy catching handles other eligible arrows.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/arrow_trial"
+      ],
+      "effects": [
+        {
+          "type": "catch_arrows",
+          "empty_hand": true
+        },
+        {
+          "type": "projectile_return",
+          "per_rank": 1,
+          "params": {
+            "allow_player_projectiles": false,
+            "allow_ownerless": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/step_assist",
+      "title": "Step Assist",
+      "lane": "Journey",
+      "description": "Step up higher blocks while not sneaking.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/arrow_trial"
+      ],
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.step_height",
+          "operation": "add_value",
+          "per_rank": 0.5,
+          "unarmored": true,
+          "params": {
+            "requires_not_sneaking": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/water_walking",
+      "title": "Water Walking",
+      "lane": "Journey",
+      "description": "Walk across the surface of water; crouch to dive.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/lunar_trial"
+      ],
+      "effects": [
+        {
+          "type": "water_walk"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/fire_immunity",
+      "title": "Fire Discipline",
+      "lane": "Journey",
+      "description": "Become immune to fire and lava damage.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/fire_trial"
+      ],
+      "effects": [
+        {
+          "type": "fire_immunity",
+          "per_rank": 1
+        },
+        {
+          "type": "lava_protection"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/creeper_kiss",
+      "title": "Creeper Kiss",
+      "lane": "Journey",
+      "description": "Pacify eligible creepers barehanded.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/creeper_trial"
+      ],
+      "effects": [
+        {
+          "type": "creeper_peace",
+          "empty_hand": true,
+          "params": {
+            "trial_milestone": "tyr_progression:classic/creeper_trial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/fall_immunity",
+      "title": "Feather Fall",
+      "lane": "Journey",
+      "description": "Ignore fall damage.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/height_trial"
+      ],
+      "effects": [
+        {
+          "type": "damage_multiplier",
+          "damage_tag": "minecraft:fall",
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/wall_climbing",
+      "title": "Wall Climbing",
+      "lane": "Movement",
+      "description": "Toggle native climbing against solid walls.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/height_trial"
+      ],
+      "effects": [
+        {
+          "type": "wall_climbing",
+          "per_rank": 1
+        }
+      ],
+      "activation": {
+        "mode": "toggle"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/bedrock_rest",
+      "title": "Bedrock Rest",
+      "lane": "Journey",
+      "description": "Rest against exposed bedrock without resetting your spawn.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/bedrock_trial"
+      ],
+      "effects": [
+        {
+          "type": "bedrock_rest",
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "trial_milestone": "tyr_progression:classic/bedrock_trial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/feign_death",
+      "title": "Feign Death",
+      "lane": "Martial Arts",
+      "description": "Toggle with your Feign Death key; pause regeneration and shed ordinary enemy aggro until you move or attack.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/bedrock_trial"
+      ],
+      "effects": [
+        {
+          "type": "feign_death",
+          "params": {
+            "aggro_radius": 64
+          }
+        }
+      ],
+      "activation": {
+        "mode": "toggle"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/blindness_ordeal",
+      "title": "Blindness Ordeal",
+      "lane": "Journey",
+      "description": "Use the ordeal binding to practice blind combat.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/blind_trial"
+      ],
+      "effects": [
+        {
+          "type": "blindness_ordeal",
+          "params": {
+            "completion_path": "tyr_progression:monk",
+            "completion_milestone": "tyr_progression:classic/blind_trial",
+            "kill_event": "tyr_progression:classic/blind_hostile_kill",
+            "trial_milestone": "tyr_progression:classic/blind_trial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/night_vision",
+      "title": "Night Vision",
+      "lane": "Journey",
+      "description": "See in darkness.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/blind_trial"
+      ],
+      "effects": [
+        {
+          "type": "enhanced_night_vision",
+          "per_rank": 1,
+          "params": {
+            "default_enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/purification",
+      "title": "Purification",
+      "lane": "Journey",
+      "description": "Clear harmful effects quickly without interrupting an active ordeal.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/wither_trial"
+      ],
+      "effects": [
+        {
+          "type": "purification",
+          "params": {
+            "interval_ticks": 10,
+            "exclude_effects": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/momentum_glide",
+      "title": "Momentum Glide",
+      "lane": "Journey",
+      "description": "Toggle native wingless gliding.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/wither_trial"
+      ],
+      "effects": [
+        {
+          "type": "momentum_glide",
+          "params": {
+            "requires_milestone": "tyr_progression:classic/wither_trial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/wood_speed",
+      "title": "Wooden Hands",
+      "lane": "Harvesting",
+      "description": "Double base barehand mining speed on tool-mineable blocks; no material permissions.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/wood_speed_trial"
+      ],
+      "effects": [
+        {
+          "type": "break_speed",
+          "target": "#tyr_progression:classic_mineable",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/silk_touch",
+      "title": "Silk Touch",
+      "lane": "Earthly Arts",
+      "description": "Select Silk Touch to harvest eligible blocks intact with your bare hands; replaces Fortune while active and never bypasses material harvest requirements.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/glass_trial"
+      ],
+      "effects": [
+        {
+          "type": "virtual_silk_touch",
+          "target": "*",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 1
+        }
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/shears",
+      "title": "Shearing Hands",
+      "lane": "Earthly Arts",
+      "description": "Select this native tool form in place of your empty hand.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/shears_trial"
+      ],
+      "effects": [
+        {
+          "type": "tool_form",
+          "target": "*",
+          "empty_hand": true,
+          "params": {
+            "form": "shears",
+            "entity_target": "*"
+          }
+        }
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/shovel",
+      "title": "Earth Shaping",
+      "lane": "Earthly Arts",
+      "description": "Select this native tool form in place of your empty hand.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/shovel_trial"
+      ],
+      "effects": [
+        {
+          "type": "tool_form",
+          "target": "*",
+          "empty_hand": true,
+          "params": {
+            "form": "shovel"
+          }
+        }
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/hoe",
+      "title": "Cultivating Hands",
+      "lane": "Earthly Arts",
+      "description": "Select this native tool form in place of your empty hand.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/hoe_trial"
+      ],
+      "effects": [
+        {
+          "type": "tool_form",
+          "target": "*",
+          "empty_hand": true,
+          "params": {
+            "form": "hoe"
+          }
+        }
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/axe",
+      "title": "Wood Shaping",
+      "lane": "Earthly Arts",
+      "description": "Select this native tool form in place of your empty hand.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/axe_trial"
+      ],
+      "effects": [
+        {
+          "type": "tool_form",
+          "target": "*",
+          "empty_hand": true,
+          "params": {
+            "form": "axe"
+          }
+        }
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
+    },
+    {
+      "id": "tyr_progression:classic/otherworld_sight",
+      "title": "Otherworld Sight",
+      "lane": "Otherworldly Discoveries",
+      "description": "See the Otherworld without a potion.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/otherworld_trial"
+      ],
+      "effects": [
+        {
+          "type": "otherworld_sight",
+          "tier": 2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/iesnium_palm",
+      "title": "Iesnium Palm",
+      "lane": "Otherworldly Discoveries",
+      "description": "Native Iesnium harvesting, subject to sight and harvest permission.",
+      "max_rank": 1,
+      "base_cost": 0,
+      "auto_achievements": [
+        "tyr_progression:classic/nether_trial"
+      ],
+      "effects": [
+        {
+          "type": "otherworld_harvest",
+          "target": "occultism:iesnium_ore_natural",
+          "tier": 2,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/iron_palm",
+      "title": "Iron Palm",
+      "lane": "Martial Arts",
+      "description": "Add 3.8 raw fist damage per rank.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "melee_bonus",
+          "per_rank": 3.8,
+          "empty_hand": true,
+          "unarmored": true,
+          "damage_tag": "minecraft:player_attack"
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/fist_tempo",
+      "title": "Fist Tempo",
+      "lane": "Martial Arts",
+      "description": "Increase fist attack speed by 0.4 per rank.",
+      "max_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.attack_speed",
+          "operation": "add_value",
+          "per_rank": 0.4,
+          "unarmored": true,
+          "empty_hand": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/forceful_palm",
+      "title": "Forceful Palm",
+      "lane": "Martial Arts",
+      "description": "Increase native barehand attack knockback by one per rank.",
+      "max_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.attack_knockback",
+          "operation": "add_value",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/flying_kick",
+      "title": "Flying Kick",
+      "lane": "Martial Arts",
+      "description": "A charged aerial critical attack at least one block above ground becomes a full-damage area kick; radius increases from 3 to 5 blocks. No additional cooldown.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "flying_kick",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 1,
+          "params": {
+            "base_radius": 2,
+            "min_clearance": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/reaping_palm",
+      "title": "Reaping Palm",
+      "lane": "Martial Arts",
+      "description": "Gain one native Looting level per rank against scoped hostiles.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "virtual_looting",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true,
+          "damage_tag": "minecraft:player_attack",
+          "params": {
+            "max_total": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/stunning_palm",
+      "title": "Stunning Palm",
+      "lane": "Martial Arts",
+      "description": "Ten ticks of stun per rank, with five seconds of enemy-wide recovery.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "stunning_strike",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 10,
+          "params": {
+            "recovery_ticks": 100,
+            "chance": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/natural_armor",
+      "title": "Natural Armor",
+      "lane": "Body",
+      "description": "Gain two natural armor per rank.",
+      "max_rank": 10,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "per_rank": 2,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/natural_toughness",
+      "title": "Natural Toughness",
+      "lane": "Body",
+      "description": "Gain two toughness per rank.",
+      "max_rank": 6,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "per_rank": 2,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/protection",
+      "title": "Protection",
+      "lane": "Body",
+      "description": "Gain two enchantment protection points per rank while unarmored; native protection cap applies.",
+      "max_rank": 8,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "virtual_protection",
+          "unarmored": true,
+          "per_rank": 2
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/vitality",
+      "title": "Vitality",
+      "lane": "Body",
+      "description": "Gain four maximum health per rank.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.max_health",
+          "operation": "add_value",
+          "per_rank": 4,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/rooted_body",
+      "title": "Rooted Body",
+      "lane": "Body",
+      "description": "Gain ten percentage points of knockback resistance per rank.",
+      "max_rank": 4,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "per_rank": 0.1,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/regeneration",
+      "title": "Regeneration",
+      "lane": "Body",
+      "description": "Recover 0.2 health per second per rank.",
+      "max_rank": 4,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "delayed_regeneration",
+          "per_rank": 0.2,
+          "unarmored": true,
+          "params": {
+            "interval_ticks": 20,
+            "after_damage_ticks": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/hunger_discipline",
+      "title": "Hunger Discipline",
+      "lane": "Body",
+      "description": "Reduce exhaustion ten percentage points per rank.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "hunger_efficiency",
+          "per_rank": 0.1,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/swift_step",
+      "title": "Swift Step",
+      "lane": "Movement",
+      "description": "Increase walk speed by 0.01 per rank, double intrinsic bonus when sprinting.",
+      "max_rank": 8,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_value",
+          "per_rank": 0.01,
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_value",
+          "per_rank": 0.01,
+          "unarmored": true,
+          "params": {
+            "requires_sprinting": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/monk_leap",
+      "title": "Monk Leap",
+      "lane": "Movement",
+      "description": "Increase jump impulse by 0.1 per rank.",
+      "max_rank": 2,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.jump_strength",
+          "operation": "add_value",
+          "per_rank": 0.1,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/depth_strider",
+      "title": "Depth Strider",
+      "lane": "Movement",
+      "description": "Improve water movement efficiency by one third per rank.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "operation": "add_value",
+          "per_rank": 0.3333333333333333,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/soul_step",
+      "title": "Soul Step",
+      "lane": "Movement",
+      "description": "Move across soul sand and soul soil with native Soul Speed I–III equivalent speed and no soul sand slowdown.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "soul_step",
+          "unarmored": true,
+          "per_rank": 1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/silent_step",
+      "title": "Silent Step",
+      "lane": "Movement",
+      "description": "Increase sneak movement ratio by 0.15 per rank.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:player.sneaking_speed",
+          "operation": "add_value",
+          "per_rank": 0.15,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/hide_in_shadows",
+      "title": "Hide in Shadows",
+      "lane": "Movement",
+      "description": "While sneaking, reduce hostile acquisition range by ten percentage points per rank.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "detection_range",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "per_rank": 0.1,
+          "params": {
+            "native_range": true,
+            "sneak_only": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/danger_sense",
+      "title": "Danger Sense",
+      "lane": "Movement",
+      "description": "Sense mobs targeting you within eight blocks per rank.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "danger_sense",
+          "target": "#tyr_progression:monk_training_hostiles",
+          "per_rank": 8,
+          "params": {
+            "alert_cooldown_ticks": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/dodge",
+      "title": "Dodge",
+      "lane": "Movement",
+      "description": "Chance to evade a verified direct hit: 10/20/30%. Area damage and unclassified damage cannot be dodged.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "direct_dodge",
+          "unarmored": true,
+          "per_rank": 0.1
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/hand_mining",
+      "title": "Hand Mining",
+      "lane": "Harvesting",
+      "description": "Increase native barehand mining-speed factor; 49 with Wooden Hands at full rank.",
+      "max_rank": 9,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "break_speed",
+          "target": "#tyr_progression:classic_mineable",
+          "per_rank": 5.222222222222222,
+          "empty_hand": true,
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/fortunate_hands",
+      "title": "Fortunate Hands",
+      "lane": "Harvesting",
+      "description": "Gain one native Fortune level per rank for scoped pickaxe blocks.",
+      "max_rank": 3,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "virtual_fortune",
+          "target": "#minecraft:mineable/pickaxe",
+          "per_rank": 1,
+          "empty_hand": true,
+          "unarmored": true,
+          "params": {
+            "max_total": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/inner_reservoir",
+      "title": "Inner Reservoir",
+      "lane": "Magical Cultivation",
+      "description": "Increase personal magical capacity through supported native attributes.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:max_mana",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "psi:total_psi",
+          "operation": "add_value",
+          "rank_values": [
+            990,
+            1980,
+            2970,
+            3960,
+            4950
+          ],
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/inner_wellspring",
+      "title": "Inner Wellspring",
+      "lane": "Magical Cultivation",
+      "description": "Recover personal magical resources more quickly.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:mana_regen",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "psi:regen",
+          "operation": "add_value",
+          "rank_values": [
+            4.95,
+            9.9,
+            14.85,
+            19.8,
+            24.75
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "forbidden_arcanus:generic.aureal_regeneration",
+          "operation": "add_value",
+          "rank_values": [
+            0.495,
+            0.99,
+            1.485,
+            1.98,
+            2.475
+          ],
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/inner_thrift",
+      "title": "Inner Thrift",
+      "lane": "Magical Cultivation",
+      "description": "Reduce supported personal magical resource costs.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "goety:soul_discount",
+          "operation": "add_value",
+          "rank_values": [
+            0.0594,
+            0.1188,
+            0.1782,
+            0.2376,
+            0.297
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "neovitae:sigil_cost_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            5.94,
+            11.88,
+            17.82,
+            23.76,
+            29.7
+          ],
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/inner_potency",
+      "title": "Inner Potency",
+      "lane": "Magical Cultivation",
+      "description": "Improve personal spell power in supported magic systems.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "operation": "add_value",
+          "rank_values": [
+            0.99,
+            1.98,
+            2.97,
+            3.96,
+            4.95
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:spell_power",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "goety:spell_potency",
+          "operation": "add_value",
+          "rank_values": [
+            20,
+            40,
+            59,
+            79,
+            99
+          ],
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "eidolon_repraised:magic_power",
+          "operation": "add_value",
+          "rank_values": [
+            0.198,
+            0.396,
+            0.594,
+            0.792,
+            0.99
+          ],
+          "unarmored": true
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:classic/arcane_attunement",
+      "title": "Arcane Attunement",
+      "lane": "Magical Cultivation",
+      "description": "Improve native casting speed and spell cooldown recovery.",
+      "max_rank": 5,
+      "base_cost": 1,
+      "step_cost": 0,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:cast_time_reduction",
+          "per_rank": 0.005,
+          "operation": "add_value",
+          "unarmored": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "per_rank": 0.005,
+          "operation": "add_value",
+          "unarmored": true
+        }
+      ]
+    }
+  ],
+  "harvest_generation": [
+    {
+      "id": "tyr_progression:classic_pickaxes",
+      "item_selector": "#tyr_progression:classic_pickaxe_representatives",
+      "block_selector": "#minecraft:mineable/pickaxe",
+      "count": 5,
+      "after": [
+        "tyr_progression:classic/wood_speed_trial"
+      ],
+      "prefer_tools": [
+        "minecraft:wooden_pickaxe",
+        "minecraft:stone_pickaxe",
+        "minecraft:iron_pickaxe",
+        "minecraft:diamond_pickaxe"
+      ],
+      "training_blocks": {
+        "minecraft:wooden_pickaxe": [
+          "minecraft:stone"
+        ],
+        "minecraft:stone_pickaxe": [
+          "minecraft:iron_ore",
+          "minecraft:copper_ore"
+        ],
+        "minecraft:iron_pickaxe": [
+          "minecraft:diamond_ore"
+        ],
+        "minecraft:diamond_pickaxe": [
+          "minecraft:obsidian"
+        ]
+      },
+      "lane": "Harvesting",
+      "hud_group": "harvesting",
+      "unarmored": true,
+      "exclude_tools": [
+        "minecraft:netherite_pickaxe"
+      ]
+    }
+  ],
+  "mastery_completion": {
+    "milestone": "tyr_progression:classic/unlimited_unlocked",
+    "event": "tyr_progression:classic_mastery_completed",
+    "when": {
+      "type": "and",
+      "conditions": [
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/iron_palm",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/fist_tempo",
+          "minimum": 2
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/forceful_palm",
+          "minimum": 2
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/flying_kick",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/reaping_palm",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/stunning_palm",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/natural_armor",
+          "minimum": 10
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/natural_toughness",
+          "minimum": 6
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/protection",
+          "minimum": 8
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/vitality",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/rooted_body",
+          "minimum": 4
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/regeneration",
+          "minimum": 4
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/hunger_discipline",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/swift_step",
+          "minimum": 8
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/monk_leap",
+          "minimum": 2
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/depth_strider",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/soul_step",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/silent_step",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/hide_in_shadows",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/danger_sense",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/dodge",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/hand_mining",
+          "minimum": 9
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/fortunate_hands",
+          "minimum": 3
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/inner_reservoir",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/inner_wellspring",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/inner_thrift",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/inner_potency",
+          "minimum": 5
+        },
+        {
+          "type": "skill_rank",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/arcane_attunement",
+          "minimum": 5
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:first_sunset"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/deep_breath"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/animal_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/arrow_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/lunar_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/fire_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/creeper_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/height_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/bedrock_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/blind_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/wither_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/wood_speed_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/glass_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/shears_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/shovel_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/hoe_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/axe_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/otherworld_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/nether_trial"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:harvest/b4fbdbe1-8118-3cb0-95a6-0ba04568502f"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:harvest/049cf01b-2d8f-3a31-b452-317e4d68e3ca"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:harvest/bf887cc3-7d3d-3a90-9cf7-58509584e150"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:harvest/1ec03bf2-0f1b-3ceb-951e-47de8c291527"
+        },
+        {
+          "type": "advancement",
+          "id": "minecraft:end/kill_dragon"
+        },
+        {
+          "type": "milestone",
+          "path": "tyr_progression:monk",
+          "id": "tyr_progression:classic/aqua_trial"
+        }
+      ]
+    }
+  }
+}

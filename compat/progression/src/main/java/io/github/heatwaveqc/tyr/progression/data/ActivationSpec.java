@@ -3,10 +3,14 @@ import com.google.gson.JsonObject;
 import java.util.Set;
 
 /** Optional activation for an owned skill, not a separate detachable power. */
-public record ActivationSpec(String mode,int durationTicks,int cooldownTicks,int jawrBloodCost,double jawrHealOnActivation) {
+public record ActivationSpec(String mode,int durationTicks,int cooldownTicks,int jawrBloodCost,double jawrHealOnActivation,String exclusiveGroup) {
+    public ActivationSpec(String mode,int durationTicks,int cooldownTicks,int jawrBloodCost,double jawrHealOnActivation){this(mode,durationTicks,cooldownTicks,jawrBloodCost,jawrHealOnActivation,"");}
     public ActivationSpec(String mode,int durationTicks,int cooldownTicks,int jawrBloodCost){this(mode,durationTicks,cooldownTicks,jawrBloodCost,0);}
     public ActivationSpec(String mode,int durationTicks,int cooldownTicks){this(mode,durationTicks,cooldownTicks,0);}
     public ActivationSpec {
+        if(exclusiveGroup==null || !exclusiveGroup.isEmpty() && (!exclusiveGroup.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")
+            || exclusiveGroup.length()>128 || !mode.equals("toggle") || cooldownTicks!=0 || jawrBloodCost!=0 || jawrHealOnActivation!=0))
+            throw new IllegalArgumentException("Exclusive activation group requires a free, cooldown-free toggle and namespaced ID");
         if(!Set.of("toggle","timed").contains(mode)||durationTicks<0||durationTicks>72000||cooldownTicks<0||cooldownTicks>72000
             ||mode.equals("timed")&&durationTicks<1||mode.equals("toggle")&&durationTicks!=0
             ||jawrBloodCost<0||jawrBloodCost>1_000_000||jawrBloodCost>0&&!mode.equals("timed")
@@ -16,12 +20,19 @@ public record ActivationSpec(String mode,int durationTicks,int cooldownTicks,int
     public static ActivationSpec read(JsonObject skill){
         if(!skill.has("activation"))return null;
         var j=skill.getAsJsonObject("activation");
-        for(var key:j.keySet())if(!Set.of("mode","duration_ticks","cooldown_ticks","jawr_blood_cost","jawr_heal_on_activation").contains(key))
+        for(var key:j.keySet())if(!Set.of("mode","duration_ticks","cooldown_ticks","jawr_blood_cost","jawr_heal_on_activation","exclusive_group").contains(key))
             throw new IllegalArgumentException("Unsupported activation field "+key);
         return new ActivationSpec(j.get("mode").getAsString(),j.has("duration_ticks")?j.get("duration_ticks").getAsInt():0,
             j.has("cooldown_ticks")?j.get("cooldown_ticks").getAsInt():0,
             j.has("jawr_blood_cost")?j.get("jawr_blood_cost").getAsBigDecimal().intValueExact():0,
-            j.has("jawr_heal_on_activation")?j.get("jawr_heal_on_activation").getAsDouble():0);
+            j.has("jawr_heal_on_activation")?j.get("jawr_heal_on_activation").getAsDouble():0,
+            j.has("exclusive_group")?j.get("exclusive_group").getAsString():"");
+    }
+    /** A group has one selection, not one independently enabled flag per member. */
+    public static String toggleSelection(String selected,String member) {
+        if(member==null||member.isBlank()||member.equals("off"))
+            throw new IllegalArgumentException("Invalid toggle member");
+        return member.equals(selected)?"off":member;
     }
     public record State(long until,long ready){
         public State {if(until<0||ready<0)throw new IllegalArgumentException("Invalid activation state");}
