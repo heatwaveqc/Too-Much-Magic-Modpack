@@ -11,6 +11,7 @@ from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import worldgen_audit_dispatch as bridge
+from worldgen_dispatch_diagnostics import classify, registration
 from run_worldgen_vanilla_control import occupancy
 
 OWNER = {"login":"heatwaveqc","id":22598785,"type":"User"}
@@ -83,6 +84,20 @@ class DispatchTests(unittest.TestCase):
                 else:
                     self.assertEqual(result.returncode,0,result.stderr)
                     self.assertEqual(result.stdout.strip(),expected)
+    def test_diagnostic_redaction(self):
+        raw=json.dumps({"message":"Unexpected inputs provided: SECRET_VALUE","errors":[{"field":"inputs","code":"invalid"},{"field":"SECRET_VALUE","code":"SECRET_VALUE"}]})
+        self.assertEqual(classify(raw),"unexpected inputs; field=inputs; code=invalid")
+        self.assertEqual(classify('{"message":"SECRET_VALUE"}'),"unrecognized response")
+        self.assertEqual(classify('not json'),"unrecognized response")
+        def api(path,method="GET",body=None):
+            self.assertEqual(method,"GET")
+            if path.startswith("actions/workflows/"):
+                return {"id":430805133,"path":".github/workflows/worldgen-audit-pilot.yml","state":"active","secret":"SECRET_VALUE"}
+            return {"object":{"sha":SHA}}
+        result=registration(api)
+        self.assertTrue(result["numeric"]["id_matches"])
+        self.assertEqual(result["filename"]["state"],"active")
+        self.assertNotIn("SECRET_VALUE",json.dumps(result))
     def test_occupancy(self):
         # Row fields: id, origin x/z, target x/z, accepted, unique, non-air, above, rise, cols, cross.
         rows=["minecraft:test\t0\t0\t0\t0\t2\t2\t2\t1\t1\t1\t0",
