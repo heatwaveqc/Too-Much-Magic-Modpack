@@ -15,7 +15,10 @@
     "max_look_x": -0.7,
     "max_abs_look_y": 0.45,
     "completion_event": "tyr_progression:monk_first_sunset",
-    "label": "First Sunset"
+    "label": "First Light",
+    "sunrise_start_time": 23000,
+    "sunrise_end_time": 1000,
+    "sunrise_min_look_x": 0.7
   },
   "mastery_stages": {
     "system": "tyr_progression:mxp",
@@ -380,7 +383,7 @@
     },
     {
       "id": "tyr_progression:classic/glass_trial",
-      "title": "Glass Touch",
+      "title": "Silk Touch",
       "strict_order": true,
       "notify_progress": true,
       "criteria": [
@@ -397,7 +400,7 @@
         "group": "tools",
         "objectives": [
           {
-            "text": "Break five glass blocks or panes with your fists"
+            "text": "Break five glass blocks or panes with your fists to unlock Silk Touch"
           }
         ]
       }
@@ -962,10 +965,10 @@
       ]
     },
     {
-      "id": "tyr_progression:classic/glass_touch",
-      "title": "Glass Touch",
+      "id": "tyr_progression:classic/silk_touch",
+      "title": "Silk Touch",
       "lane": "Earthly Arts",
-      "description": "Harvest glass and panes without shattering them.",
+      "description": "Select Silk Touch to harvest eligible blocks intact with your bare hands; replaces Fortune while active and never bypasses material harvest requirements.",
       "max_rank": 1,
       "base_cost": 0,
       "auto_achievements": [
@@ -973,11 +976,17 @@
       ],
       "effects": [
         {
-          "type": "glass_touch",
-          "target": "#tyr_progression:classic_glass",
-          "empty_hand": true
+          "type": "virtual_silk_touch",
+          "target": "*",
+          "empty_hand": true,
+          "unarmored": true,
+          "per_rank": 1
         }
-      ]
+      ],
+      "activation": {
+        "mode": "toggle",
+        "exclusive_group": "tyr_progression:classic/tool_forms"
+      }
     },
     {
       "id": "tyr_progression:classic/shears",
