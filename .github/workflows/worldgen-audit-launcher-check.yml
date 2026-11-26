@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'scripts/worldgen_audit_dispatch.py'
+      - 'scripts/worldgen_dispatch_diagnostics.py'
       - 'scripts/run_worldgen_vanilla_control.py'
       - 'tests/test_worldgen_audit_dispatch.py'
       - '.github/workflows/worldgen-audit-dispatch.yml'
@@ -10,6 +11,7 @@ on:
       - '.github/workflows/worldgen-audit-launcher-check.yml'
 permissions:
   contents: read
+  actions: read
 jobs:
   fixtures:
     runs-on: ubuntu-latest
@@ -20,6 +22,19 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_worldgen_audit_dispatch.py -v
+      - name: Read-only registered workflow diagnostics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json, os
+          from worldgen_dispatch_diagnostics import registration, DiagnosticAPI
+          print("WORKFLOW_REGISTRATION "+json.dumps(registration(DiagnosticAPI(os.environ["GH_TOKEN"])),sort_keys=True))
+          PY
+      - name: Validate actual Actions workflow syntax
+        run: |
+          go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.7
+          "$(go env GOPATH)/bin/actionlint" -color=false -shellcheck= -pyflakes= .github/workflows/worldgen-audit-pilot.yml .github/workflows/worldgen-audit-dispatch.yml
       - name: Validate launcher has only manual boot trigger
         run: |
           python - <<'PY'
