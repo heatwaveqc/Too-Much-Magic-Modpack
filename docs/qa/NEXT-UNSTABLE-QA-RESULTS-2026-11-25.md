@@ -18,12 +18,12 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | A11 | BLOCKED | Reference registry revision 6 / 1763 IDs/dispositions validates but is historical and not runtime active. Current entity/tags/boss/egg/blood/sulfur native census absent. |
 | A12 | PASS | All 69 source and installed frequency overrides match; 69 native originals across 13 verified providers match recorded originals. Historical paired-pilot evidence linked; no new worldgen run or multi-seed claim. |
 | A13 | PASS | Installed Classic equals frozen source: 55 skills, 21 milestones, mastery max 20; 511 Progression test cases pass. Runtime attributes, harvesting and combat acceptance remain C tests. |
-| B01 | PARTIAL | World 1 08:35 Nov 26: all six commands execute; Paths core,normie,newbie,monk,hunter; newbie joined=true, normie/core joined=false, all XP/rank/points=0, skills={} milestones=[]; MXP 0 levels, 0.0000/1000, 0 unspent, growth 1.0200, first completions 0; mode Newbie. Core automatic config confirmed; verify graduation enrollment before deciding defect. |
+| B01 | PASS | World 1: six commands succeeded while Newbie; after graduation/Monk initiation mode Regular, newbie=false, normie=false, core=true rank=1, zero XP/points/MXP, growth 1.02. Automatic Core enrollment verified; isolated Normie state not captured, reserved C05. |
 | B02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B05 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| B06 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| B06 | PARTIAL | Pre-graduation EMC/material valuations hidden; after graduation/Monk upper-left EMC: 0 visible before intended Stone unlock, owner confirms defect. Other acquisition/independent player probes pending. |
 | B07 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -32,12 +32,12 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C02 | FAIL | World 1 Nov 26: FTB hover text still black under Sodium; EMI looks good. Other icon/GUI-scale/transfer/category specifics not independently reported. #507 renderer defect persists. |
 | C03 | FAIL | World 1: empty first-login inventory PASS; claimed starter kit via function, Tome opens/morphs correctly but only six guides observed vs twelve configured. Owner wants native personal item rewards distributed across multiple introductory quests; #306/#509. |
 | C04 | FAIL | World 1: graduation home choice claimed, custom paper blueprint repeatedly refuses placement as obstructed. #804 native Prefab placement correction. General quest presentation sampled good; Choose your magic controls gives paper, unwanted Ring/Amulet in early Intro; owner changes routed. |
-| C05 | PARTIAL | World 1 owner confirms previous Newbie teleport tests and multiple village deaths/keep inventory, working Newbie elytra. Tombstone ghost form occurs and must be suppressed only for Newbie; owner requests jump boost for flat-ground flight. Graduation home reward reached; post-graduation commands and Core enrollment remain to verify. |
+| C05 | PARTIAL | Newbie teleport, keep inventory and elytra work per owner; ghost suppression and flat-ground jump boost #287. Regular mode, Newbie left, Core joined verified after Monk initiation. Pure Normie and post-graduation ability/teleport denial not isolated; use later fixture. |
 | C06 | PARTIAL | Owner reports controls work; individual bindings/log counts, progression screen/TreeChop details remain unverified. |
-| C07 | PARTIAL | Before unlock values hidden per owner; latest screenshot shows upper-left EMC: 0 (after apparent graduation, acquisition unknown). Verify before Stone on Normie; post-unlock and independent profiles pending. |
+| C07 | FAIL | World 1 pre-graduation values hidden; upper-left EMC: 0 appears after graduation, owner confirms should not display before Stone. Isolate HUD provider and mode vs acquisition trigger; no post-unlock/independent-player proof. |
 | C08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C10 | PARTIAL | World 1 First Light completed after time set 0 then 12000 (command-assisted, actual meditation). Owner reports sunrise did not count with mountain in way; config has clear sky/dry/direction/200 ticks, exact cause not proven. Core rank 1, MXP 0 after initiation. Training XP, skill purchase and attributes pending. |
 | C11 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C12 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -94,3 +94,7 @@ All six owner-run baseline commands returned as recorded above. Core automatic e
 ## World 1 — Batch 2, Thanksgiving morning ~08:43 Arizona
 
 Owner confirms prior teleport tests and deaths to villagers, Newbie elytra works, structure generation considerably more reasonable. Ghost form on Newbie death undesirable; jump boost requested for flat-ground takeoff. Starter kit function chat visible, Tome six guides observed (12 configured), functionality good. Replace command-based bundle with normal personal item rewards distributed across several quests; remove paper placeholder for Choose your magic controls. Move Ring of Seven Curses to optional post-graduation General Progression `Make It Hardmode`; owner tentatively favors removing Unwitnessed Amulet entirely (clarify scope, not silent item deletion). Claimed house fails placement: repeated obstruction at 1332,160,197 and earlier 1097,112,166; exact frozen RegularHomePower confirms custom paper + direct vanilla placement, Generic native only. New native placement investigation #804. Screenshot upper-left EMC: 0; acquisition not confirmed, flag for immediate B01/visibility recheck. No raw screenshot committed. No source changes or new build.
+
+## World 1 — graduation and Monk initiation (Nov 26 ~08:52 Arizona)
+
+Owner advanced to Monk before isolated Normie testing. Chat shows time set 0 and 12000, First Light complete: tyr_progression:monk unlocked; Regular mode, Newbie false, Normie false, Core true rank 1, zero XP/points and MXP. Core auto-join confirmed; pure Normie deferred to separate fixture. Owner reports mountain obstructed sunrise attempt; configured clear sky, dry weather, direction, continuous 200 ticks, empty hands/unarmored, correct Overworld time windows; no proof mountain itself was the cause. Owner confirms unintended upper-left EMC HUD after graduation. Keep World 1 as Monk fixture and perform command surveys later in a consolidated OP batch; preserve all earlier evidence. No new build or game commands executed by coordinator.
