@@ -147,7 +147,7 @@ Native Holy Stone recipe (Cursed Stone, 3 Sacred Crystals, 2 Ichor, 2 Glowstone 
 | E38 | E19 | Forbidden Fruit | Explain hunger removal and healing penalty; optional lasting choice, with Redemption Potion reversal. |
 | E39 | E31 | Forging aid | Use Forger Gem and repair/forge; later crystal optional. |
 | E40 | E21,E26 | Etheric Resonance | Apply native enchant where eligible and compare capability. |
-| E41 | E01 | Seven Curses opt-in | Explicit informed choice, not a mandatory task for all players. Explain bound slot and soul loss. |
+| E41 | — | Seven Curses opt-in (General Progression / Hard Mode) | Cross-reference the general chapter's informed opt-in; explain bound slot and soul loss, no duplicate activation or mandatory task. |
 | E42 | E41 | Soul recovery | Explain owner-bound crystals, max HP modifier and compass; no mandatory death. |
 | E43 | E41,E19 | Cursed materials | Obtain actual Ichor and Evil Essence via eligible loot/kill. |
 | E44 | E42,E43,E02 | Twisted Heart | Cursed recipe and taint requirements, then The Twist. |
@@ -168,6 +168,8 @@ Native Holy Stone recipe (Cursed Stone, 3 Sacred Crystals, 2 Ichor, 2 Glowstone 
 | E59 | E48,E50 | Decision of Annihilation | Construct exact four-corner abyssal recipe with tainted heart, Evil Ingot and Twisted Heart; note conditional recipe remainders. |
 
 ## 9. TMM-specific separation
+
+**Owner decision (2026-11-25): Ring of the Seven Curses is TMM's opt-in Hard Mode and belongs in General Progression, not an Enigmatic Legacy+-exclusive initiation branch.** General Progression owns the decision, informed activation and pack-wide explanation. Enigmatic Legacy+ chapter teaches the downstream curse-specific gear, resources, soul recovery, Worthy and redemption mechanics, with a cross-reference to the general chapter. Research node E41 represents that general-chapter dependency; not a second mandatory opt-in or duplicate reward. This is a design handoff, not a runtime or quest edit. Ordinary Enigmatic Legacy+ progression remains available without the curse.
 
 Baseline a98eadfbd625260f8d2c984cd51844ee76f198af. [defaultconfigs/enigmaticlegacyplus-server.toml](../../../defaultconfigs/enigmaticlegacyplus-server.toml) explicitly sets sevenCurses.giveStarterGear=false, autoEquip=false, abyssItems.eldritchAmulet.keepInventory=false. Starter reward moved to welcome quest; actual server config existing-world overrides and death event ordering not verified. [Existing enigmatic_legacy chapter](../../../config/ftbquests/quests/chapters/enigmatic_legacy.snbt) is one optional checkmark placeholder at baseline. Do not revise chapter here. Ring of Seven Curses is **not** Relics Ring of Seven Deadly Sins (separately owner-excluded). No changes to exclusions, corpse/XP ownership, mob drop tags, loot, recipes or class system. Monk balance handoff: Etherium native baseline 24 armor/16 toughness, armorless Golem Heart and shield threshold, cursed soul-loss multiplier, Redemption damage formula, spellstone resistances/deflection and permanent ring slots deserve targeted numerical audit if used as benchmark. No generic native QA gate.
 
