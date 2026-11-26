@@ -45,9 +45,10 @@ class MonkTyzTreeTests(unittest.TestCase):
         self.assertEqual({"-1": {"goal": 1000, "reward": 1}},
                          json.loads((OVERLAY / "config/tyzs_skills/custom/data/level-pool.json").read_text()))
 
-    def test_native_monk_rank_storage_and_discipline_rules(self):
-        # The staged Tyz overlay is historical; live purchases use native Path JSON.
-        path = json.loads(MONK_PATH.read_text(encoding="utf-8"))
+    def test_legacy_native_monk_rank_storage_and_discipline_rules(self):
+        # Preserve the pre-Classic contract against the immutable legacy migration fixture.
+        legacy = ROOT / "compat/progression/src/test/resources/legacy-monk-before-classic-v1.json"
+        path = json.loads(legacy.read_text(encoding="utf-8"))
         skills = {skill["id"]: skill for skill in path["skills"]}
         self.assertEqual(len(skills), len(path["skills"]))
         milestones = {row["id"] for row in path["milestones"]}
@@ -83,6 +84,58 @@ class MonkTyzTreeTests(unittest.TestCase):
                       skills["tyr_progression:fortunate_hands"]["requires_skills"])
         self.assertEqual(list(range(100, 951, 50)),
                          skills["tyr_progression:enlightenment"]["rank_invested_requirements"])
+
+    def test_current_classic_monk_rank_storage_and_discipline_rules(self):
+        path = json.loads(MONK_PATH.read_text(encoding="utf-8"))
+        candidate = ROOT / "compat/progression/design/tree-drafts/classic-monk-v1/monk.json"
+        self.assertEqual(path, json.loads(candidate.read_text(encoding="utf-8")))
+        skills = {s["id"]: s for s in path["skills"]}
+        milestones = {m["id"] for m in path["milestones"]}
+        self.assertEqual(len(skills), len(path["skills"]))
+        self.assertEqual(len(milestones), len(path["milestones"]))
+        self.assertEqual(MXP, path["xp_channel"])
+        conditions = path["mastery_completion"]["when"]["conditions"]
+        paid = {c["id"]: c["minimum"] for c in conditions if c["type"] == "skill_rank"}
+        deeds = {c["id"] for c in conditions if c["type"] == "milestone"}
+        self.assertEqual(53, len(conditions))
+        self.assertEqual(28, len(paid))
+        self.assertEqual(125, sum(paid.values()))
+        self.assertEqual(24, len(deeds))
+        self.assertEqual({"minecraft:end/kill_dragon"}, {c["id"] for c in conditions if c["type"] == "advancement"})
+        self.assertIn("tyr_progression:classic/wither_trial", deeds)
+        for sid, skill in skills.items():
+            with self.subTest(skill=sid):
+                self.assertTrue(sid.startswith("tyr_progression:classic/"))
+                self.assertEqual(MXP, skill.get("level_system", path["xp_channel"]))
+                self.assertEqual(MXP, skill.get("xp_channel", path["xp_channel"]))
+                self.assertGreater(skill["max_rank"], 0)
+                self.assertTrue(skill["effects"], "No no-op skill")
+                self.assertTrue(set(skill.get("requires_skills", [])) <= skills.keys())
+                self.assertTrue(set(skill.get("requires_milestones", [])) <= deeds)
+                if skill["base_cost"] == 0:
+                    self.assertTrue(skill["auto_achievements"])
+                    self.assertTrue(set(skill["auto_achievements"]) <= deeds)
+                    self.assertNotIn(sid, paid)
+                else:
+                    self.assertEqual(1, skill["base_cost"])
+                    self.assertEqual(0, skill["step_cost"])
+                    self.assertEqual(skill["max_rank"], paid[sid])
+        self.assertEqual(set(paid), {s["id"] for s in skills.values() if s["base_cost"] > 0})
+        for name in ("iron_palm", "fist_tempo", "forceful_palm", "flying_kick", "aqua_affinity"):
+            effect = skills["tyr_progression:classic/" + name]["effects"][0]
+            self.assertTrue(effect["empty_hand"])
+            self.assertTrue(effect["unarmored"])
+        for name in ("swift_step", "natural_armor", "natural_toughness", "inner_reservoir"):
+            self.assertTrue(skills["tyr_progression:classic/" + name]["effects"][0]["unarmored"])
+        generator = path["harvest_generation"][0]
+        self.assertEqual(["minecraft:wooden_pickaxe", "minecraft:stone_pickaxe",
+                          "minecraft:iron_pickaxe", "minecraft:diamond_pickaxe"], generator["prefer_tools"])
+        self.assertIn("minecraft:netherite_pickaxe", generator["exclude_tools"])
+        self.assertTrue(generator["unarmored"])
+        self.assertEqual(4, len(deeds - milestones))
+        self.assertTrue(all(s.startswith("tyr_progression:harvest/") for s in deeds - milestones))
+        self.assertEqual(20, path["training_mxp"]["ordinary_kill_per_hp"])
+        self.assertEqual(100, path["training_mxp"]["strict_fist_kill_per_hp"])
 
     def test_native_mxp_authority_and_retired_bridge_absence(self):
         # Reuse the active source-selection guard rather than require dead Java.
