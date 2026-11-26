@@ -1,0 +1,35 @@
+{
+  "placement": {
+    "salt": 1820462391,
+    "separation": 12,
+    "spacing": 40,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 8,
+      "other_set": "minecraft:villages"
+    },
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "graveyard:overrun_plains_village",
+      "weight": 1
+    },
+    {
+      "structure": "graveyard:overrun_savanna_village",
+      "weight": 1
+    },
+    {
+      "structure": "graveyard:overrun_taiga_village",
+      "weight": 1
+    },
+    {
+      "structure": "graveyard:overrun_snowy_village",
+      "weight": 1
+    },
+    {
+      "structure": "graveyard:overrun_desert_village",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "placement": {
+    "salt": 5319867,
+    "separation": 12,
+    "spacing": 20,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 10,
+      "other_set": "hexerei:nature_coven"
+    },
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "hexerei:owl_post_office",
+      "weight": 1
+    }
+  ]
+}

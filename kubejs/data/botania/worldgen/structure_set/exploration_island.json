@@ -1,0 +1,21 @@
+{
+  "placement": {
+    "salt": 5612357,
+    "separation": 12,
+    "spacing": 40,
+    "type": "minecraft:random_spread",
+    "frequency": 0.3
+  },
+  "structures": [
+    {
+      "structure": "botania:exploration_island",
+      "weight": 1
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "module": "exploration",
+      "type": "botania:module_enabled"
+    }
+  ]
+}

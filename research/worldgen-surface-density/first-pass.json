@@ -1,0 +1,1394 @@
+{
+  "schema": 1,
+  "source_snapshot": "721ea058294f838b9d7f145af427f5db228d248d",
+  "source_artifact": 15065082613,
+  "source_run": 45701411003,
+  "multiplier": 0.5,
+  "pins": {
+    "mods/apotheosis.pw.toml": "e154d7fb16dc7eb6ace7b88b3896955bb66f58c2daafe93c7ae3327ee418a509",
+    "mods/astral-sorcery.pw.toml": "88329d424bbabb5f39558c2cd33b7ccf5c6027de148d433cd4904ce08e88660c",
+    "mods/botania-revived.pw.toml": "1afaf5985c453bb3aa86d411c543be420a26f41f3f0005746d6399046f5ebf33",
+    "mods/ars-additions.pw.toml": "08f46822b355882721807489cbf64a7e8ac03efc1476136e60acbc8dd7dc2880",
+    "mods/born-in-chaos.pw.toml": "4a7d85fc2f67432dad21dd3b316a557ff73d1b4992a54cc1e0877d2ae0c8207a",
+    "mods/eidolon-repraised.pw.toml": "bce399d16a050d07d810aff857172b861a23903b5393ec40d9244d9eeaf48bd5",
+    "mods/goety.pw.toml": "e41fde783f2f9c53e3b4f887cd05f5063c758810a07e97f1710aa679874a9cc6",
+    "mods/the-graveyard.pw.toml": "17cdbc9137104a4fd010abdf39c7fd958b17351b5d8888ce886d87d9a2303963",
+    "mods/hexerei.pw.toml": "bd496127dfae8939188c1eb6d6e77930a2f89514308169abed5d27a7b3199ac2",
+    "mods/irons-spells-n-spellbooks.pw.toml": "4623bbc102dd3b7648a96569a1ab49b868774d46355b305ac40c4c79ad1c74e2",
+    "mods/just-another-witchery-remake.pw.toml": "82157c87a4a1fd2bc2a42e9af88bea21673bfb15f25d4e8b253ef6eb835ce566",
+    "mods/sons-of-sins.pw.toml": "c12b9677a3945c9debecf0ad9e7149696bbaab9b9c751e3b175a7987c98eec49",
+    "mods/primal-magick.pw.toml": "69f24286f25e7fe5041e17ae45b01c59e79b1e551da6c8db8e5adf95bb1713cf"
+  },
+  "protected": [
+    "astralsorcery:focal_point_structures",
+    "botania:exploration_mushroom"
+  ],
+  "entries": [
+    {
+      "id": "apotheosis:towers",
+      "pin": "mods/apotheosis.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 12121818,
+          "separation": 18,
+          "spacing": 26,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "apotheosis:tower_leaf",
+            "weight": 1
+          },
+          {
+            "structure": "apotheosis:tower_main",
+            "weight": 1
+          },
+          {
+            "structure": "apotheosis:tower_sand",
+            "weight": 1
+          },
+          {
+            "structure": "apotheosis:tower_spruce",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "astralsorcery:column_structures",
+      "pin": "mods/astral-sorcery.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 381629534,
+          "separation": 12,
+          "spacing": 24,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "astralsorcery:column",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "astralsorcery:dig_site_structures",
+      "pin": "mods/astral-sorcery.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 2034897632,
+          "separation": 6,
+          "spacing": 24,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "astralsorcery:dig_site",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "botania:exploration_broken_tree",
+      "pin": "mods/botania-revived.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 8974685,
+          "separation": 6,
+          "spacing": 24,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 3,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "structures": [
+          {
+            "structure": "botania:exploration_broken_tree",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "module": "exploration",
+            "type": "botania:module_enabled"
+          }
+        ]
+      }
+    },
+    {
+      "id": "botania:exploration_island",
+      "pin": "mods/botania-revived.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 5612357,
+          "separation": 12,
+          "spacing": 40,
+          "type": "minecraft:random_spread",
+          "frequency": 0.6
+        },
+        "structures": [
+          {
+            "structure": "botania:exploration_island",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "module": "exploration",
+            "type": "botania:module_enabled"
+          }
+        ]
+      }
+    },
+    {
+      "id": "botania:exploration_lake",
+      "pin": "mods/botania-revived.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 8484575,
+          "separation": 8,
+          "spacing": 32,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 4,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "structures": [
+          {
+            "structure": "botania:exploration_lake",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "module": "exploration",
+            "type": "botania:module_enabled"
+          }
+        ]
+      }
+    },
+    {
+      "id": "botania:exploration_plant",
+      "pin": "mods/botania-revived.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 8942428,
+          "separation": 8,
+          "spacing": 24,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 4,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "structures": [
+          {
+            "structure": "botania:exploration_plant",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "module": "exploration",
+            "type": "botania:module_enabled"
+          }
+        ]
+      }
+    },
+    {
+      "id": "botania:exploration_ruin",
+      "pin": "mods/botania-revived.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 48465418,
+          "separation": 8,
+          "spacing": 32,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 4,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "structures": [
+          {
+            "structure": "botania:exploration_ruin",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "module": "exploration",
+            "type": "botania:module_enabled"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ars_additions:ruined_portal",
+      "pin": "mods/ars-additions.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 30981980,
+          "separation": 15,
+          "spacing": 40,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:ruined_portals"
+          }
+        },
+        "structures": [
+          {
+            "structure": "ars_additions:ruined_portal",
+            "weight": 1
+          },
+          {
+            "structure": "ars_additions:ruined_portal_large",
+            "weight": 1
+          }
+        ],
+        "neoforge:conditions": [
+          {
+            "config": "ruined_warp_portals_enabled",
+            "type": "ars_additions:config"
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:dark_tower_forest",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 158416380,
+          "separation": 14,
+          "spacing": 75,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:dark_tower_forest",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:dark_tower_plain",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 878827685,
+          "separation": 14,
+          "spacing": 85,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:dark_tower_plain",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:dark_tower_taiga",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 593635684,
+          "separation": 10,
+          "spacing": 75,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:dark_tower_taiga",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:farm",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 373118085,
+          "separation": 6,
+          "spacing": 65,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:farm",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:firewell",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 2021465820,
+          "separation": 9,
+          "spacing": 65,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:firewell",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:infernal_pumpkin",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 563587936,
+          "separation": 6,
+          "spacing": 36,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:infernal_pumpkin",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:observation_tower_forest",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1528432837,
+          "separation": 12,
+          "spacing": 65,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:observation_tower_forest",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_2003wise",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1166241204,
+          "separation": 10,
+          "spacing": 95,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_2003wise",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_2_dling",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 124961431,
+          "separation": 9,
+          "spacing": 96,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_2_dling",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_d_4rk_devil_x",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1386119179,
+          "separation": 6,
+          "spacing": 60,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_d_4rk_devil_x",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_darktitan",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1848596683,
+          "separation": 15,
+          "spacing": 105,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_darktitan",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_derivas",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1305697841,
+          "separation": 10,
+          "spacing": 90,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_derivas",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_euthymia",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1667243702,
+          "separation": 10,
+          "spacing": 100,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_euthymia",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_feral",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1854250466,
+          "separation": 9,
+          "spacing": 95,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_feral",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_fubuki_banzai",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1085062960,
+          "separation": 10,
+          "spacing": 84,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_fubuki_banzai",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_memesus",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 832829135,
+          "separation": 11,
+          "spacing": 101,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_memesus",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_mike_and_rory",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 749647053,
+          "separation": 6,
+          "spacing": 85,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_mike_and_rory",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_nino_4416",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 414467301,
+          "separation": 9,
+          "spacing": 96,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_nino_4416",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_orion",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 2142799247,
+          "separation": 12,
+          "spacing": 100,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_orion",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_petasi",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 159447824,
+          "separation": 10,
+          "spacing": 90,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_petasi",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_plug",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 634068768,
+          "separation": 10,
+          "spacing": 100,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_plug",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_rotborne",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 574383120,
+          "separation": 7,
+          "spacing": 97,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_rotborne",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_somfunambulist",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 2111360768,
+          "separation": 12,
+          "spacing": 100,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_somfunambulist",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_tem_187",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1359044565,
+          "separation": 6,
+          "spacing": 115,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_tem_187",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:grave_the_gentleman_frog",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 40669500,
+          "separation": 6,
+          "spacing": 65,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:grave_the_gentleman_frog",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "born_in_chaos_v1:gravecarrionexe",
+      "pin": "mods/born-in-chaos.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 771309080,
+          "separation": 9,
+          "spacing": 100,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "born_in_chaos_v1:gravecarrionexe",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "eidolon_repraised:stray_tower",
+      "pin": "mods/eidolon-repraised.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 632767650,
+          "separation": 18,
+          "spacing": 24,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "eidolon_repraised:stray_tower",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "goety:blighted_shack",
+      "pin": "mods/goety.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1765432345,
+          "separation": 20,
+          "spacing": 60,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "goety:blighted_shack",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "goety:graveyard",
+      "pin": "mods/goety.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1102102011,
+          "separation": 8,
+          "spacing": 32,
+          "type": "minecraft:random_spread",
+          "frequency": 0.2,
+          "frequency_reduction_method": "legacy_type_1"
+        },
+        "structures": [
+          {
+            "structure": "goety:graveyard",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "goety:mangrove_tower",
+      "pin": "mods/goety.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1654323456,
+          "separation": 8,
+          "spacing": 32,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "goety:mangrove_tower",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "goety:secluded_igloo",
+      "pin": "mods/goety.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1012101201,
+          "separation": 8,
+          "spacing": 32,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "goety:secluded_igloo",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "goety:wrecked_mansion",
+      "pin": "mods/goety.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 288973156,
+          "separation": 20,
+          "spacing": 80,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "minecraft:woodland_mansions"
+          },
+          "spread_type": "triangular"
+        },
+        "structures": [
+          {
+            "structure": "goety:wrecked_mansion",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:dead_tree_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 781897819,
+          "separation": 16,
+          "spacing": 28,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:dead_tree",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:giant_mushroom_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 365012356,
+          "separation": 26,
+          "spacing": 34,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:giant_mushroom",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:haunted_house_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 451235912,
+          "separation": 18,
+          "spacing": 20,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:haunted_house",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:large_graveyard_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 304812394,
+          "separation": 20,
+          "spacing": 25,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:large_graveyard",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:medium_graveyard_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1690192399,
+          "separation": 16,
+          "spacing": 18,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:medium_graveyard",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:memorial_tree_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 529239621,
+          "separation": 12,
+          "spacing": 14,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:memorial_tree",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:mushroom_grave_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 379123039,
+          "separation": 18,
+          "spacing": 24,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:mushroom_grave",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:overrun_villages",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1820462391,
+          "separation": 12,
+          "spacing": 40,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 8,
+            "other_set": "minecraft:villages"
+          }
+        },
+        "structures": [
+          {
+            "structure": "graveyard:overrun_plains_village",
+            "weight": 1
+          },
+          {
+            "structure": "graveyard:overrun_savanna_village",
+            "weight": 1
+          },
+          {
+            "structure": "graveyard:overrun_taiga_village",
+            "weight": 1
+          },
+          {
+            "structure": "graveyard:overrun_snowy_village",
+            "weight": 1
+          },
+          {
+            "structure": "graveyard:overrun_desert_village",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:ruins_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 467108394,
+          "separation": 12,
+          "spacing": 16,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:ruins",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_desert_grave_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 681236914,
+          "separation": 16,
+          "spacing": 20,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_desert_grave",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_desert_graveyard_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 598017285,
+          "separation": 28,
+          "spacing": 32,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_desert_graveyard",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_grave_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 240451934,
+          "separation": 8,
+          "spacing": 12,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_grave",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_graveyard_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 598017285,
+          "separation": 18,
+          "spacing": 20,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_graveyard",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_mountain_grave_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 725689810,
+          "separation": 8,
+          "spacing": 12,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_mountain_grave",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "graveyard:small_savanna_grave_structure",
+      "pin": "mods/the-graveyard.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 709787761,
+          "separation": 8,
+          "spacing": 12,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "graveyard:small_savanna_grave",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "hexerei:dark_coven",
+      "pin": "mods/hexerei.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 2124767140,
+          "separation": 11,
+          "spacing": 29,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "hexerei:dark_coven",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "hexerei:nature_coven",
+      "pin": "mods/hexerei.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 140967140,
+          "separation": 11,
+          "spacing": 29,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "hexerei:nature_coven",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "hexerei:owl_post_office",
+      "pin": "mods/hexerei.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 5319867,
+          "separation": 12,
+          "spacing": 20,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "hexerei:nature_coven"
+          }
+        },
+        "structures": [
+          {
+            "structure": "hexerei:owl_post_office",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "hexerei:witch_hut",
+      "pin": "mods/hexerei.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1297727188,
+          "separation": 8,
+          "spacing": 20,
+          "type": "minecraft:random_spread",
+          "exclusion_zone": {
+            "chunk_count": 10,
+            "other_set": "hexerei:dark_coven"
+          }
+        },
+        "structures": [
+          {
+            "structure": "hexerei:witch_hut",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "irons_spellbooks:evoker_fort",
+      "pin": "mods/irons-spells-n-spellbooks.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 684512,
+          "separation": 50,
+          "spacing": 85,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "irons_spellbooks:evoker_fort",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "irons_spellbooks:mangrove_hut",
+      "pin": "mods/irons-spells-n-spellbooks.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 169476080,
+          "separation": 18,
+          "spacing": 25,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "irons_spellbooks:mangrove_hut",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "irons_spellbooks:mountain_tower",
+      "pin": "mods/irons-spells-n-spellbooks.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 194767080,
+          "separation": 33,
+          "spacing": 45,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "irons_spellbooks:mountain_tower",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "irons_spellbooks:pyromancer_tower",
+      "pin": "mods/irons-spells-n-spellbooks.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1512684,
+          "separation": 50,
+          "spacing": 85,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "irons_spellbooks:pyromancer_tower",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "witchery:hobgoblin_hut",
+      "pin": "mods/just-another-witchery-remake.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1521652344,
+          "separation": 8,
+          "spacing": 48,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "witchery:hobgoblin_hut",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "witchery:small_well",
+      "pin": "mods/just-another-witchery-remake.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1294654121,
+          "separation": 8,
+          "spacing": 48,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "witchery:small_well",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "witchery:well",
+      "pin": "mods/just-another-witchery-remake.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 1694756141,
+          "separation": 8,
+          "spacing": 48,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "witchery:well",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "sons_of_sins:sinful_church",
+      "pin": "mods/sons-of-sins.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 611326438,
+          "separation": 12,
+          "spacing": 37,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "sons_of_sins:sinful_church",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "primalmagick:shrines",
+      "pin": "mods/primal-magick.pw.toml",
+      "original": {
+        "placement": {
+          "salt": 11893192,
+          "separation": 10,
+          "spacing": 20,
+          "type": "minecraft:random_spread"
+        },
+        "structures": [
+          {
+            "structure": "primalmagick:earth_shrine",
+            "weight": 1
+          },
+          {
+            "structure": "primalmagick:sea_shrine",
+            "weight": 1
+          },
+          {
+            "structure": "primalmagick:sky_shrine",
+            "weight": 1
+          },
+          {
+            "structure": "primalmagick:sun_shrine",
+            "weight": 1
+          },
+          {
+            "structure": "primalmagick:moon_shrine",
+            "weight": 1
+          }
+        ]
+      }
+    }
+  ]
+}

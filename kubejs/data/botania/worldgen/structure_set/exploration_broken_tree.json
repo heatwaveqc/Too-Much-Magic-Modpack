@@ -1,0 +1,25 @@
+{
+  "placement": {
+    "salt": 8974685,
+    "separation": 6,
+    "spacing": 24,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 3,
+      "other_set": "minecraft:villages"
+    },
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "botania:exploration_broken_tree",
+      "weight": 1
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "module": "exploration",
+      "type": "botania:module_enabled"
+    }
+  ]
+}
