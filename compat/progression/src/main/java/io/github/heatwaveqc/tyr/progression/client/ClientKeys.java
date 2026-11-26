@@ -47,6 +47,7 @@ public final class ClientKeys {
         event.register(LAVA_VISION);
         event.register(CHARM);
         event.register(TAME);
+        NativeSkillKeys.register(event,FEIGN_DEATH);
     }
     @EventBusSubscriber(modid = ProgressionMod.MOD_ID,value = Dist.CLIENT)
     public static final class Game {
@@ -55,7 +56,7 @@ public final class ClientKeys {
         private static boolean nativeTaming;
         @SubscribeEvent public static void tick(ClientTickEvent.Post event) {
             Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.player == null) { lastPlayer=null; return; }
+            if (minecraft.player == null) { lastPlayer=null; NativeSkillKeys.tick(false); return; }
             // When the bindings coincide, keep the actual vanilla interaction pipeline.
             boolean nativeUse=!TAME.isUnbound() && TAME.getKey().equals(minecraft.options.keyUse.getKey())
                     && TAME.getKeyModifier()==minecraft.options.keyUse.getKeyModifier();
@@ -72,6 +73,7 @@ public final class ClientKeys {
                 while(CHARM.consumeClick()){}
                 while(TAME.consumeClick()){}
                 while(FEIGN_DEATH.consumeClick()){}
+                NativeSkillKeys.tick(false);
                 return;
             }
             send(CHARM,"charm");
@@ -87,6 +89,7 @@ public final class ClientKeys {
             send(FEIGN_DEATH,"feign_death");
             send(NIGHT_VISION,"enhanced_night_vision");
             send(LAVA_VISION,"lava_vision");
+            NativeSkillKeys.tick(minecraft.getConnection()!=null);
         }
         @SubscribeEvent public static void skillKey(net.neoforged.neoforge.client.event.InputEvent.Key event){
             Minecraft mc=Minecraft.getInstance();

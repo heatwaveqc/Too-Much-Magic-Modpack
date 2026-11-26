@@ -54,6 +54,7 @@ final class SkillKeybindings {
         return false;
     }
     static String bind(String path,String skill,int key,int modifiers){
+        if(NativeSkillKeys.has(path,skill))return "Configure this skill in Controls";
         load();if(readFailed)return "Binding file unreadable";
         if(!id(path)||!id(skill))return "Invalid skill";
         String row=path+"|"+skill;
@@ -84,6 +85,7 @@ final class SkillKeybindings {
         }finally{if(temp!=null)try{Files.deleteIfExists(temp);}catch(IOException ignored){}}
     }
     static String label(String path,String skill){
+        if(NativeSkillKeys.has(path,skill))return NativeSkillKeys.label(path,skill);
         load();var chord=bindings.get(path+"|"+skill);
         if(chord==null)return "Unbound";
         String prefix=((chord.modifiers&GLFW.GLFW_MOD_CONTROL)!=0?"Ctrl+":"")
@@ -98,7 +100,8 @@ final class SkillKeybindings {
         if(!valid(chord))return;
         for(var entry:bindings.entrySet())if(entry.getValue().equals(chord)){
             String[] parts=entry.getKey().split("\\|",-1);
-            PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(parts[0],"activate_key",parts[1],""));
+            if(!NativeSkillKeys.has(parts[0],parts[1]))
+                PacketDistributor.sendToServer(new ProgressionMenuNetwork.Mutate(parts[0],"activate_key",parts[1],""));
             return;
         }
     }

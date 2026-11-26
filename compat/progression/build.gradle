@@ -48,3 +48,49 @@ tasks.withType(Jar).configureEach {
     from('THIRD_PARTY_NOTICES.md')
     from('third_party_licenses') { into 'third_party_licenses' }
 }
+
+// Native key registrations must exist before Minecraft loads player options.
+// Generate a small catalog from actual shipped path data, never from design drafts.
+def pathResources = fileTree('src/main/resources/data') { include '*/tyr_progression/paths/**/*.json' }
+def keyCatalog = tasks.register('generateSkillKeyCatalog') {
+    inputs.files(pathResources).withPathSensitivity(PathSensitivity.RELATIVE)
+    outputs.dir(layout.buildDirectory.dir('generated/resources/skillKeys'))
+    doLast {
+        def out = layout.buildDirectory.dir('generated/resources/skillKeys').get().asFile
+        project.delete(out)
+        def rows = []
+        def lang = [:]
+        def seen = new HashSet<String>()
+        pathResources.files.sort { it.path }.each { file ->
+            def rel = project.file('src/main/resources/data').toPath().relativize(file.toPath()).toString().replace('\\','/')
+            def parts = rel.split('/',4)
+            def pathId = parts[0] + ':' + parts[3].substring(0,parts[3].length()-5)
+            def path = new groovy.json.JsonSlurper().parse(file)
+            def category = 'key.categories.tyr_progression.' + UUID.nameUUIDFromBytes(pathId.getBytes('UTF-8'))
+            def title = path.title ?: pathId.substring(pathId.indexOf(':')+1).replace('_',' ').capitalize()
+            (path.skills ?: []).findAll { it.activation != null }.each { skill ->
+                if (!(skill.activation.mode in ['toggle','timed'])) throw new GradleException("Invalid activation mode: ${pathId} / ${skill.id}")
+                def skillId = skill.id as String
+                if (!(pathId ==~ /[a-z0-9_.-]+:[a-z0-9_.\/-]+/) || !(skillId ==~ /[a-z0-9_.-]+:[a-z0-9_.\/-]+/) || pathId.length()>128 || skillId.length()>128)
+                    throw new GradleException("Invalid skill key identity: ${pathId} / ${skillId}")
+                def identity = pathId + '|' + skillId
+                if (!seen.add(identity)) throw new GradleException("Duplicate skill key identity: ${identity}")
+                def key = 'key.tyr_progression.activation.' + UUID.nameUUIDFromBytes(identity.getBytes('UTF-8'))
+                rows.add([path:pathId, skill:skillId, key:key, category:category,
+                          feign:(skill.effects ?: []).any { it.type == 'feign_death' }])
+                lang[category] = 'Tyr Progression — ' + title
+                lang[key] = skill.title ?: skillId.substring(skillId.lastIndexOf('/')+1).replace('_',' ').capitalize()
+            }
+        }
+        def catalog = new File(out,'tyr_progression/skill_key_catalog.json')
+        catalog.parentFile.mkdirs()
+        catalog.setText(groovy.json.JsonOutput.toJson(rows),'UTF-8')
+        // LanguageManager merges language resources across namespaces. Separate namespace
+        // avoids replacing the maintained Tyr Progression translations.
+        def translations = new File(out,'assets/tyr_progression_keys/lang/en_us.json')
+        translations.parentFile.mkdirs()
+        translations.setText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(lang)),'UTF-8')
+    }
+}
+sourceSets.main.resources.srcDir(keyCatalog)
+neoForge.ideSyncTask keyCatalog
