@@ -1,5 +1,5 @@
 name: Worldgen audit - authorized pilot
-run-name: Worldgen audit - authorized control or TMM
+run-name: Worldgen audit - authorized paired pilot
 on:
   workflow_dispatch:
     inputs:
@@ -31,6 +31,7 @@ jobs:
     timeout-minutes: 100
     env:
       TOOLS_SHA: '990c97ce355aac191419354809ab013efddb10f0'
+      DENSITY_SHA: '5beae36105a61e5671d5a9e12989bfa0a8ae2904'
       BASELINE_SHA: '721ea058294f838b9d7f145af427f5db228d248d'
       CARBON_SHA: '393a5ae752a419da970e9cacdf510c0822039b572cb189517b648a2a03cdb172'
     steps:
@@ -48,7 +49,8 @@ jobs:
             [[ "$APPROVED_SHA" == "$GITHUB_SHA" ]]
             gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/worldgen-request/$NONCE" > "$RUNNER_TEMP/worldgen-tmm-receipt.json"
             gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/worldgen-vanilla-request/$NONCE" > "$RUNNER_TEMP/worldgen-vanilla-receipt.json"
-            MODE=$(python3 -c 'import json, os, pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); n=os.environ["NONCE"]; sha=os.environ["APPROVED_SHA"]; receipts=[(mode, r) for mode, prefix in (("tmm","worldgen-request"),("vanilla","worldgen-vanilla-request")) for r in json.loads((p/f"worldgen-{mode}-receipt.json").read_text()) if r["ref"]==f"refs/tags/{prefix}/{n}"]; assert len(receipts)==1 and receipts[0][1]["object"]["sha"]==sha and receipts[0][1]["object"]["type"]=="commit", "Missing, ambiguous or wrong-commit receipt"; print(receipts[0][0])')
+            gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/worldgen-density-request/$NONCE" > "$RUNNER_TEMP/worldgen-density-receipt.json"
+            MODE=$(python3 -c 'import json, os, pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); n=os.environ["NONCE"]; sha=os.environ["APPROVED_SHA"]; receipts=[(mode, r) for mode, prefix in (("tmm","worldgen-request"),("vanilla","worldgen-vanilla-request"),("density","worldgen-density-request")) for r in json.loads((p/f"worldgen-{mode}-receipt.json").read_text()) if r["ref"]==f"refs/tags/{prefix}/{n}"]; assert len(receipts)==1 and receipts[0][1]["object"]["sha"]==sha and receipts[0][1]["object"]["type"]=="commit", "Missing, ambiguous or wrong-commit receipt"; print(receipts[0][0])')
           fi
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "Authorized worldgen mode: $MODE"
@@ -85,16 +87,22 @@ jobs:
           path: audit-tools
           persist-credentials: false
       - uses: actions/checkout@v4
-        if: steps.authorization.outputs.mode == 'tmm'
+        if: steps.authorization.outputs.mode != 'vanilla'
         with:
           ref: ${{ env.BASELINE_SHA }}
           path: frozen-pack
           persist-credentials: false
       - uses: actions/checkout@v4
-        if: steps.authorization.outputs.mode == 'vanilla'
+        if: steps.authorization.outputs.mode != 'tmm'
         with:
           ref: ${{ github.sha }}
           path: launcher
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        if: steps.authorization.outputs.mode == 'density'
+        with:
+          ref: ${{ env.DENSITY_SHA }}
+          path: density-overlay
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
@@ -110,9 +118,9 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git -C audit-tools rev-parse HEAD)" = "$TOOLS_SHA"
-          if [[ "${{ steps.authorization.outputs.mode }}" == tmm ]]; then test "$(git -C frozen-pack rev-parse HEAD)" = "$BASELINE_SHA"; fi
+          if [[ "${{ steps.authorization.outputs.mode }}" != vanilla ]]; then test "$(git -C frozen-pack rev-parse HEAD)" = "$BASELINE_SHA"; fi
           python -m unittest discover -s audit-tools/tests -p 'test_audit_worldgen_*.py' -v
-          if [[ "${{ steps.authorization.outputs.mode }}" == tmm ]]; then python frozen-pack/scripts/download_mods.py --check-origins; fi
+          if [[ "${{ steps.authorization.outputs.mode }}" != vanilla ]]; then python frozen-pack/scripts/download_mods.py --check-origins; fi
       - name: Reconstruct exact historical server and run bounded generation
         if: steps.authorization.outputs.mode == 'tmm'
         run: |
@@ -124,6 +132,12 @@ jobs:
           set -euo pipefail
           test "$(git -C launcher rev-parse HEAD)" = "$GITHUB_SHA"
           python launcher/scripts/run_worldgen_vanilla_control.py --tools audit-tools --work "$RUNNER_TEMP/tmm-worldgen-audit" --authorized
+      - name: Run paired half-frequency density pilot
+        if: steps.authorization.outputs.mode == 'density'
+        run: |
+          set -euo pipefail
+          test "$(git -C launcher rev-parse HEAD)" = "$GITHUB_SHA"
+          python launcher/scripts/run_worldgen_density_pilot.py --tools audit-tools --pack-root frozen-pack --density-root density-overlay --work "$RUNNER_TEMP/tmm-worldgen-audit" --authorized
       - name: Retain derived evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4
