@@ -79,4 +79,53 @@ class ClassicMonkCandidateTest {
         assertEquals(125,rankSum);assertTrue(dragon&&wither);
         assertTrue(path.milestones().stream().anyMatch(m->m.id().equals(gate.get("milestone").getAsString())&&m.points()==0&&m.xp()==0));
     }
+    @Test void allClassicDeedsAndPurchasesReachMasteryWithVanillaEquivalentTools() throws Exception {
+        Assumptions.assumeTrue(Files.isRegularFile(CANDIDATE));
+        var raw=JsonParser.parseString(Files.readString(CANDIDATE)).getAsJsonObject();
+        var survey=new java.util.HashMap<>(vanillaSurvey());
+        survey.put("minecraft:golden_pickaxe",survey.get("minecraft:wooden_pickaxe"));
+        survey.put("minecraft:netherite_pickaxe",survey.get("minecraft:diamond_pickaxe"));
+        var expanded=HarvestGeneration.expand(MONK,raw,(i,b)->survey);
+        var path=TestPaths.read(MONK,expanded.path());
+        String finale=raw.getAsJsonObject("mastery_completion").get("milestone").getAsString();
+        var gate=raw.getAsJsonObject("mastery_completion").getAsJsonObject("when").getAsJsonArray("conditions");
+        var deeds=new java.util.HashSet<String>();
+        var paid=new java.util.HashSet<String>();
+        for(var element:gate){
+            var c=element.getAsJsonObject();String kind=c.get("type").getAsString();
+            if(kind.equals("milestone"))assertTrue(deeds.add(c.get("id").getAsString()));
+            if(kind.equals("skill_rank"))assertTrue(paid.add(c.get("id").getAsString()));
+        }
+        var reached=new java.util.HashSet<String>();
+        var track=io.github.heatwaveqc.tyr.progression.core.ProgressionMath.join(path,io.github.heatwaveqc.tyr.progression.state.Track.empty());
+        boolean advanced;
+        do{
+            advanced=false;
+            for(var m:path.milestones()){
+                if(m.id().equals(finale)||reached.contains(m.id())||!reached.containsAll(m.after()))continue;
+                for(var skill:path.skills())for(var effect:skill.effects())
+                    if(m.id().equals(effect.params().get("trial_milestone"))){
+                        assertEquals(0,track.skillRank(skill.id()),"Trial access must not confer ownership");
+                        assertEquals(1,io.github.heatwaveqc.tyr.progression.core.ProgressionMath.effectRank(path,track,skill,effect),"No self-locked trial "+m.id());
+                    }
+                reached.add(m.id());reached.addAll(m.completionAliases());
+                track=io.github.heatwaveqc.tyr.progression.core.ProgressionMath.completeMilestone(track,m);
+                advanced=true;
+            }
+        }while(advanced);
+        assertTrue(reached.containsAll(deeds),"Unreachable mastery receipt");
+        for(var m:path.milestones())if(!m.id().equals(finale))assertTrue(reached.contains(m.id()),"Unreachable deed "+m.id());
+        for(var skill:path.skills())if(skill.baseCost()>0){
+            assertTrue(paid.contains(skill.id()));
+            assertTrue(skill.choiceGroup().isEmpty(),"All mastery purchases must coexist");
+        }
+        for(var e:raw.getAsJsonArray("skills")){
+            var node=e.getAsJsonObject();
+            if(node.has("auto_achievements"))for(var receipt:node.getAsJsonArray("auto_achievements"))
+                assertTrue(deeds.contains(receipt.getAsString()),"Free Classic unlock omitted from mastery");
+        }
+        assertEquals(28,paid.size());assertEquals(24,deeds.size());
+        assertTrue(path.milestones().stream().filter(m->m.id().equals(finale)).allMatch(m->reached.containsAll(m.after())));
+    }
+
 }
