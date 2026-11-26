@@ -88,6 +88,11 @@ public final class ClientKeys {
             send(NIGHT_VISION,"enhanced_night_vision");
             send(LAVA_VISION,"lava_vision");
         }
+        @SubscribeEvent public static void skillKey(net.neoforged.neoforge.client.event.InputEvent.Key event){
+            Minecraft mc=Minecraft.getInstance();
+            if(mc.player==null||mc.getConnection()==null||mc.screen!=null||event.getAction()!=GLFW.GLFW_PRESS)return;
+            SkillKeybindings.activate(event.getKey(),event.getModifiers());
+        }
         private static void send(KeyMapping key,String action) {
             while (key.consumeClick()) PacketDistributor.sendToServer(new AbilityNetwork.Action(action));
         }

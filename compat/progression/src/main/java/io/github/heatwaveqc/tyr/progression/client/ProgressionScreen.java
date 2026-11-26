@@ -24,7 +24,8 @@ public final class ProgressionScreen extends Screen {
     private SkillGraph.Graph graph;
     private final Map<String,int[]> panByPath=new HashMap<>();
     private int panX,panY,ticks;
-    private Button purchase,respec,activate,currencyButton;
+    private Button purchase,respec,activate,currencyButton,bindKey;
+    private String capturePath="",captureSkill="",bindingNotice="";
     private String currencyChoice="";
     private boolean confirmRespec;
     public ProgressionScreen(String pathId){super(Component.literal("Progression"));this.pathId=pathId;}
@@ -115,6 +116,11 @@ public final class ProgressionScreen extends Screen {
         }).bounds(204,height-25,80,20).build());
         currencyButton=addRenderableWidget(Button.builder(Component.literal("Currency"),b->
             cycleCurrency()).bounds(289,height-25,126,20).build());
+        bindKey=addRenderableWidget(Button.builder(Component.literal("Bind key"),b->{
+            if(!captureSkill.isEmpty()){capturePath="";captureSkill="";bindingNotice="";return;}
+            var node=nodes.get(selection);
+            if(node!=null&&node.has("activation_mode")){capturePath=pathId;captureSkill=selection;bindingNotice="";}
+        }).bounds(Math.max(12,width-150),6,138,20).build());
         clampPan();request();
     }
     @Override public void tick(){if(++ticks%40==0)request();}
@@ -125,6 +131,7 @@ public final class ProgressionScreen extends Screen {
         panByPath.put(pathId,new int[]{panX,panY});pathId=next;
         var pos=panByPath.getOrDefault(next,new int[2]);panX=pos[0];panY=pos[1];
         data=null;graph=null;nodes.clear();selection="";currencyChoice="";confirmRespec=false;
+        capturePath="";captureSkill="";bindingNotice="";
         if(respec!=null)respec.setMessage(Component.literal("Respec"));request();
     }
     private int viewportLeft(){return 10;}
@@ -179,6 +186,13 @@ public final class ProgressionScreen extends Screen {
             activate.active=activate.visible&&chosen.get("activation_ready").getAsBoolean();
             if(activate.visible)activate.setMessage(Component.literal(chosen.get("activation_active").getAsBoolean()?"Active / off":"Activate"));
         }
+        if(bindKey!=null){
+            bindKey.visible=chosen!=null&&chosen.has("activation_mode");
+            bindKey.active=bindKey.visible;
+            if(bindKey.visible)bindKey.setMessage(Component.literal(!captureSkill.isEmpty()?"Press key (Esc cancels)":
+                "Key: "+SkillKeybindings.label(pathId,selection)));
+        }
+        if(!captureSkill.isEmpty())line(g,"Press a key; Delete clears, Esc cancels",12,65,width-24,0xFFF0D997);
         if(data!=null&&graph!=null&&viewportBottom()>viewportTop()){
             line(g,(data.get("joined").getAsBoolean()?"Enrolled":"Not enrolled")+"   |   "+label(data.get("xp_channel").getAsString())+
                 " level "+data.get("rank").getAsInt()+"   |   "+data.get("points").getAsInt()+" points"+(data.has("debt")&&data.get("debt").getAsLong()>0?" | debt "+data.get("debt").getAsLong():""),12,53,width-24,0xFFDBC895);
@@ -188,6 +202,10 @@ public final class ProgressionScreen extends Screen {
                     " ("+challenge.get("progress").getAsInt()+"/"+challenge.get("goal").getAsInt()+")",
                     12,65,width-24,0xFFB8B3C6);
             } else line(g,"Drag to pan · scroll vertically · select a skill",12,65,width-24,0xFFB8B3C6);
+            if(!captureSkill.isEmpty()||!bindingNotice.isEmpty()){
+                g.fill(10,63,width-10,75,0xFF1A1725);
+                line(g,!captureSkill.isEmpty()?(bindingNotice.isEmpty()?"Press key · Delete clears · Esc cancels":bindingNotice+" · Esc cancels"):bindingNotice,12,65,width-24,0xFFF0D997);
+            }
             g.fill(viewportLeft(),viewportTop(),viewportRight(),viewportBottom(),0xFF100F19);
             clampPan();int ox=originX(),oy=originY();
             g.enableScissor(viewportLeft(),viewportTop(),viewportRight(),viewportBottom());
@@ -263,14 +281,33 @@ public final class ProgressionScreen extends Screen {
         }else line(g,"Requesting skill data from server...",12,65,width-24,0xFFBBB5CB);
         super.render(g,mx,my,partial);
     }
+    @Override public boolean keyPressed(int key,int scan,int modifiers){
+        if(!captureSkill.isEmpty()){
+            if(key==org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE){
+                capturePath="";captureSkill="";bindingNotice="Binding cancelled";return true;
+            }
+            if(SkillKeybindings.modifierKey(key))return true;
+            boolean clear=key==org.lwjgl.glfw.GLFW.GLFW_KEY_DELETE||key==org.lwjgl.glfw.GLFW.GLFW_KEY_BACKSPACE;
+            String error=SkillKeybindings.bind(capturePath,captureSkill,clear?-1:key,modifiers);
+            if(error!=null){bindingNotice=error;return true;}
+            bindingNotice=clear?"Key cleared":"Bound: "+SkillKeybindings.label(capturePath,captureSkill);
+            capturePath="";captureSkill="";return true;
+        }
+        return super.keyPressed(key,scan,modifiers);
+    }
     @Override public boolean mouseClicked(double mx,double my,int button){
+        if(!captureSkill.isEmpty()){
+            // Do not accidentally change the selected skill while capturing a key.
+            if(bindKey!=null&&bindKey.isMouseOver(mx,my)){capturePath="";captureSkill="";bindingNotice="Binding cancelled";}
+            return true;
+        }
         if(super.mouseClicked(mx,my,button))return true;
         if(button!=0||graph==null||!inside(mx,my))return false;
         int ox=originX(),oy=originY();
         for(var row:nodes.entrySet()){
             var pos=graph.layout().positions().get(row.getKey());int x=ox+pos.x(),y=oy+pos.y();
             if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){
-                selection=row.getKey();currencyChoice=selectedCurrency(nodes.get(selection));break;
+                selection=row.getKey();currencyChoice=selectedCurrency(nodes.get(selection));bindingNotice="";break;
             }
         }
         return true;
