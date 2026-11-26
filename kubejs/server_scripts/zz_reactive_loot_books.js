@@ -16,70 +16,85 @@
     let TMMReactivePool = TMMReactiveTag.create(TMMReactiveRegistries.ENCHANTMENT,
       TMMReactiveLocation.parse('minecraft:on_random_loot'))
 
+    // Holder.is(...) is overloaded too; compare the unwrapped registered key instead.
+    let isReactive = holder => {
+      let key = holder.unwrapKey()
+      return key.isPresent() && key.get().location().equals(TMMReactiveId)
+    }
+
     LootJS.modifiers(event => {
       let warnedEmptyPool = false
+      let disabledAfterError = false
       event.addTableModifier(LootType.CHEST).name('tmm:unconfigured_reactive_books')
         .customAction((context, loot) => {
-          // Lookup the live reloadable registry/tag at roll time; don't cache holders.
-          let registry = context.getLevel().registryAccess().registryOrThrow(TMMReactiveRegistries.ENCHANTMENT)
-          let caster = TMMReactiveBuiltins.DATA_COMPONENT_TYPE.get(TMMReactiveCasterId)
-          let it = loot.iterator()
-          while (it.hasNext()) {
-            let stack = it.next()
-            if (!stack.is(TMMReactiveItems.ENCHANTED_BOOK)) continue
-            // If the optional component cannot be resolved, fail closed.
-            if (caster == null || stack.has(caster)) continue
-            let stored = stack.get(TMMReactiveComponents.STORED_ENCHANTMENTS)
-            if (stored == null) continue
-            let bad = null
-            let retained = []
-            let old = stored.keySet().iterator()
-            while (old.hasNext()) {
-              let holder = old.next()
-              if (holder.is(TMMReactiveId)) bad = holder
-              else retained.push(holder)
-            }
-            if (bad == null) continue
+          if (disabledAfterError) return
+          try {
+            // Lookup the live reloadable registry/tag at roll time; don't cache holders.
+            let registry = context.getLevel().registryAccess().registryOrThrow(TMMReactiveRegistries.ENCHANTMENT)
+            let caster = TMMReactiveBuiltins.DATA_COMPONENT_TYPE.get(TMMReactiveCasterId)
+            let it = loot.iterator()
+            while (it.hasNext()) {
+              let stack = it.next()
+              if (!stack.getItem().equals(TMMReactiveItems.ENCHANTED_BOOK)) continue
+              // If the optional component cannot be resolved, fail closed.
+              if (caster == null || stack.has(caster)) continue
+              let stored = stack.get(TMMReactiveComponents.STORED_ENCHANTMENTS)
+              if (stored == null) continue
+              let bad = null
+              let retained = []
+              let old = stored.keySet().iterator()
+              while (old.hasNext()) {
+                let holder = old.next()
+                if (isReactive(holder)) bad = holder
+                else retained.push(holder)
+              }
+              if (bad == null) continue
 
-            let candidates = []
-            let pool = registry.getTagOrEmpty(TMMReactivePool).iterator()
-            while (pool.hasNext()) {
-              let candidate = pool.next()
-              if (candidate.is(TMMReactiveId) || stored.getLevel(candidate) > 0) continue
-              let compatible = true
-              for (let other of retained) {
-                if (!TMMReactiveEnchant.areCompatible(candidate, other)) {
-                  compatible = false
-                  break
+              let candidates = []
+              let pool = registry.getTagOrEmpty(TMMReactivePool).iterator()
+              while (pool.hasNext()) {
+                let candidate = pool.next()
+                if (isReactive(candidate) || stored.getLevel(candidate) > 0) continue
+                let compatible = true
+                for (let other of retained) {
+                  if (!TMMReactiveEnchant.areCompatible(candidate, other)) {
+                    compatible = false
+                    break
+                  }
+                }
+                if (compatible && candidate.value().getMaxLevel() >= candidate.value().getMinLevel()) {
+                  candidates.push(candidate)
                 }
               }
-              if (compatible && candidate.value().getMaxLevel() >= candidate.value().getMinLevel()) {
-                candidates.push(candidate)
-              }
-            }
 
-            // Preserve the loot roll if a broken/empty pack tag would leave a blank book.
-            // A mixed book with no compatible replacement can still retain its valid entries.
-            if (candidates.length === 0 && retained.length === 0) {
-              if (!warnedEmptyPool) {
-                console.warn('[TMM Reactive] No eligible random-loot enchantment; leaving single-entry book unchanged')
-                warnedEmptyPool = true
+              // Preserve the loot roll if a broken/empty pack tag would leave a blank book.
+              // A mixed book with no compatible replacement can still retain its valid entries.
+              if (candidates.length === 0 && retained.length === 0) {
+                if (!warnedEmptyPool) {
+                  console.warn('[TMM Reactive] No eligible random-loot enchantment; leaving single-entry book unchanged')
+                  warnedEmptyPool = true
+                }
+                continue
               }
-              continue
+              let edited = new TMMReactiveMutable(stored)
+              edited.set(bad, 0)
+              if (candidates.length > 0) {
+                let random = context.getRandom()
+                let chosen = candidates[random.nextInt(candidates.length)]
+                let min = chosen.value().getMinLevel()
+                let max = chosen.value().getMaxLevel()
+                edited.set(chosen, min + random.nextInt(max - min + 1))
+              }
+              // Mutate only the stored-enchantment component on a copy of the original.
+              let result = stack.copy()
+              result.set(TMMReactiveComponents.STORED_ENCHANTMENTS, edited.toImmutable())
+              it.set(result)
             }
-            let edited = new TMMReactiveMutable(stored)
-            edited.set(bad, 0)
-            if (candidates.length > 0) {
-              let random = context.getRandom()
-              let chosen = candidates[random.nextInt(candidates.length)]
-              let min = chosen.value().getMinLevel()
-              let max = chosen.value().getMaxLevel()
-              edited.set(chosen, min + random.nextInt(max - min + 1))
-            }
-            // Mutate only the stored-enchantment component on a copy of the original.
-            let result = stack.copy()
-            result.set(TMMReactiveComponents.STORED_ENCHANTMENTS, edited.toImmutable())
-            it.set(result)
+          } catch (error) {
+            // Optional loot hygiene must never crash world ticking. Leave the
+            // failing stack and remaining loot untouched; make the fault visible.
+            disabledAfterError = true
+            console.error('[TMM Reactive] Chest filter disabled until script reload; original loot preserved where not already processed: ' + error)
           }
         })
     })

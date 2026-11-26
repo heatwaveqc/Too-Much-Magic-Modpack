@@ -2266,7 +2266,7 @@ hash = "e0d23af9003e0d11a225aa33ad3e49dd92e6b495bbcc41d52d4fde460f367770"
 
 [[files]]
 file = "kubejs/server_scripts/zz_reactive_loot_books.js"
-hash = "df749a86bfe793dfa711c179e73872e8a37f217e150c271ec48ab3888734911a"
+hash = "0dc626dfc7c73a1b6b9f9eedd384d3dbba8543a7a523bf8a19befcdecfbd9083"
 
 [[files]]
 file = "kubejs/startup_scripts/adventurer_coin.js"

@@ -44,6 +44,8 @@ jobs:
           python3 scripts/validate_quests.py
           python3 scripts/build_theurgy_quest_pilot.py --check
           python3 tests/test_theurgy_quest_runtime.py
+      - name: Reactive chest-loot guard fixtures (offline, no Minecraft)
+        run: node scripts/test_reactive_loot_books.js
       - name: Verify quick QA starter rewards and recipe fixes (source-only)
         run: python3 scripts/verify_quick_repairs.py
       - name: Verify single Unified Progression XP authority and exact QA target
