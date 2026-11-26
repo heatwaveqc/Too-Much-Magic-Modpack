@@ -21,6 +21,13 @@ except ModuleNotFoundError as exc:
         raise
     from quest_text import dump_quest_text_list, quote_quest_text, validate_quest_locale
 
+try:
+    from scripts.build_friendship_quest import load as load_friendship, render as render_friendship
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from build_friendship_quest import load as load_friendship, render as render_friendship
+
 ROOT = Path(__file__).resolve().parents[1]
 QUESTDIR = ROOT / "config/ftbquests/quests"
 SPEC = json.loads((ROOT / "manifest/quest_chapters.json").read_text(encoding="utf-8"))
@@ -256,7 +263,6 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
     # Theurgy pilot positions are first-class source; never flatten its branching graph.
     for node in json.loads((ROOT / "manifest/theurgy_quest_pilot.json").read_text(encoding="utf-8"))["quests"]:
         put("Theurgy", node["title"], *node["position"])
-    from build_friendship_quest import load as load_friendship
     companion, _, _ = load_friendship()
     for node in companion["quests"]:
         put(companion["chapter"], node["title"], *node["position"])
@@ -385,7 +391,6 @@ def update_packwiz(changed: dict[Path, str]) -> None:
 
 
 def main() -> None:
-    from build_friendship_quest import load as load_friendship, render as render_friendship
     companion, companion_ids, companion_meta = load_friendship()
     positions = layout()
     changes: dict[Path, str] = {}

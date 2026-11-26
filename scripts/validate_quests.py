@@ -14,6 +14,13 @@ except ModuleNotFoundError as exc:
         raise
     from quest_text import quote_quest_text, validate_quest_locale, self_test as check_quest_text_escaping
 
+try:
+    from scripts.build_friendship_quest import check as check_friendship
+except ModuleNotFoundError as exc:
+    if exc.name != "scripts":
+        raise
+    from build_friendship_quest import check as check_friendship
+
 ROOT = Path(__file__).resolve().parents[1]
 QUESTS = ROOT / "config" / "ftbquests" / "quests"
 EXPECTED = {"Introduction": 4, "Progression": 5, "Magic": 25, "Exploration & Combat": 8, "Endgame": 3}
@@ -117,7 +124,6 @@ def main() -> None:
         ensure(actual_art == expected_art, "Incomplete Theurgy client quest art")
         ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
-    from build_friendship_quest import check as check_friendship
     check_friendship()
     ensure(len(authored["quests"]) == len(resolved["quests"]) == 260, "Expected 260 authored quests including Friendship is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
