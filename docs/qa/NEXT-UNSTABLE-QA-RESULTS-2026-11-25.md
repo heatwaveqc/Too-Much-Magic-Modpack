@@ -42,9 +42,9 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C12 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C14 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C15 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C15 | PARTIAL | Owner reports adjusted binding recipes visible and crafting works, but dyes still required; owner clarifies gem replacement not supplement (#809). Gem dust Spirit Fire works. Ronaza's Contact miner (8 fixed offerings confirmed source), Perpetual Life spawner visible in EMI; Perpetual Life and Equivalent Exchange in Dictionary, awkward node placement (#809). Native miner/spawner ritual execution, unbreakable wear and programming pending. |
 | C16 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C17 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C17 | PARTIAL | Philosopher's Stone ritual visible in EMI and Equivalent Exchange present in Dictionary, correcting earlier #505 discovery failure. Actual ritual, gate, conversion and economy gameplay pending. |
 | C18 | FAIL | World 1: villager ranged damage works, gun model absent; owner confirms ranged engagement: golem aggroed, advanced and used melee rather than firing; both weapons invisible (provenance/LOS/exact distance not established; #803); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
 | C19 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C20 | PARTIAL | World 1: owner observed missing/broken texture on a Stray spawner attributed to individual/multiplayer spawner mod; exact registry ID/screenshot pending. Multiplayer independent state and cooldown NOT RUN. |
@@ -126,3 +126,7 @@ Owner requests mining speed repair before Iesnium and further Monk mining-depend
 ## November 26 — generated census and saved trader status collected
 
 [Food/EMC/trader evidence](census-2026-11-26-20729a36/README.md). Current source 20729a36, 258 JAR hashes verified. Food/EMC exact registry sets agree; snapshot structure valid, EMC coverage incomplete. Owner-supplied UUID matched privately to saved blacklist: true; public identifiers omitted. No game command, helper, accusation/pardon, gameplay edit or build by collector. Existing World 1 observations above preserved.
+
+## Laboratory — Occultism, Nov 26
+
+Owner reports binding recipes adjusted and craft successfully, but dyes remain; intended gem replacement (not additive). Frozen #338 recipes confirm four dye slots plus one tier salvage/exact-purity gem in both routes; revised quantity and salvage scope need explicit decision, #809. Spirit Fire gem dust works. EMI shows Ronaza's Contact Eldritch Miner and spawner rituals, Philosopher's Stone ritual. Both Perpetual Life and Equivalent Exchange in Dictionary, layout awkward; reposition #809. Frozen miner recipe confirms eight fixed offerings, native mineshaft core activation, human-tag sacrifice, 780 duration, unbreakable result. Owner advised to execute native ritual and test actual output/wear, rather than creative finished miner. No runtime ritual completion claimed. No new build or source changes.
