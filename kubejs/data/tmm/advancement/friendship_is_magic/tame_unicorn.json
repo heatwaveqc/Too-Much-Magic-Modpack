@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "tame_unicorn": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": {
+          "type": "unicornacademy:unicorn"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tame_unicorn"
+    ]
+  ]
+}

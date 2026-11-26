@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "authored declarative pilot; not consumed by live generator; runtime integration held",
+  "status": "native-first instructional candidate; no custom tasks; optional gemstone acquisition held; canonical integration and runtime QA pending",
   "chapter": "Friendship is Magic",
   "category": "Exploration & Combat",
   "category_note": "Proposed existing exploration group; no sixth group, integrator verifies position with owner-approved architecture.",
@@ -18,8 +18,8 @@
     "no_graduation": true,
     "global_mxp": false,
     "personal_rewards": true,
-    "criteria": "Named observation contracts only, not registered FTB task types; do not emit fake task IDs or turn them into silent possession/checkmark proxies. Verify native FTB dimension and advancement support; route missing hooks to designated Progression writer. Item criterion is acquisition only.",
-    "ids": "UA01–UA21 stable author keys, not FTB GUIDs. Reserve globally unique uppercase hex IDs at integration without changing existing IDs.",
+    "criteria": "Use verified native FTB dimension, observation, item and advancement tasks. Manual checkmarks are explicit guide acknowledgements, not assertions of successful operation or native bond. No new bespoke detector code. UA18 remains a real item objective with no established survival source. Native gates remain authoritative.",
+    "ids": "Preserve 86 candidate IDs from quest_id_map.json; final global registry check at integration.",
     "dependencies": "Browsing/teaching edges only. Do not gate level milestones on arbitrary care demonstrations; UA02 independent of UA01, UA09/UA20 direct from prior bond/tame. No all-element AND.",
     "rewards": "Fixed useful thematic one-time personal items + positive XP, no currency or gem giveaway; verify loaded IDs and all current task/reward collisions on integration."
   },
@@ -38,7 +38,7 @@
         ],
         "width": 32,
         "height": 39.98574,
-        "position_semantics": "proposed center coordinates; confirm pinned FTB image anchor and rendering order before generating runtime SNBT",
+        "position_semantics": "center coordinates per pinned ChapterImage/ChapterImageButton source",
         "layer_intent": "behind all dependency lines, nodes, completion state and hitboxes",
         "interaction": "none",
         "origin": "Original generated artwork requested and approved by owner; chapter title only, no embedded quest titles, nodes or connecting lines. Source PNG unchanged.",
@@ -47,10 +47,10 @@
         "bytes": 2414446,
         "sha256": "307e155f17280405ae9ccbdf694a0cab8b919b7fb72d379fc1184cb50af2c819",
         "git_blob": "79d9432cc5eb7838faa466241b05ab047942dfeb",
-        "verification": "exact PNG verified locally; repository path verification and Packwiz integration required; actual UI layering untested"
+        "verification": "original PNG unchanged, source-verified background layer and click-through; live rendering and Packwiz inclusion pending"
       }
     ],
-    "visual_note": "Background is the entire approved illustration, not a screenshot or interactive mockup. Do not bake quest titles, dependency arrows, completion markers or extra gates into the art. Main bond milestones occupy the center lane; optional tack, care, elemental and wing activities offset left/right. Preserve all author keys, criteria, rewards and dependency edges. Distinguish actual image layering, localization (English title is part of artwork), node size and zoom/contrast acceptance from source data. No image serialization or Packwiz relock yet.",
+    "visual_note": "Background is the entire approved illustration, not a screenshot or interactive mockup. Do not bake quest titles, dependency arrows, completion markers or extra gates into the art. Main bond milestones occupy the center lane; optional tack, care, elemental and wing activities offset left/right. Preserve all author keys, criteria, rewards and dependency edges. Distinguish actual image layering, localization (English title is part of artwork), node size and zoom/contrast acceptance from source data. Native chapter image serialized; Packwiz relock pending.",
     "qa": [
       "Verify asset is present in actual distributed KubeJS resource namespace and Packwiz index.",
       "Render background below FTB dependency lines and actual interactive quest icons; no click action or obstructed hitboxes.",
@@ -75,12 +75,10 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "ferry_boarded",
-        "predicate": "Player actually becomes passenger of native Magical Ferry; do not require item",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the ferry travel guide"
       },
-      "description": "Look for a naturally generated Magical Ferry near Overworld beaches, rivers or oceans. Interact to board beneath open sky; wait for its wings and countdown. Sneak to dismount before departure. If it cannot find a safe dock, it refuses to fly. You do not need a crafted ferry. This is the optional travel lesson; entering the island another legitimate way can also start your adventure.",
+      "description": "Look for a naturally generated Magical Ferry near Overworld beaches, rivers or oceans. Interact to board beneath open sky; wait for its wings and countdown. Sneak to dismount before departure. If it cannot find a safe dock, it refuses to fly. You do not need a crafted ferry. This is the optional travel lesson; entering the island another legitimate way can also start your adventure.\n\nQuest task: read this travel guide and acknowledge it. This does not verify boarding.",
       "reward": {
         "xp": 10,
         "item": "minecraft:lead",
@@ -106,12 +104,10 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "dimension_entered",
-        "predicate": "Destination unicornacademy:unicorn_island; exact native location or server dimension transition criterion to verify",
-        "implemented": false
+        "type": "dimension",
+        "id": "unicornacademy:unicorn_island"
       },
-      "description": "Travel to Unicorn Island using a working native ferry, or another legitimate route. Record where you arrived and keep your return dock accessible. Find Academy Meadows, Skyberry Thickets or Unicorn Wildwood first. The island is intended to be accessible in Newbie, but a working return route must be confirmed before this chapter ships.",
+      "description": "Travel to Unicorn Island using a working native ferry, or another legitimate route. Record where you arrived and keep your return dock accessible. Find Academy Meadows, Skyberry Thickets or Unicorn Wildwood first. The island is intended to be accessible in Newbie, but a working return route must be confirmed before this chapter ships.\n\nQuest task: be present in Unicorn Island. The task does not distinguish travel methods.",
       "reward": {
         "xp": 15,
         "item": "minecraft:lantern",
@@ -140,12 +136,12 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_encounter",
-        "predicate": "Observe actual living unicornacademy:unicorn near player; not spawn egg possession",
-        "implemented": false
+        "type": "observation",
+        "observation_type": "entity_type",
+        "to_observe": "unicornacademy:unicorn",
+        "timer": 0
       },
-      "description": "Explore Academy Meadows, Ember Highlands, Skyberry Thickets, Unicorn Wildwood or Whispering Willows for wild unicorns. Their magic is hidden until your personal bond awakens. Choose a companion you like; you do not need a unicorn of every element. Spawn eggs are not a survival requirement. Unicorns do not breed; return to the wild herds if you want another.",
+      "description": "Explore Academy Meadows, Ember Highlands, Skyberry Thickets, Unicorn Wildwood or Whispering Willows for wild unicorns. Their magic is hidden until your personal bond awakens. Choose a companion you like; you do not need a unicorn of every element. Spawn eggs are not a survival requirement. Unicorns do not breed; return to the wild herds if you want another.\n\nQuest task: look directly at a unicorn so FTB can register an observation.",
       "reward": {
         "xp": 10,
         "item": "minecraft:apple",
@@ -173,12 +169,11 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_tamed",
-        "predicate": "Actual player UUID owns newly tamed unicorn; verify native TAME_ANIMAL trigger and entity filter before selecting adapter",
-        "implemented": false
+        "type": "advancement",
+        "id": "tmm:friendship_is_magic/tame_unicorn",
+        "source": "Vanilla minecraft:tame_animal filtered to unicornacademy:unicorn; exact SWEM tameWithName trigger confirmed in Atlas; actual unicorn inheritance/credit test pending."
       },
-      "description": "Approach a wild adult unicorn with an empty hand and mount it as with a SWEM horse; keep trying after being bucked off until it accepts you. Confirm tame status and ownership rather than assuming one ride is enough. From here, use the same unicorn for your bond milestones. Ordinary SWEM husbandry is covered in But I Want to Be a Horse Girl.",
+      "description": "Approach a wild adult unicorn with an empty hand and mount it as with a SWEM horse; keep trying after being bucked off until it accepts you. Confirm tame status and ownership rather than assuming one ride is enough. From here, use the same unicorn for your bond milestones. Ordinary SWEM husbandry is covered in But I Want to Be a Horse Girl.\n\nQuest task: the tame-animal advancement for a unicorn; this uses the native SWEM tame trigger, not a manual check.",
       "reward": {
         "xp": 20,
         "item": "minecraft:name_tag",
@@ -206,12 +201,12 @@
         "source": "exact SWEM item locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_tack_ready",
-        "predicate": "Tamed accessible unicorn has bridle, blanket, saddle and girth in actual equipment slots; player performed fit interaction",
-        "implemented": false
+        "type": "item",
+        "id": "swem:western_saddle_purple",
+        "count": 1,
+        "consume": false
       },
-      "description": "Sneak-interact with your tamed unicorn to open its inherited SWEM inventory. Search SWEM in JEI for bridle, blanket, saddle and girth strap; fit them in that order for safe steering and riding. While riding, open the Unicorn Screen (default B; check Controls > Unicorn Academy). This is your in-game reference: bond, magic energy, hoverable Powers and the Fairy Gemstone slot. Use it throughout the chapter; do not confuse SWEM affinity with magical bond.",
+      "description": "Sneak-interact with your tamed unicorn to open its inherited SWEM inventory. Search SWEM in JEI for bridle, blanket, saddle and girth strap; fit them in that order for safe steering and riding. While riding, open the Unicorn Screen (default B; check Controls > Unicorn Academy). This is your in-game reference: bond, magic energy, hoverable Powers and the Fairy Gemstone slot. Use it throughout the chapter; do not confuse SWEM affinity with magical bond.\n\nQuest task: obtain the purple western saddle shown here (see its JEI recipe). Any compatible tack works for riding; the purple saddle is just the acquisition milestone. The task does not verify equipping.",
       "reward": {
         "xp": 15,
         "item": "minecraft:leather",
@@ -239,12 +234,12 @@
         "source": "exact SWEM item locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_brushed",
-        "predicate": "Successful native brushing interaction for player/unicorn, not brush possession",
-        "implemented": false
+        "type": "item",
+        "id": "swem:brush",
+        "count": 1,
+        "consume": false
       },
-      "description": "Find the SWEM Brush recipe in JEI. Brush your unicorn while standing beside it; native bond gain is 10 with a 400-tick cooldown. SWEM grooming also has its own affinity limits. Care for your companion between rides; remove its bridle while it is resting so ordinary SWEM feeding is not blocked.",
+      "description": "Find the SWEM Brush recipe in JEI. Brush your unicorn while standing beside it; native bond gain is 10 with a 400-tick cooldown. SWEM grooming also has its own affinity limits. Care for your companion between rides; remove its bridle while it is resting so ordinary SWEM feeding is not blocked.\n\nQuest task: obtain a SWEM Brush, not proof of brushing.",
       "reward": {
         "xp": 10,
         "item": "minecraft:white_wool",
@@ -272,12 +267,12 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_sky_berry_fed",
-        "predicate": "Successful native sky berry feed by player on unicorn; inventory debit and actual feed accepted",
-        "implemented": false
+        "type": "item",
+        "id": "unicornacademy:sky_berries",
+        "count": 1,
+        "consume": false
       },
-      "description": "Find Sky Berry bushes in Academy Meadows, Skyberry Thickets and Unicorn Wildwood. Harvest mature bushes, replant berries and keep a renewable patch. Feed a berry to your unicorn: it heals 2 HP, restores a quarter of maximum magic energy and gives 16 bond XP when the feed cooldown permits. Ordinary feeding earns 8 bond XP per 200 ticks; berry restoration is separate from magical awakening. Keep ordinary SWEM food and water available too.",
+      "description": "Find Sky Berry bushes in Academy Meadows, Skyberry Thickets and Unicorn Wildwood. Harvest mature bushes, replant berries and keep a renewable patch. Feed a berry to your unicorn: it heals 2 HP, restores a quarter of maximum magic energy and gives 16 bond XP when the feed cooldown permits. Ordinary feeding earns 8 bond XP per 200 ticks; berry restoration is separate from magical awakening. Keep ordinary SWEM food and water available too.\n\nQuest task: acquire Sky Berries, not proof of feeding.",
       "reward": {
         "xp": 10,
         "item": "minecraft:flower_pot",
@@ -305,12 +300,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_ridden_exploration",
-        "predicate": "Successful ridden movement and new ridden chunk bond receipt for same player/unicorn; no AFK distance proxy",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the riding and bond guide"
       },
-      "description": "Ride your equipped unicorn across safe terrain and explore new chunks. Native magical bond gains 2 XP per 16 ridden blocks and 5 for a newly ridden chunk. Ride, brush and feed over time; inspect your own bond in the Unicorn Screen. Native training and magical bond are separate systems.",
+      "description": "Ride your equipped unicorn across safe terrain and explore new chunks. Native magical bond gains 2 XP per 16 ridden blocks and 5 for a newly ridden chunk. Ride, brush and feed over time; inspect your own bond in the Unicorn Screen. Native training and magical bond are separate systems.\n\nGuide acknowledgement only. FTB does not verify ridden distance or bond XP.",
       "reward": {
         "xp": 15,
         "item": "minecraft:oak_fence",
@@ -338,12 +331,10 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_bond_threshold",
-        "predicate": "Server reads player UUID bond for a tamed unicorn >=5 (750 cumulative XP default); record qualifying pair",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the bond level 5 awakening guide"
       },
-      "description": "Grow the bond with one unicorn to level 5. Each next level costs 50 times the next level; 750 total XP reaches awakening. The horn and bond markings reveal its element and powers. Energy is normally 100 maximum and regenerates 2 per second after awakening. The displayed unlock levels matter: wild unicorns receive their own random subset of abilities and schedules.",
+      "description": "Grow the bond with one unicorn to level 5. Each next level costs 50 times the next level; 750 total XP reaches awakening. The horn and bond markings reveal its element and powers. Energy is normally 100 maximum and regenerates 2 per second after awakening. The displayed unlock levels matter: wild unicorns receive their own random subset of abilities and schedules.\n\nGuide acknowledgement only: check your own bond in the Unicorn Screen; the quest itself does not verify level 5 or unlock magic.",
       "reward": {
         "xp": 25,
         "item": "minecraft:pink_petals",
@@ -371,12 +362,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_successful_cast",
-        "predicate": "Native accepted and successful ability execution by controlling rider; exclude refused cast, cooldown, cancellation-only or refund",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the casting controls and practice guide"
       },
-      "description": "Mount your awakened unicorn. In Controls > Unicorn Academy, bind Cycle Unicorn Magic (default R) and Use Unicorn Magic (default V); B opens the Unicorn Screen. Cycle to a power listed as unlocked, aim at a suitable safe target, cast and watch the energy and cooldown. A refused cast is not success. Some sustained abilities toggle off with a second cast. Practice the power your unicorn actually knows; no specific element is required.",
+      "description": "Mount your awakened unicorn. In Controls > Unicorn Academy, bind Cycle Unicorn Magic (default R) and Use Unicorn Magic (default V); B opens the Unicorn Screen. Cycle to a power listed as unlocked, aim at a suitable safe target, cast and watch the energy and cooldown. A refused cast is not success. Some sustained abilities toggle off with a second cast. Practice the power your unicorn actually knows; no specific element is required.\n\nGuide acknowledgement only; FTB does not verify a successful cast.",
       "reward": {
         "xp": 20,
         "item": "minecraft:soul_torch",
@@ -404,12 +393,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked light ability cast; one of rainbow_bridge/light_flash/guiding_light/light_blast/light_shield/rainbow_vision/rainbow_starfall",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the light magic guide"
       },
-      "description": "Optional light route. Read Powers in the Unicorn Screen for your unicorn's actual unlocks. Use Guiding Light for temporary illumination, Light Flash or Focused Flash for hostile targets, and Rainbow Light Bridge to aim at a destination from above then ride the temporary arc. Light Shield absorbs a finite number of hits; Rainbow Vision reveals nearby treasures and tracks; Rainbow Starfall damages hostiles and gives nearby allies buffs. Try any one unlocked light spell; do not collect all seven. Longer bridges cost more and expire.",
+      "description": "Optional light route. Read Powers in the Unicorn Screen for your unicorn's actual unlocks. Use Guiding Light for temporary illumination, Light Flash or Focused Flash for hostile targets, and Rainbow Light Bridge to aim at a destination from above then ride the temporary arc. Light Shield absorbs a finite number of hits; Rainbow Vision reveals nearby treasures and tracks; Rainbow Starfall damages hostiles and gives nearby allies buffs. Try any one unlocked light spell; do not collect all seven. Longer bridges cost more and expire.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:yellow_dye",
@@ -437,12 +424,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked plant ability; vine_manipulation/plant_growth/plant_resizing/vine_barrier/butterfly_vision",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the plant magic guide"
       },
-      "description": "Optional plant route. Use Plant Growth on a suitable crop or sapling to accelerate growth; Vine Manipulation can hold an enemy or move an eligible item or small animal. Plant Resizing grows selected plants or removes eligible obstacles, Vine Barrier makes a temporary wall, and All-Seeing Butterfly provides temporary remote scouting. Check Powers for the actual unlock schedule. Use one unlocked plant spell on your own land; temporary constructs are not harvested materials.",
+      "description": "Optional plant route. Use Plant Growth on a suitable crop or sapling to accelerate growth; Vine Manipulation can hold an enemy or move an eligible item or small animal. Plant Resizing grows selected plants or removes eligible obstacles, Vine Barrier makes a temporary wall, and All-Seeing Butterfly provides temporary remote scouting. Check Powers for the actual unlock schedule. Use one unlocked plant spell on your own land; temporary constructs are not harvested materials.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:moss_block",
@@ -470,12 +455,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked ice ability; ground_freeze/ice_blast/ice_wall/ice_slide/time_freeze",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the ice magic guide"
       },
-      "description": "Optional ice route. Ground Freeze frosts water and ground, Ice and Snow Blast slows a target, Ice Wall creates temporary protection, and Ice Trail makes a temporary rideable path over gaps and water. Cold, rain and night affect the trail's lifespan. Time Freeze immobilizes eligible creatures, not global time or bosses. Read your Powers and try any one unlocked ice spell; keep clear of other players' structures.",
+      "description": "Optional ice route. Ground Freeze frosts water and ground, Ice and Snow Blast slows a target, Ice Wall creates temporary protection, and Ice Trail makes a temporary rideable path over gaps and water. Cold, rain and night affect the trail's lifespan. Time Freeze immobilizes eligible creatures, not global time or bosses. Read your Powers and try any one unlocked ice spell; keep clear of other players' structures.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:packed_ice",
@@ -503,12 +486,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked water ability; water_creation/water_manipulation/water_shield/bubble",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the water magic guide"
       },
-      "description": "Optional water route. Water Creation makes temporary terrain water and can fill an empty bucket or glass bottle held in hand; Water Manipulation gathers an orb, then throws it on another cast or attack. Water Shield absorbs limited hits. Air Bubble refills air and grants Water Breathing while active; look up or down to rise or dive. Read the Powers list and practice any one unlocked water spell safely, away from valuable builds.",
+      "description": "Optional water route. Water Creation makes temporary terrain water and can fill an empty bucket or glass bottle held in hand; Water Manipulation gathers an orb, then throws it on another cast or attack. Water Shield absorbs limited hits. Air Bubble refills air and grants Water Breathing while active; look up or down to rise or dive. Read the Powers list and practice any one unlocked water spell safely, away from valuable builds.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:prismarine_shard",
@@ -536,12 +517,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked fire ability; fireball/heated_hooves/fire_wall/fire_pillar/fiery_speed",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the fire magic guide"
       },
-      "description": "Optional fire route. Fireball burns enemies, Red-Hot Hooves melts and scorches, Wall of Fire repels enemies, Pillar of Fire launches them, and Super Fiery Speed boosts movement while active. Read your unicorn's Powers for actual unlocks. Practice any one unlocked fire spell in a clear safe area; do not use destructive effects near friends or fragile buildings. Toggle sustained magic off when finished.",
+      "description": "Optional fire route. Fireball burns enemies, Red-Hot Hooves melts and scorches, Wall of Fire repels enemies, Pillar of Fire launches them, and Super Fiery Speed boosts movement while active. Read your unicorn's Powers for actual unlocks. Practice any one unlocked fire spell in a clear safe area; do not use destructive effects near friends or fragile buildings. Toggle sustained magic off when finished.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:red_dye",
@@ -569,12 +548,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_element_cast",
-        "predicate": "Successful unlocked weather ability; lightning_strike/weather_manipulation/tornado/thunder_shockwave/flying_lightning",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the weather magic guide"
       },
-      "description": "Optional weather route. Thunder and Lightning strikes a target, Weather Manipulation summons a local cloud, Miniature Tornado moves enemies and items, and Thunder Shockwave stuns nearby hostiles. Flying Lightning gives temporary mounted flight; look up or down to climb or dive and land before the effect ends. This is not permanent weather control. Read Powers and try one unlocked weather spell in a safe space.",
+      "description": "Optional weather route. Thunder and Lightning strikes a target, Weather Manipulation summons a local cloud, Miniature Tornado moves enemies and items, and Thunder Shockwave stuns nearby hostiles. Flying Lightning gives temporary mounted flight; look up or down to climb or dive and land before the effect ends. This is not permanent weather control. Read Powers and try one unlocked weather spell in a safe space.\n\nOptional guide acknowledgement; no cast or specific unicorn element is verified.",
       "reward": {
         "xp": 15,
         "item": "minecraft:cyan_dye",
@@ -602,12 +579,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_bond_threshold",
-        "predicate": "Server reads player UUID bond >=8 (1800 cumulative default), same qualifying pair",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the bond level 8 guide"
       },
-      "description": "Keep riding, grooming and feeding until your own bond with a unicorn reaches level 8, normally 1800 total XP. Additional powers may unlock on the way; their cost falls by 4% per level beyond the assigned unlock up to a 25% discount, and power increases. This is the native Fairy Gemstone equipment threshold. You do not need all six elements.",
+      "description": "Keep riding, grooming and feeding until your own bond with a unicorn reaches level 8, normally 1800 total XP. Additional powers may unlock on the way; their cost falls by 4% per level beyond the assigned unlock up to a 25% discount, and power increases. This is the native Fairy Gemstone equipment threshold. You do not need all six elements.\n\nGuide acknowledgement only: the native gemstone slot enforces bond 8, not this quest.",
       "reward": {
         "xp": 25,
         "item": "minecraft:purple_carpet",
@@ -640,7 +615,7 @@
         "count": 1,
         "consume": false
       },
-      "description": "The Fairy Gemstone belongs in the dedicated slot in the Unicorn Screen. It grants wings while equipped; it is recoverable equipment rather than a permanent consumed unlock. The pinned mod has no established survival recipe or loot route, so this optional acquisition quest is held until TMM establishes a legitimate source. Do not use Creative or commands to obtain it for progression.",
+      "description": "The Fairy Gemstone belongs in the dedicated slot in the Unicorn Screen. It grants wings while equipped; it is recoverable equipment rather than a permanent consumed unlock. The pinned mod has no established survival recipe or loot route, so this optional acquisition quest is held until TMM establishes a legitimate source. Do not use Creative or commands to obtain it for progression.\n\nQuest task: obtain the actual gemstone. The acquisition route remains a tracked pack-design blocker; this branch is optional and does not gate the capstone.",
       "reward": {
         "xp": 20,
         "item": "minecraft:magenta_stained_glass",
@@ -669,12 +644,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_fairy_flight",
-        "predicate": "Bond-qualified player actually controls a flying unicorn with Fairy Gemstone equipped and wings deployed; exclude ordinary mounted or creative flight",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the fairy-wing flight guide"
       },
-      "description": "At bond 8 or higher, open the Unicorn Screen and equip the Fairy Gemstone in its own slot. Bind Fairy Wings (default Y) to deploy or retract; bind SWEM Flight (default J) to take off, Space rises and Shift dives. Practice close to the ground, land safely, and keep your gemstone. Retracting wings in flight gives brief Slow Falling, not permanent immunity. Separate inherited SWEM armor-based flight is taught in the horse chapter; it does not prove fairy-wing flight.",
+      "description": "At bond 8 or higher, open the Unicorn Screen and equip the Fairy Gemstone in its own slot. Bind Fairy Wings (default Y) to deploy or retract; bind SWEM Flight (default J) to take off, Space rises and Shift dives. Practice close to the ground, land safely, and keep your gemstone. Retracting wings in flight gives brief Slow Falling, not permanent immunity. Separate inherited SWEM armor-based flight is taught in the horse chapter; it does not prove fairy-wing flight.\n\nGuide acknowledgement only; actual wings and flight are not verified. The native equipment requirements still apply.",
       "reward": {
         "xp": 30,
         "item": "minecraft:light_blue_wool",
@@ -703,12 +676,10 @@
         "source": "vanilla 1.21.1 item (runtime registry acceptance pending)"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_bond_threshold",
-        "predicate": "Server reads player UUID bond >=10 (2750 cumulative default), any one tamed unicorn; no requirement for all six elements",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the maximum bond guide"
       },
-      "description": "Reach the maximum personal bond of 10 with a unicorn: normally 2750 total XP. Continue your care and exploration, use the Unicorn Screen to see every power your friend has unlocked, and enjoy its strongest abilities. Wild unicorns can have different power sets. Fairy wings and element demonstrations are optional branches, not requirements for this capstone. Your native bond grows even when global Newbie MXP stays zero.",
+      "description": "Reach the maximum personal bond of 10 with a unicorn: normally 2750 total XP. Continue your care and exploration, use the Unicorn Screen to see every power your friend has unlocked, and enjoy its strongest abilities. Wild unicorns can have different power sets. Fairy wings and element demonstrations are optional branches, not requirements for this capstone. Your native bond grows even when global Newbie MXP stays zero.\n\nGuide acknowledgement only: read your own bond in the Unicorn Screen. FTB does not certify level 10.",
       "reward": {
         "xp": 35,
         "item": "minecraft:pink_wool",
@@ -736,12 +707,10 @@
         "source": "exact Unicorn Academy item model and locale"
       },
       "criterion": {
-        "type": "proposed_server_observation",
-        "event": "unicorn_ferry_return",
-        "predicate": "Actual native successful ferry return from unicorn_island to overworld, passenger identity; clarify mount transport separately",
-        "implemented": false
+        "type": "checkmark",
+        "label": "Read the return ferry guide"
       },
-      "description": "Return to the paired ferry dock you arrived at, board beneath open sky and wait for safe destination preparation. Record the route home. The island-side generation and safe return path require pack verification; do not assume a loose ferry item is obtainable. Before bringing your unicorn across dimensions, check the verified transport route in the next horse chapter. This optional lesson is held until the route works for Newbie players.",
+      "description": "Return to the paired ferry dock you arrived at, board beneath open sky and wait for safe destination preparation. Record the route home. The island-side generation and safe return path require pack verification; do not assume a loose ferry item is obtainable. Before bringing your unicorn across dimensions, check the verified transport route in the next horse chapter. This optional lesson is held until the route works for Newbie players.\n\nOptional return guide acknowledgement, not a verified successful crossing. Return availability is a separate pack QA requirement.",
       "reward": {
         "xp": 15,
         "item": "minecraft:light_blue_carpet",

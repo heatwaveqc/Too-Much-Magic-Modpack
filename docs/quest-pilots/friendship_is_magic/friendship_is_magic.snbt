@@ -31,7 +31,7 @@
 				{ id: "544D7A0600000001", type: "item", item: { id: "minecraft:lead", count: 1 }, count: 2, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000001", type: "custom" }
+				{ id: "544D7A0400000001", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 0.0d
@@ -45,7 +45,7 @@
 				{ id: "544D7A0600000002", type: "item", item: { id: "minecraft:lantern", count: 1 }, count: 2, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000002", type: "custom" }
+				{ id: "544D7A0400000002", type: "dimension", dimension: "unicornacademy:unicorn_island" }
 			]
 			x: 0.0d
 			y: 2.4d
@@ -60,7 +60,7 @@
 				{ id: "544D7A0600000003", type: "item", item: { id: "minecraft:apple", count: 1 }, count: 3, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000003", type: "custom" }
+				{ id: "544D7A0400000003", type: "observation", observation_type: "entity_type", to_observe: "unicornacademy:unicorn", timer: 0L }
 			]
 			x: 0.0d
 			y: 4.8d
@@ -75,7 +75,7 @@
 				{ id: "544D7A0600000004", type: "item", item: { id: "minecraft:name_tag", count: 1 }, count: 1, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000004", type: "custom" }
+				{ id: "544D7A0400000004", type: "advancement", advancement: "tmm:friendship_is_magic/tame_unicorn" }
 			]
 			x: 0.0d
 			y: 7.2d
@@ -90,7 +90,7 @@
 				{ id: "544D7A0600000005", type: "item", item: { id: "minecraft:leather", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000005", type: "custom" }
+				{ id: "544D7A0400000005", type: "item", item: { id: "swem:western_saddle_purple", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: -3.5d
 			y: 9.7d
@@ -106,7 +106,7 @@
 				{ id: "544D7A0600000006", type: "item", item: { id: "minecraft:white_wool", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000006", type: "custom" }
+				{ id: "544D7A0400000006", type: "item", item: { id: "swem:brush", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: -7.0d
 			y: 7.8d
@@ -122,7 +122,7 @@
 				{ id: "544D7A0600000007", type: "item", item: { id: "minecraft:flower_pot", count: 1 }, count: 2, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000007", type: "custom" }
+				{ id: "544D7A0400000007", type: "item", item: { id: "unicornacademy:sky_berries", count: 1 }, count: 1L, consume_items: false }
 			]
 			x: 7.0d
 			y: 7.8d
@@ -137,7 +137,7 @@
 				{ id: "544D7A0600000008", type: "item", item: { id: "minecraft:oak_fence", count: 1 }, count: 8, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000008", type: "custom" }
+				{ id: "544D7A0400000008", type: "checkmark" }
 			]
 			x: -3.5d
 			y: 12.0d
@@ -152,7 +152,7 @@
 				{ id: "544D7A0600000009", type: "item", item: { id: "minecraft:pink_petals", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000009", type: "custom" }
+				{ id: "544D7A0400000009", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 13.6d
@@ -167,7 +167,7 @@
 				{ id: "544D7A060000000A", type: "item", item: { id: "minecraft:soul_torch", count: 1 }, count: 8, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000A", type: "custom" }
+				{ id: "544D7A040000000A", type: "checkmark" }
 			]
 			x: -3.5d
 			y: 16.6d
@@ -183,7 +183,7 @@
 				{ id: "544D7A060000000B", type: "item", item: { id: "minecraft:yellow_dye", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000B", type: "custom" }
+				{ id: "544D7A040000000B", type: "checkmark" }
 			]
 			x: -8.5d
 			y: 15.7d
@@ -199,7 +199,7 @@
 				{ id: "544D7A060000000C", type: "item", item: { id: "minecraft:moss_block", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000C", type: "custom" }
+				{ id: "544D7A040000000C", type: "checkmark" }
 			]
 			x: -8.5d
 			y: 18.2d
@@ -215,7 +215,7 @@
 				{ id: "544D7A060000000D", type: "item", item: { id: "minecraft:packed_ice", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000D", type: "custom" }
+				{ id: "544D7A040000000D", type: "checkmark" }
 			]
 			x: -8.5d
 			y: 20.7d
@@ -231,7 +231,7 @@
 				{ id: "544D7A060000000E", type: "item", item: { id: "minecraft:prismarine_shard", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000E", type: "custom" }
+				{ id: "544D7A040000000E", type: "checkmark" }
 			]
 			x: 8.5d
 			y: 15.7d
@@ -247,7 +247,7 @@
 				{ id: "544D7A060000000F", type: "item", item: { id: "minecraft:red_dye", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A040000000F", type: "custom" }
+				{ id: "544D7A040000000F", type: "checkmark" }
 			]
 			x: 8.5d
 			y: 18.2d
@@ -263,7 +263,7 @@
 				{ id: "544D7A0600000010", type: "item", item: { id: "minecraft:cyan_dye", count: 1 }, count: 4, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000010", type: "custom" }
+				{ id: "544D7A0400000010", type: "checkmark" }
 			]
 			x: 8.5d
 			y: 20.7d
@@ -279,7 +279,7 @@
 				{ id: "544D7A0600000011", type: "item", item: { id: "minecraft:purple_carpet", count: 1 }, count: 6, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000011", type: "custom" }
+				{ id: "544D7A0400000011", type: "checkmark" }
 			]
 			x: 3.8d
 			y: 21.2d
@@ -311,7 +311,7 @@
 				{ id: "544D7A0600000013", type: "item", item: { id: "minecraft:light_blue_wool", count: 1 }, count: 8, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000013", type: "custom" }
+				{ id: "544D7A0400000013", type: "checkmark" }
 			]
 			x: 3.8d
 			y: 27.0d
@@ -326,7 +326,7 @@
 				{ id: "544D7A0600000014", type: "item", item: { id: "minecraft:pink_wool", count: 1 }, count: 8, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000014", type: "custom" }
+				{ id: "544D7A0400000014", type: "checkmark" }
 			]
 			x: 0.0d
 			y: 32.2d
@@ -342,7 +342,7 @@
 				{ id: "544D7A0600000015", type: "item", item: { id: "minecraft:light_blue_carpet", count: 1 }, count: 6, team_reward: false }
 			]
 			tasks: [
-				{ id: "544D7A0400000015", type: "custom" }
+				{ id: "544D7A0400000015", type: "checkmark" }
 			]
 			x: 7.0d
 			y: 2.4d
