@@ -28,7 +28,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; install
 | B08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C01 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C01 | FAIL | Test 1: owner reports successful mod loading and fresh world entry, then crash; diagnostic logs and installed SHA pending. |
 | C02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -62,3 +62,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; install
 | C32 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 
 For each attempt append ISO time, installed SHA, level, case, setup, exact command if applicable, actual result and sanitized log/screenshot/issue. PASS/FAIL/PARTIAL/BLOCKED/NOT BUILT/NOT RUN only; retain historical evidence, never commit worlds, binaries, full logs or private data.
+
+## Test 1 — fresh world
+
+Owner-reported session: client booted and all mods loaded correctly; world creation reached player entry, then client crashed. C01 **FAIL (launch/world-entry stability)**; successful initial boot and world entry are bounded partial observations, not a complete launch smoke or gameplay PASS. No B commands or further C gameplay verified. Crash report/log collection by Codex pending; exact installed SHA/artifact still to verify. Preserve this world and crash evidence; do not infer cause until logs are reviewed.
