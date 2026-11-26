@@ -42,7 +42,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C12 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C14 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C15 | PARTIAL | Owner reports adjusted binding recipes visible and crafting works, but dyes still required; owner clarifies gem replacement not supplement (#809). Gem dust Spirit Fire works. Ronaza's Contact miner (8 fixed offerings confirmed source), Perpetual Life spawner visible in EMI; Perpetual Life and Equivalent Exchange in Dictionary, awkward node placement (#809). Native miner/spawner ritual execution, unbreakable wear and programming pending. |
+| C15 | PARTIAL | Binding books craft, dyes correction #809; Spirit Fire dust works; miner/spawner/Stone discoverable in EMI, both custom Dictionary entries visible, layout #809. Owner reports Ronaza's Contact succeeded using Ars Ocultas alternate sacrifice setup and resulting Eldritch Miner tooltip Unbreakable. Actual sustained mining/wear, precise Source debit/villager retention, spawner ritual and programming pending. |
 | C16 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C17 | PARTIAL | Philosopher's Stone ritual visible in EMI and Equivalent Exchange present in Dictionary, correcting earlier #505 discovery failure. Actual ritual, gate, conversion and economy gameplay pending. |
 | C18 | FAIL | World 1: villager ranged damage works, gun model absent; owner confirms ranged engagement: golem aggroed, advanced and used melee rather than firing; both weapons invisible (provenance/LOS/exact distance not established; #803); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
@@ -134,3 +134,7 @@ Owner reports binding recipes adjusted and craft successfully, but dyes remain; 
 ## Laboratory — Pastel guide grant, Nov 26 10:36 Arizona
 
 Owner reports receiving Pastel guidebook upon picking up amethyst; requests suppression because the guide belongs in Akashic Tome. Frozen starter_kit function does not currently include Pastel among its twelve configured guides. Add to validated Tome inventory before suppressing automatic grant; inspect exact pinned native trigger/config/advancement, preserve legitimate progression and manual book access, no blanket inventory removal. #509/#306 existing onboarding workflow; no source edit or build.
+
+## Laboratory — Eldritch Miner ritual acceptance, Nov 26
+
+Owner reports successful Ronaza's Contact following Ars Ocultas sacrificial altar/containment jar/Source setup, and resulting Ancient Eldritch Miner tooltip explicitly Unbreakable. Native ritual acquisition and alternate sacrifice route observed positive; exact Source delta and retained entity not independently reported. Tooltip confirms component presentation, not actual wear resistance; test mineshaft operation, durability before/after, sustained 3200+ operations and reload, and output pool separately. No new build or game commands by coordinator.
