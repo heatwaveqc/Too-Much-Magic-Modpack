@@ -33,12 +33,12 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C03 | FAIL | World 1: empty first-login inventory PASS; claimed starter kit via function, Tome opens/morphs correctly but only six guides observed vs twelve configured. Owner wants native personal item rewards distributed across multiple introductory quests; #306/#509. |
 | C04 | FAIL | World 1: graduation home choice claimed, custom paper blueprint repeatedly refuses placement as obstructed. #804 native Prefab placement correction. General quest presentation sampled good; Choose your magic controls gives paper, unwanted Ring/Amulet in early Intro; owner changes routed. |
 | C05 | PARTIAL | Newbie teleport, keep inventory and elytra work per owner; ghost suppression and flat-ground jump boost #287. Regular mode, Newbie left, Core joined verified after Monk initiation. Pure Normie and post-graduation ability/teleport denial not isolated; use later fixture. |
-| C06 | PARTIAL | Owner reports controls work; individual bindings/log counts, progression screen/TreeChop details remain unverified. |
+| C06 | PARTIAL | World 1 owner reports controls, reserved fist, tree felling work; TreeChop XP works qualitatively; Jade progress bar and exact key/log checks not yet confirmed. |
 | C07 | FAIL | World 1 pre-graduation values hidden; upper-left EMC: 0 appears after graduation, owner confirms should not display before Stone. Isolate HUD provider and mode vs acquisition trigger; no post-unlock/independent-player proof. |
 | C08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C10 | PARTIAL | World 1 First Light completed after time set 0 then 12000 (command-assisted, actual meditation). Owner reports sunrise did not count with mountain in way; config has clear sky/dry/direction/200 ticks, exact cause not proven. Core rank 1, MXP 0 after initiation. Training XP, skill purchase and attributes pending. |
-| C11 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C10 | FAIL | World 1 First Light command-assisted PASS; reserved fist and auto armor unequip PASS; harvest level increase, sprint/mining/TreeChop MXP qualitative PASS. Paid Hand Mining ranks 2–3 stone/copper remain slow, dirt/sand instant at rank 3; reload stable but speed still fails. #805 diagnosis; exact timings/XP and attribute checks pending. |
+| C11 | PARTIAL | World 1 harvest tier increases, tree felling and reload stability observed; stone/copper speed defect #805. Challenge actionbar shows raw `minecraft:wooden_pickaxe` (2/5); UI #806. Other journey/tool trials pending. |
 | C12 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C13 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C14 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -53,7 +53,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C23 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C24 | PARTIAL | World 1 save/rejoin good. Nov 26 screenshots: Java process 11,111.5 MB (Task Manager), system memory 90%; F3 5976/8192 MB heap, 8080 MB allocated, off-heap +1101 MB, allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. One snapshot, no leak inference; #802. Long-play/multiplayer pending. |
 | C25 | PARTIAL | Owner approves Friendship is Magic visual presentation (looks amazing); task credit, rewards, exact zoom and native progression still not independently verified. |
-| C26 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C26 | PARTIAL | Reserved Fist and auto-unequip armor observed; combat/defense/movement abilities still pending. |
 | C27 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C28 | PARTIAL | World 1: owner reports Reactive crash no longer occurs with local #801 overlay; actual loot transformation, other targeted recipe fixes and log regressions remain unverified. |
 | C29 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -98,3 +98,7 @@ Owner confirms prior teleport tests and deaths to villagers, Newbie elytra works
 ## World 1 — graduation and Monk initiation (Nov 26 ~08:52 Arizona)
 
 Owner advanced to Monk before isolated Normie testing. Chat shows time set 0 and 12000, First Light complete: tyr_progression:monk unlocked; Regular mode, Newbie false, Normie false, Core true rank 1, zero XP/points and MXP. Core auto-join confirmed; pure Normie deferred to separate fixture. Owner reports mountain obstructed sunrise attempt; configured clear sky, dry weather, direction, continuous 200 ticks, empty hands/unarmored, correct Overworld time windows; no proof mountain itself was the cause. Owner confirms unintended upper-left EMC HUD after graduation. Keep World 1 as Monk fixture and perform command surveys later in a consolidated OP batch; preserve all earlier evidence. No new build or game commands executed by coordinator.
+
+## World 1 — Classic Monk harvest and UI, Nov 26 ~08:55 Arizona
+
+Owner reports Reserved Fist works, armor auto-unequips, tree felling works; sprint/mining/tree chopping grant MXP, harvest level increases work. At Hand Mining rank 2 stone and copper ore very slow; rank 3 dirt/sand instant but stone/copper still slow after reload. Reload stable. Exact speed, drops and XP deltas not measured. Frozen `EffectRuntime.breakSpeed` server-only early return is a candidate client prediction mismatch, not established root cause. #805 tracks diagnosis. Screenshot actionbar `Challenge: Harvesting: minecraft:wooden_pickaxe (2/5)` needs readable objective; owner asks transient custom-textured MXP bar above health/hunger, not vanilla XP/Botania bar, and hide inactive paths from normal navigation. #806 tracks UI scope. No new build or gameplay by coordinator.
