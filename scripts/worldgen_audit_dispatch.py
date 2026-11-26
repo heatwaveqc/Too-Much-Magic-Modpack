@@ -35,7 +35,7 @@ def validate(event):
         or not qa.owner(comment.get("user", {})) or not qa.owner(event.get("sender", {}))
         or not isinstance(comment.get("id"), int)):
         raise qa.Refused("Untrusted worldgen command")
-    match = re.fullmatch(r"/tmm worldgen (?:vanilla )?([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
+    match = re.fullmatch(r"/tmm worldgen (?:(?:vanilla|density) )?([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
     if not match or match[1] != TOOLS:
         raise qa.Refused("Expected exact reviewed worldgen tooling SHA and a fresh nonce")
     return match[2]
@@ -56,6 +56,20 @@ def check_ci(api):
         if run.get("status") != "completed" or run.get("conclusion") != "success":
             raise qa.Refused("Tooling check not green: " + name)
 
+def verify_density_ci(api):
+    sha="5beae36105a61e5671d5a9e12989bfa0a8ae2904"
+    result=api(qa.query("actions/runs",head_sha=sha,event="pull_request",per_page=100))
+    runs=result["workflow_runs"]
+    if result.get("total_count",len(runs))>len(runs):
+        raise qa.Refused("Truncated density CI inventory")
+    for name in ("Verify surface density overlay","Verify bootstrap","Python regression suite (NO GAME BOOT)","Branch lifecycle report","Economy Module CI (exact pins, no game boot)"):
+        matches=[r for r in runs if r.get("head_sha")==sha and r.get("name")==name]
+        if not matches or max(matches,key=lambda x:(x["run_number"],x.get("run_attempt",1),x["id"])).get("conclusion")!="success":
+            raise qa.Refused("Missing green exact density check: "+name)
+    pr=api("pulls/776")
+    if not pr.get("merged") or pr.get("head",{}).get("sha")!=sha:
+        raise qa.Refused("Exact density source not merged")
+
 def check_active(api):
     for status in qa.ACTIVE:
         result = api(qa.query("actions/runs", event="workflow_dispatch", status=status, per_page=100))
@@ -69,13 +83,16 @@ def check_active(api):
 def execute(api, event, now, launcher_sha):
     nonce = validate(event)
     vanilla = event["comment"]["body"].strip().startswith("/tmm worldgen vanilla ")
-    prefix = "worldgen-vanilla-request/" if vanilla else "worldgen-request/"
+    density = event["comment"]["body"].strip().startswith("/tmm worldgen density ")
+    prefix = "worldgen-density-request/" if density else "worldgen-vanilla-request/" if vanilla else "worldgen-request/"
     if not re.fullmatch(r"[0-9a-f]{40}", launcher_sha):
         raise qa.Refused("Invalid launcher SHA")
     live_comment(api, event, now)
     if main_head(api) != launcher_sha:
         raise qa.Refused("Main advanced since authorization event")
     check_ci(api)
+    if density:
+        verify_density_ci(api)
     check_active(api)
     if main_head(api) != launcher_sha:
         raise qa.Refused("Main advanced during checks")
