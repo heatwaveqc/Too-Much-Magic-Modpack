@@ -28,13 +28,13 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | B08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C01 | FAIL | Earlier unpatched crashes retained (887a4ffb at 21:07; 20729a36 at 21:19:40). World 1 post-#801 local overlay: owner reports successful entry/exploration and no further crash during session; partial retest only, clean rebuilt package/save-rejoin not yet tested. |
-| C02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C01 | PARTIAL | World 1 post-#801 local overlay: owner reports successful entry, exploration, save/rejoin Nov 26, no recurrence of crash. Earlier 887a4ffb/20729a36 pre-overlay FAIL evidence retained; clean rebuilt package and actual Reactive replacement still pending. |
+| C02 | FAIL | World 1 Nov 26: FTB hover text still black under Sodium; EMI looks good. Other icon/GUI-scale/transfer/category specifics not independently reported. #507 renderer defect persists. |
+| C03 | PARTIAL | Owner confirms empty starting inventory. Starter reward claim, 12-guide Tome, exact-once/individual behavior not yet tested. |
+| C04 | PARTIAL | Quest presentation generally good in sampled chapters, not all examined. Natural intro/graduation and housing reward not yet tested. |
 | C05 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C06 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C07 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C06 | PARTIAL | Owner reports controls work; individual bindings/log counts, progression screen/TreeChop details remain unverified. |
+| C07 | PARTIAL | Owner confirms EMC and material values correctly hidden before unlock; post-acquisition/independent-player/relog gates remain untested. |
 | C08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -51,8 +51,8 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C21 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C22 | PARTIAL | World 1: no further Reactive crash reported after #801 local script overlay; no confirmed Reactive-only/mixed/configured chest book or filter diagnostic log yet. Remaining loot/Gateway/fishing cases NOT RUN. |
 | C23 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C24 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| C25 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C24 | PARTIAL | World 1 save/rejoin good. Nov 26 screenshots: Java process 11,111.5 MB (Task Manager), system memory 90%; F3 5976/8192 MB heap, 8080 MB allocated, off-heap +1101 MB, allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. One snapshot, no leak inference; #802. Long-play/multiplayer pending. |
+| C25 | PARTIAL | Owner approves Friendship is Magic visual presentation (looks amazing); task credit, rewards, exact zoom and native progression still not independently verified. |
 | C26 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C27 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C28 | PARTIAL | World 1: owner reports Reactive crash no longer occurs with local #801 overlay; actual loot transformation, other targeted recipe fixes and log regressions remain unverified. |
@@ -82,3 +82,7 @@ Installed snapshot `20729a369e6f811730cea04cadfd12f265c96424`, locally applied R
 ## Thanksgiving morning — owner clarification and clustered plan
 
 Owner confirms 11 GB memory, and that the golem test was at engagement range: acquired aggro but approached rather than firing; neither weapon rendered. Owner approves both shoulder weapons emerging when aggroed. #802 memory research and #803 Trader render/combat/deployment follow-up created. No additional runtime result inferred. [Clustered B/C plan](NEXT-UNSTABLE-QA-2026-11-25.md#thanksgiving-execution-order--november-26-owner-gameplay) starts with read-only/non-OP World 1 baseline, then natural graduation before admin or irreversible fixtures. A report already uploaded; do not reassign A work to owner. No new build.
+
+## World 1 — Thanksgiving morning Batch 1 (2026-11-26 ~08:33 Arizona)
+
+Owner-reported: save/rejoin good, starting inventory empty, FTB hover text still black, EMI looks good, EMC and material values correctly hidden, controls work, quests generally look good (not exhaustive), Friendship is Magic chapter visually excellent. No B results yet. Two supplied screenshots inspected; Task Manager Java process 11,111.5 MB, total system memory 90%; Chrome 4,407.8 MB, F3 Java 21.0.7, heap used 5976/8192 MB (72% displayed), allocated 8080 MB (98%), off-heap +1101 MB, instantaneous allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. Measurements from nearby snapshots rather than synchronized instrumentation; not a memory leak diagnosis. #802 and #507 updated. No raw screenshots uploaded (contain coordinates/system details). No new build or commands run by QA coordinator. Next B01 owner-run, then Batch 2 non-OP onboarding.
