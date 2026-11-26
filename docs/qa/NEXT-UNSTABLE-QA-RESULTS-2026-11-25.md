@@ -9,7 +9,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | A03 | PASS | 254 pins, 258 JARs, three cozy additions, Relics 0.12.9, Modrinth Aquaculture Delight, Sodium/EMI and selected unified modules verified. Oaks recipe decoder defect separately A05. |
 | A04 | PASS | Frozen command/OP/namespaced parser source inspected; installed Monk/Hunter/Core JSON equals frozen UTF-8 source. Classic Monk 55/21, Hunter 31 skills, Core 4. Runtime commands NOT RUN. |
 | A05 | FAIL | 20729a36 also crashed 21:19:40: Reactive ItemStack.is ambiguity line 29. Current log: 17 new Oaks display-case recipe failures, 526 invalid-key lines; old decoder groups/ExMI/Goety mapping errors absent. Exact PR801 script later applied locally at owner request; native retest pending. |
-| A06 | BLOCKED | No current replacement-build food/EMC/recipe exports; morning #708 counts not transferred. Fresh B04/B05/native material maps needed. |
+| A06 | PARTIAL | Nov 26 current-build food/EMC reports collected: same 27,125 IDs, 2,634 foods, 11,410 positive EMC, 15,715 unmapped (15,696 nonexcepted). Fresh full effective recipe/native material/learned-pattern capture still pending. |
 | A07 | PARTIAL | Source quests PASS: 45 chapters/298 quests, 21 Friendship lessons, 19 personal home choices. Native Ars/Astral/Feywild grant flags false; generated IS3 Add Book flag still true. Actual first-login/claims/UI pending. |
 | A08 | PARTIAL | Verified Classic/cozy/Friendship/density source and installed paths; explicit Unlimited, #768/#742, Flowerary, #656/#448/#565 scope limits retained; no exhaustive runtime acceptance claim. |
 | A09 | PASS | Prior #708 and 887a4ffb crash evidence preserved; replacement build is separately identified, no gameplay PASS carried forward. |
@@ -21,10 +21,10 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | B01 | PASS | World 1: six commands succeeded while Newbie; after graduation/Monk initiation mode Regular, newbie=false, normie=false, core=true rank=1, zero XP/points/MXP, growth 1.02. Automatic Core enrollment verified; isolated Normie state not captured, reserved C05. |
 | B02 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B03 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| B04 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
-| B05 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| B04 | PARTIAL | Owner-generated food census collected/validated Nov 26: 27,125 IDs, 2,634 food IDs; 28,187 reported recipe holders, 26,172 previews. No new helper or command by collector; full effective recipe serialization/native maps not captured here. |
+| B05 | PARTIAL | All four owner-generated native EMC reports collected, same-invocation consistency validated. 27,125 items / 11,410 positive / 0 zero / 15,715 unmapped; coverage incomplete. Label 20729a36 retained, 258 JAR hashes independently verified. |
 | B06 | PARTIAL | Pre-graduation EMC/material valuations hidden; after graduation/Monk upper-left EMC: 0 visible before intended Stone unlock, owner confirms defect. Other acquisition/independent player probes pending. |
-| B07 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| B07 | PARTIAL | Screenshot UUID matches saved player; saved TraderBlacklist membership true, one offender. Sanitized evidence uploaded; live status command, aggression attribution/targeting/Hero pardon not tested. No blacklist mutation. |
 | B08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | B10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -122,3 +122,7 @@ Owner confirms innate Otherworld Sight/direct Otherwood harvesting correct, dire
 ## World 1 — Monk pause / registry batch
 
 Owner requests mining speed repair before Iesnium and further Monk mining-dependent trials; preserve character, ranks and world. Jade labels blocks unharvestable despite successful coal harvest; investigate client harvest correctness separately from speed and actual server drops in #805. Aquamarine shale did not drop; owner suspects iron-tier restriction, exact native tool predicate not yet verified. Remaining Monk tests deferred pending local/installable repair; no new build authorization. Switch to read-only B04/B05/B07 command surveys, avoiding respec/path leave or progression mutations. Survey helpers optional and require explicit local staging/restart; native foodcensus and EMC audit first. Exact frozen SHA 20729a369e6f811730cea04cadfd12f265c96424 + unrelated #801 overlay. No commands executed by coordinator.
+
+## November 26 — generated census and saved trader status collected
+
+[Food/EMC/trader evidence](census-2026-11-26-20729a36/README.md). Current source 20729a36, 258 JAR hashes verified. Food/EMC exact registry sets agree; snapshot structure valid, EMC coverage incomplete. Owner-supplied UUID matched privately to saved blacklist: true; public identifiers omitted. No game command, helper, accusation/pardon, gameplay edit or build by collector. Existing World 1 observations above preserved.

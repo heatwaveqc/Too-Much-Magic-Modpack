@@ -160,3 +160,7 @@ Owner-requested existing PR #708 continuation, frozen `721ea058294f838b9d7f145af
 ## 2026-11-25 evening — current installed 20729a36 A sweep
 
 [Exact build-scoped report](qa/a-results-2026-11-25-20729a36/README.md), existing PR #796: replacement current ZIP/source/JAR identity verified, 596 Java and 23 Node cases pass, 14 validators pass; Python 233/234 with generated-checklist failure. Native structure 69 override/original comparisons pass. New Oaks 17 decoder errors, persistent key errors and second Reactive crash remain failures. Fresh runtime registries and complete Astral token calculus unresolved. At owner request only, exact #801 repaired script applied to local install after baseline tests, original backed up; five mock groups and pinned Rhino parse pass, live loot NOT RUN. No new build or collector world launch.
+
+## 2026-11-26 — current food/EMC reports and saved Trader blacklist
+
+[Existing #796 evidence packet](qa/census-2026-11-26-20729a36/README.md), installed 20729a36: 27,125 IDs / 2,634 default foods; 11,410 positive EMC / 15,715 unmapped, structurally validated against all four native reports. 258 installed JAR hashes match. Saved blacklist contains the privately matched owner-supplied player; no live command or pardon executed and no identifier uploaded. Data collection only, no gameplay changes/build.
