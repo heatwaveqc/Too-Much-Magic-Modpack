@@ -119,7 +119,12 @@ public final class ProgressionScreen extends Screen {
         bindKey=addRenderableWidget(Button.builder(Component.literal("Bind key"),b->{
             if(!captureSkill.isEmpty()){capturePath="";captureSkill="";bindingNotice="";return;}
             var node=nodes.get(selection);
-            if(node!=null&&node.has("activation_mode")){capturePath=pathId;captureSkill=selection;bindingNotice="";}
+            if(node!=null&&node.has("activation_mode")){
+                if(NativeSkillKeys.has(pathId,selection)){
+                    bindingNotice="Configure this key in Options > Controls";return;
+                }
+                capturePath=pathId;captureSkill=selection;bindingNotice="";
+            }
         }).bounds(Math.max(12,width-150),6,138,20).build());
         clampPan();request();
     }
@@ -252,6 +257,8 @@ public final class ProgressionScreen extends Screen {
                     if(mx>=x&&mx<x+NODE_W&&my>=y&&my<y+NODE_H){
                         var n=row.getValue();List<Component> tooltip=new ArrayList<>();
                         tooltip.add(Component.literal(title(n,row.getKey())));
+                        if(n.has("activation_mode"))tooltip.add(Component.literal("Key: "+SkillKeybindings.label(pathId,row.getKey())+
+                            (NativeSkillKeys.has(pathId,row.getKey())?" (Controls)":" (Progression)")));
                         if(n.has("lane")&&!n.get("lane").getAsString().isBlank())tooltip.add(Component.literal(n.get("lane").getAsString()));
                         if(n.has("description")&&!n.get("description").getAsString().isBlank()){
                             for(String wordLine:n.get("description").getAsString().split("\\n")){
