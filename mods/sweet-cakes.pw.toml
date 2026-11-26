@@ -1,0 +1,13 @@
+name = "Sweet Cakes"
+filename = "csweetcakes-1.1.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/M0IszrLu/versions/CPBGE6mL/csweetcakes-1.1.1.jar"
+hash-format = "sha512"
+hash = "6142fcdf53e0ebdfc8defb35f3449ac5436f05de6355cd5bb2a7e28224021aaba684bcc26a2ef09ea4b357bf85742454feb09458c57aba49fc05a2a0701f6965"
+
+[update]
+[update.modrinth]
+mod-id = "M0IszrLu"
+version = "CPBGE6mL"

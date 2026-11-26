@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 632767650,
+    "separation": 18,
+    "spacing": 24,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "eidolon_repraised:stray_tower",
+      "weight": 1
+    }
+  ]
+}

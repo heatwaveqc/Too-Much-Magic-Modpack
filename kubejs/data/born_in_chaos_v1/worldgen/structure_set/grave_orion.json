@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 2142799247,
+    "separation": 12,
+    "spacing": 100,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "born_in_chaos_v1:grave_orion",
+      "weight": 1
+    }
+  ]
+}

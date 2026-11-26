@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 611326438,
+    "separation": 12,
+    "spacing": 37,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "sons_of_sins:sinful_church",
+      "weight": 1
+    }
+  ]
+}

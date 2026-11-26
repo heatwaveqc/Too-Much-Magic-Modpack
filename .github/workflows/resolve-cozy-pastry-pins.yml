@@ -1,0 +1,26 @@
+name: Cozy pastry exact publisher pins (NO GAME BOOT)
+on:
+  pull_request:
+    branches: [test/full-integration]
+    paths:
+      - 'scripts/resolve_cozy_pastry_pins.py'
+      - '.github/workflows/resolve-cozy-pastry-pins.yml'
+permissions:
+  contents: read
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve three exact official binaries and report native metadata
+        run: python scripts/resolve_cozy_pastry_pins.py "$RUNNER_TEMP/cozy-pastry-pins"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cozy-pastry-pin-proposals
+          path: ${{ runner.temp }}/cozy-pastry-pins
+          if-no-files-found: error

@@ -447,3 +447,8 @@ Owner requested one full build after integrating the starter routing repair; unf
 | Chaos Bunny #556 / Angels #392 / HD #298/#296 / residual labels #345 | Existing explicit deferred or incomplete | Preserve existing source and owner holds |
 
 Other outstanding gameplay defects and verification obligations remain in #431, #509, #318, #717, #708 and subsystem issues; no blanket acceptance claimed. Final exact-head quick checks and dispatch receipt required before assembly, server boot and conditional Prism packaging. Preserve last successful unstable artifact if the run fails.
+
+
+## November 25 post-second-build source intake
+
+Next separately authorized candidate: #776 (69 reviewed ordinary surface structure frequencies halved; protected focal points/mushrooms and existing biome rules unchanged; other dimensions sharing eligibility could be affected), #771/#770 (three exact pastry pins and dependencies verified), #744/#743 (independent reduced Monk/Hunter combat MXP). Current source checks only, no build or in-world acceptance. Classic Monk redesign remains active, #755 Friendship is Magic has pending native bond/gate integration, #774 Flowerary exact pin pending. Do not import unfinished drafts or silently claim acceptance. Prior second-build snapshot remains frozen.

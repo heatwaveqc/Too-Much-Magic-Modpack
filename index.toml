@@ -373,6 +373,10 @@ file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
 hash = "a8620f2e2e7a6f777085ff36f9bba5969d950599820be5b1ca37e5009ee6064c"
 
 [[files]]
+file = "kubejs/data/apotheosis/worldgen/structure_set/towers.json"
+hash = "8fe98766b62785cbe217864fe235745ecaae5791249b61af4d624c218e54e7a3"
+
+[[files]]
 file = "kubejs/data/ars_additions/tags/worldgen/structure/desert_temple.json"
 hash = "98711b03da7e61f0c2c2049e739c20f075192d7702cc54427821e9d8e706879b"
 
@@ -397,12 +401,128 @@ file = "kubejs/data/ars_additions/tags/worldgen/structure/witch_hut.json"
 hash = "9421577c1506fc368a98ca6dbf3fbb5efec6443902c73d64aaa3426418aef4f2"
 
 [[files]]
+file = "kubejs/data/ars_additions/worldgen/structure_set/ruined_portal.json"
+hash = "a5c86bdc2897c7f9fb13373c1465c5fd19e96940a6a5e91b46ff76d6b1b73090"
+
+[[files]]
 file = "kubejs/data/ars_elemental/tags/item/blacklist_bag_item.json"
 hash = "1ded0512fdbcbf6e73339a4957879ab63a0e4ea138baeb6c4af256fea275198f"
 
 [[files]]
+file = "kubejs/data/astralsorcery/worldgen/structure_set/column_structures.json"
+hash = "0d19b2e58a8243cabfbd0a37a38b2746b2911b8821ef10673cdb607d3ed2e72c"
+
+[[files]]
+file = "kubejs/data/astralsorcery/worldgen/structure_set/dig_site_structures.json"
+hash = "0b44c1adb9826b49c9ec8cce734fa633b310ce0301301d1b1e8a0cea9e7b1a02"
+
+[[files]]
 file = "kubejs/data/betterend/recipe/sulphur_gunpowder.json"
 hash = "75e18957f012f34c4b55a3dd8ece3eaaf17acc5663f57fb7271c25194ab2d645"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/dark_tower_forest.json"
+hash = "2b5b9e8627a5a9c7216fe433f403add20b84fb480182f28b01aea5b9f5c8389d"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/dark_tower_plain.json"
+hash = "c193b550c7c611e54fa0a93806e96d23e1d1c1096688c519bf7e65aba2202555"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/dark_tower_taiga.json"
+hash = "d78cbc6b02b16b16f28527b954742f527408d682feb4d30d4bb08862a30d0edf"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/farm.json"
+hash = "a4d3124393b9ba79683d346f9250bf3603c10f822763b4c7df13e1b4179d29cd"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/firewell.json"
+hash = "383cfaab37755a64fcfb805cc0d43ec93a7f8fccf3b0ee426f8e72c60017389e"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_2003wise.json"
+hash = "a7895342448d1ac6a081727a831924a18c18f068e66d579a43652d4e99eacf36"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_2_dling.json"
+hash = "dadc2d21741976d75fab02230a088a855ccf7872524575c784205f2ce45ef987"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_d_4rk_devil_x.json"
+hash = "f4e1c72fe12ff8f491a1634fbf1befdf94001dc847efb9c1773845a96098b4ab"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_darktitan.json"
+hash = "2ea4a12eadae0e93d9c0fcc5cd8f63f7ff7a59eef7a9e7e9effbeb6ba059033a"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_derivas.json"
+hash = "d175e50950a460a74906d51c0a6ee1c5e46bb6246edcccf443474705c219525d"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_euthymia.json"
+hash = "852caafe48414c099560e7b4c81405524dead6c4d0c484c5825898b59ddf7ec6"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_feral.json"
+hash = "0ab6606f08f1bc3ecf5b6220bc653133e51b1c7c5cdc98ede7807f7aef5c8b12"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_fubuki_banzai.json"
+hash = "032161234caf519cc1049a9a91e434f48e5373f4f465d18110e0fc2690a7eb54"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_memesus.json"
+hash = "74d0989b6722accf7d6200ad35cc66bf8cfb026f0b22c6d0af767e2f5c224e1f"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_mike_and_rory.json"
+hash = "39bc15e79257670c71408bf33ece3d860cc44d7bc39f88d712a90352ecbd4dd7"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_nino_4416.json"
+hash = "791e2d5c24be62126ec746ee1dc725f05e089e0bbb8e5f707e3cdefd5146d54b"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_orion.json"
+hash = "e96f36d039785594f3950195a27a42b493ba982e1f9a81e4873c598e97bd29b4"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_petasi.json"
+hash = "a2e0837f2c3255809e3084db95bdb544358bdc535c54a799eeba4f125d7a1494"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_plug.json"
+hash = "8260f20059a35c891708679d9845a11bab4c644176a6eb344357a91c712270be"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_rotborne.json"
+hash = "83c5eadd6dbaa5901f34a204f775f2f98497b623792c72bd9c912e7023a71303"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_somfunambulist.json"
+hash = "a8e44ffd8ead7984f82b5b375460271b05217ef472101cad245466c8703de561"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_tem_187.json"
+hash = "75a5f443349536ec05b1507e1052abaa17962b990b1ef3378a9d766a1b5359f6"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/grave_the_gentleman_frog.json"
+hash = "a9d3ba0f15f6dfaabfa6beb7a582aa648d0e00989f63ebc8024bd3cfe43ff633"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/gravecarrionexe.json"
+hash = "ad60ad391ae28d79b2d3f7a661d3b99d6685af9b5a84895b473a29f0742db9c8"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/infernal_pumpkin.json"
+hash = "ae292dfaf0f742615f3e0b1d0d5f3b828fdc59645498a0926578aff62f36d6e3"
+
+[[files]]
+file = "kubejs/data/born_in_chaos_v1/worldgen/structure_set/observation_tower_forest.json"
+hash = "2422a73efb591f5e8a5ea7be5235e35b41e5727ff471394e83fc0a1e7829a319"
 
 [[files]]
 file = "kubejs/data/botania/recipe/creative/creative_corporea_spark_extreme.json"
@@ -499,6 +619,26 @@ hash = "c7f049dec24210dea854c74b8ed62c67e41f8475ab4a3a4dbc2e4c8a9c45da87"
 [[files]]
 file = "kubejs/data/botania/recipe/petal_apothecary/orechid.json"
 hash = "0349f5c8fdc82c9f06a2eded77c4dab43bed145a02e95fb72961b2e560a19403"
+
+[[files]]
+file = "kubejs/data/botania/worldgen/structure_set/exploration_broken_tree.json"
+hash = "11295cc624fead14ffed0f9e3a657ab1fb3f21aaec014c865703f05503ee41d0"
+
+[[files]]
+file = "kubejs/data/botania/worldgen/structure_set/exploration_island.json"
+hash = "a5f83cfcd42e82c4e25689c53c9aa27d18e86d63e359061d304daa92f03ccbda"
+
+[[files]]
+file = "kubejs/data/botania/worldgen/structure_set/exploration_lake.json"
+hash = "2519aab053dc8fe5e977e31e54c4064cfbb41f2b54e4f9b84ab1cb512f40e4e7"
+
+[[files]]
+file = "kubejs/data/botania/worldgen/structure_set/exploration_plant.json"
+hash = "fd671de690bc95ab86eda7df4eb04878e55440b7db69de1d4988fdb01b396956"
+
+[[files]]
+file = "kubejs/data/botania/worldgen/structure_set/exploration_ruin.json"
+hash = "c3cddcc20c98aaa33286d2edbecdc6f35f6aac20469347ffc590de7c8af84977"
 
 [[files]]
 file = "kubejs/data/c/tags/fluid/blood.json"
@@ -637,12 +777,96 @@ file = "kubejs/data/eidolon_repraised/recipe/sulfur.json"
 hash = "1a23b75bfc3f9ab98377feee2dd1d4c9846e2041e1cbd744d274d329064066bb"
 
 [[files]]
+file = "kubejs/data/eidolon_repraised/worldgen/structure_set/stray_tower.json"
+hash = "3c8fad2ab104258b3376d336126c2967234fdbae48279256d6ec10b8ca269bfa"
+
+[[files]]
 file = "kubejs/data/endersdelight/recipe/chorus_pie_slice.json"
 hash = "12a0d9fa3ce6a3d6e8d908734f55573ec6a85b857e280d5def6e0d0f84b700e8"
 
 [[files]]
 file = "kubejs/data/forbidden_arcanus/neoforge/biome_modifier/add_lost_soul_overworld.json"
 hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
+
+[[files]]
+file = "kubejs/data/goety/worldgen/structure_set/blighted_shack.json"
+hash = "08578e7808a6af6a8582714b55b5f8ffc22dae4e69b40f0fb0b1fac2feab40ca"
+
+[[files]]
+file = "kubejs/data/goety/worldgen/structure_set/graveyard.json"
+hash = "dcddb6e7f05693af969355783e79fa89a1df77f5fe3aaaeffb18f386bf2f14d3"
+
+[[files]]
+file = "kubejs/data/goety/worldgen/structure_set/mangrove_tower.json"
+hash = "f9428dbb314f43651f7ac688cd9aad259a597a7223f4e57bfa49b1a7a0fca240"
+
+[[files]]
+file = "kubejs/data/goety/worldgen/structure_set/secluded_igloo.json"
+hash = "d19a9ec74e1d8e14ee81b466e3284677dd7186c0f1a5ae0abe4e82ee5a349d50"
+
+[[files]]
+file = "kubejs/data/goety/worldgen/structure_set/wrecked_mansion.json"
+hash = "7ffda8ea14c56005372d867ee647523567a3f3abe82cf2d7672d82143fb460e2"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/dead_tree_structure.json"
+hash = "36e6219dbe7428bc7429c3cfe437938c95d14a011156fec165560c2b2b002ef0"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/giant_mushroom_structure.json"
+hash = "e7f08c6974a373bd21c43c67c79212db5849244794becc56e6652363e0e38f4d"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/haunted_house_structure.json"
+hash = "82636e8a957e15c17968791bde5051371a9a557524bd4fa874a7f41144981b68"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/large_graveyard_structure.json"
+hash = "3f67ce7e0760b633d33bf85f6df3555f9a21ae99b661a90c0fb16a85dcc8abae"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/medium_graveyard_structure.json"
+hash = "f13379b2275c26dce75a1a29805746a575c5b2aa63341ef0b317811133b72c63"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/memorial_tree_structure.json"
+hash = "0aded487128f6b32b9ea34f8e444e4136ee47944de2d09b0bce1a6d9b18245e5"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/mushroom_grave_structure.json"
+hash = "4fc628301fcb8817101ef15830139615e51e718a4955b4a09a8a381b8e569470"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/overrun_villages.json"
+hash = "e0350b4ba17c62511934ebc1787baa2318ce962228656d319a490d909881a8cb"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/ruins_structure.json"
+hash = "dde25d432f426f60e07a63c677bc55281476dee3afe9262f7ee69047ce800184"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_desert_grave_structure.json"
+hash = "3cb1f4e979b76a6f5b75ab77e3d622a4b8d2e72ec9aa8b19d75bdc74355dc805"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_desert_graveyard_structure.json"
+hash = "9bdcb77833298c965543c79017ec73ed455af42ade3662ef2486fcbf516bb22f"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_grave_structure.json"
+hash = "0b5fbfc1367f452985cf29b91916d8562d9c96739597a4c9a9539afae09af484"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_graveyard_structure.json"
+hash = "76c8eb45fca7fdbe78e61e80579a6ba3231ff9ee63c8aa46bf667fd740772143"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_mountain_grave_structure.json"
+hash = "0b1ac1beebcc8c2438d1c27cd43d69acf12c7c6680cfb5cbc622ab733a7556a8"
+
+[[files]]
+file = "kubejs/data/graveyard/worldgen/structure_set/small_savanna_grave_structure.json"
+hash = "4705bb85e03f25eda207c829cee7556c39ee3d7e6d1c68c19da00421e4464420"
 
 [[files]]
 file = "kubejs/data/hexerei/recipe/mahogany_broom_from_mixing_cauldron.json"
@@ -655,6 +879,22 @@ hash = "c5046e7278e8ab6b99797e92d84d788dab5eaa791e7e1e4d6d7191bad9956d5a"
 [[files]]
 file = "kubejs/data/hexerei/recipe/witch_hazel_broom_from_mixing_cauldron.json"
 hash = "864eac00a15c27e3765ca203d60c9da923693613a5d22b801aa4bec983a2656a"
+
+[[files]]
+file = "kubejs/data/hexerei/worldgen/structure_set/dark_coven.json"
+hash = "988455ba6aad1f2f0706ed25f3b36464a49ff343c652c408abb7d6c101249b64"
+
+[[files]]
+file = "kubejs/data/hexerei/worldgen/structure_set/nature_coven.json"
+hash = "8ffcf2e78c278d1e0add11fa892664d3e73b80263d652944bbae92527a2c266c"
+
+[[files]]
+file = "kubejs/data/hexerei/worldgen/structure_set/owl_post_office.json"
+hash = "b990ec1f2e5e9eadf6f2a5741000a0124c46ac2b9c7883134ade00b9e2f2071f"
+
+[[files]]
+file = "kubejs/data/hexerei/worldgen/structure_set/witch_hut.json"
+hash = "cfc876904d3c40e53d0cf03ee13fcabb6ea41c7a68ee0877d2d3f45af86587d8"
 
 [[files]]
 file = "kubejs/data/irons_spellbooks/recipe/alchemist_cauldron/empty_blood_vial.json"
@@ -671,6 +911,22 @@ hash = "d1d6454595bb1d59411bac05a572c06e84cf0932408812d2604690cfc3edd082"
 [[files]]
 file = "kubejs/data/irons_spellbooks/tags/item/blood_focus.json"
 hash = "553f16c2f12fb6758053ed0684e72f0313ee9f607fea3555922105288b7f03f5"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/worldgen/structure_set/evoker_fort.json"
+hash = "cebf9635a70fbc3e1c28045fab290528e49a3eb23bb7839b1c203948fba8b9b8"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/worldgen/structure_set/mangrove_hut.json"
+hash = "03524edcc2e1374f24b7b24b541f957c01d7f283d2a84dd1bc70af72d8d53299"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/worldgen/structure_set/mountain_tower.json"
+hash = "fe527d45e5b42696945b4fc1a8eb20a2d3b8ee3596463a5143768329237b5571"
+
+[[files]]
+file = "kubejs/data/irons_spellbooks/worldgen/structure_set/pyromancer_tower.json"
+hash = "ff25410ff9f55300ce00ae506edb50560e1bac0a03d7ffa9094e4f6b58a98b8b"
 
 [[files]]
 file = "kubejs/data/lootr/tags/block/convert/barrels.json"
@@ -969,6 +1225,10 @@ file = "kubejs/data/primalmagick/worldgen/configured_feature/ore_marble_raw.json
 hash = "2959ab9bf73d821d7afb6ec820af39202845be14231f84f3354473b169e49245"
 
 [[files]]
+file = "kubejs/data/primalmagick/worldgen/structure_set/shrines.json"
+hash = "2662fb832e5d48c31adabe08432d0bf6a808b5761aa93a272bd5d62e8b2130a3"
+
+[[files]]
 file = "kubejs/data/projecte/pe_custom_conversions/defaults.json"
 hash = "ed27feae1012604cdae82866b4a036e0f47ee2f03238d4532b948ec19b3c42ce"
 
@@ -1219,6 +1479,10 @@ hash = "99b969132018e9da1071065a8593ba9564928b1ed0aa5ae3ab45f9dac071f7d5"
 [[files]]
 file = "kubejs/data/smart_keep_inventory/smart_keep_inventory/condition/bosses.json"
 hash = "d2753cb830c8b5a8bd4e8651c07c1153ab864ca28e4c13675e176ace12a71af5"
+
+[[files]]
+file = "kubejs/data/sons_of_sins/worldgen/structure_set/sinful_church.json"
+hash = "4bbdf16736a0aaf38e7d4944a64b17f38e76002f3a1f8224016ea8318f9e9823"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
@@ -1911,6 +2175,18 @@ hash = "a2c1ea945726bea13c75c6771d99ad4f25b39d263ad6500b4706671371da7313"
 [[files]]
 file = "kubejs/data/tmm/tags/item/ritual_of_equivalent_exchange/titans_of_destruction.json"
 hash = "ff9b1849b5c61c8f0e2cba43f97fc779838fd19cbe5c5f795934a6acf866cc1b"
+
+[[files]]
+file = "kubejs/data/witchery/worldgen/structure_set/hobgoblin_hut.json"
+hash = "05a5add91fb997346f8a28d37871c141a012375c77c98d22fe2540957420f7d9"
+
+[[files]]
+file = "kubejs/data/witchery/worldgen/structure_set/small_well.json"
+hash = "59acdc8e4f09b81da73d69ab0c80cd3a3ed41a36c351bc4b2416b66fed6b51c3"
+
+[[files]]
+file = "kubejs/data/witchery/worldgen/structure_set/well.json"
+hash = "cf8275cea7acdb6325cc5d844eec2ebcfc6e79a67157a8f4b77eab4ade8c6a8f"
 
 [[files]]
 file = "kubejs/server_scripts/ban_seven_sins_ring.js"
@@ -2672,6 +2948,11 @@ hash = "583a335211bc3a21bb379394344b67d64bffea421e7f7942c254903e1d607814"
 metafile = true
 
 [[files]]
+file = "mods/lets-do-bakery.pw.toml"
+hash = "d56449d058018ef5c932fb783a8ccbf86301a24d4de9747398dba1d70bd708f3"
+metafile = true
+
+[[files]]
 file = "mods/lets-do-beachparty.pw.toml"
 hash = "fd2a321d4abc440ff159e477dc75ebc9d32a9efa246e61ceeb6142391c55bfcf"
 metafile = true
@@ -2804,6 +3085,11 @@ metafile = true
 [[files]]
 file = "mods/nether-depths-upgrade.pw.toml"
 hash = "48c2ab25456fb7ace4367153a3de95a990cba360bdf1fb78264850c4392512d1"
+metafile = true
+
+[[files]]
+file = "mods/oaks-delight.pw.toml"
+hash = "2b3a3032be432358f3009fcd7f6cae2a5331110a95ae64e2dc13c7544a497177"
 metafile = true
 
 [[files]]
@@ -3069,6 +3355,11 @@ metafile = true
 [[files]]
 file = "mods/supermartijn642s-core-lib.pw.toml"
 hash = "0b8161b7e8c71379084080673b304a090e187b1ad45ddc2bb90ebae11f401f6f"
+metafile = true
+
+[[files]]
+file = "mods/sweet-cakes.pw.toml"
+hash = "78124a018f08b68a8f82347bf5a478eb58c53b3f5529f628a5fdba85a1b10c5b"
 metafile = true
 
 [[files]]

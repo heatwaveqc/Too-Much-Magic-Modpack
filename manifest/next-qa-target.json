@@ -135,6 +135,7 @@
     "lava-fishing",
     "ldlib2",
     "leaves-be-gone",
+    "lets-do-bakery",
     "lets-do-beachparty",
     "lets-do-brewery",
     "lets-do-farm-and-charm",
@@ -162,6 +163,7 @@
     "natures-compass",
     "neovitae",
     "nether-depths-upgrade",
+    "oaks-delight",
     "observerlib",
     "occult-cooking",
     "occultism",
@@ -215,6 +217,7 @@
     "summoning-rituals",
     "supermartijn642-config-lib",
     "supermartijn642-core-lib",
+    "sweet-cakes",
     "swem",
     "swem-addendum",
     "swing-through-grass",
@@ -346,6 +349,23 @@
       "id": "owo-lib",
       "provider": "modrinth",
       "version_id": "wbdHEItB"
+    },
+    {
+      "id": "lets-do-bakery",
+      "provider": "curseforge",
+      "project_id": 1038130,
+      "file_id": 9747401,
+      "filename": "letsdo-bakery-neoforge-2.1.12.jar"
+    },
+    {
+      "id": "oaks-delight",
+      "provider": "modrinth",
+      "version_id": "DagHrUgg"
+    },
+    {
+      "id": "sweet-cakes",
+      "provider": "modrinth",
+      "version_id": "CPBGE6mL"
     }
   ],
   "notes": [

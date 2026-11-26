@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 140967140,
+    "separation": 11,
+    "spacing": 29,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "hexerei:nature_coven",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "placement": {
+    "salt": 684512,
+    "separation": 50,
+    "spacing": 85,
+    "type": "minecraft:random_spread",
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "irons_spellbooks:evoker_fort",
+      "weight": 1
+    }
+  ]
+}

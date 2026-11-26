@@ -1,0 +1,29 @@
+{
+  "placement": {
+    "salt": 30981980,
+    "separation": 15,
+    "spacing": 40,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 10,
+      "other_set": "minecraft:ruined_portals"
+    },
+    "frequency": 0.5
+  },
+  "structures": [
+    {
+      "structure": "ars_additions:ruined_portal",
+      "weight": 1
+    },
+    {
+      "structure": "ars_additions:ruined_portal_large",
+      "weight": 1
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "config": "ruined_warp_portals_enabled",
+      "type": "ars_additions:config"
+    }
+  ]
+}

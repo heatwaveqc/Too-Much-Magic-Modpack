@@ -26,7 +26,9 @@ class HunterXpPolicyTest {
             assertEquals(4,policy.healthDivisor());
             assertEquals(2,policy.specialtyMultiplier());
             if("tyr_progression:mxp".equals(raw.get("xp_channel").getAsString())){
-                assertEquals(200,policy.mxpKillPerHp());
+                assertEquals(40,policy.mxpKillPerHp());
+                assertEquals(800.0,io.github.heatwaveqc.tyr.progression.core.HunterXpMath.combatMxp(20,policy.mxpKillPerHp(),policy.specialtyMultiplier(),false).doubleValue());
+                assertEquals(1600.0,io.github.heatwaveqc.tyr.progression.core.HunterXpMath.combatMxp(20,policy.mxpKillPerHp(),policy.specialtyMultiplier(),true).doubleValue());
                 assertEquals(100,policy.mxpPotionBaseXp());
                 assertEquals(2,policy.potionDiscoveryMultiplier());
                 assertEquals(12000,policy.potionRepeatCooldownTicks());
