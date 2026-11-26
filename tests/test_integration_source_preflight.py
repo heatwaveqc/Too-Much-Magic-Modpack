@@ -87,5 +87,41 @@ class IntegrationPreflightTests(unittest.TestCase):
         self.assertNotIn(("git", "push"), calls)
 
 
+class RetirementQuestTests(unittest.TestCase):
+    def test_retirement_preserves_canonical_quest_contract(self):
+        import retire_teamlapen as retirement
+
+        repo = Path(__file__).resolve().parents[1]
+        validator_bytes = (repo / "scripts/validate_quests.py").read_bytes()
+        canonical = json.loads((repo / "manifest/quest_chapters.json").read_text(encoding="utf-8"))
+        for restore_retired in (False, True):
+            with self.subTest(restore_retired=restore_retired), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                validator = root / "scripts/validate_quests.py"
+                validator.parent.mkdir()
+                validator.write_bytes(validator_bytes)
+                chapters = root / "manifest/quest_chapters.json"
+                chapters.parent.mkdir()
+                staged = json.loads(json.dumps(canonical))
+                manifest = {"mods": [{"id": "jawr"}], "excluded": []}
+                if restore_retired:
+                    for filename, mod in (("vampirism.snbt", "vampirism"),
+                                          ("werewolves.snbt", "werewolves")):
+                        staged["chapters"].append({"filename": filename, "category": "Exploration & Combat"})
+                        next(g for g in staged["groups"] if g["name"] == "Exploration & Combat")["count"] += 1
+                        path = root / "config/ftbquests/quests/chapters" / filename
+                        path.parent.mkdir(parents=True, exist_ok=True)
+                        path.write_text("retired placeholder", encoding="utf-8")
+                        manifest["mods"].append({"id": mod})
+                chapters.write_text(json.dumps(staged), encoding="utf-8")
+                for _ in range(2):
+                    retirement.retire(root, manifest)
+                    self.assertEqual(validator.read_bytes(), validator_bytes)
+                    self.assertEqual(json.loads(chapters.read_text(encoding="utf-8")), canonical)
+                    self.assertEqual([m["id"] for m in manifest["mods"]], ["jawr"])
+                    self.assertEqual({m["id"] for m in manifest["excluded"]}, retirement.REMOVED)
+                    self.assertFalse(any((root / p).exists() for p in retirement.FILES))
+
+
 if __name__ == "__main__":
     unittest.main()
