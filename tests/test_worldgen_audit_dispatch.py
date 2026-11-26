@@ -1,5 +1,10 @@
 """Offline tests for owner-only worldgen bridge; no network or dispatch."""
 import datetime as dt
+import json
+import os
+import shlex
+import subprocess
+import tempfile
 import sys
 import unittest
 from pathlib import Path
@@ -52,9 +57,32 @@ class DispatchTests(unittest.TestCase):
         with patch.object(bridge,"live_comment"), patch.object(bridge,"main_head",return_value=SHA), patch.object(bridge,"check_ci"), patch.object(bridge,"check_active"):
             self.assertEqual(bridge.execute(api,e,dt.datetime.now(dt.timezone.utc),SHA),NONCE)
         self.assertEqual(calls[0][2]["ref"],"refs/tags/worldgen-vanilla-request/"+NONCE)
-        self.assertEqual(calls[1][2]["inputs"]["audit_mode"],"vanilla")
+        self.assertEqual(calls[1][2]["inputs"],{"authorized_build":"true","expected_launcher_sha":SHA,"request_nonce":NONCE})
         e["comment"]["body"]=f"/tmm worldgen tectonic {bridge.TOOLS} {NONCE}"
         with self.assertRaises(bridge.qa.Refused): bridge.validate(e)
+    def test_receipt_mode_resolution(self):
+        workflow=(Path(__file__).resolve().parents[1]/".github/workflows/worldgen-audit-pilot.yml").read_text()
+        line=next(s.strip() for s in workflow.splitlines() if s.strip().startswith("MODE=$(python3 -c "))
+        cmd=shlex.split(line[len("MODE=$("):-1])
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)
+            env=dict(os.environ,RUNNER_TEMP=temp,NONCE=NONCE,APPROVED_SHA=SHA)
+            def ref(prefix, sha=SHA):
+                return {"ref":f"refs/tags/{prefix}/{NONCE}","object":{"sha":sha,"type":"commit"}}
+            for tmm,vanilla,expected in [
+                ([ref("worldgen-request")],[],"tmm"),
+                ([],[ref("worldgen-vanilla-request")],"vanilla"),
+                ([],[],None),
+                ([ref("worldgen-request")],[ref("worldgen-vanilla-request")],None),
+                ([],[ref("worldgen-vanilla-request","d"*40)],None)
+            ]:
+                (p/"worldgen-tmm-receipt.json").write_text(json.dumps(tmm))
+                (p/"worldgen-vanilla-receipt.json").write_text(json.dumps(vanilla))
+                result=subprocess.run(cmd,env=env,capture_output=True,text=True)
+                if expected is None: self.assertNotEqual(result.returncode,0)
+                else:
+                    self.assertEqual(result.returncode,0,result.stderr)
+                    self.assertEqual(result.stdout.strip(),expected)
     def test_occupancy(self):
         # Row fields: id, origin x/z, target x/z, accepted, unique, non-air, above, rise, cols, cross.
         rows=["minecraft:test\t0\t0\t0\t0\t2\t2\t2\t1\t1\t1\t0",
