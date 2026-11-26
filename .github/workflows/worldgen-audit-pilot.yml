@@ -8,7 +8,7 @@ on:
         type: boolean
         default: false
         required: true
-    expected_launcher_sha:
+      expected_launcher_sha:
         description: 'Exact reviewed main commit for connector dispatch; blank for direct owner dispatch'
         type: string
         default: ''
