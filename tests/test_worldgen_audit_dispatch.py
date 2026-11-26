@@ -61,6 +61,18 @@ class DispatchTests(unittest.TestCase):
         self.assertEqual(calls[1][2]["inputs"],{"authorized_build":"true","expected_launcher_sha":SHA,"request_nonce":NONCE})
         e["comment"]["body"]=f"/tmm worldgen tectonic {bridge.TOOLS} {NONCE}"
         with self.assertRaises(bridge.qa.Refused): bridge.validate(e)
+    def test_density_mode_and_receipt(self):
+        e=event()
+        e["comment"]["body"]=f"/tmm worldgen density {bridge.TOOLS} {NONCE}"
+        calls=[]
+        def api(path,method="GET",body=None):
+            calls.append((path,method,body))
+            return {}
+        with patch.object(bridge,"live_comment"), patch.object(bridge,"main_head",return_value=SHA), patch.object(bridge,"check_ci"), patch.object(bridge,"verify_density_ci") as gate, patch.object(bridge,"check_active"):
+            self.assertEqual(bridge.execute(api,e,dt.datetime.now(dt.timezone.utc),SHA),NONCE)
+            gate.assert_called_once()
+        self.assertEqual(calls[0][2]["ref"],"refs/tags/worldgen-density-request/"+NONCE)
+        self.assertEqual(calls[1][2]["inputs"],{"authorized_build":"true","expected_launcher_sha":SHA,"request_nonce":NONCE})
     def test_receipt_mode_resolution(self):
         workflow=(Path(__file__).resolve().parents[1]/".github/workflows/worldgen-audit-pilot.yml").read_text()
         line=next(s.strip() for s in workflow.splitlines() if s.strip().startswith("MODE=$(python3 -c "))
@@ -77,6 +89,7 @@ class DispatchTests(unittest.TestCase):
                 ([ref("worldgen-request")],[ref("worldgen-vanilla-request")],None),
                 ([],[ref("worldgen-vanilla-request","d"*40)],None)
             ]:
+                (p/"worldgen-density-receipt.json").write_text("[]")
                 (p/"worldgen-tmm-receipt.json").write_text(json.dumps(tmm))
                 (p/"worldgen-vanilla-receipt.json").write_text(json.dumps(vanilla))
                 result=subprocess.run(cmd,env=env,capture_output=True,text=True)
@@ -84,6 +97,13 @@ class DispatchTests(unittest.TestCase):
                 else:
                     self.assertEqual(result.returncode,0,result.stderr)
                     self.assertEqual(result.stdout.strip(),expected)
+            (p/"worldgen-tmm-receipt.json").write_text("[]")
+            (p/"worldgen-vanilla-receipt.json").write_text("[]")
+            (p/"worldgen-density-receipt.json").write_text(json.dumps([ref("worldgen-density-request")]))
+            result=subprocess.run(cmd,env=env,capture_output=True,text=True)
+            self.assertEqual(result.stdout.strip(),"density")
+            (p/"worldgen-tmm-receipt.json").write_text(json.dumps([ref("worldgen-request")]))
+            self.assertNotEqual(subprocess.run(cmd,env=env,capture_output=True).returncode,0)
     def test_diagnostic_redaction(self):
         raw=json.dumps({"message":"Unexpected inputs provided: SECRET_VALUE","errors":[{"field":"inputs","code":"invalid"},{"field":"SECRET_VALUE","code":"SECRET_VALUE"}]})
         self.assertEqual(classify(raw),"unexpected inputs; field=inputs; code=invalid")
