@@ -30,11 +30,11 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | B10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C01 | PARTIAL | World 1 post-#801 local overlay: owner reports successful entry, exploration, save/rejoin Nov 26, no recurrence of crash. Earlier 887a4ffb/20729a36 pre-overlay FAIL evidence retained; clean rebuilt package and actual Reactive replacement still pending. |
 | C02 | FAIL | World 1 Nov 26: FTB hover text still black under Sodium; EMI looks good. Other icon/GUI-scale/transfer/category specifics not independently reported. #507 renderer defect persists. |
-| C03 | PARTIAL | Owner confirms empty starting inventory. Starter reward claim, 12-guide Tome, exact-once/individual behavior not yet tested. |
-| C04 | PARTIAL | Quest presentation generally good in sampled chapters, not all examined. Natural intro/graduation and housing reward not yet tested. |
-| C05 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
+| C03 | FAIL | World 1: empty first-login inventory PASS; claimed starter kit via function, Tome opens/morphs correctly but only six guides observed vs twelve configured. Owner wants native personal item rewards distributed across multiple introductory quests; #306/#509. |
+| C04 | FAIL | World 1: graduation home choice claimed, custom paper blueprint repeatedly refuses placement as obstructed. #804 native Prefab placement correction. General quest presentation sampled good; Choose your magic controls gives paper, unwanted Ring/Amulet in early Intro; owner changes routed. |
+| C05 | PARTIAL | World 1 owner confirms previous Newbie teleport tests and multiple village deaths/keep inventory, working Newbie elytra. Tombstone ghost form occurs and must be suppressed only for Newbie; owner requests jump boost for flat-ground flight. Graduation home reward reached; post-graduation commands and Core enrollment remain to verify. |
 | C06 | PARTIAL | Owner reports controls work; individual bindings/log counts, progression screen/TreeChop details remain unverified. |
-| C07 | PARTIAL | Owner confirms EMC and material values correctly hidden before unlock; post-acquisition/independent-player/relog gates remain untested. |
+| C07 | PARTIAL | Before unlock values hidden per owner; latest screenshot shows upper-left EMC: 0 (after apparent graduation, acquisition unknown). Verify before Stone on Normie; post-unlock and independent profiles pending. |
 | C08 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C09 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C10 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
@@ -48,7 +48,7 @@ Authorized integration input `cc8bb188f0e0498dbc5007f6c4068bafe1481279`; current
 | C18 | FAIL | World 1: villager ranged damage works, gun model absent; owner confirms ranged engagement: golem aggroed, advanced and used melee rather than firing; both weapons invisible (provenance/LOS/exact distance not established; #803); aggression persisted into second village. Commands, relog, Hero pardon, stock, ranged setup and safety remain untested. |
 | C19 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C20 | PARTIAL | World 1: owner observed missing/broken texture on a Stray spawner attributed to individual/multiplayer spawner mod; exact registry ID/screenshot pending. Multiplayer independent state and cooldown NOT RUN. |
-| C21 | PARTIAL | World 1 login chat reports Alex's Caves 1.1.2 update to 1.1.3 and explicit Tectonic incompatibility (possible missing cave biomes, crash/hang). Warning observed, actual generation failure not established. #55/#746 follow-up; no pin/config change. |
+| C21 | PARTIAL | World 1 structure density owner reports way more reasonable. Alex's Caves/Tectonic warning previously recorded; actual cave generation unresolved. No multi-seed claim. |
 | C22 | PARTIAL | World 1: no further Reactive crash reported after #801 local script overlay; no confirmed Reactive-only/mixed/configured chest book or filter diagnostic log yet. Remaining loot/Gateway/fishing cases NOT RUN. |
 | C23 | NOT RUN | Follow checklist; no same-build acceptance evidence recorded. |
 | C24 | PARTIAL | World 1 save/rejoin good. Nov 26 screenshots: Java process 11,111.5 MB (Task Manager), system memory 90%; F3 5976/8192 MB heap, 8080 MB allocated, off-heap +1101 MB, allocation 642 MB/s, 60 FPS, integrated server 19.2/50 ms. One snapshot, no leak inference; #802. Long-play/multiplayer pending. |
@@ -90,3 +90,7 @@ Owner-reported: save/rejoin good, starting inventory empty, FTB hover text still
 ## World 1 — B01 (2026-11-26 ~08:35 Arizona)
 
 All six owner-run baseline commands returned as recorded above. Core automatic enrollment is configured but Core not joined while Newbie; follow up after natural graduation. Backup succeeded in 3.130s (60.6 MB / 60.8 MB displayed). Alex's Caves warning names Tectonic incompatibility; investigate actual cave generation and compatibility before suppressing warning or updating. No raw screenshot committed. Continue Batch 2 natural Newbie setup.
+
+## World 1 — Batch 2, Thanksgiving morning ~08:43 Arizona
+
+Owner confirms prior teleport tests and deaths to villagers, Newbie elytra works, structure generation considerably more reasonable. Ghost form on Newbie death undesirable; jump boost requested for flat-ground takeoff. Starter kit function chat visible, Tome six guides observed (12 configured), functionality good. Replace command-based bundle with normal personal item rewards distributed across several quests; remove paper placeholder for Choose your magic controls. Move Ring of Seven Curses to optional post-graduation General Progression `Make It Hardmode`; owner tentatively favors removing Unwitnessed Amulet entirely (clarify scope, not silent item deletion). Claimed house fails placement: repeated obstruction at 1332,160,197 and earlier 1097,112,166; exact frozen RegularHomePower confirms custom paper + direct vanilla placement, Generic native only. New native placement investigation #804. Screenshot upper-left EMC: 0; acquisition not confirmed, flag for immediate B01/visibility recheck. No raw screenshot committed. No source changes or new build.
