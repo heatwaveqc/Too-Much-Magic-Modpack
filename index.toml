@@ -181,6 +181,10 @@ file = "config/ftbquests/quests/chapters/forbidden_arcanus.snbt"
 hash = "544f11c2c38a0a3a9407af61b14182f9e10ecaa3a80076cf4100e1d18bd5c08f"
 
 [[files]]
+file = "config/ftbquests/quests/chapters/friendship_is_magic.snbt"
+hash = "b94015d540bc01b7f90259ed1dce19dec0dddef4d4d6034367c121b9b169acdf"
+
+[[files]]
 file = "config/ftbquests/quests/chapters/gateways_to_eternity.snbt"
 hash = "f29ec65decb7ff1d6a41c1d39e853f287f0f05330197c935f7514c8675f1c14c"
 
@@ -282,7 +286,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "d1d0ce5f34d55b9650980c09f20ed55a0aaaeb332f4e56c8249ebb37b354238c"
+hash = "c5e0ae75aa6ec09aeda22856c5bf188717bae016469fcb2748fee313ad7065cc"
 
 [[files]]
 file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
@@ -371,6 +375,10 @@ hash = "a7b21c3200122e4c08666eafd17aa842cf54df73fbb5519b64e973d3f4dc6c31"
 [[files]]
 file = "kubejs/assets/tmm/textures/item/replica_nugget.png"
 hash = "a8620f2e2e7a6f777085ff36f9bba5969d950599820be5b1ca37e5009ee6064c"
+
+[[files]]
+file = "kubejs/assets/tmm/textures/questpics/friendship_is_magic/background.png"
+hash = "307e155f17280405ae9ccbdf694a0cab8b919b7fb72d379fc1184cb50af2c819"
 
 [[files]]
 file = "kubejs/data/apotheosis/worldgen/structure_set/towers.json"
@@ -1487,6 +1495,26 @@ hash = "4bbdf16736a0aaf38e7d4944a64b17f38e76002f3a1f8224016ea8318f9e9823"
 [[files]]
 file = "kubejs/data/tmm/advancement/ars_pilot/chimera.json"
 hash = "2ac9259aefd71c5f229b8e237a7f8cf19eac5b07f08206d871a5e01d7d64cf38"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/friendship_is_magic/care_for_unicorn.json"
+hash = "3c654774b284b99959f69418e96e957a70a7a8943443890a2be1631e65da0f70"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/friendship_is_magic/return_from_island.json"
+hash = "6441e553f8f5a1468a6edff0bad67a5b2b5e6b998e16dc0c5bf7e941405f0c92"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/friendship_is_magic/ride_unicorn.json"
+hash = "c8686316c2491ddc2a55a88578d1543266d8e2d038a69a1e9e23a0dc92569eee"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/friendship_is_magic/ride_with_fairy_wings.json"
+hash = "7dcce1e282e3c01873d00427242acbc92f625baa8ca6746660ec1897c18bcc3a"
+
+[[files]]
+file = "kubejs/data/tmm/advancement/friendship_is_magic/tame_unicorn.json"
+hash = "5958ea53704909482213c97dcc66fe8b5667a7f48a0ee39bb4225df29e4e55b2"
 
 [[files]]
 file = "kubejs/data/tmm/advancement/starter_first_login.json"

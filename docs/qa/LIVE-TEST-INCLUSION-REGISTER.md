@@ -452,3 +452,8 @@ Other outstanding gameplay defects and verification obligations remain in #431, 
 ## November 25 post-second-build source intake
 
 Next separately authorized candidate: #776 (69 reviewed ordinary surface structure frequencies halved; protected focal points/mushrooms and existing biome rules unchanged; other dimensions sharing eligibility could be affected), #771/#770 (three exact pastry pins and dependencies verified), #744/#743 (independent reduced Monk/Hunter combat MXP). Current source checks only, no build or in-world acceptance. Classic Monk redesign remains active, #755 Friendship is Magic has pending native bond/gate integration, #774 Flowerary exact pin pending. Do not import unfinished drafts or silently claim acceptance. Prior second-build snapshot remains frozen.
+
+
+## Friendship is Magic next-test inclusion — November 25
+
+Owner authorized source integration of the 21-node Friendship is Magic chapter with 11 automatic tasks and 10 guide acknowledgements. Preserve 86 stable IDs, 42 personal rewards, approved illustrated background and 5 native data-only advancements. UA17/UA20 checkmarks and UA09 care proxy are explicitly temporary pending shared #768 bond milestones; no global MXP, graduation reward, or native Progression edits. Optional UA18 gemstone/UA19 wing path and UA21 return remain unverified; Newbie full native access #742 still requires engine review and gameplay validation. Source integration is not a release-ready claim. Surface-density #783 already merged; 69 indexed overrides retained. Monk redesign remains excluded until owner-ready. No build authorized here.
