@@ -162,3 +162,5 @@ Owner confirms World 1 spawner programming succeeded (old build, no explicit con
 ## World 2 — harvest trial coverage
 
 Owner reports regular diamond ore works but deepslate diamond ore does not, also stone vs cobblestone, requests programmatic list. #814 tracks narrow active Monk harvest_generation.training_blocks overrides (wood stone; stone iron/copper; iron diamond; diamond obsidian) intersecting already dynamic native capability delta. Remove narrow overrides; use registry-derived new capability delta and stable receipts. Owner wording may refer to challenge credit or actual speed/drop; exact counter vs speed vs loot symptom still to distinguish, not proof of speed regression. #805 functional speed pass retained; #721 follow-up. No build/game commands by coordinator.
+
+Owner clarification for #814: deepslate diamond ore and other affected blocks fail challenge credit only; harvest normally after corresponding tier unlocked. Scope narrowed to generated challenge membership / training_blocks overrides. Native earned harvest permissions and #805 speed functional acceptance retained. Prefer config-only correction; no engine rewrite.
