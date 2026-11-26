@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 final class BedrockRestTest {
     private static Definition.Path installedMonk() throws Exception {
-        String resource = "data/tyr_progression/tyr_progression/paths/monk.json";
+        String resource = "legacy-monk-before-classic-v1.json";
         try (InputStream input = BedrockRestTest.class.getClassLoader()
                 .getResourceAsStream(resource)) {
             assertNotNull(input);

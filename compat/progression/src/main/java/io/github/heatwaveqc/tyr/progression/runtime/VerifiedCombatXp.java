@@ -28,7 +28,7 @@ public final class VerifiedCombatXp {
                           DamageSource source,long tick) {}
     private static final Map<UUID,Before> PENDING=new HashMap<>();
     @FunctionalInterface public interface StrictVictory {
-        void completed(ServerPlayer owner,LivingEntity victim);
+        void completed(ServerPlayer owner,LivingEntity victim,String verifiedPath);
     }
     private static final java.util.List<StrictVictory> VICTORY_LISTENERS=
         new java.util.concurrent.CopyOnWriteArrayList<>();
@@ -44,20 +44,23 @@ public final class VerifiedCombatXp {
         return victim.level() instanceof ServerLevel
             && Double.isFinite(victim.getMaxHealth()) && victim.getMaxHealth()>0;
     }
+    private static boolean trainingActor(ServerPlayer p){
+        return PathRegistry.trainingXp().keySet().stream().anyMatch(path->TrainingRewards.eligible(p,path));
+    }
     private static ServerPlayer attacker(LivingEntity victim,DamageSource source){
         if(source.getEntity() instanceof ServerPlayer player
-                && source.getDirectEntity()!=null && TrainingRewards.eligible(player,"tyr_progression:monk"))
+                && source.getDirectEntity()!=null && trainingActor(player))
             return player;
         // Explicit native magic provenance only; no owner-chain guessing.
         var owner=OwnedMagicDamage.hunterOwner(victim,source);
-        return owner!=null&&TrainingRewards.eligible(owner,"tyr_progression:monk")?owner:null;
+        return owner!=null&&trainingActor(owner)?owner:null;
     }
     private static String barehandOwner(LivingEntity victim,DamageSource source){
         if(!source.is(DamageTypes.PLAYER_ATTACK)
                 ||!(source.getEntity() instanceof ServerPlayer player)
                 ||source.getDirectEntity()!=player
                 ||!player.getMainHandItem().isEmpty()
-                ||!TrainingRewards.eligible(player,"tyr_progression:monk"))return "";
+                ||!trainingActor(player))return "";
         return player.getUUID().toString();
     }
     public static void beforeDamage(LivingDamageEvent.Pre event){
@@ -133,14 +136,16 @@ public final class VerifiedCombatXp {
                         now,entry.getValue().strictWindow())){
                 // This only emits a verified generic completion. It does not
                 // automatically grant Wither deeds, gliding, or extra boss MXP.
+                var target=Selectors.entityAction("strict_fist_victory",victim);
+                io.github.heatwaveqc.tyr.progression.core.ProgressionApi.recordFiltered(credited,target,
+                    path->path.id().equals(entry.getKey()));
                 for(StrictVictory observer:VICTORY_LISTENERS) {
-                    try{observer.completed(credited,victim);}
+                    try{observer.completed(credited,victim,entry.getKey());}
                     catch(RuntimeException failure){
                         io.github.heatwaveqc.tyr.progression.ProgressionMod.LOGGER.error(
                             "Strict-victory observer failed for {}",victim.getUUID(),failure);
                     }
                 }
-                break;
             }
         }
     }
