@@ -1,0 +1,2720 @@
+{
+  "scope": "OFFLINE_PINNED_BYTECODE_RESOURCE_AUDIT_NOT_LIVE_REGISTRY",
+  "installed_source": "2fb5d1cf11fb7c6e2ccaec5824c36698888ef956",
+  "pins": {
+    "emi": {
+      "filename": "emi-1.1.24+1.21.1+neoforge.jar",
+      "sha256": "b68691f94f0727fc517cac2ab55bd6658d1179cc8cc715fe610b60c37469bc4c",
+      "pin_hash_format": "sha512",
+      "pin_hash": "f4c45ed686fe617311d6debadcb6ace5963e66f8cfe0cfed398231f081f87407070efc7a73c8b695d158f1d87a97180737b9107a46771e77df2bc9a7dc715ebd"
+    },
+    "emisemble": {
+      "filename": "emisemble-1.2.1.jar",
+      "sha256": "02084ad59e4251290142ad9c9ab3c12d5a8adc23c5be89c7d618dd71bd8e19e8",
+      "pin_hash_format": "sha512",
+      "pin_hash": "93cd951bfab7329b3d3d7da2f6c4061ba0fed75d093031047d8d19fce5dfaa645fc0ae1eee36f529e17413be453fa20a46bc6bbd4b7098fc98d2c29a9a5b228d"
+    },
+    "extra-mod-integrations": {
+      "filename": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar",
+      "sha256": "588bc09f0f43e04ef0c18d8e884197ffd4a0e605470f455cf0b5f1508cb994ba",
+      "pin_hash_format": "sha512",
+      "pin_hash": "9267359eefc56bdb1eca2992cba12363f54f974f27ca2031ecb0677ba4c3bcd1d563db94dd569bbdf085a8b890cd7aa681ae6f485859051565b6a2cf50adc4c8"
+    },
+    "almostunified": {
+      "filename": "almostunified-neoforge-1.21.1-1.4.2.jar",
+      "sha256": "65202adf4dccf7b3033537e539e23eccc541c6a15ad88d87fa1c5a09ceb3359f",
+      "pin_hash_format": "sha512",
+      "pin_hash": "82ddfb82b86dcbf62c729ebbb2ed571bf284d31a8ad494b7e10db2da24a87e7887969e6092b78e79053ea0279c75de58dc548d30eca6ba60c2816a9bd3e436fd"
+    },
+    "just-another-witchery-remake": {
+      "filename": "witchery-0.5.39+mc1.21.1.jar",
+      "sha256": "81557ceb1b878d2aa8df5fcbcc468b82479d1e38d38097873a6ffb225324e256",
+      "pin_hash_format": "sha512",
+      "pin_hash": "a3d50e65bb494b4d9b709163a295ddcecf53c498314df473d6de55633a4a5ebe810b9a0b5672f97f41786c03af01ef3ac91f0262216e074887e75d6afc35141d"
+    },
+    "mahou-tsukai": {
+      "filename": "mahoutsukai-1.21.1-v1.36.31.jar",
+      "sha256": "4022fb3cee32b28df02994cc4c5b40069651583516f6abd04775789616739aad",
+      "pin_hash_format": "sha512",
+      "pin_hash": "0c4f3bc823d681ad9cb00895d348d2b414201c4d397ca3aa6427b45b8d2b369e0bae8c1f354a9541e4205dadb58c49203d3570e2433d772c3eef1227bc8bfa5a"
+    },
+    "kubejs": {
+      "filename": "kubejs-neoforge-2101.7.2-build.381.jar",
+      "sha256": "07d8cb7ac1f7ef81f17ae00bfd84c92c18ac0398e83e64a27d91717969316bc0",
+      "pin_hash_format": "sha512",
+      "pin_hash": "f8286f9f371d0c1fb2b37e56b1dbb359dcfc5a9064a7384cbf6722450f5b5a77f05f55688d7a338b500a6f49590d51e3d3541664dfc0296e50fe573a34e5a529"
+    }
+  },
+  "top_level_jars_scanned": 258,
+  "jei_jar_present": false,
+  "provider_candidates": [
+    {
+      "container": "aether-1.21.1-1.5.10-neoforge.jar!META-INF/jarjar/accessories-neoforge-1.1.0-beta.48+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "io.wispforest.accessories.compat.emi.AccessoriesClientEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "io.wispforest.accessories.compat.jei.AccessoriesClientJEIPlugin"
+      ]
+    },
+    {
+      "container": "aether-1.21.1-1.5.10-neoforge.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.aetherteam.aether.integration.jei.AetherJEIPlugin"
+      ]
+    },
+    {
+      "container": "alexscaves-1.1.2-neoforge+1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.github.alexmodguy.alexscaves.compat.jei.AlexsCavesPlugin"
+      ]
+    },
+    {
+      "container": "almostunified-neoforge-1.21.1-1.4.2.jar",
+      "emi_annotated_candidates": [
+        "com.almostreliable.unified.compat.viewer.AlmostEMI"
+      ],
+      "jei_annotated_candidates": [
+        "com.almostreliable.unified.compat.viewer.AlmostJEI"
+      ]
+    },
+    {
+      "container": "Apotheosis-1.21.1-8.9.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.shadowsoffire.apotheosis.compat.jei.AdventureJEIPlugin"
+      ]
+    },
+    {
+      "container": "ApothicAttributes-1.21.1-2.11.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.shadowsoffire.apothic_attributes.compat.AttributesJEIPlugin"
+      ]
+    },
+    {
+      "container": "ApothicEnchanting-1.21.1-1.6.4.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.shadowsoffire.apothic_enchanting.compat.EnchJEIPlugin"
+      ]
+    },
+    {
+      "container": "ApothicSpawners-1.21.1-1.4.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.shadowsoffire.apothic_spawners.compat.SpawnerJEIPlugin"
+      ]
+    },
+    {
+      "container": "Aquaculture-1.21.1-2.7.22.jar",
+      "emi_annotated_candidates": [
+        "com.teammetallurgy.aquaculture.integration.emi.EmiIntegration"
+      ],
+      "jei_annotated_candidates": [
+        "com.teammetallurgy.aquaculture.integration.jei.JEIIntegration"
+      ]
+    },
+    {
+      "container": "ArcaneArchives-1.0.2+Neoforge-1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.arcanearchives.reborn.integration.jei.ArchiveJeiPlugin"
+      ]
+    },
+    {
+      "container": "ars_additions-1.21.1-21.3.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.github.jarva.arsadditions.client.jei.ModPlugin"
+      ]
+    },
+    {
+      "container": "ars_elemancy-1.21.1-1.18.3.jar!META-INF/jarjar/sauce-1.21.1-0.0.29.73.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.alexthw.sauce.common.recipe.jei.JeiSaucePlugin"
+      ]
+    },
+    {
+      "container": "ars_elemental-1.21.1-0.7.11.3.jar!META-INF/jarjar/sauce-1.21.1-0.0.74.113.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.alexthw.sauce.common.recipe.jei.JeiSaucePlugin"
+      ]
+    },
+    {
+      "container": "ars_elemental-1.21.1-0.7.11.3.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "alexthw.ars_elemental.recipe.jei.JeiElementalPlugin"
+      ]
+    },
+    {
+      "container": "ars_n_spells-3.3.5.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.otectus.arsnspells.compat.jei.ArsNSpellsJeiPlugin"
+      ]
+    },
+    {
+      "container": "ars_nouveau-1.21.1-5.13.5.jar",
+      "emi_annotated_candidates": [
+        "com.hollingsworth.arsnouveau.client.emi.EmiArsNouveauPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.hollingsworth.arsnouveau.client.jei.JEIArsNouveauPlugin"
+      ]
+    },
+    {
+      "container": "ars_unification-1.2.23.jar",
+      "emi_annotated_candidates": [
+        "dev.qther.ars_unification.client.emi.EmiArsUnificationPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "dev.qther.ars_unification.client.jei.JeiArsUnificationPlugin"
+      ]
+    },
+    {
+      "container": "AstralSorcery-2.0.3.59.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "hellfirepvp.astralsorcery.common.integration.jei.ASJeiPlugin"
+      ]
+    },
+    {
+      "container": "balm-neoforge-1.21.1-21.0.67.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.blay09.mods.balm.platform.compatibility.recipeviewer.internal.jei.CommonJeiPlugin"
+      ]
+    },
+    {
+      "container": "BetterEnd-21.0.39.jar",
+      "emi_annotated_candidates": [
+        "org.betterx.betterend.integration.emi.EMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "org.betterx.betterend.integration.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "born_in_chaos_[Neoforge]_1.21.1_1.7.6.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.mcreator.borninchaosv.init.BornInChaosV1ModBrewingRecipes",
+        "net.mcreator.borninchaosv.init.BornInChaosV1ModJeiInformation"
+      ]
+    },
+    {
+      "container": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar!META-INF/jarjar/Fractal-1.7.0+1.21.1-neoforge.jar",
+      "emi_annotated_candidates": [
+        "de.dafuqs.fractal.compat.FractalEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "de.dafuqs.fractal.compat.FractalJEIPlugin"
+      ]
+    },
+    {
+      "container": "Botania-Revived-1.21.1-2.0.2-NeoForge.jar",
+      "emi_annotated_candidates": [
+        "velrondevs.botania.client.integration.emi.BotaniaEmiPlugin",
+        "velrondevs.botania.module.botaniaextras.client.integration.BotaniaExtrasEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "velrondevs.botania.client.integration.jei.JEIBotaniaPlugin",
+        "velrondevs.botania.module.botaniaextras.client.integration.BotaniaExtrasJeiPlugin"
+      ]
+    },
+    {
+      "container": "BrandonsCore-1.21.1-3.2.1.309.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.brandon3055.brandonscore.integration.BCJEIPlugin"
+      ]
+    },
+    {
+      "container": "BrewinAndChewin-neoforge-4.5.0+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "umpaz.brewinandchewin.integration.emi.EMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "umpaz.brewinandchewin.integration.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "cc-tweaked-1.21.1-forge-1.121.0.jar",
+      "emi_annotated_candidates": [
+        "dan200.computercraft.client.integration.emi.EMIComputerCraft"
+      ],
+      "jei_annotated_candidates": [
+        "dan200.computercraft.client.integration.jei.JEIComputerCraft"
+      ]
+    },
+    {
+      "container": "cobblegengalore-1.21.1-0.2.9.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "cy.jdkdigital.cobblegengalore.compat.jei.CobbleGenGaloreJeiPlugin"
+      ]
+    },
+    {
+      "container": "CodeChickenLib-1.21.1-4.6.1.529.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "codechicken.lib.internal.compat.JEIPlugin"
+      ]
+    },
+    {
+      "container": "cookingforblockheads-neoforge-1.21.1-21.1.24.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.blay09.mods.cookingforblockheads.compat.jei.JEIAddon"
+      ]
+    },
+    {
+      "container": "csweetcakes-1.1.1.jar",
+      "emi_annotated_candidates": [
+        "net.ottervyne.csweetcakes.compat.emi.SweetCakesEmiPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "curios-neoforge-9.5.1+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "top.theillusivec4.curios.common.integration.emi.CuriosEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "top.theillusivec4.curios.common.integration.jei.CuriosJeiPlugin"
+      ]
+    },
+    {
+      "container": "deeperdarker-neoforge-1.21.1-1.4.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.kyanite.deeperdarker.plugins.JEIPlugin"
+      ]
+    },
+    {
+      "container": "Draconic-Evolution-1.21.1-3.1.4.633.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.brandon3055.draconicevolution.integration.jei.DEJEIPlugin"
+      ]
+    },
+    {
+      "container": "DragonSurvival-1.21.1-v2.0.74-09.11.2026-all.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "by.dragonsurvivalteam.dragonsurvival.compat.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "eidolon_repraised-1.21.1-0.5.0.8.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "alexthw.eidolon_repraised.compat.jei.JEIdolon"
+      ]
+    },
+    {
+      "container": "embers-reignited-1.21.1-1.5.9.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.rekindled.embers.compat.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "emi-1.1.24+1.21.1+neoforge.jar",
+      "emi_annotated_candidates": [
+        "dev.emi.emi.VanillaPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "dev.emi.emi.jemi.JemiPlugin"
+      ]
+    },
+    {
+      "container": "emisemble-1.2.1.jar",
+      "emi_annotated_candidates": [
+        "dev.wp.emisemble.compat.animalpen.AnimalPenPlugin",
+        "dev.wp.emisemble.compat.animus.AnimusPlugin",
+        "dev.wp.emisemble.compat.apotheosis.ApotheosisPlugin",
+        "dev.wp.emisemble.compat.apothic_enchanting.ApothicEnchantingPlugin",
+        "dev.wp.emisemble.compat.apothic_spawners.ApothicSpawnersPlugin",
+        "dev.wp.emisemble.compat.appliedthaumaturge.AppliedThaumaturgePlugin",
+        "dev.wp.emisemble.compat.arsadditions.ArsAdditionsPlugin",
+        "dev.wp.emisemble.compat.arselemental.ArsElementalPlugin",
+        "dev.wp.emisemble.compat.cataclysm.CataclysmPlugin",
+        "dev.wp.emisemble.compat.chipped.ChippedPlugin",
+        "dev.wp.emisemble.compat.cognition.CognitionPlugin",
+        "dev.wp.emisemble.compat.constructionwand.ConstructionWandPlugin",
+        "dev.wp.emisemble.compat.cookingforblockheads.CookingForBlockheadsPlugin",
+        "dev.wp.emisemble.compat.dungeonsdelight.DungeonsDelightPlugin",
+        "dev.wp.emisemble.compat.embers.EmbersPlugin",
+        "dev.wp.emisemble.compat.enchanted.EnchantedPlugin",
+        "dev.wp.emisemble.compat.enigmaticlegacyplus.EnigmaticLegacyPlusPlugin",
+        "dev.wp.emisemble.compat.functionalstorage.FunctionalStoragePlugin",
+        "dev.wp.emisemble.compat.gateways.GatewaysPlugin",
+        "dev.wp.emisemble.compat.golemoverhaul.GolemOverhaulPlugin",
+        "dev.wp.emisemble.compat.hexerei.HexereiPlugin",
+        "dev.wp.emisemble.compat.horseman.HorsemanPlugin",
+        "dev.wp.emisemble.compat.hostilenetworks.HostileNeuralNetworksPlugin",
+        "dev.wp.emisemble.compat.immersiveengineering.ImmersiveEngineeringPlugin",
+        "dev.wp.emisemble.compat.immersivepetroleum.ImmersivePetroleumPlugin",
+        "dev.wp.emisemble.compat.malum.MalumPlugin",
+        "dev.wp.emisemble.compat.mythsandlegends.MythsAndLegendsPlugin",
+        "dev.wp.emisemble.compat.nutritional.NutritionalPlugin",
+        "dev.wp.emisemble.compat.paganbless.PaganblessPlugin",
+        "dev.wp.emisemble.compat.rechiseled.RechiseledPlugin",
+        "dev.wp.emisemble.compat.risus.RisusPlugin",
+        "dev.wp.emisemble.compat.sfm.SfmPlugin",
+        "dev.wp.emisemble.compat.starbunclemania.StarbunclemaniaPlugin",
+        "dev.wp.emisemble.compat.thaumaturge.ThaumaturgePlugin",
+        "dev.wp.emisemble.compat.toxony.ToxonyPlugin",
+        "dev.wp.emisemble.compat.vanillabackport.VanillaBackportPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "enchanted-neoforge-1.21.1-4.2.7.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.favouriteless.enchanted.integrations.jei.EJeiPlugin"
+      ]
+    },
+    {
+      "container": "endersdelight-1.3.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.axedgaming.endersdelight.Plugin.JEI.JEIPlugin"
+      ]
+    },
+    {
+      "container": "enigmaticlegacyplus-1.21.1-1.1.2.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "auviotre.enigmatic.legacy.compat.jei.JEIHandler"
+      ]
+    },
+    {
+      "container": "eternalstarlight-0.9.1+1.21.1+neoforge.jar",
+      "emi_annotated_candidates": [
+        "cn.leolezury.eternalstarlight.common.compat.emi.ESEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "cn.leolezury.eternalstarlight.common.compat.jei.ESJeiPlugin"
+      ]
+    },
+    {
+      "container": "evilcraft-1.21.1-neoforge-1.2.102.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "org.cyclops.evilcraftcompat.modcompat.jei.JEIEvilCraftConfig"
+      ]
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-actually-additions-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.actuallyadditions.AAPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-chipped-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.chipped.CPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-core-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.core.impl.ExMICorePlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-farmers-delight-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.farmersdelight.FDPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-isns-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.isns.ISNSPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-pneumaticcraft-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.pneumaticcraft.PPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-rechiseled-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.rechiseled.RPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "extra-mod-integrations-all-neoforge-1.0.3+1.21.1.jar!META-INF/jarjar/com.kneelawk.extra-mod-integrations.extra-mod-integrations-reliquary-neoforge-1.0.3+1.21.1.jar",
+      "emi_annotated_candidates": [
+        "com.kneelawk.exmi.reliquary.RPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "ExtraBotany-1.21.1-1.0.4-NeoForge.jar",
+      "emi_annotated_candidates": [
+        "velrondevs.extrabotany.integration.emi.ExtraBotanyEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "velrondevs.extrabotany.integration.jei.JEIExtraBotanyPlugin"
+      ]
+    },
+    {
+      "container": "FarmersDelight-1.21.1-1.3.4.jar",
+      "emi_annotated_candidates": [
+        "vectorwing.farmersdelight.integration.emi.EMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "vectorwing.farmersdelight.integration.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "farmingforblockheads-neoforge-1.21.1-21.1.14.jar",
+      "emi_annotated_candidates": [
+        "net.blay09.mods.farmingforblockheads.compat.emi.EmiIntegration"
+      ],
+      "jei_annotated_candidates": [
+        "net.blay09.mods.farmingforblockheads.compat.jei.JEIAddon"
+      ]
+    },
+    {
+      "container": "feywild-1.21.1-5.6.4.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.saphienyako.feywild.compat.FeywildJEI"
+      ]
+    },
+    {
+      "container": "forbidden_arcanus-2.6.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.stal111.forbidden_arcanus.common.integration.ForbiddenArcanusJEIPlugin"
+      ]
+    },
+    {
+      "container": "ftb-filter-system-neoforge-21.1.4.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.ftb.mods.ftbfiltersystem.integration.jei.JEIIntegration"
+      ]
+    },
+    {
+      "container": "ftb-library-neoforge-2101.1.39.jar",
+      "emi_annotated_candidates": [
+        "dev.ftb.mods.ftblibrary.integration.EMIIntegration"
+      ],
+      "jei_annotated_candidates": [
+        "dev.ftb.mods.ftblibrary.integration.JEIIntegration"
+      ]
+    },
+    {
+      "container": "ftb-xmod-compat-neoforge-21.1.14.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.ftb.mods.ftbxmodcompat.ftbquests.jei.FTBQuestsJEIIntegration"
+      ]
+    },
+    {
+      "container": "GatewaysToEternity-1.21.1-5.1.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.shadowsoffire.gateways.compat.GatewayJEIPlugin"
+      ]
+    },
+    {
+      "container": "goety-3.2.3.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.Polarice3.Goety.compat.jei.GoetyJeiPlugin"
+      ]
+    },
+    {
+      "container": "golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "tech.alexnijjar.golemoverhaul.client.compat.jei.GolemOverhaulJeiPlugin"
+      ]
+    },
+    {
+      "container": "HammerLib-1.21-21.0.17.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "org.zeith.hammerlib.compat.jei.JeiHammerLib"
+      ]
+    },
+    {
+      "container": "hexcast-neoforged-1.21.1-0.11.1-19+neoforge.1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "at.petrak.hexcasting.forge.interop.jei.HexJEIPlugin"
+      ]
+    },
+    {
+      "container": "hexerei-0.5.0.3.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.joefoxe.hexerei.integration.jei.HexereiJei"
+      ]
+    },
+    {
+      "container": "huaxia-delight-1.21.1-1.2.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.huaxiadelight.compat.KitchenJei"
+      ]
+    },
+    {
+      "container": "ImprovableSkills-1.21-21.0.2.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "org.zeith.improvableskills.compat.jei.JeiIS3"
+      ]
+    },
+    {
+      "container": "invtweaks-1.21.1-1.3.2.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "invtweaks.jei.InvTweaksJEI"
+      ]
+    },
+    {
+      "container": "irons_spellbooks-1.21.1-3.16.3.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "io.redspace.ironsspellbooks.jei.JeiPlugin"
+      ]
+    },
+    {
+      "container": "Jade-1.21.1-NeoForge-15.10.6.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "snownee.jade.compat.JEICompat"
+      ]
+    },
+    {
+      "container": "kubejs-neoforge-2101.7.2-build.381.jar",
+      "emi_annotated_candidates": [
+        "dev.latvian.mods.kubejs.integration.emi.KubeJSEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "dev.latvian.mods.kubejs.integration.jei.KubeJSJEIPlugin"
+      ]
+    },
+    {
+      "container": "L_Ender's Cataclysm 1.21.1-3.33.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.github.L_Ender.cataclysm.jei.LEnderCataclysmJEIPlugin"
+      ]
+    },
+    {
+      "container": "lavafishing-1.21.1-1.2.13-all.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "club.redux.sunset.lavafishing.intergration.jei.LavaFishingJEIPlugin"
+      ]
+    },
+    {
+      "container": "ldlib2-neoforge-1.21.1-2.2.46.a-all.jar",
+      "emi_annotated_candidates": [
+        "com.lowdragmc.lowdraglib2.integration.xei.emi.LDLibEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.lowdragmc.lowdraglib2.integration.xei.jei.LDLibJEIPlugin"
+      ]
+    },
+    {
+      "container": "letsdo-bakery-neoforge-2.1.12.jar",
+      "emi_annotated_candidates": [
+        "net.satisfy.bakery.core.compat.emi.BakeryEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "net.satisfy.bakery.core.compat.jei.BakeryJEIPlugin"
+      ]
+    },
+    {
+      "container": "letsdo-beachparty-neoforge-2.1.5.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.satisfy.beachparty.core.compat.jei.BeachpartyJEIPlugin"
+      ]
+    },
+    {
+      "container": "letsdo-brewery-neoforge-2.1.13.jar",
+      "emi_annotated_candidates": [
+        "net.satisfy.brewery.core.compat.emi.BreweryEMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "net.satisfy.brewery.core.compat.jei.BreweryJEIClientPlugin"
+      ]
+    },
+    {
+      "container": "letsdo-farm_and_charm-neoforge-1.1.29.jar",
+      "emi_annotated_candidates": [
+        "net.satisfy.farm_and_charm.core.compat.emi.FarmAndCharmEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "net.satisfy.farm_and_charm.core.compat.jei.FarmAndCharmJEIPlugin"
+      ]
+    },
+    {
+      "container": "letsdo-herbalbrews-neoforge-1.1.4.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.satisfy.herbalbrews.core.compat.jei.HerbalBrewsJEIPlugin"
+      ]
+    },
+    {
+      "container": "mahoutsukai-1.21.1-v1.36.31.jar",
+      "emi_annotated_candidates": [
+        "stepsword.mahoutsukai.integration.emi.MahouEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "stepsword.mahoutsukai.integration.jei.MahouJeiPlugin"
+      ]
+    },
+    {
+      "container": "malum-1.21.1-1.8.2.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.sammy.malum.compat.jei.JEIHandler"
+      ]
+    },
+    {
+      "container": "modonomicon-1.21.1-neoforge-1.123.0.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.klikli_dev.modonomicon.integration.jei.ModonomiconJeiIntegrationImpl$ModonomiconJeiPlugin"
+      ]
+    },
+    {
+      "container": "modopedia-neoforge-1.21.1-1.1.11.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.favouriteless.modopedia.integrations.jei.MJeiPlugin"
+      ]
+    },
+    {
+      "container": "moreoverlays-1.24.2-mc1.21.1-neoforge.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "at.ridgo8.moreoverlays.itemsearch.JeiModule"
+      ]
+    },
+    {
+      "container": "MyNethersDelight-1.21.1-1.10.4.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.soytutta.mynethersdelight.integration.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "neoforge-dungeonsdelight-1.21.1-1.5.2.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.yirmiri.dungeonsdelight.integration.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "neovitae-1.21.1-1.1.54.jar",
+      "emi_annotated_candidates": [
+        "com.breakinblocks.neovitae.compat.emi.NeoVitaeEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.breakinblocks.neovitae.compat.jei.NeoVitaeJEIPlugin"
+      ]
+    },
+    {
+      "container": "occultcooking-1.0.1.jar",
+      "emi_annotated_candidates": [
+        "sebastrn.occultcooking.compat.emi.EMIPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "sebastrn.occultcooking.compat.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "occultism-1.21.1-neoforge-1.227.0.jar",
+      "emi_annotated_candidates": [
+        "com.klikli_dev.occultism.integration.emi.impl.OccultismEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.klikli_dev.occultism.integration.jei.impl.JeiPlugin"
+      ]
+    },
+    {
+      "container": "owo-lib-neoforge-0.12.15.6-beta.1+1.21.jar",
+      "emi_annotated_candidates": [
+        "io.wispforest.owo.compat.emi.OwoEmiPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "Pastel-1.1.5.5.jar",
+      "emi_annotated_candidates": [
+        "earth.terrarium.pastel.compat.emi.PastelEmiPlugin"
+      ],
+      "jei_annotated_candidates": []
+    },
+    {
+      "container": "Patchouli-1.21.1-93-NEOFORGE.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "vazkii.patchouli.client.jei.PatchouliJeiPlugin"
+      ]
+    },
+    {
+      "container": "polymorph-neoforge-1.2.0+1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.illusivesoulworks.polymorph.common.integration.PolymorphJeiPlugin"
+      ]
+    },
+    {
+      "container": "primalmagick-neoforge-1.21.1-6.0.7.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.verdantartifice.primalmagick.client.compat.jei.JeiHelper"
+      ]
+    },
+    {
+      "container": "ProjectE-1.21.1-PE1.1.0.jar",
+      "emi_annotated_candidates": [
+        "moze_intel.projecte.integration.recipe_viewer.emi.PEEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "moze_intel.projecte.integration.recipe_viewer.jei.PEJeiPlugin"
+      ]
+    },
+    {
+      "container": "projectexpansion-1.21.1-1.0.6.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "cool.furry.mc.neoforge.projectexpansion.integrations.jei.JeiPlugin"
+      ]
+    },
+    {
+      "container": "Psi-neoforge-1.21.1-110.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "vazkii.psi.client.jei.JEICompat"
+      ]
+    },
+    {
+      "container": "psitweaks-1.21.1-0.10.10-hotfix.jar",
+      "emi_annotated_candidates": [
+        "com.moratan251.psitweaks.client.emi.PsitweaksEmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.moratan251.psitweaks.client.jei.PsitweaksJeiPlugin"
+      ]
+    },
+    {
+      "container": "rechiseled-1.2.5-neoforge-mc1.21.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.supermartijn642.rechiseled.compat.jei.ChiselingJEIPlugin"
+      ]
+    },
+    {
+      "container": "reliquary-1.21.1-2.0.85.1599.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "reliquary.compat.jei.ReliquaryPlugin"
+      ]
+    },
+    {
+      "container": "Replication-1.21.1-1.2.7.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.buuz135.replication.compat.JEICompat"
+      ]
+    },
+    {
+      "container": "RootsClassic-1.21.1-1.5.10.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "elucent.rootsclassic.compat.jei.JEIPlugin"
+      ]
+    },
+    {
+      "container": "scriptor-neoforge-2.0.14-1.21.1-sgd.jar",
+      "emi_annotated_candidates": [
+        "com.ssblur.scriptor.integration.emi.ScriptorEMIIntegration"
+      ],
+      "jei_annotated_candidates": [
+        "com.ssblur.scriptor.integration.jei.ScriptorJEIIntegration"
+      ]
+    },
+    {
+      "container": "sons_of_sins-2.2.1d-neoforge-1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.mcreator.sonsofsins.init.SonsOfSinsModBrewingRecipes",
+        "net.mcreator.sonsofsins.init.SonsOfSinsModJeiPlugin"
+      ]
+    },
+    {
+      "container": "ssedeco-1.21.1-1.2.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.scarletsprings.ssedeco.compat.jei.JeiCompat"
+      ]
+    },
+    {
+      "container": "summoningrituals-neoforge-1.21.1-3.14.2.jar",
+      "emi_annotated_candidates": [
+        "com.almostreliable.summoningrituals.compat.viewer.emi.EmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.almostreliable.summoningrituals.compat.viewer.jei.JeiPlugin"
+      ]
+    },
+    {
+      "container": "swem-1.21.1-1.6.14.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.alaharranhonor.swem.integration.jei.JeiCompat"
+      ]
+    },
+    {
+      "container": "the_bumblezone-7.17.3+1.21.1-neoforge.jar",
+      "emi_annotated_candidates": [
+        "com.telepathicgrunt.the_bumblezone.modcompat.EMICompat"
+      ],
+      "jei_annotated_candidates": [
+        "com.telepathicgrunt.the_bumblezone.modcompat.JEIIntegration"
+      ]
+    },
+    {
+      "container": "theaurorian-1.21.1-1.0.6.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "shiroroku.theaurorian.Compat.JEI.JEIPlugin"
+      ]
+    },
+    {
+      "container": "theurgy-1.21.1-neoforge-1.79.0.jar",
+      "emi_annotated_candidates": [
+        "com.klikli_dev.theurgy.integration.emi.EmiPlugin"
+      ],
+      "jei_annotated_candidates": [
+        "com.klikli_dev.theurgy.integration.jei.JeiPlugin"
+      ]
+    },
+    {
+      "container": "titanium-1.21-4.0.52.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "com.hrznstudio.titanium.jei.TitaniumJEIPlugin"
+      ]
+    },
+    {
+      "container": "tombstone-neoforge-1.21.1-9.5.6.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "ovh.corail.tombstone.compatibility.IntegrationJustEnoughItem"
+      ]
+    },
+    {
+      "container": "trashslot-neoforge-1.21.1-21.1.11.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "net.blay09.mods.trashslot.compat.JEIAddon"
+      ]
+    },
+    {
+      "container": "twilightforest-1.21.1-4.8.3345-universal.jar",
+      "emi_annotated_candidates": [
+        "twilightforest.compat.emi.TFEmiCompat"
+      ],
+      "jei_annotated_candidates": [
+        "twilightforest.compat.jei.JEICompat"
+      ]
+    },
+    {
+      "container": "witchery-0.5.39+mc1.21.1.jar",
+      "emi_annotated_candidates": [],
+      "jei_annotated_candidates": [
+        "dev.sterner.witchery.integration.jei.WitcheryJeiPlugin"
+      ]
+    }
+  ],
+  "jawr": {
+    "jei_category_classes": [
+      "dev.sterner.witchery.integration.jei.BrazierPassiveRecipeCategory",
+      "dev.sterner.witchery.integration.jei.BrazierRecipeCategory",
+      "dev.sterner.witchery.integration.jei.CauldronBrewingRecipeCategory",
+      "dev.sterner.witchery.integration.jei.CauldronCraftingRecipeCategory",
+      "dev.sterner.witchery.integration.jei.CauldronInfusionRecipeCategory",
+      "dev.sterner.witchery.integration.jei.DistillingRecipeCategory",
+      "dev.sterner.witchery.integration.jei.OvenRecipeCategory",
+      "dev.sterner.witchery.integration.jei.RitualRecipeCategory",
+      "dev.sterner.witchery.integration.jei.SpinningRecipeCategory",
+      "dev.sterner.witchery.integration.jei.SymbologyRecipeCategory"
+    ],
+    "resource_recipe_count": 314,
+    "resource_recipe_types": {
+      "legacy_landscape:void": 1,
+      "minecraft:crafting_shaped": 108,
+      "minecraft:crafting_shapeless": 45,
+      "minecraft:smelting": 2,
+      "witchery:brazier_passive": 5,
+      "witchery:brazier_summoning": 3,
+      "witchery:cauldron_brewing": 23,
+      "witchery:cauldron_crafting": 10,
+      "witchery:cauldron_infusion": 25,
+      "witchery:crafting_special_potion": 1,
+      "witchery:distilling": 9,
+      "witchery:frozen_slippers": 1,
+      "witchery:leonards_urn": 1,
+      "witchery:oven": 11,
+      "witchery:pendant_creation": 2,
+      "witchery:ritual": 57,
+      "witchery:spinning_wheel": 9,
+      "witchery:taglock_binding": 1
+    },
+    "recipe_resources": [
+      {
+        "resource": "data/witchery/recipe/dream_weaver.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/scarecrow.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_trapdoor.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/black_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/copper_cauldron.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/dream_weaver_of_fasting.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/dream_weaver_of_fleet_foot.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/dream_weaver_of_iron_arm.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/tormented_twine.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/dream_weaver_of_nightmares.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/impregnated_fabric.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/fanciful_thread.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/golden_thread.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning/fibre_leather.json",
+        "type": "witchery:spinning_wheel",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/witches_robes.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/mutating_sprig.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/nether_wart.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/infernal_chalk.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/binding_chalk.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/golden_chalk.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/mutandis.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/pentacle.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/mutandis_extremis.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/drop_of_luck.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_crafting/otherwhere_chalk.json",
+        "type": "witchery:cauldron_crafting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_planks.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/koboldite_pentacle.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_button.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_chest_boat.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/nullified_leather.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/copper_witches_oven_fume_extension.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/spinning_wheel.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/eternal_catalyst_2.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/light_gray_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_pressure_plate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/sunlight_collector.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/coven_contract_3.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/foul_fume_logs.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/hint_of_rebirth2.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/odor_of_purity.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/exhale_of_the_horned_one.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/breath_of_the_goddess.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/hint_of_rebirth.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/reek_of_misfortune.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/whiff_of_magic.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/breath_of_the_goddess2.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/foul_fume_2.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oven_cooking/exhale_of_the_horned_one2.json",
+        "type": "witchery:oven",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_fence_gate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bone_meal_4.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cyan_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/white_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/green_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_door.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_pressure_plate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/lime_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/crystal_ball.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/death_protection_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/gold_ring.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/censer.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bone_needle.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_planks.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/wine_glass.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distillery.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/orange_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/dreamweaver_charm.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/werewolf_altar.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_boat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/censer_long.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/palevine_quill.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_fence_gate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/light_blue_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/yellow_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_button.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/coven_contract_1.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/copper_witches_oven.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_slab.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_door.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/phantom_vapor.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/reek_of_misfortune_glowstone.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/refined_evil_from_ghast.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/brew_of_hollow_tears.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/refined_evil.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/tear_and_whiff.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/demons_blood.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/oil_of_vitriol_gypsum.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/distilling/ender_dew.json",
+        "type": "witchery:distilling",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_boat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/rite_of_bloodbinding.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/rot.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_wither.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_insanity.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/befuddlement.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_imp.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/rite_of_charging_infusion.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/remove_curse.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_lightning.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/mirror_pair.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_overheating.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/rite_of_moonbinding.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/raining_toad.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_the_undead.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_the_wolf.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/change_biome.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_misfortune.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_zinc.json",
+        "type": "witchery:ritual",
+        "conditions": [
+          {
+            "type": "neoforge:mod_loaded",
+            "modid": "create"
+          }
+        ]
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/push_mobs.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/rite_of_sunbinding.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/set_day.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/charge_attuned.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/necro_stone.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/fragility.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_gold.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/bind_familiar.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/curse_of_sinking.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_iron.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/infuse_light.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/resurrect_familiar.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_witch.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/apply_ungent.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/teleport_taglock_to_waystone.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/bind_spectral_creatures.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_amber.json",
+        "type": "witchery:ritual",
+        "conditions": [
+          {
+            "type": "neoforge:mod_loaded",
+            "modid": "thaumaturge"
+          }
+        ]
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/clear_weather.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_demon.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/infuse_infernal.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/corrupt_poppet.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/change_biome_waystone.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/infuse_otherwhere.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/bestial_call.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/bind_hobgoblin_statue.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/change_biome_cheap.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/infuse_seer.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/hunger.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/apply_ointment.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_spectral_pig.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/pull_mobs.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/manifestation.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/change_biome_waystone_cheap.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/infuse_overworld.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_cinnabar.json",
+        "type": "witchery:ritual",
+        "conditions": [
+          {
+            "type": "neoforge:mod_loaded",
+            "modid": "thaumaturge"
+          }
+        ]
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/teleport_owner_to_waystone.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/set_midnight.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/summon_lightning_on_waystone.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual/blocks_below_copper.json",
+        "type": "witchery:ritual",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/iron_candelabra_undyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/orange_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/attuned_stone.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/attuned_stone_eternal.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/blue_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/light_blue_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/blue_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/black_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/iron_witches_oven.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/statue_of_hobgoblin_patron.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/voodoo_protection_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/chalice.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/blood_stained_hay.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_boat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/trousers.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_fence.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cyan_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier_summoning/summon_spectre.json",
+        "type": "witchery:brazier_summoning",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier_summoning/summon_banshee.json",
+        "type": "witchery:brazier_summoning",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier_summoning/summon_poltergeist.json",
+        "type": "witchery:brazier_summoning",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hunger_protection_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hunter_boots.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hunter_chestplate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/purple_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/magenta_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/disturbed_cotton.json",
+        "type": "legacy_landscape:void",
+        "conditions": [
+          {
+            "type": "neoforge:mod_loaded",
+            "modid": "legacy_landscape"
+          }
+        ]
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_hanging_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/arthana.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/gray_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/taglock.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/eternal_catalyst_1.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_button.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/biome_note.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/jar.json",
+        "type": "minecraft:smelting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cage_1.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_fence.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/lime_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/verdant_mending.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/palevine_ink.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/hags_ring_infusion_miner.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/frostwalker_boots.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/infernal_animus_fire_aspect.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/grotesque_thorns.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/infernal_animus_flame.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/redstone_soup_quick_charge.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/webs_silk_touch.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/hags_ring_infusion_reach.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/flying_ointment_feather_falling.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/redstone_soup_efficiency.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/last_protection.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/depths_respiration.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/flowing_spirit_soul_speed.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/oblivion_vanishing.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/happenstance_oil_luck_of_the_sea.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/happenstance_oil_fortune.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/hags_ring_infusion_lumber.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/ghost_of_the_light_swift_sneak.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/erosion_efficiency.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/love_lure.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/infernal_animus_fire_protection.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/love_loyalty.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_infusion/happenstance_oil_looting.json",
+        "type": "witchery:cauldron_infusion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cane_sword.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/pink_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/light_gray_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brown_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/dress_coat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/iron_witches_oven_fume_extension.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/guidebook.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_hanging_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bone_meal_5.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/batwing_pendant.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_chest_boat.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/witches_hat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/red_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/coven_contract_2.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/supernatural_arrow.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_fence.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/icy_slippers.json",
+        "type": "witchery:frozen_slippers",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/oxford_boots.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_fence_gate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_planks.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier/graveyard_mist.json",
+        "type": "witchery:brazier_passive",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier/deathly_veil.json",
+        "type": "witchery:brazier_passive",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier/fortification_of_the_corpse.json",
+        "type": "witchery:brazier_passive",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier/anguish_of_the_dead.json",
+        "type": "witchery:brazier_passive",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier/drain_growth.json",
+        "type": "witchery:brazier_passive",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_hanging_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_door.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hunter_helmet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bark_belt.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/yellow_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/biting_belt.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/witches_slippers.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/woven_cruor.json",
+        "type": "minecraft:smelting",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/top_hat.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/red_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_pressure_plate.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/deepslate_altar_block.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/clay_effigy.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bone_meal_7.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bear_trap.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/gray_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/broom.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_stairs.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/suppression_arrow.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_trapdoor.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_sign.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cage_2.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brazier.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/apple_of_sleeping.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/vampiric_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_slab.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/white_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/blood_crucible.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/purple_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hawthorn_slab.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/special/taglock_binding.json",
+        "type": "witchery:taglock_binding",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/special/potion_transfer.json",
+        "type": "witchery:crafting_special_potion",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/special/pendant_crafting_sun.json",
+        "type": "witchery:pendant_creation",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/special/pendant_crafting_blood.json",
+        "type": "witchery:pendant_creation",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/special/leonards_urn.json",
+        "type": "witchery:leonards_urn",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/ritual_chalk.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_chest_boat.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_trapdoor.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/voodoo_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/bone_meal_6.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/waystone.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/hunter_leggings.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/koboldite_pickaxe.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/clay_jar.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/alder_stairs.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/magenta_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/eternal_catalyst.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/green_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/pink_iron_candelabra.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/coffin.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/rowan_stairs.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/brown_iron_candelabra_dyed.json",
+        "type": "minecraft:crafting_shapeless",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/armor_protection_poppet.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/infernal_animus.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_sleeping.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_ink.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/redstone_soup.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_last_stand.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_the_grotesque.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/mystic_ungent.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_webs.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_frost.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/happenstance.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/ghost_of_the_light.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_oblivion.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/flying_ointment.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_verdant_foul.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_erosion.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_love.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/spirit_of_otherwhere.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_wasting.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_raising.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_revealing.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/soul_of_the_world.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_flowing_spirit.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/cauldron_brewing/brew_of_the_depths.json",
+        "type": "witchery:cauldron_brewing",
+        "conditions": []
+      },
+      {
+        "resource": "data/witchery/recipe/quartz_sphere.json",
+        "type": "minecraft:crafting_shaped",
+        "conditions": []
+      }
+    ],
+    "native_emi_api_references": []
+  },
+  "emisemble_witchery_reference_classes": [],
+  "emi_jemi_gate": [
+    "164: ldc           #185                // String jei",
+    "166: invokestatic  #189                // Method dev/emi/emi/platform/EmiAgnos.isModLoaded:(Ljava/lang/String;)Z",
+    "169: ifeq          196",
+    "172: aload         5",
+    "174: new           #191                // class dev/emi/emi/registry/EmiPluginContainer",
+    "177: dup",
+    "178: new           #193                // class dev/emi/emi/jemi/JemiPlugin",
+    "181: dup",
+    "182: invokespecial #194                // Method dev/emi/emi/jemi/JemiPlugin.\"<init>\":()V",
+    "185: ldc           #196                // String jemi",
+    "187: invokespecial #199                // Method dev/emi/emi/registry/EmiPluginContainer.\"<init>\":(Ldev/emi/emi/api/EmiPlugin;Ljava/lang/String;)V",
+    "190: invokeinterface #203,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z",
+    "195: pop",
+    "196: new           #207                // class dev/emi/emi/registry/EmiInitRegistryImpl",
+    "199: dup",
+    "200: invokespecial #208                // Method dev/emi/emi/registry/EmiInitRegistryImpl.\"<init>\":()V"
+  ],
+  "almost_unified": {
+    "installed_config_equals_source": true,
+    "native_emi_hiding_present": true,
+    "config": {
+      "mod_priorities": [
+        "minecraft",
+        "occultism",
+        "embers",
+        "eidolon_repraised",
+        "mahoutsukai",
+        "neovitae",
+        "primalmagick",
+        "malum",
+        "theurgy"
+      ],
+      "priority_overrides": {
+        "c:ores/silver": "occultism",
+        "c:raw_materials/silver": "occultism",
+        "c:ingots/silver": "occultism",
+        "c:nuggets/silver": "occultism",
+        "c:dusts/silver": "neovitae",
+        "c:storage_blocks/silver": "occultism",
+        "c:storage_blocks/raw_silver": "occultism",
+        "c:ores/lead": "embers",
+        "c:raw_materials/lead": "embers",
+        "c:ingots/lead": "embers",
+        "c:nuggets/lead": "embers",
+        "c:storage_blocks/lead": "embers",
+        "c:storage_blocks/raw_lead": "embers",
+        "c:dusts/iron": "neovitae",
+        "c:dusts/gold": "neovitae",
+        "c:dusts/diamond": "neovitae",
+        "c:dusts/emerald": "neovitae",
+        "c:dusts/quartz": "neovitae",
+        "c:dusts/copper": "neovitae",
+        "c:dusts/sulfur": "neovitae",
+        "c:dusts/lead": "neovitae",
+        "c:dusts/coal": "neovitae",
+        "c:dusts/lapis": "neovitae",
+        "c:dusts/amethyst": "neovitae",
+        "c:dusts/netherite_scrap": "neovitae",
+        "c:dusts/hellforged": "neovitae"
+      },
+      "stone_variants": [
+        "stone",
+        "andesite",
+        "deepslate",
+        "diorite",
+        "granite",
+        "netherrack",
+        "end_stone",
+        "blackstone",
+        "basalt"
+      ],
+      "tags": [
+        "c:dusts/{material}",
+        "c:gems/{material}",
+        "c:ingots/{material}",
+        "c:nuggets/{material}",
+        "c:ores/{material}",
+        "c:plates/{material}",
+        "c:raw_materials/{material}",
+        "c:storage_blocks/raw_{material}",
+        "c:storage_blocks/{material}",
+        "c:dusts/coal",
+        "c:dusts/lapis",
+        "c:dusts/amethyst",
+        "c:dusts/netherite_scrap",
+        "c:dusts/hellforged"
+      ],
+      "ignored_tags": [
+        "c:gems/emerald",
+        "c:gems/quartz",
+        "c:ores/copper",
+        "c:ores/quartz",
+        "c:storage_blocks/emerald",
+        "c:storage_blocks/quartz"
+      ],
+      "ignored_items": [
+        ".*:.*corrupted_dust.*",
+        "mahoutsukai:powdered_(iron|gold|diamond|emerald|quartz)",
+        ".*:.*uranium.*",
+        ".*:.*draconium.*",
+        ".*:.*replica_ore.*",
+        ".*:.*iesnium.*",
+        "eidolon_repraised:arcane_gold_.*",
+        "malum:.*(derealized|harmonized|malignant).*",
+        "malum:cthonic_gold_ore",
+        "pastel:dd_.*_ore",
+        "pastel:blackslag_.*_ore",
+        "deeperdarker:(gloomslate|sculk_stone)_.*_ore",
+        "goety:magic_emerald",
+        "goety:awakened_emerald_block",
+        "extrabotany:.*_quartz",
+        "botania:(blaze|dark|elf|lavender|mana|red|sunny)_quartz",
+        "malum:natural_quartz"
+      ],
+      "ignored_recipe_types": [
+        "cucumber:shaped_tag"
+      ],
+      "ignored_recipe_ids": [],
+      "recipe_viewer_hiding": true,
+      "loot_unification": true,
+      "ignored_loot_tables": []
+    }
+  },
+  "limits": [
+    "Annotation candidates can be gated, inactive or duplicated; not live category coverage.",
+    "Native resource JSON counts are not an effective RecipeManager census.",
+    "No UI, live recipe query, crafting or consumer-parity test performed."
+  ]
+}
