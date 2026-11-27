@@ -1,0 +1,139 @@
+{
+  "source": "887a4ffb032c3579b9ee7d2d2cfd23da9dfbac6c",
+  "superseded_during_session": true,
+  "isolated_java_tests": 548,
+  "java_failures": 0,
+  "python_tests": 214,
+  "python_failures": 1,
+  "node_tests": 23,
+  "native_modules_compiled": 4,
+  "command_results": [
+    {
+      "command": [
+        "python",
+        "scripts/validate.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_quests.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_retirement.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_unified_progression.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_silver_equipment.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_materials.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_dragon_diets.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_progression_gates.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_defaultoptions_keybindings.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_b20_trader_stock.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_b19_gateways.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_qa_inventory.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_newbie_integration.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_quick_repairs.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify_dragon_seasoned_fish.cjs"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/test_parchment_fishing.cjs",
+        "tests/test_qa_surveys.cjs"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 1
+    }
+  ]
+}

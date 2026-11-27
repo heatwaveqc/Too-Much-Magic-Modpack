@@ -1,0 +1,41 @@
+{
+  "crash_time_local": "2026-11-25 21:07:14 America/Phoenix",
+  "crash_time_utc": "2026-11-26T04:07:14Z",
+  "integration_commit": "887a4ffb032c3579b9ee7d2d2cfd23da9dfbac6c",
+  "baseline_sha": "aeee4fc6155691a2a6fcf1e98712ed783ab5a5d3",
+  "installed_inventory": "PASS: 255 exact JAR filenames/hashes match packaged expected inventory",
+  "description": "Exception ticking world",
+  "exception": "dev.latvian.mods.rhino.EvaluatorException",
+  "script": "kubejs/server_scripts/zz_reactive_loot_books.js",
+  "line": 29,
+  "call": "stack.is(TMMReactiveItems.ENCHANTED_BOOK)",
+  "ambiguous_overloads": [
+    "boolean ItemStack.is(net.minecraft.core.HolderSet)",
+    "boolean ItemStack.is(net.minecraft.world.item.Item)"
+  ],
+  "caller_path": [
+    "Primal Magick AbstractTileSidedInventoryPM.unpackLootTable",
+    "Minecraft LootTable.fill",
+    "LootJS customAction",
+    "Reactive book script line 29"
+  ],
+  "provenance": {
+    "raw_crash_report": {
+      "filename": "crash-2026-11-25_21.07.14-server.txt",
+      "bytes": 99546,
+      "sha256": "a169136857ac600e26d4c19dd66ce4d590ed7fd3ebadf561146fe645697444d7"
+    },
+    "raw_client_log": {
+      "filename": "latest.log",
+      "bytes": 2736509,
+      "sha256": "90fc454f6111da14b691e3d1e50d359a442939bba89bc6ed54245aa8e746a573"
+    },
+    "build_manifest_sha256": "a14d22522cb9c643114d6728ab76224c5900f23db45556b472860a0419997716",
+    "installed_script_sha256": "df749a86bfe793dfa711c179e73872e8a37f217e150c271ec48ab3888734911a"
+  },
+  "limits": [
+    "Only exception-bearing excerpts uploaded; raw complete crash report/log remain local.",
+    "No world restart, gameplay repair, source patch or build performed.",
+    "Stack caller identifies Primal Magick container loot generation; it does not establish a Primal Magick defect or the exact user action."
+  ]
+}

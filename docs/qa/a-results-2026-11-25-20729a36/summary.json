@@ -1,0 +1,32 @@
+{
+  "source": "20729a369e6f811730cea04cadfd12f265c96424",
+  "baseline": "cc8bb188f0e0498dbc5007f6c4068bafe1481279",
+  "installed_jars": 258,
+  "pin_count": 254,
+  "zip_sha256": "fc5a35fad65a73c6e16cf8cb0a1f85f1776149d747d520db3530ee4f3e96a3d0",
+  "build_run": 45751755305,
+  "artifact_id": 15086506741,
+  "java_tests": 596,
+  "python_tests": 234,
+  "python_passed": 233,
+  "python_failed": 1,
+  "node_tests": 23,
+  "source_validators_passed": 14,
+  "installed_script_parse_count": 22,
+  "monk_installed_and_source_equal": true,
+  "monk_skills": 55,
+  "monk_milestones": 21,
+  "monk_mastery_max_stage": 20,
+  "worldgen_overrides_source_and_installed_match": 69,
+  "native_structure_sets_checked": 69,
+  "native_structure_providers": 13,
+  "current_crash": {
+    "filename": "crash-2026-11-25_21.19.40-server.txt",
+    "sha256": "de37a924287f29fc0f2678b03c4a20bea1f4f2c638d77ae7662edc38c44f7872",
+    "line": 29,
+    "script": "zz_reactive_loot_books.js"
+  },
+  "no_collector_game_launch": true,
+  "baseline_checks_modified_gameplay": false,
+  "later_owner_authorized_local_overlay": "local-patch-801.json"
+}

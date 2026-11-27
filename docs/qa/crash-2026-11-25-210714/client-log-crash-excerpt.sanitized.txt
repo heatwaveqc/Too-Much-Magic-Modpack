@@ -1,0 +1,55 @@
+SANITIZED MATCHING LOG EXCERPT; unrelated chat/session/world/hardware information omitted.
+
+[25Nov2026 21:07:14.515] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: Encountered an unexpected exception
+net.minecraft.ReportedException: Exception ticking world
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1041) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:917) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:110) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:707) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: dev.latvian.mods.rhino.EvaluatorException: The choice of Java method net.minecraft.world.item.ItemStack.is matching JavaScript argument types (net.minecraft.world.item.EnchantedBookItem) is ambiguous; candidate methods are: 
+    boolean is(net.minecraft.core.HolderSet)
+    boolean is(net.minecraft.world.item.Item) (server_scripts:zz_reactive_loot_books.js#29)
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.DefaultErrorReporter.runtimeError(DefaultErrorReporter.java:67) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.reportRuntimeError(Context.java:93) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.reportRuntimeError(Context.java:133) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.reportRuntimeError4(Context.java:120) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.NativeJavaMethod.findFunction(NativeJavaMethod.java:227) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.NativeJavaMethod.findCachedFunction(NativeJavaMethod.java:451) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.NativeJavaMethod.call(NativeJavaMethod.java:337) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Interpreter.interpretLoop(Interpreter.java:988) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Interpreter.interpret(Interpreter.java:372) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.InterpretedFunction.call(InterpretedFunction.java:72) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.callSync(Context.java:1142) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.doTopCall(Context.java:1159) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.InterpretedFunction.call(InterpretedFunction.java:70) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.callSync(Context.java:1142) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.ArrowFunction.call(ArrowFunction.java:42) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.Context.callSync(Context.java:1142) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.InterfaceAdapter.invoke(InterfaceAdapter.java:128) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/rhino@2101.2.7-build.85/dev.latvian.mods.rhino.VMBridge$AdapterInvocationHandler.invoke(VMBridge.java:75) ~[rhino-2101.2.7-build.85.jar%23638!/:2101.2.7-build.85]
+	at TRANSFORMER/jdk.proxy3/jdk.proxy3.$Proxy195.apply(Unknown Source) ~[?:?]
+	at TRANSFORMER/lootjs@1.21.1-3.7.0/com.almostreliable.lootjs.loot.modifier.GroupedLootAction.apply(GroupedLootAction.java:84) ~[lootjs-neoforge-1.21.1-3.7.0.jar%23582!/:?]
+	at TRANSFORMER/lootjs@1.21.1-3.7.0/com.almostreliable.lootjs.loot.modifier.LootModifier.run(LootModifier.java:46) ~[lootjs-neoforge-1.21.1-3.7.0.jar%23582!/:?]
+	at TRANSFORMER/lootjs@1.21.1-3.7.0/com.almostreliable.lootjs.LootModificationsAPI.runModifiers(LootModificationsAPI.java:71) ~[lootjs-neoforge-1.21.1-3.7.0.jar%23582!/:?]
+	at TRANSFORMER/lootjs@1.21.1-3.7.0/com.almostreliable.lootjs.LootModificationsAPI.invokeActions(LootModificationsAPI.java:63) ~[lootjs-neoforge-1.21.1-3.7.0.jar%23582!/:?]
+	at TRANSFORMER/neoforge@21.1.265/net.neoforged.neoforge.common.CommonHooks.handler$geb000$lootjs$invokeActions(CommonHooks.java:1711) ~[neoforge-21.1.265-universal.jar%23437!/:?]
+	at TRANSFORMER/neoforge@21.1.265/net.neoforged.neoforge.common.CommonHooks.modifyLoot(CommonHooks.java:1086) ~[neoforge-21.1.265-universal.jar%23437!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.storage.loot.LootTable.getRandomItems(LootTable.java:127) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.storage.loot.LootTable.fill(LootTable.java:147) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/primalmagick@6.0.7/com.verdantartifice.primalmagick.common.tiles.base.AbstractTileSidedInventoryPM.lambda$unpackLootTable$10(AbstractTileSidedInventoryPM.java:308) ~[primalmagick-neoforge-1.21.1-6.0.7.jar%23621!/:6.0.7]
+	at java.base/java.util.Optional.ifPresentOrElse(Optional.java:196) ~[?:?]
+	at TRANSFORMER/primalmagick@6.0.7/com.verdantartifice.primalmagick.common.tiles.base.AbstractTileSidedInventoryPM.unpackLootTable(AbstractTileSidedInventoryPM.java:307) ~[primalmagick-neoforge-1.21.1-6.0.7.jar%23621!/:6.0.7]
+	at TRANSFORMER/primalmagick@6.0.7/com.verdantartifice.primalmagick.common.tiles.misc.CarvedBookshelfTileEntityNeoforge.onLoad(CarvedBookshelfTileEntityNeoforge.java:15) ~[primalmagick-neoforge-1.21.1-6.0.7.jar%23621!/:6.0.7]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.lambda$tickBlockEntities$0(Level.java:547) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:543) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:428) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1037) ~[client-1.21.1-20240808.144430-srg.jar%23436!/:?]
+	... 5 more
+[25Nov2026 21:07:14.531] [Render thread/ERROR] [com.mojang.blaze3d.platform.Window/]: ########## GL ERROR ##########
+[25Nov2026 21:07:14.531] [Render thread/ERROR] [com.mojang.blaze3d.platform.Window/]: @ Pre render
+[25Nov2026 21:07:14.531] [Render thread/ERROR] [com.mojang.blaze3d.platform.Window/]: 65539: Invalid key -1
+[25Nov2026 21:07:14.535] [Server thread/FATAL] [net.neoforged.neoforge.common.NeoForgeMod/]: Preparing crash report with UUID <uuid>
+[25Nov2026 21:07:14.535] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: This crash report has been saved to: <local-path>

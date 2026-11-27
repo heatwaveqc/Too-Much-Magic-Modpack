@@ -1,0 +1,163 @@
+[
+  {
+    "command": [
+      "python",
+      "scripts/validate.py"
+    ],
+    "exit": 0,
+    "seconds": 0.45,
+    "output": "PASS: Default Options packages 294 unbound mod-key defaults and one contextual middle-click sort, excluding 20 JEI native defaults; no vanilla bindings\nLIMITATION: observed options.txt inventory is not a final all-mods registered-key export\nPASS: Curios 9.5.1 built-in singular icon, bundle slot identity, player assignment and bag tag\nSOURCE ONLY: client atlas, empty/occupied UI and equipping still require Prism QA\nPASS: packwiz metadata + hashes; 835 files, 254 active mods; 267 desired entries\nNOT A BOOT TEST: no downloadable mod, dependency, client or dedicated-server validation performed\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_quests.py"
+    ],
+    "exit": 0,
+    "seconds": 0.2,
+    "output": "PASS: Friendship 21 native-task lessons, 86 IDs, original art and personal reward/graph contract\nPASS: 19 personal graduation choices with stable IDs and trusted reward commands\nPASS: Theurgy 20-node/5-panel layout and stable dependency/reward IDs validated\nPASS: five groups, 45 chapters, 298 quests; all give XP; only Ars orientation is XP-only; others grant fixed items or justified coin\nPASS: shared item criteria restricted to intentional copper/iron/emerald/diamond sales; no item reward completes a task\nNOT A GAME TEST: item registries, FTB GUI, reward claims, teams and server progression remain unverified\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_retirement.py"
+    ],
+    "exit": 0,
+    "seconds": 0.06,
+    "output": "PASS: TeamLapen retired; unified Tyr Progression with internal native transformation bridge selected; retired standalone JAR absent\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_unified_progression.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "output": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_silver_equipment.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "output": "PASS: five Eidolon tools + four Eidolon armor recipes; no global anti-lycan damage tag\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_materials.py"
+    ],
+    "exit": 0,
+    "seconds": 0.03,
+    "output": "PASS: Neo Vitae conventional dust priorities, Mahou circle mappings and original-stack restoration\nPASS: source-audited silver/lead providers, conventional whitelist and special-ore guards\nNOT A BOOT, LIVE REGISTRY, CLIENT, RECIPE, OR WORLDGEN TEST\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_dragon_diets.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "output": "PASS: dragon diets, magical nourishment, JAWR-only species policy, exclusions, native charring\nNOT TESTED: runtime item/tag expansion, KubeJS API, server boot, client gameplay\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_progression_gates.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "output": "PASS: source-only native ritual, both grid suppressions, Stone-gated MK1 Collector/Relay, 12 closed tags/40 alternatives, 14 direct flowers + Red upgrade, no obsolete script.\nPENDING: actual loaded recipes, acquisition, transmutation and Matter Upgrader bypasses.\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_defaultoptions_keybindings.py"
+    ],
+    "exit": 0,
+    "seconds": 0.06,
+    "output": "PASS: Default Options packages 294 unbound mod-key defaults and one contextual middle-click sort, excluding 20 JEI native defaults; no vanilla bindings\nLIMITATION: observed options.txt inventory is not a final all-mods registered-key export\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_b20_trader_stock.py"
+    ],
+    "exit": 0,
+    "seconds": 0.06,
+    "output": "PASS: B20 six guaranteed stock slots, twelve premium items, weighted >= uncommon ink, true affixed gear, configured glyph tiers and packwiz hashes\nPENDING: NeoForge/KubeJS runtime API, actual server+client trader offers, Apotheosis rarity/affix generation and item GUI\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_b19_gateways.py"
+    ],
+    "exit": 0,
+    "seconds": 0.14,
+    "output": "PASS: 17 dedicated spawn Gateways, exact JSON schema shape, source match, correct packwiz hashes\nPENDING: actual mob registry, Gate Pearl JEI, loot, mob AI, dedicated-server and client QA\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_qa_inventory.py"
+    ],
+    "exit": 0,
+    "seconds": 0.16,
+    "output": "{\n  \"target\": 254,\n  \"pinned\": 254,\n  \"missing\": [],\n  \"unreviewed_additions\": [],\n  \"missing_first_party\": [],\n  \"unreviewed_first_party\": []\n}\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/validate_newbie_integration.py"
+    ],
+    "exit": 0,
+    "seconds": 0.08,
+    "output": "PASS: Tyr Progression source and MXP authority selected; retired XP runtimes absent. Native gameplay untested.\nPASS: exact NeoForge Smart Keep SHA512; mixed-mode predicates, retired Tyz Safekept absent;\n298 total quests, one personal graduation; all current spell/loot/visual/thermalily mixins preserved;\nNewbie MXP and any-path species gates in source; every Packwiz index/root SHA256 matches\nSOURCE ONLY \u2014 no NeoForge boot, client/Corail tests or installed first-party JAR evidence\n"
+  },
+  {
+    "command": [
+      "python",
+      "scripts/verify_quick_repairs.py"
+    ],
+    "exit": 0,
+    "seconds": 0.05,
+    "output": "PASS quick fixes: recipe shape, reward IDs, no auto-gifts, configs, trader registry, packwiz chain\n"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify_dragon_seasoned_fish.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.03,
+    "output": "PASS: Seasoned Fish KubeJS source swaps salmon for #c:foods/raw_fish only\nNOT TESTED: actual 2.0.74 recipe matching, expanded tags, JEI, crafting in game\n"
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/test_parchment_fishing.cjs",
+      "tests/test_qa_surveys.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.11,
+    "output": "\u2714 vanilla 6-outcome treasure competes at 0.5% without bonus/empty rolls (1.4079ms)\n\u2714 mod-added treasure entries retain proportional weight and quality (0.5219ms)\n\u2714 a preexisting fragment never injects a duplicate or rescales loot (0.5297ms)\n\u2714 unrecognized composite pool fails closed without mutating items (0.55ms)\n\u2714 bad/overflowing pools fail closed without partial mutation (1.0483ms)\n\u2714 missing treasure table fails without trying to replace it (0.3726ms)\n\u2714 suite is opt-in and registers eleven operator-gated commands (2.6999ms)\n\u2714 non-OP execution does not access player, classes or files (0.7952ms)\n\u2714 console and malformed/path-traversal labels are rejected without writes (1.1452ms)\n\u2714 snapshots survive script reload; unavailable adapters remain explicit; baseline cannot be clobbered (2.0594ms)\n\u2714 comparison rejects another build and missing baseline (0.7462ms)\n\u2714 numeric diffs preserve zero and negative changes and report deleted keys (0.4841ms)\n\u2714 absent progression attachments are not initialized by snapshot collection (0.8414ms)\n\u2714 missing recipes produce seven explicit unsupported observations, never match PASS (0.7565ms)\n\u2714 Tyr namespace uses LedgerCodec and MutationLedger without constructing attachments (0.6774ms)\n\u2714 monitor summary reports net storage rate and interruptions without a generation PASS (0.6527ms)\n\u2714 monitor enforces duration/coordinates and cannot stop a nonexistent session (0.5676ms)\n\u2714 client request refuses dedicated servers and does not report successful capture (0.5183ms)\n\u2714 client ignores stale requests; exports once per new request without changing bindings (0.8279ms)\n\u2714 no destructive command execution or gameplay mutator calls in QA server source (0.1008ms)\n\u2714 all three report adapters work without System or ServerLevel.getGameTime (0.9063ms)\n\u2714 missing or invalid world time fails closed without report or fabricated tick (0.6012ms)\n\u2714 monitor observes native object identity, rejects replacement and never exports references (0.8953ms)\n\u2139 tests 23\n\u2139 suites 0\n\u2139 pass 23\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 77.3534\n"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_*.py"
+    ],
+    "exit": 1,
+    "seconds": 1.8,
+    "output": "irst_party\": [],\n  \"unreviewed_first_party\": []\n}\n{\n  \"target\": 4,\n  \"pinned\": 3,\n  \"missing\": [\n    \"missing\"\n  ],\n  \"unreviewed_additions\": [],\n  \"missing_first_party\": [],\n  \"unreviewed_first_party\": []\n}\n{\n  \"target\": 3,\n  \"pinned\": 3,\n  \"missing\": [],\n  \"unreviewed_additions\": [],\n  \"missing_first_party\": [],\n  \"unreviewed_first_party\": []\n}\nPASS: exact installed JAR inventory and hashes (3)\nSURFACE_DENSITY {\"sets\": 69, \"pins\": 13, \"archives_verified\": false, \"by_namespace\": {\"apotheosis\": 1, \"ars_additions\": 1, \"astralsorcery\": 2, \"born_in_chaos_v1\": 26, \"botania\": 5, \"eidolon_repraised\": 1, \"goety\": 5, \"graveyard\": 15, \"hexerei\": 4, \"irons_spellbooks\": 4, \"primalmagick\": 1, \"sons_of_sins\": 1, \"witchery\": 3}}\n...............................................................................................................F..........................................................................................................................\n======================================================================\nFAIL: test_markdown_is_deterministically_generated (test_feature_checklist.FeatureChecklistTest.test_markdown_is_deterministically_generated)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<frozen-source>\\tests\\test_feature_checklist.py\", line 47, in test_markdown_is_deterministically_generated\n    self.assertEqual(actual, wanted)\nAssertionError: \"# To[19033 chars]gression and cure work without TeamLapen. [sou[12758 chars]s.\\n\" != \"# To[19033 chars]gress and cure; no TeamLapen enrollment. [sour[12791 chars]s.\\n\"\nDiff is 34612 characters long. Set self.maxDiff to None to see it.\n\n----------------------------------------------------------------------\nRan 234 tests in 1.456s\n\nFAILED (failures=1)\n"
+  }
+]

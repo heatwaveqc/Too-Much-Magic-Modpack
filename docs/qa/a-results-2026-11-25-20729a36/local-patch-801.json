@@ -1,0 +1,14 @@
+{
+  "owner_authorized_local_patch": true,
+  "base_build": "20729a369e6f811730cea04cadfd12f265c96424",
+  "pr": 801,
+  "source_commit": "2e8f720d7240b83bbe6611b9b72c56f06cab413e",
+  "installed_file": "minecraft/kubejs/server_scripts/zz_reactive_loot_books.js",
+  "original_sha256_lf": "df749a86bfe793dfa711c179e73872e8a37f217e150c271ec48ab3888734911a",
+  "installed_sha256": "0dc626dfc7c73a1b6b9f9eedd384d3dbba8543a7a523bf8a19befcdecfbd9083",
+  "backup": "qa-tools/local-backups/reactive-before-801-20729a36.js (local only)",
+  "mock_fixture_groups_passed": 5,
+  "live_loot_retest": "NOT RUN",
+  "gameplay_files_changed": 1,
+  "other_installed_files_changed": false
+}

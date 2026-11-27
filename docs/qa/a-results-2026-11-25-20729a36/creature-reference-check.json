@@ -1,0 +1,18 @@
+{
+  "registry_revision": 6,
+  "reference_entity_ids": 1763,
+  "reference_census_commit": "f7aeb56a0f7b9c5957f922f5a397037f25207c76",
+  "activation": "not_runtime_active",
+  "capture_counts": {
+    "native_policy_pending": 458,
+    "approved_misc_default_deny": 859,
+    "review_hold": 102,
+    "blacklist_target": 337,
+    "approved_vanilla_exception": 3,
+    "transport_only": 4
+  },
+  "limits": [
+    "Historical reference, not current live entity registry.",
+    "Current native capture/boss/egg/drop, JAWR blood capacity and Theurgy sulfur coverage remain unverified without matching native runtime census."
+  ]
+}
