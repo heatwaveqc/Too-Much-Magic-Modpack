@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "runtime_loaded_level_registry",
+  "integration_commit": "c56fb18ffc3b9f12f27317e7fb37f15c32576a8c",
+  "dimensions": [
+    "aether:the_aether",
+    "deeperdarker:otherside",
+    "eternal_starlight:starlight",
+    "irons_spellbooks:pocket_dimension",
+    "mahoutsukai:reality_marble",
+    "minecraft:overworld",
+    "minecraft:the_end",
+    "minecraft:the_nether",
+    "neovitae:dungeon",
+    "pastel:deeper_down",
+    "the_bumblezone:the_bumblezone",
+    "theaurorian:the_aurorian",
+    "twilightforest:twilight_forest",
+    "unicornacademy:unicorn_island",
+    "voidscape:void",
+    "wardentools:abyssdim",
+    "witchery:dream_world",
+    "witchery:mirror_world",
+    "witchery:nightmare_world"
+  ],
+  "provenance": {
+    "origin": "derived_exactly_from_live_export",
+    "upstream_pr": 527,
+    "upstream_head": "8bdc44e758617b5a971332b2847b6d4de08184d6",
+    "upstream_path": "docs/dimensions/exports/c56fb18f-2026-11-22/live-dimension-registry.json",
+    "upstream_blob_sha": "02d8413cecd343591aef20a41f49e8f92bc9a3ae",
+    "captured_utc": "2026-11-22T21:43:16.855382100Z",
+    "manifest_sha256": "1728619fdbb48b95873fa46b7e2f93d3211cb1893e29744b395d89793e1c8fc3",
+    "remark": "Observed live server.levelKeys() in current experimental test build; no Angel teleport behavior measured."
+  }
+}

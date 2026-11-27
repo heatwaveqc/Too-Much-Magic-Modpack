@@ -1,0 +1,5 @@
+# Too Much Magic: Weeping Angels are structure-only encounters.
+# Keep authored statues / structure-triggered Angels; disable random snow-feature placement.
+# Confirm filename / keys from the exact pinned 1.21.1 NeoForge artifact.
+[snow_angels]
+    snow_angels = false

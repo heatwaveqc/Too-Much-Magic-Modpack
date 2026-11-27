@@ -1,0 +1,40 @@
+# Source-only checks for #387 / #392. Never downloads mod JARs, assembles, boots or packages Minecraft.
+name: Weeping Angels source dimension audit
+
+on:
+  push:
+    branches:
+      - feature/weeping-angels-native-dimension-blacklist-20261120
+  pull_request:
+    paths:
+      - config/weeping_angels-common.toml
+      - config/weeping-angels-spawns.toml
+      - kubejs/data/weeping_angels/neoforge/biome_modifier/angel_spawns.json
+      - docs/dimensions/weeping-angels-live-census-c56fb18f.json
+      - scripts/audit_weeping_angels_dimensions.py
+      - scripts/tests/test_weeping_angels_dimensions.py
+      - .github/workflows/weeping-angels-source-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source only
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check code and tests
+        run: |
+          python -m compileall -q scripts/audit_weeping_angels_dimensions.py scripts/tests/test_weeping_angels_dimensions.py
+          python -m unittest discover -s scripts/tests -p test_weeping_angels_dimensions.py -v
+      - name: Check strict 19-dimension policy against witnessed build
+        run: |
+          python scripts/audit_weeping_angels_dimensions.py \
+            --census docs/dimensions/weeping-angels-live-census-c56fb18f.json \
+            --require-census \
+            --expect-integration-commit c56fb18ffc3b9f12f27317e7fb37f15c32576a8c
