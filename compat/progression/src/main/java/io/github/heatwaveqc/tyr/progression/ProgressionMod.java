@@ -42,6 +42,7 @@ public final class ProgressionMod {
         VirtualElytra.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.WallClimbing.register();
         HunterItems.ITEMS.register(modBus);
+        io.github.heatwaveqc.tyr.progression.runtime.clothing.ClothingComponents.COMPONENTS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineItems.ITEMS.register(modBus);
         io.github.heatwaveqc.tyr.progression.runtime.cuisine.BloodCuisineRecipes.SERIALIZERS.register(modBus);
         modBus.addListener(io.github.heatwaveqc.tyr.progression.network.PathResourceNetwork::register);
