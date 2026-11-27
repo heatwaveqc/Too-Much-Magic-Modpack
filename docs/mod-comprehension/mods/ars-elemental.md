@@ -4,10 +4,12 @@
 | --- | --- |
 | Manifest ID / mod ID | `ars-elemental` / `ars_elemental` |
 | Parent | [Ars Nouveau](ars-nouveau.md) |
-| Pack pin | `ars_elemental-1.21.1-0.7.10.4.jar`; SHA-1 `562f640916aa6f5c83b3b3ee2384ca828b870e01` |
+| Current integration pin | `ars_elemental-1.21.1-0.7.11.3.jar`; SHA512 `dec67d8eba302f45ba2baf0611c9a9e42cf5325e0687dc195458fc9bb48189cec1a2f0583ad8a3272a3816d55ffc3597256b3d1a36c8dce858c28dcce44540bd` at integration `2e922405a01ded8893aef08cb06ae0278b9d96ef`. Historical35 companions inspect0.7.10.4 unless explicitly revalidated. |
 | Source snapshot | Exact release-version source found at [commit 2c433b6](https://github.com/Alexthw46/Ars-Elemental/commit/2c433b6a4e6ff5c3b314b5f5442881e0ad2dd0c2); Gradle declares 0.7.10.4 / MC 1.21.1 and Ars 5.13.2.1418, while TMM pins Ars 5.13.5. |
-| Status | **researching** — addon source now matches the 0.7.10.4 pin and exposes substantially more than the three pilot items; source-to-JAR equivalence, Ars dependency compatibility and gameplay remain open. |
-| Guide | Exact release source includes Ars Notebook content; its page inventory and presentation still need assembled-client confirmation. Cite the item's JEI recipe/use plus the matching Focus or armor page when present. |
+| Status | **stale / researching** — current integration upgraded Elemental/Sauce; [six utility rituals and version delta](ars-elemental-pinned-utility-rituals.md) revalidated, changed recipients require review. Historical35 exact-binary companions cover glyphs, gear, helpers, devices, plants, biomes and Mages. Final recipe/registry reconciliation, pilot crosswalk and profile consolidation remain; whole-runtime dependency selection and gameplay acceptance are separately unverified. |
+| Guide | Exact binary registers native Notebook pages and edits parent pages; see the guide inventory below. Presentation still needs assembled-client confirmation. |
+
+Exact binary companion: [native guide and Urn](ars-elemental-pinned-guide-urn.md), including recipe, wand order, per-target cadence/payment, capability restrictions and manual bucket path. [Focus acquisition, cost selection and greater passives](ars-elemental-pinned-foci.md) covers all four lesser/greater recipes, Mark of Mastery and Necrotic boundaries. [Armor conversion, thread capacity and damage response](ars-elemental-pinned-armor.md) covers all 48 tier-gated recipes and three weight branches. [Shocking/Spores/Summoning threads](ars-elemental-pinned-threads.md) covers all three recipes and event consumers, including integer-division sickness failure and duplicate summon-power paths. [Focus-empowered native glyphs](ars-elemental-pinned-empowering.md) covers burn/freeze/Launch/Grow/Gravity/Cut and exact head-loot rolls. [Focus-selected temporary mounts](ars-elemental-pinned-steeds.md) covers all four replacements, native duration/payment/event order, riding and noSave boundaries. [Undead revival and Homing replay](ars-elemental-pinned-undead-summons.md) traces inherited lifetime, recipient validation/events and capability payment. [Homing Projectile/Propagate Homing](ars-elemental-pinned-homing.md) supplies two Tier3 glyph routes and native targeting/lifetime recipients. [Arc/Propagate Arc](ars-elemental-pinned-arc.md) covers the two Tier2 forms, native bounce/lifetime and propagated offsets. [Six paired filters](ars-elemental-pinned-filters.md) closes12 more glyph recipes, contextual polarity and legacy overload discrepancy;16of39 glyph routes now audited. [Bee/Slime combat summons](ars-elemental-pinned-bee-slime.md) closes two Tier2 glyphs and entity/AI/timer/splitting recipients;18of39 routes audited. [Mist/Oxidize/Sliding/Nullify](ars-elemental-pinned-mist-rust-sliding.md) closes four status/control routes including disabled-by-default Nullify recipe;22of39 recipes audited. [Envenom/Poison Spores/Rage](ars-elemental-pinned-venom-spores-rage.md) closes three status-combat routes and actual recipients;25of39 recipes audited. [Fire/static glyphs](ars-elemental-pinned-fire-static.md) closes Cauterize/Conflagrate/Spark/Discharge and side-effect ordering;29of39 recipes audited. [Cavitate/Watery Grave](ars-elemental-pinned-cavitation-grave.md) closes two Water routes, occupied-Bubble and air/status/conversion boundaries;31of39 recipes audited. [Water Jet/Geyser](ars-elemental-pinned-jet-geyser.md) closes two delayed/directional entity routes;33of39 recipes audited. [Terrain/Spike](ars-elemental-pinned-terrain-spikes.md) closes placement/lookahead and supported/falling hazard recipients;35of39 recipes audited. [Charm/Link/Phantom](ars-elemental-pinned-anima.md) closes three Anima routes, actual Sauce allegiance and sharing recipients;38of39 recipes audited. [Bubble Shield and39-glyph coverage map](ars-elemental-pinned-bubble-shield.md) closes packaged glyph recipe routes with disabled/development-only boundaries explicit. Addon still researching for major branches. [Twelve loot tomes](ars-elemental-pinned-tomes.md) maps acquisition/presets/school component and full-mana payment gate. Remaining sections retain explicit unaudited/source-version limits.
 
 ## Player systems and progression
 
@@ -15,10 +17,10 @@ There is no single linear tier ladder. The player chooses elemental schools and 
 
 | Branch | How it works | What it unlocks / teaching notes |
 | --- | --- | --- |
-| Focus selection | Craft lesser elemental foci; the school’s glyphs gain amplification/discount while other elemental schools are weakened. Major focus can add condition-based benefits. | Teach one choice as a reversible specialization; identify tradeoff before equipping. Pilot teaches Lesser Focus of Fire only. |
-| Focus-enhanced spell effects | Fire Focus changes Ignite (Magic Burn/armor interaction), Water changes Freeze and Conjure Water, Air changes Launch/Cut, Earth changes Grow/Gravity. Necrotic focus is a separate Anima route. | Recipe page and focus-specific spell page required; effects are conditional on wearing the focus. Details derive from 0.7.11.0 source and require 0.7.10.4 check. |
-| Elemental armor | Four elemental sets: each piece amplifies and discounts school glyphs and reduces matching damage; full set converts some mitigated damage to mana and triggers a school benefit. Higher armor tiers and Mark of Mastery are part of the route. | Teach recipe tier, retained threads/enchants, full-set activation and the proper element. Pilot uses Fire Hat only, not complete armor progression. |
-| Urn of Endless Waters | Convert Ars Source into water and link a supported destination (e.g., cauldron or Botania Apothecary). | A Source sink with fluid output; verify supported targets and rate. Pilot has a recipe milestone, not an output test. |
+| Focus selection | Craft lesser elemental foci; the school’s glyphs gain amplification/discount while other elemental schools are weakened. Greater foci remove the lesser malus, double the configured matching boost and add conditional worn passives; the first held/worn focus selects the mana discount (see companion). | Teach one choice as a reversible specialization; identify tradeoff before equipping. Pilot teaches Lesser Focus of Fire only. |
+| Focus-enhanced spell effects | Fire Focus changes Ignite (Magic Burn/armor interaction), Water changes Freeze and Conjure Water, Air changes Launch/Cut, Earth changes Grow/Gravity. Necrotic focus is a separate Anima route. | Recipe page and focus-specific spell page required; effects are conditional on wearing the focus. Native glyph effects now audited from exact0.7.10.4 in companion; four steed replacements now audited separately; combat-summon/Homing recipient endpoints now audited; addon glyph acquisition/operation remains open. |
+| Elemental armor | Four schools × three weight choices, converted from internal-tier-2 native armor with Mark+Netherite+two essences/7,000 Source per piece. Matching tagged incoming damage counts pieces by school/weight; mana uses original incoming damage, not measured mitigation. See exact recipe/attribute/response companion. | Teach recipe tier, retained threads/enchants, full-set activation and the proper element. Pilot uses Fire Hat only, not complete armor progression. |
+| Urn of Endless Waters | Link a block fluid capability within 30; offer 1,000 mB per target every 60 ticks for default 100 Source per successful attempt. Cauldron needs an external capability; Botania fallback is a false-returning stub. Manual BucketPickup has no Source check. | A Source sink with fluid output; verify supported targets and rate. Pilot has a recipe milestone, not an output test. |
 | Siren Shrine | Befriend wild Siren with sea pickle; summon charm; place shrine and build diverse water-animal/plant habitat; supply Source per fishing-loot cycle. | Renewable fishing loot. Requires setup and time; pilot omits it. |
 | Flashjack / Flarecannon / Weald Walker | Find/befriend/assign helpers; link Flashjack to compatible turrets, use Dominion Wand for patrol/targets. Some defeated sentries can be reactivated with blaze powder or magma cream. | Defensive helper branch; exact acquisition, targets and output need exact-pin comparison. |
 | Turrets, relays and prisms | Elemental turrets inherit some focus traits and discount matching spells; elemental Source Relays raise capacity/transfer; prism lenses can alter redirected spells and some consume Source. | Utility and defense. Teach placement/configuration, Source input and limits; not covered by the pilot's 3 quests. |
@@ -28,7 +30,7 @@ There is no single linear tier ladder. The player chooses elemental schools and 
 
 1. Choose and craft a lesser Focus; equip and compare an affected and unaffected spell/school.
 2. Build elemental armor via JEI recipe chain; teach its tier, school bonuses, full-set condition and thread/enchantment retention.
-3. Configure an Urn into a test cauldron, confirm Source decreases and water appears; test unsupported/no-Source boundaries.
+3. Configure an Urn into a verified water-accepting capability block; follow the exact linking/payment boundaries in the companion. Cauldron/Apothecary guide promises need separate capability proof.
 4. For any chosen helper/shrine/turret/prism branch, teach its acquisition, placement/configuration, resource cost, observable operation and maintenance.
 5. Keep worldgen/exploration content optional; locate exact biome/structure rules and Notebook entry before promising an item route.
 
@@ -38,5 +40,44 @@ The pilot chapter has Lesser Fire Focus, Urn of Endless Waters and Pyromancer's 
 
 - Exact pin/hash and item/recipe evidence: `manifest/ars_quest_pilot.json`.
 - Version-ahead primary source for focus and subsystem descriptions: [AELangDatagen.java at commit f2a1dd1](https://github.com/Alexthw46/Ars-Elemental/blob/f2a1dd1faa2ad7e6ad00c2919120ea4fc241cdf0/src/main/java/alexthw/ars_elemental/datagen/AELangDatagen.java).
-- Unresolved: inspect the exact JAR against release commit 2c433b6; verify recipes, biome/loot conditions, attribute hooks and all addon guide entries in the assembled pack.
+- Exact JAR recovered and SHA1 matched: 2,273,778 bytes, 353 classes; 183 singular recipe resources. Guide registration and Urn audited from binary; inventory alone is not source completion. Detailed routes are now in35 companions; final registry/recipe/pilot consolidation and assembled-client presentation remain open.
 - Not run: Source-to-water output and rate; full-set armor trigger; Siren Shrine source/output cycle; turret focus synergy; prism costs and target boundary.
+
+
+[Siren acquisition and fishing shrine](ars-elemental-pinned-siren.md) covers token/charm conversion, habitat scoring, progress/Source/output order and lost inventory remainders. Native Binding/script/summon route and duplicate modifier dispatch are now traced.
+
+[Flarecannon guard and familiar](ars-elemental-pinned-flarecannon.md) covers recipe/summon/home, combat/recovery, Binding and the actual projectile base-cost reduction versus book prose.
+
+[Flashjack scout/familiar](ars-elemental-pinned-flashjack.md) covers wild conversion, turret/walker targeting, real turret Source payment, appearance/recovery and ineffective normal first-form movement discount condition.
+
+[Flashing Weald Walker](ars-elemental-pinned-flashing-walker.md) traces exact50-block Awakening override, native guardian recipient/spell/patrol and adult-to-baby recovery.
+
+[Three current elevators](ars-elemental-pinned-upstreams.md) covers exact recipes/stage gates, stack geometry, medium/crouch behavior, redstone and once-per-list Source payment/failed-effect cost.
+
+[Advanced Prism/lenses and Mirror](ars-elemental-pinned-prisms.md) traces recipes, aimed routing, seven lens implementations and native two-ended behavior; Mirror reflection overload misses native dispatch, Chaining mutates before unchecked actual debit.
+
+[Four elemental Source relays](ars-elemental-pinned-relays.md) covers exact upgrades/buffers, inherited directional loops and explicit capability registration; normal addon Warp capability path is lossless, legacy tile overload still has distance-loss code.
+
+[Five infused turrets](ars-elemental-pinned-turrets.md) closes school recipes/Sauce resolver/cost, block-type registration and addon Homing/Arc behavior extensions on native turrets.
+
+[Seven bangles](ars-elemental-pinned-bangles.md) covers exact resource gates, school attributes and player-attributed specials; [pouch/bag inventories](ars-elemental-pinned-bags.md) covers27/54slot data, open/upgrade/dye, GUI restrictions and client/server slot boundaries.
+
+[Enchanter's Horn](ars-elemental-pinned-horn.md) traces methodless scribing, area/charge, direct resolve admission and post-effect payment; [Reflection/Reactive/Soulbound](ars-elemental-pinned-enchantments.md) covers four exact enchantment recipes and event/death-return recipients.
+
+[Flashing wood/Flashpine/cave plants](ars-elemental-pinned-plants.md) traces initial natural fruit versus sapling no-pod branch, farming inputs/drops, food effects, Source-vine right-use output and weather sampling. Whole biome/mage/structure distribution still requires review.
+
+[Five biomes/Vexing Caves/Starbuncle Shrine](ars-elemental-pinned-biomes.md) maps enabled generation, ecology/hazards/material features, shrine template and structure-tag bridges. Mage combat/loot is still pending.
+
+[Four wandering Mages](ars-elemental-pinned-mages.md) covers spawn/light/focus hostility,21attack-pool entries, fixed medium equipment, school resolver and conditional self-support, without inventing normal rare loot.
+
+[Shared Sauce metadata receipt](ars-family-pinned-sauce.md) checks all eight family artifacts: Elemental61.100 and Elemancy29.73 bundles, intersection excludes29.73;61.100 is the only supplied family candidate, with whole-runtime selection still unverified.
+
+[Six utility rituals and current-pin delta](ars-elemental-pinned-utility-rituals.md) adds actionable acquisition, effects, Source-after-batch order, free Detection path and Zapping collateral. Two forest rituals remain; both changed in0.7.11.3. New embedded Sauce74.113 invalidates historical61.100 family candidate conclusion for the current pin.
+
+[Current Archwood island and Forestation](ars-elemental-pinned-forest-rituals.md) completes8ritual implementations: pod-versus-fruit input, radius/terrain/Source50-after5, selected-sapling admission-order/reload and finite zero-Source feature pass.37companions including two current-version ritual reports; remaining version-delta/recipe/full-profile review still open.
+
+[0.7.11.3 impact review](ars-elemental-pinned-07113-impact.md) revalidates Horn cast body/adds instrument recipe, configurable Life Link and Homing allies/player states; [Sauce74.113 recipients](ars-family-pinned-sauce-74113.md) adds Book of Friends/damage guard/dimension boundary. Newly pinned [Conflux](ars-conflux.md) requires combined execution review.38Elementalcompanions; status remains stale pending remaining delta/full review.
+
+[Protected book and three Crush conversions](ars-elemental-pinned-book-crush.md) closes custom NetheriteUpgradeRecipe/P4E/drop-damage/lifetime request and native sensitive item-processing outputs/caps.39Elementalcompanions; final current-version/Conflux/recipe/profile reconciliation remains.
+
+[Current Phalanx/worldgen/registry delta](ars-elemental-pinned-phalanx-worldgen.md) corrects development-only registration (now unconditional; recipe separately gated), traces orbital native behavior/styles, unchanged Walker sequence/new particle preset, Vexing carver and Evaporate propagation.40Elementalcompanions; remaining full184recipe/registry/progression/pilot and Conflux combined review open.
