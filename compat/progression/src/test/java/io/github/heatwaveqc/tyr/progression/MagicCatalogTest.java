@@ -21,8 +21,10 @@ class MagicCatalogTest{
      assertNotNull(stream, "Packaged magic stat catalog");
      var raw=JsonParser.parseReader(new java.io.InputStreamReader(stream,java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
      var defs=MagicCatalog.read(raw);
-     assertEquals(80,defs.size());
-     assertEquals(80,defs.values().stream().map(MagicCatalog.Binding::attribute).distinct().count());
+     assertEquals(82,defs.size());
+     assertEquals(82,defs.values().stream().map(MagicCatalog.Binding::attribute).distinct().count());
+     assertEquals(new MagicCatalog.Binding("ars_conflux:cast_time_reduction","add_value",1),defs.get("tyr_progression:conflux_cast_speed"));
+     assertEquals(new MagicCatalog.Binding("ars_conflux:cooldown_reduction","add_value",1),defs.get("tyr_progression:conflux_cooldown_reduction"));
      assertEquals(new MagicCatalog.Binding("goety:spell_duration","add_value",1),defs.get("tyr_progression:goety_duration"));
      assertEquals(new MagicCatalog.Binding("goety:spell_range","add_value",1),defs.get("tyr_progression:goety_range"));
      assertEquals(new MagicCatalog.Binding("goety:spell_radius","add_value",1),defs.get("tyr_progression:goety_radius"));

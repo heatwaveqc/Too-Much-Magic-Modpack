@@ -55,6 +55,17 @@
             4000,
             5000
           ]
+        },
+        {
+          "type": "magic_resource_capacity",
+          "target": "mahoutsukai:personal_mana",
+          "rank_values": [
+            0.2,
+            0.4,
+            0.6,
+            0.8,
+            1
+          ]
         }
       ]
     },
@@ -120,6 +131,17 @@
             1.5,
             2,
             2.5
+          ]
+        },
+        {
+          "type": "magic_resource_recovery",
+          "target": "mahoutsukai:personal_mana",
+          "rank_values": [
+            0.2,
+            0.4,
+            0.6,
+            0.8,
+            1
           ]
         }
       ]
@@ -227,6 +249,131 @@
             0.6,
             0.8,
             1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyr_progression:tmm_magic_quickening",
+      "title": "Quickening",
+      "description": "Reduce active spell casting and recovery times through supported native timing attributes. Native gear, soft caps and instant-cast rules still apply.",
+      "lane": "Universal Magic",
+      "max_rank": 10,
+      "required_rank": 1,
+      "rank_costs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "xp_channel": "tyr_progression:mxp",
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:cast_time_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "goety:casting_speed",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "goety:cooldown_discount",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "ars_conflux:cast_time_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        {
+          "type": "attribute",
+          "attribute": "ars_conflux:cooldown_reduction",
+          "operation": "add_value",
+          "rank_values": [
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
           ]
         }
       ]
