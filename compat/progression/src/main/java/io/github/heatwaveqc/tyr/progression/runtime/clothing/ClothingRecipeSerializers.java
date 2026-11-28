@@ -13,4 +13,6 @@ public final class ClothingRecipeSerializers {
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, ProgressionMod.MOD_ID);
     public static final Supplier<RecipeSerializer<TartanKiltRecipe>> TARTAN_KILT =
             SERIALIZERS.register("tartan_kilt", () -> new SimpleCraftingRecipeSerializer<>(TartanKiltRecipe::new));
+    public static final Supplier<RecipeSerializer<GarmentRecolorRecipe>> GARMENT_RECOLOR =
+            SERIALIZERS.register("garment_recolor", () -> new SimpleCraftingRecipeSerializer<>(GarmentRecolorRecipe::new));
 }

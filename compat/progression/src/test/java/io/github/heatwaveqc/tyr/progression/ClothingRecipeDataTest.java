@@ -46,7 +46,12 @@ class ClothingRecipeDataTest {
         Set<String> values = new HashSet<>();
         resource("tags/item/non_protective_clothing.json").getAsJsonArray("values")
                 .forEach(e -> values.add(e.getAsString()));
-        assertEquals(Set.of("tyr_progression:tartan_kilt", "tyr_progression:white_cap", "tyr_progression:loincloth"), values);
+        var expected = new HashSet<>(Set.of("tyr_progression:tartan_kilt", "tyr_progression:white_cap", "tyr_progression:loincloth"));
+        for (var style : io.github.heatwaveqc.tyr.progression.foundation.MartialGarmentStyle.values()) {
+            expected.add("tyr_progression:" + style.upperId());
+            expected.add("tyr_progression:" + style.lowerId());
+        }
+        assertEquals(expected, values);
         assertEquals("tyr_progression:tartan_kilt", resource("recipe/tartan_kilt.json").get("type").getAsString());
     }
 }

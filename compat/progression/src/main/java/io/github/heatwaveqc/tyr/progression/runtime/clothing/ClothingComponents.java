@@ -3,6 +3,7 @@ package io.github.heatwaveqc.tyr.progression.runtime.clothing;
 import com.mojang.serialization.Codec;
 import io.github.heatwaveqc.tyr.progression.ProgressionMod;
 import io.github.heatwaveqc.tyr.progression.foundation.TartanPalette;
+import io.github.heatwaveqc.tyr.progression.foundation.GarmentPalette;
 import java.util.function.Supplier;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -20,4 +21,10 @@ public final class ClothingComponents {
             COMPONENTS.registerComponentType("tartan_palette", builder -> builder
                     .persistent(PALETTE_CODEC)
                     .networkSynchronized(ByteBufCodecs.INT.map(TartanPalette::new, TartanPalette::packed)));
+    public static final Codec<GarmentPalette> GARMENT_PALETTE_CODEC =
+            Codec.intRange(0, 4095).xmap(GarmentPalette::new, GarmentPalette::packed);
+    public static final Supplier<DataComponentType<GarmentPalette>> GARMENT_PALETTE =
+            COMPONENTS.registerComponentType("garment_palette", builder -> builder
+                    .persistent(GARMENT_PALETTE_CODEC)
+                    .networkSynchronized(ByteBufCodecs.INT.map(GarmentPalette::new, GarmentPalette::packed)));
 }

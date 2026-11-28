@@ -21,5 +21,17 @@
   "key.tyr_progression.tame": "Taming / Companion Follow-Wait",
   "item.tyr_progression.tartan_kilt": "Tartan Kilt",
   "item.tyr_progression.white_cap": "White Cap",
-  "item.tyr_progression.loincloth": "Loincloth"
+  "item.tyr_progression.loincloth": "Loincloth",
+  "item.tyr_progression.karate_gi_upper": "Karate Gi Top",
+  "item.tyr_progression.karate_gi_lower": "Karate Gi Trousers",
+  "item.tyr_progression.taekwondo_dobok_upper": "Taekwondo Dobok Top",
+  "item.tyr_progression.taekwondo_dobok_lower": "Taekwondo Dobok Trousers",
+  "item.tyr_progression.shaolin_upper": "Shaolin Top",
+  "item.tyr_progression.shaolin_lower": "Shaolin Trousers",
+  "item.tyr_progression.kung_fu_upper": "Kung Fu Top",
+  "item.tyr_progression.kung_fu_lower": "Kung Fu Trousers",
+  "item.tyr_progression.kimono_hakama_upper": "Kimono & Hakama Top",
+  "item.tyr_progression.kimono_hakama_lower": "Kimono & Hakama Trousers",
+  "item.tyr_progression.wuxia_upper": "Wuxia Top",
+  "item.tyr_progression.wuxia_lower": "Wuxia Trousers"
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "W W",
+    "SWS",
+    " W "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "tyr_progression:shaolin_lower",
+    "count": 1,
+    "components": {
+      "tyr_progression:garment_palette": 3953
+    }
+  }
+}

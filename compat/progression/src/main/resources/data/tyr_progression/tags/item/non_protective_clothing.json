@@ -3,6 +3,18 @@
   "values": [
     "tyr_progression:tartan_kilt",
     "tyr_progression:white_cap",
-    "tyr_progression:loincloth"
+    "tyr_progression:loincloth",
+    "tyr_progression:karate_gi_upper",
+    "tyr_progression:karate_gi_lower",
+    "tyr_progression:taekwondo_dobok_upper",
+    "tyr_progression:taekwondo_dobok_lower",
+    "tyr_progression:shaolin_upper",
+    "tyr_progression:shaolin_lower",
+    "tyr_progression:kung_fu_upper",
+    "tyr_progression:kung_fu_lower",
+    "tyr_progression:kimono_hakama_upper",
+    "tyr_progression:kimono_hakama_lower",
+    "tyr_progression:wuxia_upper",
+    "tyr_progression:wuxia_lower"
   ]
 }
