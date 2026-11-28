@@ -1,6 +1,6 @@
-# Dive Into the Abyss — second Atlas pass
+# Dive Into the Abyss — complete native capability dossier
 
-**Status: source-backed-partial / needs-research, 2026-11-27.** [Atlas #410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent dimension/adventure research; no shared index, quests, balance, configuration, runtime or build changes. Exact native mechanics only, effective TMM interactions separately identified.
+**Status: quest-source-ready / needs-review, 2026-11-27.** [Atlas #410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent dimension/adventure research; no shared index, quests, balance, configuration, runtime or build changes. Exact native mechanics only, effective TMM interactions separately identified.
 
 ## Evidence
 
@@ -75,7 +75,7 @@ Native Wind Journal reward/loot records are separate from these 18 progression I
 | Axis | Evidence disposition |
 |---|---|
 | gear | Deep and Radiant armor, scythe/spear/staff; numeric effects next |
-| movement | Diver/escape portal and native mount candidates |
+| movement | Diver, Radiant Staff portal, victory return, Noctilure rideable flight |
 | ore_processing | crystal fragment craft/smelt, no ore multiplier identified |
 | storage | two chest boat families and machine buffers, no warehouse established |
 | crafting | native recipes, purification |
@@ -84,24 +84,24 @@ Native Wind Journal reward/loot records are separate from these 18 progression I
 | external_compatibility | common vanilla materials, NeoForge event hooks |
 | mob_farming | Protector/Soul Spawner mechanics next, no autonomous farm inferred |
 | ore_generation | natural deposits only; no generator demonstrated |
-| permanent_power | postboss vessel/bringer criteria require handler trace |
+| permanent_power | persistent mutually exclusive alignment advancement, power additionally requires full armor |
 | general_generation | native crops and creature resource loops, not unlimited |
 | direct_damage | Heart laser, scythe/spear/staff, Protector and boss |
 | block_breaking | no substantial new general mining tool established |
-| permanent_pets | Protector invoker, Noctilure candidate, actual ownership next |
-| temporary_pets | unconfirmed |
+| permanent_pets | Invoker-linked Protector, tamed Noctilure |
+| temporary_pets | effect-dependent Radiance Tempers, local count three |
 | defense | two armor sets, Purified, Protector |
-| healing_recovery | entity heart restoration and effect candidate; actual player healing next |
+| healing_recovery | spear heals .25 HP per eligible hit, Purified suppresses Corrupted, Protector heart restoration |
 | debuff_control | purification and corruption effects |
 | energy | finite Radiance buffer and catalyst charge; no external FE assumed |
 | automation_control | Sonic Blaster/Soul Spawner follow-up |
 | agriculture | native wood/fruit/berries; growth/renewable loops follow-up |
 | detection_information | Crystal Resonator/Infuser, map, Wind Journal |
-| equipment_augmentation | Stealth and crystal attunement; named ornaments not confirmed usable |
+| equipment_augmentation | Stealth I armor events, attuned Resonator; six ornaments plain registered items, no functional bonus |
 | world_manipulation | boss arena fence/portal and corruption behavior; exact limits next |
 | world_content |11 biomes,11 structures, creatures and dimension |
-| death_respawn | void teleport attempt not guaranteed rescue; no player resurrection established |
-| trade_economy | no confirmed trade system |
+| death_respawn | conditional void relocation only, no independent player resurrection or inventory recovery established |
+| trade_economy | absent: no dedicated native trade system identified |
 | progression_tiers | native18 advancements, two material routes, six crystal gate and boss |
 
 ## 7. Next pass
@@ -146,3 +146,78 @@ Crystal Resonator.getNearestTemplePos uses selected crystal.getTempleKey and Str
 ### 8.5 Final-pass boundary
 
 Remaining significant quest-source questions: exact Wind Journal task and switching UI, Warden Heart acquisition, Radiant Staff escape operation, corpse reward, named weapon/effect and Temper/Protector/Noctilure mechanics, Stealth vibration handling, Soul Spawner/Sonic Blaster and actual registered ornament availability. Then actionable instructional map covering all18 advancements and separate11-domain rating. No need to exhaust minor damage coefficients or ordinary JEI recipes. No runtime/game/quest/config/pin/build changes. Voidfall/dimension restrictions, switch packet authorization, generated arena world mutation and effective loaded armor/loot values are targeted TMM integration questions, not demonstrated exploits or fixes.
+
+## 9. Final pass — exact native rewards, operating instructions and remaining boundaries
+
+Reopened 27,978,583-byte pinned JAR: SHA512 d6436a30cb9339c63fa2c548685e61243d38b4814e4495f7cdc02294428b6be16acd066718b847d5fad8c99246baa7abc9fa4b283e09c13f7fae6443d758728a, ZIP CRC testzip returned None. Used javap -p -c on item, entity, block, blockentity, event, guide, network classes and focused LootTableModifiers, GameEventVibrationInterceptor, ChoiceScreen, ClientNoctilureRidingControl and AddStealthBookModifier; parsed all18 advancement JSONs, Wind Journal reward table and en_us. Earlier open questions resolved at quest-source depth below; historical notes remain as pass provenance, not active research requirements.
+
+### 9.1 Acquisition and Wind Journal
+
+LootTableModifiers.onLootTableLoad matches minecraft:entities/warden and adds three independent one-roll pools: Warden Heart weight7 vs empty3 (70% native base); Deep Block weight5 vs empty5 (50%); Deep Crystal count uniform1–3, only entry. No native Looting scaling in those pools. A Deep Block is reversible nine Deep Ingots; this is a real pre-dimension alternate armor material route, not guaranteed every fight. Death event spreads Deep Crystal separately, do not confuse with the pool. Loot modifier injection may interact with TMM loot policy. 
+Wind Journal is guaranteed native advancement loot reward of the_abyss (actual reward table advancements/wind_journal, one item), also craftable as in §2. Wind Whisperer and contextual wind messages feed KnownWindWhispers, per-player state; 232 en_us whisper keys across13 categories (localization count, includes category keys where present, not necessarily232 independently collectible messages). WindJournalScreen has separate journal pages and TaskNoteAccess, JumpToTaskButton and check controls. Nine native journal tasks in order: visit Deep Forest, White Forest, Crystal Cave, Waste Land; find underground Ancient Citadel; fly a Noctilure; summon Protector; open ancient city portal; fight Contagion Incarnation. Journal task check controls and synchronized CompletedTasks are not an authoritative replacement for native advancement triggers. Use the guide as exploration companion, not an invented hard gate requiring every whisper or manually checked task. 
+Crystal Resonator attunement and temple targeting in §2/8; locate natural Infuser, four matching jewels and120 ticks. Temple chest and Citadel rewards are candidate entries, not guaranteed individual rolls. Structure navigation, all six neutral blocks advancement, then naturally generated boss arena. 
+Stealth global modifier AddStealthBookModifier.doApply random.nextFloat<.5, creates enchanted book with Stealth I, conditioned on minecraft:chests/ancient_city. GameEventVibrationInterceptor checks Player cause. If all four equipped pieces have Stealth, cancels the event before checking event type. Otherwise leggings cancel HIT_GROUND, chest cancels BLOCK_PLACE/BLOCK_DESTROY/BLOCK_CHANGE, boots cancel STEP. Helmet contributes to full-set condition. No claim visual invisibility or every environmental vibration suppressed; all-player-event cancellation can affect other event listeners. Teach anvil application, individual benefits and optional full set. Only one native enchantment, max1, not universal Path power.
+
+### 9.2 Weapons and machines
+
+| Item | Native numerical/operating evidence |
+|---|---|
+| Abyssal Scythe | durability2031, mainhand ADD_VALUE attack damage12 and attack speed−3; ordinary base player1/4 implies13 damage and1 attack/s before other modifiers. hurtEnemy attempts separate damage 1.5*Sweeping Edge level against struck victim (not guaranteed additive effective damage due to hurt cooldown); costs .25HP to eligible wielder via custom damage source, 1 durability per hit. No new generic mining tier. |
+| Radiant Spear | durability2031, mainhand ADD_VALUE attack damage10 and speed−3; base player11 damage/1 attack/s; attempts separate damage1.5*Piercing level, heals eligible wielder .25HP/hit and costs1 durability. Not a life-steal percentage or projectile spear guarantee. |
+| Warden Heart | Corruption Vessel required, range14, config default damage10,120t cooldown per §8.2; separate native damage handling. |
+| Radiant Staff | Use on reinforced deepslate with air above; PlaceAbyssPortal configured feature successful placement triggers ABYSS_PORTAL_OPEN criterion and costs1 durability; repair Radiance Fragment. This is the actual ancient city portal-opening action, not automatic escape merely equipping staff. No new bedrock travel rule. |
+| Sonic Blaster | place facing target direction, adjacent native CRISTAL_BLOCK tag enables powered state; rising redstone signal at block or above schedules4t shot; resets trigger when signal drops. Six-block directed AABB; pushes living entities by 2.8*(1−knockback resistance), vertical direction further*.3; sends motion packet to server players. No direct damage call in sonicBoom. Not a laser damage farm, FE device or item transporter. |
+| Soul Spawner | server randomTick 1/2 attempt, finds spawn position, spawns stasis Shadow; proximity AABB inflate10, getEntities size>6 stops spawning (counts entities, not proven exclusively Shadows). No Shadow ordinary loot pool; not a generalized selectable mob spawner or guaranteed farm yield. |
+| Radiance Catalyst | actual four recipes, full1000 energy threshold/recharge and 200t work as §§3/8.4. No general FE network inferred. |
+| Crystal Infuser | navigation-specific five-slot interface, §2. |
+
+Mind Tiara, Ring of Will, Strength Bracelet, Pendant of Balance, Shadow Ornament, Light Ornament: registered exact ItemRegistry IDs mind_tiara/ring_of_will/strength_bracelet/pendant_of_balance/shadow_ornament/light_ornament, supplier lambdas129–134 instantiate plain Item, stack1 rare fireResistant, no native effect or Curio implementation evidenced. Do not award fabricated powers, require their survival acquisition, or count them as meaningful progression. 
+
+### 9.3 Companions and ending
+
+Protector canAttackType explicitly rejects PLAYER. checkInvoker requires actual linked ProtectorInvokerBlockEntity and valid identity. Position persists, 550HP/30 attack, Dying Heart recovery600 energy; do not teach as roaming player-controlled army or assume exact guard radius (follow-range attribute30 is not a hard tether). Radiance Temper actual 20HP, attack4, follow48, flying speed .16, movement .1. dispawnIfOwnerNotRadianceBringer discards when resolved owner lacks Radiance Bringer; unresolved owner returns without discard. Three local owned summons, not guaranteed global cap, not independent pets after changing alignment. Noctilure control reads forward/backward/sprint; landing via back when height<=1, onPlayerJump exists, ride and navigate using ordinary mount controls. Client sprint handling drains10 energy per forward+sprint tick; idle air recovery2/t, non-sprint forward1/t, grounded20/t while controlled. Idealized full reserve200 ticks (10s) sprint, refill from empty1000/2000/100 ticks respectively (50/100/5s at20TPS), client update not measured server-authoritative duration. Zero-energy latch prevents immediate sprint until recovery threshold; normal flight separate from sprint. Noctilure dampensVibrations true, no fall-damage check, native offspring factory exists; do not promise breeding procedure without confirmed food/love-mode path. Whistle item and call behavior documented as owner recall, do not invent global range. 
+
+Dysfunctionning Catalyst summons boss and creates victory portal with shouldShowWinScreen true on defeat. Contagion Incarnation corpse brokenByPlayer explicitly pops one Contagion Incarnation Skull then calls ordinary death loot and armor drops; other break routes not guaranteed trophy. Normal boss table empty. Victory portal collision checks win-screen flag, sends ShowWinScreen to server player via native dimension-transition flow; ChoiceScreen Radiance/Contagion buttons invoke corresponding selection then native respawn continuation. Advancement switch revokes opposite (§8.2); normal instructional choice after boss and return via victory portal, not claim easy arbitrary repeated UI access or irrevocable alignment. Radiant Staff opens separate ancient city portal and triggers escape criterion at successful opening; teach opening and travel independently. No proof all participants get personalized trophies. Actual quest branch should explain alternatives, not force both alignments simultaneously or treat this as a TMM Path replacement.
+
+## 10. Final instructional map (32 proposed nodes)
+
+A = native advancement ID wardentools:; I = possession/craft; O = operation/manual lesson. Map all18 native IDs once, preserve action criteria and distinguish narrative from actual mechanical gate. Rows are proposed instructional nodes, not implemented FTB quests. Related repeatable/optional actions can be grouped, no forced void death or mandatory parallel armor route.
+
+| ID | Instruction and expected result | Evidence |
+|---|---|---|
+| AB01 | Find sculk, learn Warden/ancient city context | A abyss |
+| AB02 | Obtain Warden Heart via native70% loot pool, learn Deep material reward | A corrupted_heart |
+| AB03 | Heart↔9 Corrupted Essence; craft Corrupted Vessel | I/O |
+| AB04 | Enter Abyss via permitted native route; avoid deliberately falling into void under unresolved TMM policy | A the_abyss |
+| AB05 | Receive/open Wind Journal, learn whisper and task pages | I/O |
+| AB06 | Collect Pale Shards, Darktree wood, craft Abyss Diver | A abyssdiver |
+| AB07 | Use Diver on tagged block and return, repair Deep Fragment; explain dimension rules | O |
+| AB08 | Craft Wind Whisperer; collect contextual messages | A windwhisperer |
+| AB09 | Explore Deep Forest, White Forest, Crystal Cave, Waste Land; journal tasks | O |
+| AB10 | Collect Deep Crystal/Fragments; craft/smelt ingots, Deep Block | A deepcristal |
+| AB11 | Collect Radiance Fragments, form crystal, smelt ingots | A radiance |
+| AB12 | Collect six neutral crystal types and compress each nine fragments into blocks | A cristals |
+| AB13 | Craft Crystal Resonator, find natural Infuser, attune four matching jewels; locate temple | O |
+| AB14 | Explore six temple routes and Citadel/explorer house, obtain optional loot | O |
+| AB15 | Recognize Corrupted effect, obtain Purified and learn countermeasure without forced lethal exposure | A corrupted |
+| AB16 | Craft Radiance Catalyst, fuel and reach full charge | A radiance_catalyst |
+| AB17 | Purify essence/vessel and Heart, learn recharge cost | O |
+| AB18 | Craft Protector Invoker | A protector_invoker |
+| AB19 | Insert Protector Heart, summon guardian | A protector |
+| AB20 | Restore Dying Heart, explain persistent linked health/identity | O |
+| AB21 | Tame Noctilure with treat; ride, fly, sprint reserve, whistle | O |
+| AB22 | Craft Sonic Blaster and demonstrate crystal-adjacent redstone knockback; recognize Soul Spawner encounter | O |
+| AB23 | Obtain Stealth book from Ancient City; anvil boots/legs/chest, optional full set | I/O |
+| AB24 | Craft Radiant Staff, open portal on reinforced deepslate with air above | A escape |
+| AB25 | Craft scythe/spear; explain attack modifiers and HP cost/heal | I/O |
+| AB26 | Prepare either armor set and all six jewels; actual alignment gate explained | I/O |
+| AB27 | Locate intended Dysfunctionning Catalyst arena; charge and summon | O |
+| AB28 | Defeat Contagion Incarnation, break corpse for Skull | A incarnation |
+| AB29 | Enter victory portal, choose Corruption or Radiance (alternative branches) | O |
+| AB30 | Corruption branch: choose corresponding alignment, wear full Deep armor and use Heart | A corruption_vessel, deep_armor |
+| AB31 | Radiance branch: choose corresponding alignment, wear full Radiant armor and observe Tempers | A radiance_bringer, radiant_armor |
+| AB32 | Review completed journal tasks and return/continue adventure; optionally choose alternate alignment when native UI available | O |
+
+## 11. Completion and evaluation
+
+[Separate capability evaluation](dive-into-the-abyss-evaluation.md): 26/55, four independent domains, Substantial (threshold). Source-complete significant native capabilities; 29 axes,32 teaching nodes,18 native advancement IDs, nine Journal tasks, four effects, one enchantment. No score for plain ornament names or unverified generic farming/trading, player resurrection or arbitrary FE. Minor combat phase cadence, exact mount recall range and loot weights outside central progression are nonessential reference precision. TMM dimension authorization, void damage, switch authorization, loot modifiers, equipment caps and arena world mutation remain specific integration questions; no observed bypass/failure, no changes or game execution. 
