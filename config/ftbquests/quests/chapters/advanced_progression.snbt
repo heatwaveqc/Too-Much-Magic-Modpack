@@ -133,20 +133,6 @@
 			y: 8.0d
 		}
 		{
-			id: "544D505000900000"
-			icon: { id: "minecraft:enchanting_table" }
-			optional: true
-			rewards: [
-				{ id: "544D605000900001", type: "xp", xp: 20 }
-				{ id: "544D705000900002", type: "item", item: { id: "minecraft:candle", count: 1 }, count: 4 }
-			]
-			tasks: [
-				{ id: "544D805000900000", type: "checkmark" }
-			]
-			x: 9.0d
-			y: 8.0d
-		}
-		{
 			id: "544D505000A00000"
 			icon: { id: "minecraft:enchanting_table" }
 			optional: true

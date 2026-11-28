@@ -148,9 +148,7 @@
       "filename": "advanced_progression.snbt",
       "order_index": 1,
       "icon": "minecraft:enchanting_table",
-      "mod_ids": [
-        "summoning-rituals"
-      ],
+      "mod_ids": [],
       "overview_quest_id": "544D302000200001",
       "overview_task_id": "544D402000200001"
     },

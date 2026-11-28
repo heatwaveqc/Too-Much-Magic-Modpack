@@ -1484,17 +1484,6 @@
       "packwiz_slug": "lootr"
     },
     {
-      "id": "magical-satchel",
-      "name": "Magical satchel / Surprisingly Substantial Satchel",
-      "category": "storage",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
-    },
-    {
       "id": "mahou-tsukai",
       "name": "Mahou Tsukai",
       "category": "magic",
@@ -1670,7 +1659,8 @@
       "source": "https://modrinth.com/mod/sbJh4AZw",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "occultism"
+      "packwiz_slug": "occultism",
+      "note": " 2026-11-27 owner clarification: Surprisingly Substantial Satchel is native Occultism content, not a standalone mod; retain native item subject to existing portable storage policy."
     },
     {
       "id": "octolib",
@@ -2120,17 +2110,6 @@
       "packwiz_slug": "spark"
     },
     {
-      "id": "starlight-structures",
-      "name": "Starlight / Stalwart Dungeons candidate",
-      "category": "adventure",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
-    },
-    {
       "id": "stateobserver",
       "name": "StateObserver",
       "category": "dependency",
@@ -2141,19 +2120,6 @@
       "enabled_in_pack": true,
       "dependencies_verified": false,
       "packwiz_slug": "stateobserver"
-    },
-    {
-      "id": "summoning-rituals",
-      "name": "Summoning Rituals",
-      "category": "ritual_framework",
-      "desired": true,
-      "version": "summoningrituals-neoforge-1.21.1-3.14.2",
-      "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/671040",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "note": "User-approved in PR #6. B5 pinned and server test pending. CurseForge project ID pinned; verify file maturity in test report",
-      "packwiz_slug": "summoningrituals"
     },
     {
       "id": "supermartijn642-config-lib",
@@ -3014,7 +2980,7 @@
       "curseforge_project_id": 324973,
       "candidate_file_id": 7887320,
       "packwiz_slug": "dungeon-crawl",
-      "note": "OWNER IDENTITY RESOLUTION 2026-11-20: Roguelike-style dungeon provider is Dungeon Crawl, spiritual successor to Roguelike Dungeons. Explicitly selected as desired inclusion candidate. Exact NeoForge 1.21.1 2.3.17 official CF project 324973/file 7887320 (jar DungeonCrawl-NeoForge-1.21-2.3.17.jar); source/structure compatibility, YUNG suite overlap, spawn balance, hash and required dependencies must be audited before indexing. NOT installed; owner-authorized next QA must test fresh procedural dungeons. Old placeholder id roguelike-dungeons superseded. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
+      "note": "OWNER IDENTITY RESOLUTION 2026-11-20: Roguelike-style dungeon provider is Dungeon Crawl, spiritual successor to Roguelike Dungeons. Explicitly selected as desired inclusion candidate. Exact NeoForge 1.21.1 2.3.17 official CF project 324973/file 7887320 (jar DungeonCrawl-NeoForge-1.21-2.3.17.jar); source/structure compatibility, YUNG suite overlap, spawn balance, hash and required dependencies must be audited before indexing. NOT installed; owner-authorized next QA must test fresh procedural dungeons. Old placeholder id roguelike-dungeons superseded. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS. 2026-11-27 owner reconfirmed this resolves the legacy Starlight/Stalwart Dungeons placeholder; no separate candidate."
     },
     {
       "id": "just-enough-professions",
@@ -3333,19 +3299,6 @@
       "note": "Owner-approved inclusion 2026-11-21 as an explicit narrow exception to #390's 2026-11-20 scope freeze; not yet installed. Official 1.21.1 NeoForge artifact; published requirements NeoForge 21.1.192–<21.2 and Farmer's Delight >=1.2.9,<1.4 match current pack versions, Java 21. Verify exact publisher JAR bytes/hash, metadata, optional interactions, Pam's/FD ingredient tags, worldgen and diet compatibility; integrator owns immutable Packwiz pin/index/hash reconciliation. Not live-tested or enabled. SOURCE-PINNED 2026-11-23: exact SHA1 staged from approved #551 provenance; 4/5 official publisher binaries verified, Huaxia 1.2.0 owner-uploaded JAR SHA1/ZIP/native metadata confirmed but publisher CDN digest unavailable. Native runtime dependency resolution and gameplay still untested. Must run owner-authorized full build before claiming operational."
     },
     {
-      "id": "multiplayer-spawners",
-      "name": "Multiplayer Spawners",
-      "category": "utility",
-      "desired": true,
-      "version": "2.0.2",
-      "release_status": "verified_release",
-      "source": "https://github.com/The-Plum-Team/Multiplayer-Spawners-Mod/releases/tag/v2.0.2",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "packwiz_slug": "multiplayer-spawners",
-      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Smoke 45546469223 failed before mod discovery on the publisher filename. Install the same verified 2.0.2 bytes under multiplayerspawners-2.0.2.jar; no version change. Loader/server/Apothic/player test remains pending."
-    },
-    {
       "id": "lootr-liaison",
       "name": "Lootr Liaison",
       "category": "utility",
@@ -3464,6 +3417,81 @@
       "dependencies_verified": true,
       "packwiz_slug": "sweet-cakes",
       "note": "Owner-approved #770 scope-freeze exception; exact publisher JAR and native dependency audit #771 / run 45734442559 PASS, unchanged existing dependency pins. Source integration only, diet/EMC/recipe/potion conservation and gameplay QA pending."
+    },
+    {
+      "id": "infinity-cave",
+      "name": "Infinity Cave",
+      "category": "adventure",
+      "desired": true,
+      "version": "0.7",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/infinity-cave/version/6XJT5mi4",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim. BLOCKED: exact publisher JAR native Minecraft range [1.21,1.21.1) excludes target 1.21.1 despite provider listing; Actions 46099818625. Investigate earlier compatible build or author fix; no bypass. Worldgen metadata lists separate builtin packs and min_y=-128, height=448 dimension vs height=384 noise; Tectonic coexistence still unproven. Owner-uploaded 0.7 independently CRC and SHA512 matched exact publisher artifact; fallback 0.61 also rejects 1.21.1 (Actions 46099893800). Normalized registry keys reveal differing Tectonic/Infinity Cave Terralith compatibility pack overrides. Investigate metadata correction and dedicated Tectonic compatibility before activation."
+    },
+    {
+      "id": "stronger-mobs-below",
+      "name": "Stronger Mobs Below",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.0.0",
+      "release_status": "verified_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/stronger-mobs-below/files/6874590",
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner approved installation 2026-11-27 #830, with required Enemy Echelons API and GottschCore. Prefer contemporaneous API 1.0.0 and core 2.5.0 to avoid newer version scheme incompatibility; verify actual dependency ranges. Keep vanilla-only scaling initially; no stacked Infinity Cave custom-mob scaling without review. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "stronger-mobs-below"
+    },
+    {
+      "id": "dungeons-and-taverns",
+      "name": "Dungeons and Taverns",
+      "category": "adventure",
+      "desired": true,
+      "version": "4.4.3",
+      "release_status": "candidate_release",
+      "source": "https://modrinth.com/datapack/dungeons-and-taverns/version/bJq6DOLA",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved conditional inclusion 2026-11-27 #830: exact official NeoForge 1.21.1 metadata/dependency and structure-set inventory; D&T selective taverns/underground, limit surface structures and review loot/enchantments; T&T village/outpost shared placement or equivalent density guard; compare existing villages and avoid competing generation. Do not enable before review."
+    },
+    {
+      "id": "towns-and-towers",
+      "name": "Towns and Towers",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.13.11",
+      "release_status": "candidate_release",
+      "source": "https://modrinth.com/datapack/towns-and-towers/version/DZxwgj6V",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Owner approved conditional inclusion 2026-11-27 #830: exact official NeoForge 1.21.1 metadata/dependency and structure-set inventory; D&T selective taverns/underground, limit surface structures and review loot/enchantments; T&T village/outpost shared placement or equivalent density guard; compare existing villages and avoid competing generation. Do not enable before review."
+    },
+    {
+      "id": "enemy-echelons",
+      "name": "Enemy Echelons API",
+      "version": "1.0.0",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/enemy-echelons/files/6874524",
+      "category": "dependency",
+      "desired": true,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "release_status": "verified_release",
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "enemy-echelons"
+    },
+    {
+      "id": "gottschcore",
+      "name": "GottschCore",
+      "version": "2.5.0",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/gottschcore/files/6863231",
+      "category": "dependency",
+      "desired": true,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "release_status": "verified_release",
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "gottschcore"
     }
   ],
   "excluded": [
@@ -3606,6 +3634,26 @@
     {
       "id": "explorers-compass",
       "reason": "Owner declined; the existing native Ars Additions Locate Structure ritual is extended instead."
+    },
+    {
+      "id": "summoning-rituals",
+      "reason": "Owner-approved removal #748, 2026-11-27: redundant framework, no intrinsic rituals; Occultism, Gateways and native ritual systems retained. Historical B7 membership retained as historical evidence."
+    },
+    {
+      "id": "when-dungeons-arise",
+      "reason": "Owner decision 2026-11-27 #830: omit Dungeons Arise series to limit redundant surface structures."
+    },
+    {
+      "id": "when-dungeons-arise-seven-seas",
+      "reason": "Owner decision 2026-11-27 #830: omit Dungeons Arise series to limit redundant surface structures."
+    },
+    {
+      "id": "multiplayer-spawners",
+      "reason": "Owner confirmed removal 2026-11-27 #812: Perpetual Life makes independent spawners unnecessary; Stray texture regression. Preserve vanilla spawners, Apothic Spawners, Lootr personal loot."
+    },
+    {
+      "id": "repurposed-structures",
+      "reason": "Owner excluded 2026-11-27 #830: redundant with existing YUNG's and density goals."
     }
   ],
   "items_blacklist": [

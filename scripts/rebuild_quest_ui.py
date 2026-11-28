@@ -196,11 +196,11 @@ def layout() -> dict[str, dict[str, tuple[int, int]]]:
         "Chapter Overview", "Map Out Your Infrastructure", "Install an Enchanting Table",
         "Bring an Anvil", "Build a Brewing Stand", "Build a Portal Reserve",
         "Keep an Ender Chest", "Recover Ancient Debris Products", "Construct a Lodestone",
-        "Understand Summoning Rituals", "Prepare a Protected Ritual Chamber",
+        "Prepare a Protected Ritual Chamber",
     ]
     adv_coords = [
         (0, 0), (3, 0), (0, 4), (3, 4), (6, 4), (9, 4),
-        (0, 8), (3, 8), (6, 8), (9, 8), (9, 12),
+        (0, 8), (3, 8), (6, 8), (9, 12),
     ]
     for title, xy in zip(advanced, adv_coords, strict=True):
         put("Advanced Progression", title, *xy)

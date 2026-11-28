@@ -106,7 +106,7 @@ hash = "1b25f9b82d8868ca29ca6b11270612165ee079a48b19d129553bce8b3feda385"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
-hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
+hash = "16e8e689ccf78952fdb853c0a1cd2ecd9894f6528a4d6b9a5daed5316debe551"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
@@ -286,7 +286,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "c5e0ae75aa6ec09aeda22856c5bf188717bae016469fcb2748fee313ad7065cc"
+hash = "5ad8f0ec13f8b54bbf7f62b7f31967e97d668417a7fe8be0a3fca7e5217a7845"
 
 [[files]]
 file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
@@ -347,10 +347,6 @@ hash = "81e3c8f6fda1d813608fdf6d0285a790eb6e7227ff047bd05a772224fded3eef"
 [[files]]
 file = "defaultconfigs/ftbessentials-server.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
-
-[[files]]
-file = "defaultconfigs/multiplayerspawners-server.toml"
-hash = "fd8270f5c54f0adcf36d1fec196f9a66c859b1637fc43acc61502da2e0938776"
 
 [[files]]
 file = "kubejs/assets/bountiful/lang/en_us.json"
@@ -2701,6 +2697,11 @@ hash = "1598c4eaca8666404c4d1dbf117c7afff4aaa384cd3d4dc131a8a11b7dfc1616"
 metafile = true
 
 [[files]]
+file = "mods/enemy-echelons.pw.toml"
+hash = "2a084721ec5b3c1453cc1f636b2f1be78d5a33103bba10f87251215d1ff205ca"
+metafile = true
+
+[[files]]
 file = "mods/enigmaticlegacy-plus.pw.toml"
 hash = "8514d86365986f1eac584f4a5a3c38d24e7963685b814210b1a7b03ebc045f4b"
 metafile = true
@@ -2853,6 +2854,11 @@ metafile = true
 [[files]]
 file = "mods/golem-overhaul.pw.toml"
 hash = "1dd77e06dcd06a82bd5e635e0a10ff6fbcefd607fbda7cca542316c4f4c4ab74"
+metafile = true
+
+[[files]]
+file = "mods/gottschcore.pw.toml"
+hash = "755bc9064030aa89f4625bfe864e5fb85e4e8be041eef2ca2e1efa792360cfa1"
 metafile = true
 
 [[files]]
@@ -3088,11 +3094,6 @@ metafile = true
 [[files]]
 file = "mods/mowzies-mobs.pw.toml"
 hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
-metafile = true
-
-[[files]]
-file = "mods/multiplayer-spawners.pw.toml"
-hash = "d0048aaa88bbef220a0c578b4be2fada28fafbb1b1825da33d2fc4ffdb60b90f"
 metafile = true
 
 [[files]]
@@ -3371,8 +3372,8 @@ hash = "322a7defbd55448f14fcf447fd4514156aa6c083fb095a3347aebdf04e10069b"
 metafile = true
 
 [[files]]
-file = "mods/summoningrituals.pw.toml"
-hash = "59b49692f23195e2d53945afef3d8c29ecfd942305c5c3daa1d52275e939d7d6"
+file = "mods/stronger-mobs-below.pw.toml"
+hash = "ace64f0b9928d1d37bc92b5e6deec11b82d85e8997ebf8652f0214f795dfc0a8"
 metafile = true
 
 [[files]]

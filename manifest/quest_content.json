@@ -1682,26 +1682,6 @@
     },
     {
       "chapter": "Advanced Progression",
-      "title": "Understand Summoning Rituals",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "description": "Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested.",
-      "reward": {
-        "xp": 20,
-        "item": "minecraft:candle",
-        "count": 4
-      },
-      "depends": null,
-      "optional": true,
-      "role": "guide",
-      "stage": "",
-      "layout": null,
-      "overview": false,
-      "first_log": false
-    },
-    {
-      "chapter": "Advanced Progression",
       "title": "Prepare a Protected Ritual Chamber",
       "criterion": {
         "type": "checkmark"

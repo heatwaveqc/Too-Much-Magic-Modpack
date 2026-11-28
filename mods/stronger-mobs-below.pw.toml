@@ -1,0 +1,13 @@
+name = "Stronger Mobs Below"
+filename = "strongermobsbelow-neoforge-1.21.1-1.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "f304bd11a737df530878ed292ea46a8e2b23dd6d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6874590
+project-id = 1293640
