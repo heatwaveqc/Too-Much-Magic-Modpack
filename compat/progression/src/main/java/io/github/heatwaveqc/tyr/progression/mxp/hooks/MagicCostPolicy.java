@@ -1,7 +1,7 @@
 package io.github.heatwaveqc.tyr.progression.mxp.hooks;
 
-import io.github.heatwaveqc.tyr.progression.runtime.EffectRuntime;
-import io.github.heatwaveqc.tyr.progression.runtime.NewbieMode;
+import io.github.heatwaveqc.tyr.progression.runtime.MagicSkillRuntime;
+import io.github.heatwaveqc.tyr.progression.foundation.MagicSkillMath;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.fml.ModList;
 
@@ -9,8 +9,7 @@ import net.neoforged.fml.ModList;
 public final class MagicCostPolicy {
     private MagicCostPolicy(){}
     public static int discounted(int original,double fraction){
-        if(original<=0||!Double.isFinite(fraction)||fraction<=0)return original;
-        return Math.max(1,(int)Math.ceil(original*(1-Math.min(.95,fraction))));
+        return (int)MagicSkillMath.reduce(original,fraction,.95);
     }
     public static int quote(ServerPlayer player,String source,int price){
         // Managed ANS quotes alone own shared pricing; never discount again at native debit.
@@ -20,11 +19,6 @@ public final class MagicCostPolicy {
 
     /** Evaluates one originating school; no other school is added for shared mana. */
     public static double rate(ServerPlayer player,String source){
-        if(!MxpPlayerPolicy.eligible(player)||NewbieMode.isNewbie(player))return 0;
-        double rate=0;
-        for(var active:EffectRuntime.active(player))
-            if(active.effect().type().equals("magic_cost_discount")&&active.effect().selector().equals(source))
-                rate+=active.effect().amountPerRank()*active.rank();
-        return Double.isFinite(rate)?Math.max(0,Math.min(.95,rate)):0;
+        return MagicSkillRuntime.contribution(player,"magic_cost_discount",source,.95);
     }
 }
