@@ -1,0 +1,61 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:logs",
+      "required": false
+    },
+    {
+      "id": "#c:crops",
+      "required": false
+    },
+    {
+      "id": "#tmm:emc/ordinary/fruit",
+      "required": false
+    },
+    {
+      "id": "#tmm:emc/ordinary/berries",
+      "required": false
+    },
+    {
+      "id": "#tmm:emc/ordinary/vegetables",
+      "required": false
+    },
+    {
+      "id": "#tmm:emc/ordinary/mushrooms",
+      "required": false
+    },
+    {
+      "id": "minecraft:wheat",
+      "required": false
+    },
+    {
+      "id": "minecraft:carrot",
+      "required": false
+    },
+    {
+      "id": "minecraft:potato",
+      "required": false
+    },
+    {
+      "id": "minecraft:beetroot",
+      "required": false
+    },
+    {
+      "id": "minecraft:apple",
+      "required": false
+    },
+    {
+      "id": "minecraft:sugar_cane",
+      "required": false
+    },
+    {
+      "id": "minecraft:kelp",
+      "required": false
+    },
+    {
+      "id": "minecraft:cactus",
+      "required": false
+    }
+  ]
+}

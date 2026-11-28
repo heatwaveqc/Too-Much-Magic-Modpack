@@ -3,6 +3,9 @@ package io.github.heatwaveqc.tmm.economy.audit;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.SpawnEggItem;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.AtomicMoveNotSupportedException;
@@ -65,6 +68,7 @@ public final class EmcCoverageCommands {
         // Read-only, bounded on-demand census. A malformed provider value
         // should report failure to the operator, never interrupt server ticks.
         EmcCoverageSnapshot.Payload payload;
+        JsonObject shopItems = new JsonObject();
         try {
             SortedSet<String> registered = new TreeSet<>();
             Map<String, Long> mapped = new HashMap<>();
@@ -72,6 +76,17 @@ public final class EmcCoverageCommands {
                 String key = id.toString();
                 registered.add(key);
                 Item item = BuiltInRegistries.ITEM.get(id);
+                // Default-stack facts and actual resolved tags from this exact invocation.
+                var stack = item.getDefaultInstance();
+                JsonObject facts = new JsonObject();
+                JsonArray tags = new JsonArray();
+                item.builtInRegistryHolder().tags().map(tag -> tag.location().toString())
+                    .sorted().forEach(tags::add);
+                facts.add("tags", tags);
+                facts.addProperty("max_stack", stack.getMaxStackSize());
+                facts.addProperty("food", stack.has(DataComponents.FOOD));
+                facts.addProperty("spawn_egg", item instanceof SpawnEggItem);
+                shopItems.add(key, facts);
                 ItemInfo info = ItemInfo.fromItem(item);
                 if (EMCMappingHandler.hasEmcValue(info)) {
                     mapped.put(key, EMCMappingHandler.getStoredEmcValue(info));
@@ -93,6 +108,13 @@ public final class EmcCoverageCommands {
             write(pending.resolve("items.json"), payload.itemsJson());
             write(pending.resolve("emc.json"), payload.emcJson());
             write(pending.resolve("status.json"), payload.statusJson());
+            JsonObject shopFacts = new JsonObject();
+            shopFacts.addProperty("schema_version", 1);
+            shopFacts.addProperty("source_sha_label", sha.toLowerCase(java.util.Locale.ROOT));
+            shopFacts.addProperty("projecte_map_generation", EMCMappingHandler.getLoadIndex());
+            shopFacts.add("items", shopItems);
+            String factsJson = new GsonBuilder().setPrettyPrinting().create().toJson(shopFacts) + "\n";
+            write(pending.resolve("shop-items.json"), factsJson);
 
             JsonObject meta = new JsonObject();
             meta.addProperty("schema_version", 1);
@@ -103,6 +125,9 @@ public final class EmcCoverageCommands {
             meta.addProperty("captured_utc", Instant.now().toString());
             meta.addProperty("projecte_map_generation", EMCMappingHandler.getLoadIndex());
             meta.addProperty("projecte_mapped_entries", EMCMappingHandler.getEmcMapSize());
+            meta.addProperty("shop_items_sha256", java.util.HexFormat.of().formatHex(
+                java.security.MessageDigest.getInstance("SHA-256")
+                    .digest(factsJson.getBytes(StandardCharsets.UTF_8))));
             meta.addProperty("registry_items", payload.total());
             meta.addProperty("mapped_positive", payload.positive());
             meta.addProperty("mapped_zero", payload.mappedZero());
@@ -125,7 +150,7 @@ public final class EmcCoverageCommands {
                     + payload.unmapped() + " unmapped. Run the offline #47 audit on items.json + emc.json."),
                 false);
             return 1;
-        } catch (IOException | RuntimeException ex) {
+        } catch (IOException | java.security.NoSuchAlgorithmException | RuntimeException ex) {
             source.sendFailure(Component.literal(
                 "EMC audit export failed safely; no EMC/items changed: " + ex.getMessage()));
             // A failed snapshot remains under incomplete-* for inspection;

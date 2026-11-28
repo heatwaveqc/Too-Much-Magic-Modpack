@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tmm:coin",
+      "required": false
+    },
+    {
+      "id": "bountiful:decree",
+      "required": false
+    },
+    {
+      "id": "bountiful:bounty",
+      "required": false
+    },
+    {
+      "id": "minecraft:air",
+      "required": false
+    },
+    {
+      "id": "minecraft:bedrock",
+      "required": false
+    },
+    {
+      "id": "minecraft:netherite_ingot",
+      "required": false
+    },
+    {
+      "id": "minecraft:netherite_scrap",
+      "required": false
+    },
+    {
+      "id": "minecraft:ancient_debris",
+      "required": false
+    }
+  ]
+}
