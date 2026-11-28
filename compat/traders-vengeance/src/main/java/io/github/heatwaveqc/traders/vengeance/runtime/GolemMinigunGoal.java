@@ -28,6 +28,7 @@ public final class GolemMinigunGoal extends Goal {
     private final MinigunSpin spin = new MinigunSpin();
     private boolean running;
     private boolean firing;
+    private boolean deployed;
     private int cooldown;
     private int rocketCooldown;
     private static final int ROCKET_INTERVAL = 120; // six seconds; minigun keeps operating
@@ -37,17 +38,21 @@ public final class GolemMinigunGoal extends Goal {
         setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
     }
 
-    private boolean allowed(LivingEntity target) {
+    private boolean validTarget(LivingEntity target) {
         if (!GolemMinigunEvents.armed(golem) || !(golem.level() instanceof ServerLevel world)
                 || target == null || !target.isAlive() || target.level() != world
-                || target == golem || golem.isAlliedTo(target) || !golem.canAttack(target)
-                || golem.distanceToSqr(target) > MinigunBalance.RANGE * MinigunBalance.RANGE
-                || !golem.getSensing().hasLineOfSight(target)) return false;
+                || target == golem || golem.isAlliedTo(target) || !golem.canAttack(target)) return false;
         if (target instanceof Player) {
             return target instanceof ServerPlayer player && !player.isCreative()
                 && !player.isSpectator() && TraderBlacklist.get(world).contains(player.getUUID());
         }
         return true;
+    }
+
+    private boolean allowed(LivingEntity target) {
+        return validTarget(target)
+            && golem.distanceToSqr(target) <= MinigunBalance.RANGE * MinigunBalance.RANGE
+            && golem.getSensing().hasLineOfSight(target);
     }
 
     @Override public boolean canUse() { return allowed(golem.getTarget()); }
@@ -91,6 +96,7 @@ public final class GolemMinigunGoal extends Goal {
         }
     }
     void updateSpin() {
+        deployed = validTarget(golem.getTarget());
         boolean trigger = running && allowed(golem.getTarget());
         if (trigger && spin.speed() == 0F) {
             // CC0 replacement: natural 1.19 s spin-up cue; combat spin timing is unchanged.
@@ -102,7 +108,10 @@ public final class GolemMinigunGoal extends Goal {
         if (cooldown > 0) cooldown--;
         if (rocketCooldown > 0) rocketCooldown--;
     }
+    boolean deployed() { return deployed; }
+    boolean currentDeployment() { return validTarget(golem.getTarget()); }
     boolean firing() { return firing; }
+    boolean running() { return running; }
     float speed() { return spin.speed(); }
     float angle() { return spin.angle(); }
 }

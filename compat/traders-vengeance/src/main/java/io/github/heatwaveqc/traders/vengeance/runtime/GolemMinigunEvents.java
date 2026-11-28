@@ -3,6 +3,8 @@ package io.github.heatwaveqc.traders.vengeance.runtime;
 import io.github.heatwaveqc.traders.vengeance.mixin.MobGoalsAccessor;
 import io.github.heatwaveqc.traders.vengeance.network.GolemVisualPayload;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -46,17 +48,53 @@ public final class GolemMinigunEvents {
             goals.addGoal(0, new GolemMinigunGoal(golem));
         }
     }
+    private static GolemMinigunGoal installedGoal(IronGolem golem) {
+        for (var wrapped : ((MobGoalsAccessor) golem).tradersVengeance$goalSelector().getAvailableGoals()) {
+            if (wrapped.getGoal() instanceof GolemMinigunGoal goal) return goal;
+        }
+        return null;
+    }
+
+    private static GolemVisualPayload snapshot(IronGolem golem, GolemMinigunGoal goal) {
+        boolean deployed = goal.currentDeployment();
+        return new GolemVisualPayload(golem.getUUID(), goal.angle(), goal.speed(),
+            deployed && goal.firing(), deployed);
+    }
+
+    /** Newly tracking clients get the state now, not only on the next heartbeat. */
+    public static void onStartTracking(PlayerEvent.StartTracking event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)
+                || !(event.getTarget() instanceof IronGolem golem) || !armed(golem)) return;
+        var goal = installedGoal(golem);
+        if (goal != null) PacketDistributor.sendToPlayer(player, snapshot(golem, goal));
+    }
+
+    /** Read-only operator diagnosis; never marks, equips or retargets a golem. */
+    public static String describe(IronGolem golem) {
+        var goal = installedGoal(golem);
+        var target = golem.getTarget();
+        return "golem=" + golem.getUUID() + " marker=" + golem.getPersistentData().getBoolean(MARKER)
+            + " playerCreated=" + golem.isPlayerCreated() + " armed=" + armed(golem)
+            + " goalInstalled=" + (goal != null) + " target=" + (target == null ? "none" : target.getUUID())
+            + " running=" + (goal != null && goal.running())
+            + " deployed=" + (goal != null && goal.currentDeployment())
+            + " canEngage=" + (goal != null && goal.canUse())
+            + " firing=" + (goal != null && goal.firing())
+            + " followRange=" + golem.getAttributeValue(Attributes.FOLLOW_RANGE);
+    }
+
     public static void onTick(EntityTickEvent.Post event) {
         if (!(event.getEntity() instanceof IronGolem golem)
                 || !(golem.level() instanceof ServerLevel) || !armed(golem)) return;
         for (var wrapped : ((MobGoalsAccessor) golem).tradersVengeance$goalSelector().getAvailableGoals()) {
             if (wrapped.getGoal() instanceof GolemMinigunGoal goal) {
                 boolean wasFiring = goal.firing();
+                boolean wasDeployed = goal.deployed();
                 goal.updateSpin();
                 // Periodic authoritative snapshot also covers players who just began tracking.
-                if (wasFiring != goal.firing() || golem.tickCount % 10 == 0) {
+                if (wasFiring != goal.firing() || wasDeployed != goal.deployed() || golem.tickCount % 10 == 0) {
                     PacketDistributor.sendToPlayersTrackingEntity(golem,
-                        new GolemVisualPayload(golem.getUUID(), goal.angle(), goal.speed(), goal.firing()));
+                        snapshot(golem, goal));
                 }
                 return;
             }

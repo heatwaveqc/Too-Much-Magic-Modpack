@@ -8,9 +8,19 @@ import java.util.UUID;
 public final class GolemVisualState {
     private static final Map<UUID, Sample> SAMPLES = new HashMap<>();
     private GolemVisualState() {}
-    public record Sample(float angle, float speed, boolean firing, long received) {
+    public record Sample(float angle, float speed, boolean firing, boolean deployed, long received) {
+        public boolean freshDeployment() {
+            return freshDeploymentAt(System.nanoTime());
+        }
+        boolean freshDeploymentAt(long now) {
+            long age = now - received;
+            return deployed && age >= 0 && age < 1_500_000_000L;
+        }
         public boolean freshFiring() {
-            return firing && System.nanoTime() - received < 1_500_000_000L;
+            return freshFiringAt(System.nanoTime());
+        }
+        boolean freshFiringAt(long now) {
+            return firing && freshDeploymentAt(now);
         }
         public float predictedAngle() {
             // At most ten ticks of extrapolation between heartbeat packets.
@@ -22,7 +32,7 @@ public final class GolemVisualState {
         if (!Float.isFinite(payload.angle()) || !Float.isFinite(payload.speed())) return;
         long now = System.nanoTime();
         SAMPLES.entrySet().removeIf(e -> now - e.getValue().received() > 60_000_000_000L);
-        SAMPLES.put(payload.id(), new Sample(payload.angle(), Math.max(0F, Math.min(0.4F, payload.speed())), payload.firing(), now));
+        SAMPLES.put(payload.id(), new Sample(payload.angle(), Math.max(0F, Math.min(0.4F, payload.speed())), payload.firing(), payload.deployed(), now));
     }
     public static Sample get(UUID id) { return SAMPLES.get(id); }
     public static void remove(UUID id) { SAMPLES.remove(id); }

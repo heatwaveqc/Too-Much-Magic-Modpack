@@ -25,10 +25,11 @@ public final class GolemMinigunLayer extends RenderLayer<IronGolem, IronGolemMod
             IronGolem golem, float limbSwing, float limbSwingAmount, float partialTick,
             float ageInTicks, float netHeadYaw, float headPitch) {
         var state = GolemVisualState.get(golem.getUUID());
-        if (golem.isPlayerCreated() || golem.isInvisible() || state == null) return;
+        if (golem.isPlayerCreated() || golem.isInvisible() || state == null || !state.freshDeployment()) return;
         poses.pushPose();
-        // Provisional shoulder mount: validate scale/orientation in live client.
-        poses.translate(-0.55D, 0.45D, -0.35D);
+        // Donor barrel pivot is y=21/16, plus its internal aiming transform.
+        // Shift the model origin up to the shoulder rather than below the body.
+        poses.translate(-0.72D, -1.95D, -0.35D);
         gun.renderMinigun(poses, buffers, light, LivingEntityRenderer.getOverlayCoords(golem, 0F),
             state.predictedAngle(), netHeadYaw, headPitch, true);
         poses.popPose();

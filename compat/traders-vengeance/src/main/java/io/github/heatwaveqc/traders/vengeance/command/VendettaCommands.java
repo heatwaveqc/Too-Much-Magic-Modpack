@@ -4,6 +4,9 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import io.github.heatwaveqc.traders.vengeance.state.TraderBlacklist;
 import java.util.UUID;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.world.entity.animal.IronGolem;
+import io.github.heatwaveqc.traders.vengeance.runtime.GolemMinigunEvents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -15,6 +18,16 @@ public final class VendettaCommands {
     public static void register(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("tradersvengence")
             .requires(source -> source.hasPermission(2))
+            .then(Commands.literal("inspect_golem")
+                .then(Commands.argument("golem", EntityArgument.entity())
+                    .executes(ctx -> {
+                        if (!(EntityArgument.getEntity(ctx, "golem") instanceof IronGolem golem)) {
+                            ctx.getSource().sendFailure(Component.literal("Expected an iron golem"));
+                            return 0;
+                        }
+                        ctx.getSource().sendSuccess(() -> Component.literal(GolemMinigunEvents.describe(golem)), false);
+                        return 1;
+                    })))
             .then(Commands.literal("status")
                 .then(Commands.argument("uuid", StringArgumentType.word())
                     .executes(ctx -> apply(ctx.getSource().getLevel(),
