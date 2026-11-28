@@ -33,11 +33,14 @@ public final class NpcPistolLayer<T extends AbstractVillager> extends RenderLaye
         poses.pushPose();
         try {
             // Provisional folded-arm attachment; tune adult/baby offsets in a live client.
-            poses.translate(0.26D, defender.isBaby() ? 0.98D : 0.48D, -0.40D);
+            poses.translate(0.32D, defender.isBaby() ? 0.98D : 0.38D, -0.65D);
             if (defender.isBaby()) poses.scale(0.65F, 0.65F, 0.65F);
             poses.mulPose(Axis.YP.rotationDegrees(netHeadYaw));
             poses.mulPose(Axis.XP.rotationDegrees(headPitch - 12F * defender.getAttackAnim(partialTick)));
-            mc.getItemRenderer().render(RENDER_TOKEN, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,
+            // The donor third-person transform shrinks the model to 0.1658; use
+            // explicit NPC model-space scaling and avoid applying it a second time.
+            poses.scale(0.45F, 0.45F, 0.45F);
+            mc.getItemRenderer().render(RENDER_TOKEN, ItemDisplayContext.NONE,
                 false, poses, buffers, light, OverlayTexture.NO_OVERLAY, model);
         } finally {
             poses.popPose();
