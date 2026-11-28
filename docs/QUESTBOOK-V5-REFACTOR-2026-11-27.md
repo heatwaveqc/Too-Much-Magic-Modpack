@@ -23,3 +23,52 @@ Dimensions proposal: A World Worth Exploring, Dungeons & Ruins, Alex's Caves, Th
 - Design record this PR; no runtime changes. #820 finite feature tracker. Compare active manifest (45 chapter files at earlier audit), latest Packwiz roster and Atlas, map every player-facing mod, existing GUIDs/art/locales; retain approved title exceptions. Integration writer owns common files; preserve active #345/#755 and successors, #742. Progression engine owner handles executable graduation/spawn/stage hooks. Existing QA and build approval gates apply.
 - Design blockers: final Activities names and allocation, exact Atlas classifications not yet reconciled, full dimensions/challenges list, spawn conditions, reward counts/amounts and credit, stage semantics. Owner decides. Next action: author a small, source-backed pilot quest map for a candidate activity and the relevant Tips & Tricks crosslinks; judge standalone chapter merit by coherent distinct tasks, native teaching value and absence of duplicated mod progression, not a fixed quest count. Repeat and consolidate as needed; audit Minor roster coverage alongside authoring rather than freezing chapter map before drafting. Runtime SNBT/locale/generator changes and shared ownership remain separate from design drafts.
 - Acceptance: static migration verifies IDs, references, localization, chapter placement and title caps, no description cap, all active relevant mods accounted for. B/C pending exact authorized build: personal graduation (both routes), protections and rewards, fresh/progressed save migration, mixed multiplayer spawning, companion access, bounty credit and coin accounting. No build or runtime tests run. 
+
+
+## Content-first pilot: Storage & Logistics (Nov 27, proposal for owner review)
+
+**Recommendation: retain standalone Activities chapter**, not because Arcane Archives is Major (11/55, Minor), but because it has a complete coherent progression of its own. Evidence: [exact-pin 1.0.2 Atlas](mod-capabilities/mods/arcane-archives-reborn.md), AA-01–27, 34 recipes, 40 guide entries. Preserve previously approved Arcane Archives → Occultism → ProjectE teaching order, not a mechanical gate. No AE2-style remote withdrawal claim for AA. Tips & Tricks remains the Atlas directory; other dedicated mod chapters own their own actual tasks/rewards.
+
+### Candidate quest map (24 authoring keys, not FTB IDs)
+| Key | Title | Prerequisite | Teach and demonstrate | Candidate detection, not implemented |
+|---|---|---|---|---|
+| SL01 | Tome of Arcana | none | Book + gold nugget shapeless; open Start/First Steps | book item proxy |
+| SL02 | Growing Quartz | SL01 | Radiant Resonator; clear space above; owner online, loaded chunk; default 6000t cluster; normal harvest raw quartz, Silk Touch cluster | resonator/raw quartz acquisition; not growth proof |
+| SL03 | Radiant Storage | SL02 | eight planks+raw quartz or tagged chest+quartz; sneak-use quartz upgrades existing chest preserving contents; 54 slots, default 4x stack limit | chest item proxy; conversion separate |
+| SL04 | Cutting Gems | SL02 | Gem Cutter's Table, own 18 slots; 1 raw→2 dust, 2 raw→1 shaped quartz; lit recipe output | table acquisition; recipe events if available |
+| SL05 | A Persistent Workshop | SL04 | Radiant Crafting Table, saved nine-slot grid and three bookmarks | table acquisition proxy |
+| SL06 | Bulk Storage | SL04 | Inlay→Material Interface→Troves (recipe makes four); one exact item/component identity; deposit, extract | Trove possession proxy |
+| SL07 | Liquid Storage | SL04 | Inlay→Containment Field→Tanks (recipe makes four); fill 16 buckets, compatible pipes | Tank possession proxy |
+| SL08 | Bigger on the Inside | SL06 or SL07 | sequential Brace→Interface/Field→Shaped Quartz Block; 1/3/6/10x; reverse removal only when contents fit; Trove 32768→98304→196608→327680, Tank 16→48→96→160 buckets | capacity-state detection candidate; otherwise honest upgrade acquisition proxy |
+| SL09 | Save That Space | SL06 | Radiant Key locks empty Trove type; useful for routing | Key possession proxy |
+| SL10 | Where Is It? | SL03, SL04 | Manifest search loaded owned/shared inventories across dimensions; name, @mod, #tag; locate/track, no remote withdrawal | Manifest possession proxy |
+| SL11 | Library of Inventory | SL10 | two-block Manifest Lectern, same UI from either half | lectern possession proxy |
+| SL12 | Keeping Track | SL10 | sneak-right-click Monitoring Crystal on external inventory; search its contents, double chests counted once | crystal possession proxy |
+| SL13 | Put It Away | SL03, SL04 | fuel-free Brazier of Hoarding; drop/right-click/hopper input; loaded same-dimension destinations; default 150 horizontal blocks | Brazier item proxy, not transfer proof |
+| SL14 | Everything in Its Place | SL13 | matching stock, assigned Troves, compatible chests; unassigned empty Troves skipped, remainders retained; set range 0–300 | configuration/event candidate, otherwise checkmark |
+| SL15 | Inspect Your Network | SL04 | Revelation Scepter shows device state, growth or capacity | item proxy |
+| SL16 | Fine Tuning | SL04 | Manipulation Scepter: upgrades, existing-only chest priority, opposite-hand label, Brazier settings | item proxy |
+| SL17 | Moving Day | SL04 | Translocation Scepter: select owned machine sneak-use, relocate ≤64 blocks within loaded same dimension; relink moved Tank Amphora | item proxy |
+| SL18 | Liquid Logistics | SL07, SL04 | link Amphora to loaded Tank; collect/place source, mode switch sneak-left-click; no independent reservoir or infinite fluid | item proxy |
+| SL19 | Waste Disposal | SL04 | optional Devouring Charm six discard slots, overflow filter, irreversible destruction; no required destruction | item proxy or read/check |
+| SL20 | Automated Warehousing | SL06 or SL07 or SL13 | connect vanilla hoppers/compatible item/fluid handlers and comparator fullness | operation event candidate; manual check fallback |
+| SL21 | Shared Archives | SL10 | invite using signed letter, hold 3.2s; preserve ownership; group membership grants access | optional read/check, no required second player |
+| SL22 | Changing Membership | SL21 | resign or named expulsion writ; leader dissolves group when leaving, owned devices persist | optional read/check, no required expulsion |
+| SL23 | Radiant Decoration | SL02 | slivers, lanterns and storage blocks; guide lighting | optional item proxy |
+| SL24 | Working Warehouse | SL06, SL07, SL10, SL13 | open-ended functional endpoint: store bulk items/fluid, locate stock, route incoming supplies; no forced social/destruction/other magic | checkmark for self-reported setup unless real detector available |
+
+All optional side branches, no fake hard gates; dependencies are instructional, OR syntax needs FTB/generator verification. SL24 proposal not a native advancement. Positive XP and meaningful fixed rewards required by existing standards; exact amounts/items deliberately unassigned pending owner reward discussion and global collision check. Avoid rewarding another task item or bypassing gates. Use specific Tome category/page and JEI Gem Cutting reference per AA source map. Native acquisition, claims/network permissions, portable Trove/Tank nesting (#16/#627), oversized stacks, fluids and EMC intersections remain separate engineering checks; do not promise compatibility. No runtime task implementation, quest IDs, art, source edits outside this ledger or build.
+
+### Other storage/logistics alternatives (crosslinks, not duplicate quest paths)
+- Occultism: satchels, dimensional storage controller/stabilizers/remote, worker spirits, Stable Wormhole; base 128 types/256000 items, loaded controller.
+- Ars Nouveau: Storage Lectern/Repository, Starbuncle + Dominion Wand, Warp Index, Source relays, Handy Haversack remote deposit.
+- Botania: Corporea inventory requests/automation, Hopperhock, Daffomill, Spectranthemum; Mana stores distinct.
+- Hexerei: jars, coffer/Entangled Coffer, crow collection and owl parcel delivery.
+- Theurgy: Mercurial Wire, Connection Node, item/fluid inserters/extractors and filters.
+- Neo Vitae: Routing Conduit/nodes, Spirit Cache, Sigil of Bound Treasures, The Gathering; EV/Spiritus storage distinct.
+- Embers: item/fluid pipes, filters, vacuum; Ember packet network separate.
+- Aura Cascade: Storage Books, shelves, coordinator and Fetcher.
+- Psi: Pull/Send; Ideaspace native capability but effective TMM availability/policy not verified, do not endorse warehouse bypass.
+- Pastel: six-role network and Ender devices; Goety: Transfer Gem, servant chests, Haunted Jug; Malum: pouches and typed Spirit Jars; Reliquary: Void Tear/pedestals; EvilCraft: fluid tanks and Entangled Chalice (specialized); ProjectE: bags and EMC condensation, preserve actual TMM unlocks.
+- Vanilla/inventory QoL (bundles, shulkers, sorting, crafting controls) and universal bag safety: Tips & Tricks, with short link to this chapter. Reference-backed ProjectE bags and Occultism Ender Satchel are not identical to nested serialized inventories; no assurance of unverified integration.
+- Atlas 11-domain logistics scores verified from evaluation docs for Arcane Archives/Embers/Aura Cascade/Botania/Hexerei/Psi/ProjectE (5 each; Psi conditional), EvilCraft/Reliquary etc not treated as qualifying merely from presence of one capability. Tips directory must reconcile actual per-axis rating/threshold and remaining evaluations; this comparison list is not a certified >=3 directory.
