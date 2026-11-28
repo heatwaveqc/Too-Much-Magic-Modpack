@@ -1,4 +1,5 @@
 {
+  "tmm_economy.shop.open": "Adventurers' Shop",
   "tmm_economy.mapper.apotheosis_gems": "TMM Apotheosis Gem Mapper",
   "tmm_economy.mapper.apotheosis_gems.tooltip": "Maps registered gem identity and purity using live cutting recipes and rarity.",
   "tmm_economy.processor.gem_guard": "TMM Gem Component Guard",

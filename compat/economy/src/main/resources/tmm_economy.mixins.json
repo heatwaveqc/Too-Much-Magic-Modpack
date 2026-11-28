@@ -54,7 +54,8 @@
   },
   "client": [
     "JadeOpDisplayMixin",
-    "TitaniumOpDisplayMixin"
+    "TitaniumOpDisplayMixin",
+    "QuestShopToolbarMixin"
   ],
   "plugin": "io.github.heatwaveqc.tmm.economy.mixin.EconomyEnchantingMixinPlugin"
 }
