@@ -72,3 +72,29 @@ All optional side branches, no fake hard gates; dependencies are instructional, 
 - Pastel: six-role network and Ender devices; Goety: Transfer Gem, servant chests, Haunted Jug; Malum: pouches and typed Spirit Jars; Reliquary: Void Tear/pedestals; EvilCraft: fluid tanks and Entangled Chalice (specialized); ProjectE: bags and EMC condensation, preserve actual TMM unlocks.
 - Vanilla/inventory QoL (bundles, shulkers, sorting, crafting controls) and universal bag safety: Tips & Tricks, with short link to this chapter. Reference-backed ProjectE bags and Occultism Ender Satchel are not identical to nested serialized inventories; no assurance of unverified integration.
 - Atlas 11-domain logistics scores verified from evaluation docs for Arcane Archives/Embers/Aura Cascade/Botania/Hexerei/Psi/ProjectE (5 each; Psi conditional), EvilCraft/Reliquary etc not treated as qualifying merely from presence of one capability. Tips directory must reconcile actual per-axis rating/threshold and remaining evaluations; this comparison list is not a certified >=3 directory.
+
+
+## Content-first pilot: Enchanting & Alchemy (Nov 27, proposal)
+
+Storage & Logistics accepted by owner in discussion; next candidate Enchanting & Alchemy. Recommendation: initially place two linked branches in Tips & Tricks rather than a new chapter; most native teaching belongs to existing dedicated mod chapters. Pack-wide integrations merit their own explanatory nodes, not duplicate native milestones. If a meaningful independent questline develops, revisit. This recommendation is not owner-approved yet.
+
+| Key | Candidate title | Instructional scope / primary destination |
+|---|---|---|
+| EA01 | Beyond Level Thirty | Apotheosis Eterna, Quanta, Arcana, tier caps; crosslink native enchanting branch |
+| EA02 | Choose Your Enchantments | TMM Arcane Discrimination, Improvable Skills ability, personal random selection filtering for Apothic and Eidolon; not deterministic infusion |
+| EA03 | Enchant Anywhere | TMM portable enchanting, 32 virtual shelf positions, context-free stat providers and candles; no stateful virtual Filtering Shelf, no bypass of native tier/cost rules |
+| EA04 | Anvil of Iesnium | Occultism advanced anvil and approved optional portable Iesnium upgrade, irreversible installation; distinguish source status and actual installed readiness |
+| EA05 | Recycling Enchantments | Apotheosis library/extraction, Corail books, other native alternatives; crosslink |
+| EA06 | Alternative Enchanters | Eidolon Soul Enchanter, Pastel, and other researched methods; crosslink native walkthroughs |
+| EA07 | Brewing Alternatives | Vanilla stand, Iron's Cauldron, Ars Wixie, Reliquary, Goety, Hexerei, Pastel, Botania and other native brewing; no universal interchangeability |
+| EA08 | Better Potions | Potency/duration/combination; Ars Melder, Pastel reagents, Reliquary mixtures; link distinct native procedures |
+| EA09 | Portable Potions | Neo Vitae eight-dose flask, Ars multi-dose flask/jars, Botania brews; keep carrier semantics separate |
+| EA10 | Potion Charms | #337 approved exact single registered noninstant effect, matching ordinary bottles, native six blaze powder and three bottles, exact contents preserved; no effect-specific blacklist; reject zero/multi/instant/foreign carrier; source status distinct from gameplay |
+| EA11 | Area Effects | Hexerei potion candles, Ars diffuser, native alternative area delivery |
+| EA12 | Bottling Effects | EvilCraft effect extraction and native spouse amplification; safe refusal of incompatible multi-dose carriers, no hypothetical per-dose adapter |
+| EA13 | Better Spawners | Apotheosis rune modifiers, native tier caps, spawner restrictions, not legacy sugar/nether star modifier recipes; actual tasks in Apotheosis |
+| EA14 | Beyond Spawners | EvilCraft spirit furnace/reanimator, Goety servants/nests, Neo Vitae collection and other independently researched mob-farming options; crosslink, no blanket kill-credit change |
+
+EA01/05/06/07/08/09/11/13/14 are directory or comparative guidance, not duplicate required tasks/rewards. EA02–04/10/12 merit pack-specific explanations, potentially unique instructional tasks only if verified and assigned a single authoritative home (Improvable Skills/Apotheosis/Occultism/EvilCraft or Tips & Tricks). No actual FTB IDs or rewards chosen; preserve existing reward standards, exact task detection and no auto-completion by unrelated rewards. Hunter mutagen eligibility and normal potion charm eligibility are distinct. Theurgy material transmutation belongs in its native chapter and Mining & Resource Processing crosslink, not a duplicate alchemy quest chain.
+
+Evidence on integration base: [Apotheosis exact-pin Atlas](mod-capabilities/mods/apotheosis.md), [Potion Interoperability Matrix](compat/POTION-INTEROPERABILITY-MATRIX-2026-11-20.md), [Alchemy bridge QA](qa/ALCHEMY-337-SAFE-BRIDGES-2026-11-23.md), [Economy enchanting design](../compat/economy/design/ENCHANTING-328.md), live issues #328/#337, #682/#695/#694. Native Atlas dossiers for Eidolon, EvilCraft, Reliquary, Neo Vitae, Pastel, Hexerei, Goety, Theurgy, Corail. Current integration and installed behavior not inferred from historical source checkpoints; check exact build before definitive custom-feature instructions. #337 optional Neo Vitae single-dose adapters indefinitely deferred; safe refusal accepted. Native spawners use runes with Apotheosis present. Final Atlas qualifying-mod directory still requires rating reconciliation, no claim of exhaustive coverage.
