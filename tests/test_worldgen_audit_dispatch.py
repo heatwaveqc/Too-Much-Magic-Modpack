@@ -73,6 +73,17 @@ class DispatchTests(unittest.TestCase):
             gate.assert_called_once()
         self.assertEqual(calls[0][2]["ref"],"refs/tags/worldgen-density-request/"+NONCE)
         self.assertEqual(calls[1][2]["inputs"],{"authorized_build":"true","expected_launcher_sha":SHA,"request_nonce":NONCE})
+    def test_cave_mode_and_receipt(self):
+        e=event()
+        e["comment"]["body"]=f"/tmm worldgen cave {bridge.TOOLS} {NONCE}"
+        calls=[]
+        def api(path,method="GET",body=None):
+            calls.append((path,method,body))
+            return {}
+        with patch.object(bridge,"live_comment"), patch.object(bridge,"main_head",return_value=SHA), patch.object(bridge,"check_ci"), patch.object(bridge,"check_active"):
+            self.assertEqual(bridge.execute(api,e,dt.datetime.now(dt.timezone.utc),SHA),NONCE)
+        self.assertEqual(calls[0][2]["ref"],"refs/tags/worldgen-cave-request/"+NONCE)
+        self.assertEqual(calls[1][2]["inputs"],{"authorized_build":"true","expected_launcher_sha":SHA,"request_nonce":NONCE})
     def test_receipt_mode_resolution(self):
         workflow=(Path(__file__).resolve().parents[1]/".github/workflows/worldgen-audit-pilot.yml").read_text()
         line=next(s.strip() for s in workflow.splitlines() if s.strip().startswith("MODE=$(python3 -c "))
@@ -80,6 +91,7 @@ class DispatchTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             p=Path(temp)
             env=dict(os.environ,RUNNER_TEMP=temp,NONCE=NONCE,APPROVED_SHA=SHA)
+            (p/"worldgen-cave-receipt.json").write_text("[]")
             def ref(prefix, sha=SHA):
                 return {"ref":f"refs/tags/{prefix}/{NONCE}","object":{"sha":sha,"type":"commit"}}
             for tmm,vanilla,expected in [
@@ -102,6 +114,10 @@ class DispatchTests(unittest.TestCase):
             (p/"worldgen-density-receipt.json").write_text(json.dumps([ref("worldgen-density-request")]))
             result=subprocess.run(cmd,env=env,capture_output=True,text=True)
             self.assertEqual(result.stdout.strip(),"density")
+            (p/"worldgen-density-receipt.json").write_text("[]")
+            (p/"worldgen-cave-receipt.json").write_text(json.dumps([ref("worldgen-cave-request")]))
+            result=subprocess.run(cmd,env=env,capture_output=True,text=True)
+            self.assertEqual(result.stdout.strip(),"cave")
             (p/"worldgen-tmm-receipt.json").write_text(json.dumps([ref("worldgen-request")]))
             self.assertNotEqual(subprocess.run(cmd,env=env,capture_output=True).returncode,0)
     def test_diagnostic_redaction(self):
