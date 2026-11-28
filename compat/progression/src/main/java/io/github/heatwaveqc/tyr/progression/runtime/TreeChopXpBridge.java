@@ -132,7 +132,7 @@ public final class TreeChopXpBridge {
                         pos.asLong(), pending.tick())) continue;
                 ProgressionApi.record(player, Selectors.blockBreak(original.state()));
                 ProgressionApi.record(player, Selectors.barehandBlockBreak(original.state()));
-                TrainingRewards.mining(player,original.hardness());
+                TrainingRewards.mining(player,original.hardness(),true);
                 credited++;
             }
             if (credited > 0) ProgressionMod.LOGGER.debug(

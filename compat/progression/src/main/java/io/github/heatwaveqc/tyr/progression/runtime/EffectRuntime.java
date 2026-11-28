@@ -75,9 +75,7 @@ public final class EffectRuntime {
         if ("true".equals(effect.params().get("requires_sprinting")) && !p.isSprinting()) return false;
         if ("true".equals(effect.params().get("requires_not_sneaking")) && p.isCrouching()) return false;
         if (effect.emptyHand() && !p.getMainHandItem().isEmpty()) return false;
-        if (effect.unarmored()) {
-            for (ItemStack worn : p.getArmorSlots()) if (!worn.isEmpty()) return false;
-        }
+        if (effect.unarmored() && !ClothingApi.isUnarmored(p)) return false;
         return true;
     }
     private static ResourceLocation modifierId(Active active) {

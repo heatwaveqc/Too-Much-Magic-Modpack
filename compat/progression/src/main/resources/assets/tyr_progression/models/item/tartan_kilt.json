@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tyr_progression:item/tartan_kilt_0",
+    "layer1": "tyr_progression:item/tartan_kilt_1",
+    "layer2": "tyr_progression:item/tartan_kilt_2",
+    "layer3": "tyr_progression:item/tartan_kilt_3",
+    "layer4": "tyr_progression:item/tartan_kilt_4"
+  }
+}

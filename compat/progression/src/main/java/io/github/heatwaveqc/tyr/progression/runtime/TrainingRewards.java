@@ -8,6 +8,7 @@ import io.github.heatwaveqc.tyr.progression.data.TrainingXpSpec;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import java.math.BigDecimal;
+import io.github.heatwaveqc.tyr.progression.runtime.clothing.WeightedClothing;
 import java.util.UUID;
 
 /**
@@ -41,26 +42,34 @@ public final class TrainingRewards {
                 rates.system(),"tyr_progression:training_"+category,receipt,nominal,fixed);
     }
 
-    private static void batch(ServerPlayer player,String category,
+    private static void batch(ServerPlayer player,String category,boolean verifiedPhysical,
                               java.util.function.Function<TrainingXpSpec,BigDecimal> nominal) {
+        var weight=WeightedClothing.equipped(player);
         var candidates=new java.util.ArrayList<io.github.heatwaveqc.tyr.progression.data.XpSourceRouting.Candidate>();
         for(var row:PathRegistry.trainingXp().entrySet()){
             if(!eligible(player,row.getKey()))continue;
             var rates=row.getValue();
-            candidates.add(candidate(rates,category,nominal.apply(rates),false,null));
+            candidates.add(candidate(rates,category,weight.nominal(nominal.apply(rates),verifiedPhysical,false),false,null));
         }
         ProgressionApi.awardSourceBatch(player,"training:"+UUID.randomUUID(),candidates);
     }
     public static void mining(ServerPlayer player,double hardness) {
-        batch(player,"mining",rates->rates.mining(hardness));
+        mining(player,hardness,false);
+    }
+    public static void mining(ServerPlayer player,double hardness,boolean verifiedPhysical) {
+        batch(player,"mining",verifiedPhysical,rates->rates.mining(hardness));
     }
     public static void sprint(ServerPlayer player,long fullBlocks) {
         if(fullBlocks<=0)return;
-        batch(player,"sprint",rates->rates.sprint().multiply(BigDecimal.valueOf(fullBlocks)));
+        batch(player,"sprint",true,rates->rates.sprint().multiply(BigDecimal.valueOf(fullBlocks)));
     }
     public static void kill(ServerPlayer player,double baselineHealth,
                             CombatProof proof,boolean directFistFinisher,long tick) {
-        batch(player,"combat",rates->rates.kill(baselineHealth,directFistFinisher &&
+        kill(player,baselineHealth,proof,directFistFinisher,tick,false);
+    }
+    public static void kill(ServerPlayer player,double baselineHealth,
+                            CombatProof proof,boolean directFistFinisher,long tick,boolean verifiedPhysical) {
+        batch(player,"combat",verifiedPhysical,rates->rates.kill(baselineHealth,directFistFinisher &&
                 proof.strict(player.getUUID().toString(),tick,rates.strictWindow())));
     }
 }

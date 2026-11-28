@@ -205,8 +205,10 @@ public final class ProgressionEvents {
               if (!event.isCanceled()) EffectHandlers.projectileImpact(defender,event); }
     }
     private static void equipmentChange(LivingEquipmentChangeEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player)
+        if (event.getEntity() instanceof ServerPlayer player) {
             EffectHandlers.equipmentChange(player,event);
+            io.github.heatwaveqc.tyr.progression.runtime.clothing.WeightedClothing.reconcile(player);
+        }
     }
     private static void targetChange(LivingChangeTargetEvent event) {
         if (event.getNewAboutToBeSetTarget() instanceof ServerPlayer player)
@@ -276,6 +278,7 @@ public final class ProgressionEvents {
             EffectHandlers.tick(player);
             MechanicalEffects.tick(player);
             MiningUtilities.tick(player);
+            io.github.heatwaveqc.tyr.progression.runtime.clothing.WeightedClothing.reconcile(player);
             VerifiedMiningXp.tick(player);
             VerifiedSprintingXp.tick(player);
             VillagerAttraction.tick(player);
@@ -340,6 +343,7 @@ public final class ProgressionEvents {
     }
     private static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            io.github.heatwaveqc.tyr.progression.runtime.clothing.WeightedClothing.clear(player);
             EffectRuntime.logout(player);
             MutationPowers.forget(player);
             PassivePowers.forget(player);
