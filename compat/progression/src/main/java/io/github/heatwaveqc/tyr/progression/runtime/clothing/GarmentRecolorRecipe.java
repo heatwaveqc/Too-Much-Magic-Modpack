@@ -22,7 +22,7 @@ public final class GarmentRecolorRecipe extends CustomRecipe {
     private static Optional<GarmentPalette> palette(CraftingInput input) {
         if (input.width() != 2 || input.height() != 2) return Optional.empty();
         var garment = input.getItem(0);
-        if (ClothingItems.martialStyle(garment).isEmpty() || !ClothingApi.isNonProtective(garment))
+        if (!ClothingItems.isTrainingGarment(garment) || !ClothingApi.isNonProtective(garment))
             return Optional.empty();
         if (!(input.getItem(1).getItem() instanceof DyeItem primary)
                 || !(input.getItem(2).getItem() instanceof DyeItem secondary)

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tyr_progression:item/training_slippers_0",
+    "layer1": "tyr_progression:item/training_slippers_1",
+    "layer2": "tyr_progression:item/training_slippers_2",
+    "layer3": "tyr_progression:item/training_slippers_3"
+  }
+}

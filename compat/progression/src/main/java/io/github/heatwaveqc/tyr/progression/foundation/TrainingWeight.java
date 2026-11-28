@@ -2,27 +2,38 @@ package io.github.heatwaveqc.tyr.progression.foundation;
 
 import java.math.BigDecimal;
 
-/** Highest equipped tier wins; weight modifies verified physical training only. */
+/** Full-set targets; each of four standard armor slots contributes one quarter
+ * of the bonus above baseline and one quarter of the speed penalty. */
 public enum TrainingWeight {
-    NORMAL(0, "1", 0), LIGHT(1, "1.5", -0.15), HEAVY(2, "2", -0.30), EXTREME(3, "3", -0.50);
+    NORMAL(0,"0","0"), LIGHT(1,"0.5","-0.25"), HEAVY(2,"1","-0.50"), EXTREME(3,"2","-0.75");
     private final int id;
-    private final BigDecimal multiplier;
-    private final double speed;
-    TrainingWeight(int id,String multiplier,double speed){
-        this.id=id; this.multiplier=new BigDecimal(multiplier); this.speed=speed;
+    private final BigDecimal fullBonus;
+    private final BigDecimal fullSpeed;
+    TrainingWeight(int id,String bonus,String speed){
+        this.id=id; this.fullBonus=new BigDecimal(bonus); this.fullSpeed=new BigDecimal(speed);
     }
     public int id(){return id;}
-    public BigDecimal multiplier(){return multiplier;}
-    public double speed(){return speed;}
+    public BigDecimal pieceBonus(){return fullBonus.divide(BigDecimal.valueOf(4));}
+    public BigDecimal pieceSpeed(){return fullSpeed.divide(BigDecimal.valueOf(4));}
     public static TrainingWeight byId(int id){
         if(id<0||id>3)throw new IllegalArgumentException("Invalid training weight");
         return values()[id];
     }
-    public static TrainingWeight highest(TrainingWeight a,TrainingWeight b){
-        return a.id>=b.id?a:b;
-    }
     public boolean canUpgradeTo(TrainingWeight target){return target.id>id;}
-    public BigDecimal nominal(BigDecimal base,boolean verifiedPhysical,boolean fixed){
-        return verifiedPhysical&&!fixed?base.multiply(multiplier):base;
+
+    public record Loadout(BigDecimal multiplier,BigDecimal speedChange){
+        public BigDecimal nominal(BigDecimal base,boolean verifiedPhysical,boolean fixed){
+            return verifiedPhysical&&!fixed?base.multiply(multiplier):base;
+        }
+        public double speed(){return speedChange.doubleValue();}
+    }
+    /** Fixed four-slot boundary; absent/ordinary/invalid pieces are NORMAL. */
+    public static Loadout loadout(TrainingWeight head,TrainingWeight chest,TrainingWeight legs,TrainingWeight feet){
+        BigDecimal multiplier=BigDecimal.ONE,speed=BigDecimal.ZERO;
+        for(var tier:new TrainingWeight[]{head,chest,legs,feet}){
+            multiplier=multiplier.add(tier.pieceBonus());
+            speed=speed.add(tier.pieceSpeed());
+        }
+        return new Loadout(multiplier,speed);
     }
 }

@@ -48,13 +48,15 @@ public final class ClothingColors {
     };
 
     @SubscribeEvent public static void itemColors(RegisterColorHandlersEvent.Item event) {
-        event.register(ClothingColors::tint, ClothingItems.TARTAN_KILT.get());
+        event.register(ClothingColors::tint, ClothingItems.TARTAN_KILT.get(),
+                ClothingItems.TRAINING_HEADBAND.get(),ClothingItems.TRAINING_SLIPPERS.get());
         for (var set : ClothingItems.MARTIAL.values())
             event.register(ClothingColors::tint, set.upper().get(), set.lower().get());
     }
 
     @SubscribeEvent public static void armorColors(RegisterClientExtensionsEvent event) {
-        event.registerItem(ARMOR_TINT, ClothingItems.TARTAN_KILT.get(), ClothingItems.WHITE_CAP.get(), ClothingItems.LOINCLOTH.get());
+        event.registerItem(ARMOR_TINT, ClothingItems.TARTAN_KILT.get(), ClothingItems.WHITE_CAP.get(), ClothingItems.LOINCLOTH.get(),
+                ClothingItems.TRAINING_HEADBAND.get(),ClothingItems.TRAINING_SLIPPERS.get());
         for (var set : ClothingItems.MARTIAL.values())
             event.registerItem(ARMOR_TINT, set.upper().get(), set.lower().get());
     }

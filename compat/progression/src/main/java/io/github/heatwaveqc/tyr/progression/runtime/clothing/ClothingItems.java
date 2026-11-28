@@ -56,6 +56,23 @@ public final class ClothingItems {
             ITEMS.register("white_cap", () -> new ClothingItem(CAP_MATERIAL, ArmorItem.Type.HELMET));
     public static final DeferredItem<ClothingItem> LOINCLOTH =
             ITEMS.register("loincloth", () -> new ClothingItem(LOINCLOTH_MATERIAL, ArmorItem.Type.LEGGINGS));
+    // Shared recolorable accessories complete every style without forcing
+    // identical style IDs on the four independently contributing slots.
+    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> HEADBAND_MATERIAL =
+            MATERIALS.register("training_headband", () -> nonProtectiveMaterial("training_headband",3));
+    public static final DeferredHolder<ArmorMaterial,ArmorMaterial> SLIPPERS_MATERIAL =
+            MATERIALS.register("training_slippers", () -> nonProtectiveMaterial("training_slippers",3));
+    public static final DeferredItem<ClothingItem> TRAINING_HEADBAND =
+            ITEMS.register("training_headband", () -> new ClothingItem(HEADBAND_MATERIAL,ArmorItem.Type.HELMET));
+    public static final DeferredItem<ClothingItem> TRAINING_SLIPPERS =
+            ITEMS.register("training_slippers", () -> new ClothingItem(SLIPPERS_MATERIAL,ArmorItem.Type.BOOTS));
+    public static boolean isTrainingAccessory(ItemStack stack){
+        return stack.is(TRAINING_HEADBAND.get())||stack.is(TRAINING_SLIPPERS.get());
+    }
+    public static boolean isTrainingGarment(ItemStack stack){
+        return !stack.isEmpty()&&(isTrainingAccessory(stack)||martialStyle(stack).isPresent());
+    }
+
     public record MartialSet(DeferredItem<ClothingItem> upper, DeferredItem<ClothingItem> lower) {}
     public static final Map<MartialGarmentStyle, MartialSet> MARTIAL = registerMartialSets();
 
@@ -82,6 +99,8 @@ public final class ClothingItems {
     /** Creative/given items without a custom palette use their style's defaults.
      * Renderers should call this rather than duplicating default-color rules. */
     public static Optional<GarmentPalette> martialPalette(ItemStack stack) {
+        if(isTrainingAccessory(stack))return Optional.of(stack.getOrDefault(
+                ClothingComponents.GARMENT_PALETTE.get(),GarmentPalette.of(0,0,15)));
         return martialStyle(stack).map(style ->
                 stack.getOrDefault(ClothingComponents.GARMENT_PALETTE.get(), style.defaults()));
     }

@@ -24,10 +24,11 @@ public final class ClothingItem extends ArmorItem {
     @Override public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack,context,tooltip,flag);
         var tier=stack.getOrDefault(ClothingComponents.TRAINING_WEIGHT.get(),TrainingWeight.NORMAL);
-        if(tier!=TrainingWeight.NORMAL&&ClothingItems.martialStyle(stack).isPresent())
+        if(tier!=TrainingWeight.NORMAL&&ClothingItems.isTrainingGarment(stack))
             tooltip.add(Component.translatable("tooltip.tyr_progression.training_weight",
                     Component.translatable("tooltip.tyr_progression.training_weight."+tier.name().toLowerCase(java.util.Locale.ROOT)),
-                    tier.multiplier().toPlainString(),Math.round(-tier.speed()*100)));
+                    tier.pieceBonus().movePointRight(2).stripTrailingZeros().toPlainString(),
+                    tier.pieceSpeed().negate().movePointRight(2).stripTrailingZeros().toPlainString()));
     }
     @Override public boolean isEnchantable(ItemStack stack) { return false; }
     @Override public boolean isBookEnchantable(ItemStack stack, ItemStack book) { return false; }

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tyr_progression:item/training_headband_0",
+    "layer1": "tyr_progression:item/training_headband_1",
+    "layer2": "tyr_progression:item/training_headband_2",
+    "layer3": "tyr_progression:item/training_headband_3"
+  }
+}

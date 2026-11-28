@@ -27,7 +27,7 @@ public final class WeightGarmentRecipe extends CustomRecipe {
         for(int i=0;i<input.size();i++){
             ItemStack stack=input.getItem(i);
             if(stack.isEmpty())continue;
-            if(ClothingItems.martialStyle(stack).isPresent()){
+            if(ClothingItems.isTrainingGarment(stack)){
                 if(!garment.isEmpty()||!ClothingApi.isNonProtective(stack))return null;
                 garment=stack;
             }else{

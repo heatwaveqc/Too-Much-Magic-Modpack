@@ -56,7 +56,9 @@ class ClothingArtResourceTest {
                 assertEquals("tyr_progression:item/"+item+(channels==0?"":"_"+i),textures.get("layer"+i).getAsString());
         }
     }
-    @Test void allFifteenGarmentsHaveComplete64PixelArtwork() throws Exception {
+    @Test void allSeventeenGarmentsHaveComplete64PixelArtwork() throws Exception {
+        garment("training_headband","training_headband",1,3);
+        garment("training_slippers","training_slippers",1,3);
         garment("white_cap","white_cap",1,0);
         garment("loincloth","loincloth",2,0);
         garment("tartan_kilt","tartan_kilt",2,4);

@@ -46,7 +46,7 @@ class ClothingRecipeDataTest {
         Set<String> values = new HashSet<>();
         resource("tags/item/non_protective_clothing.json").getAsJsonArray("values")
                 .forEach(e -> values.add(e.getAsString()));
-        var expected = new HashSet<>(Set.of("tyr_progression:tartan_kilt", "tyr_progression:white_cap", "tyr_progression:loincloth"));
+        var expected = new HashSet<>(Set.of("tyr_progression:tartan_kilt", "tyr_progression:white_cap", "tyr_progression:loincloth", "tyr_progression:training_headband", "tyr_progression:training_slippers"));
         for (var style : io.github.heatwaveqc.tyr.progression.foundation.MartialGarmentStyle.values()) {
             expected.add("tyr_progression:" + style.upperId());
             expected.add("tyr_progression:" + style.lowerId());

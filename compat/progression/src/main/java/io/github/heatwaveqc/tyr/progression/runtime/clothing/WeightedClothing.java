@@ -7,23 +7,29 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 
 /** Equipment-derived state; never stored as a player bonus or applied to item attributes. */
 public final class WeightedClothing {
     private WeightedClothing(){}
     private static final ResourceLocation SPEED = ResourceLocation.fromNamespaceAndPath("tyr_progression","training_weight");
     public static TrainingWeight tier(ItemStack stack){
-        if(ClothingItems.martialStyle(stack).isEmpty()||!ClothingApi.isNonProtective(stack))
+        if(!ClothingItems.isTrainingGarment(stack)||!ClothingApi.isNonProtective(stack))
             return TrainingWeight.NORMAL;
         return stack.getOrDefault(ClothingComponents.TRAINING_WEIGHT.get(),TrainingWeight.NORMAL);
     }
-    public static TrainingWeight equipped(ServerPlayer player){
-        TrainingWeight result=TrainingWeight.NORMAL;
-        for(ItemStack stack:player.getArmorSlots()){
-            result=TrainingWeight.highest(result,tier(stack));
-            if(result==TrainingWeight.EXTREME)break;
-        }
-        return result;
+    private static TrainingWeight slot(ServerPlayer player,EquipmentSlot slot){
+        var stack=player.getItemBySlot(slot);
+        // Commands or modded equip adapters cannot obtain a bonus from
+        // garments placed into a nonmatching standard equipment slot.
+        if(!(stack.getItem() instanceof ArmorItem armor)||armor.getEquipmentSlot()!=slot)
+            return TrainingWeight.NORMAL;
+        return tier(stack);
+    }
+    public static TrainingWeight.Loadout equipped(ServerPlayer player){
+        return TrainingWeight.loadout(slot(player,EquipmentSlot.HEAD),slot(player,EquipmentSlot.CHEST),
+                slot(player,EquipmentSlot.LEGS),slot(player,EquipmentSlot.FEET));
     }
     public static void reconcile(ServerPlayer player){
         var instance=player.getAttribute(Attributes.MOVEMENT_SPEED);
