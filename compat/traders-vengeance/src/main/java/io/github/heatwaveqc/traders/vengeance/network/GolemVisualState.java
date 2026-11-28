@@ -10,10 +10,17 @@ public final class GolemVisualState {
     private GolemVisualState() {}
     public record Sample(float angle, float speed, boolean firing, boolean deployed, long received) {
         public boolean freshDeployment() {
-            return deployed && System.nanoTime() - received < 1_500_000_000L;
+            return freshDeploymentAt(System.nanoTime());
+        }
+        boolean freshDeploymentAt(long now) {
+            long age = now - received;
+            return deployed && age >= 0 && age < 1_500_000_000L;
         }
         public boolean freshFiring() {
-            return firing && freshDeployment();
+            return freshFiringAt(System.nanoTime());
+        }
+        boolean freshFiringAt(long now) {
+            return firing && freshDeploymentAt(now);
         }
         public float predictedAngle() {
             // At most ten ticks of extrapolation between heartbeat packets.
