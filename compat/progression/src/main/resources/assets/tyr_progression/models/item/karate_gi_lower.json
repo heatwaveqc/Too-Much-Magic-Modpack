@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tyr_progression:item/karate_gi_lower_0",
+    "layer1": "tyr_progression:item/karate_gi_lower_1",
+    "layer2": "tyr_progression:item/karate_gi_lower_2",
+    "layer3": "tyr_progression:item/karate_gi_lower_3"
+  }
+}
