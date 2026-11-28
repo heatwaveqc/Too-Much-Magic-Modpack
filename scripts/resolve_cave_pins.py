@@ -58,27 +58,28 @@ def cf(slug, name, filename, project, file):
             errors.append(str(exc))
     raise ValueError("; ".join(errors))
 
-def infinity():
-    v = json.loads(get("https://api.modrinth.com/v2/version/6XJT5mi4"))
-    if not (v["project_id"] == "DEq97NAA" and v["version_number"] == "0.7" and v["version_type"] == "beta" and "1.21.1" in v["game_versions"] and "neoforge" in v["loaders"]):
+def infinity(vid="6XJT5mi4", version="0.7"):
+    v = json.loads(get("https://api.modrinth.com/v2/version/" + vid))
+    if not (v["project_id"] == "DEq97NAA" and v["version_number"] == version and v["version_type"] == "beta" and "1.21.1" in v["game_versions"] and "neoforge" in v["loaders"]):
         raise ValueError("unexpected Infinity Cave release identity")
     files = [f for f in v["files"] if f.get("primary") and f["filename"].endswith(".jar")]
     if len(files) != 1:
         raise ValueError("ambiguous primary JAR")
     f = files[0]
-    if not f["url"].startswith("https://cdn.modrinth.com/data/DEq97NAA/versions/6XJT5mi4/"):
+    if not f["url"].startswith("https://cdn.modrinth.com/data/DEq97NAA/versions/" + vid + "/"):
         raise ValueError("unexpected publisher path")
     data = get(f["url"])
     digest = hashlib.sha512(data).hexdigest()
     if digest != f["hashes"]["sha512"]:
         raise ValueError("publisher hash mismatch")
     evidence = inspect(data)
-    pin = f'name = "Infinity Cave"\nfilename = {q(f["filename"])}\nside = "both"\n\n[download]\nurl = {q(f["url"])}\nhash-format = "sha512"\nhash = {q(digest)}\n\n[update]\n[update.modrinth]\nmod-id = "DEq97NAA"\nversion = "6XJT5mi4"\n'
+    pin = f'name = "Infinity Cave"\nfilename = {q(f["filename"])}\nside = "both"\n\n[download]\nurl = {q(f["url"])}\nhash-format = "sha512"\nhash = {q(digest)}\n\n[update]\n[update.modrinth]\nmod-id = "DEq97NAA"\nversion = {q(vid)}\n'
     return pin, {"slug":"infinity-cave","url": f["url"],"sha512":digest,"provider_dependencies":v["dependencies"], **evidence}
 
 report = {"resolved": [], "blocked": [], "worldgen_review_required": True}
 for slug, fn in (
     ("infinity-cave", infinity),
+    ("infinity-cave-0.61-fallback", lambda: infinity("JYmVFZJJ", "0.61")),
     ("stronger-mobs-below", lambda: cf("stronger-mobs-below","Stronger Mobs Below","strongermobsbelow-neoforge-1.21.1-1.0.0.jar",1293640,6874590)),
     ("enemy-echelons", lambda: cf("enemy-echelons","Enemy Echelons API","eechelonsapi-neoforge-1.21.1-1.0.0.jar",656060,6874524)),
     ("gottschcore", lambda: cf("gottschcore","GottschCore","gottschcore-neoforge-1.21.1-2.5.0.jar",272450,6863231)),
@@ -86,6 +87,7 @@ for slug, fn in (
     try:
         pin, row = fn()
         (OUT / (slug + ".pw.toml")).write_text(pin, encoding="utf-8")
+        row["slug"] = slug
         report["resolved"].append(row)
         print("PIN", slug, json.dumps({"pin":pin,"evidence":row},default=str), flush=True)
     except Exception as exc:
@@ -98,7 +100,14 @@ try:
         raise ValueError("Tectonic baseline hash mismatch")
     tw = inspect(data)["worldgen"]
     iw = next(row["worldgen"] for row in report["resolved"] if row["slug"] == "infinity-cave")
-    report["tectonic_overlap"] = {k:{"infinity":iw[k],"tectonic":tw[k]} for k in sorted(iw.keys() & tw.keys())}
+    def registry_paths(rows):
+        mapped = {}
+        for path, value in rows.items():
+            key = path[path.index("data/"):]
+            mapped.setdefault(key, []).append({"path":path, **value})
+        return mapped
+    a, b = registry_paths(iw), registry_paths(tw)
+    report["tectonic_overlap"] = {k:{"infinity":a[k],"tectonic":b[k]} for k in sorted(a.keys() & b.keys())}
     report["tectonic_worldgen"] = tw
     print("WORLDGEN_OVERLAP", json.dumps(report["tectonic_overlap"]), flush=True)
 except Exception as exc:
