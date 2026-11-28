@@ -1484,17 +1484,6 @@
       "packwiz_slug": "lootr"
     },
     {
-      "id": "magical-satchel",
-      "name": "Magical satchel / Surprisingly Substantial Satchel",
-      "category": "storage",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
-    },
-    {
       "id": "mahou-tsukai",
       "name": "Mahou Tsukai",
       "category": "magic",
@@ -1670,7 +1659,8 @@
       "source": "https://modrinth.com/mod/sbJh4AZw",
       "enabled_in_pack": true,
       "dependencies_verified": false,
-      "packwiz_slug": "occultism"
+      "packwiz_slug": "occultism",
+      "note": " 2026-11-27 owner clarification: Surprisingly Substantial Satchel is native Occultism content, not a standalone mod; retain native item subject to existing portable storage policy."
     },
     {
       "id": "octolib",
@@ -2118,17 +2108,6 @@
       "dependencies_verified": true,
       "note": "Owner-approved QoL integration (2026-11-13). Performance profiling for client/server; commands/permissions require admin configuration.",
       "packwiz_slug": "spark"
-    },
-    {
-      "id": "starlight-structures",
-      "name": "Starlight / Stalwart Dungeons candidate",
-      "category": "adventure",
-      "desired": true,
-      "version": null,
-      "release_status": "identity_unresolved",
-      "source": null,
-      "enabled_in_pack": false,
-      "dependencies_verified": false
     },
     {
       "id": "stateobserver",
@@ -3001,7 +2980,7 @@
       "curseforge_project_id": 324973,
       "candidate_file_id": 7887320,
       "packwiz_slug": "dungeon-crawl",
-      "note": "OWNER IDENTITY RESOLUTION 2026-11-20: Roguelike-style dungeon provider is Dungeon Crawl, spiritual successor to Roguelike Dungeons. Explicitly selected as desired inclusion candidate. Exact NeoForge 1.21.1 2.3.17 official CF project 324973/file 7887320 (jar DungeonCrawl-NeoForge-1.21-2.3.17.jar); source/structure compatibility, YUNG suite overlap, spawn balance, hash and required dependencies must be audited before indexing. NOT installed; owner-authorized next QA must test fresh procedural dungeons. Old placeholder id roguelike-dungeons superseded. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS."
+      "note": "OWNER IDENTITY RESOLUTION 2026-11-20: Roguelike-style dungeon provider is Dungeon Crawl, spiritual successor to Roguelike Dungeons. Explicitly selected as desired inclusion candidate. Exact NeoForge 1.21.1 2.3.17 official CF project 324973/file 7887320 (jar DungeonCrawl-NeoForge-1.21-2.3.17.jar); source/structure compatibility, YUNG suite overlap, spawn balance, hash and required dependencies must be audited before indexing. NOT installed; owner-authorized next QA must test fresh procedural dungeons. Old placeholder id roguelike-dungeons superseded. Owner-approved source-integration recovery 2026-11-22: official publisher file downloaded in targeted GitHub Actions audit, content digest matched selected Packwiz pin, NeoForge mod metadata/required dependencies reviewed. Pin added to Unstable integration PR #524 only; no Integration Assembly, dedicated server, Prism, client launch, worldgen, or gameplay PASS. 2026-11-27 owner reconfirmed this resolves the legacy Starlight/Stalwart Dungeons placeholder; no separate candidate."
     },
     {
       "id": "just-enough-professions",
@@ -3451,6 +3430,90 @@
       "dependencies_verified": true,
       "packwiz_slug": "sweet-cakes",
       "note": "Owner-approved #770 scope-freeze exception; exact publisher JAR and native dependency audit #771 / run 45734442559 PASS, unchanged existing dependency pins. Source integration only, diet/EMC/recipe/potion conservation and gameplay QA pending."
+    },
+    {
+      "id": "infinity-cave",
+      "name": "Infinity Cave",
+      "category": "adventure",
+      "desired": true,
+      "version": "0.61",
+      "release_status": "candidate_release",
+      "source": "https://modrinth.com/mod/infinity-cave/version/JYmVFZJJ",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "stronger-mobs-below",
+      "name": "Stronger Mobs Below",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.0.0",
+      "release_status": "candidate_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/stronger-mobs-below/files/6874590",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "when-dungeons-arise",
+      "name": "When Dungeons Arise",
+      "category": "adventure",
+      "desired": true,
+      "version": "2.1.68",
+      "release_status": "candidate_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/when-dungeons-arise/files/all",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "when-dungeons-arise-seven-seas",
+      "name": "When Dungeons Arise - Seven Seas",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.0.3.2",
+      "release_status": "candidate_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/when-dungeons-arise-seven-seas/files/5661269",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "dungeons-and-taverns",
+      "name": "Dungeons and Taverns",
+      "category": "adventure",
+      "desired": true,
+      "version": "4.4.3",
+      "release_status": "candidate_release",
+      "source": "https://modrinth.com/datapack/dungeons-and-taverns/version/bJq6DOLA",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "repurposed-structures",
+      "name": "Repurposed Structures",
+      "category": "adventure",
+      "desired": true,
+      "version": "7.5.22",
+      "release_status": "candidate_release",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/repurposed-structures/files/8688394",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+    },
+    {
+      "id": "towns-and-towers",
+      "name": "Towns and Towers",
+      "category": "adventure",
+      "desired": true,
+      "version": "1.13.11",
+      "release_status": "candidate_release",
+      "source": "https://modrinth.com/datapack/towns-and-towers/version/DZxwgj6V",
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
     }
   ],
   "excluded": [
