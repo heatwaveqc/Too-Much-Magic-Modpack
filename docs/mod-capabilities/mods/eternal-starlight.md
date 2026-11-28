@@ -1,6 +1,6 @@
-# Eternal Starlight 0.9.1 — Atlas second-pass research checkpoint
+# Eternal Starlight 0.9.1 — Atlas complete native capability dossier
 
-**Status: source-backed-partial / needs-research, 2026-11-27.** Tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent adventure-dimension research boundary after artifact family #799; no overlapping shared index, quest, config, or gameplay work. Native functionality presumed working. Two evidence passes complete; final 29-axis instructional survey and separate rating still due.
+**Status: quest-source-ready / needs-review, 2026-11-27.** Tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent adventure-dimension research boundary after artifact family #799; no overlapping shared index, quest, config, or gameplay work. Native functionality presumed working. Three evidence passes complete; final instructional map and separate evaluation below.
 
 ## Evidence and scope
 
@@ -60,26 +60,26 @@ Six actual accessory IDs: battleaxe_pendant, warhammer_pendant, butterfly_wings_
 - Carved Lunaris Cactus Fruit on Grimstone Bricks summons item-display Grimstone Golem; on Aethersent Block summons anti-air/meteor defense golem. Actual owner/target rules next pass. No generalized permanent army claimed.
 - Native 61 advancements cover entry, biome exploration, gear/materials, Catalyst, meteor/weather, agriculture, companions, combat and boss rewards; extract all individual criteria into quest map in later pass. No gameplay requirement for native research closure.
 
-## 6. Preliminary axis disposition and next pass
+## 6. Capability axis navigation (read with final mechanics below)
 
 | Axis | Current evidence |
 |---|---|
 | gear | many native tiered sets, distinct special weapons |
 | movement | Seeking Eye navigation, Wand of Teleportation, climbing food; actual movement mechanics next |
 | ore_processing | alloy yields, smelt/blast |
-| storage | chest boats, quiver; inventory details next |
+| storage | 512-arrow Galactic Quiver, machine inventory and chest boats; no general warehouse |
 | crafting | alloy/ether/drying/gear recipes |
 | logistics | redstone signal routing; no generic storage network established |
 | buffs | Numbness, local armor/accessories, food |
 | external_compatibility | JEI/EMI class paths, common tags |
 | mob_farming | breeding and animal resource loops |
-| ore_generation | meteor ore and catalyst collection; exact semantics next |
+| ore_generation | meteor-derived Aethersent only; Catalyst consumes existing terrain, not generation |
 | permanent_power | equipment-bound enhancements, no innate skill tree established |
 | general_generation | meteor, plant/bird outputs, recipe conversion |
 | direct_damage | ranged, melee, hammer crit, bosses, summons |
 | block_breaking | native tiers and special tools |
 | permanent_pets | tamed moth and summoned golems, owner rules next |
-| temporary_pets | one-day hired Stranghoul |
+| temporary_pets | one-day hired Stranghoul, teleport wand Tangled Husk |
 | defense | armor, shields, Numbness, golem |
 | healing_recovery | food and effects; exact recovery next |
 | debuff_control | Pungency Stew and armor, cold interactions |
@@ -90,7 +90,7 @@ Six actual accessory IDs: battleaxe_pendant, warhammer_pendant, butterfly_wings_
 | equipment_augmentation | six accessories and smithing, enchants/trim |
 | world_manipulation | Ether/Flowglaze conversion, catalyst, terrain tools |
 | world_content | 23 biomes, landmarks, encounters |
-| death_respawn | unresolved; Numbness not death prevention |
+| death_respawn | absent as independent native capability; Numbness and Crescent are mitigation, not resurrection |
 | trade_economy | Stranghoul Malarite barter, Gatekeeper trade class |
 | progression_tiers | entry trial, gear, forge and garden material gates |
 
@@ -174,3 +174,144 @@ CrystallizedMoth actual TamableAnimal owner targeting goals (OwnerHurtByTargetGo
 Two explicit [Alkahestry raw Aethersent](../../../kubejs/data/tmm/recipe/alkahestry/eternal_starlight__raw_aethersent.json) and [raw Deepsilver](../../../kubejs/data/tmm/recipe/alkahestry/eternal_starlight__raw_deepsilver.json) recipes verified: strict no-extra-components item ingredient; charges4914 /108, output counts2 /6 respectively, both conditioned on Reliquary Alkahestry enabled and item existence. These are pack cross-mod duplication recipes, not native Eternal Starlight or guaranteed loaded configuration. Native Catalyst broad ore tags and direct terrain replacement merit separate targeted pack policy investigation, no observed failure claimed. Native multiplayer rewards are a valuable general design reference, not a new TMM implementation request.
 
 Final narrow pass: exact accessory host/effect handlers, special weapons/armor and enchants, Seeking Eye selection and recall, key companion production/acquisition conditions, effect ledger and all61 advancement criteria; complete actionable lesson map, update 29 axes (ore_generation meteor yes, Catalyst gathering only; temporary pets hire/husk; death no demonstrated native death recovery), separate final 11-domain evaluation. No exhaustive ordinary decorative recipes, build or gameplay QA required. No gameplay, balance, config, quest or index changes. 
+
+## 8. Final pass — equipment, status effects, acquisition and operations
+
+Exact SHA512 2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71, ZIP CRC clean. Reopened all61 actual nonrecipe advancement JSONs (parents and criteria), 13 native enchantment JSONs (excluding tags), exact ammo/coolant/accessory tags, gift table and food/guide data. Targeted javap -p -c of ESCommonHandler, ESItems, LivingEntityMixin, ItemMixin, ItemStackMixin, DiggerItemMixin, NeoForge AxeItemMixin, all nine effect registrations and five effect classes, EyeOfSeeking, StarfireBirdGiftGoal, DaggerOfHungerItem, SeedsLauncherItem, GalacticQuiverItem, HammerItem and armor classes. These findings supersede earlier provisional wording; no gameplay testing required for native source closure.
+
+### 8.1 Equipment-bound accessories, exact attributes and slots
+
+Compiled ESItems supplier constructors (lambda static868–873), ESAccessoryUtil and handler/mixins confirm:
+| Accessory | Host tag | Native modifier | Operating behavior |
+|---|---|---|---|
+| battleaxe_pendant | #minecraft:axes | attack speed +.15 ADD_MULTIPLIED_TOTAL | combat durability cost1 in DiggerItemMixin; axe stripping disabled by NeoForge AxeItemMixin |
+| warhammer_pendant | #eternal_starlight:hammers | attack speed +.15 ADD_MULTIPLIED_TOTAL | damage multiplied by min(1+1.5*recorded movement vector length,2) |
+| butterfly_wings_amulet | #minecraft:chest_armor | Ether resistance +.5 ADD_VALUE | post-hurt adds200 ticks of Ether exposure to living attacker or victim depending wearer, caps600; exposure erodes armor via native attachment handler, no bottled Ether cost established |
+| fungus_amulet | chest armor | heal multiplier +.5 ADD_VALUE | nonfood items in #c:mushrooms become food6 nutrition/saturationModifier1.2, existing ordinary food property takes precedence |
+| pearl_necklace | chest armor | oxygen bonus +3 ADD_VALUE, submerged mining speed +4 ADD_MULTIPLIED_TOTAL | player eyes outside water restores max air each native tick |
+| crescent_pendant | chest armor | attack damage +.15 ADD_MULTIPLIED_TOTAL | actual eligible damage cap .75*maxHP; repair1 durability each600 entity ticks for six tagged weapons |
+
+Crescent repair tag exact moonring_bow, moonring_greatsword, petal_scythe, wand_of_teleportation, chain_of_souls, crescent_spear. Separate natural-mending tag Amaramber sword/pickaxe/axe/hoe/shovel/sickle/mask/chestplate uses same1/600t server inventory tick, no pendant. Repair rate2/minute at20TPS, not free instantly repaired gear. Accessory attach/remove native stack UI uses compatibility and slot capacity; do not equate compatible host tag with availability of slots on every other mod item. Explicit registered chestpiece capacities: Deepsilver2, Glacite2, Aethersent2, Starlit Diamond3, Alchemist3, Unrealium4; other host defaults from component/utility, not an unlimited general Curios grid. Attribute modifier IDs and set dedup matter; no assumption duplicate accessories stack. Remove before host breaks. Equipment-specific bonuses are not blanket shared Curio power; owner #721 comparison governs later work, no Monk changes.
+
+### 8.2 Native effects and defensive boundaries
+
+Nine registered effects, all exact IDs prefix eternal_starlight:. Note Oblivion not void dimension travel.
+| Effect | Concrete action |
+|---|---|
+| crystal_infection | armor−1.5 per level (ADD_VALUE); damage=amplifier+1 every35 duration ticks, can kill |
+| dream_catcher | +5 armor per level, ADD_VALUE |
+| sticky | climbing with movement speed penalty (native −.06 modifier), Bouldershroom Stew teaches |
+| flammable | incoming fire damage multiplied by amplifier+2, before applicable fire resistance |
+| brittle | incoming freezing damage multiplied by amplifier+2 |
+| numbness | stores75% of eligible actual damage, applies25% now, then reapplies stored value on first tick without effect and clears attachment |
+| teary | vision blur and mob target suppression; immune tag and accumulated exposure immunity; not permanent pacification |
+| starfire | post-hurt nearby targets take one-third damage via native Starfire damage type, death spreads effect; no unrestricted recursion or fixed overall DPS claimed |
+| oblivion | wall phasing, support below retained unless sneaking, +20% total movement, −20% total gravity, −.2 enemy-follow-range multiplier at level1 |
+
+Numbness/crescent ordering: ESCommonHandler.onModifyLivingActualHurtDamage applies Crescent cap before Numbness split; bypass_invulnerability returns max(original,modified), so some bypass damage still records deferred value without immediate reduction. Exact bypasses_crescent_pendant tag contains eternal_starlight:numbness, so repayment cannot be capped by this pendant. This is NOT death prevention, not infinite stored damage exploit, and not proof interactions with other TMM death effects. Deepsilver full set removes tagged poison/wither/nausea/hunger/slowness/infested/blindness, not all debuffs. Glacite set retaliation freezes; Thermal Springstone set ignites attackers. Unrealium helmet block-suffocation immunity, chest cramming immunity; helmet eating/item-interact, chest damage, legs hit_ground/splash, boots step/hit_ground game event suppression, selected sounds muted; not universal invisibility or immunity. 
+**Roasted Forgotten Nocturnal Millet** food10/.8, always edible, guaranteed Oblivion300t at level1 (ESFoods lambda11). Guide states wall traversal and crouch descent, collision mixins and actual effect implementation present. Exact unaffected_by_oblivion block tag bedrock, barrier. Important specific integration question: whether claim-protected walls, restricted areas, dungeons or special blocks permit phase-through; no claim bypass observed and no proposal to exploit. Add to separate TMM claim/policy assessment with Catalyst. Preserve player access under existing policy, do not change mods here.
+Amaramber lantern/lit candle/campfire/Amaramber Fire suppress hostile spawning in Starlight dimension per Tablet. Use native flame via raw Amaramber block and flint/steel; do not extrapolate global spawn immunity or exact radius without handler. Distinct from ordinary light level. 
+
+### 8.3 Weapons, utility and 13 enchantments
+
+HammerItem.performCriticalAttack triggers native advancement and nearby living entities in target block AABB inflated2; damage .75*player attack damage with player source, push .4 vertical when accepted. Do not assume exact number of victims, friendly fire immunity or automatic all-Monk access. Dagger of Hunger is dual-wielding weapon with independent offhand attack ticker, nutrition/saturation-dependent damage components and starvation penalty; teach reading its hunger bar, using in combat and satiating (native saturate_dagger_of_hunger). Exact hunger handler uses item state and player food stats; nonessential coefficient timing not prerequisite. Flowglaze weapon consecutive same-target hits, tool threshold instant break, bow flight time damage, shield projectile reflection; guide/tooltip and special handler class paths, do not promise every block instant-mined or combined maxima. Golem Steel Underminer depth-dependent mining speed; Energy Boomerang returning projectile with collection/critical/homing enchants. Galactic Quiver compiled max512 arrows, large item stack component, UI insertion/extraction and arrow inventory hook; Creteor Hide3 craft, not infinite arrows or general inventory. Etheric Eye recipe Seeking Eye+4 Thioquartz gems→4; guide surface teleport, not unrestricted interdimension return. Seeking Eye use opens target GUI, only Starlight, packet target selection/range §7.2, actual EyeOfSeeking recall random .2 shatter else inventory return or drop if full (no extra return to infinite-material player). No guarantee locate success.
+Seeds Launcher accepts #c:seeds; exact 8 ammo-type JSON definitions (cooldown seconds, damage multiplier, speed multiplier): beetroot .8/.8/1.2; crinoa1/1.2/1; melon1.1/1.2/.9; nocturnal millet .8/1.5/1.5; pumpkin .5/.4/1.5; pungency fruit1.2/1.5/.9; torchflower1.2/1.5/1; wheat1/1/1. These are type multipliers and cooldown, not final damage or guaranteed ammo availability. Teach seed choice and special enchants rather than repeating all ordinary weapons.
+| Enchantment | Maximum level | Exact encoded effect at max (before handler restrictions) |
+|---|---:|---|
+| Abyssal Touch | II | whip Abyssal Fire duration10s |
+| Fearless | II | +1 knockback, pull towards attacker max speed .3 |
+| Fertile | III | Seeds Launcher +6 projectiles |
+| Gathering | II | boomerang pickup radius +1.75 |
+| Glacial Sowing | II | shot-seed freeze8s; exclusive with Overheat |
+| Homing | III | boomerang homing strength +1.6 |
+| Overheat | II | projectile ignite duration200 raw recipe field; vanilla effect semantics apply |
+| Poisoning | IV | retaliatory poison on attacker, duration2.5–4s, amplifier0–4 |
+| Precision | V | boomerang critical chance +.8 |
+| Soul Snatcher | III | Chain of Souls projectile damage +1.5 |
+| Swift Lash | V | whip attack speed +1 ADD_VALUE |
+| Tearing | I | Pungency Fruit Spear Teary2.5s |
+| Tracing | II | Chain of Souls glowing duration4.5–7s |
+
+Fearless/Poisoning/Soul Snatcher actual treasure tag; Forge loot category Fearless/Precision/Homing/Gathering, Garden Fearless/Poisoning/Soul Snatcher/Tracing; ten remaining non_treasure entries. Raw duration fields copied from JSON; effective custom/vanilla implementation units not conflated with ticks (Overheat numeric200 deliberately recorded as raw field, see caveat). Item supported/primary tags and mainhand/armor conditions apply, not every vanilla enchant can go on every new tool.
+
+### 8.4 Animal, farming and weather loops
+
+Crystallized Moth isFood #minecraft:meat, untamed attempt1/3 success; actual tamed injured meat healing2*nutrition (fallback1 nutrition); feeding Lunaris Cactus Gel consumes1 and 1/5 drops Shivering Gel, independent trials, expected5 gel not guarantee. Follow/sit/defend §7.6. Starfire Bird nest consumes offered seeds; adult bird records last seed player's UUID, each allowance addition2–4 gift deliveries. Gift goal cooldown600ticks after successful delivery, random goal evaluation and valid nearby player required. Exact gift table one weighted roll: Starfire1–3 weight35, feather2–4 weight25, Deepsilver nugget5–10 weight12; no unconditional Starfire per seed, no guaranteed fixed elapsed time. Aviary6 planks+3 Starfire, native wood variants. Breed by feeding seeds to pair, egg incubates in nest, Silk Touch axe preserves occupants/egg as described in guide. Do not assume arbitrary tame/owner teleport (bird trust not moth taming). Aurora Deer antler from impact, Yeti shear, Gleech egg throwable, Ent breeding, Forgotten Millet and Crinoa crops as §5. 
+Meteor shower witness and Creteor kill native milestones, craft Aetherstrike Rocket to initiate event, Aethersent meteor interception by golem protects structures; no exact guaranteed ore yield or full active-area spawn density claimed. Aethersent ore is true external material arrival, distinct from harvesting existing ore. 
+All Starlight biomes advancement has22 actual location predicates, excludes starlit_sky despite23 biome records; no requirement to visit the unreachable/ambient sky biome. 
+
+## 9. Proposed instructional map — 65 nodes
+
+A = actual native advancement ID (prefix eternal_starlight:), I = possession/craft proxy, O = observable operation/manual instructional credit. The 61 native progression IDs are included exactly once in the evidence column below (some related criteria grouped); dependencies follow action order, not every vanilla advancement parent is a physical unlock. No reward quantities or FTB SNBT authored. Preserve personal boss participation. 
+| ID | Prerequisite and player action | Evidence |
+|---|---|---|
+| ES01 | Overworld portal ruins; locate Gatekeeper and open challenge | A root, challenge_gatekeeper |
+| ES02 | Defeat Gatekeeper, collect first-challenge Orb and Tablet, inspect guide | A obtain_orb_of_prophecy |
+| ES03 | Activate diamond Chiseled Voidstone frame and enter | A enter_starlight |
+| ES04 | Craft Seeking Eye, choose target, recall and learn shatter risk | A obtain_seeking_eye |
+| ES05 | Mine local Deepsilver and smelt | A obtain_deepsilver_ingot |
+| ES06 | Silver Pungency Fruit/Numbness risk and repayment | A obtain_numbness_effect |
+| ES07 | Harvest Starlit Diamond, compare gear | A obtain_starlit_diamond |
+| ES08 | Craft a scythe and harvest crops | A obtain_scythe |
+| ES09 | Craft/use hammer critical AoE | A hammer_critical_hit |
+| ES10 | Harvest Thermal Springstone via fire on native giant plants | A obtain_thermal_springstone |
+| ES11 | Collect Dusted Shard | A obtain_dusted_shard |
+| ES12 | Strip Torreya logs or break campfire for raw Amaramber | A obtain_raw_amaramber |
+| ES13 | Craft Amaramber gear, natural repair and spawn-suppressing light | I/O |
+| ES14 | Melt Stellagmite with lava | A obtain_stellagmite |
+| ES15 | Cook Jinglestem Sandwich | A obtain_jinglestem_sandwich |
+| ES16 | Bouldershroom Stew and Sticky climb | A obtain_bouldershroom_stew |
+| ES17 | Find Crystallized Desert | A enter_crystallized_desert |
+| ES18 | Obtain and plant Crinoa seeds | A obtain_crinoa_seeds |
+| ES19 | Thirst Walker kill/block to obtain Tooth of Hunger | A obtain_tooth_of_hunger |
+| ES20 | Combine Teeth of Hunger into blocks | A obtain_tooth_of_hunger_blocks |
+| ES21 | Craft Dagger of Hunger, dual wield and watch nutrition | A obtain_dagger_of_hunger |
+| ES22 | Satiate Dagger | A saturate_dagger_of_hunger |
+| ES23 | Craft Crystalborn Catalyst, feed crystal shards, redstone and observe destructive harvesting safely | A obtain_crystalborn_catalyst / O |
+| ES24 | Tame Crystallized Moth using meat | A tame_crystallized_moth |
+| ES25 | Feed Cactus Gel, collect Shivering Gel; Sonar Bomb/Crystal gear | I/O |
+| ES26 | Throw Gleech Egg | A throw_gleech_egg |
+| ES27 | Summon Grimstone Golem with carved cactus fruit, use display | A summon_grimstone_golem |
+| ES28 | Enter permafrost forest | A under_permafrost_forest |
+| ES29 | Acquire Glacite Shard and make arrow | A obtain_glacite_shard, obtain_glacite_arrow |
+| ES30 | Make Frozen Bomb, cold effects and armor | A obtain_frozen_bomb |
+| ES31 | Obtain Aurora Deer antler; Yeti shear/breed | A obtain_aurora_deer_antler |
+| ES32 | Find Ether fluid and enter | A in_ether_fluid |
+| ES33 | Mine Thioquartz, craft Alchemist Mask and Etheric Eye | A obtain_thioquartz_shard, obtain_alchemist_mask |
+| ES34 | Grow Nocturnal Millet, Forgotten crop via Dusted Gravel, roast and understand Oblivion limits | A obtain_forgotten_nocturnal_millet |
+| ES35 | Convert compatible item in Ether and attach Butterfly Wings Amulet | I/O |
+| ES36 | Enter Abyss, aquatic air limits, Rookfish/air sac | A enter_abyss |
+| ES37 | Collect Red Velvetumoss Flower, aquatic ingredients, fish for Pearl Necklace | A obtain_red_velvetumoss_flower |
+| ES38 | Seed offering in Starfire Bird nest | A put_seeds_into_starfire_bird_nest |
+| ES39 | Collect Starfire gifts; construct aviary/breed | A obtain_starfire |
+| ES40 | Throw Starfire on Twilight Sand→Flowglaze, upgrade tools | A obtain_flowglaze |
+| ES41 | Witness Stranghoul hunt, find den | A witness_stranghoul_hunt |
+| ES42 | Barter for Malarite, Pungency Stew hire | A hire_stranghoul |
+| ES43 | Witness Meteor Shower | A witness_meteor_shower |
+| ES44 | Collect meteor Aethersent, smelt | A obtain_aethersent_ingot |
+| ES45 | Kill Creteor, use hide for Galactic Quiver | A kill_creteor |
+| ES46 | Obtain Aetherstrike Rocket and initiate native shower | A obtain_aetherstrike_rocket |
+| ES47 | Summon Aethersent Golem to defend against aerial targets | A summon_aethersent_golem |
+| ES48 | Navigate to Golem Forge | A enter_golem_forge |
+| ES49 | Defeat Permafrost, collect Frozen Tubes | A kill_permafrost |
+| ES50 | Use Frozen Tube on Starlight Golem | A freeze_starlight_golem |
+| ES51 | Deactivate Energy Blocks during charge | A deactivate_energy_block |
+| ES52 | Defeat Golem, collect personal loot | A kill_golem |
+| ES53 | Obtain Golem Steel Ingot, alloy recipe and recover Furnace | A obtain_golem_steel_ingot |
+| ES54 | Install Alloy Furnace; fuels, coolant, outputs, pause heat | O |
+| ES55 | Compare ore/metal batch recipes; optional Netherite and Unrealium gate | O |
+| ES56 | Energy Transmitter link, Accumulator redstone storage/distribution | O |
+| ES57 | Golem steel gear, boomerang enchants and Underminer | I/O |
+| ES58 | Find Cursed Garden; ignite Lunar Monstrosity shell | A ignite_lunar_monstrosity |
+| ES59 | Defeat Lunar Monstrosity, personal Soul Dew and gear | A kill_lunar_monstrosity |
+| ES60 | Collect Crescent Spear, attach Crescent Pendant, repair/mitigation | A obtain_crescent_spear |
+| ES61 | Chain Tangled Skull explosion | A chain_tangled_skull_explosion |
+| ES62 | Alloy Unrealium, craft full armor; choose chest accessory loadout | A full_unrealium_armor |
+| ES63 | Ignite Tear Bomb, use Seeds Launcher special ammo and effects | A ignite_tear_bomb |
+| ES64 | Consume Blossom of Stars; optional curiosities and local foods | A use_blossom_of_stars |
+| ES65 | Explore remaining22-predicate biome challenge, return through portal | A all_starlight_biomes |
+
+All61 named native nonrecipe progress IDs represented. No need to force all gear or food variants; native material and combat actions provide instructional spine. Supplement ES54/55 with Drying Rack and Geyser smoking/ Ether conversion; teach wand teleportation alongside Garden rewards, optional regional pet/aquatic branches alongside ES24/31/37, six accessories across ES35/37/60/62, 13 enchants in gear stations. 
+## 10. Completion and handoff
+
+[Separate capability evaluation](eternal-starlight-evaluation.md): 37/55,8 independent domains, Substantial. The last pass confirms breadth, but no general warehouse/logistics, construction replacement or native death recovery, so not Major under the agreed 9-domain threshold. Earlier provisional impressions are superseded. 29 axes,65 instructional nodes,61 native advancement IDs, 13 enchants,9 effects,6 accessory classes and exact numeric handler evidence. Native source survey complete at significant quest-source depth; residual ordinary recipe parameters, rare loot rates, minor combat phase cadence and optimal cross-mod combinations are not required for normal quest teaching. Cross-mod claim/ore protections (Catalyst, Oblivion) and effective config, per-player quest detection, live biome availability and loaded effect ordering are separate integration questions, not observed failures. No gameplay, build, quest, pin, config or balance changes.
