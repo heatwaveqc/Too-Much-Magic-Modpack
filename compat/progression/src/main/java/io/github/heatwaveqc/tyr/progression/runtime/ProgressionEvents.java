@@ -76,6 +76,7 @@ public final class ProgressionEvents {
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::advancement);
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,HeightFallTrial::protectLanding);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::incoming);
+        NeoForge.EVENT_BUS.addListener(MagicSkillRuntime::damage);
         NeoForge.EVENT_BUS.addListener(MechanicalEffects::postDamage);
         NeoForge.EVENT_BUS.addListener(ObservedTrials::hit);
         NeoForge.EVENT_BUS.addListener(ProgressionEvents::breakSpeed);

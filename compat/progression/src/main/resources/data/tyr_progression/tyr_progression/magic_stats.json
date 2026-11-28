@@ -400,6 +400,16 @@
       "attribute": "enigmaticlegacyplus:lifesteal",
       "scale": 1,
       "operation": "add_value"
+    },
+    "tyr_progression:conflux_cast_speed": {
+      "attribute": "ars_conflux:cast_time_reduction",
+      "scale": 1,
+      "operation": "add_value"
+    },
+    "tyr_progression:conflux_cooldown_reduction": {
+      "attribute": "ars_conflux:cooldown_reduction",
+      "scale": 1,
+      "operation": "add_value"
     }
   }
 }
