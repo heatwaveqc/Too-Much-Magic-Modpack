@@ -129,7 +129,11 @@ public final class VerifiedCombatXp {
         boolean directFistFinisher=credited.getUUID().toString()
             .equals(barehandOwner(victim,event.getSource()));
         long now=victim.level().getGameTime();
-        TrainingRewards.kill(credited,baseline,proof,directFistFinisher,now);
+        // Only the native direct physical player attack gets the training weight
+        // bonus. Other accepted combat (projectiles, spells, owned magic) retains base XP.
+        boolean physical=event.getSource().is(DamageTypes.PLAYER_ATTACK)
+                &&event.getSource().getEntity()==credited&&event.getSource().getDirectEntity()==credited;
+        TrainingRewards.kill(credited,baseline,proof,directFistFinisher,now,physical);
         if(directFistFinisher)for(var entry:PathRegistry.trainingXp().entrySet()){
             if(TrainingRewards.eligible(credited,entry.getKey())
                     &&proof.strict(credited.getUUID().toString(),

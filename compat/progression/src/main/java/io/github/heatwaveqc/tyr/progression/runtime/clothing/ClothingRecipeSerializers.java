@@ -15,4 +15,6 @@ public final class ClothingRecipeSerializers {
             SERIALIZERS.register("tartan_kilt", () -> new SimpleCraftingRecipeSerializer<>(TartanKiltRecipe::new));
     public static final Supplier<RecipeSerializer<GarmentRecolorRecipe>> GARMENT_RECOLOR =
             SERIALIZERS.register("garment_recolor", () -> new SimpleCraftingRecipeSerializer<>(GarmentRecolorRecipe::new));
+    public static final Supplier<RecipeSerializer<WeightGarmentRecipe>> GARMENT_WEIGHT =
+            SERIALIZERS.register("garment_weight", () -> new SimpleCraftingRecipeSerializer<>(WeightGarmentRecipe::new));
 }

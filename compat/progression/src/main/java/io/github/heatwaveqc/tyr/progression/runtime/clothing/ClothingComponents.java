@@ -27,4 +27,11 @@ public final class ClothingComponents {
             COMPONENTS.registerComponentType("garment_palette", builder -> builder
                     .persistent(GARMENT_PALETTE_CODEC)
                     .networkSynchronized(ByteBufCodecs.INT.map(GarmentPalette::new, GarmentPalette::packed)));
+    public static final Codec<io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight> TRAINING_WEIGHT_CODEC =
+            Codec.intRange(0,3).xmap(io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight::byId,
+                    io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight::id);
+    public static final Supplier<DataComponentType<io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight>> TRAINING_WEIGHT =
+            COMPONENTS.registerComponentType("training_weight", builder -> builder.persistent(TRAINING_WEIGHT_CODEC)
+                    .networkSynchronized(ByteBufCodecs.INT.map(io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight::byId,
+                            io.github.heatwaveqc.tyr.progression.foundation.TrainingWeight::id)));
 }

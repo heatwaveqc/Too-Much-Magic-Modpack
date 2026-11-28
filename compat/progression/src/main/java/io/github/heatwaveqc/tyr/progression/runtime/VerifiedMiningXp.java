@@ -67,7 +67,7 @@ public final class VerifiedMiningXp {
                 level.dimension().location().toString(),pos.asLong(),originalTick))return;
         ProgressionApi.record(player,Selectors.blockBreak(state));
         ProgressionApi.record(player,Selectors.barehandBlockBreak(state));
-        TrainingRewards.mining(player,hardness);
+        TrainingRewards.mining(player,hardness,true);
     }
     public static void tick(ServerPlayer player){
         Map<Long,Pending> entries=PENDING.remove(player.getUUID());
@@ -102,7 +102,7 @@ public final class VerifiedMiningXp {
                 ||!RecentBlockCredits.first(owner.getUUID(),
                     level.dimension().location().toString(),pos.asLong(),originalTick))return false;
         ProgressionApi.record(owner,Selectors.blockBreak(original));
-        TrainingRewards.mining(owner,hardness);
+        TrainingRewards.mining(owner,hardness,false);
         return true;
     }
 

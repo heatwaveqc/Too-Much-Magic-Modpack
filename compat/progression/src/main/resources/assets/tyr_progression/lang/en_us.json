@@ -33,5 +33,9 @@
   "item.tyr_progression.kimono_hakama_upper": "Kimono & Hakama Top",
   "item.tyr_progression.kimono_hakama_lower": "Kimono & Hakama Trousers",
   "item.tyr_progression.wuxia_upper": "Wuxia Top",
-  "item.tyr_progression.wuxia_lower": "Wuxia Trousers"
+  "item.tyr_progression.wuxia_lower": "Wuxia Trousers",
+  "tooltip.tyr_progression.training_weight": "%s — %sx physical training MXP, -%s%% movement speed",
+  "tooltip.tyr_progression.training_weight.light": "Light",
+  "tooltip.tyr_progression.training_weight.heavy": "Heavy",
+  "tooltip.tyr_progression.training_weight.extreme": "Extreme"
 }
