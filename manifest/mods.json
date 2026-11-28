@@ -3436,12 +3436,12 @@
       "name": "Infinity Cave",
       "category": "adventure",
       "desired": true,
-      "version": "0.61",
-      "release_status": "candidate_release",
-      "source": "https://modrinth.com/mod/infinity-cave/version/JYmVFZJJ",
+      "version": "0.7",
+      "release_status": "experimental_release",
+      "source": "https://modrinth.com/mod/infinity-cave/version/6XJT5mi4",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim."
     },
     {
       "id": "stronger-mobs-below",
@@ -3453,67 +3453,67 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/stronger-mobs-below/files/6874590",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
-    },
-    {
-      "id": "when-dungeons-arise",
-      "name": "When Dungeons Arise",
-      "category": "adventure",
-      "desired": true,
-      "version": "2.1.68",
-      "release_status": "candidate_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/when-dungeons-arise/files/all",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
-    },
-    {
-      "id": "when-dungeons-arise-seven-seas",
-      "name": "When Dungeons Arise - Seven Seas",
-      "category": "adventure",
-      "desired": true,
-      "version": "1.0.3.2",
-      "release_status": "candidate_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/when-dungeons-arise-seven-seas/files/5661269",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+      "note": "Owner approved installation 2026-11-27 #830, with required Enemy Echelons API and GottschCore. Prefer contemporaneous API 1.0.0 and core 2.5.0 to avoid newer version scheme incompatibility; verify actual dependency ranges. Keep vanilla-only scaling initially; no stacked Infinity Cave custom-mob scaling without review."
     },
     {
       "id": "dungeons-and-taverns",
       "name": "Dungeons and Taverns",
       "category": "adventure",
-      "desired": true,
+      "desired": false,
       "version": "4.4.3",
       "release_status": "candidate_release",
       "source": "https://modrinth.com/datapack/dungeons-and-taverns/version/bJq6DOLA",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
     },
     {
       "id": "repurposed-structures",
       "name": "Repurposed Structures",
       "category": "adventure",
-      "desired": true,
+      "desired": false,
       "version": "7.5.22",
       "release_status": "candidate_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/repurposed-structures/files/8688394",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
     },
     {
       "id": "towns-and-towers",
       "name": "Towns and Towers",
       "category": "adventure",
-      "desired": true,
+      "desired": false,
       "version": "1.13.11",
       "release_status": "candidate_release",
       "source": "https://modrinth.com/datapack/towns-and-towers/version/DZxwgj6V",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized."
+      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
+    },
+    {
+      "id": "enemy-echelons",
+      "name": "Enemy Echelons API",
+      "version": "1.0.0",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/enemy-echelons/files/6874524",
+      "category": "dependency",
+      "desired": true,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "release_status": "verified_release",
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending."
+    },
+    {
+      "id": "gottschcore",
+      "name": "GottschCore",
+      "version": "2.5.0",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/gottschcore/files/6863231",
+      "category": "dependency",
+      "desired": true,
+      "enabled_in_pack": false,
+      "dependencies_verified": false,
+      "release_status": "verified_release",
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending."
     }
   ],
   "excluded": [
@@ -3660,6 +3660,14 @@
     {
       "id": "summoning-rituals",
       "reason": "Owner-approved removal #748, 2026-11-27: redundant framework, no intrinsic rituals; Occultism, Gateways and native ritual systems retained. Historical B7 membership retained as historical evidence."
+    },
+    {
+      "id": "when-dungeons-arise",
+      "reason": "Owner decision 2026-11-27 #830: omit Dungeons Arise series to limit redundant surface structures."
+    },
+    {
+      "id": "when-dungeons-arise-seven-seas",
+      "reason": "Owner decision 2026-11-27 #830: omit Dungeons Arise series to limit redundant surface structures."
     }
   ],
   "items_blacklist": [
