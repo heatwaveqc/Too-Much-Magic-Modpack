@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:seeds",
+      "required": false
+    },
+    {
+      "id": "#c:crops/seeds",
+      "required": false
+    },
+    {
+      "id": "#minecraft:saplings",
+      "required": false
+    },
+    {
+      "id": "#tmm:emc/ordinary/crop_seeds",
+      "required": false
+    }
+  ]
+}

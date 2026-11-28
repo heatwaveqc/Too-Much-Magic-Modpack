@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "coin_emc": 64,
+  "target_efficiency_pct": 80,
+  "min_efficiency_pct": 75,
+  "max_efficiency_pct": 85,
+  "max_price": 2147483647,
+  "category_order": {
+    "BUY": [
+      "ores",
+      "raw_materials",
+      "food",
+      "artifacts",
+      "relics",
+      "iron_gear"
+    ],
+    "SELL": [
+      "ingots",
+      "gems",
+      "animal_products",
+      "plant_products"
+    ]
+  },
+  "dimensions": {
+    "overworld": null,
+    "nether": "tmm_shop_nether",
+    "end": "tmm_shop_end"
+  },
+  "component_sensitive_namespaces": [
+    "apotheosis",
+    "relics",
+    "artifacts",
+    "reliquified_artifacts"
+  ],
+  "notes": "Proposal only. Eligibility tags are reviewed acquisition evidence, not inferred from positive EMC. Stage grants not yet implemented. Component-sensitive stock requires separate native stack matching/valuation."
+}
