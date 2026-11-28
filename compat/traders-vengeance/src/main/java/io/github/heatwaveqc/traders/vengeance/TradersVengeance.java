@@ -28,6 +28,7 @@ public final class TradersVengeance {
         NeoForge.EVENT_BUS.addListener(HeroPardonEvents::onHeroAwarded);
         NeoForge.EVENT_BUS.addListener(VendettaEvents::onJoin);
         NeoForge.EVENT_BUS.addListener(GolemMinigunEvents::onTick);
+        NeoForge.EVENT_BUS.addListener(GolemMinigunEvents::onStartTracking);
         modBus.addListener(GolemVisualPayload::register);
         NeoForge.EVENT_BUS.addListener(VendettaCommands::register);
     }
