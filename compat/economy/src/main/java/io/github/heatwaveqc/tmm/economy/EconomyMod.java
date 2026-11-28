@@ -16,5 +16,7 @@ public final class EconomyMod {
         if (ModList.get().isLoaded("projecte")) EmcCoverageCommands.registerIfProjectEInstalled();
         if (ModList.get().isLoaded("botania")) ManaConverters.register(bus);
         if (ModList.get().isLoaded("ars_nouveau")) SourceConverters.register(bus);
+        if (ModList.get().isLoaded("goety"))
+            io.github.heatwaveqc.tmm.economy.compat.GoetySoulAbsorberCapability.register(bus);
     }
 }
