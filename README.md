@@ -2,6 +2,10 @@
 
 A magic-first Minecraft modpack under active construction.
 
+**By heatwaveqc, ChatGPT, and the Too Much Magic contributors.**
+
+Reuse is welcome under our [licensing and attribution policy](LICENSE.md), subject to individual component and third-party licenses.
+
 **Status: bootstrap / not yet boot-tested.** This repository starts with an empty packwiz baseline, an approved-mod register, and repeatable validation scripts. A published NeoForge release for a mod is **not** evidence that the assembled pack launches.
 
 Read [AGENTS.md](AGENTS.md), [the design contract](docs/DESIGN.md), [the compatibility register](docs/COMPATIBILITY.md), and [the smoke-test ledger](docs/TESTING.md) before modifying progression or activating a mod.
