@@ -5,6 +5,8 @@ import io.github.heatwaveqc.tyr.progression.foundation.TartanPalette;
 import io.github.heatwaveqc.tyr.progression.runtime.clothing.ClothingComponents;
 import io.github.heatwaveqc.tyr.progression.runtime.clothing.ClothingItems;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +37,10 @@ public final class ClothingColors {
     }
 
     private static final IClientItemExtensions ARMOR_TINT = new IClientItemExtensions() {
+        @Override public HumanoidModel<?> getHumanoidArmorModel(LivingEntity entity, ItemStack stack,
+                EquipmentSlot slot, HumanoidModel<?> original) {
+            return ClothingGeometry.select(stack, slot, original);
+        }
         @Override public int getArmorLayerTintColor(ItemStack stack, LivingEntity entity,
                 ArmorMaterial.Layer layer, int layerIdx, int fallbackColor) {
             return tint(stack, layerIdx);
@@ -48,7 +54,7 @@ public final class ClothingColors {
     }
 
     @SubscribeEvent public static void armorColors(RegisterClientExtensionsEvent event) {
-        event.registerItem(ARMOR_TINT, ClothingItems.TARTAN_KILT.get());
+        event.registerItem(ARMOR_TINT, ClothingItems.TARTAN_KILT.get(), ClothingItems.WHITE_CAP.get(), ClothingItems.LOINCLOTH.get());
         for (var set : ClothingItems.MARTIAL.values())
             event.registerItem(ARMOR_TINT, set.upper().get(), set.lower().get());
     }
