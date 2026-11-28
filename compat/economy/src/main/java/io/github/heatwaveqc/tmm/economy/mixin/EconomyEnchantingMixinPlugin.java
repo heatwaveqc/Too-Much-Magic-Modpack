@@ -11,6 +11,12 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 /** Decide before resolving optional target types, not after injection. */
 public final class EconomyEnchantingMixinPlugin implements IMixinConfigPlugin {
     @Override public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        // The shop toolbar is client-only and must not resolve absent FTB classes.
+        if (mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.QuestShopToolbarMixin")) {
+            LoadingModList mods = LoadingModList.get();
+            return mods != null && List.of("ftbquests", "ftblibrary", "qshop").stream().allMatch(id ->
+                mods.getMods().stream().anyMatch(mod -> mod.getModId().equals(id)));
+        }
         boolean eidolon = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.EidolonPersonalFilterMixin");
         boolean anvil = mixinClassName.equals("io.github.heatwaveqc.tmm.economy.mixin.PortableAnvilOpenMixin");
         boolean portable = mixinClassName.startsWith("io.github.heatwaveqc.tmm.economy.mixin.PortableEnchanting");

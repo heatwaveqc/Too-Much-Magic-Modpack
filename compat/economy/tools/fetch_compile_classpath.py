@@ -22,6 +22,7 @@ apothic-attributes apothic-enchanting relics artifacts reliquary-reincarnations
 jade titanium replication occultism observerlib cyclops-core curios geckolib patchouli
 architectury-api resourceful-lib resourceful-config caelus playeranimator
 codechicken-lib-1-8 cloth-config puzzles-lib smartbrainlib bookshelf improvable-skills hammer-lib
+ftb-quests-forge ftb-library-forge ftb-teams-forge
 """.split()
 HOSTS = {"cdn.modrinth.com", "edge.forgecdn.net", "mediafilez.forgecdn.net"}
 
