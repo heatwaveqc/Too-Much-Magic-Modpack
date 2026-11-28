@@ -18,5 +18,8 @@
   "item.tyr_progression.blood_pie_slice": "Blood Pie Slice",
   "tooltip.tyr_progression.blood_food": "Restores 1,000 JAWR blood to vampires; normal food for other players.",
   "key.tyr_progression.charm": "Charming",
-  "key.tyr_progression.tame": "Taming / Companion Follow-Wait"
+  "key.tyr_progression.tame": "Taming / Companion Follow-Wait",
+  "item.tyr_progression.tartan_kilt": "Tartan Kilt",
+  "item.tyr_progression.white_cap": "White Cap",
+  "item.tyr_progression.loincloth": "Loincloth"
 }

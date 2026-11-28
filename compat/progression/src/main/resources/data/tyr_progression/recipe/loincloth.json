@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:leather"
+    }
+  ],
+  "result": {
+    "id": "tyr_progression:loincloth",
+    "count": 1
+  }
+}
