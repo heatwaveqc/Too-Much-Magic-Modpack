@@ -2701,6 +2701,11 @@ hash = "1598c4eaca8666404c4d1dbf117c7afff4aaa384cd3d4dc131a8a11b7dfc1616"
 metafile = true
 
 [[files]]
+file = "mods/enemy-echelons.pw.toml"
+hash = "2a084721ec5b3c1453cc1f636b2f1be78d5a33103bba10f87251215d1ff205ca"
+metafile = true
+
+[[files]]
 file = "mods/enigmaticlegacy-plus.pw.toml"
 hash = "8514d86365986f1eac584f4a5a3c38d24e7963685b814210b1a7b03ebc045f4b"
 metafile = true
@@ -2853,6 +2858,11 @@ metafile = true
 [[files]]
 file = "mods/golem-overhaul.pw.toml"
 hash = "1dd77e06dcd06a82bd5e635e0a10ff6fbcefd607fbda7cca542316c4f4c4ab74"
+metafile = true
+
+[[files]]
+file = "mods/gottschcore.pw.toml"
+hash = "755bc9064030aa89f4625bfe864e5fb85e4e8be041eef2ca2e1efa792360cfa1"
 metafile = true
 
 [[files]]
@@ -3368,6 +3378,11 @@ metafile = true
 [[files]]
 file = "mods/stateobserver.pw.toml"
 hash = "322a7defbd55448f14fcf447fd4514156aa6c083fb095a3347aebdf04e10069b"
+metafile = true
+
+[[files]]
+file = "mods/stronger-mobs-below.pw.toml"
+hash = "ace64f0b9928d1d37bc92b5e6deec11b82d85e8997ebf8652f0214f795dfc0a8"
 metafile = true
 
 [[files]]

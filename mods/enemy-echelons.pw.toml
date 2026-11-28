@@ -1,0 +1,13 @@
+name = "Enemy Echelons API"
+filename = "eechelonsapi-neoforge-1.21.1-1.0.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3b37af0ca47d537552b5883d9d5fa80e3ceb93e0"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6874524
+project-id = 656060

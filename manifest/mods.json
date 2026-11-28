@@ -3441,7 +3441,7 @@
       "source": "https://modrinth.com/mod/infinity-cave/version/6XJT5mi4",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim."
+      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim. BLOCKED: exact publisher JAR native Minecraft range [1.21,1.21.1) excludes target 1.21.1 despite provider listing; Actions 46099818625. Investigate earlier compatible build or author fix; no bypass. Worldgen metadata lists separate builtin packs and min_y=-128, height=448 dimension vs height=384 noise; Tectonic coexistence still unproven."
     },
     {
       "id": "stronger-mobs-below",
@@ -3449,11 +3449,12 @@
       "category": "adventure",
       "desired": true,
       "version": "1.0.0",
-      "release_status": "candidate_release",
+      "release_status": "verified_release",
       "source": "https://www.curseforge.com/minecraft/mc-mods/stronger-mobs-below/files/6874590",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Owner approved installation 2026-11-27 #830, with required Enemy Echelons API and GottschCore. Prefer contemporaneous API 1.0.0 and core 2.5.0 to avoid newer version scheme incompatibility; verify actual dependency ranges. Keep vanilla-only scaling initially; no stacked Infinity Cave custom-mob scaling without review."
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
+      "note": "Owner approved installation 2026-11-27 #830, with required Enemy Echelons API and GottschCore. Prefer contemporaneous API 1.0.0 and core 2.5.0 to avoid newer version scheme incompatibility; verify actual dependency ranges. Keep vanilla-only scaling initially; no stacked Infinity Cave custom-mob scaling without review. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "stronger-mobs-below"
     },
     {
       "id": "dungeons-and-taverns",
@@ -3498,10 +3499,11 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/enemy-echelons/files/6874524",
       "category": "dependency",
       "desired": true,
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "release_status": "verified_release",
-      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending."
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "enemy-echelons"
     },
     {
       "id": "gottschcore",
@@ -3510,10 +3512,11 @@
       "source": "https://www.curseforge.com/minecraft/mc-mods/gottschcore/files/6863231",
       "category": "dependency",
       "desired": true,
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
+      "enabled_in_pack": true,
+      "dependencies_verified": true,
       "release_status": "verified_release",
-      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending."
+      "note": "Required for Stronger Mobs Below #830; matching August 2025 release family, exact JAR/range verification pending. Exact publisher JAR verified in Actions run 46099818625; native required dependencies and version ranges match NeoForge 21.1.265, Minecraft 1.21.1 and this three-file group. Source pin only, gameplay untested.",
+      "packwiz_slug": "gottschcore"
     }
   ],
   "excluded": [
