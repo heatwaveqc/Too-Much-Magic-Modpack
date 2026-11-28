@@ -1,10 +1,10 @@
-# Eternal Starlight 0.9.1 — Atlas first-pass research checkpoint
+# Eternal Starlight 0.9.1 — Atlas second-pass research checkpoint
 
-**Status: source-backed-partial / needs-research, 2026-11-27.** Tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent adventure-dimension research boundary after artifact family #799; no overlapping shared index, quest, config, or gameplay work. Native functionality presumed working. Final full 29-axis instructional survey and separate rating still due.
+**Status: source-backed-partial / needs-research, 2026-11-27.** Tracker [#410](https://github.com/heatwaveqc/Too-Much-Magic-Modpack/issues/410). Independent adventure-dimension research boundary after artifact family #799; no overlapping shared index, quest, config, or gameplay work. Native functionality presumed working. Two evidence passes complete; final 29-axis instructional survey and separate rating still due.
 
 ## Evidence and scope
 
-Exact Drive artifact eternalstarlight-0.9.1+1.21.1+neoforge.jar, 59,325,382 bytes, SHA512 2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71 matches [active pin](../../../mods/eternal-starlight.pw.toml), Modrinth XvcfUGfB/IyTc0Vvj. zipfile.testzip clean, 11465 entries,1447 classes. Metadata internal ID eternal_starlight, MC[1.21.1,1.22), NeoForge>=21.1.181, MIT, no other mandatory dependency declared. 1283 recipes:546 shaped,421 stonecutting,154 shapeless,54 smelting,37 blasting,18 smithing transform,11 alloy,10 smoking,10 campfire,7 Ether conversion,5 drying,4 trim,3 geyser smoking,2 tool modification,1 accessory combination. 1326 advancement JSONs including61 non-recipe progress records; 832 loot tables,440 tags,285 worldgen records,13 enchantments,18 damage types,24 jukebox songs,17 trim materials,4 trim patterns. 23 actual biome JSONs (exclude biome tags), 8 actual structure definitions/sets. 111 custom data JSONs:38 paintings,25 coolant,25 biome data,8 seeds launcher ammo,5 Ent variants,3 Boarwarf types,2 Astral Golem materials,2 Seeker variants,2 Shimmer Lacewing variants,1 Gatekeeper names. Native book custom resource path assets/eternal_starlight/eternal_starlight/books/main.json,49 section files and en_us1844 entries; no external guide dependency required. Parsed all recipe JSONs and nonrecipe advancement predicates, selected boss loot pools and book descriptions; javap -p -c of 16 key classes plus ESPortalBlock.Validator. This is a first pass, not proof every handler has been audited. All unqualified native item/block IDs in this document use eternal_starlight:.
+Exact Drive artifact eternalstarlight-0.9.1+1.21.1+neoforge.jar, 59,325,382 bytes, SHA512 2bd7d2fbc478b3cc2b6426ff9cffddf8800b46aa2ca5a4570f9d9ed2f50d4aeadc83bea0c5c410bf26c2e9e0c6cc3296cb8adff233787897265aa2d7a1ad9a71 matches [active pin](../../../mods/eternal-starlight.pw.toml), Modrinth XvcfUGfB/IyTc0Vvj. zipfile.testzip clean, 11465 entries,1447 classes. Metadata internal ID eternal_starlight, MC[1.21.1,1.22), NeoForge>=21.1.181, MIT, no other mandatory dependency declared. 1283 recipes:546 shaped,421 stonecutting,154 shapeless,54 smelting,37 blasting,18 smithing transform,11 alloy,10 smoking,10 campfire,7 Ether conversion,5 drying,4 trim,3 geyser smoking,2 tool modification,1 accessory combination. 1326 advancement JSONs including61 non-recipe progress records; 832 loot tables,440 tags,285 worldgen records,13 enchantments,18 damage types,24 jukebox songs,17 trim materials,4 trim patterns. 23 actual biome JSONs (exclude biome tags), 8 actual structure definitions/sets. 111 custom data JSONs:38 paintings,25 coolant,25 biome data,8 seeds launcher ammo,5 Ent variants,3 Boarwarf types,2 Astral Golem materials,2 Seeker variants,2 Shimmer Lacewing variants,1 Gatekeeper names. Native book custom resource path assets/eternal_starlight/eternal_starlight/books/main.json,49 section files and en_us1844 entries; no external guide dependency required. Parsed all recipe JSONs and nonrecipe advancement predicates, selected boss loot pools and book descriptions; javap -p -c of 16 key classes plus ESPortalBlock.Validator. Pass1 resource census plus pass2 compiled operating conditions below; not proof every handler has been audited. All unqualified native item/block IDs in this document use eternal_starlight:.
 
 ## 1. Entry and advancement spine
 
@@ -95,3 +95,82 @@ Six actual accessory IDs: battleaxe_pendant, warhammer_pendant, butterfly_wings_
 | progression_tiers | entry trial, gear, forge and garden material gates |
 
 Current integration index has native mod pin plus TMM Alkahestry raw Aethersent and Deepsilver recipes, no directly named Eternal Starlight quest/config path found. Check those exact conversion JSONs and any global dimension/progression/ore policies in subsequent pass; do not assume live effect. Next pass: compiled boss configs and personal reward/spawner/rechallenge, portal geometry/return, Seeking Eye targets, alloy fuel/coolant heat/throughput, Catalyst exact operation, equipment/armor/accessories, enchantments, all meaningful companion/effect loops. Final pass: consolidate acquisition/61 criteria and actionable quests, remaining 29-axis dispositions and separate editorial evaluation. No score asserted yet. No game execution, changes to pack, new mod, balance or quest implementation.
+
+## 7. Second pass — exact compiled operating rules (2026-11-27)
+
+Reopened exact Drive JAR, SHA512 and ZIP CRC match again. Inspected javap -p -c of 35+ relevant compiled classes: ESConfig and ItemsConfig/MobsConfig records, AlloyFurnaceBlockEntity, CrystalbornCatalystBlockEntity and Cursor, ESBoss, TheGatekeeper, BossChallengeCountCondition, LootChestBlockEntity, BossSpawnerBlockEntity, StarlightGolem, Permafrost, LunarMonstrosity, ESPortalBlock/Validator, SelectSeekingEyeTargetPacket, SeekingEyeItem/Targets, ESArmorMaterials, ESItemTiers, ESAccessoryUtil, ESItems, WandOfTeleportationItem, CrystallizedMoth, AethersentGolem, StarfireBird/Nest, Stranghoul, MeteorShowerWeather and redstone block entities. Native guide/localization and exact data tags/coolants/loot conditions checked. Numerical defaults are not measured loaded TMM values.
+
+### 7.1 Bosses and personal rewards
+
+Compiled ESConfig.MobsConfig defaults (attack damage scale =1 for all four, spawn enabled):
+| Boss | Max HP | Armor | Follow range |
+|---|---:|---:|---:|
+| Gatekeeper | 175 | 15 | 200 |
+| Permafrost | 120 | 10 | 100 |
+| Starlight Golem | 200 | 10 | 200 |
+| Lunar Monstrosity | 200 | 12 | 200 |
+
+Attack scale is not actual attack damage. ESBoss.hurt registers unique UUID of ServerPlayer causing a successful damage event; die also adds qualifying killer, iterates surviving same-dimension participants. Mere proximity is not guaranteed credit. BossChallengeCounts personal attachment, per boss key. Default config enableLootChest=true, enableBossRespawn=true, bossRespawnCooldown=36000 ticks (30 min at20TPS). BossDefeat attempts to place respawn spawner at initial position when configured and replaceable, then sets cooldown; cooldown is not a promise of exact real-time respawn unloaded. Gatekeeper challenge distinct NPC interaction. ESBoss.spawnBossLootChest creates actual loot chest and adds each eligible participant UUID with their personal count map, if chest placement succeeds. Fallback creates personal targeted glowing extended-lifetime loot bags for eligible participants or a common bag when none qualify. Special grant hook separate. doMobLoot gates native reward. No guarantee for offline/dead/dimension-changed players or cross-mod indirect attribution. Excellent native co-op reward model; teach participants to deal actual player-attributed damage and claim their own chest rewards, not steal/share a single boss roll.
+
+**Correction to pass1 loot wording:** Gatekeeper Tablet and Orb entries have explicit boss_challenge_count max_inclusive1, so first qualifying challenge rewards, not unconditional repeats. Glistering weapon pool four entries each conditional random_chance .3, one weighted selection among surviving candidates; can yield none. Permafrost/Golem/Lunar material pools as listed in §2; no challenge-count condition in those packaged tables, but separate eligibility/delivery above. Do not claim exact boss repeat mechanics are identical for Gatekeeper NPC and ordinary spawner-based encounters. All bosses use native combat phases; no unsupported exact attack timeline necessary for quest-source scope.
+
+### 7.2 Portal and navigation
+
+ESPortalBlock.Validator tests diamond Manhattan radius r=2..10 in vertical plane X or Z (outer width and height 2r+1, frame unique positions4r, interior Manhattan distance<r, 1+2r(r−1) hollow cells). At minimum r2: eight frame blocks, five interior cells; at maximum r10: forty frame blocks,181 interior cells. Validator checks frame tag and accepted empty interior; activate valid Chiseled Voidstone frame with Orb, no consumption in useOn. Native return destination from Starlight is Overworld; from any other source level it targets Starlight, server dimension-travel event must allow, ESTeleporter resolves destination. Ordinary player portal transition80 ticks, invulnerable ability player1 tick, nonplayers0; not instant normal survival. Do not confuse permitted destination with guarantee of TMM Newbie permission or claim-safe destination. Seeking Eye packet locate: structure search radius argument100 (native chunk-generator search units, not guaranteed physical radius), biome search6400 blocks, horizontal step32, vertical64. Uses server locate and successful target, not arbitrary coordinates; exact target menu/cost/recall shatter odds remain final pass. No forced client/command location. Wand of Teleportation raycast64-block reach in use; actual selected destination constrained by landing check; successful invocation creates thorn circle at origin and destination and owner-tagged Tangled Husk at origin, calls platform teleport event before move, consumes1 durability and 600t cooldown (30s) even if teleport event vetoes after invocation. This is real movement/temporary attack system, not unlimited transport or flight.
+
+### 7.3 Alloy Furnace thermal accounting
+
+14 slots: ingredient grid0–8, fuel9, coolant10, outputs11–13. Recipe time400 ticks all11; uses platform furnace fuel burn-time with alloy recipe type; consumes fuel only when canBurn and unlit, retains/handles container remainder, uses active lit/canBurn progress+1/tick otherwise−1 clamped0..recipe time. Max3 output result slots, canBurn validates output fit. Nominal continuous 20s/batch, 3 batches/min at20TPS; heat is independent of output completion. While lit, heat+1 every tick without cooling; with cooling only increases when remaining litTicks modulo efficiency==0. While unlit, heat decreases1/tick, plus coolant efficiency if active. Coolant loaded only when heat>0 and no cooling ticks left; duration decreases while active. Overheat clamped0..12000, default explosion radius3 (configuration parameter, not measured actual destruction radius). At cap furnace explosion path; 10min cumulative uninterrupted uncooled burning from cold; cooling reduces increase, does not by itself cool an actively lit furnace. Teach pause to cool; no guaranteed indefinite safe burn merely adding ice. Front/back ingredient automation, sides fuel/coolant and bottom extraction per sided slots; verify exact orientation if needed in final.
+| Coolant | Duration ticks | Efficiency |
+|---|---:|---:|
+| Snow/ice/snowball/Ashen Snow/Ashen Snowball/icicle | 800 | 3 |
+| Snow block | 3200 | 3 |
+| Packed ice | 8000 | 3 |
+| Blue ice | 32000 | 5 |
+| Glacite shard | 1200 | 5 |
+| Glacite | 7200 | 5 |
+| Glacite block | 12000 | 5 |
+| Frozen Tube | 1600 | 4 |
+| Glacite tools/armor/arrow/shield (12 individual records) | 300 | 4 |
+
+25 coolant JSONs total (12 distinct Glacite gear/arrow records including axe, boots, chestplate, helmet, hoe, leggings, pickaxe, scythe, shield, shovel, sword, arrow). At continuous burn with uninterrupted efficiency5 cooling approximate one heat tick per5 burn ticks, still eventually reaches cap; useful coolant duration is not direct heat removed. Can calculate nominal batches from cold ~30 uncooled if burn continuous, stop earlier rather than teaching destructive test. Default full heat and no fuel/no coolant takes600s to clear; active efficiency5 unlit gives6/tick, conditional duration enough. Actual server TPS, idle gaps and input/output availability matter.
+
+### 7.4 Crystalborn Catalyst: destructive harvesting, not ore creation
+
+Exact config maxRange128 (distance squared check at start of cursor iteration; a cursor can step one block beyond threshold before removal), energyPerShard50. Container15 = fuel0 +14 output slots. LIT requires redstone state; each active tick valid fuel increments charge toward30, absent decrements, clamp0..30, charge30 consumes one shard and adds50 internal energy, resets charge. Red and blue crystal shard tag only; no FE. At most8 active cursors, allocate min(random10..19, remaining energy), one new cursor per active tick while capacity; allocation deducted from central energy. Cursor starts at machine, follows neighboring directions; previously converted crystallized sand/red or blue crystal moss can be traversed without new harvest cost, 1/3 chance change direction; native preference tag #c:ores. Actual replaceable block tag = #minecraft:sculk_replaceable, #minecraft:sand, #c:ores, #eternal_starlight:base_stone_starlight. Moss subset minecraft:moss_block,cave_moss_block,#minecraft:dirt. Calculates drops with ordinary default Diamond Pickaxe, origin and optional block entity; no player or Fortune attached. Calls ServerLevel.destroyBlock(pos,false) then replaces with red crystal moss if moss subset else crystallized sand; emits collected drops, decrements cursor energy1 per successful replacement. Outputs merge into14 slots, overflow popResource at machine. Existing transformed terrain costs no extra cursor energy; unsuitable path/failed destruction can waste allocated energy, no guaranteed50 ores per shard, no ore creation, no unconditional throughput. No explicit claim/player event call observed in Cursor.tick prior to world mutation; platform/global protections could exist. This is a **specific cross-mod claim and protected ore policy question**, not proof of observed claim bypass. Recommend separate scoped source audit of effective tags/protection; do not silently patch or exploit. TMM direct indexed mod-specific paths currently only pin and two Alkahestry recipes (§7.7).
+
+### 7.5 Equipment and accessories
+
+Exact compiled ESArmorMaterials registry contains nine material definitions (some partial sets). Selected base raw four-player-piece sums, toughness summed four times if full set, raw knockback resistance additive, engine cap applies:
+| Material | Helmet/chest/legs/boots | Armor sum | Toughness per piece | Knockback per piece | Enchantability |
+|---|---|---:|---:|---:|---:|
+| Unrealium | 2/5/5/2 |14|.5|0|25|
+| Deepsilver |3/8/6/3|20|.5|.2|25|
+| Starlit Diamond |2/6/5/2|15|3|.1|22|
+| Glacite |3/8/6/3|20|.5|0|9|
+| Thermal Springstone |3/6/5/3|17|.5|0|15|
+| Aethersent |2/6/5/2|15|0|0|35|
+| Amaramber |2/6/5/2|15|0|0|9|
+| Alchemist |1/4/4/1|10|0|0|15|
+
+Material maps not necessarily all four items actually registered; verify ESItems registrations and special armor effects final pass. Native raw protection does NOT establish Unrealium superior armor to Deepsilver; specialized bonuses matter. Accessory effects from exact tooltip and ESAccessoryUtil attachment/UI handlers:
+| Accessory | Native role |
+|---|---|
+| Battleaxe Pendant | reduce axe combat durability loss; prevent stripping |
+| Warhammer Pendant | damage scales with movement speed |
+| Butterfly Wings Amulet | use Ether to erode armor of attackers/targets |
+| Fungus Amulet | wearer can consume fungus |
+| Pearl Necklace | instant air recovery when exiting water |
+| Crescent Pendant | cap incoming damage at75% maxHP; gradually repair Lunar Monstrosity weapons |
+
+Tooltip statements are not yet all independently traced handler constants. ESAccessoryUtil reads active host item components, uses Set<Item> across relevant equipment slots (duplicate identity dedup in that utility), apply/remove and override stack-on-equipment operations. Compatibility tags axe #minecraft:axes, chest armor #minecraft:chest_armor, hammer #eternal_starlight:hammers. These are equipment augmentations, not Curios; exact per-host slot counts and handler conditions final pass. Crescent damage cap is not a guaranteed death save at low health. Numbness tooltip defers75% incoming damage, reapplies at end; exact event ordering and damage ledger final pass; not invulnerability.
+
+### 7.6 Companions and repeatable world resources
+
+CrystallizedMoth actual TamableAnimal owner targeting goals (OwnerHurtByTargetGoal, OwnerHurtTargetGoal), follow start10/stop2, owner teleport attempt squared distance>=400 (20 blocks), untamed removeWhenFarAway eligibility only after2400 ticks. Native breeding and food ingredient predicates exist; exact meat/gel conversion and taming roll still final pass. Stranghoul follows hirer and attacks hirer targets; baby growth >24000ticks. Native hiring timer24000 ticks (20 min at20TPS, one Minecraft day); no permanent tamed companion entitlement. Stranghoul has crop/plant/dry rotten flesh/eat/breed goals and native barter tags. Aethersent Golem has explicit meteor target and projectile defense; not universal ground combat pet. Starfire Bird nested gifting/breeding/aviary logic and meteor weather verified compiled class paths, guide-supported actions in §5; exact renewable rates still final pass. No invented measured rates.
+
+### 7.7 TMM actual source interactions and next pass
+
+Two explicit [Alkahestry raw Aethersent](../../../kubejs/data/tmm/recipe/alkahestry/eternal_starlight__raw_aethersent.json) and [raw Deepsilver](../../../kubejs/data/tmm/recipe/alkahestry/eternal_starlight__raw_deepsilver.json) recipes verified: strict no-extra-components item ingredient; charges4914 /108, output counts2 /6 respectively, both conditioned on Reliquary Alkahestry enabled and item existence. These are pack cross-mod duplication recipes, not native Eternal Starlight or guaranteed loaded configuration. Native Catalyst broad ore tags and direct terrain replacement merit separate targeted pack policy investigation, no observed failure claimed. Native multiplayer rewards are a valuable general design reference, not a new TMM implementation request.
+
+Final narrow pass: exact accessory host/effect handlers, special weapons/armor and enchants, Seeking Eye selection and recall, key companion production/acquisition conditions, effect ledger and all61 advancement criteria; complete actionable lesson map, update 29 axes (ore_generation meteor yes, Catalyst gathering only; temporary pets hire/husk; death no demonstrated native death recovery), separate final 11-domain evaluation. No exhaustive ordinary decorative recipes, build or gameplay QA required. No gameplay, balance, config, quest or index changes. 
