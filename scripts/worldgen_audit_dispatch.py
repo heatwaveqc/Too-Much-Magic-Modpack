@@ -35,7 +35,7 @@ def validate(event):
         or not qa.owner(comment.get("user", {})) or not qa.owner(event.get("sender", {}))
         or not isinstance(comment.get("id"), int)):
         raise qa.Refused("Untrusted worldgen command")
-    match = re.fullmatch(r"/tmm worldgen (?:(?:vanilla|density) )?([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
+    match = re.fullmatch(r"/tmm worldgen (?:(?:vanilla|density|cave) )?([0-9a-f]{40}) ([0-9a-f]{32})", comment.get("body", "").strip())
     if not match or match[1] != TOOLS:
         raise qa.Refused("Expected exact reviewed worldgen tooling SHA and a fresh nonce")
     return match[2]
@@ -84,7 +84,8 @@ def execute(api, event, now, launcher_sha):
     nonce = validate(event)
     vanilla = event["comment"]["body"].strip().startswith("/tmm worldgen vanilla ")
     density = event["comment"]["body"].strip().startswith("/tmm worldgen density ")
-    prefix = "worldgen-density-request/" if density else "worldgen-vanilla-request/" if vanilla else "worldgen-request/"
+    cave = event["comment"]["body"].strip().startswith("/tmm worldgen cave ")
+    prefix = "worldgen-cave-request/" if cave else "worldgen-density-request/" if density else "worldgen-vanilla-request/" if vanilla else "worldgen-request/"
     if not re.fullmatch(r"[0-9a-f]{40}", launcher_sha):
         raise qa.Refused("Invalid launcher SHA")
     live_comment(api, event, now)

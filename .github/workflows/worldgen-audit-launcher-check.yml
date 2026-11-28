@@ -6,6 +6,8 @@ on:
       - 'scripts/worldgen_dispatch_diagnostics.py'
       - 'scripts/run_worldgen_vanilla_control.py'
       - 'scripts/run_worldgen_density_pilot.py'
+      - 'scripts/run_worldgen_cave_control.py'
+      - 'tests/test_worldgen_cave_control.py'
       - 'tests/test_worldgen_audit_dispatch.py'
       - '.github/workflows/worldgen-audit-dispatch.yml'
       - '.github/workflows/worldgen-audit-pilot.yml'
@@ -23,6 +25,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m unittest discover -s tests -p test_worldgen_audit_dispatch.py -v
+      - run: python -m unittest discover -s tests -p test_worldgen_cave_control.py -v
       - uses: actions/checkout@v4
         with:
           ref: 990c97ce355aac191419354809ab013efddb10f0
