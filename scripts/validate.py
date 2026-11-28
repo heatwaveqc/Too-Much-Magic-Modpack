@@ -70,6 +70,8 @@ def main() -> None:
                 check(mod.get("side") == "client", f"Resource pack must be client-only: {name}")
                 check(mod.get("filename", "").endswith(".zip"), f"Resource pack must be a ZIP: {name}")
     check(not active & excludes, "Excluded mod present in packwiz")
+    if "summoning-rituals" in excludes:
+        check("summoningrituals" not in active and not (ROOT / "mods/summoningrituals.pw.toml").exists(), "Retired Summoning Rituals pin restored")
     catalog_active = {m.get("packwiz_slug", m["id"]) for m in mods if m["enabled_in_pack"]}
     check(len(catalog_active) == sum(m["enabled_in_pack"] for m in mods), "Duplicate packwiz slugs")
     check(active == catalog_active, f"Active mismatch: packwiz={sorted(active)} manifest={sorted(catalog_active)}")

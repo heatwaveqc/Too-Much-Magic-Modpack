@@ -350,8 +350,6 @@
 	quest.544D505000700000.quest_desc: ["Acquire one Netherite Scrap to introduce late-game conventional material upgrades. This does not unlock boss-gated draconium or Replication materials."]
 	quest.544D505000800000.title: "Construct a Lodestone"
 	quest.544D505000800000.quest_desc: ["Craft a lodestone and use it with a compass as a reliable base or remote-site landmark. The pack deliberately does not include Waystones."]
-	quest.544D505000900000.title: "Understand Summoning Rituals"
-	quest.544D505000900000.quest_desc: ["Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested."]
 	quest.544D505000A00000.title: "Prepare a Protected Ritual Chamber"
 	quest.544D505000A00000.quest_desc: ["Reserve sufficient space for multiblocks, separate hazardous machinery, and keep vulnerable farms and storage away from explosive experiments. This is a planning checkmark, not an automated claim that a structure exists."]
 	quest.544D302000300001.title: "Chapter Overview"

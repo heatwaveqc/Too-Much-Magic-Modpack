@@ -1723,26 +1723,6 @@
     },
     {
       "chapter": "Advanced Progression",
-      "title": "Understand Summoning Rituals",
-      "quest_id": "544D505000900000",
-      "task_id": "544D805000900000",
-      "xp_reward_id": "544D605000900001",
-      "item_reward_id": "544D705000900002",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "reward": {
-        "xp": 20,
-        "item": "minecraft:candle",
-        "count": 4
-      },
-      "depends": null,
-      "optional": true,
-      "role": "guide",
-      "stage": ""
-    },
-    {
-      "chapter": "Advanced Progression",
       "title": "Prepare a Protected Ritual Chamber",
       "quest_id": "544D505000A00000",
       "task_id": "544D805000A00000",

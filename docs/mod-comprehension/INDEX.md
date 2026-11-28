@@ -15,7 +15,7 @@ Work one substantial slice at a time; update corresponding coverage status and l
 | 3 | `neovitae` | Ritual mechanics, energy/EV, tier gates, blood interactions |
 | 4 | `witchery-remake` | JAWR base factions, vampirism/lycanthropy and alt progression |
 | 5 | `forbidden-magic` | JAWR Forbidden Magic lich/other spell and faction extensions |
-| 6 | `summoning-rituals` | Investigate actual native input/output and customization limits |
+| 6 | `summoning-rituals` | Retired from active pack by owner decision #748; historical research only |
 | 7 | `botania-revived` | Early mana, floral loops, runic crafting and port-specific changes |
 | 8 | `roots-classic` | Early natural magic utility and repeatable sources |
 | 9 | `irons-spells` | Scrolls/spellbooks, spell school gates and Ars addon interaction |
@@ -32,7 +32,7 @@ Work one substantial slice at a time; update corresponding coverage status and l
 | 20 | `quest-shop` | Item/coin/team account semantics and rewards/balance |
 | 21 | `ftb-quests` | Existing task detectors and reliable quest authoring surfaces |
 
-Once two source-supported profiles expose complementary I/O, test a **cross-mod** hypothesis rather than indefinitely deferring pass 2. High-priority *unverified questions*: Ars Ocultas × Occultism; Ars 'n Spells × Iron's; JAWR × Vampirism × Werewolves (and the pack's separate transformation bridge); EvilCraft flesh and modded diets; Summoning Rituals output channels; magical processing substitutions; late-game EMC gate leakage. Do not presume any work merely because it is in this list.
+Once two source-supported profiles expose complementary I/O, test a **cross-mod** hypothesis rather than indefinitely deferring pass 2. High-priority *unverified questions*: Ars Ocultas × Occultism; Ars 'n Spells × Iron's; JAWR × Vampirism × Werewolves (and the pack's separate transformation bridge); EvilCraft flesh and modded diets; magical processing substitutions; late-game EMC gate leakage. Do not presume any work merely because it is in this list.
 
 ## Complete roster and status tracker
 
@@ -190,7 +190,7 @@ Replace `—` in the Profile column with `[profile](mods/<manifest-id>.md)` once
 | `polymorph` | Polymorph | qol | enabled flag | focused | queued | — |
 | `trashslot` | TrashSlot | qol | enabled flag | focused | queued | — |
 | `treechop` | HT's TreeChop | qol | enabled flag | focused | queued | — |
-| `summoning-rituals` | Summoning Rituals | ritual_framework | enabled flag | full | researching | [profile](mods/summoning-rituals.md) |
+| `summoning-rituals` | Summoning Rituals | ritual_framework | excluded (#748) | historical | retired | [profile](mods/summoning-rituals.md) |
 | `simple-backups` | Simple Backups | server_utility | enabled flag | interface | queued | — |
 | `spark` | spark | server_utility | enabled flag | interface | queued | — |
 | `improvable-skills` | Improvable Skills 3 | skills | enabled flag | full | queued | — |

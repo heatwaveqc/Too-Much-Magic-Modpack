@@ -2143,19 +2143,6 @@
       "packwiz_slug": "stateobserver"
     },
     {
-      "id": "summoning-rituals",
-      "name": "Summoning Rituals",
-      "category": "ritual_framework",
-      "desired": true,
-      "version": "summoningrituals-neoforge-1.21.1-3.14.2",
-      "release_status": "verified_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/671040",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "note": "User-approved in PR #6. B5 pinned and server test pending. CurseForge project ID pinned; verify file maturity in test report",
-      "packwiz_slug": "summoningrituals"
-    },
-    {
       "id": "supermartijn642-config-lib",
       "name": "SuperMartijn642's Config Lib",
       "category": "dependency",
@@ -3606,6 +3593,10 @@
     {
       "id": "explorers-compass",
       "reason": "Owner declined; the existing native Ars Additions Locate Structure ritual is extended instead."
+    },
+    {
+      "id": "summoning-rituals",
+      "reason": "Owner-approved removal #748, 2026-11-27: redundant framework, no intrinsic rituals; Occultism, Gateways and native ritual systems retained. Historical B7 membership retained as historical evidence."
     }
   ],
   "items_blacklist": [

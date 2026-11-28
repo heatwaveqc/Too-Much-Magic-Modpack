@@ -3,7 +3,7 @@
   "source": "scripts/rebuild_quest_ui.py",
   "source_of_titles": "manifest/quest_content.json and manifest/quest_content_resolved.json",
   "notes": "Stable signed IDs and layouts: 259 quests / 221 authored; includes the 20-node Atlas-derived Theurgy branch and 5 original procedural quest backgrounds. Updated by scripts/rebuild_quest_ui.py; client rendering not yet tested. Four Iron sale tiers added (owner 2026-11-23).",
-  "quest_count": 298,
+  "quest_count": 297,
   "chapters": 45,
   "positions": [
     {
@@ -1181,15 +1181,6 @@
       "chapter": "Advanced Progression",
       "position": [
         6,
-        8
-      ],
-      "authored": true
-    },
-    {
-      "quest_id": "544D505000900000",
-      "chapter": "Advanced Progression",
-      "position": [
-        9,
         8
       ],
       "authored": true

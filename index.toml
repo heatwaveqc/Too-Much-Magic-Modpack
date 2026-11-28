@@ -106,7 +106,7 @@ hash = "1b25f9b82d8868ca29ca6b11270612165ee079a48b19d129553bce8b3feda385"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/advanced_progression.snbt"
-hash = "d516d431088977e503353e4446d861ff2843b96b6015f8b28fa4412e2490514d"
+hash = "16e8e689ccf78952fdb853c0a1cd2ecd9894f6528a4d6b9a5daed5316debe551"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/alcohol_is_magic.snbt"
@@ -286,7 +286,7 @@ hash = "33d8c6b1f48c0df711adf6fb53e7fa39ccaaa4c0f0218eb0fb31cdf58bfeded9"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "c5e0ae75aa6ec09aeda22856c5bf188717bae016469fcb2748fee313ad7065cc"
+hash = "5ad8f0ec13f8b54bbf7f62b7f31967e97d668417a7fe8be0a3fca7e5217a7845"
 
 [[files]]
 file = "config/ftbquests/quests/reward_tables/starter_homes.snbt"
@@ -3368,11 +3368,6 @@ metafile = true
 [[files]]
 file = "mods/stateobserver.pw.toml"
 hash = "322a7defbd55448f14fcf447fd4514156aa6c083fb095a3347aebdf04e10069b"
-metafile = true
-
-[[files]]
-file = "mods/summoningrituals.pw.toml"
-hash = "59b49692f23195e2d53945afef3d8c29ecfd942305c5c3daa1d52275e939d7d6"
 metafile = true
 
 [[files]]

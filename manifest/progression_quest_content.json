@@ -8,10 +8,10 @@
     "Skills & Factions",
     "A Sufficiently Advanced Magic"
   ],
-  "quest_count": 56,
+  "quest_count": 55,
   "counts": {
     "Basic Progression": 10,
-    "Advanced Progression": 10,
+    "Advanced Progression": 9,
     "Endgame Roadmap": 6,
     "A Sufficiently Advanced Magic": 13,
     "Skills & Factions": 17
@@ -379,24 +379,6 @@
       "depends": null,
       "optional": true,
       "role": "navigation",
-      "stage": "",
-      "layout": null
-    },
-    {
-      "chapter": "Advanced Progression",
-      "title": "Understand Summoning Rituals",
-      "criterion": {
-        "type": "checkmark"
-      },
-      "description": "Summoning Rituals is a custom recipe framework: it does not bring a complete fixed questline of ritual recipes by default. Check JEI and the TMM recipe registry for any implemented pack-specific offerings. Do not assume speculative rituals work until authored and tested.",
-      "reward": {
-        "xp": 20,
-        "item": "minecraft:candle",
-        "count": 4
-      },
-      "depends": null,
-      "optional": false,
-      "role": "guide",
       "stage": "",
       "layout": null
     },

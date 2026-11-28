@@ -125,7 +125,7 @@ def main() -> None:
         ensure(all((art_dir / name).read_bytes().startswith(b"\x89PNG\r\n\x1a\n") for name in expected_art), "Invalid Theurgy PNG")
 
     check_friendship()
-    ensure(len(authored["quests"]) == len(resolved["quests"]) == 260, "Expected 260 authored quests including Friendship is Magic")
+    ensure(len(authored["quests"]) == len(resolved["quests"]) == 259, "Expected 259 authored quests including Friendship is Magic")
     ensure([q["title"] for q in authored["quests"]] == [q["title"] for q in resolved["quests"]], "Authored/resolved quest order differs")
     names = {c["name"] for c in chapters}
     ensure({"Getting Started", "Tips & Tricks", "Food & Fishing"} <= names, "Intro chapter missing")
@@ -145,10 +145,10 @@ def main() -> None:
     chapterloc = lang_text
     translated_titles = re.findall(r'quest\.([0-9A-F]{16})\.title: ', lang_text)
     translated_desc = re.findall(r'quest\.([0-9A-F]{16})\.quest_desc: \[', lang_text)
-    ensure(len(translated_titles) == len(translated_desc) == 298,
-           f"Expected 298 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
+    ensure(len(translated_titles) == len(translated_desc) == 297,
+           f"Expected 297 localized quests, got {len(translated_titles)} titles and {len(translated_desc)} descriptions")
     lang_ids = set(translated_titles)
-    ensure(len(lang_ids) == 298 and lang_ids == set(translated_desc),
+    ensure(len(lang_ids) == 297 and lang_ids == set(translated_desc),
            "Missing/duplicate quest locale keys in lang/en_us.snbt")
     for g in groups:
         ensure(f'chapter_group.{g["id"]}.title: {quote_quest_text(g["name"])}' in grouploc, f"Missing group label {g['name']}")
@@ -188,7 +188,7 @@ def main() -> None:
         blocks = quest_blocks(text, path.name)
         ensure(blocks, f"Empty quest chapter: {path.name}")
         expected = {"Getting Started": 20, "Tips & Tricks": 34, "Food & Fishing": 22, "Alcohol is Magic": 19, "Ars Nouveau": 49,
-                    "Basic Progression": 27, "Advanced Progression": 11, "Endgame Roadmap": 7,
+                    "Basic Progression": 27, "Advanced Progression": 10, "Endgame Roadmap": 7,
                     "Skills & Factions": 18, "Theurgy": 20, "Friendship is Magic": 21, "Artifacts": 3, "ProjectE": 2, "A Sufficiently Advanced Magic": 14}.get(c["name"], 1)
         ensure(len(blocks) == expected, f"Wrong quest count in {path.name}: got {len(blocks)} expected {expected}")
         coords = set()
@@ -292,7 +292,7 @@ def main() -> None:
             if qid == c["overview_quest_id"]:
                 ensure(f'id: "{c["overview_task_id"]}"' in tasks, f"Changed stable overview task ID {path.name}")
 
-    ensure(len(all_blocks) == 298, f"Expected 298 quests, found {len(all_blocks)}")
+    ensure(len(all_blocks) == 297, f"Expected 297 quests, found {len(all_blocks)}")
     for q in resolved["quests"]:
         qid = q["quest_id"]
         ensure(qid in all_blocks, f"Authored quest missing {q['title']}")
@@ -362,9 +362,9 @@ def main() -> None:
     ensure([q["quest_id"] for q in resolved["quests"] if q["criterion"]["type"] == "item_tag"] == ["544D4D1100000001"],
            "Only Punch a Tree may use the native tag filter")
     progression = json.loads((ROOT / "manifest" / "progression_quest_content.json").read_text(encoding="utf-8"))
-    planned = {"Basic Progression": 10, "Advanced Progression": 10, "Endgame Roadmap": 6,
+    planned = {"Basic Progression": 10, "Advanced Progression": 9, "Endgame Roadmap": 6,
                "Skills & Factions": 17, "A Sufficiently Advanced Magic": 13}
-    ensure(len(progression["quests"]) == 56 and progression["counts"] == planned,
+    ensure(len(progression["quests"]) == 55 and progression["counts"] == planned,
            "Full Progression source count or chapter distribution drift")
     ensure(all(x["criterion"]["type"] == "checkmark" for x in progression["quests"] if x["chapter"] == "Endgame Roadmap"),
            "Roadmap must not duplicate boss/material progression tasks")
