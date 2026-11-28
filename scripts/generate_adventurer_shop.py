@@ -100,6 +100,7 @@ def generate(facts, values, policy, template):
             if prefix + "excluded" in tags or row["spawn_egg"]:
                 reason = "excluded"
             elif direction == "BUY" and (prefix + "buy/excluded" in tags
+                   or path in ("seed", "seeds", "sapling")
                    or path.endswith(("_sapling", "_spawn_egg", "_seeds", "_seed"))
                    or "seeditem" in path):
                 reason = "market_only"
