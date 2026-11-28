@@ -349,10 +349,6 @@ file = "defaultconfigs/ftbessentials-server.snbt"
 hash = "e0d929ffd97c4f896a06de76ac1f2e891d8b111f761565c0192f947d7fb7cbd8"
 
 [[files]]
-file = "defaultconfigs/multiplayerspawners-server.toml"
-hash = "fd8270f5c54f0adcf36d1fec196f9a66c859b1637fc43acc61502da2e0938776"
-
-[[files]]
 file = "kubejs/assets/bountiful/lang/en_us.json"
 hash = "a66c5d2dfb0749dbf9970aa97924c8abae93cdb768079f15edf41d27ebd175ec"
 
@@ -3098,11 +3094,6 @@ metafile = true
 [[files]]
 file = "mods/mowzies-mobs.pw.toml"
 hash = "ef5e19ba6a664e7d2b3d54723e3d3f05c0d9e987d807ecb899c1c2ba1a509519"
-metafile = true
-
-[[files]]
-file = "mods/multiplayer-spawners.pw.toml"
-hash = "d0048aaa88bbef220a0c578b4be2fada28fafbb1b1825da33d2fc4ffdb60b90f"
 metafile = true
 
 [[files]]

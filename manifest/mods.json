@@ -3299,19 +3299,6 @@
       "note": "Owner-approved inclusion 2026-11-21 as an explicit narrow exception to #390's 2026-11-20 scope freeze; not yet installed. Official 1.21.1 NeoForge artifact; published requirements NeoForge 21.1.192–<21.2 and Farmer's Delight >=1.2.9,<1.4 match current pack versions, Java 21. Verify exact publisher JAR bytes/hash, metadata, optional interactions, Pam's/FD ingredient tags, worldgen and diet compatibility; integrator owns immutable Packwiz pin/index/hash reconciliation. Not live-tested or enabled. SOURCE-PINNED 2026-11-23: exact SHA1 staged from approved #551 provenance; 4/5 official publisher binaries verified, Huaxia 1.2.0 owner-uploaded JAR SHA1/ZIP/native metadata confirmed but publisher CDN digest unavailable. Native runtime dependency resolution and gameplay still untested. Must run owner-authorized full build before claiming operational."
     },
     {
-      "id": "multiplayer-spawners",
-      "name": "Multiplayer Spawners",
-      "category": "utility",
-      "desired": true,
-      "version": "2.0.2",
-      "release_status": "verified_release",
-      "source": "https://github.com/The-Plum-Team/Multiplayer-Spawners-Mod/releases/tag/v2.0.2",
-      "enabled_in_pack": true,
-      "dependencies_verified": false,
-      "packwiz_slug": "multiplayer-spawners",
-      "note": "Owner-selected #542 next QA. Official GitHub release 2.0.2 NeoForge 1.21.1 exact JAR asset SHA256 3118ab7710c29a15c1a732e80d6724d678e43dd11bb0a6c4ad23d9af4e2fda67 independently matched GitHub Releases API digest. Personal spawners require enableGroupDisabling=false, 10-second vanilla torch extinguishing, preserved native Lootr full personal loot. Smoke 45546469223 failed before mod discovery on the publisher filename. Install the same verified 2.0.2 bytes under multiplayerspawners-2.0.2.jar; no version change. Loader/server/Apothic/player test remains pending."
-    },
-    {
       "id": "lootr-liaison",
       "name": "Lootr Liaison",
       "category": "utility",
@@ -3441,7 +3428,7 @@
       "source": "https://modrinth.com/mod/infinity-cave/version/6XJT5mi4",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim. BLOCKED: exact publisher JAR native Minecraft range [1.21,1.21.1) excludes target 1.21.1 despite provider listing; Actions 46099818625. Investigate earlier compatible build or author fix; no bypass. Worldgen metadata lists separate builtin packs and min_y=-128, height=448 dimension vs height=384 noise; Tectonic coexistence still unproven."
+      "note": "Owner approved installation 2026-11-27 #830. 0.7 beta has upstream worldgen and spawn performance improvements over 0.61. Exact pin resolver and Tectonic coexistence audit pending; no runtime claim. BLOCKED: exact publisher JAR native Minecraft range [1.21,1.21.1) excludes target 1.21.1 despite provider listing; Actions 46099818625. Investigate earlier compatible build or author fix; no bypass. Worldgen metadata lists separate builtin packs and min_y=-128, height=448 dimension vs height=384 noise; Tectonic coexistence still unproven. Owner-uploaded 0.7 independently CRC and SHA512 matched exact publisher artifact; fallback 0.61 also rejects 1.21.1 (Actions 46099893800). Normalized registry keys reveal differing Tectonic/Infinity Cave Terralith compatibility pack overrides. Investigate metadata correction and dedicated Tectonic compatibility before activation."
     },
     {
       "id": "stronger-mobs-below",
@@ -3460,37 +3447,25 @@
       "id": "dungeons-and-taverns",
       "name": "Dungeons and Taverns",
       "category": "adventure",
-      "desired": false,
+      "desired": true,
       "version": "4.4.3",
       "release_status": "candidate_release",
       "source": "https://modrinth.com/datapack/dungeons-and-taverns/version/bJq6DOLA",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
-    },
-    {
-      "id": "repurposed-structures",
-      "name": "Repurposed Structures",
-      "category": "adventure",
-      "desired": false,
-      "version": "7.5.22",
-      "release_status": "candidate_release",
-      "source": "https://www.curseforge.com/minecraft/mc-mods/repurposed-structures/files/8688394",
-      "enabled_in_pack": false,
-      "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
+      "note": "Owner approved conditional inclusion 2026-11-27 #830: exact official NeoForge 1.21.1 metadata/dependency and structure-set inventory; D&T selective taverns/underground, limit surface structures and review loot/enchantments; T&T village/outpost shared placement or equivalent density guard; compare existing villages and avoid competing generation. Do not enable before review."
     },
     {
       "id": "towns-and-towers",
       "name": "Towns and Towers",
       "category": "adventure",
-      "desired": false,
+      "desired": true,
       "version": "1.13.11",
       "release_status": "candidate_release",
       "source": "https://modrinth.com/datapack/towns-and-towers/version/DZxwgj6V",
       "enabled_in_pack": false,
       "dependencies_verified": false,
-      "note": "Recovered 2026-11-27 from original 2026-11-13 owner approval; absent from current indexed roster, not a new scope-freeze addition. Candidate version, not pinned. #830 exact publisher binary/hash, dependency and worldgen compatibility audit required; coordinate #746 density policy. No full build authorized. Owner 2026-11-27: hold pending explicit review of actual features, density and overlap; no installation authorized."
+      "note": "Owner approved conditional inclusion 2026-11-27 #830: exact official NeoForge 1.21.1 metadata/dependency and structure-set inventory; D&T selective taverns/underground, limit surface structures and review loot/enchantments; T&T village/outpost shared placement or equivalent density guard; compare existing villages and avoid competing generation. Do not enable before review."
     },
     {
       "id": "enemy-echelons",
@@ -3671,6 +3646,14 @@
     {
       "id": "when-dungeons-arise-seven-seas",
       "reason": "Owner decision 2026-11-27 #830: omit Dungeons Arise series to limit redundant surface structures."
+    },
+    {
+      "id": "multiplayer-spawners",
+      "reason": "Owner confirmed removal 2026-11-27 #812: Perpetual Life makes independent spawners unnecessary; Stray texture regression. Preserve vanilla spawners, Apothic Spawners, Lootr personal loot."
+    },
+    {
+      "id": "repurposed-structures",
+      "reason": "Owner excluded 2026-11-27 #830: redundant with existing YUNG's and density goals."
     }
   ],
   "items_blacklist": [

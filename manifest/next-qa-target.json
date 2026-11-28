@@ -83,6 +83,7 @@
     "enchantment-descriptions",
     "enderman-overhaul",
     "enders-delight",
+    "enemy-echelons",
     "enigmatic-legacy-plus",
     "entity-culling",
     "eternal-starlight",
@@ -114,6 +115,7 @@
     "goety",
     "goety-cataclysm",
     "golem-overhaul",
+    "gottschcore",
     "hammerlib",
     "harvest-with-ease",
     "hexcast-neoforged",
@@ -158,7 +160,6 @@
     "more-overlays-updated",
     "mouse-tweaks",
     "mowzies-mobs",
-    "multiplayer-spawners",
     "my-nethers-delight",
     "natures-compass",
     "neovitae",
@@ -214,7 +215,7 @@
     "sons-of-sins",
     "spark",
     "stateobserver",
-    "summoning-rituals",
+    "stronger-mobs-below",
     "supermartijn642-config-lib",
     "supermartijn642-core-lib",
     "sweet-cakes",
@@ -391,6 +392,7 @@
     "2026-11-24 Thanksgiving promotion candidate: exact dev/progression 4a027c5f0e78af0cc08bb004e1bbb4ca3688a42a includes #515 internalized Transformations, unified food, admin controls, graduation housing engine #698, #630 strict Wither finale, and other reviewed merged Progression work. Remove standalone tmm_transformations from runtime; retain archived source. Module CI and A/B/C still required; no full build authorization.",
     "2026-11-24 #542: supersedes prior blocked note. Exact official artifact audit run 45543055707 passed for both Lootr add-ons and required pinned providers; both add-on pins indexed on this candidate. Keep personal full-loot, 10-second spawner torches, BetterEnd conversion fallback and Fair Share exclusion. No game test yet.",
     "2026-11-24 #507 source candidate: replace Embeddium with exact verified Sodium 0.8.13; leave ImmediatelyFast native defaults. Artifact hash and loader ranges passed audit run 45543055707; full client roster reverse-dependency audit still required before merging.",
-    "2026-11-24 #593 EMI-only trial replaces JEI/JEP/JER with exact verified EMI 1.1.24, EMIsemble 1.2.1 and Extra Mod Integrations 1.0.3; retains 251 external pins, no JEI bridge or EMI Professions. Native C17 and JER info loss assessment pending; prior server-tested rollback preserved."
+    "2026-11-24 #593 EMI-only trial replaces JEI/JEP/JER with exact verified EMI 1.1.24, EMIsemble 1.2.1 and Extra Mod Integrations 1.0.3; retains 251 external pins, no JEI bridge or EMI Professions. Native C17 and JER info loss assessment pending; prior server-tested rollback preserved.",
+    "2026-11-27 #748/#812/#830 supersedes previous personal spawner and Summoning Rituals selections: remove both, preserve native Occultism Perpetual Life, Apothic Spawners, and all Lootr parity. Add verified Stronger Mobs Below 1.0.0, Enemy Echelons API 1.0.0 and GottschCore 2.5.0. Infinity Cave blocked by both exact published JAR native Minecraft ranges; T&T/D&T conditional review only. No build authorization."
   ]
 }
